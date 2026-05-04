@@ -35,7 +35,7 @@ const sectionComponents: Record<AdminSection, React.ComponentType> = {
 
 const AdminPage = () => {
   const navigate = useNavigate();
-  const { role, isStaff, loading } = useRole();
+  const { role, isAdmin, loading } = useRole();
   const [activeSection, setActiveSection] = useState<AdminSection>("overview");
 
   const allowed = useMemo(() => canAccessSection(role, activeSection), [role, activeSection]);
@@ -45,7 +45,7 @@ const AdminPage = () => {
     return <div className="min-h-screen flex items-center justify-center text-muted-foreground text-sm">Carregando…</div>;
   }
 
-  if (!isStaff) {
+  if (!isAdmin) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-3 p-6 text-center">
         <ShieldAlert className="w-10 h-10 text-muted-foreground" />

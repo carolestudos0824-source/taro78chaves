@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { DEFAULT_PROGRESS, type Badge, type UserProgress } from "@/lib/content";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
+import { useRole } from "@/hooks/use-role";
 
 const LOCAL_EXTRAS_KEY = "tarot-journey-extras";
 
@@ -114,6 +115,7 @@ function progressToDbCore(p: UserProgress) {
 
 export function useProgress() {
   const { user } = useAuth();
+  const { isStaff } = useRole();
   const [progress, setProgress] = useState<UserProgress>({ ...DEFAULT_PROGRESS, ...getLocalExtras() });
   const [loading, setLoading] = useState(true);
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -162,7 +164,7 @@ export function useProgress() {
 
   // ─── Debounced save to Supabase (user_progress + profiles.student_name) ───
   useEffect(() => {
-    if (!user || loading) return;
+    if (!user || loading || isStaff) return;
 
     const corePayload = progressToDbCore(progress);
     const coreSnapshot = JSON.stringify(corePayload);

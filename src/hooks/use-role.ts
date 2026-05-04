@@ -42,7 +42,7 @@ export const useRole = () => {
 };
 
 /** Sections each role can access. Admin = everything. */
-export const MODERATOR_SECTIONS = ["overview", "users", "progress", "support", "audit"] as const;
+export const MODERATOR_SECTIONS = [] as const;
 
 export const canAccessSection = (role: AppRole, section: string): boolean => {
   if (role === "admin") return true;
