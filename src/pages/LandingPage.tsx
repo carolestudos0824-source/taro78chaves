@@ -305,45 +305,48 @@ const LandingPage = () => {
         
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-16">
           <div className="space-y-4">
-            <h2 className="font-heading text-4xl md:text-5xl">Desbloqueie a Jornada Completa</h2>
-            <p className="text-muted-foreground font-body">Escolha o plano ideal para continuar estudando no seu ritmo.</p>
+            <h2 className="font-heading text-4xl md:text-5xl text-[#FFF8E6]">Desbloqueie a Jornada Completa</h2>
+            <p className="text-[#D8CFC2] font-body text-lg">Escolha o plano ideal para continuar estudando no seu ritmo.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             {/* Monthly */}
-            <div className="p-10 rounded-[2.5rem] border border-white/10 bg-white/5 flex flex-col text-left space-y-8">
+            <div className="p-10 rounded-[2.5rem] border border-gold/20 bg-white/5 flex flex-col text-left space-y-8 backdrop-blur-sm transition-all hover:bg-white/10">
               <div className="space-y-2">
-                <h3 className="t-section-title text-white/40 font-bold">Plano Mensal</h3>
+                <h3 className="t-section-title text-[#C9A96E] font-bold uppercase tracking-widest">Plano Mensal</h3>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-5xl font-heading text-white">R$29,90</span>
-                  <span className="text-sm opacity-40">/mês</span>
+                  <span className="text-5xl font-heading text-[#FFF8E6]">R$29,90</span>
+                  <span className="text-sm text-[#D8CFC2]">/mês</span>
                 </div>
               </div>
-              <p className="text-sm opacity-60 flex-1 font-body">Ideal para quem quer testar no seu próprio tempo, com liberdade para cancelar.</p>
-              <Button onClick={() => handleSubscribe("monthly")} className="w-full py-7 rounded-full border border-white/20 text-white bg-transparent hover:bg-white/10 font-heading tracking-widest text-[11px] uppercase transition-all">
+              <p className="text-sm text-[#D8CFC2] flex-1 font-body leading-relaxed">Ideal para quem quer testar no seu próprio tempo, com liberdade para cancelar a qualquer momento.</p>
+              <Button 
+                onClick={() => handleSubscribe("monthly")} 
+                className="w-full py-7 rounded-full border border-gold/40 text-[#FFF8E6] bg-transparent hover:bg-gold/10 hover:border-gold font-heading tracking-[0.2em] text-[11px] uppercase transition-all shadow-lg"
+              >
                 ASSINAR MENSAL
               </Button>
             </div>
 
             {/* Annual */}
             <div className="p-10 rounded-[3rem] bg-white text-midnight shadow-2xl scale-105 border-4 border-gold relative flex flex-col text-left space-y-8">
-              <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-gold px-6 py-2 rounded-full text-[10px] font-heading font-black tracking-widest text-parchment shadow-xl">
+              <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-gold px-6 py-2 rounded-full text-[10px] font-heading font-black tracking-widest text-white shadow-xl">
                 ✦ MELHOR VALOR
               </div>
               <div className="space-y-2">
-                <h3 className="t-section-title text-gold-dark font-bold">Plano Anual</h3>
+                <h3 className="t-section-title text-gold-dark font-bold uppercase tracking-widest">Plano Anual</h3>
                 <div className="flex items-baseline gap-1">
                   <span className="text-6xl font-heading text-midnight">R$197</span>
-                  <span className="text-sm opacity-40">/ano</span>
+                  <span className="text-sm text-midnight/40">/ano</span>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-xs font-bold text-[#4A1528] tracking-tight">
+                  <p className="text-sm font-bold text-[#4A1528] tracking-tight">
                     = R$16,42/mês • Economia de 45%
                   </p>
-                  <p className="text-[10px] font-bold text-[#4A1528]/70">Menos de R$0,55 por dia.</p>
+                  <p className="text-[12px] font-bold text-[#4A1528]">Menos de R$0,55 por dia.</p>
                 </div>
               </div>
-              <p className="text-sm text-midnight/60 flex-1 font-body">Acesso anual à jornada completa, com estudo guiado e progresso salvo.</p>
+              <p className="text-sm text-midnight/80 flex-1 font-body leading-relaxed">Acesso anual à jornada completa pelos 78 arcanos, com estudo guiado, quizzes e progresso salvo.</p>
               <Button onClick={() => handleSubscribe("annual")} className="btn-premium w-full py-8 text-sm shadow-xl hover:scale-[1.02] transition-transform">
                 ASSINAR ANUAL →
               </Button>
@@ -408,14 +411,14 @@ const LandingPage = () => {
           <p className="t-section-title">A jornada viva pelos arcanos</p>
         </div>
 
-        <nav className="flex flex-wrap justify-center gap-8 text-[11px] font-heading tracking-widest uppercase opacity-40">
+        <nav className="flex flex-wrap justify-center gap-8 text-[11px] font-heading tracking-widest uppercase opacity-60">
           <a href="/privacidade" className="hover:text-[#4A1528] hover:opacity-100 transition-colors">Privacidade</a>
           <a href="/termos" className="hover:text-[#4A1528] hover:opacity-100 transition-colors">Termos</a>
           <a href="/suporte" className="hover:text-[#4A1528] hover:opacity-100 transition-colors">Suporte</a>
           <a href="/excluir-conta" className="hover:text-[#4A1528] hover:opacity-100 transition-colors">Excluir conta</a>
         </nav>
 
-        <p className="text-[10px] opacity-20 font-body">© {new Date().getFullYear()} Tarô 78 Chaves. Todos os direitos reservados.</p>
+        <p className="text-[10px] opacity-40 font-body">© {new Date().getFullYear()} Tarô 78 Chaves. Todos os direitos reservados.</p>
       </footer>
     </div>
   );
