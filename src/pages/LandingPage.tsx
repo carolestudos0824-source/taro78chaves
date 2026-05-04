@@ -206,17 +206,17 @@ const LandingPage = () => {
             {
               icon: "🃏",
               title: "UMA CARTA POR VEZ",
-              text: "Cada arcano tem lição própria: essência, símbolos, luz, sombra e quiz."
+              text: "Cada arcano tem lição própria: essência, símbolos guiados, luz, sombra e quiz."
             },
             {
               icon: "📈",
               title: "PROGRESSO REAL E VIVO",
-              text: "XP, sequência diária e desbloqueio por desempenho. Você sente que está evoluindo."
+              text: "XP, sequência diária e desbloqueio por progresso. Você sente que está evoluindo."
             },
             {
               icon: "🎯",
               title: "QUIZ QUE REALMENTE FIXA",
-              text: "Não é decoreba. É compreensão testada com feedback imediato."
+              text: "Não é decoreba. É compreensão testada com feedback imediato em cada etapa."
             }
           ].map((item, i) => (
             <div key={i} className="bg-white p-10 rounded-[2.5rem] border border-[#1f120d]/5 shadow-sm space-y-6 transition-all hover:shadow-xl hover:shadow-[#1f120d]/5 hover:-translate-y-1">
