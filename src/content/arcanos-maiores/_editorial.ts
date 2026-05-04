@@ -193,7 +193,7 @@ export function createEmptyArcano(number: number, name: string, numeral: string,
 
 // ─── Conversão para o formato legado (ArcanoData) ───
 
-import type { ArcanoData, LessonSection, QuizQuestion } from "@/lib/content/runtime-types";
+
 
 export function editorialToLegacy(editorial: ArcanoMaiorEditorial, unlocked = false): ArcanoData {
   const lessonSections: LessonSection[] = [
