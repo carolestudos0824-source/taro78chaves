@@ -192,7 +192,87 @@ O perigo é real: velocidade sem direção é catástrofe. A mesma energia que t
     id: "espadas-rainha",
     cardImage: rainhaImage,
     subtitulo: "A Rainha da Lucidez",
-...
+    essencia: "A Rainha de Espadas é a mestra do discernimento — a mente que corta com precisão cirúrgica, sem crueldade, sem sentimentalismo. Representa a inteligência feminina em sua forma mais afiada: a mulher que vê tudo, compreende tudo e diz exatamente o que precisa ser dito.",
+
+    simbolosCentrais: "Uma rainha sentada num trono elevado segura uma espada na mão direita e estende a mão esquerda como se chamasse alguém. O trono é decorado com borboletas (transformação) e um querubim (pureza mental). Seu perfil é austero mas não cruel. Uma única nuvem no céu alto indica pensamento claro. A coroa de borboletas simboliza metamorfose pelo intelecto.",
+
+    arquetipo: "A Juíza Sábia — a mulher que julga sem crueldade, que corta sem destruir, que sabe a verdade porque a viveu.",
+
+    luz: "Discernimento perfeito, honestidade radical, independência intelectual, comunicação precisa, experiência que gera sabedoria, fronteiras saudáveis. A Rainha de Espadas na luz é a mentora que você procura quando quer a verdade — não o conforto.",
+
+    sombra: "Frieza emocional, amargura, cinismo, isolamento por excesso de lucidez, uso da verdade para magoar, incapacidade de perdoar. Na sombra, a Rainha cortou tanto que não resta mais ninguém ao redor.",
+
+    licaoPratica: "A lucidez sem compaixão é crueldade refinada. A Rainha de Espadas ensina que ver a verdade é um dom — mas saber quando e como dizê-la é sabedoria. A espada mais afiada é aquela que corta apenas o necessário.",
+
+    interpretacaoAmor: "Parceira independente e lúcida, mulher que passou por dor e amadureceu, relação baseada em honestidade total. A Rainha de Espadas no amor é a parceira que te respeita demais para mentir.",
+
+    interpretacaoTrabalho: "Líder analítica, advogada, juíza, consultora estratégica, mentora exigente. No trabalho, é a profissional que todos respeitam — porque ela está sempre certa.",
+
+    interpretacaoEspiritualidade: "Discernimento espiritual maduro, sabedoria que vem da dor, corte de ilusões com compaixão. A Rainha de Espadas na espiritualidade é a mestra que ensina pelo exemplo da clareza.",
+
+    vozDaCarta: "Eu digo o que precisa ser dito — não o que você quer ouvir. Não me confunda com crueldade. Eu cortei o que era falso para proteger o que era verdadeiro. Se você quer gentileza vazia, procure outro trono. Se quer a verdade que liberta, sente-se.",
+
+    aprofundamento: `A Rainha de Espadas é frequentemente associada a viúvas, mulheres independentes e mulheres que amadureceram pela dor. Na tradição Rider-Waite-Smith, seu perfil austero e a espada erguida transmitem autoridade intelectual sem apologias.
+
+Na Cabala, a Rainha de Espadas representa Água no Ar — a emoção que informa o pensamento. Não é frieza: é lucidez temperada pela experiência emocional. Ela sente — mas não deixa o sentimento nublar o julgamento.
+
+As borboletas no trono e na coroa são um contraponto à severidade: representam transformação. A Rainha não nasceu afiada — ela foi lapidada pela vida. Cada borboleta é uma metamorfose que a tornou mais sábia.
+
+Na astrologia, está associada a Libra e Aquário — signos de justiça, equilíbrio e visão humanitária. A Rainha de Espadas julga, mas julga com imparcialidade — não por emoção ou vingança, mas por princípio.`,
+
+    perguntasReflexao: [
+      "Você consegue dizer verdades difíceis com compaixão — ou tende à crueldade?",
+      "A sua lucidez sobre a vida te conecta ou te isola das pessoas?",
+      "Existe uma fronteira que você precisa estabelecer com clareza e firmeza?",
+    ],
+
+    quiz: [
+      {
+        id: "espadas-rainha-q1",
+        question: "O que as borboletas no trono da Rainha simbolizam?",
+        options: ["Fragilidade", "Transformação — ela foi lapidada pela vida", "Vaidade", "Natureza"],
+        correctIndex: 1,
+        explanation: "Borboletas representam metamorfose — a Rainha foi forjada pela experiência.",
+      },
+      {
+        id: "espadas-rainha-q2",
+        question: "Qual é o arquétipo da Rainha de Espadas?",
+        options: ["A Vítima", "A Juíza Sábia", "A Mártir", "A Sedutora"],
+        correctIndex: 1,
+        explanation: "A Juíza Sábia corta sem destruir — julga com lucidez e experiência.",
+      },
+      {
+        id: "espadas-rainha-q3",
+        question: "Na Cabala, a Rainha de Espadas representa:",
+        options: ["Fogo no Ar", "Água no Ar", "Terra no Ar", "Ar no Ar"],
+        correctIndex: 1,
+        explanation: "É Água no Ar — emoção que informa o pensamento sem nublá-lo.",
+      },
+      {
+        id: "espadas-rainha-q4",
+        question: "Na sombra, a Rainha de Espadas pode indicar:",
+        options: ["Estupidez", "Frieza emocional e amargura que isola", "Preguiça", "Fantasia"],
+        correctIndex: 1,
+        explanation: "Na sombra, cortou tanto que não resta ninguém ao redor — lucidez que isola.",
+      },
+      {
+        id: "espadas-rainha-q5",
+        question: "A lição central da Rainha de Espadas é:",
+        options: ["Ser cruel com todos", "Saber quando e como dizer a verdade é sabedoria", "Nunca falar", "Ignorar emoções"],
+        correctIndex: 1,
+        explanation: "Ver a verdade é dom — saber quando e como dizê-la é sabedoria.",
+      },
+    ],
+
+    revisaoRapida: {
+      palavraChave: "Discernimento",
+      luz: "Lucidez com compaixão e fronteiras saudáveis",
+      sombra: "Frieza e cinismo que isolam",
+      licaoCentral: "A espada mais afiada é aquela que corta apenas o necessário",
+      aplicacaoPratica: "Diga uma verdade necessária com precisão e compaixão hoje",
+      fraseFixacao: "Eu não digo o que você quer ouvir — digo o que precisa ser dito",
+    },
+  },
   {
     id: "espadas-rei",
     cardImage: reiImage,
