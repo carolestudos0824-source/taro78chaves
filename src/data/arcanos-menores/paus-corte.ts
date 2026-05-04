@@ -3,6 +3,10 @@
  * Modelo padrão: 18 campos por carta.
  */
 import { type ArcanoMenorEditorial } from "./index";
+import pajemImage from "@/assets/menor-paus-pajem.jpg";
+import cavaleiroImage from "@/assets/menor-paus-cavaleiro.jpg";
+import rainhaImage from "@/assets/menor-paus-rainha.jpg";
+import reiImage from "@/assets/menor-paus-rei.jpg";
 
 export const PAUS_CORTE: Partial<ArcanoMenorEditorial>[] = [
   // ═══════════════════════════════════════════════════════════════
@@ -10,6 +14,7 @@ export const PAUS_CORTE: Partial<ArcanoMenorEditorial>[] = [
   // ═══════════════════════════════════════════════════════════════
   {
     id: "paus-pajem",
+    cardImage: pajemImage,
     subtitulo: "O Mensageiro da Chama",
     essencia: "O Pajem de Paus é o jovem explorador entusiasmado — cheio de ideias, cheio de fogo, cheio de vontade. Representa o início da jornada criativa: a primeira faísca que quer virar incêndio. É a energia pura do 'e se?' dito com olhos brilhantes.",
 
@@ -98,6 +103,7 @@ O deserto ao fundo é significativo: não é um lugar de morte, mas de potencial
   // ═══════════════════════════════════════════════════════════════
   {
     id: "paus-cavaleiro",
+    cardImage: cavaleiroImage,
     subtitulo: "O Cavaleiro da Aventura",
     essencia: "O Cavaleiro de Paus é pura ação — o aventureiro que galopa sem mapa, movido pela paixão e pela fé de que o caminho se faz caminhando. Representa a energia masculina do Fogo em movimento: destemida, impulsiva, magnética e impossível de ignorar.",
 
@@ -186,6 +192,7 @@ As salamandras com caudas abertas são um detalhe importante: nas outras cartas 
   // ═══════════════════════════════════════════════════════════════
   {
     id: "paus-rainha",
+    cardImage: rainhaImage,
     subtitulo: "A Rainha do Fogo Vivo",
     essencia: "A Rainha de Paus é a força feminina do Fogo — magnética, confiante, criativa e absolutamente dona de si. Representa a mulher que lidera pelo carisma e pela paixão: inspira sem forçar, atrai sem manipular, cria sem pedir permissão.",
 
@@ -274,6 +281,7 @@ Os leões e girassóis no trono são símbolos solares — Leo, o signo do sol, 
   // ═══════════════════════════════════════════════════════════════
   {
     id: "paus-rei",
+    cardImage: reiImage,
     subtitulo: "O Soberano do Fogo",
     essencia: "O Rei de Paus é o mestre da vontade — aquele que transformou o fogo selvagem em liderança estratégica. Representa a maturidade criativa: a visão que se tornou império, o impulso que se tornou propósito, o desejo que se tornou legado.",
 

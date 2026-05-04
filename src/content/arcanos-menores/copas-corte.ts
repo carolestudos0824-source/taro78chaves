@@ -3,6 +3,10 @@
  * Modelo padrão: 18 campos por carta.
  */
 import { type ArcanoMenorEditorial } from "./index";
+import pajemImage from "@/assets/menor-copas-pajem.jpg";
+import cavaleiroImage from "@/assets/menor-copas-cavaleiro.jpg";
+import rainhaImage from "@/assets/menor-copas-rainha.jpg";
+import reiImage from "@/assets/menor-copas-rei.jpg";
 
 export const COPAS_CORTE: Partial<ArcanoMenorEditorial>[] = [
   // ═══════════════════════════════════════════════════════════════
@@ -10,6 +14,7 @@ export const COPAS_CORTE: Partial<ArcanoMenorEditorial>[] = [
   // ═══════════════════════════════════════════════════════════════
   {
     id: "copas-pajem",
+    cardImage: pajemImage,
     subtitulo: "O Mensageiro do Coração",
     essencia: "O Pajem de Copas é o jovem mensageiro emocional — aquele que traz notícias do coração com olhos curiosos e mãos delicadas. Representa o início da maturidade afetiva: a primeira vez que se olha para dentro com seriedade e se descobre capaz de sentir com profundidade.",
 
@@ -98,6 +103,7 @@ Na tradição medieval, os pajens eram os mensageiros da corte — e no tarô, o
   // ═══════════════════════════════════════════════════════════════
   {
     id: "copas-cavaleiro",
+    cardImage: cavaleiroImage,
     subtitulo: "O Cavaleiro do Romance",
     essencia: "O Cavaleiro de Copas é o idealista em movimento — o coração que cavalga em direção ao amor sem medo de parecer excessivo. Representa a ação movida pelo sentimento: a proposta, a declaração, a criação artística que nasce da paixão.",
 
@@ -188,6 +194,7 @@ Na tradição cortês medieval, o cavaleiro trovador era aquele que dedicava sua
   // ═══════════════════════════════════════════════════════════════
   {
     id: "copas-rainha",
+    cardImage: rainhaImage,
     subtitulo: "A Rainha das Profundezas",
     essencia: "A Rainha de Copas é a mestra das emoções — aquela que sente tudo sem se afogar em nada. Representa a inteligência emocional em sua forma mais elevada: a capacidade de acolher, compreender e transformar qualquer sentimento em sabedoria.",
 
@@ -278,6 +285,7 @@ O perigo da Rainha de Copas é a absorção: sentir tanto que se perde no sentim
   // ═══════════════════════════════════════════════════════════════
   {
     id: "copas-rei",
+    cardImage: reiImage,
     subtitulo: "O Soberano das Águas",
     essencia: "O Rei de Copas é o mestre das emoções que governa sem ser governado por elas. Representa a maturidade emocional masculina em sua forma mais elevada: sentir profundamente e agir com sabedoria, liderar com compaixão e decidir com o coração equilibrado.",
 

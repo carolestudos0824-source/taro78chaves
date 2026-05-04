@@ -3,6 +3,10 @@
  * Modelo padrão: 18 campos por carta.
  */
 import { type ArcanoMenorEditorial } from "./index";
+import pajemImage from "@/assets/menor-ouros-pajem.jpg";
+import cavaleiroImage from "@/assets/menor-ouros-cavaleiro.jpg";
+import rainhaImage from "@/assets/menor-ouros-rainha.jpg";
+import reiImage from "@/assets/menor-ouros-rei.jpg";
 
 export const OUROS_CORTE: Partial<ArcanoMenorEditorial>[] = [
   // ═══════════════════════════════════════════════════════════════
@@ -10,6 +14,7 @@ export const OUROS_CORTE: Partial<ArcanoMenorEditorial>[] = [
   // ═══════════════════════════════════════════════════════════════
   {
     id: "ouros-pajem",
+    cardImage: pajemImage,
     subtitulo: "O Estudante da Matéria",
     essencia: "O Pajem de Ouros é o aprendiz do mundo material — aquele que começa a aprender sobre dinheiro, corpo, trabalho e manifestação. Representa a curiosidade prática, o primeiro emprego, o primeiro investimento, a primeira vez que se entende que a vida concreta também é um caminho de aprendizado.",
 
@@ -98,6 +103,7 @@ Na tradição pedagógica do tarô, o Pajem de Ouros é o "estudante do material
   // ═══════════════════════════════════════════════════════════════
   {
     id: "ouros-cavaleiro",
+    cardImage: cavaleiroImage,
     subtitulo: "O Cavaleiro da Constância",
     essencia: "O Cavaleiro de Ouros é o mais paciente e persistente de todos os cavaleiros. Representa a ação lenta mas imparável — o progresso que vem da constância, não da velocidade. É o oposto do Cavaleiro de Espadas: não galopa, marcha. Não corta, constrói.",
 
@@ -186,6 +192,7 @@ As folhas de carvalho no elmo e na sela são o símbolo da resistência: o carva
   // ═══════════════════════════════════════════════════════════════
   {
     id: "ouros-rainha",
+    cardImage: rainhaImage,
     subtitulo: "A Rainha da Abundância Viva",
     essencia: "A Rainha de Ouros é a mestra da abundância prática — a mulher que nutre, sustenta e faz florescer tudo ao seu redor. Representa a generosidade materializada: não em palavras, mas em comida na mesa, lar acolhedor, jardim florido e colo disponível.",
 
@@ -274,6 +281,7 @@ O trono ao ar livre, integrado ao jardim, é significativo: esta rainha não gov
   // ═══════════════════════════════════════════════════════════════
   {
     id: "ouros-rei",
+    cardImage: reiImage,
     subtitulo: "O Soberano da Prosperidade",
     essencia: "O Rei de Ouros é a autoridade máxima do mundo material — o mestre da prosperidade, do planejamento e da construção concreta. Representa a inteligência prática em sua forma mais madura: aquele que sabe criar, manter e multiplicar riqueza com responsabilidade.",
 
