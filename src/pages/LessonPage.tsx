@@ -30,12 +30,12 @@ const PHASE_STEPS: LessonPhase[] = ["intro", "lesson", "deepdive", "exercise", "
 const LessonPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { addXP, completeLesson, completeQuiz, earnBadge, isArcanoCompleted } = useProgress();
+  const { addXP, completeLesson, completeQuiz, earnBadge, isArcanoCompleted, progress } = useProgress();
   const { user } = useAuth();
   const { trackEvent } = useTrackEvent();
   const { isPremium, loading: premiumLoading } = usePremium();
   const { isAdmin, isStaff, loading: roleLoading } = useRole();
-  const { hasFullAccess } = useAccess();
+  const { hasFullAccess, canAccessArcano } = useAccess();
   const [phase, setPhase] = useState<LessonPhase>("intro");
   const [exerciseCompleted, setExerciseCompleted] = useState(false);
   const [xpEarned, setXpEarned] = useState(0);
@@ -44,8 +44,7 @@ const LessonPage = () => {
 
   const arcanoId = parseInt(id || "0", 10);
   const arcano = getArcanoById(isNaN(arcanoId) ? 0 : arcanoId);
-  const isFree = FREE_ARCANO_IDS.includes(arcanoId);
-  const hasAccess = isFree || hasFullAccess;
+  const hasAccess = canAccessArcano(arcanoId);
 
   const prevArcano = arcanoId > 0 ? ARCANOS_MAIORES[arcanoId - 1] : null;
   const nextArcano = arcanoId < 21 ? ARCANOS_MAIORES[arcanoId + 1] : null;
@@ -153,7 +152,7 @@ const LessonPage = () => {
       const quizXp = score * 10;
       addXP(quizXp);
       setXpEarned(e => e + quizXp);
-      completeQuiz(`quiz-arcano-${arcano.id}`);
+      completeQuiz(`quiz-arcano-${arcano.id}`, score, total);
       completeLesson(`arcano-${arcano.id}`);
       if (arcano.id === 0) earnBadge("fool-complete");
       if (score === total) earnBadge("quiz-master");
@@ -169,6 +168,9 @@ const LessonPage = () => {
     setPhase(p);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  // Special case: Arcano 1 performance lock
+  const isPerformanceLocked = arcanoId === 1 && !hasFullAccess && !canAccessArcano(1);
 
   // Premium gate — only shown to non-premium, non-admin, non-free users
   if (!hasAccess) {
@@ -190,7 +192,7 @@ const LessonPage = () => {
             </button>
             <div className="flex-1 text-center">
               <span className="text-[9px] tracking-[0.35em] uppercase font-heading" style={{ color: "hsl(340 42% 28% / 0.50)" }}>
-                {arcano.numeral} · Conteúdo Premium
+                {arcano.numeral} · {isPerformanceLocked ? "Bloqueio por Desempenho" : "Conteúdo Premium"}
               </span>
             </div>
           </div>
@@ -210,9 +212,30 @@ const LessonPage = () => {
             }}>{arcano.name}</h1>
             <p className="font-accent text-sm italic" style={{ color: "hsl(230 20% 15% / 0.55)" }}>{arcano.subtitle}</p>
           </div>
-          <PremiumGate featureName={arcano.name}
-            message={`Estude ${arcano.name} com profundidade — essência, símbolos, luz, sombra, voz do arcano, exercícios e quiz completo.`}
-          />
+          
+          <PremiumGate 
+            featureName={arcano.name}
+            message={isPerformanceLocked 
+              ? "Para desbloquear O Mago gratuitamente, você precisa de um desempenho excelente (80%+) no quiz do Louco. Refaça o quiz para avançar."
+              : `Estude ${arcano.name} com profundidade — essência, símbolos, luz, sombra, voz do arcano, exercícios e quiz completo.`
+            }
+          >
+            {isPerformanceLocked && (
+              <div className="mt-4 flex flex-col items-center gap-4">
+                <button
+                  onClick={() => navigate("/lesson/0")}
+                  className="px-8 py-3 rounded-full font-heading text-xs tracking-widest uppercase transition-all hover:scale-105 active:scale-95"
+                  style={{
+                    background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))",
+                    color: "hsl(36 33% 97%)",
+                    boxShadow: "0 4px 20px hsl(36 45% 58% / 0.2)",
+                  }}
+                >
+                  Refazer Quiz do Louco
+                </button>
+              </div>
+            )}
+          </PremiumGate>
         </main>
       </div>
     );

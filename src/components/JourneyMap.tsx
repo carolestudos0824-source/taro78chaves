@@ -16,7 +16,7 @@ const ARCANO_SYMBOLS: Record<number, string> = {
 
 export function JourneyMap({ progress }: JourneyMapProps) {
   const navigate = useNavigate();
-  const { bypassLocks } = useAccess();
+  const { bypassLocks, canAccessArcano } = useAccess();
 
   return (
     <div className="relative max-w-2xl mx-auto pb-16">
@@ -40,11 +40,12 @@ export function JourneyMap({ progress }: JourneyMapProps) {
       <div className="relative space-y-0">
         {ARCANOS_MAIORES.map((arcano, index) => {
           const isCompleted = progress.completedLessons.includes(`arcano-${arcano.id}`) && progress.completedQuizzes.includes(`quiz-arcano-${arcano.id}`);
-          const isPremium = !FREE_ARCANO_IDS.includes(arcano.id) && !bypassLocks;
-          const isUnlocked = bypassLocks || (!isPremium && (arcano.id === 0 || (
+          const isFree = canAccessArcano(arcano.id);
+          const isPremium = !isFree && !bypassLocks;
+          const isUnlocked = bypassLocks || isFree || (
             progress.completedLessons.includes(`arcano-${arcano.id - 1}`) &&
             progress.completedQuizzes.includes(`quiz-arcano-${arcano.id - 1}`)
-          )));
+          );
           const isCurrent = isUnlocked && !isCompleted;
           const side = index % 2 === 0 ? "left" : "right";
           const symbol = ARCANO_SYMBOLS[arcano.id] || "◇";
@@ -175,7 +176,16 @@ export function JourneyMap({ progress }: JourneyMapProps) {
                         </div>
                       )}
 
-                      {isPremium && !isCompleted && (
+                      {!isCompleted && !isCurrent && isUnlocked && isFree && (
+                        <div className={`flex items-center gap-1.5 mt-3 ${side === "left" ? "justify-end" : "justify-start"}`}>
+                          <Sparkles className="w-3 h-3 text-orange-500" />
+                          <span className="text-[9px] tracking-[0.2em] uppercase font-body" style={{
+                            color: "hsl(36 42% 40% / 0.68)"
+                          }}>Grátis</span>
+                        </div>
+                      )}
+
+                      {isPremium && !isCompleted && !isUnlocked && (
                         <div className={`flex items-center gap-1.5 mt-3 ${side === "left" ? "justify-end" : "justify-start"}`}>
                           <Crown className="w-3 h-3" style={{ color: "hsl(36 45% 50% / 0.55)" }} />
                           <span className="text-[9px] tracking-[0.2em] uppercase font-body" style={{
