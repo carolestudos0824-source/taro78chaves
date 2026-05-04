@@ -158,4 +158,48 @@ export const O_MAGO: ArcanoMaiorEditorial = {
     { keyword: "Cabala", meaning: "Beth (ב) — entre Keter e Binah" },
     { keyword: "Frase-chave", meaning: "Como acima, assim abaixo" },
   ],
+  symbolsMap: [
+    {
+      id: "infinito",
+      name: "Símbolo do Infinito",
+      description: "O lemniscata (∞) representa o domínio infinito sobre a consciência e a maestria que transcende o tempo.",
+      reflectionQuestion: "Que tipo de maestria você deseja levar para a eternidade?",
+      position: { x: 50, y: 15 }
+    },
+    {
+      id: "bastao",
+      name: "Bastão Erguido",
+      description: "Canaliza a energia criativa do cosmos. O Mago não cria a energia, ele a direciona.",
+      reflectionQuestion: "Para onde você está direcionando sua energia vital hoje?",
+      position: { x: 80, y: 35 }
+    },
+    {
+      id: "mesa-elementos",
+      name: "Mesa com Quatro Naipes",
+      description: "Representa o domínio sobre os quatro elementos: Espadas (Ar), Cálice (Água), Bastão (Fogo) e Pentáculo (Terra).",
+      reflectionQuestion: "Qual destes elementos (mente, emoção, vontade ou matéria) você domina melhor?",
+      position: { x: 45, y: 55 }
+    },
+    {
+      id: "maos-posicao",
+      name: "Mãos (Céu e Terra)",
+      description: "Uma mão para cima e outra para baixo corporificam o princípio 'como em cima, assim embaixo'.",
+      reflectionQuestion: "Como suas intenções espirituais estão se manifestando na sua vida material?",
+      position: { x: 30, y: 40 }
+    },
+    {
+      id: "jardim",
+      name: "Jardim de Flores",
+      description: "Rosas vermelhas e lírios brancos representam a união entre o desejo (vontade) e a pureza (intenção).",
+      reflectionQuestion: "Seus desejos atuais nascem de uma intenção pura?",
+      position: { x: 50, y: 85 }
+    },
+    {
+      id: "tunica",
+      name: "Túnica Branca e Vermelha",
+      description: "O branco simboliza a pureza interior e o vermelho a vontade ativa no mundo exterior.",
+      reflectionQuestion: "Você consegue manter sua integridade enquanto age com poder no mundo?",
+      position: { x: 50, y: 45 }
+    }
+  ],
 };
