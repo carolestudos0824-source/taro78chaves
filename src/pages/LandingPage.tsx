@@ -167,36 +167,6 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* ─── Benefits Section ─── */}
-      <section className="py-24 px-6 bg-[#fcf9f2]">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="space-y-4 text-center p-8 rounded-3xl bg-white/50 border border-gold/10 shadow-sm">
-              <div className="w-12 h-12 bg-[#4A1528]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <BookOpen className="w-6 h-6 text-[#4A1528]" />
-              </div>
-              <h3 className="font-heading text-xl text-midnight">Uma carta por vez</h3>
-              <p className="text-sm text-midnight/70 font-body">Estudo focado e profundo, sem pressa, respeitando o ritmo da sua intuição.</p>
-            </div>
-            
-            <div className="space-y-4 text-center p-8 rounded-3xl bg-white/50 border border-gold/10 shadow-sm">
-              <div className="w-12 h-12 bg-[#C9A96E]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Award className="w-6 h-6 text-[#C9A96E]" />
-              </div>
-              <h3 className="font-heading text-xl text-midnight">Símbolos e Quizzes</h3>
-              <p className="text-sm text-midnight/70 font-body">Aprenda a enxergar cada detalhe da carta e fixe o conhecimento com exercícios interativos.</p>
-            </div>
-
-            <div className="space-y-4 text-center p-8 rounded-3xl bg-white/50 border border-gold/10 shadow-sm">
-              <div className="w-12 h-12 bg-[#4A1528]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Zap className="w-6 h-6 text-[#4A1528]" />
-              </div>
-              <h3 className="font-heading text-xl text-midnight">Progresso Vivo</h3>
-              <p className="text-sm text-midnight/70 font-body">Acompanhe sua evolução com XP, sequência diária e conquistas que marcam sua jornada.</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ─── Mobile Section ─── */}
       <section className="py-24 px-6 bg-white overflow-hidden">
