@@ -37,7 +37,7 @@ const STATUS_META: Record<Status, { label: string; cls: string; icon: React.Reac
 
 const AdminSupport = () => {
   const { user } = useAuth();
-  const { isStaff } = useRole();
+  const { isAdmin } = useRole();
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -98,7 +98,7 @@ const AdminSupport = () => {
     resolvido: tickets.filter((t) => t.status === "resolvido").length,
   }), [tickets]);
 
-  if (!isStaff) return null;
+  if (!isAdmin) return null;
 
   return (
     <div className="space-y-6 pb-8">
