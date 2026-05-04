@@ -427,7 +427,7 @@ const LandingPage = () => {
           <DialogHeader className="space-y-4">
             <DialogTitle className="font-heading text-2xl text-midnight text-center">Adicionar à tela inicial</DialogTitle>
             <DialogDescription className="font-body text-center text-midnight/70">
-              Deixe o Tarô 78 Chaves sempre à mão para continuar sua jornada com um toque.
+              No iPhone, adicione o Tarô 78 Chaves pela opção de compartilhamento do Safari.
             </DialogDescription>
           </DialogHeader>
 
