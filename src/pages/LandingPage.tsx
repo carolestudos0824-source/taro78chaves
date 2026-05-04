@@ -54,10 +54,15 @@ const LandingPage = () => {
               </h1>
 
               <div className="space-y-8 max-w-xl mx-auto lg:mx-0">
-                <p className="text-base font-body text-[#2d1810] opacity-90 max-w-md mx-auto lg:mx-0">
-                  Você para de decorar. Começa a compreender.<br/>
-                  Uma carta por vez, com método e profundidade.
-                </p>
+                <div className="space-y-4">
+                  <p className="text-lg font-body font-semibold text-[#4A1528] leading-snug">
+                    Um app de estudo guiado para aprender Rider-Waite-Smith carta por carta, com lições, quizzes e progresso.
+                  </p>
+                  <p className="text-base font-body text-[#2d1810] opacity-90 max-w-md mx-auto lg:mx-0">
+                    Você para de decorar. Começa a compreender.<br/>
+                    Uma carta por vez, com método e profundidade.
+                  </p>
+                </div>
 
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm font-body font-medium text-[#3d2810]">
                   <div className="flex items-center gap-2">
