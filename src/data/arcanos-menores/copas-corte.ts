@@ -103,6 +103,7 @@ Na tradição medieval, os pajens eram os mensageiros da corte — e no tarô, o
   // ═══════════════════════════════════════════════════════════════
   {
     id: "copas-cavaleiro",
+    cardImage: cavaleiroImage,
     subtitulo: "O Cavaleiro do Romance",
     essencia: "O Cavaleiro de Copas é o idealista em movimento — o coração que cavalga em direção ao amor sem medo de parecer excessivo. Representa a ação movida pelo sentimento: a proposta, a declaração, a criação artística que nasce da paixão.",
 
