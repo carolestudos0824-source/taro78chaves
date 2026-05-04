@@ -304,6 +304,10 @@ const LandingPage = () => {
         <Accordion type="single" collapsible className="space-y-4">
           {[
             {
+              q: "Por onde eu começo?",
+              a: "Você começa pelo Louco, gratuitamente. Se for bem na lição, desbloqueia O Mago e sente como a jornada funciona antes de assinar."
+            },
+            {
               q: "Para quem é esse app?",
               a: "Para quem quer aprender tarô com método, prática e progressão — sem depender de significados soltos."
             },
