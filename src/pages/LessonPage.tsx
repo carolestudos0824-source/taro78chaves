@@ -34,7 +34,7 @@ const LessonPage = () => {
   const { user } = useAuth();
   const { trackEvent } = useTrackEvent();
   const { isPremium, loading: premiumLoading } = usePremium();
-  const { isAdmin } = useIsAdmin();
+  const { isAdmin, isStaff, loading: roleLoading } = useRole();
   const { hasFullAccess } = useAccess();
   const [phase, setPhase] = useState<LessonPhase>("intro");
   const [exerciseCompleted, setExerciseCompleted] = useState(false);
