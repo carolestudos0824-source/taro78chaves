@@ -285,6 +285,7 @@ O perigo da Rainha de Copas é a absorção: sentir tanto que se perde no sentim
   // ═══════════════════════════════════════════════════════════════
   {
     id: "copas-rei",
+    cardImage: reiImage,
     subtitulo: "O Soberano das Águas",
     essencia: "O Rei de Copas é o mestre das emoções que governa sem ser governado por elas. Representa a maturidade emocional masculina em sua forma mais elevada: sentir profundamente e agir com sabedoria, liderar com compaixão e decidir com o coração equilibrado.",
 
