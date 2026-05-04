@@ -103,6 +103,7 @@ Na tradição pedagógica do tarô, o Pajem de Ouros é o "estudante do material
   // ═══════════════════════════════════════════════════════════════
   {
     id: "ouros-cavaleiro",
+    cardImage: cavaleiroImage,
     subtitulo: "O Cavaleiro da Constância",
     essencia: "O Cavaleiro de Ouros é o mais paciente e persistente de todos os cavaleiros. Representa a ação lenta mas imparável — o progresso que vem da constância, não da velocidade. É o oposto do Cavaleiro de Espadas: não galopa, marcha. Não corta, constrói.",
 
