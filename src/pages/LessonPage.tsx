@@ -15,7 +15,7 @@ import { ExerciseSection } from "@/components/ExerciseSection";
 import { QuizSection } from "@/components/QuizSection";
 import PremiumGate from "@/components/PremiumGate";
 import { ArrowLeft } from "lucide-react";
-import { useAuth } from "@/hooks/use-auth";
+import { Button } from "@/components/ui/button";
 
 type LessonPhase = "intro" | "lesson" | "symbols" | "deepdive" | "exercise" | "quiz" | "complete";
 
@@ -132,6 +132,9 @@ const LessonPage = () => {
             light={arcano.layers.main.light}
             shadow={arcano.layers.main.shadow}
             onComplete={() => setPhase(arcano.symbolsMap?.length ? "symbols" : "quiz")}
+            onGoDeepDive={() => setPhase("deepdive")}
+            onGoExercise={() => setPhase("exercise")}
+            onSkipToQuiz={() => setPhase("quiz")}
           />
         )}
 
@@ -147,7 +150,7 @@ const LessonPage = () => {
         {phase === "deepdive" && (
           <div className="space-y-8">
             <DeepDiveSection {...arcano.layers.deepDive} />
-            <Button onClick={() => setPhase("exercise")} className="btn-premium w-full">Continuar para Exercício</Button>
+            <Button onClick={() => setPhase("exercise")} className="btn-premium w-full py-7">Continuar para Exercício</Button>
           </div>
         )}
 
@@ -158,7 +161,7 @@ const LessonPage = () => {
               onComplete={() => setExerciseCompleted(true)}
               completed={exerciseCompleted}
             />
-            <Button onClick={() => setPhase("quiz")} className="btn-premium w-full">Iniciar Quiz Final</Button>
+            <Button onClick={() => setPhase("quiz")} className="btn-premium w-full py-7">Iniciar Quiz Final</Button>
           </div>
         )}
 
