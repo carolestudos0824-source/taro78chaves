@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Sparkles, BookOpen, Brain, Lightbulb, CheckCircle2 } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
+import { useRole } from "@/hooks/use-role";
 import { useResolvedLesson } from "@/hooks/use-resolved-lesson";
 import { StreakCounter } from "@/components/StreakCounter";
 import mysticBg from "@/assets/mystic-bg.jpg";
@@ -49,6 +50,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
   const { order } = useParams();
   const navigate = useNavigate();
   const { progress, addXP, completeLesson, completeQuiz, completeModule } = useProgress();
+  const { isStaff, loading: roleLoading } = useRole();
   const [phase, setPhase] = useState<Phase>("lesson");
   const [quizIdx, setQuizIdx] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
@@ -64,6 +66,17 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
   const totalLessons = lessons.length;
 
   const accent = themeAccent || "36 42% 44%";
+
+  if (roleLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-center space-y-3">
+          <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin mx-auto" />
+          <p className="text-xs text-muted-foreground font-heading tracking-wider">Carregando...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!lesson) {
     return (
@@ -91,12 +104,14 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
       setSelected(null);
       setShowExp(false);
     } else {
-      completeQuiz(lesson.id);
-      completeLesson(lesson.id);
-      addXP(25 + score * 10);
-      // Auto-complete module if this was the last lesson
-      if (!nextLesson && moduleId) {
-        completeModule(moduleId);
+      if (!isStaff) {
+        completeQuiz(lesson.id);
+        completeLesson(lesson.id);
+        addXP(25 + score * 10);
+        // Auto-complete module if this was the last lesson
+        if (!nextLesson && moduleId) {
+          completeModule(moduleId);
+        }
       }
       goTo("complete");
     }

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Sparkles, MapPin, Heart } from "lucide-react";
 import { AMOR_LESSONS, getAmorLessonByOrder } from "@/content/lessons/amor";
 import { useProgress } from "@/hooks/use-progress";
+import { useRole } from "@/hooks/use-role";
 import { useResolvedLesson } from "@/hooks/use-resolved-lesson";
 import mysticBg from "@/assets/mystic-bg.jpg";
 
@@ -12,6 +13,7 @@ const AmorLessonPage = () => {
   const { order } = useParams();
   const navigate = useNavigate();
   const { addXP, completeLesson, completeQuiz, completeModule } = useProgress();
+  const { isStaff, loading: roleLoading } = useRole();
   const [phase, setPhase] = useState<Phase>("lesson");
   const [quizIndex, setQuizIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
@@ -24,6 +26,17 @@ const AmorLessonPage = () => {
 
   // Fase 4B — telemetria invisível: lição via adaptador (DB-first com fallback).
   useResolvedLesson("amor", lesson?.id ?? null);
+
+  if (roleLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-center space-y-3">
+          <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin mx-auto" />
+          <p className="text-xs text-muted-foreground font-heading tracking-wider">Carregando...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!lesson) {
     return (
@@ -42,8 +55,10 @@ const AmorLessonPage = () => {
   const currentIdx = phaseSteps.indexOf(phase);
 
   const handleStartQuiz = () => {
-    completeLesson(lesson.id);
-    addXP(15);
+    if (!isStaff) {
+      completeLesson(lesson.id);
+      addXP(15);
+    }
     setPhase("quiz");
   };
 
@@ -53,7 +68,7 @@ const AmorLessonPage = () => {
     setShowExplanation(true);
     if (idx === lesson.quiz[quizIndex].correctIndex) {
       setScore((s) => s + 1);
-      addXP(5);
+      if (!isStaff) addXP(5);
     }
   };
 
@@ -63,9 +78,11 @@ const AmorLessonPage = () => {
       setSelectedAnswer(null);
       setShowExplanation(false);
     } else {
-      completeQuiz(`quiz-${lesson.id}`);
-      addXP(10);
-      if (!nextLesson) completeModule("amor");
+      if (!isStaff) {
+        completeQuiz(`quiz-${lesson.id}`);
+        addXP(10);
+        if (!nextLesson) completeModule("amor");
+      }
       setPhase("complete");
     }
   };

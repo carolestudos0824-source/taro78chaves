@@ -13,9 +13,9 @@ import { useRole } from "@/hooks/use-role";
  */
 export function useAccess() {
   const { isPremium, subscriptionStatus, loading: premiumLoading } = usePremium();
-  const { isAdmin, loading: roleLoading } = useRole();
+  const { isAdmin, isModerator, loading: roleLoading } = useRole();
 
-  const hasFullAccess = isAdmin || isPremium;
+  const hasFullAccess = isAdmin || isModerator || isPremium;
 
   return {
     isAdmin,

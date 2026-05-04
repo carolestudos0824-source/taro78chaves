@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getArcanoFull as getArcanoById, ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, FREE_ARCANO_IDS } from "@/lib/content";
-import { useAccess } from "@/hooks/use-access";
 import { useProgress } from "@/hooks/use-progress";
 import { useTrackEvent } from "@/hooks/use-track-event";
 import { usePremium } from "@/hooks/use-premium";
-import { useIsAdmin } from "@/hooks/use-admin";
+import { useRole } from "@/hooks/use-role";
+import { useAccess } from "@/hooks/use-access";
 import { ArcanoVivoIntro } from "@/components/arcano-vivo/ArcanoVivoIntro";
 import { LessonContent } from "@/components/arcano-vivo/LessonContent";
 import { CompletionScreen } from "@/components/arcano-vivo/CompletionScreen";
@@ -34,7 +34,7 @@ const LessonPage = () => {
   const { user } = useAuth();
   const { trackEvent } = useTrackEvent();
   const { isPremium, loading: premiumLoading } = usePremium();
-  const { isAdmin } = useIsAdmin();
+  const { isAdmin, isStaff, loading: roleLoading } = useRole();
   const { hasFullAccess } = useAccess();
   const [phase, setPhase] = useState<LessonPhase>("intro");
   const [exerciseCompleted, setExerciseCompleted] = useState(false);
@@ -109,7 +109,7 @@ const LessonPage = () => {
   }
 
   // Show loading while checking premium status
-  if (premiumLoading) {
+  if (premiumLoading || roleLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: "hsl(36 33% 97%)" }}>
         <div className="w-6 h-6 rounded-full border-2 border-t-transparent animate-spin" style={{ borderColor: "hsl(36 45% 58%)", borderTopColor: "transparent" }} />
@@ -120,17 +120,21 @@ const LessonPage = () => {
   const currentIdx = PHASE_STEPS.indexOf(phase);
 
   const handleStartLesson = () => {
-    addXP(10);
-    setXpEarned(e => e + 10);
-    earnBadge("first-step");
+    if (!isStaff) {
+      addXP(10);
+      setXpEarned(e => e + 10);
+      earnBadge("first-step");
+    }
     setPhase("lesson");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleLessonComplete = () => {
-    addXP(25);
-    setXpEarned(e => e + 25);
-    completeLesson(`arcano-${arcano.id}`);
+    if (!isStaff) {
+      addXP(25);
+      setXpEarned(e => e + 25);
+      completeLesson(`arcano-${arcano.id}`);
+    }
     trackEvent(`lesson_completed_${arcano.id}`, { name: arcano.name });
     setPhase("quiz");
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -138,21 +142,25 @@ const LessonPage = () => {
 
   const handleExerciseComplete = () => {
     setExerciseCompleted(true);
-    addXP(10);
-    setXpEarned(e => e + 10);
+    if (!isStaff) {
+      addXP(10);
+      setXpEarned(e => e + 10);
+    }
   };
 
   const handleQuizComplete = (score: number, total: number) => {
-    const quizXp = score * 10;
-    addXP(quizXp);
-    setXpEarned(e => e + quizXp);
+    if (!isStaff) {
+      const quizXp = score * 10;
+      addXP(quizXp);
+      setXpEarned(e => e + quizXp);
+      completeQuiz(`quiz-arcano-${arcano.id}`);
+      completeLesson(`arcano-${arcano.id}`);
+      if (arcano.id === 0) earnBadge("fool-complete");
+      if (score === total) earnBadge("quiz-master");
+    }
     setLastQuizScore(score);
     setLastQuizTotal(total);
-    completeQuiz(`quiz-arcano-${arcano.id}`);
-    completeLesson(`arcano-${arcano.id}`);
     trackEvent(`quiz_completed_${arcano.id}`, { name: arcano.name, score, total });
-    if (arcano.id === 0) earnBadge("fool-complete");
-    if (score === total) earnBadge("quiz-master");
     setPhase("complete");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };

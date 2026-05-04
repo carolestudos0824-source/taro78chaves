@@ -7,6 +7,7 @@ import {
   type ArcanoMenorEditorial,
 } from "@/registry/naipes";
 import { useProgress } from "@/hooks/use-progress";
+import { useRole } from "@/hooks/use-role";
 import { useAuth } from "@/hooks/use-auth";
 import { persistQuizResponse } from "@/lib/quiz-persistence";
 import mysticBg from "@/assets/mystic-bg.jpg";
@@ -66,6 +67,7 @@ const ArcanoMenorLessonPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { progress, completeLesson, addXP } = useProgress();
+  const { isStaff, loading: roleLoading } = useRole();
   const { user } = useAuth();
 
   const card = useMemo(
@@ -77,6 +79,17 @@ const ArcanoMenorLessonPage = () => {
   const [quizAnswers, setQuizAnswers] = useState<Record<number, number>>({});
   const [quizSubmitted, setQuizSubmitted] = useState<Record<number, boolean>>({});
   const [completed, setCompleted] = useState(false);
+
+  if (roleLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-center space-y-3">
+          <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin mx-auto" />
+          <p className="text-xs text-muted-foreground font-heading tracking-wider">Carregando...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!card) {
     return (
@@ -126,8 +139,10 @@ const ArcanoMenorLessonPage = () => {
       navigate(`/module/${card.naipe}`);
       return;
     }
-    completeLesson(card.id);
-    addXP(XP_REWARD);
+    if (!isStaff) {
+      completeLesson(card.id);
+      addXP(XP_REWARD);
+    }
     setCompleted(true);
   };
 
