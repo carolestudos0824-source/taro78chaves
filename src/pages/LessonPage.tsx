@@ -30,12 +30,12 @@ const PHASE_STEPS: LessonPhase[] = ["intro", "lesson", "deepdive", "exercise", "
 const LessonPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { addXP, completeLesson, completeQuiz, earnBadge, isArcanoCompleted } = useProgress();
+  const { addXP, completeLesson, completeQuiz, earnBadge, isArcanoCompleted, progress } = useProgress();
   const { user } = useAuth();
   const { trackEvent } = useTrackEvent();
   const { isPremium, loading: premiumLoading } = usePremium();
   const { isAdmin, isStaff, loading: roleLoading } = useRole();
-  const { hasFullAccess } = useAccess();
+  const { hasFullAccess, canAccessArcano } = useAccess();
   const [phase, setPhase] = useState<LessonPhase>("intro");
   const [exerciseCompleted, setExerciseCompleted] = useState(false);
   const [xpEarned, setXpEarned] = useState(0);
@@ -44,8 +44,7 @@ const LessonPage = () => {
 
   const arcanoId = parseInt(id || "0", 10);
   const arcano = getArcanoById(isNaN(arcanoId) ? 0 : arcanoId);
-  const isFree = FREE_ARCANO_IDS.includes(arcanoId);
-  const hasAccess = isFree || hasFullAccess;
+  const hasAccess = canAccessArcano(arcanoId);
 
   const prevArcano = arcanoId > 0 ? ARCANOS_MAIORES[arcanoId - 1] : null;
   const nextArcano = arcanoId < 21 ? ARCANOS_MAIORES[arcanoId + 1] : null;
@@ -153,7 +152,7 @@ const LessonPage = () => {
       const quizXp = score * 10;
       addXP(quizXp);
       setXpEarned(e => e + quizXp);
-      completeQuiz(`quiz-arcano-${arcano.id}`);
+      completeQuiz(`quiz-arcano-${arcano.id}`, score, total);
       completeLesson(`arcano-${arcano.id}`);
       if (arcano.id === 0) earnBadge("fool-complete");
       if (score === total) earnBadge("quiz-master");
