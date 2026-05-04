@@ -314,7 +314,16 @@ const LessonPage = () => {
           />
         )}
 
-        {/* DEEP DIVE */}
+        {/* SYMBOLS MAP */}
+        {phase === "symbols" && arcano.symbolsMap && (
+          <SymbolMap
+            cardImage={arcano.cardImage}
+            cardName={arcano.name}
+            symbols={arcano.symbolsMap}
+            onComplete={() => goToPhase("quiz")}
+          />
+        )}
+
         {phase === "deepdive" && (
           <div className="space-y-6 bg-white/60 backdrop-blur-sm rounded-2xl px-6 py-5" style={{ animation: "fade-up 0.5s ease-out" }}>
             <div className="flex items-center justify-between">
