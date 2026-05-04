@@ -425,6 +425,7 @@ const LessonPage = () => {
         {/* COMPLETE */}
         {phase === "complete" && (
           <CompletionScreen
+            arcanoId={arcanoId}
             arcanoName={arcano.name}
             xpEarned={xpEarned}
             quizScore={lastQuizScore}
