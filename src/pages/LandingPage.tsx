@@ -260,7 +260,7 @@ const LandingPage = () => {
               <div className="w-12 h-12 bg-[#4A1528]/5 rounded-2xl flex items-center justify-center">
                 <Star className="w-6 h-6 text-[#4A1528]" />
               </div>
-              <h3 className="font-heading text-xl text-midnight">Símbolos guiados</h3>
+              <h3 className="font-heading text-xl text-midnight">Símbolos explicados</h3>
               <p className="text-sm text-midnight/70 font-body">Aprenda a enxergar a carta Rider-Waite-Smith em vez de apenas memorizar palavras-chave.</p>
             </div>
 
