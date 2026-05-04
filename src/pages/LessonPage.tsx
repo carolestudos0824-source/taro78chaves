@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getArcanoFull as getArcanoById, ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, FREE_ARCANO_IDS } from "@/lib/content";
+import { useAccess } from "@/hooks/use-access";
 import { useProgress } from "@/hooks/use-progress";
 import { useTrackEvent } from "@/hooks/use-track-event";
 import { usePremium } from "@/hooks/use-premium";
@@ -34,6 +35,7 @@ const LessonPage = () => {
   const { trackEvent } = useTrackEvent();
   const { isPremium, loading: premiumLoading } = usePremium();
   const { isAdmin } = useIsAdmin();
+  const { hasFullAccess } = useAccess();
   const [phase, setPhase] = useState<LessonPhase>("intro");
   const [exerciseCompleted, setExerciseCompleted] = useState(false);
   const [xpEarned, setXpEarned] = useState(0);
@@ -41,9 +43,9 @@ const LessonPage = () => {
   const [lastQuizTotal, setLastQuizTotal] = useState(0);
 
   const arcanoId = parseInt(id || "0", 10);
-  const arcano = getArcanoById(arcanoId);
+  const arcano = getArcanoById(isNaN(arcanoId) ? 0 : arcanoId);
   const isFree = FREE_ARCANO_IDS.includes(arcanoId);
-  const hasAccess = isFree || isPremium || isAdmin;
+  const hasAccess = isFree || hasFullAccess;
 
   const prevArcano = arcanoId > 0 ? ARCANOS_MAIORES[arcanoId - 1] : null;
   const nextArcano = arcanoId < 21 ? ARCANOS_MAIORES[arcanoId + 1] : null;
