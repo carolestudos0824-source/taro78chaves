@@ -463,6 +463,7 @@ const LandingPage = () => {
             <a href="/privacidade" className="hover:text-[#4f7fc5] transition-colors">Privacidade</a>
             <a href="/termos" className="hover:text-[#4f7fc5] transition-colors">Termos</a>
             <a href="/suporte" className="hover:text-[#4f7fc5] transition-colors">Suporte</a>
+            <a href="/excluir-conta" className="hover:text-[#4f7fc5] transition-colors">Excluir conta</a>
           </nav>
 
           <p className="text-[10px] text-[#1f120d]/30 font-medium">
