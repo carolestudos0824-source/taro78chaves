@@ -101,6 +101,7 @@ O vento que agita tudo ao redor é o Ar em movimento — pensamentos que não pa
   // ═══════════════════════════════════════════════════════════════
   {
     id: "espadas-cavaleiro",
+    cardImage: cavaleiroImage,
     subtitulo: "O Cavaleiro da Tempestade",
     essencia: "O Cavaleiro de Espadas é a mente em modo de ataque — rápido, decidido, imparável. Representa a ação intelectual em sua forma mais intensa: a decisão tomada e executada sem hesitação. Pode ser brilhante ou destrutivo, dependendo de para onde aponta a espada.",
 
