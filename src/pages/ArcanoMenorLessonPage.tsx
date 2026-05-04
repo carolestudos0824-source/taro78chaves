@@ -80,6 +80,17 @@ const ArcanoMenorLessonPage = () => {
   const [quizSubmitted, setQuizSubmitted] = useState<Record<number, boolean>>({});
   const [completed, setCompleted] = useState(false);
 
+  if (roleLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-center space-y-3">
+          <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin mx-auto" />
+          <p className="text-xs text-muted-foreground font-heading tracking-wider">Carregando...</p>
+        </div>
+      </div>
+    );
+  }
+
   if (!card) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: "hsl(36 33% 97%)" }}>
