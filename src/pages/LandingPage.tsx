@@ -66,6 +66,10 @@ const LandingPage = () => {
                 <p className="text-base text-[#1f120d]/70 italic">
                   Você deixa de decorar significados soltos e começa a entender o tarô carta por carta.
                 </p>
+
+                <p className="text-sm md:text-base font-bold text-[#5a1028]">
+                  Comece pelo Louco grátis. Vá bem na lição e desbloqueie O Mago.
+                </p>
                 
                 <div className="flex flex-wrap justify-center lg:justify-start gap-4 text-[10px] md:text-xs font-heading tracking-widest text-[#1f120d]/60 uppercase font-bold">
                   <span className="flex items-center gap-2"><Flame className="w-4 h-4 text-orange-500" /> Sequência diária</span>
@@ -79,12 +83,12 @@ const LandingPage = () => {
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5 pt-4">
                 <Button 
                   onClick={handleStart}
-                  className="w-full sm:w-auto px-10 py-7 text-sm font-heading tracking-[0.2em] uppercase rounded-full bg-[#5a1028] hover:bg-[#7a1a38] text-white shadow-xl shadow-[#5a1028]/20 transition-all hover:scale-105 active:scale-95"
+                  className="w-full sm:w-auto px-10 py-7 text-xs md:text-sm font-heading tracking-[0.2em] uppercase rounded-full bg-[#5a1028] hover:bg-[#7a1a38] text-white shadow-xl shadow-[#5a1028]/20 transition-all hover:scale-105 active:scale-95"
                 >
-                  COMEÇAR GRÁTIS →
+                  COMEÇAR PELO LOUCO — GRÁTIS →
                 </Button>
                 <p className="text-xs font-medium text-[#1f120d]/50">
-                  Primeiro arcano gratuito <br /> Sem cartão de crédito
+                  Primeiro arcano gratuito <br /> Sem cartão de crédito para começar
                 </p>
               </div>
             </div>
@@ -156,25 +160,34 @@ const LandingPage = () => {
             
             <div className="flex overflow-x-auto gap-8 pb-8 px-4 scrollbar-hide snap-x">
               {[
-                { id: 0, img: imgLouco, name: "O Louco" },
-                { id: 1, img: imgMago, name: "O Mago" },
-                { id: 2, img: imgSacerdotisa, name: "A Sacerdotisa" },
-                { id: 3, img: imgImperatriz, name: "A Imperatriz" },
-                { id: 4, name: "?" },
-                { id: 5, name: "?" },
-                { id: 6, name: "?" },
-                { id: 7, name: "?" },
+                { id: 0, img: imgLouco, name: "O Louco", badge: "Grátis" },
+                { id: 1, img: imgMago, name: "O Mago", badge: "Desbloqueável" },
+                { id: 2, img: imgSacerdotisa, name: "A Sacerdotisa", badge: "Premium" },
+                { id: 3, img: imgImperatriz, name: "A Imperatriz", badge: "Premium" },
+                { id: 4, name: "?", badge: "Premium" },
+                { id: 5, name: "?", badge: "Premium" },
+                { id: 6, name: "?", badge: "Premium" },
+                { id: 7, name: "?", badge: "Premium" },
               ].map((card, i) => (
                 <div key={i} className="flex-shrink-0 flex flex-col items-center gap-4 snap-center relative">
                   {/* Dot on line */}
-                  <div className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-4 border-[#fff8e6] z-10 ${card.img ? 'bg-[#f6d35b]' : 'bg-[#1f120d]/10'}`} style={{ top: 'calc(50% - 32px)' }} />
+                  <div className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-4 border-[#fff8e6] z-10 ${card.img ? 'bg-[#f6d35b]' : 'bg-[#1f120d]/10'}`} style={{ top: 'calc(50% - 42px)' }} />
                   
-                  <div className={`w-32 h-48 md:w-40 md:h-60 rounded-xl overflow-hidden shadow-xl border-4 border-white transform transition-transform hover:-translate-y-2 ${!card.img ? 'bg-[#fff8e6] border-dashed border-[#1f120d]/10 flex items-center justify-center opacity-50' : ''}`}>
+                  <div className={`w-32 h-48 md:w-40 md:h-60 rounded-xl overflow-hidden shadow-xl border-4 border-white transform transition-transform hover:-translate-y-2 relative ${!card.img ? 'bg-[#fff8e6] border-dashed border-[#1f120d]/10 flex items-center justify-center opacity-50' : ''}`}>
                     {card.img ? (
                       <img src={card.img} alt={card.name} className="w-full h-full object-cover" />
                     ) : (
                       <span className="text-4xl font-display text-[#1f120d]/20">?</span>
                     )}
+                    
+                    {/* Badge on card */}
+                    <div className={`absolute top-2 right-2 px-2 py-1 rounded text-[8px] font-heading font-bold tracking-wider uppercase shadow-sm ${
+                      card.badge === 'Grátis' ? 'bg-[#2d5a3d] text-white' : 
+                      card.badge === 'Desbloqueável' ? 'bg-[#4f7fc5] text-white' : 
+                      'bg-[#5a1028]/80 text-white'
+                    }`}>
+                      {card.badge}
+                    </div>
                   </div>
                   <p className={`text-[10px] font-heading tracking-widest uppercase font-bold ${card.img ? 'text-[#1f120d]' : 'text-[#1f120d]/30'}`}>
                     {card.img ? card.name : `Arcano ${i}`}
@@ -198,7 +211,7 @@ const LandingPage = () => {
             {
               icon: "📈",
               title: "PROGRESSO REAL E VIVO",
-              text: "XP, streak diário e desbloqueio sequencial. Você sente que está evoluindo."
+              text: "XP, sequência diária e desbloqueio por desempenho. Você sente que está evoluindo."
             },
             {
               icon: "🎯",
@@ -290,6 +303,10 @@ const LandingPage = () => {
         
         <Accordion type="single" collapsible className="space-y-4">
           {[
+            {
+              q: "Por onde eu começo?",
+              a: "Você começa pelo Louco, gratuitamente. Se for bem na lição, desbloqueia O Mago e sente como a jornada funciona antes de assinar."
+            },
             {
               q: "Para quem é esse app?",
               a: "Para quem quer aprender tarô com método, prática e progressão — sem depender de significados soltos."
