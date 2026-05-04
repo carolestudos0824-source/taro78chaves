@@ -14,6 +14,8 @@
  */
 
 import { getDeckEntry, getCanonicalNumeral } from "@/registry/deck-registry";
+import type { ArcanoData, LessonSection, QuizQuestion, ArcanoSymbolMapItem } from "@/lib/content/runtime-types";
+
 
 
 
