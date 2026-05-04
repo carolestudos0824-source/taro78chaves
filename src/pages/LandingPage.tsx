@@ -411,14 +411,14 @@ const LandingPage = () => {
           <p className="t-section-title">A jornada viva pelos arcanos</p>
         </div>
 
-        <nav className="flex flex-wrap justify-center gap-8 text-[11px] font-heading tracking-widest uppercase opacity-40">
+        <nav className="flex flex-wrap justify-center gap-8 text-[11px] font-heading tracking-widest uppercase opacity-60">
           <a href="/privacidade" className="hover:text-[#4A1528] hover:opacity-100 transition-colors">Privacidade</a>
           <a href="/termos" className="hover:text-[#4A1528] hover:opacity-100 transition-colors">Termos</a>
           <a href="/suporte" className="hover:text-[#4A1528] hover:opacity-100 transition-colors">Suporte</a>
           <a href="/excluir-conta" className="hover:text-[#4A1528] hover:opacity-100 transition-colors">Excluir conta</a>
         </nav>
 
-        <p className="text-[10px] opacity-20 font-body">© {new Date().getFullYear()} Tarô 78 Chaves. Todos os direitos reservados.</p>
+        <p className="text-[10px] opacity-40 font-body">© {new Date().getFullYear()} Tarô 78 Chaves. Todos os direitos reservados.</p>
       </footer>
     </div>
   );
