@@ -230,43 +230,46 @@ const LandingPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Monthly Plan */}
-            <div className="bg-white/5 border border-white/10 p-10 rounded-[2.5rem] flex flex-col justify-between space-y-8 backdrop-blur-sm">
+            <div className="bg-white/10 border border-white/20 p-10 rounded-[2.5rem] flex flex-col justify-between space-y-8 backdrop-blur-sm shadow-xl transition-all hover:bg-white/[0.15]">
               <div className="space-y-4">
-                <h3 className="font-heading tracking-[0.2em] text-sm text-white/60 uppercase">MENSAL</h3>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-display">R$29,90</span>
-                  <span className="text-sm text-white/40">/mês</span>
+                <h3 className="font-heading tracking-[0.2em] text-sm text-white/80 uppercase font-bold">MENSAL</h3>
+                <div className="space-y-1">
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-5xl font-display text-white">R$29,90</span>
+                    <span className="text-sm text-white/60">/mês</span>
+                  </div>
+                  <p className="text-xs text-white/40">Ideal para quem quer testar no seu próprio tempo</p>
                 </div>
               </div>
               <Button 
                 onClick={() => handleSubscribe("monthly")}
                 variant="outline" 
-                className="w-full py-7 text-sm font-heading tracking-[0.2em] uppercase rounded-full border-white/20 hover:bg-white/10 text-white"
+                className="w-full py-7 text-sm font-heading tracking-[0.2em] uppercase rounded-full border-white/30 hover:bg-white text-white hover:text-[#1f120d] transition-all font-bold"
               >
                 Assinar mensal
               </Button>
             </div>
 
             {/* Annual Plan */}
-            <div className="bg-white p-10 rounded-[2.5rem] flex flex-col justify-between space-y-8 relative shadow-2xl shadow-[#5a1028]/20">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-[#f6d35b] text-[#1f120d] rounded-full text-[10px] font-heading font-bold tracking-[0.2em] uppercase whitespace-nowrap">
+            <div className="bg-white p-10 rounded-[2.5rem] flex flex-col justify-between space-y-8 relative shadow-2xl shadow-[#5a1028]/40 border-2 border-[#f6d35b] transition-all hover:scale-[1.02]">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-2 bg-[#f6d35b] text-[#1f120d] rounded-full text-[10px] md:text-xs font-heading font-bold tracking-[0.2em] uppercase whitespace-nowrap shadow-lg">
                 ✦ MELHOR VALOR
               </div>
               
               <div className="space-y-4">
-                <h3 className="font-heading tracking-[0.2em] text-sm text-[#1f120d]/40 uppercase">ANUAL</h3>
+                <h3 className="font-heading tracking-[0.2em] text-sm text-[#1f120d]/40 uppercase font-bold">ANUAL</h3>
                 <div className="space-y-1">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-5xl font-display text-[#1f120d]">R$197</span>
+                    <span className="text-6xl font-display text-[#1f120d]">R$197</span>
                     <span className="text-sm text-[#1f120d]/40">/ano</span>
                   </div>
-                  <p className="text-xs font-medium text-[#4f7fc5]">= R$16,42/mês · Economia de 45%</p>
+                  <p className="text-xs md:text-sm font-bold text-[#4f7fc5]">= R$16,42/mês · Economia de 45%</p>
                 </div>
               </div>
               
               <Button 
                 onClick={() => handleSubscribe("annual")}
-                className="w-full py-7 text-sm font-heading tracking-[0.2em] uppercase rounded-full bg-[#5a1028] hover:bg-[#7a1a38] text-white"
+                className="w-full py-7 text-sm font-heading tracking-[0.2em] uppercase rounded-full bg-[#5a1028] hover:bg-[#7a1a38] text-white shadow-lg shadow-[#5a1028]/20 transition-all font-bold"
               >
                 ASSINAR ANUAL →
               </Button>
