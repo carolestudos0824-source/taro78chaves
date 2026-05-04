@@ -167,40 +167,6 @@ const LandingPage = () => {
         </div>
       </section>
 
-
-      {/* ─── Mobile Section ─── */}
-      <section className="py-24 px-6 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1 relative flex justify-center">
-            {/* Simple Mobile Mockup */}
-            <div className="relative w-full max-w-[280px] aspect-[9/19] bg-midnight rounded-[3rem] border-8 border-midnight shadow-[0_0_50px_rgba(0,0,0,0.1)] p-4">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-midnight rounded-b-2xl z-20" />
-              <div className="w-full h-full bg-parchment rounded-[2rem] overflow-hidden relative flex flex-col p-4 space-y-4">
-                 <div className="w-full h-48 bg-white rounded-xl shadow-sm overflow-hidden">
-                    <img src={imgLouco} alt="O Louco" className="w-full h-full object-cover opacity-80" />
-                 </div>
-                 <div className="h-2 w-2/3 bg-gold/20 rounded-full" />
-                 <div className="h-4 w-full bg-midnight/5 rounded-lg" />
-                 <div className="h-4 w-5/6 bg-midnight/5 rounded-lg" />
-                 <div className="mt-auto h-10 w-full bg-[#4A1528] rounded-full" />
-              </div>
-            </div>
-          </div>
-          
-          <div className="order-1 lg:order-2 space-y-8 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C9A96E]/10 text-[#C9A96E]">
-              <span className="text-[10px] font-heading tracking-widest uppercase font-bold">
-                📱 FEITO PARA ESTUDAR NO CELULAR
-              </span>
-            </div>
-            <h2 className="font-heading text-4xl text-midnight">Estude onde estiver.</h2>
-            <p className="text-lg text-midnight/70 font-body leading-relaxed max-w-lg mx-auto lg:mx-0">
-              O Tarô 78 Chaves foi pensado para aulas curtas, leitura confortável e progresso diário direto pelo seu navegador, em qualquer dispositivo.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* ─── Journey Unlock Section ─── */}
       <section className="py-24 px-6 bg-[#fdfaf5]">
         <div className="max-w-7xl mx-auto">
@@ -326,6 +292,39 @@ const LandingPage = () => {
                 ASSINAR ANUAL →
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Mobile Section ─── */}
+      <section className="py-24 px-6 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="order-2 lg:order-1 relative flex justify-center">
+            {/* Simple Mobile Mockup */}
+            <div className="relative w-full max-w-[280px] aspect-[9/19] bg-midnight rounded-[3rem] border-8 border-midnight shadow-[0_0_50px_rgba(0,0,0,0.1)] p-4">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-midnight rounded-b-2xl z-20" />
+              <div className="w-full h-full bg-parchment rounded-[2rem] overflow-hidden relative flex flex-col p-4 space-y-4">
+                 <div className="w-full h-48 bg-white rounded-xl shadow-sm overflow-hidden">
+                    <img src={imgLouco} alt="O Louco" className="w-full h-full object-cover opacity-80" />
+                 </div>
+                 <div className="h-2 w-2/3 bg-gold/20 rounded-full" />
+                 <div className="h-4 w-full bg-midnight/5 rounded-lg" />
+                 <div className="h-4 w-5/6 bg-midnight/5 rounded-lg" />
+                 <div className="mt-auto h-10 w-full bg-[#4A1528] rounded-full" />
+              </div>
+            </div>
+          </div>
+          
+          <div className="order-1 lg:order-2 space-y-8 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C9A96E]/10 text-[#C9A96E]">
+              <span className="text-[10px] font-heading tracking-widest uppercase font-bold">
+                📱 FEITO PARA ESTUDAR NO CELULAR
+              </span>
+            </div>
+            <h2 className="font-heading text-4xl text-midnight">Estude onde estiver.</h2>
+            <p className="text-lg text-midnight/70 font-body leading-relaxed max-w-lg mx-auto lg:mx-0">
+              O Tarô 78 Chaves foi pensado para aulas curtas, leitura confortável e progresso diário direto pelo seu navegador, em qualquer dispositivo.
+            </p>
           </div>
         </div>
       </section>
