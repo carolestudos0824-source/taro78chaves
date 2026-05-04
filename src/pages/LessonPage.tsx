@@ -6,6 +6,7 @@ import { useTrackEvent } from "@/hooks/use-track-event";
 import { usePremium } from "@/hooks/use-premium";
 import { useRole } from "@/hooks/use-role";
 import { useAccess } from "@/hooks/use-access";
+import { useReview } from "@/hooks/use-review";
 import { ArcanoVivoIntro } from "@/components/arcano-vivo/ArcanoVivoIntro";
 import { LessonContent } from "@/components/arcano-vivo/LessonContent";
 import { SymbolMap } from "@/components/arcano-vivo/SymbolMap";
@@ -34,6 +35,7 @@ const LessonPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addXP, completeLesson, completeQuiz, earnBadge, isArcanoCompleted, progress } = useProgress();
+  const review = useReview();
   const { user } = useAuth();
   const { trackEvent } = useTrackEvent();
   const { isPremium, loading: premiumLoading } = usePremium();
@@ -411,6 +413,11 @@ const LessonPage = () => {
                 questions={resolvedQuiz.questions ?? arcano.quiz}
                 onComplete={handleQuizComplete}
                 onAnswer={(qIdx, optIdx, isCorrect) => {
+                  if (!isCorrect) {
+                    review.addWrongAnswer(`quiz-arcano-${arcano.id}-${qIdx}`, arcano.id);
+                  } else {
+                    review.removeWrongAnswer(`quiz-arcano-${arcano.id}-${qIdx}`);
+                  }
                   if (!user) return;
                   persistQuizResponse({
                     userId: user.id,
