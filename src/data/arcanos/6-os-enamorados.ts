@@ -1,5 +1,5 @@
 import type { ArcanoMaiorEditorial } from "../arcano-editorial";
-import cardImage from "@/assets/arcano-placeholder.jpg";
+import cardImage from "@/assets/arcano-6-os-enamorados.jpg";
 
 export const OS_ENAMORADOS: ArcanoMaiorEditorial = {
   number: 6,
