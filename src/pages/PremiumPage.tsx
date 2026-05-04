@@ -10,10 +10,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
 const PREMIUM_BENEFITS = [
-  { icon: BookOpen, title: "78 Cartas Completas", desc: "Acesso total aos Arcanos Maiores e Menores." },
-  { icon: Sparkles, title: "Aprofundamento Místico", desc: "Essência, luz, sombra e simbolismo detalhado." },
-  { icon: Target, title: "Exercícios e Quizzes", desc: "Prática guiada e testes para fixar o conhecimento." },
-  { icon: Heart, title: "Tiragens Específicas", desc: "Módulos de Amor, Trabalho e Espiritualidade." },
+  { icon: BookOpen, title: "Os 78 Arcanos", desc: "Domine o deck completo (Maiores e Menores) carta por carta." },
+  { icon: Sparkles, title: "Método Arcano Vivo", desc: "Acesso total à análise simbólica, essência, luz e sombra." },
+  { icon: Target, title: "Prática Profissional", desc: "Exercícios de leitura real, quizzes e ferramentas de revisão." },
+  { icon: Heart, title: "Módulos de Aplicação", desc: "Leituras para Amor, Trabalho, Espiritualidade e Saúde." },
 ];
 
 const PremiumPage = () => {
@@ -127,10 +127,10 @@ const PremiumPage = () => {
                   <span className="font-heading text-4xl text-midnight tracking-tight">R$ 197</span>
                   <span className="text-sm opacity-40">/ano</span>
                 </div>
-                <p className="text-xs font-bold text-accent">Economia de 45% sobre o mensal</p>
+                <p className="text-xs font-bold text-accent">R$ 16,42/mês • 45% de economia</p>
               </div>
 
-              <Button disabled={loading} className="btn-premium w-full py-8 text-sm">ATIVAR ACESSO ANUAL →</Button>
+              <Button disabled={loading} className="btn-premium w-full py-8 text-sm">DESPERTAR O ORÁCULO →</Button>
             </button>
           </div>
         </div>

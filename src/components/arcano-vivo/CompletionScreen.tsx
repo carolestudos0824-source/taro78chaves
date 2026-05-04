@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, MapPin, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, MapPin, Sparkles, Check } from "lucide-react";
 import { ReflectionSection } from "../ReflectionSection";
 
 
@@ -81,14 +81,11 @@ export function CompletionScreen({
       </div>
 
       {/* Progress saved */}
-      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[10px] font-heading tracking-wider"
-        style={{
-          background: "hsl(120 40% 50% / 0.08)",
-          border: "1px solid hsl(120 40% 50% / 0.2)",
-          color: "hsl(120 40% 35%)",
-        }}
-      >
-        ✓ Progresso salvo
+      <div className="flex flex-col items-center gap-2">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-heading tracking-widest uppercase bg-success/10 border border-success/20 text-success">
+          <Check className="w-3 h-3" />
+          Sabedoria Integrada
+        </div>
       </div>
 
       {/* Editorial transition to next arcano */}
@@ -136,14 +133,13 @@ export function CompletionScreen({
       <div className="flex flex-col items-center gap-4 pt-2">
         {nextArcano && (
           <button onClick={onNextArcano}
-            className="px-10 py-3.5 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-3"
+            className="px-12 py-4 rounded-full font-heading text-sm tracking-widest uppercase transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-3 shadow-xl shadow-gold/20"
             style={{
               background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))",
               color: "hsl(36 33% 97%)",
-              boxShadow: "0 4px 20px hsl(36 45% 58% / 0.2), 0 0 40px hsl(42 70% 80% / 0.08)",
             }}
           >
-            <span>Continuar a Jornada</span>
+            <span>Seguir Travessia</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         )}

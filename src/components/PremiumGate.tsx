@@ -13,10 +13,11 @@ interface PremiumGateProps {
 }
 
 const VALUE_HOOKS = [
-  "21 arcanos maiores com análise simbólica em camadas",
-  "Aprofundamentos, exercícios e quizzes completos",
-  "Módulos de Amor, Combinações, Tiragens e Prática",
-  "Revisão inteligente e certificados por módulo",
+  "Todos os 22 arcanos maiores com análise simbólica",
+  "Acesso aos arcanos menores e módulos avançados",
+  "Exercícios práticos de leitura e quizzes de fixação",
+  "Sua jornada salva e sincronizada em todos os dispositivos",
+  "Certificado de conclusão do curso",
 ];
 
 const PremiumGate = ({
@@ -117,11 +118,11 @@ const PremiumGate = ({
       </div>
 
       <div>
-        <h3 className="font-heading text-lg tracking-wide" style={{ color: "hsl(var(--midnight))" }}>
-          {featureName ? `${featureName}` : "Conteúdo Premium"}
+        <h3 className="font-heading text-xl tracking-wide text-midnight">
+          {featureName ? `Desbloqueie ${featureName}` : "Continue sua Jornada"}
         </h3>
-        <p className="font-accent text-sm italic mt-1" style={{ color: "hsl(var(--muted-foreground) / 0.45)" }}>
-          {message || "Este conteúdo faz parte da Jornada Completa — sua formação sem limites."}
+        <p className="text-[13px] font-body text-muted-foreground/80 mt-2 max-w-[280px] mx-auto leading-relaxed">
+          {message || "Você deu os primeiros passos. Agora, desperte o Oráculo completo e domine a linguagem mística do Tarô."}
         </p>
       </div>
 
@@ -140,19 +141,18 @@ const PremiumGate = ({
         ))}
       </div>
 
-      <Button
-        onClick={() => navigate("/premium")}
-        className="font-heading tracking-wide text-[11px] uppercase px-8 py-5"
-        style={{
-          background: "linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--crimson-light)))",
-          color: "hsl(var(--parchment))",
-          border: "1px solid hsl(var(--secondary) / 0.40)",
-          boxShadow: "0 4px 20px hsl(var(--secondary) / 0.12)",
-        }}
-      >
-        <Crown className="w-3.5 h-3.5 mr-2" />
-        Conhecer a Jornada Completa
-      </Button>
+      <div className="pt-2">
+        <Button
+          onClick={() => navigate("/premium")}
+          className="btn-premium w-full py-7"
+        >
+          <Crown className="w-4 h-4 mr-2" />
+          Quero Acesso Total
+        </Button>
+        <p className="text-[10px] font-heading tracking-widest uppercase text-gold-dark mt-4 opacity-60">
+          Plano anual com 45% de desconto
+        </p>
+      </div>
     </div>
   );
 };
