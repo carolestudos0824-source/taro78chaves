@@ -60,7 +60,7 @@ const LandingPage = () => {
               <div className="space-y-4 max-w-xl mx-auto lg:mx-0">
                 <p className="text-lg md:text-xl text-[#1f120d]/80 leading-relaxed font-medium">
                   Uma lição por dia. 78 cartas. <br className="hidden md:block" />
-                  XP, streaks e quizzes que fixam de verdade.
+                  XP, sequência diária e quizzes que fixam de verdade.
                 </p>
                 
                 <p className="text-base text-[#1f120d]/70 italic">
@@ -88,7 +88,7 @@ const LandingPage = () => {
                   COMEÇAR PELO LOUCO — GRÁTIS →
                 </Button>
                 <p className="text-xs font-medium text-[#1f120d]/50">
-                  Primeiro arcano gratuito <br /> Sem cartão de crédito para começar
+                  Sem cartão de crédito para começar.
                 </p>
               </div>
             </div>
