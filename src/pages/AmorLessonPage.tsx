@@ -13,6 +13,7 @@ const AmorLessonPage = () => {
   const { order } = useParams();
   const navigate = useNavigate();
   const { addXP, completeLesson, completeQuiz, completeModule } = useProgress();
+  const { isStaff, loading: roleLoading } = useRole();
   const [phase, setPhase] = useState<Phase>("lesson");
   const [quizIndex, setQuizIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
