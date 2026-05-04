@@ -12,6 +12,9 @@ import imgLouco from "@/assets/arcano-0-louco.jpg";
 import imgMago from "@/assets/arcano-1-mago.jpg";
 import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
 import imgImperatriz from "@/assets/arcano-3-imperatriz.jpg";
+import imgImperador from "@/assets/arcano-4-imperador.jpg";
+import imgHierofante from "@/assets/arcano-5-hierofante.jpg";
+import imgEnamorados from "@/assets/arcano-6-enamorados.jpg";
 
 const LandingPage = () => {
   const navigate = useNavigate();
