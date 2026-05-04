@@ -119,7 +119,14 @@ const LessonPage = () => {
     );
   }
 
-  const currentIdx = PHASE_STEPS.indexOf(phase);
+  const phases: LessonPhase[] = ["intro", "lesson"];
+  if (arcano.symbolsMap && arcano.symbolsMap.length > 0) {
+    phases.push("symbols");
+  }
+  phases.push("deepdive", "exercise", "quiz");
+
+  const currentIdx = phases.indexOf(phase);
+
 
   const handleStartLesson = () => {
     if (!isStaff) {
