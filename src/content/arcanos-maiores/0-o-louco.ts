@@ -148,4 +148,48 @@ export const O_LOUCO: ArcanoMaiorEditorial = {
     { keyword: "Cabala", meaning: "Aleph (א) — entre Keter e Chokmah" },
     { keyword: "Elemento simbólico", meaning: "Ar — o sopro primordial" },
   ],
+  symbolsMap: [
+    {
+      id: "penhasco",
+      name: "O Penhasco",
+      description: "O limiar entre o conhecido e o desconhecido. Não é uma queda, mas o lugar onde a fé é testada.",
+      reflectionQuestion: "Qual é o 'salto' que você está adiando por medo da queda?",
+      position: { x: 75, y: 85 }
+    },
+    {
+      id: "cao-branco",
+      name: "O Cão Branco",
+      description: "Representa o instinto, o alerta e a lealdade animal que acompanha a consciência.",
+      reflectionQuestion: "Que parte de você tenta te avisar antes de um salto importante?",
+      position: { x: 80, y: 70 }
+    },
+    {
+      id: "trouxa",
+      name: "A Trouxa",
+      description: "Representa a bagagem da alma, o karma e as experiências que carregamos sem perceber.",
+      reflectionQuestion: "O que você está carregando que não serve mais para a sua nova jornada?",
+      position: { x: 35, y: 40 }
+    },
+    {
+      id: "rosa-branca",
+      name: "A Rosa Branca",
+      description: "Símbolo de pureza, inocência e da apreciação estética livre de possessividade.",
+      reflectionQuestion: "Como manter a pureza das intenções mesmo diante dos riscos?",
+      position: { x: 15, y: 55 }
+    },
+    {
+      id: "sol",
+      name: "O Sol",
+      description: "A consciência divina que ilumina o caminho pelas costas, oferecendo confiança.",
+      reflectionQuestion: "Você confia que o universo está te apoiando mesmo quando não vê o fim do caminho?",
+      position: { x: 85, y: 15 }
+    },
+    {
+      id: "montanhas",
+      name: "As Montanhas",
+      description: "As alturas frias da sabedoria abstrata que ficaram para trás ou os desafios futuros.",
+      reflectionQuestion: "Você está disposto a atravessar o terreno difícil para alcançar sua liberdade?",
+      position: { x: 60, y: 45 }
+    }
+  ],
 };
