@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { ArrowLeft, Flame, Star, Trophy, BookOpen, ChevronRight, Sparkles, Target, Award, Crown, Gift, Shield, LogOut, Type } from "lucide-react";
+import { ArrowLeft, Flame, Star, Trophy, BookOpen, Book, ChevronRight, Sparkles, Target, Award, Crown, Gift, Shield, LogOut, Type } from "lucide-react";
 import { useIsAdmin } from "@/hooks/use-admin";
 import { useProgress } from "@/hooks/use-progress";
 import { usePremium } from "@/hooks/use-premium";
@@ -271,6 +271,31 @@ const ProfilePage = () => {
             {completedCount} de 22 arcanos concluídos
           </p>
         </div>
+
+        {/* ═══════════════ JOURNEY NOTEBOOK ═══════════════ */}
+        <button 
+          onClick={() => navigate("/minha-jornada")}
+          className="w-full flex items-center justify-between rounded-xl p-5 group transition-all active:scale-95"
+          style={{
+            background: "linear-gradient(135deg, hsl(36 45% 58% / 0.1), hsl(340 42% 30% / 0.05))",
+            border: "1px solid hsl(36 45% 58% / 0.2)",
+          }}
+        >
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 rounded-full bg-white/50 flex items-center justify-center border border-hsl(36 45% 58% / 0.2)">
+              <Book className="w-5 h-5 text-primary" style={{ color: "hsl(36 45% 58%)" }} />
+            </div>
+            <div className="text-left">
+              <h2 className="font-heading text-sm tracking-wide" style={{ color: "hsl(340 42% 22%)" }}>
+                Caderno da Jornada
+              </h2>
+              <p className="text-[10px] font-body opacity-60">
+                Veja suas reflexões e aprendizados
+              </p>
+            </div>
+          </div>
+          <ChevronRight className="w-4 h-4 opacity-40 group-hover:translate-x-1 transition-transform" />
+        </button>
 
         {/* ═══════════════ CONQUISTAS ═══════════════ */}
         <div>
