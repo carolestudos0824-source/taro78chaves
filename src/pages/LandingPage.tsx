@@ -58,16 +58,20 @@ const LandingPage = () => {
               </h1>
 
               <div className="space-y-4 max-w-xl mx-auto lg:mx-0">
-                <p className="text-lg md:text-xl text-[#1f120d]/80 leading-relaxed">
+                <p className="text-lg md:text-xl text-[#1f120d]/80 leading-relaxed font-medium">
                   Uma lição por dia. 78 cartas. <br className="hidden md:block" />
                   XP, streaks e quizzes que fixam de verdade.
                 </p>
                 
-                <div className="flex flex-wrap justify-center lg:justify-start gap-4 text-sm font-heading tracking-widest text-[#1f120d]/60 uppercase">
-                  <span className="flex items-center gap-2"><Flame className="w-4 h-4 text-orange-500" /> Streak diário</span>
-                  <span className="hidden md:inline">|</span>
+                <p className="text-base text-[#1f120d]/70 italic">
+                  Você deixa de decorar significados soltos e começa a entender o tarô carta por carta.
+                </p>
+                
+                <div className="flex flex-wrap justify-center lg:justify-start gap-4 text-[10px] md:text-xs font-heading tracking-widest text-[#1f120d]/60 uppercase font-bold">
+                  <span className="flex items-center gap-2"><Flame className="w-4 h-4 text-orange-500" /> Sequência diária</span>
+                  <span className="hidden md:inline text-[#1f120d]/20">|</span>
                   <span className="flex items-center gap-2"><Star className="w-4 h-4 text-[#f6d35b]" /> XP</span>
-                  <span className="hidden md:inline">|</span>
+                  <span className="hidden md:inline text-[#1f120d]/20">|</span>
                   <span className="flex items-center gap-2"><Target className="w-4 h-4 text-red-500" /> Quizzes</span>
                 </div>
               </div>
