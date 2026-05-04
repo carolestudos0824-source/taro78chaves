@@ -66,6 +66,10 @@ const LandingPage = () => {
                 <p className="text-base text-[#1f120d]/70 italic">
                   Você deixa de decorar significados soltos e começa a entender o tarô carta por carta.
                 </p>
+
+                <p className="text-sm md:text-base font-bold text-[#5a1028]">
+                  Comece pelo Louco grátis. Vá bem na lição e desbloqueie O Mago.
+                </p>
                 
                 <div className="flex flex-wrap justify-center lg:justify-start gap-4 text-[10px] md:text-xs font-heading tracking-widest text-[#1f120d]/60 uppercase font-bold">
                   <span className="flex items-center gap-2"><Flame className="w-4 h-4 text-orange-500" /> Sequência diária</span>
@@ -79,12 +83,12 @@ const LandingPage = () => {
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5 pt-4">
                 <Button 
                   onClick={handleStart}
-                  className="w-full sm:w-auto px-10 py-7 text-sm font-heading tracking-[0.2em] uppercase rounded-full bg-[#5a1028] hover:bg-[#7a1a38] text-white shadow-xl shadow-[#5a1028]/20 transition-all hover:scale-105 active:scale-95"
+                  className="w-full sm:w-auto px-10 py-7 text-xs md:text-sm font-heading tracking-[0.2em] uppercase rounded-full bg-[#5a1028] hover:bg-[#7a1a38] text-white shadow-xl shadow-[#5a1028]/20 transition-all hover:scale-105 active:scale-95"
                 >
-                  COMEÇAR GRÁTIS →
+                  COMEÇAR PELO LOUCO — GRÁTIS →
                 </Button>
                 <p className="text-xs font-medium text-[#1f120d]/50">
-                  Primeiro arcano gratuito <br /> Sem cartão de crédito
+                  Primeiro arcano gratuito <br /> Sem cartão de crédito para começar
                 </p>
               </div>
             </div>
