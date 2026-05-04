@@ -3,11 +3,20 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { 
   Check, Flame, Star, Target, 
   Smartphone, BookOpen, Layers, Zap,
-  Menu, X, Play, Shield, Award, HelpCircle
+  Menu, X, Play, Shield, Award, HelpCircle,
+  Share, MoreVertical, PlusSquare
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useInstallPrompt } from "@/hooks/use-install-prompt";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import imgLouco from "@/assets/arcano-0-louco.jpg";
 import imgMago from "@/assets/arcano-1-mago.jpg";
 import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
@@ -19,10 +28,23 @@ import imgEnamorados from "@/assets/arcano-6-enamorados.jpg";
 const LandingPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { isInstallable, handleInstallClick } = useInstallPrompt();
+  const [showInstallModal, setShowInstallModal] = useState(false);
   
   const handleStart = () => {
     if (user) navigate("/app");
     else navigate("/auth");
+  };
+
+  const onInstallClick = async () => {
+    if (isInstallable) {
+      const result = await handleInstallClick();
+      if (!result) {
+        setShowInstallModal(true);
+      }
+    } else {
+      setShowInstallModal(true);
+    }
   };
 
   const handleSubscribe = (plan: "monthly" | "annual") => {
@@ -364,7 +386,19 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-8">
+          <div className="flex flex-col items-center gap-10">
+            <div className="flex flex-col items-center gap-4">
+              <Button 
+                onClick={onInstallClick}
+                className="btn-premium px-10 py-7 text-xs shadow-xl hover:scale-105 transition-transform"
+              >
+                ADICIONAR À TELA INICIAL →
+              </Button>
+              <p className="text-[10px] font-heading tracking-widest uppercase opacity-40">
+                Acesso rápido pelo navegador
+              </p>
+            </div>
+
             <div className="flex flex-wrap justify-center gap-8 text-sm font-heading tracking-widest uppercase opacity-60">
               <div className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-gold" />
@@ -386,6 +420,53 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+
+      {/* ─── Install Instructions Modal ─── */}
+      <Dialog open={showInstallModal} onOpenChange={setShowInstallModal}>
+        <DialogContent className="max-w-sm rounded-[2rem] bg-parchment border-gold/20 p-8">
+          <DialogHeader className="space-y-4">
+            <DialogTitle className="font-heading text-2xl text-midnight text-center">Adicionar à tela inicial</DialogTitle>
+            <DialogDescription className="font-body text-center text-midnight/70">
+              Deixe o Tarô 78 Chaves sempre à mão para continuar sua jornada com um toque.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-8 py-6">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 border-b border-gold/10 pb-2">
+                <Smartphone className="w-4 h-4 text-[#4A1528]" />
+                <span className="font-heading text-sm uppercase tracking-widest font-bold">iPhone / Safari</span>
+              </div>
+              <ol className="space-y-3 text-sm text-midnight/80 font-body list-decimal list-inside px-1">
+                <li>Abra o site no <span className="font-bold">Safari</span></li>
+                <li>Toque no botão de compartilhar <Share className="w-3 h-3 inline mb-1" /></li>
+                <li>Escolha <span className="font-bold">"Adicionar à Tela de Início"</span></li>
+                <li>Confirme em <span className="font-bold">"Adicionar"</span></li>
+              </ol>
+            </div>
+
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 border-b border-gold/10 pb-2">
+                <Smartphone className="w-4 h-4 text-[#C9A96E]" />
+                <span className="font-heading text-sm uppercase tracking-widest font-bold">Android / Chrome</span>
+              </div>
+              <ol className="space-y-3 text-sm text-midnight/80 font-body list-decimal list-inside px-1">
+                <li>Abra o site no <span className="font-bold">Chrome</span></li>
+                <li>Toque nos três pontinhos <MoreVertical className="w-3 h-3 inline mb-1" /></li>
+                <li>Escolha <span className="font-bold">"Adicionar à tela inicial"</span></li>
+                <li>Confirme o atalho</li>
+              </ol>
+            </div>
+          </div>
+
+          <Button 
+            onClick={() => setShowInstallModal(false)}
+            className="w-full btn-premium py-6 rounded-full"
+          >
+            ENTENDI
+          </Button>
+        </DialogContent>
+      </Dialog>
 
       {/* ─── FAQ Section ─── */}
       <section className="py-24 px-6 bg-[#fcf9f2]">

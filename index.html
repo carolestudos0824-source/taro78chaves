@@ -8,6 +8,14 @@
     <meta name="author" content="Tarô 78 Chaves" />
     <meta name="theme-color" content="#B8965A" />
     <link rel="canonical" href="https://taro78chaves.lovable.app/" />
+    <link rel="manifest" href="/manifest.json" />
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
