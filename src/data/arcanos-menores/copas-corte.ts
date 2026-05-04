@@ -194,6 +194,7 @@ Na tradição cortês medieval, o cavaleiro trovador era aquele que dedicava sua
   // ═══════════════════════════════════════════════════════════════
   {
     id: "copas-rainha",
+    cardImage: rainhaImage,
     subtitulo: "A Rainha das Profundezas",
     essencia: "A Rainha de Copas é a mestra das emoções — aquela que sente tudo sem se afogar em nada. Representa a inteligência emocional em sua forma mais elevada: a capacidade de acolher, compreender e transformar qualquer sentimento em sabedoria.",
 
