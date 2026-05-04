@@ -102,6 +102,7 @@ export interface ArcanoData {
   quickReview?: { keyword: string; meaning: string }[];
   reflectionQuestions?: { id: string; question: string }[];
   initiationLesson?: string;
+  symbolsMap?: ArcanoSymbolMapItem[];
 }
 
 // ─── Badges & Progress ─────────────────────────────────────────────
