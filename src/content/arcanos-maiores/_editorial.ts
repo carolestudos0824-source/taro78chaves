@@ -14,6 +14,10 @@
  */
 
 import { getDeckEntry, getCanonicalNumeral } from "@/registry/deck-registry";
+import type { ArcanoData, LessonSection, QuizQuestion, ArcanoSymbolMapItem } from "@/lib/content/runtime-types";
+
+
+
 
 // ─── Tipos auxiliares ───
 
@@ -121,6 +125,9 @@ export interface ArcanoMaiorEditorial {
 
   /** 17. Revisão rápida — pares keyword/meaning para flashcards */
   quickReview: ArcanoQuickReview[];
+
+  /** 18. Mapa de símbolos interativo */
+  symbolsMap?: ArcanoSymbolMapItem[];
 }
 
 // ─── Validação ───
@@ -186,7 +193,7 @@ export function createEmptyArcano(number: number, name: string, numeral: string,
 
 // ─── Conversão para o formato legado (ArcanoData) ───
 
-import type { ArcanoData, LessonSection, QuizQuestion } from "@/lib/content/runtime-types";
+
 
 export function editorialToLegacy(editorial: ArcanoMaiorEditorial, unlocked = false): ArcanoData {
   const lessonSections: LessonSection[] = [
@@ -259,5 +266,6 @@ export function editorialToLegacy(editorial: ArcanoMaiorEditorial, unlocked = fa
     quickReview: editorial.quickReview,
     reflectionQuestions: editorial.reflectionQuestions,
     initiationLesson: editorial.initiationLesson,
+    symbolsMap: editorial.symbolsMap,
   };
 }

@@ -8,8 +8,10 @@ import { useRole } from "@/hooks/use-role";
 import { useAccess } from "@/hooks/use-access";
 import { ArcanoVivoIntro } from "@/components/arcano-vivo/ArcanoVivoIntro";
 import { LessonContent } from "@/components/arcano-vivo/LessonContent";
+import { SymbolMap } from "@/components/arcano-vivo/SymbolMap";
 import { CompletionScreen } from "@/components/arcano-vivo/CompletionScreen";
 import { PhaseIndicator } from "@/components/arcano-vivo/PhaseIndicator";
+
 import { DeepDiveSection } from "@/components/DeepDiveSection";
 import { ExerciseSection } from "@/components/ExerciseSection";
 import { QuizSection } from "@/components/QuizSection";
@@ -23,9 +25,10 @@ import mysticBg from "@/assets/mystic-bg.jpg";
 
 
 
-type LessonPhase = "intro" | "lesson" | "deepdive" | "exercise" | "quiz" | "complete";
+type LessonPhase = "intro" | "lesson" | "symbols" | "deepdive" | "exercise" | "quiz" | "complete";
 
-const PHASE_STEPS: LessonPhase[] = ["intro", "lesson", "deepdive", "exercise", "quiz"];
+const PHASE_STEPS: LessonPhase[] = ["intro", "lesson", "symbols", "deepdive", "exercise", "quiz"];
+
 
 const LessonPage = () => {
   const { id } = useParams();
@@ -116,7 +119,14 @@ const LessonPage = () => {
     );
   }
 
-  const currentIdx = PHASE_STEPS.indexOf(phase);
+  const phases: LessonPhase[] = ["intro", "lesson"];
+  if (arcano.symbolsMap && arcano.symbolsMap.length > 0) {
+    phases.push("symbols");
+  }
+  phases.push("deepdive", "exercise", "quiz");
+
+  const currentIdx = phases.indexOf(phase);
+
 
   const handleStartLesson = () => {
     if (!isStaff) {
@@ -135,7 +145,13 @@ const LessonPage = () => {
       completeLesson(`arcano-${arcano.id}`);
     }
     trackEvent(`lesson_completed_${arcano.id}`, { name: arcano.name });
-    setPhase("quiz");
+    
+    if (arcano.symbolsMap && arcano.symbolsMap.length > 0) {
+      setPhase("symbols");
+    } else {
+      setPhase("quiz");
+    }
+
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -266,7 +282,8 @@ const LessonPage = () => {
           </div>
           <div className="flex-1" />
           <span className="text-[9px] font-body tracking-wider shrink-0" style={{ color: "hsl(230 10% 50%)" }}>{arcanoId + 1}/22</span>
-          <PhaseIndicator phases={PHASE_STEPS} currentIndex={currentIdx >= 0 ? currentIdx : PHASE_STEPS.length} />
+          <PhaseIndicator phases={phases} currentIndex={currentIdx >= 0 ? currentIdx : phases.length} />
+
         </div>
       </header>
 
@@ -305,7 +322,20 @@ const LessonPage = () => {
           />
         )}
 
-        {/* DEEP DIVE */}
+        {/* SYMBOLS MAP */}
+        {phase === "symbols" && arcano.symbolsMap && (
+          <SymbolMap
+            cardImage={arcano.cardImage}
+            cardName={arcano.name}
+            symbols={arcano.symbolsMap}
+            onComplete={() => {
+              const nextPhase = phases[currentIdx + 1];
+              if (nextPhase) goToPhase(nextPhase);
+            }}
+          />
+
+        )}
+
         {phase === "deepdive" && (
           <div className="space-y-6 bg-white/60 backdrop-blur-sm rounded-2xl px-6 py-5" style={{ animation: "fade-up 0.5s ease-out" }}>
             <div className="flex items-center justify-between">

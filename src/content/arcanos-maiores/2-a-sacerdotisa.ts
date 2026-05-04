@@ -157,4 +157,48 @@ export const A_SACERDOTISA: ArcanoMaiorEditorial = {
     { keyword: "Cabala", meaning: "Gimel (ג) — entre Keter e Tiferet" },
     { keyword: "Símbolo central", meaning: "As colunas B e J — equilíbrio entre polaridades" },
   ],
+  symbolsMap: [
+    {
+      id: "colunas-bj",
+      name: "Colunas B e J",
+      description: "Boaz (negra, força) e Jachin (branca, estabelecimento) — representam as polaridades da existência e o equilíbrio necessário.",
+      reflectionQuestion: "Qual destas polaridades está mais presente na sua vida hoje: a força ou a estabilidade?",
+      position: { x: 15, y: 50 }
+    },
+    {
+      id: "veu",
+      name: "O Véu",
+      description: "Bordado com romãs e palmeiras, o véu protege os mistérios e separa o mundo visível do invisível.",
+      reflectionQuestion: "O que você está pronto para desvelar na sua própria vida?",
+      position: { x: 50, y: 35 }
+    },
+    {
+      id: "lua-pes",
+      name: "Lua aos Pés",
+      description: "Representa o domínio sobre os ciclos, o tempo de maturação e as marés do inconsciente.",
+      reflectionQuestion: "Você está respeitando o tempo de maturação dos seus próprios sentimentos?",
+      position: { x: 50, y: 85 }
+    },
+    {
+      id: "pergaminho",
+      name: "O Pergaminho (TORA)",
+      description: "Contém a lei divina e a sabedoria oculta. Está parcialmente coberto, indicando que o saber se revela aos poucos.",
+      reflectionQuestion: "Que verdade você intui mas ainda não consegue colocar em palavras?",
+      position: { x: 55, y: 65 }
+    },
+    {
+      id: "cruz-peito",
+      name: "Cruz Solar",
+      description: "Localizada no peito, simboliza o equilíbrio entre os quatro elementos e a união dos opostos no centro do ser.",
+      reflectionQuestion: "Como você pode encontrar o seu centro em meio às exigências externas?",
+      position: { x: 50, y: 48 }
+    },
+    {
+      id: "agua-fundo",
+      name: "Água ao Fundo",
+      description: "O oceano do inconsciente coletivo que se estende além do véu, a fonte de toda a intuição.",
+      reflectionQuestion: "Você tem coragem de mergulhar nas suas próprias águas profundas?",
+      position: { x: 85, y: 85 }
+    }
+  ],
 };
