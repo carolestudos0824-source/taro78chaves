@@ -67,6 +67,7 @@ const ArcanoMenorLessonPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { progress, completeLesson, addXP } = useProgress();
+  const { isStaff, loading: roleLoading } = useRole();
   const { user } = useAuth();
 
   const card = useMemo(
