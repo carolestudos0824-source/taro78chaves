@@ -50,6 +50,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
   const { order } = useParams();
   const navigate = useNavigate();
   const { progress, addXP, completeLesson, completeQuiz, completeModule } = useProgress();
+  const { isStaff, loading: roleLoading } = useRole();
   const [phase, setPhase] = useState<Phase>("lesson");
   const [quizIdx, setQuizIdx] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
