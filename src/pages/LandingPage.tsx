@@ -58,16 +58,20 @@ const LandingPage = () => {
               </h1>
 
               <div className="space-y-4 max-w-xl mx-auto lg:mx-0">
-                <p className="text-lg md:text-xl text-[#1f120d]/80 leading-relaxed">
+                <p className="text-lg md:text-xl text-[#1f120d]/80 leading-relaxed font-medium">
                   Uma lição por dia. 78 cartas. <br className="hidden md:block" />
                   XP, streaks e quizzes que fixam de verdade.
                 </p>
                 
-                <div className="flex flex-wrap justify-center lg:justify-start gap-4 text-sm font-heading tracking-widest text-[#1f120d]/60 uppercase">
-                  <span className="flex items-center gap-2"><Flame className="w-4 h-4 text-orange-500" /> Streak diário</span>
-                  <span className="hidden md:inline">|</span>
+                <p className="text-base text-[#1f120d]/70 italic">
+                  Você deixa de decorar significados soltos e começa a entender o tarô carta por carta.
+                </p>
+                
+                <div className="flex flex-wrap justify-center lg:justify-start gap-4 text-[10px] md:text-xs font-heading tracking-widest text-[#1f120d]/60 uppercase font-bold">
+                  <span className="flex items-center gap-2"><Flame className="w-4 h-4 text-orange-500" /> Sequência diária</span>
+                  <span className="hidden md:inline text-[#1f120d]/20">|</span>
                   <span className="flex items-center gap-2"><Star className="w-4 h-4 text-[#f6d35b]" /> XP</span>
-                  <span className="hidden md:inline">|</span>
+                  <span className="hidden md:inline text-[#1f120d]/20">|</span>
                   <span className="flex items-center gap-2"><Target className="w-4 h-4 text-red-500" /> Quizzes</span>
                 </div>
               </div>
@@ -226,43 +230,46 @@ const LandingPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Monthly Plan */}
-            <div className="bg-white/5 border border-white/10 p-10 rounded-[2.5rem] flex flex-col justify-between space-y-8 backdrop-blur-sm">
+            <div className="bg-white/10 border border-white/20 p-10 rounded-[2.5rem] flex flex-col justify-between space-y-8 backdrop-blur-sm shadow-xl transition-all hover:bg-white/[0.15]">
               <div className="space-y-4">
-                <h3 className="font-heading tracking-[0.2em] text-sm text-white/60 uppercase">MENSAL</h3>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-display">R$29,90</span>
-                  <span className="text-sm text-white/40">/mês</span>
+                <h3 className="font-heading tracking-[0.2em] text-sm text-white/80 uppercase font-bold">MENSAL</h3>
+                <div className="space-y-1">
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-5xl font-display text-white">R$29,90</span>
+                    <span className="text-sm text-white/60">/mês</span>
+                  </div>
+                  <p className="text-xs text-white/40">Ideal para quem quer testar no seu próprio tempo</p>
                 </div>
               </div>
               <Button 
                 onClick={() => handleSubscribe("monthly")}
                 variant="outline" 
-                className="w-full py-7 text-sm font-heading tracking-[0.2em] uppercase rounded-full border-white/20 hover:bg-white/10 text-white"
+                className="w-full py-7 text-sm font-heading tracking-[0.2em] uppercase rounded-full border-white/30 hover:bg-white text-white hover:text-[#1f120d] transition-all font-bold"
               >
                 Assinar mensal
               </Button>
             </div>
 
             {/* Annual Plan */}
-            <div className="bg-white p-10 rounded-[2.5rem] flex flex-col justify-between space-y-8 relative shadow-2xl shadow-[#5a1028]/20">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-[#f6d35b] text-[#1f120d] rounded-full text-[10px] font-heading font-bold tracking-[0.2em] uppercase whitespace-nowrap">
+            <div className="bg-white p-10 rounded-[2.5rem] flex flex-col justify-between space-y-8 relative shadow-2xl shadow-[#5a1028]/40 border-2 border-[#f6d35b] transition-all hover:scale-[1.02]">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-2 bg-[#f6d35b] text-[#1f120d] rounded-full text-[10px] md:text-xs font-heading font-bold tracking-[0.2em] uppercase whitespace-nowrap shadow-lg">
                 ✦ MELHOR VALOR
               </div>
               
               <div className="space-y-4">
-                <h3 className="font-heading tracking-[0.2em] text-sm text-[#1f120d]/40 uppercase">ANUAL</h3>
+                <h3 className="font-heading tracking-[0.2em] text-sm text-[#1f120d]/40 uppercase font-bold">ANUAL</h3>
                 <div className="space-y-1">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-5xl font-display text-[#1f120d]">R$197</span>
+                    <span className="text-6xl font-display text-[#1f120d]">R$197</span>
                     <span className="text-sm text-[#1f120d]/40">/ano</span>
                   </div>
-                  <p className="text-xs font-medium text-[#4f7fc5]">= R$16,42/mês · Economia de 45%</p>
+                  <p className="text-xs md:text-sm font-bold text-[#4f7fc5]">= R$16,42/mês · Economia de 45%</p>
                 </div>
               </div>
               
               <Button 
                 onClick={() => handleSubscribe("annual")}
-                className="w-full py-7 text-sm font-heading tracking-[0.2em] uppercase rounded-full bg-[#5a1028] hover:bg-[#7a1a38] text-white"
+                className="w-full py-7 text-sm font-heading tracking-[0.2em] uppercase rounded-full bg-[#5a1028] hover:bg-[#7a1a38] text-white shadow-lg shadow-[#5a1028]/20 transition-all font-bold"
               >
                 ASSINAR ANUAL →
               </Button>
@@ -343,21 +350,59 @@ const LandingPage = () => {
 
           <div className="flex justify-center lg:justify-end">
             {/* Visual simulation of phone */}
-            <div className="relative w-[280px] h-[580px] bg-[#1f120d] rounded-[3rem] border-[8px] border-[#2a1a14] shadow-2xl overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#2a1a14] rounded-b-2xl z-10" />
-              <div className="w-full h-full bg-[#fff8e6] p-4 pt-10 space-y-6">
-                <div className="h-4 w-24 bg-[#1f120d]/5 rounded-full" />
-                <div className="h-40 w-full bg-white rounded-2xl shadow-sm overflow-hidden">
-                  <img src={imgLouco} alt="Louco Mobile" className="w-full h-full object-cover opacity-80" />
+            <div className="relative w-[280px] h-[580px] bg-[#1f120d] rounded-[3.5rem] border-[10px] border-[#2a1a14] shadow-[0_40px_100px_rgba(0,0,0,0.5)] overflow-hidden">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#2a1a14] rounded-b-3xl z-10 flex items-center justify-center">
+                <div className="w-10 h-1 bg-white/10 rounded-full" />
+              </div>
+              
+              <div className="w-full h-full bg-[#fff8e6] flex flex-col">
+                {/* Header App Area */}
+                <div className="p-6 pt-12 flex justify-between items-center">
+                  <div className="h-4 w-24 bg-[#1f120d]/5 rounded-full" />
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-orange-500/20" />
+                    <div className="w-3 h-3 rounded-full bg-[#f6d35b]/20" />
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <div className="h-6 w-3/4 bg-[#1f120d]/10 rounded-full" />
-                  <div className="h-3 w-full bg-[#1f120d]/5 rounded-full" />
-                  <div className="h-3 w-5/6 bg-[#1f120d]/5 rounded-full" />
+
+                {/* Content App Area */}
+                <div className="px-6 flex-1 space-y-6">
+                  <div className="aspect-[3/4] w-full bg-white rounded-2xl shadow-lg border border-white overflow-hidden transform rotate-[-1deg]">
+                    <img src={imgLouco} alt="Louco Mobile" className="w-full h-full object-cover" />
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div className="h-5 w-24 bg-[#4f7fc5]/10 rounded-full" />
+                      <div className="h-5 w-16 bg-[#f6d35b]/10 rounded-full" />
+                    </div>
+                    <div className="h-8 w-4/5 bg-[#1f120d]/10 rounded-full" />
+                    <div className="space-y-1.5">
+                      <div className="h-3 w-full bg-[#1f120d]/5 rounded-full" />
+                      <div className="h-3 w-5/6 bg-[#1f120d]/5 rounded-full" />
+                    </div>
+                  </div>
+
+                  {/* Progress Sim */}
+                  <div className="space-y-2 pt-2">
+                    <div className="flex justify-between text-[10px] font-bold text-[#1f120d]/30 uppercase">
+                      <span>Lição</span>
+                      <span>85%</span>
+                    </div>
+                    <div className="h-2 w-full bg-white rounded-full overflow-hidden border border-[#1f120d]/5">
+                      <div className="h-full bg-[#f6d35b] w-[85%]" />
+                    </div>
+                  </div>
                 </div>
-                <div className="flex gap-2">
-                  <div className="h-8 w-1/2 bg-[#5a1028] rounded-xl" />
-                  <div className="h-8 w-1/2 bg-[#1f120d]/5 rounded-xl" />
+
+                {/* Footer App Area */}
+                <div className="p-6 bg-white border-t border-[#1f120d]/5 flex gap-2">
+                  <div className="h-10 flex-1 bg-[#5a1028] rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-1 bg-white/20 rounded-full" />
+                  </div>
+                  <div className="h-10 w-12 bg-[#1f120d]/5 rounded-xl flex items-center justify-center">
+                    <Zap className="w-4 h-4 text-[#f6d35b]" />
+                  </div>
                 </div>
               </div>
             </div>
