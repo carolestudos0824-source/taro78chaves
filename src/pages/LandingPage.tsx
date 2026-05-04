@@ -160,25 +160,34 @@ const LandingPage = () => {
             
             <div className="flex overflow-x-auto gap-8 pb-8 px-4 scrollbar-hide snap-x">
               {[
-                { id: 0, img: imgLouco, name: "O Louco" },
-                { id: 1, img: imgMago, name: "O Mago" },
-                { id: 2, img: imgSacerdotisa, name: "A Sacerdotisa" },
-                { id: 3, img: imgImperatriz, name: "A Imperatriz" },
-                { id: 4, name: "?" },
-                { id: 5, name: "?" },
-                { id: 6, name: "?" },
-                { id: 7, name: "?" },
+                { id: 0, img: imgLouco, name: "O Louco", badge: "Grátis" },
+                { id: 1, img: imgMago, name: "O Mago", badge: "Desbloqueável" },
+                { id: 2, img: imgSacerdotisa, name: "A Sacerdotisa", badge: "Premium" },
+                { id: 3, img: imgImperatriz, name: "A Imperatriz", badge: "Premium" },
+                { id: 4, name: "?", badge: "Premium" },
+                { id: 5, name: "?", badge: "Premium" },
+                { id: 6, name: "?", badge: "Premium" },
+                { id: 7, name: "?", badge: "Premium" },
               ].map((card, i) => (
                 <div key={i} className="flex-shrink-0 flex flex-col items-center gap-4 snap-center relative">
                   {/* Dot on line */}
-                  <div className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-4 border-[#fff8e6] z-10 ${card.img ? 'bg-[#f6d35b]' : 'bg-[#1f120d]/10'}`} style={{ top: 'calc(50% - 32px)' }} />
+                  <div className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-4 border-[#fff8e6] z-10 ${card.img ? 'bg-[#f6d35b]' : 'bg-[#1f120d]/10'}`} style={{ top: 'calc(50% - 42px)' }} />
                   
-                  <div className={`w-32 h-48 md:w-40 md:h-60 rounded-xl overflow-hidden shadow-xl border-4 border-white transform transition-transform hover:-translate-y-2 ${!card.img ? 'bg-[#fff8e6] border-dashed border-[#1f120d]/10 flex items-center justify-center opacity-50' : ''}`}>
+                  <div className={`w-32 h-48 md:w-40 md:h-60 rounded-xl overflow-hidden shadow-xl border-4 border-white transform transition-transform hover:-translate-y-2 relative ${!card.img ? 'bg-[#fff8e6] border-dashed border-[#1f120d]/10 flex items-center justify-center opacity-50' : ''}`}>
                     {card.img ? (
                       <img src={card.img} alt={card.name} className="w-full h-full object-cover" />
                     ) : (
                       <span className="text-4xl font-display text-[#1f120d]/20">?</span>
                     )}
+                    
+                    {/* Badge on card */}
+                    <div className={`absolute top-2 right-2 px-2 py-1 rounded text-[8px] font-heading font-bold tracking-wider uppercase shadow-sm ${
+                      card.badge === 'Grátis' ? 'bg-[#2d5a3d] text-white' : 
+                      card.badge === 'Desbloqueável' ? 'bg-[#4f7fc5] text-white' : 
+                      'bg-[#5a1028]/80 text-white'
+                    }`}>
+                      {card.badge}
+                    </div>
                   </div>
                   <p className={`text-[10px] font-heading tracking-widest uppercase font-bold ${card.img ? 'text-[#1f120d]' : 'text-[#1f120d]/30'}`}>
                     {card.img ? card.name : `Arcano ${i}`}
