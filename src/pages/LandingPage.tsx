@@ -195,7 +195,7 @@ const LandingPage = () => {
                 </div>
               ))}
             </div>
-            
+
             <div className="mt-12 text-center">
               <p className="text-sm md:text-base font-bold text-[#1f120d]/60 max-w-2xl mx-auto leading-relaxed">
                 Comece pelo Louco. <span className="text-[#4f7fc5]">Desbloqueie O Mago com seu desempenho.</span> <br className="hidden md:block" />
@@ -389,32 +389,48 @@ const LandingPage = () => {
                   </div>
                 </div>
 
-                {/* Content App Area */}
-                <div className="px-6 flex-1 space-y-6">
-                  <div className="aspect-[3/4] w-full bg-white rounded-2xl shadow-lg border border-white overflow-hidden transform rotate-[-1deg]">
+                {/* Content App Area - Fixed Mockup for Premium Feel */}
+                <div className="px-6 pt-4 flex-1 space-y-4 overflow-hidden">
+                  <div className="aspect-[3/4.2] w-full bg-white rounded-2xl shadow-xl border border-white overflow-hidden transform rotate-[-1deg] transition-transform hover:rotate-0">
                     <img src={imgLouco} alt="Louco Mobile" className="w-full h-full object-cover" />
                   </div>
                   
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">
-                      <div className="h-5 w-24 bg-[#4f7fc5]/10 rounded-full" />
-                      <div className="h-5 w-16 bg-[#f6d35b]/10 rounded-full" />
+                      <div className="h-5 w-20 bg-[#4f7fc5]/10 rounded-full border border-[#4f7fc5]/10" />
+                      <div className="h-5 w-14 bg-[#f6d35b]/10 rounded-full border border-[#f6d35b]/10" />
                     </div>
-                    <div className="h-8 w-4/5 bg-[#1f120d]/10 rounded-full" />
-                    <div className="space-y-1.5">
-                      <div className="h-3 w-full bg-[#1f120d]/5 rounded-full" />
-                      <div className="h-3 w-5/6 bg-[#1f120d]/5 rounded-full" />
+                    <div className="h-7 w-4/5 bg-[#1f120d]/10 rounded-full" />
+                    <div className="space-y-2">
+                      <div className="h-2.5 w-full bg-[#1f120d]/5 rounded-full" />
+                      <div className="h-2.5 w-5/6 bg-[#1f120d]/5 rounded-full" />
                     </div>
                   </div>
+                </div>
 
-                  {/* Progress Sim */}
-                  <div className="space-y-2 pt-2">
-                    <div className="flex justify-between text-[10px] font-bold text-[#1f120d]/30 uppercase">
-                      <span>Lição</span>
-                      <span>85%</span>
+                {/* Progress & Stats Area - Inside Mockup */}
+                <div className="px-6 py-4 bg-white/40 backdrop-blur-sm border-t border-[#1f120d]/5 space-y-3">
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-[9px] font-black text-[#1f120d]/40 uppercase tracking-widest">
+                      <span>Progresso da Lição</span>
+                      <span className="text-[#5a1028]">85%</span>
                     </div>
-                    <div className="h-2 w-full bg-white rounded-full overflow-hidden border border-[#1f120d]/5">
-                      <div className="h-full bg-[#f6d35b] w-[85%]" />
+                    <div className="h-1.5 w-full bg-[#1f120d]/5 rounded-full overflow-hidden">
+                      <div className="h-full bg-[#f6d35b] w-[85%] rounded-full shadow-[0_0_8px_rgba(246,211,91,0.5)]" />
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <div className="flex gap-1">
+                      <div className="w-4 h-4 rounded bg-orange-500/20 flex items-center justify-center">
+                         <Flame className="w-2.5 h-2.5 text-orange-600" />
+                      </div>
+                      <span className="text-[8px] font-bold text-[#1f120d]/60">3 DIAS</span>
+                    </div>
+                    <div className="flex gap-1">
+                      <div className="w-4 h-4 rounded bg-[#f6d35b]/20 flex items-center justify-center">
+                         <Star className="w-2.5 h-2.5 text-[#b38e00]" />
+                      </div>
+                      <span className="text-[8px] font-bold text-[#1f120d]/60">+50 XP</span>
                     </div>
                   </div>
                 </div>
