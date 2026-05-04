@@ -16,7 +16,7 @@ const ARCANO_SYMBOLS: Record<number, string> = {
 
 export function JourneyMap({ progress }: JourneyMapProps) {
   const navigate = useNavigate();
-  const { bypassLocks } = useAccess();
+  const { bypassLocks, canAccessArcano } = useAccess();
 
   return (
     <div className="relative max-w-2xl mx-auto pb-16">
@@ -40,11 +40,12 @@ export function JourneyMap({ progress }: JourneyMapProps) {
       <div className="relative space-y-0">
         {ARCANOS_MAIORES.map((arcano, index) => {
           const isCompleted = progress.completedLessons.includes(`arcano-${arcano.id}`) && progress.completedQuizzes.includes(`quiz-arcano-${arcano.id}`);
-          const isPremium = !FREE_ARCANO_IDS.includes(arcano.id) && !bypassLocks;
-          const isUnlocked = bypassLocks || (!isPremium && (arcano.id === 0 || (
+          const isFree = canAccessArcano(arcano.id);
+          const isPremium = !isFree && !bypassLocks;
+          const isUnlocked = bypassLocks || isFree || (
             progress.completedLessons.includes(`arcano-${arcano.id - 1}`) &&
             progress.completedQuizzes.includes(`quiz-arcano-${arcano.id - 1}`)
-          )));
+          );
           const isCurrent = isUnlocked && !isCompleted;
           const side = index % 2 === 0 ? "left" : "right";
           const symbol = ARCANO_SYMBOLS[arcano.id] || "◇";
