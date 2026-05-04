@@ -33,7 +33,9 @@ const card = (
   slug,
   naipe,
   posicao,
-  cardImage: `/assets/arcanos-menores/${naipe}-${posicao}.jpg`,
+  cardImage: typeof posicao === "string" 
+    ? `/src/assets/menor-${naipe}-${posicao}.jpg` 
+    : `/assets/arcanos-menores/${naipe}-${posicao}.jpg`,
 });
 
 /** 56 cartas oficiais, ordem canônica: Copas → Paus → Espadas → Ouros, Ás → Rei. */
