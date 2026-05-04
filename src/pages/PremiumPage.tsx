@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  ArrowLeft, Crown, Check, BookOpen, Eye, Layers,
-  Target, Star, Heart, Sparkles, Lock
+  ArrowLeft, Crown, BookOpen, Eye, Layers,
+  Target, Star, Heart, Sparkles, ChevronRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { usePremium } from "@/hooks/use-premium";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { isWebCheckoutAllowed } from "@/lib/platform";
 
 const PREMIUM_BENEFITS = [
   { icon: BookOpen, title: "78 Cartas Completas", desc: "Acesso total aos Arcanos Maiores e Menores." },
@@ -19,7 +18,7 @@ const PREMIUM_BENEFITS = [
 
 const PremiumPage = () => {
   const navigate = useNavigate();
-  const { isPremium, premiumUntil } = usePremium();
+  const { isPremium } = usePremium();
   const [loading, setLoading] = useState(false);
 
   const handleSubscribe = async (plan: "monthly" | "yearly") => {
