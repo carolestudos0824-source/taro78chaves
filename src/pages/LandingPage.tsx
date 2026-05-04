@@ -3,11 +3,20 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { 
   Check, Flame, Star, Target, 
   Smartphone, BookOpen, Layers, Zap,
-  Menu, X, Play, Shield, Award, HelpCircle
+  Menu, X, Play, Shield, Award, HelpCircle,
+  Share, MoreVertical, PlusSquare
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useInstallPrompt } from "@/hooks/use-install-prompt";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import imgLouco from "@/assets/arcano-0-louco.jpg";
 import imgMago from "@/assets/arcano-1-mago.jpg";
 import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
