@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { 
   Check, Flame, Star, Target, 
-  Smartphone, BookOpen, Layers, Zap
+  Smartphone, BookOpen, Layers, Zap,
+  Menu, X, Play, Shield, Award, HelpCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
@@ -33,39 +34,56 @@ const LandingPage = () => {
       <section className="relative pt-20 pb-24 md:pt-32 md:pb-40 px-6 overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
           <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-gold/30 blur-[120px]" />
-          <div className="absolute bottom-[10%] right-[-5%] w-[40%] h-[40%] rounded-full bg-accent/20 blur-[100px]" />
+          <div className="absolute bottom-[10%] right-[-5%] w-[40%] h-[40%] rounded-full bg-secondary/10 blur-[100px]" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
-            <div className="text-center lg:text-left space-y-8">
+            <div className="text-center lg:text-left space-y-10">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 border border-gold/20 shadow-sm">
                 <span className="text-[10px] font-heading tracking-[0.2em] uppercase font-bold text-gold-dark">
                   ✦ Grátis para começar · Base Rider-Waite-Smith
                 </span>
               </div>
 
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-midnight">
-                Aprenda tarô de forma<br />
-                <span className="text-secondary italic font-medium">progressiva e viva.</span>
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-midnight">
+                Aprenda tarô<br />
+                <span className="italic font-medium text-[#4A1528]">de forma progressiva</span><br />
+                e viva.
               </h1>
 
-              <div className="space-y-6 max-w-xl mx-auto lg:mx-0">
-                <p className="text-lg md:text-xl text-midnight/80 leading-relaxed font-body">
-                  Uma lição por dia. 78 cartas. XP, sequência diária e quizzes que fixam de verdade.
+              <div className="space-y-8 max-w-xl mx-auto lg:mx-0">
+                <p className="text-base font-body text-[#2d1810] opacity-90 max-w-md mx-auto lg:mx-0">
+                  Você para de decorar. Começa a compreender.<br/>
+                  Uma carta por vez, com método e profundidade.
                 </p>
+
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm font-body font-medium text-[#3d2810]">
+                  <div className="flex items-center gap-2">
+                    <Flame className="w-4 h-4 text-[#4A1528]" />
+                    <span>Sequência diária</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-[#C9A96E]" />
+                    <span>XP Acumulado</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Target className="w-4 h-4 text-[#4A1528]" />
+                    <span>Quizzes</span>
+                  </div>
+                </div>
                 
-                <p className="text-sm md:text-base font-heading tracking-wide text-secondary/80">
-                  Comece pelo Louco grátis. Vá bem e desbloqueie O Mago.
+                <p className="text-sm font-body font-semibold text-[#4A1528]">
+                  ✦ Primeiro arcano gratuito. Vá bem e desbloqueie O Mago.
                 </p>
               </div>
 
               <div className="flex flex-col items-center lg:items-start gap-4 pt-4">
-                <Button onClick={handleStart} className="btn-premium px-12 py-8 text-sm shadow-2xl">
+                <Button onClick={handleStart} className="btn-premium px-12 py-8 text-sm shadow-2xl hover:scale-105 transition-transform">
                   COMEÇAR PELO LOUCO — GRÁTIS →
                 </Button>
-                <p className="text-[10px] font-heading tracking-[0.2em] text-muted-foreground uppercase">
+                <p className="text-[11px] font-heading tracking-[0.15em] text-[#4A1528] font-bold uppercase">
                   Sem cartão de crédito para começar.
                 </p>
               </div>
@@ -83,7 +101,7 @@ const LandingPage = () => {
                   
                   <div className="space-y-5">
                     <div className="space-y-1">
-                      <p className="t-section-title text-accent">Lição 1 • Arcanos Maiores</p>
+                      <p className="t-section-title text-[#4A1528]">Lição 1 • Arcanos Maiores</p>
                       <h3 className="font-heading text-3xl text-midnight">O Louco</h3>
                       <p className="font-accent italic text-muted-foreground">O início de toda jornada</p>
                     </div>
@@ -125,7 +143,7 @@ const LandingPage = () => {
                   <div className="w-36 h-56 md:w-44 md:h-64 rounded-2xl overflow-hidden shadow-xl border-4 border-white transition-all duration-500 group-hover:-translate-y-4">
                     <img src={card.img} alt={card.name} className="w-full h-full object-cover" />
                     <div className={`absolute top-3 right-3 px-3 py-1 rounded-full text-[9px] font-heading tracking-widest uppercase shadow-lg ${
-                      card.badge === 'Grátis' ? "bg-success text-white" : card.badge === 'Desbloqueável' ? "bg-accent text-white" : "bg-secondary text-white"
+                      card.badge === 'Grátis' ? "bg-green-600 text-white" : card.badge === 'Desbloqueável' ? "bg-[#C9A96E] text-white" : "bg-[#4A1528] text-white"
                     }`}>
                       {card.badge}
                     </div>
@@ -138,7 +156,71 @@ const LandingPage = () => {
 
           <div className="mt-8 text-center">
             <p className="text-sm font-body text-muted-foreground max-w-2xl mx-auto">
-              Comece pelo Louco. <span className="text-accent font-bold">Desbloqueie O Mago com seu desempenho.</span> Continue a jornada completa no plano premium.
+              Comece pelo Louco. <span className="text-[#C9A96E] font-bold">Desbloqueie O Mago com seu desempenho.</span> Continue a jornada completa no plano premium.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Benefits Section ─── */}
+      <section className="py-24 px-6 bg-[#fcf9f2]">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="space-y-4 text-center p-8 rounded-3xl bg-white/50 border border-gold/10 shadow-sm">
+              <div className="w-12 h-12 bg-[#4A1528]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <BookOpen className="w-6 h-6 text-[#4A1528]" />
+              </div>
+              <h3 className="font-heading text-xl text-midnight">Uma carta por vez</h3>
+              <p className="text-sm text-midnight/70 font-body">Estudo focado e profundo, sem pressa, respeitando o ritmo da sua intuição.</p>
+            </div>
+            
+            <div className="space-y-4 text-center p-8 rounded-3xl bg-white/50 border border-gold/10 shadow-sm">
+              <div className="w-12 h-12 bg-[#C9A96E]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Award className="w-6 h-6 text-[#C9A96E]" />
+              </div>
+              <h3 className="font-heading text-xl text-midnight">Símbolos e Quizzes</h3>
+              <p className="text-sm text-midnight/70 font-body">Aprenda a enxergar cada detalhe da carta e fixe o conhecimento com exercícios interativos.</p>
+            </div>
+
+            <div className="space-y-4 text-center p-8 rounded-3xl bg-white/50 border border-gold/10 shadow-sm">
+              <div className="w-12 h-12 bg-[#4A1528]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Zap className="w-6 h-6 text-[#4A1528]" />
+              </div>
+              <h3 className="font-heading text-xl text-midnight">Progresso Vivo</h3>
+              <p className="text-sm text-midnight/70 font-body">Acompanhe sua evolução com XP, sequência diária e conquistas que marcam sua jornada.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Mobile Section ─── */}
+      <section className="py-24 px-6 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="order-2 lg:order-1 relative flex justify-center">
+            {/* Simple Mobile Mockup */}
+            <div className="relative w-full max-w-[280px] aspect-[9/19] bg-midnight rounded-[3rem] border-8 border-midnight shadow-[0_0_50px_rgba(0,0,0,0.1)] p-4">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-midnight rounded-b-2xl z-20" />
+              <div className="w-full h-full bg-parchment rounded-[2rem] overflow-hidden relative flex flex-col p-4 space-y-4">
+                 <div className="w-full h-48 bg-white rounded-xl shadow-sm overflow-hidden">
+                    <img src={imgLouco} alt="O Louco" className="w-full h-full object-cover opacity-80" />
+                 </div>
+                 <div className="h-2 w-2/3 bg-gold/20 rounded-full" />
+                 <div className="h-4 w-full bg-midnight/5 rounded-lg" />
+                 <div className="h-4 w-5/6 bg-midnight/5 rounded-lg" />
+                 <div className="mt-auto h-10 w-full bg-[#4A1528] rounded-full" />
+              </div>
+            </div>
+          </div>
+          
+          <div className="order-1 lg:order-2 space-y-8 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C9A96E]/10 text-[#C9A96E]">
+              <span className="text-[10px] font-heading tracking-widest uppercase font-bold">
+                📱 FEITO PARA ESTUDAR NO CELULAR
+              </span>
+            </div>
+            <h2 className="font-heading text-4xl text-midnight">Estude onde estiver.</h2>
+            <p className="text-lg text-midnight/70 font-body leading-relaxed max-w-lg mx-auto lg:mx-0">
+              O Tarô 78 Chaves foi pensado para aulas curtas, leitura confortável e progresso diário direto pelo seu navegador, em qualquer dispositivo.
             </p>
           </div>
         </div>
@@ -146,7 +228,7 @@ const LandingPage = () => {
 
       {/* ─── Pricing Section ─── */}
       <section className="py-32 px-6 bg-midnight text-parchment relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-secondary/20 blur-[150px] rounded-full" />
+        <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-[#4A1528]/10 blur-[150px] rounded-full" />
         
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-16">
           <div className="space-y-4">
@@ -164,8 +246,8 @@ const LandingPage = () => {
                   <span className="text-sm opacity-40">/mês</span>
                 </div>
               </div>
-              <p className="text-sm opacity-60 flex-1">Ideal para quem quer testar no seu próprio tempo, com liberdade para cancelar.</p>
-              <Button onClick={() => handleSubscribe("monthly")} className="btn-outline-gold w-full py-7 border-white/20 text-white hover:bg-white/10">
+              <p className="text-sm opacity-60 flex-1 font-body">Ideal para quem quer testar no seu próprio tempo, com liberdade para cancelar.</p>
+              <Button onClick={() => handleSubscribe("monthly")} className="w-full py-7 rounded-full border border-white/20 text-white bg-transparent hover:bg-white/10 font-heading tracking-widest text-[11px] uppercase transition-all">
                 ASSINAR MENSAL
               </Button>
             </div>
@@ -181,10 +263,10 @@ const LandingPage = () => {
                   <span className="text-6xl font-heading text-midnight">R$197</span>
                   <span className="text-sm opacity-40">/ano</span>
                 </div>
-                <p className="text-xs font-bold text-accent">= R$16,42/mês • Economia de 45%</p>
+                <p className="text-xs font-bold text-[#4A1528]">= R$16,42/mês • Economia de 45%</p>
               </div>
-              <p className="text-sm text-midnight/60 flex-1">Acesso vitalício ao conhecimento transformado em hábito diário.</p>
-              <Button onClick={() => handleSubscribe("annual")} className="btn-premium w-full py-8 text-sm shadow-xl">
+              <p className="text-sm text-midnight/60 flex-1 font-body">Acesso vitalício ao conhecimento transformado em hábito diário.</p>
+              <Button onClick={() => handleSubscribe("annual")} className="btn-premium w-full py-8 text-sm shadow-xl hover:scale-[1.02] transition-transform">
                 ASSINAR ANUAL →
               </Button>
             </div>
@@ -192,21 +274,52 @@ const LandingPage = () => {
         </div>
       </section>
 
+      {/* ─── FAQ Section ─── */}
+      <section className="py-24 px-6 bg-[#fcf9f2]">
+        <div className="max-w-3xl mx-auto space-y-12">
+          <div className="text-center space-y-4">
+             <HelpCircle className="w-10 h-10 text-gold mx-auto mb-4" />
+             <h2 className="font-heading text-3xl text-midnight">Dúvidas Frequentes</h2>
+          </div>
+          
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="item-1" className="border-gold/20">
+              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Por onde eu começo?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/70">
+                Você começa pelo Louco gratuitamente. Se for bem na lição, desbloqueia O Mago e entende como a jornada funciona antes de assinar.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2" className="border-gold/20">
+              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Preciso de um baralho físico?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/70">
+                Não é obrigatório, mas recomendável. O app utiliza as imagens canônicas do Rider-Waite-Smith para você estudar cada detalhe visual.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3" className="border-gold/20">
+              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Como funciona o cancelamento?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/70">
+                Você pode cancelar sua assinatura a qualquer momento através do seu perfil no app, sem letras miúdas ou burocracia.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      </section>
+
       {/* ─── Footer ─── */}
-      <footer className="py-20 px-6 text-center space-y-12">
+      <footer className="py-20 px-6 text-center space-y-12 border-t border-gold/10">
         <div className="space-y-4">
-          <h3 className="font-heading text-2xl tracking-[0.3em] text-secondary">Tarô 78 Chaves</h3>
+          <h3 className="font-heading text-2xl tracking-[0.3em] text-[#4A1528]">Tarô 78 Chaves</h3>
           <p className="t-section-title">A jornada viva pelos arcanos</p>
         </div>
 
         <nav className="flex flex-wrap justify-center gap-8 text-[11px] font-heading tracking-widest uppercase opacity-40">
-          <a href="/privacidade" className="hover:opacity-100">Privacidade</a>
-          <a href="/termos" className="hover:opacity-100">Termos</a>
-          <a href="/suporte" className="hover:opacity-100">Suporte</a>
-          <a href="/excluir-conta" className="hover:opacity-100">Excluir conta</a>
+          <a href="/privacidade" className="hover:text-[#4A1528] hover:opacity-100 transition-colors">Privacidade</a>
+          <a href="/termos" className="hover:text-[#4A1528] hover:opacity-100 transition-colors">Termos</a>
+          <a href="/suporte" className="hover:text-[#4A1528] hover:opacity-100 transition-colors">Suporte</a>
+          <a href="/excluir-conta" className="hover:text-[#4A1528] hover:opacity-100 transition-colors">Excluir conta</a>
         </nav>
 
-        <p className="text-[10px] opacity-20">© {new Date().getFullYear()} Tarô 78 Chaves. Todos os direitos reservados.</p>
+        <p className="text-[10px] opacity-20 font-body">© {new Date().getFullYear()} Tarô 78 Chaves. Todos os direitos reservados.</p>
       </footer>
     </div>
   );
