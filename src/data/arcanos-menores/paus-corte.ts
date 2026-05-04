@@ -103,6 +103,7 @@ O deserto ao fundo é significativo: não é um lugar de morte, mas de potencial
   // ═══════════════════════════════════════════════════════════════
   {
     id: "paus-cavaleiro",
+    cardImage: cavaleiroImage,
     subtitulo: "O Cavaleiro da Aventura",
     essencia: "O Cavaleiro de Paus é pura ação — o aventureiro que galopa sem mapa, movido pela paixão e pela fé de que o caminho se faz caminhando. Representa a energia masculina do Fogo em movimento: destemida, impulsiva, magnética e impossível de ignorar.",
 
