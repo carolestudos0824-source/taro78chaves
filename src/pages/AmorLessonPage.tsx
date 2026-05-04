@@ -27,6 +27,17 @@ const AmorLessonPage = () => {
   // Fase 4B — telemetria invisível: lição via adaptador (DB-first com fallback).
   useResolvedLesson("amor", lesson?.id ?? null);
 
+  if (roleLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-center space-y-3">
+          <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin mx-auto" />
+          <p className="text-xs text-muted-foreground font-heading tracking-wider">Carregando...</p>
+        </div>
+      </div>
+    );
+  }
+
   if (!lesson) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: "hsl(36 33% 97%)" }}>
