@@ -192,6 +192,7 @@ As folhas de carvalho no elmo e na sela são o símbolo da resistência: o carva
   // ═══════════════════════════════════════════════════════════════
   {
     id: "ouros-rainha",
+    cardImage: rainhaImage,
     subtitulo: "A Rainha da Abundância Viva",
     essencia: "A Rainha de Ouros é a mestra da abundância prática — a mulher que nutre, sustenta e faz florescer tudo ao seu redor. Representa a generosidade materializada: não em palavras, mas em comida na mesa, lar acolhedor, jardim florido e colo disponível.",
 
