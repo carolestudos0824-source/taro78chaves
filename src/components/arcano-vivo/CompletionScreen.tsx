@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, MapPin, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, MapPin, Sparkles, Check } from "lucide-react";
 import { ReflectionSection } from "../ReflectionSection";
 
 
