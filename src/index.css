@@ -10,28 +10,30 @@
 
 @layer base {
   :root {
-    --background: 36 33% 97%;
-    --foreground: 230 25% 10%;
+    /* ─── Base Palette ─── */
+    --background: 36 33% 97%;      /* Creme quente */
+    --foreground: 230 25% 10%;     /* Quase preto elegante */
 
-    --card: 38 30% 95%;
+    --card: 38 30% 95%;            /* Creme um pouco mais escuro */
     --card-foreground: 230 25% 10%;
 
     --popover: 36 33% 96%;
     --popover-foreground: 230 25% 10%;
 
-    --primary: 36 45% 58%;
+    /* ─── Theme Colors ─── */
+    --primary: 36 45% 58%;         /* Dourado principal */
     --primary-foreground: 36 33% 97%;
 
-    --secondary: 340 42% 30%;
+    --secondary: 340 42% 30%;      /* Vinho profundo */
     --secondary-foreground: 36 33% 97%;
+
+    --accent: 215 40% 35%;         /* Azul elegante (finalizado) */
+    --accent-foreground: 36 33% 97%;
 
     --muted: 36 20% 90%;
     --muted-foreground: 230 10% 40%;
 
-    --accent: 340 35% 25%;
-    --accent-foreground: 36 33% 97%;
-
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 70% 45%;      /* Vermelho sóbrio */
     --destructive-foreground: 210 40% 98%;
 
     --border: 36 25% 82%;
@@ -40,31 +42,19 @@
 
     --radius: 0.75rem;
 
+    /* ─── Named tokens ─── */
     --gold: 36 45% 58%;
     --gold-light: 38 40% 72%;
     --gold-dark: 36 40% 42%;
-    --gold-muted: 36 25% 50%;
-    --crimson: 340 42% 30%;
-    --crimson-light: 340 38% 42%;
     --wine: 340 42% 30%;
-    --plum: 325 35% 18%;
     --midnight: 230 25% 10%;
     --parchment: 36 33% 97%;
-    --ivory: 38 30% 94%;
-    --moonlight: 42 70% 80%;
-
+    
     --mystic-bg: 36 33% 97%;
     --mystic-surface: 38 30% 95%;
     --mystic-elevated: 36 25% 92%;
 
-    --sidebar-background: 325 35% 12%;
-    --sidebar-foreground: 36 33% 92%;
-    --sidebar-primary: 36 45% 58%;
-    --sidebar-primary-foreground: 230 25% 10%;
-    --sidebar-accent: 325 30% 16%;
-    --sidebar-accent-foreground: 36 33% 92%;
-    --sidebar-border: 36 20% 25%;
-    --sidebar-ring: 36 45% 58%;
+    --success: 140 35% 42%;
   }
 }
 
@@ -77,19 +67,10 @@
     font-size: 17px;
   }
 
-  /* Accessibility — global font-size scale (controlled by FontSizeContext) */
-  html.font-large {
-    font-size: 19px;
-  }
-  html.font-xl {
-    font-size: 22px;
-  }
-
   body {
     @apply bg-background text-foreground font-body antialiased;
-    line-height: 1.7;
+    line-height: 1.6;
     background-color: #f5ede0;
-    background-image: none;
   }
 
   body::before {
@@ -104,6 +85,7 @@
     background-position: center;
     z-index: -1;
     pointer-events: none;
+    opacity: 0.5;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -112,635 +94,70 @@
     letter-spacing: -0.01em;
   }
 
-  h1 {
-    @apply text-5xl font-semibold;
-  }
-
-  h2 {
-    @apply text-4xl font-semibold;
-  }
-
-  h3 {
-    @apply text-3xl font-medium;
-  }
-
-  h4 {
-    @apply text-2xl font-medium;
-  }
-
-  p {
-    @apply leading-relaxed;
-  }
-}
-
-/* Altura oficial da BottomNav (ícone+label+padding+border) — fonte única para clearance. */
-:root {
-  --bottom-nav-h: 68px;
+  h1 { @apply text-4xl md:text-5xl font-semibold; }
+  h2 { @apply text-3xl md:text-4xl font-semibold; }
 }
 
 @layer utilities {
-  /**
-   * Aplica padding-bottom seguro em qualquer página dentro do AppShell,
-   * evitando que conteúdo final fique escondido atrás da BottomNav fixa.
-   * Soma a altura da nav + safe-area-inset-bottom (notch iOS).
-   */
   .pb-bottom-nav {
-    padding-bottom: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom, 0px) + 16px);
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px) + 16px);
   }
 
-  /* ═══════════════ TYPOGRAPHIC SCALE ═══════════════
-   * Padronização tipográfica do app. Use estas classes em vez de
-   * tamanhos avulsos para manter hierarquia consistente.
-   */
+  /* ─── System Components ─── */
+  
+  .btn-premium {
+    @apply font-heading tracking-widest uppercase text-[11px] px-8 py-4 rounded-full transition-all duration-300 active:scale-95 shadow-lg;
+    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(340 40% 40%));
+    color: hsl(var(--parchment));
+    border: 1px solid hsl(var(--secondary) / 0.4);
+  }
+
+  .btn-gold {
+    @apply font-heading tracking-widest uppercase text-[11px] px-8 py-4 rounded-full transition-all duration-300 active:scale-95 shadow-md;
+    background: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold)));
+    color: hsl(var(--parchment));
+    border: 1px solid hsl(var(--gold) / 0.3);
+  }
+
+  .btn-outline-gold {
+    @apply font-heading tracking-widest uppercase text-[11px] px-8 py-4 rounded-full border transition-all duration-300;
+    border-color: hsl(var(--gold) / 0.4);
+    color: hsl(var(--gold-dark));
+    background: transparent;
+  }
+  .btn-outline-gold:hover {
+    background: hsl(var(--gold) / 0.05);
+  }
+
+  .card-premium {
+    @apply rounded-2xl border bg-white/80 backdrop-blur-md shadow-sm transition-all;
+    border-color: hsl(var(--gold) / 0.2);
+  }
+
+  .card-premium-active {
+    @apply rounded-2xl border bg-white/90 backdrop-blur-xl shadow-xl;
+    border-color: hsl(var(--secondary) / 0.3);
+    box-shadow: 0 12px 40px -12px hsl(var(--secondary) / 0.15);
+  }
+
+  .text-premium {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-[#5a1028] to-[#9a2a48];
+  }
+
+  .text-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-[#8a6d3b] via-[#c9a96e] to-[#8a6d3b];
+  }
+
+  /* ─── Typography Scales ─── */
   .t-section-title {
-    @apply text-xs tracking-widest font-body uppercase opacity-70;
-  }
-  .t-card-title {
-    @apply text-base font-medium font-display;
-  }
-  .t-card-subtitle {
-    @apply text-sm font-body opacity-60;
-  }
-  .t-body {
-    @apply text-base leading-relaxed font-body;
+    @apply text-[10px] tracking-[0.3em] font-heading uppercase text-muted-foreground opacity-80;
   }
   .t-kicker {
-    @apply text-xs tracking-widest uppercase font-body;
-  }
-
-  .text-gradient-gold {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%), hsl(38 40% 65%));
-  }
-
-  .text-gradient-gold-warm {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(340 42% 30%), hsl(36 40% 42%), hsl(36 45% 58%));
-  }
-
-  .border-gold {
-    border-color: hsl(36 45% 58% / 0.2);
-  }
-
-  .border-gold-strong {
-    border-color: hsl(36 45% 58% / 0.4);
-  }
-
-  .bg-mystic-glow {
-    background: radial-gradient(ellipse at 70% 10%, hsl(42 70% 80% / 0.25) 0%, transparent 50%),
-                radial-gradient(ellipse at 20% 80%, hsl(340 42% 30% / 0.04) 0%, transparent 50%);
-  }
-
-  .bg-mystic-deep {
-    background: 
-      radial-gradient(ellipse at 20% 50%, hsl(340 42% 30% / 0.04) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, hsl(42 70% 80% / 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 80%, hsl(230 25% 10% / 0.03) 0%, transparent 50%);
-  }
-
-  .card-mystic {
-    @apply border rounded-xl;
-    background-color: hsl(var(--card) / 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-color: hsl(36 45% 58% / 0.2);
-    box-shadow: 
-      0 4px 20px hsl(36 45% 58% / 0.06),
-      inset 0 1px 0 hsl(36 45% 58% / 0.1);
-  }
-
-  .card-mystic-active {
-    @apply border rounded-xl;
-    background-color: hsl(var(--card) / 0.88);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-color: hsl(340 42% 30% / 0.3);
-    box-shadow: 
-      0 8px 30px hsl(36 45% 58% / 0.1),
-      0 0 60px hsl(42 70% 80% / 0.06),
-      inset 0 1px 0 hsl(36 45% 58% / 0.15);
-  }
-
-  .glow-gold {
-    box-shadow: 0 0 15px hsl(36 45% 58% / 0.15), 0 0 40px hsl(42 70% 80% / 0.06);
-  }
-
-  .glow-gold-strong {
-    box-shadow: 0 0 20px hsl(36 45% 58% / 0.2), 0 0 60px hsl(42 70% 80% / 0.1);
-  }
-
-  .glow-crimson {
-    box-shadow: 0 0 20px hsl(340 42% 30% / 0.15), 0 0 50px hsl(340 42% 30% / 0.06);
-  }
-
-  .divider-gold {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(36 45% 58% / 0.3), transparent);
-  }
-
-  .bg-surface-elevated {
-    background: hsl(var(--mystic-elevated));
-  }
-
-  /* ═══════════════ EDITORIAL / ORNAMENTAL ═══════════════ */
-
-  /* Pergaminho sutil — textura nobre quase imperceptível */
-  .bg-parchment-noise {
-    background-color: hsl(36 33% 96%);
-    background-image:
-      radial-gradient(circle at 20% 10%, hsl(36 45% 58% / 0.05) 0%, transparent 40%),
-      radial-gradient(circle at 80% 90%, hsl(340 42% 30% / 0.04) 0%, transparent 45%),
-      radial-gradient(circle at 50% 50%, hsl(42 70% 80% / 0.06) 0%, transparent 70%);
-  }
-
-  /* Moldura editorial — borda dupla com filete dourado */
-  .frame-editorial {
-    position: relative;
-    border: 1px solid hsl(36 45% 58% / 0.35);
-    border-radius: 0.75rem;
-    box-shadow:
-      0 0 0 1px hsl(36 33% 97% / 0.6) inset,
-      0 0 0 2px hsl(36 45% 58% / 0.15) inset,
-      0 10px 30px -12px hsl(340 42% 30% / 0.15);
-  }
-  .frame-editorial::before {
-    content: "";
-    position: absolute;
-    inset: 6px;
-    border: 1px solid hsl(36 45% 58% / 0.18);
-    border-radius: calc(0.75rem - 4px);
-    pointer-events: none;
-  }
-
-  /* Divisor ornamental — filete + losango central */
-  .divider-ornament {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    color: hsl(36 45% 58% / 0.7);
-  }
-  .divider-ornament::before,
-  .divider-ornament::after {
-    content: "";
-    flex: 1;
-    max-width: 6rem;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(36 45% 58% / 0.45), transparent);
-  }
-
-  /* Cantos ornamentais — pseudo-elementos para decorar molduras */
-  .corner-ornaments {
-    position: relative;
-  }
-  .corner-ornaments::before,
-  .corner-ornaments::after {
-    content: "✦";
-    position: absolute;
-    color: hsl(36 45% 58% / 0.5);
-    font-size: 0.85rem;
-    line-height: 1;
-  }
-  .corner-ornaments::before { top: 8px; left: 10px; }
-  .corner-ornaments::after { bottom: 8px; right: 10px; }
-
-  /* Botão premium — gradiente vinho com filete dourado */
-  .btn-premium {
-    background: linear-gradient(135deg, hsl(340 50% 26%), hsl(340 45% 18%));
-    border: 1px solid hsl(36 45% 58% / 0.45);
-    color: hsl(36 33% 97%);
-    box-shadow:
-      0 0 0 1px hsl(36 45% 58% / 0.12) inset,
-      0 8px 24px -10px hsl(340 50% 18% / 0.5);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .btn-premium:hover {
-    background: linear-gradient(135deg, hsl(340 50% 30%), hsl(340 45% 22%));
-    box-shadow:
-      0 0 0 1px hsl(36 45% 58% / 0.25) inset,
-      0 12px 32px -10px hsl(340 50% 18% / 0.6),
-      0 0 24px hsl(36 45% 58% / 0.18);
-    transform: translateY(-1px);
-  }
-
-  /* Card editorial — superfície clara com filete dourado */
-  .card-editorial {
-    background: linear-gradient(180deg, hsl(36 33% 97% / 0.92), hsl(38 30% 94% / 0.88));
-    border: 1px solid hsl(36 45% 58% / 0.25);
-    border-radius: 0.875rem;
-    box-shadow:
-      0 0 0 1px hsl(36 33% 97% / 0.5) inset,
-      0 4px 18px -8px hsl(340 42% 30% / 0.12);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    @apply text-[11px] tracking-[0.2em] font-heading uppercase text-gold-dark;
   }
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: hsl(var(--mystic-bg));
-}
-::-webkit-scrollbar-thumb {
-  background: hsl(36 45% 58% / 0.2);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(36 45% 58% / 0.35);
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-@keyframes pulse-gold {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
-
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes card-reveal {
-  from { opacity: 0; transform: rotateY(90deg) scale(0.8); }
-  to { opacity: 1; transform: rotateY(0deg) scale(1); }
-}
-
-@keyframes stars {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-
-@keyframes glow-breathe {
-  0%, 100% { box-shadow: 0 0 15px hsl(36 45% 58% / 0.1), 0 0 40px hsl(42 70% 80% / 0.05); }
-  50% { box-shadow: 0 0 25px hsl(36 45% 58% / 0.2), 0 0 60px hsl(42 70% 80% / 0.1); }
-}
-
-@keyframes progress-shine {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(200%); }
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.8; }
-}
-
-@keyframes celebration-in {
-  from { opacity: 0; transform: translateX(-50%) translateY(-30px) scale(0.95); }
-  to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
-}
-
-@keyframes celebration-out {
-  from { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
-  to { opacity: 0; transform: translateX(-50%) translateY(-20px) scale(0.95); }
-}
-
-/* ─── Arcano Vivo Animations ─── */
-
-@keyframes arcano-breathe {
-  0%, 100% { 
-    opacity: 0.12;
-    transform: scale(1);
-  }
-  50% { 
-    opacity: 0.25;
-    transform: scale(1.08);
-  }
-}
-
-@keyframes arcano-aura-pulse {
-  0%, 100% { 
-    box-shadow: 0 0 30px hsl(var(--arcano-glow, 36 45% 58%) / 0.12),
-                0 0 60px hsl(var(--arcano-glow, 36 45% 58%) / 0.06),
-                0 0 100px hsl(var(--arcano-glow, 42 70% 80%) / 0.03);
-  }
-  50% { 
-    box-shadow: 0 0 40px hsl(var(--arcano-glow, 36 45% 58%) / 0.22),
-                0 0 80px hsl(var(--arcano-glow, 36 45% 58%) / 0.12),
-                0 0 120px hsl(var(--arcano-glow, 42 70% 80%) / 0.06);
-  }
-}
-
-@keyframes arcano-card-awaken {
-  0% {
-    opacity: 0;
-    transform: scale(0.85) translateY(30px);
-    filter: brightness(0.4) saturate(0.3);
-  }
-  40% {
-    opacity: 1;
-    transform: scale(0.95) translateY(8px);
-    filter: brightness(0.7) saturate(0.6);
-  }
-  70% {
-    transform: scale(1.02) translateY(-2px);
-    filter: brightness(1.05) saturate(1.1);
-  }
-  100% {
-    transform: scale(1) translateY(0);
-    filter: brightness(1) saturate(1);
-  }
-}
-
-@keyframes arcano-shimmer-sweep {
-  0% {
-    transform: translateX(-120%) rotate(15deg);
-    opacity: 0;
-  }
-  30% {
-    opacity: 0.6;
-  }
-  100% {
-    transform: translateX(120%) rotate(15deg);
-    opacity: 0;
-  }
-}
-
-@keyframes particle-drift {
-  0% {
-    opacity: 0;
-    transform: translateY(0) translateX(0) scale(0.5);
-  }
-  20% {
-    opacity: 0.8;
-  }
-  80% {
-    opacity: 0.4;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-80px) translateX(var(--drift-x, 20px)) scale(1.2);
-  }
-}
-
-@keyframes particle-float {
-  0%, 100% {
-    transform: translateY(0) translateX(0);
-    opacity: 0.3;
-  }
-  25% {
-    transform: translateY(-12px) translateX(8px);
-    opacity: 0.7;
-  }
-  50% {
-    transform: translateY(-6px) translateX(-5px);
-    opacity: 0.5;
-  }
-  75% {
-    transform: translateY(-15px) translateX(3px);
-    opacity: 0.8;
-  }
-}
-
-@keyframes arcano-border-glow {
-  0%, 100% {
-    border-color: hsl(var(--arcano-glow, 36 45% 58%) / 0.3);
-  }
-  50% {
-    border-color: hsl(var(--arcano-glow, 36 45% 58%) / 0.6);
-  }
-}
-
-@keyframes arcano-voice-emerge {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-    filter: blur(4px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-
-@keyframes arcano-symbol-orbit {
-  0% { transform: rotate(0deg) translateX(var(--orbit-radius, 140px)) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(var(--orbit-radius, 140px)) rotate(-360deg); }
-}
-
-@keyframes subtle-vibrate {
-  0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(0.5px, -0.5px); }
-  50% { transform: translate(-0.5px, 0.5px); }
-  75% { transform: translate(0.5px, 0.5px); }
-}
-
-/* ─── Arcano Vivo v2: Living Card Animations ─── */
-
-/* Breathing with perspective — figure subtly rises and falls */
-@keyframes arcano-living-breathe {
-  0%, 100% {
-    transform: perspective(800px) rotateX(0deg) scale(1) translateY(0);
-  }
-  50% {
-    transform: perspective(800px) rotateX(0.5deg) scale(1.008) translateY(-2px);
-  }
-}
-
-/* Emergence — card breaks the plane, figure steps forward */
-@keyframes arcano-emerge {
-  0% {
-    transform: perspective(600px) translateZ(0) scale(1);
-    filter: brightness(1) contrast(1);
-  }
-  40% {
-    transform: perspective(600px) translateZ(30px) scale(1.04);
-    filter: brightness(1.1) contrast(1.05);
-  }
-  70% {
-    transform: perspective(600px) translateZ(50px) scale(1.06);
-    filter: brightness(1.15) contrast(1.08);
-  }
-  100% {
-    transform: perspective(600px) translateZ(40px) scale(1.05);
-    filter: brightness(1.08) contrast(1.03);
-  }
-}
-
-/* Energy flow — ethereal light streams around the card */
-@keyframes arcano-energy-flow {
-  0% {
-    background-position: 0% 0%;
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.5;
-  }
-  50% {
-    background-position: 100% 100%;
-    opacity: 0.3;
-  }
-  85% {
-    opacity: 0.5;
-  }
-  100% {
-    background-position: 200% 200%;
-    opacity: 0;
-  }
-}
-
-/* Symbol spotlight — a soft glow that highlights specific areas of the card */
-@keyframes arcano-symbol-spotlight {
-  0%, 100% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  20% {
-    opacity: 0.7;
-    transform: scale(1);
-  }
-  80% {
-    opacity: 0.5;
-    transform: scale(1.1);
-  }
-}
-
-/* Symbol pulse — breathing glow at a specific card position */
-@keyframes arcano-symbol-pulse {
-  0%, 100% {
-    opacity: 0.15;
-    transform: translate(-50%, -50%) scale(1);
-    box-shadow: 0 0 12px hsl(var(--symbol-color, 36 45% 58%) / 0.2);
-  }
-  50% {
-    opacity: 0.4;
-    transform: translate(-50%, -50%) scale(1.3);
-    box-shadow: 0 0 24px hsl(var(--symbol-color, 36 45% 58%) / 0.4);
-  }
-}
-
-/* Fabric flow — simulates cloth or veil movement */
-@keyframes arcano-fabric-flow {
-  0%, 100% {
-    transform: skewX(0deg) translateX(0);
-    opacity: 0.08;
-  }
-  33% {
-    transform: skewX(0.5deg) translateX(2px);
-    opacity: 0.12;
-  }
-  66% {
-    transform: skewX(-0.3deg) translateX(-1px);
-    opacity: 0.06;
-  }
-}
-
-/* Hair/ribbon drift — gentle side-to-side for flowing elements */
-@keyframes arcano-hair-drift {
-  0%, 100% {
-    transform: rotate(0deg) translateX(0);
-  }
-  25% {
-    transform: rotate(0.3deg) translateX(1px);
-  }
-  75% {
-    transform: rotate(-0.3deg) translateX(-1px);
-  }
-}
-
-/* Aura emanation — energy ripples outward from the figure */
-@keyframes arcano-aura-emanate {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.4;
-    border-color: hsl(var(--arcano-glow, 36 45% 58%) / 0.3);
-  }
-  50% {
-    transform: scale(1.15);
-    opacity: 0;
-    border-color: hsl(var(--arcano-glow, 36 45% 58%) / 0);
-  }
-  51%, 100% {
-    transform: scale(0.95);
-    opacity: 0;
-  }
-}
-
-/* Energy tendril — flowing lines of light */
-@keyframes arcano-tendril {
-  0% {
-    stroke-dashoffset: 300;
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.6;
-  }
-  80% {
-    opacity: 0.3;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    opacity: 0;
-  }
-}
-
-/* Eye gaze shift — subtle highlight position change */
-@keyframes arcano-gaze-shift {
-  0%, 100% {
-    transform: translate(-50%, -50%) translateX(0) translateY(0);
-    opacity: 0.25;
-  }
-  30% {
-    transform: translate(-50%, -50%) translateX(1px) translateY(-0.5px);
-    opacity: 0.35;
-  }
-  70% {
-    transform: translate(-50%, -50%) translateX(-0.5px) translateY(0.5px);
-    opacity: 0.3;
-  }
-}
-
-/* Card crack of light — the card's surface fractures with light before emergence */
-@keyframes arcano-light-crack {
-  0% {
-    clip-path: inset(45% 49% 45% 49%);
-    opacity: 0;
-  }
-  30% {
-    clip-path: inset(10% 48% 10% 48%);
-    opacity: 0.8;
-  }
-  60% {
-    clip-path: inset(0% 30% 0% 30%);
-    opacity: 0.5;
-  }
-  100% {
-    clip-path: inset(0% 0% 0% 0%);
-    opacity: 0;
-  }
-}
-
-/* Gentle card hover float for the emerged state */
-@keyframes arcano-float-gentle {
-  0%, 100% {
-    transform: perspective(600px) translateZ(40px) translateY(0) rotateX(0deg);
-  }
-  50% {
-    transform: perspective(600px) translateZ(45px) translateY(-4px) rotateX(0.3deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .arcano-vivo-card,
-  .arcano-vivo-particle,
-  .arcano-vivo-aura,
-  .arcano-vivo-symbol,
-  .arcano-vivo-spotlight,
-  .arcano-vivo-energy,
-  .arcano-vivo-emanation {
-    animation: none !important;
-    transition: opacity 0.3s ease !important;
-  }
+/* ─── Global Overrides for Shadcn ─── */
+.shadcn-input-premium {
+  @apply bg-white/50 border-gold/30 focus:border-gold focus:ring-gold/20 rounded-xl;
 }
