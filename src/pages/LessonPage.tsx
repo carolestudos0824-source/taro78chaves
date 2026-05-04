@@ -8,8 +8,10 @@ import { useRole } from "@/hooks/use-role";
 import { useAccess } from "@/hooks/use-access";
 import { ArcanoVivoIntro } from "@/components/arcano-vivo/ArcanoVivoIntro";
 import { LessonContent } from "@/components/arcano-vivo/LessonContent";
+import { SymbolMap } from "@/components/arcano-vivo/SymbolMap";
 import { CompletionScreen } from "@/components/arcano-vivo/CompletionScreen";
 import { PhaseIndicator } from "@/components/arcano-vivo/PhaseIndicator";
+
 import { DeepDiveSection } from "@/components/DeepDiveSection";
 import { ExerciseSection } from "@/components/ExerciseSection";
 import { QuizSection } from "@/components/QuizSection";
