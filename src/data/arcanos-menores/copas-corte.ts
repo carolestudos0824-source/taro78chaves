@@ -3,6 +3,10 @@
  * Modelo padrão: 18 campos por carta.
  */
 import { type ArcanoMenorEditorial } from "./index";
+import pajemImage from "@/assets/menor-copas-pajem.jpg";
+import cavaleiroImage from "@/assets/menor-copas-cavaleiro.jpg";
+import rainhaImage from "@/assets/menor-copas-rainha.jpg";
+import reiImage from "@/assets/menor-copas-rei.jpg";
 
 export const COPAS_CORTE: Partial<ArcanoMenorEditorial>[] = [
   // ═══════════════════════════════════════════════════════════════
@@ -10,6 +14,7 @@ export const COPAS_CORTE: Partial<ArcanoMenorEditorial>[] = [
   // ═══════════════════════════════════════════════════════════════
   {
     id: "copas-pajem",
+    cardImage: pajemImage,
     subtitulo: "O Mensageiro do Coração",
     essencia: "O Pajem de Copas é o jovem mensageiro emocional — aquele que traz notícias do coração com olhos curiosos e mãos delicadas. Representa o início da maturidade afetiva: a primeira vez que se olha para dentro com seriedade e se descobre capaz de sentir com profundidade.",
 
