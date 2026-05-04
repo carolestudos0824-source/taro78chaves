@@ -230,46 +230,71 @@ const LandingPage = () => {
       <section className="py-24 px-6 bg-[#fdfaf5]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="font-heading text-3xl md:text-4xl text-midnight">O que você desbloqueia na Jornada Completa</h2>
-            <p className="text-muted-foreground max-w-lg mx-auto font-body">Um caminho guiado para aprender tarô carta por carta, sem decorar significados soltos.</p>
+            <h2 className="font-heading text-3xl md:text-4xl text-midnight italic">O que você desbloqueia na Jornada Completa</h2>
+            <p className="text-muted-foreground max-w-lg mx-auto font-body text-balance">Um caminho guiado para aprender tarô de verdade, carta por carta, sem decorar significados soltos.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4">
-              <Layers className="w-8 h-8 text-[#4A1528]" />
-              <h3 className="font-heading text-xl text-midnight">78 cartas, passo a passo</h3>
-              <p className="text-sm text-midnight/70 font-body">Estude Arcanos Maiores, Menores e Cartas da Corte em uma sequência clara e progressiva.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
+              <div className="w-12 h-12 bg-[#4A1528]/5 rounded-2xl flex items-center justify-center">
+                <Layers className="w-6 h-6 text-[#4A1528]" />
+              </div>
+              <h3 className="font-heading text-xl text-midnight">78 cartas, uma por uma</h3>
+              <p className="text-sm text-midnight/70 font-body">Estude Arcanos Maiores, Arcanos Menores e Cartas da Corte em uma jornada clara e progressiva.</p>
             </div>
 
-            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4">
-              <BookOpen className="w-8 h-8 text-[#C9A96E]" />
-              <h3 className="font-heading text-xl text-midnight">Lições curtas e profundas</h3>
-              <p className="text-sm text-midnight/70 font-body">Cada arcano traz essência, símbolos, luz, sombra e aplicação prática.</p>
+            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
+              <div className="w-12 h-12 bg-[#C9A96E]/10 rounded-2xl flex items-center justify-center">
+                <BookOpen className="w-6 h-6 text-[#C9A96E]" />
+              </div>
+              <h3 className="font-heading text-xl text-midnight">Lições completas</h3>
+              <p className="text-sm text-midnight/70 font-body">Cada arcano traz essência, símbolos, luz, sombra e aplicação prática para leitura.</p>
             </div>
 
-            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4">
-              <Target className="w-8 h-8 text-[#4A1528]" />
-              <h3 className="font-heading text-xl text-midnight">Quizzes com feedback</h3>
-              <p className="text-sm text-midnight/70 font-body">Teste sua compreensão em cada etapa e fixe o que realmente importa.</p>
+            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
+              <div className="w-12 h-12 bg-[#4A1528]/5 rounded-2xl flex items-center justify-center">
+                <Star className="w-6 h-6 text-[#4A1528]" />
+              </div>
+              <h3 className="font-heading text-xl text-midnight">Símbolos guiados</h3>
+              <p className="text-sm text-midnight/70 font-body">Aprenda a enxergar a carta Rider-Waite-Smith em vez de apenas memorizar palavras-chave.</p>
             </div>
 
-            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4">
-              <Flame className="w-8 h-8 text-[#C9A96E]" />
-              <h3 className="font-heading text-xl text-midnight">XP e sequência diária</h3>
-              <p className="text-sm text-midnight/70 font-body">Acompanhe seu avanço com progresso salvo, XP e hábito diário de estudo.</p>
+            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
+              <div className="w-12 h-12 bg-[#C9A96E]/10 rounded-2xl flex items-center justify-center">
+                <Check className="w-6 h-6 text-[#C9A96E]" />
+              </div>
+              <h3 className="font-heading text-xl text-midnight">Quizzes que fixam</h3>
+              <p className="text-sm text-midnight/70 font-body">Teste sua compreensão com feedback imediato e avance com mais segurança.</p>
             </div>
 
-            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4">
-              <Award className="w-8 h-8 text-[#4A1528]" />
-              <h3 className="font-heading text-xl text-midnight">Desbloqueios por progresso</h3>
-              <p className="text-sm text-midnight/70 font-body">Comece pelo Louco, desbloqueie O Mago com desempenho e continue a jornada completa no premium.</p>
+            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
+              <div className="w-12 h-12 bg-[#4A1528]/5 rounded-2xl flex items-center justify-center">
+                <Flame className="w-6 h-6 text-[#4A1528]" />
+              </div>
+              <h3 className="font-heading text-xl text-midnight">XP, sequência e progresso</h3>
+              <p className="text-sm text-midnight/70 font-body">Acompanhe sua evolução, mantenha o hábito diário e veja sua jornada avançar.</p>
             </div>
 
-            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4">
-              <Star className="w-8 h-8 text-[#C9A96E]" />
-              <h3 className="font-heading text-xl text-midnight">Base Rider-Waite-Smith</h3>
-              <p className="text-sm text-midnight/70 font-body">Aprenda com a iconografia clássica do Rider-Waite-Smith, carta por carta.</p>
+            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
+              <div className="w-12 h-12 bg-[#C9A96E]/10 rounded-2xl flex items-center justify-center">
+                <Award className="w-6 h-6 text-[#C9A96E]" />
+              </div>
+              <h3 className="font-heading text-xl text-midnight">Desbloqueios por desempenho</h3>
+              <p className="text-sm text-midnight/70 font-body">Comece pelo Louco grátis, desbloqueie O Mago se for bem e continue a jornada completa no premium.</p>
             </div>
+          </div>
+
+          <div className="text-center space-y-8">
+            <p className="text-lg font-body text-midnight/80 italic">
+              Depois de experimentar o método, continue sua jornada pelos 78 arcanos.
+            </p>
+            <Button 
+              onClick={handleStart} 
+              variant="outline"
+              className="px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-widest text-[11px] uppercase transition-all"
+            >
+              COMEÇAR PELO LOUCO — GRÁTIS →
+            </Button>
           </div>
         </div>
       </section>
@@ -280,7 +305,6 @@ const LandingPage = () => {
         
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-16">
           <div className="space-y-4">
-            <p className="t-section-title text-gold/60">Depois de experimentar o método, continue sua jornada pelos 78 arcanos.</p>
             <h2 className="font-heading text-4xl md:text-5xl">Desbloqueie a Jornada Completa</h2>
             <p className="text-muted-foreground font-body">Escolha o plano ideal para continuar estudando no seu ritmo.</p>
           </div>
