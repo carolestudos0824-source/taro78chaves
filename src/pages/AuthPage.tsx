@@ -21,56 +21,29 @@ const AuthPage = () => {
   const navigate = useNavigate();
   const { signIn, signUp } = useAuth();
 
-  // Preview-only: show auditor login button on lovable preview hosts (NOT production)
   const isPreviewHost = (() => {
     if (typeof window === "undefined") return false;
     const h = window.location.hostname;
-    if (h === "apptaro.lovable.app") return false;
-    return (
-      h.endsWith(".lovable.app") ||
-      h.endsWith(".lovableproject.com") ||
-      h.endsWith(".lovable.dev") ||
-      h === "localhost" ||
-      h === "127.0.0.1"
-    );
+    return h.endsWith(".lovable.app") || h.endsWith(".lovableproject.com") || h === "localhost";
   })();
 
   const handleAuditorLogin = async () => {
     setError("");
-    setInfo("");
     setAuditorLoading(true);
     try {
       const { data, error: fnErr } = await supabase.functions.invoke("seed-preview-auditor", { body: {} });
       if (fnErr || !data?.ok) {
-        setError(data?.error || fnErr?.message || "Falha ao provisionar auditor");
+        setError(data?.error || "Falha ao provisionar auditor");
         setAuditorLoading(false);
         return;
       }
-      const { error: signErr } = await signIn(data.email, data.password);
-      if (signErr) {
-        setError(signErr.message);
-        setAuditorLoading(false);
-        return;
-      }
-      setAuditorLoading(false);
+      await signIn(data.email, data.password);
       navigate("/app");
     } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
+      setError(String(e));
       setAuditorLoading(false);
     }
   };
-
-  // Mensagem de sucesso após redefinição de senha
-  useEffect(() => {
-    if (searchParams.get("reset") === "success") {
-      setMode("login");
-      setInfo("Senha redefinida com sucesso. Faça login com a nova senha.");
-      // Limpa o query param após exibir
-      const next = new URLSearchParams(searchParams);
-      next.delete("reset");
-      setSearchParams(next, { replace: true });
-    }
-  }, [searchParams, setSearchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -82,160 +55,107 @@ const AuthPage = () => {
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: `${window.location.origin}/reset-password`,
       });
-      if (error) {
-        setError(error.message);
-      } else {
-        setInfo("E-mail de recuperação enviado. Verifique sua caixa de entrada.");
-      }
+      if (error) setError(error.message);
+      else setInfo("E-mail de recuperação enviado.");
       setLoading(false);
       return;
     }
 
-    if (mode === "signup") {
-      const { error } = await signUp(email, password, name);
-      if (error) {
-        setError(error.message);
-        setLoading(false);
-        return;
+    try {
+      if (mode === "signup") {
+        const { error } = await signUp(email, password, name);
+        if (error) throw error;
+      } else {
+        const { error } = await signIn(email, password);
+        if (error) throw error;
       }
-    } else {
-      const { error } = await signIn(email, password);
-      if (error) {
-        setError(error.message);
-        setLoading(false);
-        return;
-      }
+      navigate("/app");
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
-    navigate("/app");
   };
 
   return (
-    <div
-      className="min-h-screen flex flex-col items-center justify-center px-6"
-      style={{ background: "linear-gradient(170deg, hsl(36 33% 97%), hsl(38 28% 93%))" }}
-    >
-      <div className="w-full max-w-sm space-y-6">
-        {/* Back */}
-        <button onClick={() => navigate("/")} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12">
+      <div className="w-full max-w-sm space-y-8">
+        <button onClick={() => navigate("/")} className="flex items-center gap-2 text-xs font-heading tracking-widest uppercase opacity-40 hover:opacity-100 transition-opacity">
           <ArrowLeft className="w-4 h-4" />
           Voltar
         </button>
 
-        {/* Header */}
-        <div className="text-center space-y-2">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl mx-auto" style={{
-            background: "linear-gradient(135deg, hsl(340 42% 28% / 0.08), hsl(36 45% 58% / 0.12))",
-            border: "1px solid hsl(36 45% 58% / 0.20)",
-          }}>
-            <Crown className="w-5 h-5" style={{ color: "hsl(36 45% 50%)" }} />
+        <div className="text-center space-y-3">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mx-auto bg-white/50 border border-gold/20 shadow-sm">
+            <Crown className="w-6 h-6 text-gold-dark" />
           </div>
-          <h1 className="font-heading text-xl tracking-wide" style={{ color: "hsl(340 42% 20%)" }}>
+          <h1 className="font-heading text-2xl tracking-wide text-midnight">
             {mode === "signup" ? "Criar conta" : mode === "login" ? "Entrar" : "Recuperar senha"}
           </h1>
-          <p className="text-xs" style={{ color: "hsl(230 15% 40% / 0.45)" }}>
-            {mode === "signup" ? "Junte-se à beta privada da jornada." : mode === "login" ? "Boas-vindas de volta à jornada." : "Enviaremos um link para redefinir sua senha."}
+          <p className="text-xs font-body text-muted-foreground max-w-[240px] mx-auto leading-relaxed">
+            {mode === "signup" ? "Junte-se à jornada e descubra os segredos do Tarô." : mode === "login" ? "Boas-vindas de volta à sua jornada." : "Enviaremos um link de acesso."}
           </p>
-          <span className="inline-block text-[9px] font-heading tracking-[0.2em] uppercase px-2.5 py-0.5 rounded-full" style={{
-            background: "hsl(340 42% 28% / 0.08)",
-            color: "hsl(340 42% 28%)",
-            border: "1px solid hsl(340 42% 28% / 0.15)",
-          }}>
-            ✦ Beta Privada
-          </span>
         </div>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-3">
+        <form onSubmit={handleSubmit} className="space-y-4">
           {mode === "signup" && (
-            <div>
-              <label className="text-[11px] text-muted-foreground mb-1 block">Nome</label>
-              <Input value={name} onChange={e => setName(e.target.value)} placeholder="Seu nome" />
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark ml-1">Nome</label>
+              <Input className="shadcn-input-premium py-6" value={name} onChange={e => setName(e.target.value)} placeholder="Seu nome" />
             </div>
           )}
-          <div>
-            <label className="text-[11px] text-muted-foreground mb-1 block">E-mail</label>
-            <Input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="seu@email.com" required />
+          <div className="space-y-1.5">
+            <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark ml-1">E-mail</label>
+            <Input className="shadcn-input-premium py-6" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="seu@email.com" required />
           </div>
           {mode !== "forgot" && (
-            <div className="relative">
-              <label className="text-[11px] text-muted-foreground mb-1 block">Senha</label>
-              <Input
-                type={showPass ? "text" : "password"}
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                placeholder="Mínimo 6 caracteres"
-                required
-                minLength={6}
-              />
-              <button type="button" onClick={() => setShowPass(!showPass)} className="absolute right-3 top-7 text-muted-foreground">
-                {showPass ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-              </button>
+            <div className="space-y-1.5 relative">
+              <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark ml-1">Senha</label>
+              <div className="relative">
+                <Input
+                  className="shadcn-input-premium py-6"
+                  type={showPass ? "text" : "password"}
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  placeholder="Mínimo 6 caracteres"
+                  required
+                />
+                <button type="button" onClick={() => setShowPass(!showPass)} className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground/50 hover:text-gold-dark transition-colors">
+                  {showPass ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
             </div>
           )}
 
-          {error && (
-            <p className="text-xs text-destructive text-center">{error}</p>
-          )}
-          {info && (
-            <p className="text-xs text-center" style={{ color: "hsl(120 40% 35%)" }}>{info}</p>
-          )}
+          {error && <p className="text-[11px] font-body text-destructive text-center bg-destructive/5 py-2 rounded-lg">{error}</p>}
+          {info && <p className="text-[11px] font-body text-success text-center bg-success/5 py-2 rounded-lg">{info}</p>}
 
-          <Button
-            type="submit"
-            disabled={loading}
-            className="w-full font-heading tracking-wide text-[11px] uppercase py-5"
-            style={{
-              background: "linear-gradient(135deg, hsl(340 42% 26%), hsl(340 42% 32%))",
-              color: "hsl(36 33% 97%)",
-            }}
-          >
+          <Button type="submit" disabled={loading} className="btn-premium w-full py-7 mt-4">
             {loading ? "Aguarde..." : mode === "signup" ? "Criar Conta" : mode === "login" ? "Entrar" : "Enviar link"}
           </Button>
         </form>
 
-        {/* Toggle mode */}
-        <div className="text-center space-y-1">
+        <div className="text-center space-y-4">
           {mode === "login" && (
-            <button onClick={() => { setMode("forgot"); setError(""); setInfo(""); }} className="text-xs underline block mx-auto" style={{ color: "hsl(340 42% 28% / 0.6)" }}>
+            <button onClick={() => setMode("forgot")} className="text-[11px] font-heading tracking-widest uppercase opacity-40 hover:opacity-100 transition-opacity">
               Esqueci minha senha
             </button>
           )}
-          <p className="text-xs" style={{ color: "hsl(230 15% 40% / 0.45)" }}>
-            {mode === "signup" ? "Já tem conta?" : mode === "login" ? "Não tem conta?" : "Lembrou a senha?"}{" "}
-            <button onClick={() => { setMode(mode === "signup" ? "login" : mode === "login" ? "signup" : "login"); setError(""); setInfo(""); }} className="font-medium underline" style={{ color: "hsl(340 42% 28%)" }}>
-              {mode === "signup" ? "Entrar" : mode === "login" ? "Criar conta" : "Entrar"}
+          <p className="text-xs font-body text-muted-foreground">
+            {mode === "signup" ? "Já tem conta?" : "Não tem conta?"}{" "}
+            <button onClick={() => setMode(mode === "signup" ? "login" : "signup")} className="font-heading tracking-wider uppercase text-gold-dark ml-1">
+              {mode === "signup" ? "Entrar" : "Criar conta"}
             </button>
           </p>
         </div>
 
         {isPreviewHost && (
-          <div className="pt-2 border-t border-dashed" style={{ borderColor: "hsl(36 45% 58% / 0.25)" }}>
-            <p className="text-[10px] text-center mb-2 font-heading tracking-[0.18em] uppercase" style={{ color: "hsl(36 45% 35%)" }}>
-              ✦ Modo Auditoria (Preview)
-            </p>
-            <Button
-              type="button"
-              onClick={handleAuditorLogin}
-              disabled={auditorLoading}
-              variant="outline"
-              className="w-full text-[11px] tracking-wide"
-            >
-              {auditorLoading ? "Provisionando..." : "Entrar como Auditor"}
+          <div className="pt-6 border-t border-gold/10">
+            <Button onClick={handleAuditorLogin} disabled={auditorLoading} variant="ghost" className="w-full text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark/60">
+              {auditorLoading ? "Entrando..." : "✦ Modo Auditoria (Preview)"}
             </Button>
-            <p className="text-[10px] text-center mt-1.5 text-muted-foreground">
-              Conta premium temporária só para auditoria visual.
-            </p>
           </div>
         )}
-
-        <nav className="pt-4 mt-2 border-t border-dashed flex flex-wrap justify-center gap-x-4 gap-y-1.5 text-[10px]" style={{ borderColor: "hsl(36 45% 58% / 0.20)", color: "hsl(230 15% 40% / 0.60)" }}>
-          <a href="/privacidade" className="hover:underline">Privacidade</a>
-          <a href="/termos" className="hover:underline">Termos</a>
-          <a href="/suporte" className="hover:underline">Suporte</a>
-          <a href="/excluir-conta" className="hover:underline">Excluir conta</a>
-        </nav>
       </div>
     </div>
   );
