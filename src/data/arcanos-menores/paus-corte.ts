@@ -281,6 +281,7 @@ Os leões e girassóis no trono são símbolos solares — Leo, o signo do sol, 
   // ═══════════════════════════════════════════════════════════════
   {
     id: "paus-rei",
+    cardImage: reiImage,
     subtitulo: "O Soberano do Fogo",
     essencia: "O Rei de Paus é o mestre da vontade — aquele que transformou o fogo selvagem em liderança estratégica. Representa a maturidade criativa: a visão que se tornou império, o impulso que se tornou propósito, o desejo que se tornou legado.",
 
