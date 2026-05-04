@@ -41,7 +41,7 @@ const LessonPage = () => {
   const [lastQuizTotal, setLastQuizTotal] = useState(0);
 
   const arcanoId = parseInt(id || "0", 10);
-  const arcano = getArcanoById(arcanoId);
+  const arcano = getArcanoById(isNaN(arcanoId) ? 0 : arcanoId);
   const isFree = FREE_ARCANO_IDS.includes(arcanoId);
   const hasAccess = isFree || isPremium || isAdmin;
 
