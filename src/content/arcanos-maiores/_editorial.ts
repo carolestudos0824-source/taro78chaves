@@ -266,5 +266,6 @@ export function editorialToLegacy(editorial: ArcanoMaiorEditorial, unlocked = fa
     quickReview: editorial.quickReview,
     reflectionQuestions: editorial.reflectionQuestions,
     initiationLesson: editorial.initiationLesson,
+    symbolsMap: editorial.symbolsMap,
   };
 }
