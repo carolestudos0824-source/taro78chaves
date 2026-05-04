@@ -1,5 +1,7 @@
 import { usePremium } from "@/hooks/use-premium";
 import { useRole } from "@/hooks/use-role";
+import { useProgress } from "@/hooks/use-progress";
+import { isArcanoFree } from "@/lib/content/access";
 
 /**
  * Hook unificado de acesso pedagógico ao conteúdo.
@@ -14,8 +16,14 @@ import { useRole } from "@/hooks/use-role";
 export function useAccess() {
   const { isPremium, subscriptionStatus, loading: premiumLoading } = usePremium();
   const { isAdmin, isModerator, loading: roleLoading } = useRole();
+  const { progress, loading: progressLoading } = useProgress();
 
   const hasFullAccess = isAdmin || isModerator || isPremium;
+
+  const canAccessArcano = (arcanoId: number) => {
+    if (hasFullAccess) return true;
+    return isArcanoFree(arcanoId, progress.quizScores);
+  };
 
   return {
     isAdmin,
@@ -23,6 +31,7 @@ export function useAccess() {
     subscriptionStatus,
     hasFullAccess,
     bypassLocks: hasFullAccess,
-    loading: premiumLoading || roleLoading,
+    canAccessArcano,
+    loading: premiumLoading || roleLoading || progressLoading,
   };
 }
