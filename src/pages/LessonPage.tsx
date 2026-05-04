@@ -25,9 +25,10 @@ import mysticBg from "@/assets/mystic-bg.jpg";
 
 
 
-type LessonPhase = "intro" | "lesson" | "deepdive" | "exercise" | "quiz" | "complete";
+type LessonPhase = "intro" | "lesson" | "symbols" | "deepdive" | "exercise" | "quiz" | "complete";
 
-const PHASE_STEPS: LessonPhase[] = ["intro", "lesson", "deepdive", "exercise", "quiz"];
+const PHASE_STEPS: LessonPhase[] = ["intro", "lesson", "symbols", "deepdive", "exercise", "quiz"];
+
 
 const LessonPage = () => {
   const { id } = useParams();
