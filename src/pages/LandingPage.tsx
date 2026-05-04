@@ -297,34 +297,74 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Mobile Section ─── */}
-      <section className="py-24 px-6 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1 relative flex justify-center">
-            {/* Simple Mobile Mockup */}
-            <div className="relative w-full max-w-[280px] aspect-[9/19] bg-midnight rounded-[3rem] border-8 border-midnight shadow-[0_0_50px_rgba(0,0,0,0.1)] p-4">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-midnight rounded-b-2xl z-20" />
-              <div className="w-full h-full bg-parchment rounded-[2rem] overflow-hidden relative flex flex-col p-4 space-y-4">
-                 <div className="w-full h-48 bg-white rounded-xl shadow-sm overflow-hidden">
-                    <img src={imgLouco} alt="O Louco" className="w-full h-full object-cover opacity-80" />
-                 </div>
-                 <div className="h-2 w-2/3 bg-gold/20 rounded-full" />
-                 <div className="h-4 w-full bg-midnight/5 rounded-lg" />
-                 <div className="h-4 w-5/6 bg-midnight/5 rounded-lg" />
-                 <div className="mt-auto h-10 w-full bg-[#4A1528] rounded-full" />
-              </div>
-            </div>
-          </div>
-          
-          <div className="order-1 lg:order-2 space-y-8 text-center lg:text-left">
+      <section className="py-24 px-6 bg-[#fcf9f2]">
+        <div className="max-w-7xl mx-auto space-y-16">
+          <div className="text-center space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C9A96E]/10 text-[#C9A96E]">
               <span className="text-[10px] font-heading tracking-widest uppercase font-bold">
                 📱 FEITO PARA ESTUDAR NO CELULAR
               </span>
             </div>
-            <h2 className="font-heading text-4xl text-midnight">Estude onde estiver.</h2>
-            <p className="text-lg text-midnight/70 font-body leading-relaxed max-w-lg mx-auto lg:mx-0">
-              O Tarô 78 Chaves foi pensado para aulas curtas, leitura confortável e progresso diário direto pelo seu navegador, em qualquer dispositivo.
+            <h2 className="font-heading text-4xl text-midnight">Leve sua jornada para a tela inicial.</h2>
+            <p className="text-lg text-midnight/70 font-body leading-relaxed max-w-2xl mx-auto">
+              Crie um atalho do Tarô 78 Chaves no celular e continue seus estudos com um toque.<br/>
+              <span className="text-sm italic">Funciona pelo navegador, em qualquer dispositivo.</span>
             </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* iPhone / Safari */}
+            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-[#4A1528]/5 rounded-xl flex items-center justify-center">
+                  <Smartphone className="w-5 h-5 text-[#4A1528]" />
+                </div>
+                <h3 className="font-heading text-xl text-midnight">iPhone</h3>
+              </div>
+              <ol className="space-y-3 text-sm text-midnight/70 font-body list-decimal list-inside">
+                <li>Abra o site no Safari</li>
+                <li>Toque no botão de compartilhar</li>
+                <li>Escolha "Adicionar à Tela de Início"</li>
+                <li>Confirme em "Adicionar"</li>
+              </ol>
+            </div>
+
+            {/* Android / Chrome */}
+            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-[#C9A96E]/10 rounded-xl flex items-center justify-center">
+                  <Smartphone className="w-5 h-5 text-[#C9A96E]" />
+                </div>
+                <h3 className="font-heading text-xl text-midnight">Android</h3>
+              </div>
+              <ol className="space-y-3 text-sm text-midnight/70 font-body list-decimal list-inside">
+                <li>Abra o site no Chrome</li>
+                <li>Toque nos três pontinhos</li>
+                <li>Escolha "Adicionar à tela inicial"</li>
+                <li>Confirme o atalho</li>
+              </ol>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center gap-8">
+            <div className="flex flex-wrap justify-center gap-8 text-sm font-heading tracking-widest uppercase opacity-60">
+              <div className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-gold" />
+                <span>Aulas curtas</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-gold" />
+                <span>Visual mobile</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-gold" />
+                <span>Progresso salvo</span>
+              </div>
+            </div>
+
+            <Button onClick={handleStart} variant="link" className="text-[#4A1528] font-heading tracking-widest text-xs uppercase hover:no-underline hover:opacity-70 transition-all">
+              COMEÇAR PELO LOUCO — GRÁTIS →
+            </Button>
           </div>
         </div>
       </section>
