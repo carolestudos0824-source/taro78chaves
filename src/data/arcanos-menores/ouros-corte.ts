@@ -3,6 +3,10 @@
  * Modelo padrão: 18 campos por carta.
  */
 import { type ArcanoMenorEditorial } from "./index";
+import pajemImage from "@/assets/menor-ouros-pajem.jpg";
+import cavaleiroImage from "@/assets/menor-ouros-cavaleiro.jpg";
+import rainhaImage from "@/assets/menor-ouros-rainha.jpg";
+import reiImage from "@/assets/menor-ouros-rei.jpg";
 
 export const OUROS_CORTE: Partial<ArcanoMenorEditorial>[] = [
   // ═══════════════════════════════════════════════════════════════
@@ -10,6 +14,7 @@ export const OUROS_CORTE: Partial<ArcanoMenorEditorial>[] = [
   // ═══════════════════════════════════════════════════════════════
   {
     id: "ouros-pajem",
+    cardImage: pajemImage,
     subtitulo: "O Estudante da Matéria",
     essencia: "O Pajem de Ouros é o aprendiz do mundo material — aquele que começa a aprender sobre dinheiro, corpo, trabalho e manifestação. Representa a curiosidade prática, o primeiro emprego, o primeiro investimento, a primeira vez que se entende que a vida concreta também é um caminho de aprendizado.",
 
