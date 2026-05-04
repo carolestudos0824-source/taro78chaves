@@ -47,7 +47,7 @@ const LandingPage = () => {
             <div className="text-center lg:text-left space-y-8">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#f6d35b]/20 border border-[#f6d35b]/30">
                 <span className="text-[10px] md:text-xs font-heading tracking-[0.2em] uppercase font-bold text-[#1f120d]">
-                  ✦ GRÁTIS PARA COMEÇAR
+                  ✦ Grátis para começar · Base Rider-Waite-Smith
                 </span>
               </div>
 
@@ -80,14 +80,14 @@ const LandingPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5 pt-4">
+              <div className="flex flex-col items-center lg:items-start gap-3 pt-4">
                 <Button 
                   onClick={handleStart}
                   className="w-full sm:w-auto px-10 py-7 text-xs md:text-sm font-heading tracking-[0.2em] uppercase rounded-full bg-[#5a1028] hover:bg-[#7a1a38] text-white shadow-xl shadow-[#5a1028]/20 transition-all hover:scale-105 active:scale-95"
                 >
                   COMEÇAR PELO LOUCO — GRÁTIS →
                 </Button>
-                <p className="text-xs font-medium text-[#1f120d]/50">
+                <p className="text-[10px] md:text-xs font-bold text-[#1f120d]/50 tracking-wide uppercase">
                   Sem cartão de crédito para começar.
                 </p>
               </div>
@@ -180,11 +180,11 @@ const LandingPage = () => {
                       <span className="text-4xl font-display text-[#1f120d]/20">?</span>
                     )}
                     
-                    {/* Badge on card */}
-                    <div className={`absolute top-2 right-2 px-2 py-1 rounded text-[8px] font-heading font-bold tracking-wider uppercase shadow-sm ${
+                    {/* Badge on card - Improved legibility */}
+                    <div className={`absolute top-2 right-2 px-2.5 py-1 rounded-md text-[9px] font-heading font-black tracking-widest uppercase shadow-md ${
                       card.badge === 'Grátis' ? 'bg-[#2d5a3d] text-white' : 
                       card.badge === 'Desbloqueável' ? 'bg-[#4f7fc5] text-white' : 
-                      'bg-[#5a1028]/80 text-white'
+                      'bg-[#5a1028] text-white'
                     }`}>
                       {card.badge}
                     </div>
@@ -194,6 +194,13 @@ const LandingPage = () => {
                   </p>
                 </div>
               ))}
+            </div>
+            
+            <div className="mt-12 text-center">
+              <p className="text-sm md:text-base font-bold text-[#1f120d]/60 max-w-2xl mx-auto leading-relaxed">
+                Comece pelo Louco. <span className="text-[#4f7fc5]">Desbloqueie O Mago com seu desempenho.</span> <br className="hidden md:block" />
+                Continue a jornada completa no plano premium.
+              </p>
             </div>
           </div>
         </div>
@@ -220,10 +227,10 @@ const LandingPage = () => {
             }
           ].map((item, i) => (
             <div key={i} className="bg-white p-10 rounded-[2.5rem] border border-[#1f120d]/5 shadow-sm space-y-6 transition-all hover:shadow-xl hover:shadow-[#1f120d]/5 hover:-translate-y-1">
-              <div className="text-4xl">{item.icon}</div>
+              <div className="text-5xl">{item.icon}</div>
               <div className="space-y-3">
-                <h3 className="font-heading text-sm tracking-[0.2em] font-bold text-[#1f120d]">{item.title}</h3>
-                <p className="text-[#1f120d]/60 leading-relaxed text-sm">{item.text}</p>
+                <h3 className="font-heading text-base tracking-[0.2em] font-bold text-[#1f120d]">{item.title}</h3>
+                <p className="text-[#1f120d]/70 leading-relaxed text-sm font-medium">{item.text}</p>
               </div>
             </div>
           ))}
@@ -248,18 +255,18 @@ const LandingPage = () => {
                 <h3 className="font-heading tracking-[0.2em] text-sm text-white/80 uppercase font-bold">MENSAL</h3>
                 <div className="space-y-1">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-5xl font-display text-white">R$29,90</span>
-                    <span className="text-sm text-white/60">/mês</span>
+                    <span className="text-5xl font-display text-white font-medium">R$29,90</span>
+                    <span className="text-sm text-white/80">/mês</span>
                   </div>
-                  <p className="text-xs text-white/40">Ideal para quem quer testar no seu próprio tempo</p>
+                  <p className="text-xs text-white/60 font-medium">Ideal para quem quer testar no seu próprio tempo</p>
                 </div>
               </div>
               <Button 
                 onClick={() => handleSubscribe("monthly")}
                 variant="outline" 
-                className="w-full py-7 text-sm font-heading tracking-[0.2em] uppercase rounded-full border-white/30 hover:bg-white text-white hover:text-[#1f120d] transition-all font-bold"
+                className="w-full py-7 text-xs md:text-sm font-heading tracking-[0.2em] uppercase rounded-full bg-white border-2 border-white hover:bg-transparent text-[#5a1028] hover:text-white transition-all font-black shadow-lg"
               >
-                Assinar mensal
+                ASSINAR MENSAL
               </Button>
             </div>
 
@@ -305,7 +312,7 @@ const LandingPage = () => {
           {[
             {
               q: "Por onde eu começo?",
-              a: "Você começa pelo Louco, gratuitamente. Se for bem na lição, desbloqueia O Mago e sente como a jornada funciona antes de assinar."
+              a: "Você começa pelo Louco gratuitamente. Se for bem na lição, desbloqueia O Mago e entende como a jornada funciona antes de assinar."
             },
             {
               q: "Para quem é esse app?",
