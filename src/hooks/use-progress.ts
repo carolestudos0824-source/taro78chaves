@@ -77,7 +77,7 @@ function mergeBadges(persisted: Badge[] | null | undefined): Badge[] {
   });
 }
 
-function dbToProgress(row: DbProgress, studentName: string): UserProgress {
+function dbToProgress(row: DbProgress, studentName: string, quizScores: Record<string, number> = {}): UserProgress {
   return {
     xp: row.xp,
     level: row.level,
@@ -92,6 +92,7 @@ function dbToProgress(row: DbProgress, studentName: string): UserProgress {
     currentModule: row.current_module ?? DEFAULT_PROGRESS.currentModule,
     studentName: studentName ?? "",
     certificatesEarned: (row.certificates_earned ?? {}) as Record<string, string>,
+    quizScores,
   };
 }
 
@@ -133,13 +134,28 @@ export function useProgress() {
     let cancelled = false;
 
     const fetchProgress = async () => {
-      const [{ data: progressRow }, { data: profileRow }] = await Promise.all([
+      const [{ data: progressRow }, { data: profileRow }, { data: scoresData }] = await Promise.all([
         supabase.from("user_progress").select("*").eq("user_id", user.id).maybeSingle(),
         // student_name lives on profiles; cast because generated types may lag the migration
         supabase.from("profiles").select("*").eq("user_id", user.id).maybeSingle(),
+        // fetch quiz scores for progressive unlock
+        supabase.from("quiz_responses").select("quiz_id, is_correct").eq("user_id", user.id),
       ]);
 
       if (cancelled) return;
+
+      const quizScores: Record<string, number> = {};
+      if (scoresData) {
+        const counts: Record<string, { correct: number; total: number }> = {};
+        scoresData.forEach(r => {
+          if (!counts[r.quiz_id]) counts[r.quiz_id] = { correct: 0, total: 0 };
+          counts[r.quiz_id].total++;
+          if (r.is_correct) counts[r.quiz_id].correct++;
+        });
+        Object.entries(counts).forEach(([id, { correct, total }]) => {
+          quizScores[id] = correct / total;
+        });
+      }
 
       if (progressRow) {
         const studentName = (profileRow as Record<string, unknown> | null)?.student_name as string
@@ -267,10 +283,20 @@ export function useProgress() {
     });
   }, []);
 
-  const completeQuiz = useCallback((quizId: string) => {
+  const completeQuiz = useCallback((quizId: string, score?: number, total?: number) => {
     setProgress((prev) => {
-      if (prev.completedQuizzes.includes(quizId)) return prev;
-      return { ...prev, completedQuizzes: [...prev.completedQuizzes, quizId] };
+      const nextScores = { ...prev.quizScores };
+      if (score !== undefined && total !== undefined && total > 0) {
+        nextScores[quizId] = score / total;
+      }
+      
+      if (prev.completedQuizzes.includes(quizId) && prev.quizScores[quizId] === nextScores[quizId]) return prev;
+      
+      return { 
+        ...prev, 
+        completedQuizzes: prev.completedQuizzes.includes(quizId) ? prev.completedQuizzes : [...prev.completedQuizzes, quizId],
+        quizScores: nextScores
+      };
     });
   }, []);
 
