@@ -176,7 +176,16 @@ export function JourneyMap({ progress }: JourneyMapProps) {
                         </div>
                       )}
 
-                      {isPremium && !isCompleted && (
+                      {!isCompleted && !isCurrent && isUnlocked && isFree && (
+                        <div className={`flex items-center gap-1.5 mt-3 ${side === "left" ? "justify-end" : "justify-start"}`}>
+                          <Sparkles className="w-3 h-3 text-orange-500" />
+                          <span className="text-[9px] tracking-[0.2em] uppercase font-body" style={{
+                            color: "hsl(36 42% 40% / 0.68)"
+                          }}>Grátis</span>
+                        </div>
+                      )}
+
+                      {isPremium && !isCompleted && !isUnlocked && (
                         <div className={`flex items-center gap-1.5 mt-3 ${side === "left" ? "justify-end" : "justify-start"}`}>
                           <Crown className="w-3 h-3" style={{ color: "hsl(36 45% 50% / 0.55)" }} />
                           <span className="text-[9px] tracking-[0.2em] uppercase font-body" style={{
