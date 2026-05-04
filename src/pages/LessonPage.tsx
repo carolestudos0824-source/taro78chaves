@@ -120,17 +120,21 @@ const LessonPage = () => {
   const currentIdx = PHASE_STEPS.indexOf(phase);
 
   const handleStartLesson = () => {
-    addXP(10);
-    setXpEarned(e => e + 10);
-    earnBadge("first-step");
+    if (!isStaff) {
+      addXP(10);
+      setXpEarned(e => e + 10);
+      earnBadge("first-step");
+    }
     setPhase("lesson");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleLessonComplete = () => {
-    addXP(25);
-    setXpEarned(e => e + 25);
-    completeLesson(`arcano-${arcano.id}`);
+    if (!isStaff) {
+      addXP(25);
+      setXpEarned(e => e + 25);
+      completeLesson(`arcano-${arcano.id}`);
+    }
     trackEvent(`lesson_completed_${arcano.id}`, { name: arcano.name });
     setPhase("quiz");
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -138,21 +142,25 @@ const LessonPage = () => {
 
   const handleExerciseComplete = () => {
     setExerciseCompleted(true);
-    addXP(10);
-    setXpEarned(e => e + 10);
+    if (!isStaff) {
+      addXP(10);
+      setXpEarned(e => e + 10);
+    }
   };
 
   const handleQuizComplete = (score: number, total: number) => {
-    const quizXp = score * 10;
-    addXP(quizXp);
-    setXpEarned(e => e + quizXp);
+    if (!isStaff) {
+      const quizXp = score * 10;
+      addXP(quizXp);
+      setXpEarned(e => e + quizXp);
+      completeQuiz(`quiz-arcano-${arcano.id}`);
+      completeLesson(`arcano-${arcano.id}`);
+      if (arcano.id === 0) earnBadge("fool-complete");
+      if (score === total) earnBadge("quiz-master");
+    }
     setLastQuizScore(score);
     setLastQuizTotal(total);
-    completeQuiz(`quiz-arcano-${arcano.id}`);
-    completeLesson(`arcano-${arcano.id}`);
     trackEvent(`quiz_completed_${arcano.id}`, { name: arcano.name, score, total });
-    if (arcano.id === 0) earnBadge("fool-complete");
-    if (score === total) earnBadge("quiz-master");
     setPhase("complete");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
