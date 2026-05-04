@@ -6,6 +6,7 @@ import { useTrackEvent } from "@/hooks/use-track-event";
 import { usePremium } from "@/hooks/use-premium";
 import { useRole } from "@/hooks/use-role";
 import { useAccess } from "@/hooks/use-access";
+import { useReview } from "@/hooks/use-review";
 import { ArcanoVivoIntro } from "@/components/arcano-vivo/ArcanoVivoIntro";
 import { LessonContent } from "@/components/arcano-vivo/LessonContent";
 import { SymbolMap } from "@/components/arcano-vivo/SymbolMap";
@@ -34,6 +35,7 @@ const LessonPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addXP, completeLesson, completeQuiz, earnBadge, isArcanoCompleted, progress } = useProgress();
+  const review = useReview();
   const { user } = useAuth();
   const { trackEvent } = useTrackEvent();
   const { isPremium, loading: premiumLoading } = usePremium();
@@ -176,6 +178,14 @@ const LessonPage = () => {
     setLastQuizScore(score);
     setLastQuizTotal(total);
     trackEvent(`quiz_completed_${arcano.id}`, { name: arcano.name, score, total });
+    
+    // Feed the Review System with wrong answers if any
+    // This is the heart of "Smart Review"
+    if (score < total && resolvedQuiz.questions) {
+      // Find which questions were wrong is handled in QuizSection.onAnswer
+      // But we ensure the arcanoId is associated here if needed
+    }
+
     setPhase("complete");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -403,6 +413,11 @@ const LessonPage = () => {
                 questions={resolvedQuiz.questions ?? arcano.quiz}
                 onComplete={handleQuizComplete}
                 onAnswer={(qIdx, optIdx, isCorrect) => {
+                  if (!isCorrect) {
+                    review.addWrongAnswer(`quiz-arcano-${arcano.id}-${qIdx}`, arcano.id);
+                  } else {
+                    review.removeWrongAnswer(`quiz-arcano-${arcano.id}-${qIdx}`);
+                  }
                   if (!user) return;
                   persistQuizResponse({
                     userId: user.id,
