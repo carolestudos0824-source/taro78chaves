@@ -72,7 +72,18 @@ export interface QuizQuestion {
   explanation: string;
 }
 
+// ─── Symbols Map ───────────────────────────────────────────────────
+
+export interface ArcanoSymbolMapItem {
+  id: string;
+  name: string;
+  description: string;
+  reflectionQuestion: string;
+  position: { x: number; y: number }; // Percentage 0-100
+}
+
 // ─── Arcano (forma plana usada por componentes visuais) ────────────
+
 
 export interface ArcanoData {
   id: number;
