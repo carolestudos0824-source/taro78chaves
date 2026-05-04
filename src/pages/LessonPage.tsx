@@ -45,7 +45,7 @@ const LessonPage = () => {
   const arcanoId = parseInt(id || "0", 10);
   const arcano = getArcanoById(isNaN(arcanoId) ? 0 : arcanoId);
   const isFree = FREE_ARCANO_IDS.includes(arcanoId);
-  const hasAccess = isFree || isPremium || isAdmin;
+  const hasAccess = isFree || hasFullAccess;
 
   const prevArcano = arcanoId > 0 ? ARCANOS_MAIORES[arcanoId - 1] : null;
   const nextArcano = arcanoId < 21 ? ARCANOS_MAIORES[arcanoId + 1] : null;
