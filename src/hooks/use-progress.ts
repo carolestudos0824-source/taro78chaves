@@ -161,7 +161,7 @@ export function useProgress() {
         const studentName = (profileRow as Record<string, unknown> | null)?.student_name as string
           ?? getLocalExtras().studentName
           ?? "";
-        const next = dbToProgress(progressRow as unknown as DbProgress, studentName);
+        const next = dbToProgress(progressRow as unknown as DbProgress, studentName, quizScores);
         setProgress(next);
         // Refresh local cache to match DB
         saveLocalExtras({
@@ -170,6 +170,9 @@ export function useProgress() {
           studentName: next.studentName,
           certificatesEarned: next.certificatesEarned,
         });
+      } else {
+        // Hydrate default progress with scores even for new DB profiles
+        setProgress(prev => ({ ...prev, quizScores }));
       }
       setLoading(false);
     };
