@@ -192,6 +192,7 @@ As salamandras com caudas abertas são um detalhe importante: nas outras cartas 
   // ═══════════════════════════════════════════════════════════════
   {
     id: "paus-rainha",
+    cardImage: rainhaImage,
     subtitulo: "A Rainha do Fogo Vivo",
     essencia: "A Rainha de Paus é a força feminina do Fogo — magnética, confiante, criativa e absolutamente dona de si. Representa a mulher que lidera pelo carisma e pela paixão: inspira sem forçar, atrai sem manipular, cria sem pedir permissão.",
 
