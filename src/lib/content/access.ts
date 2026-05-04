@@ -22,8 +22,13 @@ import { MODULES_CATALOG, getModuleFromCatalog } from "./catalog";
  */
 export const FREE_ARCANO_IDS: readonly number[] = [0];
 
-export function isArcanoFree(arcanoId: number): boolean {
-  return FREE_ARCANO_IDS.includes(arcanoId);
+export function isArcanoFree(arcanoId: number, quizScores: Record<string, number> = {}): boolean {
+  if (arcanoId === 0) return true;
+  if (arcanoId === 1) {
+    const score = quizScores["quiz-arcano-0"] || 0;
+    return score >= 0.8;
+  }
+  return false;
 }
 
 /**
