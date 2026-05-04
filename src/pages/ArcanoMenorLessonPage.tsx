@@ -7,6 +7,7 @@ import {
   type ArcanoMenorEditorial,
 } from "@/registry/naipes";
 import { useProgress } from "@/hooks/use-progress";
+import { useRole } from "@/hooks/use-role";
 import { useAuth } from "@/hooks/use-auth";
 import { persistQuizResponse } from "@/lib/quiz-persistence";
 import mysticBg from "@/assets/mystic-bg.jpg";
