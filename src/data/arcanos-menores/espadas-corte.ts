@@ -3,6 +3,10 @@
  * Modelo padrão: 18 campos por carta.
  */
 import { type ArcanoMenorEditorial } from "./index";
+import pajemImage from "@/assets/menor-espadas-pajem.jpg";
+import cavaleiroImage from "@/assets/menor-espadas-cavaleiro.jpg";
+import rainhaImage from "@/assets/menor-espadas-rainha.jpg";
+import reiImage from "@/assets/menor-espadas-rei.jpg";
 
 export const ESPADAS_CORTE: Partial<ArcanoMenorEditorial>[] = [
   // ═══════════════════════════════════════════════════════════════
@@ -10,6 +14,7 @@ export const ESPADAS_CORTE: Partial<ArcanoMenorEditorial>[] = [
   // ═══════════════════════════════════════════════════════════════
   {
     id: "espadas-pajem",
+    cardImage: pajemImage,
     subtitulo: "O Vigilante das Ideias",
     essencia: "O Pajem de Espadas é o jovem pensador — alerta, curioso, afiado. Representa a mente em estado de prontidão: ansiosa para aprender, questionar e descobrir a verdade. É o estudante que levanta a mão com a pergunta mais incômoda da sala.",
 
