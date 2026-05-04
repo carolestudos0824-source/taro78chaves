@@ -29,6 +29,8 @@ const FeedbackPage = lazy(() => import("./pages/FeedbackPage.tsx"));
 const BetaInvitePage = lazy(() => import("./pages/BetaInvitePage.tsx"));
 const WaitlistPage = lazy(() => import("./pages/WaitlistPage"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
+const JourneyJournalPage = lazy(() => import("./pages/JourneyJournalPage.tsx"));
+
 
 // Module pages
 const NaipePage = lazy(() => import("./pages/NaipePage.tsx"));
@@ -218,6 +220,7 @@ const AppShell = () => (
         {/* Premium & Profile */}
         <Route path="/premium" element={<P><PremiumPage /></P>} />
         <Route path="/perfil" element={<P><ProfilePage /></P>} />
+        <Route path="/minha-jornada" element={<P><JourneyJournalPage /></P>} />
         <Route path="/feedback" element={<P><FeedbackPage /></P>} />
         <Route path="/admin" element={<P><AdminPage /></P>} />
 
