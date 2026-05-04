@@ -282,7 +282,8 @@ const LessonPage = () => {
           </div>
           <div className="flex-1" />
           <span className="text-[9px] font-body tracking-wider shrink-0" style={{ color: "hsl(230 10% 50%)" }}>{arcanoId + 1}/22</span>
-          <PhaseIndicator phases={PHASE_STEPS} currentIndex={currentIdx >= 0 ? currentIdx : PHASE_STEPS.length} />
+          <PhaseIndicator phases={phases} currentIndex={currentIdx >= 0 ? currentIdx : phases.length} />
+
         </div>
       </header>
 
