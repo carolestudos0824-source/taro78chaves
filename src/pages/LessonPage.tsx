@@ -138,7 +138,13 @@ const LessonPage = () => {
       completeLesson(`arcano-${arcano.id}`);
     }
     trackEvent(`lesson_completed_${arcano.id}`, { name: arcano.name });
-    setPhase("quiz");
+    
+    if (arcano.symbolsMap && arcano.symbolsMap.length > 0) {
+      setPhase("symbols");
+    } else {
+      setPhase("quiz");
+    }
+
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
