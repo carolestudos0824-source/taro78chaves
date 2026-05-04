@@ -350,21 +350,59 @@ const LandingPage = () => {
 
           <div className="flex justify-center lg:justify-end">
             {/* Visual simulation of phone */}
-            <div className="relative w-[280px] h-[580px] bg-[#1f120d] rounded-[3rem] border-[8px] border-[#2a1a14] shadow-2xl overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#2a1a14] rounded-b-2xl z-10" />
-              <div className="w-full h-full bg-[#fff8e6] p-4 pt-10 space-y-6">
-                <div className="h-4 w-24 bg-[#1f120d]/5 rounded-full" />
-                <div className="h-40 w-full bg-white rounded-2xl shadow-sm overflow-hidden">
-                  <img src={imgLouco} alt="Louco Mobile" className="w-full h-full object-cover opacity-80" />
+            <div className="relative w-[280px] h-[580px] bg-[#1f120d] rounded-[3.5rem] border-[10px] border-[#2a1a14] shadow-[0_40px_100px_rgba(0,0,0,0.5)] overflow-hidden">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#2a1a14] rounded-b-3xl z-10 flex items-center justify-center">
+                <div className="w-10 h-1 bg-white/10 rounded-full" />
+              </div>
+              
+              <div className="w-full h-full bg-[#fff8e6] flex flex-col">
+                {/* Header App Area */}
+                <div className="p-6 pt-12 flex justify-between items-center">
+                  <div className="h-4 w-24 bg-[#1f120d]/5 rounded-full" />
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-orange-500/20" />
+                    <div className="w-3 h-3 rounded-full bg-[#f6d35b]/20" />
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <div className="h-6 w-3/4 bg-[#1f120d]/10 rounded-full" />
-                  <div className="h-3 w-full bg-[#1f120d]/5 rounded-full" />
-                  <div className="h-3 w-5/6 bg-[#1f120d]/5 rounded-full" />
+
+                {/* Content App Area */}
+                <div className="px-6 flex-1 space-y-6">
+                  <div className="aspect-[3/4] w-full bg-white rounded-2xl shadow-lg border border-white overflow-hidden transform rotate-[-1deg]">
+                    <img src={imgLouco} alt="Louco Mobile" className="w-full h-full object-cover" />
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div className="h-5 w-24 bg-[#4f7fc5]/10 rounded-full" />
+                      <div className="h-5 w-16 bg-[#f6d35b]/10 rounded-full" />
+                    </div>
+                    <div className="h-8 w-4/5 bg-[#1f120d]/10 rounded-full" />
+                    <div className="space-y-1.5">
+                      <div className="h-3 w-full bg-[#1f120d]/5 rounded-full" />
+                      <div className="h-3 w-5/6 bg-[#1f120d]/5 rounded-full" />
+                    </div>
+                  </div>
+
+                  {/* Progress Sim */}
+                  <div className="space-y-2 pt-2">
+                    <div className="flex justify-between text-[10px] font-bold text-[#1f120d]/30 uppercase">
+                      <span>Lição</span>
+                      <span>85%</span>
+                    </div>
+                    <div className="h-2 w-full bg-white rounded-full overflow-hidden border border-[#1f120d]/5">
+                      <div className="h-full bg-[#f6d35b] w-[85%]" />
+                    </div>
+                  </div>
                 </div>
-                <div className="flex gap-2">
-                  <div className="h-8 w-1/2 bg-[#5a1028] rounded-xl" />
-                  <div className="h-8 w-1/2 bg-[#1f120d]/5 rounded-xl" />
+
+                {/* Footer App Area */}
+                <div className="p-6 bg-white border-t border-[#1f120d]/5 flex gap-2">
+                  <div className="h-10 flex-1 bg-[#5a1028] rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-1 bg-white/20 rounded-full" />
+                  </div>
+                  <div className="h-10 w-12 bg-[#1f120d]/5 rounded-xl flex items-center justify-center">
+                    <Zap className="w-4 h-4 text-[#f6d35b]" />
+                  </div>
                 </div>
               </div>
             </div>
