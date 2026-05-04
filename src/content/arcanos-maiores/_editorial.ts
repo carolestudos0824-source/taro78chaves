@@ -123,6 +123,9 @@ export interface ArcanoMaiorEditorial {
 
   /** 17. Revisão rápida — pares keyword/meaning para flashcards */
   quickReview: ArcanoQuickReview[];
+
+  /** 18. Mapa de símbolos interativo */
+  symbolsMap?: ArcanoSymbolMapItem[];
 }
 
 // ─── Validação ───
