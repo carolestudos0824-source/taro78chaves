@@ -139,8 +139,10 @@ const ArcanoMenorLessonPage = () => {
       navigate(`/module/${card.naipe}`);
       return;
     }
-    completeLesson(card.id);
-    addXP(XP_REWARD);
+    if (!isStaff) {
+      completeLesson(card.id);
+      addXP(XP_REWARD);
+    }
     setCompleted(true);
   };
 
