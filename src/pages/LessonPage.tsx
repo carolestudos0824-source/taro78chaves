@@ -109,7 +109,7 @@ const LessonPage = () => {
   }
 
   // Show loading while checking premium status
-  if (premiumLoading) {
+  if (premiumLoading || roleLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: "hsl(36 33% 97%)" }}>
         <div className="w-6 h-6 rounded-full border-2 border-t-transparent animate-spin" style={{ borderColor: "hsl(36 45% 58%)", borderTopColor: "transparent" }} />
