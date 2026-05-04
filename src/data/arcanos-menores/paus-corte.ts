@@ -3,6 +3,10 @@
  * Modelo padrão: 18 campos por carta.
  */
 import { type ArcanoMenorEditorial } from "./index";
+import pajemImage from "@/assets/menor-paus-pajem.jpg";
+import cavaleiroImage from "@/assets/menor-paus-cavaleiro.jpg";
+import rainhaImage from "@/assets/menor-paus-rainha.jpg";
+import reiImage from "@/assets/menor-paus-rei.jpg";
 
 export const PAUS_CORTE: Partial<ArcanoMenorEditorial>[] = [
   // ═══════════════════════════════════════════════════════════════
@@ -10,6 +14,7 @@ export const PAUS_CORTE: Partial<ArcanoMenorEditorial>[] = [
   // ═══════════════════════════════════════════════════════════════
   {
     id: "paus-pajem",
+    cardImage: pajemImage,
     subtitulo: "O Mensageiro da Chama",
     essencia: "O Pajem de Paus é o jovem explorador entusiasmado — cheio de ideias, cheio de fogo, cheio de vontade. Representa o início da jornada criativa: a primeira faísca que quer virar incêndio. É a energia pura do 'e se?' dito com olhos brilhantes.",
 
