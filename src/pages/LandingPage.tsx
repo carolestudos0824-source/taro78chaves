@@ -28,10 +28,23 @@ import imgEnamorados from "@/assets/arcano-6-enamorados.jpg";
 const LandingPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { isInstallable, handleInstallClick } = useInstallPrompt();
+  const [showInstallModal, setShowInstallModal] = useState(false);
   
   const handleStart = () => {
     if (user) navigate("/app");
     else navigate("/auth");
+  };
+
+  const onInstallClick = async () => {
+    if (isInstallable) {
+      const result = await handleInstallClick();
+      if (!result) {
+        setShowInstallModal(true);
+      }
+    } else {
+      setShowInstallModal(true);
+    }
   };
 
   const handleSubscribe = (plan: "monthly" | "annual") => {
