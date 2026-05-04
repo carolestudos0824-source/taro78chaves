@@ -328,8 +328,12 @@ const LessonPage = () => {
             cardImage={arcano.cardImage}
             cardName={arcano.name}
             symbols={arcano.symbolsMap}
-            onComplete={() => goToPhase("quiz")}
+            onComplete={() => {
+              const nextPhase = phases[currentIdx + 1];
+              if (nextPhase) goToPhase(nextPhase);
+            }}
           />
+
         )}
 
         {phase === "deepdive" && (
