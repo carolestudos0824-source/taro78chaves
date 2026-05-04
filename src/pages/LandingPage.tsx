@@ -211,7 +211,7 @@ const LandingPage = () => {
             {
               icon: "📈",
               title: "PROGRESSO REAL E VIVO",
-              text: "XP, streak diário e desbloqueio sequencial. Você sente que está evoluindo."
+              text: "XP, sequência diária e desbloqueio por desempenho. Você sente que está evoluindo."
             },
             {
               icon: "🎯",
