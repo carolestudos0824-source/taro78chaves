@@ -12,6 +12,9 @@ import imgLouco from "@/assets/arcano-0-louco.jpg";
 import imgMago from "@/assets/arcano-1-mago.jpg";
 import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
 import imgImperatriz from "@/assets/arcano-3-imperatriz.jpg";
+import imgImperador from "@/assets/arcano-4-imperador.jpg";
+import imgHierofante from "@/assets/arcano-5-hierofante.jpg";
+import imgEnamorados from "@/assets/arcano-6-enamorados.jpg";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -129,40 +132,55 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Journey Map Section ─── */}
-      <section className="py-24 bg-white/30 border-y border-gold/10">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-24 bg-white/30 border-y border-gold/10 relative overflow-hidden">
+        <div className="absolute top-1/2 left-0 w-full h-px bg-gold/10 -translate-y-1/2 z-0" />
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16 space-y-4">
             <h2 className="font-heading text-3xl md:text-4xl text-midnight">Explore a Trilha do Conhecimento</h2>
             <p className="text-muted-foreground max-w-lg mx-auto font-body">Uma jornada sequencial que destrava os mistérios do tarô.</p>
           </div>
 
-          <div className="flex overflow-x-auto gap-8 pb-12 px-4 scrollbar-hide snap-x items-end min-h-[320px]">
+          <div className="flex overflow-x-auto gap-4 md:gap-6 pb-12 px-4 scrollbar-hide snap-x items-end min-h-[340px]">
             {[
               { id: 0, img: imgLouco, name: "O Louco", badge: "Grátis" },
               { id: 1, img: imgMago, name: "O Mago", badge: "Desbloqueável" },
               { id: 2, img: imgSacerdotisa, name: "A Sacerdotisa", badge: "Premium" },
               { id: 3, img: imgImperatriz, name: "A Imperatriz", badge: "Premium" },
+              { id: 4, img: imgImperador, name: "O Imperador", badge: "Premium" },
+              { id: 5, img: imgHierofante, name: "O Hierofante", badge: "Premium" },
+              { id: 6, img: imgEnamorados, name: "Os Enamorados", badge: "Premium" },
             ].map((card, i) => (
-              <div key={i} className="flex-shrink-0 flex flex-col items-center gap-5 snap-center">
-                <div className="relative group">
-                  <div className="w-36 h-56 md:w-44 md:h-64 rounded-2xl overflow-hidden shadow-xl border-4 border-white transition-all duration-500 group-hover:-translate-y-4">
+              <div key={i} className="flex-shrink-0 flex flex-col items-center gap-5 snap-center group">
+                <div className="relative">
+                  <div className="w-32 h-52 md:w-40 md:h-60 rounded-2xl overflow-hidden shadow-xl border-4 border-white transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-2xl group-hover:border-gold/20">
                     <img src={card.img} alt={card.name} className="w-full h-full object-cover" />
-                    <div className={`absolute top-3 right-3 px-3 py-1 rounded-full text-[9px] font-heading tracking-widest uppercase shadow-lg ${
-                      card.badge === 'Grátis' ? "bg-green-600 text-white" : card.badge === 'Desbloqueável' ? "bg-[#C9A96E] text-white" : "bg-[#4A1528] text-white"
+                    <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[8px] font-heading tracking-widest uppercase shadow-lg z-20 ${
+                      card.badge === 'Grátis' ? "bg-green-600 text-white" : card.badge === 'Desbloqueável' ? "bg-gold text-white" : "bg-[#4A1528] text-white"
                     }`}>
                       {card.badge}
                     </div>
                   </div>
                 </div>
-                <p className="text-[11px] font-heading tracking-widest uppercase text-midnight/60">{card.name}</p>
+                <p className="text-[10px] font-heading tracking-widest uppercase text-midnight/60 transition-colors group-hover:text-midnight">{card.name}</p>
               </div>
             ))}
+            <div className="flex-shrink-0 w-20 flex items-center justify-center h-52 md:h-60 opacity-20">
+               <span className="font-heading text-4xl tracking-tighter">...</span>
+            </div>
           </div>
 
-          <div className="mt-8 text-center">
-            <p className="text-sm font-body text-muted-foreground max-w-2xl mx-auto">
-              Comece pelo Louco. <span className="text-[#C9A96E] font-bold">Desbloqueie O Mago com seu desempenho.</span> Continue a jornada completa no plano premium.
+          <div className="mt-8 text-center space-y-8">
+            <p className="text-sm font-body text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Comece pelo Louco grátis. <span className="text-gold-dark font-bold">desbloqueie O Mago</span> com seu desempenho. Continue depois pela jornada completa dos 78 arcanos.
             </p>
+            <Button 
+              onClick={handleStart} 
+              variant="outline"
+              className="px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-widest text-[11px] uppercase transition-all shadow-sm"
+            >
+              COMEÇAR PELO LOUCO — GRÁTIS →
+            </Button>
           </div>
         </div>
       </section>
