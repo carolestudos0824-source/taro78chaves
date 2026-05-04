@@ -55,8 +55,10 @@ const AmorLessonPage = () => {
   const currentIdx = phaseSteps.indexOf(phase);
 
   const handleStartQuiz = () => {
-    completeLesson(lesson.id);
-    addXP(15);
+    if (!isStaff) {
+      completeLesson(lesson.id);
+      addXP(15);
+    }
     setPhase("quiz");
   };
 
@@ -66,7 +68,7 @@ const AmorLessonPage = () => {
     setShowExplanation(true);
     if (idx === lesson.quiz[quizIndex].correctIndex) {
       setScore((s) => s + 1);
-      addXP(5);
+      if (!isStaff) addXP(5);
     }
   };
 
@@ -76,9 +78,11 @@ const AmorLessonPage = () => {
       setSelectedAnswer(null);
       setShowExplanation(false);
     } else {
-      completeQuiz(`quiz-${lesson.id}`);
-      addXP(10);
-      if (!nextLesson) completeModule("amor");
+      if (!isStaff) {
+        completeQuiz(`quiz-${lesson.id}`);
+        addXP(10);
+        if (!nextLesson) completeModule("amor");
+      }
       setPhase("complete");
     }
   };
