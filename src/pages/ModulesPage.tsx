@@ -156,6 +156,16 @@ const ModulesPage = () => {
                               <h3 className={`font-heading text-sm tracking-tight ${isCurrent ? "text-midnight" : "text-midnight/60"}`}>
                                 {mod.name}
                               </h3>
+                              {!unlocked && !isCompleted && (
+                                <span className="text-[8px] font-heading tracking-widest uppercase px-1.5 py-0.5 rounded-full bg-secondary/10 text-secondary border border-secondary/10 ml-auto shrink-0">
+                                  Premium
+                                </span>
+                              )}
+                              {isCompleted && (
+                                <span className="text-[8px] font-heading tracking-widest uppercase px-1.5 py-0.5 rounded-full bg-success/10 text-success border border-success/10 ml-auto shrink-0">
+                                  Concluído
+                                </span>
+                              )}
                             </div>
                             <p className="text-[11px] font-body text-muted-foreground line-clamp-1">{mod.subtitle}</p>
                             

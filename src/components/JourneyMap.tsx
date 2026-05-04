@@ -154,43 +154,44 @@ export function JourneyMap({ progress }: JourneyMapProps) {
                       {/* Status indicators */}
                       {isCompleted && (
                         <div className={`flex items-center gap-1.5 mt-3 ${side === "left" ? "justify-end" : "justify-start"}`}>
-                          <Check className="w-3.5 h-3.5" style={{ color: "hsl(36 42% 40% / 0.82)" }} />
-                          <span className="text-[9px] tracking-[0.2em] uppercase font-body" style={{
-                            color: "hsl(36 42% 40% / 0.68)"
-                          }}>Completo</span>
+                          <div className="px-2 py-0.5 rounded-full bg-success/10 border border-success/20 flex items-center gap-1">
+                            <Check className="w-3 h-3 text-success" />
+                            <span className="text-[8px] font-heading tracking-widest uppercase text-success">Concluído</span>
+                          </div>
                         </div>
                       )}
 
                       {isCurrent && (
                         <div className={`flex items-center gap-2 mt-3.5 ${side === "left" ? "justify-end" : "justify-start"}`}>
-                          <div className="w-6 h-px" style={{
-                            background: "linear-gradient(90deg, hsl(340 42% 28% / 0.55), transparent)"
-                          }} />
-                          <span className="text-[10px] tracking-[0.3em] uppercase font-heading"
-                            style={{
-                              color: "hsl(340 42% 22%)",
-                              animation: "pulse-gold 2.5s ease-in-out infinite"
-                            }}>
-                            Iniciar
-                          </span>
+                          <span className="text-[9px] tracking-[0.2em] font-heading text-gold-dark/60 uppercase">Em andamento</span>
+                          <div className="w-6 h-px bg-gold/30" />
                         </div>
                       )}
 
                       {!isCompleted && !isCurrent && isUnlocked && isFree && (
                         <div className={`flex items-center gap-1.5 mt-3 ${side === "left" ? "justify-end" : "justify-start"}`}>
-                          <Sparkles className="w-3 h-3 text-orange-500" />
-                          <span className="text-[9px] tracking-[0.2em] uppercase font-body" style={{
-                            color: "hsl(36 42% 40% / 0.68)"
-                          }}>Grátis</span>
+                          <div className="px-2 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/20 flex items-center gap-1">
+                            <Sparkles className="w-2.5 h-2.5 text-orange-500" />
+                            <span className="text-[8px] font-heading tracking-widest uppercase text-orange-600">Grátis</span>
+                          </div>
                         </div>
                       )}
 
-                      {isPremium && !isCompleted && !isUnlocked && (
+                      {!isCompleted && !isCurrent && arcano.id === 1 && !isUnlocked && (
                         <div className={`flex items-center gap-1.5 mt-3 ${side === "left" ? "justify-end" : "justify-start"}`}>
-                          <Crown className="w-3 h-3" style={{ color: "hsl(36 45% 50% / 0.55)" }} />
-                          <span className="text-[9px] tracking-[0.2em] uppercase font-body" style={{
-                            color: "hsl(36 45% 50% / 0.50)"
-                          }}>Premium</span>
+                          <div className="px-2 py-0.5 rounded-full bg-accent/10 border border-accent/20 flex items-center gap-1">
+                            <Lock className="w-2.5 h-2.5 text-accent" />
+                            <span className="text-[8px] font-heading tracking-widest uppercase text-accent">Desbloqueável</span>
+                          </div>
+                        </div>
+                      )}
+
+                      {isPremium && !isCompleted && !isUnlocked && arcano.id > 1 && (
+                        <div className={`flex items-center gap-1.5 mt-3 ${side === "left" ? "justify-end" : "justify-start"}`}>
+                          <div className="px-2 py-0.5 rounded-full bg-secondary/10 border border-secondary/20 flex items-center gap-1">
+                            <Crown className="w-2.5 h-2.5 text-secondary" />
+                            <span className="text-[8px] font-heading tracking-widest uppercase text-secondary">Premium</span>
+                          </div>
                         </div>
                       )}
                     </div>
