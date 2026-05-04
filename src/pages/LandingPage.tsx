@@ -226,14 +226,63 @@ const LandingPage = () => {
         </div>
       </section>
 
+      {/* ─── Journey Unlock Section ─── */}
+      <section className="py-24 px-6 bg-[#fdfaf5]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="font-heading text-3xl md:text-4xl text-midnight">O que você desbloqueia na Jornada Completa</h2>
+            <p className="text-muted-foreground max-w-lg mx-auto font-body">Um caminho guiado para aprender tarô carta por carta, sem decorar significados soltos.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4">
+              <Layers className="w-8 h-8 text-[#4A1528]" />
+              <h3 className="font-heading text-xl text-midnight">78 cartas, passo a passo</h3>
+              <p className="text-sm text-midnight/70 font-body">Estude Arcanos Maiores, Menores e Cartas da Corte em uma sequência clara e progressiva.</p>
+            </div>
+
+            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4">
+              <BookOpen className="w-8 h-8 text-[#C9A96E]" />
+              <h3 className="font-heading text-xl text-midnight">Lições curtas e profundas</h3>
+              <p className="text-sm text-midnight/70 font-body">Cada arcano traz essência, símbolos, luz, sombra e aplicação prática.</p>
+            </div>
+
+            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4">
+              <Target className="w-8 h-8 text-[#4A1528]" />
+              <h3 className="font-heading text-xl text-midnight">Quizzes com feedback</h3>
+              <p className="text-sm text-midnight/70 font-body">Teste sua compreensão em cada etapa e fixe o que realmente importa.</p>
+            </div>
+
+            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4">
+              <Flame className="w-8 h-8 text-[#C9A96E]" />
+              <h3 className="font-heading text-xl text-midnight">XP e sequência diária</h3>
+              <p className="text-sm text-midnight/70 font-body">Acompanhe seu avanço com progresso salvo, XP e hábito diário de estudo.</p>
+            </div>
+
+            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4">
+              <Award className="w-8 h-8 text-[#4A1528]" />
+              <h3 className="font-heading text-xl text-midnight">Desbloqueios por progresso</h3>
+              <p className="text-sm text-midnight/70 font-body">Comece pelo Louco, desbloqueie O Mago com desempenho e continue a jornada completa no premium.</p>
+            </div>
+
+            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4">
+              <Star className="w-8 h-8 text-[#C9A96E]" />
+              <h3 className="font-heading text-xl text-midnight">Base Rider-Waite-Smith</h3>
+              <p className="text-sm text-midnight/70 font-body">Aprenda com a iconografia clássica do Rider-Waite-Smith, carta por carta.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── Pricing Section ─── */}
       <section className="py-32 px-6 bg-midnight text-parchment relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-[#4A1528]/10 blur-[150px] rounded-full" />
         
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-16">
           <div className="space-y-4">
-            <p className="t-section-title text-gold/60">Acesso Completo</p>
-            <h2 className="font-heading text-4xl md:text-5xl">Escolha seu caminho</h2>
+            <p className="t-section-title text-gold/60">Depois de experimentar o método, continue sua jornada pelos 78 arcanos.</p>
+            <h2 className="font-heading text-4xl md:text-5xl">Desbloqueie a Jornada Completa</h2>
+            <p className="text-muted-foreground font-body">Escolha o plano ideal para continuar estudando no seu ritmo.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
@@ -263,9 +312,14 @@ const LandingPage = () => {
                   <span className="text-6xl font-heading text-midnight">R$197</span>
                   <span className="text-sm opacity-40">/ano</span>
                 </div>
-                <p className="text-xs font-bold text-[#4A1528]">= R$16,42/mês • Economia de 45%</p>
+                <div className="space-y-1">
+                  <p className="text-xs font-bold text-[#4A1528] tracking-tight">
+                    = R$16,42/mês • Economia de 45%
+                  </p>
+                  <p className="text-[10px] font-bold text-[#4A1528]/70">Menos de R$0,55 por dia.</p>
+                </div>
               </div>
-              <p className="text-sm text-midnight/60 flex-1 font-body">Acesso vitalício ao conhecimento transformado em hábito diário.</p>
+              <p className="text-sm text-midnight/60 flex-1 font-body">Acesso anual à jornada completa, com estudo guiado e progresso salvo.</p>
               <Button onClick={() => handleSubscribe("annual")} className="btn-premium w-full py-8 text-sm shadow-xl hover:scale-[1.02] transition-transform">
                 ASSINAR ANUAL →
               </Button>
@@ -290,15 +344,33 @@ const LandingPage = () => {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2" className="border-gold/20">
-              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Preciso de um baralho físico?</AccordionTrigger>
+              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">O que está incluso no plano?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/70">
-                Não é obrigatório, mas recomendável. O app utiliza as imagens canônicas do Rider-Waite-Smith para você estudar cada detalhe visual.
+                O acesso completo libera a jornada pelos 78 arcanos, com lições progressivas, quizzes, XP, progresso salvo e estudo carta por carta.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3" className="border-gold/20">
+              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Preciso saber tarô antes?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/70">
+                Não. O app foi feito para começar do zero, com uma carta por vez e explicações claras.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-4" className="border-gold/20">
+              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Vou aprender Arcanos Menores também?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/70">
+                Sim. A jornada inclui Arcanos Maiores, Menores numerados e Cartas da Corte.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-5" className="border-gold/20">
+              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Preciso de um baralho físico?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/70">
+                Não para começar. O app mostra as cartas Rider-Waite-Smith dentro das lições. Ter um baralho pode complementar seu estudo.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-6" className="border-gold/20">
               <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Como funciona o cancelamento?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/70">
-                Você pode cancelar sua assinatura a qualquer momento através do seu perfil no app, sem letras miúdas ou burocracia.
+                Você pode gerenciar ou cancelar sua assinatura pelo perfil dentro do app.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
