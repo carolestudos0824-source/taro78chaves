@@ -1,4 +1,6 @@
 import { ArrowLeft, ArrowRight, MapPin, Sparkles } from "lucide-react";
+import { ReflectionSection } from "../ReflectionSection";
+
 
 interface CompletionScreenProps {
   arcanoName: string;
@@ -20,8 +22,8 @@ interface CompletionScreenProps {
 export function CompletionScreen({
   arcanoName, xpEarned, quizScore, quizTotal,
   nextArcano, prevArcano, isPrevCompleted,
-  onNextArcano, onPrevArcano, onBackToMap, isLastArcano,
-}: CompletionScreenProps) {
+  onNextArcano, onPrevArcano, onBackToMap, isLastArcano, arcanoId,
+}: CompletionScreenProps & { arcanoId?: number }) {
   const percentage = Math.round((quizScore / quizTotal) * 100);
   const isExcellent = percentage >= 80;
 
@@ -124,6 +126,11 @@ export function CompletionScreen({
           </div>
         </div>
       )}
+
+      {/* Reflection Section */}
+      <ReflectionSection 
+        arcanoId={arcanoId !== undefined ? `maior-${arcanoId}` : arcanoName.toLowerCase()} 
+      />
 
       {/* Navigation */}
       <div className="flex flex-col items-center gap-4 pt-2">
