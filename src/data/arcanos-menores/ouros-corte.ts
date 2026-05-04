@@ -281,6 +281,7 @@ O trono ao ar livre, integrado ao jardim, é significativo: esta rainha não gov
   // ═══════════════════════════════════════════════════════════════
   {
     id: "ouros-rei",
+    cardImage: reiImage,
     subtitulo: "O Soberano da Prosperidade",
     essencia: "O Rei de Ouros é a autoridade máxima do mundo material — o mestre da prosperidade, do planejamento e da construção concreta. Representa a inteligência prática em sua forma mais madura: aquele que sabe criar, manter e multiplicar riqueza com responsabilidade.",
 
