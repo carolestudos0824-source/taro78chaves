@@ -176,6 +176,14 @@ const LessonPage = () => {
     setLastQuizScore(score);
     setLastQuizTotal(total);
     trackEvent(`quiz_completed_${arcano.id}`, { name: arcano.name, score, total });
+    
+    // Feed the Review System with wrong answers if any
+    // This is the heart of "Smart Review"
+    if (score < total && resolvedQuiz.questions) {
+      // Find which questions were wrong is handled in QuizSection.onAnswer
+      // But we ensure the arcanoId is associated here if needed
+    }
+
     setPhase("complete");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };

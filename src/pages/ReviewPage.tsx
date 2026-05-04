@@ -320,6 +320,43 @@ const ReviewPage = () => {
           </section>
         )}
 
+        {/* Smart Suggestions based on errors */}
+        {review.wrongAnswers.length > 0 && studiedArcanoIds.length > 0 && (
+          <section className="animate-fade-up">
+            <h2 className="text-[9px] font-heading tracking-[0.35em] uppercase mb-3" style={{ color: "hsl(340 42% 28%)" }}>
+              ✦ Sugestões de Reforço
+            </h2>
+            <div className="grid grid-cols-1 gap-3">
+               {Array.from(new Set(review.wrongAnswers.map(w => w.arcanoId)))
+                 .slice(0, 2)
+                 .map(id => {
+                   const arcano = arcanos?.find(a => a.numero === id);
+                   if (!arcano) return null;
+                   return (
+                     <button
+                       key={id}
+                       onClick={() => navigate(`/lesson/${id}`)}
+                       className="w-full text-left p-4 rounded-xl border border-primary/20 bg-white/50 backdrop-blur-sm flex items-center justify-between group"
+                     >
+                       <div className="flex items-center gap-3">
+                         <div className="w-8 h-8 rounded-full border border-primary/20 flex items-center justify-center bg-primary/5">
+                           <BookOpen className="w-4 h-4 text-primary" />
+                         </div>
+                         <div>
+                           <h4 className="text-sm font-heading text-primary-dark">Refazer lição: {arcano.nome}</h4>
+                           <p className="text-[10px] text-muted-foreground italic">Focar nos conceitos que você errou</p>
+                         </div>
+                       </div>
+                       <ChevronRight className="w-4 h-4 text-primary/40 group-hover:translate-x-1 transition-transform" />
+                     </button>
+                   );
+                 })
+               }
+            </div>
+          </section>
+        )}
+
+
         {/* Flashcards by arcano */}
         {studiedArcanoIds.length > 0 && (
           <section>

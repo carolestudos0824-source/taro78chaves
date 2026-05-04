@@ -13,6 +13,7 @@ import FeedbackNudge from "@/components/FeedbackNudge";
 import RetentionBanner from "@/components/RetentionBanner";
 import ContinuityCard from "@/components/ContinuityCard";
 import ProgressCelebration from "@/components/ProgressCelebration";
+import { SmartReviewCard } from "@/components/SmartReviewCard";
 import mysticBg from "@/assets/mystic-bg.jpg";
 import ornamentDivider from "@/assets/ornament-divider.png";
 import imgLouco from "@/assets/arcano-0-louco.jpg";
@@ -190,6 +191,9 @@ const ModulesPage = () => {
 
         {/* Beta welcome banner */}
         <BetaWelcomeBanner />
+
+        {/* Smart Review — Focus on conversion and retention */}
+        <SmartReviewCard />
 
         {/* Decorative tarot cards */}
         <div className="flex justify-center gap-3 py-4">
