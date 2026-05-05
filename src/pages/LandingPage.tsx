@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { 
-  Check, Flame, Star, Target, 
-  Smartphone, BookOpen, Layers, Zap,
-  Menu, X, Play, Shield, Award, HelpCircle,
-  Share, MoreVertical, PlusSquare, Eye
+  Check, Star, Target, 
+  BookOpen, Layers, Zap,
+  Menu, X, Eye, Key, Sparkles
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
@@ -24,7 +23,6 @@ import imgImperatriz from "@/assets/arcano-3-imperatriz.jpg";
 import imgImperador from "@/assets/arcano-4-imperador.jpg";
 import imgHierofante from "@/assets/arcano-5-hierofante.jpg";
 import imgEnamorados from "@/assets/arcano-6-enamorados.jpg";
-import brandLogo from "@/assets/brand-logo.png";
 import brandIcon from "@/assets/brand-icon.png";
 
 const LandingPage = () => {
@@ -58,22 +56,24 @@ const LandingPage = () => {
     <div className="min-h-screen bg-parchment text-midnight selection:bg-secondary selection:text-white">
 
       {/* ─── Top Brand Header ─── */}
-      <header className="absolute top-0 left-0 right-0 z-30 px-6 pt-6 md:pt-8">
+      <header className="absolute top-0 left-0 right-0 z-50 px-6 py-6 md:py-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2.5 group" aria-label="Tarô 78 Chaves">
-            <img
-              src={brandIcon}
-              alt=""
-              aria-hidden="true"
-              className="w-7 h-7 md:w-8 md:h-8 object-contain opacity-90 group-hover:opacity-100 transition-opacity"
-            />
-            <span className="font-heading text-[11px] md:text-xs tracking-[0.28em] uppercase text-[#5B1F3D] font-semibold">
-              Tarô <span className="text-gold-dark">78</span> Chaves
-            </span>
+          <a href="/" className="flex items-center gap-3 group transition-transform hover:scale-[1.02]" aria-label="Tarô 78 Chaves">
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-plum flex items-center justify-center border border-gold/30 shadow-lg">
+              <Key className="w-6 h-6 md:w-7 md:h-7 text-gold" strokeWidth={1.5} />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-heading text-lg md:text-xl tracking-tight text-plum font-bold leading-none">
+                Tarô 78 Chaves
+              </span>
+              <span className="font-heading text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-gold-dark font-medium mt-1">
+                A jornada viva
+              </span>
+            </div>
           </a>
           <button
             onClick={handleStart}
-            className="hidden md:inline-flex items-center font-heading text-[10px] tracking-[0.25em] uppercase text-[#5B1F3D] hover:text-gold-dark transition-colors"
+            className="inline-flex items-center font-heading text-xs tracking-[0.2em] uppercase text-plum hover:text-gold-dark transition-all hover:translate-x-1"
           >
             Entrar →
           </button>
@@ -81,94 +81,139 @@ const LandingPage = () => {
       </header>
 
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-28 pb-24 md:pt-36 md:pb-40 px-6 overflow-hidden">
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
-          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-gold/30 blur-[120px]" />
-          <div className="absolute bottom-[10%] right-[-5%] w-[40%] h-[40%] rounded-full bg-secondary/10 blur-[100px]" />
+      <section className="relative pt-32 pb-24 md:pt-48 md:pb-48 px-6 overflow-hidden">
+        {/* Background Atmosphere */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold/15 blur-[120px]" />
+          <div className="absolute bottom-[10%] right-[-5%] w-[50%] h-[50%] rounded-full bg-plum/10 blur-[100px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.03]" 
+               style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, hsl(var(--brand-gold)) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             
-            <div className="text-center lg:text-left space-y-10">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 border border-gold/20 shadow-sm">
-                <span className="text-[10px] font-heading tracking-[0.2em] uppercase font-bold text-gold-dark">
-                  ✦ Grátis para começar · Base Rider-Waite-Smith
+            <div className="text-center lg:text-left space-y-10 order-2 lg:order-1">
+              {/* Symbolic Badge */}
+              <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in">
+                <Sparkles className="w-4 h-4 text-gold-dark" />
+                <span className="text-[11px] font-heading tracking-[0.2em] uppercase font-bold text-plum">
+                  A chave abre o primeiro portal · Rider-Waite-Smith
                 </span>
               </div>
 
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-midnight normal-case">
-                Aprenda a ler o tarô{" "}
-                <span className="italic font-medium text-[#5B1F3D]">de verdade.</span>
-              </h1>
-
-              <div className="space-y-8 max-w-xl mx-auto lg:mx-0">
-                <div className="space-y-4">
-                  <p className="text-lg font-body font-medium text-[#5B1F3D] leading-snug">
-                    Um caminho guiado pelo Rider-Waite-Smith para parar de decorar significados soltos e começar a interpretar carta por carta.
-                  </p>
-                  <p className="text-base font-body text-[#2d1810] opacity-80 max-w-md mx-auto lg:mx-0">
-                    Estudo guiado, com método. Uma carta por vez, com profundidade e prática.
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm font-body font-medium text-[#3d2810]">
-                  <div className="flex items-center gap-2">
-                    <Flame className="w-4 h-4 text-[#5B1F3D]" />
-                    <span>Sequência diária</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-[#C8A66A]" />
-                    <span>XP Acumulado</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Target className="w-4 h-4 text-[#5B1F3D]" />
-                    <span>Quizzes</span>
-                  </div>
-                </div>
-                
-                <p className="text-sm font-body font-semibold text-[#5B1F3D]">
-                  ✦ Primeiro arcano gratuito. Vá bem e desbloqueie O Mago.
+              <div className="space-y-4">
+                <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-plum normal-case">
+                  Abra o primeiro portal do tarô.
+                </h1>
+                <p className="font-heading text-2xl md:text-3xl lg:text-4xl text-gold-dark font-medium italic">
+                  Aprenda a ler as cartas de verdade.
                 </p>
               </div>
 
-              <div className="flex flex-col items-center lg:items-start gap-4 pt-4">
-                <Button onClick={handleStart} className="btn-premium px-12 py-8 text-sm shadow-2xl hover:scale-105 transition-transform">
-                  COMEÇAR PELO LOUCO — GRÁTIS →
+              <div className="space-y-8 max-w-2xl mx-auto lg:mx-0">
+                <div className="space-y-6">
+                  <p className="text-lg md:text-xl font-body text-foreground leading-relaxed">
+                    Um caminho guiado pelo Rider-Waite-Smith para parar de decorar significados soltos e começar a interpretar carta por carta — com método, prática, quizzes e progresso.
+                  </p>
+                  <p className="text-base md:text-lg font-body text-foreground/75 font-medium border-l-2 border-gold/40 pl-4">
+                    ✦ Comece pelo Louco gratuitamente. Vá bem na lição e desbloqueie O Mago.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-8 md:gap-10 text-[13px] font-heading tracking-widest uppercase text-plum/70">
+                  <div className="flex items-center gap-2.5 group">
+                    <div className="w-8 h-8 rounded-full bg-plum/5 flex items-center justify-center group-hover:bg-plum/10 transition-colors">
+                      <Star className="w-4 h-4 text-gold-dark" />
+                    </div>
+                    <span>Uma carta por vez</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 group">
+                    <div className="w-8 h-8 rounded-full bg-plum/5 flex items-center justify-center group-hover:bg-plum/10 transition-colors">
+                      <Zap className="w-4 h-4 text-gold-dark" />
+                    </div>
+                    <span>Quizzes e XP</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 group">
+                    <div className="w-8 h-8 rounded-full bg-plum/5 flex items-center justify-center group-hover:bg-plum/10 transition-colors">
+                      <Layers className="w-4 h-4 text-gold-dark" />
+                    </div>
+                    <span>Progresso salvo</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center lg:items-start gap-4 pt-6">
+                <Button 
+                  onClick={handleStart} 
+                  className="w-full sm:w-auto min-h-[64px] px-12 rounded-2xl bg-plum hover:bg-plum/90 text-gold font-heading text-[14px] tracking-[0.25em] uppercase border-1.5 border-gold/40 shadow-[0_20px_50px_-12px_rgba(91,31,61,0.4)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3"
+                >
+                  <Key className="w-5 h-5" />
+                  COMEÇAR PELO LOUCO — GRÁTIS
                 </Button>
-                <p className="text-[11px] font-heading tracking-[0.15em] text-[#5B1F3D] font-bold uppercase">
-                  Sem cartão de crédito para começar.
-                </p>
+                <div className="flex flex-col items-center lg:items-start gap-1">
+                  <p className="text-xs md:text-sm font-heading tracking-[0.15em] text-plum font-bold uppercase">
+                    Sem cartão de crédito para começar.
+                  </p>
+                  <button onClick={() => document.getElementById('journey-map')?.scrollIntoView({ behavior: 'smooth' })} className="text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark hover:text-plum underline underline-offset-4 transition-colors">
+                    Ver como funciona
+                  </button>
+                </div>
               </div>
             </div>
 
-            <div className="relative flex justify-center lg:justify-end">
-              <div className="relative group perspective-1000">
-                <div className="absolute -inset-8 bg-gold/10 blur-3xl rounded-full -z-10 group-hover:bg-gold/20 transition-all duration-1000" />
+            <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
+              <div className="relative group max-w-[380px] w-full">
+                {/* Visual Portal Ornament */}
+                <div className="absolute -inset-10 border border-gold/20 rounded-[3rem] -z-10 animate-pulse-slow" />
+                <div className="absolute -inset-4 border-2 border-gold/10 rounded-[2.8rem] -z-10" />
                 
-                {/* Main Card Mockup */}
-                <div className="bg-white/90 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-2xl border border-gold/10 max-w-[340px] transform-gpu group-hover:rotate-y-12 transition-transform duration-700">
-                  <div className="aspect-[2/3] rounded-2xl overflow-hidden mb-6 shadow-xl border-4 border-white">
-                    <img src={imgLouco} alt="O Louco" className="w-full h-full object-cover" />
+                {/* Main Card Portal */}
+                <div className="bg-ivory/95 backdrop-blur-2xl p-6 md:p-8 rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)] border border-gold/20 relative overflow-hidden group-hover:shadow-[0_48px_80px_-20px_rgba(91,31,61,0.2)] transition-all duration-700">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 blur-3xl rounded-full" />
+                  
+                  {/* Card Header */}
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-lg bg-plum flex items-center justify-center">
+                        <Key className="w-4 h-4 text-gold" />
+                      </div>
+                      <span className="text-[10px] font-heading tracking-[0.25em] uppercase text-plum font-bold">Primeiro Portal</span>
+                    </div>
+                    <span className="px-2.5 py-1 rounded-full bg-gold/10 text-gold-dark text-[10px] font-heading tracking-widest uppercase font-bold border border-gold/20">Grátis</span>
+                  </div>
+
+                  {/* The Arcano Card */}
+                  <div className="relative aspect-[2/3] rounded-2xl overflow-hidden mb-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] border-[6px] border-white group-hover:scale-[1.02] transition-transform duration-700">
+                    <img src={imgLouco} alt="O Louco Rider-Waite-Smith" className="w-full h-full object-cover" />
+                    {/* Portal Overlay Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-plum/20 to-transparent opacity-40" />
                   </div>
                   
-                  <div className="space-y-5">
+                  <div className="space-y-6 text-center">
                     <div className="space-y-1">
-                      <p className="t-section-title text-[#5B1F3D]">Lição 1 • Arcanos Maiores</p>
-                      <h3 className="font-heading text-3xl text-midnight">O Louco</h3>
-                      <p className="font-accent italic text-muted-foreground">O início de toda jornada</p>
+                      <h3 className="font-heading text-4xl text-plum leading-none">O Louco</h3>
+                      <p className="font-body text-base text-plum/70 italic">O início de toda jornada</p>
                     </div>
                     
-                    <div className="space-y-2">
-                      <div className="flex justify-between text-[10px] font-heading tracking-widest uppercase opacity-40">
-                        <span>Progresso</span>
-                        <span>45%</span>
+                    <div className="pt-4 border-t border-gold/15 space-y-4">
+                      <div className="flex items-center justify-between text-[11px] font-heading tracking-[0.2em] uppercase text-plum/50">
+                        <span>Progresso Inicial</span>
+                        <span className="text-gold-dark">0%</span>
                       </div>
-                      <div className="h-1.5 w-full bg-black/5 rounded-full overflow-hidden">
-                        <div className="h-full bg-gold rounded-full" style={{ width: "45%" }} />
+                      <div className="h-2 w-full bg-plum/5 rounded-full overflow-hidden p-0.5 border border-plum/5">
+                        <div className="h-full bg-gold rounded-full w-[8%] shadow-[0_0_8px_hsl(var(--brand-gold)/0.4)]" />
                       </div>
+                      <p className="text-[11px] font-heading tracking-widest text-gold-dark font-bold uppercase">
+                        Lição gratuita · desbloqueia O Mago
+                      </p>
                     </div>
                   </div>
+                </div>
+
+                {/* Floating Elements */}
+                <div className="absolute -top-6 -right-6 w-12 h-12 bg-white rounded-full shadow-lg border border-gold/20 flex items-center justify-center animate-bounce-slow">
+                  <Star className="w-6 h-6 text-gold" fill="currentColor" />
                 </div>
               </div>
             </div>
@@ -178,6 +223,7 @@ const LandingPage = () => {
 
       {/* ─── Pain Section ─── */}
       <section className="py-20 px-6 bg-[#FAF5EF]">
+
         <div className="max-w-4xl mx-auto">
           <div className="bg-white/60 backdrop-blur-sm border border-gold/10 p-10 md:p-16 rounded-[3rem] text-center space-y-8 shadow-sm">
             <h2 className="font-heading text-3xl md:text-4xl text-midnight leading-tight">
