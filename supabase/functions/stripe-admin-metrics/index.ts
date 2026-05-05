@@ -24,22 +24,28 @@ Deno.serve(async (req) => {
       { global: { headers: { Authorization: authHeader } } },
     );
 
-    const token = authHeader.replace("Bearer ", "");
-    const { data: claimsData, error: claimsError } = await supabase.auth
-      .getClaims(token);
-    if (claimsError || !claimsData?.claims) {
+    // 1. Authenticate user
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    
+    if (authError || !user) {
+      console.error("Auth error:", authError);
       return json({ error: "Unauthorized" }, 401);
     }
-    const userId = claimsData.claims.sub as string;
 
-    // Admin check
-    const { data: roleRow } = await supabase
+    // 2. Check Admin role via Service Role client for security
+    const adminClient = createClient(
+      Deno.env.get("SUPABASE_URL")!,
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+    );
+
+    const { data: roleRow, error: roleError } = await adminClient
       .from("user_roles")
       .select("role")
-      .eq("user_id", userId)
+      .eq("user_id", user.id)
       .eq("role", "admin")
       .maybeSingle();
-    if (!roleRow) {
+
+    if (roleError || !roleRow) {
       return json({ error: "Forbidden: admin only" }, 403);
     }
 
