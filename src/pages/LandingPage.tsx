@@ -87,7 +87,7 @@ const LandingPage = () => {
       </header>
 
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-28 pb-16 md:pt-40 md:pb-24 px-6 overflow-hidden min-h-[85vh] flex items-center">
+      <section className="relative pt-24 pb-12 md:pt-32 md:pb-16 px-6 overflow-hidden min-h-[75vh] flex items-center">
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold/15 blur-[120px]" />
@@ -149,7 +149,7 @@ const LandingPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-start gap-4 pt-6 md:pt-8">
+              <div className="flex flex-col items-center lg:items-start gap-4 pt-4 md:pt-6">
                 <Button 
                   onClick={handleStart} 
                   className="w-full sm:w-auto min-h-[64px] md:min-h-[72px] px-12 md:px-14 rounded-2xl bg-plum hover:bg-plum/95 text-gold font-heading text-sm md:text-base tracking-[0.25em] uppercase border-2 border-gold/40 shadow-[0_20px_50px_-12px_rgba(91,31,61,0.5)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-4 group/btn"
@@ -220,7 +220,7 @@ const LandingPage = () => {
                 {/* Floating Elements */}
                 <div className="absolute -top-6 -right-6 w-14 h-14 bg-ivory rounded-full shadow-[0_10px_25px_-5px_rgba(91,31,61,0.2)] border border-gold/40 flex items-center justify-center animate-bounce-slow z-20 overflow-hidden">
                   <div className="w-10 h-10 rounded-full bg-plum/5 flex items-center justify-center border border-gold/20">
-                    <img src={brandIcon} alt="Assinatura Tarô 78 Chaves" className="w-6 h-6 object-contain" />
+                    <Key className="w-6 h-6 text-gold-dark" />
                   </div>
                 </div>
               </div>
