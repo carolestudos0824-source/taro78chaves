@@ -87,7 +87,7 @@ const LandingPage = () => {
       </header>
 
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-24 pb-12 md:pt-32 md:pb-16 px-6 overflow-hidden min-h-[75vh] flex items-center">
+      <section className="relative pt-24 pb-12 md:pt-28 md:pb-14 px-6 overflow-hidden min-h-[75vh] md:min-h-[85vh] lg:min-h-0 flex items-center">
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold/15 blur-[120px]" />
@@ -96,8 +96,8 @@ const LandingPage = () => {
                style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, hsl(var(--brand-gold)) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="max-w-7xl mx-auto relative z-10 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             
             <div className="text-center lg:text-left space-y-6 md:space-y-8 order-2 lg:order-1">
               {/* Symbolic Badge */}
@@ -118,30 +118,30 @@ const LandingPage = () => {
               </div>
 
               <div className="space-y-6 md:space-y-8 max-w-2xl mx-auto lg:mx-0">
-                <div className="space-y-4 md:space-y-6">
+                <div className="space-y-4 md:space-y-5">
                   <p className="text-lg md:text-xl font-body text-foreground leading-relaxed">
                     Um caminho guiado pelo Rider-Waite-Smith para parar de decorar significados soltos e começar a interpretar carta por carta — com método, prática, quizzes e progresso.
                   </p>
-                  <p className="text-base md:text-lg font-body text-foreground/75 font-medium border-l-2 border-gold/40 pl-4">
+                  <p className="text-base md:text-lg font-body text-midnight font-bold border-l-4 border-gold/60 pl-4 py-1 bg-gold/5">
                     ✦ Comece pelo Louco gratuitamente. Vá bem na lição e desbloqueie O Mago.
                   </p>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-8 md:gap-10 text-[13px] font-heading tracking-widest uppercase text-plum/70">
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 md:gap-10 text-[13px] font-heading tracking-widest uppercase text-plum font-bold">
                   <div className="flex items-center gap-2.5 group">
-                    <div className="w-8 h-8 rounded-full bg-plum/5 flex items-center justify-center group-hover:bg-plum/10 transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
                       <Star className="w-4 h-4 text-gold-dark" />
                     </div>
                     <span>Uma carta por vez</span>
                   </div>
                   <div className="flex items-center gap-2.5 group">
-                    <div className="w-8 h-8 rounded-full bg-plum/5 flex items-center justify-center group-hover:bg-plum/10 transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
                       <Zap className="w-4 h-4 text-gold-dark" />
                     </div>
                     <span>Quizzes e XP</span>
                   </div>
                   <div className="flex items-center gap-2.5 group">
-                    <div className="w-8 h-8 rounded-full bg-plum/5 flex items-center justify-center group-hover:bg-plum/10 transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
                       <Layers className="w-4 h-4 text-gold-dark" />
                     </div>
                     <span>Progresso salvo</span>
@@ -149,19 +149,19 @@ const LandingPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-start gap-4 pt-4 md:pt-6">
+              <div className="flex flex-col items-center lg:items-start gap-4 pt-2 md:pt-4">
                 <Button 
                   onClick={handleStart} 
-                  className="w-full sm:w-auto min-h-[64px] md:min-h-[72px] px-12 md:px-14 rounded-2xl bg-plum hover:bg-plum/95 text-gold font-heading text-sm md:text-base tracking-[0.25em] uppercase border-2 border-gold/40 shadow-[0_20px_50px_-12px_rgba(91,31,61,0.5)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-4 group/btn"
+                  className="w-full sm:w-auto min-h-[64px] md:min-h-[72px] px-12 md:px-14 rounded-2xl bg-plum hover:bg-plum/95 text-gold-light font-heading text-sm md:text-base tracking-[0.25em] uppercase border-2 border-gold/40 shadow-[0_20px_50px_-12px_rgba(91,31,61,0.5)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-4 group/btn"
                 >
-                  <Key className="w-6 h-6 group-hover/btn:rotate-12 transition-transform" />
+                  <Key className="w-6 h-6 group-hover/btn:rotate-12 transition-transform text-gold" />
                   COMEÇAR PELO LOUCO — GRÁTIS
                 </Button>
-                <div className="flex flex-col items-center lg:items-start gap-1.5">
-                  <p className="text-xs md:text-sm font-heading tracking-[0.15em] text-plum font-bold uppercase drop-shadow-sm">
+                <div className="flex flex-col items-center lg:items-start gap-2">
+                  <p className="text-xs md:text-sm font-heading tracking-[0.15em] text-plum font-extrabold uppercase drop-shadow-sm">
                     ✦ Sem cartão de crédito para começar.
                   </p>
-                  <button onClick={() => document.getElementById('journey-map')?.scrollIntoView({ behavior: 'smooth' })} className="text-[11px] font-heading tracking-[0.2em] uppercase text-gold-dark hover:text-plum underline underline-offset-4 transition-colors font-bold">
+                  <button onClick={() => document.getElementById('journey-map')?.scrollIntoView({ behavior: 'smooth' })} className="text-[11px] font-heading tracking-[0.2em] uppercase text-gold-dark hover:text-plum underline underline-offset-4 transition-colors font-extrabold">
                     Ver como funciona
                   </button>
                 </div>
@@ -169,48 +169,48 @@ const LandingPage = () => {
             </div>
 
             <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
-              <div className="relative group max-w-[380px] w-full">
+              <div className="relative group max-w-[340px] md:max-w-[380px] w-full">
                 {/* Visual Portal Ornament */}
-                <div className="absolute -inset-10 border border-gold/20 rounded-[3rem] -z-10 animate-pulse-slow" />
+                <div className="absolute -inset-8 border border-gold/20 rounded-[3rem] -z-10 animate-pulse-slow" />
                 <div className="absolute -inset-4 border-2 border-gold/10 rounded-[2.8rem] -z-10" />
                 
                 {/* Main Card Portal */}
-                <div className="bg-ivory/95 backdrop-blur-2xl p-6 md:p-8 rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)] border border-gold/20 relative overflow-hidden group-hover:shadow-[0_48px_80px_-20px_rgba(91,31,61,0.2)] transition-all duration-700">
+                <div className="bg-ivory/95 backdrop-blur-2xl p-5 md:p-7 rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)] border border-gold/20 relative overflow-hidden group-hover:shadow-[0_48px_80px_-20px_rgba(91,31,61,0.2)] transition-all duration-700">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 blur-3xl rounded-full" />
                   
                   {/* Card Header */}
-                  <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center justify-between mb-5">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-lg bg-plum flex items-center justify-center">
-                        <Key className="w-4 h-4 text-gold" />
+                      <div className="w-7 h-7 rounded-lg bg-plum flex items-center justify-center">
+                        <Key className="w-3.5 h-3.5 text-gold" />
                       </div>
-                      <span className="text-[10px] font-heading tracking-[0.25em] uppercase text-plum font-bold">Primeiro Portal</span>
+                      <span className="text-[9px] md:text-[10px] font-heading tracking-[0.25em] uppercase text-plum font-bold">Primeiro Portal</span>
                     </div>
-                    <span className="px-2.5 py-1 rounded-full bg-gold/10 text-gold-dark text-[10px] font-heading tracking-widest uppercase font-bold border border-gold/20">Grátis</span>
+                    <span className="px-2.5 py-1 rounded-full bg-gold/15 text-gold-dark text-[9px] md:text-[10px] font-heading tracking-widest uppercase font-bold border border-gold/30">Grátis</span>
                   </div>
 
                   {/* The Arcano Card */}
-                  <div className="relative aspect-[2/3] rounded-2xl overflow-hidden mb-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] border-[6px] border-white group-hover:scale-[1.02] transition-transform duration-700">
+                  <div className="relative aspect-[2/3] max-h-[300px] md:max-h-[380px] rounded-2xl overflow-hidden mb-6 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] border-[6px] border-white group-hover:scale-[1.02] transition-transform duration-700">
                     <img src={imgLouco} alt="O Louco Rider-Waite-Smith" className="w-full h-full object-cover" />
                     {/* Portal Overlay Effect */}
                     <div className="absolute inset-0 bg-gradient-to-t from-plum/20 to-transparent opacity-40" />
                   </div>
                   
-                  <div className="space-y-6 text-center">
-                    <div className="space-y-1">
-                      <h3 className="font-heading text-4xl text-plum leading-none">O Louco</h3>
-                      <p className="font-body text-base text-plum/70 italic">O início de toda jornada</p>
+                  <div className="space-y-4 md:space-y-6 text-center">
+                    <div className="space-y-0.5">
+                      <h3 className="font-heading text-3xl md:text-4xl text-plum leading-none">O Louco</h3>
+                      <p className="font-body text-sm md:text-base text-plum/70 italic">O início de toda jornada</p>
                     </div>
                     
-                    <div className="pt-4 border-t border-gold/15 space-y-4">
-                      <div className="flex items-center justify-between text-[11px] font-heading tracking-[0.2em] uppercase text-plum/50">
+                    <div className="pt-3 md:pt-4 border-t border-gold/15 space-y-3 md:space-y-4">
+                      <div className="flex items-center justify-between text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase text-plum font-bold">
                         <span>Progresso Inicial</span>
                         <span className="text-gold-dark">0%</span>
                       </div>
                       <div className="h-2 w-full bg-plum/5 rounded-full overflow-hidden p-0.5 border border-plum/5">
                         <div className="h-full bg-gold rounded-full w-[8%] shadow-[0_0_8px_hsl(var(--brand-gold)/0.4)]" />
                       </div>
-                      <p className="text-[11px] font-heading tracking-widest text-gold-dark font-bold uppercase">
+                      <p className="text-[10px] md:text-[11px] font-heading tracking-widest text-gold-dark font-extrabold uppercase">
                         Lição gratuita · desbloqueia O Mago
                       </p>
                     </div>
@@ -218,9 +218,9 @@ const LandingPage = () => {
                 </div>
 
                 {/* Floating Elements */}
-                <div className="absolute -top-6 -right-6 w-14 h-14 bg-ivory rounded-full shadow-[0_10px_25px_-5px_rgba(91,31,61,0.2)] border border-gold/40 flex items-center justify-center animate-bounce-slow z-20 overflow-hidden">
-                  <div className="w-10 h-10 rounded-full bg-plum/5 flex items-center justify-center border border-gold/20">
-                    <Key className="w-6 h-6 text-gold-dark" />
+                <div className="absolute -top-4 -right-4 w-12 h-12 bg-ivory rounded-full shadow-[0_10px_25px_-5px_rgba(91,31,61,0.2)] border border-gold/40 flex items-center justify-center animate-bounce-slow z-20 overflow-hidden">
+                  <div className="w-9 h-9 rounded-full bg-plum/5 flex items-center justify-center border border-gold/20">
+                    <Key className="w-5 h-5 text-gold-dark" />
                   </div>
                 </div>
               </div>
@@ -283,7 +283,7 @@ const LandingPage = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-[10px] font-heading tracking-widest uppercase text-midnight/60 transition-colors group-hover:text-midnight">{card.name}</p>
+                <p className="text-[10px] font-heading tracking-widest uppercase text-midnight font-bold transition-colors group-hover:text-plum">{card.name}</p>
               </div>
             ))}
             <div className="flex-shrink-0 w-20 flex items-center justify-center h-52 md:h-60 opacity-20">
@@ -576,39 +576,39 @@ const LandingPage = () => {
           </div>
           
           <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1" className="border-gold/20">
-              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Por onde eu começo?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/70">
+            <AccordionItem value="item-1" className="border-gold/30">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Por onde eu começo?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
                 Você começa pelo Louco gratuitamente. Se for bem na lição, desbloqueia O Mago e entende como a jornada funciona antes de assinar.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-2" className="border-gold/20">
-              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">O que está incluso no plano?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/70">
+            <AccordionItem value="item-2" className="border-gold/30">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">O que está incluso no plano?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
                 O acesso completo libera a jornada pelos 78 arcanos, com lições progressivas, quizzes, XP, progresso salvo e estudo carta por carta.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-3" className="border-gold/20">
-              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Preciso saber tarô antes?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/70">
+            <AccordionItem value="item-3" className="border-gold/30">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Preciso saber tarô antes?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
                 Não. O app foi feito para começar do zero, com uma carta por vez e explicações claras.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-4" className="border-gold/20">
-              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Vou aprender Arcanos Menores também?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/70">
+            <AccordionItem value="item-4" className="border-gold/30">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Vou aprender Arcanos Menores também?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
                 Sim. A jornada inclui Arcanos Maiores, Menores numerados e Cartas da Corte.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-5" className="border-gold/20">
-              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Preciso de um baralho físico?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/70">
+            <AccordionItem value="item-5" className="border-gold/30">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Preciso de um baralho físico?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
                 Não para começar. O app mostra as cartas Rider-Waite-Smith dentro das lições. Ter um baralho pode complementar seu estudo.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-6" className="border-gold/20">
-              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Como funciona o cancelamento?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/70">
+            <AccordionItem value="item-6" className="border-gold/30">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Como funciona o cancelamento?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
                 Se você assinou o Plano Mensal, pode gerenciar ou cancelar a qualquer momento pelo seu perfil. O Acesso Anual é um pagamento único sem renovação automática.
               </AccordionContent>
             </AccordionItem>
@@ -648,14 +648,14 @@ const LandingPage = () => {
         </div>
 
         <nav className="flex flex-wrap justify-center gap-8 md:gap-12 text-[12px] font-heading tracking-[0.2em] uppercase relative z-10">
-          <a href="/privacidade" className="text-ivory/60 hover:text-gold transition-colors font-bold">Privacidade</a>
-          <a href="/termos" className="text-ivory/60 hover:text-gold transition-colors font-bold">Termos</a>
-          <a href="/suporte" className="text-ivory/60 hover:text-gold transition-colors font-bold">Suporte</a>
-          <a href="/excluir-conta" className="text-ivory/60 hover:text-gold transition-colors font-bold">Excluir conta</a>
+          <a href="/privacidade" className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Privacidade</a>
+          <a href="/termos" className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Termos</a>
+          <a href="/suporte" className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Suporte</a>
+          <a href="/excluir-conta" className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Excluir conta</a>
         </nav>
 
         <div className="pt-8 border-t border-gold/10 max-w-xs mx-auto relative z-10">
-          <p className="text-[11px] text-ivory/30 font-body tracking-wider">
+          <p className="text-[11px] text-ivory/50 font-body tracking-wider font-medium">
             © {new Date().getFullYear()} Tarô 78 Chaves.<br />
             Todos os direitos reservados.
           </p>
