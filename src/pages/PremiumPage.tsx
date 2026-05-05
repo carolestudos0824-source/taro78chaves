@@ -156,12 +156,12 @@ const PremiumPage = () => {
               </div>
               
               <div className="space-y-1">
-                <p className="text-[10px] font-heading tracking-widest uppercase text-gold-dark">Plano Anual</p>
+                <p className="text-[10px] font-heading tracking-widest uppercase text-gold-dark">Acesso Anual</p>
                 <div className="flex items-baseline gap-1">
                   <span className="font-heading text-4xl text-midnight tracking-tight">R$ 197</span>
-                  <span className="text-sm opacity-40">/ano</span>
+                  <span className="text-xs opacity-40 font-heading">/pagamento único</span>
                 </div>
-                <p className="text-xs font-bold text-accent">R$ 16,42/mês • 45% de economia</p>
+                <p className="text-xs font-bold text-accent">12 meses de acesso • Sem renovação automática</p>
               </div>
 
               <Button 
