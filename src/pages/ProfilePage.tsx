@@ -124,12 +124,20 @@ const ProfilePage = () => {
                 {isPremium && <Crown className="w-3 h-3 text-gold" />}
               </div>
               <h3 className="font-heading text-lg text-midnight">
-                {isAdmin ? "Admin Total" : (isPremium ? "Jornada Completa" : "Plano Gratuito")}
+                {isAdmin ? "Admin Total" : (
+                  isOneTimeAnnual ? "Acesso Anual" : 
+                  (isPremium ? (premiumSource === "store_monthly" ? "Assinatura Mensal" : "Jornada Completa") : "Plano Gratuito")
+                )}
               </h3>
               {isPremium && untilFormatted && (
-                <p className="text-[10px] text-muted-foreground uppercase tracking-wider">
-                  {isStripeRecurring ? `Renova em ${untilFormatted}` : (isOneTimeAnnual ? `Acesso até ${untilFormatted}` : "Acesso vitalício ou cortesia")}
-                </p>
+                <div className="space-y-0.5">
+                  <p className="text-[10px] text-muted-foreground uppercase tracking-wider">
+                    {isStripeRecurring ? `Renovação automática: ${untilFormatted}` : (isOneTimeAnnual ? `Ativo até ${untilFormatted}` : "Acesso vitalício ou cortesia")}
+                  </p>
+                  {isOneTimeAnnual && (
+                    <p className="text-[9px] text-gold-dark/60 font-medium">Pagamento único • Sem renovação</p>
+                  )}
+                </div>
               )}
             </div>
 
@@ -147,13 +155,13 @@ const ProfilePage = () => {
                 </Button>
               ) : isOneTimeAnnual ? (
                 <div className="flex flex-col items-end gap-1">
-                  <span className="text-[10px] font-heading tracking-widest uppercase text-gold-dark/70">Pagamento Único</span>
-                  <span className="text-[8px] text-muted-foreground opacity-50">Sem renovação automática</span>
+                  <span className="text-[10px] font-heading tracking-widest uppercase text-gold-dark/70">Ativo</span>
+                  <span className="text-[8px] text-muted-foreground opacity-50 italic">12 meses de acesso</span>
                 </div>
               ) : (
                 <div className="flex flex-col items-end gap-1">
                   <span className="text-[10px] font-heading tracking-widest uppercase text-gold-dark/70">Cortesia</span>
-                  <span className="text-[8px] text-muted-foreground opacity-50">Não gerenciado via Stripe</span>
+                  <span className="text-[8px] text-muted-foreground opacity-50">Acesso liberado</span>
                 </div>
               )
             ) : (
