@@ -24,6 +24,8 @@ import imgImperatriz from "@/assets/arcano-3-imperatriz.jpg";
 import imgImperador from "@/assets/arcano-4-imperador.jpg";
 import imgHierofante from "@/assets/arcano-5-hierofante.jpg";
 import imgEnamorados from "@/assets/arcano-6-enamorados.jpg";
+import brandLogo from "@/assets/brand-logo.png";
+import brandIcon from "@/assets/brand-icon.png";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -541,8 +543,8 @@ const LandingPage = () => {
 
       {/* ─── Footer ─── */}
       <footer className="py-20 px-6 text-center space-y-12 border-t border-gold/10">
-        <div className="space-y-4">
-          <h3 className="font-heading text-2xl tracking-[0.3em] text-[#5B1F3D]">Tarô 78 Chaves</h3>
+        <div className="space-y-4 flex flex-col items-center">
+          <img src={brandLogo} alt="Tarô 78 Chaves — Sua jornada. Seu ritmo. Seu tarô." className="w-40 h-auto opacity-90" />
           <p className="t-section-title">A jornada viva pelos arcanos</p>
         </div>
 
