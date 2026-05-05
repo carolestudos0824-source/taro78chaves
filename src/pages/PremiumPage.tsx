@@ -131,7 +131,7 @@ const PremiumPage = () => {
         <div className="space-y-6">
           <div className="text-center space-y-1">
             <h2 className="t-section-title">Planos de Acesso</h2>
-            <p className="text-xs font-accent italic text-muted-foreground">Cancele quando quiser. Pagamento seguro via Stripe.</p>
+            <p className="text-xs font-accent italic text-muted-foreground">Pagamento seguro via Stripe. Suporte total ao aluno.</p>
           </div>
 
           <div className="space-y-4">
