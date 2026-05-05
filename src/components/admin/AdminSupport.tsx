@@ -31,8 +31,8 @@ interface Ticket {
 
 const STATUS_META: Record<Status, { label: string; cls: string; icon: React.ReactNode }> = {
   aberto: { label: "Aberto", cls: "bg-amber-500/10 text-amber-600", icon: <Inbox className="w-3 h-3" /> },
-  em_andamento: { label: "Em andamento", cls: "bg-blue-500/10 text-blue-600", icon: <Clock className="w-3 h-3" /> },
-  resolvido: { label: "Resolvido", cls: "bg-emerald-500/10 text-emerald-600", icon: <CheckCircle2 className="w-3 h-3" /> },
+  em_andamento: { label: "Em andamento", cls: "bg-secondary/10/10 text-secondary", icon: <Clock className="w-3 h-3" /> },
+  resolvido: { label: "Resolvido", cls: "bg-primary/10/10 text-primary", icon: <CheckCircle2 className="w-3 h-3" /> },
 };
 
 const AdminSupport = () => {
@@ -199,7 +199,7 @@ const AdminSupport = () => {
 };
 
 const StatCard = ({ label, value, icon, accent }: { label: string; value: number; icon: React.ReactNode; accent: "amber" | "blue" | "emerald" }) => {
-  const cls = accent === "amber" ? "text-amber-600" : accent === "blue" ? "text-blue-600" : "text-emerald-600";
+  const cls = accent === "amber" ? "text-amber-600" : accent === "blue" ? "text-secondary" : "text-primary";
   return (
     <div className="rounded-lg border border-border/40 bg-card/40 p-3">
       <div className={`flex items-center gap-1.5 text-xs ${cls}`}>{icon}<span>{label}</span></div>

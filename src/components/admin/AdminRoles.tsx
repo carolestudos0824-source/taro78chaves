@@ -131,7 +131,7 @@ const AdminRoles = () => {
           />
           <RoleCard
             icon={<Shield className="w-4 h-4" />}
-            color="bg-blue-500/10 text-blue-600"
+            color="bg-secondary/10/10 text-secondary"
             title="Moderador"
             perms={[
               "Visualizar usuários e progresso",
@@ -209,7 +209,7 @@ const AdminRoles = () => {
           />
           <RoleList
             title="Moderadores"
-            icon={<Shield className="w-4 h-4 text-blue-600" />}
+            icon={<Shield className="w-4 h-4 text-secondary" />}
             rows={mods}
             currentUserId={currentUserId}
             busy={busy}

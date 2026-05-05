@@ -55,14 +55,14 @@ const STATUS_META: Record<
   opcional: {
     label: "Opcional · não bloqueia",
     icon: Sparkles,
-    cls: "bg-sky-500/10 text-sky-600 border-sky-500/20",
-    dot: "bg-sky-500",
+    cls: "bg-secondary/10/10 text-secondary border-secondary/30/20",
+    dot: "bg-secondary/10",
   },
   proxima_fase: {
     label: "Próxima fase",
     icon: MoonStar,
-    cls: "bg-violet-500/10 text-violet-600 border-violet-500/20",
-    dot: "bg-violet-500",
+    cls: "bg-secondary/10/10 text-secondary border-secondary/30/20",
+    dot: "bg-secondary/10",
     muted: true,
   },
   fora_de_escopo: {

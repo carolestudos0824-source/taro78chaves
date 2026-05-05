@@ -66,9 +66,9 @@ const STATUS_LABELS: Record<SubStatus, string> = {
 };
 
 const STATUS_COLORS: Record<SubStatus, string> = {
-  monthly_active: "bg-green-500/10 text-green-600",
-  annual_active: "bg-emerald-500/10 text-emerald-600",
-  gift_active: "bg-purple-500/10 text-purple-600",
+  monthly_active: "bg-primary/10/10 text-primary",
+  annual_active: "bg-primary/10/10 text-primary",
+  gift_active: "bg-secondary/10/10 text-secondary",
   admin_grant: "bg-amber-500/10 text-amber-600",
   expired: "bg-red-500/10 text-red-500",
   cancelled_with_access: "bg-amber-500/10 text-amber-600",
@@ -231,7 +231,7 @@ const AdminSubscriptions = () => {
           <KPICard icon={<DollarSign className="w-4 h-4" />} label="MRR estimado" value={`R$ ${stats.mrrEstimated.toFixed(2)}`} accent="text-amber-600" />
           <KPICard icon={<Repeat className="w-4 h-4" />} label="ARR estimada" value={`R$ ${stats.arrEstimated.toFixed(0)}`} accent="text-amber-600" />
           <KPICard icon={<Crown className="w-4 h-4" />} label="Assinaturas pagantes" value={stats.totalPaying} accent="text-primary" />
-          <KPICard icon={<TrendingUp className="w-4 h-4" />} label="Conversão Premium" value={`${stats.conversionRate}%`} accent="text-blue-500" />
+          <KPICard icon={<TrendingUp className="w-4 h-4" />} label="Conversão Premium" value={`${stats.conversionRate}%`} accent="text-secondary" />
         </div>
       </section>
 
@@ -272,10 +272,10 @@ const AdminSubscriptions = () => {
       <section>
         <h3 className="font-heading text-[10px] tracking-[0.2em] uppercase text-muted-foreground/60 mb-3">Crescimento (últimos 30 dias)</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <KPICard icon={<Sparkles className="w-4 h-4" />} label="Novos cadastros" value={stats.newSignups30} accent="text-blue-500" />
+          <KPICard icon={<Sparkles className="w-4 h-4" />} label="Novos cadastros" value={stats.newSignups30} accent="text-secondary" />
           <KPICard icon={<TrendingDown className="w-4 h-4" />} label="Churn (taxa)" value={`${stats.churnRate}%`} accent="text-red-500" />
           <KPICard icon={<AlertCircle className="w-4 h-4" />} label="Expiram em 30d" value={stats.expiringSoon} accent="text-amber-600" />
-          <KPICard icon={<Gift className="w-4 h-4" />} label="Resgates de presente" value={stats.giftRedemptions} accent="text-purple-600" />
+          <KPICard icon={<Gift className="w-4 h-4" />} label="Resgates de presente" value={stats.giftRedemptions} accent="text-secondary" />
         </div>
       </section>
 
@@ -283,9 +283,9 @@ const AdminSubscriptions = () => {
       <section>
         <h3 className="font-heading text-[10px] tracking-[0.2em] uppercase text-muted-foreground/60 mb-3">Estados de assinatura</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2">
-          <MiniStat label="Mensal" value={stats.monthlyActive} color="bg-green-500/10 text-green-600" />
-          <MiniStat label="Anual" value={stats.annualActive} color="bg-emerald-500/10 text-emerald-600" />
-          <MiniStat label="Presente" value={stats.giftActive} color="bg-purple-500/10 text-purple-600" />
+          <MiniStat label="Mensal" value={stats.monthlyActive} color="bg-primary/10/10 text-primary" />
+          <MiniStat label="Anual" value={stats.annualActive} color="bg-primary/10/10 text-primary" />
+          <MiniStat label="Presente" value={stats.giftActive} color="bg-secondary/10/10 text-secondary" />
           <MiniStat label="Admin" value={stats.adminGrant} color="bg-amber-500/10 text-amber-600" />
           <MiniStat label="Canc. c/ acesso" value={stats.cancelledAccess} color="bg-amber-500/10 text-amber-600" />
           <MiniStat label="Expirado" value={stats.expired} color="bg-red-500/10 text-red-500" />
