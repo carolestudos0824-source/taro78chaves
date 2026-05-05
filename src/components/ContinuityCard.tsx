@@ -35,23 +35,34 @@ interface ContinuityCardProps {
 }
 
 function findNextLessonSuggestion(completedLessonIds: string[], currentModuleId?: string): { label: string; subtitle: string; path: string } | null {
+  const uniqueCompleted = new Set(completedLessonIds);
+
   // Check each module in order for in-progress work
   for (const mod of MODULES) {
     const mapping = MODULE_PREFIX_MAP[mod.id];
     if (!mapping) continue;
 
     if (mod.id === "arcanos-maiores") {
-      // Special handling for arcanos
-      const completedArcanos = completedLessonIds.filter(l => l.startsWith("arcano-"));
+      const completedArcanos = Array.from(uniqueCompleted).filter(l => l.startsWith("arcano-"));
       if (completedArcanos.length > 0 && completedArcanos.length < 22) {
-        const lastNum = Math.max(...completedArcanos.map(l => parseInt(l.replace("arcano-", ""))));
-        const nextId = lastNum + 1;
-        if (nextId <= 21) {
+        // Encontrar a primeira lacuna ou o próximo após o maior
+        const completedNums = completedArcanos.map(l => parseInt(l.replace("arcano-", ""))).filter(n => !isNaN(n));
+        let nextId = -1;
+        
+        // Procurar garras (gaps) primeiro
+        for (let i = 0; i <= 21; i++) {
+          if (!completedNums.includes(i)) {
+            nextId = i;
+            break;
+          }
+        }
+
+        if (nextId !== -1) {
           const next = ARCANOS_MAIORES.find(a => a.id === nextId);
           if (next) {
             return {
               label: `Continuar: ${next.name}`,
-              subtitle: "Próximo arcano na jornada",
+              subtitle: nextId === 0 ? "Comece sua jornada" : "Próximo arcano na jornada",
               path: `/lesson/${nextId}`,
             };
           }
@@ -60,32 +71,70 @@ function findNextLessonSuggestion(completedLessonIds: string[], currentModuleId?
       continue;
     }
 
-    const completedInModule = completedLessonIds.filter(l => l.startsWith(mapping.prefix));
+    const completedInModule = Array.from(uniqueCompleted).filter(l => l.startsWith(mapping.prefix));
+    
     if (completedInModule.length > 0 && completedInModule.length < mod.totalLessons) {
-      // Module is in progress — suggest next lesson
-      const lastOrder = Math.max(...completedInModule.map(l => {
+      // Encontrar a primeira lição não concluída neste módulo
+      const completedOrders = completedInModule.map(l => {
         const num = parseInt(l.replace(mapping.prefix, ""));
         return isNaN(num) ? -1 : num;
-      }));
-      const nextOrder = lastOrder + 1;
+      }).filter(n => n !== -1);
+
+      let nextOrder = -1;
+      for (let i = 0; i < mod.totalLessons; i++) {
+        if (!completedOrders.includes(i)) {
+          nextOrder = i;
+          break;
+        }
+      }
+
+      if (nextOrder !== -1 && nextOrder < mod.totalLessons) {
+        return {
+          label: `Continuar: ${mod.name}`,
+          subtitle: `Lição ${nextOrder + 1} de ${mod.totalLessons}`,
+          path: mapping.route(nextOrder),
+        };
+      }
+    }
+  }
+
+  // Se nenhum módulo está em andamento, sugerir o primeiro módulo não iniciado
+  for (const mod of MODULES) {
+    const mapping = MODULE_PREFIX_MAP[mod.id];
+    if (!mapping) continue;
+
+    const completedInModule = Array.from(uniqueCompleted).filter(l => l.startsWith(mapping.prefix));
+    if (completedInModule.length === 0) {
+      if (mod.id === "arcanos-maiores") {
+        return {
+          label: "Começar Arcanos Maiores",
+          subtitle: "A Jornada do Louco",
+          path: "/lesson/0",
+        };
+      }
       return {
-        label: `Continuar: ${mod.name}`,
-        subtitle: `Lição ${nextOrder + 1} de ${mod.totalLessons}`,
-        path: mapping.route(nextOrder),
+        label: `Iniciar: ${mod.name}`,
+        subtitle: mod.subtitle,
+        path: mapping.route(0),
       };
     }
   }
 
-  // If no module is in progress, suggest the first unlocked but not started module
-  if (completedLessonIds.length === 0) {
+  // Se tudo estiver completo
+  if (uniqueCompleted.size > 0) {
     return {
-      label: "Começar pelo Louco — Grátis",
-      subtitle: "Seu primeiro arcano é gratuito. Faça a lição e desbloqueie O Mago.",
-      path: "/lesson/0",
+      label: "Jornada Concluída",
+      subtitle: "Parabéns! Você finalizou todos os módulos.",
+      path: "/perfil",
     };
   }
 
-  return null;
+  // Fallback para novos usuários
+  return {
+    label: "Começar pelo Louco — Grátis",
+    subtitle: "Inicie sua jornada no tarô",
+    path: "/lesson/0",
+  };
 }
 
 const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, completedQuizzes, hasUnfinishedReview, completedLessonIds, currentModuleId }: ContinuityCardProps) => {

@@ -50,7 +50,7 @@ const BetaFeedback = () => {
 
   return (
     <>
-      {/* Floating button — hidden on mobile to avoid competition with BottomNav */}
+      {/* Floating button — hidden on mobile because of BottomNav and redundant with Feedback tab */}
       <button
         onClick={() => setOpen(!open)}
         className="hidden md:flex fixed bottom-5 right-5 z-50 w-11 h-11 rounded-full items-center justify-center transition-all active:scale-95"
