@@ -8,6 +8,8 @@ const VALID_SIZES: FontSize[] = ["normal", "large", "xl"];
 interface FontSizeContextValue {
   fontSize: FontSize;
   setFontSize: (size: FontSize) => void;
+  increaseFont: () => void;
+  decreaseFont: () => void;
 }
 
 const FontSizeContext = createContext<FontSizeContextValue | undefined>(undefined);
@@ -51,8 +53,22 @@ export function FontSizeProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  const increaseFont = useCallback(() => {
+    const currentIndex = VALID_SIZES.indexOf(fontSize);
+    if (currentIndex < VALID_SIZES.length - 1) {
+      setFontSize(VALID_SIZES[currentIndex + 1]);
+    }
+  }, [fontSize, setFontSize]);
+
+  const decreaseFont = useCallback(() => {
+    const currentIndex = VALID_SIZES.indexOf(fontSize);
+    if (currentIndex > 0) {
+      setFontSize(VALID_SIZES[currentIndex - 1]);
+    }
+  }, [fontSize, setFontSize]);
+
   return (
-    <FontSizeContext.Provider value={{ fontSize, setFontSize }}>
+    <FontSizeContext.Provider value={{ fontSize, setFontSize, increaseFont, decreaseFont }}>
       {children}
     </FontSizeContext.Provider>
   );
