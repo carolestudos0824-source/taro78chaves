@@ -348,7 +348,7 @@ const LandingPage = () => {
             <h2 className="font-heading text-4xl text-midnight">Leve sua jornada para a tela inicial.</h2>
             <p className="text-lg text-midnight/70 font-body leading-relaxed max-w-2xl mx-auto">
               Crie um atalho do Tarô 78 Chaves no celular e continue seus estudos com um toque.<br/>
-              <span className="text-sm italic">Funciona pelo navegador, em qualquer dispositivo.</span>
+              <span className="text-sm italic">Acesso rápido pelo navegador, em qualquer dispositivo.</span>
             </p>
           </div>
 
@@ -427,7 +427,7 @@ const LandingPage = () => {
           <DialogHeader className="space-y-4">
             <DialogTitle className="font-heading text-2xl text-midnight text-center">Adicionar à tela inicial</DialogTitle>
             <DialogDescription className="font-body text-center text-midnight/70">
-              No iPhone, adicione o Tarô 78 Chaves pela opção de compartilhamento do Safari.
+              Crie um atalho rápido no seu celular para acessar a jornada com um toque.
             </DialogDescription>
           </DialogHeader>
 

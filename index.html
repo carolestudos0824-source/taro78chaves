@@ -11,10 +11,22 @@
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
     <script>
+      // Clean up legacy service worker to avoid HTTP 412 errors
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js');
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+          for (const registration of registrations) {
+            registration.unregister();
+          }
         });
+        
+        // Clear caches associated with the service worker
+        if ('caches' in window) {
+          caches.keys().then(names => {
+            for (const name of names) {
+              caches.delete(name);
+            }
+          });
+        }
       }
     </script>
 
