@@ -186,7 +186,7 @@ export function QuizSection({ questions, onComplete, onAnswer }: QuizSectionProp
 
   // Active quiz
   return (
-    <div className="bg-white/75 backdrop-blur-md rounded-2xl p-8 space-y-6 shadow-sm border border-[#c9a96e]/20">
+    <div className="bg-white/75 backdrop-blur-md rounded-2xl p-8 space-y-6 shadow-sm border border-gold/20">
       {/* Progress dots */}
       <div className="flex items-center gap-1.5">
         {questions.map((_, i) => (
@@ -211,7 +211,7 @@ export function QuizSection({ questions, onComplete, onAnswer }: QuizSectionProp
         </div>
 
         <h4 className="font-display text-xl font-semibold leading-relaxed mb-6 flex items-start gap-2" style={{ color: "#3d1f2e" }}>
-          <span className="text-[#c9a96e] mt-1 shrink-0" aria-hidden="true">✦</span>
+          <span className="text-gold mt-1 shrink-0" aria-hidden="true">✦</span>
           <span>{current.question}</span>
         </h4>
 
@@ -221,9 +221,9 @@ export function QuizSection({ questions, onComplete, onAnswer }: QuizSectionProp
             const isWrongSelected = isAnswered && i === selectedOption && i !== current.correctIndex;
 
             let optionClass =
-              "bg-white/70 backdrop-blur-sm border-[#c9a96e]/30 hover:bg-white/90 hover:border-[#c9a96e]/60 hover:shadow-sm";
+              "bg-white/70 backdrop-blur-sm border-gold/30 hover:bg-white/90 hover:border-gold/60 hover:shadow-sm";
             let textColorStyle: string = "#3d1f2e";
-            let iconColor = "#c9a96e";
+            let iconColor = "hsl(var(--gold))";
 
             if (isCorrectAnswer) {
               optionClass = "bg-[#2d5a3d]/15 border-[#2d5a3d]/50";
@@ -234,7 +234,7 @@ export function QuizSection({ questions, onComplete, onAnswer }: QuizSectionProp
               textColorStyle = "#8b1a2e";
               iconColor = "#8b1a2e";
             } else if (isAnswered) {
-              optionClass = "bg-white/50 backdrop-blur-sm border-[#c9a96e]/20 opacity-70";
+              optionClass = "bg-white/50 backdrop-blur-sm border-gold/20 opacity-70";
             }
 
             return (
