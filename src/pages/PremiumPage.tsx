@@ -33,7 +33,7 @@ const PremiumPage = () => {
     if (isPremium) {
       setLoading(true);
       try {
-        const { data, error } = await supabase.functions.invoke("stripe-manage-subscription");
+        const { data, error } = await supabase.functions.invoke("stripe-customer-portal");
         if (error) throw error;
         if (data?.url) {
           window.location.href = data.url;
@@ -43,7 +43,8 @@ const PremiumPage = () => {
         }
       } catch (e) {
         console.error("Erro ao abrir portal:", e);
-        toast.info("Você já possui uma assinatura ativa. Gerencie pelo seu perfil.");
+        const msg = e.message || "";
+        toast.error(`Não foi possível abrir o portal: ${msg}`);
         navigate("/perfil");
       } finally {
         setLoading(false);
@@ -73,9 +74,11 @@ const PremiumPage = () => {
       } else {
         throw new Error("URL de checkout não retornada.");
       }
-    } catch (e) {
+    } catch (e: any) {
       console.error("Erro no checkout:", e);
-      toast.error("Não foi possível abrir o checkout. Tente novamente ou fale com suporte.");
+      // Extraindo mensagem de erro se disponível
+      const errorMsg = e.message || (typeof e === 'string' ? e : "");
+      toast.error(`Não foi possível abrir o checkout: ${errorMsg}. Tente novamente ou fale com suporte.`);
     } finally {
       setLoading(false);
     }
