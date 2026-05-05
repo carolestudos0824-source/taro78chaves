@@ -56,9 +56,32 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-parchment text-midnight selection:bg-secondary selection:text-white">
-      
+
+      {/* ─── Top Brand Header ─── */}
+      <header className="absolute top-0 left-0 right-0 z-30 px-6 pt-6 md:pt-8">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <a href="/" className="flex items-center gap-2.5 group" aria-label="Tarô 78 Chaves">
+            <img
+              src={brandIcon}
+              alt=""
+              aria-hidden="true"
+              className="w-7 h-7 md:w-8 md:h-8 object-contain opacity-90 group-hover:opacity-100 transition-opacity"
+            />
+            <span className="font-heading text-[11px] md:text-xs tracking-[0.28em] uppercase text-[#5B1F3D] font-semibold">
+              Tarô <span className="text-gold-dark">78</span> Chaves
+            </span>
+          </a>
+          <button
+            onClick={handleStart}
+            className="hidden md:inline-flex items-center font-heading text-[10px] tracking-[0.25em] uppercase text-[#5B1F3D] hover:text-gold-dark transition-colors"
+          >
+            Entrar →
+          </button>
+        </div>
+      </header>
+
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-20 pb-24 md:pt-32 md:pb-40 px-6 overflow-hidden">
+      <section className="relative pt-28 pb-24 md:pt-36 md:pb-40 px-6 overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
           <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-gold/30 blur-[120px]" />
           <div className="absolute bottom-[10%] right-[-5%] w-[40%] h-[40%] rounded-full bg-secondary/10 blur-[100px]" />
