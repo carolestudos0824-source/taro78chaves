@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 interface XPBarProps {
   xp: number;
