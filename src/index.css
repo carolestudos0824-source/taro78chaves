@@ -102,6 +102,15 @@
 
   html {
     font-size: 17px;
+    transition: font-size 0.2s ease-in-out;
+  }
+
+  html.font-large {
+    font-size: 19px;
+  }
+
+  html.font-xl {
+    font-size: 21px;
   }
 
   body {
