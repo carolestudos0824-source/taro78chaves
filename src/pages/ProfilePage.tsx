@@ -20,9 +20,11 @@ const ProfilePage = () => {
   const [searchParams] = useSearchParams();
   const { isAdmin } = useIsAdmin();
   const { progress, completedCount, journeyProgress } = useProgress();
-  const { isPremium, premiumUntil } = usePremium();
+  const { isPremium, premiumUntil, premiumSource } = usePremium();
   const { signOut } = useAuth();
   const [portalLoading, setPortalLoading] = useState(false);
+
+  const isStripeManaged = premiumSource === "store_monthly" || premiumSource === "store_annual";
 
   useEffect(() => {
     if (searchParams.get("checkout") === "success") {
@@ -33,14 +35,19 @@ const ProfilePage = () => {
   const handleOpenPortal = async () => {
     setPortalLoading(true);
     try {
-      const { data } = await supabase.functions.invoke("stripe-customer-portal", { body: {} });
-      if (data?.url) window.location.href = data.url;
-    } catch (e) {
+      const { data, error } = await supabase.functions.invoke("stripe-customer-portal", { body: {} });
+      if (error || !data?.url) {
+        toast.error("Sua assinatura não é gerenciada via Stripe. Fale com o suporte.");
+        return;
+      }
+      window.location.href = data.url;
+    } catch {
       toast.error("Erro ao abrir portal.");
     } finally {
       setPortalLoading(false);
     }
   };
+
 
   const earnedBadges = progress.badges.filter(b => b.earned);
   const untilFormatted = premiumUntil ? new Date(premiumUntil).toLocaleDateString("pt-BR") : null;
@@ -111,10 +118,15 @@ const ProfilePage = () => {
               {isPremium && untilFormatted && <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Renova em {untilFormatted}</p>}
             </div>
             {isPremium ? (
-              <Button onClick={handleOpenPortal} disabled={portalLoading} variant="outline" className="btn-outline-gold px-6">Gerenciar</Button>
+              isStripeManaged ? (
+                <Button onClick={handleOpenPortal} disabled={portalLoading} variant="outline" className="btn-outline-gold px-6">Gerenciar</Button>
+              ) : (
+                <span className="text-[10px] font-heading tracking-widest uppercase text-gold-dark/70">Cortesia</span>
+              )
             ) : (
               <Button onClick={() => navigate("/premium")} className="btn-premium px-8">Upgrade</Button>
             )}
+
           </div>
         </div>
 
