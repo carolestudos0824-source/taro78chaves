@@ -31,9 +31,10 @@ interface ContinuityCardProps {
   hasUnfinishedReview: boolean;
   /** Full completed lessons array for smart suggestions */
   completedLessonIds?: string[];
+  currentModuleId?: string;
 }
 
-function findNextLessonSuggestion(completedLessonIds: string[]): { label: string; subtitle: string; path: string } | null {
+function findNextLessonSuggestion(completedLessonIds: string[], currentModuleId?: string): { label: string; subtitle: string; path: string } | null {
   // Check each module in order for in-progress work
   for (const mod of MODULES) {
     const mapping = MODULE_PREFIX_MAP[mod.id];
@@ -87,7 +88,7 @@ function findNextLessonSuggestion(completedLessonIds: string[]): { label: string
   return null;
 }
 
-const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, completedQuizzes, hasUnfinishedReview, completedLessonIds }: ContinuityCardProps) => {
+const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, completedQuizzes, hasUnfinishedReview, completedLessonIds, currentModuleId }: ContinuityCardProps) => {
   const navigate = useNavigate();
 
   const actions: Array<{
@@ -100,7 +101,7 @@ const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, comple
 
   // Smart suggestion based on all completed lessons
   if (completedLessonIds && completedLessonIds.length > 0) {
-    const suggestion = findNextLessonSuggestion(completedLessonIds);
+    const suggestion = findNextLessonSuggestion(completedLessonIds, currentModuleId);
     if (suggestion) {
       actions.push({ ...suggestion, icon: ArrowRight, priority: 1 });
     }

@@ -50,10 +50,10 @@ const BetaFeedback = () => {
 
   return (
     <>
-      {/* Floating button */}
+      {/* Floating button — hidden on mobile to avoid competition with BottomNav */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-5 right-5 z-50 w-11 h-11 rounded-full flex items-center justify-center transition-all active:scale-95"
+        className="hidden md:flex fixed bottom-5 right-5 z-50 w-11 h-11 rounded-full items-center justify-center transition-all active:scale-95"
         style={{
           background: "linear-gradient(135deg, hsl(340 42% 28%), hsl(280 30% 28%))",
           boxShadow: "0 4px 16px hsl(340 42% 28% / 0.25)",

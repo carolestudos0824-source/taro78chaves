@@ -34,13 +34,13 @@ const BottomNav = () => {
               onClick={() => navigate(item.path)}
               className="flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg transition-all"
               style={{
-                color: isActive ? "hsl(340 42% 28%)" : "hsl(230 15% 40% / 0.40)",
+                color: isActive ? "hsl(340 50% 30%)" : "hsl(340 40% 25% / 0.55)",
               }}
             >
               <Icon className="w-5 h-5" strokeWidth={isActive ? 2.2 : 1.5} />
               <span className="text-[9px] font-heading tracking-wider">{item.label}</span>
               {isActive && (
-                <div className="w-1 h-1 rounded-full mt-0.5" style={{ background: "hsl(340 42% 28%)" }} />
+                <div className="w-1 h-1 rounded-full mt-0.5" style={{ background: "hsl(340 50% 30%)" }} />
               )}
             </button>
           );
