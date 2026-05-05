@@ -22,6 +22,14 @@ const PremiumPage = () => {
   const [loading, setLoading] = useState(false);
 
   const handleSubscribe = async (plan: "monthly" | "yearly") => {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      toast.info("Entre na sua conta para assinar.");
+      navigate("/auth?redirect=/premium");
+      return;
+    }
+
     if (isPremium) {
       setLoading(true);
       try {
@@ -48,7 +56,18 @@ const PremiumPage = () => {
       const { data, error } = await supabase.functions.invoke("stripe-create-checkout", {
         body: { plan },
       });
-      if (error) throw error;
+      
+      if (error) {
+        // Detailed error message from function
+        const msg = error.message || "";
+        if (msg.includes("401")) {
+          toast.info("Sua sessão expirou. Entre novamente.");
+          navigate("/auth");
+          return;
+        }
+        throw error;
+      }
+
       if (data?.url) {
         window.location.href = data.url;
       } else {
@@ -56,7 +75,7 @@ const PremiumPage = () => {
       }
     } catch (e) {
       console.error("Erro no checkout:", e);
-      toast.error("Erro ao iniciar pagamento. Tente novamente.");
+      toast.error("Não foi possível abrir o checkout. Tente novamente ou fale com suporte.");
     } finally {
       setLoading(false);
     }
