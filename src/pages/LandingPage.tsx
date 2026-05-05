@@ -56,9 +56,32 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-parchment text-midnight selection:bg-secondary selection:text-white">
-      
+
+      {/* ─── Top Brand Header ─── */}
+      <header className="absolute top-0 left-0 right-0 z-30 px-6 pt-6 md:pt-8">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <a href="/" className="flex items-center gap-2.5 group" aria-label="Tarô 78 Chaves">
+            <img
+              src={brandIcon}
+              alt=""
+              aria-hidden="true"
+              className="w-7 h-7 md:w-8 md:h-8 object-contain opacity-90 group-hover:opacity-100 transition-opacity"
+            />
+            <span className="font-heading text-[11px] md:text-xs tracking-[0.28em] uppercase text-[#5B1F3D] font-semibold">
+              Tarô <span className="text-gold-dark">78</span> Chaves
+            </span>
+          </a>
+          <button
+            onClick={handleStart}
+            className="hidden md:inline-flex items-center font-heading text-[10px] tracking-[0.25em] uppercase text-[#5B1F3D] hover:text-gold-dark transition-colors"
+          >
+            Entrar →
+          </button>
+        </div>
+      </header>
+
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-20 pb-24 md:pt-32 md:pb-40 px-6 overflow-hidden">
+      <section className="relative pt-28 pb-24 md:pt-36 md:pb-40 px-6 overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
           <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-gold/30 blur-[120px]" />
           <div className="absolute bottom-[10%] right-[-5%] w-[40%] h-[40%] rounded-full bg-secondary/10 blur-[100px]" />
@@ -74,20 +97,18 @@ const LandingPage = () => {
                 </span>
               </div>
 
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-midnight">
-                Aprenda tarô<br />
-                <span className="italic font-medium text-[#5B1F3D]">de forma progressiva</span><br />
-                e viva.
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-midnight normal-case">
+                Aprenda a ler o tarô{" "}
+                <span className="italic font-medium text-[#5B1F3D]">de verdade.</span>
               </h1>
 
               <div className="space-y-8 max-w-xl mx-auto lg:mx-0">
                 <div className="space-y-4">
-                  <p className="text-lg font-body font-semibold text-[#5B1F3D] leading-snug">
-                    Um app de estudo guiado para aprender Rider-Waite-Smith carta por carta, com lições, quizzes e progresso.
+                  <p className="text-lg font-body font-medium text-[#5B1F3D] leading-snug">
+                    Um caminho guiado pelo Rider-Waite-Smith para parar de decorar significados soltos e começar a interpretar carta por carta.
                   </p>
-                  <p className="text-base font-body text-[#2d1810] opacity-90 max-w-md mx-auto lg:mx-0">
-                    Você para de decorar. Começa a compreender.<br/>
-                    Uma carta por vez, com método e profundidade.
+                  <p className="text-base font-body text-[#2d1810] opacity-80 max-w-md mx-auto lg:mx-0">
+                    Estudo guiado, com método. Uma carta por vez, com profundidade e prática.
                   </p>
                 </div>
 
@@ -187,7 +208,7 @@ const LandingPage = () => {
             <p className="text-muted-foreground max-w-2xl mx-auto font-body">Uma jornada progressiva para aprender tarô carta por carta, com clareza, prática e profundidade.</p>
           </div>
 
-          <div className="flex overflow-x-auto gap-4 md:gap-6 pb-12 px-4 scrollbar-hide snap-x items-end min-h-[340px]">
+          <div className="flex overflow-x-auto gap-4 md:gap-6 pb-8 px-4 scrollbar-elegant snap-x items-end min-h-[340px]">
             {[
               { id: 0, img: imgLouco, name: "O Louco", badge: "Grátis" },
               { id: 1, img: imgMago, name: "O Mago", badge: "Desbloqueável" },
