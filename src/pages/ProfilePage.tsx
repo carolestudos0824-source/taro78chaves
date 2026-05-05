@@ -118,10 +118,15 @@ const ProfilePage = () => {
               {isPremium && untilFormatted && <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Renova em {untilFormatted}</p>}
             </div>
             {isPremium ? (
-              <Button onClick={handleOpenPortal} disabled={portalLoading} variant="outline" className="btn-outline-gold px-6">Gerenciar</Button>
+              isStripeManaged ? (
+                <Button onClick={handleOpenPortal} disabled={portalLoading} variant="outline" className="btn-outline-gold px-6">Gerenciar</Button>
+              ) : (
+                <span className="text-[10px] font-heading tracking-widest uppercase text-gold-dark/70">Cortesia</span>
+              )
             ) : (
               <Button onClick={() => navigate("/premium")} className="btn-premium px-8">Upgrade</Button>
             )}
+
           </div>
         </div>
 
