@@ -78,8 +78,8 @@ function findNextLessonSuggestion(completedLessonIds: string[]): { label: string
   // If no module is in progress, suggest the first unlocked but not started module
   if (completedLessonIds.length === 0) {
     return {
-      label: "Começar: O Louco",
-      subtitle: "Sua primeira lição",
+      label: "Começar pelo Louco — Grátis",
+      subtitle: "Seu primeiro arcano é gratuito. Faça a lição e desbloqueie O Mago.",
       path: "/lesson/0",
     };
   }

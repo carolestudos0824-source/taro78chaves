@@ -94,6 +94,14 @@ const ModulesPage = () => {
           <BetaWelcomeBanner />
           <SmartReviewCard />
           
+          {progress.completedLessons.length === 0 && (
+            <div className="bg-gold/5 border border-gold/20 rounded-2xl p-4 text-center space-y-2">
+              <p className="text-[11px] font-medium text-gold-dark/80 italic">
+                ✦ Comece pelo Louco grátis. Vá bem e desbloqueie O Mago. Continue a jornada completa no Premium.
+              </p>
+            </div>
+          )}
+          
           {/* ─── Hero Visuals ─── */}
           <div className="flex justify-center -space-x-4 py-4 opacity-80 scale-90">
             <img src={imgLouco} alt="" className="w-20 rounded-xl shadow-2xl -rotate-12 border-2 border-white/50" />
@@ -156,7 +164,12 @@ const ModulesPage = () => {
                               <h3 className={`font-heading text-sm tracking-tight ${isCurrent ? "text-midnight" : "text-midnight/60"}`}>
                                 {mod.name}
                               </h3>
-                              {!unlocked && !isCompleted && (
+                              {mod.id === "arcanos-maiores" && (
+                                <span className="text-[8px] font-heading tracking-widest uppercase px-1.5 py-0.5 rounded-full bg-orange-500/10 text-orange-600 border border-orange-500/10 ml-auto shrink-0">
+                                  Contém Lição Grátis
+                                </span>
+                              )}
+                              {!unlocked && !isCompleted && mod.id !== "arcanos-maiores" && (
                                 <span className="text-[8px] font-heading tracking-widest uppercase px-1.5 py-0.5 rounded-full bg-secondary/10 text-secondary border border-secondary/10 ml-auto shrink-0">
                                   Premium
                                 </span>
@@ -167,7 +180,11 @@ const ModulesPage = () => {
                                 </span>
                               )}
                             </div>
-                            <p className="text-[11px] font-body text-muted-foreground line-clamp-1">{mod.subtitle}</p>
+                            <p className="text-[11px] font-body text-muted-foreground line-clamp-1">
+                              {mod.id === "arcanos-maiores" && progress.completedLessons.length === 0 
+                                ? "Comece pelo Louco gratuitamente e inicie sua jornada." 
+                                : mod.subtitle}
+                            </p>
                             
                             {isCurrent && prog > 0 && (
                               <div className="mt-3 h-1 rounded-full bg-gold/10 overflow-hidden">
