@@ -360,21 +360,21 @@ const LandingPage = () => {
                 ✦ MELHOR VALOR
               </div>
               <div className="space-y-2">
-                <h3 className="t-section-title text-gold-dark font-bold uppercase tracking-widest">Plano Anual</h3>
+                <h3 className="t-section-title text-gold-dark font-bold uppercase tracking-widest">Acesso Anual</h3>
                 <div className="flex items-baseline gap-1">
                   <span className="text-6xl font-heading text-midnight">R$197</span>
-                  <span className="text-sm text-midnight/40">/ano</span>
+                  <span className="text-sm text-midnight/40">/pagamento único</span>
                 </div>
                 <div className="space-y-1">
                   <p className="text-sm font-bold text-[#5B1F3D] tracking-tight">
-                    = R$16,42/mês • Economia de 45%
+                    12 meses de acesso • Sem renovação automática
                   </p>
-                  <p className="text-[12px] font-bold text-[#5B1F3D]">Menos de R$0,55 por dia.</p>
+                  <p className="text-[12px] font-bold text-[#5B1F3D]">Economia de 45% em relação ao mensal.</p>
                 </div>
               </div>
-              <p className="text-sm text-midnight/80 flex-1 font-body leading-relaxed">Acesso anual à jornada completa pelos 78 arcanos, com estudo guiado, quizzes e progresso salvo.</p>
+              <p className="text-sm text-midnight/80 flex-1 font-body leading-relaxed">Acesso total à jornada completa pelos 78 arcanos por um ano inteiro, com estudo guiado, quizzes e progresso salvo.</p>
               <Button onClick={() => handleSubscribe("annual")} className="btn-premium w-full py-8 text-sm shadow-xl hover:scale-[1.02] transition-transform">
-                ASSINAR ANUAL →
+                DESPERTAR O ORÁCULO →
               </Button>
             </div>
           </div>
@@ -555,7 +555,7 @@ const LandingPage = () => {
             <AccordionItem value="item-6" className="border-gold/20">
               <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Como funciona o cancelamento?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/70">
-                Você pode gerenciar ou cancelar sua assinatura pelo perfil dentro do app.
+                Se você assinou o Plano Mensal, pode gerenciar ou cancelar a qualquer momento pelo seu perfil. O Acesso Anual é um pagamento único sem renovação automática.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
