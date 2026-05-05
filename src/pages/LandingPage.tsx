@@ -153,6 +153,28 @@ const LandingPage = () => {
         </div>
       </section>
 
+      {/* ─── Pain Section ─── */}
+      <section className="py-20 px-6 bg-[#FDFBF7]">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white/60 backdrop-blur-sm border border-gold/10 p-10 md:p-16 rounded-[3rem] text-center space-y-8 shadow-sm">
+            <h2 className="font-heading text-3xl md:text-4xl text-midnight leading-tight">
+              Você já tentou aprender tarô e ficou <span className="italic text-[#4A1528]">mais confusa?</span>
+            </h2>
+            <div className="space-y-6 max-w-2xl mx-auto">
+              <p className="text-lg font-body text-midnight/70 leading-relaxed">
+                Vídeos soltos, listas de palavras-chave e significados decorados até ajudam no começo. Mas na hora de fazer uma leitura real, tudo parece escapar.
+              </p>
+              <div className="pt-4 border-t border-gold/10">
+                <p className="text-xl font-heading text-[#4A1528] tracking-wide">
+                  O problema não é falta de intuição.<br className="hidden md:block" />
+                  <span className="font-bold">É falta de método.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── Journey Map Section ─── */}
       <section className="py-24 bg-white/30 border-y border-gold/10 relative overflow-hidden">
         <div className="absolute top-1/2 left-0 w-full h-px bg-gold/10 -translate-y-1/2 z-0" />
@@ -218,50 +240,50 @@ const LandingPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
               <div className="w-12 h-12 bg-[#4A1528]/5 rounded-2xl flex items-center justify-center">
-                <Layers className="w-6 h-6 text-[#4A1528]" />
+                <Eye className="w-6 h-6 text-[#4A1528]" />
               </div>
-              <h3 className="font-heading text-xl text-midnight">78 cartas, uma por uma</h3>
-              <p className="text-sm text-midnight/70 font-body">Estude Arcanos Maiores, Arcanos Menores e Cartas da Corte em uma jornada clara e progressiva.</p>
-            </div>
-
-            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
-              <div className="w-12 h-12 bg-[#C9A96E]/10 rounded-2xl flex items-center justify-center">
-                <BookOpen className="w-6 h-6 text-[#C9A96E]" />
-              </div>
-              <h3 className="font-heading text-xl text-midnight">Lições completas</h3>
-              <p className="text-sm text-midnight/70 font-body">Cada arcano traz essência, símbolos, luz, sombra e aplicação prática para leitura.</p>
-            </div>
-
-            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
-              <div className="w-12 h-12 bg-[#4A1528]/5 rounded-2xl flex items-center justify-center">
-                <Star className="w-6 h-6 text-[#4A1528]" />
-              </div>
-              <h3 className="font-heading text-xl text-midnight">Símbolos explicados</h3>
-              <p className="text-sm text-midnight/70 font-body">Aprenda a enxergar a carta Rider-Waite-Smith em vez de apenas memorizar palavras-chave.</p>
+              <h3 className="font-heading text-xl text-midnight">Você aprende pela imagem</h3>
+              <p className="text-sm text-midnight/70 font-body">Em vez de decorar palavras-chave, você aprende a observar símbolos, cenas e movimentos da carta Rider-Waite-Smith.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
               <div className="w-12 h-12 bg-[#C9A96E]/10 rounded-2xl flex items-center justify-center">
                 <Check className="w-6 h-6 text-[#C9A96E]" />
               </div>
-              <h3 className="font-heading text-xl text-midnight">Quizzes que fixam</h3>
-              <p className="text-sm text-midnight/70 font-body">Teste sua compreensão com feedback imediato e avance com mais segurança.</p>
+              <h3 className="font-heading text-xl text-midnight">Você pratica antes de avançar</h3>
+              <p className="text-sm text-midnight/70 font-body">Cada lição testa sua compreensão com quiz e feedback. Para desbloquear O Mago, você precisa ir bem no Louco.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
               <div className="w-12 h-12 bg-[#4A1528]/5 rounded-2xl flex items-center justify-center">
-                <Flame className="w-6 h-6 text-[#4A1528]" />
+                <Target className="w-6 h-6 text-[#4A1528]" />
               </div>
-              <h3 className="font-heading text-xl text-midnight">XP, sequência e progresso</h3>
-              <p className="text-sm text-midnight/70 font-body">Acompanhe sua evolução, mantenha o hábito diário e veja sua jornada avançar.</p>
+              <h3 className="font-heading text-xl text-midnight">Você segue uma jornada real</h3>
+              <p className="text-sm text-midnight/70 font-body">XP, sequência diária, progresso salvo e desbloqueios mantêm seu estudo vivo — uma carta por vez, sem se perder.</p>
+            </div>
+
+            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
+              <div className="w-12 h-12 bg-[#C9A96E]/10 rounded-2xl flex items-center justify-center">
+                <Layers className="w-6 h-6 text-[#C9A96E]" />
+              </div>
+              <h3 className="font-heading text-xl text-midnight">78 cartas, uma por uma</h3>
+              <p className="text-sm text-midnight/70 font-body">Não é uma lista de significados. É uma jornada guiada por Arcanos Maiores, Menores e Corte no seu ritmo.</p>
+            </div>
+
+            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
+              <div className="w-12 h-12 bg-[#4A1528]/5 rounded-2xl flex items-center justify-center">
+                <BookOpen className="w-6 h-6 text-[#4A1528]" />
+              </div>
+              <h3 className="font-heading text-xl text-midnight">Lições que ensinam a olhar</h3>
+              <p className="text-sm text-midnight/70 font-body">Cada arcano traz essência, símbolos, luz e sombra aplicados ao amor, trabalho e vida prática.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
               <div className="w-12 h-12 bg-[#C9A96E]/10 rounded-2xl flex items-center justify-center">
                 <Award className="w-6 h-6 text-[#C9A96E]" />
               </div>
-              <h3 className="font-heading text-xl text-midnight">Desbloqueios por desempenho</h3>
-              <p className="text-sm text-midnight/70 font-body">Comece pelo Louco grátis, desbloqueie O Mago se for bem e continue a jornada completa no premium.</p>
+              <h3 className="font-heading text-xl text-midnight">Saia da "decoreba"</h3>
+              <p className="text-sm text-midnight/70 font-body">Aprenda a lógica por trás de cada arcano para que a interpretação flua com mais naturalidade e confiança.</p>
             </div>
           </div>
 
@@ -281,8 +303,8 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Pricing Section ─── */}
-      <section className="py-32 px-6 bg-midnight text-parchment relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-[#4A1528]/10 blur-[150px] rounded-full" />
+      <section className="py-32 px-6 bg-[#4A1528] text-parchment relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-white/5 blur-[150px] rounded-full" />
         
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-16">
           <div className="space-y-4">
