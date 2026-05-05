@@ -136,7 +136,7 @@ const ProfilePage = () => {
             {isAdmin ? (
               <span className="text-[10px] font-heading tracking-widest uppercase text-accent font-bold">Admin</span>
             ) : isPremium ? (
-              isStripeManaged ? (
+              isStripeRecurring ? (
                 <Button 
                   onClick={handleOpenPortal} 
                   disabled={portalLoading} 
@@ -145,6 +145,11 @@ const ProfilePage = () => {
                 >
                   Gerenciar
                 </Button>
+              ) : isOneTimeAnnual ? (
+                <div className="flex flex-col items-end gap-1">
+                  <span className="text-[10px] font-heading tracking-widest uppercase text-gold-dark/70">Pagamento Único</span>
+                  <span className="text-[8px] text-muted-foreground opacity-50">Sem renovação automática</span>
+                </div>
               ) : (
                 <div className="flex flex-col items-end gap-1">
                   <span className="text-[10px] font-heading tracking-widest uppercase text-gold-dark/70">Cortesia</span>
