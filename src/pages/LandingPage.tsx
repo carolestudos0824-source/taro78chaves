@@ -618,8 +618,12 @@ const LandingPage = () => {
       <footer className="py-20 px-6 text-center space-y-12 border-t border-gold/10">
         <div className="space-y-4 flex flex-col items-center">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-plum flex items-center justify-center border border-gold/30">
-              <Key className="w-7 h-7 text-gold" strokeWidth={1.5} />
+            <div className="w-12 h-12 flex items-center justify-center">
+              <img 
+                src={brandIcon} 
+                alt="Ícone Tarô 78 Chaves" 
+                className="w-full h-full object-contain" 
+              />
             </div>
             <div className="text-left">
               <span className="font-heading text-xl tracking-tight text-plum font-bold block leading-none">
