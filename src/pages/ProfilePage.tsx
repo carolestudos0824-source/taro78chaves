@@ -24,8 +24,9 @@ const ProfilePage = () => {
   const { signOut } = useAuth();
   const [portalLoading, setPortalLoading] = useState(false);
 
-  // Regra segura: só é Stripe se tiver o ID do cliente e o source não for admin/gift/cortesia
-  const isStripeManaged = isPremium && !!stripeCustomerId && !["admin", "gift", "preview-auditor"].includes(premiumSource || "");
+  // Regra segura: só é Stripe Recurring se tiver o ID do cliente e o source for store_monthly ou store_annual (recorrentes)
+  const isStripeRecurring = isPremium && !!stripeCustomerId && ["store_monthly", "store_annual"].includes(premiumSource || "");
+  const isOneTimeAnnual = premiumSource === "store_annual_one_time";
 
   useEffect(() => {
     if (searchParams.get("checkout") === "success") {
@@ -127,7 +128,7 @@ const ProfilePage = () => {
               </h3>
               {isPremium && untilFormatted && (
                 <p className="text-[10px] text-muted-foreground uppercase tracking-wider">
-                  {isStripeManaged ? `Renova em ${untilFormatted}` : "Acesso vitalício ou cortesia"}
+                  {isStripeRecurring ? `Renova em ${untilFormatted}` : (isOneTimeAnnual ? `Acesso até ${untilFormatted}` : "Acesso vitalício ou cortesia")}
                 </p>
               )}
             </div>
@@ -135,7 +136,7 @@ const ProfilePage = () => {
             {isAdmin ? (
               <span className="text-[10px] font-heading tracking-widest uppercase text-accent font-bold">Admin</span>
             ) : isPremium ? (
-              isStripeManaged ? (
+              isStripeRecurring ? (
                 <Button 
                   onClick={handleOpenPortal} 
                   disabled={portalLoading} 
@@ -144,6 +145,11 @@ const ProfilePage = () => {
                 >
                   Gerenciar
                 </Button>
+              ) : isOneTimeAnnual ? (
+                <div className="flex flex-col items-end gap-1">
+                  <span className="text-[10px] font-heading tracking-widest uppercase text-gold-dark/70">Pagamento Único</span>
+                  <span className="text-[8px] text-muted-foreground opacity-50">Sem renovação automática</span>
+                </div>
               ) : (
                 <div className="flex flex-col items-end gap-1">
                   <span className="text-[10px] font-heading tracking-widest uppercase text-gold-dark/70">Cortesia</span>

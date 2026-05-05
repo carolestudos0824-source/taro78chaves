@@ -100,6 +100,8 @@ Deno.serve(async (req) => {
         metadata: { user_id: userId, plan_code: plan, origin: "lovable_web" },
       },
     } : {
+      // For mode 'payment', metadata is typically on the session. 
+      // We can also put it on the payment_intent if needed.
       payment_intent_data: {
         metadata: { user_id: userId, plan_code: plan, origin: "lovable_web" },
       },
