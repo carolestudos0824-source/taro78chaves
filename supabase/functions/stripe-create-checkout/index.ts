@@ -70,6 +70,11 @@ Deno.serve(async (req) => {
   }
 
   const stripe = new Stripe(STRIPE_SECRET, { apiVersion: "2024-12-18.acacia" });
+  
+  // Fetch price to determine mode (subscription vs payment)
+  const price = await stripe.prices.retrieve(priceId);
+  const isRecurring = price.type === "recurring";
+  const mode = isRecurring ? "subscription" : "payment";
 
   // Reuse existing customer when possible
   let customerId: string | undefined;
@@ -83,16 +88,22 @@ Deno.serve(async (req) => {
   const cancelUrl = `${origin}/premium?checkout=cancelled`;
 
   const session = await stripe.checkout.sessions.create({
-    mode: "subscription",
+    mode,
     customer: customerId,
     customer_email: customerId ? undefined : userEmail,
     line_items: [{ price: priceId, quantity: 1 }],
     success_url: successUrl,
     cancel_url: cancelUrl,
     // Metadata flows to subscription via subscription_data — webhook reads it.
-    subscription_data: {
-      metadata: { user_id: userId, plan_code: plan, origin: "lovable_web" },
-    },
+    ...(isRecurring ? {
+      subscription_data: {
+        metadata: { user_id: userId, plan_code: plan, origin: "lovable_web" },
+      },
+    } : {
+      payment_intent_data: {
+        metadata: { user_id: userId, plan_code: plan, origin: "lovable_web" },
+      },
+    }),
     metadata: { user_id: userId, plan_code: plan, origin: "lovable_web" },
   });
 
