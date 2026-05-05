@@ -99,7 +99,7 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             
-            <div className="text-center lg:text-left space-y-10 order-2 lg:order-1">
+            <div className="text-center lg:text-left space-y-6 md:space-y-8 order-2 lg:order-1">
               {/* Symbolic Badge */}
               <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in">
                 <Sparkles className="w-4 h-4 text-gold-dark" />
@@ -108,8 +108,8 @@ const LandingPage = () => {
                 </span>
               </div>
 
-              <div className="space-y-4">
-                <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-plum normal-case">
+              <div className="space-y-3 md:space-y-4">
+                <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl leading-[1.1] tracking-tight text-plum normal-case">
                   Abra o primeiro portal do tarô.
                 </h1>
                 <p className="font-heading text-2xl md:text-3xl lg:text-4xl text-gold-dark font-medium italic">
@@ -117,8 +117,8 @@ const LandingPage = () => {
                 </p>
               </div>
 
-              <div className="space-y-8 max-w-2xl mx-auto lg:mx-0">
-                <div className="space-y-6">
+              <div className="space-y-6 md:space-y-8 max-w-2xl mx-auto lg:mx-0">
+                <div className="space-y-4 md:space-y-6">
                   <p className="text-lg md:text-xl font-body text-foreground leading-relaxed">
                     Um caminho guiado pelo Rider-Waite-Smith para parar de decorar significados soltos e começar a interpretar carta por carta — com método, prática, quizzes e progresso.
                   </p>
