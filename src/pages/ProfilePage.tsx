@@ -20,11 +20,12 @@ const ProfilePage = () => {
   const [searchParams] = useSearchParams();
   const { isAdmin } = useIsAdmin();
   const { progress, completedCount, journeyProgress } = useProgress();
-  const { isPremium, premiumUntil, premiumSource } = usePremium();
+  const { isPremium, premiumUntil, premiumSource, stripeCustomerId } = usePremium();
   const { signOut } = useAuth();
   const [portalLoading, setPortalLoading] = useState(false);
 
-  const isStripeManaged = premiumSource === "store_monthly" || premiumSource === "store_annual";
+  // Regra segura: só é Stripe se tiver o ID do cliente e o source não for admin/gift
+  const isStripeManaged = isPremium && !!stripeCustomerId && !["admin", "gift"].includes(premiumSource || "");
 
   useEffect(() => {
     if (searchParams.get("checkout") === "success") {
@@ -33,11 +34,16 @@ const ProfilePage = () => {
   }, [searchParams]);
 
   const handleOpenPortal = async () => {
+    if (!stripeCustomerId) {
+      toast.error("Seu acesso não é gerenciado via Stripe. Fale com o suporte.");
+      return;
+    }
+
     setPortalLoading(true);
     try {
       const { data, error } = await supabase.functions.invoke("stripe-customer-portal", { body: {} });
       if (error || !data?.url) {
-        toast.error("Sua assinatura não é gerenciada via Stripe. Fale com o suporte.");
+        toast.error("Erro ao acessar o portal de pagamentos.");
         return;
       }
       window.location.href = data.url;
@@ -111,17 +117,38 @@ const ProfilePage = () => {
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <p className="text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark">Seu Acesso</p>
+                <p className="text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark">
+                  {isAdmin ? "Acesso administrativo" : "Seu Acesso"}
+                </p>
                 {isPremium && <Crown className="w-3 h-3 text-gold" />}
               </div>
-              <h3 className="font-heading text-lg text-midnight">{isPremium ? "Jornada Completa" : "Plano Gratuito"}</h3>
-              {isPremium && untilFormatted && <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Renova em {untilFormatted}</p>}
+              <h3 className="font-heading text-lg text-midnight">
+                {isAdmin ? "Admin Total" : (isPremium ? "Jornada Completa" : "Plano Gratuito")}
+              </h3>
+              {isPremium && untilFormatted && (
+                <p className="text-[10px] text-muted-foreground uppercase tracking-wider">
+                  {isStripeManaged ? `Renova em ${untilFormatted}` : "Acesso vitalício ou cortesia"}
+                </p>
+              )}
             </div>
-            {isPremium ? (
+
+            {isAdmin ? (
+              <span className="text-[10px] font-heading tracking-widest uppercase text-accent font-bold">Admin</span>
+            ) : isPremium ? (
               isStripeManaged ? (
-                <Button onClick={handleOpenPortal} disabled={portalLoading} variant="outline" className="btn-outline-gold px-6">Gerenciar</Button>
+                <Button 
+                  onClick={handleOpenPortal} 
+                  disabled={portalLoading} 
+                  variant="outline" 
+                  className="btn-outline-gold px-6"
+                >
+                  Gerenciar
+                </Button>
               ) : (
-                <span className="text-[10px] font-heading tracking-widest uppercase text-gold-dark/70">Cortesia</span>
+                <div className="flex flex-col items-end gap-1">
+                  <span className="text-[10px] font-heading tracking-widest uppercase text-gold-dark/70">Cortesia</span>
+                  <span className="text-[8px] text-muted-foreground opacity-50">Não gerenciado via Stripe</span>
+                </div>
               )
             ) : (
               <Button onClick={() => navigate("/premium")} className="btn-premium px-8">Upgrade</Button>
