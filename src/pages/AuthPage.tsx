@@ -4,7 +4,8 @@ import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Crown, ArrowLeft, Eye, EyeOff } from "lucide-react";
+import { ArrowLeft, Eye, EyeOff } from "lucide-react";
+import brandIcon from "@/assets/brand-icon.png";
 
 const AuthPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -86,10 +87,12 @@ const AuthPage = () => {
         </button>
 
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mx-auto bg-white/50 border border-gold/20 shadow-sm">
-            <Crown className="w-6 h-6 text-gold-dark" />
-          </div>
-          <h1 className="font-heading text-2xl tracking-wide text-midnight">
+          <img
+            src={brandIcon}
+            alt="Tarô 78 Chaves"
+            className="w-20 h-20 mx-auto rounded-2xl shadow-sm"
+          />
+          <h1 className="font-heading text-2xl tracking-wide text-secondary">
             {mode === "signup" ? "Criar conta" : mode === "login" ? "Entrar" : "Recuperar senha"}
           </h1>
           <div className="space-y-2">
