@@ -14,11 +14,11 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["Cinzel", "serif"],
-        display: ["Cormorant Garamond", "Georgia", "serif"],
-        body: ["DM Sans", "Inter", "system-ui", "sans-serif"],
-        sans: ["DM Sans", "Inter", "system-ui", "sans-serif"],
-        accent: ["Cormorant Garamond", "serif"],
+        heading: ["Cinzel", "Cormorant Garamond", "Georgia", "serif"],
+        display: ["Cinzel", "Cormorant Garamond", "Georgia", "serif"],
+        body: ["Lora", "Cormorant Garamond", "Georgia", "serif"],
+        sans: ["Lora", "Inter", "system-ui", "sans-serif"],
+        accent: ["Cormorant Garamond", "Lora", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
