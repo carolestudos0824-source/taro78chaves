@@ -612,8 +612,20 @@ const LandingPage = () => {
       {/* ─── Footer ─── */}
       <footer className="py-20 px-6 text-center space-y-12 border-t border-gold/10">
         <div className="space-y-4 flex flex-col items-center">
-          <img src={brandLogo} alt="Tarô 78 Chaves — Sua jornada. Seu ritmo. Seu tarô." className="w-40 h-auto opacity-90" />
-          <p className="t-section-title">A jornada viva pelos arcanos</p>
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-xl bg-plum flex items-center justify-center border border-gold/30">
+              <Key className="w-7 h-7 text-gold" strokeWidth={1.5} />
+            </div>
+            <div className="text-left">
+              <span className="font-heading text-xl tracking-tight text-plum font-bold block leading-none">
+                Tarô 78 Chaves
+              </span>
+              <span className="font-heading text-[10px] tracking-[0.2em] uppercase text-gold-dark font-medium mt-1 block">
+                A jornada viva
+              </span>
+            </div>
+          </div>
+          <p className="t-section-title mt-4">Sua jornada. Seu ritmo. Seu tarô.</p>
         </div>
 
         <nav className="flex flex-wrap justify-center gap-8 text-[11px] font-heading tracking-widest uppercase opacity-60">
