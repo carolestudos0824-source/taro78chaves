@@ -648,10 +648,10 @@ const LandingPage = () => {
         </div>
 
         <nav className="flex flex-wrap justify-center gap-8 md:gap-12 text-[12px] font-heading tracking-[0.2em] uppercase relative z-10">
-          <a href="/privacidade" className="text-ivory/60 hover:text-gold transition-colors font-bold">Privacidade</a>
-          <a href="/termos" className="text-ivory/60 hover:text-gold transition-colors font-bold">Termos</a>
-          <a href="/suporte" className="text-ivory/60 hover:text-gold transition-colors font-bold">Suporte</a>
-          <a href="/excluir-conta" className="text-ivory/60 hover:text-gold transition-colors font-bold">Excluir conta</a>
+          <a href="/privacidade" className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Privacidade</a>
+          <a href="/termos" className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Termos</a>
+          <a href="/suporte" className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Suporte</a>
+          <a href="/excluir-conta" className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Excluir conta</a>
         </nav>
 
         <div className="pt-8 border-t border-gold/10 max-w-xs mx-auto relative z-10">
