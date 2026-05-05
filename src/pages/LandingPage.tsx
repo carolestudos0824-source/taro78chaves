@@ -314,7 +314,7 @@ const LandingPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             {/* Monthly */}
-            <div className="p-10 rounded-[2.5rem] border border-gold/20 bg-white/5 flex flex-col text-left space-y-8 backdrop-blur-sm transition-all hover:bg-white/10">
+            <div className="p-10 rounded-[2.5rem] border border-white/10 bg-white/5 flex flex-col text-left space-y-8 backdrop-blur-sm transition-all hover:bg-white/10">
               <div className="space-y-2">
                 <h3 className="t-section-title text-[#C9A96E] font-bold uppercase tracking-widest">Plano Mensal</h3>
                 <div className="flex items-baseline gap-1">
