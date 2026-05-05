@@ -88,7 +88,7 @@ function findNextLessonSuggestion(completedLessonIds: string[], currentModuleId?
   return null;
 }
 
-const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, completedQuizzes, hasUnfinishedReview, completedLessonIds }: ContinuityCardProps) => {
+const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, completedQuizzes, hasUnfinishedReview, completedLessonIds, currentModuleId }: ContinuityCardProps) => {
   const navigate = useNavigate();
 
   const actions: Array<{
