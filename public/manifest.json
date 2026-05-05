@@ -4,8 +4,8 @@
   "description": "Estudo guiado de tarô carta por carta.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FCF9F2",
-  "theme_color": "#4A1528",
+  "background_color": "#FAF5EF",
+  "theme_color": "#5B1F3D",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
