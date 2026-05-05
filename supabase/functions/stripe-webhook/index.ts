@@ -177,15 +177,31 @@ Deno.serve(async (req) => {
       internalType === "payment_succeeded" ||
       internalType === "checkout_completed"
     ) {
-      const periodEndUnix = await extractPeriodEndUnix();
-      const premium_until = periodEndUnix
-        ? new Date(periodEndUnix * 1000).toISOString()
-        : null;
+      const isOneTimeAnnual = (planCode === "yearly" || planCode === "annual") && obj.mode === "payment";
+      
+      let premium_until: string | null = null;
+
+      if (isOneTimeAnnual) {
+        // One-time annual payment: access for 12 months from now
+        const d = new Date();
+        d.setFullYear(d.getFullYear() + 1);
+        premium_until = d.toISOString();
+      } else {
+        const periodEndUnix = await extractPeriodEndUnix();
+        premium_until = periodEndUnix
+          ? new Date(periodEndUnix * 1000).toISOString()
+          : null;
+      }
+
+      const premium_source = isOneTimeAnnual 
+        ? "store_annual_one_time" 
+        : (planCode === "yearly" || planCode === "annual" ? "store_annual" : "store_monthly");
+
       await admin
         .from("profiles")
         .update({
           is_premium: true,
-          premium_source: planCode === "yearly" || planCode === "annual" ? "store_annual" : "store_monthly",
+          premium_source,
           ...(premium_until ? { premium_until } : {}),
           ...(customerId ? { stripe_customer_id: customerId } : {}),
         })
