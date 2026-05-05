@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Lock, Check, ChevronRight, Sparkles, User, Flame } from "lucide-react";
+import { Lock, Check, ChevronRight, Sparkles, User, Flame, Key } from "lucide-react";
 import { 
   MODULES_CATALOG as MODULES, 
   isModuleUnlocked, 
