@@ -25,6 +25,7 @@ import imgImperador from "@/assets/arcano-4-imperador.jpg";
 import imgHierofante from "@/assets/arcano-5-hierofante.jpg";
 import imgEnamorados from "@/assets/arcano-6-enamorados.jpg";
 import brandIcon from "@/assets/brand-icon.png";
+import brandLogo from "@/assets/brand-logo.png";
 
 const LandingPage = () => {
   const navigate = useNavigate();
