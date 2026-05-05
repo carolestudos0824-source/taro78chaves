@@ -11,12 +11,25 @@ import mysticBg from "@/assets/mystic-bg.jpg";
 import ornamentDivider from "@/assets/ornament-divider.png";
 
 const Index = () => {
-  const { progress, updateStreak, isArcanoCompleted, getCurrentArcanoId, completedCount, journeyProgress } = useProgress();
+  const { progress, loading: progressLoading, updateStreak, isArcanoCompleted, getCurrentArcanoId, completedCount, journeyProgress } = useProgress();
   const navigate = useNavigate();
 
   useEffect(() => {
-    updateStreak();
-  }, []);
+    if (!progressLoading) {
+      updateStreak();
+    }
+  }, [progressLoading]);
+
+  if (progressLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7]">
+        <div className="text-center space-y-4">
+          <div className="w-10 h-10 border-2 border-gold/20 border-t-gold animate-spin rounded-full mx-auto" />
+          <p className="text-[10px] text-gold-dark/40 font-heading tracking-widest uppercase">Lendo Arcanos</p>
+        </div>
+      </div>
+    );
+  }
 
   const currentArcanoId = getCurrentArcanoId();
   const currentArcano = ARCANOS_MAIORES.find(a => a.id === currentArcanoId);
