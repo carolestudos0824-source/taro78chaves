@@ -18,39 +18,54 @@ const PREMIUM_BENEFITS = [
 
 const PremiumPage = () => {
   const navigate = useNavigate();
-  const { isPremium } = usePremium();
+  const { isPremium, stripeCustomerId } = usePremium();
   const [loading, setLoading] = useState(false);
 
   const handleSubscribe = async (plan: "monthly" | "yearly") => {
+    if (isPremium) {
+      setLoading(true);
+      try {
+        const { data, error } = await supabase.functions.invoke("stripe-manage-subscription");
+        if (error) throw error;
+        if (data?.url) {
+          window.location.href = data.url;
+        } else {
+          toast.info("Você já possui uma assinatura ativa. Gerencie pelo seu perfil.");
+          navigate("/perfil");
+        }
+      } catch (e) {
+        console.error("Erro ao abrir portal:", e);
+        toast.info("Você já possui uma assinatura ativa. Gerencie pelo seu perfil.");
+        navigate("/perfil");
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
+
     setLoading(true);
     try {
-      const { data } = await supabase.functions.invoke("stripe-create-checkout", {
+      const { data, error } = await supabase.functions.invoke("stripe-create-checkout", {
         body: { plan },
       });
-      if (data?.url) window.location.href = data.url;
+      if (error) throw error;
+      if (data?.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error("URL de checkout não retornada.");
+      }
     } catch (e) {
-      toast.error("Erro ao iniciar pagamento.");
+      console.error("Erro no checkout:", e);
+      toast.error("Erro ao iniciar pagamento. Tente novamente.");
     } finally {
       setLoading(false);
     }
   };
 
-  if (isPremium) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-6 text-center space-y-8">
-        <div className="w-20 h-20 rounded-full bg-gold/10 border border-gold/40 flex items-center justify-center">
-          <Crown className="w-10 h-10 text-gold-dark" />
-        </div>
-        <div className="space-y-2">
-          <h1 className="font-heading text-3xl text-midnight">Sua Jornada é Ilimitada</h1>
-          <p className="text-muted-foreground max-w-xs mx-auto leading-relaxed">
-            Você tem acesso total a todos os arcanos e ferramentas da plataforma.
-          </p>
-        </div>
-        <Button onClick={() => navigate("/app")} className="btn-premium px-10 py-7">Continuar Estudando</Button>
-      </div>
-    );
-  }
+  // Se o usuário já é premium, mostramos uma versão simplificada ou redirecionamos logicamente no clique.
+  // Mantemos o visual da página para que ele veja os planos caso queira comparar/mudar (o clique tratará).
+  // Removido o block de `if (isPremium)` que escondia a página toda.
+
 
   return (
     <div className="min-h-screen pb-12">
