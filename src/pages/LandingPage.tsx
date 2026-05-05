@@ -4,7 +4,7 @@ import {
   Check, Flame, Star, Target, 
   Smartphone, BookOpen, Layers, Zap,
   Menu, X, Play, Shield, Award, HelpCircle,
-  Share, MoreVertical, PlusSquare
+  Share, MoreVertical, PlusSquare, Eye
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
