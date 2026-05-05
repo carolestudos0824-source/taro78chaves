@@ -34,7 +34,7 @@ interface ContinuityCardProps {
   currentModuleId?: string;
 }
 
-function findNextLessonSuggestion(completedLessonIds: string[]): { label: string; subtitle: string; path: string } | null {
+function findNextLessonSuggestion(completedLessonIds: string[], currentModuleId?: string): { label: string; subtitle: string; path: string } | null {
   // Check each module in order for in-progress work
   for (const mod of MODULES) {
     const mapping = MODULE_PREFIX_MAP[mod.id];
