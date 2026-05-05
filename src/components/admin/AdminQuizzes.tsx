@@ -51,7 +51,7 @@ const QUEUE_LABEL: Record<QuizQueue, string> = {
 };
 
 const QUEUE_TONE: Record<QuizQueue, string> = {
-  validado: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400",
+  validado: "bg-primary/10/10 text-primary dark:text-primary",
   quase: "bg-amber-500/10 text-amber-700 dark:text-amber-400",
   incompleto: "bg-orange-500/10 text-orange-700 dark:text-orange-400",
   critico: "bg-rose-500/10 text-rose-700 dark:text-rose-400",
@@ -80,7 +80,7 @@ const DIFFICULTY_LABEL: Record<Difficulty, string> = {
 };
 
 const DIFFICULTY_TONE: Record<Difficulty, string> = {
-  easy: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
+  easy: "bg-primary/10/10 text-primary dark:text-primary",
   medium: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
   hard: "bg-rose-500/10 text-rose-600 dark:text-rose-400",
 };
@@ -282,7 +282,7 @@ const AdminQuizzes = () => {
           const subMin = quizzes.filter((q) => q.status === "published" && q.queue !== "validado" && q.queue !== "quase").length;
           if (subMin === 0) {
             return (
-              <div className="text-[11px] text-emerald-700 dark:text-emerald-400 bg-emerald-500/5 rounded-md px-2 py-1.5">
+              <div className="text-[11px] text-primary dark:text-primary bg-primary/10/5 rounded-md px-2 py-1.5">
                 ✓ Régua mínima aplicada — nenhum quiz publicado abaixo do limite editorial.
               </div>
             );
@@ -461,7 +461,7 @@ const StatCard = ({
   const toneClass = {
     default: "border-border/50 text-foreground",
     primary: "border-primary/20 text-primary bg-primary/5",
-    emerald: "border-emerald-500/20 text-emerald-600 dark:text-emerald-400 bg-emerald-500/5",
+    emerald: "border-primary/30/20 text-primary dark:text-primary bg-primary/10/5",
     amber: "border-amber-500/20 text-amber-600 dark:text-amber-400 bg-amber-500/5",
   }[tone];
   return (
@@ -797,7 +797,7 @@ const QuizEditor = ({
                             key={i}
                             className={`text-xs flex items-center gap-2 ${
                               i === q.correct_index
-                                ? "text-emerald-600 dark:text-emerald-400 font-medium"
+                                ? "text-primary dark:text-primary font-medium"
                                 : "text-muted-foreground"
                             }`}
                           >
@@ -872,7 +872,7 @@ const QuizEditor = ({
                         onClick={() => setEditingQuestion({ ...editingQuestion, correct_index: i })}
                         className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors shrink-0 ${
                           editingQuestion.correct_index === i
-                            ? "bg-emerald-500/20 border-emerald-500 text-emerald-600 dark:text-emerald-400"
+                            ? "bg-primary/10/20 border-primary/30 text-primary dark:text-primary"
                             : "border-border text-transparent hover:border-primary/50"
                         }`}
                       >

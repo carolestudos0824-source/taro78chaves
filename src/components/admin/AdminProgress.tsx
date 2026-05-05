@@ -263,7 +263,7 @@ const MiniStat = ({ label, value, detail, trend }: { label: string; value: strin
   <div className="p-3 rounded-xl border border-border/50 bg-card/50">
     <div className="flex items-center justify-between mb-1">
       <span className="text-[10px] text-muted-foreground">{label}</span>
-      {trend === "up" && <ArrowUp className="w-3 h-3 text-green-500" />}
+      {trend === "up" && <ArrowUp className="w-3 h-3 text-primary" />}
       {trend === "down" && <ArrowDown className="w-3 h-3 text-red-400" />}
     </div>
     <p className="text-lg font-heading text-foreground">{value}</p>

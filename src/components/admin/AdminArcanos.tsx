@@ -46,7 +46,7 @@ const STATUS_LABEL: Record<ArcanoStatus, string> = {
 const STATUS_TONE: Record<ArcanoStatus, string> = {
   empty: "bg-muted/40 text-muted-foreground border-border/50",
   partial: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
-  draft: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+  draft: "bg-secondary/10/10 text-secondary dark:text-secondary border-secondary/30/20",
   published: "bg-primary/10 text-primary border-primary/20",
 };
 
@@ -179,8 +179,8 @@ const PRIORITY_LABEL: Record<Priority, string> = {
 };
 
 const PRIORITY_TONE: Record<Priority, string> = {
-  validated: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
-  almost: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+  validated: "bg-primary/10/10 text-primary dark:text-primary border-primary/30/20",
+  almost: "bg-secondary/10/10 text-secondary dark:text-secondary border-secondary/30/20",
   incomplete: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
   critical: "bg-destructive/10 text-destructive border-destructive/30",
 };
@@ -353,7 +353,7 @@ const AdminArcanos = () => {
             <div className="flex gap-1.5 flex-wrap">
               <button
                 onClick={() => setFilterPriority("almost")}
-                className="text-[11px] px-2 py-1 rounded-full border border-blue-500/20 bg-blue-500/10 text-blue-600 dark:text-blue-400"
+                className="text-[11px] px-2 py-1 rounded-full border border-secondary/30/20 bg-secondary/10/10 text-secondary dark:text-secondary"
               >
                 {stats.almost} quase prontos
               </button>
@@ -545,7 +545,7 @@ const AdminArcanos = () => {
                       className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium ${
                         a.tier === "premium"
                           ? "bg-primary/10 text-primary"
-                          : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                          : "bg-primary/10/10 text-primary dark:text-primary"
                       }`}
                     >
                       {a.tier === "premium" ? "Premium" : "Gratuito"}
@@ -607,10 +607,10 @@ const StatCard = ({
   const toneClass = {
     default: "border-border/50 text-foreground",
     primary: "border-primary/20 text-primary bg-primary/5",
-    emerald: "border-emerald-500/20 text-emerald-600 dark:text-emerald-400 bg-emerald-500/5",
+    emerald: "border-primary/30/20 text-primary dark:text-primary bg-primary/10/5",
     amber: "border-amber-500/20 text-amber-600 dark:text-amber-400 bg-amber-500/5",
     destructive: "border-destructive/30 text-destructive bg-destructive/5",
-    blue: "border-blue-500/20 text-blue-600 dark:text-blue-400 bg-blue-500/5",
+    blue: "border-secondary/30/20 text-secondary dark:text-secondary bg-secondary/10/5",
   }[tone];
   return (
     <div className={`p-3 rounded-xl border ${toneClass}`}>
@@ -772,7 +772,7 @@ const ArcanoEditor = ({ arcano, onBack }: { arcano: ArcanoRow; onBack: () => voi
           <Button size="sm" variant="outline" className="gap-1.5 h-8" onClick={toggleValidated}>
             {draft.validated ? (
               <>
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" /> Validado
+                <ShieldCheck className="w-3.5 h-3.5 text-primary" /> Validado
               </>
             ) : (
               <>
@@ -787,7 +787,7 @@ const ArcanoEditor = ({ arcano, onBack }: { arcano: ArcanoRow; onBack: () => voi
               </>
             ) : (
               <>
-                <Unlock className="w-3.5 h-3.5 text-emerald-500" /> Gratuito
+                <Unlock className="w-3.5 h-3.5 text-primary" /> Gratuito
               </>
             )}
           </Button>

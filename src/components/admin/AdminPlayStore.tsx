@@ -67,7 +67,7 @@ const AdminPlayStore = () => {
             <div key={item.id} className="p-4 flex items-start gap-3">
               <button onClick={() => toggle(item.id)} className="mt-0.5 shrink-0" aria-label={isDone ? "Desmarcar" : "Marcar como concluído"}>
                 {isDone
-                  ? <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                  ? <CheckCircle2 className="w-5 h-5 text-primary" />
                   : <Circle className="w-5 h-5 text-muted-foreground/60" />}
               </button>
               <div className="flex-1 min-w-0">

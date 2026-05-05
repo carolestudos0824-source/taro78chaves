@@ -111,7 +111,7 @@ const AdminOverview = () => {
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <KPICard icon={<DollarSign className="w-4 h-4" />} label="MRR estimado" value={`R$ ${stats.mrr.toFixed(2)}`} accent="text-amber-600" badge="est." />
-          <KPICard icon={<TrendingUp className="w-4 h-4" />} label="Conversão Premium" value={`${stats.conversionRate}%`} accent="text-blue-500" />
+          <KPICard icon={<TrendingUp className="w-4 h-4" />} label="Conversão Premium" value={`${stats.conversionRate}%`} accent="text-secondary" />
           <KPICard icon={<XCircle className="w-4 h-4" />} label="Premiums expirados (30d)" value={stats.recentExpired} accent={stats.recentExpired > 0 ? "text-red-400" : "text-muted-foreground"} />
           <KPICard icon={<UserPlus className="w-4 h-4" />} label="Novos cadastros (7d)" value={stats.recentSignups} accent="text-primary" />
         </div>
@@ -121,7 +121,7 @@ const AdminOverview = () => {
       <div>
         <div className="flex items-baseline justify-between mb-3">
           <h3 className="font-heading text-xs tracking-[0.15em] uppercase text-muted-foreground/60">Receita real (Stripe)</h3>
-          <span className="text-[10px] uppercase tracking-wider text-emerald-600/80">
+          <span className="text-[10px] uppercase tracking-wider text-primary/80">
             {stripeLoading ? "carregando…" : stripeError ? "erro" : "ao vivo"}
           </span>
         </div>
@@ -135,19 +135,19 @@ const AdminOverview = () => {
               icon={<Crown className="w-4 h-4" />}
               label="Assinaturas ativas (Stripe)"
               value={stripeLoading ? "…" : stripeMetrics?.activeSubscriptions ?? 0}
-              accent="text-emerald-600"
+              accent="text-primary"
             />
             <KPICard
               icon={<DollarSign className="w-4 h-4" />}
               label="MRR real"
               value={stripeLoading ? "…" : `R$ ${(stripeMetrics?.mrr ?? 0).toFixed(2)}`}
-              accent="text-emerald-600"
+              accent="text-primary"
             />
             <KPICard
               icon={<TrendingUp className="w-4 h-4" />}
               label="Receita (últ. 100 cobranças)"
               value={stripeLoading ? "…" : `R$ ${(stripeMetrics?.totalRevenue ?? 0).toFixed(2)}`}
-              accent="text-emerald-600"
+              accent="text-primary"
             />
             <PlaceholderCard label="Churn real (em breve)" />
           </div>
@@ -164,7 +164,7 @@ const AdminOverview = () => {
           <KPICard icon={<Users className="w-4 h-4" />} label="Total de Usuários" value={stats.totalUsers} />
           <KPICard icon={<Crown className="w-4 h-4" />} label="Assinantes Ativos" value={stats.premiumUsers} accent="text-primary" />
           <KPICard icon={<Users className="w-4 h-4" />} label="Usuários Gratuitos" value={stats.freeUsers} />
-          <KPICard icon={<Gift className="w-4 h-4" />} label="Presenteados" value={stats.giftedUsers} accent="text-purple-500" />
+          <KPICard icon={<Gift className="w-4 h-4" />} label="Presenteados" value={stats.giftedUsers} accent="text-secondary" />
         </div>
       </div>
 

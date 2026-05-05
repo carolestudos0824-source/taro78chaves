@@ -87,7 +87,7 @@ const AdminGiftCodes = () => {
     if (!gc.is_active) return { label: "Desativado", cls: "bg-muted text-muted-foreground", key: "disabled" as const };
     if (gc.expires_at && new Date(gc.expires_at) < now) return { label: "Expirado", cls: "bg-red-500/10 text-red-500", key: "expired" as const };
     if (gc.current_uses >= gc.max_uses) return { label: "Esgotado", cls: "bg-amber-500/10 text-amber-600", key: "exhausted" as const };
-    return { label: "Ativo", cls: "bg-green-500/10 text-green-600", key: "active" as const };
+    return { label: "Ativo", cls: "bg-primary/10/10 text-primary", key: "active" as const };
   };
 
   const enriched = useMemo(() => codes.map(c => ({ ...c, status: getStatus(c) })), [codes, now]);
@@ -278,7 +278,7 @@ const AdminGiftCodes = () => {
                   <td className="p-3 text-right">
                     <div className="inline-flex gap-1">
                       <button onClick={() => copyCode(gc.code)} className="p-1.5 rounded hover:bg-muted text-muted-foreground hover:text-foreground" title="Copiar">
-                        {copied === gc.code ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5" />}
+                        {copied === gc.code ? <Check className="w-3.5 h-3.5 text-primary" /> : <Copy className="w-3.5 h-3.5" />}
                       </button>
                       <button onClick={() => setHistoryCode(gc)} className="p-1.5 rounded hover:bg-muted text-muted-foreground hover:text-foreground" title="Histórico">
                         <History className="w-3.5 h-3.5" />

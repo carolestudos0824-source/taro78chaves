@@ -88,7 +88,7 @@ const AdminUsers = () => {
     if (!u.is_premium) return { label: "Gratuito", cls: "bg-muted text-muted-foreground", key: "free" as const };
     const until = u.premium_until ? new Date(u.premium_until) : null;
     if (until && until <= now) return { label: "Expirado", cls: "bg-destructive/10 text-destructive", key: "expired" as const };
-    if (u.premium_source === "gift" || u.premium_source === "admin") return { label: "Presenteado", cls: "bg-purple-500/10 text-purple-600", key: "gift" as const };
+    if (u.premium_source === "gift" || u.premium_source === "admin") return { label: "Presenteado", cls: "bg-secondary/10/10 text-secondary", key: "gift" as const };
     return { label: "Assinante", cls: "bg-primary/10 text-primary", key: "premium" as const };
   };
 

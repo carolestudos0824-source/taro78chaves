@@ -71,7 +71,17 @@
     --mystic-surface: 18 38% 94%;       /* Rosa Aveludado very soft */
     --mystic-elevated: 30 25% 92%;      /* Greige Quente lighter */
 
-    --success: 140 30% 38%;
+    --success: 38 42% 44%;              /* Ouro escuro — concluído elegante */
+    --success-foreground: 35 56% 96%;
+    --warning: 36 60% 50%;              /* Ouro mais quente */
+    --warning-foreground: 333 50% 18%;
+
+    /* Brand semantic aliases (oficial Tarô 78 Chaves) */
+    --brand-plum: 333 50% 24%;          /* #5B1F3D */
+    --brand-gold: 38 47% 60%;           /* #C8A66A */
+    --brand-greige: 30 22% 82%;         /* #DCCFC2 */
+    --brand-rose: 18 38% 92%;           /* #F3E6E0 */
+    --brand-ivory: 35 56% 96%;          /* #FAF5EF */
 
     /* Sidebar */
     --sidebar-background: 35 56% 96%;

@@ -50,7 +50,7 @@ const STATUS_LABEL: Record<ModuleStatus, string> = {
 const STATUS_TONE: Record<ModuleStatus, string> = {
   empty: "bg-muted/40 text-muted-foreground border-border/50",
   partial: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
-  draft: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+  draft: "bg-secondary/10/10 text-secondary dark:text-secondary border-secondary/30/20",
   published: "bg-primary/10 text-primary border-primary/20",
 };
 
@@ -123,9 +123,9 @@ const RANK_LABEL: Record<EditorialRank, string> = {
 };
 
 const RANK_TONE: Record<EditorialRank, string> = {
-  validado: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+  validado: "bg-primary/10/10 text-primary dark:text-primary border-primary/30/20",
   quase_pronto: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
-  incompleto: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+  incompleto: "bg-secondary/10/10 text-secondary dark:text-secondary border-secondary/30/20",
   critico: "bg-destructive/10 text-destructive border-destructive/20",
 };
 
@@ -434,7 +434,7 @@ const AdminModules = () => {
                           className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium ${
                             mod.tier === "premium"
                               ? "bg-primary/10 text-primary"
-                              : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                              : "bg-primary/10/10 text-primary dark:text-primary"
                           }`}
                         >
                           {mod.tier === "premium" ? "Premium" : "Gratuito"}
@@ -465,7 +465,7 @@ const AdminModules = () => {
                         {mod.tier === "premium" ? (
                           <LockIcon className="w-3.5 h-3.5 text-primary" />
                         ) : (
-                          <Unlock className="w-3.5 h-3.5 text-emerald-500" />
+                          <Unlock className="w-3.5 h-3.5 text-primary" />
                         )}
                       </Button>
                       <Button
