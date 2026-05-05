@@ -79,7 +79,7 @@ const ModulesPage = () => {
             <div className="flex items-center gap-3">
               <StreakCounter streak={progress.streak} />
               <button onClick={() => navigate("/perfil")} className="w-10 h-10 rounded-full flex items-center justify-center bg-white/50 border border-gold/20 shadow-sm transition-transform active:scale-90">
-                <User className="w-5 h-5 text-gold-dark" />
+                <Key className="w-5 h-5 text-gold-dark" />
               </button>
             </div>
           </div>
