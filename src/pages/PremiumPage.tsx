@@ -116,7 +116,7 @@ const PremiumPage = () => {
             </button>
 
             {/* Yearly */}
-            <button onClick={() => handleSubscribe("yearly")} disabled={loading} className="w-full text-left bg-white border-2 border-gold p-8 rounded-[2rem] flex flex-col space-y-6 shadow-2xl relative overflow-hidden active:scale-[0.98] transition-all">
+            <div className="w-full text-left bg-white border-2 border-gold p-8 rounded-[2rem] flex flex-col space-y-6 shadow-2xl relative overflow-hidden active:scale-[0.98] transition-all">
               <div className="absolute top-0 right-0 bg-gold px-6 py-2 rounded-bl-3xl text-[9px] font-heading font-black tracking-widest text-parchment uppercase shadow-sm">
                 Melhor Valor
               </div>
@@ -130,8 +130,14 @@ const PremiumPage = () => {
                 <p className="text-xs font-bold text-accent">R$ 16,42/mês • 45% de economia</p>
               </div>
 
-              <Button disabled={loading} className="btn-premium w-full py-8 text-sm">DESPERTAR O ORÁCULO →</Button>
-            </button>
+              <Button 
+                onClick={() => handleSubscribe("yearly")} 
+                disabled={loading} 
+                className="btn-premium w-full py-8 text-sm"
+              >
+                DESPERTAR O ORÁCULO →
+              </Button>
+            </div>
           </div>
         </div>
       </main>
