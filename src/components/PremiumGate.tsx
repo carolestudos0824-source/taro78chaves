@@ -13,11 +13,11 @@ interface PremiumGateProps {
 }
 
 const VALUE_HOOKS = [
-  "Todos os 22 arcanos maiores com análise simbólica",
-  "Acesso aos arcanos menores e módulos avançados",
-  "Exercícios práticos de leitura e quizzes de fixação",
+  "Todos os 78 arcanos maiores, menores e corte",
+  "Lições completas com essência, luz e sombra",
+  "Símbolos explicados detalhadamente carta por carta",
+  "Quizzes de fixação com feedback imediato",
   "Sua jornada salva e sincronizada em todos os dispositivos",
-  "Certificado de conclusão do curso",
 ];
 
 const PremiumGate = ({
@@ -119,10 +119,10 @@ const PremiumGate = ({
 
       <div>
         <h3 className="font-heading text-xl tracking-wide text-midnight">
-          {featureName ? `Desbloqueie ${featureName}` : "Continue sua Jornada"}
+          {featureName ? `Desbloqueie ${featureName}` : "Continue sua Jornada Completa"}
         </h3>
         <p className="text-[13px] font-body text-muted-foreground/80 mt-2 max-w-[280px] mx-auto leading-relaxed">
-          {message || "Você deu os primeiros passos. Agora, desperte o Oráculo completo e domine a linguagem mística do Tarô."}
+          {message || "Você já começou pelo Louco. Agora desbloqueie os próximos arcanos e siga estudando carta por carta, com método, símbolos, quizzes e progresso salvo."}
         </p>
       </div>
 
