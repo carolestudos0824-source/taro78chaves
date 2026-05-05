@@ -58,14 +58,14 @@ const LandingPage = () => {
     <div className="min-h-screen bg-parchment text-midnight selection:bg-secondary selection:text-white">
 
       {/* ─── Top Brand Header ─── */}
-      <header className="absolute top-0 left-0 right-0 z-50 px-6 py-4 md:py-6">
+      <header className="absolute top-0 left-0 right-0 z-50 px-6 py-4 md:py-6 bg-parchment/80 backdrop-blur-md border-b border-gold/10">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <a href="/" className="flex items-center gap-3 group transition-transform hover:scale-[1.02]" aria-label="Tarô 78 Chaves">
+          <a href="/" className="flex items-center gap-2.5 group transition-transform hover:scale-[1.02]" aria-label="Tarô 78 Chaves">
             <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
               <img 
                 src={brandIcon} 
-                alt="Ícone Tarô 78 Chaves" 
-                className="w-full h-full object-contain" 
+                alt="Logo Tarô 78 Chaves" 
+                className="w-full h-full object-contain filter drop-shadow-sm" 
               />
             </div>
             <div className="flex flex-col">
@@ -79,7 +79,7 @@ const LandingPage = () => {
           </a>
           <button
             onClick={handleStart}
-            className="inline-flex items-center font-heading text-xs tracking-[0.2em] uppercase text-plum hover:text-gold-dark transition-all hover:translate-x-1"
+            className="inline-flex items-center font-heading text-xs tracking-[0.2em] uppercase text-plum hover:text-gold-dark transition-all hover:translate-x-1 font-bold"
           >
             Entrar →
           </button>
@@ -87,7 +87,7 @@ const LandingPage = () => {
       </header>
 
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-24 pb-20 md:pt-36 md:pb-32 px-6 overflow-hidden min-h-[90vh] flex items-center">
+      <section className="relative pt-28 pb-16 md:pt-40 md:pb-24 px-6 overflow-hidden min-h-[85vh] flex items-center">
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold/15 blur-[120px]" />
@@ -149,19 +149,19 @@ const LandingPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-start gap-3 pt-4 md:pt-6">
+              <div className="flex flex-col items-center lg:items-start gap-4 pt-6 md:pt-8">
                 <Button 
                   onClick={handleStart} 
-                  className="w-full sm:w-auto min-h-[58px] md:min-h-[64px] px-10 md:px-12 rounded-2xl bg-plum hover:bg-plum/90 text-gold font-heading text-[13px] md:text-[14px] tracking-[0.25em] uppercase border-1.5 border-gold/40 shadow-[0_20px_50px_-12px_rgba(91,31,61,0.4)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3"
+                  className="w-full sm:w-auto min-h-[64px] md:min-h-[72px] px-12 md:px-14 rounded-2xl bg-plum hover:bg-plum/95 text-gold font-heading text-sm md:text-base tracking-[0.25em] uppercase border-2 border-gold/40 shadow-[0_20px_50px_-12px_rgba(91,31,61,0.5)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-4 group/btn"
                 >
-                  <Key className="w-5 h-5" />
+                  <Key className="w-6 h-6 group-hover/btn:rotate-12 transition-transform" />
                   COMEÇAR PELO LOUCO — GRÁTIS
                 </Button>
-                <div className="flex flex-col items-center lg:items-start gap-1">
-                  <p className="text-xs md:text-sm font-heading tracking-[0.15em] text-plum font-bold uppercase">
-                    Sem cartão de crédito para começar.
+                <div className="flex flex-col items-center lg:items-start gap-1.5">
+                  <p className="text-xs md:text-sm font-heading tracking-[0.15em] text-plum font-bold uppercase drop-shadow-sm">
+                    ✦ Sem cartão de crédito para começar.
                   </p>
-                  <button onClick={() => document.getElementById('journey-map')?.scrollIntoView({ behavior: 'smooth' })} className="text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark hover:text-plum underline underline-offset-4 transition-colors">
+                  <button onClick={() => document.getElementById('journey-map')?.scrollIntoView({ behavior: 'smooth' })} className="text-[11px] font-heading tracking-[0.2em] uppercase text-gold-dark hover:text-plum underline underline-offset-4 transition-colors font-bold">
                     Ver como funciona
                   </button>
                 </div>
@@ -218,9 +218,9 @@ const LandingPage = () => {
                 </div>
 
                 {/* Floating Elements */}
-                <div className="absolute -top-6 -right-6 w-14 h-14 bg-ivory rounded-full shadow-[0_10px_25px_-5px_rgba(91,31,61,0.2)] border border-gold/40 flex items-center justify-center animate-bounce-slow z-20">
+                <div className="absolute -top-6 -right-6 w-14 h-14 bg-ivory rounded-full shadow-[0_10px_25px_-5px_rgba(91,31,61,0.2)] border border-gold/40 flex items-center justify-center animate-bounce-slow z-20 overflow-hidden">
                   <div className="w-10 h-10 rounded-full bg-plum/5 flex items-center justify-center border border-gold/20">
-                    <Key className="w-6 h-6 text-gold-dark" />
+                    <img src={brandIcon} alt="Assinatura Tarô 78 Chaves" className="w-6 h-6 object-contain" />
                   </div>
                 </div>
               </div>
@@ -617,36 +617,49 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Footer ─── */}
-      <footer className="py-20 px-6 text-center space-y-12 border-t border-gold/10">
-        <div className="space-y-4 flex flex-col items-center">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 flex items-center justify-center">
+      <footer className="py-24 px-6 text-center space-y-12 bg-plum text-ivory border-t-4 border-gold/30 relative overflow-hidden">
+        {/* Subtle background ornament */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full" 
+               style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, hsl(var(--brand-gold)) 1px, transparent 0)', backgroundSize: '60px 60px' }} />
+        </div>
+
+        <div className="space-y-6 flex flex-col items-center relative z-10">
+          <div className="flex items-center gap-3.5 group">
+            <div className="w-14 h-14 flex items-center justify-center p-1 bg-ivory/10 rounded-xl backdrop-blur-sm border border-gold/20 group-hover:scale-110 transition-transform duration-500">
               <img 
                 src={brandIcon} 
-                alt="Ícone Tarô 78 Chaves" 
-                className="w-full h-full object-contain" 
+                alt="Logo Tarô 78 Chaves" 
+                className="w-full h-full object-contain filter drop-shadow-lg" 
               />
             </div>
             <div className="text-left">
-              <span className="font-heading text-xl tracking-tight text-plum font-bold block leading-none">
+              <span className="font-heading text-2xl tracking-tight text-gold font-bold block leading-none">
                 Tarô 78 Chaves
               </span>
-              <span className="font-heading text-[10px] tracking-[0.2em] uppercase text-gold-dark font-medium mt-1 block">
+              <span className="font-heading text-[11px] tracking-[0.3em] uppercase text-gold/60 font-medium mt-1.5 block">
                 A jornada viva
               </span>
             </div>
           </div>
-          <p className="t-section-title mt-4">Sua jornada. Seu ritmo. Seu tarô.</p>
+          <p className="font-heading text-xl md:text-2xl text-gold-light italic max-w-md drop-shadow-sm">
+            "Sua jornada. Seu ritmo. Seu tarô."
+          </p>
         </div>
 
-        <nav className="flex flex-wrap justify-center gap-8 text-[11px] font-heading tracking-widest uppercase opacity-60">
-          <a href="/privacidade" className="hover:text-[#5B1F3D] hover:opacity-100 transition-colors">Privacidade</a>
-          <a href="/termos" className="hover:text-[#5B1F3D] hover:opacity-100 transition-colors">Termos</a>
-          <a href="/suporte" className="hover:text-[#5B1F3D] hover:opacity-100 transition-colors">Suporte</a>
-          <a href="/excluir-conta" className="hover:text-[#5B1F3D] hover:opacity-100 transition-colors">Excluir conta</a>
+        <nav className="flex flex-wrap justify-center gap-8 md:gap-12 text-[12px] font-heading tracking-[0.2em] uppercase relative z-10">
+          <a href="/privacidade" className="text-ivory/60 hover:text-gold transition-colors font-bold">Privacidade</a>
+          <a href="/termos" className="text-ivory/60 hover:text-gold transition-colors font-bold">Termos</a>
+          <a href="/suporte" className="text-ivory/60 hover:text-gold transition-colors font-bold">Suporte</a>
+          <a href="/excluir-conta" className="text-ivory/60 hover:text-gold transition-colors font-bold">Excluir conta</a>
         </nav>
 
-        <p className="text-[10px] opacity-40 font-body">© {new Date().getFullYear()} Tarô 78 Chaves. Todos os direitos reservados.</p>
+        <div className="pt-8 border-t border-gold/10 max-w-xs mx-auto relative z-10">
+          <p className="text-[11px] text-ivory/30 font-body tracking-wider">
+            © {new Date().getFullYear()} Tarô 78 Chaves.<br />
+            Todos os direitos reservados.
+          </p>
+        </div>
       </footer>
     </div>
   );
