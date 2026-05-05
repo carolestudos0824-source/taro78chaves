@@ -109,7 +109,7 @@ const ModulesPage = () => {
             <img src={imgEstrela} alt="" className="w-20 rounded-xl shadow-2xl rotate-12 border-2 border-white/50" />
           </div>
           
-          <ContinuityCard lastLessonId={null} lastLessonName={null} completedLessons={progress.completedLessons.length} completedQuizzes={progress.completedQuizzes.length} hasUnfinishedReview={false} completedLessonIds={progress.completedLessons} />
+          <ContinuityCard lastLessonId={null} lastLessonName={null} completedLessons={progress.completedLessons.length} completedQuizzes={progress.completedQuizzes.length} hasUnfinishedReview={false} completedLessonIds={progress.completedLessons} currentModuleId="arcanos-maiores" />
         </div>
 
         {/* ─── Modules Grid ─── */}
