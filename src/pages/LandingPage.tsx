@@ -149,10 +149,10 @@ const LandingPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-start gap-4 pt-6">
+              <div className="flex flex-col items-center lg:items-start gap-3 pt-4 md:pt-6">
                 <Button 
                   onClick={handleStart} 
-                  className="w-full sm:w-auto min-h-[64px] px-12 rounded-2xl bg-plum hover:bg-plum/90 text-gold font-heading text-[14px] tracking-[0.25em] uppercase border-1.5 border-gold/40 shadow-[0_20px_50px_-12px_rgba(91,31,61,0.4)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3"
+                  className="w-full sm:w-auto min-h-[58px] md:min-h-[64px] px-10 md:px-12 rounded-2xl bg-plum hover:bg-plum/90 text-gold font-heading text-[13px] md:text-[14px] tracking-[0.25em] uppercase border-1.5 border-gold/40 shadow-[0_20px_50px_-12px_rgba(91,31,61,0.4)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3"
                 >
                   <Key className="w-5 h-5" />
                   COMEÇAR PELO LOUCO — GRÁTIS
