@@ -655,7 +655,7 @@ const LandingPage = () => {
         </nav>
 
         <div className="pt-8 border-t border-gold/10 max-w-xs mx-auto relative z-10">
-          <p className="text-[11px] text-ivory/30 font-body tracking-wider">
+          <p className="text-[11px] text-ivory/50 font-body tracking-wider font-medium">
             © {new Date().getFullYear()} Tarô 78 Chaves.<br />
             Todos os direitos reservados.
           </p>
