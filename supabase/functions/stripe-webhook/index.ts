@@ -177,7 +177,7 @@ Deno.serve(async (req) => {
       internalType === "payment_succeeded" ||
       internalType === "checkout_completed"
     ) {
-      const isOneTimeAnnual = (planCode === "yearly" || planCode === "annual") && obj.mode === "payment";
+      const isOneTimeAnnual = (planCode === "yearly" || planCode === "annual") && !obj.subscription;
       
       let premium_until: string | null = null;
 
