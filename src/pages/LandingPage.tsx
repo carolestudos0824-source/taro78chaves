@@ -576,39 +576,39 @@ const LandingPage = () => {
           </div>
           
           <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1" className="border-gold/20">
-              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Por onde eu começo?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/70">
+            <AccordionItem value="item-1" className="border-gold/30">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Por onde eu começo?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
                 Você começa pelo Louco gratuitamente. Se for bem na lição, desbloqueia O Mago e entende como a jornada funciona antes de assinar.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-2" className="border-gold/20">
-              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">O que está incluso no plano?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/70">
+            <AccordionItem value="item-2" className="border-gold/30">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">O que está incluso no plano?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
                 O acesso completo libera a jornada pelos 78 arcanos, com lições progressivas, quizzes, XP, progresso salvo e estudo carta por carta.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-3" className="border-gold/20">
-              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Preciso saber tarô antes?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/70">
+            <AccordionItem value="item-3" className="border-gold/30">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Preciso saber tarô antes?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
                 Não. O app foi feito para começar do zero, com uma carta por vez e explicações claras.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-4" className="border-gold/20">
-              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Vou aprender Arcanos Menores também?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/70">
+            <AccordionItem value="item-4" className="border-gold/30">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Vou aprender Arcanos Menores também?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
                 Sim. A jornada inclui Arcanos Maiores, Menores numerados e Cartas da Corte.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-5" className="border-gold/20">
-              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Preciso de um baralho físico?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/70">
+            <AccordionItem value="item-5" className="border-gold/30">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Preciso de um baralho físico?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
                 Não para começar. O app mostra as cartas Rider-Waite-Smith dentro das lições. Ter um baralho pode complementar seu estudo.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-6" className="border-gold/20">
-              <AccordionTrigger className="font-heading text-left hover:text-gold transition-colors">Como funciona o cancelamento?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/70">
+            <AccordionItem value="item-6" className="border-gold/30">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Como funciona o cancelamento?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
                 Se você assinou o Plano Mensal, pode gerenciar ou cancelar a qualquer momento pelo seu perfil. O Acesso Anual é um pagamento único sem renovação automática.
               </AccordionContent>
             </AccordionItem>
