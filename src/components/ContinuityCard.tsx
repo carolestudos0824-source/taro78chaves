@@ -31,6 +31,7 @@ interface ContinuityCardProps {
   hasUnfinishedReview: boolean;
   /** Full completed lessons array for smart suggestions */
   completedLessonIds?: string[];
+  currentModuleId?: string;
 }
 
 function findNextLessonSuggestion(completedLessonIds: string[]): { label: string; subtitle: string; path: string } | null {
