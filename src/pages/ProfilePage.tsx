@@ -24,8 +24,8 @@ const ProfilePage = () => {
   const { signOut } = useAuth();
   const [portalLoading, setPortalLoading] = useState(false);
 
-  // Regra segura: só é Stripe se tiver o ID do cliente e o source não for admin/gift
-  const isStripeManaged = isPremium && !!stripeCustomerId && !["admin", "gift"].includes(premiumSource || "");
+  // Regra segura: só é Stripe se tiver o ID do cliente e o source não for admin/gift/cortesia
+  const isStripeManaged = isPremium && !!stripeCustomerId && !["admin", "gift", "preview-auditor"].includes(premiumSource || "");
 
   useEffect(() => {
     if (searchParams.get("checkout") === "success") {
