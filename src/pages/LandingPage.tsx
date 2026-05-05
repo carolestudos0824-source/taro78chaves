@@ -202,7 +202,7 @@ const LandingPage = () => {
                   <div className="w-32 h-52 md:w-40 md:h-60 rounded-2xl overflow-hidden shadow-xl border-4 border-white transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-2xl group-hover:border-gold/20">
                     <img src={card.img} alt={card.name} className="w-full h-full object-cover" />
                     <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[8px] font-heading tracking-widest uppercase shadow-lg z-20 ${
-                      card.badge === 'Grátis' ? "bg-green-600 text-white" : card.badge === 'Desbloqueável' ? "bg-gold text-white" : "bg-[#5B1F3D] text-white"
+                      card.badge === 'Grátis' ? "bg-gold text-secondary" : card.badge === 'Desbloqueável' ? "bg-gold text-white" : "bg-[#5B1F3D] text-white"
                     }`}>
                       {card.badge}
                     </div>
