@@ -15,6 +15,7 @@ interface PremiumState {
   isPremium: boolean;
   premiumUntil: string | null;
   premiumSource: string | null;
+  stripeCustomerId: string | null;
   subscriptionStatus: SubscriptionStatus;
   loading: boolean;
 }
@@ -59,20 +60,21 @@ export const usePremium = (): PremiumState => {
     isPremium: false,
     premiumUntil: null,
     premiumSource: null,
+    stripeCustomerId: null,
     subscriptionStatus: "free",
     loading: true,
   });
 
   useEffect(() => {
     if (!user) {
-      setState({ isPremium: false, premiumUntil: null, premiumSource: null, subscriptionStatus: "free", loading: false });
+      setState({ isPremium: false, premiumUntil: null, premiumSource: null, stripeCustomerId: null, subscriptionStatus: "free", loading: false });
       return;
     }
 
     const fetchPremium = async () => {
       const { data } = await supabase
         .from("profiles")
-        .select("is_premium, premium_until, premium_source")
+        .select("is_premium, premium_until, premium_source, stripe_customer_id")
         .eq("user_id", user.id)
         .single();
 
@@ -85,11 +87,12 @@ export const usePremium = (): PremiumState => {
           isPremium: isActive,
           premiumUntil: data.premium_until,
           premiumSource: data.premium_source,
+          stripeCustomerId: data.stripe_customer_id,
           subscriptionStatus: status,
           loading: false,
         });
       } else {
-        setState({ isPremium: false, premiumUntil: null, premiumSource: null, subscriptionStatus: "free", loading: false });
+        setState({ isPremium: false, premiumUntil: null, premiumSource: null, stripeCustomerId: null, subscriptionStatus: "free", loading: false });
       }
     };
 
