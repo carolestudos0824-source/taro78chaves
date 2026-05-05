@@ -80,10 +80,24 @@ const DeleteAccountPage = lazy(() => import("./pages/legal/DeleteAccountPage.tsx
 const queryClient = new QueryClient();
 
 const LoadingFallback = () => (
-  <div className="min-h-screen flex items-center justify-center bg-background">
-    <div className="text-center space-y-3">
-      <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin mx-auto" />
-      <p className="text-xs text-muted-foreground font-heading tracking-wider">Carregando...</p>
+  <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7] relative overflow-hidden">
+    {/* Decorative background elements consistent with the brand */}
+    <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+      <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-gold blur-[120px]" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold blur-[120px]" />
+    </div>
+
+    <div className="text-center space-y-6 relative z-10 animate-fade-in">
+      <div className="relative">
+        <div className="w-12 h-12 rounded-full border-2 border-gold/20 border-t-gold animate-spin mx-auto" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-1.5 h-1.5 rounded-full bg-gold/40 animate-pulse" />
+        </div>
+      </div>
+      <div className="space-y-2">
+        <p className="text-[10px] text-gold-dark/60 font-heading tracking-[0.3em] uppercase">Tarô 78 Chaves</p>
+        <p className="text-[11px] text-gold-dark/30 font-body italic">Preparando sua jornada...</p>
+      </div>
     </div>
   </div>
 );
