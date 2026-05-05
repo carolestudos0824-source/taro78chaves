@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { 
   Check, Star, Target, 
   BookOpen, Layers, Zap,
-  Menu, X, Eye, Key, Sparkles
+  Menu, X, Eye, Key, Sparkles,
+  Award, Smartphone, Share, MoreVertical, HelpCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
