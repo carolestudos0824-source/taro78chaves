@@ -16,7 +16,7 @@ export function XPBar({ xp, level }: XPBarProps) {
           background: "linear-gradient(135deg, hsl(340 42% 28% / 0.14), hsl(36 45% 55% / 0.10))",
           boxShadow: "0 0 16px hsl(340 42% 28% / 0.10), inset 0 1px 3px hsl(36 45% 58% / 0.12)"
         }}>
-          <Star className="w-4.5 h-4.5" style={{ color: "hsl(340 42% 24%)", fill: "hsl(340 42% 28% / 0.30)" }} />
+          <Sparkles className="w-4.5 h-4.5" style={{ color: "hsl(340 50% 30%)", fill: "hsl(340 50% 30% / 0.20)" }} />
         </div>
         <div className="flex flex-col">
           <span className="text-[10px] tracking-wider uppercase leading-none font-body" style={{
