@@ -58,11 +58,15 @@ const LandingPage = () => {
     <div className="min-h-screen bg-parchment text-midnight selection:bg-secondary selection:text-white">
 
       {/* ─── Top Brand Header ─── */}
-      <header className="absolute top-0 left-0 right-0 z-50 px-6 py-6 md:py-8">
+      <header className="absolute top-0 left-0 right-0 z-50 px-6 py-4 md:py-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <a href="/" className="flex items-center gap-3 group transition-transform hover:scale-[1.02]" aria-label="Tarô 78 Chaves">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-plum flex items-center justify-center border border-gold/30 shadow-lg">
-              <Key className="w-6 h-6 md:w-7 md:h-7 text-gold" strokeWidth={1.5} />
+            <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
+              <img 
+                src={brandIcon} 
+                alt="Ícone Tarô 78 Chaves" 
+                className="w-full h-full object-contain" 
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-heading text-lg md:text-xl tracking-tight text-plum font-bold leading-none">
