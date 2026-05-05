@@ -24,8 +24,9 @@ const ProfilePage = () => {
   const { signOut } = useAuth();
   const [portalLoading, setPortalLoading] = useState(false);
 
-  // Regra segura: só é Stripe se tiver o ID do cliente e o source não for admin/gift/cortesia
-  const isStripeManaged = isPremium && !!stripeCustomerId && !["admin", "gift", "preview-auditor"].includes(premiumSource || "");
+  // Regra segura: só é Stripe Recurring se tiver o ID do cliente e o source for store_monthly ou store_annual (recorrentes)
+  const isStripeRecurring = isPremium && !!stripeCustomerId && ["store_monthly", "store_annual"].includes(premiumSource || "");
+  const isOneTimeAnnual = premiumSource === "store_annual_one_time";
 
   useEffect(() => {
     if (searchParams.get("checkout") === "success") {
