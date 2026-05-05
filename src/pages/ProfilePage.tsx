@@ -128,7 +128,7 @@ const ProfilePage = () => {
               </h3>
               {isPremium && untilFormatted && (
                 <p className="text-[10px] text-muted-foreground uppercase tracking-wider">
-                  {isStripeManaged ? `Renova em ${untilFormatted}` : "Acesso vitalício ou cortesia"}
+                  {isStripeRecurring ? `Renova em ${untilFormatted}` : (isOneTimeAnnual ? `Acesso até ${untilFormatted}` : "Acesso vitalício ou cortesia")}
                 </p>
               )}
             </div>
