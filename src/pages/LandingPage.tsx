@@ -97,20 +97,18 @@ const LandingPage = () => {
                 </span>
               </div>
 
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-midnight">
-                Aprenda tarô<br />
-                <span className="italic font-medium text-[#5B1F3D]">de forma progressiva</span><br />
-                e viva.
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-midnight normal-case">
+                Aprenda a ler o tarô{" "}
+                <span className="italic font-medium text-[#5B1F3D]">de verdade.</span>
               </h1>
 
               <div className="space-y-8 max-w-xl mx-auto lg:mx-0">
                 <div className="space-y-4">
-                  <p className="text-lg font-body font-semibold text-[#5B1F3D] leading-snug">
-                    Um app de estudo guiado para aprender Rider-Waite-Smith carta por carta, com lições, quizzes e progresso.
+                  <p className="text-lg font-body font-medium text-[#5B1F3D] leading-snug">
+                    Um caminho guiado pelo Rider-Waite-Smith para parar de decorar significados soltos e começar a interpretar carta por carta.
                   </p>
-                  <p className="text-base font-body text-[#2d1810] opacity-90 max-w-md mx-auto lg:mx-0">
-                    Você para de decorar. Começa a compreender.<br/>
-                    Uma carta por vez, com método e profundidade.
+                  <p className="text-base font-body text-[#2d1810] opacity-80 max-w-md mx-auto lg:mx-0">
+                    Estudo guiado, com método. Uma carta por vez, com profundidade e prática.
                   </p>
                 </div>
 
