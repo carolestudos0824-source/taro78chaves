@@ -40,8 +40,7 @@ const DeleteAccountPage = () => (
 
     <h2>Assinatura ativa</h2>
     <p>
-      Se você tiver uma assinatura ativa, cancele-a antes de solicitar a exclusão para
-      evitar cobranças futuras. O acesso premium se encerra junto com a conta.
+      Se você tiver uma assinatura <strong>mensal</strong> ativa, cancele a recorrência no portal do assinante antes de solicitar a exclusão para evitar cobranças futuras. O acesso premium (mensal ou anual) se encerra junto com a conta.
     </p>
 
     <h2>Dúvidas</h2>
