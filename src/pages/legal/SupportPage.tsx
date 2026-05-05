@@ -17,16 +17,17 @@ const SupportPage = () => (
       <li>Conta bloqueada? Escreva para o suporte com o e-mail cadastrado.</li>
     </ul>
 
-    <h2>Assinatura premium</h2>
+    <h2>Acesso Premium</h2>
     <ul>
       <li>Comprou no site mas não desbloqueou? Aguarde alguns minutos e atualize o app.</li>
-      <li>Use o portal do assinante (na tela de Perfil) para gerenciar pagamento e nota fiscal.</li>
+      <li><strong>Plano Mensal:</strong> Use o portal do assinante (na tela de Perfil) para gerenciar pagamento, nota fiscal ou cancelar a renovação.</li>
+      <li><strong>Plano Anual:</strong> Por ser um pagamento único sem renovação automática, não requer cancelamento. Seu acesso será válido por 12 meses.</li>
     </ul>
 
-    <h2>Cancelamento</h2>
+    <h2>Cancelamento (Plano Mensal)</h2>
     <p>
-      O cancelamento pode ser feito no portal do assinante. O acesso premium permanece
-      até o fim do período pago. Não há renovação após o cancelamento.
+      O cancelamento da recorrência pode ser feito no portal do assinante. O acesso premium permanece
+      até o fim do período mensal pago.
     </p>
 
     <h2>Exclusão de conta</h2>

@@ -24,21 +24,21 @@ const TermsPage = () => (
       <li>É proibido criar contas em nome de terceiros sem autorização.</li>
     </ul>
 
-    <h2>3. Assinatura Premium</h2>
+    <h2>3. Assinatura e Planos</h2>
     <p>
-      O App pode oferecer um plano premium com acesso ampliado a módulos e ferramentas.
-      No ambiente <strong>web</strong>, as cobranças são processadas pelo Stripe. Em
-      futuras distribuições via Google Play Store, as cobranças seguirão a política de
-      pagamentos aplicável da plataforma.
+      O App oferece dois modelos de acesso premium:
     </p>
+    <ul>
+      <li><strong>Plano Mensal:</strong> assinatura recorrente com renovação automática a cada 30 dias. O cancelamento pode ser feito a qualquer momento pelo portal do assinante.</li>
+      <li><strong>Plano Anual:</strong> pagamento único para 12 meses de acesso, sem renovação automática. Ao final do período, o acesso premium expira e uma nova compra manual é necessária para renovação.</li>
+    </ul>
 
-    <h2>4. Cancelamento e reembolso</h2>
+    <h2>4. Cancelamento e Reembolso</h2>
     <p>
-      Você pode cancelar sua assinatura a qualquer momento pelo portal do assinante. O
-      cancelamento encerra a renovação; o acesso premium permanece até o fim do período
-      pago. Reembolsos seguem as regras da plataforma de pagamento utilizada na compra
-      (Stripe no ambiente web; loja de aplicativos quando aplicável) e a legislação
-      consumerista vigente.
+      Para o plano mensal, o cancelamento encerra a renovação futura; o acesso premium permanece até o fim do período já pago. Para o plano anual de pagamento único, não há renovação a ser cancelada, e o acesso é garantido pelo período contratado.
+    </p>
+    <p>
+      Reembolsos seguem a legislação consumerista vigente (direito de arrependimento de 7 dias para compras online) e as regras da plataforma de pagamento utilizada.
     </p>
 
     <h2>5. Propriedade intelectual</h2>
