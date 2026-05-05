@@ -19,7 +19,8 @@ const ProfilePage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { isAdmin } = useIsAdmin();
-  const { progress, completedCount, journeyProgress } = useProgress();
+  const { progress, completedCount } = useProgress();
+  const { fontSize, setFontSize } = useFontSize();
   const { isPremium, premiumUntil, premiumSource, stripeCustomerId } = usePremium();
   const { signOut } = useAuth();
   const [portalLoading, setPortalLoading] = useState(false);
@@ -168,6 +169,40 @@ const ProfilePage = () => {
               <Button onClick={() => navigate("/premium")} className="btn-premium px-8">Upgrade</Button>
             )}
 
+          </div>
+        </div>
+
+        {/* ─── Reading Preferences ─── */}
+        <div className="bg-white/80 backdrop-blur-xl border border-gold/20 p-5 rounded-2xl space-y-4 shadow-sm">
+          <div className="flex items-center gap-3 mb-1">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gold/10">
+              <Type className="w-4 h-4 text-gold-dark" />
+            </div>
+            <div className="flex-1">
+              <h4 className="font-heading text-sm text-midnight">Conforto de leitura</h4>
+              <p className="text-[10px] text-muted-foreground">Ajuste o tamanho dos textos</p>
+            </div>
+          </div>
+          
+          <div className="flex items-center justify-between gap-2 p-1 bg-gold/5 rounded-xl border border-gold/10">
+            {[
+              { id: "normal", label: "Compacto", icon: "A−" },
+              { id: "large", label: "Padrão", icon: "A" },
+              { id: "xl", label: "Ampliado", icon: "A+" }
+            ].map((size) => (
+              <button
+                key={size.id}
+                onClick={() => setFontSize(size.id as any)}
+                className={`flex-1 py-2 px-1 rounded-lg text-[10px] font-heading tracking-wider uppercase transition-all ${
+                  fontSize === size.id 
+                    ? "bg-white text-gold-dark shadow-sm border border-gold/20" 
+                    : "text-muted-foreground/60 hover:text-gold-dark/60"
+                }`}
+              >
+                <span className="block text-xs mb-0.5">{size.icon}</span>
+                {size.label}
+              </button>
+            ))}
           </div>
         </div>
 
