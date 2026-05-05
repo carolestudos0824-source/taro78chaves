@@ -283,7 +283,7 @@ const LandingPage = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-[10px] font-heading tracking-widest uppercase text-midnight/60 transition-colors group-hover:text-midnight">{card.name}</p>
+                <p className="text-[10px] font-heading tracking-widest uppercase text-midnight font-bold transition-colors group-hover:text-plum">{card.name}</p>
               </div>
             ))}
             <div className="flex-shrink-0 w-20 flex items-center justify-center h-52 md:h-60 opacity-20">
