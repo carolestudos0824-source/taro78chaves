@@ -168,7 +168,7 @@ export function JourneyMap({ progress }: JourneyMapProps) {
                         </div>
                       )}
 
-                      {!isCompleted && !isCurrent && isUnlocked && isFree && (
+                      {!isCompleted && !isCurrent && arcano.id === 0 && (
                         <div className={`flex items-center gap-1.5 mt-3 ${side === "left" ? "justify-end" : "justify-start"}`}>
                           <div className="px-2 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/20 flex items-center gap-1">
                             <Sparkles className="w-2.5 h-2.5 text-orange-500" />
@@ -177,11 +177,13 @@ export function JourneyMap({ progress }: JourneyMapProps) {
                         </div>
                       )}
 
-                      {!isCompleted && !isCurrent && arcano.id === 1 && !isUnlocked && (
+                      {!isCompleted && !isCurrent && arcano.id === 1 && (
                         <div className={`flex items-center gap-1.5 mt-3 ${side === "left" ? "justify-end" : "justify-start"}`}>
                           <div className="px-2 py-0.5 rounded-full bg-accent/10 border border-accent/20 flex items-center gap-1">
-                            <Lock className="w-2.5 h-2.5 text-accent" />
-                            <span className="text-[8px] font-heading tracking-widest uppercase text-accent">Desbloqueável</span>
+                            {isUnlocked ? <Sparkles className="w-2.5 h-2.5 text-accent" /> : <Lock className="w-2.5 h-2.5 text-accent" />}
+                            <span className="text-[8px] font-heading tracking-widest uppercase text-accent">
+                              {isUnlocked ? "Desbloqueado" : "Desbloqueável"}
+                            </span>
                           </div>
                         </div>
                       )}
@@ -195,6 +197,18 @@ export function JourneyMap({ progress }: JourneyMapProps) {
                         </div>
                       )}
                     </div>
+
+                    {isCurrent && (
+                      <div className="px-5 pb-4 md:px-6 md:pb-5">
+                        <p className="text-[10px] text-muted-foreground/80 italic bg-gold/5 p-2 rounded-lg border border-gold/10">
+                          {arcano.id === 1 && !isUnlocked 
+                            ? "✦ Desbloqueie com 80% no quiz do Louco." 
+                            : arcano.id > 1 && !isUnlocked && !bypassLocks
+                            ? "✦ Disponível na Jornada Completa."
+                            : "✦ Próxima etapa da sua jornada."}
+                        </p>
+                      </div>
+                    )}
 
                     {isCurrent && (
                       <div className="absolute bottom-0 left-0 right-0 h-px" style={{
