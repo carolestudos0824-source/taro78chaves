@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { ChevronRight, Sparkles, Layers, Star, Moon, Sun, Eye, User } from "lucide-react";
+import { ChevronRight, Sparkles, Layers, Star, Eye, User, Key, DoorOpen, BookOpen } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 
 interface OnboardingStep {
@@ -7,130 +7,82 @@ interface OnboardingStep {
   kicker: string;
   title: string;
   lines: string[];
-  accent: "gold" | "wine" | "plum";
-  detail?: string;
+  detail?: "name" | "layers";
 }
 
 const STEPS: OnboardingStep[] = [
   {
-    symbol: <Sparkles className="w-6 h-6" />,
+    symbol: <Key className="w-7 h-7" strokeWidth={1.5} />,
     kicker: "Boas-vindas",
     title: "Você não veio aprender cartas.",
     lines: [
       "Você veio aprender a ler o que já existe dentro de si.",
-      "",
       "Aqui, o Tarô é linguagem viva — espelho de arquétipos, forças e verdades que já te habitam.",
-      "",
       "Cada carta revela uma parte da sua história. Nenhuma resposta vem de fora.",
     ],
-    accent: "gold",
   },
   {
-    symbol: <User className="w-6 h-6" />,
+    symbol: <User className="w-7 h-7" strokeWidth={1.5} />,
     kicker: "Apresentação",
     title: "Como posso te chamar?",
     lines: [
       "Antes de começar, deixe seu nome.",
       "Ele aparecerá em momentos especiais da sua jornada — como saudação e nos seus certificados.",
-      "",
       "Pode pular se preferir manter o anonimato.",
     ],
-    accent: "wine",
     detail: "name",
   },
   {
-    symbol: <Star className="w-6 h-6" />,
+    symbol: <Star className="w-7 h-7" strokeWidth={1.5} />,
     kicker: "A Jornada do Louco",
     title: "22 mestres. Uma travessia.",
     lines: [
-      "Tudo começa no Arcano Zero — O Louco.",
-      "Ele é o viajante que salta sem garantias.",
-      "",
+      "Tudo começa no Arcano Zero — O Louco. Ele é o viajante que salta sem garantias.",
       "Cada Arcano Maior é um portal de sabedoria:",
       "O Mago ensina o poder da intenção consciente.",
       "A Sacerdotisa revela o que está além do visível.",
       "A Imperatriz desperta a força criadora.",
-      "",
       "Você vai caminhar com todos eles — um a um.",
     ],
-    accent: "wine",
   },
   {
-    symbol: <Layers className="w-6 h-6" />,
+    symbol: <Layers className="w-7 h-7" strokeWidth={1.5} />,
     kicker: "Método em Camadas",
     title: "Profundidade sem pressão.",
-    lines: [
-      "Cada arcano é estudado em camadas de significado:",
-    ],
-    accent: "plum",
+    lines: ["Cada arcano é estudado em camadas de significado:"],
     detail: "layers",
   },
   {
-    symbol: <Eye className="w-6 h-6" />,
+    symbol: <Eye className="w-7 h-7" strokeWidth={1.5} />,
     kicker: "Arcanos Vivos",
     title: "As cartas conversam com você.",
     lines: [
       "As cartas não estão presas em páginas.",
       "Elas aparecem nos seus quizzes, nos desafios, nas revisões — e falam diretamente com você.",
-      "",
-      "Você não memoriza. Você convive.",
-      "E quanto mais convive, mais compreende.",
+      "Você não memoriza. Você convive. E quanto mais convive, mais compreende.",
     ],
-    accent: "gold",
   },
   {
-    symbol: <Sun className="w-6 h-6" />,
+    symbol: <BookOpen className="w-7 h-7" strokeWidth={1.5} />,
     kicker: "A Jornada Completa",
     title: "22 arcanos. 2 módulos. Uma travessia profunda.",
     lines: [
       "Comece pelos Fundamentos do Tarô — a base de tudo.",
-      "",
       "Depois, entre na Jornada dos Arcanos Maiores — 22 portais de sabedoria, um a um.",
-      "",
       "A plataforma cresce junto com você.",
     ],
-    accent: "wine",
   },
   {
-    symbol: <Sparkles className="w-6 h-6" />,
+    symbol: <DoorOpen className="w-7 h-7" strokeWidth={1.5} />,
     kicker: "Pronta?",
     title: "O Louco espera por você.",
     lines: [
-      "Não é preciso saber nada.",
-      "Não é preciso acreditar em nada.",
-      "",
+      "Não é preciso saber nada. Não é preciso acreditar em nada.",
       "Só é preciso dar o primeiro passo.",
-      "",
-      "O precipício não é o fim.",
-      "É onde a jornada começa.",
+      "O precipício não é o fim. É onde a jornada começa.",
     ],
-    accent: "plum",
   },
 ];
-
-const ACCENT = {
-  gold: {
-    main: "hsl(36 45% 50%)",
-    soft: "hsl(36 45% 50% / 0.10)",
-    border: "hsl(36 45% 50% / 0.22)",
-    glow: "hsl(36 45% 50% / 0.06)",
-    gradient: "linear-gradient(135deg, hsl(36 45% 42%), hsl(36 50% 60%))",
-  },
-  wine: {
-    main: "hsl(340 42% 30%)",
-    soft: "hsl(340 42% 30% / 0.08)",
-    border: "hsl(340 42% 30% / 0.18)",
-    glow: "hsl(340 42% 30% / 0.04)",
-    gradient: "linear-gradient(135deg, hsl(340 42% 25%), hsl(340 38% 40%))",
-  },
-  plum: {
-    main: "hsl(280 30% 32%)",
-    soft: "hsl(280 30% 32% / 0.08)",
-    border: "hsl(280 30% 32% / 0.16)",
-    glow: "hsl(280 30% 32% / 0.04)",
-    gradient: "linear-gradient(135deg, hsl(280 30% 26%), hsl(280 28% 42%))",
-  },
-};
 
 const LAYER_ITEMS = [
   { label: "Essência", desc: "O coração vivo da carta", icon: "◉" },
@@ -138,11 +90,6 @@ const LAYER_ITEMS = [
   { label: "Simbolismo", desc: "Cada detalhe visual tem propósito", icon: "⟡" },
   { label: "Amor & Trabalho", desc: "Aplicações na vida real", icon: "♡" },
   { label: "Quiz & Prática", desc: "Integre o que compreendeu", icon: "✦" },
-];
-
-const MODULE_ITEMS = [
-  { name: "Fundamentos", desc: "As raízes do Tarô" },
-  { name: "Arcanos Maiores", desc: "22 portais de sabedoria" },
 ];
 
 interface Props {
@@ -157,22 +104,19 @@ const OnboardingPage = ({ onComplete }: Props) => {
 
   const current = STEPS[step];
   const isLast = step === STEPS.length - 1;
-  const colors = ACCENT[current.accent];
 
   const goNext = useCallback(() => {
-    if (current.detail === "name") {
-      setStudentName(nameInput.trim());
-    }
+    if (current.detail === "name") setStudentName(nameInput.trim());
     if (isLast) {
       setDirection("out");
-      setTimeout(onComplete, 500);
+      setTimeout(onComplete, 480);
       return;
     }
     setDirection("out");
     setTimeout(() => {
       setStep(s => s + 1);
       setDirection("in");
-    }, 320);
+    }, 280);
   }, [isLast, onComplete, current.detail, nameInput, setStudentName]);
 
   const goBack = useCallback(() => {
@@ -181,40 +125,47 @@ const OnboardingPage = ({ onComplete }: Props) => {
     setTimeout(() => {
       setStep(s => s - 1);
       setDirection("in");
-    }, 320);
+    }, 280);
   }, [step]);
 
   return (
     <div
-      className="min-h-screen relative overflow-hidden flex flex-col select-none"
+      data-onboarding
+      className="fixed inset-0 z-[60] overflow-y-auto flex flex-col select-none"
       style={{
-        background: "linear-gradient(170deg, hsl(36 33% 97%) 0%, hsl(38 28% 93%) 40%, hsl(36 30% 95%) 100%)",
-        transition: "opacity 0.5s ease",
+        background:
+          "radial-gradient(ellipse at 50% 0%, hsl(var(--brand-rose) / 0.55) 0%, transparent 55%), linear-gradient(180deg, hsl(var(--brand-ivory)) 0%, hsl(var(--brand-rose) / 0.4) 100%)",
+        transition: "opacity 0.45s ease",
         opacity: direction === "out" && isLast ? 0 : 1,
       }}
     >
-      {/* Subtle texture overlay */}
-      <div className="fixed inset-0 z-0 pointer-events-none" style={{
-        background: `radial-gradient(ellipse at 50% 0%, ${colors.glow} 0%, transparent 70%)`,
-        transition: "background 0.5s ease",
-      }} />
+      {/* Subtle ornament watermark */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 12% 22%, hsl(var(--brand-gold)) 0 1.5px, transparent 2px), radial-gradient(circle at 88% 78%, hsl(var(--brand-gold)) 0 1.5px, transparent 2px), radial-gradient(circle at 80% 18%, hsl(var(--brand-plum)) 0 1px, transparent 2px), radial-gradient(circle at 18% 82%, hsl(var(--brand-plum)) 0 1px, transparent 2px)",
+          backgroundSize: "420px 420px",
+        }}
+      />
 
       {/* Top bar: progress + skip */}
-      <div className="relative z-10 flex items-center justify-between px-6 pt-6 pb-2">
-        <div className="flex items-center gap-1.5">
+      <div className="relative z-10 flex items-center justify-between px-5 md:px-8 pt-5 md:pt-8 pb-2 max-w-3xl w-full mx-auto">
+        <div className="flex items-center gap-2">
           {STEPS.map((_, i) => (
             <div
               key={i}
               className="rounded-full transition-all duration-500"
               style={{
-                width: i === step ? 24 : 6,
-                height: 4,
+                width: i === step ? 28 : 8,
+                height: 8,
                 background:
                   i < step
-                    ? "hsl(140 35% 50% / 0.40)"
+                    ? "hsl(var(--brand-gold))"
                     : i === step
-                    ? colors.main
-                    : "hsl(36 20% 70% / 0.30)",
+                      ? "hsl(var(--brand-plum))"
+                      : "hsl(var(--brand-greige))",
               }}
             />
           ))}
@@ -222,8 +173,8 @@ const OnboardingPage = ({ onComplete }: Props) => {
         {!isLast && (
           <button
             onClick={onComplete}
-            className="text-[10px] font-accent italic transition-colors"
-            style={{ color: "hsl(230 15% 40% / 0.35)" }}
+            className="text-sm font-heading tracking-[0.18em] uppercase px-3 py-1.5 rounded-full transition-colors"
+            style={{ color: "hsl(var(--brand-plum))" }}
           >
             Pular
           </button>
@@ -231,25 +182,27 @@ const OnboardingPage = ({ onComplete }: Props) => {
       </div>
 
       {/* Main content */}
-      <div className="flex-1 relative z-10 flex items-center justify-center px-6 py-4">
+      <div className="flex-1 relative z-10 flex items-center justify-center px-5 md:px-8 py-6">
         <div
-          className="max-w-sm w-full"
+          className="w-full max-w-xl"
           style={{
-            animation: direction === "in" ? "fade-in 0.45s ease-out" : "none",
             opacity: direction === "out" ? 0 : 1,
             transform: direction === "out" ? "translateY(6px)" : "none",
-            transition: "opacity 0.3s ease, transform 0.3s ease",
+            transition: "opacity 0.28s ease, transform 0.28s ease",
+            animation: direction === "in" ? "fade-in 0.5s ease-out" : "none",
           }}
         >
-          {/* Icon */}
-          <div className="flex justify-center mb-5">
+          {/* Icon tile — plum bg, gold border, gold icon */}
+          <div className="flex justify-center mb-6">
             <div
-              className="w-14 h-14 rounded-2xl flex items-center justify-center"
+              className="w-[72px] h-[72px] md:w-[80px] md:h-[80px] rounded-2xl flex items-center justify-center"
               style={{
-                background: colors.soft,
-                border: `1px solid ${colors.border}`,
-                color: colors.main,
-                boxShadow: `0 8px 32px ${colors.glow}`,
+                background:
+                  "linear-gradient(135deg, hsl(var(--brand-plum)) 0%, hsl(333 50% 18%) 100%)",
+                border: "1.5px solid hsl(var(--brand-gold) / 0.6)",
+                color: "hsl(var(--brand-gold))",
+                boxShadow:
+                  "0 14px 40px -16px hsl(var(--brand-plum) / 0.55), inset 0 1px 0 hsl(var(--brand-gold) / 0.18)",
               }}
             >
               {current.symbol}
@@ -258,60 +211,88 @@ const OnboardingPage = ({ onComplete }: Props) => {
 
           {/* Kicker */}
           <p
-            className="text-center text-[9px] font-heading tracking-[0.35em] uppercase mb-2"
-            style={{ color: colors.main }}
+            className="text-center text-[11px] md:text-xs font-heading tracking-[0.32em] uppercase mb-3"
+            style={{ color: "hsl(var(--brand-gold))" }}
           >
+            <span className="inline-block mx-2 opacity-70">✦</span>
             {current.kicker}
+            <span className="inline-block mx-2 opacity-70">✦</span>
           </p>
 
-          {/* Title */}
+          {/* Title — large, dark plum, legible */}
           <h1
-            className="text-center font-heading text-xl md:text-2xl tracking-wide leading-tight mb-5"
-            style={{ color: "hsl(230 25% 12%)" }}
+            className="text-center font-heading text-[28px] leading-[1.15] md:text-[40px] md:leading-[1.1] tracking-tight mb-5"
+            style={{ color: "hsl(var(--brand-plum))" }}
           >
             {current.title}
           </h1>
 
-          {/* Thin divider */}
-          <div className="flex justify-center mb-5">
-            <div className="w-8 h-px" style={{ background: colors.border }} />
+          {/* Gold divider */}
+          <div className="flex items-center justify-center gap-2 mb-6" aria-hidden>
+            <div className="w-10 h-px" style={{ background: "hsl(var(--brand-gold) / 0.5)" }} />
+            <span className="text-[10px]" style={{ color: "hsl(var(--brand-gold))" }}>✦</span>
+            <div className="w-10 h-px" style={{ background: "hsl(var(--brand-gold) / 0.5)" }} />
           </div>
 
-          {/* Body text */}
-          <div className="space-y-1 mb-6">
+          {/* Body — strong contrast, comfortable size */}
+          <div className="space-y-3 mb-7 max-w-lg mx-auto">
             {current.lines.map((line, i) => (
               <p
                 key={i}
-                className="text-center text-[13px] font-body leading-relaxed"
-                style={{ color: line === "" ? "transparent" : "hsl(230 15% 25% / 0.55)" }}
+                className="text-center font-body text-[16px] md:text-[18px] leading-[1.6]"
+                style={{ color: "hsl(var(--foreground))" }}
               >
-                {line || "\u00A0"}
+                {line}
               </p>
             ))}
           </div>
 
           {/* Detail: Layers */}
           {current.detail === "layers" && (
-            <div className="space-y-2 mb-4">
+            <div className="space-y-2.5 mb-4 max-w-md mx-auto">
               {LAYER_ITEMS.map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all"
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl"
                   style={{
-                    background: "hsl(38 28% 94% / 0.7)",
-                    border: "1px solid hsl(36 25% 82% / 0.5)",
-                    animationDelay: `${i * 80}ms`,
-                    animation: direction === "in" ? `fade-in 0.4s ease-out ${i * 80}ms both` : "none",
+                    background: "hsl(var(--brand-ivory) / 0.85)",
+                    border: "1px solid hsl(var(--brand-gold) / 0.28)",
+                    boxShadow: "0 2px 10px -4px hsl(var(--brand-plum) / 0.08)",
+                    animation:
+                      direction === "in"
+                        ? `fade-in 0.4s ease-out ${i * 70}ms both`
+                        : "none",
                   }}
                 >
-                  <span className="text-base w-6 text-center" style={{ color: colors.main }}>{item.icon}</span>
+                  <span
+                    className="w-9 h-9 rounded-full flex items-center justify-center text-base shrink-0"
+                    style={{
+                      background: "hsl(var(--brand-plum))",
+                      color: "hsl(var(--brand-gold))",
+                    }}
+                  >
+                    {item.icon}
+                  </span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-[12px] font-heading tracking-wide" style={{ color: "hsl(230 25% 15%)" }}>{item.label}</p>
-                    <p className="text-[10px]" style={{ color: "hsl(230 15% 40% / 0.50)" }}>{item.desc}</p>
+                    <p
+                      className="text-[14px] md:text-[15px] font-heading tracking-wide"
+                      style={{ color: "hsl(var(--brand-plum))" }}
+                    >
+                      {item.label}
+                    </p>
+                    <p
+                      className="text-[13px] md:text-[14px] leading-snug"
+                      style={{ color: "hsl(var(--foreground) / 0.78)" }}
+                    >
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
               ))}
-              <p className="text-center text-[10px] italic font-accent mt-3" style={{ color: "hsl(230 15% 40% / 0.40)" }}>
+              <p
+                className="text-center text-[13px] md:text-[14px] italic font-accent mt-4"
+                style={{ color: "hsl(var(--brand-plum) / 0.75)" }}
+              >
                 Vá fundo quando quiser. Avance quando sentir que é hora.
               </p>
             </div>
@@ -319,119 +300,89 @@ const OnboardingPage = ({ onComplete }: Props) => {
 
           {/* Detail: Name capture */}
           {current.detail === "name" && (
-            <div className="mb-4">
+            <div className="mb-4 max-w-sm mx-auto">
               <label
                 htmlFor="onboarding-name"
-                className="block text-center text-[10px] font-heading tracking-[0.25em] uppercase mb-2"
-                style={{ color: colors.main }}
+                className="block text-center text-[11px] font-heading tracking-[0.28em] uppercase mb-3"
+                style={{ color: "hsl(var(--brand-gold))" }}
               >
-                Como posso te chamar?
+                Seu nome
               </label>
               <input
                 id="onboarding-name"
                 type="text"
                 value={nameInput}
                 onChange={(e) => setNameInput(e.target.value)}
-                placeholder="Seu nome"
+                placeholder="Como posso te chamar?"
                 autoComplete="given-name"
                 maxLength={60}
-                className="w-full px-4 py-3 rounded-xl text-center text-sm font-body outline-none transition-all"
+                className="w-full px-5 py-4 rounded-xl text-center text-[17px] font-body outline-none transition-all"
                 style={{
-                  background: "hsl(38 28% 94% / 0.85)",
-                  border: `1px solid ${colors.border}`,
-                  color: "hsl(230 25% 15%)",
-                  boxShadow: `0 4px 18px ${colors.glow}`,
+                  background: "hsl(var(--brand-ivory))",
+                  border: "1.5px solid hsl(var(--brand-gold) / 0.45)",
+                  color: "hsl(var(--brand-plum))",
+                  boxShadow: "0 4px 18px -8px hsl(var(--brand-plum) / 0.15)",
                 }}
               />
               <p
-                className="text-center text-[10px] italic font-accent mt-3"
-                style={{ color: "hsl(230 15% 40% / 0.45)" }}
+                className="text-center text-[13px] italic font-accent mt-3"
+                style={{ color: "hsl(var(--brand-plum) / 0.65)" }}
               >
                 Opcional. Pode deixar em branco e seguir.
               </p>
             </div>
           )}
-
-          {/* Detail: Modules */}
-          {current.detail === "modules" && (
-            <div className="mb-4">
-              <div className="flex flex-wrap justify-center gap-1.5">
-                {MODULE_ITEMS.map((mod, i) => (
-                  <span
-                    key={i}
-                    className="text-[10px] px-2.5 py-1 rounded-full font-heading tracking-wide"
-                    style={{
-                      background: i < 3 ? "hsl(38 28% 93% / 0.8)" : colors.soft,
-                      border: `1px solid ${i < 3 ? "hsl(36 25% 82% / 0.4)" : colors.border}`,
-                      color: i < 3 ? "hsl(230 15% 30%)" : colors.main,
-                      animation: direction === "in" ? `fade-in 0.3s ease-out ${i * 60}ms both` : "none",
-                    }}
-                  >
-                    {mod.name}
-                  </span>
-                ))}
-              </div>
-              <div
-                className="mt-4 px-4 py-2.5 rounded-xl text-center"
-                style={{
-                  background: colors.soft,
-                  border: `1px solid ${colors.border}`,
-                }}
-              >
-                <p className="text-[10px] font-heading tracking-wider uppercase" style={{ color: colors.main }}>
-                  ✦ Área Premium
-                </p>
-                <p className="text-[10px] mt-0.5" style={{ color: "hsl(230 15% 40% / 0.45)" }}>
-                  Combinações, Tiragens, Amor e Prática — acesso exclusivo para quem quer ir além.
-                </p>
-              </div>
-            </div>
-          )}
         </div>
       </div>
 
-      {/* Bottom */}
-      <div className="relative z-10 px-6 pb-8 space-y-3">
-        {/* Main CTA */}
+      {/* Bottom controls */}
+      <div className="relative z-10 px-5 md:px-8 pb-8 md:pb-10 space-y-4 max-w-xl w-full mx-auto">
+        {/* Main CTA — large, plum-filled with gold accent */}
         <button
           onClick={goNext}
-          className="w-full max-w-sm mx-auto flex items-center justify-center gap-2 py-3.5 rounded-xl font-heading text-[11px] tracking-[0.18em] uppercase transition-all duration-300 active:scale-[0.98]"
+          className="w-full flex items-center justify-center gap-2.5 min-h-[56px] md:min-h-[60px] px-6 rounded-2xl font-heading text-[13px] md:text-[14px] tracking-[0.22em] uppercase transition-all duration-300 active:scale-[0.98]"
           style={{
-            background: isLast ? colors.gradient : "hsl(38 28% 94% / 0.90)",
-            border: isLast ? "none" : `1px solid ${colors.border}`,
-            color: isLast ? "hsl(36 33% 97%)" : colors.main,
-            boxShadow: isLast ? `0 8px 32px ${colors.soft}` : "none",
-            backdropFilter: "blur(8px)",
+            background:
+              "linear-gradient(135deg, hsl(var(--brand-plum)) 0%, hsl(333 50% 18%) 100%)",
+            border: "1.5px solid hsl(var(--brand-gold) / 0.55)",
+            color: "hsl(var(--brand-gold-light, 38 50% 78%))",
+            boxShadow:
+              "0 10px 32px -10px hsl(var(--brand-plum) / 0.5), inset 0 1px 0 hsl(var(--brand-gold) / 0.2)",
           }}
         >
           {isLast ? (
             <>
               <Sparkles className="w-4 h-4" />
-              Iniciar minha Jornada
+              <span style={{ color: "hsl(var(--brand-gold))" }}>
+                Iniciar minha Jornada
+              </span>
             </>
           ) : (
             <>
-              Continuar
-              <ChevronRight className="w-3.5 h-3.5" />
+              <span style={{ color: "hsl(var(--brand-gold))" }}>Continuar</span>
+              <ChevronRight className="w-4 h-4" style={{ color: "hsl(var(--brand-gold))" }} />
             </>
           )}
         </button>
 
-        {/* Back */}
-        {step > 0 && !isLast && (
-          <button
-            onClick={goBack}
-            className="block mx-auto text-[10px] font-accent italic transition-colors"
-            style={{ color: "hsl(230 15% 40% / 0.30)" }}
+        {/* Back + counter */}
+        <div className="flex items-center justify-center gap-4">
+          {step > 0 && (
+            <button
+              onClick={goBack}
+              className="text-[13px] font-heading tracking-[0.18em] uppercase underline-offset-4 hover:underline"
+              style={{ color: "hsl(var(--brand-plum))" }}
+            >
+              Voltar
+            </button>
+          )}
+          <span
+            className="text-[12px] font-heading tracking-[0.22em] uppercase"
+            style={{ color: "hsl(var(--brand-plum) / 0.65)" }}
           >
-            Voltar
-          </button>
-        )}
-
-        {/* Step counter */}
-        <p className="text-center text-[9px]" style={{ color: "hsl(230 15% 40% / 0.25)" }}>
-          {step + 1} de {STEPS.length}
-        </p>
+            <span style={{ color: "hsl(var(--brand-gold))" }}>✦</span> {step + 1} de {STEPS.length} <span style={{ color: "hsl(var(--brand-gold))" }}>✦</span>
+          </span>
+        </div>
       </div>
     </div>
   );
