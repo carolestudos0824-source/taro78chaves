@@ -218,8 +218,10 @@ const LandingPage = () => {
                 </div>
 
                 {/* Floating Elements */}
-                <div className="absolute -top-6 -right-6 w-12 h-12 bg-white rounded-full shadow-lg border border-gold/20 flex items-center justify-center animate-bounce-slow">
-                  <Star className="w-6 h-6 text-gold" fill="currentColor" />
+                <div className="absolute -top-6 -right-6 w-14 h-14 bg-ivory rounded-full shadow-[0_10px_25px_-5px_rgba(91,31,61,0.2)] border border-gold/40 flex items-center justify-center animate-bounce-slow z-20">
+                  <div className="w-10 h-10 rounded-full bg-plum/5 flex items-center justify-center border border-gold/20">
+                    <Key className="w-6 h-6 text-gold-dark" />
+                  </div>
                 </div>
               </div>
             </div>
