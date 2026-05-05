@@ -101,7 +101,7 @@ const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, comple
 
   // Smart suggestion based on all completed lessons
   if (completedLessonIds && completedLessonIds.length > 0) {
-    const suggestion = findNextLessonSuggestion(completedLessonIds);
+    const suggestion = findNextLessonSuggestion(completedLessonIds, currentModuleId);
     if (suggestion) {
       actions.push({ ...suggestion, icon: ArrowRight, priority: 1 });
     }
