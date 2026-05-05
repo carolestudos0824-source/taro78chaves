@@ -25,6 +25,7 @@ import imgImperador from "@/assets/arcano-4-imperador.jpg";
 import imgHierofante from "@/assets/arcano-5-hierofante.jpg";
 import imgEnamorados from "@/assets/arcano-6-enamorados.jpg";
 import brandIcon from "@/assets/brand-icon.png";
+import brandLogo from "@/assets/brand-logo.png";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -57,11 +58,15 @@ const LandingPage = () => {
     <div className="min-h-screen bg-parchment text-midnight selection:bg-secondary selection:text-white">
 
       {/* ─── Top Brand Header ─── */}
-      <header className="absolute top-0 left-0 right-0 z-50 px-6 py-6 md:py-8">
+      <header className="absolute top-0 left-0 right-0 z-50 px-6 py-4 md:py-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <a href="/" className="flex items-center gap-3 group transition-transform hover:scale-[1.02]" aria-label="Tarô 78 Chaves">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-plum flex items-center justify-center border border-gold/30 shadow-lg">
-              <Key className="w-6 h-6 md:w-7 md:h-7 text-gold" strokeWidth={1.5} />
+            <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
+              <img 
+                src={brandIcon} 
+                alt="Ícone Tarô 78 Chaves" 
+                className="w-full h-full object-contain" 
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-heading text-lg md:text-xl tracking-tight text-plum font-bold leading-none">
@@ -82,7 +87,7 @@ const LandingPage = () => {
       </header>
 
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-32 pb-24 md:pt-48 md:pb-48 px-6 overflow-hidden">
+      <section className="relative pt-24 pb-20 md:pt-36 md:pb-32 px-6 overflow-hidden min-h-[90vh] flex items-center">
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold/15 blur-[120px]" />
@@ -94,7 +99,7 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             
-            <div className="text-center lg:text-left space-y-10 order-2 lg:order-1">
+            <div className="text-center lg:text-left space-y-6 md:space-y-8 order-2 lg:order-1">
               {/* Symbolic Badge */}
               <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in">
                 <Sparkles className="w-4 h-4 text-gold-dark" />
@@ -103,8 +108,8 @@ const LandingPage = () => {
                 </span>
               </div>
 
-              <div className="space-y-4">
-                <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-plum normal-case">
+              <div className="space-y-3 md:space-y-4">
+                <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl leading-[1.1] tracking-tight text-plum normal-case">
                   Abra o primeiro portal do tarô.
                 </h1>
                 <p className="font-heading text-2xl md:text-3xl lg:text-4xl text-gold-dark font-medium italic">
@@ -112,8 +117,8 @@ const LandingPage = () => {
                 </p>
               </div>
 
-              <div className="space-y-8 max-w-2xl mx-auto lg:mx-0">
-                <div className="space-y-6">
+              <div className="space-y-6 md:space-y-8 max-w-2xl mx-auto lg:mx-0">
+                <div className="space-y-4 md:space-y-6">
                   <p className="text-lg md:text-xl font-body text-foreground leading-relaxed">
                     Um caminho guiado pelo Rider-Waite-Smith para parar de decorar significados soltos e começar a interpretar carta por carta — com método, prática, quizzes e progresso.
                   </p>
@@ -144,10 +149,10 @@ const LandingPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-start gap-4 pt-6">
+              <div className="flex flex-col items-center lg:items-start gap-3 pt-4 md:pt-6">
                 <Button 
                   onClick={handleStart} 
-                  className="w-full sm:w-auto min-h-[64px] px-12 rounded-2xl bg-plum hover:bg-plum/90 text-gold font-heading text-[14px] tracking-[0.25em] uppercase border-1.5 border-gold/40 shadow-[0_20px_50px_-12px_rgba(91,31,61,0.4)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3"
+                  className="w-full sm:w-auto min-h-[58px] md:min-h-[64px] px-10 md:px-12 rounded-2xl bg-plum hover:bg-plum/90 text-gold font-heading text-[13px] md:text-[14px] tracking-[0.25em] uppercase border-1.5 border-gold/40 shadow-[0_20px_50px_-12px_rgba(91,31,61,0.4)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3"
                 >
                   <Key className="w-5 h-5" />
                   COMEÇAR PELO LOUCO — GRÁTIS
@@ -213,8 +218,10 @@ const LandingPage = () => {
                 </div>
 
                 {/* Floating Elements */}
-                <div className="absolute -top-6 -right-6 w-12 h-12 bg-white rounded-full shadow-lg border border-gold/20 flex items-center justify-center animate-bounce-slow">
-                  <Star className="w-6 h-6 text-gold" fill="currentColor" />
+                <div className="absolute -top-6 -right-6 w-14 h-14 bg-ivory rounded-full shadow-[0_10px_25px_-5px_rgba(91,31,61,0.2)] border border-gold/40 flex items-center justify-center animate-bounce-slow z-20">
+                  <div className="w-10 h-10 rounded-full bg-plum/5 flex items-center justify-center border border-gold/20">
+                    <Key className="w-6 h-6 text-gold-dark" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -613,8 +620,12 @@ const LandingPage = () => {
       <footer className="py-20 px-6 text-center space-y-12 border-t border-gold/10">
         <div className="space-y-4 flex flex-col items-center">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-plum flex items-center justify-center border border-gold/30">
-              <Key className="w-7 h-7 text-gold" strokeWidth={1.5} />
+            <div className="w-12 h-12 flex items-center justify-center">
+              <img 
+                src={brandIcon} 
+                alt="Ícone Tarô 78 Chaves" 
+                className="w-full h-full object-contain" 
+              />
             </div>
             <div className="text-left">
               <span className="font-heading text-xl tracking-tight text-plum font-bold block leading-none">
