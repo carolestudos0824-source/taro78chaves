@@ -87,7 +87,7 @@ const LandingPage = () => {
       </header>
 
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-16 pb-10 md:pt-20 md:pb-12 px-6 overflow-hidden min-h-0 flex items-center">
+      <section className="relative pt-12 pb-6 md:pt-14 md:pb-8 px-6 overflow-hidden min-h-0 flex items-center">
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold/15 blur-[120px]" />
@@ -97,18 +97,18 @@ const LandingPage = () => {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
             
-            <div className="text-center lg:text-left space-y-5 md:space-y-6 order-2 lg:order-1">
+            <div className="text-center lg:text-left space-y-4 md:space-y-5 order-2 lg:order-1">
               {/* Symbolic Badge */}
-              <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in">
+              <div className="inline-flex items-center gap-2.5 px-5 py-1.5 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in">
                 <Sparkles className="w-4 h-4 text-gold-dark" />
                 <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase font-bold text-plum">
                   A chave abre o primeiro portal · Rider-Waite-Smith
                 </span>
               </div>
 
-              <div className="space-y-2 md:space-y-3">
+              <div className="space-y-1 md:space-y-2">
                 <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-plum normal-case">
                   Abra o primeiro portal do tarô.
                 </h1>
@@ -117,53 +117,53 @@ const LandingPage = () => {
                 </p>
               </div>
 
-              <div className="space-y-5 md:space-y-6 max-w-2xl mx-auto lg:mx-0">
-                <div className="space-y-3 md:space-y-4">
+              <div className="space-y-4 md:space-y-5 max-w-2xl mx-auto lg:mx-0">
+                <div className="space-y-2 md:space-y-3">
                   <p className="text-base md:text-lg lg:text-xl font-body text-foreground leading-relaxed">
                     Um caminho guiado pelo Rider-Waite-Smith para parar de decorar significados soltos e começar a interpretar carta por carta — com método, prática, quizzes e progresso.
                   </p>
-                  <div className="bg-gold/10 border-l-4 border-gold/60 p-3 md:p-4 rounded-r-xl">
-                    <p className="text-sm md:text-base font-body text-midnight font-bold">
+                  <div className="bg-gold/10 border-l-4 border-gold/60 p-2 md:p-3 rounded-r-xl">
+                    <p className="text-xs md:text-sm lg:text-base font-body text-midnight font-bold">
                       ✦ Comece pelo Louco gratuitamente. Vá bem na lição e desbloqueie O Mago.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-8 text-[12px] font-heading tracking-widest uppercase text-plum font-bold">
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6 text-[11px] md:text-[12px] font-heading tracking-widest uppercase text-plum font-bold">
                   <div className="flex items-center gap-2 group">
-                    <div className="w-7 h-7 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
-                      <Star className="w-3.5 h-3.5 text-gold-dark" />
+                    <div className="w-6 h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
+                      <Star className="w-3 h-3 text-gold-dark" />
                     </div>
                     <span>Uma carta por vez</span>
                   </div>
                   <div className="flex items-center gap-2 group">
-                    <div className="w-7 h-7 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
-                      <Zap className="w-3.5 h-3.5 text-gold-dark" />
+                    <div className="w-6 h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
+                      <Zap className="w-3 h-3 text-gold-dark" />
                     </div>
                     <span>Quizzes e XP</span>
                   </div>
                   <div className="flex items-center gap-2 group">
-                    <div className="w-7 h-7 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
-                      <Layers className="w-3.5 h-3.5 text-gold-dark" />
+                    <div className="w-6 h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
+                      <Layers className="w-3 h-3 text-gold-dark" />
                     </div>
                     <span>Progresso salvo</span>
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-start gap-3 pt-2">
+              <div className="flex flex-col items-center lg:items-start gap-2 pt-1 md:pt-2">
                 <Button 
                   onClick={handleStart} 
-                  className="w-full sm:w-auto min-h-[60px] md:min-h-[68px] px-10 md:px-12 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-sm md:text-base tracking-[0.25em] uppercase border-none shadow-[0_15px_40px_-10px_rgba(91,31,61,0.6)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-4 group/btn"
+                  className="w-full sm:w-auto min-h-[56px] md:min-h-[64px] px-8 md:px-10 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-sm md:text-base tracking-[0.25em] uppercase border-none shadow-[0_15px_40px_-10px_rgba(91,31,61,0.6)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-4 group/btn"
                 >
                   <Key className="w-5 h-5 group-hover/btn:rotate-12 transition-transform text-gold" />
                   COMEÇAR PELO LOUCO — GRÁTIS
                 </Button>
-                <div className="flex flex-col items-center lg:items-start gap-1">
-                  <p className="text-xs md:text-sm font-heading tracking-[0.15em] text-plum font-extrabold uppercase drop-shadow-sm">
+                <div className="flex flex-col items-center lg:items-start gap-0.5">
+                  <p className="text-[10px] md:text-[12px] font-heading tracking-[0.15em] text-plum font-extrabold uppercase drop-shadow-sm">
                     ✦ Sem cartão de crédito para começar.
                   </p>
-                  <button onClick={() => document.getElementById('journey-map')?.scrollIntoView({ behavior: 'smooth' })} className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase text-gold-dark hover:text-plum underline underline-offset-4 transition-colors font-extrabold">
+                  <button onClick={() => document.getElementById('journey-map')?.scrollIntoView({ behavior: 'smooth' })} className="text-[9px] md:text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark hover:text-plum underline underline-offset-4 transition-colors font-extrabold">
                     Ver como funciona
                   </button>
                 </div>
@@ -171,48 +171,48 @@ const LandingPage = () => {
             </div>
 
             <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
-              <div className="relative group max-w-[320px] md:max-w-[360px] w-full">
+              <div className="relative group max-w-[280px] md:max-w-[320px] lg:max-w-[340px] w-full">
                 {/* Visual Portal Ornament */}
-                <div className="absolute -inset-6 border border-gold/20 rounded-[3rem] -z-10 animate-pulse-slow" />
-                <div className="absolute -inset-3 border-2 border-gold/10 rounded-[2.8rem] -z-10" />
+                <div className="absolute -inset-4 border border-gold/20 rounded-[2.5rem] -z-10 animate-pulse-slow" />
+                <div className="absolute -inset-2 border-2 border-gold/10 rounded-[2.3rem] -z-10" />
                 
                 {/* Main Card Portal */}
-                <div className="bg-ivory/95 backdrop-blur-2xl p-4 md:p-5 rounded-[2.2rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)] border border-gold/20 relative overflow-hidden group-hover:shadow-[0_48px_80px_-20px_rgba(91,31,61,0.2)] transition-all duration-700">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 blur-3xl rounded-full" />
+                <div className="bg-ivory/95 backdrop-blur-2xl p-3.5 md:p-4 rounded-[2rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)] border border-gold/20 relative overflow-hidden group-hover:shadow-[0_48px_80px_-20px_rgba(91,31,61,0.2)] transition-all duration-700">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-gold/5 blur-3xl rounded-full" />
                   
                   {/* Card Header */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-lg bg-plum flex items-center justify-center">
-                        <Key className="w-3.5 h-3.5 text-gold" />
+                  <div className="flex items-center justify-between mb-3 md:mb-4">
+                    <div className="flex items-center gap-1.5 md:gap-2">
+                      <div className="w-6 h-6 md:w-7 md:h-7 rounded-lg bg-plum flex items-center justify-center">
+                        <Key className="w-3 h-3 md:w-3.5 md:h-3.5 text-gold" />
                       </div>
-                      <span className="text-[9px] md:text-[10px] font-heading tracking-[0.25em] uppercase text-plum font-bold">Primeiro Portal</span>
+                      <span className="text-[8px] md:text-[9px] lg:text-[10px] font-heading tracking-[0.25em] uppercase text-plum font-bold">Primeiro Portal</span>
                     </div>
-                    <span className="px-2.5 py-1 rounded-full bg-gold/15 text-gold-dark text-[9px] md:text-[10px] font-heading tracking-widest uppercase font-bold border border-gold/30">Grátis</span>
+                    <span className="px-2 py-0.5 md:px-2.5 md:py-1 rounded-full bg-gold/15 text-gold-dark text-[8px] md:text-[9px] lg:text-[10px] font-heading tracking-widest uppercase font-bold border border-gold/30">Grátis</span>
                   </div>
 
                   {/* The Arcano Card */}
-                  <div className="relative aspect-[2/3] max-h-[250px] md:max-h-[320px] rounded-2xl overflow-hidden mb-4 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] border-[5px] border-white group-hover:scale-[1.02] transition-transform duration-700">
+                  <div className="relative aspect-[2/3] max-h-[220px] md:max-h-[260px] lg:max-h-[280px] rounded-xl md:rounded-2xl overflow-hidden mb-3 md:mb-4 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] border-[4px] md:border-[5px] border-white group-hover:scale-[1.02] transition-transform duration-700">
                     <img src={imgLouco} alt="O Louco Rider-Waite-Smith" className="w-full h-full object-cover" />
                     {/* Portal Overlay Effect */}
                     <div className="absolute inset-0 bg-gradient-to-t from-plum/20 to-transparent opacity-40" />
                   </div>
                   
-                  <div className="space-y-4 text-center">
+                  <div className="space-y-2 md:space-y-3 text-center">
                     <div className="space-y-0.5">
-                      <h3 className="font-heading text-2xl md:text-3xl text-plum leading-none">O Louco</h3>
-                      <p className="font-body text-xs md:text-sm text-plum/70 italic">O início de toda jornada</p>
+                      <h3 className="font-heading text-xl md:text-2xl lg:text-3xl text-plum leading-none">O Louco</h3>
+                      <p className="font-body text-[10px] md:text-xs lg:text-sm text-plum/70 italic">O início de toda jornada</p>
                     </div>
                     
-                    <div className="pt-3 border-t border-gold/15 space-y-2 md:space-y-3">
-                      <div className="flex items-center justify-between text-[9px] md:text-[10px] font-heading tracking-[0.2em] uppercase text-plum font-bold">
+                    <div className="pt-2 md:pt-3 border-t border-gold/15 space-y-1.5 md:space-y-2">
+                      <div className="flex items-center justify-between text-[8px] md:text-[9px] lg:text-[10px] font-heading tracking-[0.2em] uppercase text-plum font-bold">
                         <span>Progresso Inicial</span>
                         <span className="text-gold-dark">0%</span>
                       </div>
-                      <div className="h-1.5 w-full bg-plum/5 rounded-full overflow-hidden p-0.5 border border-plum/5">
+                      <div className="h-1 md:h-1.5 w-full bg-plum/5 rounded-full overflow-hidden p-0.5 border border-plum/5">
                         <div className="h-full bg-gold rounded-full w-[8%] shadow-[0_0_8px_hsl(var(--brand-gold)/0.4)]" />
                       </div>
-                      <p className="text-[9px] md:text-[10px] font-heading tracking-widest text-gold-dark font-extrabold uppercase">
+                      <p className="text-[8px] md:text-[9px] lg:text-[10px] font-heading tracking-widest text-gold-dark font-extrabold uppercase">
                         Lição gratuita · desbloqueia O Mago
                       </p>
                     </div>
@@ -220,9 +220,9 @@ const LandingPage = () => {
                 </div>
 
                 {/* Floating Elements */}
-                <div className="absolute -top-3 -right-3 w-10 h-10 bg-ivory rounded-full shadow-[0_10px_25px_-5px_rgba(91,31,61,0.2)] border border-gold/40 flex items-center justify-center animate-bounce-slow z-20 overflow-hidden">
-                  <div className="w-8 h-8 rounded-full bg-plum/5 flex items-center justify-center border border-gold/20">
-                    <Key className="w-4 h-4 text-gold-dark" />
+                <div className="absolute -top-2 -right-2 w-8 h-8 md:w-10 md:h-10 bg-ivory rounded-full shadow-[0_10px_25px_-5px_rgba(91,31,61,0.2)] border border-gold/40 flex items-center justify-center animate-bounce-slow z-20 overflow-hidden">
+                  <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-plum/5 flex items-center justify-center border border-gold/20">
+                    <Key className="w-3 h-3 md:w-4 md:h-4 text-gold-dark" />
                   </div>
                 </div>
               </div>
