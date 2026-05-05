@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
 
 #lovable-badge {
   display: none !important;
@@ -10,51 +10,78 @@
 
 @layer base {
   :root {
-    /* ─── Base Palette ─── */
-    --background: 36 33% 97%;      /* Creme quente */
-    --foreground: 230 25% 10%;     /* Quase preto elegante */
+    /* ─── Tarô 78 Chaves — Official Brand Palette ─── */
+    /* Marfim Suave #FAF5EF — base background */
+    --background: 35 56% 96%;
+    --foreground: 335 35% 18%;          /* deep ameixa for text */
 
-    --card: 38 30% 95%;            /* Creme um pouco mais escuro */
-    --card-foreground: 230 25% 10%;
+    /* Greige Quente #DCCFC2 — neutral cards */
+    --card: 35 25% 94%;
+    --card-foreground: 335 35% 18%;
 
-    --popover: 36 33% 96%;
-    --popover-foreground: 230 25% 10%;
+    --popover: 35 56% 97%;
+    --popover-foreground: 335 35% 18%;
 
-    /* ─── Theme Colors ─── */
-    --primary: 36 45% 58%;         /* Dourado principal */
-    --primary-foreground: 36 33% 97%;
+    /* ─── Brand Theme ─── */
+    /* Ouro Antigo #C8A66A — primary accent */
+    --primary: 38 47% 60%;
+    --primary-foreground: 35 56% 96%;
 
-    --secondary: 340 42% 30%;      /* Vinho profundo */
-    --secondary-foreground: 36 33% 97%;
+    /* Ameixa Profundo #5B1F3D — main brand color */
+    --secondary: 333 50% 24%;
+    --secondary-foreground: 35 56% 96%;
 
-    --accent: 215 40% 35%;         /* Azul elegante (finalizado) */
-    --accent-foreground: 36 33% 97%;
+    --accent: 38 47% 60%;
+    --accent-foreground: 333 50% 24%;
 
-    --muted: 36 20% 90%;
-    --muted-foreground: 230 10% 40%;
+    /* Greige Quente #DCCFC2 — muted */
+    --muted: 30 22% 84%;
+    --muted-foreground: 333 18% 38%;
 
-    --destructive: 0 70% 45%;      /* Vermelho sóbrio */
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 35 56% 96%;
 
-    --border: 36 25% 82%;
-    --input: 36 20% 88%;
-    --ring: 36 45% 58%;
+    --border: 30 22% 82%;
+    --input: 30 25% 90%;
+    --ring: 38 47% 60%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* ─── Named tokens ─── */
-    --gold: 36 45% 58%;
-    --gold-light: 38 40% 72%;
-    --gold-dark: 36 40% 42%;
-    --wine: 340 42% 30%;
-    --midnight: 230 25% 10%;
-    --parchment: 36 33% 97%;
-    
-    --mystic-bg: 36 33% 97%;
-    --mystic-surface: 38 30% 95%;
-    --mystic-elevated: 36 25% 92%;
+    /* ─── Named brand tokens ─── */
+    /* Ouro Antigo */
+    --gold: 38 47% 60%;
+    --gold-light: 38 50% 78%;
+    --gold-dark: 36 42% 44%;
+    --gold-muted: 35 30% 78%;
 
-    --success: 140 35% 42%;
+    /* Ameixa Profundo */
+    --wine: 333 50% 24%;
+    --plum: 333 50% 24%;
+    --crimson: 333 50% 24%;
+    --crimson-light: 335 38% 38%;
+
+    /* Neutral surfaces */
+    --midnight: 335 35% 18%;            /* dark text */
+    --parchment: 35 56% 96%;            /* Marfim */
+    --ivory: 35 56% 97%;
+    --moonlight: 18 38% 92%;            /* Rosa Aveludado #F3E6E0 */
+
+    /* Mystic surfaces — light, soft, premium */
+    --mystic-bg: 35 56% 96%;
+    --mystic-surface: 18 38% 94%;       /* Rosa Aveludado very soft */
+    --mystic-elevated: 30 25% 92%;      /* Greige Quente lighter */
+
+    --success: 140 30% 38%;
+
+    /* Sidebar */
+    --sidebar-background: 35 56% 96%;
+    --sidebar-foreground: 333 50% 24%;
+    --sidebar-primary: 333 50% 24%;
+    --sidebar-primary-foreground: 35 56% 96%;
+    --sidebar-accent: 18 38% 92%;
+    --sidebar-accent-foreground: 333 50% 24%;
+    --sidebar-border: 30 22% 82%;
+    --sidebar-ring: 38 47% 60%;
   }
 }
 
@@ -69,33 +96,24 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
-    line-height: 1.6;
-    background-color: #f5ede0;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('/mystic-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-    pointer-events: none;
-    opacity: 0.5;
+    line-height: 1.65;
+    /* Marfim Suave base with very gentle Rosa Aveludado warmth */
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(ellipse 70% 50% at 80% 0%, hsl(var(--moonlight) / 0.55) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 0% 100%, hsl(var(--mystic-elevated) / 0.4) 0%, transparent 60%);
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+    @apply font-heading;
     line-height: 1.2;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.005em;
+    color: hsl(var(--secondary));
   }
 
-  h1 { @apply text-4xl md:text-5xl font-semibold; }
-  h2 { @apply text-3xl md:text-4xl font-semibold; }
+  h1 { @apply text-4xl md:text-5xl font-medium; }
+  h2 { @apply text-3xl md:text-4xl font-medium; }
 }
 
 @layer utilities {
@@ -103,61 +121,77 @@
     padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px) + 16px);
   }
 
-  /* ─── System Components ─── */
-  
+  /* ─── Brand UI Components ─── */
+
   .btn-premium {
-    @apply font-heading tracking-widest uppercase text-[11px] px-8 py-4 rounded-full transition-all duration-300 active:scale-95 shadow-lg;
-    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(340 40% 40%));
+    @apply font-heading tracking-[0.2em] uppercase text-[11px] px-8 py-4 rounded-full transition-all duration-300 active:scale-95;
+    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(333 45% 30%));
     color: hsl(var(--parchment));
     border: 1px solid hsl(var(--secondary) / 0.4);
+    box-shadow: 0 6px 24px -8px hsl(var(--secondary) / 0.35);
+  }
+  .btn-premium:hover {
+    box-shadow: 0 10px 32px -8px hsl(var(--secondary) / 0.45);
   }
 
   .btn-gold {
-    @apply font-heading tracking-widest uppercase text-[11px] px-8 py-4 rounded-full transition-all duration-300 active:scale-95 shadow-md;
+    @apply font-heading tracking-[0.2em] uppercase text-[11px] px-8 py-4 rounded-full transition-all duration-300 active:scale-95;
     background: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold)));
     color: hsl(var(--parchment));
-    border: 1px solid hsl(var(--gold) / 0.3);
+    border: 1px solid hsl(var(--gold) / 0.4);
+    box-shadow: 0 4px 18px -6px hsl(var(--gold) / 0.4);
   }
 
   .btn-outline-gold {
-    @apply font-heading tracking-widest uppercase text-[11px] px-8 py-4 rounded-full border transition-all duration-300;
-    border-color: hsl(var(--gold) / 0.4);
-    color: hsl(var(--gold-dark));
-    background: transparent;
+    @apply font-heading tracking-[0.2em] uppercase text-[11px] px-8 py-4 rounded-full border transition-all duration-300;
+    border-color: hsl(var(--gold) / 0.5);
+    color: hsl(var(--secondary));
+    background: hsl(var(--parchment) / 0.6);
   }
   .btn-outline-gold:hover {
-    background: hsl(var(--gold) / 0.05);
+    background: hsl(var(--gold) / 0.08);
+    border-color: hsl(var(--gold));
   }
 
   .card-premium {
-    @apply rounded-2xl border bg-white/80 backdrop-blur-md shadow-sm transition-all;
+    @apply rounded-2xl border bg-white/70 backdrop-blur-md shadow-sm transition-all;
     border-color: hsl(var(--gold) / 0.2);
   }
 
   .card-premium-active {
-    @apply rounded-2xl border bg-white/90 backdrop-blur-xl shadow-xl;
-    border-color: hsl(var(--secondary) / 0.3);
-    box-shadow: 0 12px 40px -12px hsl(var(--secondary) / 0.15);
+    @apply rounded-2xl border bg-white/85 backdrop-blur-xl;
+    border-color: hsl(var(--secondary) / 0.25);
+    box-shadow: 0 14px 40px -16px hsl(var(--secondary) / 0.18);
   }
 
   .text-premium {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-[#5a1028] to-[#9a2a48];
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--secondary)), hsl(333 45% 36%));
   }
 
   .text-gold {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-[#8a6d3b] via-[#c9a96e] to-[#8a6d3b];
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold)), hsl(var(--gold-dark)));
   }
 
   /* ─── Typography Scales ─── */
   .t-section-title {
-    @apply text-[10px] tracking-[0.3em] font-heading uppercase text-muted-foreground opacity-80;
+    @apply text-[10px] tracking-[0.3em] font-heading uppercase opacity-70;
+    color: hsl(var(--gold-dark));
   }
   .t-kicker {
-    @apply text-[11px] tracking-[0.2em] font-heading uppercase text-gold-dark;
+    @apply text-[11px] tracking-[0.25em] font-heading uppercase;
+    color: hsl(var(--gold-dark));
   }
 }
 
 /* ─── Global Overrides for Shadcn ─── */
 .shadcn-input-premium {
-  @apply bg-white/50 border-gold/30 focus:border-gold focus:ring-gold/20 rounded-xl;
+  @apply bg-white/70 rounded-xl;
+  border-color: hsl(var(--gold) / 0.3);
+}
+.shadcn-input-premium:focus,
+.shadcn-input-premium:focus-visible {
+  border-color: hsl(var(--secondary) / 0.6);
+  box-shadow: 0 0 0 3px hsl(var(--secondary) / 0.12);
 }

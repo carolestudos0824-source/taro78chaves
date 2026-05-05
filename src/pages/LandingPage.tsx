@@ -24,6 +24,8 @@ import imgImperatriz from "@/assets/arcano-3-imperatriz.jpg";
 import imgImperador from "@/assets/arcano-4-imperador.jpg";
 import imgHierofante from "@/assets/arcano-5-hierofante.jpg";
 import imgEnamorados from "@/assets/arcano-6-enamorados.jpg";
+import brandLogo from "@/assets/brand-logo.png";
+import brandIcon from "@/assets/brand-icon.png";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -74,13 +76,13 @@ const LandingPage = () => {
 
               <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-midnight">
                 Aprenda tarô<br />
-                <span className="italic font-medium text-[#4A1528]">de forma progressiva</span><br />
+                <span className="italic font-medium text-[#5B1F3D]">de forma progressiva</span><br />
                 e viva.
               </h1>
 
               <div className="space-y-8 max-w-xl mx-auto lg:mx-0">
                 <div className="space-y-4">
-                  <p className="text-lg font-body font-semibold text-[#4A1528] leading-snug">
+                  <p className="text-lg font-body font-semibold text-[#5B1F3D] leading-snug">
                     Um app de estudo guiado para aprender Rider-Waite-Smith carta por carta, com lições, quizzes e progresso.
                   </p>
                   <p className="text-base font-body text-[#2d1810] opacity-90 max-w-md mx-auto lg:mx-0">
@@ -91,20 +93,20 @@ const LandingPage = () => {
 
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm font-body font-medium text-[#3d2810]">
                   <div className="flex items-center gap-2">
-                    <Flame className="w-4 h-4 text-[#4A1528]" />
+                    <Flame className="w-4 h-4 text-[#5B1F3D]" />
                     <span>Sequência diária</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-[#C9A96E]" />
+                    <Zap className="w-4 h-4 text-[#C8A66A]" />
                     <span>XP Acumulado</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Target className="w-4 h-4 text-[#4A1528]" />
+                    <Target className="w-4 h-4 text-[#5B1F3D]" />
                     <span>Quizzes</span>
                   </div>
                 </div>
                 
-                <p className="text-sm font-body font-semibold text-[#4A1528]">
+                <p className="text-sm font-body font-semibold text-[#5B1F3D]">
                   ✦ Primeiro arcano gratuito. Vá bem e desbloqueie O Mago.
                 </p>
               </div>
@@ -113,7 +115,7 @@ const LandingPage = () => {
                 <Button onClick={handleStart} className="btn-premium px-12 py-8 text-sm shadow-2xl hover:scale-105 transition-transform">
                   COMEÇAR PELO LOUCO — GRÁTIS →
                 </Button>
-                <p className="text-[11px] font-heading tracking-[0.15em] text-[#4A1528] font-bold uppercase">
+                <p className="text-[11px] font-heading tracking-[0.15em] text-[#5B1F3D] font-bold uppercase">
                   Sem cartão de crédito para começar.
                 </p>
               </div>
@@ -131,7 +133,7 @@ const LandingPage = () => {
                   
                   <div className="space-y-5">
                     <div className="space-y-1">
-                      <p className="t-section-title text-[#4A1528]">Lição 1 • Arcanos Maiores</p>
+                      <p className="t-section-title text-[#5B1F3D]">Lição 1 • Arcanos Maiores</p>
                       <h3 className="font-heading text-3xl text-midnight">O Louco</h3>
                       <p className="font-accent italic text-muted-foreground">O início de toda jornada</p>
                     </div>
@@ -154,18 +156,18 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Pain Section ─── */}
-      <section className="py-20 px-6 bg-[#FDFBF7]">
+      <section className="py-20 px-6 bg-[#FAF5EF]">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white/60 backdrop-blur-sm border border-gold/10 p-10 md:p-16 rounded-[3rem] text-center space-y-8 shadow-sm">
             <h2 className="font-heading text-3xl md:text-4xl text-midnight leading-tight">
-              Você já tentou aprender tarô e ficou <span className="italic text-[#4A1528]">mais confusa?</span>
+              Você já tentou aprender tarô e ficou <span className="italic text-[#5B1F3D]">mais confusa?</span>
             </h2>
             <div className="space-y-6 max-w-2xl mx-auto">
               <p className="text-lg font-body text-midnight/70 leading-relaxed">
                 Vídeos soltos, listas de palavras-chave e significados decorados até ajudam no começo. Mas na hora de fazer uma leitura real, tudo parece escapar.
               </p>
               <div className="pt-4 border-t border-gold/10">
-                <p className="text-xl font-heading text-[#4A1528] tracking-wide">
+                <p className="text-xl font-heading text-[#5B1F3D] tracking-wide">
                   O problema não é falta de intuição.<br className="hidden md:block" />
                   <span className="font-bold">É falta de método.</span>
                 </p>
@@ -200,7 +202,7 @@ const LandingPage = () => {
                   <div className="w-32 h-52 md:w-40 md:h-60 rounded-2xl overflow-hidden shadow-xl border-4 border-white transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-2xl group-hover:border-gold/20">
                     <img src={card.img} alt={card.name} className="w-full h-full object-cover" />
                     <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[8px] font-heading tracking-widest uppercase shadow-lg z-20 ${
-                      card.badge === 'Grátis' ? "bg-green-600 text-white" : card.badge === 'Desbloqueável' ? "bg-gold text-white" : "bg-[#4A1528] text-white"
+                      card.badge === 'Grátis' ? "bg-green-600 text-white" : card.badge === 'Desbloqueável' ? "bg-gold text-white" : "bg-[#5B1F3D] text-white"
                     }`}>
                       {card.badge}
                     </div>
@@ -230,7 +232,7 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Journey Unlock Section ─── */}
-      <section className="py-24 px-6 bg-[#fdfaf5]">
+      <section className="py-24 px-6 bg-[#FAF5EF]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 space-y-4">
             <h2 className="font-heading text-3xl md:text-4xl text-midnight italic">O que você desbloqueia na Jornada Completa</h2>
@@ -239,48 +241,48 @@ const LandingPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
-              <div className="w-12 h-12 bg-[#4A1528]/5 rounded-2xl flex items-center justify-center">
-                <Eye className="w-6 h-6 text-[#4A1528]" />
+              <div className="w-12 h-12 bg-[#5B1F3D]/5 rounded-2xl flex items-center justify-center">
+                <Eye className="w-6 h-6 text-[#5B1F3D]" />
               </div>
               <h3 className="font-heading text-xl text-midnight">Você aprende pela imagem</h3>
               <p className="text-sm text-midnight/70 font-body">Em vez de decorar palavras-chave, você aprende a observar símbolos, cenas e movimentos da carta Rider-Waite-Smith.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
-              <div className="w-12 h-12 bg-[#C9A96E]/10 rounded-2xl flex items-center justify-center">
-                <Check className="w-6 h-6 text-[#C9A96E]" />
+              <div className="w-12 h-12 bg-[#C8A66A]/10 rounded-2xl flex items-center justify-center">
+                <Check className="w-6 h-6 text-[#C8A66A]" />
               </div>
               <h3 className="font-heading text-xl text-midnight">Você pratica antes de avançar</h3>
               <p className="text-sm text-midnight/70 font-body">Cada lição testa sua compreensão com quiz e feedback. Para desbloquear O Mago, você precisa ir bem no Louco.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
-              <div className="w-12 h-12 bg-[#4A1528]/5 rounded-2xl flex items-center justify-center">
-                <Target className="w-6 h-6 text-[#4A1528]" />
+              <div className="w-12 h-12 bg-[#5B1F3D]/5 rounded-2xl flex items-center justify-center">
+                <Target className="w-6 h-6 text-[#5B1F3D]" />
               </div>
               <h3 className="font-heading text-xl text-midnight">Você segue uma jornada real</h3>
               <p className="text-sm text-midnight/70 font-body">XP, sequência diária, progresso salvo e desbloqueios mantêm seu estudo vivo — uma carta por vez, sem se perder.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
-              <div className="w-12 h-12 bg-[#C9A96E]/10 rounded-2xl flex items-center justify-center">
-                <Layers className="w-6 h-6 text-[#C9A96E]" />
+              <div className="w-12 h-12 bg-[#C8A66A]/10 rounded-2xl flex items-center justify-center">
+                <Layers className="w-6 h-6 text-[#C8A66A]" />
               </div>
               <h3 className="font-heading text-xl text-midnight">78 cartas, uma por uma</h3>
               <p className="text-sm text-midnight/70 font-body">Não é uma lista de significados. É uma jornada guiada por Arcanos Maiores, Menores e Corte no seu ritmo.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
-              <div className="w-12 h-12 bg-[#4A1528]/5 rounded-2xl flex items-center justify-center">
-                <BookOpen className="w-6 h-6 text-[#4A1528]" />
+              <div className="w-12 h-12 bg-[#5B1F3D]/5 rounded-2xl flex items-center justify-center">
+                <BookOpen className="w-6 h-6 text-[#5B1F3D]" />
               </div>
               <h3 className="font-heading text-xl text-midnight">Lições que ensinam a olhar</h3>
               <p className="text-sm text-midnight/70 font-body">Cada arcano traz essência, símbolos, luz e sombra aplicados ao amor, trabalho e vida prática.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
-              <div className="w-12 h-12 bg-[#C9A96E]/10 rounded-2xl flex items-center justify-center">
-                <Award className="w-6 h-6 text-[#C9A96E]" />
+              <div className="w-12 h-12 bg-[#C8A66A]/10 rounded-2xl flex items-center justify-center">
+                <Award className="w-6 h-6 text-[#C8A66A]" />
               </div>
               <h3 className="font-heading text-xl text-midnight">Saia da "decoreba"</h3>
               <p className="text-sm text-midnight/70 font-body">Aprenda a lógica por trás de cada arcano para que a interpretação flua com mais naturalidade e confiança.</p>
@@ -303,12 +305,12 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Pricing Section ─── */}
-      <section className="py-32 px-6 bg-[#4A1528] text-parchment relative overflow-hidden">
+      <section className="py-32 px-6 bg-[#5B1F3D] text-parchment relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-white/5 blur-[150px] rounded-full" />
         
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-16">
           <div className="space-y-4">
-            <h2 className="font-heading text-4xl md:text-5xl text-[#FFF8E6]">Desbloqueie a Jornada Completa</h2>
+            <h2 className="font-heading text-4xl md:text-5xl text-[#FAF5EF]">Desbloqueie a Jornada Completa</h2>
             <p className="text-[#D8CFC2] font-body text-lg">Escolha o plano ideal para continuar estudando no seu ritmo.</p>
           </div>
 
@@ -316,16 +318,16 @@ const LandingPage = () => {
             {/* Monthly */}
             <div className="p-10 rounded-[2.5rem] border border-white/10 bg-white/5 flex flex-col text-left space-y-8 backdrop-blur-sm transition-all hover:bg-white/10">
               <div className="space-y-2">
-                <h3 className="t-section-title text-[#C9A96E] font-bold uppercase tracking-widest">Plano Mensal</h3>
+                <h3 className="t-section-title text-[#C8A66A] font-bold uppercase tracking-widest">Plano Mensal</h3>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-5xl font-heading text-[#FFF8E6]">R$29,90</span>
+                  <span className="text-5xl font-heading text-[#FAF5EF]">R$29,90</span>
                   <span className="text-sm text-[#D8CFC2]">/mês</span>
                 </div>
               </div>
               <p className="text-sm text-[#D8CFC2] flex-1 font-body leading-relaxed">Ideal para quem quer testar no seu próprio tempo, com liberdade para cancelar a qualquer momento.</p>
               <Button 
                 onClick={() => handleSubscribe("monthly")} 
-                className="w-full py-7 rounded-full border border-gold/40 text-[#FFF8E6] bg-transparent hover:bg-gold/10 hover:border-gold font-heading tracking-[0.2em] text-[11px] uppercase transition-all shadow-lg"
+                className="w-full py-7 rounded-full border border-gold/40 text-[#FAF5EF] bg-transparent hover:bg-gold/10 hover:border-gold font-heading tracking-[0.2em] text-[11px] uppercase transition-all shadow-lg"
               >
                 ASSINAR MENSAL
               </Button>
@@ -343,10 +345,10 @@ const LandingPage = () => {
                   <span className="text-sm text-midnight/40">/ano</span>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-sm font-bold text-[#4A1528] tracking-tight">
+                  <p className="text-sm font-bold text-[#5B1F3D] tracking-tight">
                     = R$16,42/mês • Economia de 45%
                   </p>
-                  <p className="text-[12px] font-bold text-[#4A1528]">Menos de R$0,55 por dia.</p>
+                  <p className="text-[12px] font-bold text-[#5B1F3D]">Menos de R$0,55 por dia.</p>
                 </div>
               </div>
               <p className="text-sm text-midnight/80 flex-1 font-body leading-relaxed">Acesso anual à jornada completa pelos 78 arcanos, com estudo guiado, quizzes e progresso salvo.</p>
@@ -359,10 +361,10 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Mobile Section ─── */}
-      <section className="py-24 px-6 bg-[#fcf9f2]">
+      <section className="py-24 px-6 bg-[#F3E6E0]">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="text-center space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C9A96E]/10 text-[#C9A96E]">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C8A66A]/10 text-[#C8A66A]">
               <span className="text-[10px] font-heading tracking-widest uppercase font-bold">
                 📱 FEITO PARA ESTUDAR NO CELULAR
               </span>
@@ -378,8 +380,8 @@ const LandingPage = () => {
             {/* iPhone / Safari */}
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-6">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-[#4A1528]/5 rounded-xl flex items-center justify-center">
-                  <Smartphone className="w-5 h-5 text-[#4A1528]" />
+                <div className="w-10 h-10 bg-[#5B1F3D]/5 rounded-xl flex items-center justify-center">
+                  <Smartphone className="w-5 h-5 text-[#5B1F3D]" />
                 </div>
                 <h3 className="font-heading text-xl text-midnight">iPhone</h3>
               </div>
@@ -394,8 +396,8 @@ const LandingPage = () => {
             {/* Android / Chrome */}
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-6">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-[#C9A96E]/10 rounded-xl flex items-center justify-center">
-                  <Smartphone className="w-5 h-5 text-[#C9A96E]" />
+                <div className="w-10 h-10 bg-[#C8A66A]/10 rounded-xl flex items-center justify-center">
+                  <Smartphone className="w-5 h-5 text-[#C8A66A]" />
                 </div>
                 <h3 className="font-heading text-xl text-midnight">Android</h3>
               </div>
@@ -436,7 +438,7 @@ const LandingPage = () => {
               </div>
             </div>
 
-            <Button onClick={handleStart} variant="link" className="text-[#4A1528] font-heading tracking-widest text-xs uppercase hover:no-underline hover:opacity-70 transition-all">
+            <Button onClick={handleStart} variant="link" className="text-[#5B1F3D] font-heading tracking-widest text-xs uppercase hover:no-underline hover:opacity-70 transition-all">
               COMEÇAR PELO LOUCO — GRÁTIS →
             </Button>
           </div>
@@ -456,7 +458,7 @@ const LandingPage = () => {
           <div className="space-y-8 py-6">
             <div className="space-y-4">
               <div className="flex items-center gap-3 border-b border-gold/10 pb-2">
-                <Smartphone className="w-4 h-4 text-[#4A1528]" />
+                <Smartphone className="w-4 h-4 text-[#5B1F3D]" />
                 <span className="font-heading text-sm uppercase tracking-widest font-bold">iPhone / Safari</span>
               </div>
               <ol className="space-y-3 text-sm text-midnight/80 font-body list-decimal list-inside px-1">
@@ -469,7 +471,7 @@ const LandingPage = () => {
 
             <div className="space-y-4">
               <div className="flex items-center gap-3 border-b border-gold/10 pb-2">
-                <Smartphone className="w-4 h-4 text-[#C9A96E]" />
+                <Smartphone className="w-4 h-4 text-[#C8A66A]" />
                 <span className="font-heading text-sm uppercase tracking-widest font-bold">Android / Chrome</span>
               </div>
               <ol className="space-y-3 text-sm text-midnight/80 font-body list-decimal list-inside px-1">
@@ -491,7 +493,7 @@ const LandingPage = () => {
       </Dialog>
 
       {/* ─── FAQ Section ─── */}
-      <section className="py-24 px-6 bg-[#fcf9f2]">
+      <section className="py-24 px-6 bg-[#F3E6E0]">
         <div className="max-w-3xl mx-auto space-y-12">
           <div className="text-center space-y-4">
              <HelpCircle className="w-10 h-10 text-gold mx-auto mb-4" />
@@ -541,16 +543,16 @@ const LandingPage = () => {
 
       {/* ─── Footer ─── */}
       <footer className="py-20 px-6 text-center space-y-12 border-t border-gold/10">
-        <div className="space-y-4">
-          <h3 className="font-heading text-2xl tracking-[0.3em] text-[#4A1528]">Tarô 78 Chaves</h3>
+        <div className="space-y-4 flex flex-col items-center">
+          <img src={brandLogo} alt="Tarô 78 Chaves — Sua jornada. Seu ritmo. Seu tarô." className="w-40 h-auto opacity-90" />
           <p className="t-section-title">A jornada viva pelos arcanos</p>
         </div>
 
         <nav className="flex flex-wrap justify-center gap-8 text-[11px] font-heading tracking-widest uppercase opacity-60">
-          <a href="/privacidade" className="hover:text-[#4A1528] hover:opacity-100 transition-colors">Privacidade</a>
-          <a href="/termos" className="hover:text-[#4A1528] hover:opacity-100 transition-colors">Termos</a>
-          <a href="/suporte" className="hover:text-[#4A1528] hover:opacity-100 transition-colors">Suporte</a>
-          <a href="/excluir-conta" className="hover:text-[#4A1528] hover:opacity-100 transition-colors">Excluir conta</a>
+          <a href="/privacidade" className="hover:text-[#5B1F3D] hover:opacity-100 transition-colors">Privacidade</a>
+          <a href="/termos" className="hover:text-[#5B1F3D] hover:opacity-100 transition-colors">Termos</a>
+          <a href="/suporte" className="hover:text-[#5B1F3D] hover:opacity-100 transition-colors">Suporte</a>
+          <a href="/excluir-conta" className="hover:text-[#5B1F3D] hover:opacity-100 transition-colors">Excluir conta</a>
         </nav>
 
         <p className="text-[10px] opacity-40 font-body">© {new Date().getFullYear()} Tarô 78 Chaves. Todos os direitos reservados.</p>
