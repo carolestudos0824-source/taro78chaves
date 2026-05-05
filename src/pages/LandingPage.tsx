@@ -208,7 +208,7 @@ const LandingPage = () => {
             <p className="text-muted-foreground max-w-2xl mx-auto font-body">Uma jornada progressiva para aprender tarô carta por carta, com clareza, prática e profundidade.</p>
           </div>
 
-          <div className="flex overflow-x-auto gap-4 md:gap-6 pb-12 px-4 scrollbar-hide snap-x items-end min-h-[340px]">
+          <div className="flex overflow-x-auto gap-4 md:gap-6 pb-8 px-4 scrollbar-elegant snap-x items-end min-h-[340px]">
             {[
               { id: 0, img: imgLouco, name: "O Louco", badge: "Grátis" },
               { id: 1, img: imgMago, name: "O Mago", badge: "Desbloqueável" },
