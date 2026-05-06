@@ -27,13 +27,13 @@ export const SmartReviewCard = () => {
 
   return (
     <div className="mb-6 animate-fade-up">
-      <div className="rounded-2xl overflow-hidden border border-primary/20 bg-white/70 backdrop-blur-md shadow-sm">
-        <div className="p-4 border-b border-primary/10 bg-primary/5 flex items-center justify-between">
+      <div className="rounded-2xl overflow-hidden border border-gold/20 bg-white/70 backdrop-blur-md shadow-sm">
+        <div className="p-4 border-b border-gold/10 bg-gold/5 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Brain className="w-4 h-4 text-primary" />
-            <h3 className="font-heading text-sm tracking-wide text-primary-dark">Revisão Inteligente</h3>
+            <Brain className="w-4 h-4 text-plum" />
+            <h3 className="font-heading text-sm font-bold tracking-wide text-plum">Revisão Inteligente</h3>
           </div>
-          <span className="text-[10px] font-heading uppercase tracking-widest text-primary/60">Sugerido para você</span>
+          <span className="text-[10px] font-heading uppercase tracking-widest text-plum/40 font-bold">Sugerido</span>
         </div>
         
         <div className="p-4 space-y-4">
