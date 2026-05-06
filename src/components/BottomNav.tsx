@@ -41,8 +41,8 @@ const BottomNav = () => {
                   color: isActive ? "#5B1F3D" : "#5B1F3D",
                 }}
               />
-              <span className={`text-[10px] font-heading tracking-widest uppercase transition-all duration-300 ${
-                isActive ? "font-bold text-[#5B1F3D]" : "font-semibold text-[#5B1F3D]/60"
+              <span className={`text-[11px] font-heading tracking-[0.15em] uppercase transition-all duration-300 ${
+                isActive ? "font-black text-[#5B1F3D]" : "font-bold text-[#5B1F3D]"
               }`}>
                 {item.label}
               </span>

@@ -107,7 +107,7 @@ const DailyChallengesPage = () => {
             style={{ color: "#5B1F3D" }}
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="text-xs font-heading font-bold tracking-widest uppercase">Voltar</span>
+            <span className="text-[11px] font-heading font-black tracking-widest uppercase">Voltar</span>
           </button>
 
           <div className="text-center">
@@ -128,7 +128,7 @@ const DailyChallengesPage = () => {
               <p className="font-body text-sm font-medium" style={{ color: "#5B1F3DCC" }}>
                 Sua prática de hoje
               </p>
-              <p className="font-accent text-[11px] italic" style={{ color: "#5B1F3DB3" }}>
+              <p className="font-accent text-[12px] italic font-bold" style={{ color: "#5B1F3D" }}>
                 Complete seu ritual e mantenha sua jornada viva.
               </p>
             </div>
@@ -229,8 +229,8 @@ const DailyChallengesPage = () => {
                       }}>
                         {ch.title}
                       </h3>
-                      <p className="font-body text-[12px] leading-relaxed font-medium mt-0.5" style={{
-                        color: ch.completed ? "#5B1F3D60" : "#5B1F3DCC",
+                      <p className="font-body text-[13px] leading-relaxed font-bold mt-1" style={{
+                        color: ch.completed ? "#5B1F3D60" : "#5B1F3D",
                       }}>
                         {ch.subtitle}
                       </p>

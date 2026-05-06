@@ -52,10 +52,10 @@ const PremiumGate = ({
           <Crown className="w-3.5 h-3.5" style={{ color: "hsl(var(--gold))" }} />
         </div>
         <div className="flex-1 text-left">
-          <p className="text-[11px] font-heading tracking-wide" style={{ color: "hsl(var(--secondary))" }}>
+          <p className="text-[13px] font-heading tracking-wider font-black" style={{ color: "hsl(var(--secondary))" }}>
             Jornada Completa
           </p>
-          <p className="text-[10px]" style={{ color: "hsl(var(--muted-foreground) / 0.40)" }}>
+          <p className="text-[11px] font-bold" style={{ color: "hsl(var(--secondary))" }}>
             Acesse todos os módulos e aprofundamentos
           </p>
         </div>
@@ -75,9 +75,9 @@ const PremiumGate = ({
       >
         <Lock className="w-4 h-4 shrink-0" style={{ color: "hsl(var(--gold) / 0.50)" }} />
         <div className="flex-1 min-w-0">
-          <p className="text-[12px] font-body" style={{ color: "hsl(var(--muted-foreground) / 0.55)" }}>
+          <p className="text-[13px] font-body font-bold" style={{ color: "hsl(var(--secondary))" }}>
             {featureName ? (
-              <><span className="font-medium" style={{ color: "hsl(var(--secondary))" }}>{featureName}</span> é conteúdo premium.</>
+              <><span className="font-black" style={{ color: "hsl(var(--secondary))" }}>{featureName}</span> é conteúdo premium.</>
             ) : (
               "Este conteúdo faz parte da Jornada Completa."
             )}
@@ -85,7 +85,7 @@ const PremiumGate = ({
         </div>
         <button
           onClick={() => navigate("/premium")}
-          className="text-[10px] font-heading tracking-wider uppercase shrink-0 px-3 py-1.5 rounded-lg transition-colors"
+          className="text-[11px] font-heading tracking-[0.15em] uppercase shrink-0 px-4 py-2 rounded-lg transition-all font-black"
           style={{
             background: "hsl(var(--secondary) / 0.08)",
             color: "hsl(var(--secondary))",
@@ -134,7 +134,7 @@ const PremiumGate = ({
         {VALUE_HOOKS.map((hook, i) => (
           <div key={i} className="flex items-center gap-2.5">
             <Sparkles className="w-3 h-3 shrink-0" style={{ color: "hsl(var(--gold) / 0.60)" }} />
-            <span className="text-[12px] font-body" style={{ color: "hsl(var(--muted-foreground) / 0.50)" }}>
+            <span className="text-[13px] font-body font-bold" style={{ color: "hsl(var(--secondary))" }}>
               {hook}
             </span>
           </div>
