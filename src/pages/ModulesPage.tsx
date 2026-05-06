@@ -159,10 +159,10 @@ const ModulesPage = () => {
                         disabled={!unlocked}
                         className={`w-full text-left p-5 rounded-2xl border transition-all duration-300 relative group overflow-hidden ${
                           isCurrent 
-                            ? "bg-white border-gold/40 shadow-xl shadow-gold/5 scale-[1.02]" 
+                            ? "bg-white border-gold shadow-xl shadow-gold/5 scale-[1.02]" 
                             : unlocked 
-                            ? "bg-white/50 border-gold/20 hover:bg-white active:scale-[0.98]" 
-                            : "bg-black/5 border-transparent opacity-60 grayscale cursor-not-allowed"
+                            ? "bg-white/60 border-gold/20 hover:bg-white active:scale-[0.98]" 
+                            : "bg-greige/20 border-gold/10 opacity-75 cursor-not-allowed"
                         }`}
                       >
                         {isCurrent && (
