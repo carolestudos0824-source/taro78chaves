@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 interface PhaseIndicatorProps {
   phases: string[];
   currentIndex: number;
