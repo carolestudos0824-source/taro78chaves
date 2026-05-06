@@ -176,7 +176,7 @@ const ModulesPage = () => {
           )}
           
           {/* ─── Hero Visuals ─── */}
-          <div className="flex justify-center -space-x-4 py-6 opacity-90 scale-100">
+          <div className="flex justify-center -space-x-4 py-4 md:py-6 opacity-90 scale-100">
             <img src={imgLouco} alt="" className="w-24 rounded-2xl shadow-xl -rotate-12 border-2 border-white/50" />
             <img src={imgSacerdotisa} alt="" className="w-24 rounded-2xl shadow-xl z-10 border-2 border-white" />
             <img src={imgEstrela} alt="" className="w-24 rounded-2xl shadow-xl rotate-12 border-2 border-white/50" />
