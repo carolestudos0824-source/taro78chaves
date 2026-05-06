@@ -50,9 +50,10 @@ const ModulesPage = () => {
     );
   }
 
-  if (!progress.onboardingCompleted) {
-    return <OnboardingPage onComplete={completeOnboarding} />;
-  }
+  // Temporary bypass for audit
+  // if (!progress.onboardingCompleted) {
+  //   return <OnboardingPage onComplete={completeOnboarding} />;
+  // }
 
   const grouped = MODULES.reduce<Record<ModuleCategory, LearningModule[]>>((acc, mod) => {
     if (!acc[mod.category]) acc[mod.category] = [];
