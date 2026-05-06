@@ -51,9 +51,9 @@ export function XPBar({ xp, level }: XPBarProps) {
           </div>
         </div>
       </div>
-      <span className="text-sm font-body tabular-nums shrink-0" style={{ color: "hsl(230 20% 12% / 0.78)" }}>
-        {xpInLevel}<span style={{ color: "hsl(230 20% 12% / 0.40)" }}>/100</span>{" "}
-        <span className="font-heading" style={{ color: "hsl(36 42% 40%)" }}>XP</span>
+      <span className="text-sm font-body tabular-nums shrink-0 font-bold" style={{ color: "hsl(var(--brand-plum) / 0.8)" }}>
+        {xpInLevel}<span style={{ color: "hsl(var(--brand-plum) / 0.4)" }}>/100</span>{" "}
+        <span className="font-heading" style={{ color: "hsl(var(--brand-gold))" }}>XP</span>
       </span>
     </div>
   );
