@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { BookOpen, Layers, Eye, ChevronDown, Heart, Briefcase, Sparkles, ScrollText, Feather } from "lucide-react";
 import { type LessonSection } from "@/lib/content/runtime-types";
 
