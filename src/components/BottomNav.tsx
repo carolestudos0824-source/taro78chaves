@@ -34,7 +34,7 @@ const BottomNav = () => {
               onClick={() => navigate(item.path)}
               className="flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg transition-all"
               style={{
-                color: isActive ? "hsl(340 50% 30%)" : "hsl(340 40% 25% / 0.55)",
+                color: isActive ? "hsl(var(--brand-plum))" : "hsl(var(--brand-plum) / 0.45)",
               }}
             >
               <Icon className="w-5 h-5" strokeWidth={isActive ? 2.2 : 1.5} />
