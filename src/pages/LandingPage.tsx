@@ -353,7 +353,7 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 space-y-4">
             <h2 className="font-heading text-3xl md:text-4xl text-midnight italic">O que você desbloqueia na Jornada Completa</h2>
-            <p className="text-muted-foreground max-w-lg mx-auto font-body text-balance">Um caminho guiado para aprender tarô de verdade, carta por carta, sem decorar significados soltos.</p>
+            <p className="text-muted-foreground max-w-lg mx-auto font-body text-balance">Estude os 78 arcanos com uma trilha progressiva, fiel ao Rider-Waite-Smith e pensada para criar prática, continuidade e domínio simbólico.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
