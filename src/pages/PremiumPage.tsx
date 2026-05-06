@@ -103,10 +103,10 @@ const PremiumPage = () => {
               <span className="text-[10px] font-heading tracking-[0.2em] uppercase text-[#FAF5EF] font-black">Jornada Completa</span>
             </div>
             <h1 className="font-heading text-4xl text-[#5B1F3D] leading-tight font-black">
-              Receba todas as chaves da sua jornada.
+              Aprenda Tarô como uma jornada.
             </h1>
             <p className="text-[#5B1F3D]/80 font-body text-base font-bold italic leading-relaxed">
-              Abra as 78 portas do Tarô e continue sua travessia com método, prática e progresso salvo.
+              Estude os 78 arcanos com uma trilha progressiva, fiel ao Rider-Waite-Smith e pensada para criar prática, continuidade e domínio simbólico.
             </p>
           </div>
         </div>
