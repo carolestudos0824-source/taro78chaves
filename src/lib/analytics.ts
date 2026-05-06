@@ -41,7 +41,14 @@ export const trackPageView = (path: string) => {
 
 export const trackEvent = (eventName: string, params: Record<string, any> = {}) => {
   if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", eventName, params);
+    const utms = getUTMParams();
+    const eventParams = {
+      ...params,
+      ...utms,
+      page_path: window.location.pathname,
+      page_location: window.location.href,
+    };
+    window.gtag("event", eventName, eventParams);
   }
 };
 
