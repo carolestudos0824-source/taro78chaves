@@ -179,7 +179,7 @@ const AppShell = () => (
     <div className="pb-bottom-nav">
       <Routes>
         {/* Dashboard */}
-        <Route path="/app" element={<P><ModulesPage /></P>} />
+        <Route path="/app" element={<ModulesPage />} />
         <Route path="/trilhas" element={<P><TrailsPage /></P>} />
 
         {/* Fundamentos */}
