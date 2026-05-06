@@ -339,8 +339,8 @@ const ModulesPage = () => {
           })}
         </div>
 
-        <div className="pt-8 flex justify-center">
-          <img src={ornamentDivider} alt="" className="w-24 opacity-20" />
+        <div className="pt-16 pb-8 flex justify-center">
+          <img src={ornamentDivider} alt="" className="w-28 opacity-30" />
         </div>
       </main>
     </div>
