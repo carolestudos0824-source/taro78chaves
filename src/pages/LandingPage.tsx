@@ -465,7 +465,7 @@ const LandingPage = () => {
               </div>
               <p className="text-sm text-midnight/80 flex-1 font-body leading-relaxed">Acesso total à jornada completa pelos 78 arcanos por um ano inteiro, com estudo guiado, quizzes e progresso salvo.</p>
               <Button onClick={() => handleSubscribe("annual")} className="btn-premium w-full py-8 text-sm shadow-xl hover:scale-[1.02] transition-transform">
-                DESPERTAR O ORÁCULO →
+                COMEÇAR A JORNADA COMPLETA →
               </Button>
             </div>
           </div>
@@ -473,7 +473,7 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Mobile Section ─── */}
-      <section className="py-24 px-6 bg-[#F3E6E0]">
+      <section className="py-20 px-6 bg-parchment border-y border-gold/10">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="text-center space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C8A66A]/10 text-[#C8A66A]">
@@ -605,7 +605,7 @@ const LandingPage = () => {
       </Dialog>
 
       {/* ─── FAQ Section ─── */}
-      <section className="py-24 px-6 bg-[#F3E6E0]">
+      <section className="py-20 px-6 bg-white/20">
         <div className="max-w-3xl mx-auto space-y-12">
           <div className="text-center space-y-4">
              <HelpCircle className="w-10 h-10 text-gold mx-auto mb-4" />
@@ -654,7 +654,7 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Footer ─── */}
-      <footer className="py-24 px-6 text-center space-y-12 bg-plum text-ivory border-t-4 border-gold/30 relative overflow-hidden">
+      <footer className="py-12 px-6 text-center space-y-12 bg-plum text-ivory border-t-4 border-gold/30 relative overflow-hidden">
         {/* Subtle background ornament */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full" 
