@@ -29,9 +29,9 @@ export function XPBar({ xp, level }: XPBarProps) {
       </div>
       <div className="flex-1 relative">
         <div className="h-3.5 rounded-full overflow-hidden" style={{
-          background: "hsl(36 18% 84%)",
-          border: "1px solid hsl(36 22% 75% / 0.85)",
-          boxShadow: "inset 0 1px 3px hsl(230 25% 10% / 0.10)"
+          background: "hsl(var(--brand-ivory))",
+          border: "1px solid hsl(var(--brand-gold) / 0.3)",
+          boxShadow: "inset 0 1px 3px hsl(var(--brand-plum) / 0.1)"
         }}>
           <div
             className="h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
