@@ -3,7 +3,7 @@ import { KeyRound } from "lucide-react";
 import { StreakCounter } from "@/components/StreakCounter";
 import { XPBar } from "@/components/XPBar";
 import brandIcon from "@/assets/brand-icon.png";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface HeaderProps {
   streak: number;
