@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { motion, useReducedMotion, Variants } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { getArcanoVivoConfig } from "@/config/arcano-vivo";
 import { LockKeyhole, Key } from "lucide-react";
 
@@ -31,49 +31,13 @@ export function ArcanoVivoAnimatedCard({
   const isBreathing = !["darkness", "reveal", "awaken", "shimmer"].includes(phase);
   const isEmerged = !["darkness", "reveal", "awaken", "shimmer", "breathe"].includes(phase);
 
-  // Animation variants
-  const containerVariants: Variants = {
-    darkness: { scale: 0.9, opacity: 0 },
-    reveal: { 
-      scale: 1, 
-      opacity: 1,
-      transition: { duration: 1.2, ease: "easeOut" }
-    }
-  };
-
-  const cardVariants: Variants = {
-    initial: { rotateY: 0, y: 0 },
-    breathe: {
-      y: [0, -8, 0],
-      rotateY: [0, 1, -1, 0],
-      transition: {
-        duration: config.breatheSpeed || 4,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
-  };
-
-  const glowVariants: Variants = {
-    initial: { opacity: 0, scale: 0.8 },
-    active: {
-      opacity: [0.3, 0.6, 0.3],
-      scale: [1, 1.1, 1],
-      transition: {
-        duration: (config.breatheSpeed || 4) * 0.8,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
-  };
-
   return (
     <motion.div 
       className="relative" 
       style={{ perspective: "1200px" }}
-      initial="darkness"
-      animate={isRevealed ? "reveal" : "darkness"}
-      variants={containerVariants}
+      initial={{ scale: 0.9, opacity: 0 }}
+      animate={isRevealed ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
     >
       {/* Outer aura (breathing) */}
       <motion.div
@@ -95,15 +59,23 @@ export function ArcanoVivoAnimatedCard({
 
       {/* The card itself */}
       <motion.div
-        className="relative w-64 h-[24rem] sm:w-80 sm:h-[30rem] rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000"
+        className="relative w-64 h-[24rem] sm:w-80 sm:h-[30rem] rounded-2xl overflow-hidden shadow-2xl"
         style={{
           border: `2.5px solid hsl(${config.glowColor} / 0.5)`,
+          transformStyle: "preserve-3d",
           boxShadow: isEmerged
             ? `0 25px 80px hsl(${config.glowColor} / 0.3), 0 0 120px hsl(${config.ambientColor} / 0.15)`
             : `0 20px 60px hsl(${config.glowColor} / 0.2)`,
         }}
-        animate={isBreathing && !shouldReduceMotion ? "breathe" : "initial"}
-        variants={cardVariants}
+        animate={isBreathing && !shouldReduceMotion ? {
+          y: [0, -8, 0],
+          rotateY: [0, 1, -1, 0]
+        } : { y: 0, rotateY: 0 }}
+        transition={{
+          duration: config.breatheSpeed || 4,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
       >
         {/* Card image */}
         <motion.img
