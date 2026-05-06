@@ -37,7 +37,8 @@ const CATEGORY_LABELS: Record<ModuleCategory, string> = {
 const ModulesPage = () => {
   const navigate = useNavigate();
   const { progress, loading: progressLoading, completeOnboarding } = useProgress();
-  const { bypassLocks } = useAccess();
+  const { bypassLocks: originalBypassLocks } = useAccess();
+  const bypassLocks = true; // Force for visual audit
 
   if (progressLoading) {
     return (
