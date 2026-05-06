@@ -56,7 +56,7 @@ const FeedbackPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF5EF] pb-32">
+    <div className="min-h-screen bg-[#FAF5EF] pb-bottom-nav">
       <header className="relative overflow-hidden bg-white/40 border-b border-[#C8A66A]/20">
         <div className="absolute inset-0 pointer-events-none" style={{
           background: "radial-gradient(ellipse at 50% 0%, #C8A66A1A 0%, transparent 60%)",
