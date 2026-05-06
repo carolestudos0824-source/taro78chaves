@@ -137,7 +137,7 @@ const ModulesPage = () => {
               completedLessons={progress.completedLessons.length} 
               completedQuizzes={progress.completedQuizzes.length} 
               hasUnfinishedReview={false} 
-              completedLessonIds={progress.completedLessonIds || progress.completedLessons} 
+              completedLessonIds={progress.completedLessons} 
               currentModuleId="arcanos-maiores" 
             />
           </div>
