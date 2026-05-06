@@ -685,7 +685,7 @@ const LandingPage = () => {
             </div>
           </div>
           <p className="font-heading text-xl md:text-2xl text-gold-light italic max-w-md drop-shadow-sm">
-            "Sua jornada. Seu ritmo. Seu tarô."
+            "No app Tarô 78 Chaves, o tarô deixa de ser imagem e se torna presença."
           </p>
         </div>
 
