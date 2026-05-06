@@ -270,32 +270,6 @@ export function ArcanoVivoIntro({
         showSymbols={showSymbols}
       />
 
-        {/* Corner ornaments with breathing */}
-        {isBreathing && (
-          <>
-            {[
-              "-top-2 -left-2",
-              "-top-2 -right-2",
-              "-bottom-2 -left-2",
-              "-bottom-2 -right-2",
-            ].map((pos, i) => (
-              <div
-                key={i}
-                className={`absolute ${pos} w-1.5 h-1.5 rounded-full`}
-                style={{
-                  background: `hsl(${config.glowColor} / 0.6)`,
-                  animation: `twinkle ${2 + i * 0.7}s ease-in-out infinite`,
-                  animationDelay: `${i * 0.4}s`,
-                  boxShadow: `0 0 6px hsl(${config.glowColor} / 0.3)`,
-                }}
-              />
-            ))}
-          </>
-        )}
-      </div>
-        );
-      })()}
-
 
       {/* Spotlight label — FORA da carta, em área dedicada abaixo. Reserva altura fixa para evitar saltos de layout. */}
       <div className="mt-5 min-h-[60px] flex items-center justify-center w-full max-w-sm px-2">
