@@ -4,7 +4,8 @@ import {
   Check, Star, Target, 
   BookOpen, Layers, Zap,
   Menu, X, Eye, Key, Sparkles,
-  Award, Smartphone, Share, MoreVertical, HelpCircle
+  Award, Smartphone, Share, MoreVertical, HelpCircle,
+  ChevronRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
@@ -195,9 +196,10 @@ const LandingPage = () => {
                         window.location.hash = "#como-funciona";
                       }
                     }} 
-                    className="text-[9px] md:text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark hover:text-plum underline underline-offset-4 transition-colors font-extrabold cursor-pointer p-1"
+                    className="group inline-flex items-center gap-2 text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase text-plum hover:text-gold-dark underline underline-offset-4 transition-all font-extrabold cursor-pointer p-2"
                   >
                     Ver como funciona
+                    <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
               </div>
@@ -265,10 +267,13 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Pain Section ─── */}
-      <section className="py-20 px-6 bg-[#FAF5EF]">
+      <section className="py-16 md:py-20 px-6 bg-[#FAF5EF]">
 
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white/60 backdrop-blur-sm border border-gold/10 p-10 md:p-16 rounded-[3rem] text-center space-y-8 shadow-sm">
+        <div className="max-w-4xl mx-auto relative">
+          <div className="absolute -top-6 -left-6 md:-top-10 md:-left-10 opacity-10 pointer-events-none">
+            <Key className="w-20 h-20 md:w-32 md:h-32 text-gold-dark rotate-[-15deg]" />
+          </div>
+          <div className="bg-white/60 backdrop-blur-sm border border-gold/10 p-10 md:p-14 rounded-[3rem] text-center space-y-6 shadow-sm relative z-10">
             <h2 className="font-heading text-3xl md:text-4xl text-midnight leading-tight">
               Você já tentou aprender tarô e ficou <span className="italic text-[#5B1F3D]">mais confusa?</span>
             </h2>
@@ -288,7 +293,7 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Journey Map Section ─── */}
-      <section id="como-funciona" className="py-24 bg-white/30 border-y border-gold/10 relative overflow-hidden">
+      <section id="como-funciona" className="py-20 md:py-24 bg-white/30 border-y border-gold/10 relative overflow-hidden">
         <div className="absolute top-1/2 left-0 w-full h-px bg-gold/10 -translate-y-1/2 z-0" />
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -317,7 +322,7 @@ const LandingPage = () => {
                   </div>
                 </div>
                 <div className="text-center">
-                  <span className="text-[10px] md:text-xs font-heading tracking-[0.2em] uppercase text-plum font-bold">
+                  <span className="text-[10px] md:text-xs font-heading tracking-[0.1em] uppercase text-plum font-bold block truncate w-full px-1">
                     {card.name.toUpperCase()}
                   </span>
                 </div>
@@ -473,7 +478,7 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Mobile Section ─── */}
-      <section className="py-20 px-6 bg-parchment border-y border-gold/10">
+      <section className="py-16 md:py-20 px-6 bg-parchment border-y border-gold/10">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="text-center space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C8A66A]/10 text-[#C8A66A]">
@@ -605,7 +610,7 @@ const LandingPage = () => {
       </Dialog>
 
       {/* ─── FAQ Section ─── */}
-      <section className="py-20 px-6 bg-white/20">
+      <section className="py-16 md:py-20 px-6 bg-white/20">
         <div className="max-w-3xl mx-auto space-y-12">
           <div className="text-center space-y-4">
              <HelpCircle className="w-10 h-10 text-gold mx-auto mb-4" />
@@ -654,7 +659,7 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Footer ─── */}
-      <footer className="py-12 px-6 text-center space-y-12 bg-plum text-ivory border-t-4 border-gold/30 relative overflow-hidden">
+      <footer className="py-8 md:py-12 px-6 text-center space-y-10 bg-plum text-ivory border-t-4 border-gold/30 relative overflow-hidden">
         {/* Subtle background ornament */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full" 
