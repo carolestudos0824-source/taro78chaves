@@ -65,8 +65,8 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
               }`}>
                 Tarô 78 Chaves
               </h1>
-              <div className={`flex flex-col transition-all duration-500 ease-in-out overflow-hidden ${
-                isCompact ? "max-h-0 opacity-0" : "max-h-16 opacity-100"
+              <div className={`flex flex-col transition-all duration-500 ease-in-out ${
+                isCompact ? "h-0 opacity-0 pointer-events-none" : "h-auto opacity-100"
               }`}>
                 <span className="font-heading text-[10px] md:text-[13px] tracking-[0.4em] uppercase text-[#C8A66A] font-black leading-none">
                   A Jornada Viva
