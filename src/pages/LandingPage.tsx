@@ -130,21 +130,21 @@ const LandingPage = () => {
 
               <div className="space-y-1 md:space-y-2">
                 <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-plum normal-case">
-                  Abra o primeiro portal do tarô.
+                  Aprenda Tarô como uma jornada.
                 </h1>
                 <p className="font-heading text-lg md:text-xl lg:text-2xl text-gold-dark font-medium italic opacity-90">
-                  Aprenda a interpretar as cartas com método, prática e confiança.
+                  Arcano por arcano, com lições curtas, quizzes, XP e progresso real.
                 </p>
               </div>
 
               <div className="space-y-4 md:space-y-5 max-w-2xl mx-auto lg:mx-0">
                 <div className="space-y-2 md:space-y-3">
                   <p className="text-base md:text-lg lg:text-xl font-body text-foreground leading-relaxed">
-                    Um caminho guiado pelo Rider-Waite-Smith para parar de decorar significados soltos e começar a interpretar carta por carta.
+                    Não é um app de tiragem automática. É uma escola viva de Tarô no seu bolso.
                   </p>
                   <div className="bg-gold/10 border-l-4 border-gold/60 p-2 md:p-3 rounded-r-xl">
                     <p className="text-xs md:text-sm lg:text-base font-body text-midnight font-bold">
-                      ✦ Da primeira carta à primeira leitura: um caminho guiado para ganhar confiança no tarô.
+                      ✦ Estude os 78 arcanos com uma trilha progressiva, fiel ao Rider-Waite-Smith e pensada para criar prática, continuidade e domínio simbólico.
                     </p>
                   </div>
                 </div>
