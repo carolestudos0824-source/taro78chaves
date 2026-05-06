@@ -131,19 +131,19 @@ const LandingPage = () => {
                 <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-plum normal-case">
                   Abra o primeiro portal do tarô.
                 </h1>
-                <p className="font-heading text-2xl md:text-3xl lg:text-4xl text-gold-dark font-medium italic">
-                  Aprenda a ler as cartas de verdade.
+                <p className="font-heading text-lg md:text-xl lg:text-2xl text-gold-dark font-medium italic opacity-90">
+                  Aprenda a interpretar as cartas com método, prática e confiança.
                 </p>
               </div>
 
               <div className="space-y-4 md:space-y-5 max-w-2xl mx-auto lg:mx-0">
                 <div className="space-y-2 md:space-y-3">
                   <p className="text-base md:text-lg lg:text-xl font-body text-foreground leading-relaxed">
-                    Um caminho guiado pelo Rider-Waite-Smith para parar de decorar significados soltos e começar a interpretar carta por carta — com método, prática, quizzes e progresso.
+                    Um caminho guiado pelo Rider-Waite-Smith para parar de decorar significados soltos e começar a interpretar carta por carta.
                   </p>
                   <div className="bg-gold/10 border-l-4 border-gold/60 p-2 md:p-3 rounded-r-xl">
                     <p className="text-xs md:text-sm lg:text-base font-body text-midnight font-bold">
-                      ✦ Comece pelo Louco gratuitamente. Vá bem na lição e desbloqueie O Mago.
+                      ✦ Da primeira carta à primeira leitura: um caminho guiado para ganhar confiança no tarô.
                     </p>
                   </div>
                 </div>
@@ -307,17 +307,21 @@ const LandingPage = () => {
               { id: 5, img: imgHierofante, name: "O Hierofante", badge: "Premium" },
               { id: 6, img: imgEnamorados, name: "Os Enamorados", badge: "Premium" },
             ].map((card, i) => (
-              <div key={i} className="flex-shrink-0 flex flex-col items-center gap-5 snap-center group">
+              <div key={i} className="flex-shrink-0 flex flex-col items-center gap-3 snap-center group">
                 <div className="relative">
                   <div className="w-32 h-52 md:w-40 md:h-60 rounded-2xl overflow-hidden shadow-xl border-4 border-white transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-2xl group-hover:border-gold/20">
                     <img src={card.img} alt={card.name} className="w-full h-full object-cover" />
-                    <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[8px] font-heading tracking-widest uppercase shadow-lg z-20 ${
-                      card.badge === 'Grátis' ? "bg-gold text-secondary" : card.badge === 'Desbloqueável' ? "bg-gold text-white" : "bg-[#5B1F3D] text-white"
-                    }`}>
+                    <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[8px] font-heading tracking-widest uppercase shadow-lg z-20 ${ card.badge === "Grátis" ? "bg-success text-white" : "bg-gold text-white" }`}>
                       {card.badge}
                     </div>
                   </div>
                 </div>
+                <div className="text-center">
+                  <span className="text-[10px] md:text-xs font-heading tracking-[0.2em] uppercase text-plum font-bold">
+                    {card.name.toUpperCase()}
+                  </span>
+                </div>
+              </div>
                 <p className="text-[10px] md:text-[11px] font-heading tracking-widest uppercase text-midnight font-bold transition-colors group-hover:text-plum bg-white/50 px-2 py-0.5 rounded-full">{card.name}</p>
               </div>
             ))}
