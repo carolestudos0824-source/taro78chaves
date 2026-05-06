@@ -116,11 +116,11 @@ const ModulesPage = () => {
   return (
     <div className="min-h-screen pb-bottom-nav bg-[#FAF5EF]">
       {/* ─── Persistent Header ─── */}
-      <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-xl border-b border-[#C8A66A]/30 shadow-sm">
-        <div className="container max-w-lg py-5 px-6">
-          <div className="flex items-center justify-between mb-5">
-            <div className="flex items-center gap-3">
-              <div className="w-14 h-14 flex items-center justify-center shrink-0 p-1 bg-white rounded-2xl shadow-sm border border-[#C8A66A]/20">
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-[#C8A66A]/30 shadow-md">
+        <div className="container max-w-lg py-6 px-6">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 flex items-center justify-center shrink-0 p-1 bg-white rounded-2xl shadow-md border border-[#C8A66A]/30">
                 <img 
                   src={brandIcon} 
                   alt="Tarô 78 Chaves" 
@@ -128,20 +128,20 @@ const ModulesPage = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <h1 className="font-heading text-2xl text-[#5B1F3D] font-bold tracking-tight leading-none mb-1">
+                <h1 className="font-heading text-2xl text-[#5B1F3D] font-extrabold tracking-tight leading-none mb-1.5">
                   Tarô 78 Chaves
                 </h1>
                 <div className="flex flex-col">
-                  <span className="font-heading text-[11px] tracking-[0.2em] uppercase text-[#C8A66A] font-bold leading-none">
+                  <span className="font-heading text-[12px] tracking-[0.2em] uppercase text-[#C8A66A] font-black leading-none">
                     Sua Jornada
                   </span>
-                  <span className="text-[10px] font-body text-[#5B1F3D]/80 mt-1.5 leading-none font-medium italic">
+                  <span className="text-[11px] font-body text-[#5B1F3D]/70 mt-2 leading-none font-semibold italic">
                     Abra os portais dos 78 arcanos.
                   </span>
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-3">
               <StreakCounter streak={progress.streak} />
               <button 
                 onClick={() => navigate("/perfil")} 
@@ -156,7 +156,7 @@ const ModulesPage = () => {
         </div>
       </header>
 
-      <main className="container max-w-lg px-6 py-8 space-y-10">
+      <main className="container max-w-lg px-6 py-12 space-y-12">
         <ProgressCelebration xp={progress.xp} level={progress.level} streak={progress.streak} completedLessons={progress.completedLessons.length} />
         
         <div className="space-y-6">
