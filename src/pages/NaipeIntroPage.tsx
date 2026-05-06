@@ -56,7 +56,7 @@ const NaipeIntroPage = () => {
   ].filter((s) => s.content && s.content.length > 0);
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
       <div className="fixed inset-0 z-0">
         <img src={mysticBg} alt="" className="w-full h-full object-cover" />
         <div className="absolute inset-0" style={{

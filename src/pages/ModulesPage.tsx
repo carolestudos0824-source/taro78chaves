@@ -1,19 +1,14 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
-  Lock, 
   Check, 
   ChevronRight, 
   Sparkles, 
-  User, 
   Flame, 
   Key, 
   KeyRound, 
   Eye, 
-  BookOpen, 
-  Star, 
   Moon, 
-  Sun, 
   Droplets, 
   Gem, 
   Swords, 
@@ -23,7 +18,6 @@ import {
   LockKeyhole,
   GitBranch,
   Layout,
-  PanelsTopLeft,
   Target,
   Briefcase,
   SquareStack,
@@ -37,21 +31,14 @@ import {
 } from "@/lib/content";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
-import OnboardingPage from "./OnboardingPage";
-import { XPBar } from "@/components/XPBar";
-import { StreakCounter } from "@/components/StreakCounter";
+import { Header } from "@/components/Header";
 import BetaWelcomeBanner from "@/components/BetaWelcomeBanner";
-import FeedbackNudge from "@/components/FeedbackNudge";
-import RetentionBanner from "@/components/RetentionBanner";
 import ContinuityCard from "@/components/ContinuityCard";
 import ProgressCelebration from "@/components/ProgressCelebration";
 import { SmartReviewCard } from "@/components/SmartReviewCard";
 import imgLouco from "@/assets/arcano-0-louco.jpg";
 import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
 import imgEstrela from "@/assets/arcano-17-estrela.jpg";
-import ornamentDivider from "@/assets/ornament-divider.png";
-import brandIcon from "@/assets/brand-icon.png";
-import brandLogo from "@/assets/brand-logo.png";
 
 const CATEGORY_LABELS: Record<ModuleCategory, string> = {
   "foundation": "O Portal de Entrada",
@@ -116,49 +103,10 @@ const ModulesPage = () => {
   };
 
   return (
-    <div className="min-h-screen pb-bottom-nav bg-[#FAF5EF]">
-      {/* ─── Persistent Header ─── */}
-      <header className="sticky top-0 z-40 bg-white/98 backdrop-blur-2xl border-b-2 border-[#C8A66A]/20 shadow-lg">
-        <div className="container max-w-lg py-3 px-6 md:py-5">
-          <div className="flex items-center justify-between mb-3 md:mb-5">
-            <div className="flex items-center gap-3.5 md:gap-5">
-              <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center shrink-0 p-1.5 bg-white rounded-2xl md:rounded-[1.25rem] shadow-xl border-2 border-[#C8A66A]/30">
-                <img 
-                  src={brandIcon} 
-                  alt="Tarô 78 Chaves" 
-                  className="w-full h-full object-contain" 
-                />
-              </div>
-              <div className="flex flex-col">
-                <h1 className="font-heading text-xl md:text-3xl text-[#5B1F3D] font-black tracking-tight leading-none mb-1.5 md:mb-2.5">
-                  Tarô 78 Chaves
-                </h1>
-                <div className="flex flex-col">
-                  <span className="font-heading text-[10px] md:text-[13px] tracking-[0.4em] uppercase text-[#C8A66A] font-black leading-none">
-                    A Jornada Viva
-                  </span>
-                  <span className="text-[10px] md:text-[13px] font-body text-[#5B1F3D] mt-1.5 md:mt-2.5 leading-none font-bold italic">
-                    Abra os portais dos 78 arcanos.
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center gap-2 md:gap-3">
-              <StreakCounter streak={progress.streak} />
-              <button 
-                onClick={() => navigate("/perfil")} 
-                className="w-9 h-9 md:w-11 md:h-11 rounded-xl flex items-center justify-center bg-white border border-[#C8A66A]/30 shadow-sm transition-all hover:border-[#C8A66A]/60 active:scale-95 group"
-                title="Meu Perfil"
-              >
-                <KeyRound className="w-3.5 h-3.5 md:w-5 md:h-5 text-[#C8A66A] group-hover:rotate-12 transition-transform" />
-              </button>
-            </div>
-          </div>
-          <XPBar xp={progress.xp} level={progress.level} />
-        </div>
-      </header>
+    <div className="min-h-screen bg-[#FAF5EF]">
+      <Header streak={progress.streak} xp={progress.xp} level={progress.level} />
 
-      <main className="container max-w-lg px-6 pt-6 pb-32 md:pt-10 md:pb-40 space-y-10 md:space-y-14 scroll-mt-32 md:scroll-mt-40">
+      <main className="container max-w-lg px-6 pt-6 pb-24 md:pt-10 md:pb-32 space-y-10 md:space-y-14">
         <ProgressCelebration xp={progress.xp} level={progress.level} streak={progress.streak} completedLessons={progress.completedLessons.length} />
         
         <div className="space-y-6">
@@ -364,8 +312,8 @@ const ModulesPage = () => {
           })}
         </div>
 
-        <div className="pt-16 pb-8 flex justify-center">
-          <img src={ornamentDivider} alt="" className="w-28 opacity-30" />
+        <div className="pt-16 pb-8 flex justify-center opacity-30">
+          ✦ ✦ ✦
         </div>
       </main>
     </div>

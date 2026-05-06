@@ -176,7 +176,7 @@ const AppShell = () => (
     <BetaBadge />
     <BetaFeedback />
     {/* Wrapper aplica clearance automático para a BottomNav fixa em TODAS as páginas */}
-    <div className="pb-bottom-nav">
+    <div>
       <Routes>
         {/* Dashboard */}
         <Route path="/app" element={<ModulesPage />} />

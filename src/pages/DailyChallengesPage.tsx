@@ -78,7 +78,7 @@ const DailyChallengesPage = () => {
   }, [addXP, updateStreak]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground pb-bottom-nav">
       {/* Active challenge modal */}
       {activeChallenge && (
         <ChallengeModal
