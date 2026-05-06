@@ -20,7 +20,12 @@ import {
   Crown, 
   Layers, 
   Compass,
-  LockKeyhole
+  LockKeyhole,
+  GitBranch,
+  Layout,
+  PanelsTopLeft,
+  Target,
+  Briefcase
 } from "lucide-react";
 import { 
   MODULES_CATALOG as MODULES, 
