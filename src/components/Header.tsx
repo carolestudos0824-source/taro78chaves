@@ -42,15 +42,13 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
 
   return (
     <header 
-      className={`sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b-2 border-[#C8A66A]/20 shadow-lg transition-all duration-500 ease-in-out ${
-        isCompact ? "py-2 md:py-3 shadow-md" : "py-3 md:py-6"
-      }`}
+      className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-xl border-b-2 border-[#C8A66A]/20 shadow-lg transition-shadow duration-300"
     >
-      <div className="container max-w-lg px-6">
-        <div className={`flex items-center justify-between transition-all duration-500 ${isCompact ? "mb-1 md:mb-2" : "mb-4 md:mb-6"}`}>
+      <div className={`container max-w-lg px-6 transition-all duration-500 ease-in-out ${isCompact ? "py-2 md:py-3" : "py-3 md:py-6"}`}>
+        <div className={`flex items-center justify-between transition-all duration-500 ease-in-out ${isCompact ? "mb-1" : "mb-4 md:mb-6"}`}>
           <div className="flex items-center gap-3 md:gap-6">
-            <div className={`flex items-center justify-center shrink-0 p-1.5 bg-white rounded-2xl shadow-xl border border-[#C8A66A]/30 transition-all duration-500 ${
-              isCompact ? "w-11 h-11 md:w-12 md:h-12" : "w-14 h-14 md:w-20 md:h-20"
+            <div className={`flex items-center justify-center shrink-0 p-1.5 bg-white rounded-2xl shadow-xl border border-[#C8A66A]/30 transition-all duration-500 ease-in-out ${
+              isCompact ? "w-11 h-11" : "w-14 h-14 md:w-20 md:h-20"
             }`}>
               <img 
                 src={brandIcon} 
@@ -59,21 +57,21 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
               />
             </div>
             <div className="flex flex-col justify-center">
-              <h1 className={`font-heading text-[#5B1F3D] font-black tracking-tight leading-none transition-all duration-500 ${
-                isCompact ? "text-lg md:text-xl" : "text-xl md:text-3xl mb-1.5 md:mb-3"
+              <h1 className={`font-heading text-[#5B1F3D] font-black tracking-tight leading-none transition-all duration-500 ease-in-out ${
+                isCompact ? "text-lg" : "text-xl md:text-3xl mb-1.5 md:mb-3"
               }`}>
                 Tarô 78 Chaves
               </h1>
-              {!isCompact && (
-                <div className="flex flex-col transition-all duration-500 opacity-100 transform translate-y-0">
-                  <span className="font-heading text-[10px] md:text-[13px] tracking-[0.4em] uppercase text-[#C8A66A] font-black leading-none">
-                    A Jornada Viva
-                  </span>
-                  <span className="hidden md:block text-[11px] font-body text-[#5B1F3D]/70 mt-2 leading-none font-bold italic">
-                    Abra os portais dos 78 arcanos.
-                  </span>
-                </div>
-              )}
+              <div className={`flex flex-col transition-all duration-500 ease-in-out overflow-hidden ${
+                isCompact ? "max-h-0 opacity-0" : "max-h-16 opacity-100"
+              }`}>
+                <span className="font-heading text-[10px] md:text-[13px] tracking-[0.4em] uppercase text-[#C8A66A] font-black leading-none">
+                  A Jornada Viva
+                </span>
+                <span className="hidden md:block text-[11px] font-body text-[#5B1F3D]/70 mt-2 leading-none font-bold italic">
+                  Abra os portais dos 78 arcanos.
+                </span>
+              </div>
             </div>
           </div>
           <div className="flex items-center gap-2 md:gap-4">
@@ -89,7 +87,7 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
             </button>
           </div>
         </div>
-        <div className={`transition-all duration-500 origin-left ${isCompact ? "scale-[0.92] opacity-90 -mt-1" : "scale-100 opacity-100"}`}>
+        <div className={`transition-all duration-500 ease-in-out origin-left ${isCompact ? "scale-[0.92] opacity-90 -mt-1" : "scale-100 opacity-100"}`}>
           <XPBar xp={xp} level={level} />
         </div>
       </div>
