@@ -204,6 +204,25 @@ const LessonPage = () => {
           />
         )}
       </main>
+
+      {showXpReward && (
+        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[100]">
+          <XPRewardMotion xp={10} arcanoId={arcanoId} />
+        </div>
+      )}
+
+      {showUnlockMoment && nextArcano && (
+        <ArcanoUnlockMoment
+          arcanoId={nextArcano.id}
+          cardName={nextArcano.name}
+          cardImage={nextArcano.cardImage}
+          arcanoSlug={nextArcano.id === 1 ? "o-mago" : "generic"}
+          onContinue={() => {
+            setShowUnlockMoment(false);
+            setPhase("complete");
+          }}
+        />
+      )}
     </div>
   );
 };
