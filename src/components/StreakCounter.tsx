@@ -18,10 +18,10 @@ export function StreakCounter({ streak }: StreakCounterProps) {
     }}>
       <Flame
         className="w-4 h-4 transition-colors"
-        style={{ color: isActive ? "hsl(340 42% 24%)" : "hsl(230 10% 45% / 0.38)" }}
+        style={{ color: isActive ? "hsl(var(--brand-plum))" : "hsl(var(--brand-plum) / 0.3)" }}
       />
-      <span className="text-sm font-heading tabular-nums" style={{
-        color: isActive ? "hsl(230 20% 12% / 0.88)" : "hsl(230 10% 40% / 0.42)"
+      <span className="text-sm font-heading tabular-nums font-bold" style={{
+        color: isActive ? "hsl(var(--brand-plum))" : "hsl(var(--brand-plum) / 0.4)"
       }}>
         {streak}
       </span>
