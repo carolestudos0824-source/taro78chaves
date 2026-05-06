@@ -220,7 +220,7 @@ const ModulesPage = () => {
             if (!mods || mods.length === 0) return null;
 
             return (
-              <section key={cat} className="space-y-6">
+              <section key={cat} className="space-y-4 md:space-y-6">
                 <div className="flex items-center gap-4">
                   <span className="h-px flex-1 bg-[#C8A66A]/20" />
                   <h2 className="font-heading text-[12px] tracking-[0.2em] uppercase font-bold text-[#5B1F3D]/80">
