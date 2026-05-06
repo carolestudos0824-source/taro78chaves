@@ -135,7 +135,11 @@
 
 @layer utilities {
   .pb-bottom-nav {
-    padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px) + 32px);
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px) + 24px);
+  }
+
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
   /* ─── Brand UI Components ─── */
