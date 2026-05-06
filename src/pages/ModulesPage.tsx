@@ -225,36 +225,36 @@ const ModulesPage = () => {
                           <div className="absolute top-0 left-0 w-1.5 h-full bg-[#C8A66A]" />
                         )}
                         
-                        <div className="flex items-center gap-6 relative z-10">
+                        <div className="flex items-center gap-7 md:gap-10 relative z-10">
                           {/* Icon Circle */}
-                          <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border-2 transition-all duration-500 shadow-sm ${
+                          <div className={`w-16 h-16 md:w-20 md:h-20 rounded-3xl flex items-center justify-center shrink-0 border-2 transition-all duration-500 shadow-md ${
                             isCurrent 
-                              ? "bg-[#C8A66A]/15 border-[#C8A66A] text-[#5B1F3D] scale-110 rotate-3 shadow-lg" 
+                              ? "bg-gradient-to-br from-[#C8A66A]/20 to-[#C8A66A]/5 border-[#C8A66A] text-[#5B1F3D] scale-110 rotate-3 shadow-xl" 
                               : unlocked 
-                              ? "bg-[#FAF5EF] border-[#DCCFC2] text-[#5B1F3D]" 
-                              : "bg-[#F3E6E0] border-[#DCCFC2] text-[#5B1F3D]"
+                              ? "bg-[#FAF5EF] border-[#DCCFC2]/40 text-[#5B1F3D]" 
+                              : "bg-[#F3E6E0] border-[#DCCFC2]/20 text-[#5B1F3D]/30"
                           }`}>
                             {isCompleted ? (
-                              <Check className="w-6 h-6 text-[#5B1F3D]" strokeWidth={3} />
+                              <Check className="w-8 h-8 md:w-10 md:h-10 text-[#5B1F3D]" strokeWidth={3.5} />
                             ) : unlocked ? (
-                              <IconComponent className="w-7 h-7" />
+                              <IconComponent className="w-8 h-8 md:w-10 md:h-10" />
                             ) : (
                               <div className="relative">
-                                <IconComponent className="w-7 h-7 opacity-30" />
-                                <LockKeyhole className="w-5 h-5 absolute -bottom-1 -right-1 text-[#5B1F3D] drop-shadow-sm" />
+                                <IconComponent className="w-8 h-8 md:w-10 md:h-10 opacity-20" />
+                                <LockKeyhole className="w-6 h-6 absolute -bottom-1 -right-1 text-[#5B1F3D] drop-shadow-md" />
                               </div>
                             )}
                           </div>
 
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                              <span className="text-[11px] font-black tracking-widest text-[#C8A66A]">{mod.symbol}</span>
-                              <h3 className={`font-heading text-lg tracking-tight leading-tight ${
+                          <div className="flex-1 min-w-0 py-2">
+                            <div className="flex items-center gap-3 mb-2 flex-wrap">
+                              <span className="text-[12px] md:text-[14px] font-black tracking-[0.3em] text-[#C8A66A] opacity-80">{mod.symbol}</span>
+                              <h3 className={`font-heading text-xl md:text-2xl tracking-tight leading-tight transition-all ${
                                 isCurrent 
                                   ? "text-[#5B1F3D] font-black" 
                                   : unlocked 
                                   ? "text-[#5B1F3D] font-bold" 
-                                  : "text-[#5B1F3D]/95 font-bold"
+                                  : "text-[#5B1F3D]/60 font-bold"
                               }`}>
                                 {mod.name}
                               </h3>
