@@ -38,7 +38,7 @@ const BottomNav = () => {
               }}
             >
               <Icon className="w-5 h-5" strokeWidth={isActive ? 2.2 : 1.5} />
-              <span className="text-[9px] font-heading tracking-wider">{item.label}</span>
+              <span className={`text-[10px] font-heading tracking-wider ${isActive ? "font-bold" : "font-semibold"}`}>{item.label}</span>
               {isActive && (
                 <div className="w-1 h-1 rounded-full mt-0.5" style={{ background: "hsl(var(--brand-plum))" }} />
               )}
