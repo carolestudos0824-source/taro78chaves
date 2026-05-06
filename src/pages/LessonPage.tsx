@@ -61,6 +61,8 @@ const LessonPage = () => {
     if (!isStaff) {
       addXP(10);
       setXpEarned(10);
+      setShowXpReward(true);
+      setTimeout(() => setShowXpReward(false), 2000);
       earnBadge("first-step");
     }
     setPhase("lesson");
@@ -74,7 +76,10 @@ const LessonPage = () => {
       setXpEarned(e => e + quizXp);
       completeQuiz(`quiz-arcano-${arcano.id}`, score, total);
       completeLesson(`arcano-${arcano.id}`);
-      if (arcano.id === 0) earnBadge("fool-complete");
+      if (arcano.id === 0) {
+        earnBadge("fool-complete");
+        setShowUnlockMoment(true);
+      }
     }
     setLastQuizScore(score);
     setLastQuizTotal(total);
