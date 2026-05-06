@@ -25,7 +25,9 @@ import {
   Layout,
   PanelsTopLeft,
   Target,
-  Briefcase
+  Briefcase,
+  SquareStack,
+  Stars
 } from "lucide-react";
 import { 
   MODULES_CATALOG as MODULES, 
@@ -72,8 +74,8 @@ const MODULE_ICON_MAP: Record<string, any> = {
   "cartas-corte": Crown,
   "combinacoes": GitBranch,
   "tiragens": PanelsTopLeft,
-  "espiritualidade": Moon,
-  "mesa-taro": Layout,
+  "espiritualidade": Stars,
+  "mesa-taro": SquareStack,
   "leitura-aplicada": Target,
   "pratica": Sparkles,
   "trabalhar-taro": Briefcase,
@@ -117,10 +119,10 @@ const ModulesPage = () => {
     <div className="min-h-screen pb-bottom-nav bg-[#FAF5EF]">
       {/* ─── Persistent Header ─── */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-[#C8A66A]/30 shadow-md">
-        <div className="container max-w-lg py-4 px-6 md:py-6">
-          <div className="flex items-center justify-between mb-4 md:mb-6">
-            <div className="flex items-center gap-3 md:gap-4">
-              <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center shrink-0 p-1 bg-white rounded-2xl shadow-md border border-[#C8A66A]/30">
+        <div className="container max-w-lg py-2.5 px-6 md:py-4">
+          <div className="flex items-center justify-between mb-2.5 md:mb-4">
+            <div className="flex items-center gap-2.5 md:gap-4">
+              <div className="w-10 h-10 md:w-14 md:h-14 flex items-center justify-center shrink-0 p-1 bg-white rounded-xl md:rounded-2xl shadow-md border border-[#C8A66A]/30">
                 <img 
                   src={brandIcon} 
                   alt="Tarô 78 Chaves" 
@@ -128,14 +130,14 @@ const ModulesPage = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <h1 className="font-heading text-xl md:text-2xl text-[#5B1F3D] font-extrabold tracking-tight leading-none mb-1">
+                <h1 className="font-heading text-lg md:text-2xl text-[#5B1F3D] font-extrabold tracking-tight leading-none mb-0.5 md:mb-1.5">
                   Tarô 78 Chaves
                 </h1>
                 <div className="flex flex-col">
-                  <span className="font-heading text-[10px] md:text-[12px] tracking-[0.2em] uppercase text-[#C8A66A] font-black leading-none">
+                  <span className="font-heading text-[9px] md:text-[11px] tracking-[0.2em] uppercase text-[#C8A66A] font-black leading-none">
                     Sua Jornada
                   </span>
-                  <span className="hidden xs:block text-[10px] md:text-[11px] font-body text-[#5B1F3D]/70 mt-1 md:mt-2 leading-none font-semibold italic">
+                  <span className="hidden sm:block text-[9px] md:text-[11px] font-body text-[#5B1F3D]/70 mt-1 md:mt-2 leading-none font-semibold italic">
                     Abra os portais dos 78 arcanos.
                   </span>
                 </div>
@@ -145,10 +147,10 @@ const ModulesPage = () => {
               <StreakCounter streak={progress.streak} />
               <button 
                 onClick={() => navigate("/perfil")} 
-                className="w-10 h-10 md:w-11 md:h-11 rounded-xl flex items-center justify-center bg-white border border-[#C8A66A]/30 shadow-sm transition-all hover:border-[#C8A66A]/60 active:scale-95 group"
+                className="w-9 h-9 md:w-11 md:h-11 rounded-xl flex items-center justify-center bg-white border border-[#C8A66A]/30 shadow-sm transition-all hover:border-[#C8A66A]/60 active:scale-95 group"
                 title="Meu Perfil"
               >
-                <KeyRound className="w-4 h-4 md:w-5 md:h-5 text-[#C8A66A] group-hover:rotate-12 transition-transform" />
+                <KeyRound className="w-3.5 h-3.5 md:w-5 md:h-5 text-[#C8A66A] group-hover:rotate-12 transition-transform" />
               </button>
             </div>
           </div>
@@ -156,7 +158,7 @@ const ModulesPage = () => {
         </div>
       </header>
 
-      <main className="container max-w-lg px-6 pt-8 pb-20 md:pt-12 md:pb-24 space-y-10 md:space-y-12">
+      <main className="container max-w-lg px-6 pt-6 pb-20 md:pt-10 md:pb-24 space-y-8 md:space-y-12 scroll-mt-32 md:scroll-mt-40">
         <ProgressCelebration xp={progress.xp} level={progress.level} streak={progress.streak} completedLessons={progress.completedLessons.length} />
         
         <div className="space-y-6">
@@ -174,7 +176,7 @@ const ModulesPage = () => {
           )}
           
           {/* ─── Hero Visuals ─── */}
-          <div className="flex justify-center -space-x-4 py-6 opacity-90 scale-100">
+          <div className="flex justify-center -space-x-4 py-4 md:py-6 opacity-90 scale-100">
             <img src={imgLouco} alt="" className="w-24 rounded-2xl shadow-xl -rotate-12 border-2 border-white/50" />
             <img src={imgSacerdotisa} alt="" className="w-24 rounded-2xl shadow-xl z-10 border-2 border-white" />
             <img src={imgEstrela} alt="" className="w-24 rounded-2xl shadow-xl rotate-12 border-2 border-white/50" />
@@ -185,7 +187,7 @@ const ModulesPage = () => {
           {/* ─── Premium Conversion Card ─── */}
           <div 
             onClick={() => navigate("/premium")}
-            className="cursor-pointer bg-[#5B1F3D] border border-[#C8A66A]/40 rounded-3xl p-7 shadow-2xl relative overflow-hidden group transition-all hover:scale-[1.02] active:scale-[0.98] ring-1 ring-[#C8A66A]/20"
+            className="cursor-pointer bg-[#5B1F3D] border border-[#C8A66A]/40 rounded-3xl p-5 md:p-7 shadow-2xl relative overflow-hidden group transition-all hover:scale-[1.02] active:scale-[0.98] ring-1 ring-[#C8A66A]/20"
           >
             <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#C8A66A]/20 rounded-full blur-3xl group-hover:bg-[#C8A66A]/30 transition-colors" />
             <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-[#FAF5EF]/10 rounded-full blur-2xl" />
@@ -212,13 +214,13 @@ const ModulesPage = () => {
         </div>
 
         {/* ─── Modules Grid ─── */}
-        <div className="space-y-12">
+        <div className="space-y-8 md:space-y-12">
           {categoryOrder.map(cat => {
             const mods = grouped[cat];
             if (!mods || mods.length === 0) return null;
 
             return (
-              <section key={cat} className="space-y-6">
+              <section key={cat} className="space-y-4 md:space-y-6">
                 <div className="flex items-center gap-4">
                   <span className="h-px flex-1 bg-[#C8A66A]/20" />
                   <h2 className="font-heading text-[12px] tracking-[0.2em] uppercase font-bold text-[#5B1F3D]/80">
@@ -245,7 +247,7 @@ const ModulesPage = () => {
                             ? "bg-white border-[#C8A66A] shadow-2xl shadow-[#C8A66A]/20 scale-[1.02] ring-1 ring-[#C8A66A]/30" 
                             : unlocked 
                             ? "bg-white/90 border-[#DCCFC2]/40 hover:bg-white hover:border-[#C8A66A]/50 active:scale-[0.98] shadow-md" 
-                            : "bg-[#F3E6E0]/60 border-[#DCCFC2]/40 opacity-100 cursor-not-allowed grayscale-[0.3]"
+                            : "bg-[#F3E6E0]/80 border-[#C8A66A]/30 opacity-100 cursor-not-allowed"
                         }`}
                       >
                         {isCurrent && (
@@ -259,7 +261,7 @@ const ModulesPage = () => {
                               ? "bg-[#C8A66A]/15 border-[#C8A66A] text-[#5B1F3D] scale-110 rotate-3 shadow-lg" 
                               : unlocked 
                               ? "bg-[#FAF5EF] border-[#DCCFC2] text-[#5B1F3D]" 
-                              : "bg-[#FAF5EF]/80 border-[#C8A66A]/30 text-[#5B1F3D]/60"
+                              : "bg-[#FAF5EF]/90 border-[#C8A66A]/40 text-[#5B1F3D]/80"
                           }`}>
                             {isCompleted ? (
                               <Check className="w-6 h-6 text-[#5B1F3D]" strokeWidth={3} />
@@ -267,7 +269,7 @@ const ModulesPage = () => {
                               <IconComponent className="w-7 h-7" />
                             ) : (
                               <div className="relative">
-                                <IconComponent className="w-7 h-7 opacity-30" />
+                                <IconComponent className="w-7 h-7 opacity-40" />
                                 <LockKeyhole className="w-4 h-4 absolute -bottom-1 -right-1 text-[#C8A66A] drop-shadow-sm" />
                               </div>
                             )}
@@ -281,7 +283,7 @@ const ModulesPage = () => {
                                   ? "text-[#5B1F3D] font-black" 
                                   : unlocked 
                                   ? "text-[#5B1F3D] font-bold" 
-                                  : "text-[#5B1F3D]/85 font-bold"
+                                  : "text-[#5B1F3D]/95 font-bold"
                               }`}>
                                 {mod.name}
                               </h3>
@@ -293,7 +295,7 @@ const ModulesPage = () => {
                                   </span>
                                 )}
                                 {!unlocked && !isCompleted && mod.id !== "arcanos-maiores" && (
-                                  <span className="text-[9px] font-heading tracking-widest uppercase px-2.5 py-1 rounded-full bg-[#5B1F3D]/10 text-[#5B1F3D] border border-[#5B1F3D]/20 font-black flex items-center gap-1">
+                                  <span className="text-[9px] font-heading tracking-widest uppercase px-2.5 py-1 rounded-full bg-[#5B1F3D]/10 text-[#5B1F3D] border border-[#5B1F3D]/20 font-black flex items-center gap-1 shadow-sm">
                                     <KeyRound className="w-2.5 h-2.5 text-[#C8A66A]" />
                                     Premium
                                   </span>
@@ -307,7 +309,7 @@ const ModulesPage = () => {
                             </div>
                             
                             <p className={`text-[12px] font-body line-clamp-1 leading-relaxed ${
-                              unlocked ? "text-[#5B1F3D]/80 font-medium" : "text-[#5B1F3D]/60 font-medium italic"
+                              unlocked ? "text-[#5B1F3D]/80 font-medium" : "text-[#5B1F3D]/80 font-medium italic"
                             }`}>
                               {mod.id === "arcanos-maiores" && progress.completedLessons.length === 0 
                                 ? "Inicie sua jornada no portal sagrado." 
