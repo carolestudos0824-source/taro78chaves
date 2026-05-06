@@ -18,13 +18,13 @@ const BottomNav = () => {
 
   return (
     <nav
-      className="fixed bottom-0 inset-x-0 z-40 border-t bg-ivory/80 backdrop-blur-md"
+      className="fixed bottom-0 inset-x-0 z-40 border-t bg-white/95 backdrop-blur-xl"
       style={{
-        borderColor: "hsl(var(--brand-gold) / 0.2)",
+        borderColor: "#C8A66A33",
         paddingBottom: "env(safe-area-inset-bottom, 0px)",
       }}
     >
-      <div className="max-w-lg mx-auto flex items-center justify-around py-2">
+      <div className="max-w-lg mx-auto flex items-center justify-around py-3 px-2">
         {NAV_ITEMS.map(item => {
           const Icon = item.icon;
           const isActive = location.pathname === item.path || location.pathname.startsWith(item.path + "/");
@@ -32,15 +32,22 @@ const BottomNav = () => {
             <button
               key={item.path}
               onClick={() => navigate(item.path)}
-              className="flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg transition-all"
-              style={{
-                color: isActive ? "hsl(var(--brand-plum))" : "hsl(var(--brand-plum) / 0.7)",
-              }}
+              className="flex flex-col items-center gap-1 px-4 py-1.5 rounded-2xl transition-all duration-300 relative group"
             >
-              <Icon className="w-5 h-5" strokeWidth={isActive ? 2.2 : 1.5} />
-              <span className={`text-[10px] font-heading tracking-wider ${isActive ? "font-bold" : "font-semibold"}`}>{item.label}</span>
+              <Icon 
+                className={`w-5 h-5 transition-all duration-300 ${isActive ? "scale-110" : "opacity-60 group-hover:opacity-100"}`} 
+                strokeWidth={isActive ? 2.5 : 2} 
+                style={{
+                  color: isActive ? "#5B1F3D" : "#5B1F3D",
+                }}
+              />
+              <span className={`text-[10px] font-heading tracking-widest uppercase transition-all duration-300 ${
+                isActive ? "font-bold text-[#5B1F3D]" : "font-semibold text-[#5B1F3D]/60"
+              }`}>
+                {item.label}
+              </span>
               {isActive && (
-                <div className="w-1 h-1 rounded-full mt-0.5" style={{ background: "hsl(var(--brand-plum))" }} />
+                <div className="absolute -bottom-1 w-1 h-1 rounded-full bg-[#C8A66A] shadow-[0_0_8px_#C8A66A]" />
               )}
             </button>
           );
