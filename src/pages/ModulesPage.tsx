@@ -106,10 +106,10 @@ const ModulesPage = () => {
     <div className="min-h-screen bg-[#FAF5EF]">
       <Header streak={progress.streak} xp={progress.xp} level={progress.level} />
 
-      <main className="container max-w-lg px-6 pt-6 pb-24 md:pt-10 md:pb-32 space-y-10 md:space-y-14">
+      <main className="container max-w-lg px-6 pt-10 pb-24 md:pt-16 md:pb-32 space-y-12 md:space-y-20">
         <ProgressCelebration xp={progress.xp} level={progress.level} streak={progress.streak} completedLessons={progress.completedLessons.length} />
         
-        <div className="space-y-6">
+        <div className="space-y-8 md:space-y-12">
           <BetaWelcomeBanner />
           <SmartReviewCard />
           
