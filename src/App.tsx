@@ -150,7 +150,21 @@ const AppRoutes = () => (
       {/* ═══ Auth & public standalone (no BottomNav, no BetaBadge/Feedback) ═══ */}
       <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
       <Route path="/reset-password" element={<ResetPasswordPage />} />
-...
+
+      {/* ═══ Public marketing pages (no BottomNav) ═══ */}
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/convite" element={<BetaInvitePage />} />
+      <Route path="/waitlist" element={<WaitlistPage />} />
+      <Route path="/apresentacao" element={<PresentationPage />} />
+
+      {/* ═══ Legal / compliance (public, no auth) ═══ */}
+      <Route path="/privacidade" element={<PrivacyPage />} />
+      <Route path="/termos" element={<TermsPage />} />
+      <Route path="/suporte" element={<SupportPage />} />
+      <Route path="/excluir-conta" element={<DeleteAccountPage />} />
+
+      {/* ═══ App routes (with BottomNav + Beta overlays) ═══ */}
+      <Route path="/*" element={<AppShell />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </Suspense>
