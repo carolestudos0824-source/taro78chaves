@@ -75,7 +75,7 @@ const ProgressCelebration = ({ xp, level, streak, completedLessons }: ProgressCe
 
   return (
     <div
-      className="fixed top-8 left-1/2 -translate-x-1/2 z-50 max-w-sm w-[90%]"
+      className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 max-w-sm w-[90%]"
       style={{ animation: "celebration-in 0.5s ease-out, celebration-out 0.5s ease-in 4s forwards" }}
     >
       <div className="rounded-xl p-4 flex items-center gap-3.5" style={{
