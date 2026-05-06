@@ -37,8 +37,8 @@ export function XPBar({ xp, level }: XPBarProps) {
             className="h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
             style={{
               width: `${Math.max(xpInLevel, 3)}%`,
-              background: "linear-gradient(90deg, hsl(340 42% 26%), hsl(36 42% 44%), hsl(42 55% 60%))",
-              boxShadow: "0 1px 4px hsl(36 45% 50% / 0.35)"
+              background: "linear-gradient(90deg, hsl(var(--brand-plum)), hsl(var(--brand-gold)), hsl(var(--gold-light)))",
+              boxShadow: "0 1px 4px hsl(var(--brand-gold) / 0.3)"
             }}
           >
             <div
