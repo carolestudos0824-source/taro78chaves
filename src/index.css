@@ -11,39 +11,30 @@
 @layer base {
   :root {
     /* ─── Tarô 78 Chaves — Official Brand Palette ─── */
-    /* Marfim Suave #FAF5EF — base background */
-    --background: 35 56% 96%;
-    --foreground: 335 35% 18%;          /* deep ameixa for text */
+    --primary: 336 49% 24%;        /* #5B1F3D Ameixa */
+    --primary-foreground: 36 33% 97%;
+    --accent: 36 45% 60%;          /* #C8A66A Ouro */
+    --background: 30 33% 97%;      /* #FAF5EF Marfim */
+    --card: 15 33% 94%;            /* #F3E6E0 Rosa aveludado */
+    --muted: 20 20% 82%;           /* #DCCFC2 Greige */
 
-    /* Greige Quente #DCCFC2 — neutral cards */
-    --card: 35 25% 94%;
-    --card-foreground: 335 35% 18%;
+    --foreground: 336 49% 18%;
+    --card-foreground: 336 49% 18%;
+    --popover: 30 33% 97%;
+    --popover-foreground: 336 49% 18%;
 
-    --popover: 35 56% 97%;
-    --popover-foreground: 335 35% 18%;
+    --secondary: 336 49% 24%;
+    --secondary-foreground: 30 33% 97%;
 
-    /* ─── Brand Theme ─── */
-    /* Ouro Antigo #C8A66A — primary accent */
-    --primary: 38 47% 60%;
-    --primary-foreground: 35 56% 96%;
+    --accent-foreground: 336 49% 24%;
 
-    /* Ameixa Profundo #5B1F3D — main brand color */
-    --secondary: 333 50% 24%;
-    --secondary-foreground: 35 56% 96%;
-
-    --accent: 38 47% 60%;
-    --accent-foreground: 333 50% 24%;
-
-    /* Greige Quente #DCCFC2 — muted */
-    --muted: 30 22% 84%;
-    --muted-foreground: 333 18% 38%;
-
+    --muted-foreground: 336 10% 40%;
     --destructive: 0 60% 45%;
-    --destructive-foreground: 35 56% 96%;
+    --destructive-foreground: 30 33% 97%;
 
-    --border: 30 22% 82%;
-    --input: 30 25% 90%;
-    --ring: 38 47% 60%;
+    --border: 20 20% 82%;
+    --input: 20 20% 90%;
+    --ring: 36 45% 60%;
 
     --radius: 1rem;
 

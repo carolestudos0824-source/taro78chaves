@@ -14,11 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["Cinzel", "Cormorant Garamond", "Georgia", "serif"],
-        display: ["Cinzel", "Cormorant Garamond", "Georgia", "serif"],
-        body: ["Lora", "Cormorant Garamond", "Georgia", "serif"],
-        sans: ["Lora", "Inter", "system-ui", "sans-serif"],
-        accent: ["Cormorant Garamond", "Lora", "serif"],
+        display: ['Cinzel', 'serif'],
+        heading: ['Cinzel', 'serif'],
+        body: ['Lora', 'serif'],
+        sans: ['Lora', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -26,6 +25,13 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        brand: {
+          ameixa: '#5B1F3D',
+          ouro: '#C8A66A',
+          greige: '#DCCFC2',
+          rosa: '#F3E6E0',
+          marfim: '#FAF5EF',
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
