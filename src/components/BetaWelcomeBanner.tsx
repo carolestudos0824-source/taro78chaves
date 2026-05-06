@@ -63,9 +63,9 @@ const BetaWelcomeBanner = () => {
             onClick={() => { dismiss(); navigate("/module/fundamentos"); }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-heading text-[10px] tracking-[0.15em] uppercase transition-all hover:scale-105"
             style={{
-              background: "linear-gradient(135deg, hsl(340 42% 26%), hsl(340 42% 32%))",
-              color: "hsl(36 33% 97%)",
-              boxShadow: "0 4px 16px hsl(340 42% 28% / 0.15)",
+              background: "hsl(var(--brand-plum))",
+              color: "hsl(var(--brand-ivory))",
+              boxShadow: "0 4px 16px hsl(var(--brand-plum) / 0.2)",
             }}
           >
             Começar pelos Fundamentos
