@@ -75,10 +75,11 @@ const ModulesPage = () => {
       <header className="sticky top-0 z-30 bg-background/80 backdrop-blur-xl border-b border-gold/10">
         <div className="container max-w-lg py-4 px-6">
           <div className="flex items-center justify-between mb-4">
-            <div className="flex flex-col">
-              <p className="t-section-title mb-1">A Jornada do Louco</p>
-              <h1 className="font-heading text-xl md:text-2xl text-midnight tracking-tight">Sua Jornada</h1>
-            </div>
+            <img
+              src="/logo-taro78.png"
+              alt="Tarô 78 Chaves"
+              className="h-9 sm:h-10 w-auto object-contain"
+            />
             <div className="flex items-center gap-3">
               <StreakCounter streak={progress.streak} />
               <button onClick={() => navigate("/perfil")} className="w-10 h-10 rounded-full flex items-center justify-center bg-white/50 border border-gold/20 shadow-sm transition-transform active:scale-90">
