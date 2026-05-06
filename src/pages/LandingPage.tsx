@@ -131,19 +131,19 @@ const LandingPage = () => {
                 <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-plum normal-case">
                   Abra o primeiro portal do tarô.
                 </h1>
-                <p className="font-heading text-2xl md:text-3xl lg:text-4xl text-gold-dark font-medium italic">
-                  Aprenda a ler as cartas de verdade.
+                <p className="font-heading text-lg md:text-xl lg:text-2xl text-gold-dark font-medium italic opacity-90">
+                  Aprenda a interpretar as cartas com método, prática e confiança.
                 </p>
               </div>
 
               <div className="space-y-4 md:space-y-5 max-w-2xl mx-auto lg:mx-0">
                 <div className="space-y-2 md:space-y-3">
                   <p className="text-base md:text-lg lg:text-xl font-body text-foreground leading-relaxed">
-                    Um caminho guiado pelo Rider-Waite-Smith para parar de decorar significados soltos e começar a interpretar carta por carta — com método, prática, quizzes e progresso.
+                    Um caminho guiado pelo Rider-Waite-Smith para parar de decorar significados soltos e começar a interpretar carta por carta.
                   </p>
                   <div className="bg-gold/10 border-l-4 border-gold/60 p-2 md:p-3 rounded-r-xl">
                     <p className="text-xs md:text-sm lg:text-base font-body text-midnight font-bold">
-                      ✦ Comece pelo Louco gratuitamente. Vá bem na lição e desbloqueie O Mago.
+                      ✦ Da primeira carta à primeira leitura: um caminho guiado para ganhar confiança no tarô.
                     </p>
                   </div>
                 </div>
@@ -307,18 +307,20 @@ const LandingPage = () => {
               { id: 5, img: imgHierofante, name: "O Hierofante", badge: "Premium" },
               { id: 6, img: imgEnamorados, name: "Os Enamorados", badge: "Premium" },
             ].map((card, i) => (
-              <div key={i} className="flex-shrink-0 flex flex-col items-center gap-5 snap-center group">
+              <div key={i} className="flex-shrink-0 flex flex-col items-center gap-3 snap-center group">
                 <div className="relative">
                   <div className="w-32 h-52 md:w-40 md:h-60 rounded-2xl overflow-hidden shadow-xl border-4 border-white transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-2xl group-hover:border-gold/20">
                     <img src={card.img} alt={card.name} className="w-full h-full object-cover" />
-                    <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[8px] font-heading tracking-widest uppercase shadow-lg z-20 ${
-                      card.badge === 'Grátis' ? "bg-gold text-secondary" : card.badge === 'Desbloqueável' ? "bg-gold text-white" : "bg-[#5B1F3D] text-white"
-                    }`}>
+                    <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[8px] font-heading tracking-widest uppercase shadow-lg z-20 ${ card.badge === "Grátis" ? "bg-success text-white" : "bg-gold text-white" }`}>
                       {card.badge}
                     </div>
                   </div>
                 </div>
-                <p className="text-[10px] md:text-[11px] font-heading tracking-widest uppercase text-midnight font-bold transition-colors group-hover:text-plum bg-white/50 px-2 py-0.5 rounded-full">{card.name}</p>
+                <div className="text-center">
+                  <span className="text-[10px] md:text-xs font-heading tracking-[0.2em] uppercase text-plum font-bold">
+                    {card.name.toUpperCase()}
+                  </span>
+                </div>
               </div>
             ))}
             <div className="flex-shrink-0 w-20 flex items-center justify-center h-52 md:h-60 opacity-20">
@@ -352,26 +354,26 @@ const LandingPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
               <div className="w-12 h-12 bg-[#5B1F3D]/5 rounded-2xl flex items-center justify-center">
-                <Eye className="w-6 h-6 text-[#5B1F3D]" />
+                <Key className="w-6 h-6 text-[#5B1F3D]" />
               </div>
-              <h3 className="font-heading text-xl text-midnight">Você aprende pela imagem</h3>
-              <p className="text-sm text-midnight/70 font-body">Em vez de decorar palavras-chave, você aprende a observar símbolos, cenas e movimentos da carta Rider-Waite-Smith.</p>
+              <h3 className="font-heading text-xl text-midnight">O Caminho do Aprendiz</h3>
+              <p className="text-sm text-midnight/70 font-body">Aprenda a ler cada arcano de forma fluida, sem decorar tabelas de significados ou palavras-chave soltas.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
               <div className="w-12 h-12 bg-[#C8A66A]/10 rounded-2xl flex items-center justify-center">
-                <Check className="w-6 h-6 text-[#C8A66A]" />
+                <Sparkles className="w-6 h-6 text-[#C8A66A]" />
               </div>
-              <h3 className="font-heading text-xl text-midnight">Você pratica antes de avançar</h3>
-              <p className="text-sm text-midnight/70 font-body">Cada lição testa sua compreensão com quiz e feedback. Para desbloquear O Mago, você precisa ir bem no Louco.</p>
+              <h3 className="font-heading text-xl text-midnight">Método Arcano Vivo</h3>
+              <p className="text-sm text-midnight/70 font-body">Uma metodologia que conecta a simbologia clássica do Rider-Waite-Smith com aplicação prática no seu dia a dia.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
               <div className="w-12 h-12 bg-[#5B1F3D]/5 rounded-2xl flex items-center justify-center">
                 <Target className="w-6 h-6 text-[#5B1F3D]" />
               </div>
-              <h3 className="font-heading text-xl text-midnight">Você segue uma jornada real</h3>
-              <p className="text-sm text-midnight/70 font-body">XP, sequência diária, progresso salvo e desbloqueios mantêm seu estudo vivo — uma carta por vez, sem se perder.</p>
+              <h3 className="font-heading text-xl text-midnight">Prática e Progressão</h3>
+              <p className="text-sm text-midnight/70 font-body">Você avança com quizzes, exercícios reais e trilhas salvas na sua jornada — da primeira carta à primeira leitura.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
@@ -379,7 +381,7 @@ const LandingPage = () => {
                 <Layers className="w-6 h-6 text-[#C8A66A]" />
               </div>
               <h3 className="font-heading text-xl text-midnight">78 cartas, uma por uma</h3>
-              <p className="text-sm text-midnight/70 font-body">Não é uma lista de significados. É uma jornada guiada por Arcanos Maiores, Menores e Corte no seu ritmo.</p>
+              <p className="text-sm text-midnight/70 font-body">Uma jornada guiada por Arcanos Maiores, Menores e Corte no seu ritmo, desbloqueando conhecimento conforme evolui.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
@@ -387,15 +389,15 @@ const LandingPage = () => {
                 <BookOpen className="w-6 h-6 text-[#5B1F3D]" />
               </div>
               <h3 className="font-heading text-xl text-midnight">Lições que ensinam a olhar</h3>
-              <p className="text-sm text-midnight/70 font-body">Cada arcano traz essência, símbolos, luz e sombra aplicados ao amor, trabalho e vida prática.</p>
+              <p className="text-sm text-midnight/70 font-body">Cada arcano traz essência, símbolos, luz e sombra aplicados ao amor, trabalho e vida prática com clareza.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
               <div className="w-12 h-12 bg-[#C8A66A]/10 rounded-2xl flex items-center justify-center">
                 <Award className="w-6 h-6 text-[#C8A66A]" />
               </div>
-              <h3 className="font-heading text-xl text-midnight">Saia da "decoreba"</h3>
-              <p className="text-sm text-midnight/70 font-body">Aprenda a lógica por trás de cada arcano para que a interpretação flua com mais naturalidade e confiança.</p>
+              <h3 className="font-heading text-xl text-midnight">Ganhe Confiança Real</h3>
+              <p className="text-sm text-midnight/70 font-body">Aprenda a lógica por trás de cada arcano para que a interpretação flua com mais naturalidade, clareza e autoridade.</p>
             </div>
           </div>
 
@@ -463,7 +465,7 @@ const LandingPage = () => {
               </div>
               <p className="text-sm text-midnight/80 flex-1 font-body leading-relaxed">Acesso total à jornada completa pelos 78 arcanos por um ano inteiro, com estudo guiado, quizzes e progresso salvo.</p>
               <Button onClick={() => handleSubscribe("annual")} className="btn-premium w-full py-8 text-sm shadow-xl hover:scale-[1.02] transition-transform">
-                DESPERTAR O ORÁCULO →
+                COMEÇAR A JORNADA COMPLETA →
               </Button>
             </div>
           </div>
@@ -471,7 +473,7 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Mobile Section ─── */}
-      <section className="py-24 px-6 bg-[#F3E6E0]">
+      <section className="py-20 px-6 bg-parchment border-y border-gold/10">
         <div className="max-w-7xl mx-auto space-y-16">
           <div className="text-center space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C8A66A]/10 text-[#C8A66A]">
@@ -603,7 +605,7 @@ const LandingPage = () => {
       </Dialog>
 
       {/* ─── FAQ Section ─── */}
-      <section className="py-24 px-6 bg-[#F3E6E0]">
+      <section className="py-20 px-6 bg-white/20">
         <div className="max-w-3xl mx-auto space-y-12">
           <div className="text-center space-y-4">
              <HelpCircle className="w-10 h-10 text-gold mx-auto mb-4" />
@@ -652,7 +654,7 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Footer ─── */}
-      <footer className="py-24 px-6 text-center space-y-12 bg-plum text-ivory border-t-4 border-gold/30 relative overflow-hidden">
+      <footer className="py-12 px-6 text-center space-y-12 bg-plum text-ivory border-t-4 border-gold/30 relative overflow-hidden">
         {/* Subtle background ornament */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full" 
