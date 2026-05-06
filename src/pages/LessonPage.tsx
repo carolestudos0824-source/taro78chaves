@@ -191,7 +191,7 @@ const LessonPage = () => {
             xpEarned={xpEarned}
             quizScore={lastQuizScore}
             quizTotal={lastQuizTotal}
-            nextArcano={nextArcano ? { ...nextArcano, cardImage: getArcanoById(nextArcano.id)?.cardImage || "" } : undefined}
+            nextArcano={nextArcano ? { id: nextArcano.id, name: nextArcano.name, numeral: nextArcano.numeral, subtitle: nextArcano.subtitle } : undefined}
             isLastArcano={arcanoId === 21}
             onNextArcano={() => {
               if (nextArcano) {
