@@ -32,7 +32,7 @@ export function ArcanoVivoAnimatedCard({
   const isEmerged = !["darkness", "reveal", "awaken", "shimmer", "breathe"].includes(phase);
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     darkness: { scale: 0.9, opacity: 0 },
     reveal: { 
       scale: 1, 
@@ -41,7 +41,7 @@ export function ArcanoVivoAnimatedCard({
     }
   };
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     initial: { rotateY: 0, y: 0 },
     breathe: {
       y: [0, -8, 0],
@@ -54,7 +54,7 @@ export function ArcanoVivoAnimatedCard({
     }
   };
 
-  const glowVariants = {
+  const glowVariants: Variants = {
     initial: { opacity: 0, scale: 0.8 },
     active: {
       opacity: [0.3, 0.6, 0.3],
