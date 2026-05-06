@@ -156,7 +156,7 @@ const ModulesPage = () => {
         </div>
       </header>
 
-      <main className="container max-w-lg px-6 py-8 md:py-12 space-y-10 md:space-y-12">
+      <main className="container max-w-lg px-6 pt-8 pb-20 md:pt-12 md:pb-24 space-y-10 md:space-y-12">
         <ProgressCelebration xp={progress.xp} level={progress.level} streak={progress.streak} completedLessons={progress.completedLessons.length} />
         
         <div className="space-y-6">
