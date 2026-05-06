@@ -134,7 +134,13 @@ const LandingPage = () => {
                 </h1>
                 <p className="font-heading text-lg md:text-xl lg:text-2xl text-gold-dark font-medium italic opacity-90">
                   Arcano por arcano, com lições curtas, quizzes, Pontos de Jornada e progresso real.
-...
+                </p>
+
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6 pt-3 md:pt-4 font-heading text-[10px] md:text-xs tracking-[0.2em] uppercase text-plum font-extrabold drop-shadow-sm">
+                  <div className="flex items-center gap-2 group">
+                    <div className="w-6 h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
+                      <Zap className="w-3 h-3 text-gold-dark" />
+                    </div>
                     <span>Quizzes e Pontos de Jornada</span>
                   </div>
                   <div className="flex items-center gap-2 group">
