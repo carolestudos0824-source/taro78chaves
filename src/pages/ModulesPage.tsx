@@ -25,7 +25,9 @@ import {
   Layout,
   PanelsTopLeft,
   Target,
-  Briefcase
+  Briefcase,
+  SquareStack,
+  Stars
 } from "lucide-react";
 import { 
   MODULES_CATALOG as MODULES, 
