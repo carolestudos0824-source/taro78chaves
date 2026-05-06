@@ -55,6 +55,25 @@ const CATEGORY_LABELS: Record<ModuleCategory, string> = {
   "professional": "Profissional",
 };
 
+const MODULE_ICON_MAP: Record<string, any> = {
+  "fundamentos": BookOpen,
+  "leitura-simbolica": Eye,
+  "arcanos-maiores": Star,
+  "arquitetura-menores": Layers,
+  "copas": Droplets,
+  "paus": Flame,
+  "espadas": Swords,
+  "ouros": Gem,
+  "cartas-corte": Crown,
+  "combinacoes": KeyRound,
+  "tiragens": Compass,
+  "espiritualidade": Moon,
+  "mesa-taro": Sun,
+  "leitura-aplicada": Compass,
+  "pratica": Sparkles,
+  "trabalhar-taro": Crown,
+};
+
 const ModulesPage = () => {
   const navigate = useNavigate();
   const { progress, loading: progressLoading, completeOnboarding } = useProgress();
