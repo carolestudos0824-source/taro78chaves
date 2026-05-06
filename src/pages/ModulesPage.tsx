@@ -114,12 +114,24 @@ const ModulesPage = () => {
           <SmartReviewCard />
           
           {progress.completedLessons.length === 0 && (
-            <div className="bg-[#F3E6E0] border-2 border-[#C8A66A]/30 rounded-2xl p-6 text-center space-y-3 relative overflow-hidden group shadow-md ring-4 ring-[#C8A66A]/5">
-              <div className="absolute top-0 left-0 w-2 h-full bg-[#C8A66A]" />
-              <p className="text-[15px] font-black text-[#5B1F3D] italic leading-relaxed relative z-10">
-                ✦ Comece pelo Louco grátis. Vá bem e desbloqueie O Mago. <br/>
-                <span className="text-[#C8A66A] font-black not-italic block mt-1 uppercase tracking-widest text-xs">Continue sua Jornada Viva.</span>
-              </p>
+            <div className="space-y-6 animate-fade-in">
+              <div className="bg-[#5B1F3D] border-2 border-[#C8A66A] rounded-[2.5rem] p-8 text-center space-y-4 relative overflow-hidden group shadow-2xl ring-8 ring-[#C8A66A]/5">
+                <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#C8A66A]/20 rounded-full blur-3xl" />
+                <div className="relative z-10 space-y-4">
+                  <p className="text-[11px] font-heading tracking-[0.4em] uppercase font-black text-[#C8A66A]">✦ Portal de Início ✦</p>
+                  <h3 className="font-heading text-2xl md:text-3xl text-white font-black tracking-tight leading-tight">Começar Jornada: <br/>O Louco</h3>
+                  <p className="text-[15px] font-body font-bold text-white/90 italic leading-relaxed">
+                    O primeiro portal da sua travessia grátis. <br/>
+                    <span className="text-[#C8A66A] not-italic block mt-1 uppercase tracking-widest text-[10px]">Vá bem e desbloqueie O Mago.</span>
+                  </p>
+                  <button 
+                    onClick={() => navigate("/lesson/0")}
+                    className="w-full py-5 bg-[#C8A66A] hover:bg-[#C8A66A]/90 text-[#5B1F3D] rounded-2xl font-heading text-[12px] font-black tracking-[0.3em] uppercase transition-all shadow-xl hover:scale-[1.02] active:scale-[0.95]"
+                  >
+                    ABRIR PORTAL DO LOUCO
+                  </button>
+                </div>
+              </div>
             </div>
           )}
           
