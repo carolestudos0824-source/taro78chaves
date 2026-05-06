@@ -185,10 +185,9 @@ const ARCANO_CONFIGS: Record<number, Partial<ArcanoVivoConfig>> = {
   },
   
   // ─── O DIABO (15) ───
-  // Energia densa, magnética, sombras. Correntes, fogo, sombra.
   15: {
-    glowColor: "333 50% 24%", // Plum profundo
-    ambientColor: "0 60% 15%", // Vermelho sombrio
+    glowColor: "333 50% 24%",
+    ambientColor: "0 60% 15%",
     breatheSpeed: 5,
     particles: ["⛓", "🔥", "·", "⬫"],
     awakenDelay: 1000,
@@ -208,6 +207,7 @@ const ARCANO_CONFIGS: Record<number, Partial<ArcanoVivoConfig>> = {
       { x: 48, y: 75, size: 40, color: "0 0% 20%", delay: 1600, label: "Correntes largas — o apego voluntário", duration: 6 },
     ],
   },
+};
 
 export function getArcanoVivoConfig(arcanoId: number): ArcanoVivoConfig {
   const specific = ARCANO_CONFIGS[arcanoId] || {};
