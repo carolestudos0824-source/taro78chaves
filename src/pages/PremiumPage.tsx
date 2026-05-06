@@ -85,7 +85,7 @@ const PremiumPage = () => {
   };
 
   return (
-    <div className="min-h-screen pb-32 bg-[#FAF5EF]">
+    <div className="min-h-screen pb-bottom-nav bg-[#FAF5EF]">
       <header className="px-6 pt-12 pb-24 relative overflow-hidden bg-white/40 border-b border-[#C8A66A]/20 shadow-sm">
         <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
           <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-[#C8A66A]/40 blur-[120px] rounded-full" />
