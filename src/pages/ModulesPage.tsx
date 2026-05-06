@@ -141,7 +141,7 @@ const ModulesPage = () => {
               <section key={cat} className="space-y-5">
                 <div className="flex items-center gap-4">
                   <span className="h-px flex-1 bg-gold/10" />
-                  <h2 className="t-section-title">{CATEGORY_LABELS[cat]}</h2>
+                  <h2 className="t-section-title font-bold text-plum/80">{CATEGORY_LABELS[cat]}</h2>
                   <span className="h-px flex-1 bg-gold/10" />
                 </div>
 
