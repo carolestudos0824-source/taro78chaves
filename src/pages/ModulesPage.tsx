@@ -187,7 +187,7 @@ const ModulesPage = () => {
           {/* ─── Premium Conversion Card ─── */}
           <div 
             onClick={() => navigate("/premium")}
-            className="cursor-pointer bg-[#5B1F3D] border border-[#C8A66A]/40 rounded-3xl p-7 shadow-2xl relative overflow-hidden group transition-all hover:scale-[1.02] active:scale-[0.98] ring-1 ring-[#C8A66A]/20"
+            className="cursor-pointer bg-[#5B1F3D] border border-[#C8A66A]/40 rounded-3xl p-5 md:p-7 shadow-2xl relative overflow-hidden group transition-all hover:scale-[1.02] active:scale-[0.98] ring-1 ring-[#C8A66A]/20"
           >
             <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#C8A66A]/20 rounded-full blur-3xl group-hover:bg-[#C8A66A]/30 transition-colors" />
             <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-[#FAF5EF]/10 rounded-full blur-2xl" />
