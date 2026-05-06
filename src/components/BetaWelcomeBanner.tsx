@@ -50,10 +50,10 @@ const BetaWelcomeBanner = () => {
           <p className="text-[11px] font-heading tracking-[0.3em] uppercase mb-1.5 font-black" style={{ color: "hsl(var(--brand-plum))" }}>
             ✦ Boas-vindas à Beta
           </p>
-          <h3 className="font-heading text-base font-bold tracking-wide mb-1.5" style={{
+          <h3 className="font-heading text-base font-black tracking-wide mb-1.5" style={{
             color: "hsl(var(--brand-plum))",
           }}>
-            Você é uma das primeiras.
+            O Louco abre a primeira porta.
           </h3>
           <p className="font-body text-[13px] font-semibold leading-relaxed mb-4" style={{ color: "hsl(var(--brand-plum))" }}>
             Sua jornada começa pelos <strong className="font-black" style={{ color: "hsl(var(--brand-plum))" }}>Fundamentos do Tarô</strong> — é a porta de entrada para tudo o que vem depois. De lá, os arcanos se revelam um a um.
