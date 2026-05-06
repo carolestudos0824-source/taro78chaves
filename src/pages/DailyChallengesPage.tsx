@@ -128,7 +128,7 @@ const DailyChallengesPage = () => {
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-6 pb-24 space-y-6">
+      <div className="max-w-2xl mx-auto px-6 pb-32 space-y-6">
 
         {/* Progress summary */}
         <div className="rounded-2xl p-6 shadow-sm border" style={{
@@ -170,14 +170,17 @@ const DailyChallengesPage = () => {
           </div>
           <div className="space-y-3">
             {challenges.map((ch) => {
-              const IconComponent = {
-                "scroll": Scroll,
-                "sparkles": Sparkles,
-                "help-circle": HelpCircle,
-                "eye": Eye,
-                "layers": Layers,
-                "book-open": BookOpenIcon
-              }[ch.icon] || Star;
+              const IconComponent = (() => {
+                switch (ch.icon) {
+                  case "scroll": return Scroll;
+                  case "sparkles": return Sparkles;
+                  case "help-circle": return HelpCircle;
+                  case "eye": return Eye;
+                  case "layers": return Layers;
+                  case "book-open": return BookOpenIcon;
+                  default: return Star;
+                }
+              })();
 
               return (
                 <button
