@@ -26,29 +26,31 @@ export const SmartReviewCard = () => {
     .filter(Boolean);
 
   return (
-    <div className="mb-6 animate-fade-up">
-      <div className="rounded-2xl overflow-hidden border border-gold/20 bg-white/70 backdrop-blur-md shadow-sm">
-        <div className="p-4 border-b border-gold/10 bg-gold/5 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Brain className="w-4 h-4 text-plum" />
-            <h3 className="font-heading text-sm font-bold tracking-wide text-plum">Revisão Inteligente</h3>
+    <div className="mb-10 animate-fade-up">
+      <div className="rounded-3xl overflow-hidden border-2 border-[#C8A66A]/20 bg-white/80 backdrop-blur-xl shadow-xl ring-8 ring-[#C8A66A]/5">
+        <div className="p-5 border-b border-[#C8A66A]/10 bg-gradient-to-r from-[#C8A66A]/5 to-transparent flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-[#FAF5EF] rounded-xl border border-[#C8A66A]/20">
+              <Brain className="w-5 h-5 text-[#5B1F3D]" />
+            </div>
+            <h3 className="font-heading text-[15px] font-black tracking-tight text-[#5B1F3D]">Revisão Inteligente</h3>
           </div>
-          <span className="text-[10px] font-heading uppercase tracking-widest text-plum/40 font-bold">Sugerido</span>
+          <span className="text-[10px] font-heading uppercase tracking-[0.2em] text-[#C8A66A] font-black">Reforço necessário</span>
         </div>
         
-        <div className="p-4 space-y-4">
-          <p className="text-[11px] text-plum/70 font-body leading-relaxed">
-            Você teve dificuldades com estes arcanos recentemente. Que tal reforçar agora?
+        <div className="p-6 space-y-6">
+          <p className="text-[14px] text-[#5B1F3D]/80 font-body leading-relaxed font-bold italic">
+            Sua jornada encontrou névoa nestes arcanos. Que tal abrir estas portas novamente?
           </p>
           
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2.5">
             {difficultArcanos.map((arcano) => (
               <button
                 key={arcano!.id}
                 onClick={() => navigate(`/lesson/${arcano!.id}`)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-gold/20 hover:border-gold/50 transition-all text-xs font-bold text-plum"
+                className="flex items-center gap-3 px-4 py-2 rounded-2xl bg-[#FAF5EF] border-2 border-[#DCCFC2]/40 hover:border-[#C8A66A]/50 transition-all text-[13px] font-bold text-[#5B1F3D] group"
               >
-                <span className="text-[10px] opacity-60">{arcano!.numeral}</span>
+                <span className="text-[11px] font-black text-[#C8A66A] group-hover:scale-110 transition-transform">{arcano!.numeral}</span>
                 {arcano!.name}
               </button>
             ))}
@@ -56,11 +58,11 @@ export const SmartReviewCard = () => {
           
           <button
             onClick={() => navigate("/revisao")}
-            className="w-full mt-2 flex items-center justify-center gap-2 py-3 rounded-xl bg-plum text-ivory text-[10px] font-heading tracking-[0.15em] uppercase transition-all hover:brightness-110 active:scale-[0.98] shadow-md shadow-plum/10"
+            className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl bg-[#5B1F3D] text-white text-[11px] font-heading tracking-[0.25em] uppercase transition-all hover:brightness-110 active:scale-[0.98] shadow-lg border-2 border-[#C8A66A]/30"
           >
-            <RotateCcw className="w-3.5 h-3.5" />
-            Revisar todos os erros
-            <ArrowRight className="w-3.5 h-3.5" />
+            <RotateCcw className="w-4 h-4" />
+            LIMPAR A NÉVOA (REVISAR)
+            <ArrowRight className="w-4 h-4" />
           </button>
         </div>
       </div>
