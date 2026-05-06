@@ -245,7 +245,7 @@ const ModulesPage = () => {
                             ? "bg-white border-[#C8A66A] shadow-2xl shadow-[#C8A66A]/20 scale-[1.02] ring-1 ring-[#C8A66A]/30" 
                             : unlocked 
                             ? "bg-white/90 border-[#DCCFC2]/40 hover:bg-white hover:border-[#C8A66A]/50 active:scale-[0.98] shadow-md" 
-                            : "bg-[#DCCFC2]/20 border-[#DCCFC2]/20 opacity-90 cursor-not-allowed"
+                            : "bg-[#F3E6E0]/60 border-[#DCCFC2]/40 opacity-100 cursor-not-allowed grayscale-[0.3]"
                         }`}
                       >
                         {isCurrent && (
@@ -259,14 +259,17 @@ const ModulesPage = () => {
                               ? "bg-[#C8A66A]/15 border-[#C8A66A] text-[#5B1F3D] scale-110 rotate-3 shadow-lg" 
                               : unlocked 
                               ? "bg-[#FAF5EF] border-[#DCCFC2] text-[#5B1F3D]" 
-                              : "bg-[#DCCFC2]/30 border-[#DCCFC2]/50 text-[#5B1F3D]/40"
+                              : "bg-[#FAF5EF]/80 border-[#C8A66A]/30 text-[#5B1F3D]/60"
                           }`}>
                             {isCompleted ? (
                               <Check className="w-6 h-6 text-[#5B1F3D]" strokeWidth={3} />
                             ) : unlocked ? (
                               <IconComponent className="w-7 h-7" />
                             ) : (
-                              <LockKeyhole className="w-6 h-6" />
+                              <div className="relative">
+                                <IconComponent className="w-7 h-7 opacity-30" />
+                                <LockKeyhole className="w-4 h-4 absolute -bottom-1 -right-1 text-[#C8A66A] drop-shadow-sm" />
+                              </div>
                             )}
                           </div>
 
@@ -278,7 +281,7 @@ const ModulesPage = () => {
                                   ? "text-[#5B1F3D] font-black" 
                                   : unlocked 
                                   ? "text-[#5B1F3D] font-bold" 
-                                  : "text-[#5B1F3D]/60 font-bold"
+                                  : "text-[#5B1F3D]/85 font-bold"
                               }`}>
                                 {mod.name}
                               </h3>
@@ -291,7 +294,7 @@ const ModulesPage = () => {
                                 )}
                                 {!unlocked && !isCompleted && mod.id !== "arcanos-maiores" && (
                                   <span className="text-[9px] font-heading tracking-widest uppercase px-2.5 py-1 rounded-full bg-[#5B1F3D]/10 text-[#5B1F3D] border border-[#5B1F3D]/20 font-black flex items-center gap-1">
-                                    <KeyRound className="w-2.5 h-2.5" />
+                                    <KeyRound className="w-2.5 h-2.5 text-[#C8A66A]" />
                                     Premium
                                   </span>
                                 )}
@@ -304,7 +307,7 @@ const ModulesPage = () => {
                             </div>
                             
                             <p className={`text-[12px] font-body line-clamp-1 leading-relaxed ${
-                              unlocked ? "text-[#5B1F3D]/80 font-medium" : "text-[#5B1F3D]/40 font-medium"
+                              unlocked ? "text-[#5B1F3D]/80 font-medium" : "text-[#5B1F3D]/60 font-medium italic"
                             }`}>
                               {mod.id === "arcanos-maiores" && progress.completedLessons.length === 0 
                                 ? "Inicie sua jornada no portal sagrado." 
