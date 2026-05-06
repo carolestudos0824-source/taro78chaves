@@ -63,7 +63,7 @@ const ProfilePage = () => {
   const untilFormatted = premiumUntil ? new Date(premiumUntil).toLocaleDateString("pt-BR") : null;
 
   return (
-    <div className="min-h-screen bg-[#FAF5EF] pb-32">
+    <div className="min-h-screen bg-[#FAF5EF] pb-bottom-nav">
       <header className="relative pt-12 pb-24 px-6 overflow-hidden bg-white/40 border-b border-[#C8A66A]/20">
         <div className="absolute inset-0 z-0 pointer-events-none opacity-10">
           <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-[#C8A66A]/40 blur-[100px] rounded-full" />
