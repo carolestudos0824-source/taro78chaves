@@ -157,7 +157,7 @@ const LandingPage = () => {
 
               <div className="flex flex-col items-center lg:items-start gap-2 pt-1 md:pt-2">
                 <Button 
-                  onClick={handleStart} 
+                  onClick={() => handleStart("hero")}
                   className="w-full sm:w-auto min-h-[56px] md:min-h-[64px] px-8 md:px-10 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-sm md:text-base tracking-[0.25em] uppercase border-none shadow-[0_15px_40px_-10px_rgba(91,31,61,0.6)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-4 group/btn"
                 >
                   <Key className="w-5 h-5 group-hover/btn:rotate-12 transition-transform text-gold" />
@@ -305,7 +305,7 @@ const LandingPage = () => {
               Comece pelo Louco grátis. Vá bem na lição e <span className="text-gold-dark font-bold">desbloqueie O Mago</span>. Depois, continue sua jornada completa pelos 78 arcanos.
             </p>
             <Button 
-              onClick={handleStart} 
+              onClick={() => handleStart("journey")} 
               variant="outline"
               className="px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-widest text-[11px] uppercase transition-all shadow-sm"
             >
@@ -378,7 +378,7 @@ const LandingPage = () => {
               Depois de experimentar o método, continue sua jornada pelos 78 arcanos.
             </p>
             <Button 
-              onClick={handleStart} 
+              onClick={() => handleStart("unlock")} 
               variant="outline"
               className="px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-widest text-[11px] uppercase transition-all"
             >
