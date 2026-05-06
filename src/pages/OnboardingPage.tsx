@@ -65,11 +65,11 @@ const STEPS: OnboardingStep[] = [
   {
     symbol: <BookOpen className="w-7 h-7" strokeWidth={1.5} />,
     kicker: "A Jornada Completa",
-    title: "22 arcanos. 2 módulos. Uma travessia profunda.",
+    title: "Uma escola viva no seu bolso.",
     lines: [
-      "Comece pelos Fundamentos do Tarô — a base de tudo.",
-      "Depois, entre na Jornada dos Arcanos Maiores — 22 portais de sabedoria, um a um.",
-      "A plataforma cresce junto com você.",
+      "Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, XP e progresso real.",
+      "Estude os 78 arcanos com uma trilha progressiva, fiel ao Rider-Waite-Smith.",
+      "O Tarô deixa de ser imagem e se torna presença.",
     ],
   },
   {
