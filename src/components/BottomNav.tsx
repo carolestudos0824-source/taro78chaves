@@ -18,9 +18,9 @@ const BottomNav = () => {
 
   return (
     <nav
-      className="fixed bottom-0 inset-x-0 z-40 border-t bg-white/70 backdrop-blur-md"
+      className="fixed bottom-0 inset-x-0 z-40 border-t bg-ivory/80 backdrop-blur-md"
       style={{
-        borderColor: "hsl(36 25% 82% / 0.60)",
+        borderColor: "hsl(var(--brand-gold) / 0.2)",
         paddingBottom: "env(safe-area-inset-bottom, 0px)",
       }}
     >
