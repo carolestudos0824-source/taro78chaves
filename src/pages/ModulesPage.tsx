@@ -180,26 +180,26 @@ const ModulesPage = () => {
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
                               <span className="t-kicker opacity-50">{mod.symbol}</span>
-                              <h3 className={`font-heading text-sm tracking-tight ${isCurrent ? "text-midnight" : "text-midnight/60"}`}>
+                              <h3 className={`font-heading text-sm tracking-tight ${isCurrent ? "text-plum font-bold" : unlocked ? "text-plum/80 font-semibold" : "text-plum/40 font-medium"}`}>
                                 {mod.name}
                               </h3>
                               {mod.id === "arcanos-maiores" && (
-                                <span className="text-[8px] font-heading tracking-widest uppercase px-1.5 py-0.5 rounded-full bg-orange-500/10 text-orange-600 border border-orange-500/10 ml-auto shrink-0">
-                                  Contém Lição Grátis
+                                <span className="text-[8px] font-heading tracking-widest uppercase px-1.5 py-0.5 rounded-full bg-gold/10 text-gold-dark border border-gold/20 ml-auto shrink-0 font-bold">
+                                  Lição Grátis
                                 </span>
                               )}
                               {!unlocked && !isCompleted && mod.id !== "arcanos-maiores" && (
-                                <span className="text-[8px] font-heading tracking-widest uppercase px-1.5 py-0.5 rounded-full bg-secondary/10 text-secondary border border-secondary/10 ml-auto shrink-0">
+                                <span className="text-[8px] font-heading tracking-widest uppercase px-1.5 py-0.5 rounded-full bg-plum/5 text-plum/60 border border-plum/10 ml-auto shrink-0">
                                   Premium
                                 </span>
                               )}
                               {isCompleted && (
-                                <span className="text-[8px] font-heading tracking-widest uppercase px-1.5 py-0.5 rounded-full bg-success/10 text-success border border-success/10 ml-auto shrink-0">
+                                <span className="text-[8px] font-heading tracking-widest uppercase px-1.5 py-0.5 rounded-full bg-success/10 text-success border border-success/10 ml-auto shrink-0 font-bold">
                                   Concluído
                                 </span>
                               )}
                             </div>
-                            <p className="text-[11px] font-body text-muted-foreground line-clamp-1">
+                            <p className={`text-[11px] font-body line-clamp-1 ${unlocked ? "text-plum/60" : "text-plum/30"}`}>
                               {mod.id === "arcanos-maiores" && progress.completedLessons.length === 0 
                                 ? "Comece pelo Louco gratuitamente e inicie sua jornada." 
                                 : mod.subtitle}
