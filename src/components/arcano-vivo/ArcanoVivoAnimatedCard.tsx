@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, Variants } from "framer-motion";
 import { getArcanoVivoConfig } from "@/config/arcano-vivo";
 import { LockKeyhole, Key } from "lucide-react";
 
