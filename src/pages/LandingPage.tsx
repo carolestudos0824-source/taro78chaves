@@ -77,21 +77,12 @@ const LandingPage = () => {
       <header className="absolute top-0 left-0 right-0 z-50 px-6 py-4 md:py-6 bg-parchment/80 backdrop-blur-md border-b border-gold/10">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <a href="/" className="flex items-center gap-2.5 group transition-transform hover:scale-[1.02]" aria-label="Tarô 78 Chaves">
-            <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
-              <img 
-                src={brandIcon} 
-                alt="Logo Tarô 78 Chaves" 
-                className="w-full h-full object-contain filter drop-shadow-sm" 
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-heading text-lg md:text-xl tracking-tight text-plum font-bold leading-none">
-                Tarô 78 Chaves
-              </span>
-              <span className="font-heading text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-gold-dark font-medium mt-1">
-                A jornada viva
-              </span>
-            </div>
+            <img
+              src="/logo-taro78.png"
+              alt="Tarô 78 Chaves"
+              className="h-9 sm:h-10 md:h-12 w-auto object-contain"
+            />
+          </a>
           </a>
           <button
             onClick={() => {
@@ -122,9 +113,9 @@ const LandingPage = () => {
               {/* Symbolic Badge */}
               <div className="inline-flex items-center gap-2.5 px-5 py-1.5 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in">
                 <Sparkles className="w-4 h-4 text-gold-dark" />
-                <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase font-bold text-plum">
-                  A chave abre o primeiro portal · Rider-Waite-Smith
-                </span>
+                  <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase font-bold text-plum">
+                    ✦ A chave abre o primeiro portal · Rider-Waite-Smith ✦
+                  </span>
               </div>
 
               <div className="space-y-1 md:space-y-2">

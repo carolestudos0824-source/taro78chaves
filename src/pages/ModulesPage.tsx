@@ -75,9 +75,12 @@ const ModulesPage = () => {
       <header className="sticky top-0 z-30 bg-background/80 backdrop-blur-xl border-b border-gold/10">
         <div className="container max-w-lg py-4 px-6">
           <div className="flex items-center justify-between mb-4">
-            <div className="flex flex-col">
-              <p className="t-section-title mb-1">A Jornada do Louco</p>
-              <h1 className="font-heading text-xl md:text-2xl text-midnight tracking-tight">Sua Jornada</h1>
+            <div className="flex items-center gap-3">
+              <img
+                src="/logo-taro78.png"
+                alt="Tarô 78 Chaves"
+                className="h-8 sm:h-9 md:h-10 w-auto object-contain"
+              />
             </div>
             <div className="flex items-center gap-3">
               <StreakCounter streak={progress.streak} />
