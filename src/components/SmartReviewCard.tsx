@@ -56,7 +56,7 @@ export const SmartReviewCard = () => {
           
           <button
             onClick={() => navigate("/revisao")}
-            className="w-full mt-2 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-primary text-white text-xs font-heading tracking-widest uppercase transition-all hover:brightness-110 active:scale-[0.98]"
+            className="w-full mt-2 flex items-center justify-center gap-2 py-3 rounded-xl bg-plum text-ivory text-[10px] font-heading tracking-[0.15em] uppercase transition-all hover:brightness-110 active:scale-[0.98] shadow-md shadow-plum/10"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             Revisar todos os erros
