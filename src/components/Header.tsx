@@ -49,7 +49,7 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
     <header 
       className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-xl border-b-2 border-[#C8A66A]/20 shadow-lg transition-shadow duration-300"
     >
-      <div className="container max-w-lg px-6 py-3 md:py-6 relative">
+      <div className="container max-w-lg px-6 py-4 md:py-6 relative">
         <div className={`flex items-center justify-between transition-all duration-500 ease-in-out ${isCompact ? "mb-1" : "mb-4 md:mb-6"}`}>
           <div className="flex items-center gap-3 md:gap-6">
             <div className={`flex items-center justify-center shrink-0 p-1.5 bg-white rounded-2xl shadow-xl border border-[#C8A66A]/30 transition-all duration-500 ease-in-out transform ${
