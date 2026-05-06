@@ -17,59 +17,55 @@ const BetaWelcomeBanner = () => {
 
   return (
     <div
-      className="relative rounded-2xl p-5 mb-6 overflow-hidden"
+      className="relative rounded-[2rem] p-7 md:p-9 mb-10 overflow-hidden"
       style={{
-        background: "linear-gradient(145deg, hsl(var(--brand-plum) / 0.04), hsl(var(--brand-gold) / 0.06), hsl(var(--brand-ivory)))",
-        border: "1.5px solid hsl(var(--brand-gold) / 0.25)",
-        boxShadow: "0 8px 32px hsl(var(--brand-plum) / 0.04), 0 0 60px hsl(var(--brand-gold) / 0.04)",
-        animation: "fade-in 0.6s ease-out",
+        background: "linear-gradient(145deg, hsl(var(--brand-plum) / 0.05), hsl(var(--brand-gold) / 0.08), #FFF)",
+        border: "2px solid hsl(var(--brand-gold) / 0.3)",
+        boxShadow: "0 12px 40px hsl(var(--brand-plum) / 0.06), 0 0 80px hsl(var(--brand-gold) / 0.05)",
+        animation: "fade-in 0.8s ease-out",
       }}
     >
       {/* Close */}
       <button
         onClick={dismiss}
-        className="absolute top-3 right-3 w-6 h-6 rounded-full flex items-center justify-center transition-colors hover:bg-black/5"
-        style={{ color: "hsl(230 15% 40% / 0.30)" }}
+        className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-all hover:bg-black/5 active:scale-90"
+        style={{ color: "hsl(230 15% 40% / 0.40)" }}
       >
-        <X className="w-3.5 h-3.5" />
+        <X className="w-4 h-4" />
       </button>
 
-      {/* Decorative */}
-      <div className="absolute top-2 left-4 text-sm" style={{ color: "hsl(36 45% 58% / 0.15)" }}>✦</div>
-      <div className="absolute bottom-2 right-10 text-xs" style={{ color: "hsl(36 45% 58% / 0.10)" }}>✧</div>
-
-      <div className="flex items-start gap-4">
-        <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{
-          background: "linear-gradient(135deg, hsl(var(--brand-plum) / 0.08), hsl(var(--brand-gold) / 0.12))",
-          border: "1px solid hsl(var(--brand-gold) / 0.22)",
+      <div className="flex flex-col md:flex-row items-start gap-6 md:gap-8">
+        <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-lg" style={{
+          background: "linear-gradient(135deg, hsl(var(--brand-plum) / 0.1), hsl(var(--brand-gold) / 0.15))",
+          border: "2px solid hsl(var(--brand-gold) / 0.25)",
         }}>
-          <Sparkles className="w-5 h-5" style={{ color: "hsl(var(--brand-gold))" }} />
+          <Sparkles className="w-7 h-7" style={{ color: "hsl(var(--brand-gold))" }} />
         </div>
  
         <div className="flex-1 min-w-0">
-          <p className="text-[11px] font-heading tracking-[0.3em] uppercase mb-1.5 font-black" style={{ color: "hsl(var(--brand-plum))" }}>
-            ✦ Boas-vindas à Beta
+          <p className="text-[11px] md:text-[13px] font-heading tracking-[0.4em] uppercase mb-2 font-black" style={{ color: "hsl(var(--brand-gold))" }}>
+            ✦ Boas-vindas à Beta ✦
           </p>
-          <h3 className="font-heading text-base font-black tracking-wide mb-1.5" style={{
+          <h3 className="font-heading text-xl md:text-2xl font-black tracking-tight mb-3" style={{
             color: "hsl(var(--brand-plum))",
           }}>
             O Louco abre a primeira porta.
           </h3>
-          <p className="font-body text-[13px] font-semibold leading-relaxed mb-4" style={{ color: "hsl(var(--brand-plum))" }}>
+          <p className="font-body text-[15px] md:text-[17px] font-bold leading-relaxed mb-6 italic" style={{ color: "hsl(var(--brand-plum) / 0.8)" }}>
             Sua jornada começa pelos <strong className="font-black" style={{ color: "hsl(var(--brand-plum))" }}>Fundamentos do Tarô</strong> — é a porta de entrada para tudo o que vem depois. De lá, os arcanos se revelam um a um.
           </p>
 
           <button
             onClick={() => { dismiss(); navigate("/module/fundamentos"); }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-heading text-[11px] tracking-[0.2em] uppercase transition-all hover:scale-105 active:scale-95 font-black"
+            className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-heading text-[11px] tracking-[0.25em] uppercase transition-all hover:scale-105 active:scale-95 font-black border-2 border-[#C8A66A]/30"
             style={{
               background: "hsl(var(--brand-plum))",
-              color: "hsl(var(--brand-ivory))",
-              boxShadow: "0 4px 16px hsl(var(--brand-plum) / 0.2)",
+              color: "#FFF",
+              boxShadow: "0 8px 24px hsl(var(--brand-plum) / 0.25)",
             }}
           >
             Começar pelos Fundamentos
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-4 h-4" />
           </button>
         </div>
       </div>

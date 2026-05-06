@@ -186,39 +186,36 @@ const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, comple
   if (topActions.length === 0) return null;
 
   return (
-    <div className="mb-5">
-      <p className="t-section-title text-center mb-3 font-bold" style={{ color: "hsl(var(--brand-plum) / 0.6)" }}>
-        Próximos Passos
-      </p>
-      <div className="space-y-2">
+    <div className="mb-10">
+      <div className="flex items-center gap-4 mb-4">
+        <span className="h-px flex-1 bg-[#C8A66A]/20" />
+        <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#C8A66A]">
+          Sua Travessia
+        </h2>
+        <span className="h-px flex-1 bg-[#C8A66A]/20" />
+      </div>
+      <div className="grid gap-3">
         {topActions.map((action) => {
           const Icon = action.icon;
           return (
             <button
               key={action.path}
               onClick={() => navigate(action.path)}
-              className="w-full group transition-all duration-300 hover:scale-[1.01]"
+              className="w-full group transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
             >
-              <div className="rounded-xl p-3.5 flex items-center gap-3" style={{
-                background: "linear-gradient(145deg, hsl(var(--brand-ivory)), hsl(var(--brand-rose) / 0.5))",
-                border: "1px solid hsl(var(--brand-gold) / 0.2)",
-                boxShadow: "0 4px 15px hsl(var(--brand-plum) / 0.05)",
-              }}>
-                <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style={{
-                  background: "hsl(var(--brand-plum) / 0.05)",
-                  border: "1px solid hsl(var(--brand-plum) / 0.15)",
-                }}>
-                  <Icon className="w-4 h-4" style={{ color: "hsl(var(--brand-plum))" }} />
+              <div className="rounded-2xl p-5 flex items-center gap-5 bg-white border-2 border-[#DCCFC2]/40 shadow-lg hover:border-[#C8A66A]/40">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-[#FAF5EF] border border-[#C8A66A]/20 shadow-inner group-hover:rotate-6 transition-transform">
+                  <Icon className="w-6 h-6 text-[#5B1F3D]" />
                 </div>
                 <div className="flex-1 text-left min-w-0">
-                  <h4 className="font-heading text-sm font-bold tracking-tight" style={{ color: "hsl(var(--brand-plum))" }}>
+                  <h4 className="font-heading text-base font-black tracking-tight text-[#5B1F3D]">
                     {action.label}
                   </h4>
-                  <p className="text-[11px] font-body" style={{ color: "hsl(var(--brand-plum) / 0.6)" }}>
+                  <p className="text-[12px] font-body font-bold italic text-[#5B1F3D]/50 leading-tight">
                     {action.subtitle}
                   </p>
                 </div>
-                <ArrowRight className="w-3.5 h-3.5 shrink-0 group-hover:translate-x-1 transition-transform" style={{ color: "hsl(var(--brand-plum) / 0.4)" }} />
+                <ArrowRight className="w-5 h-5 shrink-0 group-hover:translate-x-1.5 transition-transform text-[#C8A66A]" />
               </div>
             </button>
           );

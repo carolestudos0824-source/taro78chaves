@@ -106,10 +106,10 @@ const ModulesPage = () => {
     <div className="min-h-screen bg-[#FAF5EF]">
       <Header streak={progress.streak} xp={progress.xp} level={progress.level} />
 
-      <main className="container max-w-lg px-6 pt-6 pb-24 md:pt-10 md:pb-32 space-y-10 md:space-y-14">
+      <main className="container max-w-lg px-6 pt-10 pb-24 md:pt-16 md:pb-32 space-y-12 md:space-y-20">
         <ProgressCelebration xp={progress.xp} level={progress.level} streak={progress.streak} completedLessons={progress.completedLessons.length} />
         
-        <div className="space-y-6">
+        <div className="space-y-8 md:space-y-12">
           <BetaWelcomeBanner />
           <SmartReviewCard />
           
@@ -130,29 +130,16 @@ const ModulesPage = () => {
             <img src={imgEstrela} alt="" className="w-24 rounded-2xl shadow-xl rotate-12 border-2 border-white/50" />
           </div>
           
-          <div className="space-y-4">
-            <div className="flex items-center gap-4">
-              <span className="h-px flex-1 bg-[#C8A66A]/20" />
-              <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#C8A66A]">
-                Próximos Passos
-              </h2>
-              <span className="h-px flex-1 bg-[#C8A66A]/20" />
-            </div>
-            <button 
-              onClick={() => navigate("/desafios")}
-              className="w-full text-left p-6 rounded-[2rem] border-2 border-[#C8A66A]/30 bg-white shadow-xl flex items-center gap-6 group transition-all hover:scale-[1.02] active:scale-[0.98] ring-4 ring-[#C8A66A]/5"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-[#FAF5EF] border-2 border-[#C8A66A]/40 flex items-center justify-center shrink-0 shadow-inner group-hover:rotate-6 transition-transform">
-                <Moon className="w-7 h-7 text-[#5B1F3D]" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-heading text-lg font-black text-[#5B1F3D] tracking-tight">Ritual Diário</h3>
-                <p className="text-[13px] font-body font-bold italic text-[#5B1F3D]/60 leading-tight">Sua prática de hoje</p>
-                <p className="text-[10px] font-heading font-black tracking-widest uppercase text-[#C8A66A] mt-1.5 opacity-0 group-hover:opacity-100 transition-opacity">Mantenha sua jornada viva</p>
-              </div>
-              <ChevronRight className="w-6 h-6 text-[#C8A66A] group-hover:translate-x-1.5 transition-transform" />
-            </button>
-            <ContinuityCard lastLessonId={null} lastLessonName={null} completedLessons={progress.completedLessons.length} completedQuizzes={progress.completedQuizzes.length} hasUnfinishedReview={false} completedLessonIds={progress.completedLessons} currentModuleId="arcanos-maiores" />
+          <div className="space-y-6">
+            <ContinuityCard 
+              lastLessonId={null} 
+              lastLessonName={null} 
+              completedLessons={progress.completedLessons.length} 
+              completedQuizzes={progress.completedQuizzes.length} 
+              hasUnfinishedReview={false} 
+              completedLessonIds={progress.completedLessons} 
+              currentModuleId="arcanos-maiores" 
+            />
           </div>
 
           {/* ─── Premium Conversion Card ─── */}
@@ -185,22 +172,22 @@ const ModulesPage = () => {
         </div>
 
         {/* ─── Modules Grid ─── */}
-        <div className="space-y-8 md:space-y-12">
+        <div className="space-y-12 md:space-y-20">
           {categoryOrder.map(cat => {
             const mods = grouped[cat];
             if (!mods || mods.length === 0) return null;
 
             return (
-              <section key={cat} className="space-y-4 md:space-y-6">
-                <div className="flex items-center gap-4">
-                  <span className="h-px flex-1 bg-[#C8A66A]/20" />
-                  <h2 className="font-heading text-[11px] md:text-[13px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
+              <section key={cat} className="space-y-6 md:space-y-10">
+                <div className="flex items-center gap-6">
+                  <span className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A]/30" />
+                  <h2 className="font-heading text-[11px] md:text-[14px] tracking-[0.4em] uppercase font-black text-[#5B1F3D]/80">
                     {CATEGORY_LABELS[cat]}
                   </h2>
-                  <span className="h-px flex-1 bg-[#C8A66A]/20" />
+                  <span className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A]/30" />
                 </div>
 
-                <div className="space-y-4">
+                <div className="grid gap-6 md:gap-8">
                   {mods.map((mod) => {
                     const unlocked = bypassLocks || isModuleUnlocked(mod.id, progress.completedModules);
                     const isCompleted = progress.completedModules.includes(mod.id);
@@ -213,74 +200,74 @@ const ModulesPage = () => {
                         key={mod.id}
                         onClick={() => unlocked && navigate(mod.route)}
                         disabled={!unlocked}
-                        className={`w-full text-left p-6 rounded-[2rem] border-2 transition-all duration-500 relative group overflow-hidden ${
+                        className={`w-full text-left p-7 md:p-9 rounded-[2.5rem] border-2 transition-all duration-500 relative group overflow-hidden ${
                           isCurrent 
-                            ? "bg-white border-[#C8A66A] shadow-2xl shadow-[#C8A66A]/20 scale-[1.02] ring-1 ring-[#C8A66A]/30" 
+                            ? "bg-white border-[#C8A66A] shadow-2xl shadow-[#C8A66A]/30 scale-[1.02] ring-1 ring-[#C8A66A]/40" 
                             : unlocked 
-                            ? "bg-white border-[#DCCFC2] hover:bg-white hover:border-[#C8A66A]/50 active:scale-[0.98] shadow-md" 
-                            : "bg-[#F3E6E0] border-[#DCCFC2] opacity-100 cursor-not-allowed grayscale-[0.2]"
+                            ? "bg-white border-[#DCCFC2]/60 hover:border-[#C8A66A]/50 active:scale-[0.98] shadow-lg hover:shadow-xl" 
+                            : "bg-[#F3E6E0]/50 border-[#DCCFC2]/40 opacity-90 cursor-not-allowed grayscale-[0.3]"
                         }`}
                       >
                         {isCurrent && (
                           <div className="absolute top-0 left-0 w-1.5 h-full bg-[#C8A66A]" />
                         )}
                         
-                        <div className="flex items-center gap-6 relative z-10">
+                        <div className="flex items-center gap-7 md:gap-10 relative z-10">
                           {/* Icon Circle */}
-                          <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border-2 transition-all duration-500 shadow-sm ${
+                          <div className={`w-16 h-16 md:w-20 md:h-20 rounded-3xl flex items-center justify-center shrink-0 border-2 transition-all duration-500 shadow-md ${
                             isCurrent 
-                              ? "bg-[#C8A66A]/15 border-[#C8A66A] text-[#5B1F3D] scale-110 rotate-3 shadow-lg" 
+                              ? "bg-gradient-to-br from-[#C8A66A]/20 to-[#C8A66A]/5 border-[#C8A66A] text-[#5B1F3D] scale-110 rotate-3 shadow-xl" 
                               : unlocked 
-                              ? "bg-[#FAF5EF] border-[#DCCFC2] text-[#5B1F3D]" 
-                              : "bg-[#F3E6E0] border-[#DCCFC2] text-[#5B1F3D]"
+                              ? "bg-[#FAF5EF] border-[#DCCFC2]/40 text-[#5B1F3D]" 
+                              : "bg-[#F3E6E0] border-[#DCCFC2]/20 text-[#5B1F3D]/30"
                           }`}>
                             {isCompleted ? (
-                              <Check className="w-6 h-6 text-[#5B1F3D]" strokeWidth={3} />
+                              <Check className="w-8 h-8 md:w-10 md:h-10 text-[#5B1F3D]" strokeWidth={3.5} />
                             ) : unlocked ? (
-                              <IconComponent className="w-7 h-7" />
+                              <IconComponent className="w-8 h-8 md:w-10 md:h-10" />
                             ) : (
                               <div className="relative">
-                                <IconComponent className="w-7 h-7 opacity-30" />
-                                <LockKeyhole className="w-5 h-5 absolute -bottom-1 -right-1 text-[#5B1F3D] drop-shadow-sm" />
+                                <IconComponent className="w-8 h-8 md:w-10 md:h-10 opacity-20" />
+                                <LockKeyhole className="w-6 h-6 absolute -bottom-1 -right-1 text-[#5B1F3D] drop-shadow-md" />
                               </div>
                             )}
                           </div>
 
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                              <span className="text-[11px] font-black tracking-widest text-[#C8A66A]">{mod.symbol}</span>
-                              <h3 className={`font-heading text-lg tracking-tight leading-tight ${
+                          <div className="flex-1 min-w-0 py-2">
+                            <div className="flex items-center gap-3 mb-2 flex-wrap">
+                              <span className="text-[12px] md:text-[14px] font-black tracking-[0.3em] text-[#C8A66A] opacity-80">{mod.symbol}</span>
+                              <h3 className={`font-heading text-xl md:text-2xl tracking-tight leading-tight transition-all ${
                                 isCurrent 
                                   ? "text-[#5B1F3D] font-black" 
                                   : unlocked 
                                   ? "text-[#5B1F3D] font-bold" 
-                                  : "text-[#5B1F3D]/95 font-bold"
+                                  : "text-[#5B1F3D]/60 font-bold"
                               }`}>
                                 {mod.name}
                               </h3>
                               
-                              <div className="ml-auto flex items-center gap-1.5">
+                              <div className="ml-auto flex items-center gap-2">
                                 {mod.id === "arcanos-maiores" && (
-                                  <span className="text-[10px] font-heading tracking-widest uppercase px-3 py-1.5 rounded-full bg-[#FAF5EF] text-[#C8A66A] border-2 border-[#C8A66A] font-black shadow-sm">
+                                  <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase px-4 py-2 rounded-xl bg-[#FAF5EF] text-[#C8A66A] border border-[#C8A66A]/40 font-black shadow-sm">
                                     Grátis
                                   </span>
                                 )}
                                 {!unlocked && !isCompleted && mod.id !== "arcanos-maiores" && (
-                                  <span className="text-[10px] font-heading tracking-widest uppercase px-3 py-1.5 rounded-full bg-[#5B1F3D] text-white border-2 border-[#C8A66A] font-black flex items-center gap-1.5 shadow-sm">
-                                    <KeyRound className="w-3 h-3 text-[#C8A66A]" />
+                                  <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase px-4 py-2 rounded-xl bg-[#5B1F3D] text-white border border-[#C8A66A] font-black flex items-center gap-2 shadow-lg">
+                                    <KeyRound className="w-3.5 h-3.5 text-[#C8A66A]" />
                                     Premium
                                   </span>
                                 )}
                                 {isCompleted && (
-                                  <span className="text-[10px] font-heading tracking-widest uppercase px-3 py-1.5 rounded-full bg-[#DCCFC2]/40 text-[#5B1F3D] border-2 border-[#DCCFC2] font-black shadow-sm">
+                                  <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase px-4 py-2 rounded-xl bg-[#DCCFC2]/30 text-[#5B1F3D]/60 border border-[#DCCFC2]/50 font-black shadow-sm">
                                     Concluído
                                   </span>
                                 )}
                               </div>
                             </div>
                             
-                             <p className={`text-[13px] font-body line-clamp-1 leading-relaxed ${
-                              unlocked ? "text-[#5B1F3D]/80 font-semibold" : "text-[#5B1F3D]/80 font-bold italic"
+                             <p className={`text-[14px] md:text-[16px] font-body line-clamp-1 leading-relaxed ${
+                              unlocked ? "text-[#5B1F3D]/70 font-semibold" : "text-[#5B1F3D]/50 font-bold italic"
                             }`}>
                               {mod.id === "arcanos-maiores" && progress.completedLessons.length === 0 
                                 ? "Abra o primeiro portal do Louco." 
