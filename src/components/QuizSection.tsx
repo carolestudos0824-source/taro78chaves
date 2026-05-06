@@ -56,7 +56,11 @@ export function QuizSection({ questions, onComplete, onAnswer }: QuizSectionProp
   if (reviewMode && mistakes.length > 0) {
     const item = mistakes[reviewIndex];
     return (
-      <div className="space-y-6" style={{ animation: "fade-up 0.5s ease-out" }}>
+      <motion.div 
+        className="space-y-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
         <div className="flex items-center justify-between">
           <span className="text-xs font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(36 40% 42%)" }}>
             Revisão — {reviewIndex + 1} de {mistakes.length}
@@ -123,7 +127,7 @@ export function QuizSection({ questions, onComplete, onAnswer }: QuizSectionProp
             </button>
           )}
         </div>
-      </div>
+      </motion.div>
     );
   }
 
@@ -132,19 +136,26 @@ export function QuizSection({ questions, onComplete, onAnswer }: QuizSectionProp
     const percentage = Math.round((score / questions.length) * 100);
     const isPerfect = percentage === 100;
     return (
-      <div className="text-center py-8 space-y-5" style={{ animation: "fade-up 0.6s ease-out" }}>
-        <div
+      <motion.div 
+        className="text-center py-8 space-y-5"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+      >
+        <motion.div
           className="w-20 h-20 mx-auto rounded-full flex items-center justify-center"
           style={{
             background: isPerfect
               ? "linear-gradient(135deg, hsl(36 45% 58% / 0.2), hsl(42 70% 80% / 0.15))"
               : "hsl(38 25% 93% / 0.8)",
             border: `2px solid ${isPerfect ? "hsl(36 45% 58% / 0.4)" : "hsl(230 10% 75% / 0.3)"}`,
-            animation: isPerfect ? "glow-breathe 3s ease-in-out infinite" : "none",
           }}
+          animate={isPerfect ? {
+            boxShadow: ["0 0 0px hsl(36 45% 58% / 0)", "0 0 20px hsl(36 45% 58% / 0.4)", "0 0 0px hsl(36 45% 58% / 0)"]
+          } : {}}
+          transition={{ duration: 2, repeat: Infinity }}
         >
           <Trophy className="w-10 h-10" style={{ color: isPerfect ? "hsl(36 45% 58%)" : "hsl(230 10% 50%)" }} />
-        </div>
+        </motion.div>
 
         <div>
           <h3 className="font-heading text-2xl mb-1" style={{ color: "hsl(36 40% 42%)" }}>
@@ -160,9 +171,14 @@ export function QuizSection({ questions, onComplete, onAnswer }: QuizSectionProp
         </p>
 
         {isPerfect && (
-          <p className="text-sm font-heading tracking-wider" style={{ color: "hsl(36 45% 58%)", animation: "glow-breathe 3s ease-in-out infinite" }}>
+          <motion.p 
+            className="text-sm font-heading tracking-wider" 
+            style={{ color: "hsl(36 45% 58%)" }}
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
             ⭐ Badge de Mestre desbloqueado!
-          </p>
+          </motion.p>
         )}
 
         <div className="flex flex-col items-center gap-3 pt-2">
@@ -181,7 +197,7 @@ export function QuizSection({ questions, onComplete, onAnswer }: QuizSectionProp
             </button>
           )}
         </div>
-      </div>
+      </motion.div>
     );
   }
 
@@ -209,7 +225,7 @@ export function QuizSection({ questions, onComplete, onAnswer }: QuizSectionProp
         ))}
       </div>
 
-      <div style={{ animation: "fade-up 0.4s ease-out" }}>
+      <div>
         <div className="flex items-center gap-2 mb-3">
           <span className="text-xs tracking-widest font-body uppercase opacity-60" style={{ color: "#3d1f2e" }}>
             {isTrueFalse ? "Verdadeiro ou Falso" : "Múltipla Escolha"}
@@ -247,13 +263,14 @@ export function QuizSection({ questions, onComplete, onAnswer }: QuizSectionProp
             }
 
             return (
-              <button
+              <motion.button
                 key={i}
                 onClick={() => handleSelect(i)}
                 disabled={isAnswered}
                 className={`w-full text-left rounded-xl px-5 py-4 text-base font-body cursor-pointer transition-all duration-200 border flex items-center gap-3 ${optionClass} ${
                   !isAnswered ? "active:scale-[0.99]" : "cursor-default"
                 } ${isTrueFalse ? "justify-center text-center" : ""}`}
+                animate={isWrongSelected ? { x: [-5, 5, -5, 5, 0] } : isCorrectAnswer ? { scale: [1, 1.02, 1] } : {}}
               >
                 <span
                   className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold shrink-0 border"
@@ -276,43 +293,55 @@ export function QuizSection({ questions, onComplete, onAnswer }: QuizSectionProp
                 >
                   {String(option ?? "")}
                 </span>
-              </button>
+              </motion.button>
             );
           })}
         </div>
 
-        {isAnswered && (
-          <div
-            className="mt-5 p-4 rounded-xl"
-            style={{
-              background: "hsl(36 45% 58% / 0.08)",
-              border: "1px solid hsl(36 45% 58% / 0.18)",
-              animation: "fade-up 0.3s ease-out",
-            }}
-          >
-            <p className="text-sm font-accent italic leading-relaxed" style={{ color: "hsl(230 20% 30% / 0.85)" }}>
-              {current.explanation}
-            </p>
-          </div>
-        )}
-
-        {isAnswered && (
-          <div className="mt-5 flex justify-end" style={{ animation: "fade-up 0.3s ease-out" }}>
-            <button
-              onClick={handleNext}
-              className="px-7 py-2.5 rounded-full font-heading text-sm tracking-wider flex items-center gap-2 transition-all duration-300 hover:scale-105"
+        <AnimatePresence>
+          {isAnswered && (
+            <motion.div
+              className="mt-5 p-4 rounded-xl"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
               style={{
-                background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))",
-                color: "hsl(36 33% 97%)",
-                boxShadow: "0 4px 16px hsl(36 45% 58% / 0.2)",
+                background: "hsl(36 45% 58% / 0.08)",
+                border: "1px solid hsl(36 45% 58% / 0.18)",
+                overflow: "hidden"
               }}
             >
-              {currentIndex < questions.length - 1 ? "Próxima" : "Ver Resultado"}
-              <ArrowRight className="w-4 h-4" />
-            </button>
-    </motion.div>
-        )}
+              <p className="text-sm font-accent italic leading-relaxed" style={{ color: "hsl(230 20% 30% / 0.85)" }}>
+                {current.explanation}
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {isAnswered && (
+            <motion.div 
+              className="mt-5 flex justify-end"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+            >
+              <button
+                onClick={handleNext}
+                className="px-7 py-2.5 rounded-full font-heading text-sm tracking-wider flex items-center gap-2 transition-all duration-300 hover:scale-105"
+                style={{
+                  background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))",
+                  color: "hsl(36 33% 97%)",
+                  boxShadow: "0 4px 16px hsl(36 45% 58% / 0.2)",
+                }}
+              >
+                {currentIndex < questions.length - 1 ? "Próxima" : "Ver Resultado"}
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </div>
+    </motion.div>
   );
 }
