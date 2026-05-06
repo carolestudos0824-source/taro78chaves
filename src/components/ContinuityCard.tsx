@@ -176,10 +176,10 @@ const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, comple
 
   actions.push({
     label: "Ritual diário",
-    subtitle: "Sua prática de hoje",
+    subtitle: "Sua prática mística de hoje",
     path: "/desafios",
     icon: Sparkles,
-    priority: 3,
+    priority: 4,
   });
 
   const topActions = actions.sort((a, b) => a.priority - b.priority).slice(0, 2);
