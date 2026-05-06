@@ -171,10 +171,10 @@ const SlideCover = () => (
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
     }}>
-      A Jornada do Louco
+      Tarô 78 Chaves
     </h1>
     <p className="font-accent text-lg md:text-xl italic leading-relaxed max-w-md mx-auto" style={{ color: "hsl(230 20% 15% / 0.50)" }}>
-      A plataforma que transforma o estudo do tarô em uma jornada de autoconhecimento — com profundidade, beleza e estrutura.
+      Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, XP e progresso real.
     </p>
     <div className="flex items-center justify-center gap-8 pt-4">
       {[
@@ -223,9 +223,9 @@ const SlideProblem = () => (
 const SlideSolution = () => (
   <div>
     <SlideTitle
-      kicker="A Solução"
-      title="Uma plataforma completa de formação em tarô"
-      subtitle="A Jornada do Louco reúne o que estava disperso: tradição, método, beleza e prática — em um só lugar."
+      kicker="O Diferencial"
+      title="Não é um app de tiragem automática"
+      subtitle="O Tarô 78 Chaves é uma escola viva no seu bolso, focada no domínio real dos 78 arcanos."
     />
     <div className="grid md:grid-cols-3 gap-4 max-w-2xl mx-auto">
       {[

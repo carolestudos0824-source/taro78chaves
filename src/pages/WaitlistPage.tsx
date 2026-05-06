@@ -155,7 +155,7 @@ const DIFERENCIAIS = [
   {
     icon: Sparkles,
     title: "Arcanos vivos",
-    desc: "Estudo imersivo onde cada arcano se torna presença, não apenas imagem estática.",
+    desc: "No app Tarô 78 Chaves, o tarô deixa de ser imagem e se torna presença.",
   },
   {
     icon: Layers,
@@ -220,14 +220,14 @@ const WaitlistPage = () => {
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}>
-            Aprenda tarô como uma jornada viva de símbolo, presença e leitura real.
+            Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, XP e progresso real.
           </h1>
 
           {/* Subheadline */}
           <p className="font-body text-sm md:text-base leading-relaxed max-w-lg mx-auto mb-10" style={{
             color: "hsl(230 15% 30% / 0.55)",
           }}>
-            Uma plataforma imersiva de ensino de tarô que une método, profundidade simbólica, trilha gamificada e experiência viva com os arcanos.
+            Não é um app de tiragem automática. É uma escola viva de Tarô no seu bolso, fiel ao Rider-Waite-Smith e pensada para criar prática, continuidade e domínio simbólico.
           </p>
 
           {/* CTA Form */}
