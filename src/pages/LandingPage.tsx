@@ -608,7 +608,7 @@ const LandingPage = () => {
             <AccordionItem value="item-2" className="border-gold/30">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">O que está incluso no plano?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
-                O acesso completo libera a jornada pelos 78 arcanos, com lições progressivas, quizzes, XP, progresso salvo e estudo carta por carta.
+                O acesso completo libera a jornada pelos 78 arcanos, com lições progressivas, quizzes, Pontos de Jornada, progresso salvo e estudo carta por carta.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3" className="border-gold/30">
