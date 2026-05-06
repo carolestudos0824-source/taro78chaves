@@ -103,7 +103,7 @@ const ModulesPage = () => {
   };
 
   return (
-    <div className="min-h-screen pb-bottom-nav bg-[#FAF5EF]">
+    <div className="min-h-screen bg-[#FAF5EF]">
       <Header streak={progress.streak} xp={progress.xp} level={progress.level} />
 
       <main className="container max-w-lg px-6 pt-6 pb-24 md:pt-10 md:pb-32 space-y-10 md:space-y-14">
