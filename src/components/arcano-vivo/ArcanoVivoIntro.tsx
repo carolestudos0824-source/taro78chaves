@@ -324,99 +324,116 @@ export function ArcanoVivoIntro({
       </p>
 
       {/* Voice section */}
-      {showVoice && (
-        <div className="mt-8 w-full max-w-md" style={{ animation: "arcano-voice-emerge 0.8s ease-out" }}>
-          {/* Divider */}
-          <div className="flex items-center gap-3 mb-5">
-            <div className="flex-1 h-px" style={{ background: `linear-gradient(90deg, transparent, hsl(${config.glowColor} / 0.3), transparent)` }} />
-            <span className="text-[9px] font-heading tracking-[0.3em] uppercase" style={{ color: `hsl(${config.glowColor} / 0.7)` }}>
-              A voz do arcano
-            </span>
-            <div className="flex-1 h-px" style={{ background: `linear-gradient(90deg, transparent, hsl(${config.glowColor} / 0.3), transparent)` }} />
-          </div>
-
-          {/* Quote card */}
-          <div
-            className="relative rounded-2xl p-5 sm:p-6"
-            style={{
-              background: "linear-gradient(135deg, hsl(36 33% 97% / 0.9), hsl(38 30% 94% / 0.95))",
-              border: `1px solid hsl(${config.glowColor} / 0.25)`,
-              boxShadow: `0 8px 32px hsl(${config.glowColor} / 0.08), inset 0 1px 0 hsl(${config.glowColor} / 0.12)`,
-            }}
+      <AnimatePresence>
+        {showVoice && (
+          <motion.div 
+            className="mt-8 w-full max-w-md"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.8 }}
           >
-            <span className="absolute top-2 left-3 text-xl font-accent select-none" style={{ color: `hsl(${config.glowColor} / 0.2)` }}>"</span>
-            <span className="absolute bottom-2 right-3 text-xl font-accent select-none" style={{ color: `hsl(${config.glowColor} / 0.2)` }}>"</span>
-
-            <p
-              className="font-accent text-base sm:text-lg leading-relaxed italic whitespace-pre-line min-h-[60px]"
-              style={{ color: "hsl(230 28% 14%)" }}
-            >
-              {activeText.substring(0, charIndex)}
-              {!typingDone && (
-                <span
-                  className="inline-block w-0.5 h-5 ml-0.5 align-middle"
-                  style={{ background: `hsl(${config.glowColor})`, animation: "pulse-gold 1s ease-in-out infinite" }}
-                />
-              )}
-            </p>
-
-            {/* Controls */}
-            <div className="mt-4 pt-3 flex items-center justify-between" style={{ borderTop: `1px solid hsl(${config.glowColor} / 0.12)` }}>
-              <span className="text-[10px] font-heading tracking-[0.2em] uppercase" style={{ color: `hsl(${config.glowColor} / 0.7)` }}>
-                — {name}
+            {/* Divider */}
+            <div className="flex items-center gap-3 mb-5">
+              <div className="flex-1 h-px" style={{ background: `linear-gradient(90deg, transparent, hsl(${config.glowColor} / 0.3), transparent)` }} />
+              <span className="text-[9px] font-heading tracking-[0.3em] uppercase" style={{ color: `hsl(${config.glowColor} / 0.7)` }}>
+                A voz do arcano
               </span>
-              <div className="flex items-center gap-2">
+              <div className="flex-1 h-px" style={{ background: `linear-gradient(90deg, transparent, hsl(${config.glowColor} / 0.3), transparent)` }} />
+            </div>
+
+            {/* Quote card */}
+            <div
+              className="relative rounded-2xl p-5 sm:p-6"
+              style={{
+                background: "linear-gradient(135deg, hsl(36 33% 97% / 0.9), hsl(38 30% 94% / 0.95))",
+                border: `1px solid hsl(${config.glowColor} / 0.25)`,
+                boxShadow: `0 8px 32px hsl(${config.glowColor} / 0.08), inset 0 1px 0 hsl(${config.glowColor} / 0.12)`,
+              }}
+            >
+              <span className="absolute top-2 left-3 text-xl font-accent select-none" style={{ color: `hsl(${config.glowColor} / 0.2)` }}>"</span>
+              <span className="absolute bottom-2 right-3 text-xl font-accent select-none" style={{ color: `hsl(${config.glowColor} / 0.2)` }}>"</span>
+
+              <p
+                className="font-accent text-base sm:text-lg leading-relaxed italic whitespace-pre-line min-h-[60px]"
+                style={{ color: "hsl(230 28% 14%)" }}
+              >
+                {activeText.substring(0, charIndex)}
                 {!typingDone && (
-                  <button onClick={skipTyping} className="text-[10px] font-heading tracking-wider px-2 py-1 rounded-full" style={{ color: "hsl(230 10% 50%)" }}>
-                    Revelar
-                  </button>
+                  <motion.span
+                    className="inline-block w-0.5 h-5 ml-0.5 align-middle"
+                    style={{ background: `hsl(${config.glowColor})` }}
+                    animate={{ opacity: [0, 1, 0] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                  />
                 )}
-                {typingDone && voiceMode === "intro" && (
-                  <button
-                    onClick={() => setVoiceMode("full")}
-                    className="text-[10px] font-heading tracking-wider px-2 py-1 rounded-full"
-                    style={{ color: `hsl(${config.glowColor})` }}
-                  >
-                    Ler mais
-                  </button>
-                )}
-                <button
-                  onClick={handleListen}
-                  className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300"
-                  style={{
-                    background: `hsl(${config.glowColor} / ${isListening ? 0.15 : 0.08})`,
-                    border: `1px solid hsl(${config.glowColor} / ${isListening ? 0.4 : 0.2})`,
-                  }}
-                  title={isListening ? "Parar" : "Ouvir o Arcano"}
-                >
-                  {isListening ? (
-                    <VolumeX className="w-3.5 h-3.5" style={{ color: `hsl(${config.glowColor})` }} />
-                  ) : (
-                    <Volume2 className="w-3.5 h-3.5" style={{ color: `hsl(${config.glowColor})` }} />
+              </p>
+
+              {/* Controls */}
+              <div className="mt-4 pt-3 flex items-center justify-between" style={{ borderTop: `1px solid hsl(${config.glowColor} / 0.12)` }}>
+                <span className="text-[10px] font-heading tracking-[0.2em] uppercase" style={{ color: `hsl(${config.glowColor} / 0.7)` }}>
+                  — {name}
+                </span>
+                <div className="flex items-center gap-2">
+                  {!typingDone && (
+                    <button onClick={skipTyping} className="text-[10px] font-heading tracking-wider px-2 py-1 rounded-full" style={{ color: "hsl(230 10% 50%)" }}>
+                      Revelar
+                    </button>
                   )}
-                </button>
+                  {typingDone && voiceMode === "intro" && (
+                    <button
+                      onClick={() => setVoiceMode("full")}
+                      className="text-[10px] font-heading tracking-wider px-2 py-1 rounded-full"
+                      style={{ color: `hsl(${config.glowColor})` }}
+                    >
+                      Ler mais
+                    </button>
+                  )}
+                  <button
+                    onClick={handleListen}
+                    className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300"
+                    style={{
+                      background: `hsl(${config.glowColor} / ${isListening ? 0.15 : 0.08})`,
+                      border: `1px solid hsl(${config.glowColor} / ${isListening ? 0.4 : 0.2})`,
+                    }}
+                    title={isListening ? "Parar" : "Ouvir o Arcano"}
+                  >
+                    {isListening ? (
+                      <VolumeX className="w-3.5 h-3.5" style={{ color: `hsl(${config.glowColor})` }} />
+                    ) : (
+                      <Volume2 className="w-3.5 h-3.5" style={{ color: `hsl(${config.glowColor})` }} />
+                    )}
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* CTA */}
-      {phase === "ready" && typingDone && (
-        <div className="mt-8 flex flex-col items-center gap-3" style={{ animation: "arcano-voice-emerge 0.5s ease-out" }}>
-          <button
-            onClick={onEnterLesson}
-            className="px-10 py-3.5 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105 active:scale-95"
-            style={{
-              background: `linear-gradient(135deg, hsl(36 40% 42%), hsl(${config.glowColor}))`,
-              color: "hsl(36 33% 97%)",
-              boxShadow: `0 4px 24px hsl(${config.glowColor} / 0.25), 0 0 40px hsl(${config.ambientColor} / 0.08)`,
-            }}
+      <AnimatePresence>
+        {phase === "ready" && typingDone && (
+          <motion.div 
+            className="mt-8 flex flex-col items-center gap-3"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
           >
-            ✦ Começar a Lição
-          </button>
-        </div>
-      )}
+            <button
+              onClick={onEnterLesson}
+              className="px-10 py-3.5 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105 active:scale-95"
+              style={{
+                background: `linear-gradient(135deg, hsl(36 40% 42%), hsl(${config.glowColor}))`,
+                color: "hsl(36 33% 97%)",
+                boxShadow: `0 4px 24px hsl(${config.glowColor} / 0.25), 0 0 40px hsl(${config.ambientColor} / 0.08)`,
+              }}
+            >
+              ✦ Começar a Lição
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
