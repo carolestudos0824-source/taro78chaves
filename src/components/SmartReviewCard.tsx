@@ -46,7 +46,7 @@ export const SmartReviewCard = () => {
               <button
                 key={arcano!.id}
                 onClick={() => navigate(`/lesson/${arcano!.id}`)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-primary/10 hover:border-primary/30 transition-all text-xs font-medium text-primary-dark"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-gold/20 hover:border-gold/50 transition-all text-xs font-bold text-plum"
               >
                 <span className="text-[10px] opacity-60">{arcano!.numeral}</span>
                 {arcano!.name}
