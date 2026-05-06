@@ -187,16 +187,24 @@ export function QuizSection({ questions, onComplete, onAnswer }: QuizSectionProp
 
   // Active quiz
   return (
-    <div className="bg-white/75 backdrop-blur-md rounded-2xl p-8 space-y-6 shadow-sm border border-gold/20">
+    <motion.div 
+      className="bg-white/75 backdrop-blur-md rounded-2xl p-8 space-y-6 shadow-sm border border-gold/20"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
       {/* Progress dots */}
       <div className="flex items-center gap-1.5">
         {questions.map((_, i) => (
-          <div
+          <motion.div
             key={i}
-            className="h-1.5 flex-1 rounded-full transition-all duration-500"
-            style={{
-              background: i < currentIndex ? "hsl(36 45% 58%)" : i === currentIndex ? "hsl(36 45% 58% / 0.5)" : "hsl(36 25% 82% / 0.5)",
+            className="h-1.5 flex-1 rounded-full"
+            initial={false}
+            animate={{
+              backgroundColor: i < currentIndex ? "hsl(36, 45%, 58%)" : i === currentIndex ? "rgba(200, 166, 106, 0.5)" : "rgba(220, 207, 194, 0.5)",
+              scaleY: i === currentIndex ? 1.5 : 1
             }}
+            transition={{ duration: 0.3 }}
           />
         ))}
       </div>
