@@ -63,43 +63,18 @@ export function JourneyMap({ progress }: JourneyMapProps) {
             >
               {/* Card */}
               <div className={`flex-1 ${side === "left" ? "pr-10 md:pr-14" : "pl-10 md:pl-14"}`}>
-                <button
-                  onClick={() => (isUnlocked || isPremium) && navigate(`/lesson/${arcano.id}`)}
-                  disabled={!isUnlocked && !isPremium}
-                  className={`w-full group relative transition-all duration-500 ${
-                    side === "left" ? "text-right" : "text-left"
-                  }`}
-                >
-                  <div
-                    className={`relative overflow-hidden rounded-xl transition-all duration-500 ${
-                      isCurrent
-                        ? "hover:scale-[1.02] cursor-pointer"
-                        : isCompleted
-                        ? "cursor-pointer"
-                        : isPremium
-                        ? "hover:scale-[1.01] cursor-pointer"
-                        : "cursor-not-allowed"
-                    }`}
-                    style={isCurrent ? {
-                      background: "linear-gradient(145deg, hsl(38 28% 93% / 0.92), hsl(36 33% 95% / 0.88))",
-                      backdropFilter: "blur(18px)",
-                      border: "1.5px solid hsl(340 42% 28% / 0.40)",
-                      boxShadow: "0 8px 35px hsl(340 42% 28% / 0.12), 0 0 50px hsl(42 70% 78% / 0.08), inset 0 1px 0 hsl(36 45% 55% / 0.20)",
-                      animation: "glow-breathe 5s ease-in-out infinite"
-                    } : isCompleted ? {
-                      background: "hsl(38 28% 94% / 0.78)",
-                      backdropFilter: "blur(12px)",
-                      border: "1px solid hsl(36 42% 52% / 0.30)",
-                      boxShadow: "0 3px 14px hsl(36 45% 55% / 0.08)"
-                    } : {
-                      background: "hsl(36 18% 90% / 0.42)",
-                      backdropFilter: "blur(4px)",
-                      border: "1px solid hsl(36 22% 80% / 0.45)"
-                    }}
-                  >
-                    {/* Inner content hidden in favor of TarotAnimatedCard but logic remains for accessibility or further use if needed */}
-                  </div>
-                </button>
+                <div className={`w-full flex ${side === "left" ? "justify-end" : "justify-start"}`}>
+                  <TarotAnimatedCard
+                    cardImage={getArcanoFull(arcano.id)?.cardImage || ""}
+                    cardName={arcano.name}
+                    arcanoId={arcano.id}
+                    arcanoSlug={arcano.slug}
+                    state={isCompleted ? 'completed' : isCurrent ? 'available' : 'locked'}
+                    isPremium={isPremium}
+                    onClick={() => (isUnlocked || isPremium) && navigate(`/lesson/${arcano.id}`)}
+                    className="w-[140px]"
+                  />
+                </div>
               </div>
 
               {/* Center Node */}
