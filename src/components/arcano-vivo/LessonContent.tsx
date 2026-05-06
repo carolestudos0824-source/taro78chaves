@@ -358,7 +358,7 @@ export function LessonContent({
             <button onClick={onGoExercise} className="text-[10px] font-heading tracking-wider" style={{ color: "hsl(230 10% 45%)" }}>
               ✍️ Exercício
             </button>
-          </div>
+    </motion.div>
         </div>
       )}
     </div>
