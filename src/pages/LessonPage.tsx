@@ -191,7 +191,7 @@ const LessonPage = () => {
             xpEarned={xpEarned}
             quizScore={lastQuizScore}
             quizTotal={lastQuizTotal}
-            nextArcano={nextArcano}
+            nextArcano={nextArcano ? { ...nextArcano, cardImage: getArcanoById(nextArcano.id)?.cardImage || "" } : undefined}
             isLastArcano={arcanoId === 21}
             onNextArcano={() => {
               if (nextArcano) {
@@ -215,7 +215,7 @@ const LessonPage = () => {
         <ArcanoUnlockMoment
           arcanoId={nextArcano.id}
           cardName={nextArcano.name}
-          cardImage={nextArcano.cardImage}
+          cardImage={getArcanoById(nextArcano.id)?.cardImage || ""}
           arcanoSlug={nextArcano.id === 1 ? "o-mago" : "generic"}
           onContinue={() => {
             setShowUnlockMoment(false);
