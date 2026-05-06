@@ -683,10 +683,10 @@ const LandingPage = () => {
         </div>
 
         <nav className="flex flex-wrap justify-center gap-8 md:gap-12 text-[12px] font-heading tracking-[0.2em] uppercase relative z-10">
-          <a href="/privacidade" onClick={() => trackEvent("click_footer_legal", { type: "privacidade" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Privacidade</a>
-          <a href="/termos" onClick={() => trackEvent("click_footer_legal", { type: "termos" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Termos</a>
-          <a href="/suporte" onClick={() => trackEvent("click_footer_legal", { type: "suporte" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Suporte</a>
-          <a href="/excluir-conta" onClick={() => trackEvent("click_footer_legal", { type: "excluir-conta" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Excluir conta</a>
+          <a href="/privacidade" onClick={() => trackEvent("landing_legal_link_click", { link_name: "privacidade", source: "landing" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Privacidade</a>
+          <a href="/termos" onClick={() => trackEvent("landing_legal_link_click", { link_name: "termos", source: "landing" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Termos</a>
+          <a href="/suporte" onClick={() => trackEvent("landing_legal_link_click", { link_name: "suporte", source: "landing" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Suporte</a>
+          <a href="/excluir-conta" onClick={() => trackEvent("landing_legal_link_click", { link_name: "excluir_conta", source: "landing" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Excluir conta</a>
         </nav>
 
         <div className="pt-8 border-t border-gold/10 max-w-xs mx-auto relative z-10">
