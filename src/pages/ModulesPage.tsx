@@ -185,22 +185,22 @@ const ModulesPage = () => {
         </div>
 
         {/* ─── Modules Grid ─── */}
-        <div className="space-y-8 md:space-y-12">
+        <div className="space-y-12 md:space-y-20">
           {categoryOrder.map(cat => {
             const mods = grouped[cat];
             if (!mods || mods.length === 0) return null;
 
             return (
-              <section key={cat} className="space-y-4 md:space-y-6">
-                <div className="flex items-center gap-4">
-                  <span className="h-px flex-1 bg-[#C8A66A]/20" />
-                  <h2 className="font-heading text-[11px] md:text-[13px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
+              <section key={cat} className="space-y-6 md:space-y-10">
+                <div className="flex items-center gap-6">
+                  <span className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A]/30" />
+                  <h2 className="font-heading text-[11px] md:text-[14px] tracking-[0.4em] uppercase font-black text-[#5B1F3D]/80">
                     {CATEGORY_LABELS[cat]}
                   </h2>
-                  <span className="h-px flex-1 bg-[#C8A66A]/20" />
+                  <span className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A]/30" />
                 </div>
 
-                <div className="space-y-4">
+                <div className="grid gap-6 md:gap-8">
                   {mods.map((mod) => {
                     const unlocked = bypassLocks || isModuleUnlocked(mod.id, progress.completedModules);
                     const isCompleted = progress.completedModules.includes(mod.id);
@@ -213,12 +213,12 @@ const ModulesPage = () => {
                         key={mod.id}
                         onClick={() => unlocked && navigate(mod.route)}
                         disabled={!unlocked}
-                        className={`w-full text-left p-6 rounded-[2rem] border-2 transition-all duration-500 relative group overflow-hidden ${
+                        className={`w-full text-left p-7 md:p-9 rounded-[2.5rem] border-2 transition-all duration-500 relative group overflow-hidden ${
                           isCurrent 
-                            ? "bg-white border-[#C8A66A] shadow-2xl shadow-[#C8A66A]/20 scale-[1.02] ring-1 ring-[#C8A66A]/30" 
+                            ? "bg-white border-[#C8A66A] shadow-2xl shadow-[#C8A66A]/30 scale-[1.02] ring-1 ring-[#C8A66A]/40" 
                             : unlocked 
-                            ? "bg-white border-[#DCCFC2] hover:bg-white hover:border-[#C8A66A]/50 active:scale-[0.98] shadow-md" 
-                            : "bg-[#F3E6E0] border-[#DCCFC2] opacity-100 cursor-not-allowed grayscale-[0.2]"
+                            ? "bg-white border-[#DCCFC2]/60 hover:border-[#C8A66A]/50 active:scale-[0.98] shadow-lg hover:shadow-xl" 
+                            : "bg-[#F3E6E0]/50 border-[#DCCFC2]/40 opacity-90 cursor-not-allowed grayscale-[0.3]"
                         }`}
                       >
                         {isCurrent && (
