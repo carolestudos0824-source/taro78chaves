@@ -5,6 +5,8 @@ import {
   BookOpen, Star, Crown, Sparkles, ArrowRight, Heart,
   Compass, Award, Library, Check, X,
 } from "lucide-react";
+import { TarotAnimatedCard } from "@/components/tarot-motion/TarotAnimatedCard";
+import { getArcanoFull } from "@/lib/content";
 
 /* ═══════════════ SLIDE DATA ═══════════════ */
 
