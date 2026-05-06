@@ -5,7 +5,9 @@ import { useProgress } from "@/hooks/use-progress";
 import { usePremium } from "@/hooks/use-premium";
 import { useRole } from "@/hooks/use-role";
 import { useAccess } from "@/hooks/use-access";
-import { ArcanoVivoIntro } from "@/components/arcano-vivo/ArcanoVivoIntro";
+import { ArcanoVivoStage } from "@/components/tarot-motion/ArcanoVivoStage";
+import { ArcanoUnlockMoment } from "@/components/tarot-motion/ArcanoUnlockMoment";
+import { XPRewardMotion } from "@/components/tarot-motion/XPRewardMotion";
 import { LessonContent } from "@/components/arcano-vivo/LessonContent";
 import { SymbolMap } from "@/components/arcano-vivo/SymbolMap";
 import { CompletionScreen } from "@/components/arcano-vivo/CompletionScreen";
@@ -29,6 +31,8 @@ const LessonPage = () => {
   const [phase, setPhase] = useState<LessonPhase>("intro");
   const [exerciseCompleted, setExerciseCompleted] = useState(false);
   const [xpEarned, setXpEarned] = useState(0);
+  const [showXpReward, setShowXpReward] = useState(false);
+  const [showUnlockMoment, setShowUnlockMoment] = useState(false);
   const [lastQuizScore, setLastQuizScore] = useState(0);
   const [lastQuizTotal, setLastQuizTotal] = useState(0);
 
