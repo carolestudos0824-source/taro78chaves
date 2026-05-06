@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import brandIcon from "@/assets/brand-icon.png";
+import { trackEvent } from "@/lib/analytics";
 
 const AuthPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -64,8 +65,10 @@ const AuthPage = () => {
 
     try {
       if (mode === "signup") {
+        trackEvent("signup_started");
         const { error } = await signUp(email, password, name);
         if (error) throw error;
+        trackEvent("signup_completed");
       } else {
         const { error } = await signIn(email, password);
         if (error) throw error;

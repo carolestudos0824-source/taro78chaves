@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { usePremium } from "@/hooks/use-premium";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { trackEvent } from "@/lib/analytics";
 
 const PREMIUM_BENEFITS = [
   { icon: BookOpen, title: "Os 78 Arcanos", desc: "Domine o deck completo (Maiores e Menores) carta por carta." },
@@ -53,6 +54,7 @@ const PremiumPage = () => {
     }
 
     setLoading(true);
+    trackEvent(`checkout_${plan}_started`);
     try {
       const { data, error } = await supabase.functions.invoke("stripe-create-checkout", {
         body: { plan },
