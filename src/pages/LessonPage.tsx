@@ -119,17 +119,12 @@ const LessonPage = () => {
 
       <main className="container max-w-lg mx-auto px-4 py-8">
         {phase === "intro" && (
-          <ArcanoVivoIntro
+          <ArcanoVivoStage
             arcanoId={arcanoId}
-            name={arcano.name}
-            numeral={arcano.numeral}
-            subtitle={arcano.subtitle}
-            keywords={arcano.keywords}
+            cardName={arcano.name}
             cardImage={arcano.cardImage}
-            archetype={arcano.archetype}
-            voiceIntro={arcano.firstPersonIntro}
-            voiceFullText={arcano.voiceText}
-            onEnterLesson={handleStartLesson}
+            arcanoSlug={arcano.id === 0 ? "o-louco" : arcano.id === 1 ? "o-mago" : arcano.id === 15 ? "o-diabo" : "generic"}
+            onContinue={handleStartLesson}
           />
         )}
 
