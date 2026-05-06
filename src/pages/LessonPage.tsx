@@ -5,7 +5,9 @@ import { useProgress } from "@/hooks/use-progress";
 import { usePremium } from "@/hooks/use-premium";
 import { useRole } from "@/hooks/use-role";
 import { useAccess } from "@/hooks/use-access";
-import { ArcanoVivoIntro } from "@/components/arcano-vivo/ArcanoVivoIntro";
+import { ArcanoVivoStage } from "@/components/tarot-motion/ArcanoVivoStage";
+import { ArcanoUnlockMoment } from "@/components/tarot-motion/ArcanoUnlockMoment";
+import { XPRewardMotion } from "@/components/tarot-motion/XPRewardMotion";
 import { LessonContent } from "@/components/arcano-vivo/LessonContent";
 import { SymbolMap } from "@/components/arcano-vivo/SymbolMap";
 import { CompletionScreen } from "@/components/arcano-vivo/CompletionScreen";
@@ -29,6 +31,8 @@ const LessonPage = () => {
   const [phase, setPhase] = useState<LessonPhase>("intro");
   const [exerciseCompleted, setExerciseCompleted] = useState(false);
   const [xpEarned, setXpEarned] = useState(0);
+  const [showXpReward, setShowXpReward] = useState(false);
+  const [showUnlockMoment, setShowUnlockMoment] = useState(false);
   const [lastQuizScore, setLastQuizScore] = useState(0);
   const [lastQuizTotal, setLastQuizTotal] = useState(0);
 
@@ -57,6 +61,8 @@ const LessonPage = () => {
     if (!isStaff) {
       addXP(10);
       setXpEarned(10);
+      setShowXpReward(true);
+      setTimeout(() => setShowXpReward(false), 2000);
       earnBadge("first-step");
     }
     setPhase("lesson");
@@ -70,7 +76,10 @@ const LessonPage = () => {
       setXpEarned(e => e + quizXp);
       completeQuiz(`quiz-arcano-${arcano.id}`, score, total);
       completeLesson(`arcano-${arcano.id}`);
-      if (arcano.id === 0) earnBadge("fool-complete");
+      if (arcano.id === 0) {
+        earnBadge("fool-complete");
+        setShowUnlockMoment(true);
+      }
     }
     setLastQuizScore(score);
     setLastQuizTotal(total);
@@ -119,17 +128,12 @@ const LessonPage = () => {
 
       <main className="container max-w-lg mx-auto px-4 py-8">
         {phase === "intro" && (
-          <ArcanoVivoIntro
+          <ArcanoVivoStage
             arcanoId={arcanoId}
-            name={arcano.name}
-            numeral={arcano.numeral}
-            subtitle={arcano.subtitle}
-            keywords={arcano.keywords}
+            cardName={arcano.name}
             cardImage={arcano.cardImage}
-            archetype={arcano.archetype}
-            voiceIntro={arcano.firstPersonIntro}
-            voiceFullText={arcano.voiceText}
-            onEnterLesson={handleStartLesson}
+            arcanoSlug={arcano.id === 0 ? "o-louco" : arcano.id === 1 ? "o-mago" : arcano.id === 15 ? "o-diabo" : "generic"}
+            onContinue={handleStartLesson}
           />
         )}
 
@@ -187,7 +191,7 @@ const LessonPage = () => {
             xpEarned={xpEarned}
             quizScore={lastQuizScore}
             quizTotal={lastQuizTotal}
-            nextArcano={nextArcano}
+            nextArcano={nextArcano ? { id: nextArcano.id, name: nextArcano.name, numeral: nextArcano.numeral, subtitle: nextArcano.subtitle } : undefined}
             isLastArcano={arcanoId === 21}
             onNextArcano={() => {
               if (nextArcano) {
@@ -200,6 +204,25 @@ const LessonPage = () => {
           />
         )}
       </main>
+
+      {showXpReward && (
+        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[100]">
+          <XPRewardMotion xp={10} arcanoId={arcanoId} />
+        </div>
+      )}
+
+      {showUnlockMoment && nextArcano && (
+        <ArcanoUnlockMoment
+          arcanoId={nextArcano.id}
+          cardName={nextArcano.name}
+          cardImage={getArcanoById(nextArcano.id)?.cardImage || ""}
+          arcanoSlug={nextArcano.id === 1 ? "o-mago" : "generic"}
+          onContinue={() => {
+            setShowUnlockMoment(false);
+            setPhase("complete");
+          }}
+        />
+      )}
     </div>
   );
 };
