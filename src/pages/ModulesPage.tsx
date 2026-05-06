@@ -1,19 +1,14 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
-  Lock, 
   Check, 
   ChevronRight, 
   Sparkles, 
-  User, 
   Flame, 
   Key, 
   KeyRound, 
   Eye, 
-  BookOpen, 
-  Star, 
   Moon, 
-  Sun, 
   Droplets, 
   Gem, 
   Swords, 
@@ -23,7 +18,6 @@ import {
   LockKeyhole,
   GitBranch,
   Layout,
-  PanelsTopLeft,
   Target,
   Briefcase,
   SquareStack,
@@ -37,21 +31,14 @@ import {
 } from "@/lib/content";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
-import OnboardingPage from "./OnboardingPage";
-import { XPBar } from "@/components/XPBar";
-import { StreakCounter } from "@/components/StreakCounter";
+import { Header } from "@/components/Header";
 import BetaWelcomeBanner from "@/components/BetaWelcomeBanner";
-import FeedbackNudge from "@/components/FeedbackNudge";
-import RetentionBanner from "@/components/RetentionBanner";
 import ContinuityCard from "@/components/ContinuityCard";
 import ProgressCelebration from "@/components/ProgressCelebration";
 import { SmartReviewCard } from "@/components/SmartReviewCard";
 import imgLouco from "@/assets/arcano-0-louco.jpg";
 import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
 import imgEstrela from "@/assets/arcano-17-estrela.jpg";
-import ornamentDivider from "@/assets/ornament-divider.png";
-import brandIcon from "@/assets/brand-icon.png";
-import brandLogo from "@/assets/brand-logo.png";
 
 const CATEGORY_LABELS: Record<ModuleCategory, string> = {
   "foundation": "O Portal de Entrada",
