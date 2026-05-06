@@ -171,10 +171,10 @@ const SlideCover = () => (
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
     }}>
-      A Jornada do Louco
+      Tarô 78 Chaves
     </h1>
     <p className="font-accent text-lg md:text-xl italic leading-relaxed max-w-md mx-auto" style={{ color: "hsl(230 20% 15% / 0.50)" }}>
-      A plataforma que transforma o estudo do tarô em uma jornada de autoconhecimento — com profundidade, beleza e estrutura.
+      Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, XP e progresso real.
     </p>
     <div className="flex items-center justify-center gap-8 pt-4">
       {[
