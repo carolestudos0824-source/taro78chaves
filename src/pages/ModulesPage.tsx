@@ -259,28 +259,28 @@ const ModulesPage = () => {
                                 {mod.name}
                               </h3>
                               
-                              <div className="ml-auto flex items-center gap-1.5">
+                              <div className="ml-auto flex items-center gap-2">
                                 {mod.id === "arcanos-maiores" && (
-                                  <span className="text-[10px] font-heading tracking-widest uppercase px-3 py-1.5 rounded-full bg-[#FAF5EF] text-[#C8A66A] border-2 border-[#C8A66A] font-black shadow-sm">
+                                  <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase px-4 py-2 rounded-xl bg-[#FAF5EF] text-[#C8A66A] border border-[#C8A66A]/40 font-black shadow-sm">
                                     Grátis
                                   </span>
                                 )}
                                 {!unlocked && !isCompleted && mod.id !== "arcanos-maiores" && (
-                                  <span className="text-[10px] font-heading tracking-widest uppercase px-3 py-1.5 rounded-full bg-[#5B1F3D] text-white border-2 border-[#C8A66A] font-black flex items-center gap-1.5 shadow-sm">
-                                    <KeyRound className="w-3 h-3 text-[#C8A66A]" />
+                                  <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase px-4 py-2 rounded-xl bg-[#5B1F3D] text-white border border-[#C8A66A] font-black flex items-center gap-2 shadow-lg">
+                                    <KeyRound className="w-3.5 h-3.5 text-[#C8A66A]" />
                                     Premium
                                   </span>
                                 )}
                                 {isCompleted && (
-                                  <span className="text-[10px] font-heading tracking-widest uppercase px-3 py-1.5 rounded-full bg-[#DCCFC2]/40 text-[#5B1F3D] border-2 border-[#DCCFC2] font-black shadow-sm">
+                                  <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase px-4 py-2 rounded-xl bg-[#DCCFC2]/30 text-[#5B1F3D]/60 border border-[#DCCFC2]/50 font-black shadow-sm">
                                     Concluído
                                   </span>
                                 )}
                               </div>
                             </div>
                             
-                             <p className={`text-[13px] font-body line-clamp-1 leading-relaxed ${
-                              unlocked ? "text-[#5B1F3D]/80 font-semibold" : "text-[#5B1F3D]/80 font-bold italic"
+                             <p className={`text-[14px] md:text-[16px] font-body line-clamp-1 leading-relaxed ${
+                              unlocked ? "text-[#5B1F3D]/70 font-semibold" : "text-[#5B1F3D]/50 font-bold italic"
                             }`}>
                               {mod.id === "arcanos-maiores" && progress.completedLessons.length === 0 
                                 ? "Abra o primeiro portal do Louco." 
