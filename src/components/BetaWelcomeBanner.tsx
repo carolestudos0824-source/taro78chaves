@@ -49,14 +49,14 @@ const BetaWelcomeBanner = () => {
           <h3 className="font-heading text-xl md:text-2xl font-black tracking-tight mb-3" style={{
             color: "hsl(var(--brand-plum))",
           }}>
-            O Louco abre a primeira porta.
+            O primeiro passo da jornada.
           </h3>
           <p className="font-body text-[15px] md:text-[17px] font-bold leading-relaxed mb-6 italic" style={{ color: "hsl(var(--brand-plum) / 0.8)" }}>
-            Sua jornada começa pelos <strong className="font-black" style={{ color: "hsl(var(--brand-plum))" }}>Fundamentos do Tarô</strong> — é a porta de entrada para tudo o que vem depois. De lá, os arcanos se revelam um a um.
+            Sua jornada começa pelo <strong className="font-black" style={{ color: "hsl(var(--brand-plum))" }}>Arcano 0: O Louco</strong> — é a porta de entrada grátis para a sua travessia mística. Vá bem e desbloqueie O Mago.
           </p>
 
           <button
-            onClick={() => { dismiss(); navigate("/module/fundamentos"); }}
+            onClick={() => { dismiss(); navigate("/lesson/0"); }}
             className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-heading text-[11px] tracking-[0.25em] uppercase transition-all hover:scale-105 active:scale-95 font-black border-2 border-[#C8A66A]/30"
             style={{
               background: "hsl(var(--brand-plum))",
@@ -64,7 +64,7 @@ const BetaWelcomeBanner = () => {
               boxShadow: "0 8px 24px hsl(var(--brand-plum) / 0.25)",
             }}
           >
-            Começar pelos Fundamentos
+            Abrir Portal do Louco
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
