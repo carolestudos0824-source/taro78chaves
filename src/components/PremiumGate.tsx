@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Crown, Sparkles, Lock, ArrowRight } from "lucide-react";
+import { Crown, Sparkles, LockKeyhole, ArrowRight, KeyRound, SquareStack, Compass, WandSparkles, CircleCheck, Eye, Stars } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { usePremium } from "@/hooks/use-premium";
 import { useIsAdmin } from "@/hooks/use-admin";
@@ -13,11 +13,12 @@ interface PremiumGateProps {
 }
 
 const VALUE_HOOKS = [
-  "Todos os 78 arcanos maiores, menores e corte",
-  "Lições completas com essência, luz e sombra",
-  "Símbolos explicados detalhadamente carta por carta",
-  "Quizzes de fixação com feedback imediato",
-  "Sua jornada salva e sincronizada em todos os dispositivos",
+  { icon: SquareStack, label: "78 arcanos guiados" },
+  { icon: Compass, label: "Jornada progressiva" },
+  { icon: Sparkles, label: "Quizzes e XP" },
+  { icon: WandSparkles, label: "Práticas guiadas" },
+  { icon: CircleCheck, label: "Progresso salvo" },
+  { icon: Stars, label: "Arcanos Vivos" },
 ];
 
 const PremiumGate = ({
@@ -31,7 +32,6 @@ const PremiumGate = ({
   const { isPremium, loading } = usePremium();
   const { isAdmin } = useIsAdmin();
 
-  // Admins always bypass premium gate
   if (loading) return null;
   if ((isPremium || isAdmin) && children) return <>{children}</>;
   if (isPremium || isAdmin) return null;
@@ -40,26 +40,20 @@ const PremiumGate = ({
     return (
       <button
         onClick={() => navigate("/premium")}
-        className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all active:scale-[0.99] ${className}`}
-        style={{
-          background: "linear-gradient(135deg, hsl(var(--secondary) / 0.06), hsl(var(--gold) / 0.08))",
-          border: "1px solid hsl(var(--gold) / 0.18)",
-        }}
+        className={`w-full flex items-center gap-4 px-5 py-4 rounded-2xl transition-all active:scale-[0.98] bg-white border-2 border-[#C8A66A]/30 shadow-md group ${className}`}
       >
-        <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{
-          background: "linear-gradient(135deg, hsl(var(--secondary) / 0.08), hsl(var(--gold) / 0.12))",
-        }}>
-          <Crown className="w-3.5 h-3.5" style={{ color: "hsl(var(--gold))" }} />
+        <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 bg-[#5B1F3D] border border-[#C8A66A] shadow-sm">
+          <KeyRound className="w-5 h-5 text-[#C8A66A]" />
         </div>
         <div className="flex-1 text-left">
-          <p className="text-[13px] font-heading tracking-wider font-black" style={{ color: "hsl(var(--secondary))" }}>
+          <p className="text-[13px] font-heading tracking-widest font-black text-[#5B1F3D] uppercase">
             Jornada Completa
           </p>
-          <p className="text-[11px] font-bold" style={{ color: "hsl(var(--secondary))" }}>
-            Acesse todos os módulos e aprofundamentos
+          <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/60">
+            Acesse as 78 portas da sua travessia
           </p>
         </div>
-        <ArrowRight className="w-3.5 h-3.5 shrink-0" style={{ color: "hsl(var(--gold) / 0.50)" }} />
+        <ArrowRight className="w-4 h-4 text-[#C8A66A] group-hover:translate-x-1 transition-transform" />
       </button>
     );
   }
@@ -67,75 +61,53 @@ const PremiumGate = ({
   if (variant === "inline") {
     return (
       <div
-        className={`flex items-center gap-3 px-4 py-3 rounded-xl ${className}`}
-        style={{
-          background: "hsl(var(--secondary) / 0.04)",
-          border: "1px solid hsl(var(--secondary) / 0.10)",
-        }}
+        className={`flex items-center gap-4 px-5 py-4 rounded-2xl bg-[#F3E6E0] border-2 border-[#C8A66A]/30 shadow-sm ${className}`}
       >
-        <Lock className="w-4 h-4 shrink-0" style={{ color: "hsl(var(--gold) / 0.50)" }} />
+        <LockKeyhole className="w-5 h-5 shrink-0 text-[#5B1F3D]" />
         <div className="flex-1 min-w-0">
-          <p className="text-[13px] font-body font-bold" style={{ color: "hsl(var(--secondary))" }}>
+          <p className="text-[13px] font-body font-bold text-[#5B1F3D]">
             {featureName ? (
-              <><span className="font-black" style={{ color: "hsl(var(--secondary))" }}>{featureName}</span> é conteúdo premium.</>
+              <><span className="font-black text-[#C8A66A] uppercase tracking-widest">Portal: {featureName}</span></>
             ) : (
-              "Este conteúdo faz parte da Jornada Completa."
+              "Acesso à Jornada Completa."
             )}
           </p>
         </div>
         <button
           onClick={() => navigate("/premium")}
-          className="text-[11px] font-heading tracking-[0.15em] uppercase shrink-0 px-4 py-2 rounded-lg transition-all font-black"
-          style={{
-            background: "hsl(var(--secondary) / 0.08)",
-            color: "hsl(var(--secondary))",
-            border: "1px solid hsl(var(--secondary) / 0.15)",
-          }}
+          className="text-[10px] font-heading tracking-[0.2em] uppercase shrink-0 px-4 py-2 rounded-xl bg-[#5B1F3D] text-white border border-[#C8A66A] font-black shadow-md transition-all active:scale-95"
         >
-          Ver plano
+          Abrir
         </button>
       </div>
     );
   }
 
-  // block variant — full paywall card
   return (
     <div
-      className={`rounded-2xl p-6 text-center space-y-4 ${className}`}
-      style={{
-        background: "linear-gradient(170deg, hsl(var(--mystic-surface) / 0.95), hsl(var(--card)))",
-        border: "1.5px solid hsl(var(--gold) / 0.20)",
-        boxShadow: "0 8px 40px hsl(var(--secondary) / 0.04)",
-      }}
+      className={`rounded-[2.5rem] p-8 text-center space-y-6 bg-white border-4 border-[#C8A66A]/30 shadow-2xl ring-8 ring-[#C8A66A]/5 ${className}`}
     >
       <div className="flex justify-center">
-        <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{
-          background: "linear-gradient(135deg, hsl(var(--secondary) / 0.08), hsl(var(--gold) / 0.12))",
-          border: "1px solid hsl(var(--gold) / 0.20)",
-        }}>
-          <Crown className="w-6 h-6" style={{ color: "hsl(var(--gold))" }} />
+        <div className="w-16 h-16 rounded-2xl bg-[#5B1F3D] border-2 border-[#C8A66A] flex items-center justify-center shadow-xl rotate-3">
+          <KeyRound className="w-8 h-8 text-[#C8A66A]" />
         </div>
       </div>
 
-      <div>
-        <h3 className="font-heading text-xl tracking-wide text-midnight">
-          {featureName ? `Desbloqueie ${featureName}` : "Continue sua Jornada Completa"}
+      <div className="space-y-3">
+        <h3 className="font-heading text-2xl font-black text-[#5B1F3D] tracking-tight">
+          Abra as 78 Portas do Tarô
         </h3>
-        <p className="text-[13px] font-body text-muted-foreground/80 mt-2 max-w-[280px] mx-auto leading-relaxed">
-          {message || "Você já começou pelo Louco. Agora desbloqueie os próximos arcanos e siga estudando carta por carta, com método, símbolos, quizzes e progresso salvo."}
+        <p className="text-[14px] font-body text-[#5B1F3D]/80 font-bold italic leading-relaxed max-w-[320px] mx-auto">
+          {message || "Você já começou pelo Louco. Agora receba todas as chaves e siga atravessando cada arcano com método, prática e ritual."}
         </p>
       </div>
 
-      <div className="flex justify-center">
-        <div className="w-8 h-px" style={{ background: "hsl(var(--gold) / 0.25)" }} />
-      </div>
-
-      <div className="space-y-2 text-left max-w-xs mx-auto">
+      <div className="grid grid-cols-2 gap-3 text-left max-w-xs mx-auto py-2">
         {VALUE_HOOKS.map((hook, i) => (
-          <div key={i} className="flex items-center gap-2.5">
-            <Sparkles className="w-3 h-3 shrink-0" style={{ color: "hsl(var(--gold) / 0.60)" }} />
-            <span className="text-[13px] font-body font-bold" style={{ color: "hsl(var(--secondary))" }}>
-              {hook}
+          <div key={i} className="flex items-center gap-2">
+            <hook.icon className="w-3.5 h-3.5 shrink-0 text-[#C8A66A]" />
+            <span className="text-[11px] font-heading font-black text-[#5B1F3D] uppercase tracking-tight leading-none">
+              {hook.label}
             </span>
           </div>
         ))}
@@ -144,13 +116,12 @@ const PremiumGate = ({
       <div className="pt-2">
         <Button
           onClick={() => navigate("/premium")}
-          className="btn-premium w-full py-7"
+          className="w-full py-8 bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.2em] shadow-xl border-2 border-[#C8A66A]"
         >
-          <Crown className="w-4 h-4 mr-2" />
-          Quero Acesso Total
+          COMEÇAR JORNADA COMPLETA
         </Button>
-        <p className="text-[10px] font-heading tracking-widest uppercase text-gold-dark mt-4 opacity-60">
-          Plano anual com 45% de desconto
+        <p className="text-[10px] font-heading tracking-widest uppercase text-[#C8A66A] mt-5 font-black opacity-80">
+          Receba todas as chaves da sua travessia
         </p>
       </div>
     </div>

@@ -158,7 +158,7 @@ const ModulesPage = () => {
         </div>
       </header>
 
-      <main className="container max-w-lg px-6 pt-6 pb-20 md:pt-10 md:pb-24 space-y-8 md:space-y-12 scroll-mt-32 md:scroll-mt-40">
+      <main className="container max-w-lg px-6 pt-6 pb-32 md:pt-10 md:pb-40 space-y-10 md:space-y-14 scroll-mt-32 md:scroll-mt-40">
         <ProgressCelebration xp={progress.xp} level={progress.level} streak={progress.streak} completedLessons={progress.completedLessons.length} />
         
         <div className="space-y-6">
@@ -166,11 +166,11 @@ const ModulesPage = () => {
           <SmartReviewCard />
           
           {progress.completedLessons.length === 0 && (
-            <div className="bg-[#FAF5EF] border-2 border-[#5B1F3D]/20 rounded-2xl p-6 text-center space-y-3 relative overflow-hidden group shadow-sm">
+            <div className="bg-[#F3E6E0] border-2 border-[#C8A66A]/30 rounded-2xl p-6 text-center space-y-3 relative overflow-hidden group shadow-md ring-4 ring-[#C8A66A]/5">
               <div className="absolute top-0 left-0 w-2 h-full bg-[#C8A66A]" />
-              <p className="text-[14px] font-bold text-[#5B1F3D] italic leading-relaxed relative z-10">
+              <p className="text-[15px] font-black text-[#5B1F3D] italic leading-relaxed relative z-10">
                 ✦ Comece pelo Louco grátis. Vá bem e desbloqueie O Mago. <br/>
-                <span className="text-[#C8A66A] font-black not-italic block mt-1">Continue a jornada completa no Premium.</span>
+                <span className="text-[#C8A66A] font-black not-italic block mt-1 uppercase tracking-widest text-xs">Continue sua Jornada Viva.</span>
               </p>
             </div>
           )}
@@ -182,7 +182,30 @@ const ModulesPage = () => {
             <img src={imgEstrela} alt="" className="w-24 rounded-2xl shadow-xl rotate-12 border-2 border-white/50" />
           </div>
           
-          <ContinuityCard lastLessonId={null} lastLessonName={null} completedLessons={progress.completedLessons.length} completedQuizzes={progress.completedQuizzes.length} hasUnfinishedReview={false} completedLessonIds={progress.completedLessons} currentModuleId="arcanos-maiores" />
+          <div className="space-y-4">
+            <div className="flex items-center gap-4">
+              <span className="h-px flex-1 bg-[#C8A66A]/20" />
+              <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#C8A66A]">
+                Próximos Passos
+              </h2>
+              <span className="h-px flex-1 bg-[#C8A66A]/20" />
+            </div>
+            <button 
+              onClick={() => navigate("/desafios")}
+              className="w-full text-left p-6 rounded-[2rem] border-2 border-[#C8A66A]/30 bg-white shadow-xl flex items-center gap-6 group transition-all hover:scale-[1.02] active:scale-[0.98] ring-4 ring-[#C8A66A]/5"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-[#FAF5EF] border-2 border-[#C8A66A]/40 flex items-center justify-center shrink-0 shadow-inner group-hover:rotate-6 transition-transform">
+                <Moon className="w-7 h-7 text-[#5B1F3D]" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-heading text-lg font-black text-[#5B1F3D] tracking-tight">Ritual Diário</h3>
+                <p className="text-[13px] font-body font-bold italic text-[#5B1F3D]/60 leading-tight">Sua prática de hoje</p>
+                <p className="text-[10px] font-heading font-black tracking-widest uppercase text-[#C8A66A] mt-1.5 opacity-0 group-hover:opacity-100 transition-opacity">Mantenha sua jornada viva</p>
+              </div>
+              <ChevronRight className="w-6 h-6 text-[#C8A66A] group-hover:translate-x-1.5 transition-transform" />
+            </button>
+            <ContinuityCard lastLessonId={null} lastLessonName={null} completedLessons={progress.completedLessons.length} completedQuizzes={progress.completedQuizzes.length} hasUnfinishedReview={false} completedLessonIds={progress.completedLessons} currentModuleId="arcanos-maiores" />
+          </div>
 
           {/* ─── Premium Conversion Card ─── */}
           <div 

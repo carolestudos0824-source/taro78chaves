@@ -1,4 +1,4 @@
-import { Sparkles } from "lucide-react";
+import { Sparkles, KeyRound, Compass } from "lucide-react";
 
 interface XPBarProps {
   xp: number;
@@ -11,34 +11,36 @@ export function XPBar({ xp, level }: XPBarProps) {
   return (
     <div className="flex items-center gap-4">
       <div className="flex items-center gap-3 shrink-0">
-        <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-md transition-transform hover:scale-105" style={{
-          border: "2px solid #5B1F3D33",
+        <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transition-transform hover:scale-105" style={{
+          border: "2px solid #C8A66A4D",
           background: "linear-gradient(135deg, #FAF5EF, #F3E6E0)",
-          boxShadow: "0 4px 12px #5B1F3D0D"
+          boxShadow: "0 4px 15px rgba(91, 31, 61, 0.08)"
         }}>
-          <Sparkles className="w-5 h-5" style={{ color: "#5B1F3D", fill: "#5B1F3D1A" }} />
+          <KeyRound className="w-6 h-6" style={{ color: "#C8A66A" }} />
         </div>
         <div className="flex flex-col">
-          <span className="text-[11px] tracking-widest uppercase leading-none font-heading font-black" style={{
-            color: "#5B1F3D"
+          <span className="text-[10px] tracking-[0.2em] uppercase leading-none font-heading font-black" style={{
+            color: "#C8A66A"
           }}>Nível</span>
-          <span className="text-xl font-heading tracking-tight leading-tight font-black" style={{
+          <span className="text-xl font-heading tracking-tighter leading-tight font-black" style={{
             color: "#5B1F3D"
           }}>{level}</span>
         </div>
       </div>
-      <div className="flex-1 relative">
-        <div className="h-4 rounded-full overflow-hidden p-[2px]" style={{
-          background: "#FAF5EF",
-          border: "1.5px solid #C8A66A4D",
-          boxShadow: "inset 0 2px 4px #5B1F3D0D"
+      <div className="flex-1 relative space-y-1.5">
+        <div className="flex justify-between items-end px-1">
+          <span className="text-[9px] font-heading font-black tracking-widest text-[#5B1F3D]/60 uppercase">Progresso da Jornada</span>
+          <span className="text-[10px] font-heading font-black text-[#5B1F3D]">{xpInLevel}%</span>
+        </div>
+        <div className="h-3 rounded-full overflow-hidden p-[1.5px]" style={{
+          background: "#DCCFC240",
+          border: "1px solid #DCCFC2",
         }}>
           <div
-            className="h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
+            className="h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden shadow-[0_0_10px_rgba(200,166,106,0.5)]"
             style={{
               width: `${Math.max(xpInLevel, 5)}%`,
               background: "linear-gradient(90deg, #5B1F3D, #C8A66A)",
-              boxShadow: "0 0 10px #C8A66A4D"
             }}
           >
             <div
@@ -51,12 +53,12 @@ export function XPBar({ xp, level }: XPBarProps) {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-end tabular-nums">
+      <div className="flex flex-col items-end tabular-nums shrink-0">
         <div className="flex items-baseline gap-0.5">
           <span className="text-base font-black text-[#5B1F3D]">{xpInLevel}</span>
-          <span className="text-[11px] font-black text-[#5B1F3D]/60">/100</span>
+          <span className="text-[10px] font-black text-[#5B1F3D]/30">/100</span>
         </div>
-        <span className="text-[11px] font-heading font-black tracking-[0.2em] text-[#C8A66A] uppercase leading-none">XP</span>
+        <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#C8A66A] uppercase leading-none">XP</span>
       </div>
     </div>
   );
