@@ -25,7 +25,7 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
 
   return (
     <header 
-      className={`sticky top-0 z-40 bg-white/98 backdrop-blur-2xl border-b-2 border-[#C8A66A]/20 shadow-lg transition-all duration-500 ease-in-out ${
+      className={`sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b-2 border-[#C8A66A]/20 shadow-lg transition-all duration-500 ease-in-out ${
         isCompact ? "py-2 md:py-3 shadow-md" : "py-3 md:py-6"
       }`}
     >
