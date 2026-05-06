@@ -133,34 +133,15 @@ const LandingPage = () => {
                   Aprenda Tarô como uma jornada.
                 </h1>
                 <p className="font-heading text-lg md:text-xl lg:text-2xl text-gold-dark font-medium italic opacity-90">
-                  Arcano por arcano, com lições curtas, quizzes, XP e progresso real.
+                  Arcano por arcano, com lições curtas, quizzes, Pontos de Jornada e progresso real.
                 </p>
-              </div>
 
-              <div className="space-y-4 md:space-y-5 max-w-2xl mx-auto lg:mx-0">
-                <div className="space-y-2 md:space-y-3">
-                  <p className="text-base md:text-lg lg:text-xl font-body text-foreground leading-relaxed">
-                    Não é um app de tiragem automática. É uma escola viva de Tarô no seu bolso.
-                  </p>
-                  <div className="bg-gold/10 border-l-4 border-gold/60 p-2 md:p-3 rounded-r-xl">
-                    <p className="text-xs md:text-sm lg:text-base font-body text-midnight font-bold">
-                      ✦ Estude os 78 arcanos com uma trilha progressiva, fiel ao Rider-Waite-Smith e pensada para criar prática, continuidade e domínio simbólico.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6 text-[11px] md:text-[12px] font-heading tracking-widest uppercase text-plum font-bold">
-                  <div className="flex items-center gap-2 group">
-                    <div className="w-6 h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
-                      <Star className="w-3 h-3 text-gold-dark" />
-                    </div>
-                    <span>Uma carta por vez</span>
-                  </div>
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6 pt-3 md:pt-4 font-heading text-[10px] md:text-xs tracking-[0.2em] uppercase text-plum font-extrabold drop-shadow-sm">
                   <div className="flex items-center gap-2 group">
                     <div className="w-6 h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
                       <Zap className="w-3 h-3 text-gold-dark" />
                     </div>
-                    <span>Quizzes e XP</span>
+                    <span>Quizzes e Pontos de Jornada</span>
                   </div>
                   <div className="flex items-center gap-2 group">
                     <div className="w-6 h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
@@ -299,7 +280,7 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16 space-y-4">
             <h2 className="font-heading text-3xl md:text-4xl text-midnight">Explore a Trilha do Conhecimento</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto font-body">Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, XP e progresso real.</p>
+            <p className="text-muted-foreground max-w-2xl mx-auto font-body">Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, Pontos de Jornada e progresso real.</p>
           </div>
 
           <div className="flex overflow-x-auto gap-4 md:gap-6 pb-8 px-4 scrollbar-elegant snap-x items-end min-h-[340px]">
@@ -627,7 +608,7 @@ const LandingPage = () => {
             <AccordionItem value="item-2" className="border-gold/30">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">O que está incluso no plano?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
-                O acesso completo libera a jornada pelos 78 arcanos, com lições progressivas, quizzes, XP, progresso salvo e estudo carta por carta.
+                O acesso completo libera a jornada pelos 78 arcanos, com lições progressivas, quizzes, Pontos de Jornada, progresso salvo e estudo carta por carta.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3" className="border-gold/30">
