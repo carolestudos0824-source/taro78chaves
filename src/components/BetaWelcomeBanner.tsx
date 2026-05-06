@@ -40,8 +40,8 @@ const BetaWelcomeBanner = () => {
 
       <div className="flex items-start gap-4">
         <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{
-          background: "linear-gradient(135deg, hsl(340 42% 28% / 0.08), hsl(36 45% 58% / 0.12))",
-          border: "1px solid hsl(36 45% 58% / 0.22)",
+          background: "linear-gradient(135deg, hsl(var(--brand-plum) / 0.08), hsl(var(--brand-gold) / 0.12))",
+          border: "1px solid hsl(var(--brand-gold) / 0.22)",
         }}>
           <Sparkles className="w-5 h-5" style={{ color: "hsl(36 45% 50%)" }} />
         </div>
