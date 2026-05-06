@@ -70,13 +70,13 @@ const MODULE_ICON_MAP: Record<string, any> = {
   "espadas": Swords,
   "ouros": Gem,
   "cartas-corte": Crown,
-  "combinacoes": KeyRound,
-  "tiragens": Compass,
+  "combinacoes": GitBranch,
+  "tiragens": PanelsTopLeft,
   "espiritualidade": Moon,
-  "mesa-taro": Sun,
-  "leitura-aplicada": Compass,
+  "mesa-taro": Layout,
+  "leitura-aplicada": Target,
   "pratica": Sparkles,
-  "trabalhar-taro": Crown,
+  "trabalhar-taro": Briefcase,
 };
 
 const ModulesPage = () => {
