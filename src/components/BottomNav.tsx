@@ -18,9 +18,9 @@ const BottomNav = () => {
 
   return (
     <nav
-      className="fixed bottom-0 inset-x-0 z-40 border-t bg-white/70 backdrop-blur-md"
+      className="fixed bottom-0 inset-x-0 z-40 border-t bg-ivory/80 backdrop-blur-md"
       style={{
-        borderColor: "hsl(36 25% 82% / 0.60)",
+        borderColor: "hsl(var(--brand-gold) / 0.2)",
         paddingBottom: "env(safe-area-inset-bottom, 0px)",
       }}
     >
@@ -34,13 +34,13 @@ const BottomNav = () => {
               onClick={() => navigate(item.path)}
               className="flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg transition-all"
               style={{
-                color: isActive ? "hsl(340 50% 30%)" : "hsl(340 40% 25% / 0.55)",
+                color: isActive ? "hsl(var(--brand-plum))" : "hsl(var(--brand-plum) / 0.45)",
               }}
             >
               <Icon className="w-5 h-5" strokeWidth={isActive ? 2.2 : 1.5} />
               <span className="text-[9px] font-heading tracking-wider">{item.label}</span>
               {isActive && (
-                <div className="w-1 h-1 rounded-full mt-0.5" style={{ background: "hsl(340 50% 30%)" }} />
+                <div className="w-1 h-1 rounded-full mt-0.5" style={{ background: "hsl(var(--brand-plum))" }} />
               )}
             </button>
           );

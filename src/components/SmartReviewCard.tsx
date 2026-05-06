@@ -27,17 +27,17 @@ export const SmartReviewCard = () => {
 
   return (
     <div className="mb-6 animate-fade-up">
-      <div className="rounded-2xl overflow-hidden border border-primary/20 bg-white/70 backdrop-blur-md shadow-sm">
-        <div className="p-4 border-b border-primary/10 bg-primary/5 flex items-center justify-between">
+      <div className="rounded-2xl overflow-hidden border border-gold/20 bg-white/70 backdrop-blur-md shadow-sm">
+        <div className="p-4 border-b border-gold/10 bg-gold/5 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Brain className="w-4 h-4 text-primary" />
-            <h3 className="font-heading text-sm tracking-wide text-primary-dark">Revisão Inteligente</h3>
+            <Brain className="w-4 h-4 text-plum" />
+            <h3 className="font-heading text-sm font-bold tracking-wide text-plum">Revisão Inteligente</h3>
           </div>
-          <span className="text-[10px] font-heading uppercase tracking-widest text-primary/60">Sugerido para você</span>
+          <span className="text-[10px] font-heading uppercase tracking-widest text-plum/40 font-bold">Sugerido</span>
         </div>
         
         <div className="p-4 space-y-4">
-          <p className="text-xs text-muted-foreground leading-relaxed">
+          <p className="text-[11px] text-plum/70 font-body leading-relaxed">
             Você teve dificuldades com estes arcanos recentemente. Que tal reforçar agora?
           </p>
           
@@ -46,7 +46,7 @@ export const SmartReviewCard = () => {
               <button
                 key={arcano!.id}
                 onClick={() => navigate(`/lesson/${arcano!.id}`)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-primary/10 hover:border-primary/30 transition-all text-xs font-medium text-primary-dark"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-gold/20 hover:border-gold/50 transition-all text-xs font-bold text-plum"
               >
                 <span className="text-[10px] opacity-60">{arcano!.numeral}</span>
                 {arcano!.name}
@@ -56,7 +56,7 @@ export const SmartReviewCard = () => {
           
           <button
             onClick={() => navigate("/revisao")}
-            className="w-full mt-2 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-primary text-white text-xs font-heading tracking-widest uppercase transition-all hover:brightness-110 active:scale-[0.98]"
+            className="w-full mt-2 flex items-center justify-center gap-2 py-3 rounded-xl bg-plum text-ivory text-[10px] font-heading tracking-[0.15em] uppercase transition-all hover:brightness-110 active:scale-[0.98] shadow-md shadow-plum/10"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             Revisar todos os erros

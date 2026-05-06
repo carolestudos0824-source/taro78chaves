@@ -19,9 +19,9 @@ const BetaWelcomeBanner = () => {
     <div
       className="relative rounded-2xl p-5 mb-6 overflow-hidden"
       style={{
-        background: "linear-gradient(145deg, hsl(340 42% 28% / 0.06), hsl(36 45% 58% / 0.08), hsl(38 28% 93% / 0.95))",
-        border: "1.5px solid hsl(36 45% 58% / 0.25)",
-        boxShadow: "0 8px 32px hsl(340 42% 28% / 0.06), 0 0 60px hsl(36 45% 58% / 0.04)",
+        background: "linear-gradient(145deg, hsl(var(--brand-plum) / 0.04), hsl(var(--brand-gold) / 0.06), hsl(var(--brand-ivory)))",
+        border: "1.5px solid hsl(var(--brand-gold) / 0.25)",
+        boxShadow: "0 8px 32px hsl(var(--brand-plum) / 0.04), 0 0 60px hsl(var(--brand-gold) / 0.04)",
         animation: "fade-in 0.6s ease-out",
       }}
     >
@@ -40,34 +40,32 @@ const BetaWelcomeBanner = () => {
 
       <div className="flex items-start gap-4">
         <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{
-          background: "linear-gradient(135deg, hsl(340 42% 28% / 0.08), hsl(36 45% 58% / 0.12))",
-          border: "1px solid hsl(36 45% 58% / 0.22)",
+          background: "linear-gradient(135deg, hsl(var(--brand-plum) / 0.08), hsl(var(--brand-gold) / 0.12))",
+          border: "1px solid hsl(var(--brand-gold) / 0.22)",
         }}>
-          <Sparkles className="w-5 h-5" style={{ color: "hsl(36 45% 50%)" }} />
+          <Sparkles className="w-5 h-5" style={{ color: "hsl(var(--brand-gold))" }} />
         </div>
-
+ 
         <div className="flex-1 min-w-0">
-          <p className="text-[9px] font-heading tracking-[0.3em] uppercase mb-1" style={{ color: "hsl(340 42% 28% / 0.55)" }}>
+          <p className="text-[9px] font-heading tracking-[0.3em] uppercase mb-1 font-bold" style={{ color: "hsl(var(--brand-plum) / 0.5)" }}>
             ✦ Boas-vindas à Beta
           </p>
-          <h3 className="font-heading text-base tracking-wide mb-1.5" style={{
-            background: "linear-gradient(135deg, hsl(340 42% 20%), hsl(36 35% 28%))",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+          <h3 className="font-heading text-base font-bold tracking-wide mb-1.5" style={{
+            color: "hsl(var(--brand-plum))",
           }}>
             Você é uma das primeiras.
           </h3>
-          <p className="font-body text-[12px] leading-relaxed mb-3" style={{ color: "hsl(230 15% 25% / 0.55)" }}>
-            Sua jornada começa pelos <strong style={{ color: "hsl(340 42% 24%)" }}>Fundamentos do Tarô</strong> — é a porta de entrada para tudo o que vem depois. De lá, os arcanos se revelam um a um.
+          <p className="font-body text-[12px] leading-relaxed mb-3" style={{ color: "hsl(var(--brand-plum) / 0.7)" }}>
+            Sua jornada começa pelos <strong style={{ color: "hsl(var(--brand-plum))" }}>Fundamentos do Tarô</strong> — é a porta de entrada para tudo o que vem depois. De lá, os arcanos se revelam um a um.
           </p>
 
           <button
             onClick={() => { dismiss(); navigate("/module/fundamentos"); }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-heading text-[10px] tracking-[0.15em] uppercase transition-all hover:scale-105"
             style={{
-              background: "linear-gradient(135deg, hsl(340 42% 26%), hsl(340 42% 32%))",
-              color: "hsl(36 33% 97%)",
-              boxShadow: "0 4px 16px hsl(340 42% 28% / 0.15)",
+              background: "hsl(var(--brand-plum))",
+              color: "hsl(var(--brand-ivory))",
+              boxShadow: "0 4px 16px hsl(var(--brand-plum) / 0.2)",
             }}
           >
             Começar pelos Fundamentos

@@ -9,19 +9,19 @@ export function StreakCounter({ streak }: StreakCounterProps) {
 
   return (
     <div className="flex items-center gap-1.5 px-3.5 py-2 rounded-full transition-all duration-300" style={isActive ? {
-      border: "1px solid hsl(340 42% 26% / 0.45)",
-      background: "hsl(340 42% 28% / 0.10)",
-      boxShadow: "0 0 14px hsl(340 42% 28% / 0.10)"
+      border: "1px solid hsl(var(--brand-plum) / 0.3)",
+      background: "hsl(var(--brand-plum) / 0.08)",
+      boxShadow: "0 0 14px hsl(var(--brand-plum) / 0.05)"
     } : {
-      border: "1px solid hsl(36 22% 78% / 0.65)",
-      background: "hsl(38 28% 93% / 0.55)"
+      border: "1px solid hsl(var(--brand-gold) / 0.2)",
+      background: "hsl(var(--brand-ivory) / 0.5)"
     }}>
       <Flame
         className="w-4 h-4 transition-colors"
-        style={{ color: isActive ? "hsl(340 42% 24%)" : "hsl(230 10% 45% / 0.38)" }}
+        style={{ color: isActive ? "hsl(var(--brand-plum))" : "hsl(var(--brand-plum) / 0.3)" }}
       />
-      <span className="text-sm font-heading tabular-nums" style={{
-        color: isActive ? "hsl(230 20% 12% / 0.88)" : "hsl(230 10% 40% / 0.42)"
+      <span className="text-sm font-heading tabular-nums font-bold" style={{
+        color: isActive ? "hsl(var(--brand-plum))" : "hsl(var(--brand-plum) / 0.4)"
       }}>
         {streak}
       </span>

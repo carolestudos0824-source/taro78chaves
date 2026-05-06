@@ -12,33 +12,33 @@ export function XPBar({ xp, level }: XPBarProps) {
     <div className="flex items-center gap-4">
       <div className="flex items-center gap-2.5 shrink-0">
         <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{
-          border: "1.5px solid hsl(340 42% 26% / 0.50)",
-          background: "linear-gradient(135deg, hsl(340 42% 28% / 0.14), hsl(36 45% 55% / 0.10))",
-          boxShadow: "0 0 16px hsl(340 42% 28% / 0.10), inset 0 1px 3px hsl(36 45% 58% / 0.12)"
+          border: "1.5px solid hsl(var(--brand-plum) / 0.3)",
+          background: "linear-gradient(135deg, hsl(var(--brand-plum) / 0.08), hsl(var(--brand-gold) / 0.05))",
+          boxShadow: "0 0 16px hsl(var(--brand-plum) / 0.05), inset 0 1px 3px hsl(var(--brand-gold) / 0.1)"
         }}>
-          <Sparkles className="w-4.5 h-4.5" style={{ color: "hsl(340 50% 30%)", fill: "hsl(340 50% 30% / 0.20)" }} />
+          <Sparkles className="w-4.5 h-4.5" style={{ color: "hsl(var(--brand-plum))", fill: "hsl(var(--brand-plum) / 0.1)" }} />
         </div>
         <div className="flex flex-col">
-          <span className="text-[10px] tracking-wider uppercase leading-none font-body" style={{
-            color: "hsl(230 20% 15% / 0.60)"
+          <span className="text-[10px] tracking-wider uppercase leading-none font-body font-bold" style={{
+            color: "hsl(var(--brand-plum) / 0.5)"
           }}>Nível</span>
-          <span className="text-lg font-heading tracking-wide leading-tight" style={{
-            color: "hsl(340 42% 22%)"
+          <span className="text-lg font-heading tracking-wide leading-tight font-bold" style={{
+            color: "hsl(var(--brand-plum))"
           }}>{level}</span>
         </div>
       </div>
       <div className="flex-1 relative">
         <div className="h-3.5 rounded-full overflow-hidden" style={{
-          background: "hsl(36 18% 84%)",
-          border: "1px solid hsl(36 22% 75% / 0.85)",
-          boxShadow: "inset 0 1px 3px hsl(230 25% 10% / 0.10)"
+          background: "hsl(var(--brand-ivory))",
+          border: "1px solid hsl(var(--brand-gold) / 0.3)",
+          boxShadow: "inset 0 1px 3px hsl(var(--brand-plum) / 0.1)"
         }}>
           <div
             className="h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
             style={{
               width: `${Math.max(xpInLevel, 3)}%`,
-              background: "linear-gradient(90deg, hsl(340 42% 26%), hsl(36 42% 44%), hsl(42 55% 60%))",
-              boxShadow: "0 1px 4px hsl(36 45% 50% / 0.35)"
+              background: "linear-gradient(90deg, hsl(var(--brand-plum)), hsl(var(--brand-gold)), hsl(var(--gold-light)))",
+              boxShadow: "0 1px 4px hsl(var(--brand-gold) / 0.3)"
             }}
           >
             <div
@@ -51,9 +51,9 @@ export function XPBar({ xp, level }: XPBarProps) {
           </div>
         </div>
       </div>
-      <span className="text-sm font-body tabular-nums shrink-0" style={{ color: "hsl(230 20% 12% / 0.78)" }}>
-        {xpInLevel}<span style={{ color: "hsl(230 20% 12% / 0.40)" }}>/100</span>{" "}
-        <span className="font-heading" style={{ color: "hsl(36 42% 40%)" }}>XP</span>
+      <span className="text-sm font-body tabular-nums shrink-0 font-bold" style={{ color: "hsl(var(--brand-plum) / 0.8)" }}>
+        {xpInLevel}<span style={{ color: "hsl(var(--brand-plum) / 0.4)" }}>/100</span>{" "}
+        <span className="font-heading" style={{ color: "hsl(var(--brand-gold))" }}>XP</span>
       </span>
     </div>
   );

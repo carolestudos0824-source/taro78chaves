@@ -187,8 +187,8 @@ const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, comple
 
   return (
     <div className="mb-5">
-      <p className="t-section-title text-center mb-3" style={{ color: "hsl(340 42% 28% / 0.50)" }}>
-        Continue sua jornada
+      <p className="t-section-title text-center mb-3 font-bold" style={{ color: "hsl(var(--brand-plum) / 0.6)" }}>
+        Próximos Passos
       </p>
       <div className="space-y-2">
         {topActions.map((action) => {
@@ -200,25 +200,25 @@ const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, comple
               className="w-full group transition-all duration-300 hover:scale-[1.01]"
             >
               <div className="rounded-xl p-3.5 flex items-center gap-3" style={{
-                background: "linear-gradient(145deg, hsl(38 28% 93% / 0.90), hsl(36 33% 95% / 0.85))",
-                border: "1px solid hsl(340 42% 28% / 0.15)",
-                boxShadow: "0 2px 10px hsl(340 42% 28% / 0.04)",
+                background: "linear-gradient(145deg, hsl(var(--brand-ivory)), hsl(var(--brand-rose) / 0.5))",
+                border: "1px solid hsl(var(--brand-gold) / 0.2)",
+                boxShadow: "0 4px 15px hsl(var(--brand-plum) / 0.05)",
               }}>
                 <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style={{
-                  background: "hsl(340 42% 28% / 0.06)",
-                  border: "1px solid hsl(340 42% 28% / 0.15)",
+                  background: "hsl(var(--brand-plum) / 0.05)",
+                  border: "1px solid hsl(var(--brand-plum) / 0.15)",
                 }}>
-                  <Icon className="w-4 h-4" style={{ color: "hsl(340 42% 26%)" }} />
+                  <Icon className="w-4 h-4" style={{ color: "hsl(var(--brand-plum))" }} />
                 </div>
                 <div className="flex-1 text-left min-w-0">
-                  <h4 className="t-card-title truncate" style={{ color: "hsl(340 42% 22%)" }}>
+                  <h4 className="font-heading text-sm font-bold tracking-tight" style={{ color: "hsl(var(--brand-plum))" }}>
                     {action.label}
                   </h4>
-                  <p className="t-card-subtitle" style={{ color: "hsl(230 15% 30% / 0.45)" }}>
+                  <p className="text-[11px] font-body" style={{ color: "hsl(var(--brand-plum) / 0.6)" }}>
                     {action.subtitle}
                   </p>
                 </div>
-                <ArrowRight className="w-3.5 h-3.5 shrink-0 group-hover:translate-x-1 transition-transform" style={{ color: "hsl(340 42% 28% / 0.30)" }} />
+                <ArrowRight className="w-3.5 h-3.5 shrink-0 group-hover:translate-x-1 transition-transform" style={{ color: "hsl(var(--brand-plum) / 0.4)" }} />
               </div>
             </button>
           );
