@@ -1,8 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 import { getArcanoVivoConfig, type ArcanoVivoConfig, type SymbolSpotlight } from "@/config/arcano-vivo";
-import { getArcanoVideoSrc } from "@/config/arcano-videos";
-import { ArcanoVivoVideo } from "@/components/arcano-vivo/ArcanoVivoVideo";
+import { ArcanoVivoAnimatedCard } from "@/components/arcano-vivo/ArcanoVivoAnimatedCard";
 
 interface ArcanoVivoIntroProps {
   arcanoId: number;
