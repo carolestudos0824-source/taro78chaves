@@ -22,6 +22,8 @@ import imgLouco from "@/assets/arcano-0-louco.jpg";
 import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
 import imgEstrela from "@/assets/arcano-17-estrela.jpg";
 import ornamentDivider from "@/assets/ornament-divider.png";
+import brandIcon from "@/assets/brand-icon.png";
+import brandLogo from "@/assets/brand-logo.png";
 
 const CATEGORY_LABELS: Record<ModuleCategory, string> = {
   "foundation": "Fundação",
