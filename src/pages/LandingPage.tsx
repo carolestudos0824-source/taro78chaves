@@ -322,8 +322,6 @@ const LandingPage = () => {
                   </span>
                 </div>
               </div>
-                <p className="text-[10px] md:text-[11px] font-heading tracking-widest uppercase text-midnight font-bold transition-colors group-hover:text-plum bg-white/50 px-2 py-0.5 rounded-full">{card.name}</p>
-              </div>
             ))}
             <div className="flex-shrink-0 w-20 flex items-center justify-center h-52 md:h-60 opacity-20">
                <span className="font-heading text-4xl tracking-tighter">...</span>
