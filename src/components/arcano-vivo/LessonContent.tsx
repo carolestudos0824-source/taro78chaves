@@ -65,7 +65,12 @@ export function LessonContent({
   };
 
   return (
-    <div className="space-y-6 pb-8" style={{ animation: "fade-up 0.5s ease-out" }}>
+    <motion.div 
+      className="space-y-6 pb-8"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
