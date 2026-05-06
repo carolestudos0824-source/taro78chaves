@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useInstallPrompt } from "@/hooks/use-install-prompt";
+import { trackEvent, appendUTMsToUrl } from "@/lib/analytics";
 import {
   Dialog,
   DialogContent,
@@ -33,12 +34,14 @@ const LandingPage = () => {
   const { isInstallable, handleInstallClick } = useInstallPrompt();
   const [showInstallModal, setShowInstallModal] = useState(false);
   
-  const handleStart = () => {
-    if (user) navigate("/app");
-    else navigate("/auth");
+  const handleStart = (ctaType: string = "general") => {
+    trackEvent(`click_start_free_${ctaType}`);
+    const dest = user ? "/app" : "/auth";
+    navigate(appendUTMsToUrl(dest));
   };
 
   const onInstallClick = async () => {
+    trackEvent("click_pwa_install_instruction");
     if (isInstallable) {
       const result = await handleInstallClick();
       if (!result) {
@@ -50,8 +53,9 @@ const LandingPage = () => {
   };
 
   const handleSubscribe = (plan: "monthly" | "annual") => {
-    if (user) navigate("/premium");
-    else navigate(`/auth?redirect=/premium&plan=${plan}`);
+    trackEvent(`click_${plan}_plan`);
+    if (user) navigate(appendUTMsToUrl("/premium"));
+    else navigate(appendUTMsToUrl(`/auth?redirect=/premium&plan=${plan}`));
   };
 
   return (
@@ -78,7 +82,7 @@ const LandingPage = () => {
             </div>
           </a>
           <button
-            onClick={handleStart}
+            onClick={() => handleStart("header")}
             className="inline-flex items-center font-heading text-xs tracking-[0.2em] uppercase text-plum hover:text-gold-dark transition-all hover:translate-x-1 font-bold"
           >
             Entrar →
@@ -153,7 +157,7 @@ const LandingPage = () => {
 
               <div className="flex flex-col items-center lg:items-start gap-2 pt-1 md:pt-2">
                 <Button 
-                  onClick={handleStart} 
+                  onClick={() => handleStart("hero")}
                   className="w-full sm:w-auto min-h-[56px] md:min-h-[64px] px-8 md:px-10 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-sm md:text-base tracking-[0.25em] uppercase border-none shadow-[0_15px_40px_-10px_rgba(91,31,61,0.6)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-4 group/btn"
                 >
                   <Key className="w-5 h-5 group-hover/btn:rotate-12 transition-transform text-gold" />
@@ -163,7 +167,10 @@ const LandingPage = () => {
                   <p className="text-[10px] md:text-[12px] font-heading tracking-[0.15em] text-plum font-extrabold uppercase drop-shadow-sm">
                     ✦ Sem cartão de crédito para começar.
                   </p>
-                  <button onClick={() => document.getElementById('journey-map')?.scrollIntoView({ behavior: 'smooth' })} className="text-[9px] md:text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark hover:text-plum underline underline-offset-4 transition-colors font-extrabold">
+                  <button onClick={() => {
+                    trackEvent("click_how_it_works");
+                    document.getElementById('journey-map')?.scrollIntoView({ behavior: 'smooth' });
+                  }} className="text-[9px] md:text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark hover:text-plum underline underline-offset-4 transition-colors font-extrabold">
                     Ver como funciona
                   </button>
                 </div>
@@ -298,7 +305,7 @@ const LandingPage = () => {
               Comece pelo Louco grátis. Vá bem na lição e <span className="text-gold-dark font-bold">desbloqueie O Mago</span>. Depois, continue sua jornada completa pelos 78 arcanos.
             </p>
             <Button 
-              onClick={handleStart} 
+              onClick={() => handleStart("journey")} 
               variant="outline"
               className="px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-widest text-[11px] uppercase transition-all shadow-sm"
             >
@@ -371,7 +378,7 @@ const LandingPage = () => {
               Depois de experimentar o método, continue sua jornada pelos 78 arcanos.
             </p>
             <Button 
-              onClick={handleStart} 
+              onClick={() => handleStart("unlock")} 
               variant="outline"
               className="px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-widest text-[11px] uppercase transition-all"
             >
@@ -515,7 +522,7 @@ const LandingPage = () => {
               </div>
             </div>
 
-            <Button onClick={handleStart} variant="link" className="text-[#5B1F3D] font-heading tracking-widest text-xs uppercase hover:no-underline hover:opacity-70 transition-all">
+            <Button onClick={() => handleStart("pricing")} variant="link" className="text-[#5B1F3D] font-heading tracking-widest text-xs uppercase hover:no-underline hover:opacity-70 transition-all">
               COMEÇAR PELO LOUCO — GRÁTIS →
             </Button>
           </div>
@@ -650,10 +657,10 @@ const LandingPage = () => {
         </div>
 
         <nav className="flex flex-wrap justify-center gap-8 md:gap-12 text-[12px] font-heading tracking-[0.2em] uppercase relative z-10">
-          <a href="/privacidade" className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Privacidade</a>
-          <a href="/termos" className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Termos</a>
-          <a href="/suporte" className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Suporte</a>
-          <a href="/excluir-conta" className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Excluir conta</a>
+          <a href="/privacidade" onClick={() => trackEvent("click_footer_legal", { type: "privacidade" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Privacidade</a>
+          <a href="/termos" onClick={() => trackEvent("click_footer_legal", { type: "termos" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Termos</a>
+          <a href="/suporte" onClick={() => trackEvent("click_footer_legal", { type: "suporte" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Suporte</a>
+          <a href="/excluir-conta" onClick={() => trackEvent("click_footer_legal", { type: "excluir-conta" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Excluir conta</a>
         </nav>
 
         <div className="pt-8 border-t border-gold/10 max-w-xs mx-auto relative z-10">

@@ -1,6 +1,6 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,6 +10,7 @@ import BetaBadge from "@/components/BetaBadge";
 import BetaFeedback from "@/components/BetaFeedback";
 import BottomNav from "@/components/BottomNav";
 import SessionInitializer from "@/components/SessionInitializer";
+import { initGA, trackPageView, useUTMTracker } from "@/lib/analytics";
 
 // Eager: critical path
 import LandingPage from "./pages/LandingPage.tsx";
@@ -127,27 +128,30 @@ const P = ({ children }: { children: React.ReactNode }) => (
   <ProtectedRoute>{children}</ProtectedRoute>
 );
 
+const AnalyticsTracker = () => {
+  const location = useLocation();
+  useUTMTracker();
+
+  useEffect(() => {
+    initGA();
+  }, []);
+
+  useEffect(() => {
+    trackPageView(location.pathname + location.search);
+  }, [location]);
+
+  return null;
+};
+
 const AppRoutes = () => (
   <Suspense fallback={<LoadingFallback />}>
+    <AnalyticsTracker />
     <Routes>
       {/* ═══ Auth & public standalone (no BottomNav, no BetaBadge/Feedback) ═══ */}
       <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
       <Route path="/reset-password" element={<ResetPasswordPage />} />
-
-      {/* ═══ Public marketing pages (no BottomNav) ═══ */}
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/convite" element={<BetaInvitePage />} />
-      <Route path="/waitlist" element={<WaitlistPage />} />
-      <Route path="/apresentacao" element={<PresentationPage />} />
-
-      {/* ═══ Legal / compliance (public, no auth) ═══ */}
-      <Route path="/privacidade" element={<PrivacyPage />} />
-      <Route path="/termos" element={<TermsPage />} />
-      <Route path="/suporte" element={<SupportPage />} />
-      <Route path="/excluir-conta" element={<DeleteAccountPage />} />
-
-      {/* ═══ App routes (with BottomNav + Beta overlays) ═══ */}
-      <Route path="/*" element={<AppShell />} />
+...
+      <Route path="*" element={<NotFound />} />
     </Routes>
   </Suspense>
 );
