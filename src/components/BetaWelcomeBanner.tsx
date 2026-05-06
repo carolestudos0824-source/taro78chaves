@@ -47,7 +47,7 @@ const BetaWelcomeBanner = () => {
         </div>
  
         <div className="flex-1 min-w-0">
-          <p className="text-[9px] font-heading tracking-[0.3em] uppercase mb-1 font-bold" style={{ color: "hsl(var(--brand-plum) / 0.5)" }}>
+          <p className="text-[11px] font-heading tracking-[0.3em] uppercase mb-1.5 font-black" style={{ color: "hsl(var(--brand-plum))" }}>
             ✦ Boas-vindas à Beta
           </p>
           <h3 className="font-heading text-base font-bold tracking-wide mb-1.5" style={{
@@ -55,13 +55,13 @@ const BetaWelcomeBanner = () => {
           }}>
             Você é uma das primeiras.
           </h3>
-          <p className="font-body text-[12px] leading-relaxed mb-3" style={{ color: "hsl(var(--brand-plum) / 0.7)" }}>
-            Sua jornada começa pelos <strong style={{ color: "hsl(var(--brand-plum))" }}>Fundamentos do Tarô</strong> — é a porta de entrada para tudo o que vem depois. De lá, os arcanos se revelam um a um.
+          <p className="font-body text-[13px] font-semibold leading-relaxed mb-4" style={{ color: "hsl(var(--brand-plum))" }}>
+            Sua jornada começa pelos <strong className="font-black" style={{ color: "hsl(var(--brand-plum))" }}>Fundamentos do Tarô</strong> — é a porta de entrada para tudo o que vem depois. De lá, os arcanos se revelam um a um.
           </p>
 
           <button
             onClick={() => { dismiss(); navigate("/module/fundamentos"); }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-heading text-[10px] tracking-[0.15em] uppercase transition-all hover:scale-105"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-heading text-[11px] tracking-[0.2em] uppercase transition-all hover:scale-105 active:scale-95 font-black"
             style={{
               background: "hsl(var(--brand-plum))",
               color: "hsl(var(--brand-ivory))",

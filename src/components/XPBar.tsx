@@ -19,8 +19,8 @@ export function XPBar({ xp, level }: XPBarProps) {
           <Sparkles className="w-5 h-5" style={{ color: "#5B1F3D", fill: "#5B1F3D1A" }} />
         </div>
         <div className="flex flex-col">
-          <span className="text-[10px] tracking-widest uppercase leading-none font-heading font-black" style={{
-            color: "#5B1F3D80"
+          <span className="text-[11px] tracking-widest uppercase leading-none font-heading font-black" style={{
+            color: "#5B1F3D"
           }}>Nível</span>
           <span className="text-xl font-heading tracking-tight leading-tight font-black" style={{
             color: "#5B1F3D"
@@ -53,10 +53,10 @@ export function XPBar({ xp, level }: XPBarProps) {
       </div>
       <div className="flex flex-col items-end tabular-nums">
         <div className="flex items-baseline gap-0.5">
-          <span className="text-sm font-black text-[#5B1F3D]">{xpInLevel}</span>
-          <span className="text-[10px] font-bold text-[#5B1F3D]/40">/100</span>
+          <span className="text-base font-black text-[#5B1F3D]">{xpInLevel}</span>
+          <span className="text-[11px] font-black text-[#5B1F3D]/60">/100</span>
         </div>
-        <span className="text-[9px] font-heading font-black tracking-widest text-[#C8A66A] uppercase leading-none">XP</span>
+        <span className="text-[11px] font-heading font-black tracking-[0.2em] text-[#C8A66A] uppercase leading-none">XP</span>
       </div>
     </div>
   );
