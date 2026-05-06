@@ -183,7 +183,31 @@ const ARCANO_CONFIGS: Record<number, Partial<ArcanoVivoConfig>> = {
       { x: 15, y: 40, width: 70, height: 45, angle: 0 }, // manto azul
     ],
   },
-};
+  
+  // ─── O DIABO (15) ───
+  // Energia densa, magnética, sombras. Correntes, fogo, sombra.
+  15: {
+    glowColor: "333 50% 24%", // Plum profundo
+    ambientColor: "0 60% 15%", // Vermelho sombrio
+    breatheSpeed: 5,
+    particles: ["⛓", "🔥", "·", "⬫"],
+    awakenDelay: 1000,
+    shimmerDelay: 2500,
+    voiceStyle: "mystical",
+    atmosphere: [
+      "hsl(333 50% 15% / 0.12)",
+      "hsl(0 60% 10% / 0.08)",
+      "transparent",
+    ],
+    intensity: "moderate",
+    energyFlow: "downward",
+    gazePosition: { x: 48, y: 22 },
+    symbolSpotlights: [
+      { x: 48, y: 15, size: 45, color: "0 70% 40%", delay: 0, label: "Tocha invertida — fogo da paixão material", duration: 6 },
+      { x: 48, y: 35, size: 50, color: "333 40% 20%", delay: 800, label: "O Diabo — o magnetismo das sombras", duration: 7 },
+      { x: 48, y: 75, size: 40, color: "0 0% 20%", delay: 1600, label: "Correntes largas — o apego voluntário", duration: 6 },
+    ],
+  },
 
 export function getArcanoVivoConfig(arcanoId: number): ArcanoVivoConfig {
   const specific = ARCANO_CONFIGS[arcanoId] || {};
