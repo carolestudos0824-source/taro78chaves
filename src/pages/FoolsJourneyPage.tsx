@@ -35,7 +35,7 @@ const FoolsJourneyPage = () => {
   const { meta, fases, arcanos } = journey;
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
       {/* Background */}
       <div className="fixed inset-0 z-0">
         <img src={mysticBg} alt="" className="w-full h-full object-cover" width={1920} height={1080} />
