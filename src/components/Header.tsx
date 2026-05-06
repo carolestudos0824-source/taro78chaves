@@ -14,20 +14,23 @@ interface HeaderProps {
 export const Header = ({ streak, xp, level }: HeaderProps) => {
   const navigate = useNavigate();
   const [isCompact, setIsCompact] = useState(false);
+  const isCompactRef = useRef(false);
 
   useEffect(() => {
     let ticking = false;
-    const threshold = 40;
-    const hysteresis = 20;
+    const threshold = 60;
+    const hysteresis = 30;
 
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const currentScroll = window.scrollY;
           
-          if (!isCompact && currentScroll > threshold) {
+          if (!isCompactRef.current && currentScroll > threshold) {
+            isCompactRef.current = true;
             setIsCompact(true);
-          } else if (isCompact && currentScroll < (threshold - hysteresis)) {
+          } else if (isCompactRef.current && currentScroll < (threshold - hysteresis)) {
+            isCompactRef.current = false;
             setIsCompact(false);
           }
           ticking = false;
@@ -38,17 +41,17 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isCompact]);
+  }, []);
 
   return (
     <header 
       className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-xl border-b-2 border-[#C8A66A]/20 shadow-lg transition-shadow duration-300"
     >
-      <div className={`container max-w-lg px-6 transition-all duration-500 ease-in-out ${isCompact ? "py-2 md:py-3" : "py-3 md:py-6"}`}>
+      <div className="container max-w-lg px-6 py-3 md:py-6 relative">
         <div className={`flex items-center justify-between transition-all duration-500 ease-in-out ${isCompact ? "mb-1" : "mb-4 md:mb-6"}`}>
           <div className="flex items-center gap-3 md:gap-6">
-            <div className={`flex items-center justify-center shrink-0 p-1.5 bg-white rounded-2xl shadow-xl border border-[#C8A66A]/30 transition-all duration-500 ease-in-out ${
-              isCompact ? "w-11 h-11" : "w-14 h-14 md:w-20 md:h-20"
+            <div className={`flex items-center justify-center shrink-0 p-1.5 bg-white rounded-2xl shadow-xl border border-[#C8A66A]/30 transition-all duration-500 ease-in-out transform ${
+              isCompact ? "w-11 h-11 scale-90" : "w-14 h-14 md:w-20 md:h-20 scale-100"
             }`}>
               <img 
                 src={brandIcon} 
