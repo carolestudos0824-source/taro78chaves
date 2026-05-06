@@ -223,9 +223,9 @@ const SlideProblem = () => (
 const SlideSolution = () => (
   <div>
     <SlideTitle
-      kicker="A Solução"
-      title="Uma plataforma completa de formação em tarô"
-      subtitle="A Jornada do Louco reúne o que estava disperso: tradição, método, beleza e prática — em um só lugar."
+      kicker="O Diferencial"
+      title="Não é um app de tiragem automática"
+      subtitle="O Tarô 78 Chaves é uma escola viva no seu bolso, focada no domínio real dos 78 arcanos."
     />
     <div className="grid md:grid-cols-3 gap-4 max-w-2xl mx-auto">
       {[
