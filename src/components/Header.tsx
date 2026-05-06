@@ -16,12 +16,29 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
   const [isCompact, setIsCompact] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+    const threshold = 40;
+    const hysteresis = 20;
+
     const handleScroll = () => {
-      setIsCompact(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScroll = window.scrollY;
+          
+          if (!isCompact && currentScroll > threshold) {
+            setIsCompact(true);
+          } else if (isCompact && currentScroll < (threshold - hysteresis)) {
+            setIsCompact(false);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isCompact]);
 
   return (
     <header 
