@@ -167,10 +167,18 @@ const LandingPage = () => {
                   <p className="text-[10px] md:text-[12px] font-heading tracking-[0.15em] text-plum font-extrabold uppercase drop-shadow-sm">
                     ✦ Sem cartão de crédito para começar.
                   </p>
-                  <button onClick={() => {
-                    trackEvent("click_how_it_works");
-                    document.getElementById('journey-map')?.scrollIntoView({ behavior: 'smooth' });
-                  }} className="text-[9px] md:text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark hover:text-plum underline underline-offset-4 transition-colors font-extrabold">
+                   <button 
+                    onClick={() => {
+                      trackEvent("click_how_it_works");
+                      const element = document.getElementById('como-funciona');
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      } else {
+                        window.location.hash = "#como-funciona";
+                      }
+                    }} 
+                    className="text-[9px] md:text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark hover:text-plum underline underline-offset-4 transition-colors font-extrabold cursor-pointer p-1"
+                  >
                     Ver como funciona
                   </button>
                 </div>
@@ -262,7 +270,7 @@ const LandingPage = () => {
       </section>
 
       {/* ─── Journey Map Section ─── */}
-      <section className="py-24 bg-white/30 border-y border-gold/10 relative overflow-hidden">
+      <section id="como-funciona" className="py-24 bg-white/30 border-y border-gold/10 relative overflow-hidden">
         <div className="absolute top-1/2 left-0 w-full h-px bg-gold/10 -translate-y-1/2 z-0" />
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
