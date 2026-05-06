@@ -113,9 +113,10 @@ const ModulesPage = () => {
           <SmartReviewCard />
           
           {progress.completedLessons.length === 0 && (
-            <div className="bg-gold/5 border border-gold/20 rounded-2xl p-4 text-center space-y-2">
-              <p className="text-[11px] font-medium text-gold-dark/80 italic">
-                ✦ Comece pelo Louco grátis. Vá bem e desbloqueie O Mago. Continue a jornada completa no Premium.
+            <div className="bg-plum/5 border border-plum/10 rounded-2xl p-4 text-center space-y-2">
+              <p className="text-[12px] font-medium text-plum/90 italic leading-relaxed">
+                ✦ Comece pelo Louco grátis. Vá bem e desbloqueie O Mago. <br/>
+                <span className="text-gold-dark font-bold">Continue a jornada completa no Premium.</span>
               </p>
             </div>
           )}
