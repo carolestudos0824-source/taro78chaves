@@ -299,7 +299,7 @@ const ModulesPage = () => {
           })}
         </div>
 
-        <div className="pt-16 pb-40 md:pb-52 flex justify-center opacity-30">
+        <div className="pt-20 pb-48 md:pb-64 flex justify-center opacity-30">
           ✦ ✦ ✦
         </div>
       </main>
