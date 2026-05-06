@@ -185,28 +185,28 @@ const ModulesPage = () => {
           {/* ─── Premium Conversion Card ─── */}
           <div 
             onClick={() => navigate("/premium")}
-            className="cursor-pointer bg-[#5B1F3D] border border-[#C8A66A]/40 rounded-3xl p-6 shadow-2xl relative overflow-hidden group transition-all hover:scale-[1.01] active:scale-[0.99]"
+            className="cursor-pointer bg-[#5B1F3D] border border-[#C8A66A]/40 rounded-3xl p-7 shadow-2xl relative overflow-hidden group transition-all hover:scale-[1.02] active:scale-[0.98] ring-1 ring-[#C8A66A]/20"
           >
-            <div className="absolute -top-12 -right-12 w-40 h-40 bg-[#C8A66A]/10 rounded-full blur-3xl group-hover:bg-[#C8A66A]/20 transition-colors" />
-            <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-[#FAF5EF]/5 rounded-full blur-2xl" />
+            <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#C8A66A]/20 rounded-full blur-3xl group-hover:bg-[#C8A66A]/30 transition-colors" />
+            <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-[#FAF5EF]/10 rounded-full blur-2xl" />
             
-            <div className="relative z-10 flex items-center gap-5">
-              <div className="w-14 h-14 rounded-2xl bg-[#C8A66A] flex items-center justify-center shrink-0 shadow-lg group-hover:rotate-12 transition-transform duration-500">
-                <KeyRound className="w-8 h-8 text-[#5B1F3D]" />
+            <div className="relative z-10 flex items-center gap-6">
+              <div className="w-16 h-16 rounded-2xl bg-[#C8A66A] flex items-center justify-center shrink-0 shadow-lg group-hover:rotate-12 transition-transform duration-500 border border-[#FAF5EF]/30">
+                <KeyRound className="w-9 h-9 text-[#5B1F3D]" />
               </div>
               <div className="flex-1">
-                <h3 className="font-heading text-lg font-bold text-[#FAF5EF] leading-tight mb-1">
+                <h3 className="font-heading text-xl font-bold text-[#FAF5EF] leading-tight mb-1.5">
                   Desbloqueie a Jornada Completa
                 </h3>
-                <p className="text-[12px] text-[#FAF5EF]/80 font-body font-medium leading-snug">
-                  Acesse os 78 arcanos, práticas guiadas, quizzes e o método completo.
+                <p className="text-[13px] text-[#FAF5EF]/90 font-body font-medium leading-snug">
+                  Acesse os 78 arcanos, práticas guiadas, quizzes e o método exclusivo.
                 </p>
               </div>
-              <ChevronRight className="w-6 h-6 text-[#C8A66A] opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+              <ChevronRight className="w-7 h-7 text-[#C8A66A] group-hover:translate-x-1.5 transition-all" />
             </div>
             
-            <div className="mt-5 flex items-center justify-center py-2.5 bg-[#C8A66A] rounded-xl font-heading text-[12px] font-bold text-[#5B1F3D] tracking-widest uppercase shadow-md group-hover:bg-[#DCCFC2] transition-colors">
-              Desbloquear Premium
+            <div className="mt-6 flex items-center justify-center py-3.5 bg-gradient-to-r from-[#C8A66A] to-[#DCCFC2] rounded-xl font-heading text-[13px] font-black text-[#5B1F3D] tracking-[0.2em] uppercase shadow-lg group-hover:brightness-110 transition-all border border-white/20">
+              Desbloquear Premium Agora
             </div>
           </div>
         </div>
