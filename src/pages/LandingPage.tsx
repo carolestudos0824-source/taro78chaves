@@ -133,34 +133,9 @@ const LandingPage = () => {
                   Aprenda Tarô como uma jornada.
                 </h1>
                 <p className="font-heading text-lg md:text-xl lg:text-2xl text-gold-dark font-medium italic opacity-90">
-                  Arcano por arcano, com lições curtas, quizzes, XP e progresso real.
-                </p>
-              </div>
-
-              <div className="space-y-4 md:space-y-5 max-w-2xl mx-auto lg:mx-0">
-                <div className="space-y-2 md:space-y-3">
-                  <p className="text-base md:text-lg lg:text-xl font-body text-foreground leading-relaxed">
-                    Não é um app de tiragem automática. É uma escola viva de Tarô no seu bolso.
-                  </p>
-                  <div className="bg-gold/10 border-l-4 border-gold/60 p-2 md:p-3 rounded-r-xl">
-                    <p className="text-xs md:text-sm lg:text-base font-body text-midnight font-bold">
-                      ✦ Estude os 78 arcanos com uma trilha progressiva, fiel ao Rider-Waite-Smith e pensada para criar prática, continuidade e domínio simbólico.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6 text-[11px] md:text-[12px] font-heading tracking-widest uppercase text-plum font-bold">
-                  <div className="flex items-center gap-2 group">
-                    <div className="w-6 h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
-                      <Star className="w-3 h-3 text-gold-dark" />
-                    </div>
-                    <span>Uma carta por vez</span>
-                  </div>
-                  <div className="flex items-center gap-2 group">
-                    <div className="w-6 h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
-                      <Zap className="w-3 h-3 text-gold-dark" />
-                    </div>
-                    <span>Quizzes e XP</span>
+                  Arcano por arcano, com lições curtas, quizzes, Pontos de Jornada e progresso real.
+...
+                    <span>Quizzes e Pontos de Jornada</span>
                   </div>
                   <div className="flex items-center gap-2 group">
                     <div className="w-6 h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
