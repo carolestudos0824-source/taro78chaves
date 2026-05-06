@@ -172,7 +172,7 @@ const ModulesPage = () => {
                         <div className="flex items-center gap-5 relative z-10">
                           {/* Icon Circle */}
                           <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 border-2 transition-colors ${
-                            isCurrent ? "bg-gold/10 border-gold/40 text-gold-dark" : "bg-white/50 border-gold/10 text-muted-foreground"
+                            isCurrent ? "bg-gold/10 border-gold/40 text-gold-dark" : unlocked ? "bg-white border-gold/10 text-plum/60" : "bg-white/30 border-gold/5 text-plum/30"
                           }`}>
                             {isCompleted ? <Check className="w-5 h-5 text-success" /> : unlocked ? <span className="text-base">{mod.icon}</span> : <Lock className="w-4 h-4" />}
                           </div>
