@@ -187,8 +187,8 @@ const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, comple
 
   return (
     <div className="mb-5">
-      <p className="t-section-title text-center mb-3" style={{ color: "hsl(340 42% 28% / 0.50)" }}>
-        Continue sua jornada
+      <p className="t-section-title text-center mb-3 font-bold" style={{ color: "hsl(var(--brand-plum) / 0.6)" }}>
+        Próximos Passos
       </p>
       <div className="space-y-2">
         {topActions.map((action) => {
