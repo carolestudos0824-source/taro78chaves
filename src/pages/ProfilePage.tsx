@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { ArrowLeft, Flame, Star, Trophy, Book, ChevronRight, Sparkles, Crown, LogOut, Type, MessageSquare, Shield } from "lucide-react";
+import { ArrowLeft, Flame, Star, Trophy, Book, ChevronRight, KeyRound, LogOut, Type, MessageSquare, Shield, UserRound, Sparkles } from "lucide-react";
 import { useIsAdmin } from "@/hooks/use-admin";
 import { useProgress } from "@/hooks/use-progress";
 import { usePremium } from "@/hooks/use-premium";
 import { useAuth } from "@/hooks/use-auth";
 import { useFontSize } from "@/contexts/font-size-context";
-import { ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull as getArcanoById } from "@/lib/content";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
@@ -26,19 +25,14 @@ const ProfilePage = () => {
   const { signOut } = useAuth();
   const [portalLoading, setPortalLoading] = useState(false);
 
-  // Regra segura: só é Stripe Recurring se tiver o ID do cliente e o source for store_monthly ou store_annual (recorrentes)
   const isStripeRecurring = isPremium && !!stripeCustomerId && ["store_monthly", "store_annual"].includes(premiumSource || "");
   const isOneTimeAnnual = premiumSource === "store_annual_one_time";
 
   useEffect(() => {
     if (searchParams.get("checkout") === "success") {
-      toast.success("Acesso premium ativado com sucesso!");
-      
-      // Track success only once per mount
+      toast.success("As chaves da jornada completa foram ativadas!");
       trackEvent("checkout_success_return", {
         source: "stripe",
-        checkout_status: "success",
-        premium_source: premiumSource,
         is_premium: isPremium,
         plan: premiumSource?.includes("monthly") ? "monthly" : (premiumSource?.includes("annual") ? "yearly" : "unknown")
       });
@@ -47,7 +41,7 @@ const ProfilePage = () => {
 
   const handleOpenPortal = async () => {
     if (!stripeCustomerId) {
-      toast.error("Seu acesso não é gerenciado via Stripe. Fale com o suporte.");
+      toast.error("Acesso não gerenciado via portal automático. Fale com o Oráculo.");
       return;
     }
 
@@ -55,7 +49,7 @@ const ProfilePage = () => {
     try {
       const { data, error } = await supabase.functions.invoke("stripe-customer-portal", { body: {} });
       if (error || !data?.url) {
-        toast.error("Erro ao acessar o portal de pagamentos.");
+        toast.error("Erro ao acessar o portal de assinaturas.");
         return;
       }
       window.location.href = data.url;
@@ -66,135 +60,115 @@ const ProfilePage = () => {
     }
   };
 
-
-  const earnedBadges = progress.badges.filter(b => b.earned);
   const untilFormatted = premiumUntil ? new Date(premiumUntil).toLocaleDateString("pt-BR") : null;
 
   return (
-    <div className="min-h-screen pb-bottom-nav">
-      {/* ─── Hero Header ─── */}
-      <header className="relative pt-12 pb-24 px-6 overflow-hidden bg-white/30">
+    <div className="min-h-screen bg-[#FAF5EF] pb-32">
+      <header className="relative pt-12 pb-24 px-6 overflow-hidden bg-white/40 border-b border-[#C8A66A]/20">
         <div className="absolute inset-0 z-0 pointer-events-none opacity-10">
-          <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-gold/40 blur-[100px] rounded-full" />
+          <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-[#C8A66A]/40 blur-[100px] rounded-full" />
         </div>
 
         <div className="max-w-lg mx-auto relative z-10 flex flex-col items-center space-y-6">
-          <div className="relative group">
-            <div className="w-24 h-24 rounded-full flex items-center justify-center bg-white border-2 border-gold/40 shadow-2xl relative z-10 overflow-hidden">
-              <span className="font-heading text-4xl text-gold-dark">{LEVEL_TITLES[progress.level]?.charAt(0)}</span>
+          <div className="relative">
+            <div className="w-28 h-28 rounded-full flex items-center justify-center bg-white border-4 border-[#C8A66A] shadow-2xl relative z-10 overflow-hidden ring-8 ring-[#C8A66A]/10">
+              <span className="font-heading text-5xl text-[#5B1F3D] font-black">{LEVEL_TITLES[progress.level]?.charAt(0)}</span>
             </div>
-            <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full flex items-center justify-center bg-secondary text-white text-[10px] font-heading border-2 border-white shadow-lg">
+            <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-full flex items-center justify-center bg-[#5B1F3D] text-white text-[12px] font-heading font-black border-2 border-white shadow-lg z-20">
               {progress.level}
             </div>
           </div>
 
-          <div className="text-center space-y-1">
-            <h1 className="font-heading text-3xl text-midnight tracking-tight">
+          <div className="text-center space-y-2">
+            <h1 className="font-heading text-3xl text-[#5B1F3D] font-black tracking-tight">
               {LEVEL_TITLES[progress.level] || "Iluminado"}
             </h1>
-            <p className="font-accent italic text-muted-foreground">Nível {progress.level} • {progress.xp} XP acumulados</p>
+            <p className="font-accent italic font-bold text-[#5B1F3D]/60 text-sm">
+              Nível {progress.level} • {progress.xp} XP conquistados
+            </p>
           </div>
 
-          {/* XP Tracker */}
-          <div className="w-full space-y-2">
-            <div className="flex justify-between text-[10px] font-heading tracking-widest uppercase opacity-40 px-1">
-              <span>Progresso</span>
+          <div className="w-full space-y-3 px-4">
+            <div className="flex justify-between text-[11px] font-heading font-black tracking-widest uppercase text-[#C8A66A]">
+              <span>Progresso na Travessia</span>
               <span>{progress.xp % 100}%</span>
             </div>
-            <div className="h-1.5 w-full bg-gold/10 rounded-full overflow-hidden">
-              <div className="h-full bg-gold rounded-full" style={{ width: `${progress.xp % 100}%` }} />
+            <div className="h-2.5 w-full bg-[#DCCFC2]/40 rounded-full overflow-hidden border border-[#DCCFC2]/20">
+              <div className="h-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] rounded-full shadow-[0_0_8px_rgba(200,166,106,0.5)]" style={{ width: `${progress.xp % 100}%` }} />
             </div>
           </div>
         </div>
       </header>
 
-      <main className="max-w-lg mx-auto px-6 -mt-12 relative z-20 space-y-6">
-        {/* ─── Stats Card ─── */}
+      <main className="max-w-lg mx-auto px-6 -mt-12 relative z-20 space-y-8">
         <div className="grid grid-cols-3 gap-4">
           {[
-            { label: "Sequência", val: progress.streak, icon: Flame, color: "text-orange-500" },
-            { label: "Arcanos", val: completedCount, icon: Star, color: "text-gold-dark" },
-            { label: "Badges", val: earnedBadges.length, icon: Trophy, color: "text-accent" },
+            { label: "Ritual", val: progress.streak, icon: Flame, color: "#5B1F3D" },
+            { label: "Portais", val: completedCount, icon: KeyRound, color: "#C8A66A" },
+            { label: "Insignias", val: progress.badges.filter(b => b.earned).length, icon: Sparkles, color: "#5B1F3D" },
           ].map(s => (
-            <div key={s.label} className="bg-white/80 backdrop-blur-xl border border-gold/20 p-4 rounded-2xl text-center shadow-sm">
-              <s.icon className={`w-4 h-4 mx-auto mb-2 opacity-60 ${s.color}`} />
-              <div className="font-heading text-lg text-midnight">{s.val}</div>
-              <div className="text-[9px] font-heading tracking-widest uppercase opacity-40">{s.label}</div>
+            <div key={s.label} className="bg-white border-2 border-[#DCCFC2]/30 p-5 rounded-[1.5rem] text-center shadow-lg transform transition-transform hover:scale-[1.02]">
+              <div className="w-8 h-8 mx-auto mb-2 bg-[#FAF5EF] rounded-lg flex items-center justify-center">
+                <s.icon className="w-4 h-4" style={{ color: s.color }} />
+              </div>
+              <div className="font-heading text-xl font-black text-[#5B1F3D]">{s.val}</div>
+              <div className="text-[9px] font-heading font-black tracking-widest uppercase text-[#C8A66A]">{s.label}</div>
             </div>
           ))}
         </div>
 
-        {/* ─── Subscription Section ─── */}
-        <div className="bg-white/90 backdrop-blur-2xl border-2 border-gold/20 p-6 rounded-3xl space-y-6 shadow-xl shadow-gold/5">
+        <div className="bg-white border-4 border-[#C8A66A]/30 p-6 rounded-[2rem] space-y-6 shadow-xl ring-8 ring-[#C8A66A]/5">
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <p className="text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark">
-                  {isAdmin ? "Acesso administrativo" : "Seu Acesso"}
+                <p className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">
+                  {isAdmin ? "O Oráculo" : "Seu Acesso"}
                 </p>
-                {isPremium && <Crown className="w-3 h-3 text-gold" />}
+                {isPremium && <KeyRound className="w-3.5 h-3.5 text-[#C8A66A]" />}
               </div>
-              <h3 className="font-heading text-lg text-midnight">
-                {isAdmin ? "Admin Total" : (
-                  isOneTimeAnnual ? "Acesso Anual" : 
-                  (isPremium ? (premiumSource === "store_monthly" ? "Assinatura Mensal" : "Jornada Completa") : "Plano Gratuito")
+              <h3 className="font-heading text-xl font-black text-[#5B1F3D]">
+                {isAdmin ? "Acesso Total" : (
+                  isOneTimeAnnual ? "Jornada Anual" : 
+                  (isPremium ? (premiumSource === "store_monthly" ? "Assinatura Mensal" : "Jornada Completa") : "Plano do Louco")
                 )}
               </h3>
               {isPremium && untilFormatted && (
-                <div className="space-y-0.5">
-                  <p className="text-[10px] text-muted-foreground uppercase tracking-wider">
-                    {isStripeRecurring ? `Renovação automática: ${untilFormatted}` : (isOneTimeAnnual ? `Ativo até ${untilFormatted}` : "Acesso vitalício ou cortesia")}
-                  </p>
-                  {isOneTimeAnnual && (
-                    <p className="text-[9px] text-gold-dark/60 font-medium">Pagamento único • Sem renovação</p>
-                  )}
-                </div>
+                <p className="text-[10px] font-body font-bold italic text-[#5B1F3D]/60 uppercase tracking-widest">
+                  {isStripeRecurring ? `Renovação: ${untilFormatted}` : `Ativo até: ${untilFormatted}`}
+                </p>
               )}
             </div>
 
             {isAdmin ? (
-              <span className="text-[10px] font-heading tracking-widest uppercase text-accent font-bold">Admin</span>
+              <span className="text-[10px] font-heading font-black tracking-widest uppercase text-white bg-[#5B1F3D] px-3 py-1.5 rounded-lg border border-[#C8A66A]">Admin</span>
             ) : isPremium ? (
-              isStripeRecurring ? (
-                <Button 
+              isStripeRecurring && (
+                <button 
                   onClick={handleOpenPortal} 
                   disabled={portalLoading} 
-                  variant="outline" 
-                  className="btn-outline-gold px-6"
+                  className="font-heading text-[10px] font-black tracking-widest uppercase px-4 py-2 rounded-xl border-2 border-[#DCCFC2] text-[#5B1F3D] hover:bg-[#FAF5EF]"
                 >
                   Gerenciar
-                </Button>
-              ) : isOneTimeAnnual ? (
-                <div className="flex flex-col items-end gap-1">
-                  <span className="text-[10px] font-heading tracking-widest uppercase text-gold-dark/70">Ativo</span>
-                  <span className="text-[8px] text-muted-foreground opacity-50 italic">12 meses de acesso</span>
-                </div>
-              ) : (
-                <div className="flex flex-col items-end gap-1">
-                  <span className="text-[10px] font-heading tracking-widest uppercase text-gold-dark/70">Cortesia</span>
-                  <span className="text-[8px] text-muted-foreground opacity-50">Acesso liberado</span>
-                </div>
+                </button>
               )
             ) : (
-              <Button onClick={() => navigate("/premium")} className="btn-premium px-8">Upgrade</Button>
+              <button onClick={() => navigate("/premium")} className="bg-[#5B1F3D] text-white px-6 py-2.5 rounded-xl font-heading font-black text-[10px] tracking-widest uppercase border border-[#C8A66A]">Upgrade</button>
             )}
-
           </div>
         </div>
 
-        {/* ─── Reading Preferences ─── */}
-        <div className="bg-white/80 backdrop-blur-xl border border-gold/20 p-5 rounded-2xl space-y-4 shadow-sm">
-          <div className="flex items-center gap-3 mb-1">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gold/10">
-              <Type className="w-4 h-4 text-gold-dark" />
+        <div className="bg-white border-2 border-[#DCCFC2]/40 p-6 rounded-2xl space-y-5 shadow-md">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A]/20">
+              <Type className="w-5 h-5 text-[#5B1F3D]" />
             </div>
             <div className="flex-1">
-              <h4 className="font-heading text-sm text-midnight">Conforto de leitura</h4>
-              <p className="text-[10px] text-muted-foreground">Ajuste o tamanho dos textos</p>
+              <h4 className="font-heading text-base font-black text-[#5B1F3D]">Conforto de leitura</h4>
+              <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/50">Ajuste o tamanho dos portais de texto</p>
             </div>
           </div>
           
-          <div className="flex items-center justify-between gap-2 p-1 bg-gold/5 rounded-xl border border-gold/10">
+          <div className="flex items-center justify-between gap-3 p-1.5 bg-[#FAF5EF] rounded-2xl border-2 border-[#DCCFC2]/40">
             {[
               { id: "normal", label: "Compacto", icon: "A−" },
               { id: "large", label: "Padrão", icon: "A" },
@@ -203,56 +177,54 @@ const ProfilePage = () => {
               <button
                 key={size.id}
                 onClick={() => setFontSize(size.id as any)}
-                className={`flex-1 py-2 px-1 rounded-lg text-[10px] font-heading tracking-wider uppercase transition-all ${
+                className={`flex-1 py-3 px-1 rounded-xl text-[10px] font-heading font-black tracking-[0.15em] uppercase transition-all ${
                   fontSize === size.id 
-                    ? "bg-white text-gold-dark shadow-sm border border-gold/20" 
-                    : "text-muted-foreground/60 hover:text-gold-dark/60"
+                    ? "bg-[#5B1F3D] text-white shadow-md border-2 border-[#C8A66A]" 
+                    : "text-[#5B1F3D]/40 hover:text-[#5B1F3D]/60"
                 }`}
               >
-                <span className="block text-xs mb-0.5">{size.icon}</span>
+                <span className="block text-sm mb-0.5">{size.icon}</span>
                 {size.label}
               </button>
             ))}
           </div>
         </div>
 
-        {/* ─── Quick Actions ─── */}
-        <div className="space-y-3 pt-2">
-          <button onClick={() => navigate("/minha-jornada")} className="w-full flex items-center justify-between p-5 rounded-2xl bg-white/50 border border-gold/10 group active:scale-95 transition-transform">
+        <div className="space-y-3">
+          <button onClick={() => navigate("/minha-jornada")} className="w-full flex items-center justify-between p-6 rounded-2xl bg-white border-2 border-[#DCCFC2]/40 group active:scale-[0.98] transition-all shadow-md">
             <div className="flex items-center gap-4">
-              <Book className="w-5 h-5 text-gold-dark opacity-60" />
+              <Book className="w-6 h-6 text-[#C8A66A]" />
               <div className="text-left">
-                <p className="font-heading text-sm text-midnight">Caderno da Jornada</p>
-                <p className="text-[10px] text-muted-foreground italic">Suas reflexões pessoais</p>
+                <p className="font-heading text-base font-black text-[#5B1F3D]">Caderno da Jornada</p>
+                <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/50 leading-none">Suas reflexões rituais</p>
               </div>
             </div>
-            <ChevronRight className="w-4 h-4 opacity-20 group-hover:translate-x-1 transition-transform" />
+            <ChevronRight className="w-5 h-5 text-[#C8A66A] group-hover:translate-x-1 transition-transform" />
           </button>
 
           {isAdmin && (
-            <button onClick={() => navigate("/admin")} className="w-full flex items-center justify-between p-5 rounded-2xl bg-accent/5 border border-accent/20 group">
+            <button onClick={() => navigate("/admin")} className="w-full flex items-center justify-between p-6 rounded-2xl bg-[#5B1F3D] border-2 border-[#C8A66A] text-white group shadow-xl">
               <div className="flex items-center gap-4">
-                <Shield className="w-5 h-5 text-accent opacity-60" />
-                <p className="font-heading text-sm text-midnight">Painel Administrativo</p>
+                <Shield className="w-6 h-6 text-[#C8A66A]" />
+                <p className="font-heading text-base font-black tracking-tight">Painel Administrativo</p>
               </div>
-              <ChevronRight className="w-4 h-4 opacity-20" />
+              <ChevronRight className="w-5 h-5 text-[#C8A66A]" />
             </button>
           )}
         </div>
 
-        {/* ─── Danger Zone ─── */}
-        <div className="pt-10 flex flex-col items-center space-y-6">
-          <button onClick={signOut} className="flex items-center gap-2 text-[11px] font-heading tracking-widest uppercase opacity-40 hover:opacity-100 transition-opacity">
-            <LogOut className="w-3.5 h-3.5" />
-            Sair da Conta
+        <div className="pt-12 flex flex-col items-center space-y-8">
+          <button onClick={signOut} className="flex items-center gap-2 text-[11px] font-heading font-black tracking-[0.3em] uppercase text-[#5B1F3D]/40 hover:text-[#5B1F3D] transition-colors">
+            <LogOut className="w-4 h-4" />
+            Sair da conta
           </button>
           
-          <nav className="flex items-center gap-6 text-[10px] font-heading tracking-widest uppercase opacity-20">
-            <a href="/suporte">Suporte</a>
+          <nav className="flex items-center gap-8 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]/40">
+            <a href="/suporte" className="hover:text-[#C8A66A] transition-colors">Suporte</a>
             <span>•</span>
-            <a href="/termos">Termos</a>
+            <a href="/termos" className="hover:text-[#C8A66A] transition-colors">Termos</a>
             <span>•</span>
-            <a href="/excluir-conta">Excluir</a>
+            <a href="/excluir-conta" className="hover:text-[#C8A66A] transition-colors">Excluir</a>
           </nav>
         </div>
       </main>
