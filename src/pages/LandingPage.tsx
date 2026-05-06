@@ -34,14 +34,22 @@ const LandingPage = () => {
   const { isInstallable, handleInstallClick } = useInstallPrompt();
   const [showInstallModal, setShowInstallModal] = useState(false);
   
-  const handleStart = (ctaType: string = "general") => {
-    trackEvent(`click_start_free_${ctaType}`);
+  const handleStart = (ctaType: string = "general", label: string = "Começar pelo Louco — Grátis") => {
+    trackEvent(`landing_cta_${ctaType}_start_click`, {
+      cta_text: label,
+      source: "landing",
+      page_path: window.location.pathname,
+      page_location: window.location.href
+    });
     const dest = user ? "/app" : "/auth";
     navigate(appendUTMsToUrl(dest));
   };
 
   const onInstallClick = async () => {
-    trackEvent("click_pwa_install_instruction");
+    trackEvent("landing_pwa_install_click", {
+      source: "landing",
+      page_path: window.location.pathname
+    });
     if (isInstallable) {
       const result = await handleInstallClick();
       if (!result) {
@@ -53,7 +61,11 @@ const LandingPage = () => {
   };
 
   const handleSubscribe = (plan: "monthly" | "annual") => {
-    trackEvent(`click_${plan}_plan`);
+    trackEvent(`landing_checkout_${plan}_click`, {
+      plan,
+      source: "landing",
+      page_path: window.location.pathname
+    });
     if (user) navigate(appendUTMsToUrl("/premium"));
     else navigate(appendUTMsToUrl(`/auth?redirect=/premium&plan=${plan}`));
   };
@@ -82,7 +94,10 @@ const LandingPage = () => {
             </div>
           </a>
           <button
-            onClick={() => handleStart("header")}
+            onClick={() => {
+              trackEvent("landing_login_click", { source: "landing" });
+              handleStart("header", "Entrar");
+            }}
             className="inline-flex items-center font-heading text-xs tracking-[0.2em] uppercase text-plum hover:text-gold-dark transition-all hover:translate-x-1 font-bold"
           >
             Entrar →
@@ -169,7 +184,10 @@ const LandingPage = () => {
                   </p>
                    <button 
                     onClick={() => {
-                      trackEvent("click_how_it_works");
+                      trackEvent("landing_how_it_works_click", {
+                        source: "landing",
+                        page_path: window.location.pathname
+                      });
                       const element = document.getElementById('como-funciona');
                       if (element) {
                         element.scrollIntoView({ behavior: 'smooth' });
