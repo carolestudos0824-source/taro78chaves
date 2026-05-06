@@ -19,9 +19,9 @@ const BetaWelcomeBanner = () => {
     <div
       className="relative rounded-2xl p-5 mb-6 overflow-hidden"
       style={{
-        background: "linear-gradient(145deg, hsl(340 42% 28% / 0.06), hsl(36 45% 58% / 0.08), hsl(38 28% 93% / 0.95))",
-        border: "1.5px solid hsl(36 45% 58% / 0.25)",
-        boxShadow: "0 8px 32px hsl(340 42% 28% / 0.06), 0 0 60px hsl(36 45% 58% / 0.04)",
+        background: "linear-gradient(145deg, hsl(var(--brand-plum) / 0.04), hsl(var(--brand-gold) / 0.06), hsl(var(--brand-ivory)))",
+        border: "1.5px solid hsl(var(--brand-gold) / 0.25)",
+        boxShadow: "0 8px 32px hsl(var(--brand-plum) / 0.04), 0 0 60px hsl(var(--brand-gold) / 0.04)",
         animation: "fade-in 0.6s ease-out",
       }}
     >
