@@ -118,7 +118,7 @@ const ModulesPage = () => {
   };
 
   return (
-    <div className="min-h-screen pb-bottom-nav bg-ivory/30">
+    <div className="min-h-screen pb-bottom-nav bg-[#FAF5EF]">
       {/* ─── Persistent Header ─── */}
       <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-xl border-b border-[#C8A66A]/30 shadow-sm">
         <div className="container max-w-lg py-5 px-6">
