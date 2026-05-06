@@ -38,7 +38,11 @@ const ModulesPage = () => {
   const navigate = useNavigate();
   const { progress, loading: progressLoading, completeOnboarding } = useProgress();
   const { bypassLocks: originalBypassLocks } = useAccess();
-  const bypassLocks = true; // Force for visual audit
+  // Force bypassLocks to true ONLY for visual consistency in the preview if needed, 
+  // but the user wants to see "blocked" states too. 
+  // Let's use the real bypassLocks to see the actual logic.
+  const bypassLocks = originalBypassLocks; 
+
 
   if (progressLoading) {
     return (
@@ -74,13 +78,13 @@ const ModulesPage = () => {
   };
 
   return (
-    <div className="min-h-screen pb-bottom-nav">
+    <div className="min-h-screen pb-bottom-nav bg-ivory/30">
       {/* ─── Persistent Header ─── */}
-      <header className="sticky top-0 z-30 bg-background/80 backdrop-blur-xl border-b border-gold/10">
-        <div className="container max-w-lg py-4 px-6">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 flex items-center justify-center shrink-0">
+      <header className="sticky top-0 z-30 bg-background/95 backdrop-blur-xl border-b border-gold/20 shadow-sm">
+        <div className="container max-w-lg py-5 px-6">
+          <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 flex items-center justify-center shrink-0 p-0.5 bg-white rounded-xl shadow-inner border border-gold/10">
                 <img 
                   src={brandIcon} 
                   alt="Tarô 78 Chaves" 
@@ -88,18 +92,27 @@ const ModulesPage = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-heading text-[9px] tracking-[0.2em] uppercase text-gold-dark font-medium leading-none mb-1">
-                  A Jornada do Louco
-                </span>
-                <h1 className="font-heading text-lg text-plum font-bold tracking-tight leading-none">
+                <h1 className="font-heading text-xl text-plum font-bold tracking-tight leading-none mb-1.5">
                   Tarô 78 Chaves
                 </h1>
+                <div className="flex flex-col">
+                  <span className="font-heading text-[10px] tracking-[0.15em] uppercase text-gold-dark font-bold leading-none">
+                    Sua Jornada
+                  </span>
+                  <span className="text-[9px] font-body text-plum/50 mt-1 leading-none italic">
+                    Comece pelo Louco e avance pelos 78 arcanos.
+                  </span>
+                </div>
               </div>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5">
               <StreakCounter streak={progress.streak} />
-              <button onClick={() => navigate("/perfil")} className="w-10 h-10 rounded-full flex items-center justify-center bg-white/50 border border-gold/20 shadow-sm transition-transform active:scale-90">
-                <Key className="w-5 h-5 text-gold-dark" />
+              <button 
+                onClick={() => navigate("/perfil")} 
+                className="w-11 h-11 rounded-xl flex items-center justify-center bg-white border border-gold/20 shadow-sm transition-all hover:border-gold/40 active:scale-95 group"
+                title="Meu Perfil"
+              >
+                <Key className="w-5 h-5 text-gold-dark group-hover:rotate-12 transition-transform" />
               </button>
             </div>
           </div>
@@ -115,10 +128,11 @@ const ModulesPage = () => {
           <SmartReviewCard />
           
           {progress.completedLessons.length === 0 && (
-            <div className="bg-plum/5 border border-plum/10 rounded-2xl p-4 text-center space-y-2">
-              <p className="text-[12px] font-medium text-plum/90 italic leading-relaxed">
+            <div className="bg-plum/5 border border-plum/10 rounded-2xl p-4 text-center space-y-2 relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-1 h-full bg-gold/50" />
+              <p className="text-[12px] font-medium text-plum/90 italic leading-relaxed relative z-10">
                 ✦ Comece pelo Louco grátis. Vá bem e desbloqueie O Mago. <br/>
-                <span className="text-gold-dark font-bold">Continue a jornada completa no Premium.</span>
+                <span className="text-gold-dark font-bold not-italic">Continue a jornada completa no Premium.</span>
               </p>
             </div>
           )}
@@ -161,10 +175,10 @@ const ModulesPage = () => {
                         disabled={!unlocked}
                         className={`w-full text-left p-5 rounded-2xl border transition-all duration-300 relative group overflow-hidden ${
                           isCurrent 
-                            ? "bg-white border-gold shadow-xl shadow-gold/5 scale-[1.02]" 
+                            ? "bg-white border-gold shadow-xl shadow-gold/10 scale-[1.02] ring-1 ring-gold/20" 
                             : unlocked 
-                            ? "bg-white/60 border-gold/20 hover:bg-white active:scale-[0.98]" 
-                            : "bg-greige/20 border-gold/10 opacity-75 cursor-not-allowed"
+                            ? "bg-white/80 border-gold/30 hover:bg-white hover:border-gold/50 active:scale-[0.98] shadow-sm" 
+                            : "bg-greige/40 border-gold/10 opacity-80 cursor-not-allowed grayscale-[0.3]"
                         }`}
                       >
                         {isCurrent && (
@@ -173,8 +187,8 @@ const ModulesPage = () => {
                         
                         <div className="flex items-center gap-5 relative z-10">
                           {/* Icon Circle */}
-                          <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 border-2 transition-colors ${
-                            isCurrent ? "bg-gold/10 border-gold/40 text-gold-dark" : unlocked ? "bg-white border-gold/10 text-plum/60" : "bg-white/30 border-gold/5 text-plum/30"
+                          <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border-2 transition-all shadow-sm ${
+                            isCurrent ? "bg-gold/15 border-gold text-gold-dark scale-110" : unlocked ? "bg-white border-gold/20 text-plum" : "bg-white/40 border-gold/10 text-plum/30"
                           }`}>
                             {isCompleted ? <Check className="w-5 h-5 text-success" /> : unlocked ? <span className="text-base">{mod.icon}</span> : <Lock className="w-4 h-4" />}
                           </div>
@@ -182,28 +196,28 @@ const ModulesPage = () => {
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
                               <span className="t-kicker opacity-50">{mod.symbol}</span>
-                              <h3 className={`font-heading text-sm tracking-tight ${isCurrent ? "text-plum font-bold" : unlocked ? "text-plum/80 font-semibold" : "text-plum/40 font-medium"}`}>
+                              <h3 className={`font-heading text-[15px] tracking-tight ${isCurrent ? "text-plum font-bold" : unlocked ? "text-plum/90 font-bold" : "text-plum/40 font-semibold"}`}>
                                 {mod.name}
                               </h3>
                               {mod.id === "arcanos-maiores" && (
-                                <span className="text-[8px] font-heading tracking-widest uppercase px-1.5 py-0.5 rounded-full bg-gold/10 text-gold-dark border border-gold/20 ml-auto shrink-0 font-bold">
+                                <span className="text-[9px] font-heading tracking-widest uppercase px-2 py-0.5 rounded-lg bg-gold/20 text-gold-dark border border-gold/30 ml-auto shrink-0 font-bold shadow-sm">
                                   Lição Grátis
                                 </span>
                               )}
                               {!unlocked && !isCompleted && mod.id !== "arcanos-maiores" && (
-                                <span className="text-[8px] font-heading tracking-widest uppercase px-1.5 py-0.5 rounded-full bg-plum/5 text-plum/60 border border-plum/10 ml-auto shrink-0">
+                                <span className="text-[9px] font-heading tracking-widest uppercase px-2 py-0.5 rounded-lg bg-plum/10 text-plum border border-plum/20 ml-auto shrink-0 font-bold">
                                   Premium
                                 </span>
                               )}
                               {isCompleted && (
-                                <span className="text-[8px] font-heading tracking-widest uppercase px-1.5 py-0.5 rounded-full bg-success/10 text-success border border-success/10 ml-auto shrink-0 font-bold">
+                                <span className="text-[9px] font-heading tracking-widest uppercase px-2 py-0.5 rounded-lg bg-success/20 text-success border border-success/30 ml-auto shrink-0 font-bold shadow-sm">
                                   Concluído
                                 </span>
                               )}
                             </div>
-                            <p className={`text-[11px] font-body line-clamp-1 ${unlocked ? "text-plum/60" : "text-plum/30"}`}>
+                            <p className={`text-[11px] font-body line-clamp-1 leading-relaxed ${unlocked ? "text-plum/75 font-medium" : "text-plum/30 font-medium"}`}>
                               {mod.id === "arcanos-maiores" && progress.completedLessons.length === 0 
-                                ? "Comece pelo Louco gratuitamente e inicie sua jornada." 
+                                ? "Inicie sua jornada no portal sagrado." 
                                 : mod.subtitle}
                             </p>
                             
