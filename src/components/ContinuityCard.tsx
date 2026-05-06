@@ -211,14 +211,14 @@ const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, comple
                   <Icon className="w-4 h-4" style={{ color: "hsl(var(--brand-plum))" }} />
                 </div>
                 <div className="flex-1 text-left min-w-0">
-                  <h4 className="t-card-title truncate" style={{ color: "hsl(340 42% 22%)" }}>
+                  <h4 className="font-heading text-sm font-bold tracking-tight" style={{ color: "hsl(var(--brand-plum))" }}>
                     {action.label}
                   </h4>
-                  <p className="t-card-subtitle" style={{ color: "hsl(230 15% 30% / 0.45)" }}>
+                  <p className="text-[11px] font-body" style={{ color: "hsl(var(--brand-plum) / 0.6)" }}>
                     {action.subtitle}
                   </p>
                 </div>
-                <ArrowRight className="w-3.5 h-3.5 shrink-0 group-hover:translate-x-1 transition-transform" style={{ color: "hsl(340 42% 28% / 0.30)" }} />
+                <ArrowRight className="w-3.5 h-3.5 shrink-0 group-hover:translate-x-1 transition-transform" style={{ color: "hsl(var(--brand-plum) / 0.4)" }} />
               </div>
             </button>
           );
