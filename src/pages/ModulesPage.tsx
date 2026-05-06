@@ -20,7 +20,12 @@ import {
   Crown, 
   Layers, 
   Compass,
-  LockKeyhole
+  LockKeyhole,
+  GitBranch,
+  Layout,
+  PanelsTopLeft,
+  Target,
+  Briefcase
 } from "lucide-react";
 import { 
   MODULES_CATALOG as MODULES, 
@@ -65,13 +70,13 @@ const MODULE_ICON_MAP: Record<string, any> = {
   "espadas": Swords,
   "ouros": Gem,
   "cartas-corte": Crown,
-  "combinacoes": KeyRound,
-  "tiragens": Compass,
+  "combinacoes": GitBranch,
+  "tiragens": PanelsTopLeft,
   "espiritualidade": Moon,
-  "mesa-taro": Sun,
-  "leitura-aplicada": Compass,
+  "mesa-taro": Layout,
+  "leitura-aplicada": Target,
   "pratica": Sparkles,
-  "trabalhar-taro": Crown,
+  "trabalhar-taro": Briefcase,
 };
 
 const ModulesPage = () => {
@@ -111,11 +116,11 @@ const ModulesPage = () => {
   return (
     <div className="min-h-screen pb-bottom-nav bg-[#FAF5EF]">
       {/* ─── Persistent Header ─── */}
-      <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-xl border-b border-[#C8A66A]/30 shadow-sm">
-        <div className="container max-w-lg py-5 px-6">
-          <div className="flex items-center justify-between mb-5">
-            <div className="flex items-center gap-3">
-              <div className="w-14 h-14 flex items-center justify-center shrink-0 p-1 bg-white rounded-2xl shadow-sm border border-[#C8A66A]/20">
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-[#C8A66A]/30 shadow-md">
+        <div className="container max-w-lg py-4 px-6 md:py-6">
+          <div className="flex items-center justify-between mb-4 md:mb-6">
+            <div className="flex items-center gap-3 md:gap-4">
+              <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center shrink-0 p-1 bg-white rounded-2xl shadow-md border border-[#C8A66A]/30">
                 <img 
                   src={brandIcon} 
                   alt="Tarô 78 Chaves" 
@@ -123,27 +128,27 @@ const ModulesPage = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <h1 className="font-heading text-2xl text-[#5B1F3D] font-bold tracking-tight leading-none mb-1">
+                <h1 className="font-heading text-xl md:text-2xl text-[#5B1F3D] font-extrabold tracking-tight leading-none mb-1">
                   Tarô 78 Chaves
                 </h1>
                 <div className="flex flex-col">
-                  <span className="font-heading text-[11px] tracking-[0.2em] uppercase text-[#C8A66A] font-bold leading-none">
+                  <span className="font-heading text-[10px] md:text-[12px] tracking-[0.2em] uppercase text-[#C8A66A] font-black leading-none">
                     Sua Jornada
                   </span>
-                  <span className="text-[10px] font-body text-[#5B1F3D]/80 mt-1.5 leading-none font-medium italic">
+                  <span className="hidden xs:block text-[10px] md:text-[11px] font-body text-[#5B1F3D]/70 mt-1 md:mt-2 leading-none font-semibold italic">
                     Abra os portais dos 78 arcanos.
                   </span>
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2 md:gap-3">
               <StreakCounter streak={progress.streak} />
               <button 
                 onClick={() => navigate("/perfil")} 
-                className="w-11 h-11 rounded-xl flex items-center justify-center bg-white border border-[#C8A66A]/30 shadow-sm transition-all hover:border-[#C8A66A]/60 active:scale-95 group"
+                className="w-10 h-10 md:w-11 md:h-11 rounded-xl flex items-center justify-center bg-white border border-[#C8A66A]/30 shadow-sm transition-all hover:border-[#C8A66A]/60 active:scale-95 group"
                 title="Meu Perfil"
               >
-                <KeyRound className="w-5 h-5 text-[#C8A66A] group-hover:rotate-12 transition-transform" />
+                <KeyRound className="w-4 h-4 md:w-5 md:h-5 text-[#C8A66A] group-hover:rotate-12 transition-transform" />
               </button>
             </div>
           </div>
@@ -151,7 +156,7 @@ const ModulesPage = () => {
         </div>
       </header>
 
-      <main className="container max-w-lg px-6 py-8 space-y-10">
+      <main className="container max-w-lg px-6 pt-8 pb-20 md:pt-12 md:pb-24 space-y-10 md:space-y-12">
         <ProgressCelebration xp={progress.xp} level={progress.level} streak={progress.streak} completedLessons={progress.completedLessons.length} />
         
         <div className="space-y-6">
@@ -180,28 +185,28 @@ const ModulesPage = () => {
           {/* ─── Premium Conversion Card ─── */}
           <div 
             onClick={() => navigate("/premium")}
-            className="cursor-pointer bg-[#5B1F3D] border border-[#C8A66A]/40 rounded-3xl p-6 shadow-2xl relative overflow-hidden group transition-all hover:scale-[1.01] active:scale-[0.99]"
+            className="cursor-pointer bg-[#5B1F3D] border border-[#C8A66A]/40 rounded-3xl p-7 shadow-2xl relative overflow-hidden group transition-all hover:scale-[1.02] active:scale-[0.98] ring-1 ring-[#C8A66A]/20"
           >
-            <div className="absolute -top-12 -right-12 w-40 h-40 bg-[#C8A66A]/10 rounded-full blur-3xl group-hover:bg-[#C8A66A]/20 transition-colors" />
-            <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-[#FAF5EF]/5 rounded-full blur-2xl" />
+            <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#C8A66A]/20 rounded-full blur-3xl group-hover:bg-[#C8A66A]/30 transition-colors" />
+            <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-[#FAF5EF]/10 rounded-full blur-2xl" />
             
-            <div className="relative z-10 flex items-center gap-5">
-              <div className="w-14 h-14 rounded-2xl bg-[#C8A66A] flex items-center justify-center shrink-0 shadow-lg group-hover:rotate-12 transition-transform duration-500">
-                <KeyRound className="w-8 h-8 text-[#5B1F3D]" />
+            <div className="relative z-10 flex items-center gap-6">
+              <div className="w-16 h-16 rounded-2xl bg-[#C8A66A] flex items-center justify-center shrink-0 shadow-lg group-hover:rotate-12 transition-transform duration-500 border border-[#FAF5EF]/30">
+                <KeyRound className="w-9 h-9 text-[#5B1F3D]" />
               </div>
               <div className="flex-1">
-                <h3 className="font-heading text-lg font-bold text-[#FAF5EF] leading-tight mb-1">
+                <h3 className="font-heading text-xl font-bold text-[#FAF5EF] leading-tight mb-1.5">
                   Desbloqueie a Jornada Completa
                 </h3>
-                <p className="text-[12px] text-[#FAF5EF]/80 font-body font-medium leading-snug">
-                  Acesse os 78 arcanos, práticas guiadas, quizzes e o método completo.
+                <p className="text-[13px] text-[#FAF5EF]/90 font-body font-medium leading-snug">
+                  Acesse os 78 arcanos, práticas guiadas, quizzes e o método exclusivo.
                 </p>
               </div>
-              <ChevronRight className="w-6 h-6 text-[#C8A66A] opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+              <ChevronRight className="w-7 h-7 text-[#C8A66A] group-hover:translate-x-1.5 transition-all" />
             </div>
             
-            <div className="mt-5 flex items-center justify-center py-2.5 bg-[#C8A66A] rounded-xl font-heading text-[12px] font-bold text-[#5B1F3D] tracking-widest uppercase shadow-md group-hover:bg-[#DCCFC2] transition-colors">
-              Desbloquear Premium
+            <div className="mt-6 flex items-center justify-center py-3.5 bg-gradient-to-r from-[#C8A66A] to-[#DCCFC2] rounded-xl font-heading text-[13px] font-black text-[#5B1F3D] tracking-[0.2em] uppercase shadow-lg group-hover:brightness-110 transition-all border border-white/20">
+              Desbloquear Premium Agora
             </div>
           </div>
         </div>
@@ -240,7 +245,7 @@ const ModulesPage = () => {
                             ? "bg-white border-[#C8A66A] shadow-2xl shadow-[#C8A66A]/20 scale-[1.02] ring-1 ring-[#C8A66A]/30" 
                             : unlocked 
                             ? "bg-white/90 border-[#DCCFC2]/40 hover:bg-white hover:border-[#C8A66A]/50 active:scale-[0.98] shadow-md" 
-                            : "bg-[#DCCFC2]/20 border-[#DCCFC2]/20 opacity-90 cursor-not-allowed"
+                            : "bg-[#F3E6E0]/60 border-[#DCCFC2]/40 opacity-100 cursor-not-allowed grayscale-[0.3]"
                         }`}
                       >
                         {isCurrent && (
@@ -254,14 +259,17 @@ const ModulesPage = () => {
                               ? "bg-[#C8A66A]/15 border-[#C8A66A] text-[#5B1F3D] scale-110 rotate-3 shadow-lg" 
                               : unlocked 
                               ? "bg-[#FAF5EF] border-[#DCCFC2] text-[#5B1F3D]" 
-                              : "bg-[#DCCFC2]/30 border-[#DCCFC2]/50 text-[#5B1F3D]/40"
+                              : "bg-[#FAF5EF]/80 border-[#C8A66A]/30 text-[#5B1F3D]/60"
                           }`}>
                             {isCompleted ? (
                               <Check className="w-6 h-6 text-[#5B1F3D]" strokeWidth={3} />
                             ) : unlocked ? (
                               <IconComponent className="w-7 h-7" />
                             ) : (
-                              <LockKeyhole className="w-6 h-6" />
+                              <div className="relative">
+                                <IconComponent className="w-7 h-7 opacity-30" />
+                                <LockKeyhole className="w-4 h-4 absolute -bottom-1 -right-1 text-[#C8A66A] drop-shadow-sm" />
+                              </div>
                             )}
                           </div>
 
@@ -273,7 +281,7 @@ const ModulesPage = () => {
                                   ? "text-[#5B1F3D] font-black" 
                                   : unlocked 
                                   ? "text-[#5B1F3D] font-bold" 
-                                  : "text-[#5B1F3D]/60 font-bold"
+                                  : "text-[#5B1F3D]/85 font-bold"
                               }`}>
                                 {mod.name}
                               </h3>
@@ -286,7 +294,7 @@ const ModulesPage = () => {
                                 )}
                                 {!unlocked && !isCompleted && mod.id !== "arcanos-maiores" && (
                                   <span className="text-[9px] font-heading tracking-widest uppercase px-2.5 py-1 rounded-full bg-[#5B1F3D]/10 text-[#5B1F3D] border border-[#5B1F3D]/20 font-black flex items-center gap-1">
-                                    <KeyRound className="w-2.5 h-2.5" />
+                                    <KeyRound className="w-2.5 h-2.5 text-[#C8A66A]" />
                                     Premium
                                   </span>
                                 )}
@@ -299,7 +307,7 @@ const ModulesPage = () => {
                             </div>
                             
                             <p className={`text-[12px] font-body line-clamp-1 leading-relaxed ${
-                              unlocked ? "text-[#5B1F3D]/80 font-medium" : "text-[#5B1F3D]/40 font-medium"
+                              unlocked ? "text-[#5B1F3D]/80 font-medium" : "text-[#5B1F3D]/60 font-medium italic"
                             }`}>
                               {mod.id === "arcanos-maiores" && progress.completedLessons.length === 0 
                                 ? "Inicie sua jornada no portal sagrado." 
@@ -331,8 +339,8 @@ const ModulesPage = () => {
           })}
         </div>
 
-        <div className="pt-8 flex justify-center">
-          <img src={ornamentDivider} alt="" className="w-24 opacity-20" />
+        <div className="pt-16 pb-8 flex justify-center">
+          <img src={ornamentDivider} alt="" className="w-28 opacity-30" />
         </div>
       </main>
     </div>
