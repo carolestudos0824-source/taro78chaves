@@ -354,26 +354,26 @@ const LandingPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
               <div className="w-12 h-12 bg-[#5B1F3D]/5 rounded-2xl flex items-center justify-center">
-                <Eye className="w-6 h-6 text-[#5B1F3D]" />
+                <Key className="w-6 h-6 text-[#5B1F3D]" />
               </div>
-              <h3 className="font-heading text-xl text-midnight">Você aprende pela imagem</h3>
-              <p className="text-sm text-midnight/70 font-body">Em vez de decorar palavras-chave, você aprende a observar símbolos, cenas e movimentos da carta Rider-Waite-Smith.</p>
+              <h3 className="font-heading text-xl text-midnight">O Caminho do Aprendiz</h3>
+              <p className="text-sm text-midnight/70 font-body">Aprenda a ler cada arcano de forma fluida, sem decorar tabelas de significados ou palavras-chave soltas.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
               <div className="w-12 h-12 bg-[#C8A66A]/10 rounded-2xl flex items-center justify-center">
-                <Check className="w-6 h-6 text-[#C8A66A]" />
+                <Sparkles className="w-6 h-6 text-[#C8A66A]" />
               </div>
-              <h3 className="font-heading text-xl text-midnight">Você pratica antes de avançar</h3>
-              <p className="text-sm text-midnight/70 font-body">Cada lição testa sua compreensão com quiz e feedback. Para desbloquear O Mago, você precisa ir bem no Louco.</p>
+              <h3 className="font-heading text-xl text-midnight">Método Arcano Vivo</h3>
+              <p className="text-sm text-midnight/70 font-body">Uma metodologia que conecta a simbologia clássica do Rider-Waite-Smith com aplicação prática no seu dia a dia.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
               <div className="w-12 h-12 bg-[#5B1F3D]/5 rounded-2xl flex items-center justify-center">
                 <Target className="w-6 h-6 text-[#5B1F3D]" />
               </div>
-              <h3 className="font-heading text-xl text-midnight">Você segue uma jornada real</h3>
-              <p className="text-sm text-midnight/70 font-body">XP, sequência diária, progresso salvo e desbloqueios mantêm seu estudo vivo — uma carta por vez, sem se perder.</p>
+              <h3 className="font-heading text-xl text-midnight">Prática e Progressão</h3>
+              <p className="text-sm text-midnight/70 font-body">Você avança com quizzes, exercícios reais e trilhas salvas na sua jornada — da primeira carta à primeira leitura.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
@@ -381,7 +381,7 @@ const LandingPage = () => {
                 <Layers className="w-6 h-6 text-[#C8A66A]" />
               </div>
               <h3 className="font-heading text-xl text-midnight">78 cartas, uma por uma</h3>
-              <p className="text-sm text-midnight/70 font-body">Não é uma lista de significados. É uma jornada guiada por Arcanos Maiores, Menores e Corte no seu ritmo.</p>
+              <p className="text-sm text-midnight/70 font-body">Uma jornada guiada por Arcanos Maiores, Menores e Corte no seu ritmo, desbloqueando conhecimento conforme evolui.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
@@ -389,15 +389,15 @@ const LandingPage = () => {
                 <BookOpen className="w-6 h-6 text-[#5B1F3D]" />
               </div>
               <h3 className="font-heading text-xl text-midnight">Lições que ensinam a olhar</h3>
-              <p className="text-sm text-midnight/70 font-body">Cada arcano traz essência, símbolos, luz e sombra aplicados ao amor, trabalho e vida prática.</p>
+              <p className="text-sm text-midnight/70 font-body">Cada arcano traz essência, símbolos, luz e sombra aplicados ao amor, trabalho e vida prática com clareza.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
               <div className="w-12 h-12 bg-[#C8A66A]/10 rounded-2xl flex items-center justify-center">
                 <Award className="w-6 h-6 text-[#C8A66A]" />
               </div>
-              <h3 className="font-heading text-xl text-midnight">Saia da "decoreba"</h3>
-              <p className="text-sm text-midnight/70 font-body">Aprenda a lógica por trás de cada arcano para que a interpretação flua com mais naturalidade e confiança.</p>
+              <h3 className="font-heading text-xl text-midnight">Ganhe Confiança Real</h3>
+              <p className="text-sm text-midnight/70 font-body">Aprenda a lógica por trás de cada arcano para que a interpretação flua com mais naturalidade, clareza e autoridade.</p>
             </div>
           </div>
 
