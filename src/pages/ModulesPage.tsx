@@ -38,7 +38,11 @@ const ModulesPage = () => {
   const navigate = useNavigate();
   const { progress, loading: progressLoading, completeOnboarding } = useProgress();
   const { bypassLocks: originalBypassLocks } = useAccess();
-  const bypassLocks = true; // Force for visual audit
+  // Force bypassLocks to true ONLY for visual consistency in the preview if needed, 
+  // but the user wants to see "blocked" states too. 
+  // Let's use the real bypassLocks to see the actual logic.
+  const bypassLocks = originalBypassLocks; 
+
 
   if (progressLoading) {
     return (
