@@ -37,13 +37,21 @@ const DailyChallengesPage = () => {
 
   const [challenges, setChallenges] = useState<DailyChallengeItem[]>(() => {
     const saved = localStorage.getItem("daily-challenges");
+    const freshChallenges = buildDailyChallenges();
+    
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        if (parsed.date === today()) return parsed.items;
+        if (parsed.date === today()) {
+          // Sync icons from buildDailyChallenges in case they changed
+          return parsed.items.map((item: any) => {
+            const fresh = freshChallenges.find(f => f.type === item.type);
+            return fresh ? { ...item, icon: fresh.icon } : item;
+          });
+        }
       } catch {}
     }
-    return buildDailyChallenges();
+    return freshChallenges;
   });
 
   const [activeChallenge, setActiveChallenge] = useState<DailyChallengeItem | null>(null);
