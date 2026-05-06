@@ -155,7 +155,7 @@ const DIFERENCIAIS = [
   {
     icon: Sparkles,
     title: "Arcanos vivos",
-    desc: "Estudo imersivo onde cada arcano se torna presença, não apenas imagem estática.",
+    desc: "No app Tarô 78 Chaves, o tarô deixa de ser imagem e se torna presença.",
   },
   {
     icon: Layers,
