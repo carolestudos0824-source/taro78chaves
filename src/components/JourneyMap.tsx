@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { Lock, Check, Sparkles, Crown } from "lucide-react";
-import { ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, FREE_ARCANO_IDS } from "@/lib/content";
+import { ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, FREE_ARCANO_IDS, getArcanoFull } from "@/lib/content";
 import type { UserProgress } from "@/lib/content";
 import { useAccess } from "@/hooks/use-access";
+import { TarotAnimatedCard } from "./tarot-motion/TarotAnimatedCard";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface JourneyMapProps {
   progress: UserProgress;
@@ -95,126 +97,7 @@ export function JourneyMap({ progress }: JourneyMapProps) {
                       border: "1px solid hsl(36 22% 80% / 0.45)"
                     }}
                   >
-                    {/* Inner gradient for current */}
-                    {isCurrent && (
-                      <div className="absolute inset-0 pointer-events-none" style={{
-                        background: "linear-gradient(135deg, hsl(36 45% 55% / 0.07), transparent 60%, hsl(340 42% 28% / 0.04))"
-                      }} />
-                    )}
-
-                    <div className="relative z-10 p-5 md:p-6">
-                      {/* Corner ornaments for current */}
-                      {isCurrent && (
-                        <>
-                          <div className="absolute top-2.5 left-2.5 w-4 h-4" style={{ borderTop: "1.5px solid hsl(36 42% 45% / 0.42)", borderLeft: "1.5px solid hsl(36 42% 45% / 0.42)" }} />
-                          <div className="absolute top-2.5 right-2.5 w-4 h-4" style={{ borderTop: "1.5px solid hsl(36 42% 45% / 0.42)", borderRight: "1.5px solid hsl(36 42% 45% / 0.42)" }} />
-                          <div className="absolute bottom-2.5 left-2.5 w-4 h-4" style={{ borderBottom: "1.5px solid hsl(36 42% 45% / 0.42)", borderLeft: "1.5px solid hsl(36 42% 45% / 0.42)" }} />
-                          <div className="absolute bottom-2.5 right-2.5 w-4 h-4" style={{ borderBottom: "1.5px solid hsl(36 42% 45% / 0.42)", borderRight: "1.5px solid hsl(36 42% 45% / 0.42)" }} />
-                        </>
-                      )}
-
-                      {/* Numeral + symbol */}
-                      <div className={`flex items-center gap-2 mb-2 ${side === "left" ? "justify-end" : "justify-start"}`}>
-                        <span className="text-[10px] font-heading tracking-[0.4em] uppercase" style={{
-                          color: isCurrent ? "hsl(340 42% 22%)" : isCompleted ? "hsl(36 42% 40% / 0.85)" : "hsl(230 10% 45% / 0.30)"
-                        }}>
-                          {arcano.numeral}
-                        </span>
-                        <span className="text-sm" style={{
-                          color: isCurrent ? "hsl(340 42% 28% / 0.60)" : isCompleted ? "hsl(36 42% 45% / 0.48)" : "hsl(230 10% 45% / 0.18)"
-                        }}>
-                          {symbol}
-                        </span>
-                      </div>
-
-                      {/* Name */}
-                      <h3 className={`font-heading tracking-wide leading-tight mb-1.5 transition-all duration-500 ${
-                        isCurrent ? "text-lg md:text-xl" : isCompleted ? "text-base" : "text-sm"
-                      }`} style={isCurrent ? {
-                        background: "linear-gradient(135deg, hsl(340 42% 20%), hsl(36 35% 26%), hsl(36 42% 42%))",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                      } : isCompleted ? {
-                        color: "hsl(230 20% 12% / 0.75)"
-                      } : {
-                        color: "hsl(230 10% 45% / 0.30)"
-                      }}>
-                        {arcano.name}
-                      </h3>
-
-                      {/* Subtitle */}
-                      <p className={`font-accent italic leading-relaxed ${
-                        isCurrent ? "text-sm" : "text-xs"
-                      }`} style={{
-                        color: isCurrent ? "hsl(230 20% 15% / 0.60)" : isCompleted ? "hsl(230 20% 15% / 0.48)" : "hsl(230 10% 45% / 0.18)"
-                      }}>
-                        {arcano.subtitle}
-                      </p>
-
-                      {/* Status indicators */}
-                      {isCompleted && (
-                        <div className={`flex items-center gap-1.5 mt-3 ${side === "left" ? "justify-end" : "justify-start"}`}>
-                          <div className="px-2 py-0.5 rounded-full bg-success/10 border border-success/20 flex items-center gap-1">
-                            <Check className="w-3 h-3 text-success" />
-                            <span className="text-[8px] font-heading tracking-widest uppercase text-success">Concluído</span>
-                          </div>
-                        </div>
-                      )}
-
-                      {isCurrent && (
-                        <div className={`flex items-center gap-2 mt-3.5 ${side === "left" ? "justify-end" : "justify-start"}`}>
-                          <span className="text-[9px] tracking-[0.2em] font-heading text-gold-dark/60 uppercase">Em andamento</span>
-                          <div className="w-6 h-px bg-gold/30" />
-                        </div>
-                      )}
-
-                      {!isCompleted && !isCurrent && arcano.id === 0 && (
-                        <div className={`flex items-center gap-1.5 mt-3 ${side === "left" ? "justify-end" : "justify-start"}`}>
-                          <div className="px-2 py-0.5 rounded-full bg-orange-500/10 border border-orange-500/20 flex items-center gap-1">
-                            <Sparkles className="w-2.5 h-2.5 text-orange-500" />
-                            <span className="text-[8px] font-heading tracking-widest uppercase text-orange-600">Grátis</span>
-                          </div>
-                        </div>
-                      )}
-
-                      {!isCompleted && !isCurrent && arcano.id === 1 && (
-                        <div className={`flex items-center gap-1.5 mt-3 ${side === "left" ? "justify-end" : "justify-start"}`}>
-                          <div className="px-2 py-0.5 rounded-full bg-accent/10 border border-accent/20 flex items-center gap-1">
-                            {isUnlocked ? <Sparkles className="w-2.5 h-2.5 text-accent" /> : <Lock className="w-2.5 h-2.5 text-accent" />}
-                            <span className="text-[8px] font-heading tracking-widest uppercase text-accent">
-                              {isUnlocked ? "Desbloqueado" : "Desbloqueável"}
-                            </span>
-                          </div>
-                        </div>
-                      )}
-
-                      {isPremium && !isCompleted && !isUnlocked && arcano.id > 1 && (
-                        <div className={`flex items-center gap-1.5 mt-3 ${side === "left" ? "justify-end" : "justify-start"}`}>
-                          <div className="px-2 py-0.5 rounded-full bg-secondary/10 border border-secondary/20 flex items-center gap-1">
-                            <Crown className="w-2.5 h-2.5 text-secondary" />
-                            <span className="text-[8px] font-heading tracking-widest uppercase text-secondary">Premium</span>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                    {isCurrent && (
-                      <div className="px-5 pb-4 md:px-6 md:pb-5">
-                        <p className="text-[10px] text-muted-foreground/80 italic bg-gold/5 p-2 rounded-lg border border-gold/10">
-                          {arcano.id === 1 && !isUnlocked 
-                            ? "✦ Desbloqueie com 80% no quiz do Louco." 
-                            : arcano.id > 1 && !isUnlocked && !bypassLocks
-                            ? "✦ Disponível na Jornada Completa."
-                            : "✦ Próxima etapa da sua jornada."}
-                        </p>
-                      </div>
-                    )}
-
-                    {isCurrent && (
-                      <div className="absolute bottom-0 left-0 right-0 h-px" style={{
-                        background: "linear-gradient(90deg, transparent, hsl(340 42% 28% / 0.30), transparent)"
-                      }} />
-                    )}
+                    {/* Inner content hidden in favor of TarotAnimatedCard but logic remains for accessibility or further use if needed */}
                   </div>
                 </button>
               </div>
