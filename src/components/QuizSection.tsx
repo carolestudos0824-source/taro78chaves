@@ -310,7 +310,7 @@ export function QuizSection({ questions, onComplete, onAnswer }: QuizSectionProp
               {currentIndex < questions.length - 1 ? "Próxima" : "Ver Resultado"}
               <ArrowRight className="w-4 h-4" />
             </button>
-          </div>
+    </motion.div>
         )}
       </div>
     </div>
