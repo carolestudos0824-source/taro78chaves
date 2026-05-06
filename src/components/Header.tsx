@@ -18,13 +18,13 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
 
   useEffect(() => {
     let ticking = false;
-    const threshold = 60;
-    const hysteresis = 30;
+    const threshold = 80;
+    const hysteresis = 40;
 
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const currentScroll = window.scrollY;
+          const currentScroll = Math.max(0, window.scrollY);
           
           if (!isCompactRef.current && currentScroll > threshold) {
             isCompactRef.current = true;
@@ -40,6 +40,8 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    // Initial check
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
