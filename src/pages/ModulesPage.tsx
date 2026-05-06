@@ -168,23 +168,51 @@ const ModulesPage = () => {
           <SmartReviewCard />
           
           {progress.completedLessons.length === 0 && (
-            <div className="bg-plum/5 border border-plum/10 rounded-2xl p-4 text-center space-y-2 relative overflow-hidden group">
-              <div className="absolute top-0 left-0 w-1 h-full bg-gold/50" />
-              <p className="text-[12px] font-medium text-plum/90 italic leading-relaxed relative z-10">
+            <div className="bg-[#5B1F3D]/5 border border-[#5B1F3D]/10 rounded-2xl p-5 text-center space-y-2 relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-1.5 h-full bg-[#C8A66A]" />
+              <p className="text-[13px] font-medium text-[#5B1F3D] italic leading-relaxed relative z-10">
                 ✦ Comece pelo Louco grátis. Vá bem e desbloqueie O Mago. <br/>
-                <span className="text-gold-dark font-bold not-italic">Continue a jornada completa no Premium.</span>
+                <span className="text-[#C8A66A] font-bold not-italic">Continue a jornada completa no Premium.</span>
               </p>
             </div>
           )}
           
           {/* ─── Hero Visuals ─── */}
-          <div className="flex justify-center -space-x-4 py-4 opacity-80 scale-90">
-            <img src={imgLouco} alt="" className="w-20 rounded-xl shadow-2xl -rotate-12 border-2 border-white/50" />
-            <img src={imgSacerdotisa} alt="" className="w-20 rounded-xl shadow-2xl z-10 border-2 border-white" />
-            <img src={imgEstrela} alt="" className="w-20 rounded-xl shadow-2xl rotate-12 border-2 border-white/50" />
+          <div className="flex justify-center -space-x-4 py-6 opacity-90 scale-100">
+            <img src={imgLouco} alt="" className="w-24 rounded-2xl shadow-xl -rotate-12 border-2 border-white/50" />
+            <img src={imgSacerdotisa} alt="" className="w-24 rounded-2xl shadow-xl z-10 border-2 border-white" />
+            <img src={imgEstrela} alt="" className="w-24 rounded-2xl shadow-xl rotate-12 border-2 border-white/50" />
           </div>
           
           <ContinuityCard lastLessonId={null} lastLessonName={null} completedLessons={progress.completedLessons.length} completedQuizzes={progress.completedQuizzes.length} hasUnfinishedReview={false} completedLessonIds={progress.completedLessons} currentModuleId="arcanos-maiores" />
+
+          {/* ─── Premium Conversion Card ─── */}
+          <div 
+            onClick={() => navigate("/premium")}
+            className="cursor-pointer bg-[#5B1F3D] border border-[#C8A66A]/40 rounded-3xl p-6 shadow-2xl relative overflow-hidden group transition-all hover:scale-[1.01] active:scale-[0.99]"
+          >
+            <div className="absolute -top-12 -right-12 w-40 h-40 bg-[#C8A66A]/10 rounded-full blur-3xl group-hover:bg-[#C8A66A]/20 transition-colors" />
+            <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-[#FAF5EF]/5 rounded-full blur-2xl" />
+            
+            <div className="relative z-10 flex items-center gap-5">
+              <div className="w-14 h-14 rounded-2xl bg-[#C8A66A] flex items-center justify-center shrink-0 shadow-lg group-hover:rotate-12 transition-transform duration-500">
+                <KeyRound className="w-8 h-8 text-[#5B1F3D]" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-heading text-lg font-bold text-[#FAF5EF] leading-tight mb-1">
+                  Desbloqueie a Jornada Completa
+                </h3>
+                <p className="text-[12px] text-[#FAF5EF]/80 font-body font-medium leading-snug">
+                  Acesse os 78 arcanos, práticas guiadas, quizzes e o método completo.
+                </p>
+              </div>
+              <ChevronRight className="w-6 h-6 text-[#C8A66A] opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+            </div>
+            
+            <div className="mt-5 flex items-center justify-center py-2.5 bg-[#C8A66A] rounded-xl font-heading text-[12px] font-bold text-[#5B1F3D] tracking-widest uppercase shadow-md group-hover:bg-[#DCCFC2] transition-colors">
+              Desbloquear Premium
+            </div>
+          </div>
         </div>
 
         {/* ─── Modules Grid ─── */}
