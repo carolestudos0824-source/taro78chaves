@@ -154,7 +154,18 @@ const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, comple
     if (suggestion) {
       actions.push({ ...suggestion, icon: ArrowRight, priority: 1 });
     }
-  } else if (lastLessonId && lastLessonName) {
+  } else {
+    // If no progress, prioritize O Louco
+    actions.push({
+      label: "Abrir: O Louco",
+      subtitle: "Sua primeira chave na jornada",
+      path: "/lesson/0",
+      icon: ArrowRight,
+      priority: 1,
+    });
+  }
+
+  if (lastLessonId && lastLessonName && !actions.find(a => a.priority === 1)) {
     actions.push({
       label: `Continuar: ${lastLessonName}`,
       subtitle: "Retome de onde parou",
