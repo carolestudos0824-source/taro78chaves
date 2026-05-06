@@ -214,7 +214,7 @@ const ModulesPage = () => {
         </div>
 
         {/* ─── Modules Grid ─── */}
-        <div className="space-y-12">
+        <div className="space-y-8 md:space-y-12">
           {categoryOrder.map(cat => {
             const mods = grouped[cat];
             if (!mods || mods.length === 0) return null;
