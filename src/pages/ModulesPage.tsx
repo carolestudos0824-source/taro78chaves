@@ -182,7 +182,30 @@ const ModulesPage = () => {
             <img src={imgEstrela} alt="" className="w-24 rounded-2xl shadow-xl rotate-12 border-2 border-white/50" />
           </div>
           
-          <ContinuityCard lastLessonId={null} lastLessonName={null} completedLessons={progress.completedLessons.length} completedQuizzes={progress.completedQuizzes.length} hasUnfinishedReview={false} completedLessonIds={progress.completedLessons} currentModuleId="arcanos-maiores" />
+          <div className="space-y-4">
+            <div className="flex items-center gap-4">
+              <span className="h-px flex-1 bg-[#C8A66A]/20" />
+              <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#C8A66A]">
+                Próximos Passos
+              </h2>
+              <span className="h-px flex-1 bg-[#C8A66A]/20" />
+            </div>
+            <button 
+              onClick={() => navigate("/desafios")}
+              className="w-full text-left p-6 rounded-[2rem] border-2 border-[#C8A66A]/30 bg-white shadow-xl flex items-center gap-6 group transition-all hover:scale-[1.02] active:scale-[0.98] ring-4 ring-[#C8A66A]/5"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-[#FAF5EF] border-2 border-[#C8A66A]/40 flex items-center justify-center shrink-0 shadow-inner group-hover:rotate-6 transition-transform">
+                <Moon className="w-7 h-7 text-[#5B1F3D]" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-heading text-lg font-black text-[#5B1F3D] tracking-tight">Ritual Diário</h3>
+                <p className="text-[13px] font-body font-bold italic text-[#5B1F3D]/60 leading-tight">Sua prática de hoje</p>
+                <p className="text-[10px] font-heading font-black tracking-widest uppercase text-[#C8A66A] mt-1.5 opacity-0 group-hover:opacity-100 transition-opacity">Mantenha sua jornada viva</p>
+              </div>
+              <ChevronRight className="w-6 h-6 text-[#C8A66A] group-hover:translate-x-1.5 transition-transform" />
+            </button>
+            <ContinuityCard lastLessonId={null} lastLessonName={null} completedLessons={progress.completedLessons.length} completedQuizzes={progress.completedQuizzes.length} hasUnfinishedReview={false} completedLessonIds={progress.completedLessons} currentModuleId="arcanos-maiores" />
+          </div>
 
           {/* ─── Premium Conversion Card ─── */}
           <div 
