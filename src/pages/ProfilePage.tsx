@@ -10,6 +10,7 @@ import { ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull as getArcanoB
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { trackEvent } from "@/lib/analytics";
 
 const LEVEL_TITLES: Record<number, string> = {
   1: "Neófito", 2: "Aprendiz", 3: "Estudante", 4: "Buscador", 5: "Iniciado", 6: "Adepto", 7: "Guardião", 8: "Mestre", 9: "Oráculo", 10: "Iluminado",
@@ -32,8 +33,17 @@ const ProfilePage = () => {
   useEffect(() => {
     if (searchParams.get("checkout") === "success") {
       toast.success("Acesso premium ativado com sucesso!");
+      
+      // Track success only once per mount
+      trackEvent("checkout_success_return", {
+        source: "stripe",
+        checkout_status: "success",
+        premium_source: premiumSource,
+        is_premium: isPremium,
+        plan: premiumSource?.includes("monthly") ? "monthly" : (premiumSource?.includes("annual") ? "yearly" : "unknown")
+      });
     }
-  }, [searchParams]);
+  }, [searchParams, premiumSource, isPremium]);
 
   const handleOpenPortal = async () => {
     if (!stripeCustomerId) {
