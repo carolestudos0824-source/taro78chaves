@@ -401,7 +401,7 @@ const SlideJourney = () => (
       title="Do Louco ao Mundo"
       subtitle="Você percorre os 22 Arcanos Maiores como etapas de uma transformação interior."
     />
-    <div className="flex flex-wrap justify-center gap-2 max-w-xl mx-auto">
+    <div className="grid grid-cols-4 md:grid-cols-6 gap-3 max-w-2xl mx-auto">
       {[
         "O Louco", "O Mago", "A Sacerdotisa", "A Imperatriz", "O Imperador",
         "O Hierofante", "Os Enamorados", "O Carro", "A Justiça", "O Eremita",
@@ -409,17 +409,16 @@ const SlideJourney = () => (
         "O Diabo", "A Torre", "A Estrela", "A Lua", "O Sol",
         "O Julgamento", "O Mundo",
       ].map((name, i) => (
-        <span
+        <TarotAnimatedCard
           key={i}
-          className="text-[10px] px-2.5 py-1 rounded-full font-heading tracking-wide"
-          style={{
-            background: i < 3 ? "hsl(340 42% 28% / 0.08)" : "hsl(38 28% 93% / 0.80)",
-            border: i < 3 ? "1px solid hsl(340 42% 28% / 0.18)" : "1px solid hsl(36 25% 82% / 0.50)",
-            color: i < 3 ? "hsl(340 42% 24%)" : "hsl(230 15% 30% / 0.55)",
-          }}
-        >
-          {String(i).padStart(2, "0")} {name}
-        </span>
+          cardImage={getArcanoFull(i)?.cardImage || ""}
+          cardName={name}
+          arcanoId={i}
+          arcanoSlug={name.toLowerCase().replace(/ /g, "-")}
+          state={i === 0 ? "available" : i === 1 ? "active" : "locked"}
+          variant="portal"
+          className="w-full scale-75 md:scale-90"
+        />
       ))}
     </div>
     <p className="text-center text-[10px] font-accent italic mt-4" style={{ color: "hsl(230 15% 40% / 0.40)" }}>
