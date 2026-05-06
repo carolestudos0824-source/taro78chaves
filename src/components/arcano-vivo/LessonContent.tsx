@@ -339,28 +339,35 @@ export function LessonContent({
       )}
 
       {/* Action buttons */}
-      {step >= 2 && (
-        <div className="flex flex-col items-center gap-3 pt-4" style={{ animation: "fade-up 0.4s ease-out" }}>
-          <button onClick={onComplete}
-            className="px-10 py-3.5 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105 active:scale-95"
-            style={{
-              background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))",
-              color: "hsl(36 33% 97%)",
-              boxShadow: "0 4px 20px hsl(36 45% 58% / 0.2)",
-            }}
+      <AnimatePresence>
+        {step >= 2 && (
+          <motion.div 
+            className="flex flex-col items-center gap-3 pt-4"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
           >
-            Concluir Lição ✦
-          </button>
-          <div className="flex gap-4">
-            <button onClick={onGoDeepDive} className="text-[10px] font-heading tracking-wider" style={{ color: "hsl(230 10% 45%)" }}>
-              🔮 Aprofundar
+            <button onClick={onComplete}
+              className="px-10 py-3.5 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105 active:scale-95"
+              style={{
+                background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))",
+                color: "hsl(36 33% 97%)",
+                boxShadow: "0 4px 20px hsl(36 45% 58% / 0.2)",
+              }}
+            >
+              Concluir Lição ✦
             </button>
-            <button onClick={onGoExercise} className="text-[10px] font-heading tracking-wider" style={{ color: "hsl(230 10% 45%)" }}>
-              ✍️ Exercício
-            </button>
+            <div className="flex gap-4">
+              <button onClick={onGoDeepDive} className="text-[10px] font-heading tracking-wider" style={{ color: "hsl(230 10% 45%)" }}>
+                🔮 Aprofundar
+              </button>
+              <button onClick={onGoExercise} className="text-[10px] font-heading tracking-wider" style={{ color: "hsl(230 10% 45%)" }}>
+                ✍️ Exercício
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
-        </div>
-      )}
-    </div>
   );
 }
