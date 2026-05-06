@@ -17,13 +17,12 @@ const BottomNav = () => {
 
   return (
     <nav
-      className="fixed bottom-0 inset-x-0 z-40 border-t bg-white/98 backdrop-blur-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)]"
+      className="fixed bottom-0 inset-x-0 z-40 border-t bg-white/98 backdrop-blur-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe"
       style={{
         borderColor: "#C8A66A33",
-        paddingBottom: "env(safe-area-inset-bottom, 0px)",
       }}
     >
-      <div className="max-w-lg mx-auto flex items-center justify-around py-3 px-2">
+      <div className="max-w-lg mx-auto flex items-center justify-around py-2 px-2">
         {NAV_ITEMS.map(item => {
           const Icon = item.icon;
           const isActive = location.pathname === item.path || location.pathname.startsWith(item.path + "/");
