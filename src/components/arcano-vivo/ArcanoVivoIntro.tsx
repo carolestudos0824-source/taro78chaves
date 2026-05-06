@@ -1,8 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 import { getArcanoVivoConfig, type ArcanoVivoConfig, type SymbolSpotlight } from "@/config/arcano-vivo";
-import { getArcanoVideoSrc } from "@/config/arcano-videos";
-import { ArcanoVivoVideo } from "@/components/arcano-vivo/ArcanoVivoVideo";
+import { ArcanoVivoAnimatedCard } from "@/components/arcano-vivo/ArcanoVivoAnimatedCard";
 
 interface ArcanoVivoIntroProps {
   arcanoId: number;
@@ -262,199 +261,14 @@ export function ArcanoVivoIntro({
         </h1>
       </div>
 
-      {/* Card container with perspective — substituído pelo Arcano Vivo Video quando disponível */}
-      {(() => {
-        const videoSrc = getArcanoVideoSrc(arcanoId);
-        if (videoSrc) {
-          return (
-            <div
-              className="w-56 sm:w-72 transition-opacity duration-700"
-              style={{ opacity: isRevealed ? 1 : 0 }}
-            >
-              <ArcanoVivoVideo
-                arcanoId={arcanoId}
-                videoSrc={videoSrc}
-                posterImage={cardImage}
-                arcanoName={name}
-                glowColor={config.glowColor}
-                fallback={
-                  <img
-                    src={cardImage}
-                    alt={name}
-                    className="w-full aspect-[9/16] object-cover rounded-2xl"
-                    style={{
-                      border: `2px solid hsl(${config.glowColor} / 0.40)`,
-                      boxShadow: `0 16px 48px hsl(${config.glowColor} / 0.15)`,
-                    }}
-                  />
-                }
-              />
-            </div>
-          );
-        }
-        return (
-      <div className="relative" style={{ perspective: "800px" }}>
-
-        {/* Outer aura (breathing) */}
-        <div
-          className="absolute -inset-6 rounded-3xl pointer-events-none arcano-vivo-aura transition-opacity duration-1000"
-          style={{
-            background: `radial-gradient(ellipse, hsl(${config.glowColor} / ${isBreathing ? 0.15 : 0}) 0%, transparent 70%)`,
-            animation: isBreathing ? `arcano-breathe ${config.breatheSpeed}s ease-in-out infinite` : undefined,
-          }}
-        />
-
-        {/* The card itself — clean, art has total protagonism */}
-        <div
-          className="arcano-vivo-card relative w-56 h-[21rem] sm:w-72 sm:h-[26rem] rounded-2xl overflow-hidden"
-          style={{
-            border: `2px solid hsl(${config.glowColor} / 0.40)`,
-            transformStyle: "preserve-3d",
-            animation: isRevealed
-              ? isEmerged
-                ? `arcano-float-gentle ${config.breatheSpeed * 1.2}s ease-in-out infinite`
-                : isBreathing
-                ? `arcano-living-breathe ${config.breatheSpeed}s ease-in-out infinite, arcano-aura-pulse ${config.breatheSpeed}s ease-in-out infinite, arcano-border-glow ${config.breatheSpeed}s ease-in-out infinite`
-                : "arcano-card-awaken 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards"
-              : undefined,
-            opacity: isRevealed ? undefined : 0,
-            boxShadow: isEmerged
-              ? `0 20px 60px hsl(${config.glowColor} / 0.25), 0 0 100px hsl(${config.ambientColor} / 0.12), 0 0 150px hsl(${config.glowColor} / 0.05)`
-              : `0 16px 48px hsl(${config.glowColor} / 0.15), 0 0 80px hsl(${config.ambientColor} / 0.08)`,
-            transition: "box-shadow 1.5s ease-out",
-          }}
-        >
-          {/* Card image — full bleed, no overlays cobrindo a arte */}
-          <img
-            src={cardImage}
-            alt={name}
-            className="w-full h-full object-cover transition-all duration-[2s]"
-            style={{
-              filter: isAwakened
-                ? isEmerged
-                  ? "brightness(1.08) saturate(1.1) contrast(1.03)"
-                  : "brightness(1) saturate(1)"
-                : "brightness(0.5) saturate(0.3)",
-            }}
-          />
-
-          {/* Shimmer sweep — efêmero, passa rapidamente sobre a arte */}
-          {isShimmering && (
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: `linear-gradient(105deg, transparent 30%, hsl(${config.glowColor} / 0.25) 50%, transparent 70%)`,
-                animation: "arcano-shimmer-sweep 1.2s ease-in-out forwards",
-              }}
-            />
-          )}
-
-          {/* Light crack before emergence — opacidade reduzida para não cobrir a arte */}
-          {phase === "emerge" && (
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: `linear-gradient(180deg, hsl(${config.glowColor} / 0.25), transparent 60%)`,
-                animation: "arcano-light-crack 1.5s ease-out forwards",
-                mixBlendMode: "screen",
-              }}
-            />
-          )}
-
-          {/* Fabric flow overlays — sutis, mixBlendMode overlay preserva a arte */}
-          {isBreathing && config.fabricRegions?.map((region, i) => (
-            <div
-              key={`fabric-${i}`}
-              className="absolute pointer-events-none"
-              style={{
-                left: `${region.x}%`,
-                top: `${region.y}%`,
-                width: `${region.width}%`,
-                height: `${region.height}%`,
-                background: `linear-gradient(${region.angle}deg, transparent 20%, hsl(${config.glowColor} / 0.04) 50%, transparent 80%)`,
-                animation: `arcano-fabric-flow ${config.breatheSpeed * 1.5}s ease-in-out infinite`,
-                animationDelay: `${i * 0.5}s`,
-                mixBlendMode: "overlay",
-              }}
-            />
-          ))}
-
-          {/* Eye gaze highlight — sutil, não cobre */}
-          {isBreathing && config.gazePosition && (
-            <div
-              className="absolute pointer-events-none rounded-full"
-              style={{
-                left: `${config.gazePosition.x}%`,
-                top: `${config.gazePosition.y}%`,
-                width: "12px",
-                height: "8px",
-                background: `radial-gradient(ellipse, hsl(${config.glowColor} / 0.2) 0%, transparent 70%)`,
-                animation: `arcano-gaze-shift ${config.breatheSpeed * 2}s ease-in-out infinite`,
-                "--symbol-color": config.glowColor,
-              } as React.CSSProperties}
-            />
-          )}
-
-          {/* Symbol spotlights — APENAS o glow circular fica sobre a carta. Labels foram movidas para fora. */}
-          {config.symbolSpotlights?.map((spot, i) => {
-            const isActive = showSymbols && i <= activeSpotlight;
-            return (
-              <div
-                key={`spot-${i}`}
-                className="absolute pointer-events-none rounded-full arcano-vivo-spotlight transition-opacity duration-700"
-                style={{
-                  left: `${spot.x}%`,
-                  top: `${spot.y}%`,
-                  width: `${spot.size}px`,
-                  height: `${spot.size}px`,
-                  opacity: isActive ? 1 : 0,
-                  "--symbol-color": spot.color,
-                  animation: isActive ? `arcano-symbol-pulse ${spot.duration}s ease-in-out infinite` : undefined,
-                  background: `radial-gradient(circle, hsl(${spot.color} / 0.35) 0%, transparent 70%)`,
-                } as React.CSSProperties}
-              />
-            );
-          })}
-
-          {/* Subtle vibration on breathe */}
-          {isBreathing && !isEmerged && (
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                animation: "subtle-vibrate 0.15s linear infinite",
-                opacity: 0.3,
-                mixBlendMode: "overlay",
-                background: `radial-gradient(circle at 50% 40%, hsl(${config.glowColor} / 0.05) 0%, transparent 60%)`,
-              }}
-            />
-          )}
-        </div>
-
-        {/* Corner ornaments with breathing */}
-        {isBreathing && (
-          <>
-            {[
-              "-top-2 -left-2",
-              "-top-2 -right-2",
-              "-bottom-2 -left-2",
-              "-bottom-2 -right-2",
-            ].map((pos, i) => (
-              <div
-                key={i}
-                className={`absolute ${pos} w-1.5 h-1.5 rounded-full`}
-                style={{
-                  background: `hsl(${config.glowColor} / 0.6)`,
-                  animation: `twinkle ${2 + i * 0.7}s ease-in-out infinite`,
-                  animationDelay: `${i * 0.4}s`,
-                  boxShadow: `0 0 6px hsl(${config.glowColor} / 0.3)`,
-                }}
-              />
-            ))}
-          </>
-        )}
-      </div>
-        );
-      })()}
+      <ArcanoVivoAnimatedCard
+        arcanoId={arcanoId}
+        name={name}
+        cardImage={cardImage}
+        phase={phase}
+        activeSpotlight={activeSpotlight}
+        showSymbols={showSymbols}
+      />
 
 
       {/* Spotlight label — FORA da carta, em área dedicada abaixo. Reserva altura fixa para evitar saltos de layout. */}
