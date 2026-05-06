@@ -1,5 +1,7 @@
 import React, { useMemo } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { getArcanoVivoConfig } from "@/config/arcano-vivo";
+import { LockKeyhole, Key } from "lucide-react";
 
 interface ArcanoVivoAnimatedCardProps {
   arcanoId: number;
@@ -8,6 +10,7 @@ interface ArcanoVivoAnimatedCardProps {
   phase: string;
   activeSpotlight: number;
   showSymbols: boolean;
+  status?: 'locked' | 'available' | 'inProgress' | 'completed';
 }
 
 export function ArcanoVivoAnimatedCard({
@@ -17,8 +20,10 @@ export function ArcanoVivoAnimatedCard({
   phase,
   activeSpotlight,
   showSymbols,
+  status = 'available'
 }: ArcanoVivoAnimatedCardProps) {
   const config = useMemo(() => getArcanoVivoConfig(arcanoId), [arcanoId]);
+  const shouldReduceMotion = useReducedMotion();
 
   const isRevealed = phase !== "darkness";
   const isAwakened = !["darkness", "reveal"].includes(phase);
@@ -27,57 +32,77 @@ export function ArcanoVivoAnimatedCard({
   const isEmerged = !["darkness", "reveal", "awaken", "shimmer", "breathe"].includes(phase);
 
   return (
-    <div className="relative" style={{ perspective: "1200px" }}>
+    <motion.div 
+      className="relative" 
+      style={{ perspective: "1200px" }}
+      initial={{ scale: 0.9, opacity: 0 }}
+      animate={isRevealed ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
+    >
       {/* Outer aura (breathing) */}
-      <div
-        className="absolute -inset-12 rounded-[3rem] pointer-events-none arcano-vivo-aura transition-opacity duration-1000"
+      <motion.div
+        className="absolute -inset-16 rounded-[4rem] pointer-events-none transition-opacity duration-1000"
         style={{
-          background: `radial-gradient(ellipse, hsl(${config.glowColor} / ${isBreathing ? 0.2 : 0}) 0%, transparent 75%)`,
-          animation: isBreathing ? `arcano-breathe ${config.breatheSpeed}s ease-in-out infinite` : undefined,
+          background: `radial-gradient(circle, hsl(${config.glowColor} / 0.25) 0%, transparent 75%)`,
+          opacity: isBreathing ? 1 : 0,
+        }}
+        animate={isBreathing && !shouldReduceMotion ? {
+          scale: [1, 1.05, 1],
+          opacity: [0.4, 0.7, 0.4]
+        } : {}}
+        transition={{
+          duration: config.breatheSpeed || 4,
+          repeat: Infinity,
+          ease: "easeInOut"
         }}
       />
 
       {/* The card itself */}
-      <div
-        className="arcano-vivo-card relative w-64 h-[24rem] sm:w-80 sm:h-[30rem] rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000"
+      <motion.div
+        className="relative w-64 h-[24rem] sm:w-80 sm:h-[30rem] rounded-2xl overflow-hidden shadow-2xl"
         style={{
           border: `2.5px solid hsl(${config.glowColor} / 0.5)`,
           transformStyle: "preserve-3d",
-          animation: isRevealed
-            ? isEmerged
-              ? `arcano-float-gentle ${config.breatheSpeed * 1.2}s ease-in-out infinite`
-              : isBreathing
-              ? `arcano-living-breathe ${config.breatheSpeed}s ease-in-out infinite, arcano-border-glow ${config.breatheSpeed}s ease-in-out infinite`
-              : "arcano-card-awaken 2s cubic-bezier(0.16, 1, 0.3, 1) forwards"
-            : "scale(0.9) opacity(0)",
-          opacity: isRevealed ? 1 : 0,
           boxShadow: isEmerged
             ? `0 25px 80px hsl(${config.glowColor} / 0.3), 0 0 120px hsl(${config.ambientColor} / 0.15)`
             : `0 20px 60px hsl(${config.glowColor} / 0.2)`,
         }}
+        animate={isBreathing && !shouldReduceMotion ? {
+          y: [0, -8, 0],
+          rotateY: [0, 1, -1, 0]
+        } : { y: 0, rotateY: 0 }}
+        transition={{
+          duration: config.breatheSpeed || 4,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
       >
         {/* Card image */}
-        <img
+        <motion.img
           src={cardImage}
           alt={name}
-          className="w-full h-full object-cover transition-all duration-[2.5s]"
-          style={{
+          className="w-full h-full object-cover"
+          initial={{ filter: "brightness(0.3) saturate(0.2) contrast(0.8)" }}
+          animate={{
             filter: isAwakened
               ? isEmerged
                 ? "brightness(1.1) saturate(1.15) contrast(1.05)"
                 : "brightness(1) saturate(1)"
               : "brightness(0.3) saturate(0.2) contrast(0.8)",
           }}
+          transition={{ duration: 2.5 }}
         />
 
         {/* Shimmer sweep */}
-        {isShimmering && (
-          <div
+        {isShimmering && !shouldReduceMotion && (
+          <motion.div
             className="absolute inset-0 pointer-events-none"
             style={{
               background: `linear-gradient(110deg, transparent 25%, hsl(${config.glowColor} / 0.4) 50%, transparent 75%)`,
-              animation: "arcano-shimmer-sweep 1.5s ease-in-out forwards",
             }}
+            initial={{ x: "-100%" }}
+            animate={{ x: "200%" }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
           />
         )}
 
@@ -85,45 +110,74 @@ export function ArcanoVivoAnimatedCard({
         {config.symbolSpotlights?.map((spot, i) => {
           const isActive = showSymbols && i <= activeSpotlight;
           return (
-            <div
+            <motion.div
               key={`spot-${i}`}
-              className="absolute pointer-events-none rounded-full transition-opacity duration-1000"
+              className="absolute pointer-events-none rounded-full"
               style={{
                 left: `${spot.x}%`,
                 top: `${spot.y}%`,
-                width: `${spot.size * 1.2}px`,
-                height: `${spot.size * 1.2}px`,
-                opacity: isActive ? 0.6 : 0,
+                width: `${spot.size * 1.5}px`,
+                height: `${spot.size * 1.5}px`,
                 transform: "translate(-50%, -50%)",
-                background: `radial-gradient(circle, hsl(${spot.color} / 0.6) 0%, transparent 70%)`,
-                animation: isActive ? `arcano-symbol-pulse ${spot.duration}s ease-in-out infinite` : undefined,
+                background: `radial-gradient(circle, hsl(${spot.color} / 0.7) 0%, transparent 70%)`,
+              }}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ 
+                opacity: isActive ? 0.8 : 0,
+                scale: isActive ? [1, 1.2, 1] : 0 
+              }}
+              transition={{ 
+                opacity: { duration: 0.8 },
+                scale: { 
+                  duration: spot.duration || 3, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }
               }}
             />
           );
         })}
 
-        {/* Breath overlay */}
-        {isBreathing && (
-          <div
-            className="absolute inset-0 pointer-events-none mix-blend-overlay"
-            style={{
-              background: `radial-gradient(circle at 50% 50%, hsl(${config.glowColor} / 0.1) 0%, transparent 80%)`,
-              animation: `arcano-aura-pulse ${config.breatheSpeed}s ease-in-out infinite`,
-            }}
-          />
+        {/* Status Overlays */}
+        {status === 'locked' && (
+          <div className="absolute inset-0 bg-black/40 backdrop-grayscale flex items-center justify-center">
+            <LockKeyhole className="w-16 h-16 text-white/50" />
+          </div>
         )}
-      </div>
+      </motion.div>
 
-      {/* Halo decoration */}
-      {isBreathing && (
-        <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] rounded-full pointer-events-none opacity-20 blur-3xl animate-pulse"
+      {/* Decorative Halo */}
+      {isBreathing && !shouldReduceMotion && (
+        <motion.div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] rounded-full pointer-events-none blur-3xl"
           style={{
-            background: `radial-gradient(circle, hsl(${config.glowColor}) 0%, transparent 70%)`,
-            animationDuration: `${config.breatheSpeed * 2}s`,
+            background: `radial-gradient(circle, hsl(${config.glowColor} / 0.15) 0%, transparent 70%)`,
+          }}
+          animate={{
+            opacity: [0.1, 0.3, 0.1],
+            scale: [0.8, 1.1, 0.8],
+          }}
+          transition={{
+            duration: (config.breatheSpeed || 4) * 2,
+            repeat: Infinity,
+            ease: "easeInOut"
           }}
         />
       )}
-    </div>
+      
+      {/* Key Glow (Subtle visual for "presence") */}
+      {isEmerged && (
+        <motion.div
+          className="absolute bottom-4 right-4 z-20"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          <div className="p-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg">
+            <Key className="w-6 h-6 text-[#C8A66A] drop-shadow-[0_0_8px_rgba(200,166,106,0.8)]" />
+          </div>
+        </motion.div>
+      )}
+    </motion.div>
   );
 }

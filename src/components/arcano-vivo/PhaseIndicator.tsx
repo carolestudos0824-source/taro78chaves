@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 interface PhaseIndicatorProps {
   phases: string[];
   currentIndex: number;
@@ -10,12 +12,15 @@ export function PhaseIndicator({ phases, currentIndex }: PhaseIndicatorProps) {
   return (
     <div className="flex gap-1.5">
       {phases.map((_, i) => (
-        <div
+        <motion.div
           key={i}
-          className="h-1.5 w-5 rounded-full transition-all duration-500"
-          style={{
-            background: i <= currentIndex ? "hsl(36 45% 58%)" : "hsl(36 25% 82% / 0.6)",
+          className="h-1.5 w-5 rounded-full"
+          initial={false}
+          animate={{
+            backgroundColor: i <= currentIndex ? "hsl(36, 45%, 58%)" : "rgba(220, 207, 194, 0.6)",
+            scale: i === currentIndex ? 1.2 : 1
           }}
+          transition={{ duration: 0.5 }}
         />
       ))}
     </div>
