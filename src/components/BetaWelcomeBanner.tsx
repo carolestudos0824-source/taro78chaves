@@ -43,22 +43,20 @@ const BetaWelcomeBanner = () => {
           background: "linear-gradient(135deg, hsl(var(--brand-plum) / 0.08), hsl(var(--brand-gold) / 0.12))",
           border: "1px solid hsl(var(--brand-gold) / 0.22)",
         }}>
-          <Sparkles className="w-5 h-5" style={{ color: "hsl(36 45% 50%)" }} />
+          <Sparkles className="w-5 h-5" style={{ color: "hsl(var(--brand-gold))" }} />
         </div>
-
+ 
         <div className="flex-1 min-w-0">
-          <p className="text-[9px] font-heading tracking-[0.3em] uppercase mb-1" style={{ color: "hsl(340 42% 28% / 0.55)" }}>
+          <p className="text-[9px] font-heading tracking-[0.3em] uppercase mb-1 font-bold" style={{ color: "hsl(var(--brand-plum) / 0.5)" }}>
             ✦ Boas-vindas à Beta
           </p>
-          <h3 className="font-heading text-base tracking-wide mb-1.5" style={{
-            background: "linear-gradient(135deg, hsl(340 42% 20%), hsl(36 35% 28%))",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+          <h3 className="font-heading text-base font-bold tracking-wide mb-1.5" style={{
+            color: "hsl(var(--brand-plum))",
           }}>
             Você é uma das primeiras.
           </h3>
-          <p className="font-body text-[12px] leading-relaxed mb-3" style={{ color: "hsl(230 15% 25% / 0.55)" }}>
-            Sua jornada começa pelos <strong style={{ color: "hsl(340 42% 24%)" }}>Fundamentos do Tarô</strong> — é a porta de entrada para tudo o que vem depois. De lá, os arcanos se revelam um a um.
+          <p className="font-body text-[12px] leading-relaxed mb-3" style={{ color: "hsl(var(--brand-plum) / 0.7)" }}>
+            Sua jornada começa pelos <strong style={{ color: "hsl(var(--brand-plum))" }}>Fundamentos do Tarô</strong> — é a porta de entrada para tudo o que vem depois. De lá, os arcanos se revelam um a um.
           </p>
 
           <button
