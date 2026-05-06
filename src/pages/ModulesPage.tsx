@@ -166,11 +166,11 @@ const ModulesPage = () => {
           <SmartReviewCard />
           
           {progress.completedLessons.length === 0 && (
-            <div className="bg-[#FAF5EF] border-2 border-[#5B1F3D]/20 rounded-2xl p-6 text-center space-y-3 relative overflow-hidden group shadow-sm">
+            <div className="bg-[#F3E6E0] border-2 border-[#C8A66A]/30 rounded-2xl p-6 text-center space-y-3 relative overflow-hidden group shadow-md ring-4 ring-[#C8A66A]/5">
               <div className="absolute top-0 left-0 w-2 h-full bg-[#C8A66A]" />
-              <p className="text-[14px] font-bold text-[#5B1F3D] italic leading-relaxed relative z-10">
+              <p className="text-[15px] font-black text-[#5B1F3D] italic leading-relaxed relative z-10">
                 ✦ Comece pelo Louco grátis. Vá bem e desbloqueie O Mago. <br/>
-                <span className="text-[#C8A66A] font-black not-italic block mt-1">Continue a jornada completa no Premium.</span>
+                <span className="text-[#C8A66A] font-black not-italic block mt-1 uppercase tracking-widest text-xs">Continue sua Jornada Viva.</span>
               </p>
             </div>
           )}
