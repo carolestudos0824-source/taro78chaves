@@ -54,18 +54,18 @@ import brandIcon from "@/assets/brand-icon.png";
 import brandLogo from "@/assets/brand-logo.png";
 
 const CATEGORY_LABELS: Record<ModuleCategory, string> = {
-  "foundation": "Fundação",
-  "major-arcana": "Arcanos Maiores",
-  "minor-arcana": "Arcanos Menores",
-  "advanced": "Avançado",
-  "practice": "Prática",
-  "professional": "Profissional",
+  "foundation": "O Portal de Entrada",
+  "major-arcana": "A Jornada da Alma",
+  "minor-arcana": "A Estrutura do Tarô",
+  "advanced": "Leituras Profundas",
+  "practice": "O Ritual Vivo",
+  "professional": "O Ofício e Autoridade",
 };
 
 const MODULE_ICON_MAP: Record<string, any> = {
-  "fundamentos": BookOpen,
+  "fundamentos": Compass,
   "leitura-simbolica": Eye,
-  "arcanos-maiores": Star,
+  "arcanos-maiores": Stars,
   "arquitetura-menores": Layers,
   "copas": Droplets,
   "paus": Flame,
@@ -73,8 +73,8 @@ const MODULE_ICON_MAP: Record<string, any> = {
   "ouros": Gem,
   "cartas-corte": Crown,
   "combinacoes": GitBranch,
-  "tiragens": PanelsTopLeft,
-  "espiritualidade": Stars,
+  "tiragens": Layout,
+  "espiritualidade": Moon,
   "mesa-taro": SquareStack,
   "leitura-aplicada": Target,
   "pratica": Sparkles,
@@ -118,11 +118,11 @@ const ModulesPage = () => {
   return (
     <div className="min-h-screen pb-bottom-nav bg-[#FAF5EF]">
       {/* ─── Persistent Header ─── */}
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-[#C8A66A]/30 shadow-md">
-        <div className="container max-w-lg py-2.5 px-6 md:py-4">
-          <div className="flex items-center justify-between mb-2.5 md:mb-4">
-            <div className="flex items-center gap-2.5 md:gap-4">
-              <div className="w-10 h-10 md:w-14 md:h-14 flex items-center justify-center shrink-0 p-1 bg-white rounded-xl md:rounded-2xl shadow-md border border-[#C8A66A]/30">
+      <header className="sticky top-0 z-40 bg-white/98 backdrop-blur-2xl border-b-2 border-[#C8A66A]/20 shadow-lg">
+        <div className="container max-w-lg py-3 px-6 md:py-5">
+          <div className="flex items-center justify-between mb-3 md:mb-5">
+            <div className="flex items-center gap-3.5 md:gap-5">
+              <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center shrink-0 p-1.5 bg-white rounded-2xl md:rounded-[1.25rem] shadow-xl border-2 border-[#C8A66A]/30">
                 <img 
                   src={brandIcon} 
                   alt="Tarô 78 Chaves" 
@@ -130,14 +130,14 @@ const ModulesPage = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <h1 className="font-heading text-xl md:text-3xl text-[#5B1F3D] font-black tracking-tight leading-none mb-1 md:mb-2">
+                <h1 className="font-heading text-xl md:text-3xl text-[#5B1F3D] font-black tracking-tight leading-none mb-1.5 md:mb-2.5">
                   Tarô 78 Chaves
                 </h1>
                 <div className="flex flex-col">
-                  <span className="font-heading text-[10px] md:text-[13px] tracking-[0.3em] uppercase text-[#C8A66A] font-black leading-none">
-                    Sua Jornada
+                  <span className="font-heading text-[10px] md:text-[13px] tracking-[0.4em] uppercase text-[#C8A66A] font-black leading-none">
+                    A Jornada Viva
                   </span>
-                  <span className="hidden sm:block text-[10px] md:text-[13px] font-body text-[#5B1F3D] mt-1.5 md:mt-2.5 leading-none font-bold italic">
+                  <span className="text-[10px] md:text-[13px] font-body text-[#5B1F3D] mt-1.5 md:mt-2.5 leading-none font-bold italic">
                     Abra os portais dos 78 arcanos.
                   </span>
                 </div>
@@ -187,28 +187,28 @@ const ModulesPage = () => {
           {/* ─── Premium Conversion Card ─── */}
           <div 
             onClick={() => navigate("/premium")}
-            className="cursor-pointer bg-[#5B1F3D] border border-[#C8A66A]/40 rounded-3xl p-5 md:p-7 shadow-2xl relative overflow-hidden group transition-all hover:scale-[1.02] active:scale-[0.98] ring-1 ring-[#C8A66A]/20"
+            className="cursor-pointer bg-[#5B1F3D] border-2 border-[#C8A66A]/50 rounded-[2.5rem] p-6 md:p-8 shadow-2xl relative overflow-hidden group transition-all hover:scale-[1.03] active:scale-[0.98] ring-4 ring-[#C8A66A]/10"
           >
             <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#C8A66A]/20 rounded-full blur-3xl group-hover:bg-[#C8A66A]/30 transition-colors" />
             <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-[#FAF5EF]/10 rounded-full blur-2xl" />
             
             <div className="relative z-10 flex items-center gap-6">
-              <div className="w-16 h-16 rounded-2xl bg-[#C8A66A] flex items-center justify-center shrink-0 shadow-lg group-hover:rotate-12 transition-transform duration-500 border border-[#FAF5EF]/30">
-                <KeyRound className="w-9 h-9 text-[#5B1F3D]" />
+              <div className="w-16 h-16 rounded-2xl bg-[#C8A66A] flex items-center justify-center shrink-0 shadow-lg group-hover:rotate-12 transition-transform duration-500 border-2 border-[#FAF5EF]/30">
+                <Key className="w-9 h-9 text-[#5B1F3D]" />
               </div>
               <div className="flex-1">
-                <h3 className="font-heading text-xl font-bold text-[#FAF5EF] leading-tight mb-1.5">
-                  Desbloqueie a Jornada Completa
+                <h3 className="font-heading text-xl md:text-2xl font-black text-white leading-tight mb-2">
+                  Receba as 78 Chaves
                 </h3>
-                <p className="text-[13px] text-[#FAF5EF]/90 font-body font-medium leading-snug">
-                  Acesse os 78 arcanos, práticas guiadas, quizzes e o método exclusivo.
+                <p className="text-[14px] text-white/95 font-body font-bold leading-relaxed italic">
+                  Abra as portas mais profundas e continue a Jornada do Louco.
                 </p>
               </div>
-              <ChevronRight className="w-7 h-7 text-[#C8A66A] group-hover:translate-x-1.5 transition-all" />
+              <ChevronRight className="w-8 h-8 text-[#C8A66A] group-hover:translate-x-2 transition-all" />
             </div>
             
-            <div className="mt-6 flex items-center justify-center py-3.5 bg-gradient-to-r from-[#C8A66A] to-[#DCCFC2] rounded-xl font-heading text-[13px] font-black text-[#5B1F3D] tracking-[0.2em] uppercase shadow-lg group-hover:brightness-110 transition-all border border-white/20">
-              Desbloquear Premium Agora
+            <div className="mt-6 flex items-center justify-center py-4 bg-gradient-to-r from-[#C8A66A] to-[#DCCFC2] rounded-2xl font-heading text-[14px] font-black text-[#5B1F3D] tracking-[0.3em] uppercase shadow-xl group-hover:brightness-110 transition-all border-2 border-white/30">
+              Desbloquear Jornada Completa
             </div>
           </div>
         </div>
@@ -308,12 +308,12 @@ const ModulesPage = () => {
                               </div>
                             </div>
                             
-                            <p className={`text-[13px] font-body line-clamp-1 leading-relaxed ${
+                             <p className={`text-[13px] font-body line-clamp-1 leading-relaxed ${
                               unlocked ? "text-[#5B1F3D]/80 font-semibold" : "text-[#5B1F3D]/80 font-bold italic"
                             }`}>
                               {mod.id === "arcanos-maiores" && progress.completedLessons.length === 0 
-                                ? "Inicie sua jornada no portal sagrado." 
-                                : mod.subtitle}
+                                ? "Abra o primeiro portal do Louco." 
+                                : mod.id === "fundamentos" ? "As chaves iniciais do seu templo." : mod.subtitle}
                             </p>
                             
                             {isCurrent && prog > 0 && (

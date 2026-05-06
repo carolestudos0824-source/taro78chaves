@@ -125,11 +125,11 @@ const DailyChallengesPage = () => {
             </h1>
             
             <div className="flex flex-col gap-1 items-center">
-              <p className="font-body text-sm font-medium" style={{ color: "#5B1F3DCC" }}>
-                Sua prática de hoje
+              <p className="font-body text-sm font-bold" style={{ color: "#5B1F3D" }}>
+                Sua travessia de hoje
               </p>
-              <p className="font-accent text-[12px] italic font-bold" style={{ color: "#5B1F3D" }}>
-                Complete seu ritual e mantenha sua jornada viva.
+              <p className="font-accent text-[12px] italic font-black" style={{ color: "#C8A66A" }}>
+                Complete seu ritual e mantenha as chaves vivas.
               </p>
             </div>
           </div>
