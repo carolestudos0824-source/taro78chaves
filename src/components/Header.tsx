@@ -90,7 +90,7 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
             </button>
           </div>
         </div>
-        <div className={`transition-all duration-500 ease-in-out origin-left ${isCompact ? "scale-[0.92] opacity-90 -mt-1" : "scale-100 opacity-100"}`}>
+        <div className={`transition-all duration-500 ease-in-out origin-left transform ${isCompact ? "scale-[0.85] opacity-0 h-0 pointer-events-none" : "scale-100 opacity-100 h-auto"}`}>
           <XPBar xp={xp} level={level} />
         </div>
       </div>
