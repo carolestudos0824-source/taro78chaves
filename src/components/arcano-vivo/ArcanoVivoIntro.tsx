@@ -2,8 +2,6 @@ import { useState, useEffect, useMemo } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 import { getArcanoVivoConfig, type ArcanoVivoConfig } from "@/config/arcano-vivo";
 import { ArcanoVivoAnimatedCard } from "@/components/arcano-vivo/ArcanoVivoAnimatedCard";
-import { ArcanoVivoVideo } from "@/components/arcano-vivo/ArcanoVivoVideo";
-import { getArcanoVideoSrc } from "@/config/arcano-videos";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ArcanoVivoIntroProps {
