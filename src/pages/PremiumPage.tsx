@@ -9,6 +9,7 @@ import { usePremium } from "@/hooks/use-premium";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { trackEvent } from "@/lib/analytics";
+import { isWebCheckoutAllowed } from "@/lib/platform";
 
 const PREMIUM_BENEFITS = [
   { icon: SquareStack, title: "78 arcanos guiados", desc: "Abra todas as portas do deck completo." },
