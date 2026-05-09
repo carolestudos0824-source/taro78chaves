@@ -139,6 +139,7 @@ const PremiumPage = () => {
           </div>
         </div>
 
+        {webCheckoutAllowed ? (
         <div className="space-y-6">
           <div className="text-center space-y-2">
             <h2 className="font-heading text-xl font-black text-[#5B1F3D]">Planos de Acesso</h2>
@@ -190,6 +191,14 @@ const PremiumPage = () => {
             </div>
           </div>
         </div>
+        ) : (
+        <div className="bg-white border-2 border-[#DCCFC2] p-6 rounded-3xl text-center space-y-2">
+          <h2 className="font-heading text-base font-black text-[#5B1F3D]">Assinatura via navegador</h2>
+          <p className="text-xs font-body font-bold text-[#5B1F3D]/70 leading-relaxed">
+            Para abrir a Jornada Completa, finalize a assinatura pelo navegador do celular ou no computador. Em breve, também pelo Google Play.
+          </p>
+        </div>
+        )}
 
         <div className="space-y-6 py-8">
           <h2 className="text-center font-heading text-lg font-black text-[#5B1F3D]">Dúvidas da Travessia</h2>
