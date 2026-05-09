@@ -264,14 +264,25 @@ export function ArcanoVivoIntro({
         </h1>
       </div>
 
-      <ArcanoVivoAnimatedCard
-        arcanoId={arcanoId}
-        name={name}
-        cardImage={cardImage}
-        phase={phase}
-        activeSpotlight={activeSpotlight}
-        showSymbols={showSymbols}
-      />
+      <div className="w-full max-w-[280px] sm:max-w-xs">
+        <ArcanoVivoVideo
+          arcanoId={arcanoId}
+          videoSrc={getArcanoVideoSrc(arcanoId)}
+          posterImage={cardImage}
+          arcanoName={name}
+          glowColor={config.glowColor}
+          fallback={
+            <ArcanoVivoAnimatedCard
+              arcanoId={arcanoId}
+              name={name}
+              cardImage={cardImage}
+              phase={phase}
+              activeSpotlight={activeSpotlight}
+              showSymbols={showSymbols}
+            />
+          }
+        />
+      </div>
 
 
       {/* Spotlight label — FORA da carta, em área dedicada abaixo. Reserva altura fixa para evitar saltos de layout. */}
