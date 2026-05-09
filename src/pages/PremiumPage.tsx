@@ -24,6 +24,7 @@ const PremiumPage = () => {
   const navigate = useNavigate();
   const { isPremium, stripeCustomerId } = usePremium();
   const [loading, setLoading] = useState(false);
+  const webCheckoutAllowed = isWebCheckoutAllowed();
 
   const handleSubscribe = async (plan: "monthly" | "yearly") => {
     const { data: { user } } = await supabase.auth.getUser();
