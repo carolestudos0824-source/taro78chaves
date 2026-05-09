@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Navigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Sparkles, MapPin } from "lucide-react";
 import { COMBINACOES_LESSONS, getCombinacoesLessonByOrder } from "@/content/lessons/combinacoes";
 import { useProgress } from "@/hooks/use-progress";
+import { useAccess } from "@/hooks/use-access";
 import { useResolvedLesson } from "@/hooks/use-resolved-lesson";
 import mysticBg from "@/assets/mystic-bg.jpg";
 
@@ -11,7 +12,8 @@ type Phase = "lesson" | "exercise" | "deepdive" | "quiz" | "complete";
 const CombinacoesLessonPage = () => {
   const { order } = useParams();
   const navigate = useNavigate();
-  const { addXP, completeLesson, completeQuiz, completeModule } = useProgress();
+  const { addXP, completeLesson, completeQuiz, completeModule, progress } = useProgress();
+  const { bypassLocks, loading: accessLoading } = useAccess();
   const [phase, setPhase] = useState<Phase>("lesson");
   const [quizIndex, setQuizIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
@@ -36,6 +38,18 @@ const CombinacoesLessonPage = () => {
         </div>
       </div>
     );
+  }
+
+  // Guarda de acesso consistente com /module/combinacoes:
+  // admin/auditor/premium passam direto; usuário comum precisa ter completado a lição anterior.
+  if (!accessLoading && !bypassLocks) {
+    if (lessonOrder > 0) {
+      const prev = COMBINACOES_LESSONS.find((l) => l.order === lessonOrder - 1);
+      const prevCompleted = prev ? progress.completedLessons.includes(prev.id) : false;
+      if (!prevCompleted) {
+        return <Navigate to="/module/combinacoes" replace />;
+      }
+    }
   }
 
   const phaseSteps: Phase[] = ["lesson", "exercise", ...(lesson.deepDive ? ["deepdive" as Phase] : []), "quiz"];
