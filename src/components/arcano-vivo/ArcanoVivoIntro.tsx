@@ -2,8 +2,6 @@ import { useState, useEffect, useMemo } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 import { getArcanoVivoConfig, type ArcanoVivoConfig } from "@/config/arcano-vivo";
 import { ArcanoVivoAnimatedCard } from "@/components/arcano-vivo/ArcanoVivoAnimatedCard";
-import { ArcanoVivoVideo } from "@/components/arcano-vivo/ArcanoVivoVideo";
-import { getArcanoVideoSrc } from "@/config/arcano-videos";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ArcanoVivoIntroProps {
@@ -265,24 +263,16 @@ export function ArcanoVivoIntro({
       </div>
 
       <div className="w-full max-w-[280px] sm:max-w-xs">
-        <ArcanoVivoVideo
+        <ArcanoVivoAnimatedCard
           arcanoId={arcanoId}
-          videoSrc={getArcanoVideoSrc(arcanoId)}
-          posterImage={cardImage}
-          arcanoName={name}
-          glowColor={config.glowColor}
-          fallback={
-            <ArcanoVivoAnimatedCard
-              arcanoId={arcanoId}
-              name={name}
-              cardImage={cardImage}
-              phase={phase}
-              activeSpotlight={activeSpotlight}
-              showSymbols={showSymbols}
-            />
-          }
+          name={name}
+          cardImage={cardImage}
+          phase={phase}
+          activeSpotlight={activeSpotlight}
+          showSymbols={showSymbols}
         />
       </div>
+
 
 
       {/* Spotlight label — FORA da carta, em área dedicada abaixo. Reserva altura fixa para evitar saltos de layout. */}
