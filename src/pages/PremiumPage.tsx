@@ -56,6 +56,11 @@ const PremiumPage = () => {
       return;
     }
 
+    if (!webCheckoutAllowed) {
+      toast.info("Para assinar pelo app Android, em breve usaremos o Google Play. Por enquanto, assine pelo navegador.");
+      return;
+    }
+
     setLoading(true);
     trackEvent(`checkout_${plan}_started`);
     try {
