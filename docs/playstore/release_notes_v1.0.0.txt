@@ -1,0 +1,3 @@
+Primeira versão Android do Tarô 78 Chaves.
+Explore uma jornada guiada pelos 78 arcanos do sistema Rider-Waite-Smith, com lições progressivas, quizzes, XP e acompanhamento de progresso.
+Interface otimizada para dispositivos móveis, com foco em estudo, simbologia e prática interpretativa.
