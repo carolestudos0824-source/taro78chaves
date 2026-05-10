@@ -9,10 +9,10 @@ interface Item {
 }
 
 const ITEMS: Item[] = [
-  { id: "privacy", title: "Privacy Policy URL", detail: "URL pública da Política de Privacidade para o Play Console.", link: { label: "/privacidade", href: "/privacidade" } },
-  { id: "terms", title: "Termos de Serviço URL", detail: "URL pública dos Termos de Serviço.", link: { label: "/termos", href: "/termos" } },
-  { id: "support", title: "Página de Suporte", detail: "Contato e canal de atendimento exigidos pelo Play Console.", link: { label: "/suporte", href: "/suporte" } },
-  { id: "delete", title: "Exclusão de conta", detail: "Fluxo público de solicitação de exclusão (obrigatório para apps com login).", link: { label: "/excluir-conta", href: "/excluir-conta" } },
+  { id: "privacy", title: "Privacy Policy URL", detail: "URL pública da Política de Privacidade para o Play Console.", link: { label: "taro78chaves.lovable.app/privacidade", href: "https://taro78chaves.lovable.app/privacidade" } },
+  { id: "terms", title: "Termos de Serviço URL", detail: "URL pública dos Termos de Serviço.", link: { label: "taro78chaves.lovable.app/termos", href: "https://taro78chaves.lovable.app/termos" } },
+  { id: "support", title: "Página de Suporte", detail: "Contato e canal de atendimento exigidos pelo Play Console.", link: { label: "taro78chaves.lovable.app/suporte", href: "https://taro78chaves.lovable.app/suporte" } },
+  { id: "delete", title: "Exclusão de conta", detail: "Fluxo público de solicitação de exclusão (obrigatório para apps com login).", link: { label: "taro78chaves.lovable.app/excluir-conta", href: "https://taro78chaves.lovable.app/excluir-conta" } },
   { id: "data-safety", title: "Data Safety", detail: "Preencher seção Data Safety: dados coletados (e-mail, progresso, analytics), criptografia em trânsito, opção de exclusão." },
   { id: "app-access", title: "App Access para revisão", detail: "Fornecer credenciais demo (login + premium) para o time de revisão do Google." },
   { id: "content-rating", title: "Content Rating", detail: "Aplicar questionário do IARC. Conteúdo educacional simbólico, sem violência/sexo." },

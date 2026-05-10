@@ -68,7 +68,7 @@ const PrivacyPage = () => (
     <h2>7. Exclusão de conta</h2>
     <p>
       Você pode solicitar a exclusão da sua conta a qualquer momento pela página{" "}
-      <a href="/excluir-conta">/excluir-conta</a> ou por e-mail. Veja detalhes do processo lá.
+      <a href="https://taro78chaves.lovable.app/excluir-conta">https://taro78chaves.lovable.app/excluir-conta</a> ou por e-mail. Veja detalhes do processo lá.
     </p>
 
     <h2>8. Segurança</h2>

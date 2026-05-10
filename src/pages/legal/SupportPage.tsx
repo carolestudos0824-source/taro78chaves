@@ -32,7 +32,7 @@ const SupportPage = () => (
 
     <h2>Exclusão de conta</h2>
     <p>
-      Veja a página <a href="/excluir-conta">/excluir-conta</a> para o passo a passo.
+      Veja a página <a href="https://taro78chaves.lovable.app/excluir-conta">https://taro78chaves.lovable.app/excluir-conta</a> para o passo a passo.
     </p>
 
     <h2>Problemas técnicos</h2>

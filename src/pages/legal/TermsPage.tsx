@@ -68,7 +68,7 @@ const TermsPage = () => (
     <h2>8. Suporte</h2>
     <p>
       Suporte por e-mail em <strong>{SUPPORT_EMAIL}</strong>. Veja também{" "}
-      <a href="/suporte">/suporte</a>.
+      <a href="https://taro78chaves.lovable.app/suporte">https://taro78chaves.lovable.app/suporte</a>.
     </p>
 
     <h2>9. Alterações</h2>

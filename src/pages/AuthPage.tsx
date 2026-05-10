@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
@@ -19,35 +19,8 @@ const AuthPage = () => {
   const [error, setError] = useState("");
   const [info, setInfo] = useState("");
   const [loading, setLoading] = useState(false);
-  const [auditorLoading, setAuditorLoading] = useState(false);
   const navigate = useNavigate();
   const { signIn, signUp } = useAuth();
-
-  const isPreviewHost = (() => {
-    if (typeof window === "undefined") return false;
-    const h = window.location.hostname;
-    // Strictly block production domain even if accessed via .lovable.app
-    if (h === "apptaro.lovable.app") return false;
-    return h.endsWith(".lovable.app") || h.endsWith(".lovableproject.com") || h === "localhost";
-  })();
-
-  const handleAuditorLogin = async () => {
-    setError("");
-    setAuditorLoading(true);
-    try {
-      const { data, error: fnErr } = await supabase.functions.invoke("seed-preview-auditor", { body: {} });
-      if (fnErr || !data?.ok) {
-        setError(data?.error || "Falha ao provisionar auditor");
-        setAuditorLoading(false);
-        return;
-      }
-      await signIn(data.email, data.password);
-      navigate("/app");
-    } catch (e) {
-      setError(String(e));
-      setAuditorLoading(false);
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -170,14 +143,6 @@ const AuthPage = () => {
             </button>
           </p>
         </div>
-
-        {isPreviewHost && (
-          <div className="pt-6 border-t border-gold/10">
-            <Button onClick={handleAuditorLogin} disabled={auditorLoading} variant="ghost" className="w-full text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark/60">
-              {auditorLoading ? "Entrando..." : "✦ Modo Auditoria (Preview)"}
-            </Button>
-          </div>
-        )}
       </div>
     </div>
   );
