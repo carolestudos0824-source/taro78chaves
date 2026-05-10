@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
@@ -20,7 +20,7 @@ const AuthPage = () => {
   const [info, setInfo] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
+  const { signIn, signUp } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -143,14 +143,6 @@ const AuthPage = () => {
             </button>
           </p>
         </div>
-
-        {isPreviewHost && (
-          <div className="pt-6 border-t border-gold/10">
-            <Button onClick={handleAuditorLogin} disabled={auditorLoading} variant="ghost" className="w-full text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark/60">
-              {auditorLoading ? "Entrando..." : "✦ Modo Auditoria (Preview)"}
-            </Button>
-          </div>
-        )}
       </div>
     </div>
   );
