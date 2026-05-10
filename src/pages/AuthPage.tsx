@@ -26,6 +26,8 @@ const AuthPage = () => {
   const isPreviewHost = (() => {
     if (typeof window === "undefined") return false;
     const h = window.location.hostname;
+    // Strictly block production domain even if accessed via .lovable.app
+    if (h === "apptaro.lovable.app") return false;
     return h.endsWith(".lovable.app") || h.endsWith(".lovableproject.com") || h === "localhost";
   })();
 

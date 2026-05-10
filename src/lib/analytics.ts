@@ -13,6 +13,9 @@ declare global {
 
 export const initGA = () => {
   if (typeof window === "undefined" || window.gtag) return;
+  
+  const consent = localStorage.getItem("taro_analytics_consent");
+  if (consent !== "true") return;
 
   const script1 = document.createElement("script");
   script1.async = true;
