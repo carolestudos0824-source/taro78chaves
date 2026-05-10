@@ -52,9 +52,9 @@ export function ReflectionSection({ arcanoId, lessonId }: ReflectionSectionProps
       return;
     }
 
-    // Admin/Auditor skip saving to avoid polluting metrics if requested
+    // Admin/Staff skip saving to avoid polluting metrics if requested
     if (isAdmin || isStaff) {
-      toast.success("Modo Auditor: Reflexão simulada com sucesso!");
+      toast.success("Sucesso: Reflexão simulada no modo administrativo.");
       setSaved(true);
       return;
     }
