@@ -57,7 +57,7 @@ const PremiumPage = () => {
     }
 
     if (!webCheckoutAllowed) {
-      toast.info("Para assinar pelo app Android, em breve usaremos o Google Play. Por enquanto, assine pelo navegador.");
+      toast.info("Assinaturas pelo app Android estarão disponíveis em breve. Usuários com acesso ativo podem entrar normalmente.");
       return;
     }
 
@@ -193,9 +193,9 @@ const PremiumPage = () => {
         </div>
         ) : (
         <div className="bg-white border-2 border-[#DCCFC2] p-6 rounded-3xl text-center space-y-2">
-          <h2 className="font-heading text-base font-black text-[#5B1F3D]">Assinatura via navegador</h2>
+          <h2 className="font-heading text-base font-black text-[#5B1F3D]">Acesso Premium</h2>
           <p className="text-xs font-body font-bold text-[#5B1F3D]/70 leading-relaxed">
-            Para abrir a Jornada Completa, finalize a assinatura pelo navegador do celular ou no computador. Em breve, também pelo Google Play.
+            Assinaturas pelo app Android estarão disponíveis em breve. Usuários com acesso ativo podem entrar normalmente.
           </p>
         </div>
         )}
