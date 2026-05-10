@@ -15,5 +15,3 @@ const BetaBadge = () => (
 );
 
 export default BetaBadge;
-
-export default BetaBadge;
