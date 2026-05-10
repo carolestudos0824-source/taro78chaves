@@ -28,10 +28,10 @@ const LegalLayout = ({ title, updatedAt = "Abril de 2026", children }: Props) =>
         </article>
 
         <nav className="mt-12 pt-6 border-t border-border/40 flex flex-wrap gap-x-5 gap-y-2 text-xs">
-          <Link to="/privacidade" className="text-muted-foreground hover:text-primary underline-offset-2 hover:underline">Privacidade</Link>
-          <Link to="/termos" className="text-muted-foreground hover:text-primary underline-offset-2 hover:underline">Termos</Link>
-          <Link to="/suporte" className="text-muted-foreground hover:text-primary underline-offset-2 hover:underline">Suporte</Link>
-          <Link to="/excluir-conta" className="text-muted-foreground hover:text-primary underline-offset-2 hover:underline">Excluir conta</Link>
+          <a href="https://taro78chaves.lovable.app/privacidade" className="text-muted-foreground hover:text-primary underline-offset-2 hover:underline">Privacidade</a>
+          <a href="https://taro78chaves.lovable.app/termos" className="text-muted-foreground hover:text-primary underline-offset-2 hover:underline">Termos</a>
+          <a href="https://taro78chaves.lovable.app/suporte" className="text-muted-foreground hover:text-primary underline-offset-2 hover:underline">Suporte</a>
+          <a href="https://taro78chaves.lovable.app/excluir-conta" className="text-muted-foreground hover:text-primary underline-offset-2 hover:underline">Excluir conta</a>
           <Link to="/" className="text-muted-foreground hover:text-primary underline-offset-2 hover:underline ml-auto">Início</Link>
         </nav>
       </main>

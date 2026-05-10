@@ -220,11 +220,11 @@ const ProfilePage = () => {
           </button>
           
           <nav className="flex items-center gap-8 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]/40">
-            <a href="/suporte" className="hover:text-[#C8A66A] transition-colors">Suporte</a>
+            <a href="https://taro78chaves.lovable.app/suporte" className="hover:text-[#C8A66A] transition-colors">Suporte</a>
             <span>•</span>
-            <a href="/termos" className="hover:text-[#C8A66A] transition-colors">Termos</a>
+            <a href="https://taro78chaves.lovable.app/termos" className="hover:text-[#C8A66A] transition-colors">Termos</a>
             <span>•</span>
-            <a href="/excluir-conta" className="hover:text-[#C8A66A] transition-colors">Excluir</a>
+            <a href="https://taro78chaves.lovable.app/excluir-conta" className="hover:text-[#C8A66A] transition-colors">Excluir</a>
           </nav>
         </div>
       </main>
