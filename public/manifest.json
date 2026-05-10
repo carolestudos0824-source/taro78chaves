@@ -2,7 +2,7 @@
   "name": "Tarô 78 Chaves",
   "short_name": "Tarô 78 Chaves",
   "description": "Estudo guiado de tarô carta por carta.",
-  "start_url": "/",
+  "start_url": "/?android_app=1",
   "display": "standalone",
   "background_color": "#FAF5EF",
   "theme_color": "#5B1F3D",
