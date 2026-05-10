@@ -19,9 +19,22 @@ declare global {
 
 export const isAndroidApp = (): boolean => {
   if (typeof window === "undefined") return false;
+  
+  // 1. URL Parameter check (for TWA start_url: ?android_app=1)
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("android_app") === "1") {
+    try {
+      localStorage.setItem("platform.isAndroidApp", "1");
+    } catch (e) {}
+    return true;
+  }
+
+  // 2. Global window flag (injected by Capacitor/WebView)
   if (window.__IS_ANDROID_APP__ === true) return true;
+
+  // 3. Persisted flag (to maintain state after navigation)
   try {
-    if (window.localStorage?.getItem("platform.isAndroidApp") === "1") return true;
+    if (localStorage.getItem("platform.isAndroidApp") === "1") return true;
   } catch {
     /* ignore */
   }
