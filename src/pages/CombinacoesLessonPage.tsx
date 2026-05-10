@@ -41,7 +41,7 @@ const CombinacoesLessonPage = () => {
   }
 
   // Guarda de acesso consistente com /module/combinacoes:
-  // admin/auditor/premium passam direto; usuário comum precisa ter completado a lição anterior.
+  // admin/premium passam direto; usuário comum precisa ter completado a lição anterior.
   if (!accessLoading && !bypassLocks) {
     if (lessonOrder > 0) {
       const prev = COMBINACOES_LESSONS.find((l) => l.order === lessonOrder - 1);
