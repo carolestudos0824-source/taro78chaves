@@ -19,35 +19,8 @@ const AuthPage = () => {
   const [error, setError] = useState("");
   const [info, setInfo] = useState("");
   const [loading, setLoading] = useState(false);
-  const [auditorLoading, setAuditorLoading] = useState(false);
   const navigate = useNavigate();
-  const { signIn, signUp } = useAuth();
 
-  const isPreviewHost = (() => {
-    if (typeof window === "undefined") return false;
-    const h = window.location.hostname;
-    // Strictly block production domain even if accessed via .lovable.app
-    if (h === "apptaro.lovable.app") return false;
-    return h.endsWith(".lovable.app") || h.endsWith(".lovableproject.com") || h === "localhost";
-  })();
-
-  const handleAuditorLogin = async () => {
-    setError("");
-    setAuditorLoading(true);
-    try {
-      const { data, error: fnErr } = await supabase.functions.invoke("seed-preview-auditor", { body: {} });
-      if (fnErr || !data?.ok) {
-        setError(data?.error || "Falha ao provisionar auditor");
-        setAuditorLoading(false);
-        return;
-      }
-      await signIn(data.email, data.password);
-      navigate("/app");
-    } catch (e) {
-      setError(String(e));
-      setAuditorLoading(false);
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
