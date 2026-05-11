@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Lock, Check, Star, Sparkles, Crown } from "lucide-react";
+import { ArrowLeft, ChevronRight, Lock, Check, Star, Sparkles, Crown, Compass, Key } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { MODULES_CATALOG as MODULES, isModuleUnlocked } from "@/lib/content";
+import imgLouco from "@/assets/arcano-0-louco.jpg";
+import imgMago from "@/assets/arcano-1-mago.jpg";
 
 interface TrailLevel {
   id: string;
@@ -102,31 +104,40 @@ const TrailsPage = () => {
           background: "radial-gradient(ellipse at 80% 100%, hsl(340 42% 30% / 0.06) 0%, transparent 50%)",
         }} />
 
-        <div className="relative max-w-2xl mx-auto px-6 pt-8 pb-6">
-          <button
-            onClick={() => navigate("/app")}
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm font-body">Módulos</span>
-          </button>
+        <div className="relative max-w-2xl mx-auto px-6 pt-10 pb-8">
+          <div className="flex justify-between items-start mb-8">
+            <button
+              onClick={() => navigate("/app")}
+              className="flex items-center gap-2 text-[#5B1F3D] hover:text-[#C8A66A] transition-colors group"
+            >
+              <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+              <span className="text-sm font-heading font-black uppercase tracking-widest">Módulos</span>
+            </button>
+            <div className="flex -space-x-4 opacity-40 hover:opacity-100 transition-opacity duration-500">
+              <img src={imgLouco} alt="" className="w-12 h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
+              <img src={imgMago} alt="" className="w-12 h-18 object-cover rounded-md border border-[#C8A66A]/30 rotate-12 shadow-lg" />
+            </div>
+          </div>
 
-          <div className="text-center">
-            <div className="text-[10px] tracking-[0.4em] uppercase font-body mb-2" style={{ color: "hsl(36 45% 58% / 0.60)" }}>
+          <div className="text-center relative">
+            <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[#C8A66A]/20">
+              <Compass className="w-12 h-12 animate-pulse-slow" />
+            </div>
+            <div className="text-[11px] tracking-[0.4em] uppercase font-heading font-black mb-2 text-[#C8A66A]">
               Arcano Vivo
             </div>
             <h1
-              className="font-heading text-2xl tracking-wide"
+              className="font-heading text-3xl md:text-4xl tracking-tight font-black"
               style={{
-                background: "linear-gradient(135deg, hsl(340 42% 20%), hsl(36 35% 28%), hsl(36 42% 42%))",
+                background: "linear-gradient(135deg, #5B1F3D, #C8A66A)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
             >
               Trilhas de Formação
             </h1>
-            <p className="font-accent text-sm italic mt-1" style={{ color: "hsl(230 20% 15% / 0.50)" }}>
-              Sua jornada do início à maestria
+            <p className="font-body text-[15px] font-bold italic mt-2 text-[#5B1F3D]/70">
+              Sua jornada do início à maestria real
             </p>
           </div>
         </div>
@@ -135,38 +146,41 @@ const TrailsPage = () => {
       <div className="max-w-2xl mx-auto px-6 pb-16 space-y-6">
 
         {/* Overall progress */}
-        <div className="rounded-xl p-5" style={{
-          background: "hsl(38 28% 93% / 0.75)",
-          border: "1px solid hsl(36 45% 50% / 0.18)",
+        <div className="rounded-2xl p-6 shadow-xl border-2" style={{
+          background: "linear-gradient(145deg, #FAF5EF, #F3E6E0)",
+          borderColor: "#C8A66A4D",
         }}>
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="font-heading text-sm tracking-wide" style={{ color: "hsl(340 42% 22%)" }}>
-              Progresso Geral
-            </h2>
-            <span className="font-heading text-sm" style={{ color: "hsl(36 42% 40%)" }}>
-              {currentLevel ? `Nível ${currentLevel.level} — ${currentLevel.title}` : "Completo ✦"}
+          <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-[#C8A66A]" />
+              <h2 className="font-heading text-xs font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
+                Progresso Geral
+              </h2>
+            </div>
+            <span className="font-heading text-[11px] font-black tracking-widest uppercase px-3 py-1 rounded-full bg-[#5B1F3D] text-[#FAF5EF]">
+              {currentLevel ? `Nível ${currentLevel.level} • ${currentLevel.title}` : "Completo ✦"}
             </span>
           </div>
-          <div className="flex gap-1">
+          <div className="flex gap-2">
             {TRAIL_LEVELS.map(level => {
               const prog = getLevelProgress(level);
               const complete = isLevelComplete(level);
               const unlocked = isLevelUnlocked(level);
               return (
-                <div key={level.id} className="flex-1">
-                  <div className="h-2.5 rounded-full overflow-hidden" style={{
-                    background: unlocked ? "hsl(36 18% 84%)" : "hsl(36 12% 90%)",
-                    border: `1px solid ${unlocked ? "hsl(36 22% 75% / 0.50)" : "hsl(36 15% 85% / 0.30)"}`,
+                <div key={level.id} className="flex-1 space-y-2">
+                  <div className="h-3 rounded-full overflow-hidden p-[1px]" style={{
+                    background: unlocked ? "#DCCFC260" : "#DCCFC230",
+                    border: `1px solid ${unlocked ? "#C8A66A50" : "#DCCFC240"}`,
                   }}>
-                    <div className="h-full rounded-full transition-all duration-700" style={{
+                    <div className="h-full rounded-full transition-all duration-1000 shadow-[0_0_8px_rgba(200,166,106,0.3)]" style={{
                       width: `${Math.max(prog, complete ? 100 : 0)}%`,
                       background: complete
-                        ? `linear-gradient(90deg, ${level.accentColor}, hsl(36 42% 44%))`
-                        : `linear-gradient(90deg, hsl(340 42% 26%), hsl(36 42% 44%))`,
+                        ? `linear-gradient(90deg, ${level.accentColor}, #C8A66A)`
+                        : `linear-gradient(90deg, #5B1F3D, #C8A66A)`,
                     }} />
                   </div>
-                  <div className="text-[9px] font-body text-center mt-1" style={{
-                    color: unlocked ? "hsl(230 15% 30% / 0.45)" : "hsl(230 15% 30% / 0.25)",
+                  <div className="text-[10px] font-heading font-black text-center uppercase tracking-tighter" style={{
+                    color: unlocked ? "#5B1F3D" : "#5B1F3D40",
                   }}>
                     {level.title}
                   </div>
@@ -191,64 +205,67 @@ const TrailsPage = () => {
               </div>
 
               {/* Level header */}
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-4 mb-6">
                 <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center text-xl shrink-0"
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shrink-0 shadow-lg transition-transform duration-500 hover:rotate-3"
                   style={{
                     background: unlocked
-                      ? `${level.accentColor}15`
-                      : "hsl(36 15% 88% / 0.50)",
-                    border: `1.5px solid ${unlocked ? level.accentBorder : "hsl(36 18% 80% / 0.25)"}`,
-                    opacity: unlocked ? 1 : 0.5,
+                      ? `linear-gradient(135deg, ${level.accentColor}20, #FAF5EF)`
+                      : "#DCCFC230",
+                    border: `2px solid ${unlocked ? level.accentColor : "#DCCFC260"}`,
+                    opacity: unlocked ? 1 : 0.6,
                   }}
                 >
-                  {unlocked ? level.icon : <Lock className="w-5 h-5" style={{ color: "hsl(230 15% 30% / 0.25)" }} />}
+                  {unlocked ? level.icon : <Lock className="w-6 h-6 text-[#5B1F3D40]" />}
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[9px] tracking-[0.3em] uppercase font-body" style={{
-                      color: unlocked ? level.accentColor : "hsl(230 15% 30% / 0.30)",
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[10px] tracking-[0.3em] uppercase font-heading font-black" style={{
+                      color: unlocked ? level.accentColor : "#5B1F3D40",
                     }}>
-                      Nível {level.level}
+                      Portal {level.level}
                     </span>
                     {complete && (
-                      <span className="text-[9px] tracking-[0.2em] uppercase font-body px-2 py-0.5 rounded-full" style={{
-                        background: `${level.accentColor}15`,
-                        color: level.accentColor,
+                      <span className="text-[10px] tracking-[0.1em] uppercase font-heading font-black px-2 py-0.5 rounded-md border border-[#C8A66A]" style={{
+                        background: "#FAF5EF",
+                        color: "#C8A66A",
                       }}>
                         Concluído
                       </span>
                     )}
                     {isCurrent && (
-                      <span className="text-[9px] tracking-[0.2em] uppercase font-body px-2 py-0.5 rounded-full" style={{
-                        background: "hsl(340 42% 30% / 0.10)",
-                        color: "hsl(340 42% 28%)",
+                      <span className="text-[10px] tracking-[0.1em] uppercase font-heading font-black px-2 py-0.5 rounded-md border border-[#5B1F3D]" style={{
+                        background: "#FAF5EF",
+                        color: "#5B1F3D",
                       }}>
                         Em progresso
                       </span>
                     )}
                   </div>
-                  <h2 className="font-heading text-lg tracking-wide" style={{
-                    color: unlocked ? "hsl(340 42% 22%)" : "hsl(230 15% 30% / 0.35)",
+                  <h2 className="font-heading text-xl font-black tracking-tight" style={{
+                    color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                   }}>
                     {level.title}
                   </h2>
-                  <p className="font-accent text-xs italic" style={{
-                    color: unlocked ? "hsl(230 20% 15% / 0.50)" : "hsl(230 15% 30% / 0.25)",
+                  <p className="font-body text-sm font-bold italic" style={{
+                    color: unlocked ? "#5B1F3D90" : "#5B1F3D40",
                   }}>
                     {level.subtitle}
                   </p>
                 </div>
                 {isCurrent && (
-                  <span className="font-heading text-sm shrink-0" style={{ color: level.accentColor }}>
-                    {prog}%
-                  </span>
+                  <div className="flex flex-col items-center shrink-0">
+                    <span className="font-heading text-xl font-black" style={{ color: level.accentColor }}>
+                      {prog}%
+                    </span>
+                    <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#C8A66A]">Chaves</span>
+                  </div>
                 )}
               </div>
 
               {/* Module cards */}
-              <div className="space-y-2.5 ml-6 border-l-2 pl-5" style={{
-                borderColor: unlocked ? `${level.accentColor}25` : "hsl(36 18% 85% / 0.30)",
+              <div className="space-y-4 ml-7 border-l-2 pl-6" style={{
+                borderColor: unlocked ? `${level.accentColor}40` : "#DCCFC240",
               }}>
                 {level.modules.map(modId => {
                   const mod = MODULES.find(m => m.id === modId);
@@ -262,55 +279,67 @@ const TrailsPage = () => {
                       key={mod.id}
                       onClick={() => modUnlocked && navigate(mod.route)}
                       disabled={!modUnlocked}
-                      className="w-full text-left group transition-all duration-300"
+                      className="w-full text-left group transition-all duration-500 relative"
                     >
-                      <div className="rounded-xl p-4 flex items-center gap-3.5 transition-all duration-300" style={modCurrent ? {
-                        background: "linear-gradient(145deg, hsl(38 28% 93% / 0.94), hsl(36 33% 95% / 0.90))",
-                        border: `1.5px solid ${level.accentBorder}`,
-                        boxShadow: `0 4px 20px ${level.accentColor}10`,
+                      {modCurrent && (
+                        <div className="absolute -left-[31px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#5B1F3D] border-2 border-[#FAF5EF] z-10 animate-pulse" />
+                      )}
+                      <div className="rounded-2xl p-5 flex items-center gap-5 transition-all duration-500 group-hover:translate-x-1" style={modCurrent ? {
+                        background: "linear-gradient(145deg, #FFF, #FAF5EF)",
+                        border: `2px solid ${level.accentColor}`,
+                        boxShadow: `0 8px 30px ${level.accentColor}15`,
                       } : modComplete ? {
-                        background: "hsl(38 28% 94% / 0.80)",
-                        border: "1px solid hsl(36 42% 52% / 0.25)",
+                        background: "#FAF5EF90",
+                        border: "1px solid #C8A66A40",
                       } : {
-                        background: "hsl(36 18% 90% / 0.40)",
-                        border: "1px solid hsl(36 22% 80% / 0.30)",
+                        background: "#DCCFC220",
+                        border: "1px solid #DCCFC240",
+                        opacity: 0.8,
                       }}>
                         {/* Status icon */}
-                        <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style={modComplete ? {
-                          background: `${level.accentColor}12`,
-                          border: `1.5px solid ${level.accentColor}30`,
+                        <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:scale-110" style={modComplete ? {
+                          background: "#FAF5EF",
+                          border: `1px solid ${level.accentColor}60`,
                         } : modCurrent ? {
-                          background: "hsl(38 28% 93%)",
-                          border: `1.5px solid ${level.accentBorder}`,
+                          background: "#5B1F3D",
+                          border: `1px solid ${level.accentColor}`,
                         } : {
-                          background: "hsl(36 18% 90% / 0.55)",
-                          border: "1px solid hsl(36 22% 75% / 0.35)",
+                          background: "#DCCFC240",
+                          border: "1px solid #DCCFC260",
                         }}>
                           {modComplete ? (
-                            <Check className="w-4 h-4" style={{ color: level.accentColor }} />
+                            <Check className="w-6 h-6" style={{ color: level.accentColor }} />
                           ) : modCurrent ? (
-                            <span className="text-sm">{mod.icon}</span>
+                            <div className="relative">
+                              <Key className="w-6 h-6 text-[#C8A66A]" />
+                              <Sparkles className="w-3 h-3 absolute -top-1 -right-1 text-[#C8A66A] animate-pulse" />
+                            </div>
                           ) : (
-                            <Lock className="w-3.5 h-3.5" style={{ color: "hsl(230 10% 45% / 0.25)" }} />
+                            <Lock className="w-5 h-5 text-[#5B1F3D40]" />
                           )}
                         </div>
 
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-heading text-sm tracking-wide truncate" style={{
-                            color: modCurrent ? "hsl(340 42% 22%)" : modComplete ? "hsl(230 20% 12% / 0.75)" : "hsl(230 10% 45% / 0.30)",
-                          }}>
-                            {mod.name}
-                          </h3>
-                          <p className="font-accent text-[11px] italic truncate" style={{
-                            color: modCurrent ? "hsl(230 20% 15% / 0.50)" : modComplete ? "hsl(230 20% 15% / 0.40)" : "hsl(230 10% 45% / 0.18)",
+                          <div className="flex items-center gap-2 mb-1">
+                            <h3 className="font-heading text-[15px] font-black tracking-tight truncate" style={{
+                              color: modCurrent ? "#5B1F3D" : modComplete ? "#5B1F3D95" : "#5B1F3D40",
+                            }}>
+                              {mod.name}
+                            </h3>
+                            {modCurrent && (
+                              <span className="text-[8px] font-heading font-black uppercase tracking-[0.2em] px-2 py-0.5 rounded-full bg-[#C8A66A] text-white">Próximo</span>
+                            )}
+                          </div>
+                          <p className="font-body text-xs font-bold italic truncate" style={{
+                            color: modCurrent ? "#5B1F3D80" : modComplete ? "#5B1F3D60" : "#5B1F3D20",
                           }}>
                             {mod.subtitle}
                           </p>
                         </div>
 
                         {modUnlocked && (
-                          <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" style={{
-                            color: modCurrent ? level.accentColor : "hsl(36 42% 45% / 0.35)",
+                          <ChevronRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1" style={{
+                            color: modCurrent ? "#C8A66A" : "#DCCFC2",
                           }} />
                         )}
                       </div>
