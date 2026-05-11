@@ -78,7 +78,7 @@ const AuthPage = () => {
               {mode === "signup" ? "Crie sua conta para salvar seu progresso e começar sua jornada pelo Louco." : mode === "login" ? "Boas-vindas de volta à sua jornada." : "Enviaremos um link de acesso."}
             </p>
             {mode === "signup" && (
-              <p className="text-[11px] font-medium text-gold-dark/80 italic">
+              <p className="text-[11px] font-bold text-plum italic">
                 ✦ Comece pelo Louco gratuitamente. Sem cartão de crédito.
               </p>
             )}
