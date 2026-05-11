@@ -129,24 +129,31 @@ const FundamentosPage = () => {
       <main className="relative z-10 container max-w-3xl py-8 px-6">
         {/* Intro text */}
         <div
-          className="rounded-2xl p-6 mb-10 text-center relative overflow-hidden group"
+          className="rounded-2xl p-7 mb-10 text-center relative overflow-hidden group"
           style={{
-            background: "linear-gradient(135deg, #FAF5EF, #F3E6E0)",
-            border: "1px solid #C8A66A30",
-            boxShadow: "0 10px 30px rgba(91, 31, 61, 0.03)",
+            background: "linear-gradient(135deg, #FAF5EF 0%, #F3E6E0 100%)",
+            border: "1px solid rgba(200, 166, 106, 0.28)",
+            boxShadow: "0 10px 30px rgba(91, 31, 61, 0.04)",
           }}
         >
           {/* Decorative icons */}
-          <div className="absolute top-2 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
+          <div className="absolute top-2 right-4 opacity-15 group-hover:opacity-25 transition-opacity">
             <span className="text-2xl">✨</span>
           </div>
-          <div className="absolute bottom-2 left-4 opacity-10 group-hover:opacity-20 transition-opacity">
+          <div className="absolute bottom-2 left-4 opacity-15 group-hover:opacity-25 transition-opacity">
             <span className="text-xl">🗝️</span>
           </div>
-          
+
+          {/* Tarot ornament — chave & estrela */}
+          <div className="flex items-center justify-center gap-3 mb-4 opacity-90">
+            <span className="h-px w-10" style={{ background: "linear-gradient(90deg, transparent, #C8A66A80)" }} />
+            <span className="text-[13px]" style={{ color: "#C8A66A", letterSpacing: "0.3em" }}>✶ ◈ ✶</span>
+            <span className="h-px w-10" style={{ background: "linear-gradient(90deg, #C8A66A80, transparent)" }} />
+          </div>
+
           <p
-            className="font-accent text-[15px] italic leading-relaxed max-w-xl mx-auto"
-            style={{ color: "#5B1F3D" }}
+            className="font-accent text-[16px] md:text-[17px] italic leading-relaxed max-w-xl mx-auto"
+            style={{ color: "#3D1429", fontWeight: 500 }}
           >
             "Este módulo é a sua base. Aqui você vai entender o que é o tarô,
             como ele funciona e como estudá-lo com profundidade e clareza —
@@ -156,11 +163,14 @@ const FundamentosPage = () => {
 
         {/* Lesson trail section header */}
         <div className="flex items-center gap-4 mb-6">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-          <span className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#C8A66A]">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#C8A66A30] to-[#C8A66A70]" />
+          <span
+            className="text-[11px] font-heading tracking-[0.32em] uppercase"
+            style={{ color: "#8B6A30", fontWeight: 600 }}
+          >
             Trilha de Aprendizado
           </span>
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A40]" />
+          <div className="h-px flex-1 bg-gradient-to-l from-transparent via-[#C8A66A30] to-[#C8A66A70]" />
         </div>
 
         {/* Lesson trail */}
