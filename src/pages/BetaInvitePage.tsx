@@ -8,13 +8,13 @@ import { Button } from "@/components/ui/button";
 
 /* ═══════════════ DATA ═══════════════ */
 
-const BETA_ITEMS = [
+const ITEMS = [
   "Onboarding e introdução ao método",
   "Fundamentos do Tarô",
   "O Louco — arcano completo com voz e quiz",
   "Progresso salvo com XP e streak",
   "Experiência visual imersiva",
-  "Área premium em desenvolvimento",
+  "Área premium disponível",
 ];
 
 const WHY_NOW = [
@@ -170,7 +170,7 @@ const BetaInvitePage = () => {
             border: "1.5px solid hsl(36 45% 58% / 0.22)",
             boxShadow: "0 8px 40px hsl(340 42% 28% / 0.04)",
           }}>
-            {BETA_ITEMS.map((item, i) => (
+            {ITEMS.map((item, i) => (
               <div key={i} className="flex items-center gap-2.5">
                 <Check className="w-3.5 h-3.5 shrink-0" style={{ color: "hsl(36 45% 50% / 0.70)" }} />
                 <span className="text-[12px] font-body" style={{ color: "hsl(230 15% 25% / 0.55)" }}>{item}</span>
