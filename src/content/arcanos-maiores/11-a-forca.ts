@@ -2,9 +2,9 @@ import type { ArcanoMaiorEditorial } from "./_editorial";
 import cardImage from "@/assets/arcano-11-forca.jpg";
 
 export const A_FORCA: ArcanoMaiorEditorial = {
-  number: 11,
+  number: 8,
   name: "A Força",
-  numeral: "XI",
+  numeral: "VIII",
   subtitle: "O Poder Interior",
   slug: "a-forca",
   cardImage,
@@ -55,7 +55,7 @@ export const A_FORCA: ArcanoMaiorEditorial = {
   },
 
   deepDive: {
-    text: "A Força é o Arcano XI na tradição Rider-Waite (VIII na tradição de Marselha). A troca com a Justiça foi feita por Arthur Edward Waite para alinhar com correspondências astrológicas (Leão = Força). O número 11 é um número mestre — duplicação do 1, indicando poder amplificado pela consciência. Após a Roda da Fortuna mostrar que forças externas operam, A Força revela o poder interno que nenhuma roda pode tirar.",
+    text: "A Força é o Arcano VIII na tradição Rider-Waite (XI na tradição de Marselha). A troca com a Justiça foi feita por Arthur Edward Waite para alinhar com correspondências astrológicas (Leão = Força). O número oito é o lemniscata verticalizado — equilíbrio infinito. Após o Carro (VII), A Força revela o poder interno que nenhuma roda pode tirar.",
     symbolism: "A mulher não usa correntes, chicote ou armadura para dominar o leão — usa flores e toque gentil. O lemniscata sobre sua cabeça é o mesmo do Mago (I), mas aqui o domínio não é sobre os elementos externos, e sim sobre a natureza interior. O leão com a boca aberta representa os instintos em sua forma bruta — raiva, medo, desejo — que são transformados, não destruídos.",
     cabala: "Na Cabala, A Força corresponde à letra Teth (ט), que significa 'serpente'. A serpente é a kundalini — a energia vital enrolada na base da coluna que, quando desperta conscientemente, ilumina. O caminho de Teth conecta Chesed (Misericórdia) a Geburah (Severidade), representando a força que nasce da compaixão e se aplica com rigor amoroso.",
     history: "Nas cartas renascentistas, a Força aparecia como Hércules ou Sansão — figuras masculinas de poder bruto. A tradição esotérica transformou radicalmente o arcano: na versão de Pamela Colman Smith, é uma mulher serena que domina o leão com gentileza. Essa mudança reflete a evolução do conceito de força: do poder físico ao poder interior, do domínio externo ao autodomínio.",
@@ -72,8 +72,8 @@ export const A_FORCA: ArcanoMaiorEditorial = {
     {
       id: "forca-q1", type: "multiple-choice",
       question: "Qual é o número d'A Força na tradição Rider-Waite?",
-      options: ["VIII", "IX", "X", "XI"], correctIndex: 3,
-      explanation: "A Força é o arcano XI na tradição Rider-Waite (VIII na tradição de Marselha).",
+      options: ["VII", "VIII", "XI", "XII"], correctIndex: 1,
+      explanation: "A Força é o arcano VIII na tradição Rider-Waite (XI na tradição de Marselha).",
     },
     {
       id: "forca-q2", type: "multiple-choice",
@@ -125,7 +125,7 @@ export const A_FORCA: ArcanoMaiorEditorial = {
   ],
 
   quickReview: [
-    { keyword: "Número", meaning: "XI (Rider-Waite) / VIII (Marselha)" },
+    { keyword: "Número", meaning: "VIII (Rider-Waite) / XI (Marselha)" },
     { keyword: "Arquétipo", meaning: "A Domadora, a Guerreira Gentil" },
     { keyword: "Luz", meaning: "Coragem compassiva, paciência, autodomínio" },
     { keyword: "Sombra", meaning: "Repressão emocional, bypass espiritual, rigidez" },
