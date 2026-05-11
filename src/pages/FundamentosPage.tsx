@@ -5,7 +5,6 @@ import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { useResolvedModule } from "@/hooks/use-resolved-module";
 import { XPBar } from "@/components/XPBar";
-// import mysticBg from "@/assets/mystic-bg.jpg";
 
 const FundamentosPage = () => {
   const navigate = useNavigate();

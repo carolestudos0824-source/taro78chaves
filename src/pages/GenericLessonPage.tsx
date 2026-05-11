@@ -5,7 +5,6 @@ import { useProgress } from "@/hooks/use-progress";
 import { useRole } from "@/hooks/use-role";
 import { useResolvedLesson } from "@/hooks/use-resolved-lesson";
 import { StreakCounter } from "@/components/StreakCounter";
-// import mysticBg from "@/assets/mystic-bg.jpg";
 
 interface GenericLesson {
   id: string;

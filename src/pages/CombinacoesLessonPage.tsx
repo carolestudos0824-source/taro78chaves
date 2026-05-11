@@ -5,7 +5,6 @@ import { COMBINACOES_LESSONS, getCombinacoesLessonByOrder } from "@/content/less
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { useResolvedLesson } from "@/hooks/use-resolved-lesson";
-// import mysticBg from "@/assets/mystic-bg.jpg";
 
 type Phase = "lesson" | "exercise" | "deepdive" | "quiz" | "complete";
 

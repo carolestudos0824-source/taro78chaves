@@ -3,7 +3,6 @@ import { ArrowLeft, ChevronRight, Lock, Check, Star, Sparkles, Crown } from "luc
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { MODULES_CATALOG as MODULES, isModuleUnlocked } from "@/lib/content";
-// import ornamentDivider from "@/assets/ornament-divider.png";
 
 interface TrailLevel {
   id: string;

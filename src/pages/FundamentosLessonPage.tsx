@@ -6,7 +6,6 @@ import { useProgress } from "@/hooks/use-progress";
 import { useRole } from "@/hooks/use-role";
 import { useResolvedQuiz } from "@/hooks/use-resolved-quiz";
 import { useResolvedLesson } from "@/hooks/use-resolved-lesson";
-// import mysticBg from "@/assets/mystic-bg.jpg";
 
 /** Fase 4A — piloto restrito a 3 lições reais de Fundamentos. */
 const FASE_4A_PILOT_LESSONS = new Set(["fund-1", "fund-2", "fund-3"]);
