@@ -8,18 +8,17 @@ import { EDITORIAL_REGISTRY } from "@/content/arcanos-maiores";
 
 const FoolsJourneyPage = () => {
   const navigate = useNavigate();
-  const { progress } = useProgress();
+  const { progress, isArcanoUnlocked, isArcanoCompleted } = useProgress();
 
   // Fase 2C: lista agregada dos 22 Arcanos Maiores também passa pelo adaptador
-  // (telemetria sourceUsed='db'/usedFallback=false).
   const resolvedMaiores = useResolvedArcanosMaiores();
   void resolvedMaiores;
 
   // Fase 5D: estrutura editorial da Jornada vem do CMS via adapter.
   const { data: journey, isLoading } = useJourneyContent();
 
-  const isStudied = (arcanoId: number) =>
-    progress.completedLessons.includes(`arcano-${arcanoId}`);
+  const isStudied = (arcanoId: number) => isArcanoUnlocked(arcanoId);
+  const isComplete = (arcanoId: number) => isArcanoCompleted(arcanoId);
 
   if (isLoading || !journey) {
     return (
