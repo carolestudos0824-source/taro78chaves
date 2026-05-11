@@ -353,26 +353,29 @@ const FoolsJourneyPage = () => {
           </div>
         </section>
 
-        {/* Action buttons */}
-        <div className="flex flex-col items-center gap-3 pb-10">
+        {/* Action buttons - Final CTA */}
+        <div className="flex flex-col items-center gap-4 pb-16 pt-8 relative z-10">
           <button
-            onClick={() => navigate("/module/arcanos-maiores")}
-            className="px-8 py-3 rounded-full font-heading text-[11px] tracking-[0.2em] uppercase flex items-center gap-2 transition-all hover:scale-105"
+            onClick={() => navigate("/lesson/0")}
+            className="group relative w-full max-w-xs px-10 py-5 rounded-full font-heading text-[12px] tracking-[0.3em] uppercase transition-all duration-500 hover:scale-105 active:scale-95 shadow-xl"
             style={{
-              background: "linear-gradient(135deg, hsl(340 42% 26%), hsl(36 42% 44%))",
-              color: "hsl(36 33% 97%)",
-              boxShadow: "0 6px 24px hsl(340 42% 28% / 0.15)",
+              background: "linear-gradient(135deg, #5B1F3D 0%, #3D1429 100%)",
+              color: "#FAF5EF",
             }}
           >
-            <Sparkles className="w-4 h-4" />
-            Iniciar a Jornada
+            <span className="relative z-10 flex items-center justify-center gap-3">
+              <Sparkles className="w-4 h-4 text-[#C8A66A] group-hover:rotate-12 transition-transform" />
+              Começar pelo Louco
+            </span>
+            <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
           </button>
+          
           <button
-            onClick={() => navigate("/app")}
-            className="px-8 py-3 rounded-full font-heading text-[11px] tracking-[0.2em] uppercase flex items-center justify-center gap-2 transition-all hover:bg-[#5B1F3D]/5 border border-[#5B1F3D]/20"
+            onClick={() => navigate("/module/arcanos-maiores")}
+            className="w-full max-w-xs px-10 py-4 rounded-full font-heading text-[11px] tracking-[0.2em] uppercase transition-all hover:bg-white/60 border-2 border-[#C8A66A30] font-bold"
             style={{ color: "#5B1F3D" }}
           >
-            Voltar aos Módulos
+            Voltar à Trilha dos Arcanos
           </button>
         </div>
       </main>
