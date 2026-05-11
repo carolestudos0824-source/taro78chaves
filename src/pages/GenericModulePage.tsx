@@ -205,11 +205,11 @@ const GenericModulePage = ({
 
         {/* Lessons Trail Header */}
         <div className="flex items-center gap-3 mb-5 animate-fade-in" style={{ animationDelay: "320ms", animationFillMode: "both" }}>
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-          <span className="text-[10px] font-heading tracking-[0.2em] uppercase text-[#C8A66A]">
-            Conteúdo do Módulo
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#C8A66A30] to-[#C8A66A70]" />
+          <span className="text-[11px] font-heading tracking-[0.32em] uppercase" style={{ color: "#8B6A30", fontWeight: 600 }}>
+            Trilha de Aprendizado
           </span>
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A40]" />
+          <div className="h-px flex-1 bg-gradient-to-l from-transparent via-[#C8A66A30] to-[#C8A66A70]" />
         </div>
 
         {/* Lessons */}
