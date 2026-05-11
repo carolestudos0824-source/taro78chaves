@@ -190,7 +190,7 @@ const LandingPage = () => {
             </div>
 
             <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
-              <div className="relative group max-w-[280px] md:max-w-[320px] lg:max-w-[340px] w-full">
+              <div className="relative group max-w-[280px] md:max-w-[320px] lg:max-w-[340px] w-full mb-12 lg:mb-0">
                 {/* Visual Portal Ornament */}
                 <div className="absolute -inset-4 border border-gold/20 rounded-[2.5rem] -z-10 animate-pulse-slow" />
                 <div className="absolute -inset-2 border-2 border-gold/10 rounded-[2.3rem] -z-10" />
