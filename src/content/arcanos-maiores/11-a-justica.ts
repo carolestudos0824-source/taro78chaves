@@ -11,7 +11,7 @@ export const A_JUSTICA: ArcanoMaiorEditorial = {
   keywords: ["Equilíbrio", "Verdade", "Consequência", "Responsabilidade", "Karma"],
 
   essence:
-    "A Justiça é o Arcano VIII — a lei implacável de causa e efeito, o espelho que reflete sem distorção. Ela não julga com emoção; ela mede com precisão. Sentada entre as duas colunas da objetividade, segura a espada da verdade em uma mão e a balança do equilíbrio na outra. Herdeira de Ma'at egípcia, Themis grega e Astreia romana, encarna o princípio cósmico de que toda ação produz reação proporcional, independentemente de quem a pratique. Quando a Justiça aparece, ela diz: o que você plantou, colherá. Não com punição — com exatidão.",
+    "A Justiça é o Arcano XI — a lei implacável de causa e efeito, o espelho que reflete sem distorção. Ela não julga com emoção; ela mede com precisão. Sentada entre as duas colunas da objetividade, segura a espada da verdade em uma mão e a balança do equilíbrio na outra. Herdeira de Ma'at egípcia, Themis grega e Astreia romana, encarna o principio cósmico de que toda ação produz reação proporcional, independentemente de quem a pratique. Quando a Justiça aparece, ela diz: o que você plantou, colherá. Não com punição — com exatidão.",
 
   symbols: [
     { name: "Espada erguida na mão direita", meaning: "Verdade que corta — discernimento, clareza mental e decisão firme. Erguida na vertical, indica que a verdade não se inclina a um lado: ela permanece reta." },

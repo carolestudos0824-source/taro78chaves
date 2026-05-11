@@ -82,9 +82,14 @@ export function JourneyMap({ progress }: JourneyMapProps) {
 
                   {/* Pedagogical Label */}
                   <div className={`mt-4 flex flex-col ${side === "left" ? "items-end text-right" : "items-start text-left"}`}>
-                    <span className="text-[10px] md:text-[11px] font-heading tracking-[0.3em] text-[#C8A66A] font-black uppercase mb-1">
-                      {arcano.numeral}
-                    </span>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-[9px] font-heading tracking-widest text-[#5B1F3D60] font-bold">
+                        {index + 1}/22
+                      </span>
+                      <span className="text-[10px] md:text-[11px] font-heading tracking-[0.3em] text-[#C8A66A] font-black uppercase">
+                        {arcano.numeral}
+                      </span>
+                    </div>
                     <h4 className="font-heading text-sm md:text-base text-[#5B1F3D] font-black tracking-tight leading-tight">
                       {arcano.name}
                     </h4>

@@ -155,7 +155,7 @@ const LessonPage = () => {
       <header className="sticky top-0 z-30 bg-background/80 backdrop-blur-xl border-b border-gold/10 px-4 py-3 flex items-center gap-4">
         <button onClick={() => navigate(-1)} className="p-2 opacity-50 hover:opacity-100"><ArrowLeft className="w-5 h-5" /></button>
         <div className="flex-1 min-w-0">
-          <p className="t-section-title text-[9px] mb-0.5">{arcano.numeral} • {arcanoId + 1}/22</p>
+          <p className="t-section-title text-[9px] mb-0.5">ETAPA {arcanoId + 1} DE 22 • {arcano.numeral}</p>
           <h2 className="font-heading text-sm text-midnight truncate">{arcano.name}</h2>
         </div>
         <PhaseIndicator phases={phases} currentIndex={phases.indexOf(phase)} />

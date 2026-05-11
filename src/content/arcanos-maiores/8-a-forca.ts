@@ -11,7 +11,7 @@ export const A_FORCA: ArcanoMaiorEditorial = {
   keywords: ["Coragem", "Compaixão", "Domínio Interior", "Paciência", "Poder Suave"],
 
   essence:
-    "A Força é o Arcano XI — o poder que não precisa gritar para ser ouvido. Não é a força bruta do guerreiro, mas a coragem silenciosa de quem domina seus instintos com compaixão. A mulher que abre a boca do leão não o subjuga — ela o acaricia. É a vitória da consciência sobre o impulso, do amor sobre o medo. Reescritura feminina do herói solar — eco da deusa Cibele com seus leões e da virgem que doma a fera nas alegorias medievais — apresenta o poder espiritual como ternura firme, não como dominação. Quando A Força aparece, ela diz: o verdadeiro poder é gentil.",
+    "A Força é o Arcano VIII — o poder que não precisa gritar para ser ouvido. Não é a força bruta do guerreiro, mas a coragem silenciosa de quem domina seus instintos com compaixão. A mulher que abre a boca do leão não o subjuga — ela o acaricia. É a vitória da consciência sobre o impulso, do amor sobre o medo. Reescritura feminina do herói solar — eco da deusa Cibele com seus leões e da virgem que doma a fera nas alegorias medievais — apresenta o poder espiritual como ternura firme, não como dominação. Quando A Força aparece, ela diz: o verdadeiro poder é gentil.",
 
   symbols: [
     { name: "Mulher abrindo a boca do leão", meaning: "Domínio dos instintos pela gentileza — não pela violência. A mão pousa, não esmaga: a fera se rende porque foi reconhecida, não dominada." },
