@@ -232,7 +232,7 @@ const TiragensPage = () => {
                           LIÇÃO {lesson.order + 1}
                         </span>
                         {isCurrent && (
-                          <span className="text-[8px] bg-[#C8A66A20] text-[#C8A66A] px-2 py-0.5 rounded-full font-heading tracking-widest uppercase animate-pulse">
+                          <span className="text-[8px] bg-[#C8A66A20] text-[#5B1F3D] px-2 py-0.5 rounded-full font-heading tracking-widest uppercase animate-pulse">
                             Atual
                           </span>
                         )}
