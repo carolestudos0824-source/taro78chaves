@@ -306,8 +306,10 @@ const Index = () => {
         </section>
 
         {/* Bottom ornament */}
-        <div className="flex items-center justify-center pb-10">
-          <img src={ornamentDivider} alt="" className="w-28 h-auto opacity-40" loading="lazy" width={800} height={512} />
+        <div className="pb-10">
+          <div className="ornament-divider-procedural">
+            <div className="ornament-divider-procedural-diamond" />
+          </div>
         </div>
       </main>
     </div>
