@@ -55,10 +55,11 @@ const FundamentosPage = () => {
       <header
         className="relative z-10"
         style={{
-          borderBottom: "1.5px solid #C8A66A40",
-          background: "rgba(250, 245, 239, 0.95)",
-          backdropFilter: "blur(20px)",
-          boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)",
+          borderBottom: "1px solid rgba(200, 166, 106, 0.18)",
+          background: "linear-gradient(180deg, rgba(250, 245, 239, 0.92) 0%, rgba(250, 245, 239, 0.55) 100%)",
+          backdropFilter: "blur(18px)",
+          WebkitBackdropFilter: "blur(18px)",
+          boxShadow: "0 1px 0 rgba(91, 31, 61, 0.03)",
         }}
       >
         <div className="container max-w-3xl py-6 px-6">
