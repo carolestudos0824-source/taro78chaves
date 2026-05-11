@@ -68,7 +68,7 @@ const FoolsJourneyPage = () => {
               <ArrowLeft className="w-4 h-4" style={{ color: "#5B1F3D" }} />
             </button>
             <div>
-              <span className="text-[11px] tracking-[0.35em] uppercase font-heading font-semibold block mb-0.5" style={{ color: "#8B6A30" }}>
+              <span className="text-[11px] tracking-[0.35em] uppercase font-heading font-semibold block mb-0.5" style={{ color: "#5B1F3D" }}>
                 ✦ Visão Geral ✦
               </span>
               <h1 className="font-heading text-xl tracking-wide" style={{
@@ -97,7 +97,7 @@ const FoolsJourneyPage = () => {
           <p className="font-accent text-lg italic leading-relaxed px-4" style={{ color: "#3D1429", fontWeight: 500 }}>
             "{meta.introEpigrafe}"
           </p>
-          <p className="font-heading text-[10px] tracking-[0.3em] uppercase mt-4 font-semibold" style={{ color: "#8B6A30" }}>
+          <p className="font-heading text-[10px] tracking-[0.3em] uppercase mt-4 font-semibold" style={{ color: "#5B1F3D" }}>
             {meta.introSubtitulo}
           </p>
         </div>
@@ -156,7 +156,7 @@ const FoolsJourneyPage = () => {
                 <h2 className="font-heading text-xl tracking-wide mb-2" style={{ color: "#3D1429" }}>
                   {phase.titulo}
                 </h2>
-                <p className="font-accent text-sm italic" style={{ color: "#8B6A30", opacity: 0.8 }}>
+                <p className="font-accent text-sm italic" style={{ color: "#5B1F3D", opacity: 0.8 }}>
                   {phase.subtitulo}
                 </p>
               </div>
@@ -251,7 +251,7 @@ const FoolsJourneyPage = () => {
                             </div>
                             <p
                               className="font-accent text-[12px] italic mb-2 font-medium"
-                              style={{ color: studied ? "#8B6A30" : "#8B6A3040" }}
+                              style={{ color: studied ? "#5B1F3D" : "#5B1F3D40" }}
                             >
                               {arcano.papel}
                             </p>
@@ -295,7 +295,7 @@ const FoolsJourneyPage = () => {
             <p className="font-body text-sm leading-[1.85] max-w-lg mx-auto mb-6" style={{ color: "#4A1830", opacity: 0.8 }}>
               {meta.encerramentoCorpo}
             </p>
-            <p className="font-accent text-lg italic font-medium" style={{ color: "#8B6A30" }}>
+            <p className="font-accent text-lg italic font-medium" style={{ color: "#5B1F3D" }}>
               {meta.encerramentoConvite}
             </p>
           </div>

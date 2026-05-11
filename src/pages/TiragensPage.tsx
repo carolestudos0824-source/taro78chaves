@@ -88,7 +88,7 @@ const TiragensPage = () => {
               </span>
               <span
                 className="text-[11px] font-heading tracking-wider"
-                style={{ color: "#C8A66A" }}
+                style={{ color: "#5B1F3D" }}
               >
                 {progressPct}%
               </span>

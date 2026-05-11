@@ -95,7 +95,7 @@ const FeedbackPage = () => {
               <Button onClick={() => navigate("/app")} className="w-full bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-xl font-heading font-black tracking-widest py-6 border-2 border-[#C8A66A]">
                 VOLTAR À JORNADA
               </Button>
-              <button onClick={() => { setSent(false); setSelected(null); setMessage(""); }} className="font-heading text-[10px] tracking-widest uppercase font-black text-[#C8A66A]">
+              <button onClick={() => { setSent(false); setSelected(null); setMessage(""); }} className="font-heading text-[10px] tracking-widest uppercase font-black text-[#5B1F3D]">
                 Enviar outra mensagem
               </button>
             </div>
@@ -104,7 +104,7 @@ const FeedbackPage = () => {
           <div className="space-y-8 animate-fade-in">
             {!selected ? (
               <div className="space-y-6">
-                <p className="text-center text-[11px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A]">
+                <p className="text-center text-[11px] font-heading font-black tracking-[0.3em] uppercase text-[#5B1F3D]">
                   Sobre o que quer falar?
                 </p>
                 <div className="grid grid-cols-2 gap-4">
@@ -134,14 +134,14 @@ const FeedbackPage = () => {
                       {CATEGORIES.find(c => c.id === selected)!.label}
                     </span>
                   </div>
-                  <button onClick={() => setSelected(null)} className="text-[10px] font-heading font-black tracking-widest uppercase text-[#C8A66A]">
+                  <button onClick={() => setSelected(null)} className="text-[10px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">
                     Trocar
                   </button>
                 </div>
 
                 <div className="space-y-6">
                   <div className="space-y-3">
-                    <label className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A] px-1">
+                    <label className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D] px-1">
                       Sua mensagem
                     </label>
                     <Textarea

@@ -421,7 +421,7 @@ const LandingPage = () => {
             {/* Monthly */}
             <div className="p-10 rounded-[2.5rem] border border-white/10 bg-white/5 flex flex-col text-left space-y-8 backdrop-blur-sm transition-all hover:bg-white/10">
               <div className="space-y-2">
-                <h3 className="t-section-title text-[#C8A66A] font-bold uppercase tracking-widest">Plano Mensal</h3>
+                <h3 className="t-section-title text-[#5B1F3D] font-bold uppercase tracking-widest">Plano Mensal</h3>
                 <div className="flex items-baseline gap-1">
                   <span className="text-5xl font-heading text-[#FAF5EF]">R$29,90</span>
                   <span className="text-sm text-[#D8CFC2]">/mês</span>

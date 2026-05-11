@@ -361,7 +361,7 @@ const FundamentosPage = () => {
               
               <div className="mt-6 flex items-center justify-center gap-2">
                 <div className="h-px w-8 bg-[#C8A66A40]" />
-                <span className="text-[9px] font-heading tracking-[0.3em] uppercase text-[#C8A66A80]">
+                <span className="text-[9px] font-heading tracking-[0.3em] uppercase text-[#5B1F3D80]">
                   Base da Jornada
                 </span>
                 <div className="h-px w-8 bg-[#C8A66A40]" />

@@ -143,7 +143,7 @@ const NaipePage = () => {
                 </p>
               )}
               {!filled && unlocked && (
-                <p className="text-[10px] font-body tracking-wider" style={{ color: "hsl(36 40% 50% / 0.60)" }}>
+                <p className="text-[10px] font-body tracking-wider" style={{ color: "#5B1F3D80" }}>
                   Conteúdo em breve
                 </p>
               )}
@@ -262,7 +262,7 @@ const NaipePage = () => {
         {/* Divider */}
         <div className="flex items-center gap-4 mb-8" style={{ animation: "fade-up 0.4s ease-out 0.05s both" }}>
           <div className="flex-1 h-px bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-          <span className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#C8A66A]">
+          <span className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#5B1F3D]">
             Trilha de Estudo
           </span>
           <div className="flex-1 h-px bg-gradient-to-l from-transparent to-[#C8A66A40]" />
@@ -292,7 +292,7 @@ const NaipePage = () => {
 
         {/* Footer */}
         <div className="text-center pt-4 mb-10" style={{ animation: "fade-up 0.4s ease-out 0.7s both" }}>
-          <button onClick={() => navigate("/app")} className="text-[10px] font-heading tracking-[0.2em] uppercase transition-all hover:text-[#5B1F3D] hover:scale-105" style={{ color: "#C8A66A" }}>
+          <button onClick={() => navigate("/app")} className="text-[10px] font-heading tracking-[0.2em] uppercase transition-all hover:text-[#5B1F3D] hover:scale-105" style={{ color: "#5B1F3D" }}>
             ← Voltar aos módulos
           </button>
         </div>
