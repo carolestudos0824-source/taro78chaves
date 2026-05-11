@@ -99,7 +99,7 @@ const FundamentosPage = () => {
               </span>
               <span
                 className="text-[11px] font-heading tracking-wider"
-                style={{ color: "#C8A66A" }}
+                style={{ color: "#5B1F3D" }}
               >
                 {progressPct}%
               </span>
@@ -260,7 +260,7 @@ const FundamentosPage = () => {
                           LIÇÃO {lesson.order + 1}
                         </span>
                         {isCurrent && (
-                          <span className="text-[8px] bg-[#C8A66A20] text-[#C8A66A] px-2 py-0.5 rounded-full font-heading tracking-widest uppercase animate-pulse">
+                          <span className="text-[8px] bg-[#C8A66A20] text-[#5B1F3D] px-2 py-0.5 rounded-full font-heading tracking-widest uppercase animate-pulse">
                             Atual
                           </span>
                         )}
@@ -276,8 +276,8 @@ const FundamentosPage = () => {
                       <p
                         className="font-body text-[12.5px] leading-relaxed"
                         style={{
-                          color: unlocked ? "#4A1830" : "#5B1F3D30",
-                          fontWeight: isCurrent ? 600 : 500,
+                          color: unlocked ? "#5B1F3D" : "#5B1F3D40",
+                          fontWeight: isCurrent ? 700 : 500,
                         }}
                       >
                         {lesson.subtitle}

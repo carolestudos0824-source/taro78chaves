@@ -188,7 +188,7 @@ const GenericModulePage = ({
             style={{ color: "#5B1F3DAA" }}
           >
             <span>{completedCount}/{lessons.length} lições concluídas</span>
-            <span style={{ color: "#C8A66A" }}>{pct}%</span>
+            <span style={{ color: "#5B1F3D" }}>{pct}%</span>
           </div>
           <div className="h-2 rounded-full overflow-hidden" style={{ background: "#E8DED3", border: "1px solid #D1C4B5" }}>
             <div
@@ -284,7 +284,7 @@ const GenericModulePage = ({
                         LIÇÃO {lesson.order + 1}
                       </span>
                       {isCurrent && (
-                        <span className="text-[7px] bg-[#C8A66A20] text-[#C8A66A] px-2 py-0.5 rounded-full font-heading uppercase animate-pulse">
+                        <span className="text-[7px] bg-[#C8A66A20] text-[#5B1F3D] px-2 py-0.5 rounded-full font-heading uppercase animate-pulse">
                           Próxima
                         </span>
                       )}
@@ -297,7 +297,7 @@ const GenericModulePage = ({
                     </h3>
                     <p
                       className="font-body text-[12px] leading-relaxed truncate"
-                      style={{ color: unlocked ? "#4A1830" : "#5B1F3D25", fontWeight: 500 }}
+                      style={{ color: unlocked ? "#5B1F3D" : "#5B1F3D40", fontWeight: 700 }}
                     >
                       {lesson.subtitle}
                     </p>
