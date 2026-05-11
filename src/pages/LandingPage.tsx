@@ -675,11 +675,11 @@ const LandingPage = () => {
           </p>
         </div>
 
-        <nav className="flex flex-wrap justify-center gap-8 md:gap-12 text-[12px] font-heading tracking-[0.2em] uppercase relative z-10">
-          <a href="https://taro78chaves.lovable.app/privacidade" onClick={() => trackEvent("landing_legal_link_click", { link_name: "privacidade", source: "landing" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Privacidade</a>
-          <a href="https://taro78chaves.lovable.app/termos" onClick={() => trackEvent("landing_legal_link_click", { link_name: "termos", source: "landing" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Termos</a>
-          <a href="https://taro78chaves.lovable.app/suporte" onClick={() => trackEvent("landing_legal_link_click", { link_name: "suporte", source: "landing" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Suporte</a>
-          <a href="https://taro78chaves.lovable.app/excluir-conta" onClick={() => trackEvent("landing_legal_link_click", { link_name: "excluir_conta", source: "landing" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Excluir conta</a>
+        <nav className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-[13px] md:text-[14px] font-heading tracking-[0.25em] uppercase relative z-10 px-4">
+          <a href="https://taro78chaves.lovable.app/privacidade" onClick={() => trackEvent("landing_legal_link_click", { link_name: "privacidade", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/20 pb-1">Privacidade</a>
+          <a href="https://taro78chaves.lovable.app/termos" onClick={() => trackEvent("landing_legal_link_click", { link_name: "termos", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/20 pb-1">Termos</a>
+          <a href="https://taro78chaves.lovable.app/suporte" onClick={() => trackEvent("landing_legal_link_click", { link_name: "suporte", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/20 pb-1">Suporte</a>
+          <a href="https://taro78chaves.lovable.app/excluir-conta" onClick={() => trackEvent("landing_legal_link_click", { link_name: "excluir_conta", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/20 pb-1">Excluir conta</a>
         </nav>
 
         <div className="pt-8 border-t border-gold/10 max-w-xs mx-auto relative z-10">
