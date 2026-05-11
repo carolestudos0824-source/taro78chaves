@@ -23,12 +23,12 @@ const FundamentosLessonPage = () => {
   const [showExplanation, setShowExplanation] = useState(false);
   const [score, setScore] = useState(0);
 
-  // Fallback defensivo para rota literal /fundamentos/:order
+  // Fallback defensivo para rota literal /fundamentos/:order ou IDs inválidos
   const isLiteralRoute = order === ":order";
-  
   const lessonOrder = parseInt(order || "0", 10);
-  const lesson = getFundamentosLessonByOrder(lessonOrder);
-  const nextLesson = getFundamentosLessonByOrder(lessonOrder + 1);
+  const isValidOrder = !isNaN(lessonOrder);
+  const lesson = getFundamentosLessonByOrder(isValidOrder ? lessonOrder : -1);
+  const nextLesson = getFundamentosLessonByOrder(isValidOrder ? lessonOrder + 1 : -1);
 
   // Redirecionamento defensivo se a rota for literal ou inválida
   useEffect(() => {
@@ -81,7 +81,7 @@ const FundamentosLessonPage = () => {
     );
   }
 
-  if (isLiteralRoute) {
+  if (isLiteralRoute || !isValidOrder) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7]">
         <div className="text-center space-y-4 animate-pulse">
