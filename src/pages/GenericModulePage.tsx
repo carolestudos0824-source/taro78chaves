@@ -153,10 +153,16 @@ const GenericModulePage = ({
           {/* Editorial intro */}
           {editorialIntro && (
             <div className="mt-4 pt-4 border-t border-[#C8A66A20]">
+              <div className="flex items-center justify-center gap-2 mb-3 opacity-90">
+                <span className="h-px w-8" style={{ background: "linear-gradient(90deg, transparent, #C8A66A80)" }} />
+                <span className="text-[11px]" style={{ color: "#C8A66A", letterSpacing: "0.3em" }}>✶ ◈ ✶</span>
+                <span className="h-px w-8" style={{ background: "linear-gradient(90deg, #C8A66A80, transparent)" }} />
+              </div>
               <p
-                className="font-accent text-[13px] leading-relaxed italic animate-fade-in"
+                className="font-accent text-[14px] md:text-[15px] leading-relaxed italic animate-fade-in text-center"
                 style={{
-                  color: "#5B1F3DBB",
+                  color: "#3D1429",
+                  fontWeight: 500,
                   animationDelay: "200ms",
                   animationFillMode: "both",
                 }}
