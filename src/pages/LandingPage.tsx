@@ -75,7 +75,7 @@ const LandingPage = () => {
     <div className="min-h-screen bg-parchment text-midnight selection:bg-secondary selection:text-white">
 
       {/* ─── Top Brand Header ─── */}
-      <header className="absolute top-0 left-0 right-0 z-50 px-6 py-4 md:py-6 bg-parchment/80 backdrop-blur-md border-b border-gold/10">
+      <header className="sticky top-0 z-50 px-6 py-4 md:py-6 bg-parchment/95 backdrop-blur-md border-b border-gold/10">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <a href="/" className="flex items-center gap-2.5 group transition-transform hover:scale-[1.02]" aria-label="Tarô 78 Chaves">
             <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
@@ -107,7 +107,7 @@ const LandingPage = () => {
       </header>
 
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-12 pb-6 md:pt-14 md:pb-8 px-6 overflow-hidden min-h-0 flex items-center">
+      <section className="relative pt-20 pb-12 md:pt-32 md:pb-24 px-6 overflow-hidden flex items-center min-h-[85vh] lg:min-h-[auto]">
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold/15 blur-[120px]" />
@@ -190,7 +190,7 @@ const LandingPage = () => {
             </div>
 
             <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
-              <div className="relative group max-w-[280px] md:max-w-[320px] lg:max-w-[340px] w-full">
+              <div className="relative group max-w-[280px] md:max-w-[320px] lg:max-w-[340px] w-full mb-12 lg:mb-0">
                 {/* Visual Portal Ornament */}
                 <div className="absolute -inset-4 border border-gold/20 rounded-[2.5rem] -z-10 animate-pulse-slow" />
                 <div className="absolute -inset-2 border-2 border-gold/10 rounded-[2.3rem] -z-10" />
