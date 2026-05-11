@@ -78,7 +78,7 @@ const AuthPage = () => {
               {mode === "signup" ? "Crie sua conta para salvar seu progresso e começar sua jornada pelo Louco." : mode === "login" ? "Boas-vindas de volta à sua jornada." : "Enviaremos um link de acesso."}
             </p>
             {mode === "signup" && (
-              <p className="text-[11px] font-medium text-gold-dark/80 italic">
+              <p className="text-[11px] font-bold text-plum italic">
                 ✦ Comece pelo Louco gratuitamente. Sem cartão de crédito.
               </p>
             )}
@@ -88,17 +88,17 @@ const AuthPage = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           {mode === "signup" && (
             <div className="space-y-1.5">
-              <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark ml-1">Nome</label>
+              <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-plum/70 ml-1">Nome</label>
               <Input className="shadcn-input-premium py-6" value={name} onChange={e => setName(e.target.value)} placeholder="Seu nome" />
             </div>
           )}
           <div className="space-y-1.5">
-            <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark ml-1">E-mail</label>
+            <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-plum/70 ml-1">E-mail</label>
             <Input className="shadcn-input-premium py-6" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="seu@email.com" required />
           </div>
           {mode !== "forgot" && (
             <div className="space-y-1.5 relative">
-              <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark ml-1">Senha</label>
+              <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-plum/70 ml-1">Senha</label>
               <div className="relative">
                 <Input
                   className="shadcn-input-premium py-6"
@@ -108,7 +108,7 @@ const AuthPage = () => {
                   placeholder="Mínimo 6 caracteres"
                   required
                 />
-                <button type="button" onClick={() => setShowPass(!showPass)} className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground/50 hover:text-gold-dark transition-colors">
+                <button type="button" onClick={() => setShowPass(!showPass)} className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground/50 hover:text-plum transition-colors">
                   {showPass ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
@@ -138,7 +138,7 @@ const AuthPage = () => {
           )}
           <p className="text-xs font-body text-muted-foreground">
             {mode === "signup" ? "Já tem conta?" : "Não tem conta?"}{" "}
-            <button onClick={() => setMode(mode === "signup" ? "login" : "signup")} className="font-heading tracking-wider uppercase text-gold-dark ml-1">
+            <button onClick={() => setMode(mode === "signup" ? "login" : "signup")} className="font-heading tracking-wider uppercase text-plum font-bold ml-1">
               {mode === "signup" ? "Entrar" : "Criar conta"}
             </button>
           </p>

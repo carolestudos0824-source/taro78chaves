@@ -118,7 +118,7 @@ const GenericModulePage = ({
               <span
                 className="text-[10px] font-heading uppercase tracking-[0.25em] px-4 py-1.5 rounded-full"
                 style={{
-                  color: "#C8A66A",
+                  color: "#5B1F3D",
                   background: "rgba(200, 166, 106, 0.1)",
                   border: "1px solid rgba(200, 166, 106, 0.2)",
                 }}
@@ -206,7 +206,7 @@ const GenericModulePage = ({
         {/* Lessons Trail Header */}
         <div className="flex items-center gap-3 mb-5 animate-fade-in" style={{ animationDelay: "320ms", animationFillMode: "both" }}>
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#C8A66A30] to-[#C8A66A70]" />
-          <span className="text-[11px] font-heading tracking-[0.32em] uppercase" style={{ color: "#8B6A30", fontWeight: 600 }}>
+          <span className="text-[11px] font-heading tracking-[0.32em] uppercase" style={{ color: "#5B1F3D", fontWeight: 700 }}>
             Trilha de Aprendizado
           </span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent via-[#C8A66A30] to-[#C8A66A70]" />
@@ -280,7 +280,7 @@ const GenericModulePage = ({
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-0.5">
-                      <span className="text-[9px] font-heading font-bold" style={{ color: unlocked ? "#C8A66A" : "#5B1F3D40" }}>
+                      <span className="text-[9px] font-heading font-bold" style={{ color: unlocked ? "#5B1F3D" : "#5B1F3D40" }}>
                         LIÇÃO {lesson.order + 1}
                       </span>
                       {isCurrent && (

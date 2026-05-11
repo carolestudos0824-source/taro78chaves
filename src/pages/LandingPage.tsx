@@ -89,7 +89,7 @@ const LandingPage = () => {
               <span className="font-heading text-lg md:text-xl tracking-tight text-plum font-bold leading-none">
                 Tarô 78 Chaves
               </span>
-              <span className="font-heading text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-gold-dark font-medium mt-1">
+              <span className="font-heading text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-plum font-bold mt-1">
                 A jornada viva
               </span>
             </div>
@@ -132,7 +132,7 @@ const LandingPage = () => {
                 <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-plum normal-case">
                   Aprenda Tarô como uma jornada.
                 </h1>
-                <p className="font-heading text-lg md:text-xl lg:text-2xl text-gold-dark font-medium italic opacity-90">
+                <p className="font-heading text-lg md:text-xl lg:text-2xl text-plum font-bold italic opacity-90">
                   Arcano por arcano, com lições curtas, quizzes, Pontos de Jornada e progresso real.
                 </p>
 
@@ -231,7 +231,7 @@ const LandingPage = () => {
                       <div className="h-1 md:h-1.5 w-full bg-plum/5 rounded-full overflow-hidden p-0.5 border border-plum/5">
                         <div className="h-full bg-gold rounded-full w-[8%] shadow-[0_0_8px_hsl(var(--brand-gold)/0.4)]" />
                       </div>
-                      <p className="text-[8px] md:text-[9px] lg:text-[10px] font-heading tracking-widest text-gold-dark font-extrabold uppercase">
+                      <p className="text-[8px] md:text-[9px] lg:text-[10px] font-heading tracking-widest text-plum font-extrabold uppercase">
                         Lição gratuita · desbloqueia O Mago
                       </p>
                     </div>
@@ -321,7 +321,7 @@ const LandingPage = () => {
 
           <div className="mt-8 text-center space-y-8">
             <p className="text-sm font-body text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Comece pelo Louco grátis. Vá bem na lição e <span className="text-gold-dark font-bold">desbloqueie O Mago</span>. Depois, continue sua jornada completa pelos 78 arcanos.
+              Comece pelo Louco grátis. Vá bem na lição e <span className="text-plum font-bold">desbloqueie O Mago</span>. Depois, continue sua jornada completa pelos 78 arcanos.
             </p>
             <Button 
               onClick={() => handleStart("journey")} 
@@ -670,7 +670,7 @@ const LandingPage = () => {
               </span>
             </div>
           </div>
-          <p className="font-heading text-xl md:text-2xl text-gold-light italic max-w-md drop-shadow-sm">
+          <p className="font-heading text-xl md:text-2xl text-ivory italic max-w-md drop-shadow-sm opacity-90">
             "No app Tarô 78 Chaves, o tarô deixa de ser imagem e se torna presença."
           </p>
         </div>

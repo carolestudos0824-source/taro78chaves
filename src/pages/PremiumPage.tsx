@@ -121,7 +121,7 @@ const PremiumPage = () => {
 
       <main className="max-w-lg mx-auto px-6 -mt-12 relative z-20 space-y-12">
         <div className="space-y-4">
-          <h2 className="text-center font-heading text-xs tracking-[0.3em] uppercase font-black text-[#C8A66A]">
+          <h2 className="text-center font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
             O que você desbloqueia:
           </h2>
           <div className="grid grid-cols-1 gap-3">
@@ -153,7 +153,7 @@ const PremiumPage = () => {
               className="w-full text-left bg-white border-2 border-[#DCCFC2] p-6 rounded-3xl flex items-center justify-between group active:scale-[0.98] transition-all shadow-sm hover:border-[#C8A66A]"
             >
               <div className="space-y-1">
-                <p className="text-[11px] font-heading tracking-[0.2em] uppercase font-black text-[#C8A66A]">Plano Mensal</p>
+                <p className="text-[11px] font-heading tracking-[0.2em] uppercase font-black text-[#5B1F3D]">Plano Mensal</p>
                 <div className="flex items-baseline gap-1">
                   <span className="font-heading text-2xl text-[#5B1F3D] font-black">R$ 29,90</span>
                   <span className="text-xs font-bold text-[#5B1F3D]/40">/mês</span>
@@ -176,7 +176,7 @@ const PremiumPage = () => {
                   <span className="font-heading text-5xl text-[#5B1F3D] font-black tracking-tighter">R$ 197</span>
                   <span className="text-xs font-heading font-black text-[#5B1F3D]/40">/único</span>
                 </div>
-                <p className="text-sm font-black text-[#C8A66A] italic leading-relaxed">
+                <p className="text-sm font-black text-[#5B1F3D] italic leading-relaxed">
                   12 meses de acesso • Sem renovação automática
                 </p>
               </div>

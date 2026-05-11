@@ -22,7 +22,7 @@ const Index = () => {
       <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7]">
         <div className="text-center space-y-4">
           <div className="w-10 h-10 border-2 border-gold/20 border-t-gold animate-spin rounded-full mx-auto" />
-          <p className="text-[10px] text-gold-dark/40 font-heading tracking-widest uppercase">Lendo Arcanos</p>
+          <p className="text-[10px] text-plum/60 font-heading tracking-widest uppercase">Lendo Arcanos</p>
         </div>
       </div>
     );
@@ -114,7 +114,7 @@ const Index = () => {
                 <div className="font-heading text-3xl md:text-4xl tracking-wide" style={{ color: "#5B1F3D" }}>
                   {completedCount}
                 </div>
-                <div className="text-[10px] tracking-[0.3em] uppercase font-heading mt-2" style={{ color: "#C8A66A" }}>
+                <div className="text-[10px] tracking-[0.3em] uppercase font-heading mt-2" style={{ color: "#5B1F3D" }}>
                   Concluídos
                 </div>
               </div>
@@ -122,7 +122,7 @@ const Index = () => {
                 <div className="font-heading text-3xl md:text-4xl tracking-wide" style={{ color: "#5B1F3D" }}>
                   22
                 </div>
-                <div className="text-[10px] tracking-[0.3em] uppercase font-heading mt-2" style={{ color: "#C8A66A" }}>
+                <div className="text-[10px] tracking-[0.3em] uppercase font-heading mt-2" style={{ color: "#5B1F3D" }}>
                   Arcanos
                 </div>
               </div>
@@ -184,7 +184,7 @@ const Index = () => {
 
                   {/* Text */}
                   <div className="flex-1 text-left">
-                    <div className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1.5" style={{ color: "#C8A66A" }}>
+                    <div className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1.5" style={{ color: "#5B1F3D" }}>
                       Próxima etapa
                     </div>
                     <h3 className="font-heading text-2xl md:text-3xl tracking-wide mb-1" style={{ color: "#5B1F3D" }}>
@@ -246,7 +246,7 @@ const Index = () => {
         <section className="mb-12">
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-            <span className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#C8A66A]">
+            <span className="text-[10px] font-heading tracking-[0.3em] uppercase text-plum font-bold">
               Sua Aprendizagem
             </span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A40]" />
@@ -275,7 +275,7 @@ const Index = () => {
         <section className="mb-12">
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-            <span className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#C8A66A]">
+            <span className="text-[10px] font-heading tracking-[0.3em] uppercase text-plum font-bold">
               Mapa da Jornada
             </span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A40]" />
