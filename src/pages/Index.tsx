@@ -173,48 +173,48 @@ const Index = () => {
               onClick={() => navigate(`/lesson/${currentArcanoId}`)}
               className="w-full group transition-all duration-500 hover:scale-[1.02] active:scale-95"
             >
-              <div className="relative overflow-hidden rounded-[2rem] p-8 md:p-10" style={{
+              <div className="relative overflow-hidden rounded-[2.5rem] p-10 md:p-12 transition-all duration-500 group-hover:shadow-[0_40px_80px_rgba(91,31,61,0.12)]" style={{
                 background: "white",
-                border: "1.5px solid #C8A66A",
-                boxShadow: "0 25px 60px rgba(91, 31, 61, 0.08), 0 0 40px rgba(200, 166, 106, 0.12)",
+                border: "2px solid #C8A66A",
+                boxShadow: "0 30px 70px rgba(91, 31, 61, 0.1), 0 0 50px rgba(200, 166, 106, 0.15)",
               }}>
                 {/* Background glow */}
-                <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#C8A66A10] rounded-full blur-3xl group-hover:bg-[#C8A66A20] transition-colors" />
+                <div className="absolute -top-10 -right-10 w-48 h-48 bg-[#C8A66A15] rounded-full blur-3xl group-hover:bg-[#C8A66A25] transition-colors" />
 
-                <div className="relative z-10 flex items-center gap-6">
+                <div className="relative z-10 flex items-center gap-8">
                   {/* Arcano symbol */}
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center shrink-0 transition-all duration-500 group-hover:rotate-12" style={{
-                    border: "2px solid #C8A66A",
+                  <div className="w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center shrink-0 transition-all duration-700 group-hover:rotate-12 group-hover:scale-105" style={{
+                    border: "2.5px solid #C8A66A",
                     background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
-                    boxShadow: "0 10px 25px rgba(91, 31, 61, 0.3)"
+                    boxShadow: "0 15px 35px rgba(91, 31, 61, 0.4)"
                   }}>
-                    <span className="font-heading text-xl md:text-2xl text-[#FAF5EF]">
+                    <span className="font-heading text-2xl md:text-3xl text-[#FAF5EF]">
                       {currentArcano.numeral}
                     </span>
                   </div>
 
                   {/* Text */}
                   <div className="flex-1 text-left">
-                    <div className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1.5" style={{ color: "#5B1F3D" }}>
+                    <div className="text-[11px] tracking-[0.45em] uppercase font-heading mb-2 font-black" style={{ color: "#5B1F3D" }}>
                       Próxima etapa
                     </div>
-                    <h3 className="font-heading text-2xl md:text-3xl tracking-wide mb-1" style={{ color: "#5B1F3D" }}>
+                    <h3 className="font-heading text-3xl md:text-4xl tracking-tight mb-2 font-black" style={{ color: "#5B1F3D" }}>
                       {currentArcano.name}
                     </h3>
-                    <p className="font-accent text-base italic" style={{ color: "#5B1F3DBB" }}>
+                    <p className="font-accent text-lg md:text-xl italic font-medium" style={{ color: "#5B1F3DCC" }}>
                       {currentArcano.subtitle}
                     </p>
                   </div>
 
                   {/* CTA */}
-                  <div className="shrink-0 flex flex-col items-center gap-2">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 transition-all" style={{
+                  <div className="shrink-0 flex flex-col items-center gap-3">
+                    <div className="w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-all duration-500" style={{
                       background: "linear-gradient(135deg, #C8A66A, #B08D50)",
-                      boxShadow: "0 8px 20px rgba(200, 166, 106, 0.3)"
+                      boxShadow: "0 10px 25px rgba(200, 166, 106, 0.4)"
                     }}>
-                      <Sparkles className="w-5 h-5 text-[#5B1F3D]" />
+                      <Sparkles className="w-6 h-6 text-[#5B1F3D]" />
                     </div>
-                    <span className="text-[9px] tracking-[0.3em] uppercase font-heading font-bold" style={{ color: "#5B1F3D" }}>
+                    <span className="text-[10px] tracking-[0.35em] uppercase font-heading font-black" style={{ color: "#5B1F3D" }}>
                       {completedCount === 0 ? "Começar" : "Continuar"}
                     </span>
                   </div>
