@@ -274,10 +274,10 @@ const FundamentosPage = () => {
                         {lesson.title}
                       </h3>
                       <p
-                        className="font-body text-xs leading-relaxed"
+                        className="font-body text-[12.5px] leading-relaxed"
                         style={{
-                          color: unlocked ? "#5B1F3DCC" : "#5B1F3D20",
-                          fontWeight: isCurrent ? 500 : 400,
+                          color: unlocked ? "#4A1830" : "#5B1F3D30",
+                          fontWeight: isCurrent ? 600 : 500,
                         }}
                       >
                         {lesson.subtitle}
