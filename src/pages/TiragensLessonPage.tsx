@@ -19,9 +19,12 @@ const TiragensLessonPage = () => {
   
   // Fallback defensivo para rota literal /tiragens/:order
   const isLiteralRoute = order === ":order";
+  // Fallback defensivo para rota literal /tiragens/:order ou IDs inválidos
+  const isLiteralRoute = order === ":order";
   const lessonOrder = parseInt(order || "0", 10);
-  const lesson = getTiragensLessonByOrder(lessonOrder);
-  const nextLesson = getTiragensLessonByOrder(lessonOrder + 1);
+  const isValidOrder = !isNaN(lessonOrder);
+  const lesson = getTiragensLessonByOrder(isValidOrder ? lessonOrder : -1);
+  const nextLesson = getTiragensLessonByOrder(isValidOrder ? lessonOrder + 1 : -1);
 
   // Redirecionamento defensivo se a rota for literal
   useEffect(() => {
@@ -33,7 +36,7 @@ const TiragensLessonPage = () => {
   // Fase 4B — telemetria invisível: lição via adaptador (DB-first com fallback).
   useResolvedLesson("tiragens", lesson?.id ?? null);
 
-  if (isLiteralRoute) {
+  if (isLiteralRoute || !isValidOrder) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7]">
         <div className="text-center space-y-4 animate-pulse">

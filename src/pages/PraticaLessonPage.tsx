@@ -19,9 +19,12 @@ const PraticaLessonPage = () => {
   
   // Fallback defensivo para rota literal /pratica/:order
   const isLiteralRoute = order === ":order";
+  // Fallback defensivo para rota literal /pratica/:order ou IDs inválidos
+  const isLiteralRoute = order === ":order";
   const lessonOrder = parseInt(order || "0", 10);
-  const lesson = getPraticaLessonByOrder(lessonOrder);
-  const nextLesson = getPraticaLessonByOrder(lessonOrder + 1);
+  const isValidOrder = !isNaN(lessonOrder);
+  const lesson = getPraticaLessonByOrder(isValidOrder ? lessonOrder : -1);
+  const nextLesson = getPraticaLessonByOrder(isValidOrder ? lessonOrder + 1 : -1);
 
   // Redirecionamento defensivo se a rota for literal
   useEffect(() => {
@@ -30,7 +33,7 @@ const PraticaLessonPage = () => {
     }
   }, [isLiteralRoute, navigate]);
 
-  if (isLiteralRoute) {
+  if (isLiteralRoute || !isValidOrder) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7]">
         <div className="text-center space-y-4 animate-pulse">
