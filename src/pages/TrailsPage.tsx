@@ -89,6 +89,10 @@ const TrailsPage = () => {
     return Math.round((completed / level.modules.length) * 100);
   };
 
+  // Find the single absolute next module in the entire journey
+  const allModulesOrdered = TRAIL_LEVELS.flatMap(l => l.modules);
+  const nextGlobalModuleId = allModulesOrdered.find(mId => !progress.completedModules.includes(mId));
+
   // Determine current level
   const currentLevelIdx = TRAIL_LEVELS.findIndex(l => isLevelUnlocked(l) && !isLevelComplete(l));
   const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : null;
@@ -264,8 +268,8 @@ const TrailsPage = () => {
               </div>
 
               {/* Module cards */}
-              <div className="space-y-4 ml-7 border-l-2 pl-6" style={{
-                borderColor: unlocked ? `${level.accentColor}40` : "#DCCFC240",
+              <div className="space-y-4 ml-7 border-l pl-6" style={{
+                borderColor: unlocked ? `${level.accentColor}20` : "#DCCFC230",
               }}>
                 {level.modules.map(modId => {
                   const mod = MODULES.find(m => m.id === modId);
@@ -286,36 +290,36 @@ const TrailsPage = () => {
                       )}
                       <div className="rounded-2xl p-5 flex items-center gap-5 transition-all duration-500 group-hover:translate-x-1" style={modCurrent ? {
                         background: "linear-gradient(145deg, #FFF, #FAF5EF)",
-                        border: `2px solid ${level.accentColor}`,
-                        boxShadow: `0 8px 30px ${level.accentColor}15`,
+                        border: `2px solid ${modId === nextGlobalModuleId ? level.accentColor : '#DCCFC2'}`,
+                        boxShadow: modId === nextGlobalModuleId ? `0 8px 30px ${level.accentColor}15` : 'none',
                       } : modComplete ? {
                         background: "#FAF5EF90",
-                        border: "1px solid #C8A66A40",
-                      } : {
-                        background: "#DCCFC220",
                         border: "1px solid #DCCFC240",
+                      } : {
+                        background: "#DCCFC210",
+                        border: "1px solid #DCCFC220",
                         opacity: 0.8,
                       }}>
                         {/* Status icon */}
                         <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:scale-110" style={modComplete ? {
                           background: "#FAF5EF",
-                          border: `1px solid ${level.accentColor}60`,
+                          border: `1px solid ${level.accentColor}30`,
                         } : modCurrent ? {
-                          background: "#5B1F3D",
-                          border: `1px solid ${level.accentColor}`,
+                          background: modId === nextGlobalModuleId ? "#5B1F3D" : "#FAF5EF",
+                          border: `1.5px solid ${modId === nextGlobalModuleId ? level.accentColor : '#DCCFC2'}`,
                         } : {
-                          background: "#DCCFC240",
-                          border: "1px solid #DCCFC260",
+                          background: "#DCCFC220",
+                          border: "1px solid #DCCFC240",
                         }}>
                           {modComplete ? (
                             <Check className="w-6 h-6" style={{ color: level.accentColor }} />
                           ) : modCurrent ? (
                             <div className="relative">
-                              <Key className="w-6 h-6 text-[#C8A66A]" />
-                              <Sparkles className="w-3 h-3 absolute -top-1 -right-1 text-[#C8A66A] animate-pulse" />
+                              <Key className={`w-6 h-6 ${modId === nextGlobalModuleId ? 'text-[#C8A66A]' : 'text-[#5B1F3D50]'}`} />
+                              {modId === nextGlobalModuleId && <Sparkles className="w-3 h-3 absolute -top-1 -right-1 text-[#C8A66A] animate-pulse" />}
                             </div>
                           ) : (
-                            <Lock className="w-5 h-5 text-[#5B1F3D40]" />
+                            <Lock className="w-5 h-5 text-[#5B1F3D20]" />
                           )}
                         </div>
 
@@ -326,7 +330,7 @@ const TrailsPage = () => {
                             }}>
                               {mod.name}
                             </h3>
-                            {modCurrent && (
+                            {modId === nextGlobalModuleId && (
                               <span className="text-[8px] font-heading font-black uppercase tracking-[0.2em] px-2 py-0.5 rounded-full bg-[#C8A66A] text-white">Próximo</span>
                             )}
                           </div>
