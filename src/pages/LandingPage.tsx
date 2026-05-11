@@ -286,34 +286,36 @@ const LandingPage = () => {
             <p className="text-muted-foreground max-w-2xl mx-auto font-body">Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, Pontos de Jornada e progresso real.</p>
           </div>
 
-          <div className="flex overflow-x-auto gap-4 md:gap-6 pb-8 px-4 scrollbar-elegant snap-x items-end min-h-[340px]">
-            {[
-              { id: 0, img: imgLouco, name: "O Louco", badge: "Grátis" },
-              { id: 1, img: imgMago, name: "O Mago", badge: "Desbloqueável" },
-              { id: 2, img: imgSacerdotisa, name: "A Sacerdotisa", badge: "Premium" },
-              { id: 3, img: imgImperatriz, name: "A Imperatriz", badge: "Premium" },
-              { id: 4, img: imgImperador, name: "O Imperador", badge: "Premium" },
-              { id: 5, img: imgHierofante, name: "O Hierofante", badge: "Premium" },
-              { id: 6, img: imgEnamorados, name: "Os Enamorados", badge: "Premium" },
-            ].map((card, i) => (
-              <div key={i} className="flex-shrink-0 flex flex-col items-center gap-3 snap-center group">
-                <div className="relative">
-                  <div className="w-32 h-52 md:w-40 md:h-60 rounded-2xl overflow-hidden shadow-xl border-4 border-white transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-2xl group-hover:border-gold/20">
-                    <img src={card.img} alt={card.name} className="w-full h-full object-cover" />
-                    <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[8px] font-heading tracking-widest uppercase shadow-lg z-20 ${ card.badge === "Grátis" ? "bg-success text-white" : "bg-gold text-white" }`}>
-                      {card.badge}
+          <div className="relative">
+            <div className="flex overflow-x-auto gap-4 md:gap-6 pb-8 px-4 scrollbar-elegant snap-x items-end min-h-[340px] justify-start md:justify-center">
+              {[
+                { id: 0, img: imgLouco, name: "O Louco", badge: "Grátis" },
+                { id: 1, img: imgMago, name: "O Mago", badge: "Desbloqueável" },
+                { id: 2, img: imgSacerdotisa, name: "A Sacerdotisa", badge: "Premium" },
+                { id: 3, img: imgImperatriz, name: "A Imperatriz", badge: "Premium" },
+                { id: 4, img: imgImperador, name: "O Imperador", badge: "Premium" },
+                { id: 5, img: imgHierofante, name: "O Hierofante", badge: "Premium" },
+                { id: 6, img: imgEnamorados, name: "Os Enamorados", badge: "Premium" },
+              ].map((card, i) => (
+                <div key={i} className="flex-shrink-0 flex flex-col items-center gap-3 snap-center group">
+                  <div className="relative">
+                    <div className="w-32 h-52 md:w-40 md:h-60 rounded-2xl overflow-hidden shadow-xl border-4 border-white transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-2xl group-hover:border-gold/20">
+                      <img src={card.img} alt={card.name} className="w-full h-full object-cover" />
+                      <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[8px] font-heading tracking-widest uppercase shadow-lg z-20 ${ card.badge === "Grátis" ? "bg-success text-white" : "bg-gold text-white" }`}>
+                        {card.badge}
+                      </div>
                     </div>
                   </div>
+                  <div className="text-center">
+                    <span className="text-[10px] md:text-xs font-heading tracking-[0.1em] uppercase text-plum font-bold block truncate w-full px-1">
+                      {card.name.toUpperCase()}
+                    </span>
+                  </div>
                 </div>
-                <div className="text-center">
-                  <span className="text-[10px] md:text-xs font-heading tracking-[0.1em] uppercase text-plum font-bold block truncate w-full px-1">
-                    {card.name.toUpperCase()}
-                  </span>
-                </div>
+              ))}
+              <div className="flex-shrink-0 w-20 flex items-center justify-center h-52 md:h-60 opacity-20">
+                 <span className="font-heading text-4xl tracking-tighter">...</span>
               </div>
-            ))}
-            <div className="flex-shrink-0 w-20 flex items-center justify-center h-52 md:h-60 opacity-20">
-               <span className="font-heading text-4xl tracking-tighter">...</span>
             </div>
           </div>
 
