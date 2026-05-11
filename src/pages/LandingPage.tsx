@@ -207,7 +207,7 @@ const LandingPage = () => {
                       </div>
                       <span className="text-[8px] md:text-[9px] lg:text-[10px] font-heading tracking-[0.25em] uppercase text-plum font-bold">Primeiro Portal</span>
                     </div>
-                    <span className="px-2 py-0.5 md:px-2.5 md:py-1 rounded-full bg-gold/15 text-gold-dark text-[8px] md:text-[9px] lg:text-[10px] font-heading tracking-widest uppercase font-bold border border-gold/30">Grátis</span>
+                    <span className="px-2 py-0.5 md:px-2.5 md:py-1 rounded-full bg-gold/15 text-plum text-[8px] md:text-[9px] lg:text-[10px] font-heading tracking-widest uppercase font-bold border border-gold/30">Grátis</span>
                   </div>
 
                   {/* The Arcano Card */}
@@ -226,7 +226,7 @@ const LandingPage = () => {
                     <div className="pt-2 md:pt-3 border-t border-gold/15 space-y-1.5 md:space-y-2">
                       <div className="flex items-center justify-between text-[8px] md:text-[9px] lg:text-[10px] font-heading tracking-[0.2em] uppercase text-plum font-bold">
                         <span>Progresso Inicial</span>
-                        <span className="text-gold-dark">0%</span>
+                        <span className="text-plum font-bold">0%</span>
                       </div>
                       <div className="h-1 md:h-1.5 w-full bg-plum/5 rounded-full overflow-hidden p-0.5 border border-plum/5">
                         <div className="h-full bg-gold rounded-full w-[8%] shadow-[0_0_8px_hsl(var(--brand-gold)/0.4)]" />
@@ -442,7 +442,7 @@ const LandingPage = () => {
                 ✦ MELHOR VALOR
               </div>
               <div className="space-y-2">
-                <h3 className="t-section-title text-gold-dark font-bold uppercase tracking-widest">Acesso Anual</h3>
+                <h3 className="t-section-title text-plum font-black uppercase tracking-widest">Acesso Anual</h3>
                 <div className="flex items-baseline gap-1">
                   <span className="text-6xl font-heading text-midnight">R$197</span>
                   <span className="text-sm text-midnight/40">/pagamento único</span>
@@ -662,10 +662,10 @@ const LandingPage = () => {
               />
             </div>
             <div className="text-left">
-              <span className="font-heading text-2xl tracking-tight text-gold font-bold block leading-none">
+              <span className="font-heading text-2xl tracking-tight text-gold font-bold block leading-none drop-shadow-sm">
                 Tarô 78 Chaves
               </span>
-              <span className="font-heading text-[11px] tracking-[0.3em] uppercase text-gold/60 font-medium mt-1.5 block">
+              <span className="font-heading text-[11px] tracking-[0.3em] uppercase text-gold font-bold mt-1.5 block opacity-80">
                 A jornada viva
               </span>
             </div>
@@ -676,10 +676,10 @@ const LandingPage = () => {
         </div>
 
         <nav className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-[13px] md:text-[14px] font-heading tracking-[0.25em] uppercase relative z-10 px-4">
-          <a href="https://taro78chaves.lovable.app/privacidade" onClick={() => trackEvent("landing_legal_link_click", { link_name: "privacidade", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/20 pb-1">Privacidade</a>
-          <a href="https://taro78chaves.lovable.app/termos" onClick={() => trackEvent("landing_legal_link_click", { link_name: "termos", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/20 pb-1">Termos</a>
-          <a href="https://taro78chaves.lovable.app/suporte" onClick={() => trackEvent("landing_legal_link_click", { link_name: "suporte", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/20 pb-1">Suporte</a>
-          <a href="https://taro78chaves.lovable.app/excluir-conta" onClick={() => trackEvent("landing_legal_link_click", { link_name: "excluir_conta", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/20 pb-1">Excluir conta</a>
+          <a href="https://taro78chaves.lovable.app/privacidade" onClick={() => trackEvent("landing_legal_link_click", { link_name: "privacidade", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Privacidade</a>
+          <a href="https://taro78chaves.lovable.app/termos" onClick={() => trackEvent("landing_legal_link_click", { link_name: "termos", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Termos</a>
+          <a href="https://taro78chaves.lovable.app/suporte" onClick={() => trackEvent("landing_legal_link_click", { link_name: "suporte", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Suporte</a>
+          <a href="https://taro78chaves.lovable.app/excluir-conta" onClick={() => trackEvent("landing_legal_link_click", { link_name: "excluir_conta", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Excluir conta</a>
         </nav>
 
         <div className="pt-8 border-t border-gold/10 max-w-xs mx-auto relative z-10">
