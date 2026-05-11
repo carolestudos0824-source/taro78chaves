@@ -257,24 +257,24 @@ const Index = () => {
         <section className="mb-12">
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-            <span className="text-[10px] font-heading tracking-[0.3em] uppercase text-plum font-bold">
+            <span className="text-[11px] font-heading tracking-[0.4em] uppercase text-plum font-black">
               Sua Aprendizagem
             </span>
-            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A40]" />
+            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A50]" />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { icon: "◈", label: "Essência e arquétipos" },
               { icon: "◎", label: "Símbolos e significados" },
               { icon: "☀", label: "Luz e sombra" },
               { icon: "♡", label: "Amor, trabalho e espírito" },
             ].map((item) => (
-              <div key={item.label} className="rounded-2xl p-6 text-center transition-all hover:bg-white/80 border border-transparent hover:border-[#C8A66A30] group shadow-sm hover:shadow-md" style={{
-                background: "rgba(255, 255, 255, 0.5)",
-                backdropFilter: "blur(8px)",
+              <div key={item.label} className="rounded-[1.5rem] p-7 text-center transition-all hover:bg-white border border-[#C8A66A25] group shadow-sm hover:shadow-xl" style={{
+                background: "rgba(255, 255, 255, 0.85)",
+                backdropFilter: "blur(12px)",
               }}>
-                <span className="text-2xl block mb-3" style={{ color: "#C8A66A" }}>{item.icon}</span>
-                <span className="text-[11px] font-heading tracking-wider uppercase leading-tight block" style={{ color: "#5B1F3DCC" }}>
+                <span className="text-3xl block mb-4 transition-transform group-hover:scale-110 duration-500" style={{ color: "#C8A66A" }}>{item.icon}</span>
+                <span className="text-[12px] font-heading tracking-wide uppercase leading-snug block font-black" style={{ color: "#5B1F3D" }}>
                   {item.label}
                 </span>
               </div>
