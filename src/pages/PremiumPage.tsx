@@ -176,7 +176,7 @@ const PremiumPage = () => {
                   <span className="font-heading text-5xl text-[#5B1F3D] font-black tracking-tighter">R$ 197</span>
                   <span className="text-xs font-heading font-black text-[#5B1F3D]/40">/único</span>
                 </div>
-                <p className="text-sm font-black text-[#C8A66A] italic leading-relaxed">
+                <p className="text-sm font-black text-[#5B1F3D] italic leading-relaxed">
                   12 meses de acesso • Sem renovação automática
                 </p>
               </div>
