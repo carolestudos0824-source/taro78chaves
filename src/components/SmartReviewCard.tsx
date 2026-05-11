@@ -35,7 +35,7 @@ export const SmartReviewCard = () => {
             </div>
             <h3 className="font-heading text-[15px] font-black tracking-tight text-[#5B1F3D]">Revisão Inteligente</h3>
           </div>
-          <span className="text-[10px] font-heading uppercase tracking-[0.2em] text-[#C8A66A] font-black">Reforço necessário</span>
+          <span className="text-[10px] font-heading uppercase tracking-[0.2em] text-[#5B1F3D] font-black">Reforço necessário</span>
         </div>
         
         <div className="p-6 space-y-6">
