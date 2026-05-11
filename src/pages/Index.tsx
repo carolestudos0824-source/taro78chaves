@@ -7,8 +7,6 @@ import { StreakCounter } from "@/components/StreakCounter";
 import { JourneyMap } from "@/components/JourneyMap";
 import { useProgress } from "@/hooks/use-progress";
 import { ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull as getArcanoById } from "@/lib/content";
-// Assets - RWS cards remain. Background and ornaments replaced by procedural CSS/SVG.
-
 const Index = () => {
   const { progress, loading: progressLoading, updateStreak, isArcanoCompleted, getCurrentArcanoId, completedCount, journeyProgress } = useProgress();
   const navigate = useNavigate();
