@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"; from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Sparkles, MapPin } from "lucide-react";
 import { PRATICA_LESSONS, getPraticaLessonByOrder } from "@/content/lessons/pratica";
