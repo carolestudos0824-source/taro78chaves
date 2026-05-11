@@ -95,8 +95,8 @@ const LoadingFallback = () => (
         </div>
       </div>
       <div className="space-y-2">
-        <p className="text-[10px] text-gold-dark/60 font-heading tracking-[0.3em] uppercase">Tarô 78 Chaves</p>
-        <p className="text-[11px] text-gold-dark/30 font-body italic">Preparando sua jornada...</p>
+        <p className="text-[10px] text-plum/80 font-heading tracking-[0.3em] uppercase">Tarô 78 Chaves</p>
+        <p className="text-[11px] text-plum/60 font-body italic">Preparando sua jornada...</p>
       </div>
     </div>
   </div>

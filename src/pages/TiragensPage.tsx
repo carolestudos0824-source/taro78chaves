@@ -63,7 +63,7 @@ const TiragensPage = () => {
             <div className="flex flex-col flex-1">
               <span
                 className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1.5 flex items-center gap-2"
-                style={{ color: "#C8A66A" }}
+                style={{ color: "#5B1F3D" }}
               >
                 <span style={{ color: "#C8A66A" }}>◎</span>
                 Módulo Avançado
@@ -142,7 +142,7 @@ const TiragensPage = () => {
         {/* Lesson trail section header */}
         <div className="flex items-center gap-4 mb-6">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-          <span className="text-[10px] font-heading tracking-[0.2em] uppercase text-[#C8A66A]">
+          <span className="text-[10px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D]">
             Conteúdo do Módulo
           </span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A40]" />
@@ -226,13 +226,13 @@ const TiragensPage = () => {
                         <span
                           className="text-[9px] font-heading tracking-[0.2em] font-bold"
                           style={{
-                            color: unlocked ? "#C8A66A" : "#5B1F3D40",
+                            color: unlocked ? "#5B1F3D" : "#5B1F3D40",
                           }}
                         >
                           LIÇÃO {lesson.order + 1}
                         </span>
                         {isCurrent && (
-                          <span className="text-[8px] bg-[#C8A66A20] text-[#C8A66A] px-2 py-0.5 rounded-full font-heading tracking-widest uppercase animate-pulse">
+                          <span className="text-[8px] bg-[#C8A66A20] text-[#5B1F3D] px-2 py-0.5 rounded-full font-heading tracking-widest uppercase animate-pulse">
                             Atual
                           </span>
                         )}
@@ -248,7 +248,7 @@ const TiragensPage = () => {
                       <p
                         className="font-body text-xs leading-relaxed"
                         style={{
-                          color: unlocked ? "#5B1F3DBB" : "#5B1F3D20",
+                          color: unlocked ? "#5B1F3D" : "#5B1F3D20",
                         }}
                       >
                         {lesson.subtitle}
