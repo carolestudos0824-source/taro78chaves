@@ -4,7 +4,7 @@ import { ArrowLeft, Search, X } from "lucide-react";
 import { useSymbolsContent } from "@/hooks/use-content";
 import type { SymbolItemContent } from "@/lib/content";
 // import mysticBg from "@/assets/mystic-bg.jpg";
-import ornamentDivider from "@/assets/ornament-divider.png";
+// import ornamentDivider from "@/assets/ornament-divider.png";
 
 const SymbolLibraryPage = () => {
   const navigate = useNavigate();
@@ -243,7 +243,7 @@ const SymbolLibraryPage = () => {
         )}
 
         <div className="flex items-center justify-center pt-4 pb-10">
-          <img src={ornamentDivider} alt="" className="w-28 h-auto opacity-40" loading="lazy" width={800} height={512} />
+          <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
         </div>
       </main>
 

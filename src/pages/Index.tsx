@@ -9,7 +9,7 @@ import { useProgress } from "@/hooks/use-progress";
 import { ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull as getArcanoById } from "@/lib/content";
 // Assets - RWS cards remain. Background and ornaments replaced by procedural CSS/SVG.
 // // import mysticBg from "@/assets/mystic-bg.jpg";
-// import ornamentDivider from "@/assets/ornament-divider.png";
+// // import ornamentDivider from "@/assets/ornament-divider.png";
 
 const Index = () => {
   const { progress, loading: progressLoading, updateStreak, isArcanoCompleted, getCurrentArcanoId, completedCount, journeyProgress } = useProgress();

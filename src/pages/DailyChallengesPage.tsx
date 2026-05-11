@@ -18,7 +18,7 @@ import {
   type CombinacaoDoDia,
   type MiniInterpretacao,
 } from "@/lib/daily/builders";
-import ornamentDivider from "@/assets/ornament-divider.png";
+// import ornamentDivider from "@/assets/ornament-divider.png";
 
 const today = () => new Date().toISOString().slice(0, 10);
 
@@ -174,7 +174,7 @@ const DailyChallengesPage = () => {
         {/* Challenge list */}
         <div>
           <div className="flex items-center justify-center mb-3">
-            <img src={ornamentDivider} alt="" className="w-24 h-auto opacity-40" loading="lazy" width={800} height={512} />
+            <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
           </div>
           <div className="space-y-3">
             {challenges.map((ch) => {

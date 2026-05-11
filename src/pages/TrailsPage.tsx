@@ -3,7 +3,7 @@ import { ArrowLeft, ChevronRight, Lock, Check, Star, Sparkles, Crown } from "luc
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { MODULES_CATALOG as MODULES, isModuleUnlocked } from "@/lib/content";
-import ornamentDivider from "@/assets/ornament-divider.png";
+// import ornamentDivider from "@/assets/ornament-divider.png";
 
 interface TrailLevel {
   id: string;
@@ -188,7 +188,7 @@ const TrailsPage = () => {
             <div key={level.id}>
               {/* Divider */}
               <div className="flex items-center justify-center mb-3">
-                <img src={ornamentDivider} alt="" className="w-24 h-auto opacity-40" loading="lazy" width={800} height={512} />
+                <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
               </div>
 
               {/* Level header */}
@@ -325,7 +325,7 @@ const TrailsPage = () => {
 
         {/* Bottom ornament */}
         <div className="flex items-center justify-center pt-6">
-          <img src={ornamentDivider} alt="" className="w-28 h-auto opacity-40" loading="lazy" width={800} height={512} />
+          <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
         </div>
       </div>
     </div>

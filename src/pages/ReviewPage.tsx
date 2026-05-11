@@ -14,7 +14,7 @@ import {
 } from "@/lib/review/builders";
 import { QuickReviewCard } from "@/components/QuickReviewCard";
 // import mysticBg from "@/assets/mystic-bg.jpg";
-import ornamentDivider from "@/assets/ornament-divider.png";
+// import ornamentDivider from "@/assets/ornament-divider.png";
 
 type ReviewMode = "home" | "flashcards" | "wrong-answers" | "daily-challenge";
 
@@ -425,7 +425,7 @@ const ReviewPage = () => {
         {/* Quick Review — all 22 arcanos */}
         <section>
           <div className="flex items-center justify-center mb-3">
-            <img src={ornamentDivider} alt="" className="w-28 h-auto opacity-50" loading="lazy" width={800} height={512} />
+            <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
           </div>
           <h2 className="text-[9px] font-heading tracking-[0.35em] uppercase mb-1 text-center" style={{ color: "hsl(36 42% 40%)" }}>
             ✦ Revisão Rápida
@@ -445,7 +445,7 @@ const ReviewPage = () => {
         </section>
 
         <div className="flex items-center justify-center pt-4 pb-10">
-          <img src={ornamentDivider} alt="" className="w-28 h-auto opacity-40" loading="lazy" width={800} height={512} />
+          <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
         </div>
       </main>
     </div>

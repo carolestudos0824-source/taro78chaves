@@ -5,7 +5,7 @@ import { useResolvedArcanosMaiores } from "@/hooks/use-resolved-arcanos-maiores"
 import { useJourneyContent } from "@/hooks/use-content";
 import { CORES_FASE, JOURNEY_MOTION } from "@/config/journey-visual";
 // import mysticBg from "@/assets/mystic-bg.jpg";
-import ornamentDivider from "@/assets/ornament-divider.png";
+// import ornamentDivider from "@/assets/ornament-divider.png";
 
 const FoolsJourneyPage = () => {
   const navigate = useNavigate();
@@ -84,7 +84,7 @@ const FoolsJourneyPage = () => {
         {/* Epigraph */}
         <div className="text-center mb-8" style={{ animation: "fade-up 0.5s ease-out" }}>
           <div className="flex justify-center mb-4">
-            <img src={ornamentDivider} alt="" className="w-24 h-auto opacity-40" loading="lazy" width={800} height={512} />
+            <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
           </div>
           <p className="font-accent text-base italic leading-relaxed" style={{ color: "hsl(230 20% 15% / 0.55)" }}>
             "{meta.introEpigrafe}"
@@ -122,7 +122,7 @@ const FoolsJourneyPage = () => {
             >
               {/* Phase header */}
               <div className="flex items-center justify-center mb-3">
-                <img src={ornamentDivider} alt="" className="w-20 h-auto opacity-30" loading="lazy" width={800} height={512} />
+                <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
               </div>
 
               <div className="text-center mb-5">
@@ -242,7 +242,7 @@ const FoolsJourneyPage = () => {
         {/* Closing */}
         <section className="mb-8" style={{ animation: "fade-up 0.6s ease-out" }}>
           <div className="flex items-center justify-center mb-4">
-            <img src={ornamentDivider} alt="" className="w-28 h-auto opacity-45" loading="lazy" width={800} height={512} />
+            <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
           </div>
           <div className="text-center">
             <Sparkles className="w-5 h-5 mx-auto mb-3" style={{ color: "hsl(36 42% 45% / 0.60)" }} />

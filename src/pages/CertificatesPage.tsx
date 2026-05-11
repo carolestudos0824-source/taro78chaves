@@ -9,7 +9,7 @@ import {
   type EarnedCertificateView,
 } from "@/lib/certificates/emission";
 import CertificateCard, { FullCertificate } from "@/components/CertificateCard";
-import ornamentDivider from "@/assets/ornament-divider.png";
+// import ornamentDivider from "@/assets/ornament-divider.png";
 
 const CertificatesPage = () => {
   const navigate = useNavigate();
@@ -149,7 +149,7 @@ const CertificatesPage = () => {
         {earned.length > 0 && (
           <div>
             <div className="flex items-center justify-center mb-3">
-              <img src={ornamentDivider} alt="" className="w-24 h-auto opacity-40" loading="lazy" width={800} height={512} />
+              <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
             </div>
             <h2 className="font-heading text-sm tracking-wide text-center mb-4" style={{ color: "hsl(340 42% 22%)" }}>
               Conquistados ({earned.length})
@@ -171,7 +171,7 @@ const CertificatesPage = () => {
         {locked.length > 0 && (
           <div>
             <div className="flex items-center justify-center mb-3">
-              <img src={ornamentDivider} alt="" className="w-24 h-auto opacity-40" loading="lazy" width={800} height={512} />
+              <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
             </div>
             <h2 className="font-heading text-sm tracking-wide text-center mb-4" style={{ color: "hsl(230 15% 30% / 0.35)" }}>
               Em progresso ({locked.length})
