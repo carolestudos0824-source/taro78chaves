@@ -321,7 +321,7 @@ const LandingPage = () => {
 
           <div className="mt-8 text-center space-y-8">
             <p className="text-sm font-body text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Comece pelo Louco grátis. Vá bem na lição e <span className="text-gold-dark font-bold">desbloqueie O Mago</span>. Depois, continue sua jornada completa pelos 78 arcanos.
+              Comece pelo Louco grátis. Vá bem na lição e <span className="text-plum font-bold">desbloqueie O Mago</span>. Depois, continue sua jornada completa pelos 78 arcanos.
             </p>
             <Button 
               onClick={() => handleStart("journey")} 
