@@ -31,14 +31,22 @@ const FundamentosPage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
-      {/* Background */}
+      {/* Background — continuous, soft, premium */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, #FAF5EF 0%, #DCCFC2 100%)",
-            opacity: 0.8,
+              "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+            opacity: 0.95,
+          }}
+        />
+        {/* Subtle radial halo to remove horizontal banding */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 0%, rgba(243, 230, 224, 0.55) 0%, transparent 55%)",
           }}
         />
       </div>
