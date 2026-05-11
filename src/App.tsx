@@ -27,7 +27,7 @@ const FundamentosPage = lazy(() => import("./pages/FundamentosPage.tsx"));
 const FundamentosLessonPage = lazy(() => import("./pages/FundamentosLessonPage.tsx"));
 const FeedbackPage = lazy(() => import("./pages/FeedbackPage.tsx"));
 const BetaInvitePage = lazy(() => import("./pages/BetaInvitePage.tsx"));
-const WaitlistPage = lazy(() => import("./pages/WaitlistPage"));
+
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 const JourneyJournalPage = lazy(() => import("./pages/JourneyJournalPage.tsx"));
 
@@ -153,7 +153,7 @@ const AppRoutes = () => (
       {/* ═══ Public marketing pages (no BottomNav) ═══ */}
       <Route path="/" element={<LandingPage />} />
       <Route path="/convite" element={<BetaInvitePage />} />
-      <Route path="/waitlist" element={<WaitlistPage />} />
+      <Route path="/waitlist" element={<Navigate to="/" replace />} />
       <Route path="/apresentacao" element={<PresentationPage />} />
 
       {/* ═══ Legal / compliance (public, no auth) ═══ */}

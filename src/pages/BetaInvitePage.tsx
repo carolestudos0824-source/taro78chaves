@@ -139,13 +139,6 @@ const BetaInvitePage = () => {
               Quero entrar agora
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <button
-              onClick={() => navigate("/waitlist")}
-              className="text-[11px] font-heading tracking-wider uppercase transition-colors px-4 py-2"
-              style={{ color: "hsl(340 42% 28% / 0.50)" }}
-            >
-              Entrar na lista de espera
-            </button>
           </div>
         </div>
 
@@ -273,13 +266,6 @@ const BetaInvitePage = () => {
               Quero entrar agora
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <button
-              onClick={() => navigate("/waitlist")}
-              className="text-[11px] font-heading tracking-wider uppercase transition-colors"
-              style={{ color: "hsl(340 42% 28% / 0.50)" }}
-            >
-              Entrar na lista de espera
-            </button>
           </div>
         </div>
 
