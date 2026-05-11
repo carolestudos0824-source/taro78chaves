@@ -248,7 +248,7 @@ const TiragensPage = () => {
                       <p
                         className="font-body text-xs leading-relaxed"
                         style={{
-                          color: unlocked ? "#5B1F3DBB" : "#5B1F3D20",
+                          color: unlocked ? "#5B1F3D" : "#5B1F3D20",
                         }}
                       >
                         {lesson.subtitle}
