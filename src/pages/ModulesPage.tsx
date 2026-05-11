@@ -117,11 +117,11 @@ const ModulesPage = () => {
               <div className="bg-[#5B1F3D] border-2 border-[#C8A66A] rounded-[2.5rem] p-8 text-center space-y-4 relative overflow-hidden group shadow-2xl ring-8 ring-[#C8A66A]/5">
                 <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#C8A66A]/20 rounded-full blur-3xl" />
                 <div className="relative z-10 space-y-4">
-                  <p className="text-[11px] font-heading tracking-[0.4em] uppercase font-black text-[#C8A66A]">✦ Portal de Início ✦</p>
+                  <p className="text-[11px] font-heading tracking-[0.4em] uppercase font-black text-white/80">✦ Portal de Início ✦</p>
                   <h3 className="font-heading text-2xl md:text-3xl text-white font-black tracking-tight leading-tight">Começar Jornada: <br/>O Louco</h3>
                   <p className="text-[15px] font-body font-bold text-white/90 italic leading-relaxed">
                     O primeiro portal da sua travessia grátis. <br/>
-                    <span className="text-[#C8A66A] not-italic block mt-1 uppercase tracking-widest text-[10px]">Vá bem e desbloqueie O Mago.</span>
+                    <span className="text-white/70 not-italic block mt-1 uppercase tracking-widest text-[10px] font-bold">Vá bem e desbloqueie O Mago.</span>
                   </p>
                   <button 
                     onClick={() => navigate("/lesson/0")}
@@ -246,7 +246,7 @@ const ModulesPage = () => {
 
                           <div className="flex-1 min-w-0 py-2">
                             <div className="flex items-center gap-3 mb-2 flex-wrap">
-                              <span className="text-[12px] md:text-[14px] font-black tracking-[0.3em] text-[#C8A66A] opacity-80">{mod.symbol}</span>
+                              <span className="text-[12px] md:text-[14px] font-black tracking-[0.3em] text-[#5B1F3D] opacity-40">{mod.symbol}</span>
                               <h3 className={`font-heading text-xl md:text-2xl tracking-tight leading-tight transition-all ${
                                 isCurrent 
                                   ? "text-[#5B1F3D] font-black" 
@@ -259,7 +259,7 @@ const ModulesPage = () => {
                               
                               <div className="ml-auto flex items-center gap-2">
                                 {mod.id === "arcanos-maiores" && (
-                                  <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase px-4 py-2 rounded-xl bg-[#FAF5EF] text-[#C8A66A] border border-[#C8A66A]/40 font-black shadow-sm">
+                                  <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase px-4 py-2 rounded-xl bg-gold/10 text-plum border border-gold/40 font-black shadow-sm">
                                     Grátis
                                   </span>
                                 )}
@@ -270,7 +270,7 @@ const ModulesPage = () => {
                                   </span>
                                 )}
                                 {isCompleted && (
-                                  <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase px-4 py-2 rounded-xl bg-[#DCCFC2]/30 text-[#5B1F3D]/60 border border-[#DCCFC2]/50 font-black shadow-sm">
+                                  <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase px-4 py-2 rounded-xl bg-[#DCCFC2]/30 text-[#5B1F3D]/80 border border-[#DCCFC2]/50 font-black shadow-sm">
                                     Concluído
                                   </span>
                                 )}
@@ -278,7 +278,7 @@ const ModulesPage = () => {
                             </div>
                             
                              <p className={`text-[14px] md:text-[16px] font-body line-clamp-1 leading-relaxed ${
-                              unlocked ? "text-[#5B1F3D]/70 font-semibold" : "text-[#5B1F3D]/50 font-bold italic"
+                              unlocked ? "text-[#5B1F3D]/85 font-bold" : "text-[#5B1F3D]/60 font-bold italic"
                             }`}>
                               {mod.id === "arcanos-maiores" && progress.completedLessons.length === 0 
                                 ? "Abra o primeiro portal do Louco." 
