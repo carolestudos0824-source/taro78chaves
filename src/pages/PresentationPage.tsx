@@ -465,7 +465,7 @@ const SlidePlans = () => (
         </div>
         <div className="text-center pb-2" style={{ borderBottom: "1px solid hsl(36 45% 58% / 0.18)" }}>
           <p className="text-[10px] font-heading tracking-[0.3em] uppercase" style={{ color: "hsl(340 42% 28%)" }}>Jornada Completa</p>
-          <p className="font-heading text-xl mt-1" style={{ color: "hsl(340 42% 20%)" }}>Em breve</p>
+          <p className="font-heading text-xl mt-1" style={{ color: "hsl(340 42% 20%)" }}>R$ 197</p>
         </div>
         {["78 arcanos em profundidade", "10 módulos completos", "Certificados", "Tiragens e Combinações", "Tarô e Amor"].map((f, i) => (
           <div key={i} className="flex items-center gap-2">
