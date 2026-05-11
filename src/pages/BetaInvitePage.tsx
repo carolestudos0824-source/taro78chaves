@@ -8,13 +8,13 @@ import { Button } from "@/components/ui/button";
 
 /* ═══════════════ DATA ═══════════════ */
 
-const BETA_ITEMS = [
+const ITEMS = [
   "Onboarding e introdução ao método",
   "Fundamentos do Tarô",
   "O Louco — arcano completo com voz e quiz",
   "Progresso salvo com XP e streak",
   "Experiência visual imersiva",
-  "Área premium em desenvolvimento",
+  "Área premium disponível",
 ];
 
 const WHY_NOW = [
