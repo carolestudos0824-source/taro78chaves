@@ -317,8 +317,8 @@ const FoolsJourneyPage = () => {
           </button>
           <button
             onClick={() => navigate("/app")}
-            className="text-[10px] font-accent italic transition-all"
-            style={{ color: "hsl(230 20% 15% / 0.35)" }}
+            className="px-8 py-3 rounded-full font-heading text-[11px] tracking-[0.2em] uppercase flex items-center justify-center gap-2 transition-all hover:bg-[#5B1F3D]/5 border border-[#5B1F3D]/20"
+            style={{ color: "#5B1F3D" }}
           >
             Voltar aos Módulos
           </button>
