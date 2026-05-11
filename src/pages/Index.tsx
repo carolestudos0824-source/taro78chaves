@@ -263,8 +263,8 @@ const Index = () => {
 
         {/* ═══════════════ WHAT YOU'LL LEARN ═══════════════ */}
         <section className="mb-10">
-          <div className="flex items-center justify-center mb-3">
-            <img src={ornamentDivider} alt="" className="w-28 h-auto opacity-50" loading="lazy" width={800} height={512} />
+          <div className="ornament-divider-procedural">
+            <div className="ornament-divider-procedural-diamond" />
           </div>
           <h2 className="font-accent text-sm tracking-[0.25em] uppercase italic text-center mb-5" style={{
             color: "hsl(340 42% 24%)",
