@@ -36,37 +36,43 @@ const FoolsJourneyPage = () => {
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
       {/* Background */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
-        
+        {/* Camada de suavização para reduzir faixas horizontais preservando profundidade */}
         <div className="absolute inset-0" style={{
-          background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.12) 0%, hsl(36 33% 97% / 0.06) 30%, hsl(36 33% 97% / 0.10) 70%, hsl(36 33% 97% / 0.25) 100%)"
+          background: "radial-gradient(circle at 50% 30%, transparent 0%, hsl(36 33% 97% / 0.08) 100%)",
+          mixOverlay: "overlay"
+        } as any} />
+        <div className="absolute inset-0" style={{
+          background: "linear-gradient(to bottom, #FAF5EF 0%, #F5EBDE 35%, #EFE2D2 65%, #E9D9C5 100%)",
+          opacity: 0.95
         }} />
       </div>
 
       {/* Header */}
-      <header className="relative z-10" style={{
-        borderBottom: "1px solid hsl(36 45% 50% / 0.30)",
-        background: "linear-gradient(180deg, hsl(36 33% 96% / 0.94) 0%, hsl(38 28% 93% / 0.92) 100%)",
-        backdropFilter: "blur(28px)",
-        boxShadow: "0 6px 36px hsl(36 45% 50% / 0.08)"
+      <header className="relative z-20" style={{
+        borderBottom: "1px solid rgba(200,166,106,0.18)",
+        background: "linear-gradient(180deg, rgba(250,245,239,0.96) 0%, rgba(245,235,222,0.94) 100%)",
+        backdropFilter: "blur(18px)",
+        boxShadow: "0 4px 24px rgba(61,20,41,0.05)"
       }}>
         <div className="container max-w-3xl py-5 px-6">
           <div className="flex items-center gap-4">
             <button
               onClick={() => navigate(-1)}
-              className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-105"
+              className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-105 active:scale-95"
               style={{
-                background: "hsl(36 45% 58% / 0.08)",
-                border: "1px solid hsl(36 45% 58% / 0.18)",
+                background: "rgba(200,166,106,0.08)",
+                border: "1px solid rgba(200,166,106,0.18)",
               }}
+              aria-label="Voltar"
             >
-              <ArrowLeft className="w-4 h-4" style={{ color: "hsl(340 42% 26%)" }} />
+              <ArrowLeft className="w-4 h-4" style={{ color: "#5B1F3D" }} />
             </button>
             <div>
-              <span className="text-[9px] tracking-[0.35em] uppercase font-body block mb-0.5" style={{ color: "hsl(340 42% 28%)" }}>
+              <span className="text-[11px] tracking-[0.35em] uppercase font-heading font-semibold block mb-0.5" style={{ color: "#8B6A30" }}>
                 ✦ Visão Geral ✦
               </span>
               <h1 className="font-heading text-xl tracking-wide" style={{
-                background: "linear-gradient(135deg, hsl(340 42% 22%), hsl(36 35% 28%), hsl(36 45% 44%))",
+                background: "linear-gradient(135deg, #3D1429 0%, #5B1F3D 50%, #8B6A30 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}>
@@ -80,27 +86,31 @@ const FoolsJourneyPage = () => {
       {/* Content */}
       <main className="relative z-10 container max-w-3xl py-8 px-6">
         {/* Epigraph */}
-        <div className="text-center mb-8" style={{ animation: "fade-up 0.5s ease-out" }}>
-          <div className="flex justify-center mb-4">
-            <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
+        <div className="text-center mb-10" style={{ animation: "fade-up 0.5s ease-out" }}>
+          <div className="flex justify-center mb-6">
+            <div className="flex items-center gap-3">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#C8A66A]/40" />
+              <span className="text-[#C8A66A] text-lg">✶◈✶</span>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#C8A66A]/40" />
+            </div>
           </div>
-          <p className="font-accent text-base italic leading-relaxed" style={{ color: "hsl(230 20% 15% / 0.55)" }}>
+          <p className="font-accent text-lg italic leading-relaxed px-4" style={{ color: "#3D1429", fontWeight: 500 }}>
             "{meta.introEpigrafe}"
           </p>
-          <p className="font-heading text-xs tracking-[0.3em] uppercase mt-3" style={{ color: "hsl(36 42% 45% / 0.60)" }}>
+          <p className="font-heading text-[10px] tracking-[0.3em] uppercase mt-4 font-semibold" style={{ color: "#8B6A30" }}>
             {meta.introSubtitulo}
           </p>
         </div>
 
         {/* Introduction paragraphs */}
-        <section className="mb-10" style={{ animation: "fade-up 0.6s ease-out" }}>
-          <div className="rounded-xl p-6 space-y-4" style={{
-            background: "hsl(38 28% 93% / 0.85)",
-            backdropFilter: "blur(14px)",
-            border: "1px solid hsl(36 45% 50% / 0.18)",
+        <section className="mb-12" style={{ animation: "fade-up 0.6s ease-out" }}>
+          <div className="rounded-2xl p-7 space-y-4 shadow-sm" style={{
+            background: "rgba(255,255,255,0.4)",
+            backdropFilter: "blur(12px)",
+            border: "1px solid rgba(200,166,106,0.15)",
           }}>
             {meta.introCorpo.map((para, i) => (
-              <p key={i} className="font-body text-sm leading-[1.85]" style={{ color: "hsl(230 20% 15% / 0.68)" }}>
+              <p key={i} className="font-body text-sm leading-[1.85]" style={{ color: "#4A1830", opacity: 0.85 }}>
                 {para}
               </p>
             ))}
