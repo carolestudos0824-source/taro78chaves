@@ -55,7 +55,7 @@ export const A_JUSTICA: ArcanoMaiorEditorial = {
   },
 
   deepDive: {
-    text: "A Justiça é o Arcano VIII na tradição Rider-Waite (XI na tradição de Marselha — a troca com A Força é uma das diferenças mais debatidas do Tarô). O número oito é o lemniscata verticalizado — equilíbrio infinito, ciclo perpétuo de causa e efeito. Após a conquista do Carro (VII), a Justiça pede uma pausa para avaliar: a vitória foi justa? O caminho foi íntegro?",
+    text: "A Justiça é o Arcano XI na tradição Rider-Waite (VIII na tradição de Marselha — a troca com A Força é uma das diferenças mais debatidas do Tarô). O número onze é um número mestre — equilíbrio entre opostos.",
     symbolism: "A espada na mão direita indica que a verdade é ativa — ela corta, separa, distingue. A balança na mão esquerda (receptiva) indica que o julgamento precisa de receptividade para pesar todos os lados. A posição frontal, olhando diretamente para o observador, significa que a Justiça não desvia o olhar. O véu roxo atrás dela lembra que por trás da lei existe compaixão.",
     cabala: "Na Cabala, a Justiça corresponde à letra Lamed (ל), que significa 'aguilhão' — o instrumento que guia o boi (a força bruta) na direção certa. É a única letra hebraica que se eleva acima da linha — representando a aspiração ao alto, à retidão. O caminho de Lamed conecta Geburah (Severidade) a Tiferet (Beleza), equilibrando rigor e harmonia.",
     history: "A Justiça como arcano do Tarô reflete a figura da Maat egípcia — a deusa que pesava o coração dos mortos contra a pena da verdade. Na tradição grega, é Themis, a deusa da lei natural. A tradição esotérica fundiu essas figuras em um símbolo universal: a lei cósmica que opera acima de qualquer sistema humano.",
@@ -72,8 +72,8 @@ export const A_JUSTICA: ArcanoMaiorEditorial = {
     {
       id: "justica-q1", type: "multiple-choice",
       question: "Qual é o número da Justiça na tradição Rider-Waite?",
-      options: ["VII", "VIII", "XI", "XII"], correctIndex: 1,
-      explanation: "Na tradição Rider-Waite, a Justiça é o arcano VIII (na tradição de Marselha é XI).",
+      options: ["VIII", "IX", "X", "XI"], correctIndex: 3,
+      explanation: "Na tradição Rider-Waite, a Justiça é o arcano XI (na tradição de Marselha é VIII).",
     },
     {
       id: "justica-q2", type: "multiple-choice",
@@ -125,7 +125,7 @@ export const A_JUSTICA: ArcanoMaiorEditorial = {
   ],
 
   quickReview: [
-    { keyword: "Número", meaning: "VIII (Rider-Waite) / XI (Marselha)" },
+    { keyword: "Número", meaning: "XI (Rider-Waite) / VIII (Marselha)" },
     { keyword: "Arquétipo", meaning: "A Juíza, a Equilibradora, a Guardiã da Lei Natural" },
     { keyword: "Luz", meaning: "Honestidade, equilíbrio, responsabilidade, verdade" },
     { keyword: "Sombra", meaning: "Rigidez, frieza, vingança, autojulgamento" },
