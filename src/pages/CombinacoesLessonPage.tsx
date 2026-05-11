@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react"; from "react";
 import { useNavigate, useParams, Navigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Sparkles, MapPin } from "lucide-react";
 import { COMBINACOES_LESSONS, getCombinacoesLessonByOrder } from "@/content/lessons/combinacoes";
@@ -18,20 +18,41 @@ const CombinacoesLessonPage = () => {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
   const [score, setScore] = useState(0);
-
+  
+  // Fallback defensivo para rota literal /combinacoes/:order
+  const isLiteralRoute = order === ":order";
   const lessonOrder = parseInt(order || "0", 10);
   const lesson = getCombinacoesLessonByOrder(lessonOrder);
   const nextLesson = getCombinacoesLessonByOrder(lessonOrder + 1);
 
+  // Redirecionamento defensivo se a rota for literal
+  useEffect(() => {
+    if (isLiteralRoute) {
+      navigate("/module/combinacoes", { replace: true });
+    }
+  }, [isLiteralRoute, navigate]);
+
   // Fase 4B — telemetria invisível: lição via adaptador (DB-first com fallback).
   useResolvedLesson("combinacoes", lesson?.id ?? null);
 
-  if (!lesson) {
+  if (!lesson || isLiteralRoute) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: "hsl(36 33% 97%)" }}>
-        <div className="text-center space-y-4">
-          <p className="font-heading text-lg" style={{ color: "hsl(230 25% 15%)" }}>Lição não encontrada</p>
-          <button onClick={() => navigate("/module/combinacoes")} className="text-sm font-heading tracking-wider" style={{ color: "hsl(36 45% 58%)" }}>
+        <div className="text-center space-y-6 max-w-xs px-6">
+          <div className="w-16 h-16 bg-[#F3E6E0] rounded-full flex items-center justify-center mx-auto mb-2 border border-[#C8A66A30]">
+            <span className="text-2xl">🎴</span>
+          </div>
+          <div className="space-y-2">
+            <h2 className="font-heading text-xl" style={{ color: "#5B1F3D" }}>Lição não encontrada</h2>
+            <p className="font-body text-sm text-[#5B1F3D]/60 italic leading-relaxed">
+              "As cartas se combinam apenas para quem sabe ler o silêncio entre elas."
+            </p>
+          </div>
+          <button 
+            onClick={() => navigate("/module/combinacoes")} 
+            className="w-full py-3.5 px-6 rounded-full font-heading text-[12px] tracking-[0.2em] uppercase transition-all shadow-md hover:scale-105 active:scale-95"
+            style={{ background: "#C8A66A", color: "#5B1F3D" }}
+          >
             Voltar ao módulo
           </button>
         </div>
