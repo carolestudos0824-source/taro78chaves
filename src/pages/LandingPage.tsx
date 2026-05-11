@@ -132,7 +132,7 @@ const LandingPage = () => {
                 <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-plum normal-case">
                   Aprenda Tarô como uma jornada.
                 </h1>
-                <p className="font-heading text-lg md:text-xl lg:text-2xl text-gold-dark font-medium italic opacity-90">
+                <p className="font-heading text-lg md:text-xl lg:text-2xl text-plum font-bold italic opacity-90">
                   Arcano por arcano, com lições curtas, quizzes, Pontos de Jornada e progresso real.
                 </p>
 
