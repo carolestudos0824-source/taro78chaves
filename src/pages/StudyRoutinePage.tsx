@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ChevronRight, Flame, BookOpen, RefreshCw, Sun, Target, TrendingUp, Check } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { MODULES_CATALOG as MODULES, ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull as getArcanoById, isModuleUnlocked } from "@/lib/content";
-import ornamentDivider from "@/assets/ornament-divider.png";
+// import ornamentDivider from "@/assets/ornament-divider.png";
 
 const WEEKDAYS = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
 
@@ -162,7 +162,7 @@ const StudyRoutinePage = () => {
         {/* ═══════════════ TODAY'S ACTIONS ═══════════════ */}
         <div>
           <div className="flex items-center justify-center mb-3">
-            <img src={ornamentDivider} alt="" className="w-24 h-auto opacity-40" loading="lazy" width={800} height={512} />
+            <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
           </div>
           <h2 className="font-heading text-sm tracking-wide text-center mb-4" style={{ color: "hsl(340 42% 22%)" }}>
             O que fazer hoje
@@ -242,7 +242,7 @@ const StudyRoutinePage = () => {
         {/* ═══════════════ JOURNEY PROGRESS ═══════════════ */}
         <div>
           <div className="flex items-center justify-center mb-3">
-            <img src={ornamentDivider} alt="" className="w-24 h-auto opacity-40" loading="lazy" width={800} height={512} />
+            <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
           </div>
           <h2 className="font-heading text-sm tracking-wide text-center mb-4" style={{ color: "hsl(340 42% 22%)" }}>
             Visão Geral

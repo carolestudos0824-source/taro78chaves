@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ChevronDown } from "lucide-react";
 import { useNumerologyContent } from "@/hooks/use-content";
 import { NAIPES } from "@/registry/naipes";
-import mysticBg from "@/assets/mystic-bg.jpg";
+// import mysticBg from "@/assets/mystic-bg.jpg";
 
 const NumerologiaPage = () => {
   const navigate = useNavigate();
@@ -13,8 +13,8 @@ const NumerologiaPage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="fixed inset-0 z-0">
-        <img src={mysticBg} alt="" className="w-full h-full object-cover" />
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        
         <div className="absolute inset-0" style={{
           background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.90), hsl(36 33% 97% / 0.85), hsl(36 33% 97% / 0.95))",
         }} />

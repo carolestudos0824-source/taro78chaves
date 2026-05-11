@@ -7,8 +7,9 @@ import { StreakCounter } from "@/components/StreakCounter";
 import { JourneyMap } from "@/components/JourneyMap";
 import { useProgress } from "@/hooks/use-progress";
 import { ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull as getArcanoById } from "@/lib/content";
-import mysticBg from "@/assets/mystic-bg.jpg";
-import ornamentDivider from "@/assets/ornament-divider.png";
+// Assets - RWS cards remain. Background and ornaments replaced by procedural CSS/SVG.
+// // import mysticBg from "@/assets/mystic-bg.jpg";
+// // import ornamentDivider from "@/assets/ornament-divider.png";
 
 const Index = () => {
   const { progress, loading: progressLoading, updateStreak, isArcanoCompleted, getCurrentArcanoId, completedCount, journeyProgress } = useProgress();
@@ -39,12 +40,7 @@ const Index = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background */}
-      <div className="fixed inset-0 z-0">
-        <img src={mysticBg} alt="" className="w-full h-full object-cover" width={1920} height={1080} />
-        <div className="absolute inset-0" style={{
-          background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.06) 0%, hsl(36 33% 97% / 0.04) 30%, hsl(36 33% 97% / 0.06) 70%, hsl(36 33% 97% / 0.18) 100%)"
-        }} />
-      </div>
+      <div className="fixed inset-0 z-0 mystic-bg-procedural" />
 
       {/* Header */}
       <header className="relative z-10" style={{
@@ -267,8 +263,8 @@ const Index = () => {
 
         {/* ═══════════════ WHAT YOU'LL LEARN ═══════════════ */}
         <section className="mb-10">
-          <div className="flex items-center justify-center mb-3">
-            <img src={ornamentDivider} alt="" className="w-28 h-auto opacity-50" loading="lazy" width={800} height={512} />
+          <div className="ornament-divider-procedural">
+            <div className="ornament-divider-procedural-diamond" />
           </div>
           <h2 className="font-accent text-sm tracking-[0.25em] uppercase italic text-center mb-5" style={{
             color: "hsl(340 42% 24%)",
@@ -298,8 +294,8 @@ const Index = () => {
 
         {/* ═══════════════ JOURNEY MAP ═══════════════ */}
         <section className="mb-10">
-          <div className="flex items-center justify-center mb-3">
-            <img src={ornamentDivider} alt="" className="w-28 h-auto opacity-50" loading="lazy" width={800} height={512} />
+          <div className="ornament-divider-procedural">
+            <div className="ornament-divider-procedural-diamond" />
           </div>
           <h2 className="font-accent text-sm tracking-[0.25em] uppercase italic text-center mb-6" style={{
             color: "hsl(340 42% 24%)",
@@ -310,8 +306,10 @@ const Index = () => {
         </section>
 
         {/* Bottom ornament */}
-        <div className="flex items-center justify-center pb-10">
-          <img src={ornamentDivider} alt="" className="w-28 h-auto opacity-40" loading="lazy" width={800} height={512} />
+        <div className="pb-10">
+          <div className="ornament-divider-procedural">
+            <div className="ornament-divider-procedural-diamond" />
+          </div>
         </div>
       </main>
     </div>

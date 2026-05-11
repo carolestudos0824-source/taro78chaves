@@ -5,7 +5,7 @@ import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { useResolvedModule } from "@/hooks/use-resolved-module";
 import { XPBar } from "@/components/XPBar";
-import mysticBg from "@/assets/mystic-bg.jpg";
+// import mysticBg from "@/assets/mystic-bg.jpg";
 
 const FundamentosPage = () => {
   const navigate = useNavigate();
@@ -33,8 +33,8 @@ const FundamentosPage = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background */}
-      <div className="fixed inset-0 z-0">
-        <img src={mysticBg} alt="" className="w-full h-full object-cover" />
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        
         <div
           className="absolute inset-0"
           style={{

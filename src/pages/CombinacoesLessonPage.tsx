@@ -5,7 +5,7 @@ import { COMBINACOES_LESSONS, getCombinacoesLessonByOrder } from "@/content/less
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { useResolvedLesson } from "@/hooks/use-resolved-lesson";
-import mysticBg from "@/assets/mystic-bg.jpg";
+// import mysticBg from "@/assets/mystic-bg.jpg";
 
 type Phase = "lesson" | "exercise" | "deepdive" | "quiz" | "complete";
 
@@ -108,8 +108,8 @@ const CombinacoesLessonPage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="fixed inset-0 z-0">
-        <img src={mysticBg} alt="" className="w-full h-full object-cover" />
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.88), hsl(36 33% 97% / 0.82), hsl(36 33% 97% / 0.92))" }} />
       </div>
 

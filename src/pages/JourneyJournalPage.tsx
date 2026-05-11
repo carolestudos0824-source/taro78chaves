@@ -4,7 +4,7 @@ import { ArrowLeft, Book, Calendar, ChevronRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { getArcanoFull as getArcanoById } from "@/lib/content";
-import mysticBg from "@/assets/mystic-bg.jpg";
+// import mysticBg from "@/assets/mystic-bg.jpg";
 
 interface Reflection {
   id: string;
@@ -62,8 +62,8 @@ const JourneyJournalPage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="fixed inset-0 z-0">
-        <img src={mysticBg} alt="" className="w-full h-full object-cover" />
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        
         <div className="absolute inset-0" style={{
           background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.85), hsl(36 33% 97% / 0.80))",
         }} />

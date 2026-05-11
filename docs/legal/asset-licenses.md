@@ -47,17 +47,18 @@ Este documento detalha a origem e o status de licenciamento de todos os assets v
 
 ## 4. Fundos e Ornamentos (Decorativos)
 
-- **Caminho no projeto**: `src/assets/mystic-bg.jpg`, `src/assets/ornament-divider.png`, `public/mystic-bg.jpg`
-- **Onde é usado**: Plano de fundo da aplicação (background) e separadores visuais.
-- **Tipo de asset**: Imagem (JPG/PNG).
-- **Origem exata**: Origem não documentada no repositório.
-- **URL da origem**: Desconhecida.
-- **Autor/criador**: Desconhecido.
-- **Licença exata**: Desconhecida.
-- **Se é domínio público**: NÃO (ou indeteminado).
-- **Evidência da licença**: Nenhuma evidência de licenciamento encontrada.
-- **Risco**: MÉDIO.
-- **Precisa substituição**: SIM. Recomenda-se a substituição por assets de autoria própria ou provenientes de bancos de imagem com licença comercial explícita (como Unsplash, Pixabay ou Adobe Stock com recibo) antes do envio final para a Google Play Store.
+- **Caminho no projeto**: N/A (Removido)
+- **Onde é usado**: N/A
+- **Tipo de asset**: N/A
+- **Origem exata**: Assets `mystic-bg.jpg` e `ornament-divider.png` foram removidos do projeto para eliminar riscos de licenciamento.
+- **URL da origem**: N/A
+- **Autor/criador**: N/A
+- **Licença exata**: N/A
+- **Se é domínio público**: N/A
+- **Evidência da licença**: N/A
+- **Risco**: BAIXO (Removido).
+- **Precisa substituição**: CONCLUÍDO. Substituído por implementações procedurais em CSS e SVG inline nativos do projeto.
+- **Observação**: O fundo da aplicação agora utiliza gradientes CSS e padrões de repetição geométricos definidos em `src/index.css`. Os divisores ornamentais foram substituídos por elementos flexbox com gradientes e formas geométricas (diamond) em CSS puro, garantindo 100% de autoria e eliminando dependências de arquivos externos de imagem.
 
 ## 5. Placeholders e Recursos Técnicos
 

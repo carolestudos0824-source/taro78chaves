@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, ChevronDown, ChevronRight } from "lucide-react";
 import { type Naipe, NAIPES } from "@/registry/naipes";
 import { useSuitIntroContent } from "@/hooks/use-content";
-import mysticBg from "@/assets/mystic-bg.jpg";
+// import mysticBg from "@/assets/mystic-bg.jpg";
 
 const NAIPE_ROUTE_MAP: Record<string, Naipe> = {
   copas: "copas",
@@ -57,8 +57,8 @@ const NaipeIntroPage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
-      <div className="fixed inset-0 z-0">
-        <img src={mysticBg} alt="" className="w-full h-full object-cover" />
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        
         <div className="absolute inset-0" style={{
           background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.88), hsl(36 33% 97% / 0.82), hsl(36 33% 97% / 0.92))",
         }} />

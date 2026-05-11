@@ -4,8 +4,8 @@ import { useProgress } from "@/hooks/use-progress";
 import { useResolvedArcanosMaiores } from "@/hooks/use-resolved-arcanos-maiores";
 import { useJourneyContent } from "@/hooks/use-content";
 import { CORES_FASE, JOURNEY_MOTION } from "@/config/journey-visual";
-import mysticBg from "@/assets/mystic-bg.jpg";
-import ornamentDivider from "@/assets/ornament-divider.png";
+// import mysticBg from "@/assets/mystic-bg.jpg";
+// import ornamentDivider from "@/assets/ornament-divider.png";
 
 const FoolsJourneyPage = () => {
   const navigate = useNavigate();
@@ -37,8 +37,8 @@ const FoolsJourneyPage = () => {
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
       {/* Background */}
-      <div className="fixed inset-0 z-0">
-        <img src={mysticBg} alt="" className="w-full h-full object-cover" width={1920} height={1080} />
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        
         <div className="absolute inset-0" style={{
           background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.12) 0%, hsl(36 33% 97% / 0.06) 30%, hsl(36 33% 97% / 0.10) 70%, hsl(36 33% 97% / 0.25) 100%)"
         }} />
@@ -84,7 +84,7 @@ const FoolsJourneyPage = () => {
         {/* Epigraph */}
         <div className="text-center mb-8" style={{ animation: "fade-up 0.5s ease-out" }}>
           <div className="flex justify-center mb-4">
-            <img src={ornamentDivider} alt="" className="w-24 h-auto opacity-40" loading="lazy" width={800} height={512} />
+            <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
           </div>
           <p className="font-accent text-base italic leading-relaxed" style={{ color: "hsl(230 20% 15% / 0.55)" }}>
             "{meta.introEpigrafe}"
@@ -122,7 +122,7 @@ const FoolsJourneyPage = () => {
             >
               {/* Phase header */}
               <div className="flex items-center justify-center mb-3">
-                <img src={ornamentDivider} alt="" className="w-20 h-auto opacity-30" loading="lazy" width={800} height={512} />
+                <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
               </div>
 
               <div className="text-center mb-5">
@@ -242,7 +242,7 @@ const FoolsJourneyPage = () => {
         {/* Closing */}
         <section className="mb-8" style={{ animation: "fade-up 0.6s ease-out" }}>
           <div className="flex items-center justify-center mb-4">
-            <img src={ornamentDivider} alt="" className="w-28 h-auto opacity-45" loading="lazy" width={800} height={512} />
+            <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
           </div>
           <div className="text-center">
             <Sparkles className="w-5 h-5 mx-auto mb-3" style={{ color: "hsl(36 42% 45% / 0.60)" }} />
