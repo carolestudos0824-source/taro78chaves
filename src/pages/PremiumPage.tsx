@@ -153,7 +153,7 @@ const PremiumPage = () => {
               className="w-full text-left bg-white border-2 border-[#DCCFC2] p-6 rounded-3xl flex items-center justify-between group active:scale-[0.98] transition-all shadow-sm hover:border-[#C8A66A]"
             >
               <div className="space-y-1">
-                <p className="text-[11px] font-heading tracking-[0.2em] uppercase font-black text-[#C8A66A]">Plano Mensal</p>
+                <p className="text-[11px] font-heading tracking-[0.2em] uppercase font-black text-[#5B1F3D]">Plano Mensal</p>
                 <div className="flex items-baseline gap-1">
                   <span className="font-heading text-2xl text-[#5B1F3D] font-black">R$ 29,90</span>
                   <span className="text-xs font-bold text-[#5B1F3D]/40">/mês</span>
