@@ -24,18 +24,18 @@ export function JourneyMap({ progress }: JourneyMapProps) {
     <div className="relative max-w-2xl mx-auto pb-16">
       {/* Decorative top */}
       <div className="flex flex-col items-center mb-6 opacity-50">
-        <div className="w-px h-8" style={{ background: "linear-gradient(to bottom, transparent, hsl(36 42% 45% / 0.55))" }} />
-        <Sparkles className="w-4 h-4" style={{ color: "hsl(36 42% 45% / 0.60)" }} />
+        <div className="w-px h-10" style={{ background: "linear-gradient(to bottom, transparent, #C8A66A80)" }} />
+        <Sparkles className="w-4 h-4" style={{ color: "#C8A66A" }} />
       </div>
 
       {/* Central path line */}
       <div className="absolute left-1/2 top-16 bottom-16 -translate-x-px w-px">
         <div className="w-full h-full" style={{
           background: `repeating-linear-gradient(to bottom, 
-            hsl(36 42% 45% / 0.45) 0px, 
-            hsl(36 42% 45% / 0.45) 4px, 
+            rgba(200, 166, 106, 0.4) 0px, 
+            rgba(200, 166, 106, 0.4) 4px, 
             transparent 4px, 
-            transparent 12px)`,
+            transparent 14px)`,
         }} />
       </div>
 
@@ -64,16 +64,21 @@ export function JourneyMap({ progress }: JourneyMapProps) {
               {/* Card */}
               <div className={`flex-1 ${side === "left" ? "pr-10 md:pr-14" : "pl-10 md:pl-14"}`}>
                 <div className={`w-full flex ${side === "left" ? "justify-end" : "justify-start"}`}>
-                  <TarotAnimatedCard
-                    cardImage={getArcanoFull(arcano.id)?.cardImage || ""}
-                    cardName={arcano.name}
-                    arcanoId={arcano.id}
-                    arcanoSlug={arcano.slug}
-                    state={isCompleted ? 'completed' : isCurrent ? 'available' : 'locked'}
-                    isPremium={isPremium}
-                    onClick={() => (isUnlocked || isPremium) && navigate(`/lesson/${arcano.id}`)}
-                    className="w-[140px]"
-                  />
+                  <div className="relative group/card">
+                    {/* Halo effect */}
+                    <div className="absolute inset-0 bg-[#C8A66A] opacity-0 group-hover/card:opacity-10 blur-2xl rounded-xl transition-opacity duration-500" />
+                    
+                    <TarotAnimatedCard
+                      cardImage={getArcanoFull(arcano.id)?.cardImage || ""}
+                      cardName={arcano.name}
+                      arcanoId={arcano.id}
+                      arcanoSlug={arcano.slug}
+                      state={isCompleted ? 'completed' : isCurrent ? 'available' : 'locked'}
+                      isPremium={isPremium}
+                      onClick={() => (isUnlocked || isPremium) && navigate(`/lesson/${arcano.id}`)}
+                      className="w-[145px] relative z-10"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -83,32 +88,32 @@ export function JourneyMap({ progress }: JourneyMapProps) {
                   <div
                     className="absolute inset-0 -m-3 rounded-full"
                     style={{
-                      border: "1px solid hsl(340 42% 28% / 0.28)",
+                      border: "1px solid rgba(91, 31, 61, 0.15)",
                       animation: "glow-breathe 4s ease-in-out infinite"
                     }}
                   />
                 )}
                 <div
-                  className="relative w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-500"
+                  className="relative w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-500"
                   style={isCurrent ? {
-                    border: "2px solid hsl(340 42% 26% / 0.52)",
-                    background: "linear-gradient(135deg, hsl(38 28% 93%), hsl(36 33% 96%), hsl(36 45% 55% / 0.15))",
-                    boxShadow: "0 0 25px hsl(340 42% 28% / 0.16), 0 0 50px hsl(36 45% 55% / 0.08)",
+                    border: "2px solid #5B1F3D",
+                    background: "white",
+                    boxShadow: "0 10px 25px rgba(91, 31, 61, 0.1), 0 0 40px rgba(200, 166, 106, 0.1)",
                     animation: "glow-breathe 4s ease-in-out infinite"
                   } : isCompleted ? {
-                    border: "2px solid hsl(36 42% 45% / 0.42)",
-                    background: "hsl(38 28% 94% / 0.90)"
+                    border: "2px solid rgba(200, 166, 106, 0.5)",
+                    background: "#FAF5EF"
                   } : {
-                    border: "1.5px solid hsl(36 22% 75% / 0.50)",
-                    background: "hsl(36 18% 90% / 0.55)"
+                    border: "1.5px solid rgba(209, 196, 181, 0.4)",
+                    background: "rgba(220, 207, 194, 0.3)"
                   }}
                 >
                   {isCompleted ? (
-                    <Check className="w-4 h-4" style={{ color: "hsl(36 42% 38% / 0.88)" }} />
+                    <Check className="w-5 h-5" style={{ color: "#C8A66A" }} />
                   ) : isUnlocked ? (
-                    <span className="text-base" style={{ color: "hsl(340 42% 22%)", lineHeight: 1 }}>{symbol}</span>
+                    <span className="text-xl font-heading" style={{ color: "#5B1F3D", lineHeight: 1 }}>{symbol}</span>
                   ) : isPremium ? (
-                    <Crown className="w-3.5 h-3.5" style={{ color: "hsl(36 45% 50% / 0.45)" }} />
+                    <Crown className="w-4 h-4" style={{ color: "#C8A66A" }} />
                   ) : (
                     <Lock className="w-3.5 h-3.5" style={{ color: "hsl(230 10% 45% / 0.30)" }} />
                   )}
@@ -124,7 +129,7 @@ export function JourneyMap({ progress }: JourneyMapProps) {
                 style={{ width: "calc(50% - 60px)" }}
               >
                 <div className="w-full h-px" style={{
-                  background: isCurrent ? "hsl(340 42% 28% / 0.32)" : isCompleted ? "hsl(36 42% 45% / 0.30)" : "hsl(36 22% 80% / 0.38)"
+                  background: isCurrent ? "rgba(91, 31, 61, 0.2)" : isCompleted ? "rgba(200, 166, 106, 0.3)" : "rgba(209, 196, 181, 0.2)"
                 }} />
               </div>
 
@@ -137,8 +142,8 @@ export function JourneyMap({ progress }: JourneyMapProps) {
 
       {/* Decorative bottom */}
       <div className="flex flex-col items-center mt-8 opacity-42">
-        <Sparkles className="w-4 h-4" style={{ color: "hsl(36 42% 45% / 0.50)" }} />
-        <div className="w-px h-6" style={{ background: "linear-gradient(to top, transparent, hsl(36 42% 45% / 0.42))" }} />
+        <Sparkles className="w-4 h-4" style={{ color: "#C8A66A" }} />
+        <div className="w-px h-10" style={{ background: "linear-gradient(to top, transparent, #C8A66A80)" }} />
       </div>
     </div>
   );
