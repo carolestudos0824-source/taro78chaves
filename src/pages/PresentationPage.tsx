@@ -53,18 +53,23 @@ const PresentationPage = () => {
       style={{ background: "hsl(36 33% 97%)" }}
     >
       {/* Top bar */}
-      <div className="flex items-center justify-between px-6 py-3" style={{
-        borderBottom: "1px solid hsl(36 25% 82% / 0.50)",
-        background: "hsl(38 28% 95% / 0.95)",
+      <div className="flex items-center justify-between px-6 py-4" style={{
+        borderBottom: "1px solid hsl(36 45% 58% / 0.20)",
+        background: "hsl(38 28% 95% / 0.98)",
         backdropFilter: "blur(12px)",
       }}>
-        <button onClick={() => navigate(-1)} className="text-[10px] font-heading tracking-[0.3em] uppercase" style={{ color: "hsl(230 15% 40% / 0.50)" }}>
-          ← Voltar
+        <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-[11px] font-heading tracking-[0.2em] uppercase font-bold transition-colors hover:text-gold-dark" style={{ color: "hsl(340 42% 28%)" }}>
+          <ChevronLeft className="w-3.5 h-3.5" />
+          Voltar
         </button>
-        <span className="text-[10px] font-heading tracking-[0.4em] uppercase" style={{ color: "hsl(340 42% 28% / 0.60)" }}>
-          ✦ A Jornada do Louco ✦
-        </span>
-        <span className="text-[10px] font-body tabular-nums" style={{ color: "hsl(230 15% 40% / 0.40)" }}>
+        <div className="flex items-center gap-2">
+          <Sparkles className="w-3 h-3 text-gold-dark opacity-60" />
+          <span className="text-[11px] font-heading tracking-[0.3em] uppercase font-bold" style={{ color: "hsl(340 42% 20%)" }}>
+            A Jornada do Louco
+          </span>
+          <Sparkles className="w-3 h-3 text-gold-dark opacity-60" />
+        </div>
+        <span className="text-[11px] font-heading tracking-widest font-black tabular-nums" style={{ color: "hsl(340 42% 28% / 0.70)" }}>
           {current + 1} / {total}
         </span>
       </div>
@@ -93,26 +98,37 @@ const PresentationPage = () => {
         {current > 0 && (
           <button
             onClick={() => go(-1)}
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
-            style={{ background: "hsl(36 45% 58% / 0.10)", border: "1px solid hsl(36 45% 58% / 0.20)" }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 active:scale-95 z-20"
+            style={{ 
+              background: "hsl(38 28% 95% / 0.90)", 
+              border: "1.5px solid hsl(36 45% 58% / 0.30)",
+              boxShadow: "0 4px 12px hsl(340 42% 28% / 0.10)"
+            }}
+            aria-label="Slide anterior"
           >
-            <ChevronLeft className="w-5 h-5" style={{ color: "hsl(340 42% 28%)" }} />
+            <ChevronLeft className="w-6 h-6" style={{ color: "hsl(340 42% 28%)" }} />
           </button>
         )}
         {current < total - 1 && (
           <button
             onClick={() => go(1)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
-            style={{ background: "hsl(36 45% 58% / 0.10)", border: "1px solid hsl(36 45% 58% / 0.20)" }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 active:scale-95 z-20"
+            style={{ 
+              background: "hsl(38 28% 95% / 0.90)", 
+              border: "1.5px solid hsl(36 45% 58% / 0.30)",
+              boxShadow: "0 4px 12px hsl(340 42% 28% / 0.10)"
+            }}
+            aria-label="Próximo slide"
           >
-            <ChevronRight className="w-5 h-5" style={{ color: "hsl(340 42% 28%)" }} />
+            <ChevronRight className="w-6 h-6" style={{ color: "hsl(340 42% 28%)" }} />
           </button>
         )}
       </div>
 
       {/* Progress dots */}
-      <div className="flex items-center justify-center gap-1.5 py-3" style={{
-        borderTop: "1px solid hsl(36 25% 82% / 0.40)",
+      <div className="flex items-center justify-center gap-2 py-4 md:py-6" style={{
+        borderTop: "1px solid hsl(36 45% 58% / 0.15)",
+        background: "hsl(38 28% 95% / 0.50)"
       }}>
         {SLIDES.map((_, i) => (
           <button
@@ -120,14 +136,16 @@ const PresentationPage = () => {
             onClick={() => setCurrent(i)}
             className="rounded-full transition-all duration-300"
             style={{
-              width: i === current ? 20 : 5,
-              height: 5,
+              width: i === current ? 24 : 7,
+              height: 7,
               background: i === current
                 ? "hsl(340 42% 28%)"
                 : i < current
-                ? "hsl(36 45% 58% / 0.50)"
-                : "hsl(36 25% 82% / 0.60)",
+                ? "hsl(36 45% 58% / 0.70)"
+                : "hsl(36 25% 82% / 0.90)",
+              border: i === current ? "none" : "1px solid hsl(340 42% 28% / 0.10)"
             }}
+            aria-label={`Ir para slide ${i + 1}`}
           />
         ))}
       </div>
@@ -185,7 +203,7 @@ const SlideCover = () => (
       ].map(s => (
         <div key={s.l} className="text-center">
           <div className="font-heading text-xl md:text-2xl" style={{ color: "hsl(340 42% 22%)" }}>{s.v}</div>
-          <div className="text-[8px] tracking-[0.3em] uppercase font-heading mt-0.5" style={{ color: "hsl(230 15% 30% / 0.40)" }}>{s.l}</div>
+          <div className="text-[10px] tracking-[0.3em] uppercase font-heading mt-1 font-black" style={{ color: "hsl(340 42% 28% / 0.80)" }}>{s.l}</div>
         </div>
       ))}
     </div>
