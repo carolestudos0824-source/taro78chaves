@@ -91,24 +91,24 @@ const Index = () => {
       <main className="relative z-10 container max-w-3xl px-6 pb-12">
 
         {/* ═══════════════ HERO SECTION ═══════════════ */}
-        <section className="pt-16 pb-12 text-center relative animate-fade-in">
-          <div className="flex items-center justify-center gap-3 mb-6 opacity-80">
-            <span className="h-px w-10 bg-gradient-to-r from-transparent to-[#C8A66A80]" />
-            <span className="text-[13px] tracking-[0.4em] uppercase" style={{ color: "#C8A66A" }}>✶ ◈ ✶</span>
-            <span className="h-px w-10 bg-gradient-to-l from-transparent to-[#C8A66A80]" />
+        <section className="pt-20 pb-12 text-center relative animate-fade-in">
+          <div className="flex items-center justify-center gap-4 mb-8 opacity-90">
+            <span className="h-px w-12 bg-gradient-to-r from-transparent to-[#C8A66A]/60" />
+            <span className="text-[14px] tracking-[0.5em] uppercase font-bold" style={{ color: "#C8A66A" }}>✶ ◈ ✶</span>
+            <span className="h-px w-12 bg-gradient-to-l from-transparent to-[#C8A66A]/60" />
           </div>
           
-          <h1 className="font-heading text-4xl md:text-6xl tracking-tight mb-5" style={{ color: "#5B1F3D" }}>
+          <h1 className="font-heading text-5xl md:text-7xl tracking-tight mb-6" style={{ color: "#5B1F3D" }}>
             A Jornada do Louco
           </h1>
           
-          <p className="font-accent text-xl md:text-2xl italic leading-relaxed max-w-lg mx-auto mb-5" style={{ color: "#5B1F3D", fontWeight: 500 }}>
+          <p className="font-accent text-2xl md:text-3xl italic leading-relaxed max-w-xl mx-auto mb-6" style={{ color: "#5B1F3D", fontWeight: 600 }}>
             "Os 22 Arcanos Maiores como percurso iniciático da alma"
           </p>
           
-          <p className="text-[15px] font-body max-w-md mx-auto leading-relaxed px-4" style={{ color: "#5B1F3DBB", fontWeight: 500 }}>
+          <p className="text-[16px] font-body max-w-lg mx-auto leading-relaxed px-6" style={{ color: "#5B1F3DCC", fontWeight: 500 }}>
             Do potencial puro do Louco à completude do Mundo — cada arcano é uma etapa de autoconhecimento, 
-            com lições, símbolos e rituais para sua travessia.
+            com lições, símbolos e rituais sagrados para sua travessia.
           </p>
         </section>
 
