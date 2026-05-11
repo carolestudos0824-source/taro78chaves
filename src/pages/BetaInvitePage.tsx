@@ -124,7 +124,7 @@ const BetaInvitePage = () => {
           </h1>
 
           <p className="font-body text-sm md:text-base leading-relaxed mb-8 max-w-lg mx-auto" style={{ color: "hsl(230 15% 30% / 0.60)" }}>
-            Uma plataforma imersiva de ensino de tarô que une método, profundidade simbólica, trilha gamificada e experiência viva com os arcanos. O acesso está aberto para os primeiros estudantes.
+            Uma plataforma imersiva de ensino de tarô que une método, profundidade simbólica, trilha gamificada e experiência viva com os arcanos. Comece agora sua jornada pelos 78 arcanos.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
