@@ -122,7 +122,7 @@ const Index = () => {
                 <div className="font-heading text-3xl md:text-4xl tracking-wide" style={{ color: "#5B1F3D" }}>
                   22
                 </div>
-                <div className="text-[10px] tracking-[0.3em] uppercase font-heading mt-2" style={{ color: "#C8A66A" }}>
+                <div className="text-[10px] tracking-[0.3em] uppercase font-heading mt-2" style={{ color: "#5B1F3D" }}>
                   Arcanos
                 </div>
               </div>
