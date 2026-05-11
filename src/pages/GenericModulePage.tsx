@@ -296,8 +296,8 @@ const GenericModulePage = ({
                       {lesson.title}
                     </h3>
                     <p
-                      className="font-body text-[11px] leading-relaxed truncate"
-                      style={{ color: unlocked ? "#5B1F3DBB" : "#5B1F3D20" }}
+                      className="font-body text-[12px] leading-relaxed truncate"
+                      style={{ color: unlocked ? "#4A1830" : "#5B1F3D25", fontWeight: 500 }}
                     >
                       {lesson.subtitle}
                     </p>
