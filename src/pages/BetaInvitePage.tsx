@@ -101,9 +101,9 @@ const BetaInvitePage = () => {
             background: "linear-gradient(135deg, hsl(340 42% 28% / 0.08), hsl(280 30% 28% / 0.06))",
             border: "1px solid hsl(36 45% 58% / 0.25)",
           }}>
-            <Lock className="w-3 h-3" style={{ color: "hsl(36 45% 55%)" }} />
+            <Sparkles className="w-3 h-3" style={{ color: "hsl(36 45% 55%)" }} />
             <span className="text-[10px] font-heading tracking-[0.35em] uppercase" style={{ color: "hsl(340 42% 28% / 0.70)" }}>
-              Lançamento · Convite
+              Jornada Guiada
             </span>
           </div>
 
