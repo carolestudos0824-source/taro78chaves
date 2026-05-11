@@ -101,9 +101,9 @@ const BetaInvitePage = () => {
             background: "linear-gradient(135deg, hsl(340 42% 28% / 0.08), hsl(280 30% 28% / 0.06))",
             border: "1px solid hsl(36 45% 58% / 0.25)",
           }}>
-            <Lock className="w-3 h-3" style={{ color: "hsl(36 45% 55%)" }} />
+            <Sparkles className="w-3 h-3" style={{ color: "hsl(36 45% 55%)" }} />
             <span className="text-[10px] font-heading tracking-[0.35em] uppercase" style={{ color: "hsl(340 42% 28% / 0.70)" }}>
-              Lançamento · Convite
+              Jornada Guiada
             </span>
           </div>
 
@@ -124,7 +124,7 @@ const BetaInvitePage = () => {
           </h1>
 
           <p className="font-body text-sm md:text-base leading-relaxed mb-8 max-w-lg mx-auto" style={{ color: "hsl(230 15% 30% / 0.60)" }}>
-            Uma plataforma imersiva de ensino de tarô que une método, profundidade simbólica, trilha gamificada e experiência viva com os arcanos. O acesso está aberto para os primeiros estudantes.
+            Uma plataforma imersiva de ensino de tarô que une método, profundidade simbólica, trilha gamificada e experiência viva com os arcanos. Comece agora sua jornada pelos 78 arcanos.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -247,7 +247,7 @@ const BetaInvitePage = () => {
         <div className="relative z-10 max-w-xl mx-auto text-center space-y-6">
           <span className="text-2xl block" style={{ color: "hsl(36 45% 58% / 0.30)" }}>✦</span>
 
-          <SectionLabel>Convite</SectionLabel>
+          <SectionLabel>Inicie sua Jornada</SectionLabel>
           <SectionTitle>Comece sua jornada desde o início.</SectionTitle>
 
           <p className="font-body text-[13px] leading-relaxed max-w-md mx-auto" style={{ color: "hsl(230 15% 30% / 0.50)" }}>
