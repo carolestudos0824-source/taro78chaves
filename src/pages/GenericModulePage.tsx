@@ -280,7 +280,7 @@ const GenericModulePage = ({
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-0.5">
-                      <span className="text-[9px] font-heading font-bold" style={{ color: unlocked ? "#C8A66A" : "#5B1F3D40" }}>
+                      <span className="text-[9px] font-heading font-bold" style={{ color: unlocked ? "#5B1F3D" : "#5B1F3D40" }}>
                         LIÇÃO {lesson.order + 1}
                       </span>
                       {isCurrent && (
