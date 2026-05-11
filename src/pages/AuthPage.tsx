@@ -98,7 +98,7 @@ const AuthPage = () => {
           </div>
           {mode !== "forgot" && (
             <div className="space-y-1.5 relative">
-              <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-gold-dark ml-1">Senha</label>
+              <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-plum/70 ml-1">Senha</label>
               <div className="relative">
                 <Input
                   className="shadcn-input-premium py-6"
