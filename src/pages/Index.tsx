@@ -22,7 +22,7 @@ const Index = () => {
       <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7]">
         <div className="text-center space-y-4">
           <div className="w-10 h-10 border-2 border-gold/20 border-t-gold animate-spin rounded-full mx-auto" />
-          <p className="text-[10px] text-gold-dark/40 font-heading tracking-widest uppercase">Lendo Arcanos</p>
+          <p className="text-[10px] text-plum/60 font-heading tracking-widest uppercase">Lendo Arcanos</p>
         </div>
       </div>
     );
