@@ -98,19 +98,29 @@ const PresentationPage = () => {
         {current > 0 && (
           <button
             onClick={() => go(-1)}
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
-            style={{ background: "hsl(36 45% 58% / 0.10)", border: "1px solid hsl(36 45% 58% / 0.20)" }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 active:scale-95 z-20"
+            style={{ 
+              background: "hsl(38 28% 95% / 0.90)", 
+              border: "1.5px solid hsl(36 45% 58% / 0.30)",
+              boxShadow: "0 4px 12px hsl(340 42% 28% / 0.10)"
+            }}
+            aria-label="Slide anterior"
           >
-            <ChevronLeft className="w-5 h-5" style={{ color: "hsl(340 42% 28%)" }} />
+            <ChevronLeft className="w-6 h-6" style={{ color: "hsl(340 42% 28%)" }} />
           </button>
         )}
         {current < total - 1 && (
           <button
             onClick={() => go(1)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
-            style={{ background: "hsl(36 45% 58% / 0.10)", border: "1px solid hsl(36 45% 58% / 0.20)" }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 active:scale-95 z-20"
+            style={{ 
+              background: "hsl(38 28% 95% / 0.90)", 
+              border: "1.5px solid hsl(36 45% 58% / 0.30)",
+              boxShadow: "0 4px 12px hsl(340 42% 28% / 0.10)"
+            }}
+            aria-label="Próximo slide"
           >
-            <ChevronRight className="w-5 h-5" style={{ color: "hsl(340 42% 28%)" }} />
+            <ChevronRight className="w-6 h-6" style={{ color: "hsl(340 42% 28%)" }} />
           </button>
         )}
       </div>
