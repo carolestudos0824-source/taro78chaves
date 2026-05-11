@@ -53,18 +53,23 @@ const PresentationPage = () => {
       style={{ background: "hsl(36 33% 97%)" }}
     >
       {/* Top bar */}
-      <div className="flex items-center justify-between px-6 py-3" style={{
-        borderBottom: "1px solid hsl(36 25% 82% / 0.50)",
-        background: "hsl(38 28% 95% / 0.95)",
+      <div className="flex items-center justify-between px-6 py-4" style={{
+        borderBottom: "1px solid hsl(36 45% 58% / 0.20)",
+        background: "hsl(38 28% 95% / 0.98)",
         backdropFilter: "blur(12px)",
       }}>
-        <button onClick={() => navigate(-1)} className="text-[10px] font-heading tracking-[0.3em] uppercase" style={{ color: "hsl(230 15% 40% / 0.50)" }}>
-          ← Voltar
+        <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-[11px] font-heading tracking-[0.2em] uppercase font-bold transition-colors hover:text-gold-dark" style={{ color: "hsl(340 42% 28%)" }}>
+          <ChevronLeft className="w-3.5 h-3.5" />
+          Voltar
         </button>
-        <span className="text-[10px] font-heading tracking-[0.4em] uppercase" style={{ color: "hsl(340 42% 28% / 0.60)" }}>
-          ✦ A Jornada do Louco ✦
-        </span>
-        <span className="text-[10px] font-body tabular-nums" style={{ color: "hsl(230 15% 40% / 0.40)" }}>
+        <div className="flex items-center gap-2">
+          <Sparkles className="w-3 h-3 text-gold-dark opacity-60" />
+          <span className="text-[11px] font-heading tracking-[0.3em] uppercase font-bold" style={{ color: "hsl(340 42% 20%)" }}>
+            A Jornada do Louco
+          </span>
+          <Sparkles className="w-3 h-3 text-gold-dark opacity-60" />
+        </div>
+        <span className="text-[11px] font-heading tracking-widest font-black tabular-nums" style={{ color: "hsl(340 42% 28% / 0.70)" }}>
           {current + 1} / {total}
         </span>
       </div>
