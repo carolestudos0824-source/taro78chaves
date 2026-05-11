@@ -199,12 +199,12 @@
 
   /* ─── Typography Scales ─── */
   .t-section-title {
-    @apply text-[10px] tracking-[0.3em] font-heading uppercase opacity-70;
-    color: hsl(var(--gold-dark));
+    @apply text-[10px] tracking-[0.3em] font-heading uppercase opacity-85 font-black;
+    color: hsl(var(--secondary));
   }
   .t-kicker {
-    @apply text-[11px] tracking-[0.25em] font-heading uppercase;
-    color: hsl(var(--gold-dark));
+    @apply text-[11px] tracking-[0.25em] font-heading uppercase font-bold;
+    color: hsl(var(--secondary) / 0.9);
   }
 
   /* ─── Elegant horizontal scrollbar (premium) ─── */
