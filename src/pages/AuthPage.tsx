@@ -108,7 +108,7 @@ const AuthPage = () => {
                   placeholder="Mínimo 6 caracteres"
                   required
                 />
-                <button type="button" onClick={() => setShowPass(!showPass)} className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground/50 hover:text-gold-dark transition-colors">
+                <button type="button" onClick={() => setShowPass(!showPass)} className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground/50 hover:text-plum transition-colors">
                   {showPass ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
