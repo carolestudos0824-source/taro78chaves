@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Sparkles, MapPin } from "lucide-react";
 import { FUNDAMENTOS_LESSONS, getFundamentosLessonByOrder } from "@/content/lessons/fundamentos";
