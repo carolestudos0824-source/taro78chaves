@@ -169,7 +169,8 @@ const AppRoutes = () => (
   </Suspense>
 );
 
-/** Layout shell for authenticated app pages — includes BottomNav, BetaBadge, BetaFeedback */
+/** Layout shell for authenticated app pages — includes BottomNav */
+const AppShell = () => (
   <>
     {/* Layout shell for authenticated app pages — includes BottomNav */}
     <div className="pb-bottom-nav">

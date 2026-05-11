@@ -327,21 +327,21 @@ const WaitlistPage = () => {
         borderTop: "1px solid hsl(36 25% 82% / 0.30)",
       }}>
         <div className="max-w-2xl mx-auto text-center space-y-6">
-          <SectionLabel>A Beta</SectionLabel>
+          <SectionLabel>O Projeto</SectionLabel>
           <SectionTitle>Uma entrada antecipada para viver a primeira fase da plataforma.</SectionTitle>
 
           <p className="font-body text-[13px] leading-relaxed max-w-lg mx-auto" style={{ color: "hsl(230 15% 30% / 0.50)" }}>
-            A beta é a fase inicial de acesso à plataforma com um grupo reduzido de estudantes. Nesta etapa, será possível experimentar a proposta pedagógica, entrar na Jornada do Louco, testar os primeiros conteúdos e acompanhar de perto o nascimento de uma nova forma de estudar tarô.
+            O acesso inicial à plataforma ocorre com um grupo reduzido de estudantes. Nesta etapa, será possível experimentar a proposta pedagógica, entrar na Jornada do Louco, testar os conteúdos e acompanhar de perto o nascimento de uma nova forma de estudar tarô.
           </p>
 
-          {/* Beta value card */}
+          {/* Value card */}
           <div className="rounded-2xl p-6 max-w-md mx-auto text-left space-y-3" style={{
             background: "linear-gradient(170deg, hsl(38 28% 95%), hsl(340 42% 28% / 0.02))",
             border: "1.5px solid hsl(36 45% 58% / 0.22)",
             boxShadow: "0 8px 40px hsl(340 42% 28% / 0.04)",
           }}>
             <p className="text-[10px] font-heading tracking-[0.3em] uppercase text-center" style={{ color: "hsl(340 42% 28% / 0.60)" }}>
-              O que a beta já entrega
+              O que já entregamos
             </p>
             {[
               "Onboarding inicial da jornada",

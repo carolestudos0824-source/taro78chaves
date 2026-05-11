@@ -136,7 +136,7 @@ const BetaInvitePage = () => {
                 border: "1px solid hsl(36 45% 58% / 0.25)",
               }}
             >
-              Quero entrar na beta
+              Quero entrar agora
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
             <button
@@ -162,7 +162,7 @@ const BetaInvitePage = () => {
         <div className="max-w-2xl mx-auto space-y-6">
           <div className="text-center space-y-3">
             <SectionLabel>O que já está disponível</SectionLabel>
-            <SectionTitle>A plataforma já entrega a experiência central.</h1>
+            <SectionTitle>A plataforma já entrega a experiência central.</SectionTitle>
           </div>
 
           <div className="rounded-2xl p-6 max-w-md mx-auto space-y-3" style={{
