@@ -160,34 +160,34 @@ const NaipePage = () => {
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
-        
         <div className="absolute inset-0" style={{
-          background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.10) 0%, hsl(36 33% 97% / 0.05) 30%, hsl(36 33% 97% / 0.08) 70%, hsl(36 33% 97% / 0.22) 100%)",
+          background: "linear-gradient(to bottom, #FAF5EF 0%, #DCCFC2 100%)",
+          opacity: 0.8,
         }} />
       </div>
 
       {/* Header */}
       <header className="relative z-10" style={{
-        borderBottom: `1px solid ${naipeInfo.color.border}`,
-        background: "linear-gradient(180deg, hsl(36 33% 96% / 0.94) 0%, hsl(38 28% 93% / 0.92) 100%)",
-        backdropFilter: "blur(28px)",
-        boxShadow: "0 6px 36px hsl(36 45% 50% / 0.08)",
+        borderBottom: `1.5px solid ${naipeInfo.color.primary}40`,
+        background: "rgba(250, 245, 239, 0.95)",
+        backdropFilter: "blur(20px)",
+        boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)",
       }}>
-        <div className="container max-w-3xl py-5 px-6">
-          <div className="flex items-center justify-between mb-3">
+        <div className="container max-w-3xl py-6 px-6">
+          <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">
-              <button onClick={() => navigate("/app")} className="transition-colors hover:scale-105 duration-200" style={{ color: "hsl(230 10% 40%)" }}>
+              <button 
+                onClick={() => navigate("/app")} 
+                className="transition-all hover:scale-110 duration-200 w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30]" 
+                style={{ color: "#5B1F3D" }}
+              >
                 <ArrowLeft className="w-5 h-5" />
               </button>
               <div>
-                <span className="text-[10px] tracking-[0.35em] uppercase font-body mb-0.5 flex items-center gap-1.5" style={{ color: naipeInfo.color.primary }}>
+                <span className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1 flex items-center gap-2" style={{ color: naipeInfo.color.primary }}>
                   {naipeInfo.icon} Arcanos Menores
                 </span>
-                <h1 className="font-heading text-xl md:text-2xl tracking-wide" style={{
-                  background: `linear-gradient(135deg, hsl(340 42% 22%), ${naipeInfo.color.primary})`,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}>
+                <h1 className="font-heading text-2xl md:text-3xl tracking-wide" style={{ color: "#5B1F3D" }}>
                   {naipeInfo.name}
                 </h1>
               </div>
@@ -195,63 +195,64 @@ const NaipePage = () => {
             <StreakCounter streak={progress.streak} />
           </div>
 
-          <p className="font-accent text-xs italic leading-relaxed mb-4" style={{ color: "hsl(230 20% 25% / 0.55)" }}>
-            {NAIPE_PHRASES[naipe]}
+          <p className="font-accent text-[13px] italic leading-relaxed mb-6" style={{ color: "#5B1F3DBB" }}>
+            "{NAIPE_PHRASES[naipe]}"
           </p>
 
           {/* Progress */}
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] font-heading tracking-wider" style={{ color: "hsl(230 10% 45%)" }}>
+          <div className="space-y-2 bg-white/40 p-3 rounded-xl border border-[#C8A66A20]">
+            <div className="flex items-center justify-between px-1">
+              <span className="text-[11px] font-heading tracking-wider" style={{ color: "#5B1F3DAA" }}>
                 {completedCount}/14 cartas estudadas
               </span>
-              <span className="text-[10px] font-heading tracking-wider" style={{ color: naipeInfo.color.primary }}>
+              <span className="text-[11px] font-heading tracking-wider" style={{ color: naipeInfo.color.primary }}>
                 {progressPct}%
               </span>
             </div>
-            <div className="h-2 rounded-full overflow-hidden" style={{ background: "hsl(36 18% 84%)", border: "1px solid hsl(36 22% 75% / 0.50)" }}>
-              <div className="h-full rounded-full transition-all duration-700" style={{ width: `${progressPct}%`, background: `linear-gradient(90deg, ${naipeInfo.color.primary}, hsl(36 45% 55%))` }} />
+            <div className="h-2.5 rounded-full overflow-hidden" style={{ background: "#E8DED3", border: "1px solid #D1C4B5" }}>
+              <div className="h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden" style={{ 
+                width: `${progressPct}%`, 
+                background: `linear-gradient(90deg, ${naipeInfo.color.primary}, #C8A66A)` 
+              }}>
+                 <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+              </div>
             </div>
           </div>
-          <div className="mt-3">
+          <div className="mt-4">
             <XPBar xp={progress.xp} level={progress.level} />
           </div>
         </div>
       </header>
 
-      <main className="relative z-10 container max-w-3xl py-6 px-6">
+      <main className="relative z-10 container max-w-3xl py-8 px-6">
         {/* Fase 3B — telemetria invisível para todas as 14 cartas deste naipe */}
         {cards.map((c) => (
           <PilotMenorProbe key={`probe-${c.id}`} naipe={naipe} posicao={c.posicao} />
         ))}
 
         {/* Study tools */}
-        <div className="grid grid-cols-3 gap-2.5 mb-6" style={{ animation: "fade-up 0.4s ease-out" }}>
+        <div className="grid grid-cols-3 gap-3 mb-8" style={{ animation: "fade-up 0.4s ease-out" }}>
           {[
-            { icon: <BookOpen className="w-4 h-4" />, label: "Introdução", desc: "Elemento e simbologia", onClick: () => navigate(`/naipe/${naipe}/intro`) },
+            { icon: <BookOpen className="w-4 h-4" />, label: "Introdução", desc: "Simbologia", onClick: () => navigate(`/naipe/${naipe}/intro`) },
             { icon: <Hash className="w-4 h-4" />, label: "Números", desc: "Ás ao Dez", onClick: () => navigate("/numerologia") },
             { icon: <Crown className="w-4 h-4" />, label: "Corte", desc: "Pajem ao Rei", onClick: () => navigate("/module/cartas-corte") },
           ].map((tool) => (
             <button
               key={tool.label}
               onClick={tool.onClick}
-              className="rounded-xl p-3 text-center transition-all duration-300 hover:scale-[1.02] group"
-              style={{
-                background: naipeInfo.color.surface,
-                border: `1px solid ${naipeInfo.color.border}`,
-              }}
+              className="rounded-2xl p-4 text-center transition-all duration-300 hover:scale-[1.05] group bg-white/60 border border-[#C8A66A30] backdrop-blur-sm shadow-sm"
             >
-              <div className="w-8 h-8 mx-auto rounded-full flex items-center justify-center mb-1.5" style={{
-                background: `${naipeInfo.color.primary}10`,
-                border: `1px solid ${naipeInfo.color.border}`,
+              <div className="w-10 h-10 mx-auto rounded-full flex items-center justify-center mb-2 transition-colors group-hover:bg-[#C8A66A10]" style={{
+                background: `${naipeInfo.color.primary}15`,
+                border: `1px solid ${naipeInfo.color.primary}30`,
                 color: naipeInfo.color.primary,
               }}>
                 {tool.icon}
               </div>
-              <p className="font-heading text-[11px] tracking-wide" style={{ color: "hsl(230 25% 15%)" }}>
+              <p className="font-heading text-[11px] tracking-widest uppercase mb-1" style={{ color: "#5B1F3D" }}>
                 {tool.label}
               </p>
-              <p className="text-[9px] font-accent italic" style={{ color: "hsl(230 20% 25% / 0.40)" }}>
+              <p className="text-[9px] font-accent italic" style={{ color: "#5B1F3D60" }}>
                 {tool.desc}
               </p>
             </button>
@@ -259,41 +260,39 @@ const NaipePage = () => {
         </div>
 
         {/* Divider */}
-        <div className="flex items-center gap-3 mb-5" style={{ animation: "fade-up 0.4s ease-out 0.05s both" }}>
-          <div className="flex-1 h-px" style={{ background: `linear-gradient(90deg, transparent, ${naipeInfo.color.border})` }} />
-          <span className="text-[10px] font-heading tracking-[0.25em] uppercase" style={{ color: "hsl(230 10% 50%)" }}>
+        <div className="flex items-center gap-4 mb-8" style={{ animation: "fade-up 0.4s ease-out 0.05s both" }}>
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent to-[#C8A66A40]" />
+          <span className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#C8A66A]">
             Trilha de Estudo
           </span>
-          <div className="flex-1 h-px" style={{ background: `linear-gradient(90deg, ${naipeInfo.color.border}, transparent)` }} />
+          <div className="flex-1 h-px bg-gradient-to-l from-transparent to-[#C8A66A40]" />
         </div>
 
         {/* Numbered cards */}
-        <h3 className="font-heading text-xs tracking-[0.2em] uppercase mb-3 flex items-center gap-2" style={{ color: naipeInfo.color.primary, animation: "fade-up 0.4s ease-out 0.1s both" }}>
-          <span className="w-5 h-5 rounded-full flex items-center justify-center text-[10px]" style={{
-            background: naipeInfo.color.surface,
-            border: `1px solid ${naipeInfo.color.border}`,
-          }}>1</span>
-          Ás ao Dez
-        </h3>
-        <div className="space-y-2.5 mb-8">
+        <div className="flex items-center gap-3 mb-4 opacity-80" style={{ animation: "fade-up 0.4s ease-out 0.1s both" }}>
+           <span className="text-xl" style={{ color: naipeInfo.color.primary }}>◈</span>
+           <h3 className="font-heading text-xs tracking-[0.3em] uppercase" style={{ color: "#5B1F3D" }}>
+            Ás ao Dez
+          </h3>
+        </div>
+        <div className="space-y-3 mb-10">
           {numbered.map((card, i) => renderCardRow(card, i, 120 + i * 40))}
         </div>
 
         {/* Court cards */}
-        <h3 className="font-heading text-xs tracking-[0.2em] uppercase mb-3 flex items-center gap-2" style={{ color: naipeInfo.color.primary, animation: "fade-up 0.4s ease-out 0.5s both" }}>
-          <span className="w-5 h-5 rounded-full flex items-center justify-center text-[10px]" style={{
-            background: naipeInfo.color.surface,
-            border: `1px solid ${naipeInfo.color.border}`,
-          }}>♛</span>
-          Cartas da Corte
-        </h3>
-        <div className="space-y-2.5 mb-8">
+        <div className="flex items-center gap-3 mb-4 opacity-80" style={{ animation: "fade-up 0.4s ease-out 0.5s both" }}>
+           <span className="text-xl" style={{ color: naipeInfo.color.primary }}>♛</span>
+           <h3 className="font-heading text-xs tracking-[0.3em] uppercase" style={{ color: "#5B1F3D" }}>
+            Cartas da Corte
+          </h3>
+        </div>
+        <div className="space-y-3 mb-12">
           {court.map((card, i) => renderCardRow(card, 10 + i, 520 + i * 40))}
         </div>
 
         {/* Footer */}
-        <div className="text-center pt-4" style={{ animation: "fade-up 0.4s ease-out 0.7s both" }}>
-          <button onClick={() => navigate("/app")} className="text-xs font-heading tracking-wider transition-colors" style={{ color: "hsl(230 10% 45%)" }}>
+        <div className="text-center pt-4 mb-10" style={{ animation: "fade-up 0.4s ease-out 0.7s both" }}>
+          <button onClick={() => navigate("/app")} className="text-[10px] font-heading tracking-[0.2em] uppercase transition-all hover:text-[#5B1F3D] hover:scale-105" style={{ color: "#C8A66A" }}>
             ← Voltar aos módulos
           </button>
         </div>
