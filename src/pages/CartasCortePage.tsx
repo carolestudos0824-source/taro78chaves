@@ -4,7 +4,7 @@ import { ArrowLeft, ChevronDown, ChevronRight } from "lucide-react";
 import { useCourtCardsContent } from "@/hooks/use-content";
 import { NAIPES, type Naipe } from "@/registry/naipes";
 import { useResolvedArcanoMenorPilot } from "@/hooks/use-resolved-arcanos-menores-pilot";
-import mysticBg from "@/assets/mystic-bg.jpg";
+// import mysticBg from "@/assets/mystic-bg.jpg";
 
 /**
  * Telemetria invisível da Fase 3 — dispara o hook do adaptador para validar
@@ -51,8 +51,8 @@ const CartasCortePage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="fixed inset-0 z-0">
-        <img src={mysticBg} alt="" className="w-full h-full object-cover" />
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        
         <div className="absolute inset-0" style={{
           background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.90), hsl(36 33% 97% / 0.85), hsl(36 33% 97% / 0.95))",
         }} />

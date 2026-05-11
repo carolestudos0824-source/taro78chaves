@@ -5,7 +5,7 @@ import { useAccess } from "@/hooks/use-access";
 import { useResolvedModule } from "@/hooks/use-resolved-module";
 import { XPBar } from "@/components/XPBar";
 import { StreakCounter } from "@/components/StreakCounter";
-import mysticBg from "@/assets/mystic-bg.jpg";
+// import mysticBg from "@/assets/mystic-bg.jpg";
 
 interface GenericLesson {
   id: string;
@@ -71,8 +71,8 @@ const GenericModulePage = ({
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background */}
-      <div className="fixed inset-0 z-0">
-        <img src={mysticBg} alt="" className="w-full h-full object-cover" />
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        
         <div className="absolute inset-0" style={{
           background: `linear-gradient(to bottom, hsl(${accent} / 0.04), hsl(36 33% 97% / 0.18), hsl(36 33% 97% / 0.28))`
         }} />

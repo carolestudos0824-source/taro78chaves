@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, Sparkles, MapPin } from "lucide-react";
 import { PRATICA_LESSONS, getPraticaLessonByOrder } from "@/content/lessons/pratica";
 import { useProgress } from "@/hooks/use-progress";
 import { useResolvedLesson } from "@/hooks/use-resolved-lesson";
-import mysticBg from "@/assets/mystic-bg.jpg";
+// import mysticBg from "@/assets/mystic-bg.jpg";
 
 type Phase = "lesson" | "exercise" | "deepdive" | "quiz" | "complete";
 
@@ -93,8 +93,8 @@ const PraticaLessonPage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="fixed inset-0 z-0">
-        <img src={mysticBg} alt="" className="w-full h-full object-cover" />
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.88), hsl(36 33% 97% / 0.82), hsl(36 33% 97% / 0.92))" }} />
       </div>
 

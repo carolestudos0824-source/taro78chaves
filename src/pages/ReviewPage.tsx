@@ -13,7 +13,7 @@ import {
   type Flashcard,
 } from "@/lib/review/builders";
 import { QuickReviewCard } from "@/components/QuickReviewCard";
-import mysticBg from "@/assets/mystic-bg.jpg";
+// import mysticBg from "@/assets/mystic-bg.jpg";
 import ornamentDivider from "@/assets/ornament-divider.png";
 
 type ReviewMode = "home" | "flashcards" | "wrong-answers" | "daily-challenge";
@@ -170,8 +170,8 @@ const ReviewPage = () => {
   // ── Home ──
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="fixed inset-0 z-0">
-        <img src={mysticBg} alt="" className="w-full h-full object-cover" width={1920} height={1080} />
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        
         <div className="absolute inset-0" style={{
           background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.06), hsl(36 33% 97% / 0.04), hsl(36 33% 97% / 0.18))"
         }} />

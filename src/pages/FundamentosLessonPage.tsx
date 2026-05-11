@@ -6,7 +6,7 @@ import { useProgress } from "@/hooks/use-progress";
 import { useRole } from "@/hooks/use-role";
 import { useResolvedQuiz } from "@/hooks/use-resolved-quiz";
 import { useResolvedLesson } from "@/hooks/use-resolved-lesson";
-import mysticBg from "@/assets/mystic-bg.jpg";
+// import mysticBg from "@/assets/mystic-bg.jpg";
 
 /** Fase 4A — piloto restrito a 3 lições reais de Fundamentos. */
 const FASE_4A_PILOT_LESSONS = new Set(["fund-1", "fund-2", "fund-3"]);
@@ -145,8 +145,8 @@ const FundamentosLessonPage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="fixed inset-0 z-0">
-        <img src={mysticBg} alt="" className="w-full h-full object-cover" />
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.88), hsl(36 33% 97% / 0.82), hsl(36 33% 97% / 0.92))" }} />
       </div>
 

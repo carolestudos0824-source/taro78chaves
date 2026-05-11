@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Search, X } from "lucide-react";
 import { useSymbolsContent } from "@/hooks/use-content";
 import type { SymbolItemContent } from "@/lib/content";
-import mysticBg from "@/assets/mystic-bg.jpg";
+// import mysticBg from "@/assets/mystic-bg.jpg";
 import ornamentDivider from "@/assets/ornament-divider.png";
 
 const SymbolLibraryPage = () => {
@@ -43,8 +43,8 @@ const SymbolLibraryPage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="fixed inset-0 z-0">
-        <img src={mysticBg} alt="" className="w-full h-full object-cover" width={1920} height={1080} />
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        
         <div className="absolute inset-0" style={{
           background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.06), hsl(36 33% 97% / 0.04), hsl(36 33% 97% / 0.18))"
         }} />

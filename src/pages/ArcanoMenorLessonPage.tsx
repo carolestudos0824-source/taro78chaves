@@ -10,7 +10,7 @@ import { useProgress } from "@/hooks/use-progress";
 import { useRole } from "@/hooks/use-role";
 import { useAuth } from "@/hooks/use-auth";
 import { persistQuizResponse } from "@/lib/quiz-persistence";
-import mysticBg from "@/assets/mystic-bg.jpg";
+// import mysticBg from "@/assets/mystic-bg.jpg";
 
 /**
  * Lição-piloto dos Arcanos Menores — multi-fase carrossel.
@@ -169,8 +169,8 @@ const ArcanoMenorLessonPage = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background */}
-      <div className="fixed inset-0 z-0">
-        <img src={mysticBg} alt="" className="w-full h-full object-cover" />
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        
         <div
           className="absolute inset-0"
           style={{
