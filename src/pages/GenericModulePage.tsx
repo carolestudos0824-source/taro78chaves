@@ -5,7 +5,6 @@ import { useAccess } from "@/hooks/use-access";
 import { useResolvedModule } from "@/hooks/use-resolved-module";
 import { XPBar } from "@/components/XPBar";
 import { StreakCounter } from "@/components/StreakCounter";
-// import mysticBg from "@/assets/mystic-bg.jpg";
 
 interface GenericLesson {
   id: string;

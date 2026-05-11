@@ -4,7 +4,6 @@ import { ArrowLeft, Book, Calendar, ChevronRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { getArcanoFull as getArcanoById } from "@/lib/content";
-// import mysticBg from "@/assets/mystic-bg.jpg";
 
 interface Reflection {
   id: string;

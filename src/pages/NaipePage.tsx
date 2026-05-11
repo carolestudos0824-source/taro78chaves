@@ -11,7 +11,6 @@ import { useAccess } from "@/hooks/use-access";
 import { XPBar } from "@/components/XPBar";
 import { StreakCounter } from "@/components/StreakCounter";
 import { useResolvedArcanoMenorPilot } from "@/hooks/use-resolved-arcanos-menores-pilot";
-// import mysticBg from "@/assets/mystic-bg.jpg";
 
 /**
  * Telemetria invisível da Fase 3 — dispara o hook do adaptador para validar

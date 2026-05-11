@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Search, X } from "lucide-react";
 import { useSymbolsContent } from "@/hooks/use-content";
 import type { SymbolItemContent } from "@/lib/content";
-// import mysticBg from "@/assets/mystic-bg.jpg";
-// import ornamentDivider from "@/assets/ornament-divider.png";
 
 const SymbolLibraryPage = () => {
   const navigate = useNavigate();

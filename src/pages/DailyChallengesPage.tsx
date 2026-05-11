@@ -18,7 +18,6 @@ import {
   type CombinacaoDoDia,
   type MiniInterpretacao,
 } from "@/lib/daily/builders";
-// import ornamentDivider from "@/assets/ornament-divider.png";
 
 const today = () => new Date().toISOString().slice(0, 10);
 

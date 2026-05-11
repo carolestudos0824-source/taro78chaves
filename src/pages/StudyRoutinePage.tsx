@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ChevronRight, Flame, BookOpen, RefreshCw, Sun, Target, TrendingUp, Check } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { MODULES_CATALOG as MODULES, ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull as getArcanoById, isModuleUnlocked } from "@/lib/content";
-// import ornamentDivider from "@/assets/ornament-divider.png";
 
 const WEEKDAYS = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
 

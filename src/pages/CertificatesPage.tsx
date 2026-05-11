@@ -9,7 +9,6 @@ import {
   type EarnedCertificateView,
 } from "@/lib/certificates/emission";
 import CertificateCard, { FullCertificate } from "@/components/CertificateCard";
-// import ornamentDivider from "@/assets/ornament-divider.png";
 
 const CertificatesPage = () => {
   const navigate = useNavigate();

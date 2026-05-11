@@ -13,8 +13,6 @@ import {
   type Flashcard,
 } from "@/lib/review/builders";
 import { QuickReviewCard } from "@/components/QuickReviewCard";
-// import mysticBg from "@/assets/mystic-bg.jpg";
-// import ornamentDivider from "@/assets/ornament-divider.png";
 
 type ReviewMode = "home" | "flashcards" | "wrong-answers" | "daily-challenge";
 
