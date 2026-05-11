@@ -142,11 +142,6 @@ const NaipePage = () => {
                   {card.subtitulo}
                 </p>
               )}
-              {!filled && unlocked && (
-                <p className="text-[10px] font-body tracking-wider" style={{ color: "#5B1F3D80" }}>
-                  Conteúdo em preparação
-                </p>
-              )}
             </div>
             {unlocked && filled && (
               <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" style={{ color: naipeInfo.color.primary }} />
