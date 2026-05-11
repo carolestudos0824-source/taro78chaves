@@ -63,7 +63,7 @@ const TiragensPage = () => {
             <div className="flex flex-col flex-1">
               <span
                 className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1.5 flex items-center gap-2"
-                style={{ color: "#C8A66A" }}
+                style={{ color: "#5B1F3D" }}
               >
                 <span style={{ color: "#C8A66A" }}>◎</span>
                 Módulo Avançado
