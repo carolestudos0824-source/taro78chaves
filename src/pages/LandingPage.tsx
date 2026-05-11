@@ -89,7 +89,7 @@ const LandingPage = () => {
               <span className="font-heading text-lg md:text-xl tracking-tight text-plum font-bold leading-none">
                 Tarô 78 Chaves
               </span>
-              <span className="font-heading text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-gold-dark font-medium mt-1">
+              <span className="font-heading text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-plum font-bold mt-1">
                 A jornada viva
               </span>
             </div>
