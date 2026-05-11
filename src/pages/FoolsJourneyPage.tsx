@@ -34,17 +34,19 @@ const FoolsJourneyPage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
-      {/* Background */}
+      {/* Background — Marfim suave e atmosfera premium */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
-        {/* Camada de suavização para reduzir faixas horizontais preservando profundidade */}
         <div className="absolute inset-0" style={{
-          background: "radial-gradient(circle at 50% 30%, transparent 0%, hsl(36 33% 97% / 0.08) 100%)",
-          mixOverlay: "overlay"
-        } as any} />
-        <div className="absolute inset-0" style={{
-          background: "linear-gradient(to bottom, #FAF5EF 0%, #F5EBDE 35%, #EFE2D2 65%, #E9D9C5 100%)",
-          opacity: 0.95
+          background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+          opacity: 0.98
         }} />
+        {/* Subtle radial halo for atmosphere */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse at 50% 0%, rgba(243, 230, 224, 0.45) 0%, transparent 65%)",
+          }}
+        />
       </div>
 
       {/* Header */}
