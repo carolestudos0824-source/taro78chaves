@@ -168,25 +168,24 @@ const LandingPage = () => {
                     Leva menos de 1 minuto.
                   </p>
                 </div>
-                   <button 
-                    onClick={() => {
-                      trackEvent("landing_how_it_works_click", {
-                        source: "landing",
-                        page_path: window.location.pathname
-                      });
-                      const element = document.getElementById('como-funciona');
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                      } else {
-                        window.location.hash = "#como-funciona";
-                      }
-                    }} 
-                    className="group inline-flex items-center gap-2 text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase text-plum hover:text-gold-dark underline underline-offset-4 transition-all font-extrabold cursor-pointer p-2"
-                  >
-                    Ver como funciona
-                    <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </div>
+                <button 
+                  onClick={() => {
+                    trackEvent("landing_how_it_works_click", {
+                      source: "landing",
+                      page_path: window.location.pathname
+                    });
+                    const element = document.getElementById('como-funciona');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                      window.location.hash = "#como-funciona";
+                    }
+                  }} 
+                  className="group inline-flex items-center gap-2 text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase text-plum hover:text-gold-dark underline underline-offset-4 transition-all font-extrabold cursor-pointer p-2"
+                >
+                  Ver como funciona
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </button>
               </div>
             </div>
 
