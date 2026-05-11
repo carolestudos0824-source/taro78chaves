@@ -310,9 +310,6 @@ const GenericModulePage = ({
         </div>
       </div>
     </div>
-
-      </div>
-    </div>
   );
 };
 
