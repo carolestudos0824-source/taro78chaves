@@ -200,7 +200,7 @@ const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, comple
     <div className="mb-10">
       <div className="flex items-center gap-4 mb-4">
         <span className="h-px flex-1 bg-[#C8A66A]/20" />
-        <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#C8A66A]">
+        <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
           Sua Travessia
         </h2>
         <span className="h-px flex-1 bg-[#C8A66A]/20" />
@@ -222,7 +222,7 @@ const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, comple
                   <h4 className="font-heading text-base font-black tracking-tight text-[#5B1F3D]">
                     {action.label}
                   </h4>
-                  <p className="text-[12px] font-body font-bold italic text-[#5B1F3D]/50 leading-tight">
+                  <p className="text-[12px] font-body font-bold italic text-[#5B1F3D]/70 leading-tight">
                     {action.subtitle}
                   </p>
                 </div>

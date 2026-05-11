@@ -64,8 +64,8 @@ const Index = () => {
                 <ArrowLeft className="w-5 h-5" />
               </button>
               <div>
-                <span className="text-[10px] tracking-[0.4em] uppercase font-heading flex items-center gap-2" style={{ color: "#C8A66A" }}>
-                  <span>✦</span> Módulo Principal <span>✦</span>
+                <span className="text-[10px] tracking-[0.4em] uppercase font-heading flex items-center gap-2" style={{ color: "#5B1F3D" }}>
+                  <span style={{ color: "#C8A66A" }}>✦</span> Módulo Principal <span style={{ color: "#C8A66A" }}>✦</span>
                 </span>
               </div>
             </div>
@@ -127,10 +127,10 @@ const Index = () => {
                 </div>
               </div>
               <div className="text-center">
-                <div className="font-heading text-3xl md:text-4xl tracking-wide" style={{ color: "#C8A66A" }}>
+                <div className="font-heading text-3xl md:text-4xl tracking-wide" style={{ color: "#5B1F3D" }}>
                   {journeyProgress}%
                 </div>
-                <div className="text-[10px] tracking-[0.3em] uppercase font-heading mt-2" style={{ color: "#5B1F3D80" }}>
+                <div className="text-[10px] tracking-[0.3em] uppercase font-heading mt-2" style={{ color: "#5B1F3D" }}>
                   Progresso
                 </div>
               </div>

@@ -91,7 +91,7 @@ const LessonPage = () => {
     const isPerformanceLocked = arcanoId === 1 && !hasFullAccess;
     return (
       <div className="min-h-screen bg-background p-6 flex flex-col items-center justify-center text-center space-y-8">
-        <div className="w-20 h-20 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center font-heading text-2xl text-gold-dark">
+        <div className="w-20 h-20 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center font-heading text-2xl text-plum font-bold">
           {arcano.numeral}
         </div>
         <div className="space-y-2">

@@ -127,7 +127,7 @@ const TrailsPage = () => {
             <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[#C8A66A]/20">
               <Compass className="w-12 h-12 animate-pulse-slow" />
             </div>
-            <div className="text-[11px] tracking-[0.4em] uppercase font-heading font-black mb-2 text-[#C8A66A]">
+            <div className="text-[11px] tracking-[0.4em] uppercase font-heading font-black mb-2 text-[#5B1F3D]">
               Arcano Vivo
             </div>
             <h1
@@ -184,7 +184,7 @@ const TrailsPage = () => {
                     }} />
                   </div>
                   <div className="text-[10px] font-heading font-black text-center uppercase tracking-tighter" style={{
-                    color: unlocked ? "#5B1F3D" : "#5B1F3D40",
+                    color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                   }}>
                     {level.title}
                   </div>
@@ -225,14 +225,14 @@ const TrailsPage = () => {
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-[10px] tracking-[0.3em] uppercase font-heading font-black" style={{
-                      color: unlocked ? level.accentColor : "#5B1F3D40",
+                      color: unlocked ? "#5B1F3D" : "#5B1F3D40",
                     }}>
                       Portal {level.level}
                     </span>
                     {complete && (
                       <span className="text-[10px] tracking-[0.1em] uppercase font-heading font-black px-2 py-0.5 rounded-md border border-[#C8A66A]" style={{
                         background: "#FAF5EF",
-                        color: "#C8A66A",
+                        color: "#5B1F3D",
                       }}>
                         Concluído
                       </span>
@@ -252,7 +252,7 @@ const TrailsPage = () => {
                     {level.title}
                   </h2>
                   <p className="font-body text-sm font-bold italic" style={{
-                    color: unlocked ? "#5B1F3D90" : "#5B1F3D40",
+                    color: unlocked ? "#5B1F3D" : "#5B1F3D40",
                   }}>
                     {level.subtitle}
                   </p>
@@ -262,7 +262,7 @@ const TrailsPage = () => {
                     <span className="font-heading text-xl font-black" style={{ color: level.accentColor }}>
                       {prog}%
                     </span>
-                    <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#C8A66A]">Chaves</span>
+                    <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]">Chaves</span>
                   </div>
                 )}
               </div>
@@ -335,7 +335,7 @@ const TrailsPage = () => {
                             )}
                           </div>
                           <p className="font-body text-xs font-bold italic truncate" style={{
-                            color: modCurrent ? "#5B1F3D80" : modComplete ? "#5B1F3D60" : "#5B1F3D20",
+                            color: modCurrent ? "#5B1F3D90" : modComplete ? "#5B1F3D70" : "#5B1F3D35",
                           }}>
                             {mod.subtitle}
                           </p>

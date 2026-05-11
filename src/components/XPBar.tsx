@@ -20,7 +20,7 @@ export function XPBar({ xp, level }: XPBarProps) {
         </div>
         <div className="flex flex-col">
           <span className="text-[10px] tracking-[0.2em] uppercase leading-none font-heading font-black" style={{
-            color: "#C8A66A"
+            color: "#5B1F3D"
           }}>Nível</span>
           <span className="text-xl font-heading tracking-tighter leading-tight font-black" style={{
             color: "#5B1F3D"
@@ -29,7 +29,7 @@ export function XPBar({ xp, level }: XPBarProps) {
       </div>
       <div className="flex-1 relative space-y-1.5">
         <div className="flex justify-between items-end px-1">
-          <span className="text-[9px] font-heading font-black tracking-widest text-[#5B1F3D]/60 uppercase">Progresso da Jornada</span>
+          <span className="text-[9px] font-heading font-black tracking-widest text-[#5B1F3D]/80 uppercase">Progresso da Jornada</span>
           <span className="text-[10px] font-heading font-black text-[#5B1F3D]">{xpInLevel}%</span>
         </div>
         <div className="h-3 rounded-full overflow-hidden p-[1.5px]" style={{
@@ -58,7 +58,7 @@ export function XPBar({ xp, level }: XPBarProps) {
           <span className="text-base font-black text-[#5B1F3D]">{xpInLevel}</span>
           <span className="text-[10px] font-black text-[#5B1F3D]/30">/100</span>
         </div>
-        <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#C8A66A] uppercase leading-none">XP</span>
+        <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#5B1F3D] uppercase leading-none">XP</span>
       </div>
     </div>
   );

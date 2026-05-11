@@ -83,13 +83,13 @@ const ProfilePage = () => {
             <h1 className="font-heading text-3xl text-[#5B1F3D] font-black tracking-tight">
               {LEVEL_TITLES[progress.level] || "Iluminado"}
             </h1>
-            <p className="font-accent italic font-bold text-[#5B1F3D]/60 text-sm">
+            <p className="font-accent italic font-bold text-[#5B1F3D]/80 text-sm">
               Nível {progress.level} • {progress.xp} XP conquistados
             </p>
           </div>
 
           <div className="w-full space-y-3 px-4">
-            <div className="flex justify-between text-[11px] font-heading font-black tracking-widest uppercase text-[#C8A66A]">
+            <div className="flex justify-between text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">
               <span>Progresso na Travessia</span>
               <span>{progress.xp % 100}%</span>
             </div>
@@ -112,7 +112,7 @@ const ProfilePage = () => {
                 <s.icon className="w-4 h-4" style={{ color: s.color }} />
               </div>
               <div className="font-heading text-xl font-black text-[#5B1F3D]">{s.val}</div>
-              <div className="text-[9px] font-heading font-black tracking-widest uppercase text-[#C8A66A]">{s.label}</div>
+              <div className="text-[9px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">{s.label}</div>
             </div>
           ))}
         </div>
@@ -121,7 +121,7 @@ const ProfilePage = () => {
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <p className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">
+                <p className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/80">
                   {isAdmin ? "O Oráculo" : "Seu Acesso"}
                 </p>
                 {isPremium && <KeyRound className="w-3.5 h-3.5 text-[#C8A66A]" />}
@@ -133,7 +133,7 @@ const ProfilePage = () => {
                 )}
               </h3>
               {isPremium && untilFormatted && (
-                <p className="text-[10px] font-body font-bold italic text-[#5B1F3D]/60 uppercase tracking-widest">
+                <p className="text-[10px] font-body font-bold italic text-[#5B1F3D]/80 uppercase tracking-widest">
                   {isStripeRecurring ? `Renovação: ${untilFormatted}` : `Ativo até: ${untilFormatted}`}
                 </p>
               )}
@@ -164,7 +164,7 @@ const ProfilePage = () => {
             </div>
             <div className="flex-1">
               <h4 className="font-heading text-base font-black text-[#5B1F3D]">Conforto de leitura</h4>
-              <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/50">Ajuste o tamanho dos portais de texto</p>
+              <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/70">Ajuste o tamanho dos portais de texto</p>
             </div>
           </div>
           
@@ -180,7 +180,7 @@ const ProfilePage = () => {
                 className={`flex-1 py-3 px-1 rounded-xl text-[10px] font-heading font-black tracking-[0.15em] uppercase transition-all ${
                   fontSize === size.id 
                     ? "bg-[#5B1F3D] text-white shadow-md border-2 border-[#C8A66A]" 
-                    : "text-[#5B1F3D]/40 hover:text-[#5B1F3D]/60"
+                    : "text-[#5B1F3D]/60 hover:text-[#5B1F3D]/80"
                 }`}
               >
                 <span className="block text-sm mb-0.5">{size.icon}</span>
@@ -196,7 +196,7 @@ const ProfilePage = () => {
               <Book className="w-6 h-6 text-[#C8A66A]" />
               <div className="text-left">
                 <p className="font-heading text-base font-black text-[#5B1F3D]">Caderno da Jornada</p>
-                <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/50 leading-none">Suas reflexões rituais</p>
+                <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/70 leading-none">Suas reflexões rituais</p>
               </div>
             </div>
             <ChevronRight className="w-5 h-5 text-[#C8A66A] group-hover:translate-x-1 transition-transform" />
@@ -214,12 +214,12 @@ const ProfilePage = () => {
         </div>
 
         <div className="pt-12 flex flex-col items-center space-y-8">
-          <button onClick={signOut} className="flex items-center gap-2 text-[11px] font-heading font-black tracking-[0.3em] uppercase text-[#5B1F3D]/40 hover:text-[#5B1F3D] transition-colors">
+          <button onClick={signOut} className="flex items-center gap-2 text-[11px] font-heading font-black tracking-[0.3em] uppercase text-[#5B1F3D]/60 hover:text-[#5B1F3D] transition-colors">
             <LogOut className="w-4 h-4" />
             Sair da conta
           </button>
           
-          <nav className="flex items-center gap-8 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]/40">
+          <nav className="flex items-center gap-8 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">
             <a href="https://taro78chaves.lovable.app/suporte" className="hover:text-[#C8A66A] transition-colors">Suporte</a>
             <span>•</span>
             <a href="https://taro78chaves.lovable.app/termos" className="hover:text-[#C8A66A] transition-colors">Termos</a>
