@@ -142,7 +142,7 @@ const TiragensPage = () => {
         {/* Lesson trail section header */}
         <div className="flex items-center gap-4 mb-6">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-          <span className="text-[10px] font-heading tracking-[0.2em] uppercase text-[#C8A66A]">
+          <span className="text-[10px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D]">
             Conteúdo do Módulo
           </span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A40]" />
