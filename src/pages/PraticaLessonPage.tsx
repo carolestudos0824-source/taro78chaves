@@ -17,8 +17,6 @@ const PraticaLessonPage = () => {
   const [showExplanation, setShowExplanation] = useState(false);
   const [score, setScore] = useState(0);
   
-  // Fallback defensivo para rota literal /pratica/:order
-  const isLiteralRoute = order === ":order";
   // Fallback defensivo para rota literal /pratica/:order ou IDs inválidos
   const isLiteralRoute = order === ":order";
   const lessonOrder = parseInt(order || "0", 10);
