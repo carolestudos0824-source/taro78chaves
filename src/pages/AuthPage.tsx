@@ -138,7 +138,7 @@ const AuthPage = () => {
           )}
           <p className="text-xs font-body text-muted-foreground">
             {mode === "signup" ? "Já tem conta?" : "Não tem conta?"}{" "}
-            <button onClick={() => setMode(mode === "signup" ? "login" : "signup")} className="font-heading tracking-wider uppercase text-gold-dark ml-1">
+            <button onClick={() => setMode(mode === "signup" ? "login" : "signup")} className="font-heading tracking-wider uppercase text-plum font-bold ml-1">
               {mode === "signup" ? "Entrar" : "Criar conta"}
             </button>
           </p>
