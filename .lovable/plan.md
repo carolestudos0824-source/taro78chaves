@@ -1,37 +1,35 @@
-# Plano de Implementação: Revisão Inteligente (v1)
+### Global Legibility Audit: "Ouro é detalhe. Ameixa é leitura."
 
-O objetivo é criar uma seção de "Revisão Inteligente" que utilize os dados de erros cometidos nos quizzes para sugerir cartas/conceitos que o usuário deve reforçar.
+Ensure all functional, pedagogical, and interface text uses **Ameixa Profundo (`#5B1F3D`)** instead of light gold or beige colors, while preserving **Ouro Antigo (`#C8A66A`)** for decorative elements (icons, borders, symbols).
 
-## Auditoria de Dados
-- Os erros e acertos já são persistidos na tabela `quiz_responses` via `src/lib/quiz-persistence.ts`.
-- O hook `useReview` (Local Storage) também rastreia `wrongAnswers` localmente quando o usuário erra em tempo real, permitindo uma revisão imediata mesmo sem persistência total do histórico de todos os usuários.
-- **Veredito:** Os dados existem. A melhor abordagem para v1 é usar os dados do `useReview` (que já gerencia `wrongAnswers` no Local Storage) para garantir reatividade imediata, enquanto a persistência no Supabase serve como backup/telemetria.
+#### Changes:
 
-## Ações
+1. **`src/pages/LandingPage.tsx`**
+   - Replace gold text in pricing section titles ("Plano Mensal") with Ameixa.
+   - Audit any remaining slogan or informational text in gold.
 
-### 1. Novo Componente: `src/components/SmartReviewCard.tsx`
-- Criar um card para a página inicial (`ModulesPage`) que aparece apenas se houver erros para revisar.
-- Mostrar até 3 cartas com mais erros.
-- Permitir navegação direta para a seção de revisão daquela carta.
+2. **`src/pages/FoolsJourneyPage.tsx`**
+   - Change label "✦ Visão Geral ✦" to Ameixa.
+   - Change "meta.introSubtitulo" and "meta.subtitulo" to Ameixa.
+   - Change "arcano.papel" (subtitle for each card) to Ameixa.
+   - Change closing invitation text to Ameixa.
 
-### 2. Atualizar `src/pages/ModulesPage.tsx`
-- Importar e exibir o `SmartReviewCard` acima da lista de módulos ou na seção de ferramentas.
-- Integrar com o hook `useReview` para obter as `wrongAnswers`.
+3. **`src/pages/NaipePage.tsx`**
+   - Change "Conteúdo em breve" text to Ameixa.
+   - Change "Trilha de Estudo" divider label to Ameixa.
+   - Change "Voltar aos módulos" link text to Ameixa.
 
-### 3. Melhorar `src/pages/ReviewPage.tsx`
-- Garantir que a lógica de "Perguntas Errradas" (`wrong-answers`) seja clara e acessível.
-- Adicionar uma seção de "Sugestões de Estudo" baseada nos IDs dos arcanos que tiveram mais erros.
+4. **`src/pages/FeedbackPage.tsx`**
+   - Change functional labels ("Sobre o que quer falar?", "Sua mensagem", "Trocar", "Enviar outra mensagem") to Ameixa.
 
-### 4. Ajustes no fluxo de Quiz (`src/components/QuizSection.tsx`)
-- Garantir que o `onAnswer` passe o `arcanoId` (se disponível) para que o `LessonPage` chame `addWrongAnswer` do hook `useReview`.
+5. **`src/pages/FundamentosPage.tsx`**
+   - Change "Base da Jornada" label to Ameixa.
 
-## Detalhes Técnicos
-- **Lógica de Ranking:** Simples contagem de erros por `arcanoId`.
-- **UI/UX:** Design consistente com o tema "Aquarela Mística" (RWS Rider-Waite).
-- **Responsividade:** Mobile-first (390px).
+6. **Verification**
+   - Run `npx tsc --noEmit`
+   - Run `npm run build`
 
-## Validação Prévia
-- Os dados são persistidos? SIM (`quiz_responses` e `tarot-review-data` no localStorage).
-- Altera quizzes existentes? NÃO.
-- Altera XP? NÃO.
-- Build compila? A verificar após implementação.
+#### Technical details:
+- Standard color for Ameixa: `#5B1F3D`
+- Standard color for Ouro (icons/details): `#C8A66A`
+- Accessibility: Ensure contrast ratio exceeds 4.5:1 for small text and 3:1 for large text.
