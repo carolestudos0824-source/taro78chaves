@@ -10,11 +10,7 @@ interface JourneyMapProps {
   progress: UserProgress;
 }
 
-const ARCANO_SYMBOLS: Record<number, string> = {
-  0: "✦", 1: "✧", 2: "◈", 3: "❋", 4: "◆", 5: "✦", 6: "♡", 7: "⚡",
-  8: "∞", 9: "☆", 10: "◎", 11: "⚖", 12: "△", 13: "✝", 14: "✧",
-  15: "⛧", 16: "⌂", 17: "★", 18: "✦", 19: "☀", 20: "♱", 21: "◯",
-};
+// Symbols removed to favor pedagogical numbering inside nodes
 
 export function JourneyMap({ progress }: JourneyMapProps) {
   const navigate = useNavigate();
@@ -50,7 +46,7 @@ export function JourneyMap({ progress }: JourneyMapProps) {
           );
           const isCurrent = isUnlocked && !isCompleted;
           const side = index % 2 === 0 ? "left" : "right";
-          const symbol = ARCANO_SYMBOLS[arcano.id] || "◇";
+          // Symbol logic removed
 
           return (
             <div
@@ -123,14 +119,30 @@ export function JourneyMap({ progress }: JourneyMapProps) {
                     background: "rgba(220, 207, 194, 0.3)"
                   }}
                 >
-                  {isCompleted ? (
-                    <Check className="w-5 h-5" style={{ color: "#C8A66A" }} />
-                  ) : isUnlocked ? (
-                    <span className="text-xl font-heading" style={{ color: "#5B1F3D", lineHeight: 1 }}>{symbol}</span>
-                  ) : isPremium ? (
-                    <Crown className="w-4 h-4" style={{ color: "#C8A66A" }} />
-                  ) : (
-                    <Lock className="w-3.5 h-3.5" style={{ color: "hsl(230 10% 45% / 0.30)" }} />
+                  <span 
+                    className="font-heading text-sm md:text-base font-black transition-colors duration-500" 
+                    style={{ 
+                      color: isUnlocked || isCompleted ? "#5B1F3D" : "#5B1F3D40",
+                      lineHeight: 1 
+                    }}
+                  >
+                    {arcano.numeral}
+                  </span>
+                  
+                  {isCompleted && (
+                    <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#C8A66A] flex items-center justify-center border border-white shadow-sm">
+                      <Check className="w-2.5 h-2.5 text-white" strokeWidth={4} />
+                    </div>
+                  )}
+                  
+                  {!isUnlocked && !isFree && !isCompleted && !bypassLocks && (
+                    <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-white flex items-center justify-center border border-[#DCCFC2] shadow-sm">
+                      {isPremium ? (
+                        <Crown className="w-2.5 h-2.5 text-[#C8A66A]" />
+                      ) : (
+                        <Lock className="w-2.5 h-2.5 text-[#5B1F3D40]" />
+                      )}
+                    </div>
                   )}
                 </div>
               </div>
