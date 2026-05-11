@@ -231,7 +231,7 @@ const LandingPage = () => {
                       <div className="h-1 md:h-1.5 w-full bg-plum/5 rounded-full overflow-hidden p-0.5 border border-plum/5">
                         <div className="h-full bg-gold rounded-full w-[8%] shadow-[0_0_8px_hsl(var(--brand-gold)/0.4)]" />
                       </div>
-                      <p className="text-[8px] md:text-[9px] lg:text-[10px] font-heading tracking-widest text-gold-dark font-extrabold uppercase">
+                      <p className="text-[8px] md:text-[9px] lg:text-[10px] font-heading tracking-widest text-plum font-extrabold uppercase">
                         Lição gratuita · desbloqueia O Mago
                       </p>
                     </div>
