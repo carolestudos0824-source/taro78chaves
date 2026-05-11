@@ -27,7 +27,7 @@ const FundamentosPage = lazy(() => import("./pages/FundamentosPage.tsx"));
 const FundamentosLessonPage = lazy(() => import("./pages/FundamentosLessonPage.tsx"));
 const FeedbackPage = lazy(() => import("./pages/FeedbackPage.tsx"));
 const BetaInvitePage = lazy(() => import("./pages/BetaInvitePage.tsx"));
-const WaitlistPage = lazy(() => import("./pages/WaitlistPage"));
+
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 const JourneyJournalPage = lazy(() => import("./pages/JourneyJournalPage.tsx"));
 
