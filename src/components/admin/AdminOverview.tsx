@@ -149,7 +149,7 @@ const AdminOverview = () => {
               value={stripeLoading ? "…" : `R$ ${(stripeMetrics?.totalRevenue ?? 0).toFixed(2)}`}
               accent="text-primary"
             />
-            <PlaceholderCard label="Churn real (em breve)" />
+            <PlaceholderCard label="Churn real (em desenvolvimento)" />
           </div>
         )}
         <p className="text-[11px] text-muted-foreground mt-3 leading-relaxed">
