@@ -160,10 +160,14 @@ const LandingPage = () => {
                   <Key className="w-5 h-5 group-hover/btn:rotate-12 transition-transform text-gold" />
                   COMEÇAR PELO LOUCO — GRÁTIS
                 </Button>
-                <div className="flex flex-col items-center lg:items-start gap-0.5">
-                  <p className="text-[10px] md:text-[12px] font-heading tracking-[0.15em] text-plum font-extrabold uppercase drop-shadow-sm">
+                <div className="flex flex-col items-center lg:items-start gap-1">
+                  <p className="text-sm md:text-base font-heading tracking-[0.1em] text-plum font-extrabold uppercase drop-shadow-sm">
                     ✦ Sem cartão de crédito para começar.
                   </p>
+                  <p className="text-[11px] md:text-xs font-body text-plum/60 italic font-bold">
+                    Leva menos de 1 minuto.
+                  </p>
+                </div>
                    <button 
                     onClick={() => {
                       trackEvent("landing_how_it_works_click", {
