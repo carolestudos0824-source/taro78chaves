@@ -163,6 +163,12 @@ const AppRoutes = () => (
       <Route path="/excluir-conta" element={<DeleteAccountPage />} />
 
       {/* ═══ App routes (with BottomNav + Beta overlays) ═══ */}
+      <Route path="/:order" element={<Navigate to="/app" replace />} />
+      <Route path="/:id" element={<Navigate to="/app" replace />} />
+      <Route path="/:slug" element={<Navigate to="/app" replace />} />
+      <Route path="/undefined" element={<Navigate to="/app" replace />} />
+      <Route path="/null" element={<Navigate to="/app" replace />} />
+      <Route path="/NaN" element={<Navigate to="/app" replace />} />
       <Route path="/*" element={<AppShell />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
