@@ -40,12 +40,7 @@ const Index = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background */}
-      <div className="fixed inset-0 z-0">
-        <img src={mysticBg} alt="" className="w-full h-full object-cover" width={1920} height={1080} />
-        <div className="absolute inset-0" style={{
-          background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.06) 0%, hsl(36 33% 97% / 0.04) 30%, hsl(36 33% 97% / 0.06) 70%, hsl(36 33% 97% / 0.18) 100%)"
-        }} />
-      </div>
+      <div className="fixed inset-0 z-0 mystic-bg-procedural" />
 
       {/* Header */}
       <header className="relative z-10" style={{
