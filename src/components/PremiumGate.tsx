@@ -67,7 +67,7 @@ const PremiumGate = ({
         <div className="flex-1 min-w-0">
           <p className="text-[13px] font-body font-bold text-[#5B1F3D]">
             {featureName ? (
-              <><span className="font-black text-[#C8A66A] uppercase tracking-widest">Portal: {featureName}</span></>
+              <><span className="font-black text-[#5B1F3D] uppercase tracking-widest">Portal: {featureName}</span></>
             ) : (
               "Acesso à Jornada Completa."
             )}
