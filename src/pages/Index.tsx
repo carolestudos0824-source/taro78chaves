@@ -184,7 +184,7 @@ const Index = () => {
 
                   {/* Text */}
                   <div className="flex-1 text-left">
-                    <div className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1.5" style={{ color: "#C8A66A" }}>
+                    <div className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1.5" style={{ color: "#5B1F3D" }}>
                       Próxima etapa
                     </div>
                     <h3 className="font-heading text-2xl md:text-3xl tracking-wide mb-1" style={{ color: "#5B1F3D" }}>
