@@ -118,7 +118,7 @@ const GenericModulePage = ({
               <span
                 className="text-[10px] font-heading uppercase tracking-[0.25em] px-4 py-1.5 rounded-full"
                 style={{
-                  color: "#C8A66A",
+                  color: "#5B1F3D",
                   background: "rgba(200, 166, 106, 0.1)",
                   border: "1px solid rgba(200, 166, 106, 0.2)",
                 }}
