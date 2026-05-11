@@ -57,7 +57,7 @@ const PremiumPage = () => {
     }
 
     if (!webCheckoutAllowed) {
-      toast.info("Assinaturas pelo app Android estarão disponíveis em breve. Usuários com acesso ativo podem entrar normalmente.");
+      toast.info("Assinaturas pelo app Android estão em desenvolvimento. Usuários com acesso ativo podem entrar normalmente.");
       return;
     }
 
@@ -195,7 +195,7 @@ const PremiumPage = () => {
         <div className="bg-white border-2 border-[#DCCFC2] p-6 rounded-3xl text-center space-y-2">
           <h2 className="font-heading text-base font-black text-[#5B1F3D]">Acesso Premium</h2>
           <p className="text-xs font-body font-bold text-[#5B1F3D]/70 leading-relaxed">
-            Assinaturas pelo app Android estarão disponíveis em breve. Usuários com acesso ativo podem entrar normalmente.
+            Assinaturas pelo app Android estão em desenvolvimento. Usuários com acesso ativo podem entrar normalmente.
           </p>
         </div>
         )}
