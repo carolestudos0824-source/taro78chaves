@@ -69,11 +69,14 @@ const GenericModulePage = ({
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
-      {/* Background */}
+      {/* Background — continuous, soft, premium */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         <div className="absolute inset-0" style={{
-          background: `linear-gradient(to bottom, #FAF5EF 0%, #DCCFC2 100%)`,
-          opacity: 0.8
+          background: `linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)`,
+          opacity: 0.95
+        }} />
+        <div className="absolute inset-0" style={{
+          background: "radial-gradient(ellipse at 50% 0%, rgba(243, 230, 224, 0.55) 0%, transparent 55%)"
         }} />
       </div>
 
@@ -150,10 +153,16 @@ const GenericModulePage = ({
           {/* Editorial intro */}
           {editorialIntro && (
             <div className="mt-4 pt-4 border-t border-[#C8A66A20]">
+              <div className="flex items-center justify-center gap-2 mb-3 opacity-90">
+                <span className="h-px w-8" style={{ background: "linear-gradient(90deg, transparent, #C8A66A80)" }} />
+                <span className="text-[11px]" style={{ color: "#C8A66A", letterSpacing: "0.3em" }}>✶ ◈ ✶</span>
+                <span className="h-px w-8" style={{ background: "linear-gradient(90deg, #C8A66A80, transparent)" }} />
+              </div>
               <p
-                className="font-accent text-[13px] leading-relaxed italic animate-fade-in"
+                className="font-accent text-[14px] md:text-[15px] leading-relaxed italic animate-fade-in text-center"
                 style={{
-                  color: "#5B1F3DBB",
+                  color: "#3D1429",
+                  fontWeight: 500,
                   animationDelay: "200ms",
                   animationFillMode: "both",
                 }}
@@ -196,11 +205,11 @@ const GenericModulePage = ({
 
         {/* Lessons Trail Header */}
         <div className="flex items-center gap-3 mb-5 animate-fade-in" style={{ animationDelay: "320ms", animationFillMode: "both" }}>
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-          <span className="text-[10px] font-heading tracking-[0.2em] uppercase text-[#C8A66A]">
-            Conteúdo do Módulo
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#C8A66A30] to-[#C8A66A70]" />
+          <span className="text-[11px] font-heading tracking-[0.32em] uppercase" style={{ color: "#8B6A30", fontWeight: 600 }}>
+            Trilha de Aprendizado
           </span>
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A40]" />
+          <div className="h-px flex-1 bg-gradient-to-l from-transparent via-[#C8A66A30] to-[#C8A66A70]" />
         </div>
 
         {/* Lessons */}
@@ -287,8 +296,8 @@ const GenericModulePage = ({
                       {lesson.title}
                     </h3>
                     <p
-                      className="font-body text-[11px] leading-relaxed truncate"
-                      style={{ color: unlocked ? "#5B1F3DBB" : "#5B1F3D20" }}
+                      className="font-body text-[12px] leading-relaxed truncate"
+                      style={{ color: unlocked ? "#4A1830" : "#5B1F3D25", fontWeight: 500 }}
                     >
                       {lesson.subtitle}
                     </p>
