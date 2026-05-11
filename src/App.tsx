@@ -6,8 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider, useAuth } from "@/hooks/use-auth";
 import { FontSizeProvider } from "@/contexts/font-size-context";
-import BetaBadge from "@/components/BetaBadge";
-import BetaFeedback from "@/components/BetaFeedback";
+// Beta components removed
 import BottomNav from "@/components/BottomNav";
 import SessionInitializer from "@/components/SessionInitializer";
 import { initGA, trackPageView, useUTMTracker } from "@/lib/analytics";
@@ -171,11 +170,8 @@ const AppRoutes = () => (
 );
 
 /** Layout shell for authenticated app pages — includes BottomNav, BetaBadge, BetaFeedback */
-const AppShell = () => (
   <>
-    <BetaBadge />
-    <BetaFeedback />
-    {/* Wrapper aplica clearance automático para a BottomNav fixa em TODAS as páginas */}
+    {/* Layout shell for authenticated app pages — includes BottomNav */}
     <div className="pb-bottom-nav">
       <Routes>
         {/* Dashboard */}

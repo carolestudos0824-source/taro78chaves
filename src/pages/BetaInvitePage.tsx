@@ -36,7 +36,7 @@ const WHY_NOW = [
   {
     icon: Eye,
     title: "Qualidade, não improviso",
-    desc: "A beta é uma entrada antecipada em algo refinado.",
+    desc: "Acesso antecipado em algo refinado.",
   },
 ];
 
@@ -50,8 +50,8 @@ const FAQ = [
     a: "Para quem quer estudar tarô de verdade, com profundidade, clareza e método.",
   },
   {
-    q: "A beta já está completa?",
-    a: "A beta já entrega a experiência central do produto. A expansão acontece em fases.",
+    q: "A plataforma já está completa?",
+    a: "O app já entrega a experiência central do produto. A expansão acontece em fases.",
   },
 ];
 
@@ -103,7 +103,7 @@ const BetaInvitePage = () => {
           }}>
             <Lock className="w-3 h-3" style={{ color: "hsl(36 45% 55%)" }} />
             <span className="text-[10px] font-heading tracking-[0.35em] uppercase" style={{ color: "hsl(340 42% 28% / 0.70)" }}>
-              Beta Aberta · Convite
+              Lançamento · Convite
             </span>
           </div>
 
@@ -124,7 +124,7 @@ const BetaInvitePage = () => {
           </h1>
 
           <p className="font-body text-sm md:text-base leading-relaxed mb-8 max-w-lg mx-auto" style={{ color: "hsl(230 15% 30% / 0.60)" }}>
-            Uma plataforma imersiva de ensino de tarô que une método, profundidade simbólica, trilha gamificada e experiência viva com os arcanos. A beta está aberta para os primeiros estudantes.
+            Uma plataforma imersiva de ensino de tarô que une método, profundidade simbólica, trilha gamificada e experiência viva com os arcanos. O acesso está aberto para os primeiros estudantes.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -154,7 +154,7 @@ const BetaInvitePage = () => {
         </div>
       </section>
 
-      {/* ════════════════ O QUE JÁ ESTÁ NA BETA ════════════════ */}
+      {/* ════════════════ O QUE JÁ ESTÁ DISPONÍVEL ════════════════ */}
       <section className="py-20 px-6" style={{
         background: "linear-gradient(180deg, hsl(38 30% 95% / 0.50) 0%, hsl(36 33% 97%) 100%)",
         borderTop: "1px solid hsl(36 25% 82% / 0.40)",
@@ -162,7 +162,7 @@ const BetaInvitePage = () => {
         <div className="max-w-2xl mx-auto space-y-6">
           <div className="text-center space-y-3">
             <SectionLabel>O que já está disponível</SectionLabel>
-            <SectionTitle>A beta já entrega a experiência central da plataforma.</SectionTitle>
+            <SectionTitle>A plataforma já entrega a experiência central.</h1>
           </div>
 
           <div className="rounded-2xl p-6 max-w-md mx-auto space-y-3" style={{
@@ -185,7 +185,7 @@ const BetaInvitePage = () => {
         <div className="max-w-2xl mx-auto space-y-6">
           <div className="text-center space-y-3">
             <SectionLabel>Por que agora</SectionLabel>
-            <SectionTitle>A beta é uma porta que se abre para poucos.</SectionTitle>
+            <SectionTitle>Uma porta que se abre para poucos.</SectionTitle>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
@@ -255,7 +255,7 @@ const BetaInvitePage = () => {
           <span className="text-2xl block" style={{ color: "hsl(36 45% 58% / 0.30)" }}>✦</span>
 
           <SectionLabel>Convite</SectionLabel>
-          <SectionTitle>Entre na beta e comece sua jornada desde o início.</SectionTitle>
+          <SectionTitle>Comece sua jornada desde o início.</SectionTitle>
 
           <p className="font-body text-[13px] leading-relaxed max-w-md mx-auto" style={{ color: "hsl(230 15% 30% / 0.50)" }}>
             Se você deseja estudar tarô com mais profundidade, beleza e consciência simbólica, esta é a hora de entrar.
@@ -270,7 +270,7 @@ const BetaInvitePage = () => {
                 border: "1px solid hsl(36 45% 58% / 0.25)",
               }}
             >
-              Quero entrar na beta
+              Quero entrar agora
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
             <button

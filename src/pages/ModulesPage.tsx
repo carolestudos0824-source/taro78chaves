@@ -32,7 +32,6 @@ import {
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { Header } from "@/components/Header";
-import BetaWelcomeBanner from "@/components/BetaWelcomeBanner";
 import ContinuityCard from "@/components/ContinuityCard";
 import ProgressCelebration from "@/components/ProgressCelebration";
 import { SmartReviewCard } from "@/components/SmartReviewCard";
@@ -110,7 +109,7 @@ const ModulesPage = () => {
         <ProgressCelebration xp={progress.xp} level={progress.level} streak={progress.streak} completedLessons={progress.completedLessons.length} />
         
         <div className="space-y-8 md:space-y-12">
-          <BetaWelcomeBanner />
+          {/* Welcome Banner removed */}
           <SmartReviewCard />
           
           {progress.completedLessons.length === 0 && (

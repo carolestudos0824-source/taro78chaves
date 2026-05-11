@@ -360,7 +360,7 @@ const WaitlistPage = () => {
           </div>
 
           <p className="font-accent text-[12px] italic leading-relaxed max-w-sm mx-auto" style={{ color: "hsl(230 20% 15% / 0.38)" }}>
-            A beta não é um produto improvisado. É uma entrada antecipada em uma plataforma em construção refinada.
+            A plataforma não é um produto improvisado. É uma entrada antecipada em uma construção refinada.
           </p>
         </div>
       </section>
