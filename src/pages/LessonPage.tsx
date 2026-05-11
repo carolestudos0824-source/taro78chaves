@@ -36,18 +36,53 @@ const LessonPage = () => {
   const [lastQuizScore, setLastQuizScore] = useState(0);
   const [lastQuizTotal, setLastQuizTotal] = useState(0);
 
+  // Fallback defensivo para rota literal /lesson/:id ou IDs inválidos
+  const isLiteralRoute = id === ":id";
   const arcanoId = parseInt(id || "0", 10);
-  const arcano = getArcanoById(isNaN(arcanoId) ? 0 : arcanoId);
-  const hasAccess = canAccessArcano(arcanoId);
+  const isValidId = !isNaN(arcanoId) && arcanoId >= 0 && arcanoId <= 21;
 
-  const nextArcano = arcanoId < 21 ? ARCANOS_MAIORES[arcanoId + 1] : null;
+  // Redirecionamento defensivo se a rota for literal
+  useEffect(() => {
+    if (isLiteralRoute) {
+      navigate("/module/arcanos-maiores", { replace: true });
+    }
+  }, [isLiteralRoute, navigate]);
 
-  if (!arcano || premiumLoading || roleLoading) {
+  const arcano = getArcanoById(isValidId ? arcanoId : 0);
+  const hasAccess = isValidId ? canAccessArcano(arcanoId) : false;
+
+  const nextArcano = isValidId && arcanoId < 21 ? ARCANOS_MAIORES[arcanoId + 1] : null;
+
+  if (isLiteralRoute) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7]">
-        <div className="text-center space-y-4">
-          <div className="w-10 h-10 border-2 border-gold/20 border-t-gold animate-spin rounded-full mx-auto" />
-          <p className="text-[10px] text-plum/60 font-heading tracking-widest uppercase">Iniciando Lição</p>
+        <div className="text-center space-y-4 animate-pulse">
+          <div className="w-12 h-12 border-4 border-[#C8A66A]/20 border-t-[#5B1F3D] animate-spin rounded-full mx-auto" />
+          <p className="text-[12px] text-[#5B1F3D] font-heading tracking-widest uppercase font-bold">Redirecionando...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!arcano || !isValidId || premiumLoading || roleLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7]">
+        <div className="text-center space-y-6 max-w-xs px-6 animate-fade-in">
+          <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-2 border border-gold/30">
+            <span className="text-2xl text-plum">🃏</span>
+          </div>
+          <div className="space-y-2">
+            <h2 className="font-heading text-xl text-midnight">Arcano não encontrado</h2>
+            <p className="font-body text-sm text-muted-foreground italic leading-relaxed">
+              "Nem toda porta deve ser aberta antes do tempo."
+            </p>
+          </div>
+          <button 
+            onClick={() => navigate("/module/arcanos-maiores")} 
+            className="w-full py-3.5 px-6 rounded-full font-heading text-[12px] tracking-[0.2em] uppercase transition-all shadow-md hover:scale-105 active:scale-95 bg-gold text-plum"
+          >
+            Voltar à Jornada
+          </button>
         </div>
       </div>
     );
