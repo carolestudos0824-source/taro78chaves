@@ -246,7 +246,7 @@ const Index = () => {
         <section className="mb-12">
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-            <span className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#C8A66A]">
+            <span className="text-[10px] font-heading tracking-[0.3em] uppercase text-plum font-bold">
               Sua Aprendizagem
             </span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A40]" />
