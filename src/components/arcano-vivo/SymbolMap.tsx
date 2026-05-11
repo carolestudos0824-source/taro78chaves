@@ -33,8 +33,8 @@ export function SymbolMap({ cardImage, cardName, symbols, onComplete }: SymbolMa
     <div className="space-y-6 pb-8 animate-fade-up">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Info className="w-4 h-4" style={{ color: "hsl(36 40% 42%)" }} />
-          <span className="text-[10px] font-heading tracking-[0.25em] uppercase" style={{ color: "hsl(36 40% 42%)" }}>
+          <Info className="w-4 h-4 text-plum/70" />
+          <span className="text-[10px] font-heading tracking-[0.25em] uppercase text-plum font-bold">
             Mapa de Símbolos
           </span>
         </div>
