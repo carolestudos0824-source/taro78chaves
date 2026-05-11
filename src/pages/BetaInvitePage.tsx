@@ -247,7 +247,7 @@ const BetaInvitePage = () => {
         <div className="relative z-10 max-w-xl mx-auto text-center space-y-6">
           <span className="text-2xl block" style={{ color: "hsl(36 45% 58% / 0.30)" }}>✦</span>
 
-          <SectionLabel>Convite</SectionLabel>
+          <SectionLabel>Inicie sua Jornada</SectionLabel>
           <SectionTitle>Comece sua jornada desde o início.</SectionTitle>
 
           <p className="font-body text-[13px] leading-relaxed max-w-md mx-auto" style={{ color: "hsl(230 15% 30% / 0.50)" }}>
