@@ -113,52 +113,53 @@ const Index = () => {
         </section>
 
         {/* ═══════════════ PROGRESS DASHBOARD ═══════════════ */}
-        <section className="mb-14">
-          <div className="relative rounded-[2rem] overflow-hidden p-8 md:p-10" style={{
-            background: "linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(250, 245, 239, 0.8) 100%)",
-            backdropFilter: "blur(12px)",
-            border: "1.5px solid rgba(200, 166, 106, 0.25)",
-            boxShadow: "0 20px 50px rgba(91, 31, 61, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.6)"
+        <section className="mb-16">
+          <div className="relative rounded-[2.5rem] overflow-hidden p-10 md:p-12" style={{
+            background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
+            backdropFilter: "blur(24px)",
+            border: "2px solid rgba(200, 166, 106, 0.35)",
+            boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8)"
           }}>
             {/* Stats row */}
-            <div className="grid grid-cols-3 gap-8 mb-10 relative z-10">
+            <div className="grid grid-cols-3 gap-10 mb-12 relative z-10">
               <div className="text-center">
-                <div className="font-heading text-4xl md:text-5xl tracking-tight" style={{ color: "#5B1F3D" }}>
+                <div className="font-heading text-5xl md:text-6xl tracking-tighter" style={{ color: "#5B1F3D" }}>
                   {completedCount}
                 </div>
-                <div className="text-[10px] tracking-[0.3em] uppercase font-heading mt-3 font-bold" style={{ color: "#C8A66A" }}>
+                <div className="text-[11px] tracking-[0.4em] uppercase font-heading mt-4 font-black" style={{ color: "#C8A66A" }}>
                   Concluídos
                 </div>
               </div>
               <div className="text-center">
-                <div className="font-heading text-4xl md:text-5xl tracking-tight" style={{ color: "#5B1F3D" }}>
+                <div className="font-heading text-5xl md:text-6xl tracking-tighter" style={{ color: "#5B1F3D" }}>
                   22
                 </div>
-                <div className="text-[10px] tracking-[0.3em] uppercase font-heading mt-3 font-bold" style={{ color: "#C8A66A" }}>
+                <div className="text-[11px] tracking-[0.4em] uppercase font-heading mt-4 font-black" style={{ color: "#C8A66A" }}>
                   Arcanos
                 </div>
               </div>
               <div className="text-center">
-                <div className="font-heading text-4xl md:text-5xl tracking-tight" style={{ color: "#5B1F3D" }}>
+                <div className="font-heading text-5xl md:text-6xl tracking-tighter" style={{ color: "#5B1F3D" }}>
                   {journeyProgress}%
                 </div>
-                <div className="text-[10px] tracking-[0.3em] uppercase font-heading mt-3 font-bold" style={{ color: "#C8A66A" }}>
+                <div className="text-[11px] tracking-[0.4em] uppercase font-heading mt-4 font-black" style={{ color: "#C8A66A" }}>
                   Progresso
                 </div>
               </div>
             </div>
 
             {/* Module progress bar */}
-            <div className="relative z-10 px-1">
-              <div className="h-3 rounded-full overflow-hidden" style={{
+            <div className="relative z-10 px-2">
+              <div className="h-3.5 rounded-full overflow-hidden" style={{
                 background: "#E8DED3",
-                border: "1px solid rgba(209, 196, 181, 0.5)",
+                border: "1.5px solid rgba(209, 196, 181, 0.6)",
               }}>
                 <div className="h-full rounded-full transition-all duration-1000 ease-out relative" style={{
                   width: `${Math.max(journeyProgress, 2)}%`,
                   background: "linear-gradient(90deg, #5B1F3D, #C8A66A)",
+                  boxShadow: "0 0 10px rgba(91, 31, 61, 0.2)"
                 }}>
-                  <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+                  <div className="absolute inset-0 w-1/3 h-full bg-white/30 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
                 </div>
               </div>
             </div>
