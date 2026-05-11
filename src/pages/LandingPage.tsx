@@ -160,29 +160,32 @@ const LandingPage = () => {
                   <Key className="w-5 h-5 group-hover/btn:rotate-12 transition-transform text-gold" />
                   COMEÇAR PELO LOUCO — GRÁTIS
                 </Button>
-                <div className="flex flex-col items-center lg:items-start gap-0.5">
-                  <p className="text-[10px] md:text-[12px] font-heading tracking-[0.15em] text-plum font-extrabold uppercase drop-shadow-sm">
+                <div className="flex flex-col items-center lg:items-start gap-1">
+                  <p className="text-sm md:text-base font-heading tracking-[0.1em] text-plum font-extrabold uppercase drop-shadow-sm">
                     ✦ Sem cartão de crédito para começar.
                   </p>
-                   <button 
-                    onClick={() => {
-                      trackEvent("landing_how_it_works_click", {
-                        source: "landing",
-                        page_path: window.location.pathname
-                      });
-                      const element = document.getElementById('como-funciona');
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                      } else {
-                        window.location.hash = "#como-funciona";
-                      }
-                    }} 
-                    className="group inline-flex items-center gap-2 text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase text-plum hover:text-gold-dark underline underline-offset-4 transition-all font-extrabold cursor-pointer p-2"
-                  >
-                    Ver como funciona
-                    <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  <p className="text-[11px] md:text-xs font-body text-plum/60 italic font-bold">
+                    Leva menos de 1 minuto.
+                  </p>
                 </div>
+                <button 
+                  onClick={() => {
+                    trackEvent("landing_how_it_works_click", {
+                      source: "landing",
+                      page_path: window.location.pathname
+                    });
+                    const element = document.getElementById('como-funciona');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                      window.location.hash = "#como-funciona";
+                    }
+                  }} 
+                  className="group inline-flex items-center gap-2 text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase text-plum hover:text-gold-dark underline underline-offset-4 transition-all font-extrabold cursor-pointer p-2"
+                >
+                  Ver como funciona
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </button>
               </div>
             </div>
 
@@ -283,34 +286,36 @@ const LandingPage = () => {
             <p className="text-muted-foreground max-w-2xl mx-auto font-body">Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, Pontos de Jornada e progresso real.</p>
           </div>
 
-          <div className="flex overflow-x-auto gap-4 md:gap-6 pb-8 px-4 scrollbar-elegant snap-x items-end min-h-[340px]">
-            {[
-              { id: 0, img: imgLouco, name: "O Louco", badge: "Grátis" },
-              { id: 1, img: imgMago, name: "O Mago", badge: "Desbloqueável" },
-              { id: 2, img: imgSacerdotisa, name: "A Sacerdotisa", badge: "Premium" },
-              { id: 3, img: imgImperatriz, name: "A Imperatriz", badge: "Premium" },
-              { id: 4, img: imgImperador, name: "O Imperador", badge: "Premium" },
-              { id: 5, img: imgHierofante, name: "O Hierofante", badge: "Premium" },
-              { id: 6, img: imgEnamorados, name: "Os Enamorados", badge: "Premium" },
-            ].map((card, i) => (
-              <div key={i} className="flex-shrink-0 flex flex-col items-center gap-3 snap-center group">
-                <div className="relative">
-                  <div className="w-32 h-52 md:w-40 md:h-60 rounded-2xl overflow-hidden shadow-xl border-4 border-white transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-2xl group-hover:border-gold/20">
-                    <img src={card.img} alt={card.name} className="w-full h-full object-cover" />
-                    <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[8px] font-heading tracking-widest uppercase shadow-lg z-20 ${ card.badge === "Grátis" ? "bg-success text-white" : "bg-gold text-white" }`}>
-                      {card.badge}
+          <div className="relative">
+            <div className="flex overflow-x-auto gap-4 md:gap-6 pb-8 px-4 scrollbar-elegant snap-x items-end min-h-[340px] justify-start md:justify-center">
+              {[
+                { id: 0, img: imgLouco, name: "O Louco", badge: "Grátis" },
+                { id: 1, img: imgMago, name: "O Mago", badge: "Desbloqueável" },
+                { id: 2, img: imgSacerdotisa, name: "A Sacerdotisa", badge: "Premium" },
+                { id: 3, img: imgImperatriz, name: "A Imperatriz", badge: "Premium" },
+                { id: 4, img: imgImperador, name: "O Imperador", badge: "Premium" },
+                { id: 5, img: imgHierofante, name: "O Hierofante", badge: "Premium" },
+                { id: 6, img: imgEnamorados, name: "Os Enamorados", badge: "Premium" },
+              ].map((card, i) => (
+                <div key={i} className="flex-shrink-0 flex flex-col items-center gap-3 snap-center group">
+                  <div className="relative">
+                    <div className="w-32 h-52 md:w-40 md:h-60 rounded-2xl overflow-hidden shadow-xl border-4 border-white transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-2xl group-hover:border-gold/20">
+                      <img src={card.img} alt={card.name} className="w-full h-full object-cover" />
+                      <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[8px] font-heading tracking-widest uppercase shadow-lg z-20 ${ card.badge === "Grátis" ? "bg-success text-white" : "bg-gold text-white" }`}>
+                        {card.badge}
+                      </div>
                     </div>
                   </div>
+                  <div className="text-center">
+                    <span className="text-[10px] md:text-xs font-heading tracking-[0.1em] uppercase text-plum font-bold block truncate w-full px-1">
+                      {card.name.toUpperCase()}
+                    </span>
+                  </div>
                 </div>
-                <div className="text-center">
-                  <span className="text-[10px] md:text-xs font-heading tracking-[0.1em] uppercase text-plum font-bold block truncate w-full px-1">
-                    {card.name.toUpperCase()}
-                  </span>
-                </div>
+              ))}
+              <div className="flex-shrink-0 w-20 flex items-center justify-center h-52 md:h-60 opacity-20">
+                 <span className="font-heading text-4xl tracking-tighter">...</span>
               </div>
-            ))}
-            <div className="flex-shrink-0 w-20 flex items-center justify-center h-52 md:h-60 opacity-20">
-               <span className="font-heading text-4xl tracking-tighter">...</span>
             </div>
           </div>
 
@@ -670,11 +675,11 @@ const LandingPage = () => {
           </p>
         </div>
 
-        <nav className="flex flex-wrap justify-center gap-8 md:gap-12 text-[12px] font-heading tracking-[0.2em] uppercase relative z-10">
-          <a href="https://taro78chaves.lovable.app/privacidade" onClick={() => trackEvent("landing_legal_link_click", { link_name: "privacidade", source: "landing" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Privacidade</a>
-          <a href="https://taro78chaves.lovable.app/termos" onClick={() => trackEvent("landing_legal_link_click", { link_name: "termos", source: "landing" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Termos</a>
-          <a href="https://taro78chaves.lovable.app/suporte" onClick={() => trackEvent("landing_legal_link_click", { link_name: "suporte", source: "landing" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Suporte</a>
-          <a href="https://taro78chaves.lovable.app/excluir-conta" onClick={() => trackEvent("landing_legal_link_click", { link_name: "excluir_conta", source: "landing" })} className="text-ivory/80 hover:text-gold transition-colors font-extrabold">Excluir conta</a>
+        <nav className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-[13px] md:text-[14px] font-heading tracking-[0.25em] uppercase relative z-10 px-4">
+          <a href="https://taro78chaves.lovable.app/privacidade" onClick={() => trackEvent("landing_legal_link_click", { link_name: "privacidade", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/20 pb-1">Privacidade</a>
+          <a href="https://taro78chaves.lovable.app/termos" onClick={() => trackEvent("landing_legal_link_click", { link_name: "termos", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/20 pb-1">Termos</a>
+          <a href="https://taro78chaves.lovable.app/suporte" onClick={() => trackEvent("landing_legal_link_click", { link_name: "suporte", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/20 pb-1">Suporte</a>
+          <a href="https://taro78chaves.lovable.app/excluir-conta" onClick={() => trackEvent("landing_legal_link_click", { link_name: "excluir_conta", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/20 pb-1">Excluir conta</a>
         </nav>
 
         <div className="pt-8 border-t border-gold/10 max-w-xs mx-auto relative z-10">
