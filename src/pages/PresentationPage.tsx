@@ -203,7 +203,7 @@ const SlideCover = () => (
       ].map(s => (
         <div key={s.l} className="text-center">
           <div className="font-heading text-xl md:text-2xl" style={{ color: "hsl(340 42% 22%)" }}>{s.v}</div>
-          <div className="text-[8px] tracking-[0.3em] uppercase font-heading mt-0.5" style={{ color: "hsl(230 15% 30% / 0.40)" }}>{s.l}</div>
+          <div className="text-[10px] tracking-[0.3em] uppercase font-heading mt-1 font-black" style={{ color: "hsl(340 42% 28% / 0.80)" }}>{s.l}</div>
         </div>
       ))}
     </div>
