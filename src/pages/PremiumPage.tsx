@@ -121,7 +121,7 @@ const PremiumPage = () => {
 
       <main className="max-w-lg mx-auto px-6 -mt-12 relative z-20 space-y-12">
         <div className="space-y-4">
-          <h2 className="text-center font-heading text-xs tracking-[0.3em] uppercase font-black text-[#C8A66A]">
+          <h2 className="text-center font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
             O que você desbloqueia:
           </h2>
           <div className="grid grid-cols-1 gap-3">
