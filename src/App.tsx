@@ -152,7 +152,7 @@ const AppRoutes = () => (
 
       {/* ═══ Public marketing pages (no BottomNav) ═══ */}
       <Route path="/" element={<LandingPage />} />
-      <Route path="/convite" element={<BetaInvitePage />} />
+      <Route path="/convite" element={<LandingPage />} />
       <Route path="/waitlist" element={<Navigate to="/" replace />} />
       <Route path="/apresentacao" element={<PresentationPage />} />
 
