@@ -126,8 +126,9 @@ const PresentationPage = () => {
       </div>
 
       {/* Progress dots */}
-      <div className="flex items-center justify-center gap-1.5 py-3" style={{
-        borderTop: "1px solid hsl(36 25% 82% / 0.40)",
+      <div className="flex items-center justify-center gap-2 py-4 md:py-6" style={{
+        borderTop: "1px solid hsl(36 45% 58% / 0.15)",
+        background: "hsl(38 28% 95% / 0.50)"
       }}>
         {SLIDES.map((_, i) => (
           <button
@@ -135,14 +136,16 @@ const PresentationPage = () => {
             onClick={() => setCurrent(i)}
             className="rounded-full transition-all duration-300"
             style={{
-              width: i === current ? 20 : 5,
-              height: 5,
+              width: i === current ? 24 : 7,
+              height: 7,
               background: i === current
                 ? "hsl(340 42% 28%)"
                 : i < current
-                ? "hsl(36 45% 58% / 0.50)"
-                : "hsl(36 25% 82% / 0.60)",
+                ? "hsl(36 45% 58% / 0.70)"
+                : "hsl(36 25% 82% / 0.90)",
+              border: i === current ? "none" : "1px solid hsl(340 42% 28% / 0.10)"
             }}
+            aria-label={`Ir para slide ${i + 1}`}
           />
         ))}
       </div>
