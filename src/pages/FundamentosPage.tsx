@@ -254,7 +254,7 @@ const FundamentosPage = () => {
                         <span
                           className="text-[9px] font-heading tracking-[0.2em] font-bold"
                           style={{
-                            color: unlocked ? "#C8A66A" : "#5B1F3D40",
+                            color: unlocked ? "#5B1F3D" : "#5B1F3D40",
                           }}
                         >
                           LIÇÃO {lesson.order + 1}
