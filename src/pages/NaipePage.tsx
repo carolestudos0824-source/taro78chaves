@@ -298,8 +298,6 @@ const NaipePage = () => {
         </div>
       </main>
     </div>
-      </main>
-    </div>
   );
 };
 
