@@ -144,7 +144,7 @@ const NaipePage = () => {
               )}
               {!filled && unlocked && (
                 <p className="text-[10px] font-body tracking-wider" style={{ color: "#5B1F3D80" }}>
-                  Conteúdo em breve
+                  Conteúdo em preparação
                 </p>
               )}
             </div>
