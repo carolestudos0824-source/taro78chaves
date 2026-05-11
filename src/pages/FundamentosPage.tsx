@@ -166,7 +166,7 @@ const FundamentosPage = () => {
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#C8A66A30] to-[#C8A66A70]" />
           <span
             className="text-[11px] font-heading tracking-[0.32em] uppercase"
-            style={{ color: "#8B6A30", fontWeight: 600 }}
+            style={{ color: "#5B1F3D", fontWeight: 700 }}
           >
             Trilha de Aprendizado
           </span>
