@@ -75,7 +75,7 @@ const BetaFeedback = () => {
         >
           <div>
             <p className="text-[10px] font-heading tracking-[0.3em] uppercase" style={{ color: "hsl(340 42% 28%)" }}>
-              Feedback Beta
+              Feedback do App
             </p>
             <p className="text-[11px] mt-0.5" style={{ color: "hsl(230 15% 40% / 0.50)" }}>
               Sua opinião ajuda a melhorar a plataforma.

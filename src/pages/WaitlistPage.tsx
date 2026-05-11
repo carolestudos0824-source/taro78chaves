@@ -320,7 +320,7 @@ const WaitlistPage = () => {
       </section>
 
       {/* ════════════════════════════════════════════════
-          4. BLOCO SOBRE A BETA
+          4. BLOCO SOBRE O PROJETO
           ════════════════════════════════════════════════ */}
       <section className="py-20 px-6" style={{
         background: "linear-gradient(180deg, hsl(38 30% 95% / 0.40) 0%, hsl(36 33% 97%) 100%)",
