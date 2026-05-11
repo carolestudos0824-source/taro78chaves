@@ -63,7 +63,7 @@ export function JourneyMap({ progress }: JourneyMapProps) {
             >
               {/* Card */}
               <div className={`flex-1 ${side === "left" ? "pr-10 md:pr-14" : "pl-10 md:pl-14"}`}>
-                <div className={`w-full flex ${side === "left" ? "justify-end" : "justify-start"}`}>
+                <div className={`w-full flex flex-col ${side === "left" ? "items-end" : "items-start"}`}>
                   <div className="relative group/card">
                     {/* Halo effect */}
                     <div className="absolute inset-0 bg-[#C8A66A] opacity-0 group-hover/card:opacity-10 blur-2xl rounded-xl transition-opacity duration-500" />
@@ -78,6 +78,16 @@ export function JourneyMap({ progress }: JourneyMapProps) {
                       onClick={() => (isUnlocked || isPremium) && navigate(`/lesson/${arcano.id}`)}
                       className="w-[145px] relative z-10"
                     />
+                  </div>
+
+                  {/* Pedagogical Label */}
+                  <div className={`mt-4 flex flex-col ${side === "left" ? "items-end text-right" : "items-start text-left"}`}>
+                    <span className="text-[10px] md:text-[11px] font-heading tracking-[0.3em] text-[#C8A66A] font-black uppercase mb-1">
+                      {arcano.numeral}
+                    </span>
+                    <h4 className="font-heading text-sm md:text-base text-[#5B1F3D] font-black tracking-tight leading-tight">
+                      {arcano.name}
+                    </h4>
                   </div>
                 </div>
               </div>
