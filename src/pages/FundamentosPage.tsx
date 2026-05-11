@@ -30,15 +30,15 @@ const FundamentosPage = () => {
   const progressPct = Math.round((completedCount / FUNDAMENTOS_LESSONS.length) * 100);
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
       {/* Background */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
-        
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, hsl(36 33% 97% / 0.10) 0%, hsl(36 33% 97% / 0.05) 30%, hsl(36 33% 97% / 0.08) 70%, hsl(36 33% 97% / 0.22) 100%)",
+              "linear-gradient(to bottom, #FAF5EF 0%, #DCCFC2 100%)",
+            opacity: 0.8,
           }}
         />
       </div>
@@ -47,39 +47,32 @@ const FundamentosPage = () => {
       <header
         className="relative z-10"
         style={{
-          borderBottom: "1px solid hsl(36 45% 50% / 0.35)",
-          background:
-            "linear-gradient(180deg, hsl(36 33% 96% / 0.94) 0%, hsl(38 28% 93% / 0.92) 100%)",
-          backdropFilter: "blur(28px)",
-          boxShadow:
-            "0 6px 36px hsl(36 45% 50% / 0.10), 0 1px 0 hsl(36 45% 58% / 0.20) inset",
+          borderBottom: "1.5px solid #C8A66A40",
+          background: "rgba(250, 245, 239, 0.95)",
+          backdropFilter: "blur(20px)",
+          boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)",
         }}
       >
-        <div className="container max-w-3xl py-5 px-6">
-          <div className="flex items-center gap-4 mb-4">
+        <div className="container max-w-3xl py-6 px-6">
+          <div className="flex items-center gap-4 mb-5">
             <button
               onClick={() => navigate("/app")}
-              className="transition-colors hover:scale-105 duration-200"
-              style={{ color: "hsl(230 10% 40%)" }}
+              className="transition-all hover:scale-110 duration-200 w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30]"
+              style={{ color: "#5B1F3D" }}
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
             <div className="flex flex-col flex-1">
               <span
-                className="text-[10px] tracking-[0.35em] uppercase font-body mb-1 flex items-center gap-1.5"
-                style={{ color: "hsl(340 42% 28%)" }}
+                className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1.5 flex items-center gap-2"
+                style={{ color: "#5B1F3D" }}
               >
-                <span style={{ color: "hsl(36 40% 42%)" }}>◈</span>
+                <span style={{ color: "#C8A66A" }}>◈</span>
                 Módulo Introdutório
               </span>
               <h1
-                className="font-heading text-xl md:text-2xl tracking-wide"
-                style={{
-                  background:
-                    "linear-gradient(135deg, hsl(340 42% 22%), hsl(36 35% 28%), hsl(36 45% 44%))",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
+                className="font-heading text-2xl md:text-3xl tracking-wide"
+                style={{ color: "#5B1F3D" }}
               >
                 Fundamentos do Tarô
               </h1>
@@ -87,62 +80,82 @@ const FundamentosPage = () => {
           </div>
 
           {/* Progress bar */}
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
+          <div className="space-y-2 bg-white/40 p-3 rounded-xl border border-[#C8A66A20]">
+            <div className="flex items-center justify-between px-1">
               <span
-                className="text-[10px] font-heading tracking-wider"
-                style={{ color: "hsl(230 10% 45%)" }}
+                className="text-[11px] font-heading tracking-wider"
+                style={{ color: "#5B1F3DCC" }}
               >
-                {completedCount}/{FUNDAMENTOS_LESSONS.length} lições
+                {completedCount}/{FUNDAMENTOS_LESSONS.length} lições concluídas
               </span>
               <span
-                className="text-[10px] font-heading tracking-wider"
-                style={{ color: "hsl(36 40% 42%)" }}
+                className="text-[11px] font-heading tracking-wider"
+                style={{ color: "#C8A66A" }}
               >
                 {progressPct}%
               </span>
             </div>
             <div
-              className="h-2 rounded-full overflow-hidden"
+              className="h-2.5 rounded-full overflow-hidden"
               style={{
-                background: "hsl(36 18% 84%)",
-                border: "1px solid hsl(36 22% 75% / 0.50)",
+                background: "#E8DED3",
+                border: "1px solid #D1C4B5",
               }}
             >
               <div
-                className="h-full rounded-full transition-all duration-700"
+                className="h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
                 style={{
                   width: `${progressPct}%`,
-                  background:
-                    "linear-gradient(90deg, hsl(340 42% 26%), hsl(36 42% 44%))",
+                  background: "linear-gradient(90deg, #5B1F3D, #C8A66A)",
                 }}
-              />
+              >
+                <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+              </div>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Intro text */}
+      {/* Main Content */}
       <main className="relative z-10 container max-w-3xl py-8 px-6">
+        {/* Intro text */}
         <div
-          className="rounded-xl p-5 mb-8"
+          className="rounded-2xl p-6 mb-10 text-center relative overflow-hidden group"
           style={{
-            background: "hsl(38 30% 95% / 0.80)",
-            border: "1px solid hsl(36 45% 58% / 0.15)",
+            background: "linear-gradient(135deg, #FAF5EF, #F3E6E0)",
+            border: "1px solid #C8A66A30",
+            boxShadow: "0 10px 30px rgba(91, 31, 61, 0.03)",
           }}
         >
+          {/* Decorative icons */}
+          <div className="absolute top-2 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
+            <span className="text-2xl">✨</span>
+          </div>
+          <div className="absolute bottom-2 left-4 opacity-10 group-hover:opacity-20 transition-opacity">
+            <span className="text-xl">🗝️</span>
+          </div>
+          
           <p
-            className="font-accent text-sm italic leading-relaxed text-center"
-            style={{ color: "hsl(230 20% 25% / 0.70)" }}
+            className="font-accent text-[15px] italic leading-relaxed max-w-xl mx-auto"
+            style={{ color: "#5B1F3D" }}
           >
-            Este módulo é a sua base. Aqui você vai entender o que é o tarô,
+            "Este módulo é a sua base. Aqui você vai entender o que é o tarô,
             como ele funciona e como estudá-lo com profundidade e clareza —
-            antes de mergulhar nos 22 Arcanos Maiores.
+            antes de mergulhar nos 22 Arcanos Maiores."
           </p>
         </div>
 
+        {/* Lesson trail section header */}
+        <div className="flex items-center gap-4 mb-6">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
+          <span className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#C8A66A]">
+            Trilha de Aprendizado
+          </span>
+          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A40]" />
+        </div>
+
         {/* Lesson trail */}
-        <div className="space-y-3">
+        <div className="space-y-4">
           {FUNDAMENTOS_LESSONS.map((lesson, i) => {
             const completed = isLessonCompleted(lesson.id);
             const unlocked = isLessonUnlocked(lesson.order);
@@ -155,135 +168,122 @@ const FundamentosPage = () => {
                   unlocked && navigate(`/fundamentos/${lesson.order}`)
                 }
                 disabled={!unlocked}
-                className="w-full text-left group transition-all duration-500"
+                className="w-full text-left group transition-all duration-300"
                 style={{
                   animation: `fade-up 0.5s ease-out both`,
                   animationDelay: `${i * 60}ms`,
                 }}
               >
                 <div
-                  className="relative overflow-hidden rounded-xl transition-all duration-400"
+                  className="relative overflow-hidden rounded-2xl transition-all duration-300 transform group-hover:translate-x-1"
                   style={
                     isCurrent
                       ? {
-                          background:
-                            "linear-gradient(145deg, hsl(38 28% 93% / 0.94), hsl(36 33% 95% / 0.90))",
-                          backdropFilter: "blur(18px)",
-                          border: "1.5px solid hsl(340 42% 28% / 0.35)",
-                          boxShadow:
-                            "0 6px 28px hsl(340 42% 28% / 0.10), 0 0 40px hsl(42 70% 78% / 0.06)",
+                          background: "#FFFFFF",
+                          border: "1.5px solid #C8A66A",
+                          boxShadow: "0 12px 30px rgba(200, 166, 106, 0.15), 0 0 20px rgba(91, 31, 61, 0.05)",
                         }
                       : completed
                       ? {
-                          background: "hsl(38 28% 94% / 0.80)",
-                          backdropFilter: "blur(12px)",
-                          border: "1px solid hsl(36 42% 52% / 0.30)",
-                          boxShadow: "0 3px 14px hsl(36 45% 55% / 0.06)",
+                          background: "rgba(250, 245, 239, 0.8)",
+                          border: "1px solid #C8A66A40",
+                          boxShadow: "0 4px 15px rgba(0, 0, 0, 0.02)",
                         }
                       : {
-                          background: "hsl(36 18% 90% / 0.45)",
-                          backdropFilter: "blur(4px)",
-                          border: "1px solid hsl(36 22% 80% / 0.45)",
+                          background: "rgba(220, 207, 194, 0.3)",
+                          border: "1px solid #D1C4B560",
+                          opacity: 0.7,
                         }
                   }
                 >
-                  <div className="p-5 flex items-center gap-4">
-                    {/* Icon */}
+                  <div className="p-5 flex items-center gap-5">
+                    {/* Icon container */}
                     <div
-                      className="w-11 h-11 rounded-full flex items-center justify-center shrink-0 transition-all duration-500"
+                      className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 transition-all duration-300"
                       style={
                         isCurrent
                           ? {
-                              border: "2px solid hsl(340 42% 26% / 0.45)",
-                              background:
-                                "linear-gradient(135deg, hsl(38 28% 93%), hsl(36 45% 55% / 0.12))",
-                              boxShadow: "0 0 20px hsl(340 42% 28% / 0.12)",
+                              background: "linear-gradient(135deg, #5B1F3D, #8B3D5A)",
+                              color: "#FAF5EF",
+                              boxShadow: "0 5px 15px rgba(91, 31, 61, 0.2)",
                             }
                           : completed
                           ? {
-                              border: "2px solid hsl(36 42% 45% / 0.40)",
-                              background: "hsl(38 28% 94% / 0.90)",
+                              background: "#F3E6E0",
+                              border: "1px solid #C8A66A",
+                              color: "#C8A66A",
                             }
                           : {
-                              border: "1.5px solid hsl(36 22% 75% / 0.50)",
-                              background: "hsl(36 18% 90% / 0.55)",
+                              background: "#DCCFC240",
+                              border: "1px solid #DCCFC2",
+                              color: "#5B1F3D40",
                             }
                       }
                     >
                       {completed ? (
-                        <Check
-                          className="w-5 h-5"
-                          style={{ color: "hsl(36 42% 38%)" }}
-                        />
+                        <Check className="w-5 h-5" />
                       ) : unlocked ? (
-                        <span className="text-lg">{lesson.icon}</span>
+                        <span className="text-xl">{lesson.icon}</span>
                       ) : (
-                        <Lock
-                          className="w-4 h-4"
-                          style={{ color: "hsl(230 10% 45% / 0.30)" }}
-                        />
+                        <Lock className="w-4 h-4" />
                       )}
                     </div>
 
-                    {/* Text */}
+                    {/* Text content */}
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-0.5">
+                      <div className="flex items-center gap-2 mb-1">
                         <span
-                          className="text-[10px] font-heading tracking-[0.2em]"
+                          className="text-[9px] font-heading tracking-[0.2em] font-bold"
                           style={{
-                            color: isCurrent
-                              ? "hsl(340 42% 22%)"
-                              : completed
-                              ? "hsl(36 42% 40%)"
-                              : "hsl(230 10% 45% / 0.30)",
+                            color: unlocked ? "#C8A66A" : "#5B1F3D40",
                           }}
                         >
-                          {lesson.order + 1}/{FUNDAMENTOS_LESSONS.length}
+                          LIÇÃO {lesson.order + 1}
                         </span>
-                        <h3
-                          className="font-heading text-sm tracking-wide truncate"
-                          style={
-                            isCurrent
-                              ? {
-                                  background:
-                                    "linear-gradient(135deg, hsl(340 42% 20%), hsl(36 35% 26%))",
-                                  WebkitBackgroundClip: "text",
-                                  WebkitTextFillColor: "transparent",
-                                }
-                              : completed
-                              ? { color: "hsl(230 20% 12% / 0.75)" }
-                              : { color: "hsl(230 10% 45% / 0.30)" }
-                          }
-                        >
-                          {lesson.title}
-                        </h3>
+                        {isCurrent && (
+                          <span className="text-[8px] bg-[#C8A66A20] text-[#C8A66A] px-2 py-0.5 rounded-full font-heading tracking-widest uppercase animate-pulse">
+                            Atual
+                          </span>
+                        )}
                       </div>
-                      <p
-                        className="font-accent text-xs italic truncate"
+                      <h3
+                        className="font-heading text-base md:text-lg tracking-wide mb-0.5"
                         style={{
-                          color: isCurrent
-                            ? "hsl(230 20% 15% / 0.55)"
-                            : completed
-                            ? "hsl(230 20% 15% / 0.45)"
-                            : "hsl(230 10% 45% / 0.18)",
+                          color: unlocked ? "#5B1F3D" : "#5B1F3D40",
+                        }}
+                      >
+                        {lesson.title}
+                      </h3>
+                      <p
+                        className="font-body text-xs leading-relaxed"
+                        style={{
+                          color: unlocked ? "#5B1F3DCC" : "#5B1F3D20",
+                          fontWeight: isCurrent ? 500 : 400,
                         }}
                       >
                         {lesson.subtitle}
                       </p>
                     </div>
 
-                    {/* Arrow */}
-                    {unlocked && (
-                      <ChevronRight
-                        className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1"
-                        style={{
-                          color: isCurrent
-                            ? "hsl(340 42% 28% / 0.50)"
-                            : "hsl(36 42% 45% / 0.40)",
-                        }}
-                      />
-                    )}
+                    {/* Arrow / Status */}
+                    <div className="shrink-0">
+                      {unlocked ? (
+                        <ChevronRight
+                          className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                          style={{ color: "#C8A66A" }}
+                        />
+                      ) : (
+                        <div className="w-8 h-8 rounded-full border border-[#D1C4B540] flex items-center justify-center">
+                           <Lock className="w-3.5 h-3.5 opacity-20" />
+                        </div>
+                      )}
+                    </div>
                   </div>
+                  
+                  {/* Subtle decorative bar for completed lessons */}
+                  {completed && (
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#C8A66A30]" />
+                  )}
                 </div>
               </button>
             );
@@ -291,46 +291,72 @@ const FundamentosPage = () => {
         </div>
 
         {/* Module completion message */}
-        {completedCount === FUNDAMENTOS_LESSONS.length && (
+        {completedCount === FUNDAMENTOS_LESSONS.length ? (
           <div
-            className="mt-8 rounded-xl p-6 text-center"
+            className="mt-12 rounded-2xl p-8 text-center relative overflow-hidden"
             style={{
-              background:
-                "linear-gradient(135deg, hsl(36 45% 58% / 0.08), hsl(340 42% 30% / 0.06))",
-              border: "1px solid hsl(36 45% 58% / 0.25)",
-              animation: "fade-up 0.6s ease-out",
+              background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+              border: "2.5px solid #C8A66A",
+              boxShadow: "0 20px 50px rgba(91, 31, 61, 0.2)",
+              animation: "fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
           >
-            <div className="text-2xl mb-3">✦</div>
-            <h3
-              className="font-heading text-lg tracking-wide mb-2"
-              style={{ color: "hsl(340 42% 22%)" }}
-            >
-              Fundamentos Completos!
-            </h3>
-            <p
-              className="font-accent text-sm italic max-w-sm mx-auto mb-4"
-              style={{ color: "hsl(230 20% 15% / 0.55)" }}
-            >
-              Você construiu sua base. Agora está preparada para a Jornada dos
-              22 Arcanos Maiores.
-            </p>
-            <button
-              onClick={() => navigate("/module/arcanos-maiores")}
-              className="px-8 py-3 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105"
-              style={{
-                background:
-                  "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))",
-                color: "hsl(36 33% 97%)",
-                boxShadow: "0 4px 20px hsl(36 45% 58% / 0.2)",
-              }}
-            >
-              Começar Arcanos Maiores →
-            </button>
+            {/* Background ornaments */}
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#C8A66A10] rounded-full blur-3xl" />
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#C8A66A10] rounded-full blur-3xl" />
+            
+            <div className="relative z-10">
+              <div className="flex justify-center gap-3 mb-4">
+                <span className="text-xl text-[#C8A66A]">✦</span>
+                <span className="text-2xl text-[#C8A66A]">🗝️</span>
+                <span className="text-xl text-[#C8A66A]">✦</span>
+              </div>
+              
+              <h3
+                className="font-heading text-2xl tracking-wide mb-3 text-[#FAF5EF]"
+              >
+                Fundamentos Completos!
+              </h3>
+              
+              <p
+                className="font-accent text-base italic max-w-sm mx-auto mb-8 text-[#FAF5EFCC]"
+              >
+                "Sua base está sólida. Você está preparada para iniciar a Jornada Real através dos 22 Arcanos Maiores."
+              </p>
+              
+              <button
+                onClick={() => navigate("/module/arcanos-maiores")}
+                className="group relative px-10 py-4 rounded-full font-heading text-sm tracking-[0.2em] transition-all duration-500 hover:scale-105 active:scale-95"
+                style={{
+                  background: "#C8A66A",
+                  color: "#5B1F3D",
+                  boxShadow: "0 10px 30px rgba(200, 166, 106, 0.4)",
+                }}
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  COMEÇAR ARCANOS MAIORES
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </button>
+              
+              <div className="mt-6 flex items-center justify-center gap-2">
+                <div className="h-px w-8 bg-[#C8A66A40]" />
+                <span className="text-[9px] font-heading tracking-[0.3em] uppercase text-[#C8A66A80]">
+                  Base da Jornada
+                </span>
+                <div className="h-px w-8 bg-[#C8A66A40]" />
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="mt-12 text-center pb-8 opacity-40">
+            <span className="text-2xl text-[#C8A66A]">🗝️</span>
           </div>
         )}
       </main>
     </div>
+
   );
 };
 
