@@ -143,11 +143,11 @@ export function SymbolMap({ cardImage, cardName, symbols, onComplete }: SymbolMa
         <button 
           onClick={onComplete}
           className={`px-8 py-3 rounded-full font-heading text-sm tracking-wider transition-all duration-300
-            ${isLast ? "bg-gold-600 text-white shadow-lg scale-105" : "text-gold-700 bg-gold-50"}`}
+            ${isLast ? "bg-plum text-white shadow-lg scale-105" : "text-plum bg-white"}`}
           style={{
-            background: isLast ? "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))" : undefined,
-            color: isLast ? "white" : "hsl(36 40% 42%)",
-            border: isLast ? "none" : "1px solid hsl(36 45% 58% / 0.2)"
+            background: isLast ? "linear-gradient(135deg, #5B1F3D, #3D1429)" : undefined,
+            color: isLast ? "white" : "#5B1F3D",
+            border: isLast ? "none" : "1px solid #C8A66A40"
           }}
         >
           {isLast ? "Continuar ✦" : "Pular Mapa"}
