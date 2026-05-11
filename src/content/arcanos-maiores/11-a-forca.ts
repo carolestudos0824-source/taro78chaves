@@ -2,9 +2,9 @@ import type { ArcanoMaiorEditorial } from "./_editorial";
 import cardImage from "@/assets/arcano-11-forca.jpg";
 
 export const A_FORCA: ArcanoMaiorEditorial = {
-  number: 11,
+  number: 8,
   name: "A Força",
-  numeral: "XI",
+  numeral: "VIII",
   subtitle: "O Poder Interior",
   slug: "a-forca",
   cardImage,
