@@ -251,7 +251,7 @@ const FoolsJourneyPage = () => {
                             </div>
                             <p
                               className="font-accent text-[12px] italic mb-2 font-medium"
-                              style={{ color: studied ? "#8B6A30" : "#8B6A3040" }}
+                              style={{ color: studied ? "#5B1F3D" : "#5B1F3D40" }}
                             >
                               {arcano.papel}
                             </p>
