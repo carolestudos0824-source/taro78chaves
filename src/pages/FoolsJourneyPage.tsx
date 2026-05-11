@@ -220,6 +220,11 @@ const FoolsJourneyPage = () => {
                                 </div>
                               </div>
                             )}
+                            {isComplete(arcano.arcanoNumero) && (
+                              <div className="absolute top-1 right-1 w-5 h-5 rounded-full bg-white/90 shadow-sm flex items-center justify-center border border-[#C8A66A]/30">
+                                <Sparkles className="w-3 h-3 text-[#C8A66A]" />
+                              </div>
+                            )}
                           </div>
 
                           {/* Content */}
@@ -238,9 +243,11 @@ const FoolsJourneyPage = () => {
                               >
                                 {arcano.nome}
                               </h3>
-                              {studied && isEven && (
+                              {studied && (isEven ? (
                                 <ChevronRight className="w-3.5 h-3.5 shrink-0 opacity-40 group-hover:translate-x-0.5 transition-transform" style={{ color: colors.main }} />
-                              )}
+                              ) : (
+                                <ChevronRight className="w-3.5 h-3.5 shrink-0 opacity-40 group-hover:-translate-x-0.5 transition-transform rotate-180" style={{ color: colors.main }} />
+                              ))}
                             </div>
                             <p
                               className="font-accent text-[12px] italic mb-2 font-medium"
