@@ -281,20 +281,30 @@ const AppShell = () => (
   </>
 );
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <FontSizeProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <AuthProvider>
-            <AppRoutes />
-          </AuthProvider>
-        </BrowserRouter>
-      </TooltipProvider>
-    </FontSizeProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  useEffect(() => {
+    const marker = document.getElementById("boot-marker");
+    if (marker) {
+      marker.innerText = "APP COMPONENT RENDERED - READY";
+      console.log("App component mounted");
+    }
+  }, []);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <FontSizeProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <AuthProvider>
+              <AppRoutes />
+            </AuthProvider>
+          </BrowserRouter>
+        </TooltipProvider>
+      </FontSizeProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
