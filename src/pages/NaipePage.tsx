@@ -1,5 +1,5 @@
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-import { ArrowLeft, Lock, Check, ChevronRight, BookOpen, Hash, Crown } from "lucide-react";
+import { ArrowLeft, Lock, Check, ChevronRight, BookOpen, Hash, Crown, Sparkles } from "lucide-react";
 import {
   type Naipe,
   NAIPES,
@@ -100,51 +100,51 @@ const NaipePage = () => {
         style={{ animation: `fade-up 0.4s ease-out both`, animationDelay: `${delay}ms` }}
       >
         <div className="relative overflow-hidden rounded-xl transition-all duration-300" style={isCurrent && filled ? {
-          background: "hsl(36 33% 98%)",
-          border: `2px solid ${naipeInfo.color.primary}`,
-          boxShadow: `0 10px 30px -10px ${naipeInfo.color.primary}40`,
+          background: "white",
+          border: `2px solid #C8A66A`,
+          boxShadow: `0 12px 35px -10px rgba(91, 31, 61, 0.15)`,
         } : completed ? {
           background: "hsl(36 33% 97% / 0.8)",
-          border: "1px solid hsl(36 42% 45% / 0.2)",
+          border: "1px solid #C8A66A40",
         } : {
-          background: "hsl(36 18% 92% / 0.4)",
-          border: "1px solid hsl(36 22% 85% / 0.4)",
+          background: "rgba(220, 207, 194, 0.15)",
+          border: "1px solid rgba(220, 207, 194, 0.3)",
         }}>
-          <div className="p-4 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 shadow-sm" style={completed ? {
-              border: "2.5px solid hsl(36 42% 45%)",
+          <div className="p-4 flex items-center gap-4">
+            <div className="w-11 h-11 rounded-full flex items-center justify-center shrink-0 shadow-sm transition-transform group-hover:scale-105" style={completed ? {
+              border: "2.5px solid #5B1F3D",
               background: "#FAF5EF",
             } : unlocked ? {
-              border: `2.5px solid ${naipeInfo.color.primary}`,
+              border: `2.5px solid #5B1F3D`,
               background: "#FAF5EF",
             } : {
-              border: "1.5px solid hsl(36 22% 70% / 0.5)",
-              background: "hsl(36 18% 90% / 0.5)",
+              border: "1.5px solid rgba(91, 31, 61, 0.15)",
+              background: "rgba(220, 207, 194, 0.1)",
             }}>
               {completed ? (
-                <Check className="w-5 h-5" style={{ color: "hsl(36 42% 38%)" }} strokeWidth={3} />
+                <Check className="w-6 h-6" style={{ color: "#5B1F3D" }} strokeWidth={3.5} />
               ) : unlocked ? (
-                <span className="text-sm font-heading font-black" style={{ color: naipeInfo.color.primary }}>
+                <span className="text-sm font-heading font-black" style={{ color: "#5B1F3D" }}>
                   {isNum ? card.posicao : courtIcon(card.posicao as string)}
                 </span>
               ) : (
-                <Lock className="w-3.5 h-3.5" style={{ color: "hsl(36 22% 60%)" }} />
+                <Lock className="w-4 h-4" style={{ color: "#5B1F3D30" }} />
               )}
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-heading text-[15px] tracking-tight truncate font-black" style={{
-                color: unlocked ? "#5B1F3D" : "hsl(36 22% 50%)",
+              <h3 className="font-heading text-base tracking-tight truncate font-black" style={{
+                color: unlocked ? "#5B1F3D" : "#5B1F3D60",
               }}>
                 {card.nome}
               </h3>
               {card.subtitulo && (
-                <p className="font-accent text-xs italic truncate font-bold" style={{ color: unlocked ? "hsl(36 42% 35%)" : "hsl(36 22% 60%)" }}>
+                <p className="font-accent text-[13px] italic truncate font-bold" style={{ color: unlocked ? "#8B6A30" : "#5B1F3D40" }}>
                   {card.subtitulo}
                 </p>
               )}
             </div>
             {unlocked && filled && (
-              <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1.5 transition-transform" style={{ color: "#C8A66A" }} />
+              <ChevronRight className="w-5 h-5 shrink-0 group-hover:translate-x-1.5 transition-transform" style={{ color: "#C8A66A" }} />
             )}
           </div>
         </div>
@@ -163,26 +163,26 @@ const NaipePage = () => {
 
       {/* Header */}
       <header className="relative z-10" style={{
-        borderBottom: `1.5px solid ${naipeInfo.color.primary}40`,
-        background: "rgba(250, 245, 239, 0.95)",
+        borderBottom: `2.5px solid #C8A66A40`,
+        background: "rgba(255, 255, 255, 0.98)",
         backdropFilter: "blur(20px)",
-        boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)",
+        boxShadow: "0 10px 40px rgba(91, 31, 61, 0.06)",
       }}>
-        <div className="container max-w-3xl py-6 px-6">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-4">
+        <div className="container max-w-3xl py-8 px-6">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-5">
               <button 
                 onClick={() => navigate("/app")} 
-                className="transition-all hover:scale-110 duration-200 w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30]" 
+                className="transition-all hover:scale-110 duration-200 w-11 h-11 rounded-full flex items-center justify-center bg-[#FAF5EF] border-2 border-[#C8A66A40] shadow-sm" 
                 style={{ color: "#5B1F3D" }}
               >
-                <ArrowLeft className="w-5 h-5" />
+                <ArrowLeft className="w-6 h-6" />
               </button>
               <div>
-                <span className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1 flex items-center gap-2" style={{ color: naipeInfo.color.primary }}>
-                  {naipeInfo.icon} Arcanos Menores
+                <span className="text-[11px] tracking-[0.45em] uppercase font-heading mb-1.5 flex items-center gap-2 font-black" style={{ color: "#8B6A30" }}>
+                  <Sparkles className="w-3.5 h-3.5" /> Arcanos Menores
                 </span>
-                <h1 className="font-heading text-2xl md:text-3xl tracking-wide" style={{ color: "#5B1F3D" }}>
+                <h1 className="font-heading text-3xl md:text-4xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
                   {naipeInfo.name}
                 </h1>
               </div>
@@ -190,30 +190,30 @@ const NaipePage = () => {
             <StreakCounter streak={progress.streak} />
           </div>
 
-          <p className="font-accent text-[15px] italic leading-relaxed mb-6 font-bold" style={{ color: "#5B1F3D" }}>
+          <p className="font-accent text-[17px] italic leading-relaxed mb-8 font-bold border-l-4 border-[#C8A66A40] pl-5 py-1" style={{ color: "#5B1F3D" }}>
             "{NAIPE_PHRASES[naipe]}"
           </p>
 
           {/* Progress */}
-          <div className="space-y-2 bg-white/60 p-4 rounded-xl border-2 border-[#C8A66A]/30 shadow-sm">
+          <div className="space-y-3 bg-[#FAF5EF] p-5 rounded-2xl border-2 border-[#C8A66A20] shadow-inner">
             <div className="flex items-center justify-between px-1">
-              <span className="text-[11px] font-heading tracking-[0.2em] uppercase font-black" style={{ color: "#5B1F3D" }}>
+              <span className="text-[12px] font-heading tracking-[0.25em] uppercase font-black" style={{ color: "#5B1F3D" }}>
                 {completedCount}/14 cartas estudadas
               </span>
-              <span className="text-[12px] font-heading font-black" style={{ color: naipeInfo.color.primary }}>
+              <span className="text-[13px] font-heading font-black" style={{ color: "#8B6A30" }}>
                 {progressPct}%
               </span>
             </div>
-            <div className="h-2.5 rounded-full overflow-hidden" style={{ background: "#E8DED3", border: "1px solid #D1C4B5" }}>
+            <div className="h-3 rounded-full overflow-hidden p-[1.5px]" style={{ background: "#DCCFC240", border: "1px solid #DCCFC260" }}>
               <div className="h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden" style={{ 
-                width: `${progressPct}%`, 
-                background: `linear-gradient(90deg, ${naipeInfo.color.primary}, #C8A66A)` 
+                width: `${Math.max(progressPct, 4)}%`, 
+                background: `linear-gradient(90deg, #5B1F3D, #C8A66A)` 
               }}>
-                 <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+                 <div className="absolute inset-0 w-1/3 h-full bg-white/25 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
               </div>
             </div>
           </div>
-          <div className="mt-4">
+          <div className="mt-6">
             <XPBar xp={progress.xp} level={progress.level} />
           </div>
         </div>
@@ -226,11 +226,11 @@ const NaipePage = () => {
         ))}
 
         {/* Study tools */}
-        <div className="grid grid-cols-3 gap-3 mb-8" style={{ animation: "fade-up 0.4s ease-out" }}>
+        <div className="grid grid-cols-3 gap-4 mb-12" style={{ animation: "fade-up 0.4s ease-out" }}>
           {[
-            { icon: <BookOpen className="w-4 h-4" />, label: "Introdução", desc: "Simbologia", onClick: () => navigate(`/naipe/${naipe}/intro`) },
-            { icon: <Hash className="w-4 h-4" />, label: "Números", desc: "Ás ao Dez", onClick: () => navigate("/numerologia") },
-            { icon: <Crown className="w-4 h-4" />, label: "Corte", desc: "Pajem ao Rei", onClick: () => navigate("/module/cartas-corte") },
+            { icon: <BookOpen className="w-5 h-5" />, label: "Introdução", desc: "Simbologia", onClick: () => navigate(`/naipe/${naipe}/intro`) },
+            { icon: <Hash className="w-5 h-5" />, label: "Números", desc: "Ás ao Dez", onClick: () => navigate("/numerologia") },
+            { icon: <Crown className="w-5 h-5" />, label: "Corte", desc: "Pajem ao Rei", onClick: () => navigate("/module/cartas-corte") },
           ].map((tool) => (
             <button
               key={tool.label}
@@ -251,33 +251,37 @@ const NaipePage = () => {
         </div>
 
         {/* Divider */}
-        <div className="flex items-center gap-4 mb-8" style={{ animation: "fade-up 0.4s ease-out 0.05s both" }}>
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-          <span className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#5B1F3D]">
+        <div className="flex items-center gap-5 mb-10" style={{ animation: "fade-up 0.4s ease-out 0.05s both" }}>
+          <div className="flex-1 h-[2px] bg-gradient-to-r from-transparent to-[#C8A66A40]" />
+          <span className="text-[11px] font-heading tracking-[0.4em] uppercase text-[#5B1F3D] font-black">
             Trilha de Estudo
           </span>
-          <div className="flex-1 h-px bg-gradient-to-l from-transparent to-[#C8A66A40]" />
+          <div className="flex-1 h-[2px] bg-gradient-to-l from-transparent to-[#C8A66A40]" />
         </div>
 
         {/* Numbered cards */}
-        <div className="flex items-center gap-3 mb-4 opacity-80" style={{ animation: "fade-up 0.4s ease-out 0.1s both" }}>
-           <span className="text-xl" style={{ color: naipeInfo.color.primary }}>◈</span>
-           <h3 className="font-heading text-xs tracking-[0.3em] uppercase" style={{ color: "#5B1F3D" }}>
+        <div className="flex items-center gap-3 mb-6" style={{ animation: "fade-up 0.4s ease-out 0.1s both" }}>
+           <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#5B1F3D] shadow-md">
+             <span className="text-ivory text-sm font-heading font-bold">◈</span>
+           </div>
+           <h3 className="font-heading text-[13px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
             Ás ao Dez
           </h3>
         </div>
-        <div className="space-y-3 mb-10">
+        <div className="space-y-4 mb-14">
           {numbered.map((card, i) => renderCardRow(card, i, 120 + i * 40))}
         </div>
 
         {/* Court cards */}
-        <div className="flex items-center gap-3 mb-4 opacity-80" style={{ animation: "fade-up 0.4s ease-out 0.5s both" }}>
-           <span className="text-xl" style={{ color: naipeInfo.color.primary }}>♛</span>
-           <h3 className="font-heading text-xs tracking-[0.3em] uppercase" style={{ color: "#5B1F3D" }}>
+        <div className="flex items-center gap-3 mb-6" style={{ animation: "fade-up 0.4s ease-out 0.5s both" }}>
+           <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#8B6A30] shadow-md">
+             <span className="text-ivory text-sm font-heading font-bold">♛</span>
+           </div>
+           <h3 className="font-heading text-[13px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
             Cartas da Corte
           </h3>
         </div>
-        <div className="space-y-3 mb-12">
+        <div className="space-y-4 mb-16">
           {court.map((card, i) => renderCardRow(card, 10 + i, 520 + i * 40))}
         </div>
 
