@@ -243,7 +243,7 @@ const NaipePage = () => {
               <p className="font-heading text-[12px] tracking-[0.2em] uppercase mb-1 font-black" style={{ color: "#5B1F3D" }}>
                 {tool.label}
               </p>
-              <p className="text-[9px] font-accent italic" style={{ color: "#5B1F3D60" }}>
+              <p className="text-[10px] font-accent italic font-bold" style={{ color: "hsl(36 42% 35%)" }}>
                 {tool.desc}
               </p>
             </button>
