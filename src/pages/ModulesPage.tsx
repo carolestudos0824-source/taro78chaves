@@ -79,6 +79,8 @@ const ModulesPage = () => {
 
   console.log("USE PROGRESS START");
   const { progress, loading: progressLoading, completeOnboarding } = useProgress();
+  const { bypassLocks: originalBypassLocks } = useAccess();
+  const bypassLocks = originalBypassLocks;
 
   useEffect(() => {
     if (!progressLoading) {
@@ -107,9 +109,6 @@ const ModulesPage = () => {
     marker.innerText += " | MODULES PAGE VISUAL SHELL RENDERED";
   }
 
-
-  const { bypassLocks: originalBypassLocks } = useAccess();
-  const bypassLocks = originalBypassLocks; 
 
   const grouped = MODULES.reduce<Record<ModuleCategory, LearningModule[]>>((acc, mod) => {
     if (!acc[mod.category]) acc[mod.category] = [];
