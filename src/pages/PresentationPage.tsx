@@ -422,8 +422,8 @@ const SlideJourney = () => (
     <div className="grid grid-cols-4 md:grid-cols-6 gap-3 max-w-2xl mx-auto">
       {[
         "O Louco", "O Mago", "A Sacerdotisa", "A Imperatriz", "O Imperador",
-        "O Hierofante", "Os Enamorados", "O Carro", "A Justiça", "O Eremita",
-        "A Roda", "A Força", "O Enforcado", "A Morte", "A Temperança",
+        "O Hierofante", "Os Enamorados", "O Carro", "A Força", "O Eremita",
+        "A Roda", "A Justiça", "O Enforcado", "A Morte", "A Temperança",
         "O Diabo", "A Torre", "A Estrela", "A Lua", "O Sol",
         "O Julgamento", "O Mundo",
       ].map((name, i) => (
