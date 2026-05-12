@@ -165,31 +165,34 @@ const AppRoutes = () => {
     <Suspense fallback={<LoadingFallback />}>
       <AnalyticsTracker />
       <Routes>
-        {/* Ordem de prioridade: rotas estáticas primeiro */}
+        {/* Ordem de prioridade absoluta: rotas estáticas primeiro */}
         <Route path="/app" element={<AppShell />} />
         
-        {/* Rotas secundárias do shell */}
-        <Route path="/perfil" element={<AppShell />} />
-        <Route path="/premium" element={<AppShell />} />
-        <Route path="/admin" element={<AppShell />} />
-        
-        {/* Auth & Public */}
+        {/* ═══ Auth & Public ═══ */}
         <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/" element={<LandingPage />} />
         
-        {/* Captura de sub-rotas */}
+        {/* Rotas administrativas e de perfil no shell */}
+        <Route path="/perfil" element={<AppShell />} />
+        <Route path="/premium" element={<AppShell />} />
+        <Route path="/admin" element={<AppShell />} />
+        
+        {/* Captura de sub-rotas com prefixo explícito */}
         <Route path="/module/*" element={<AppShell />} />
         <Route path="/lesson/*" element={<AppShell />} />
+        <Route path="/fundamentos/*" element={<AppShell />} />
+        <Route path="/naipe/*" element={<AppShell />} />
+        <Route path="/arcano-menor/*" element={<AppShell />} />
         
         {/* Legal */}
         <Route path="/privacidade" element={<PrivacyPage />} />
         <Route path="/termos" element={<TermsPage />} />
 
-        {/* Fallback do Shell para qualquer rota /... */}
+        {/* Catch-all para o shell autenticado */}
         <Route path="/*" element={<AppShell />} />
 
-        {/* Catch-all final */}
+        {/* Catch-all real final para rotas inexistentes */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
@@ -317,10 +320,6 @@ const AppShell = () => (
         <Route path="/minha-jornada" element={<P><JourneyJournalPage /></P>} />
         <Route path="/feedback" element={<P><FeedbackPage /></P>} />
         <Route path="/admin" element={<P><AdminPage /></P>} />
-
-        {/* Fallback do shell para lidar com URLs legadas ou malformadas */}
-        <Route path="/:id" element={<Navigate to="/app" replace />} />
-        <Route path="/:slug" element={<Navigate to="/app" replace />} />
         <Route path="/undefined" element={<Navigate to="/app" replace />} />
         <Route path="/null" element={<Navigate to="/app" replace />} />
         <Route path="/NaN" element={<Navigate to="/app" replace />} />
