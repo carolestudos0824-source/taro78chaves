@@ -3,7 +3,7 @@ import cardImage from "@/assets/arcano-11-forca.jpg";
 
 export const A_FORCA: ArcanoMaiorEditorial = {
   number: 8,
-  name: "A Força TEST",
+  name: "A Força",
   numeral: "VIII",
   subtitle: "O Poder Interior",
   slug: "a-forca",
