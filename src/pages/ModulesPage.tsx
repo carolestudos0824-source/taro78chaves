@@ -69,28 +69,47 @@ const MODULE_ICON_MAP: Record<string, any> = {
 
 const ModulesPage = () => {
   const navigate = useNavigate();
+  
+  // Diagnostic Effect
+  useEffect(() => {
+    console.log("MODULES PAGE FUNCTION ENTERED");
+    const marker = document.getElementById("boot-marker");
+    if (marker) marker.innerText += " | MODULES PAGE FUNCTION ENTERED";
+  }, []);
+
+  console.log("USE PROGRESS START");
   const { progress, loading: progressLoading, completeOnboarding } = useProgress();
-  const { bypassLocks: originalBypassLocks } = useAccess();
-  const bypassLocks = originalBypassLocks; 
 
   useEffect(() => {
-    const marker = document.getElementById("boot-marker");
-    if (marker) {
-      marker.innerText += " | MODULES PAGE RENDERED";
+    if (!progressLoading) {
+      console.log("USE PROGRESS DONE");
+      const marker = document.getElementById("boot-marker");
+      if (marker) marker.innerText += " | USE PROGRESS DONE";
     }
-    console.log("ModulesPage mounted");
-  }, []);
+  }, [progressLoading]);
 
   if (progressLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
         <div className="text-center space-y-4 animate-fade-in">
+          <div className="bg-blue-100 text-blue-800 text-[10px] font-mono p-2 rounded mb-4">
+            USE PROGRESS LOADING...
+          </div>
           <div className="w-12 h-12 border-4 border-[#C8A66A]/20 border-t-[#5B1F3D] animate-spin rounded-full mx-auto" />
           <p className="text-[12px] text-[#5B1F3D] font-heading tracking-widest uppercase font-bold">Sincronizando Jornada</p>
         </div>
       </div>
     );
   }
+
+  const marker = document.getElementById("boot-marker");
+  if (marker && !marker.innerText.includes("VISUAL SHELL")) {
+    marker.innerText += " | MODULES PAGE VISUAL SHELL RENDERED";
+  }
+
+
+  const { bypassLocks: originalBypassLocks } = useAccess();
+  const bypassLocks = originalBypassLocks; 
 
   const grouped = MODULES.reduce<Record<ModuleCategory, LearningModule[]>>((acc, mod) => {
     if (!acc[mod.category]) acc[mod.category] = [];
