@@ -1,41 +1,48 @@
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+// import App from "./App.tsx";
 import "./index.css";
 
 console.log("main.tsx execution started");
 
-const rootElement = document.getElementById("root");
-if (!rootElement) {
-  console.error("Root element not found!");
-  throw new Error("Failed to find the root element");
+const marker = document.getElementById("boot-marker");
+if (marker) {
+  marker.innerText = "MAIN.TSX OK";
 }
 
-// Boot markers removed for final render
-const marker = document.getElementById("boot-marker");
+const rootElement = document.getElementById("root");
 
-try {
-  console.log("Creating React root...");
-  const root = createRoot(rootElement);
-  
-  console.log("Rendering App component...");
-  root.render(<App />);
-  console.log("root.render called");
-} catch (error) {
-  console.error("Critical rendering error during root setup:", error);
-  const errorMsg = error instanceof Error ? error.message : String(error);
-  const errorStack = error instanceof Error ? error.stack : "No stack trace";
-  
-  if (marker) {
-    marker.style.background = "red";
-    marker.innerText = `CRITICAL ERROR: ${errorMsg}`;
+if (!rootElement) {
+  console.error("Root element not found!");
+  if (marker) marker.innerText = "ERROR: ROOT NOT FOUND";
+} else {
+  try {
+    const root = createRoot(rootElement);
+    
+    // Test A - minimal render
+    root.render(
+      <div style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 999998,
+        background: '#1a0f1f',
+        color: '#f5d78e',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: '24px',
+        fontFamily: 'serif',
+        textAlign: 'center',
+        padding: '20px'
+      }}>
+        <h1>REACT ROOT MINIMAL OK</h1>
+        <p style={{ fontSize: '16px', marginTop: '10px' }}>Se você está vendo esta tela escura com texto dourado, o React Root está funcionando.</p>
+      </div>
+    );
+    
+    if (marker) marker.innerText = "REACT RENDER CALLED";
+  } catch (err) {
+    console.error("Critical error in main.tsx:", err);
+    if (marker) marker.innerText = `CRITICAL ERROR: ${err}`;
   }
-  
-  rootElement.innerHTML = `
-    <div style="padding: 20px; text-align: center; font-family: sans-serif; background: #FAF5EF; min-height: 100vh; color: #5B1F3D;">
-      <h2>Ops! Ocorreu um erro crítico ao iniciar o app.</h2>
-      <p>Erro: ${errorMsg}</p>
-      <pre style="text-align: left; background: #f4f4f4; padding: 15px; margin-top: 20px; font-size: 11px; overflow: auto; border: 1px solid #ccc;">${errorStack}</pre>
-      <button onclick="window.location.reload(true)" style="padding: 12px 24px; cursor: pointer; background: #C8A66A; color: #5B1F3D; border: none; font-weight: bold; border-radius: 8px; margin-top: 20px;">Tentar Recarregar</button>
-    </div>
-  `;
 }
