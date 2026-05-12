@@ -3,14 +3,13 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { FontSizeProvider } from "@/contexts/font-size-context";
-import { AuthProvider } from "@/contexts/auth-context";
+import { AuthProvider, useAuth } from "@/hooks/use-auth";
 import { useEffect, useState } from "react";
-import { useAuth } from "@/contexts/auth-context";
 
 const queryClient = new QueryClient();
 
 const AuthTestDisplay = () => {
-  const { session, loading, error } = useAuth();
+  const { session, loading } = useAuth();
   const [timeoutActive, setTimeoutActive] = useState(false);
 
   useEffect(() => {
@@ -32,8 +31,7 @@ const AuthTestDisplay = () => {
 
   let authStatus = "LOADING";
   if (!loading) {
-    if (error) authStatus = "ERROR";
-    else if (session) authStatus = "LOGGED";
+    if (session) authStatus = "LOGGED";
     else authStatus = "PUBLIC";
   } else if (timeoutActive) {
     authStatus = "TIMEOUT (FALLBACK PUBLIC)";
@@ -63,7 +61,6 @@ const AuthTestDisplay = () => {
         background: 'rgba(245, 215, 142, 0.1)'
       }}>
         <p style={{ fontSize: '18px', fontWeight: 'bold' }}>AUTH STATUS: {authStatus}</p>
-        {error && <p style={{ fontSize: '14px', color: '#ff4444' }}>Error: {error.message}</p>}
       </div>
       <p style={{ fontSize: '16px', marginTop: '15px' }}>O AuthProvider foi reintroduzido para teste de conexão.</p>
     </div>
