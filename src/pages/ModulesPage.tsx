@@ -73,6 +73,14 @@ const ModulesPage = () => {
   const { bypassLocks: originalBypassLocks } = useAccess();
   const bypassLocks = originalBypassLocks; 
 
+  useEffect(() => {
+    const marker = document.getElementById("boot-marker");
+    if (marker) {
+      marker.innerText = "MODULES PAGE RENDERED - READY";
+      console.log("ModulesPage mounted");
+    }
+  }, []);
+
   if (progressLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
