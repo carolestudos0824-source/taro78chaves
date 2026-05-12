@@ -451,7 +451,7 @@ const SlideJourney = () => {
         title="Do Louco ao Mundo"
         subtitle="Você percorre os 22 Arcanos Maiores como etapas de uma transformação interior."
       />
-      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-11 gap-2 md:gap-3 max-w-5xl mx-auto overflow-y-auto max-h-[55vh] md:max-h-none py-4 px-4 scrollbar-hide flex justify-center">
+      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-11 gap-2 md:gap-3 max-w-5xl mx-auto overflow-y-auto max-h-[55vh] md:max-h-none py-4 px-4 scrollbar-hide justify-items-center">
         {majores.map((card, i) => (
           <div key={i} className="flex flex-col items-center group">
             <div className="relative w-full">
