@@ -2,29 +2,42 @@ import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 
+console.log("main.tsx execution started");
+
 const rootElement = document.getElementById("root");
-if (!rootElement) throw new Error("Failed to find the root element");
+if (!rootElement) {
+  console.error("Root element not found!");
+  throw new Error("Failed to find the root element");
+}
 
-const root = createRoot(rootElement);
-
-// Remove marker after React takes over
 const marker = document.getElementById("boot-marker");
 if (marker) {
-  console.log("React mounting, removing boot marker");
-  // Optional: keep it for a few ms to be sure user sees it
-  // marker.remove(); 
+  marker.innerText = "MAIN.TSX START - RENDERING...";
 }
 
 try {
+  console.log("Creating React root...");
+  const root = createRoot(rootElement);
+  
+  console.log("Rendering App component...");
   root.render(<App />);
+  console.log("root.render called");
 } catch (error) {
-  console.error("Critical rendering error:", error);
+  console.error("Critical rendering error during root setup:", error);
+  const errorMsg = error instanceof Error ? error.message : String(error);
+  const errorStack = error instanceof Error ? error.stack : "No stack trace";
+  
+  if (marker) {
+    marker.style.background = "red";
+    marker.innerText = `CRITICAL ERROR: ${errorMsg}`;
+  }
+  
   rootElement.innerHTML = `
-    <div style="padding: 20px; text-align: center; font-family: sans-serif; background: #FAF5EF; min-h: 100vh;">
-      <h2 style="color: #5B1F3D;">Ops! Ocorreu um erro ao carregar o app.</h2>
-      <p style="color: #5B1F3D;">Tente recarregar a página ou limpar o cache do navegador.</p>
-      <button onclick="window.location.reload(true)" style="padding: 10px 20px; cursor: pointer; background: #C8A66A; color: #5B1F3D; border: none; font-weight: bold; border-radius: 8px;">Recarregar Agora</button>
-      <pre style="text-align: left; background: #eee; padding: 10px; margin-top: 20px; font-size: 10px; overflow: auto;">${error instanceof Error ? error.stack : String(error)}</pre>
+    <div style="padding: 20px; text-align: center; font-family: sans-serif; background: #FAF5EF; min-height: 100vh; color: #5B1F3D;">
+      <h2>Ops! Ocorreu um erro crítico ao iniciar o app.</h2>
+      <p>Erro: ${errorMsg}</p>
+      <pre style="text-align: left; background: #f4f4f4; padding: 15px; margin-top: 20px; font-size: 11px; overflow: auto; border: 1px solid #ccc;">${errorStack}</pre>
+      <button onclick="window.location.reload(true)" style="padding: 12px 24px; cursor: pointer; background: #C8A66A; color: #5B1F3D; border: none; font-weight: bold; border-radius: 8px; margin-top: 20px;">Tentar Recarregar</button>
     </div>
   `;
 }
