@@ -30,6 +30,13 @@ import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
 import imgEstrela from "@/assets/arcano-17-estrela.jpg";
 import { useEffect } from "react";
 
+// Mock components to avoid hook issues
+const SmartReviewCard = () => <div className="p-4 bg-white/50 rounded-2xl border border-dashed border-[#C8A66A]">Review Card Shell</div>;
+const ProgressCelebration = () => null;
+const ContinuityCard = () => null;
+const GitBranch = (props: any) => <div {...props}>Y</div>;
+const Target = (props: any) => <div {...props}>O</div>;
+
 const CATEGORY_LABELS: Record<ModuleCategory, string> = {
   "foundation": "Trilha 1 · Fundamentos",
   "major-arcana": "Trilha 2 · Arcanos Maiores",
@@ -57,13 +64,6 @@ const MODULE_ICON_MAP: Record<string, any> = {
   "pratica": Sparkles,
   "trabalhar-taro": Briefcase,
 };
-
-// Mock components to avoid hook issues
-const SmartReviewCard = () => <div className="p-4 bg-white/50 rounded-2xl border border-dashed border-[#C8A66A]">Review Card Shell</div>;
-const ProgressCelebration = () => null;
-const ContinuityCard = () => null;
-const GitBranch = (props: any) => <div {...props}>Y</div>;
-const Target = (props: any) => <div {...props}>O</div>;
 
 const ModulesPageSafe = () => {
   const navigate = useNavigate();
