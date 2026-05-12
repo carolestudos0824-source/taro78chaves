@@ -251,33 +251,37 @@ const NaipePage = () => {
         </div>
 
         {/* Divider */}
-        <div className="flex items-center gap-4 mb-8" style={{ animation: "fade-up 0.4s ease-out 0.05s both" }}>
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-          <span className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#5B1F3D]">
+        <div className="flex items-center gap-5 mb-10" style={{ animation: "fade-up 0.4s ease-out 0.05s both" }}>
+          <div className="flex-1 h-[2px] bg-gradient-to-r from-transparent to-[#C8A66A40]" />
+          <span className="text-[11px] font-heading tracking-[0.4em] uppercase text-[#5B1F3D] font-black">
             Trilha de Estudo
           </span>
-          <div className="flex-1 h-px bg-gradient-to-l from-transparent to-[#C8A66A40]" />
+          <div className="flex-1 h-[2px] bg-gradient-to-l from-transparent to-[#C8A66A40]" />
         </div>
 
         {/* Numbered cards */}
-        <div className="flex items-center gap-3 mb-4 opacity-80" style={{ animation: "fade-up 0.4s ease-out 0.1s both" }}>
-           <span className="text-xl" style={{ color: naipeInfo.color.primary }}>◈</span>
-           <h3 className="font-heading text-xs tracking-[0.3em] uppercase" style={{ color: "#5B1F3D" }}>
+        <div className="flex items-center gap-3 mb-6" style={{ animation: "fade-up 0.4s ease-out 0.1s both" }}>
+           <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#5B1F3D] shadow-md">
+             <span className="text-ivory text-sm font-heading font-bold">◈</span>
+           </div>
+           <h3 className="font-heading text-[13px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
             Ás ao Dez
           </h3>
         </div>
-        <div className="space-y-3 mb-10">
+        <div className="space-y-4 mb-14">
           {numbered.map((card, i) => renderCardRow(card, i, 120 + i * 40))}
         </div>
 
         {/* Court cards */}
-        <div className="flex items-center gap-3 mb-4 opacity-80" style={{ animation: "fade-up 0.4s ease-out 0.5s both" }}>
-           <span className="text-xl" style={{ color: naipeInfo.color.primary }}>♛</span>
-           <h3 className="font-heading text-xs tracking-[0.3em] uppercase" style={{ color: "#5B1F3D" }}>
+        <div className="flex items-center gap-3 mb-6" style={{ animation: "fade-up 0.4s ease-out 0.5s both" }}>
+           <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#8B6A30] shadow-md">
+             <span className="text-ivory text-sm font-heading font-bold">♛</span>
+           </div>
+           <h3 className="font-heading text-[13px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
             Cartas da Corte
           </h3>
         </div>
-        <div className="space-y-3 mb-12">
+        <div className="space-y-4 mb-16">
           {court.map((card, i) => renderCardRow(card, 10 + i, 520 + i * 40))}
         </div>
 
