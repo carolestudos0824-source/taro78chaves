@@ -287,21 +287,21 @@ const SlideMethod = () => (
     />
     <div className="space-y-2 max-w-md mx-auto">
       {[
-        { n: "01", label: "Essência", desc: "O coração vivo da carta — significado central, palavras-chave, arquétipo", color: "#C8A66A" },
-        { n: "02", label: "Luz & Sombra", desc: "Forças e desafios que cada arcano encarna — o que ativa e o que bloqueia", color: "#5B1F3D" },
-        { n: "03", label: "Simbolismo", desc: "Cada detalhe da imagem tem propósito — cores, objetos, posturas, paisagens", color: "#3D1429" },
-        { n: "04", label: "Aplicações", desc: "Amor, trabalho, saúde, espiritualidade — a carta na vida real", color: "#1A1A1A" },
-        { n: "05", label: "Quiz & Prática", desc: "Exercícios e quizzes que integram o aprendizado no corpo e na mente", color: "#2F4F4F" },
+        { n: "01", label: "Essência", desc: "O coração vivo da carta — significado central, palavras-chave, arquétipo", color: "#5B1F3D" },
+        { n: "02", label: "Luz & Sombra", desc: "Forças e desafios que cada arcano encarna — o que ativa e o que bloqueia", color: "#C8A66A" },
+        { n: "03", label: "Simbolismo", desc: "Cada detalhe da imagem tem propósito — cores, objetos, posturas, paisagens", color: "#DCCFC2" },
+        { n: "04", label: "Aplicações", desc: "Amor, trabalho, saúde, espiritualidade — a carta na vida real", color: "#E8DED3" },
+        { n: "05", label: "Quiz & Prática", desc: "Exercícios e quizzes que integram o aprendizado no corpo e na mente", color: "#FAF5EF" },
       ].map((item, i) => (
         <div key={i} className="flex items-center gap-4 px-4 py-3 rounded-xl" style={{
           background: "rgba(250, 245, 239, 0.7)",
           border: "1px solid #DCCFC2",
         }}>
-          <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style={{
-            background: `${item.color}20`,
-            border: `1.5px solid ${item.color}`,
+          <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 shadow-sm" style={{
+            background: i === 4 ? "#5B1F3D10" : item.color,
+            border: `1.5px solid ${i === 4 ? "#5B1F3D40" : "#C8A66A40"}`,
           }}>
-            <span className="font-heading text-[10px] tracking-wider" style={{ color: item.color, fontWeight: "bold" }}>{item.n}</span>
+            <span className="font-heading text-[11px] font-black" style={{ color: (i === 2 || i === 3 || i === 4) ? "#5B1F3D" : "#FAF5EF" }}>{item.n}</span>
           </div>
           <div>
             <h3 className="font-heading text-xs tracking-wide" style={{ color: "#5B1F3D" }}>{item.label}</h3>
@@ -360,15 +360,15 @@ const SlideInside = () => (
       {[
         "Lições em camadas",
         "Quizzes interativos",
-        "Revisão espaçada",
-        "Flashcards",
+        "Revisão Inteligente",
+        "Cartas RWS Canônicas",
         "Desafios diários",
         "Rotina de estudo",
         "Biblioteca simbólica",
         "XP e conquistas",
         "Certificados",
         "Trilhas por nível",
-        "Feedback integrado",
+        "Feedback nos Quizzes",
         "Painel de progresso",
       ].map((item, i) => (
         <div key={i} className="flex items-center gap-2 px-3 py-2.5 rounded-lg" style={{
@@ -392,16 +392,16 @@ const SlideModules = () => (
     />
     <div className="grid md:grid-cols-2 gap-2 max-w-2xl mx-auto">
       {[
-        { n: "01", name: "Fundamentos do Tarô", desc: "História, estrutura e princípios" },
-        { n: "02", name: "Leitura Simbólica", desc: "O olhar que revela a carta" },
-        { n: "03", name: "Arcanos Maiores", desc: "Os 22 arquétipos universais" },
-        { n: "04", name: "Arquitetura dos Menores", desc: "Os 4 naipes e a lógica numérica" },
-        { n: "05", name: "Naipes Completos", desc: "Copas, Paus, Espadas e Ouros" },
-        { n: "06", name: "Cartas da Corte", desc: "Pessoas, posturas e estágios" },
-        { n: "07", name: "Combinações", desc: "A arte da síntese e leitura cruzada" },
-        { n: "08", name: "Tiragens Profundas", desc: "Métodos clássicos e intuitivos" },
+        { n: "01", name: "Fundamentos do Tarô", desc: "Estrutura, ética e história" },
+        { n: "02", name: "Leitura Simbólica", desc: "O método visual de interpretação" },
+        { n: "03", name: "Arcanos Maiores", desc: "Os 22 portais da alma" },
+        { n: "04", name: "Arquitetura dos Menores", desc: "Elementos e lógica numérica" },
+        { n: "05", name: "Naipes de Ação e Emoção", desc: "Copas, Paus, Espadas e Ouros" },
+        { n: "06", name: "Cartas da Corte", desc: "Pessoas, posturas e energias" },
+        { n: "07", name: "Combinações", desc: "A arte da síntese de cartas" },
+        { n: "08", name: "Tiragens e Métodos", desc: "Layouts clássicos e intuitivos" },
         { n: "09", name: "Leitura Aplicada", desc: "Amor, trabalho e espiritualidade" },
-        { n: "10", name: "Prática Profissional", desc: "Ética e condução de consultas" },
+        { n: "10", name: "Prática Profissional", desc: "Ética, mesa e atendimento" },
       ].map((mod, i) => (
         <div key={i} className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl" style={{
           background: "rgba(250, 245, 239, 0.7)",
@@ -425,24 +425,28 @@ const SlideJourney = () => (
       title="Do Louco ao Mundo"
       subtitle="Você percorre os 22 Arcanos Maiores como etapas de uma transformação interior."
     />
-    <div className="grid grid-cols-4 md:grid-cols-6 gap-3 max-w-2xl mx-auto">
+    <div className="grid grid-cols-5 md:grid-cols-11 gap-1.5 md:gap-2 max-w-4xl mx-auto overflow-y-auto max-h-[50vh] md:max-h-none py-2 px-1 scrollbar-hide">
       {[
         "O Louco", "O Mago", "A Sacerdotisa", "A Imperatriz", "O Imperador",
         "O Hierofante", "Os Enamorados", "O Carro", "A Força", "O Eremita",
-        "A Roda", "A Justiça", "O Enforcado", "A Morte", "A Temperança",
+        "A Roda da Fortuna", "A Justiça", "O Enforcado", "A Morte", "A Temperança",
         "O Diabo", "A Torre", "A Estrela", "A Lua", "O Sol",
         "O Julgamento", "O Mundo",
       ].map((name, i) => (
-        <TarotAnimatedCard
-          key={i}
-          cardImage={getArcanoFull(i)?.cardImage || ""}
-          cardName={name}
-          arcanoId={i}
-          arcanoSlug={name.toLowerCase().replace(/ /g, "-")}
-          state={i === 0 ? "available" : i === 1 ? "active" : "locked"}
-          variant="portal"
-          className="w-full scale-75 md:scale-90"
-        />
+        <div key={i} className="flex flex-col items-center">
+          <TarotAnimatedCard
+            cardImage={getArcanoFull(i)?.cardImage || ""}
+            cardName={name}
+            arcanoId={i}
+            arcanoSlug={name.toLowerCase().replace(/ /g, "-")}
+            state={i === 0 ? "available" : i === 8 || i === 11 || i === 21 ? "active" : "locked"}
+            variant="lesson"
+            className="w-full"
+          />
+          <span className="text-[6px] md:text-[8px] font-heading font-black mt-1 text-[#5B1F3D80] uppercase tracking-tighter text-center leading-none">
+            {i === 10 ? "Roda" : name.split(" ").pop()}
+          </span>
+        </div>
       ))}
     </div>
     <p className="text-center text-[10px] font-body italic mt-4" style={{ color: "#5B1F3D", opacity: 0.7 }}>
@@ -547,7 +551,7 @@ const SlideCTA = ({ onStart }: { onStart: () => void }) => (
       Iniciar Minha Jornada
       <ArrowRight className="w-4 h-4" />
     </button>
-    <p className="text-[10px] font-body" style={{ color: "#5B1F3D", opacity: 0.8 }}>
+    <p className="text-[10px] font-body font-black" style={{ color: "#5B1F3D", opacity: 0.9 }}>
       Comece gratuitamente · No seu ritmo · Sem renovação automática no anual
     </p>
   </div>
