@@ -129,21 +129,41 @@ export function useProgress() {
 
   // ─── Fetch from Supabase when user is available ───
   useEffect(() => {
+    const marker = document.getElementById("boot-marker");
     if (!user) {
       setProgress({ ...DEFAULT_PROGRESS, ...getLocalExtras() });
       setLoading(false);
+      if (marker) marker.innerText += " | PROGRESS: PUBLIC";
       return;
     }
 
     let cancelled = false;
+    if (marker) marker.innerText += " | USE PROGRESS START";
 
     const fetchProgress = async () => {
+      // Timeout fallback for progress fetch
+      const timeoutPromise = new Promise(resolve => setTimeout(() => resolve({ timeout: true }), 5000));
+
       try {
-        const [{ data: progressRow }, { data: profileRow }, { data: scoresData }] = await Promise.all([
+        const fetchPromise = Promise.all([
           supabase.from("user_progress").select("*").eq("user_id", user.id).maybeSingle(),
           supabase.from("profiles").select("*").eq("user_id", user.id).maybeSingle(),
           supabase.from("quiz_responses").select("quiz_id, is_correct").eq("user_id", user.id),
         ]);
+
+        const result = await Promise.race([fetchPromise, timeoutPromise]) as any;
+
+        if (result?.timeout) {
+          console.warn("Progress fetch timed out, using local data");
+          if (marker) marker.innerText += " | USE PROGRESS ERROR (TIMEOUT)";
+          if (!cancelled) setLoading(false);
+          return;
+        }
+
+        const [progressRes, profileRes, scoresRes] = result;
+        const progressRow = progressRes.data;
+        const profileRow = profileRes.data;
+        const scoresData = scoresRes.data;
 
         if (cancelled) return;
 
@@ -175,8 +195,10 @@ export function useProgress() {
         } else {
           setProgress(prev => ({ ...prev, quizScores }));
         }
+        if (marker) marker.innerText += " | USE PROGRESS DONE";
       } catch (err) {
         console.error("Error fetching progress:", err);
+        if (marker) marker.innerText += " | USE PROGRESS ERROR";
       } finally {
         if (!cancelled) setLoading(false);
       }

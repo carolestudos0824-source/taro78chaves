@@ -144,10 +144,18 @@ const AnalyticsTracker = () => {
 
 const AppRoutes = () => {
   const { loading: authLoading, user } = useAuth();
+  const location = useLocation();
 
   useEffect(() => {
-    // Boot markers removed for final render
-  }, [authLoading, user]);
+    const marker = document.getElementById("boot-marker");
+    if (marker) {
+      if (authLoading) {
+        marker.innerText = "AUTH REAL STATUS: LOADING";
+      } else {
+        marker.innerText = `AUTH REAL STATUS: ${user ? 'LOGGED' : 'PUBLIC'} | ROUTE: ${location.pathname}`;
+      }
+    }
+  }, [authLoading, user, location.pathname]);
 
   if (authLoading) {
     return <LoadingFallback />;
@@ -287,6 +295,8 @@ const AppShell = () => (
 
 const App = () => {
   useEffect(() => {
+    const marker = document.getElementById("boot-marker");
+    if (marker) marker.innerText = "APP ROOT RENDERED";
     console.log("App component mounted");
   }, []);
 
@@ -308,9 +318,10 @@ const App = () => {
               fontSize: '10px',
               padding: '2px 10px',
               textAlign: 'center',
-              pointerEvents: 'none'
+              pointerEvents: 'none',
+              fontFamily: 'monospace'
             }}>
-              INITIALIZING REAL APP...
+              PROVIDERS REAL READY
             </div>
             <AuthProvider>
               <AppRoutes />
