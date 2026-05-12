@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { TarotAnimatedCard } from "@/components/tarot-motion/TarotAnimatedCard";
 import { getArcanoFull } from "@/lib/content";
+import { useAuth } from "@/hooks/use-auth";
 
 /* ═══════════════ SLIDE DATA ═══════════════ */
 
@@ -29,6 +30,7 @@ const SLIDES = [
 const PresentationPage = () => {
   const [current, setCurrent] = useState(0);
   const navigate = useNavigate();
+  const { user } = useAuth();
   const total = SLIDES.length;
 
   const go = useCallback((dir: 1 | -1) => {
@@ -47,29 +49,41 @@ const PresentationPage = () => {
 
   const slideId = SLIDES[current].id;
 
+  const handleCTA = () => {
+    if (user) {
+      navigate("/app");
+    } else {
+      navigate("/auth");
+    }
+  };
+
   return (
     <div
       className="fixed inset-0 z-50 flex flex-col select-none"
-      style={{ background: "hsl(36 33% 97%)" }}
+      style={{ background: "#FAF5EF" }}
     >
       {/* Top bar */}
       <div className="flex items-center justify-between px-6 py-4" style={{
-        borderBottom: "1px solid hsl(36 45% 58% / 0.20)",
-        background: "hsl(38 28% 95% / 0.98)",
+        borderBottom: "1px solid #C8A66A40",
+        background: "#FAF5EF",
         backdropFilter: "blur(12px)",
       }}>
-        <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-[11px] font-heading tracking-[0.2em] uppercase font-bold transition-colors hover:text-gold-dark" style={{ color: "hsl(340 42% 28%)" }}>
+        <button 
+          onClick={() => navigate(-1)} 
+          className="flex items-center gap-1 text-[11px] font-heading tracking-[0.2em] uppercase font-bold transition-colors hover:text-[#C8A66A]" 
+          style={{ color: "#5B1F3D" }}
+        >
           <ChevronLeft className="w-3.5 h-3.5" />
           Voltar
         </button>
         <div className="flex items-center gap-2">
-          <Sparkles className="w-3 h-3 text-gold-dark opacity-60" />
-          <span className="text-[11px] font-heading tracking-[0.3em] uppercase font-bold" style={{ color: "hsl(340 42% 20%)" }}>
+          <Sparkles className="w-3 h-3" style={{ color: "#C8A66A" }} />
+          <span className="text-[11px] font-heading tracking-[0.3em] uppercase font-bold" style={{ color: "#5B1F3D" }}>
             A Jornada do Louco
           </span>
-          <Sparkles className="w-3 h-3 text-gold-dark opacity-60" />
+          <Sparkles className="w-3 h-3" style={{ color: "#C8A66A" }} />
         </div>
-        <span className="text-[11px] font-heading tracking-widest font-black tabular-nums" style={{ color: "hsl(340 42% 28% / 0.70)" }}>
+        <span className="text-[11px] font-heading tracking-widest font-black tabular-nums" style={{ color: "#5B1F3D" }}>
           {current + 1} / {total}
         </span>
       </div>
@@ -90,7 +104,7 @@ const PresentationPage = () => {
             {slideId === "journey" && <SlideJourney />}
             {slideId === "plans" && <SlidePlans />}
             {slideId === "value" && <SlideValue />}
-            {slideId === "cta" && <SlideCTA onStart={() => navigate("/auth")} />}
+            {slideId === "cta" && <SlideCTA onStart={handleCTA} />}
           </div>
         </div>
 
@@ -100,13 +114,13 @@ const PresentationPage = () => {
             onClick={() => go(-1)}
             className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 active:scale-95 z-20"
             style={{ 
-              background: "hsl(38 28% 95% / 0.90)", 
-              border: "1.5px solid hsl(36 45% 58% / 0.30)",
-              boxShadow: "0 4px 12px hsl(340 42% 28% / 0.10)"
+              background: "#FAF5EF", 
+              border: "1.5px solid #C8A66A40",
+              boxShadow: "0 4px 12px rgba(91, 31, 61, 0.10)"
             }}
             aria-label="Slide anterior"
           >
-            <ChevronLeft className="w-6 h-6" style={{ color: "hsl(340 42% 28%)" }} />
+            <ChevronLeft className="w-6 h-6" style={{ color: "#5B1F3D" }} />
           </button>
         )}
         {current < total - 1 && (
@@ -114,21 +128,21 @@ const PresentationPage = () => {
             onClick={() => go(1)}
             className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 active:scale-95 z-20"
             style={{ 
-              background: "hsl(38 28% 95% / 0.90)", 
-              border: "1.5px solid hsl(36 45% 58% / 0.30)",
-              boxShadow: "0 4px 12px hsl(340 42% 28% / 0.10)"
+              background: "#FAF5EF", 
+              border: "1.5px solid #C8A66A40",
+              boxShadow: "0 4px 12px rgba(91, 31, 61, 0.10)"
             }}
             aria-label="Próximo slide"
           >
-            <ChevronRight className="w-6 h-6" style={{ color: "hsl(340 42% 28%)" }} />
+            <ChevronRight className="w-6 h-6" style={{ color: "#5B1F3D" }} />
           </button>
         )}
       </div>
 
       {/* Progress dots */}
       <div className="flex items-center justify-center gap-2 py-4 md:py-6" style={{
-        borderTop: "1px solid hsl(36 45% 58% / 0.15)",
-        background: "hsl(38 28% 95% / 0.50)"
+        borderTop: "1px solid #C8A66A30",
+        background: "rgba(250, 245, 239, 0.5)"
       }}>
         {SLIDES.map((_, i) => (
           <button
@@ -139,11 +153,11 @@ const PresentationPage = () => {
               width: i === current ? 24 : 7,
               height: 7,
               background: i === current
-                ? "hsl(340 42% 28%)"
+                ? "#5B1F3D"
                 : i < current
-                ? "hsl(36 45% 58% / 0.70)"
-                : "hsl(36 25% 82% / 0.90)",
-              border: i === current ? "none" : "1px solid hsl(340 42% 28% / 0.10)"
+                ? "#C8A66A80"
+                : "#DCCFC2",
+              border: i === current ? "none" : "1px solid rgba(91, 31, 61, 0.10)"
             }}
             aria-label={`Ir para slide ${i + 1}`}
           />
@@ -158,19 +172,15 @@ const PresentationPage = () => {
 const SlideTitle = ({ kicker, title, subtitle }: { kicker?: string; title: string; subtitle?: string }) => (
   <div className="text-center mb-8">
     {kicker && (
-      <p className="text-[9px] font-heading tracking-[0.5em] uppercase mb-3" style={{ color: "hsl(36 45% 50%)" }}>
+      <p className="text-[9px] font-heading tracking-[0.5em] uppercase mb-3" style={{ color: "#C8A66A" }}>
         {kicker}
       </p>
     )}
-    <h2 className="font-heading text-2xl md:text-4xl tracking-wide leading-tight" style={{
-      background: "linear-gradient(135deg, hsl(340 42% 20%), hsl(36 35% 28%), hsl(36 42% 42%))",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-    }}>
+    <h2 className="font-heading text-2xl md:text-4xl tracking-wide leading-tight" style={{ color: "#5B1F3D" }}>
       {title}
     </h2>
     {subtitle && (
-      <p className="font-accent text-sm md:text-base italic mt-3 max-w-lg mx-auto leading-relaxed" style={{ color: "hsl(230 20% 15% / 0.50)" }}>
+      <p className="font-body text-sm md:text-base italic mt-3 max-w-lg mx-auto leading-relaxed" style={{ color: "#5B1F3D", opacity: 0.7 }}>
         {subtitle}
       </p>
     )}
@@ -180,30 +190,26 @@ const SlideTitle = ({ kicker, title, subtitle }: { kicker?: string; title: strin
 const SlideCover = () => (
   <div className="text-center space-y-6">
     <div className="flex items-center justify-center gap-3 mb-2">
-      <div className="w-16 h-px" style={{ background: "linear-gradient(to right, transparent, hsl(36 45% 58% / 0.40))" }} />
-      <span className="text-lg" style={{ color: "hsl(36 45% 58% / 0.40)" }}>✦</span>
-      <div className="w-16 h-px" style={{ background: "linear-gradient(to left, transparent, hsl(36 45% 58% / 0.40))" }} />
+      <div className="w-16 h-px" style={{ background: "linear-gradient(to right, transparent, #C8A66A80)" }} />
+      <span className="text-lg" style={{ color: "#C8A66A" }}>✦</span>
+      <div className="w-16 h-px" style={{ background: "linear-gradient(to left, transparent, #C8A66A80)" }} />
     </div>
-    <h1 className="font-heading text-4xl md:text-6xl tracking-wide leading-tight" style={{
-      background: "linear-gradient(135deg, hsl(340 42% 18%), hsl(230 25% 12%), hsl(36 42% 38%))",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-    }}>
+    <h1 className="font-heading text-4xl md:text-6xl tracking-wide leading-tight" style={{ color: "#5B1F3D" }}>
       Tarô 78 Chaves
     </h1>
-    <p className="font-accent text-lg md:text-xl italic leading-relaxed max-w-md mx-auto" style={{ color: "hsl(230 20% 15% / 0.50)" }}>
+    <p className="font-body text-lg md:text-xl italic leading-relaxed max-w-md mx-auto" style={{ color: "#5B1F3D", opacity: 0.7 }}>
       Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, XP e progresso real.
     </p>
     <div className="flex items-center justify-center gap-8 pt-4">
       {[
         { v: "78", l: "Arcanos" },
-        { v: "10", l: "Módulos" },
+        { v: "16", l: "Módulos" },
         { v: "5", l: "Camadas" },
         { v: "RWS", l: "Tradição" },
       ].map(s => (
         <div key={s.l} className="text-center">
-          <div className="font-heading text-xl md:text-2xl" style={{ color: "hsl(340 42% 22%)" }}>{s.v}</div>
-          <div className="text-[10px] tracking-[0.3em] uppercase font-heading mt-1 font-black" style={{ color: "hsl(340 42% 28% / 0.80)" }}>{s.l}</div>
+          <div className="font-heading text-xl md:text-2xl" style={{ color: "#5B1F3D" }}>{s.v}</div>
+          <div className="text-[10px] tracking-[0.3em] uppercase font-heading mt-1 font-black" style={{ color: "#5B1F3D", opacity: 0.9 }}>{s.l}</div>
         </div>
       ))}
     </div>
@@ -227,11 +233,11 @@ const SlideProblem = () => (
         "Nenhuma plataforma une profundidade, beleza e método em um só lugar",
       ].map((item, i) => (
         <div key={i} className="flex items-start gap-2.5 px-4 py-3 rounded-xl" style={{
-          background: "hsl(340 42% 28% / 0.04)",
-          border: "1px solid hsl(340 42% 28% / 0.10)",
+          background: "rgba(91, 31, 61, 0.04)",
+          border: "1px solid rgba(91, 31, 61, 0.10)",
         }}>
-          <X className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: "hsl(340 42% 35% / 0.50)" }} />
-          <span className="text-[12px] font-body leading-relaxed" style={{ color: "hsl(230 15% 25% / 0.60)" }}>{item}</span>
+          <X className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: "#5B1F3D", opacity: 0.5 }} />
+          <span className="text-[12px] font-body leading-relaxed" style={{ color: "#5B1F3D", opacity: 0.85 }}>{item}</span>
         </div>
       ))}
     </div>
@@ -254,17 +260,17 @@ const SlideSolution = () => (
         const Icon = item.icon;
         return (
           <div key={i} className="text-center p-5 rounded-xl" style={{
-            background: "hsl(38 28% 95% / 0.80)",
-            border: "1px solid hsl(36 25% 82% / 0.60)",
+            background: "#FAF5EF",
+            border: "1px solid #DCCFC2",
           }}>
             <div className="w-11 h-11 rounded-xl mx-auto mb-3 flex items-center justify-center" style={{
-              background: "hsl(340 42% 28% / 0.06)",
-              border: "1px solid hsl(340 42% 28% / 0.12)",
+              background: "rgba(91, 31, 61, 0.06)",
+              border: "1px solid rgba(91, 31, 61, 0.12)",
             }}>
-              <Icon className="w-5 h-5" style={{ color: "hsl(340 42% 26%)" }} />
+              <Icon className="w-5 h-5" style={{ color: "#5B1F3D" }} />
             </div>
-            <h3 className="font-heading text-sm tracking-wide mb-1" style={{ color: "hsl(340 42% 20%)" }}>{item.title}</h3>
-            <p className="text-[11px] font-body leading-relaxed" style={{ color: "hsl(230 15% 25% / 0.50)" }}>{item.desc}</p>
+            <h3 className="font-heading text-sm tracking-wide mb-1" style={{ color: "#5B1F3D" }}>{item.title}</h3>
+            <p className="text-[11px] font-body leading-relaxed" style={{ color: "#5B1F3D", opacity: 0.85 }}>{item.desc}</p>
           </div>
         );
       })}
@@ -281,25 +287,25 @@ const SlideMethod = () => (
     />
     <div className="space-y-2 max-w-md mx-auto">
       {[
-        { n: "01", label: "Essência", desc: "O coração vivo da carta — significado central, palavras-chave, arquétipo", color: "hsl(36 45% 50%)" },
-        { n: "02", label: "Luz & Sombra", desc: "Forças e desafios que cada arcano encarna — o que ativa e o que bloqueia", color: "hsl(340 42% 30%)" },
-        { n: "03", label: "Simbolismo", desc: "Cada detalhe da imagem tem propósito — cores, objetos, posturas, paisagens", color: "hsl(280 30% 35%)" },
-        { n: "04", label: "Aplicações", desc: "Amor, trabalho, saúde, espiritualidade — a carta na vida real", color: "hsl(210 35% 40%)" },
-        { n: "05", label: "Quiz & Prática", desc: "Exercícios e quizzes que integram o aprendizado no corpo e na mente", color: "hsl(140 35% 40%)" },
+        { n: "01", label: "Essência", desc: "O coração vivo da carta — significado central, palavras-chave, arquétipo", color: "#C8A66A" },
+        { n: "02", label: "Luz & Sombra", desc: "Forças e desafios que cada arcano encarna — o que ativa e o que bloqueia", color: "#5B1F3D" },
+        { n: "03", label: "Simbolismo", desc: "Cada detalhe da imagem tem propósito — cores, objetos, posturas, paisagens", color: "#3D1429" },
+        { n: "04", label: "Aplicações", desc: "Amor, trabalho, saúde, espiritualidade — a carta na vida real", color: "#1A1A1A" },
+        { n: "05", label: "Quiz & Prática", desc: "Exercícios e quizzes que integram o aprendizado no corpo e na mente", color: "#2F4F4F" },
       ].map((item, i) => (
         <div key={i} className="flex items-center gap-4 px-4 py-3 rounded-xl" style={{
-          background: "hsl(38 28% 95% / 0.70)",
-          border: "1px solid hsl(36 25% 82% / 0.50)",
+          background: "rgba(250, 245, 239, 0.7)",
+          border: "1px solid #DCCFC2",
         }}>
           <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style={{
-            background: `${item.color}10`,
-            border: `1.5px solid ${item.color}30`,
+            background: `${item.color}20`,
+            border: `1.5px solid ${item.color}`,
           }}>
-            <span className="font-heading text-[10px] tracking-wider" style={{ color: item.color }}>{item.n}</span>
+            <span className="font-heading text-[10px] tracking-wider" style={{ color: item.color, fontWeight: "bold" }}>{item.n}</span>
           </div>
           <div>
-            <h3 className="font-heading text-xs tracking-wide" style={{ color: "hsl(230 25% 12%)" }}>{item.label}</h3>
-            <p className="text-[10px] font-body leading-relaxed" style={{ color: "hsl(230 15% 25% / 0.50)" }}>{item.desc}</p>
+            <h3 className="font-heading text-xs tracking-wide" style={{ color: "#5B1F3D" }}>{item.label}</h3>
+            <p className="text-[10px] font-body leading-relaxed" style={{ color: "#5B1F3D", opacity: 0.85 }}>{item.desc}</p>
           </div>
         </div>
       ))}
@@ -323,18 +329,18 @@ const SlideDifferentials = () => (
         const Icon = item.icon;
         return (
           <div key={i} className="flex items-start gap-3 p-4 rounded-xl" style={{
-            background: "hsl(38 28% 95% / 0.80)",
-            border: "1px solid hsl(36 25% 82% / 0.50)",
+            background: "rgba(250, 245, 239, 0.8)",
+            border: "1px solid #DCCFC2",
           }}>
             <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style={{
-              background: "hsl(340 42% 28% / 0.06)",
-              border: "1px solid hsl(340 42% 28% / 0.12)",
+              background: "rgba(91, 31, 61, 0.06)",
+              border: "1px solid rgba(91, 31, 61, 0.12)",
             }}>
-              <Icon className="w-4 h-4" style={{ color: "hsl(340 42% 26%)" }} />
+              <Icon className="w-4 h-4" style={{ color: "#5B1F3D" }} />
             </div>
             <div>
-              <h3 className="font-heading text-[13px] tracking-wide" style={{ color: "hsl(340 42% 20%)" }}>{item.title}</h3>
-              <p className="text-[11px] font-body leading-relaxed mt-0.5" style={{ color: "hsl(230 15% 25% / 0.50)" }}>{item.desc}</p>
+              <h3 className="font-heading text-[13px] tracking-wide" style={{ color: "#5B1F3D" }}>{item.title}</h3>
+              <p className="text-[11px] font-body leading-relaxed mt-0.5" style={{ color: "#5B1F3D", opacity: 0.85 }}>{item.desc}</p>
             </div>
           </div>
         );
@@ -366,11 +372,11 @@ const SlideInside = () => (
         "Painel de progresso",
       ].map((item, i) => (
         <div key={i} className="flex items-center gap-2 px-3 py-2.5 rounded-lg" style={{
-          background: "hsl(38 28% 95% / 0.70)",
-          border: "1px solid hsl(36 25% 82% / 0.50)",
+          background: "rgba(250, 245, 239, 0.7)",
+          border: "1px solid #DCCFC2",
         }}>
-          <Check className="w-3 h-3 shrink-0" style={{ color: "hsl(140 35% 45%)" }} />
-          <span className="text-[11px] font-body" style={{ color: "hsl(230 15% 25% / 0.60)" }}>{item}</span>
+          <Check className="w-3 h-3 shrink-0" style={{ color: "#14532D" }} />
+          <span className="text-[11px] font-body" style={{ color: "#5B1F3D", fontWeight: "600" }}>{item}</span>
         </div>
       ))}
     </div>
@@ -381,30 +387,30 @@ const SlideModules = () => (
   <div>
     <SlideTitle
       kicker="Conteúdo"
-      title="10 módulos de formação"
+      title="Módulos progressivos de formação"
       subtitle="Do fundamento à prática — cada módulo constrói sobre o anterior."
     />
     <div className="grid md:grid-cols-2 gap-2 max-w-2xl mx-auto">
       {[
         { n: "01", name: "Fundamentos do Tarô", desc: "História, estrutura e princípios" },
-        { n: "02", name: "Arcanos Maiores", desc: "22 portais de sabedoria" },
-        { n: "03", name: "Copas", desc: "Emoções, relacionamentos, intuição" },
-        { n: "04", name: "Ouros", desc: "Matéria, trabalho, corpo" },
-        { n: "05", name: "Espadas", desc: "Mente, conflito, verdade" },
-        { n: "06", name: "Paus", desc: "Ação, criatividade, vontade" },
-        { n: "07", name: "Combinações", desc: "A arte da leitura cruzada" },
-        { n: "08", name: "Tiragens", desc: "Métodos clássicos e intuitivos" },
-        { n: "09", name: "Tarô e Amor", desc: "Leituras do coração" },
-        { n: "10", name: "Prática Guiada", desc: "Interpretação com feedback" },
+        { n: "02", name: "Leitura Simbólica", desc: "O olhar que revela a carta" },
+        { n: "03", name: "Arcanos Maiores", desc: "Os 22 arquétipos universais" },
+        { n: "04", name: "Arquitetura dos Menores", desc: "Os 4 naipes e a lógica numérica" },
+        { n: "05", name: "Naipes Completos", desc: "Copas, Paus, Espadas e Ouros" },
+        { n: "06", name: "Cartas da Corte", desc: "Pessoas, posturas e estágios" },
+        { n: "07", name: "Combinações", desc: "A arte da síntese e leitura cruzada" },
+        { n: "08", name: "Tiragens Profundas", desc: "Métodos clássicos e intuitivos" },
+        { n: "09", name: "Leitura Aplicada", desc: "Amor, trabalho e espiritualidade" },
+        { n: "10", name: "Prática Profissional", desc: "Ética e condução de consultas" },
       ].map((mod, i) => (
         <div key={i} className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl" style={{
-          background: "hsl(38 28% 95% / 0.70)",
-          border: "1px solid hsl(36 25% 82% / 0.50)",
+          background: "rgba(250, 245, 239, 0.7)",
+          border: "1px solid #DCCFC2",
         }}>
-          <span className="font-heading text-[10px] tracking-wider w-6 shrink-0" style={{ color: "hsl(36 45% 50%)" }}>{mod.n}</span>
+          <span className="font-heading text-[10px] tracking-wider w-6 shrink-0" style={{ color: "#C8A66A", fontWeight: "bold" }}>{mod.n}</span>
           <div>
-            <h3 className="font-heading text-[12px] tracking-wide" style={{ color: "hsl(230 25% 12%)" }}>{mod.name}</h3>
-            <p className="text-[10px] font-accent italic" style={{ color: "hsl(230 15% 25% / 0.40)" }}>{mod.desc}</p>
+            <h3 className="font-heading text-[12px] tracking-wide" style={{ color: "#5B1F3D" }}>{mod.name}</h3>
+            <p className="text-[10px] font-body italic" style={{ color: "#5B1F3D", opacity: 0.6 }}>{mod.desc}</p>
           </div>
         </div>
       ))}
@@ -439,7 +445,7 @@ const SlideJourney = () => (
         />
       ))}
     </div>
-    <p className="text-center text-[10px] font-accent italic mt-4" style={{ color: "hsl(230 15% 40% / 0.40)" }}>
+    <p className="text-center text-[10px] font-body italic mt-4" style={{ color: "#5B1F3D", opacity: 0.7 }}>
       Cada carta com 5 camadas de significado · Três leituras · Quiz e prática
     </p>
   </div>
@@ -455,40 +461,50 @@ const SlidePlans = () => (
     <div className="grid md:grid-cols-2 gap-4 max-w-xl mx-auto">
       {/* Free */}
       <div className="rounded-xl p-5 space-y-3" style={{
-        background: "hsl(38 28% 95% / 0.80)",
-        border: "1px solid hsl(36 25% 82% / 0.60)",
+        background: "rgba(250, 245, 239, 0.8)",
+        border: "1px solid #DCCFC2",
       }}>
-        <div className="text-center pb-2" style={{ borderBottom: "1px solid hsl(36 25% 82% / 0.40)" }}>
-          <p className="text-[10px] font-heading tracking-[0.3em] uppercase" style={{ color: "hsl(230 15% 40% / 0.50)" }}>Gratuito</p>
-          <p className="font-heading text-xl mt-1" style={{ color: "hsl(230 25% 15%)" }}>R$ 0</p>
+        <div className="text-center pb-2" style={{ borderBottom: "1px solid rgba(220, 207, 194, 0.4)" }}>
+          <p className="text-[10px] font-heading tracking-[0.3em] uppercase" style={{ color: "#5B1F3D", opacity: 0.6 }}>Acesso Básico</p>
+          <p className="font-heading text-xl mt-1" style={{ color: "#5B1F3D" }}>Gratuito</p>
         </div>
         {["Onboarding iniciático", "Fundamentos do Tarô", "O Louco completo", "Desafios diários", "Quizzes e XP"].map((f, i) => (
           <div key={i} className="flex items-center gap-2">
-            <Check className="w-3 h-3 shrink-0" style={{ color: "hsl(140 35% 45%)" }} />
-            <span className="text-[11px] font-body" style={{ color: "hsl(230 15% 25% / 0.55)" }}>{f}</span>
+            <Check className="w-3 h-3 shrink-0" style={{ color: "#14532D" }} />
+            <span className="text-[11px] font-body" style={{ color: "#5B1F3D", opacity: 0.85 }}>{f}</span>
           </div>
         ))}
       </div>
       {/* Premium */}
       <div className="rounded-xl p-5 space-y-3 relative" style={{
-        background: "linear-gradient(170deg, hsl(38 28% 95%), hsl(340 42% 28% / 0.03))",
-        border: "1.5px solid hsl(36 45% 58% / 0.30)",
-        boxShadow: "0 6px 30px hsl(340 42% 28% / 0.05)",
+        background: "linear-gradient(170deg, #FAF5EF, rgba(91, 31, 61, 0.03))",
+        border: "1.5px solid #C8A66A",
+        boxShadow: "0 6px 30px rgba(91, 31, 61, 0.05)",
       }}>
         <div className="absolute -top-2.5 left-1/2 -translate-x-1/2">
           <span className="text-[8px] font-heading tracking-[0.2em] uppercase px-2.5 py-0.5 rounded-full" style={{
-            background: "linear-gradient(135deg, hsl(340 42% 26%), hsl(340 42% 32%))",
-            color: "hsl(36 33% 97%)",
-          }}>✦ Completo</span>
+            background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+            color: "#FAF5EF",
+          }}>✦ Premium</span>
         </div>
-        <div className="text-center pb-2" style={{ borderBottom: "1px solid hsl(36 45% 58% / 0.18)" }}>
-          <p className="text-[10px] font-heading tracking-[0.3em] uppercase" style={{ color: "hsl(340 42% 28%)" }}>Jornada Completa</p>
-          <p className="font-heading text-xl mt-1" style={{ color: "hsl(340 42% 20%)" }}>R$ 197</p>
+        <div className="text-center pb-2" style={{ borderBottom: "1px solid rgba(200, 166, 106, 0.18)" }}>
+          <p className="text-[10px] font-heading tracking-[0.3em] uppercase" style={{ color: "#5B1F3D" }}>Jornada Completa</p>
+          <div className="flex items-center justify-center gap-2 mt-1">
+             <div className="text-center">
+               <p className="text-[9px] uppercase font-bold text-[#C8A66A]">Mensal</p>
+               <p className="font-heading text-lg" style={{ color: "#5B1F3D" }}>R$ 29,90</p>
+             </div>
+             <div className="w-px h-6 bg-[#C8A66A40]" />
+             <div className="text-center">
+               <p className="text-[9px] uppercase font-bold text-[#C8A66A]">Anual</p>
+               <p className="font-heading text-lg" style={{ color: "#5B1F3D" }}>R$ 197</p>
+             </div>
+          </div>
         </div>
-        {["78 arcanos em profundidade", "10 módulos completos", "Certificados", "Tiragens e Combinações", "Tarô e Amor"].map((f, i) => (
+        {["78 arcanos guiados", "Todos os módulos liberados", "Certificados de conclusão", "Tiragens e Combinações", "Mesa de Tarô e Ética"].map((f, i) => (
           <div key={i} className="flex items-center gap-2">
-            <Sparkles className="w-3 h-3 shrink-0" style={{ color: "hsl(36 45% 50%)" }} />
-            <span className="text-[11px] font-body" style={{ color: "hsl(230 15% 25% / 0.60)" }}>{f}</span>
+            <Sparkles className="w-3 h-3 shrink-0" style={{ color: "#C8A66A" }} />
+            <span className="text-[11px] font-body" style={{ color: "#5B1F3D", fontWeight: "600" }}>{f}</span>
           </div>
         ))}
       </div>
@@ -498,12 +514,12 @@ const SlidePlans = () => (
 
 const SlideValue = () => (
   <div className="text-center space-y-6">
-    <span className="text-2xl block" style={{ color: "hsl(36 45% 58% / 0.30)" }}>✦</span>
-    <blockquote className="font-accent text-xl md:text-2xl italic leading-relaxed max-w-lg mx-auto" style={{ color: "hsl(340 42% 20%)" }}>
+    <span className="text-2xl block" style={{ color: "#C8A66A40" }}>✦</span>
+    <blockquote className="font-body text-xl md:text-2xl italic leading-relaxed max-w-lg mx-auto" style={{ color: "#5B1F3D", fontWeight: "600" }}>
       "As cartas não preveem o futuro — elas iluminam o que já existe dentro de você."
     </blockquote>
-    <div className="w-12 h-px mx-auto" style={{ background: "hsl(36 45% 58% / 0.30)" }} />
-    <p className="font-body text-sm leading-relaxed max-w-md mx-auto" style={{ color: "hsl(230 15% 30% / 0.50)" }}>
+    <div className="w-12 h-px mx-auto" style={{ background: "#C8A66A40" }} />
+    <p className="font-body text-sm leading-relaxed max-w-md mx-auto" style={{ color: "#5B1F3D", opacity: 0.85 }}>
       A Jornada do Louco não é mais um curso. É uma formação que une tradição milenar, pedagogia estruturada e uma experiência visual que faz jus à profundidade do que ensina. Cada detalhe foi pensado para que o estudo seja tão transformador quanto o próprio tarô.
     </p>
   </div>
@@ -511,32 +527,28 @@ const SlideValue = () => (
 
 const SlideCTA = ({ onStart }: { onStart: () => void }) => (
   <div className="text-center space-y-6">
-    <span className="text-xl block" style={{ color: "hsl(36 45% 58% / 0.25)" }}>✧</span>
-    <h2 className="font-heading text-3xl md:text-4xl tracking-wide" style={{
-      background: "linear-gradient(135deg, hsl(340 42% 18%), hsl(230 25% 12%), hsl(36 42% 38%))",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-    }}>
+    <span className="text-xl block" style={{ color: "#C8A66A30" }}>✧</span>
+    <h2 className="font-heading text-3xl md:text-4xl tracking-wide" style={{ color: "#5B1F3D" }}>
       Sua jornada começa agora
     </h2>
-    <p className="font-accent text-base italic leading-relaxed max-w-sm mx-auto" style={{ color: "hsl(230 20% 15% / 0.50)" }}>
+    <p className="font-body text-base italic leading-relaxed max-w-sm mx-auto" style={{ color: "#5B1F3D", opacity: 0.75 }}>
       O Louco salta sem saber o destino — mas confiando na jornada. Você não precisa saber tudo. Só precisa começar.
     </p>
     <button
       onClick={onStart}
       className="inline-flex items-center gap-2 px-10 py-4 rounded-xl font-heading text-sm tracking-wide transition-all hover:scale-105"
       style={{
-        background: "linear-gradient(135deg, hsl(340 42% 26%), hsl(340 42% 32%))",
-        color: "hsl(36 33% 97%)",
-        boxShadow: "0 6px 24px hsl(340 42% 28% / 0.18)",
+        background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+        color: "#FAF5EF",
+        boxShadow: "0 6px 24px rgba(91, 31, 61, 0.18)",
       }}
     >
       <Sparkles className="w-4 h-4" />
       Iniciar Minha Jornada
       <ArrowRight className="w-4 h-4" />
     </button>
-    <p className="text-[10px] font-body" style={{ color: "hsl(230 15% 30% / 0.35)" }}>
-      Comece gratuitamente · Sem compromisso · No seu ritmo
+    <p className="text-[10px] font-body" style={{ color: "#5B1F3D", opacity: 0.8 }}>
+      Comece gratuitamente · No seu ritmo · Sem renovação automática no anual
     </p>
   </div>
 );
