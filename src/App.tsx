@@ -182,13 +182,39 @@ const AppRoutes = () => {
         <Route path="/excluir-conta" element={<DeleteAccountPage />} />
 
         {/* ═══ App routes (with BottomNav + Beta overlays) ═══ */}
+        <Route path="/app/*" element={<AppShell />} />
+        <Route path="/trilhas/*" element={<AppShell />} />
+        <Route path="/module/*" element={<AppShell />} />
+        <Route path="/fundamentos/*" element={<AppShell />} />
+        <Route path="/lesson/*" element={<AppShell />} />
+        <Route path="/jornada-do-louco/*" element={<AppShell />} />
+        <Route path="/naipe/*" element={<AppShell />} />
+        <Route path="/cartas-corte/*" element={<AppShell />} />
+        <Route path="/numerologia/*" element={<AppShell />} />
+        <Route path="/arcano-menor/*" element={<AppShell />} />
+        <Route path="/combinacoes/*" element={<AppShell />} />
+        <Route path="/tiragens/*" element={<AppShell />} />
+        <Route path="/amor/*" element={<AppShell />} />
+        <Route path="/pratica/*" element={<AppShell />} />
+        <Route path="/leitura-simbolica/*" element={<AppShell />} />
+        <Route path="/arquitetura-menores/*" element={<AppShell />} />
+        <Route path="/revisao/*" element={<AppShell />} />
+        <Route path="/desafios/*" element={<AppShell />} />
+        <Route path="/certificados/*" element={<AppShell />} />
+        <Route path="/biblioteca/*" element={<AppShell />} />
+        <Route path="/rotina/*" element={<AppShell />} />
+        <Route path="/premium/*" element={<AppShell />} />
+        <Route path="/perfil/*" element={<AppShell />} />
+        <Route path="/minha-jornada/*" element={<AppShell />} />
+        <Route path="/feedback/*" element={<AppShell />} />
+        <Route path="/admin/*" element={<AppShell />} />
+
+        {/* Catch-all and dynamic redirects */}
         <Route path="/:order" element={<Navigate to="/app" replace />} />
         <Route path="/:id" element={<Navigate to="/app" replace />} />
-        <Route path="/:slug" element={<Navigate to="/app" replace />} />
         <Route path="/undefined" element={<Navigate to="/app" replace />} />
         <Route path="/null" element={<Navigate to="/app" replace />} />
         <Route path="/NaN" element={<Navigate to="/app" replace />} />
-        <Route path="/*" element={<AppShell />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
