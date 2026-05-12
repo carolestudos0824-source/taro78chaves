@@ -121,11 +121,7 @@ export function useProgress() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const marker = document.getElementById("boot-marker");
-    if (marker) {
-      marker.innerText = `PROGRESS HOOK - USER: ${user ? 'YES' : 'NO'}`;
-      console.log("useProgress hook execution - user:", user?.id);
-    }
+    console.log("useProgress hook execution - user:", user?.id);
   }, [user]);
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastSavedCoreRef = useRef<string>("");

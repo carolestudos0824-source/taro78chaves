@@ -10,10 +10,8 @@ if (!rootElement) {
   throw new Error("Failed to find the root element");
 }
 
+// Boot markers removed for final render
 const marker = document.getElementById("boot-marker");
-if (marker) {
-  marker.innerText = "MAIN.TSX START - RENDERING...";
-}
 
 try {
   console.log("Creating React root...");

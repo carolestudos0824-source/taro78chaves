@@ -23,11 +23,7 @@ const AuthPage = () => {
   const { signIn, signUp } = useAuth();
 
   useEffect(() => {
-    const marker = document.getElementById("boot-marker");
-    if (marker) {
-      marker.innerText = "AUTH PAGE RENDERED - READY";
-      console.log("AuthPage mounted");
-    }
+    console.log("AuthPage mounted");
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
