@@ -199,10 +199,10 @@ export const DECK_REGISTRY: readonly DeckEntry[] = [
     canonicalSymbols: ["duas esfinges (preta e branca)", "dossel estrelado", "armadura com luas nos ombros", "cidade ao fundo", "lemniscata"],
   },
   {
-    number: 8, numeral: "VIII", name: "A Justiça", slug: "a-justica",
-    subtitle: "O Equilíbrio Kármico",
-    cardImage: justicaImage, assetStatus: "official",
-    canonicalSymbols: ["espada erguida", "balança", "coroa com pedra azul", "manto vermelho", "véu entre colunas"],
+    number: 8, numeral: "VIII", name: "A Força", slug: "a-forca",
+    subtitle: "A Coragem Suave",
+    cardImage: forcaImage, assetStatus: "official",
+    canonicalSymbols: ["mulher acariciando leão", "lemniscata sobre a cabeça", "guirlanda de flores", "vestido branco", "montanha ao fundo"],
   },
   {
     number: 9, numeral: "IX", name: "O Eremita", slug: "o-eremita",
@@ -217,10 +217,10 @@ export const DECK_REGISTRY: readonly DeckEntry[] = [
     canonicalSymbols: ["roda com letras TARO/YHVH", "esfinge no topo", "serpente descendo", "Anúbis subindo", "quatro criaturas aladas nos cantos"],
   },
   {
-    number: 11, numeral: "XI", name: "A Força", slug: "a-forca",
-    subtitle: "A Coragem Suave",
-    cardImage: forcaImage, assetStatus: "official",
-    canonicalSymbols: ["mulher acariciando leão", "lemniscata sobre a cabeça", "guirlanda de flores", "vestido branco", "montanha ao fundo"],
+    number: 11, numeral: "XI", name: "A Justiça", slug: "a-justica",
+    subtitle: "O Equilíbrio Kármico",
+    cardImage: justicaImage, assetStatus: "official",
+    canonicalSymbols: ["espada erguida", "balança", "coroa com pedra azul", "manto vermelho", "véu entre colunas"],
   },
   {
     number: 12, numeral: "XII", name: "O Enforcado", slug: "o-enforcado",
