@@ -359,8 +359,8 @@ const ModulesPage = () => {
                              <p className={`text-[14px] md:text-[16px] font-body line-clamp-1 leading-relaxed ${
                               unlocked ? "text-[#5B1F3D]/85 font-bold" : "text-[#5B1F3D]/60 font-bold italic"
                             }`}>
-                              {mod.id === "arcanos-maiores" && progress.completedLessons.length === 0 
-                                ? "Abra o primeiro portal do Louco." 
+                              {mod.id === "arcanos-maiores"
+                                ? "O Mapa da Jornada do Louco." 
                                 : mod.id === "fundamentos" ? "As chaves iniciais do seu templo." : mod.subtitle}
                             </p>
                             
