@@ -159,6 +159,7 @@ const AppRoutes = () => {
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/privacidade" element={<PrivacyPage />} />
         <Route path="/termos" element={<TermsPage />} />
+        <Route path="/apresentacao" element={<PresentationPage />} />
 
         {/* ═══ App Shell Routes (Layout Wrapper) ═══ */}
         <Route element={<AppShell />}>
