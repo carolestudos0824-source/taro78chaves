@@ -425,7 +425,7 @@ const SlideJourney = () => (
       title="Do Louco ao Mundo"
       subtitle="Você percorre os 22 Arcanos Maiores como etapas de uma transformação interior."
     />
-    <div className="grid grid-cols-6 md:grid-cols-11 gap-1.5 md:gap-2 max-w-3xl mx-auto overflow-y-auto max-h-[45vh] md:max-h-none py-2 px-1">
+    <div className="grid grid-cols-5 md:grid-cols-11 gap-1.5 md:gap-2 max-w-4xl mx-auto overflow-y-auto max-h-[50vh] md:max-h-none py-2 px-1 scrollbar-hide">
       {[
         "O Louco", "O Mago", "A Sacerdotisa", "A Imperatriz", "O Imperador",
         "O Hierofante", "Os Enamorados", "O Carro", "A Força", "O Eremita",
@@ -439,11 +439,11 @@ const SlideJourney = () => (
             cardName={name}
             arcanoId={i}
             arcanoSlug={name.toLowerCase().replace(/ /g, "-")}
-            state={i === 0 ? "available" : "locked"}
-            variant="portal"
-            className="w-full scale-100 md:scale-95"
+            state={i === 0 ? "available" : i === 8 || i === 11 || i === 21 ? "active" : "locked"}
+            variant="lesson"
+            className="w-full"
           />
-          <span className="text-[6px] md:text-[8px] font-heading font-black mt-1 text-[#5B1F3D60] uppercase tracking-tighter text-center leading-none">
+          <span className="text-[6px] md:text-[8px] font-heading font-black mt-1 text-[#5B1F3D80] uppercase tracking-tighter text-center leading-none">
             {i === 10 ? "Roda" : name.split(" ").pop()}
           </span>
         </div>
