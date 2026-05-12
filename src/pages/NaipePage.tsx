@@ -226,11 +226,11 @@ const NaipePage = () => {
         ))}
 
         {/* Study tools */}
-        <div className="grid grid-cols-3 gap-3 mb-8" style={{ animation: "fade-up 0.4s ease-out" }}>
+        <div className="grid grid-cols-3 gap-4 mb-12" style={{ animation: "fade-up 0.4s ease-out" }}>
           {[
-            { icon: <BookOpen className="w-4 h-4" />, label: "Introdução", desc: "Simbologia", onClick: () => navigate(`/naipe/${naipe}/intro`) },
-            { icon: <Hash className="w-4 h-4" />, label: "Números", desc: "Ás ao Dez", onClick: () => navigate("/numerologia") },
-            { icon: <Crown className="w-4 h-4" />, label: "Corte", desc: "Pajem ao Rei", onClick: () => navigate("/module/cartas-corte") },
+            { icon: <BookOpen className="w-5 h-5" />, label: "Introdução", desc: "Simbologia", onClick: () => navigate(`/naipe/${naipe}/intro`) },
+            { icon: <Hash className="w-5 h-5" />, label: "Números", desc: "Ás ao Dez", onClick: () => navigate("/numerologia") },
+            { icon: <Crown className="w-5 h-5" />, label: "Corte", desc: "Pajem ao Rei", onClick: () => navigate("/module/cartas-corte") },
           ].map((tool) => (
             <button
               key={tool.label}
