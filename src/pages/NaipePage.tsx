@@ -190,7 +190,7 @@ const NaipePage = () => {
             <StreakCounter streak={progress.streak} />
           </div>
 
-          <p className="font-accent text-[13px] italic leading-relaxed mb-6" style={{ color: "#5B1F3DBB" }}>
+          <p className="font-accent text-[15px] italic leading-relaxed mb-6 font-bold" style={{ color: "#5B1F3D" }}>
             "{NAIPE_PHRASES[naipe]}"
           </p>
 
