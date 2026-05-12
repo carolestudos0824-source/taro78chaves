@@ -203,7 +203,7 @@ const SlideCover = () => (
     <div className="flex items-center justify-center gap-8 pt-4">
       {[
         { v: "78", l: "Arcanos" },
-        { v: "16", l: "Módulos" },
+        { v: "TRILHAS", l: "Guiadas" },
         { v: "5", l: "Camadas" },
         { v: "RWS", l: "Tradição" },
       ].map(s => (
