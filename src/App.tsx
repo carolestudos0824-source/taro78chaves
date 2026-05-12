@@ -165,30 +165,31 @@ const AppRoutes = () => {
     <Suspense fallback={<LoadingFallback />}>
       <AnalyticsTracker />
       <Routes>
-        {/* Ordem crítica: rotas estáticas primeiro */}
+        {/* Ordem de prioridade: rotas estáticas primeiro */}
         <Route path="/app" element={<AppShell />} />
         
-        {/* ═══ Auth & public standalone ═══ */}
+        {/* Rotas secundárias do shell */}
+        <Route path="/perfil" element={<AppShell />} />
+        <Route path="/premium" element={<AppShell />} />
+        <Route path="/admin" element={<AppShell />} />
+        
+        {/* Auth & Public */}
         <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
-
-        {/* ═══ Public marketing pages ═══ */}
         <Route path="/" element={<LandingPage />} />
-        <Route path="/convite" element={<LandingPage />} />
-        <Route path="/apresentacao" element={<PresentationPage />} />
-
-        {/* ═══ Legal / compliance ═══ */}
+        
+        {/* Captura de sub-rotas */}
+        <Route path="/module/*" element={<AppShell />} />
+        <Route path="/lesson/*" element={<AppShell />} />
+        
+        {/* Legal */}
         <Route path="/privacidade" element={<PrivacyPage />} />
         <Route path="/termos" element={<TermsPage />} />
-        <Route path="/suporte" element={<SupportPage />} />
-        <Route path="/excluir-conta" element={<DeleteAccountPage />} />
 
-        {/* Shell para todas as outras rotas do app */}
+        {/* Fallback do Shell para qualquer rota /... */}
         <Route path="/*" element={<AppShell />} />
 
-        {/* Catch-all redirects */}
-        <Route path="/:order" element={<Navigate to="/app" replace />} />
-        <Route path="/:id" element={<Navigate to="/app" replace />} />
+        {/* Catch-all final */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
@@ -222,21 +223,14 @@ const AppRouteProbe = () => {
   }, []);
 
   return (
-    <div 
-      className="flex flex-col items-center justify-center bg-blue-700 text-white p-20 text-center"
-      style={{ 
-        minHeight: '80vh',
-        width: '100%',
-        zIndex: 99999,
-        position: 'relative'
-      }}
-    >
-      <h1 className="text-4xl font-bold mb-8">ROUTE APP ELEMENT ENTERED</h1>
-      <p className="text-xl opacity-80">ÁREA PRINCIPAL ATIVA</p>
-      <div className="mt-10 p-4 border-2 border-white/30 rounded font-mono text-sm">
-        Diagnosticando renderização da rota /app
+    <Suspense fallback={
+      <div className="flex-1 flex flex-col items-center justify-center bg-[#FAF5EF] space-y-4 min-h-[60vh]">
+        <div className="text-[10px] font-mono text-blue-600 animate-pulse">CARREGANDO JORNADA REAL...</div>
+        <LoadingFallback />
       </div>
-    </div>
+    }>
+      <LazyModulesPage />
+    </Suspense>
   );
 };
 
@@ -324,7 +318,7 @@ const AppShell = () => (
         <Route path="/feedback" element={<P><FeedbackPage /></P>} />
         <Route path="/admin" element={<P><AdminPage /></P>} />
 
-        <Route path="/:order" element={<Navigate to="/app" replace />} />
+        {/* Fallback do shell para lidar com URLs legadas ou malformadas */}
         <Route path="/:id" element={<Navigate to="/app" replace />} />
         <Route path="/:slug" element={<Navigate to="/app" replace />} />
         <Route path="/undefined" element={<Navigate to="/app" replace />} />
