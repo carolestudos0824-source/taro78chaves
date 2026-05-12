@@ -4,37 +4,28 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { FontSizeProvider } from "@/contexts/font-size-context";
 import { AuthProvider, useAuth } from "@/hooks/use-auth";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
-const AuthTestDisplay = () => {
-  const { session, loading } = useAuth();
-  const [timeoutActive, setTimeoutActive] = useState(false);
-
+const MarkerUpdater = ({ path }: { path: string }) => {
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (loading) {
-        setTimeoutActive(true);
-        const marker = document.getElementById("boot-marker");
-        if (marker) marker.innerText = "AUTH TIMEOUT - FALLBACK PUBLIC";
-      }
-    }, 5000);
-
     const marker = document.getElementById("boot-marker");
     if (marker) {
-      marker.innerText = "TEST C2: AUTH PROVIDER - RENDERING";
+      marker.innerText = `TEST C3: ROUTER MOCK - ${path}`;
     }
-    
-    return () => clearTimeout(timer);
-  }, [loading]);
+  }, [path]);
+  return null;
+};
 
+const FakePage = ({ title }: { title: string }) => {
+  const { session, loading } = useAuth();
+  const location = useLocation();
+  
   let authStatus = "LOADING";
   if (!loading) {
-    if (session) authStatus = "LOGGED";
-    else authStatus = "PUBLIC";
-  } else if (timeoutActive) {
-    authStatus = "TIMEOUT (FALLBACK PUBLIC)";
+    authStatus = session ? "LOGGED" : "PUBLIC";
   }
 
   return (
@@ -42,7 +33,7 @@ const AuthTestDisplay = () => {
       position: 'fixed',
       inset: 0,
       zIndex: 999997,
-      background: '#1a1f1a',
+      background: '#1a1f2e',
       color: '#f5d78e',
       display: 'flex',
       flexDirection: 'column',
@@ -53,7 +44,9 @@ const AuthTestDisplay = () => {
       textAlign: 'center',
       padding: '20px'
     }}>
-      <h1>TEST C2: AUTH PROVIDER OK</h1>
+      <MarkerUpdater path={location.pathname} />
+      <h1>TEST C3: ROUTER MOCK OK</h1>
+      <h2 style={{ fontSize: '20px', color: '#fff', marginTop: '10px' }}>PÁGINA: {title}</h2>
       <div style={{ 
         marginTop: '20px', 
         padding: '15px', 
@@ -62,7 +55,16 @@ const AuthTestDisplay = () => {
       }}>
         <p style={{ fontSize: '18px', fontWeight: 'bold' }}>AUTH STATUS: {authStatus}</p>
       </div>
-      <p style={{ fontSize: '16px', marginTop: '15px' }}>O AuthProvider foi reintroduzido para teste de conexão.</p>
+      
+      <nav style={{ marginTop: '30px', display: 'flex', gap: '20px' }}>
+        <Link to="/" style={{ color: '#f5d78e', fontSize: '16px' }}>Home (/)</Link>
+        <Link to="/app" style={{ color: '#f5d78e', fontSize: '16px' }}>App (/app)</Link>
+        <Link to="/apresentacao" style={{ color: '#f5d78e', fontSize: '16px' }}>Apresentação (/apresentacao)</Link>
+      </nav>
+      
+      <p style={{ fontSize: '14px', marginTop: '30px', opacity: 0.8 }}>
+        Navegação mock ativa para validar o componente Router.
+      </p>
     </div>
   );
 };
@@ -75,7 +77,14 @@ const App = () => {
           <TooltipProvider>
             <Toaster />
             <Sonner />
-            <AuthTestDisplay />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<FakePage title="Home" />} />
+                <Route path="/app" element={<FakePage title="App Dashboard" />} />
+                <Route path="/apresentacao" element={<FakePage title="Apresentação" />} />
+                <Route path="*" element={<FakePage title="404 Not Found" />} />
+              </Routes>
+            </BrowserRouter>
           </TooltipProvider>
         </AuthProvider>
       </FontSizeProvider>
