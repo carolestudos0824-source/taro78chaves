@@ -182,14 +182,16 @@ const AppRoutes = () => {
         <Route path="/excluir-conta" element={<DeleteAccountPage />} />
 
         {/* ═══ App routes (with BottomNav + Beta overlays) ═══ */}
+        <Route path="/app" element={<AppShell />} />
+        <Route path="/trilhas" element={<AppShell />} />
+        <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/*" element={<AppShell />} />
 
-        {/* Catch-all and dynamic redirects */}
+        {/* Catch-all and dynamic redirects at the very end */}
         <Route path="/:order" element={<Navigate to="/app" replace />} />
         <Route path="/:id" element={<Navigate to="/app" replace />} />
-        <Route path="/undefined" element={<Navigate to="/app" replace />} />
-        <Route path="/null" element={<Navigate to="/app" replace />} />
-        <Route path="/NaN" element={<Navigate to="/app" replace />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
