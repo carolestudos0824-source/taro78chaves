@@ -100,51 +100,51 @@ const NaipePage = () => {
         style={{ animation: `fade-up 0.4s ease-out both`, animationDelay: `${delay}ms` }}
       >
         <div className="relative overflow-hidden rounded-xl transition-all duration-300" style={isCurrent && filled ? {
-          background: "linear-gradient(145deg, hsl(38 28% 93% / 0.94), hsl(36 33% 95% / 0.90))",
-          border: `1.5px solid ${naipeInfo.color.border}`,
-          boxShadow: `0 4px 20px ${naipeInfo.color.border}`,
+          background: "hsl(36 33% 98%)",
+          border: `2px solid ${naipeInfo.color.primary}`,
+          boxShadow: `0 10px 30px -10px ${naipeInfo.color.primary}40`,
         } : completed ? {
-          background: "hsl(38 28% 94% / 0.80)",
-          border: "1px solid hsl(36 42% 52% / 0.30)",
+          background: "hsl(36 33% 97% / 0.8)",
+          border: "1px solid hsl(36 42% 45% / 0.2)",
         } : {
-          background: "hsl(36 18% 90% / 0.45)",
-          border: "1px solid hsl(36 22% 80% / 0.45)",
+          background: "hsl(36 18% 92% / 0.4)",
+          border: "1px solid hsl(36 22% 85% / 0.4)",
         }}>
           <div className="p-4 flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style={completed ? {
-              border: "2px solid hsl(36 42% 45% / 0.40)",
-              background: "hsl(38 28% 94% / 0.90)",
+            <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 shadow-sm" style={completed ? {
+              border: "2.5px solid hsl(36 42% 45%)",
+              background: "#FAF5EF",
             } : unlocked ? {
-              border: `1.5px solid ${naipeInfo.color.border}`,
-              background: naipeInfo.color.surface,
+              border: `2.5px solid ${naipeInfo.color.primary}`,
+              background: "#FAF5EF",
             } : {
-              border: "1.5px solid hsl(36 22% 75% / 0.50)",
-              background: "hsl(36 18% 90% / 0.55)",
+              border: "1.5px solid hsl(36 22% 70% / 0.5)",
+              background: "hsl(36 18% 90% / 0.5)",
             }}>
               {completed ? (
-                <Check className="w-4 h-4" style={{ color: "hsl(36 42% 38%)" }} />
+                <Check className="w-5 h-5" style={{ color: "hsl(36 42% 38%)" }} strokeWidth={3} />
               ) : unlocked ? (
-                <span className="text-xs font-heading" style={{ color: naipeInfo.color.primary }}>
+                <span className="text-sm font-heading font-black" style={{ color: naipeInfo.color.primary }}>
                   {isNum ? card.posicao : courtIcon(card.posicao as string)}
                 </span>
               ) : (
-                <Lock className="w-3.5 h-3.5" style={{ color: "hsl(230 10% 45% / 0.30)" }} />
+                <Lock className="w-3.5 h-3.5" style={{ color: "hsl(36 22% 60%)" }} />
               )}
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-heading text-sm tracking-wide truncate" style={{
-                color: unlocked ? "hsl(230 20% 12% / 0.80)" : "hsl(230 10% 45% / 0.30)",
+              <h3 className="font-heading text-[15px] tracking-tight truncate font-black" style={{
+                color: unlocked ? "#5B1F3D" : "hsl(36 22% 50%)",
               }}>
                 {card.nome}
               </h3>
               {card.subtitulo && (
-                <p className="font-accent text-xs italic truncate" style={{ color: "hsl(230 20% 15% / 0.45)" }}>
+                <p className="font-accent text-xs italic truncate font-bold" style={{ color: unlocked ? "hsl(36 42% 35%)" : "hsl(36 22% 60%)" }}>
                   {card.subtitulo}
                 </p>
               )}
             </div>
             {unlocked && filled && (
-              <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" style={{ color: naipeInfo.color.primary }} />
+              <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1.5 transition-transform" style={{ color: "#C8A66A" }} />
             )}
           </div>
         </div>
