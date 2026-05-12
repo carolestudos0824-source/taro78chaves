@@ -143,19 +143,7 @@ const AnalyticsTracker = () => {
 };
 
 const AppRoutes = () => {
-  const { loading: authLoading, user } = useAuth();
-  const location = useLocation();
-
-  useEffect(() => {
-    const marker = document.getElementById("boot-marker");
-    if (marker) {
-      if (authLoading) {
-        marker.innerText = "AUTH REAL STATUS: LOADING";
-      } else {
-        marker.innerText = `AUTH REAL STATUS: ${user ? 'LOGGED' : 'PUBLIC'} | ROUTE: ${location.pathname}`;
-      }
-    }
-  }, [authLoading, user, location.pathname]);
+  const { loading: authLoading } = useAuth();
 
   if (authLoading) {
     return <LoadingFallback />;
@@ -265,36 +253,12 @@ const AppRoutes = () => {
   );
 };
 
-const LazyModulesPage = lazy(() => {
-  console.log("MODULES PAGE IMPORT START");
-  const marker = document.getElementById("boot-marker");
-  if (marker) marker.innerText += " | MODULES PAGE IMPORT START";
-  
-  return import("./pages/ModulesPage").then(m => {
-    console.log("MODULES PAGE IMPORT DONE");
-    if (marker) marker.innerText += " | MODULES PAGE IMPORT DONE";
-    return m;
-  }).catch(err => {
-    console.error("MODULES PAGE IMPORT ERROR", err);
-    if (marker) {
-      marker.innerText += " | MODULES PAGE IMPORT ERROR";
-      marker.style.background = '#800';
-    }
-    throw err;
-  });
-});
+const LazyModulesPage = lazy(() => import("./pages/ModulesPage"));
 
 const AppRouteProbe = () => {
-  useEffect(() => {
-    console.log("ROUTE APP ELEMENT ENTERED");
-    const marker = document.getElementById("boot-marker");
-    if (marker) marker.innerText += " | ROUTE APP ELEMENT ENTERED";
-  }, []);
-
   return (
     <Suspense fallback={
       <div className="flex-1 flex flex-col items-center justify-center bg-[#FAF5EF] space-y-4 min-h-[60vh]">
-        <div className="text-[10px] font-mono text-blue-600 animate-pulse">CARREGANDO JORNADA REAL...</div>
         <LoadingFallback />
       </div>
     }>
@@ -315,12 +279,6 @@ const AppShell = () => (
 );
 
 const App = () => {
-  useEffect(() => {
-    const marker = document.getElementById("boot-marker");
-    if (marker) marker.innerText = "APP ROOT RENDERED";
-    console.log("App component mounted");
-  }, []);
-
   return (
     <QueryClientProvider client={queryClient}>
       <FontSizeProvider>
@@ -328,22 +286,6 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            <div id="boot-marker" style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              zIndex: 999999,
-              background: 'rgba(0,0,0,0.8)',
-              color: '#fff',
-              fontSize: '10px',
-              padding: '2px 10px',
-              textAlign: 'center',
-              pointerEvents: 'none',
-              fontFamily: 'monospace'
-            }}>
-              PROVIDERS REAL READY
-            </div>
             <AuthProvider>
               <AppRoutes />
             </AuthProvider>
