@@ -143,7 +143,14 @@ const AnalyticsTracker = () => {
 };
 
 const AppRoutes = () => {
-  const { loading: authLoading } = useAuth();
+  const { loading: authLoading, user } = useAuth();
+
+  useEffect(() => {
+    const marker = document.getElementById("boot-marker");
+    if (marker) {
+      marker.innerText = `ROUTES LOADED - AUTH: ${authLoading ? 'LOADING' : user ? 'LOGGED' : 'PUBLIC'}`;
+    }
+  }, [authLoading, user]);
 
   if (authLoading) {
     return <LoadingFallback />;
@@ -281,20 +288,30 @@ const AppShell = () => (
   </>
 );
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <FontSizeProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <AuthProvider>
-            <AppRoutes />
-          </AuthProvider>
-        </BrowserRouter>
-      </TooltipProvider>
-    </FontSizeProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  useEffect(() => {
+    const marker = document.getElementById("boot-marker");
+    if (marker) {
+      marker.innerText = "APP COMPONENT RENDERED - READY";
+      console.log("App component mounted");
+    }
+  }, []);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <FontSizeProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <AuthProvider>
+              <AppRoutes />
+            </AuthProvider>
+          </BrowserRouter>
+        </TooltipProvider>
+      </FontSizeProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
