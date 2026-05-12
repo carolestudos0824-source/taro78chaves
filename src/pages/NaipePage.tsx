@@ -163,26 +163,26 @@ const NaipePage = () => {
 
       {/* Header */}
       <header className="relative z-10" style={{
-        borderBottom: `1.5px solid ${naipeInfo.color.primary}40`,
-        background: "rgba(250, 245, 239, 0.95)",
+        borderBottom: `2.5px solid #C8A66A40`,
+        background: "rgba(255, 255, 255, 0.98)",
         backdropFilter: "blur(20px)",
-        boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)",
+        boxShadow: "0 10px 40px rgba(91, 31, 61, 0.06)",
       }}>
-        <div className="container max-w-3xl py-6 px-6">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-4">
+        <div className="container max-w-3xl py-8 px-6">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-5">
               <button 
                 onClick={() => navigate("/app")} 
-                className="transition-all hover:scale-110 duration-200 w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30]" 
+                className="transition-all hover:scale-110 duration-200 w-11 h-11 rounded-full flex items-center justify-center bg-[#FAF5EF] border-2 border-[#C8A66A40] shadow-sm" 
                 style={{ color: "#5B1F3D" }}
               >
-                <ArrowLeft className="w-5 h-5" />
+                <ArrowLeft className="w-6 h-6" />
               </button>
               <div>
-                <span className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1 flex items-center gap-2" style={{ color: naipeInfo.color.primary }}>
-                  {naipeInfo.icon} Arcanos Menores
+                <span className="text-[11px] tracking-[0.45em] uppercase font-heading mb-1.5 flex items-center gap-2 font-black" style={{ color: "#8B6A30" }}>
+                  <Sparkles className="w-3.5 h-3.5" /> Arcanos Menores
                 </span>
-                <h1 className="font-heading text-2xl md:text-3xl tracking-wide" style={{ color: "#5B1F3D" }}>
+                <h1 className="font-heading text-3xl md:text-4xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
                   {naipeInfo.name}
                 </h1>
               </div>
@@ -190,30 +190,30 @@ const NaipePage = () => {
             <StreakCounter streak={progress.streak} />
           </div>
 
-          <p className="font-accent text-[15px] italic leading-relaxed mb-6 font-bold" style={{ color: "#5B1F3D" }}>
+          <p className="font-accent text-[17px] italic leading-relaxed mb-8 font-bold border-l-4 border-[#C8A66A40] pl-5 py-1" style={{ color: "#5B1F3D" }}>
             "{NAIPE_PHRASES[naipe]}"
           </p>
 
           {/* Progress */}
-          <div className="space-y-2 bg-white/60 p-4 rounded-xl border-2 border-[#C8A66A]/30 shadow-sm">
+          <div className="space-y-3 bg-[#FAF5EF] p-5 rounded-2xl border-2 border-[#C8A66A20] shadow-inner">
             <div className="flex items-center justify-between px-1">
-              <span className="text-[11px] font-heading tracking-[0.2em] uppercase font-black" style={{ color: "#5B1F3D" }}>
+              <span className="text-[12px] font-heading tracking-[0.25em] uppercase font-black" style={{ color: "#5B1F3D" }}>
                 {completedCount}/14 cartas estudadas
               </span>
-              <span className="text-[12px] font-heading font-black" style={{ color: naipeInfo.color.primary }}>
+              <span className="text-[13px] font-heading font-black" style={{ color: "#8B6A30" }}>
                 {progressPct}%
               </span>
             </div>
-            <div className="h-2.5 rounded-full overflow-hidden" style={{ background: "#E8DED3", border: "1px solid #D1C4B5" }}>
+            <div className="h-3 rounded-full overflow-hidden p-[1.5px]" style={{ background: "#DCCFC240", border: "1px solid #DCCFC260" }}>
               <div className="h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden" style={{ 
-                width: `${progressPct}%`, 
-                background: `linear-gradient(90deg, ${naipeInfo.color.primary}, #C8A66A)` 
+                width: `${Math.max(progressPct, 4)}%`, 
+                background: `linear-gradient(90deg, #5B1F3D, #C8A66A)` 
               }}>
-                 <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+                 <div className="absolute inset-0 w-1/3 h-full bg-white/25 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
               </div>
             </div>
           </div>
-          <div className="mt-4">
+          <div className="mt-6">
             <XPBar xp={progress.xp} level={progress.level} />
           </div>
         </div>
