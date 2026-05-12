@@ -114,8 +114,6 @@ function progressToDbCore(p: UserProgress) {
   };
 }
 
-console.log("useProgress init - user:", user?.id);
-
 export function useProgress() {
   const { user } = useAuth();
   console.log("useProgress hook execution - user:", user?.id);
