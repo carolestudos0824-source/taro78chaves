@@ -1,5 +1,5 @@
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-import { ArrowLeft, Lock, Check, ChevronRight, BookOpen, Hash, Crown } from "lucide-react";
+import { ArrowLeft, Lock, Check, ChevronRight, BookOpen, Hash, Crown, Sparkles } from "lucide-react";
 import {
   type Naipe,
   NAIPES,
