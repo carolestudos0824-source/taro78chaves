@@ -151,7 +151,44 @@ const ModulesPage = () => {
         <ProgressCelebration xp={progress.xp} level={progress.level} streak={progress.streak} completedLessons={progress.completedLessons.length} />
         
         <div className="space-y-8 md:space-y-12">
-          {/* Welcome Banner removed */}
+          {/* ─── Study Trails Selector ─── */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-4">
+              <span className="h-px flex-1 bg-[#C8A66A]/20" />
+              <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
+                Seu Centro de Formação
+              </h2>
+              <span className="h-px flex-1 bg-[#C8A66A]/20" />
+            </div>
+            
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { id: "foundation", label: "Base", icon: Compass, color: "bg-[#F3E6E0]" },
+                { id: "major-arcana", label: "Maiores", icon: Stars, color: "bg-[#FAF5EF]" },
+                { id: "minor-arcana", label: "Menores", icon: Layers, color: "bg-[#E8DED3]" },
+                { id: "advanced", label: "Métodos", icon: Layout, color: "bg-[#DCCFC2]" },
+                { id: "practice", label: "Prática", icon: Sparkles, color: "bg-[#FAF5EF]" },
+                { id: "professional", label: "Ofício", icon: Briefcase, color: "bg-[#F3E6E0]" },
+              ].map((trail) => (
+                <button
+                  key={trail.id}
+                  onClick={() => {
+                    const el = document.getElementById(`cat-${trail.id}`);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }}
+                  className="flex flex-col items-center gap-2 p-3 rounded-2xl border border-[#C8A66A]/20 bg-white/60 hover:bg-white transition-all shadow-sm group"
+                >
+                  <div className={`w-10 h-10 rounded-xl ${trail.color} flex items-center justify-center border border-[#C8A66A]/10 group-hover:scale-110 transition-transform`}>
+                    <trail.icon className="w-5 h-5 text-[#5B1F3D]" />
+                  </div>
+                  <span className="text-[9px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">
+                    {trail.label}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
           <SmartReviewCard />
           
           {progress.completedLessons.length === 0 && (
@@ -231,7 +268,7 @@ const ModulesPage = () => {
             if (!mods || mods.length === 0) return null;
 
             return (
-              <section key={cat} className="space-y-6 md:space-y-10">
+              <section key={cat} id={`cat-${cat}`} className="space-y-6 md:space-y-10 scroll-mt-24">
                 <div className="flex items-center gap-6">
                   <span className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A]/30" />
                   <h2 className="font-heading text-[11px] md:text-[14px] tracking-[0.4em] uppercase font-black text-[#5B1F3D]/80">
@@ -302,7 +339,7 @@ const ModulesPage = () => {
                               <div className="ml-auto flex items-center gap-2">
                                 {mod.id === "arcanos-maiores" && (
                                   <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase px-4 py-2 rounded-xl bg-gold/10 text-plum border border-gold/40 font-black shadow-sm">
-                                    Grátis
+                                    Início Grátis
                                   </span>
                                 )}
                                 {!unlocked && !isCompleted && mod.id !== "arcanos-maiores" && (
