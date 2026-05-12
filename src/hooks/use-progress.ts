@@ -116,14 +116,17 @@ function progressToDbCore(p: UserProgress) {
 
 export function useProgress() {
   const { user } = useAuth();
-  console.log("useProgress hook execution - user:", user?.id);
-  const marker = document.getElementById("boot-marker");
-  if (marker) {
-    marker.innerText = `PROGRESS HOOK - USER: ${user ? 'YES' : 'NO'}`;
-  }
   const { isStaff } = useRole();
   const [progress, setProgress] = useState<UserProgress>({ ...DEFAULT_PROGRESS, ...getLocalExtras() });
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const marker = document.getElementById("boot-marker");
+    if (marker) {
+      marker.innerText = `PROGRESS HOOK - USER: ${user ? 'YES' : 'NO'}`;
+      console.log("useProgress hook execution - user:", user?.id);
+    }
+  }, [user]);
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastSavedCoreRef = useRef<string>("");
   const lastSavedNameRef = useRef<string>("");
