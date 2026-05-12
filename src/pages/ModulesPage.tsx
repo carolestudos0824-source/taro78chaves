@@ -76,7 +76,7 @@ const ModulesPage = () => {
   useEffect(() => {
     const marker = document.getElementById("boot-marker");
     if (marker) {
-      marker.innerText = "APP REAL - MODULES PAGE RENDERED";
+      marker.innerText += " | MODULES PAGE RENDERED";
     }
     console.log("ModulesPage mounted");
   }, []);

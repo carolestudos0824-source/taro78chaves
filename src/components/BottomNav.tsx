@@ -16,7 +16,7 @@ const BottomNav = () => {
   useEffect(() => {
     const marker = document.getElementById("boot-marker");
     if (marker) {
-      marker.innerText = "BOTTOM NAV RENDERED - NAVIGATING";
+      marker.innerText += " | BOTTOM NAV RENDERED";
       console.log("BottomNav rendered at", location.pathname);
     }
   }, [location.pathname]);
