@@ -40,12 +40,12 @@ import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
 import imgEstrela from "@/assets/arcano-17-estrela.jpg";
 
 const CATEGORY_LABELS: Record<ModuleCategory, string> = {
-  "foundation": "O Portal de Entrada",
-  "major-arcana": "A Jornada da Alma",
-  "minor-arcana": "A Estrutura do Tarô",
-  "advanced": "Leituras Profundas",
-  "practice": "O Ritual Vivo",
-  "professional": "O Ofício e Autoridade",
+  "foundation": "Trilha 1 · Fundamentos",
+  "major-arcana": "Trilha 2 · Arcanos Maiores",
+  "minor-arcana": "Trilha 3 · Arcanos Menores",
+  "advanced": "Trilha 4 · Métodos e Combinações",
+  "practice": "Trilha 5 · Prática Guiada",
+  "professional": "Trilha 6 · Formação Profissional",
 };
 
 const MODULE_ICON_MAP: Record<string, any> = {
@@ -101,11 +101,53 @@ const ModulesPage = () => {
     return mod.totalLessons ? Math.round((completed / mod.totalLessons) * 100) : 0;
   };
 
+  const totalArcanosCount = 78;
+  const completedMaiores = progress.completedLessons.filter(l => l.startsWith("arcano-")).length;
+  const completedMenores = progress.completedLessons.filter(l => 
+    l.startsWith("copas-") || l.startsWith("paus-") || l.startsWith("espadas-") || l.startsWith("ouros-")
+  ).length;
+  const totalCompletedArcanos = completedMaiores + completedMenores;
+  const globalProgressPct = Math.round((totalCompletedArcanos / totalArcanosCount) * 100);
+
   return (
     <div className="min-h-screen bg-[#FAF5EF]">
       <Header streak={progress.streak} xp={progress.xp} level={progress.level} />
 
-      <main className="container max-w-lg px-6 pt-10 pb-24 md:pt-16 md:pb-32 space-y-12 md:space-y-20">
+      <main className="container max-w-lg px-6 pt-10 pb-24 md:pt-16 md:pb-32 space-y-12 md:space-y-16">
+        {/* ─── Global Training Progress ─── */}
+        <div className="bg-white border-2 border-[#C8A66A]/20 rounded-3xl p-6 shadow-sm animate-fade-in">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[#5B1F3D] flex items-center justify-center border border-[#C8A66A]/30">
+                <SquareStack className="w-5 h-5 text-[#C8A66A]" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#5B1F3D] uppercase">Sua Formação</span>
+                <span className="text-sm font-heading font-black text-[#5B1F3D]">Domínio dos 78 Arcanos</span>
+              </div>
+            </div>
+            <div className="text-right">
+              <span className="text-xl font-heading font-black text-[#5B1F3D]">{totalCompletedArcanos}</span>
+              <span className="text-[10px] font-black text-[#5B1F3D]/30 ml-1">/78</span>
+            </div>
+          </div>
+          
+          <div className="h-2.5 rounded-full bg-[#E8DED3] overflow-hidden p-[1.5px] border border-[#D1C4B5]/30">
+            <div 
+              className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out relative overflow-hidden"
+              style={{ width: `${Math.max(globalProgressPct, 2)}%` }}
+            >
+              <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+            </div>
+          </div>
+          
+          <p className="mt-3 text-[11px] font-body font-bold text-[#5B1F3D]/60 italic text-center">
+            {totalCompletedArcanos === 0 
+              ? "Inicie sua jornada para abrir os primeiros portais." 
+              : `Você já domina ${totalCompletedArcanos} das 78 chaves do tarô.`}
+          </p>
+        </div>
+
         <ProgressCelebration xp={progress.xp} level={progress.level} streak={progress.streak} completedLessons={progress.completedLessons.length} />
         
         <div className="space-y-8 md:space-y-12">
