@@ -100,51 +100,51 @@ const NaipePage = () => {
         style={{ animation: `fade-up 0.4s ease-out both`, animationDelay: `${delay}ms` }}
       >
         <div className="relative overflow-hidden rounded-xl transition-all duration-300" style={isCurrent && filled ? {
-          background: "linear-gradient(145deg, hsl(38 28% 93% / 0.94), hsl(36 33% 95% / 0.90))",
-          border: `1.5px solid ${naipeInfo.color.border}`,
-          boxShadow: `0 4px 20px ${naipeInfo.color.border}`,
+          background: "hsl(36 33% 98%)",
+          border: `2px solid ${naipeInfo.color.primary}`,
+          boxShadow: `0 10px 30px -10px ${naipeInfo.color.primary}40`,
         } : completed ? {
-          background: "hsl(38 28% 94% / 0.80)",
-          border: "1px solid hsl(36 42% 52% / 0.30)",
+          background: "hsl(36 33% 97% / 0.8)",
+          border: "1px solid hsl(36 42% 45% / 0.2)",
         } : {
-          background: "hsl(36 18% 90% / 0.45)",
-          border: "1px solid hsl(36 22% 80% / 0.45)",
+          background: "hsl(36 18% 92% / 0.4)",
+          border: "1px solid hsl(36 22% 85% / 0.4)",
         }}>
           <div className="p-4 flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style={completed ? {
-              border: "2px solid hsl(36 42% 45% / 0.40)",
-              background: "hsl(38 28% 94% / 0.90)",
+            <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 shadow-sm" style={completed ? {
+              border: "2.5px solid hsl(36 42% 45%)",
+              background: "#FAF5EF",
             } : unlocked ? {
-              border: `1.5px solid ${naipeInfo.color.border}`,
-              background: naipeInfo.color.surface,
+              border: `2.5px solid ${naipeInfo.color.primary}`,
+              background: "#FAF5EF",
             } : {
-              border: "1.5px solid hsl(36 22% 75% / 0.50)",
-              background: "hsl(36 18% 90% / 0.55)",
+              border: "1.5px solid hsl(36 22% 70% / 0.5)",
+              background: "hsl(36 18% 90% / 0.5)",
             }}>
               {completed ? (
-                <Check className="w-4 h-4" style={{ color: "hsl(36 42% 38%)" }} />
+                <Check className="w-5 h-5" style={{ color: "hsl(36 42% 38%)" }} strokeWidth={3} />
               ) : unlocked ? (
-                <span className="text-xs font-heading" style={{ color: naipeInfo.color.primary }}>
+                <span className="text-sm font-heading font-black" style={{ color: naipeInfo.color.primary }}>
                   {isNum ? card.posicao : courtIcon(card.posicao as string)}
                 </span>
               ) : (
-                <Lock className="w-3.5 h-3.5" style={{ color: "hsl(230 10% 45% / 0.30)" }} />
+                <Lock className="w-3.5 h-3.5" style={{ color: "hsl(36 22% 60%)" }} />
               )}
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-heading text-sm tracking-wide truncate" style={{
-                color: unlocked ? "hsl(230 20% 12% / 0.80)" : "hsl(230 10% 45% / 0.30)",
+              <h3 className="font-heading text-[15px] tracking-tight truncate font-black" style={{
+                color: unlocked ? "#5B1F3D" : "hsl(36 22% 50%)",
               }}>
                 {card.nome}
               </h3>
               {card.subtitulo && (
-                <p className="font-accent text-xs italic truncate" style={{ color: "hsl(230 20% 15% / 0.45)" }}>
+                <p className="font-accent text-xs italic truncate font-bold" style={{ color: unlocked ? "hsl(36 42% 35%)" : "hsl(36 22% 60%)" }}>
                   {card.subtitulo}
                 </p>
               )}
             </div>
             {unlocked && filled && (
-              <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" style={{ color: naipeInfo.color.primary }} />
+              <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1.5 transition-transform" style={{ color: "#C8A66A" }} />
             )}
           </div>
         </div>
@@ -190,17 +190,17 @@ const NaipePage = () => {
             <StreakCounter streak={progress.streak} />
           </div>
 
-          <p className="font-accent text-[13px] italic leading-relaxed mb-6" style={{ color: "#5B1F3DBB" }}>
+          <p className="font-accent text-[15px] italic leading-relaxed mb-6 font-bold" style={{ color: "#5B1F3D" }}>
             "{NAIPE_PHRASES[naipe]}"
           </p>
 
           {/* Progress */}
-          <div className="space-y-2 bg-white/40 p-3 rounded-xl border border-[#C8A66A20]">
+          <div className="space-y-2 bg-white/60 p-4 rounded-xl border-2 border-[#C8A66A]/30 shadow-sm">
             <div className="flex items-center justify-between px-1">
-              <span className="text-[11px] font-heading tracking-wider" style={{ color: "#5B1F3DAA" }}>
+              <span className="text-[11px] font-heading tracking-[0.2em] uppercase font-black" style={{ color: "#5B1F3D" }}>
                 {completedCount}/14 cartas estudadas
               </span>
-              <span className="text-[11px] font-heading tracking-wider" style={{ color: naipeInfo.color.primary }}>
+              <span className="text-[12px] font-heading font-black" style={{ color: naipeInfo.color.primary }}>
                 {progressPct}%
               </span>
             </div>
@@ -235,19 +235,15 @@ const NaipePage = () => {
             <button
               key={tool.label}
               onClick={tool.onClick}
-              className="rounded-2xl p-4 text-center transition-all duration-300 hover:scale-[1.05] group bg-white/60 border border-[#C8A66A30] backdrop-blur-sm shadow-sm"
+              className="rounded-2xl p-5 text-center transition-all duration-300 hover:scale-[1.05] group bg-white border-2 border-[#C8A66A]/30 backdrop-blur-sm shadow-lg hover:border-[#C8A66A]/60"
             >
-              <div className="w-10 h-10 mx-auto rounded-full flex items-center justify-center mb-2 transition-colors group-hover:bg-[#C8A66A10]" style={{
-                background: `${naipeInfo.color.primary}15`,
-                border: `1px solid ${naipeInfo.color.primary}30`,
-                color: naipeInfo.color.primary,
-              }}>
-                {tool.icon}
+              <div className="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 transition-colors group-hover:bg-[#C8A66A]/10 bg-[#FAF5EF] border border-[#C8A66A]/20 shadow-inner">
+                <div style={{ color: "#5B1F3D" }}>{tool.icon}</div>
               </div>
-              <p className="font-heading text-[11px] tracking-widest uppercase mb-1" style={{ color: "#5B1F3D" }}>
+              <p className="font-heading text-[12px] tracking-[0.2em] uppercase mb-1 font-black" style={{ color: "#5B1F3D" }}>
                 {tool.label}
               </p>
-              <p className="text-[9px] font-accent italic" style={{ color: "#5B1F3D60" }}>
+              <p className="text-[10px] font-accent italic font-bold" style={{ color: "hsl(36 42% 35%)" }}>
                 {tool.desc}
               </p>
             </button>
