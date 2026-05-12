@@ -108,6 +108,9 @@ const ModulesPage = () => {
   }
 
 
+  const { bypassLocks: originalBypassLocks } = useAccess();
+  const bypassLocks = originalBypassLocks; 
+
   const grouped = MODULES.reduce<Record<ModuleCategory, LearningModule[]>>((acc, mod) => {
     if (!acc[mod.category]) acc[mod.category] = [];
     acc[mod.category].push(mod);
