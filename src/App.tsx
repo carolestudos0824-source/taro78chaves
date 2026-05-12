@@ -142,38 +142,46 @@ const AnalyticsTracker = () => {
   return null;
 };
 
-const AppRoutes = () => (
-  <Suspense fallback={<LoadingFallback />}>
-    <AnalyticsTracker />
-    <Routes>
-      {/* ═══ Auth & public standalone (no BottomNav, no BetaBadge/Feedback) ═══ */}
-      <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
-      <Route path="/reset-password" element={<ResetPasswordPage />} />
+const AppRoutes = () => {
+  const { loading: authLoading } = useAuth();
 
-      {/* ═══ Public marketing pages (no BottomNav) ═══ */}
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/convite" element={<LandingPage />} />
-      <Route path="/waitlist" element={<Navigate to="/" replace />} />
-      <Route path="/apresentacao" element={<PresentationPage />} />
+  if (authLoading) {
+    return <LoadingFallback />;
+  }
 
-      {/* ═══ Legal / compliance (public, no auth) ═══ */}
-      <Route path="/privacidade" element={<PrivacyPage />} />
-      <Route path="/termos" element={<TermsPage />} />
-      <Route path="/suporte" element={<SupportPage />} />
-      <Route path="/excluir-conta" element={<DeleteAccountPage />} />
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <AnalyticsTracker />
+      <Routes>
+        {/* ═══ Auth & public standalone (no BottomNav, no BetaBadge/Feedback) ═══ */}
+        <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
 
-      {/* ═══ App routes (with BottomNav + Beta overlays) ═══ */}
-      <Route path="/:order" element={<Navigate to="/app" replace />} />
-      <Route path="/:id" element={<Navigate to="/app" replace />} />
-      <Route path="/:slug" element={<Navigate to="/app" replace />} />
-      <Route path="/undefined" element={<Navigate to="/app" replace />} />
-      <Route path="/null" element={<Navigate to="/app" replace />} />
-      <Route path="/NaN" element={<Navigate to="/app" replace />} />
-      <Route path="/*" element={<AppShell />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  </Suspense>
-);
+        {/* ═══ Public marketing pages (no BottomNav) ═══ */}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/convite" element={<LandingPage />} />
+        <Route path="/waitlist" element={<Navigate to="/" replace />} />
+        <Route path="/apresentacao" element={<PresentationPage />} />
+
+        {/* ═══ Legal / compliance (public, no auth) ═══ */}
+        <Route path="/privacidade" element={<PrivacyPage />} />
+        <Route path="/termos" element={<TermsPage />} />
+        <Route path="/suporte" element={<SupportPage />} />
+        <Route path="/excluir-conta" element={<DeleteAccountPage />} />
+
+        {/* ═══ App routes (with BottomNav + Beta overlays) ═══ */}
+        <Route path="/:order" element={<Navigate to="/app" replace />} />
+        <Route path="/:id" element={<Navigate to="/app" replace />} />
+        <Route path="/:slug" element={<Navigate to="/app" replace />} />
+        <Route path="/undefined" element={<Navigate to="/app" replace />} />
+        <Route path="/null" element={<Navigate to="/app" replace />} />
+        <Route path="/NaN" element={<Navigate to="/app" replace />} />
+        <Route path="/*" element={<AppShell />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
+  );
+};
 
 /** Layout shell for authenticated app pages — includes BottomNav */
 const AppShell = () => (
