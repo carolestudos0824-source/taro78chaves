@@ -320,8 +320,6 @@ const AppShell = () => (
         <Route path="/minha-jornada" element={<P><JourneyJournalPage /></P>} />
         <Route path="/feedback" element={<P><FeedbackPage /></P>} />
         <Route path="/admin" element={<P><AdminPage /></P>} />
-
-        {/* Redirects para /app apenas para padrões de erro conhecidos */}
         <Route path="/undefined" element={<Navigate to="/app" replace />} />
         <Route path="/null" element={<Navigate to="/app" replace />} />
         <Route path="/NaN" element={<Navigate to="/app" replace />} />
