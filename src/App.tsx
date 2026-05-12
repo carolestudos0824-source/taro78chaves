@@ -165,31 +165,30 @@ const AppRoutes = () => {
     <Suspense fallback={<LoadingFallback />}>
       <AnalyticsTracker />
       <Routes>
-        {/* ═══ Auth & public standalone (no BottomNav, no BetaBadge/Feedback) ═══ */}
+        {/* Ordem crítica: rotas estáticas primeiro */}
+        <Route path="/app" element={<AppShell />} />
+        
+        {/* ═══ Auth & public standalone ═══ */}
         <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
 
-        {/* ═══ Public marketing pages (no BottomNav) ═══ */}
+        {/* ═══ Public marketing pages ═══ */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/convite" element={<LandingPage />} />
-        <Route path="/waitlist" element={<Navigate to="/" replace />} />
         <Route path="/apresentacao" element={<PresentationPage />} />
 
-        {/* ═══ Legal / compliance (public, no auth) ═══ */}
+        {/* ═══ Legal / compliance ═══ */}
         <Route path="/privacidade" element={<PrivacyPage />} />
         <Route path="/termos" element={<TermsPage />} />
         <Route path="/suporte" element={<SupportPage />} />
         <Route path="/excluir-conta" element={<DeleteAccountPage />} />
 
-        {/* ═══ App routes (with BottomNav + Beta overlays) ═══ */}
+        {/* Shell para todas as outras rotas do app */}
         <Route path="/*" element={<AppShell />} />
 
-        {/* Catch-all and dynamic redirects */}
+        {/* Catch-all redirects */}
         <Route path="/:order" element={<Navigate to="/app" replace />} />
         <Route path="/:id" element={<Navigate to="/app" replace />} />
-        <Route path="/undefined" element={<Navigate to="/app" replace />} />
-        <Route path="/null" element={<Navigate to="/app" replace />} />
-        <Route path="/NaN" element={<Navigate to="/app" replace />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
@@ -223,18 +222,20 @@ const AppRouteProbe = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <div className="bg-blue-600 text-white text-[10px] font-mono px-4 py-1 text-center">
-        DEBUG: ROUTE APP ELEMENT ENTERED
+    <div 
+      className="flex flex-col items-center justify-center bg-blue-700 text-white p-20 text-center"
+      style={{ 
+        minHeight: '80vh',
+        width: '100%',
+        zIndex: 99999,
+        position: 'relative'
+      }}
+    >
+      <h1 className="text-4xl font-bold mb-8">ROUTE APP ELEMENT ENTERED</h1>
+      <p className="text-xl opacity-80">ÁREA PRINCIPAL ATIVA</p>
+      <div className="mt-10 p-4 border-2 border-white/30 rounded font-mono text-sm">
+        Diagnosticando renderização da rota /app
       </div>
-      <Suspense fallback={
-        <div className="flex-1 flex flex-col items-center justify-center bg-[#FAF5EF] space-y-4">
-          <div className="text-[10px] font-mono text-blue-600 animate-pulse">MODULES PAGE LOADING...</div>
-          <LoadingFallback />
-        </div>
-      }>
-        <LazyModulesPage />
-      </Suspense>
     </div>
   );
 };
