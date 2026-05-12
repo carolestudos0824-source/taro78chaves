@@ -102,11 +102,8 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
 
         {/* State Overlays */}
         {isLocked && (
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex flex-col items-center justify-center p-4">
-            <LockKeyhole className="w-8 h-8 text-[#C8A66A]/50 mb-2" />
-            <span className="text-[10px] font-heading tracking-widest uppercase text-white/40 text-center">
-              Adormecido
-            </span>
+          <div className="absolute inset-0 bg-black/5 flex flex-col items-center justify-center p-4">
+            <LockKeyhole className="w-4 h-4 text-[#C8A66A]/30 mb-1" />
           </div>
         )}
 

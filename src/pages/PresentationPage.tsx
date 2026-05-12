@@ -418,42 +418,71 @@ const SlideModules = () => (
   </div>
 );
 
-const SlideJourney = () => (
-  <div>
-    <SlideTitle
-      kicker="A Jornada"
-      title="Do Louco ao Mundo"
-      subtitle="Você percorre os 22 Arcanos Maiores como etapas de uma transformação interior."
-    />
-    <div className="grid grid-cols-5 md:grid-cols-11 gap-1.5 md:gap-2 max-w-4xl mx-auto overflow-y-auto max-h-[50vh] md:max-h-none py-2 px-1 scrollbar-hide">
-      {[
-        "O Louco", "O Mago", "A Sacerdotisa", "A Imperatriz", "O Imperador",
-        "O Hierofante", "Os Enamorados", "O Carro", "A Força", "O Eremita",
-        "A Roda da Fortuna", "A Justiça", "O Enforcado", "A Morte", "A Temperança",
-        "O Diabo", "A Torre", "A Estrela", "A Lua", "O Sol",
-        "O Julgamento", "O Mundo",
-      ].map((name, i) => (
-        <div key={i} className="flex flex-col items-center">
-          <TarotAnimatedCard
-            cardImage={getArcanoFull(i)?.cardImage || ""}
-            cardName={name}
-            arcanoId={i}
-            arcanoSlug={name.toLowerCase().replace(/ /g, "-")}
-            state={i === 0 ? "available" : i === 8 || i === 11 || i === 21 ? "active" : "locked"}
-            variant="lesson"
-            className="w-full"
-          />
-          <span className="text-[6px] md:text-[8px] font-heading font-black mt-1 text-[#5B1F3D80] uppercase tracking-tighter text-center leading-none">
-            {i === 10 ? "Roda" : name.split(" ").pop()}
-          </span>
-        </div>
-      ))}
+const SlideJourney = () => {
+  const majores = [
+    { n: "0", name: "O Louco" },
+    { n: "I", name: "O Mago" },
+    { n: "II", name: "A Sacerdotisa" },
+    { n: "III", name: "A Imperatriz" },
+    { n: "IV", name: "O Imperador" },
+    { n: "V", name: "O Hierofante" },
+    { n: "VI", name: "Os Enamorados" },
+    { n: "VII", name: "O Carro" },
+    { n: "VIII", name: "A Força" },
+    { n: "IX", name: "O Eremita" },
+    { n: "X", name: "A Roda da Fortuna" },
+    { n: "XI", name: "A Justiça" },
+    { n: "XII", name: "O Enforcado" },
+    { n: "XIII", name: "A Morte" },
+    { n: "XIV", name: "A Temperança" },
+    { n: "XV", name: "O Diabo" },
+    { n: "XVI", name: "A Torre" },
+    { n: "XVII", name: "A Estrela" },
+    { n: "XVIII", name: "A Lua" },
+    { n: "XIX", name: "O Sol" },
+    { n: "XX", name: "O Julgamento" },
+    { n: "XXI", name: "O Mundo" },
+  ];
+
+  return (
+    <div>
+      <SlideTitle
+        kicker="A Jornada"
+        title="Do Louco ao Mundo"
+        subtitle="Você percorre os 22 Arcanos Maiores como etapas de uma transformação interior."
+      />
+      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-11 gap-2 md:gap-3 max-w-5xl mx-auto overflow-y-auto max-h-[55vh] md:max-h-none py-4 px-2 scrollbar-hide">
+        {majores.map((card, i) => (
+          <div key={i} className="flex flex-col items-center group">
+            <div className="relative w-full">
+              <TarotAnimatedCard
+                cardImage={getArcanoFull(i)?.cardImage || ""}
+                cardName={card.name}
+                arcanoId={i}
+                arcanoSlug={card.name.toLowerCase().replace(/ /g, "-")}
+                state={i === 0 ? "available" : i === 8 || i === 11 || i === 21 ? "active" : "locked"}
+                variant="lesson"
+                className="w-full"
+              />
+              <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#FAF5EF] border border-[#C8A66A40] flex items-center justify-center shadow-sm z-30">
+                <span className="text-[8px] font-heading font-black text-[#5B1F3D]">{card.n}</span>
+              </div>
+            </div>
+            <span 
+              className="text-[8px] font-heading font-bold mt-2 text-[#5B1F3D] uppercase tracking-wider text-center leading-tight h-8 flex items-center justify-center px-1"
+              style={{ wordBreak: "break-word" }}
+            >
+              {card.name}
+            </span>
+          </div>
+        ))}
+      </div>
+      <p className="text-center text-xs md:text-sm font-body italic mt-6" style={{ color: "#5B1F3D", opacity: 0.9 }}>
+        Cada carta com <span style={{ color: "#C8A66A" }}>5 camadas</span> de significado · Três leituras · Quiz e prática
+      </p>
     </div>
-    <p className="text-center text-[10px] font-body italic mt-4" style={{ color: "#5B1F3D", opacity: 0.7 }}>
-      Cada carta com 5 camadas de significado · Três leituras · Quiz e prática
-    </p>
-  </div>
-);
+  );
+};
 
 const SlidePlans = () => (
   <div>
