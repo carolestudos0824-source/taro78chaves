@@ -175,7 +175,7 @@ const AppRoutes = () => {
         {/* ═══ App Shell Routes (Layout Wrapper) ═══ */}
         <Route element={<AppShell />}>
           {/* Dashboard */}
-          <Route path="/app" element={<AppRouteProbe />} />
+          <Route path="/app" element={<P><AppRouteProbe /></P>} />
           <Route path="/trilhas" element={<P><TrailsPage /></P>} />
 
           {/* Fundamentos */}
