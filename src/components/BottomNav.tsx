@@ -1,4 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { BookOpen, UserRound, MessageCircle, KeyRound } from "lucide-react";
 
 const NAV_ITEMS = [
