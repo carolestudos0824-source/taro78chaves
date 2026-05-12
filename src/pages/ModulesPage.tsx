@@ -203,12 +203,12 @@ const ModulesPage = () => {
                     O primeiro portal da sua travessia grátis. <br/>
                     <span className="text-white/70 not-italic block mt-1 uppercase tracking-widest text-[10px] font-bold">Vá bem e desbloqueie O Mago.</span>
                   </p>
-                  <button 
-                    onClick={() => navigate("/lesson/0")}
-                    className="w-full py-5 bg-[#C8A66A] hover:bg-[#C8A66A]/90 text-[#5B1F3D] rounded-2xl font-heading text-[12px] font-black tracking-[0.3em] uppercase transition-all shadow-xl hover:scale-[1.02] active:scale-[0.95]"
+                  <Link 
+                    to="/lesson/0"
+                    className="block w-full py-5 bg-[#C8A66A] hover:bg-[#C8A66A]/90 text-[#5B1F3D] rounded-2xl font-heading text-[12px] font-black tracking-[0.3em] uppercase transition-all shadow-xl hover:scale-[1.02] active:scale-[0.95]"
                   >
                     ABRIR PORTAL DO LOUCO
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
