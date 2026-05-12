@@ -253,36 +253,12 @@ const AppRoutes = () => {
   );
 };
 
-const LazyModulesPage = lazy(() => {
-  console.log("MODULES PAGE IMPORT START");
-  const marker = document.getElementById("boot-marker");
-  if (marker) marker.innerText += " | MODULES PAGE IMPORT START";
-  
-  return import("./pages/ModulesPage").then(m => {
-    console.log("MODULES PAGE IMPORT DONE");
-    if (marker) marker.innerText += " | MODULES PAGE IMPORT DONE";
-    return m;
-  }).catch(err => {
-    console.error("MODULES PAGE IMPORT ERROR", err);
-    if (marker) {
-      marker.innerText += " | MODULES PAGE IMPORT ERROR";
-      marker.style.background = '#800';
-    }
-    throw err;
-  });
-});
+const LazyModulesPage = lazy(() => import("./pages/ModulesPage"));
 
 const AppRouteProbe = () => {
-  useEffect(() => {
-    console.log("ROUTE APP ELEMENT ENTERED");
-    const marker = document.getElementById("boot-marker");
-    if (marker) marker.innerText += " | ROUTE APP ELEMENT ENTERED";
-  }, []);
-
   return (
     <Suspense fallback={
       <div className="flex-1 flex flex-col items-center justify-center bg-[#FAF5EF] space-y-4 min-h-[60vh]">
-        <div className="text-[10px] font-mono text-blue-600 animate-pulse">CARREGANDO JORNADA REAL...</div>
         <LoadingFallback />
       </div>
     }>
