@@ -71,10 +71,10 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
                 isCompact ? "h-0 opacity-0 pointer-events-none" : "h-auto opacity-100"
               }`}>
                 <span className="font-heading text-[10px] md:text-[13px] tracking-[0.4em] uppercase text-[#5B1F3D] font-black leading-none">
-                  A Jornada Viva
+                  Formação 78 Arcanos
                 </span>
                 <span className="hidden md:block text-[11px] font-body text-[#5B1F3D]/85 mt-2 leading-none font-bold italic">
-                  Abra os portais dos 78 arcanos.
+                  Sua jornada completa pelos 78 arcanos.
                 </span>
               </div>
             </div>

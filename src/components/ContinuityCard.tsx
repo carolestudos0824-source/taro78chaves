@@ -3,16 +3,20 @@ import { ArrowRight, RefreshCw, Sparkles } from "lucide-react";
 import { MODULES_CATALOG as MODULES, ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, type LearningModule } from "@/lib/content";
 
 /** Module lesson prefix mapping for detecting last completed lesson per module */
-const MODULE_PREFIX_MAP: Record<string, { prefix: string; route: (order: number) => string; getLessonName?: (id: string) => string }> = {
+const MODULE_PREFIX_MAP: Record<string, { 
+  prefix: string; 
+  route: (order: number, modId?: string) => string; 
+  getLessonName?: (id: string) => string 
+}> = {
   "fundamentos":         { prefix: "fund-", route: (o) => `/fundamentos/${o}` },
   "leitura-simbolica":   { prefix: "ls-",   route: (o) => `/leitura-simbolica/${o}` },
   "arcanos-maiores":     { prefix: "arcano-", route: (o) => `/lesson/${o}` },
   "arquitetura-menores": { prefix: "am-",   route: (o) => `/arquitetura-menores/${o}` },
-  "copas":               { prefix: "copas-", route: (o) => `/naipe/copas/${o}` },
-  "paus":                { prefix: "paus-",  route: (o) => `/naipe/paus/${o}` },
-  "espadas":             { prefix: "espadas-", route: (o) => `/naipe/espadas/${o}` },
-  "ouros":               { prefix: "ouros-", route: (o) => `/naipe/ouros/${o}` },
-  "cartas-corte":        { prefix: "corte-", route: (o) => `/cartas-corte/${o}` },
+  "copas":               { prefix: "copas-", route: (o) => `/arcano-menor/copas-${o < 10 ? o + 1 : ['pajem', 'cavaleiro', 'rainha', 'rei'][o - 10]}` },
+  "paus":                { prefix: "paus-",  route: (o) => `/arcano-menor/paus-${o < 10 ? o + 1 : ['pajem', 'cavaleiro', 'rainha', 'rei'][o - 10]}` },
+  "espadas":             { prefix: "espadas-", route: (o) => `/arcano-menor/espadas-${o < 10 ? o + 1 : ['pajem', 'cavaleiro', 'rainha', 'rei'][o - 10]}` },
+  "ouros":               { prefix: "ouros-", route: (o) => `/arcano-menor/ouros-${o < 10 ? o + 1 : ['pajem', 'cavaleiro', 'rainha', 'rei'][o - 10]}` },
+  "cartas-corte":        { prefix: "corte-", route: (o) => `/module/cartas-corte` }, // Redirect to module for now as it's a grid
   "combinacoes":         { prefix: "comb-", route: (o) => `/combinacoes/${o}` },
   "tiragens":            { prefix: "tir-",  route: (o) => `/tiragens/${o}` },
   "espiritualidade":     { prefix: "esp-",  route: (o) => `/espiritualidade/${o}` },
@@ -92,7 +96,7 @@ function findNextLessonSuggestion(completedLessonIds: string[], currentModuleId?
         return {
           label: `Continuar: ${mod.name}`,
           subtitle: `Lição ${nextOrder + 1} de ${mod.totalLessons}`,
-          path: mapping.route(nextOrder),
+          path: mapping.route(nextOrder, mod.id),
         };
       }
     }
@@ -115,7 +119,7 @@ function findNextLessonSuggestion(completedLessonIds: string[], currentModuleId?
       return {
         label: `Iniciar: ${mod.name}`,
         subtitle: mod.subtitle,
-        path: mapping.route(0),
+        path: mapping.route(0, mod.id),
       };
     }
   }

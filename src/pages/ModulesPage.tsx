@@ -40,12 +40,12 @@ import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
 import imgEstrela from "@/assets/arcano-17-estrela.jpg";
 
 const CATEGORY_LABELS: Record<ModuleCategory, string> = {
-  "foundation": "O Portal de Entrada",
-  "major-arcana": "A Jornada da Alma",
-  "minor-arcana": "A Estrutura do Tarô",
-  "advanced": "Leituras Profundas",
-  "practice": "O Ritual Vivo",
-  "professional": "O Ofício e Autoridade",
+  "foundation": "Trilha 1 · Fundamentos",
+  "major-arcana": "Trilha 2 · Arcanos Maiores",
+  "minor-arcana": "Trilha 3 · Arcanos Menores",
+  "advanced": "Trilha 4 · Métodos e Combinações",
+  "practice": "Trilha 5 · Prática Guiada",
+  "professional": "Trilha 6 · Formação Profissional",
 };
 
 const MODULE_ICON_MAP: Record<string, any> = {
@@ -101,15 +101,94 @@ const ModulesPage = () => {
     return mod.totalLessons ? Math.round((completed / mod.totalLessons) * 100) : 0;
   };
 
+  const totalArcanosCount = 78;
+  const completedMaiores = progress.completedLessons.filter(l => l.startsWith("arcano-")).length;
+  const completedMenores = progress.completedLessons.filter(l => 
+    l.startsWith("copas-") || l.startsWith("paus-") || l.startsWith("espadas-") || l.startsWith("ouros-")
+  ).length;
+  const totalCompletedArcanos = completedMaiores + completedMenores;
+  const globalProgressPct = Math.round((totalCompletedArcanos / totalArcanosCount) * 100);
+
   return (
     <div className="min-h-screen bg-[#FAF5EF]">
       <Header streak={progress.streak} xp={progress.xp} level={progress.level} />
 
-      <main className="container max-w-lg px-6 pt-10 pb-24 md:pt-16 md:pb-32 space-y-12 md:space-y-20">
+      <main className="container max-w-lg px-6 pt-10 pb-24 md:pt-16 md:pb-32 space-y-12 md:space-y-16">
+        {/* ─── Global Training Progress ─── */}
+        <div className="bg-white border-2 border-[#C8A66A]/20 rounded-3xl p-6 shadow-sm animate-fade-in">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[#5B1F3D] flex items-center justify-center border border-[#C8A66A]/30">
+                <SquareStack className="w-5 h-5 text-[#C8A66A]" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#5B1F3D] uppercase">Sua Formação</span>
+                <span className="text-sm font-heading font-black text-[#5B1F3D]">Mapa dos 78 Arcanos</span>
+              </div>
+            </div>
+            <div className="text-right">
+              <span className="text-xl font-heading font-black text-[#5B1F3D]">{totalCompletedArcanos}</span>
+              <span className="text-[10px] font-black text-[#5B1F3D]/30 ml-1">/78</span>
+            </div>
+          </div>
+          
+          <div className="h-2.5 rounded-full bg-[#E8DED3] overflow-hidden p-[1.5px] border border-[#D1C4B5]/30">
+            <div 
+              className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out relative overflow-hidden"
+              style={{ width: `${Math.max(globalProgressPct, 2)}%` }}
+            >
+              <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+            </div>
+          </div>
+          
+          <p className="mt-3 text-[11px] font-body font-bold text-[#5B1F3D]/60 italic text-center">
+            {totalCompletedArcanos === 0 
+              ? "Inicie sua jornada para abrir os primeiros portais." 
+              : `Você já domina ${totalCompletedArcanos} das 78 chaves do tarô.`}
+          </p>
+        </div>
+
         <ProgressCelebration xp={progress.xp} level={progress.level} streak={progress.streak} completedLessons={progress.completedLessons.length} />
         
         <div className="space-y-8 md:space-y-12">
-          {/* Welcome Banner removed */}
+          {/* ─── Study Trails Selector ─── */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-4">
+              <span className="h-px flex-1 bg-[#C8A66A]/20" />
+              <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
+                Seu Centro de Formação
+              </h2>
+              <span className="h-px flex-1 bg-[#C8A66A]/20" />
+            </div>
+            
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { id: "foundation", label: "Base", icon: Compass, color: "bg-[#F3E6E0]" },
+                { id: "major-arcana", label: "Maiores", icon: Stars, color: "bg-[#FAF5EF]" },
+                { id: "minor-arcana", label: "Menores", icon: Layers, color: "bg-[#E8DED3]" },
+                { id: "advanced", label: "Métodos", icon: Layout, color: "bg-[#DCCFC2]" },
+                { id: "practice", label: "Prática", icon: Sparkles, color: "bg-[#FAF5EF]" },
+                { id: "professional", label: "Ofício", icon: Briefcase, color: "bg-[#F3E6E0]" },
+              ].map((trail) => (
+                <button
+                  key={trail.id}
+                  onClick={() => {
+                    const el = document.getElementById(`cat-${trail.id}`);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }}
+                  className="flex flex-col items-center gap-2 p-3 rounded-2xl border border-[#C8A66A]/20 bg-white/60 hover:bg-white transition-all shadow-sm group"
+                >
+                  <div className={`w-10 h-10 rounded-xl ${trail.color} flex items-center justify-center border border-[#C8A66A]/10 group-hover:scale-110 transition-transform`}>
+                    <trail.icon className="w-5 h-5 text-[#5B1F3D]" />
+                  </div>
+                  <span className="text-[9px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">
+                    {trail.label}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
           <SmartReviewCard />
           
           {progress.completedLessons.length === 0 && (
@@ -167,7 +246,7 @@ const ModulesPage = () => {
               </div>
               <div className="flex-1">
                 <h3 className="font-heading text-xl md:text-2xl font-black text-white leading-tight mb-2">
-                  Receba as 78 Chaves
+                  A Jornada dos 78 Arcanos
                 </h3>
                 <p className="text-[14px] text-white/95 font-body font-bold leading-relaxed italic">
                   Abra as portas mais profundas e continue a Jornada do Louco.
@@ -189,7 +268,7 @@ const ModulesPage = () => {
             if (!mods || mods.length === 0) return null;
 
             return (
-              <section key={cat} className="space-y-6 md:space-y-10">
+              <section key={cat} id={`cat-${cat}`} className="space-y-6 md:space-y-10 scroll-mt-24">
                 <div className="flex items-center gap-6">
                   <span className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A]/30" />
                   <h2 className="font-heading text-[11px] md:text-[14px] tracking-[0.4em] uppercase font-black text-[#5B1F3D]/80">
@@ -260,7 +339,7 @@ const ModulesPage = () => {
                               <div className="ml-auto flex items-center gap-2">
                                 {mod.id === "arcanos-maiores" && (
                                   <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase px-4 py-2 rounded-xl bg-gold/10 text-plum border border-gold/40 font-black shadow-sm">
-                                    Grátis
+                                    Início Grátis
                                   </span>
                                 )}
                                 {!unlocked && !isCompleted && mod.id !== "arcanos-maiores" && (
@@ -280,8 +359,8 @@ const ModulesPage = () => {
                              <p className={`text-[14px] md:text-[16px] font-body line-clamp-1 leading-relaxed ${
                               unlocked ? "text-[#5B1F3D]/85 font-bold" : "text-[#5B1F3D]/60 font-bold italic"
                             }`}>
-                              {mod.id === "arcanos-maiores" && progress.completedLessons.length === 0 
-                                ? "Abra o primeiro portal do Louco." 
+                              {mod.id === "arcanos-maiores"
+                                ? "O Mapa da Jornada do Louco." 
                                 : mod.id === "fundamentos" ? "As chaves iniciais do seu templo." : mod.subtitle}
                             </p>
                             

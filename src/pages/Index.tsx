@@ -78,7 +78,7 @@ const Index = () => {
               </button>
               <div>
                 <span className="text-[11px] tracking-[0.45em] uppercase font-heading font-black flex items-center gap-2" style={{ color: "#5B1F3D" }}>
-                  <span style={{ color: "#C8A66A" }}>✦</span> Módulo Principal <span style={{ color: "#C8A66A" }}>✦</span>
+                  <span style={{ color: "#C8A66A" }}>✦</span> Trilha dos Arcanos Maiores <span style={{ color: "#C8A66A" }}>✦</span>
                 </span>
               </div>
             </div>
@@ -99,7 +99,7 @@ const Index = () => {
           </div>
           
           <h1 className="font-heading text-5xl md:text-7xl tracking-tight mb-6" style={{ color: "#5B1F3D" }}>
-            A Jornada do Louco
+            Jornada do Louco — 22 Arcanos Maiores
           </h1>
           
           <p className="font-accent text-2xl md:text-3xl italic leading-relaxed max-w-xl mx-auto mb-6" style={{ color: "#5B1F3D", fontWeight: 600 }}>
