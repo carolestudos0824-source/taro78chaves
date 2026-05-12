@@ -118,6 +118,7 @@ console.log("useProgress init - user:", user?.id);
 
 export function useProgress() {
   const { user } = useAuth();
+  console.log("useProgress hook execution - user:", user?.id);
   const { isStaff } = useRole();
   const [progress, setProgress] = useState<UserProgress>({ ...DEFAULT_PROGRESS, ...getLocalExtras() });
   const [loading, setLoading] = useState(true);
