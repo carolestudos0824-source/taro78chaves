@@ -123,7 +123,7 @@ const ModulesPage = () => {
               </div>
               <div className="flex flex-col">
                 <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#5B1F3D] uppercase">Sua Formação</span>
-                <span className="text-sm font-heading font-black text-[#5B1F3D]">Domínio dos 78 Arcanos</span>
+                <span className="text-sm font-heading font-black text-[#5B1F3D]">Mapa dos 78 Arcanos</span>
               </div>
             </div>
             <div className="text-right">
@@ -246,7 +246,7 @@ const ModulesPage = () => {
               </div>
               <div className="flex-1">
                 <h3 className="font-heading text-xl md:text-2xl font-black text-white leading-tight mb-2">
-                  Receba as 78 Chaves
+                  A Jornada dos 78 Arcanos
                 </h3>
                 <p className="text-[14px] text-white/95 font-body font-bold leading-relaxed italic">
                   Abra as portas mais profundas e continue a Jornada do Louco.
