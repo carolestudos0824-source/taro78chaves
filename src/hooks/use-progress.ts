@@ -114,6 +114,8 @@ function progressToDbCore(p: UserProgress) {
   };
 }
 
+console.log("useProgress init - user:", user?.id);
+
 export function useProgress() {
   const { user } = useAuth();
   const { isStaff } = useRole();
