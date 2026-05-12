@@ -14,7 +14,7 @@ import { initGA, trackPageView, useUTMTracker } from "@/lib/analytics";
 // Eager: critical path
 import LandingPage from "./pages/LandingPage.tsx";
 import AuthPage from "./pages/AuthPage.tsx";
-import ModulesPage from "./pages/ModulesPage.tsx";
+import ModulesPage from "./pages/ModulesPage_Safe.tsx";
 
 // Lazy: everything else
 const Index = lazy(() => import("./pages/Index.tsx"));
@@ -297,6 +297,21 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <div id="boot-marker" style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              zIndex: 999999,
+              background: 'rgba(0,0,0,0.8)',
+              color: '#fff',
+              fontSize: '10px',
+              padding: '2px 10px',
+              textAlign: 'center',
+              pointerEvents: 'none'
+            }}>
+              INITIALIZING REAL APP...
+            </div>
             <AuthProvider>
               <AppRoutes />
             </AuthProvider>

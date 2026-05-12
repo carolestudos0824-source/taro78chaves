@@ -1,12 +1,12 @@
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx_minimal.tsx";
+import App from "./App.tsx";
 import "./index.css";
 
-console.log("main.tsx execution started - Test C2");
+console.log("main.tsx execution started - RESTORE REAL APP");
 
 const marker = document.getElementById("boot-marker");
 if (marker) {
-  marker.innerText = "MAIN IMPORTED APP - C2";
+  marker.innerText = "MAIN IMPORTED REAL APP";
 }
 
 const rootElement = document.getElementById("root");
