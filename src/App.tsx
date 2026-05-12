@@ -165,31 +165,28 @@ const AppRoutes = () => {
     <Suspense fallback={<LoadingFallback />}>
       <AnalyticsTracker />
       <Routes>
-        {/* ═══ Auth & public standalone (no BottomNav, no BetaBadge/Feedback) ═══ */}
+        {/* Ordem crítica: rotas estáticas primeiro */}
+        <Route path="/app" element={<AppShell />} />
+        
+        {/* ═══ Auth & public standalone ═══ */}
         <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
 
-        {/* ═══ Public marketing pages (no BottomNav) ═══ */}
+        {/* ═══ Public marketing pages ═══ */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/convite" element={<LandingPage />} />
-        <Route path="/waitlist" element={<Navigate to="/" replace />} />
         <Route path="/apresentacao" element={<PresentationPage />} />
 
-        {/* ═══ Legal / compliance (public, no auth) ═══ */}
+        {/* ═══ Legal / compliance ═══ */}
         <Route path="/privacidade" element={<PrivacyPage />} />
         <Route path="/termos" element={<TermsPage />} />
         <Route path="/suporte" element={<SupportPage />} />
         <Route path="/excluir-conta" element={<DeleteAccountPage />} />
 
-        {/* ═══ App routes (with BottomNav + Beta overlays) ═══ */}
-        <Route path="/app" element={<AppShell />} />
-        <Route path="/trilhas" element={<AppShell />} />
-        <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
-        <Route path="/reset-password" element={<ResetPasswordPage />} />
-        <Route path="/" element={<LandingPage />} />
+        {/* Shell para todas as outras rotas do app */}
         <Route path="/*" element={<AppShell />} />
 
-        {/* Catch-all and dynamic redirects at the very end */}
+        {/* Catch-all redirects */}
         <Route path="/:order" element={<Navigate to="/app" replace />} />
         <Route path="/:id" element={<Navigate to="/app" replace />} />
         <Route path="*" element={<NotFound />} />
