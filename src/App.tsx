@@ -146,10 +146,7 @@ const AppRoutes = () => {
   const { loading: authLoading, user } = useAuth();
 
   useEffect(() => {
-    const marker = document.getElementById("boot-marker");
-    if (marker) {
-      marker.innerText = `ROUTES LOADED - AUTH: ${authLoading ? 'LOADING' : user ? 'LOGGED' : 'PUBLIC'}`;
-    }
+    // Boot markers removed for final render
   }, [authLoading, user]);
 
   if (authLoading) {
@@ -290,11 +287,7 @@ const AppShell = () => (
 
 const App = () => {
   useEffect(() => {
-    const marker = document.getElementById("boot-marker");
-    if (marker) {
-      marker.innerText = "APP COMPONENT RENDERED - READY";
-      console.log("App component mounted");
-    }
+    console.log("App component mounted");
   }, []);
 
   return (

@@ -74,11 +74,7 @@ const ModulesPage = () => {
   const bypassLocks = originalBypassLocks; 
 
   useEffect(() => {
-    const marker = document.getElementById("boot-marker");
-    if (marker) {
-      marker.innerText = "MODULES PAGE RENDERED - READY";
-      console.log("ModulesPage mounted");
-    }
+    console.log("ModulesPage mounted");
   }, []);
 
   if (progressLoading) {
