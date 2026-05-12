@@ -195,12 +195,12 @@ const NaipePage = () => {
           </p>
 
           {/* Progress */}
-          <div className="space-y-2 bg-white/40 p-3 rounded-xl border border-[#C8A66A20]">
+          <div className="space-y-2 bg-white/60 p-4 rounded-xl border-2 border-[#C8A66A]/30 shadow-sm">
             <div className="flex items-center justify-between px-1">
-              <span className="text-[11px] font-heading tracking-wider" style={{ color: "#5B1F3DAA" }}>
+              <span className="text-[11px] font-heading tracking-[0.2em] uppercase font-black" style={{ color: "#5B1F3D" }}>
                 {completedCount}/14 cartas estudadas
               </span>
-              <span className="text-[11px] font-heading tracking-wider" style={{ color: naipeInfo.color.primary }}>
+              <span className="text-[12px] font-heading font-black" style={{ color: naipeInfo.color.primary }}>
                 {progressPct}%
               </span>
             </div>
