@@ -165,31 +165,34 @@ const AppRoutes = () => {
     <Suspense fallback={<LoadingFallback />}>
       <AnalyticsTracker />
       <Routes>
-        {/* Ordem de prioridade: rotas estáticas primeiro */}
+        {/* Ordem de prioridade absoluta: rotas estáticas primeiro */}
         <Route path="/app" element={<AppShell />} />
         
-        {/* Rotas secundárias do shell */}
-        <Route path="/perfil" element={<AppShell />} />
-        <Route path="/premium" element={<AppShell />} />
-        <Route path="/admin" element={<AppShell />} />
-        
-        {/* Auth & Public */}
+        {/* ═══ Auth & Public ═══ */}
         <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/" element={<LandingPage />} />
         
-        {/* Captura de sub-rotas */}
+        {/* Rotas administrativas e de perfil no shell */}
+        <Route path="/perfil" element={<AppShell />} />
+        <Route path="/premium" element={<AppShell />} />
+        <Route path="/admin" element={<AppShell />} />
+        
+        {/* Captura de sub-rotas com prefixo explícito */}
         <Route path="/module/*" element={<AppShell />} />
         <Route path="/lesson/*" element={<AppShell />} />
+        <Route path="/fundamentos/*" element={<AppShell />} />
+        <Route path="/naipe/*" element={<AppShell />} />
+        <Route path="/arcano-menor/*" element={<AppShell />} />
         
         {/* Legal */}
         <Route path="/privacidade" element={<PrivacyPage />} />
         <Route path="/termos" element={<TermsPage />} />
 
-        {/* Fallback do Shell para qualquer rota /... */}
+        {/* Catch-all para o shell autenticado */}
         <Route path="/*" element={<AppShell />} />
 
-        {/* Catch-all final */}
+        {/* Catch-all real final para rotas inexistentes */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
