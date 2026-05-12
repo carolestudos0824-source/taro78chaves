@@ -318,7 +318,7 @@ const AppShell = () => (
         <Route path="/feedback" element={<P><FeedbackPage /></P>} />
         <Route path="/admin" element={<P><AdminPage /></P>} />
 
-        <Route path="/:order" element={<Navigate to="/app" replace />} />
+        {/* Fallback do shell para lidar com URLs legadas ou malformadas */}
         <Route path="/:id" element={<Navigate to="/app" replace />} />
         <Route path="/:slug" element={<Navigate to="/app" replace />} />
         <Route path="/undefined" element={<Navigate to="/app" replace />} />
