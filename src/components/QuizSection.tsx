@@ -10,7 +10,7 @@ interface QuizSectionProps {
   onAnswer?: (questionIndex: number, selectedIndex: number, isCorrect: boolean) => void;
 }
 
-export function QuizSection({ questions, onComplete, onAnswer }: QuizSectionProps) {
+export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -19,6 +19,24 @@ export function QuizSection({ questions, onComplete, onAnswer }: QuizSectionProp
   const [mistakes, setMistakes] = useState<{ question: QuizQuestion; selected: number }[]>([]);
   const [reviewMode, setReviewMode] = useState(false);
   const [reviewIndex, setReviewIndex] = useState(0);
+
+  if (!questions || questions.length === 0) {
+    return (
+      <div className="bg-white/75 backdrop-blur-md rounded-2xl p-8 text-center space-y-4 border border-gold/20 shadow-sm">
+        <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-2">
+          <Sparkles className="w-8 h-8 text-gold" />
+        </div>
+        <h3 className="font-heading text-lg text-plum">Quiz não disponível</h3>
+        <p className="text-sm text-plum/60 italic">"O conhecimento se manifesta através da prática, mas esta lição ainda está sendo preparada."</p>
+        <button 
+          onClick={() => onComplete(0, 0)}
+          className="px-8 py-3 rounded-full bg-gold text-plum font-heading text-sm tracking-wider"
+        >
+          Continuar Jornada
+        </button>
+      </div>
+    );
+  }
 
   const current = questions[currentIndex];
   const isTrueFalse = current?.type === "true-false";
