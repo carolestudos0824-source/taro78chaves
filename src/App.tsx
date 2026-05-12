@@ -222,21 +222,14 @@ const AppRouteProbe = () => {
   }, []);
 
   return (
-    <div 
-      className="flex flex-col items-center justify-center bg-blue-700 text-white p-20 text-center"
-      style={{ 
-        minHeight: '80vh',
-        width: '100%',
-        zIndex: 99999,
-        position: 'relative'
-      }}
-    >
-      <h1 className="text-4xl font-bold mb-8">ROUTE APP ELEMENT ENTERED</h1>
-      <p className="text-xl opacity-80">ÁREA PRINCIPAL ATIVA</p>
-      <div className="mt-10 p-4 border-2 border-white/30 rounded font-mono text-sm">
-        Diagnosticando renderização da rota /app
+    <Suspense fallback={
+      <div className="flex-1 flex flex-col items-center justify-center bg-[#FAF5EF] space-y-4 min-h-[60vh]">
+        <div className="text-[10px] font-mono text-blue-600 animate-pulse">CARREGANDO JORNADA REAL...</div>
+        <LoadingFallback />
       </div>
-    </div>
+    }>
+      <LazyModulesPage />
+    </Suspense>
   );
 };
 
