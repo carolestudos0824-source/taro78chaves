@@ -143,19 +143,7 @@ const AnalyticsTracker = () => {
 };
 
 const AppRoutes = () => {
-  const { loading: authLoading, user } = useAuth();
-  const location = useLocation();
-
-  useEffect(() => {
-    const marker = document.getElementById("boot-marker");
-    if (marker) {
-      if (authLoading) {
-        marker.innerText = "AUTH REAL STATUS: LOADING";
-      } else {
-        marker.innerText = `AUTH REAL STATUS: ${user ? 'LOGGED' : 'PUBLIC'} | ROUTE: ${location.pathname}`;
-      }
-    }
-  }, [authLoading, user, location.pathname]);
+  const { loading: authLoading } = useAuth();
 
   if (authLoading) {
     return <LoadingFallback />;
