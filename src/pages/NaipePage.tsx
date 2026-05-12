@@ -100,51 +100,51 @@ const NaipePage = () => {
         style={{ animation: `fade-up 0.4s ease-out both`, animationDelay: `${delay}ms` }}
       >
         <div className="relative overflow-hidden rounded-xl transition-all duration-300" style={isCurrent && filled ? {
-          background: "hsl(36 33% 98%)",
-          border: `2px solid ${naipeInfo.color.primary}`,
-          boxShadow: `0 10px 30px -10px ${naipeInfo.color.primary}40`,
+          background: "white",
+          border: `2px solid #C8A66A`,
+          boxShadow: `0 12px 35px -10px rgba(91, 31, 61, 0.15)`,
         } : completed ? {
           background: "hsl(36 33% 97% / 0.8)",
-          border: "1px solid hsl(36 42% 45% / 0.2)",
+          border: "1px solid #C8A66A40",
         } : {
-          background: "hsl(36 18% 92% / 0.4)",
-          border: "1px solid hsl(36 22% 85% / 0.4)",
+          background: "rgba(220, 207, 194, 0.15)",
+          border: "1px solid rgba(220, 207, 194, 0.3)",
         }}>
-          <div className="p-4 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 shadow-sm" style={completed ? {
-              border: "2.5px solid hsl(36 42% 45%)",
+          <div className="p-4 flex items-center gap-4">
+            <div className="w-11 h-11 rounded-full flex items-center justify-center shrink-0 shadow-sm transition-transform group-hover:scale-105" style={completed ? {
+              border: "2.5px solid #5B1F3D",
               background: "#FAF5EF",
             } : unlocked ? {
-              border: `2.5px solid ${naipeInfo.color.primary}`,
+              border: `2.5px solid #5B1F3D`,
               background: "#FAF5EF",
             } : {
-              border: "1.5px solid hsl(36 22% 70% / 0.5)",
-              background: "hsl(36 18% 90% / 0.5)",
+              border: "1.5px solid rgba(91, 31, 61, 0.15)",
+              background: "rgba(220, 207, 194, 0.1)",
             }}>
               {completed ? (
-                <Check className="w-5 h-5" style={{ color: "hsl(36 42% 38%)" }} strokeWidth={3} />
+                <Check className="w-6 h-6" style={{ color: "#5B1F3D" }} strokeWidth={3.5} />
               ) : unlocked ? (
-                <span className="text-sm font-heading font-black" style={{ color: naipeInfo.color.primary }}>
+                <span className="text-sm font-heading font-black" style={{ color: "#5B1F3D" }}>
                   {isNum ? card.posicao : courtIcon(card.posicao as string)}
                 </span>
               ) : (
-                <Lock className="w-3.5 h-3.5" style={{ color: "hsl(36 22% 60%)" }} />
+                <Lock className="w-4 h-4" style={{ color: "#5B1F3D30" }} />
               )}
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-heading text-[15px] tracking-tight truncate font-black" style={{
-                color: unlocked ? "#5B1F3D" : "hsl(36 22% 50%)",
+              <h3 className="font-heading text-base tracking-tight truncate font-black" style={{
+                color: unlocked ? "#5B1F3D" : "#5B1F3D60",
               }}>
                 {card.nome}
               </h3>
               {card.subtitulo && (
-                <p className="font-accent text-xs italic truncate font-bold" style={{ color: unlocked ? "hsl(36 42% 35%)" : "hsl(36 22% 60%)" }}>
+                <p className="font-accent text-[13px] italic truncate font-bold" style={{ color: unlocked ? "#8B6A30" : "#5B1F3D40" }}>
                   {card.subtitulo}
                 </p>
               )}
             </div>
             {unlocked && filled && (
-              <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1.5 transition-transform" style={{ color: "#C8A66A" }} />
+              <ChevronRight className="w-5 h-5 shrink-0 group-hover:translate-x-1.5 transition-transform" style={{ color: "#C8A66A" }} />
             )}
           </div>
         </div>
