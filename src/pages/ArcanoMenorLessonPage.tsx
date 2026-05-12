@@ -114,7 +114,7 @@ const ArcanoMenorLessonPage = () => {
   const isLast = phaseIdx === PHASE_ORDER.length - 1;
   const totalQuiz = card.quiz?.length ?? 0;
   const allQuizSubmitted =
-    totalQuiz > 0 && Object.keys(quizSubmitted).length === totalQuiz;
+    totalQuiz === 0 || (totalQuiz > 0 && Object.keys(quizSubmitted).length === totalQuiz);
 
   const goNext = () => {
     if (phase === "quiz" && !allQuizSubmitted) return;
