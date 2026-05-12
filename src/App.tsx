@@ -165,30 +165,31 @@ const AppRoutes = () => {
     <Suspense fallback={<LoadingFallback />}>
       <AnalyticsTracker />
       <Routes>
-        {/* Ordem crítica: rotas estáticas primeiro */}
+        {/* Ordem de prioridade: rotas estáticas primeiro */}
         <Route path="/app" element={<AppShell />} />
         
-        {/* ═══ Auth & public standalone ═══ */}
+        {/* Rotas secundárias do shell */}
+        <Route path="/perfil" element={<AppShell />} />
+        <Route path="/premium" element={<AppShell />} />
+        <Route path="/admin" element={<AppShell />} />
+        
+        {/* Auth & Public */}
         <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
-
-        {/* ═══ Public marketing pages ═══ */}
         <Route path="/" element={<LandingPage />} />
-        <Route path="/convite" element={<LandingPage />} />
-        <Route path="/apresentacao" element={<PresentationPage />} />
-
-        {/* ═══ Legal / compliance ═══ */}
+        
+        {/* Captura de sub-rotas */}
+        <Route path="/module/*" element={<AppShell />} />
+        <Route path="/lesson/*" element={<AppShell />} />
+        
+        {/* Legal */}
         <Route path="/privacidade" element={<PrivacyPage />} />
         <Route path="/termos" element={<TermsPage />} />
-        <Route path="/suporte" element={<SupportPage />} />
-        <Route path="/excluir-conta" element={<DeleteAccountPage />} />
 
-        {/* Shell para todas as outras rotas do app */}
+        {/* Fallback do Shell para qualquer rota /... */}
         <Route path="/*" element={<AppShell />} />
 
-        {/* Catch-all redirects */}
-        <Route path="/:order" element={<Navigate to="/app" replace />} />
-        <Route path="/:id" element={<Navigate to="/app" replace />} />
+        {/* Catch-all final */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
