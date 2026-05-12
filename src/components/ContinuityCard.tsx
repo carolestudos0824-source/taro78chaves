@@ -232,7 +232,7 @@ const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, comple
                 </div>
                 <ArrowRight className="w-5 h-5 shrink-0 group-hover:translate-x-1.5 transition-transform text-[#C8A66A]" />
               </div>
-            </button>
+            </Link>
           );
         })}
       </div>
