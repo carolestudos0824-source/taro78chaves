@@ -12,6 +12,14 @@ const BottomNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  useEffect(() => {
+    const marker = document.getElementById("boot-marker");
+    if (marker) {
+      marker.innerText = "BOTTOM NAV RENDERED - NAVIGATING";
+      console.log("BottomNav rendered at", location.pathname);
+    }
+  }, [location.pathname]);
+
   if (location.pathname === "/") return null;
   if (location.pathname.startsWith("/admin")) return null;
 
