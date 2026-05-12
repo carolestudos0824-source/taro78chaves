@@ -235,16 +235,12 @@ const NaipePage = () => {
             <button
               key={tool.label}
               onClick={tool.onClick}
-              className="rounded-2xl p-4 text-center transition-all duration-300 hover:scale-[1.05] group bg-white/60 border border-[#C8A66A30] backdrop-blur-sm shadow-sm"
+              className="rounded-2xl p-5 text-center transition-all duration-300 hover:scale-[1.05] group bg-white border-2 border-[#C8A66A]/30 backdrop-blur-sm shadow-lg hover:border-[#C8A66A]/60"
             >
-              <div className="w-10 h-10 mx-auto rounded-full flex items-center justify-center mb-2 transition-colors group-hover:bg-[#C8A66A10]" style={{
-                background: `${naipeInfo.color.primary}15`,
-                border: `1px solid ${naipeInfo.color.primary}30`,
-                color: naipeInfo.color.primary,
-              }}>
-                {tool.icon}
+              <div className="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 transition-colors group-hover:bg-[#C8A66A]/10 bg-[#FAF5EF] border border-[#C8A66A]/20 shadow-inner">
+                <div style={{ color: "#5B1F3D" }}>{tool.icon}</div>
               </div>
-              <p className="font-heading text-[11px] tracking-widest uppercase mb-1" style={{ color: "#5B1F3D" }}>
+              <p className="font-heading text-[12px] tracking-[0.2em] uppercase mb-1 font-black" style={{ color: "#5B1F3D" }}>
                 {tool.label}
               </p>
               <p className="text-[9px] font-accent italic" style={{ color: "#5B1F3D60" }}>
