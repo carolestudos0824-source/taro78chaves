@@ -134,47 +134,48 @@ export function useProgress() {
     let cancelled = false;
 
     const fetchProgress = async () => {
-      const [{ data: progressRow }, { data: profileRow }, { data: scoresData }] = await Promise.all([
-        supabase.from("user_progress").select("*").eq("user_id", user.id).maybeSingle(),
-        // student_name lives on profiles; cast because generated types may lag the migration
-        supabase.from("profiles").select("*").eq("user_id", user.id).maybeSingle(),
-        // fetch quiz scores for progressive unlock
-        supabase.from("quiz_responses").select("quiz_id, is_correct").eq("user_id", user.id),
-      ]);
+      try {
+        const [{ data: progressRow }, { data: profileRow }, { data: scoresData }] = await Promise.all([
+          supabase.from("user_progress").select("*").eq("user_id", user.id).maybeSingle(),
+          supabase.from("profiles").select("*").eq("user_id", user.id).maybeSingle(),
+          supabase.from("quiz_responses").select("quiz_id, is_correct").eq("user_id", user.id),
+        ]);
 
-      if (cancelled) return;
+        if (cancelled) return;
 
-      const quizScores: Record<string, number> = {};
-      if (scoresData) {
-        const counts: Record<string, { correct: number; total: number }> = {};
-        scoresData.forEach(r => {
-          if (!counts[r.quiz_id]) counts[r.quiz_id] = { correct: 0, total: 0 };
-          counts[r.quiz_id].total++;
-          if (r.is_correct) counts[r.quiz_id].correct++;
-        });
-        Object.entries(counts).forEach(([id, { correct, total }]) => {
-          quizScores[id] = correct / total;
-        });
+        const quizScores: Record<string, number> = {};
+        if (scoresData) {
+          const counts: Record<string, { correct: number; total: number }> = {};
+          scoresData.forEach(r => {
+            if (!counts[r.quiz_id]) counts[r.quiz_id] = { correct: 0, total: 0 };
+            counts[r.quiz_id].total++;
+            if (r.is_correct) counts[r.quiz_id].correct++;
+          });
+          Object.entries(counts).forEach(([id, { correct, total }]) => {
+            quizScores[id] = correct / total;
+          });
+        }
+
+        if (progressRow) {
+          const studentName = (profileRow as Record<string, unknown> | null)?.student_name as string
+            ?? getLocalExtras().studentName
+            ?? "";
+          const next = dbToProgress(progressRow as unknown as DbProgress, studentName, quizScores);
+          setProgress(next);
+          saveLocalExtras({
+            badges: next.badges,
+            currentModule: next.currentModule,
+            studentName: next.studentName,
+            certificatesEarned: next.certificatesEarned,
+          });
+        } else {
+          setProgress(prev => ({ ...prev, quizScores }));
+        }
+      } catch (err) {
+        console.error("Error fetching progress:", err);
+      } finally {
+        if (!cancelled) setLoading(false);
       }
-
-      if (progressRow) {
-        const studentName = (profileRow as Record<string, unknown> | null)?.student_name as string
-          ?? getLocalExtras().studentName
-          ?? "";
-        const next = dbToProgress(progressRow as unknown as DbProgress, studentName, quizScores);
-        setProgress(next);
-        // Refresh local cache to match DB
-        saveLocalExtras({
-          badges: next.badges,
-          currentModule: next.currentModule,
-          studentName: next.studentName,
-          certificatesEarned: next.certificatesEarned,
-        });
-      } else {
-        // Hydrate default progress with scores even for new DB profiles
-        setProgress(prev => ({ ...prev, quizScores }));
-      }
-      setLoading(false);
     };
 
     fetchProgress();
