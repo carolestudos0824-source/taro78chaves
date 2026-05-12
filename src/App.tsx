@@ -14,7 +14,7 @@ import { initGA, trackPageView, useUTMTracker } from "@/lib/analytics";
 // Eager: critical path
 import LandingPage from "./pages/LandingPage.tsx";
 import AuthPage from "./pages/AuthPage.tsx";
-import ModulesPage from "./pages/ModulesPage_Safe.tsx";
+import ModulesPage from "./pages/ModulesPage.tsx";
 
 // Lazy: everything else
 const Index = lazy(() => import("./pages/Index.tsx"));

@@ -74,6 +74,10 @@ const ModulesPage = () => {
   const bypassLocks = originalBypassLocks; 
 
   useEffect(() => {
+    const marker = document.getElementById("boot-marker");
+    if (marker) {
+      marker.innerText = "APP REAL - MODULES PAGE RENDERED";
+    }
     console.log("ModulesPage mounted");
   }, []);
 
