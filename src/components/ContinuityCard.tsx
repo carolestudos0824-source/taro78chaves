@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ArrowRight, RefreshCw, Sparkles } from "lucide-react";
 import { MODULES_CATALOG as MODULES, ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, type LearningModule } from "@/lib/content";
 
@@ -213,9 +213,9 @@ const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, comple
         {topActions.map((action) => {
           const Icon = action.icon;
           return (
-            <button
+            <Link
               key={action.path}
-              onClick={() => navigate(action.path)}
+              to={action.path}
               className="w-full group transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
             >
               <div className="rounded-2xl p-5 flex items-center gap-5 bg-white border-2 border-[#DCCFC2]/40 shadow-lg hover:border-[#C8A66A]/40">
@@ -232,7 +232,7 @@ const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, comple
                 </div>
                 <ArrowRight className="w-5 h-5 shrink-0 group-hover:translate-x-1.5 transition-transform text-[#C8A66A]" />
               </div>
-            </button>
+            </Link>
           );
         })}
       </div>
