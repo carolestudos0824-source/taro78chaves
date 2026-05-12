@@ -213,9 +213,9 @@ const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, comple
         {topActions.map((action) => {
           const Icon = action.icon;
           return (
-            <button
+            <Link
               key={action.path}
-              onClick={() => navigate(action.path)}
+              to={action.path}
               className="w-full group transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
             >
               <div className="rounded-2xl p-5 flex items-center gap-5 bg-white border-2 border-[#DCCFC2]/40 shadow-lg hover:border-[#C8A66A]/40">
