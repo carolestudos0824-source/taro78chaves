@@ -165,34 +165,100 @@ const AppRoutes = () => {
     <Suspense fallback={<LoadingFallback />}>
       <AnalyticsTracker />
       <Routes>
-        {/* Ordem de prioridade absoluta: rotas estáticas primeiro */}
-        <Route path="/app" element={<AppShell />} />
-        
-        {/* ═══ Auth & Public ═══ */}
+        {/* ═══ Public Routes (No Shell) ═══ */}
+        <Route path="/" element={<LandingPage />} />
         <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
-        <Route path="/" element={<LandingPage />} />
-        
-        {/* Rotas administrativas e de perfil no shell */}
-        <Route path="/perfil" element={<AppShell />} />
-        <Route path="/premium" element={<AppShell />} />
-        <Route path="/admin" element={<AppShell />} />
-        
-        {/* Captura de sub-rotas com prefixo explícito */}
-        <Route path="/module/*" element={<AppShell />} />
-        <Route path="/lesson/*" element={<AppShell />} />
-        <Route path="/fundamentos/*" element={<AppShell />} />
-        <Route path="/naipe/*" element={<AppShell />} />
-        <Route path="/arcano-menor/*" element={<AppShell />} />
-        
-        {/* Legal */}
         <Route path="/privacidade" element={<PrivacyPage />} />
         <Route path="/termos" element={<TermsPage />} />
 
-        {/* Catch-all para o shell autenticado */}
-        <Route path="/*" element={<AppShell />} />
+        {/* ═══ App Shell Routes (Layout Wrapper) ═══ */}
+        <Route element={<AppShell />}>
+          {/* Dashboard */}
+          <Route path="/app" element={<AppRouteProbe />} />
+          <Route path="/trilhas" element={<P><TrailsPage /></P>} />
 
-        {/* Catch-all real final para rotas inexistentes */}
+          {/* Fundamentos */}
+          <Route path="/module/fundamentos" element={<P><FundamentosPage /></P>} />
+          <Route path="/fundamentos/:order" element={<P><FundamentosLessonPage /></P>} />
+
+          {/* Arcanos Maiores */}
+          <Route path="/module/arcanos-maiores" element={<P><Index /></P>} />
+          <Route path="/lesson/:id" element={<P><LessonPage /></P>} />
+          <Route path="/jornada-do-louco" element={<P><FoolsJourneyPage /></P>} />
+
+          {/* Arcanos Menores — Naipes */}
+          <Route path="/module/copas" element={<P><NaipePage /></P>} />
+          <Route path="/module/paus" element={<P><NaipePage /></P>} />
+          <Route path="/module/espadas" element={<P><NaipePage /></P>} />
+          <Route path="/module/ouros" element={<P><NaipePage /></P>} />
+          <Route path="/naipe/:naipe/intro" element={<P><NaipeIntroPage /></P>} />
+          <Route path="/module/cartas-corte" element={<P><CartasCortePage /></P>} />
+          <Route path="/cartas-corte" element={<Navigate to="/module/cartas-corte" replace />} />
+          <Route path="/numerologia" element={<P><NumerologiaPage /></P>} />
+          <Route path="/arcano-menor/:id" element={<P><ArcanoMenorLessonPage /></P>} />
+
+          {/* Combinações */}
+          <Route path="/module/combinacoes" element={<P><CombinacoesPage /></P>} />
+          <Route path="/combinacoes/:order" element={<P><CombinacoesLessonPage /></P>} />
+
+          {/* Tiragens */}
+          <Route path="/module/tiragens" element={<P><TiragensPage /></P>} />
+          <Route path="/tiragens/:order" element={<P><TiragensLessonPage /></P>} />
+
+          {/* Amor */}
+          <Route path="/module/amor" element={<P><AmorPage /></P>} />
+          <Route path="/amor/:order" element={<P><AmorLessonPage /></P>} />
+
+          {/* Prática */}
+          <Route path="/module/pratica" element={<P><PraticaPage /></P>} />
+          <Route path="/pratica/:order" element={<P><PraticaLessonPage /></P>} />
+
+          {/* Leitura Simbólica */}
+          <Route path="/module/leitura-simbolica" element={<P><LeituraSimbolicaPage /></P>} />
+          <Route path="/leitura-simbolica/:order" element={<P><LeituraSimbolicaLessonPage /></P>} />
+
+          {/* Arquitetura dos Menores */}
+          <Route path="/module/arquitetura-menores" element={<P><ArquiteturaMenoresPage /></P>} />
+          <Route path="/arquitetura-menores/:order" element={<P><ArquiteturaMenoresLessonPage /></P>} />
+
+          {/* Espiritualidade */}
+          <Route path="/module/espiritualidade" element={<P><EspiritualidadePage /></P>} />
+          <Route path="/espiritualidade/:order" element={<P><EspiritualidadeLessonPage /></P>} />
+
+          {/* Mesa de Tarô */}
+          <Route path="/module/mesa-taro" element={<P><MesaTaroPage /></P>} />
+          <Route path="/mesa-taro/:order" element={<P><MesaTaroLessonPage /></P>} />
+
+          {/* Leitura Aplicada */}
+          <Route path="/module/leitura-aplicada" element={<P><LeituraAplicadaPage /></P>} />
+          <Route path="/leitura-aplicada/:order" element={<P><LeituraAplicadaLessonPage /></P>} />
+
+          {/* Trabalhar com Tarô */}
+          <Route path="/module/trabalhar-taro" element={<P><TrabalharTaroPage /></P>} />
+          <Route path="/trabalhar-taro/:order" element={<P><TrabalharTaroLessonPage /></P>} />
+
+          {/* Ferramentas de estudo */}
+          <Route path="/revisao" element={<P><ReviewPage /></P>} />
+          <Route path="/desafios" element={<P><DailyChallengesPage /></P>} />
+          <Route path="/certificados" element={<P><CertificatesPage /></P>} />
+          <Route path="/biblioteca" element={<P><SymbolLibraryPage /></P>} />
+          <Route path="/rotina" element={<P><StudyRoutinePage /></P>} />
+
+          {/* Premium & Profile */}
+          <Route path="/premium" element={<P><PremiumPage /></P>} />
+          <Route path="/perfil" element={<P><ProfilePage /></P>} />
+          <Route path="/minha-jornada" element={<P><JourneyJournalPage /></P>} />
+          <Route path="/feedback" element={<P><FeedbackPage /></P>} />
+          <Route path="/admin" element={<P><AdminPage /></P>} />
+          
+          {/* Aliases for bad URLs */}
+          <Route path="/undefined" element={<Navigate to="/app" replace />} />
+          <Route path="/null" element={<Navigate to="/app" replace />} />
+          <Route path="/NaN" element={<Navigate to="/app" replace />} />
+        </Route>
+
+        {/* Catch-all final */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
