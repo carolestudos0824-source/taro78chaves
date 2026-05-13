@@ -41,7 +41,7 @@ const NaipeIntroPage = () => {
     const parts = text.split(/(\*\*[^*]+\*\*)/g);
     return parts.map((part, i) => {
       if (part.startsWith("**") && part.endsWith("**")) {
-        return <strong key={i} style={{ color: "hsl(340 42% 22%)" }}>{part.slice(2, -2)}</strong>;
+        return <strong key={i} style={{ color: "#5B1F3D" }}>{part.slice(2, -2)}</strong>;
       }
       return <span key={i}>{part}</span>;
     });
@@ -56,58 +56,77 @@ const NaipeIntroPage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
+      {/* Background — Marfim Suave refined from /app */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
-        
-        <div className="absolute inset-0" style={{
-          background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.88), hsl(36 33% 97% / 0.82), hsl(36 33% 97% / 0.92))",
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+            opacity: 0.98,
+          }}
+        />
+        {/* Subtle atmosphere layers */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.8) 0%, transparent 30%, transparent 70%, rgba(239, 226, 210, 0.5) 100%)",
+          }}
+        />
       </div>
 
-      {/* Header */}
-      <header className="relative z-10 backdrop-blur-md" style={{
-        background: "hsl(36 33% 97% / 0.85)",
-        borderBottom: `1px solid ${info.color.border}`,
+      {/* Header — Premium Header style from /app */}
+      <header className="relative z-10" style={{
+        borderBottom: "1.5px solid #C8A66A40",
+        background: "rgba(250, 245, 239, 0.95)",
+        backdropFilter: "blur(20px)",
+        boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)"
       }}>
-        <div className="container max-w-3xl py-3 px-4 flex items-center gap-4">
-          <button onClick={() => navigate(`/module/${naipe}`)} className="transition-colors hover:scale-105 duration-200" style={{ color: "hsl(230 10% 40%)" }}>
+        <div className="container max-w-3xl py-4 px-6 flex items-center gap-4">
+          <button 
+            onClick={() => navigate(`/module/${naipe}`)} 
+            className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30] shadow-sm transition-all hover:scale-110 duration-200" 
+            style={{ color: "#5B1F3D" }}
+          >
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <div className="flex items-center gap-2 flex-1">
-            <span className="text-lg">{info.icon}</span>
-            <span className="font-heading text-sm" style={{ color: "hsl(230 25% 15%)" }}>
-              Introdução — {info.name}
+          <div className="flex items-center gap-3 flex-1">
+            <span className="text-xl filter drop-shadow-sm">{info.icon}</span>
+            <span className="font-heading text-base font-black tracking-tight" style={{ color: "#5B1F3D" }}>
+              Introdução · {info.name}
             </span>
           </div>
         </div>
       </header>
 
       <main className="relative z-10 container max-w-3xl px-4 py-8">
-        {/* Hero */}
-        <div className="text-center space-y-4 mb-10" style={{ animation: "fade-up 0.6s ease-out" }}>
-          <div className="w-20 h-20 mx-auto rounded-full flex items-center justify-center text-3xl" style={{
-            background: info.color.surface,
-            border: `2px solid ${info.color.border}`,
-            boxShadow: `0 0 40px ${info.color.border}`,
+        {/* Hero — Redesigned for premium force */}
+        <div className="text-center space-y-6 mb-12" style={{ animation: "fade-up 0.7s ease-out" }}>
+          <div className="w-24 h-24 mx-auto rounded-3xl flex items-center justify-center text-4xl shadow-2xl transition-all duration-700 hover:rotate-12" style={{
+            background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+            border: `2.5px solid #C8A66A`,
+            boxShadow: `0 20px 50px rgba(91, 31, 61, 0.3), 0 0 30px rgba(200, 166, 106, 0.2)`,
           }}>
-            {info.icon}
+            <span className="filter drop-shadow-md">{info.icon}</span>
           </div>
-          <h1 className="font-heading text-2xl md:text-3xl tracking-wide" style={{
-            background: `linear-gradient(135deg, hsl(340 42% 22%), ${info.color.primary})`,
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}>
+          <h1 className="font-heading text-4xl md:text-5xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
             {ped.nome ?? info.name}
           </h1>
-          <p className="font-accent text-base italic" style={{ color: "hsl(230 20% 25% / 0.60)" }}>
+          <p className="font-accent text-lg md:text-xl italic font-black leading-snug" style={{ color: "#5B1F3D99" }}>
             {ped.subtitulo ?? info.subtitle}
           </p>
           {ped.fraseAbertura && (
-            <p className="font-accent text-sm italic max-w-md mx-auto leading-relaxed" style={{
-              color: info.color.primary,
-              filter: "brightness(0.85)",
-            }}>
-              "{ped.fraseAbertura}"
-            </p>
+            <div className="relative py-4 px-8 max-w-xl mx-auto">
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#C8A66A] to-transparent rounded-full" />
+              <p className="font-accent text-[18px] md:text-[20px] italic leading-relaxed font-black pl-4" style={{ color: "#5B1F3D" }}>
+                "{ped.fraseAbertura}"
+              </p>
+            </div>
           )}
         </div>
 
@@ -124,15 +143,16 @@ const NaipeIntroPage = () => {
           ))}
         </div>
 
-        {/* Main text */}
+        {/* Main text — High readability */}
         {ped.essencia && (
-          <div className="rounded-xl p-6 mb-8" style={{
-            background: "hsl(38 30% 95% / 0.85)",
-            border: "1px solid hsl(36 45% 58% / 0.15)",
-            animation: "fade-up 0.5s ease-out 0.2s both",
+          <div className="rounded-[2rem] p-8 md:p-10 mb-10 transition-all duration-500" style={{
+            background: "rgba(255, 255, 255, 0.95)",
+            border: "2px solid #C8A66A30",
+            boxShadow: "0 20px 50px rgba(91, 31, 61, 0.05)",
+            animation: "fade-up 0.6s ease-out 0.2s both",
           }}>
             {ped.essencia.split("\n\n").map((p, i) => (
-              <p key={i} className="text-sm leading-relaxed mb-4 last:mb-0" style={{ color: "hsl(230 20% 25%)" }}>
+              <p key={i} className="text-[16px] md:text-[17px] leading-relaxed mb-6 last:mb-0 font-black" style={{ color: "#3D1429" }}>
                 {renderContent(p)}
               </p>
             ))}

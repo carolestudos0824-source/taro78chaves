@@ -203,23 +203,25 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
     const a = accentOverride || accent;
     return (
       <div
-        className="rounded-xl overflow-hidden animate-fade-in"
+        className="rounded-[2rem] overflow-hidden animate-fade-in mb-6 transition-all duration-500 hover:shadow-2xl"
         style={{
-          background: "hsl(38 28% 93% / 0.85)",
-          border: `1px solid hsl(${a} / 0.12)`,
-          backdropFilter: "blur(8px)",
-          boxShadow: `0 4px 24px hsl(${a} / 0.04)`,
+          background: "rgba(255, 255, 255, 0.95)",
+          border: `2px solid #C8A66A40`,
+          backdropFilter: "blur(12px)",
+          boxShadow: `0 15px 35px rgba(91, 31, 61, 0.04)`,
           animationDelay: delay,
           animationFillMode: "both",
         }}
       >
         {label && (
-          <div className="px-5 pt-4 pb-0 flex items-center gap-2">
-            {icon}
-            <span className="text-[10px] font-heading tracking-[0.2em] uppercase" style={{ color: `hsl(${a})` }}>{label}</span>
+          <div className="px-8 pt-6 pb-2 flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#5B1F3D10] border border-[#5B1F3D20]">
+              {icon}
+            </div>
+            <span className="text-[11px] font-heading tracking-[0.3em] uppercase font-black" style={{ color: "#C8A66A" }}>{label}</span>
           </div>
         )}
-        <div className="p-5">
+        <div className="px-8 py-6">
           {children}
         </div>
       </div>
@@ -243,50 +245,67 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
   );
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Background */}
+    <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
+      {/* Background — Marfim Suave refined from /app */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
-        
-        <div className="absolute inset-0" style={{
-          background: `linear-gradient(to bottom, hsl(${accent} / 0.03), hsl(36 33% 97% / 0.18), hsl(36 33% 97% / 0.26))`
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+            opacity: 0.98,
+          }}
+        />
+        {/* Subtle atmosphere layers */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.8) 0%, transparent 30%, transparent 70%, rgba(239, 226, 210, 0.5) 100%)",
+          }}
+        />
       </div>
 
-      {/* ── Sticky Header ── */}
+      {/* ── Sticky Header — Premium Header style from /app ── */}
       <header
         className="sticky top-0 z-20"
         style={{
-          background: "hsl(36 33% 97% / 0.88)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          borderBottom: `1px solid hsl(${accent} / 0.10)`,
+          borderBottom: "1.5px solid #C8A66A40",
+          background: "rgba(250, 245, 239, 0.95)",
+          backdropFilter: "blur(20px)",
+          boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)"
         }}
       >
-        <div className="max-w-lg mx-auto px-4 py-3 flex items-center gap-3">
+        <div className="max-w-lg mx-auto px-4 py-4 flex items-center gap-4">
           <button
             onClick={() => navigate(moduleRoute)}
-            className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform active:scale-95"
-            style={{ background: "hsl(36 33% 97% / 0.7)", border: `1px solid hsl(${accent} / 0.12)` }}
+            className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-all hover:scale-110 active:scale-95 bg-[#FAF5EF] border border-[#C8A66A30] shadow-sm"
+            style={{ color: "#5B1F3D" }}
           >
-            <ArrowLeft className="w-4 h-4" style={{ color: "hsl(230 20% 25%)" }} />
+            <ArrowLeft className="w-5 h-5" />
           </button>
           <div className="flex-1 min-w-0">
-            <p className="text-[9px] font-heading tracking-[0.25em] uppercase truncate" style={{ color: `hsl(${accent} / 0.7)` }}>
+            <p className="text-[10px] font-heading tracking-[0.3em] uppercase truncate font-black" style={{ color: "#C8A66A" }}>
               {categoryLabel || moduleName}
             </p>
-            <p className="font-heading text-sm truncate" style={{ color: "hsl(230 25% 15%)" }}>
+            <h2 className="font-heading text-base truncate font-black" style={{ color: "#5B1F3D" }}>
               {lesson.title}
-            </p>
+            </h2>
           </div>
           <PhaseNav />
         </div>
         {/* Lesson progress bar */}
-        <div className="h-0.5" style={{ background: `hsl(${accent} / 0.08)` }}>
+        <div className="h-1" style={{ background: "#E8DED3" }}>
           <div
-            className="h-full transition-all duration-500"
+            className="h-full transition-all duration-700 ease-out"
             style={{
               width: `${((lessonOrder + 1) / totalLessons) * 100}%`,
-              background: `linear-gradient(90deg, hsl(${accent}), hsl(${accent} / 0.6))`,
+              background: "linear-gradient(90deg, #5B1F3D, #C8A66A)",
+              boxShadow: "0 0 10px rgba(91, 31, 61, 0.2)"
             }}
           />
         </div>
@@ -296,29 +315,31 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
         {/* ── Editorial opening ── */}
         {phase === "lesson" && (
           <>
-            {/* Intro card */}
+            {/* Intro card — Premium style */}
             <div
-              className="rounded-2xl p-5 mb-5 animate-fade-in"
+              className="rounded-[2rem] p-8 mb-8 animate-fade-in relative overflow-hidden transition-all duration-500"
               style={{
-                background: `linear-gradient(135deg, hsl(${accent} / 0.05), hsl(36 33% 97% / 0.70), hsl(${accent} / 0.03))`,
-                border: `1px solid hsl(${accent} / 0.12)`,
-                backdropFilter: "blur(12px)",
-                boxShadow: `0 6px 24px hsl(${accent} / 0.05)`,
+                background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
+                backdropFilter: "blur(24px)",
+                border: "2.5px solid #C8A66A",
+                boxShadow: "0 20px 50px rgba(91, 31, 61, 0.08)"
               }}
             >
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-4 mb-6">
                 <StreakCounter streak={progress.streak} />
-                <span className="text-[10px] font-heading tracking-wider ml-auto" style={{ color: "hsl(230 20% 15% / 0.4)" }}>
+                <span className="text-[11px] font-heading tracking-[0.2em] ml-auto uppercase font-black" style={{ color: "#C8A66A" }}>
                   Lição {lessonOrder + 1} de {totalLessons}
                 </span>
               </div>
-              <div className="flex items-center gap-2.5 mb-1.5">
-                <span className="text-xl">{lesson.icon}</span>
-                <h1 className="font-heading text-lg tracking-wide" style={{ color: "hsl(230 25% 15%)" }}>
+              <div className="flex items-center gap-4 mb-3">
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-[#5B1F3D] border border-[#C8A66A40] shadow-lg">
+                   <span className="text-2xl filter drop-shadow-sm">{lesson.icon}</span>
+                </div>
+                <h1 className="font-heading text-2xl md:text-3xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
                   {lesson.title}
                 </h1>
               </div>
-              <p className="font-accent text-xs italic leading-relaxed" style={{ color: "hsl(230 20% 15% / 0.55)" }}>
+              <p className="font-accent text-[15px] italic leading-relaxed font-black" style={{ color: "#5B1F3D99" }}>
                 {lesson.subtitle}
               </p>
             </div>
@@ -333,9 +354,9 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
                 {lesson.content.split("\n\n").map((p, i) => (
                   <p
                     key={i}
-                    className="text-sm leading-relaxed mb-3 last:mb-0"
-                    style={{ color: "hsl(230 20% 25%)" }}
-                    dangerouslySetInnerHTML={{ __html: p.replace(/\*\*(.*?)\*\*/g, '<strong style="color: hsl(230 25% 15%)">$1</strong>') }}
+                    className="text-[15px] leading-relaxed mb-4 last:mb-0 font-black"
+                    style={{ color: "#3D1429" }}
+                    dangerouslySetInnerHTML={{ __html: p.replace(/\*\*(.*?)\*\*/g, '<strong style="color: #5B1F3D">$1</strong>') }}
                   />
                 ))}
               </SectionBlock>
@@ -349,8 +370,8 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
                 >
                   <ul className="space-y-2">
                     {lesson.keyPoints.map((kp, i) => (
-                      <li key={i} className="text-xs leading-relaxed flex gap-2.5 items-start" style={{ color: "hsl(230 20% 25%)" }}>
-                        <span className="mt-1 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: `hsl(${accent})` }} />
+                      <li key={i} className="text-[14px] leading-relaxed flex gap-3 items-start font-black" style={{ color: "#3D1429" }}>
+                        <span className="mt-1.5 w-2 h-2 rounded-full shrink-0" style={{ background: "#C8A66A" }} />
                         {kp}
                       </li>
                     ))}

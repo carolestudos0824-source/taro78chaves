@@ -97,67 +97,70 @@ const NaipePage = () => {
         onClick={() => filled && unlocked && navigate(`/arcano-menor/${card.id}`)}
         disabled={!unlocked || !filled}
         className="w-full text-left group transition-all duration-500"
-        style={{ animation: `fade-up 0.4s ease-out both`, animationDelay: `${delay}ms` }}
+        style={{ animation: `fade-up 0.5s ease-out both`, animationDelay: `${delay}ms` }}
       >
         <div 
-          className="relative overflow-hidden rounded-2xl transition-all duration-500" 
+          className="relative overflow-hidden rounded-[2rem] transition-all duration-500" 
           style={isCurrent && filled ? {
             background: "white",
-            border: `2px solid #C8A66A`,
-            boxShadow: `0 20px 40px -12px rgba(91, 31, 61, 0.18)`,
-            transform: "translateY(-2px)"
+            border: `2.5px solid #C8A66A`,
+            boxShadow: `0 30px 60px -12px rgba(91, 31, 61, 0.22)`,
+            transform: "translateY(-4px)"
           } : completed ? {
-            background: "rgba(255, 255, 255, 0.85)",
-            border: "1px solid rgba(200, 166, 106, 0.3)",
-            boxShadow: "0 4px 15px rgba(91, 31, 61, 0.03)"
+            background: "rgba(255, 255, 255, 0.9)",
+            border: "2px solid rgba(200, 166, 106, 0.35)",
+            boxShadow: "0 8px 25px rgba(91, 31, 61, 0.04)"
           } : {
-            background: "rgba(220, 207, 194, 0.1)",
-            border: "1px solid rgba(220, 207, 194, 0.2)",
+            background: "rgba(220, 207, 194, 0.15)",
+            border: "2px solid rgba(220, 207, 194, 0.25)",
           }}
         >
           {/* Hover effect overlay */}
-          <div className="absolute inset-0 bg-[#C8A66A]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-[#C8A66A]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           
-          <div className="p-5 flex items-center gap-5 relative z-10">
-            <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:shadow-md" style={completed ? {
-              border: "2.5px solid #5B1F3D",
+          <div className="p-6 flex items-center gap-6 relative z-10">
+            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-2xl ${
+              isCurrent && filled ? "scale-110" : ""
+            }`} style={completed ? {
+              border: "3px solid #5B1F3D",
               background: "#FAF5EF",
-              boxShadow: "inset 0 2px 4px rgba(91, 31, 61, 0.05)"
+              boxShadow: "inset 0 3px 6px rgba(91, 31, 61, 0.08)"
             } : unlocked ? {
-              border: `2.5px solid #5B1F3D`,
+              border: `3px solid #5B1F3D`,
               background: "#FAF5EF",
-              boxShadow: "inset 0 2px 4px rgba(91, 31, 61, 0.05)"
+              boxShadow: "inset 0 3px 6px rgba(91, 31, 61, 0.08)",
+              borderColor: isCurrent ? "#5B1F3D" : "#5B1F3D80"
             } : {
-              border: "1.5px solid rgba(91, 31, 61, 0.15)",
-              background: "rgba(220, 207, 194, 0.1)",
+              border: "2px solid rgba(91, 31, 61, 0.2)",
+              background: "rgba(220, 207, 194, 0.2)",
             }}>
               {completed ? (
-                <Check className="w-6 h-6" style={{ color: "#5B1F3D" }} strokeWidth={3.5} />
+                <Check className="w-7 h-7" style={{ color: "#5B1F3D" }} strokeWidth={4} />
               ) : unlocked ? (
-                <span className="text-sm font-heading font-black" style={{ color: "#5B1F3D" }}>
+                <span className="text-lg font-heading font-black" style={{ color: "#5B1F3D" }}>
                   {isNum ? card.posicao : courtIcon(card.posicao as string)}
                 </span>
               ) : (
-                <Lock className="w-4 h-4" style={{ color: "#5B1F3D30" }} />
+                <Lock className="w-5 h-5" style={{ color: "#5B1F3D40" }} />
               )}
             </div>
             
             <div className="flex-1 min-w-0">
-              <h3 className="font-heading text-lg tracking-tight truncate font-black leading-tight" style={{
+              <h3 className="font-heading text-xl tracking-tight truncate font-black leading-tight" style={{
                 color: unlocked ? "#5B1F3D" : "#5B1F3D60",
               }}>
                 {card.nome}
               </h3>
               {card.subtitulo && (
-                <p className="font-accent text-sm italic truncate font-bold mt-0.5" style={{ color: unlocked ? "#8B6A30" : "#5B1F3D30" }}>
+                <p className="font-accent text-[15px] italic truncate font-black mt-1" style={{ color: unlocked ? "#8B6A30" : "#5B1F3D40" }}>
                   {card.subtitulo}
                 </p>
               )}
             </div>
             
             {unlocked && filled && (
-              <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A]/20 transition-all duration-300 group-hover:bg-[#C8A66A]/10 group-hover:border-[#C8A66A]/40 group-hover:translate-x-1">
-                <ChevronRight className="w-5 h-5 shrink-0" style={{ color: "#C8A66A" }} />
+              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border-2 border-[#C8A66A]/30 transition-all duration-500 group-hover:bg-[#C8A66A]/20 group-hover:border-[#C8A66A] group-hover:translate-x-2 shadow-sm">
+                <ChevronRight className="w-6 h-6 shrink-0" style={{ color: "#C8A66A" }} />
               </div>
             )}
           </div>
@@ -168,36 +171,52 @@ const NaipePage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
+      {/* Background — Refined Marfim from /app */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
-        <div className="absolute inset-0" style={{
-          background: "linear-gradient(135deg, #FAF5EF 0%, #F5E6D3 50%, #DCCFC2 100%)",
-          opacity: 0.95,
-        }} />
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+            opacity: 0.98,
+          }}
+        />
+        {/* Subtle atmosphere layers */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.8) 0%, transparent 30%, transparent 70%, rgba(239, 226, 210, 0.5) 100%)",
+          }}
+        />
       </div>
 
-      {/* Header */}
+      {/* Header — Premium Style from /app */}
       <header className="relative z-10" style={{
-        borderBottom: `2.5px solid #C8A66A40`,
-        background: "rgba(255, 255, 255, 0.98)",
+        borderBottom: "1.5px solid #C8A66A40",
+        background: "rgba(250, 245, 239, 0.95)",
         backdropFilter: "blur(20px)",
-        boxShadow: "0 10px 40px rgba(91, 31, 61, 0.06)",
+        boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)"
       }}>
         <div className="container max-w-3xl py-8 px-6">
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-5">
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-6">
               <button 
                 onClick={() => navigate("/app")} 
-                className="transition-all hover:scale-110 duration-200 w-11 h-11 rounded-full flex items-center justify-center bg-[#FAF5EF] border-2 border-[#C8A66A40] shadow-sm" 
+                className="transition-all hover:scale-110 duration-200 w-12 h-12 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30] shadow-sm" 
                 style={{ color: "#5B1F3D" }}
               >
                 <ArrowLeft className="w-6 h-6" />
               </button>
               <div>
-                <span className="text-[11px] tracking-[0.45em] uppercase font-heading mb-1.5 flex items-center gap-2 font-black" style={{ color: "#8B6A30" }}>
+                <span className="text-[11px] tracking-[0.45em] uppercase font-heading mb-2 flex items-center gap-2 font-black" style={{ color: "#C8A66A" }}>
                   <Sparkles className="w-3.5 h-3.5" /> Arcanos Menores
                 </span>
-                <h1 className="font-heading text-3xl md:text-4xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
+                <h1 className="font-heading text-4xl md:text-5xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
                   {naipeInfo.name}
                 </h1>
               </div>
@@ -205,60 +224,63 @@ const NaipePage = () => {
             <StreakCounter streak={progress.streak} />
           </div>
 
-          <p className="font-accent text-[18px] md:text-[20px] italic leading-relaxed mb-10 font-black border-l-4 border-[#C8A66A] pl-6 py-2" style={{ color: "#5B1F3D" }}>
-            "{NAIPE_PHRASES[naipe]}"
-          </p>
+          <div className="relative mb-12">
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#C8A66A] to-transparent rounded-full" />
+            <p className="font-accent text-[20px] md:text-[22px] italic leading-relaxed font-black pl-8 py-3" style={{ color: "#5B1F3D" }}>
+              "{NAIPE_PHRASES[naipe]}"
+            </p>
+          </div>
 
-          {/* Progress */}
-          <div className="space-y-4 bg-[#FAF5EF] p-6 rounded-2xl border-2 border-[#C8A66A]/30 shadow-[inset_0_2px_10px_rgba(91,31,61,0.05)]">
-            <div className="flex items-center justify-between px-1">
-              <span className="text-[12px] font-heading tracking-[0.3em] uppercase font-black" style={{ color: "#5B1F3D" }}>
-                {completedCount}/14 cartas concluídas
+          {/* Progress — Unified with /app dashboard style */}
+          <div className="bg-white/60 backdrop-blur-md p-8 rounded-[2rem] border-2 border-[#C8A66A]/30 shadow-xl">
+            <div className="flex items-center justify-between mb-5 px-1">
+              <span className="text-[13px] font-heading tracking-[0.35em] uppercase font-black" style={{ color: "#5B1F3D" }}>
+                {completedCount}/14 lições concluídas
               </span>
-              <span className="text-[14px] font-heading font-black px-2 py-0.5 rounded-full bg-[#C8A66A]/10" style={{ color: "#8B6A30" }}>
+              <span className="text-[15px] font-heading font-black px-3 py-1 rounded-full bg-[#C8A66A]/10 border border-[#C8A66A]/20" style={{ color: "#8B6A30" }}>
                 {progressPct}%
               </span>
             </div>
-            <div className="h-4 rounded-full overflow-hidden p-[2px]" style={{ background: "#DCCFC250", border: "1px solid #DCCFC260" }}>
-              <div className="h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden" style={{ 
+            <div className="h-4 rounded-full overflow-hidden p-[2.5px]" style={{ background: "#E8DED3", border: "1.5px solid rgba(209, 196, 181, 0.6)" }}>
+              <div className="h-full rounded-full transition-all duration-1000 ease-out relative" style={{ 
                 width: `${Math.max(progressPct, 4)}%`, 
-                background: `linear-gradient(90deg, #5B1F3D, #8B6A30, #C8A66A)` 
+                background: `linear-gradient(90deg, #5B1F3D, #C8A66A)` 
               }}>
                  <div className="absolute inset-0 w-1/2 h-full bg-white/30 skew-x-[-25deg] animate-pulse" style={{ left: '10%' }} />
               </div>
             </div>
           </div>
-          <div className="mt-6">
+          <div className="mt-8">
             <XPBar xp={progress.xp} level={progress.level} />
           </div>
         </div>
       </header>
 
-      <main className="relative z-10 container max-w-3xl py-8 px-6">
+      <main className="relative z-10 container max-w-3xl py-12 px-6">
         {/* Fase 3B — telemetria invisível para todas as 14 cartas deste naipe */}
         {cards.map((c) => (
           <PilotMenorProbe key={`probe-${c.id}`} naipe={naipe} posicao={c.posicao} />
         ))}
 
-        {/* Study tools */}
-        <div className="grid grid-cols-3 gap-4 mb-12" style={{ animation: "fade-up 0.4s ease-out" }}>
+        {/* Study tools — Card style from /app */}
+        <div className="grid grid-cols-3 gap-5 mb-16" style={{ animation: "fade-up 0.5s ease-out" }}>
           {[
-            { icon: <BookOpen className="w-5 h-5" />, label: "Introdução", desc: "Simbologia", onClick: () => navigate(`/naipe/${naipe}/intro`) },
-            { icon: <Hash className="w-5 h-5" />, label: "Números", desc: "Ás ao Dez", onClick: () => navigate("/numerologia") },
-            { icon: <Crown className="w-5 h-5" />, label: "Corte", desc: "Pajem ao Rei", onClick: () => navigate("/module/cartas-corte") },
+            { icon: <BookOpen className="w-6 h-6" />, label: "Introdução", desc: "Simbologia", onClick: () => navigate(`/naipe/${naipe}/intro`) },
+            { icon: <Hash className="w-6 h-6" />, label: "Números", desc: "Ás ao Dez", onClick: () => navigate("/numerologia") },
+            { icon: <Crown className="w-6 h-6" />, label: "Corte", desc: "Pajem ao Rei", onClick: () => navigate("/module/cartas-corte") },
           ].map((tool) => (
             <button
               key={tool.label}
               onClick={tool.onClick}
-              className="rounded-2xl p-5 text-center transition-all duration-300 hover:scale-[1.05] group bg-white border-2 border-[#C8A66A]/30 backdrop-blur-sm shadow-xl hover:border-[#C8A66A]/60"
+              className="rounded-[2rem] p-6 text-center transition-all duration-500 hover:scale-[1.05] group bg-white border-2 border-[#C8A66A]/30 backdrop-blur-md shadow-lg hover:shadow-2xl hover:border-[#C8A66A]"
             >
-              <div className="w-14 h-14 mx-auto rounded-2xl flex items-center justify-center mb-3 transition-all duration-300 group-hover:bg-[#C8A66A]/15 bg-[#FAF5EF] border-2 border-[#C8A66A]/20 shadow-inner group-hover:shadow-md">
-                <div style={{ color: "#5B1F3D" }}>{tool.icon}</div>
+              <div className="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 group-hover:bg-[#5B1F3D] group-hover:shadow-[0_10px_25px_rgba(91,31,61,0.3)] bg-[#FAF5EF] border-2 border-[#C8A66A]/20 shadow-inner">
+                <div className="group-hover:text-white transition-colors duration-500" style={{ color: "#5B1F3D" }}>{tool.icon}</div>
               </div>
-              <p className="font-heading text-[12px] tracking-[0.2em] uppercase mb-1 font-black" style={{ color: "#5B1F3D" }}>
+              <p className="font-heading text-[13px] tracking-[0.25em] uppercase mb-1 font-black" style={{ color: "#5B1F3D" }}>
                 {tool.label}
               </p>
-              <p className="text-[10px] font-accent italic font-bold" style={{ color: "hsl(36 42% 35%)" }}>
+              <p className="text-[11px] font-accent italic font-black" style={{ color: "#8B6A30" }}>
                 {tool.desc}
               </p>
             </button>

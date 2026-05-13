@@ -111,29 +111,64 @@ const ModulesPage = () => {
   const globalProgressPct = Math.round((totalCompletedArcanos / totalArcanosCount) * 100);
 
   return (
-    <div className="min-h-screen bg-[#FAF5EF]">
+    <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
+      {/* Background — Marfim Suave refined from /app */}
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+            opacity: 0.98,
+          }}
+        />
+        {/* Subtle atmosphere layers */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.8) 0%, transparent 30%, transparent 70%, rgba(239, 226, 210, 0.5) 100%)",
+          }}
+        />
+      </div>
+
       <Header streak={progress.streak} xp={progress.xp} level={progress.level} />
 
-      <main className="container max-w-lg px-6 pt-10 pb-24 md:pt-16 md:pb-32 space-y-12 md:space-y-16">
-        {/* ─── Global Training Progress ─── */}
-        <div className="bg-white border-2 border-[#C8A66A]/20 rounded-3xl p-6 shadow-sm animate-fade-in">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#5B1F3D] flex items-center justify-center border border-[#C8A66A]/30">
-                <SquareStack className="w-5 h-5 text-[#C8A66A]" />
+      <main className="relative z-10 container max-w-lg px-6 pt-10 pb-24 md:pt-16 md:pb-32 space-y-12 md:space-y-16">
+        {/* ─── Global Training Progress — Dashboard style from /app ─── */}
+        <div className="relative rounded-[2.5rem] overflow-hidden p-8 md:p-10 transition-all duration-500" style={{
+          background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
+          backdropFilter: "blur(24px)",
+          border: "2.5px solid #C8A66A",
+          boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08), 0 0 40px rgba(200, 166, 106, 0.1)"
+        }}>
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A30]" style={{
+                background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+                boxShadow: "0 10px 25px rgba(91, 31, 61, 0.25)"
+              }}>
+                <SquareStack className="w-7 h-7 text-[#C8A66A]" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#5B1F3D] uppercase">Sua Formação</span>
-                <span className="text-sm font-heading font-black text-[#5B1F3D]">Mapa dos 78 Arcanos</span>
+                <span className="text-[11px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Sua Formação</span>
+                <span className="text-lg font-heading font-black text-[#5B1F3D]">Mapa dos 78 Arcanos</span>
               </div>
             </div>
             <div className="text-right">
-              <span className="text-xl font-heading font-black text-[#5B1F3D]">{totalCompletedArcanos}</span>
-              <span className="text-[10px] font-black text-[#5B1F3D]/30 ml-1">/78</span>
+              <span className="text-3xl font-heading font-black text-[#5B1F3D]">{totalCompletedArcanos}</span>
+              <span className="text-[14px] font-black text-[#5B1F3D]/30 ml-1">/78</span>
             </div>
           </div>
           
-          <div className="h-2.5 rounded-full bg-[#E8DED3] overflow-hidden p-[1.5px] border border-[#D1C4B5]/30">
+          <div className="h-4 rounded-full overflow-hidden p-[2.5px]" style={{ 
+            background: "#E8DED3", 
+            border: "1.5px solid rgba(209, 196, 181, 0.6)" 
+          }}>
             <div 
               className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out relative overflow-hidden"
               style={{ width: `${Math.max(globalProgressPct, 2)}%` }}
@@ -142,9 +177,9 @@ const ModulesPage = () => {
             </div>
           </div>
           
-          <p className="mt-3 text-[11px] font-body font-bold text-[#5B1F3D]/60 italic text-center">
+          <p className="mt-5 text-[13px] font-body font-black text-[#5B1F3D]/70 italic text-center leading-relaxed">
             {totalCompletedArcanos === 0 
-              ? "Inicie sua jornada para abrir os primeiros portais." 
+              ? "Inicie sua jornada para abrir os primeiros portais sagrados." 
               : `Você já domina ${totalCompletedArcanos} das 78 chaves do tarô.`}
           </p>
         </div>
@@ -162,14 +197,14 @@ const ModulesPage = () => {
               <span className="h-px flex-1 bg-[#C8A66A]/20" />
             </div>
             
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-4">
               {[
-                { id: "foundation", label: "Base", icon: Compass, color: "bg-[#F3E6E0]" },
-                { id: "major-arcana", label: "Maiores", icon: Stars, color: "bg-[#FAF5EF]" },
-                { id: "minor-arcana", label: "Menores", icon: Layers, color: "bg-[#E8DED3]" },
-                { id: "advanced", label: "Métodos", icon: Layout, color: "bg-[#DCCFC2]" },
-                { id: "practice", label: "Prática", icon: Sparkles, color: "bg-[#FAF5EF]" },
-                { id: "professional", label: "Ofício", icon: Briefcase, color: "bg-[#F3E6E0]" },
+                { id: "foundation", label: "Base", icon: Compass, color: "linear-gradient(135deg, #F3E6E0, #FAF5EF)" },
+                { id: "major-arcana", label: "Maiores", icon: Stars, color: "linear-gradient(135deg, #FAF5EF, #F5EBDE)" },
+                { id: "minor-arcana", label: "Menores", icon: Layers, color: "linear-gradient(135deg, #E8DED3, #FAF5EF)" },
+                { id: "advanced", label: "Métodos", icon: Layout, color: "linear-gradient(135deg, #DCCFC2, #FAF5EF)" },
+                { id: "practice", label: "Prática", icon: Sparkles, color: "linear-gradient(135deg, #FAF5EF, #F3E6E0)" },
+                { id: "professional", label: "Ofício", icon: Briefcase, color: "linear-gradient(135deg, #F3E6E0, #E8DED3)" },
               ].map((trail) => (
                 <button
                   key={trail.id}
@@ -177,12 +212,12 @@ const ModulesPage = () => {
                     const el = document.getElementById(`cat-${trail.id}`);
                     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
-                  className="flex flex-col items-center gap-2 p-3 rounded-2xl border border-[#C8A66A]/20 bg-white/60 hover:bg-white transition-all shadow-sm group"
+                  className="flex flex-col items-center gap-3 p-5 rounded-[2rem] border-2 border-[#C8A66A]/20 bg-white/60 hover:bg-white transition-all shadow-lg hover:shadow-2xl hover:-translate-y-1 group"
                 >
-                  <div className={`w-10 h-10 rounded-xl ${trail.color} flex items-center justify-center border border-[#C8A66A]/10 group-hover:scale-110 transition-transform`}>
-                    <trail.icon className="w-5 h-5 text-[#5B1F3D]" />
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A]/10 group-hover:scale-110 transition-all duration-500 group-hover:bg-[#5B1F3D] group-hover:shadow-[0_8px_20px_rgba(91,31,61,0.3)] shadow-inner`} style={{ background: trail.color }}>
+                    <trail.icon className="w-7 h-7 text-[#5B1F3D] group-hover:text-white transition-colors duration-500" />
                   </div>
-                  <span className="text-[9px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">
+                  <span className="text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D] group-hover:text-[#C8A66A] transition-colors">
                     {trail.label}
                   </span>
                 </button>
@@ -291,48 +326,48 @@ const ModulesPage = () => {
                         key={mod.id}
                         onClick={() => unlocked && navigate(mod.route)}
                         disabled={!unlocked}
-                        className={`w-full text-left p-7 md:p-9 rounded-[2.5rem] border-2 transition-all duration-500 relative group overflow-hidden ${
+                        className={`w-full text-left p-8 md:p-10 rounded-[3rem] border-2 transition-all duration-500 relative group overflow-hidden ${
                           isCurrent 
-                            ? "bg-white border-[#C8A66A] shadow-2xl shadow-[#C8A66A]/30 scale-[1.02] ring-1 ring-[#C8A66A]/40" 
+                            ? "bg-white border-[#C8A66A] shadow-2xl shadow-[#C8A66A]/30 scale-[1.02] ring-2 ring-[#C8A66A]/40" 
                             : unlocked 
-                            ? "bg-white border-[#DCCFC2]/60 hover:border-[#C8A66A]/50 active:scale-[0.98] shadow-lg hover:shadow-xl" 
+                            ? "bg-white border-[#DCCFC2]/60 hover:border-[#C8A66A]/50 active:scale-[0.98] shadow-xl hover:shadow-2xl" 
                             : "bg-[#F3E6E0]/50 border-[#DCCFC2]/40 opacity-90 cursor-not-allowed grayscale-[0.3]"
                         }`}
                       >
                         {isCurrent && (
-                          <div className="absolute top-0 left-0 w-1.5 h-full bg-[#C8A66A]" />
+                          <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-[#C8A66A] to-transparent" />
                         )}
                         
-                        <div className="flex items-center gap-7 md:gap-10 relative z-10">
+                        <div className="flex items-center gap-8 md:gap-12 relative z-10">
                           {/* Icon Circle */}
-                          <div className={`w-16 h-16 md:w-20 md:h-20 rounded-3xl flex items-center justify-center shrink-0 border-2 transition-all duration-500 shadow-md ${
+                          <div className={`w-20 h-20 md:w-24 md:h-24 rounded-[1.8rem] flex items-center justify-center shrink-0 border-2 transition-all duration-500 shadow-lg ${
                             isCurrent 
-                              ? "bg-gradient-to-br from-[#C8A66A]/20 to-[#C8A66A]/5 border-[#C8A66A] text-[#5B1F3D] scale-110 rotate-3 shadow-xl" 
+                              ? "bg-gradient-to-br from-[#5B1F3D] to-[#3D1429] border-[#C8A66A] text-[#FAF5EF] scale-110 rotate-3 shadow-2xl" 
                               : unlocked 
-                              ? "bg-[#FAF5EF] border-[#DCCFC2]/40 text-[#5B1F3D]" 
+                              ? "bg-[#FAF5EF] border-[#C8A66A30] text-[#5B1F3D]" 
                               : "bg-[#F3E6E0] border-[#DCCFC2]/20 text-[#5B1F3D]/30"
                           }`}>
                             {isCompleted ? (
-                              <Check className="w-8 h-8 md:w-10 md:h-10 text-[#5B1F3D]" strokeWidth={3.5} />
+                              <Check className={`w-10 h-10 md:w-12 md:h-12 ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} strokeWidth={4} />
                             ) : unlocked ? (
-                              <IconComponent className="w-8 h-8 md:w-10 md:h-10" />
+                              <IconComponent className={`w-10 h-10 md:w-12 md:h-12 ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} />
                             ) : (
                               <div className="relative">
-                                <IconComponent className="w-8 h-8 md:w-10 md:h-10 opacity-20" />
-                                <LockKeyhole className="w-6 h-6 absolute -bottom-1 -right-1 text-[#5B1F3D] drop-shadow-md" />
+                                <IconComponent className="w-10 h-10 md:w-12 md:h-12 opacity-20" />
+                                <LockKeyhole className="w-8 h-8 absolute -bottom-2 -right-2 text-[#5B1F3D] drop-shadow-xl" />
                               </div>
                             )}
                           </div>
 
                           <div className="flex-1 min-w-0 py-2">
-                            <div className="flex items-center gap-3 mb-2 flex-wrap">
-                              <span className="text-[12px] md:text-[14px] font-black tracking-[0.3em] text-[#5B1F3D] opacity-40">{mod.symbol}</span>
-                              <h3 className={`font-heading text-xl md:text-2xl tracking-tight leading-tight transition-all ${
+                            <div className="flex items-center gap-4 mb-3 flex-wrap">
+                              <span className={`text-[14px] md:text-[16px] font-black tracking-[0.4em] transition-colors ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D] opacity-40"}`}>{mod.symbol}</span>
+                              <h3 className={`font-heading text-2xl md:text-3xl tracking-tight leading-tight transition-all ${
                                 isCurrent 
                                   ? "text-[#5B1F3D] font-black" 
                                   : unlocked 
-                                  ? "text-[#5B1F3D] font-bold" 
-                                  : "text-[#5B1F3D]/60 font-bold"
+                                  ? "text-[#5B1F3D] font-black" 
+                                  : "text-[#5B1F3D]/60 font-black"
                               }`}>
                                 {mod.name}
                               </h3>
