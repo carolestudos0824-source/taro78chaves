@@ -208,21 +208,8 @@ export function LessonContent(props: LessonContentProps) {
         {renderAccordionSection("simbolos")}
         {renderAccordionSection("luz")}
         {renderAccordionSection("sombra")}
+        {renderAccordionSection("licao")}
       </div>
-
-      {/* 13b (Optional Highlight for Lição Iniciática if it's the only thing that worked) */}
-      {initiationLesson && (
-        <div className="rounded-2xl bg-gradient-to-br from-[#FAF5EF] to-[#F5EBDE] border-2 border-[#C8A66A]/30 p-8 shadow-md relative overflow-hidden mt-8">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-            <Feather className="w-12 h-12 text-[#5B1F3D]" />
-          </div>
-          <div className="flex items-center gap-3 mb-4 relative z-10">
-            <span className="text-xl w-10 h-10 rounded-full flex items-center justify-center bg-white/80 border border-[#C8A66A]/40 shadow-sm">⟡</span>
-            <span className="text-[11px] font-heading font-black tracking-[0.3em] uppercase text-[#5B1F3D]">Lição Iniciática</span>
-          </div>
-          <p className="text-[16px] leading-relaxed italic text-[#5B1F3D] font-medium relative z-10">{initiationLesson}</p>
-        </div>
-      )}
 
       {/* 14, 15, 16: CTAs Finais */}
       <div className="pt-8 space-y-6">
