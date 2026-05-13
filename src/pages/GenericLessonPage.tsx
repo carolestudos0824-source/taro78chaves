@@ -243,50 +243,67 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
   );
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Background */}
+    <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
+      {/* Background — Marfim Suave refined from /app */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
-        
-        <div className="absolute inset-0" style={{
-          background: `linear-gradient(to bottom, hsl(${accent} / 0.03), hsl(36 33% 97% / 0.18), hsl(36 33% 97% / 0.26))`
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+            opacity: 0.98,
+          }}
+        />
+        {/* Subtle atmosphere layers */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.8) 0%, transparent 30%, transparent 70%, rgba(239, 226, 210, 0.5) 100%)",
+          }}
+        />
       </div>
 
-      {/* ── Sticky Header ── */}
+      {/* ── Sticky Header — Premium Header style from /app ── */}
       <header
         className="sticky top-0 z-20"
         style={{
-          background: "hsl(36 33% 97% / 0.88)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          borderBottom: `1px solid hsl(${accent} / 0.10)`,
+          borderBottom: "1.5px solid #C8A66A40",
+          background: "rgba(250, 245, 239, 0.95)",
+          backdropFilter: "blur(20px)",
+          boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)"
         }}
       >
-        <div className="max-w-lg mx-auto px-4 py-3 flex items-center gap-3">
+        <div className="max-w-lg mx-auto px-4 py-4 flex items-center gap-4">
           <button
             onClick={() => navigate(moduleRoute)}
-            className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform active:scale-95"
-            style={{ background: "hsl(36 33% 97% / 0.7)", border: `1px solid hsl(${accent} / 0.12)` }}
+            className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-all hover:scale-110 active:scale-95 bg-[#FAF5EF] border border-[#C8A66A30] shadow-sm"
+            style={{ color: "#5B1F3D" }}
           >
-            <ArrowLeft className="w-4 h-4" style={{ color: "hsl(230 20% 25%)" }} />
+            <ArrowLeft className="w-5 h-5" />
           </button>
           <div className="flex-1 min-w-0">
-            <p className="text-[9px] font-heading tracking-[0.25em] uppercase truncate" style={{ color: `hsl(${accent} / 0.7)` }}>
+            <p className="text-[10px] font-heading tracking-[0.3em] uppercase truncate font-black" style={{ color: "#C8A66A" }}>
               {categoryLabel || moduleName}
             </p>
-            <p className="font-heading text-sm truncate" style={{ color: "hsl(230 25% 15%)" }}>
+            <h2 className="font-heading text-base truncate font-black" style={{ color: "#5B1F3D" }}>
               {lesson.title}
-            </p>
+            </h2>
           </div>
           <PhaseNav />
         </div>
         {/* Lesson progress bar */}
-        <div className="h-0.5" style={{ background: `hsl(${accent} / 0.08)` }}>
+        <div className="h-1" style={{ background: "#E8DED3" }}>
           <div
-            className="h-full transition-all duration-500"
+            className="h-full transition-all duration-700 ease-out"
             style={{
               width: `${((lessonOrder + 1) / totalLessons) * 100}%`,
-              background: `linear-gradient(90deg, hsl(${accent}), hsl(${accent} / 0.6))`,
+              background: "linear-gradient(90deg, #5B1F3D, #C8A66A)",
+              boxShadow: "0 0 10px rgba(91, 31, 61, 0.2)"
             }}
           />
         </div>
