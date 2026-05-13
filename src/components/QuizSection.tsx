@@ -110,8 +110,8 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
                   <span
                     className="w-7 h-7 rounded-full flex items-center justify-center text-xs shrink-0"
                     style={{
-                      border: `1.5px solid ${isCorrect ? "hsl(120 35% 50%)" : isWrong ? "hsl(0 50% 55%)" : "hsl(230 10% 70%)"}`,
-                      color: isCorrect ? "hsl(120 35% 40%)" : isWrong ? "hsl(0 50% 45%)" : "hsl(230 10% 50%)",
+                      border: `1.5px solid ${isCorrect ? "#C8A66A" : isWrong ? "#5B1F3D" : "rgba(91, 31, 61, 0.2)"}`,
+                      color: isCorrect ? "#5B1F3D" : isWrong ? "#5B1F3D" : "rgba(91, 31, 61, 0.5)",
                     }}
                   >
                     {isCorrect ? <Check className="w-3.5 h-3.5" /> : isWrong ? <X className="w-3.5 h-3.5" /> : String.fromCharCode(65 + i)}
