@@ -495,7 +495,7 @@ const SlideJourney = () => {
                 cardName={card.name}
                 arcanoId={i}
                 arcanoSlug={card.name.toLowerCase().replace(/ /g, "-")}
-                state={i === 0 ? "available" : i === 8 || i === 11 || i === 21 ? "active" : "locked"}
+                state={i === 0 || i === 8 || i === 11 || i === 21 ? "active" : "available"}
                 showLockIcon={false}
                 variant="lesson"
                 className="w-full"
