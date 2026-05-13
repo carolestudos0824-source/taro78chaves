@@ -265,12 +265,15 @@ const NaipePage = () => {
         </div>
 
         {/* Divider */}
-        <div className="flex items-center gap-5 mb-10" style={{ animation: "fade-up 0.4s ease-out 0.05s both" }}>
-          <div className="flex-1 h-[2px] bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-          <span className="text-[11px] font-heading tracking-[0.4em] uppercase text-[#5B1F3D] font-black">
-            Trilha de Estudo
-          </span>
-          <div className="flex-1 h-[2px] bg-gradient-to-l from-transparent to-[#C8A66A40]" />
+        <div className="flex items-center gap-6 mb-12" style={{ animation: "fade-up 0.4s ease-out 0.05s both" }}>
+          <div className="flex-1 h-[1.5px] bg-gradient-to-r from-transparent via-[#C8A66A]/40 to-transparent" />
+          <div className="flex flex-col items-center gap-1">
+            <span className="text-[12px] font-heading tracking-[0.5em] uppercase text-[#5B1F3D] font-black">
+              Trilha de Estudo
+            </span>
+            <div className="w-8 h-[2px] bg-[#C8A66A]" />
+          </div>
+          <div className="flex-1 h-[1.5px] bg-gradient-to-r from-transparent via-[#C8A66A]/40 to-transparent" />
         </div>
 
         {/* Numbered cards */}
