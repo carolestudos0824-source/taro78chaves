@@ -110,9 +110,13 @@ const AuthPage = () => {
               {mode === "signup" ? "Crie sua conta para salvar seu progresso e começar sua jornada pelo Louco." : mode === "login" ? "Boas-vindas de volta à sua jornada." : "Enviaremos um link de acesso."}
             </p>
             {mode === "signup" && (
-              <p className="text-[11px] font-bold text-plum italic">
-                ✦ Comece pelo Louco gratuitamente. Sem cartão de crédito.
-              </p>
+              <div className="flex items-center justify-center gap-2 pt-2">
+                <span className="text-[#C8A66A]">✦</span>
+                <p className="text-[12px] font-black text-[#8B6A30] italic">
+                  Comece pelo Louco gratuitamente
+                </p>
+                <span className="text-[#C8A66A]">✦</span>
+              </div>
             )}
           </div>
         </div>
