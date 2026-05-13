@@ -202,13 +202,12 @@ export function LessonContent(props: LessonContentProps) {
         <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Conteúdo Detalhado</span>
       </div>
 
-      {/* 9, 10, 11, 12, 13: Essência, Símbolos, Luz, Sombra, Lição (Accordion) */}
+      {/* 9, 10, 11, 12: Essência, Símbolos, Luz, Sombra (Accordion) */}
       <div className="space-y-0">
         {renderAccordionSection("essencia")}
         {renderAccordionSection("simbolos")}
         {renderAccordionSection("luz")}
         {renderAccordionSection("sombra")}
-        {renderAccordionSection("licao")}
       </div>
 
       {/* 13b (Optional Highlight for Lição Iniciática if it's the only thing that worked) */}
