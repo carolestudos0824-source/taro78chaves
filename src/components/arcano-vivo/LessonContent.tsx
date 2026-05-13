@@ -212,18 +212,18 @@ export function LessonContent({
                             <span className="text-sm">☀</span>
                             <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#8B6A30]">Luz</span>
                           </div>
-                          <p className="text-[14px] leading-[1.65] text-[#5B1F3D]/90">{lightText}</p>
+                          <p className="text-[14px] leading-[1.7] text-[#5B1F3D] font-medium">{lightText}</p>
                         </div>
                         <div className="rounded-xl p-4" style={{ background: "rgba(91, 31, 61, 0.04)", border: "1px solid rgba(91, 31, 61, 0.15)" }}>
                           <div className="flex items-center gap-2 mb-2">
                             <span className="text-sm">☾</span>
-                            <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]/70">Sombra</span>
+                            <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">Sombra</span>
                           </div>
-                          <p className="text-[14px] leading-[1.65] text-[#5B1F3D]/90">{shadowText}</p>
+                          <p className="text-[14px] leading-[1.7] text-[#5B1F3D] font-medium">{shadowText}</p>
                         </div>
                       </div>
                     ) : (
-                      <p className="text-[14px] leading-[1.65] text-[#5B1F3D]/90">{section.content}</p>
+                      <p className="text-[14px] leading-[1.7] text-[#5B1F3D] font-medium">{section.content}</p>
                     )}
                   </div>
                 )}
