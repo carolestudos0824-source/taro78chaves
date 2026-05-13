@@ -27,7 +27,7 @@ const LessonPage = () => {
   const { addXP, completeLesson, completeQuiz, earnBadge } = useProgress();
   const { loading: premiumLoading } = usePremium();
   const { isStaff, loading: roleLoading } = useRole();
-  const { canAccessArcano, hasFullAccess } = useAccess();
+  const { canAccessArcano, hasFullAccess, loading: accessLoading } = useAccess();
   const [phase, setPhase] = useState<LessonPhase>("intro");
   const [exerciseCompleted, setExerciseCompleted] = useState(false);
   const [xpEarned, setXpEarned] = useState(0);
