@@ -103,7 +103,7 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
         />
 
         {/* State Overlays */}
-        {isLocked && (
+        {isLocked && showLockIcon && (
           <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
             {/* Premium Lock Overlay */}
             <div className="absolute inset-0 bg-[#5B1F3D]/20 mix-blend-multiply" />
