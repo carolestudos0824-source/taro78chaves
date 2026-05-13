@@ -81,10 +81,10 @@ const ArcanoMenorLessonPage = () => {
 
   if (roleLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="text-center space-y-3">
-          <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin mx-auto" />
-          <p className="text-xs text-muted-foreground font-heading tracking-wider">Carregando...</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
+        <div className="text-center space-y-6 animate-pulse">
+          <div className="w-12 h-12 border-4 border-[#C8A66A]/20 border-t-[#5B1F3D] animate-spin rounded-full mx-auto shadow-[0_0_15px_rgba(91,31,61,0.1)]" />
+          <p className="text-[11px] text-[#5B1F3D] font-heading tracking-[0.3em] uppercase font-black">Lendo Arcanos...</p>
         </div>
       </div>
     );
@@ -265,11 +265,11 @@ const ArcanoMenorLessonPage = () => {
           <div
             className="relative rounded-xl overflow-hidden"
             style={{
-              border: `1.5px solid ${naipeInfo.color.border}`,
-              boxShadow: `0 12px 40px ${naipeInfo.color.border}, 0 2px 8px hsl(36 45% 50% / 0.10)`,
-              background: naipeInfo.color.surface,
+              border: "2.5px solid #C8A66A",
+              boxShadow: "0 20px 50px rgba(91, 31, 61, 0.15)",
+              background: "white",
               maxWidth: phase === "intro" ? "260px" : "180px",
-              transition: "max-width 0.6s cubic-bezier(0.16,1,0.3,1)",
+              transition: "all 0.6s cubic-bezier(0.16,1,0.3,1)",
             }}
           >
             <img

@@ -62,11 +62,23 @@ const PresentationPage = () => {
       className="fixed inset-0 z-50 flex flex-col select-none"
       style={{ background: "#FAF5EF" }}
     >
+      {/* Background — Marfim Suave replicando /app */}
+      <div className="fixed inset-0 z-0">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+            opacity: 0.98,
+          }}
+        />
+      </div>
+
       {/* Top bar */}
-      <div className="flex items-center justify-between px-6 py-4" style={{
-        borderBottom: "1px solid #C8A66A40",
-        background: "#FAF5EF",
-        backdropFilter: "blur(12px)",
+      <div className="relative z-10 flex items-center justify-between px-6 py-6" style={{
+        borderBottom: "2px solid #C8A66A40",
+        background: "rgba(255, 255, 255, 0.98)",
+        backdropFilter: "blur(20px)",
+        boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)",
       }}>
         <button 
           onClick={() => navigate(-1)} 
@@ -115,8 +127,8 @@ const PresentationPage = () => {
             className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 active:scale-95 z-20"
             style={{ 
               background: "#FAF5EF", 
-              border: "1.5px solid #C8A66A40",
-              boxShadow: "0 4px 12px rgba(91, 31, 61, 0.10)"
+              border: "2px solid #C8A66A40",
+              boxShadow: "0 8px 24px rgba(91, 31, 61, 0.08)"
             }}
             aria-label="Slide anterior"
           >
@@ -129,8 +141,8 @@ const PresentationPage = () => {
             className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 active:scale-95 z-20"
             style={{ 
               background: "#FAF5EF", 
-              border: "1.5px solid #C8A66A40",
-              boxShadow: "0 4px 12px rgba(91, 31, 61, 0.10)"
+              border: "2px solid #C8A66A40",
+              boxShadow: "0 8px 24px rgba(91, 31, 61, 0.08)"
             }}
             aria-label="Próximo slide"
           >
@@ -140,9 +152,9 @@ const PresentationPage = () => {
       </div>
 
       {/* Progress dots */}
-      <div className="flex items-center justify-center gap-2 py-4 md:py-6" style={{
-        borderTop: "1px solid #C8A66A30",
-        background: "rgba(250, 245, 239, 0.5)"
+      <div className="relative z-10 flex items-center justify-center gap-3 py-6 md:py-8" style={{
+        borderTop: "2px solid #C8A66A30",
+        background: "rgba(255, 255, 255, 0.95)"
       }}>
         {SLIDES.map((_, i) => (
           <button
@@ -176,11 +188,11 @@ const SlideTitle = ({ kicker, title, subtitle }: { kicker?: string; title: strin
         {kicker}
       </p>
     )}
-    <h2 className="font-heading text-2xl md:text-4xl tracking-wide leading-tight" style={{ color: "#5B1F3D" }}>
+    <h2 className="font-heading text-2xl md:text-5xl tracking-tight leading-tight font-black" style={{ color: "#5B1F3D" }}>
       {title}
     </h2>
     {subtitle && (
-      <p className="font-body text-sm md:text-base italic mt-3 max-w-lg mx-auto leading-relaxed" style={{ color: "#5B1F3D", opacity: 0.7 }}>
+      <p className="font-accent text-lg md:text-2xl italic mt-4 max-w-xl mx-auto leading-relaxed font-bold" style={{ color: "#5B1F3DCC" }}>
         {subtitle}
       </p>
     )}
@@ -194,10 +206,10 @@ const SlideCover = () => (
       <span className="text-lg" style={{ color: "#C8A66A" }}>✦</span>
       <div className="w-16 h-px" style={{ background: "linear-gradient(to left, transparent, #C8A66A80)" }} />
     </div>
-    <h1 className="font-heading text-4xl md:text-6xl tracking-wide leading-tight" style={{ color: "#5B1F3D" }}>
+    <h1 className="font-heading text-4xl md:text-7xl tracking-tight leading-tight font-black" style={{ color: "#5B1F3D" }}>
       Tarô 78 Chaves
     </h1>
-    <p className="font-body text-lg md:text-xl italic leading-relaxed max-w-md mx-auto" style={{ color: "#5B1F3D", opacity: 0.7 }}>
+    <p className="font-accent text-xl md:text-3xl italic leading-relaxed max-w-xl mx-auto font-bold" style={{ color: "#5B1F3DCC" }}>
       Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, XP e progresso real.
     </p>
     <div className="flex items-center justify-center gap-8 pt-4">
@@ -208,8 +220,8 @@ const SlideCover = () => (
         { v: "RWS", l: "Tradição" },
       ].map(s => (
         <div key={s.l} className="text-center">
-          <div className="font-heading text-xl md:text-2xl" style={{ color: "#5B1F3D" }}>{s.v}</div>
-          <div className="text-[10px] tracking-[0.3em] uppercase font-heading mt-1 font-black" style={{ color: "#5B1F3D", opacity: 0.9 }}>{s.l}</div>
+          <div className="font-heading text-xl md:text-3xl font-black" style={{ color: "#5B1F3D" }}>{s.v}</div>
+          <div className="text-[10px] tracking-[0.4em] uppercase font-heading mt-2 font-black" style={{ color: "#8B6A30" }}>{s.l}</div>
         </div>
       ))}
     </div>
@@ -232,12 +244,13 @@ const SlideProblem = () => (
         "Ausência de estrutura pedagógica — cada fonte diz algo diferente",
         "Nenhuma plataforma une profundidade, beleza e método em um só lugar",
       ].map((item, i) => (
-        <div key={i} className="flex items-start gap-2.5 px-4 py-3 rounded-xl" style={{
-          background: "rgba(91, 31, 61, 0.04)",
-          border: "1px solid rgba(91, 31, 61, 0.10)",
+        <div key={i} className="flex items-start gap-4 px-5 py-4 rounded-2xl transition-all hover:bg-white/80" style={{
+          background: "rgba(255, 255, 255, 0.6)",
+          border: "2px solid rgba(200, 166, 106, 0.25)",
+          boxShadow: "0 4px 20px rgba(91, 31, 61, 0.03)"
         }}>
           <X className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: "#5B1F3D", opacity: 0.5 }} />
-          <span className="text-[12px] font-body leading-relaxed" style={{ color: "#5B1F3D", opacity: 0.85 }}>{item}</span>
+          <span className="text-[14px] font-body leading-relaxed font-medium" style={{ color: "#5B1F3D" }}>{item}</span>
         </div>
       ))}
     </div>
@@ -259,9 +272,10 @@ const SlideSolution = () => (
       ].map((item, i) => {
         const Icon = item.icon;
         return (
-          <div key={i} className="text-center p-5 rounded-xl" style={{
-            background: "#FAF5EF",
-            border: "1px solid #DCCFC2",
+          <div key={i} className="text-center p-6 rounded-2xl transition-all hover:scale-105" style={{
+            background: "white",
+            border: "2px solid #C8A66A40",
+            boxShadow: "0 10px 30px rgba(91, 31, 61, 0.06)"
           }}>
             <div className="w-11 h-11 rounded-xl mx-auto mb-3 flex items-center justify-center" style={{
               background: "rgba(91, 31, 61, 0.06)",
@@ -269,8 +283,8 @@ const SlideSolution = () => (
             }}>
               <Icon className="w-5 h-5" style={{ color: "#5B1F3D" }} />
             </div>
-            <h3 className="font-heading text-sm tracking-wide mb-1" style={{ color: "#5B1F3D" }}>{item.title}</h3>
-            <p className="text-[11px] font-body leading-relaxed" style={{ color: "#5B1F3D", opacity: 0.85 }}>{item.desc}</p>
+            <h3 className="font-heading text-base tracking-wide mb-2 font-black" style={{ color: "#5B1F3D" }}>{item.title}</h3>
+            <p className="text-[12px] font-body leading-relaxed font-medium" style={{ color: "#5B1F3DCC" }}>{item.desc}</p>
           </div>
         );
       })}
@@ -293,9 +307,10 @@ const SlideMethod = () => (
         { n: "04", label: "Aplicações", desc: "Amor, trabalho, saúde, espiritualidade — a carta na vida real", color: "#E8DED3" },
         { n: "05", label: "Quiz & Prática", desc: "Exercícios e quizzes que integram o aprendizado no corpo e na mente", color: "#FAF5EF" },
       ].map((item, i) => (
-        <div key={i} className="flex items-center gap-4 px-4 py-3 rounded-xl" style={{
-          background: "rgba(250, 245, 239, 0.7)",
-          border: "1px solid #DCCFC2",
+        <div key={i} className="flex items-center gap-5 px-5 py-4 rounded-2xl" style={{
+          background: "rgba(255, 255, 255, 0.8)",
+          border: "2px solid #C8A66A30",
+          boxShadow: "0 4px 15px rgba(91, 31, 61, 0.04)"
         }}>
           <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 shadow-sm" style={{
             background: i === 4 ? "#5B1F3D10" : item.color,
@@ -304,8 +319,8 @@ const SlideMethod = () => (
             <span className="font-heading text-[11px] font-black" style={{ color: (i === 2 || i === 3 || i === 4) ? "#5B1F3D" : "#FAF5EF" }}>{item.n}</span>
           </div>
           <div>
-            <h3 className="font-heading text-xs tracking-wide" style={{ color: "#5B1F3D" }}>{item.label}</h3>
-            <p className="text-[10px] font-body leading-relaxed" style={{ color: "#5B1F3D", opacity: 0.85 }}>{item.desc}</p>
+            <h3 className="font-heading text-sm tracking-wide font-black" style={{ color: "#5B1F3D" }}>{item.label}</h3>
+            <p className="text-[11px] font-body leading-relaxed font-medium" style={{ color: "#5B1F3DCC" }}>{item.desc}</p>
           </div>
         </div>
       ))}
@@ -328,9 +343,9 @@ const SlideDifferentials = () => (
       ].map((item, i) => {
         const Icon = item.icon;
         return (
-          <div key={i} className="flex items-start gap-3 p-4 rounded-xl" style={{
-            background: "rgba(250, 245, 239, 0.8)",
-            border: "1px solid #DCCFC2",
+          <div key={i} className="flex items-start gap-4 p-5 rounded-2xl transition-all hover:bg-white" style={{
+            background: "rgba(255, 255, 255, 0.6)",
+            border: "2px solid #C8A66A30",
           }}>
             <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style={{
               background: "rgba(91, 31, 61, 0.06)",
@@ -339,8 +354,8 @@ const SlideDifferentials = () => (
               <Icon className="w-4 h-4" style={{ color: "#5B1F3D" }} />
             </div>
             <div>
-              <h3 className="font-heading text-[13px] tracking-wide" style={{ color: "#5B1F3D" }}>{item.title}</h3>
-              <p className="text-[11px] font-body leading-relaxed mt-0.5" style={{ color: "#5B1F3D", opacity: 0.85 }}>{item.desc}</p>
+              <h3 className="font-heading text-[15px] tracking-wide font-black" style={{ color: "#5B1F3D" }}>{item.title}</h3>
+              <p className="text-[12px] font-body leading-relaxed mt-1 font-medium" style={{ color: "#5B1F3DCC" }}>{item.desc}</p>
             </div>
           </div>
         );
@@ -371,9 +386,9 @@ const SlideInside = () => (
         "Feedback nos Quizzes",
         "Painel de progresso",
       ].map((item, i) => (
-        <div key={i} className="flex items-center gap-2 px-3 py-2.5 rounded-lg" style={{
-          background: "rgba(250, 245, 239, 0.7)",
-          border: "1px solid #DCCFC2",
+        <div key={i} className="flex items-center gap-3 px-4 py-4 rounded-xl shadow-sm transition-all hover:shadow-md" style={{
+          background: "white",
+          border: "2px solid #C8A66A20",
         }}>
           <Check className="w-3 h-3 shrink-0" style={{ color: "#14532D" }} />
           <span className="text-[11px] font-body" style={{ color: "#5B1F3D", fontWeight: "600" }}>{item}</span>
@@ -403,14 +418,14 @@ const SlideModules = () => (
         { n: "09", name: "Leitura Aplicada", desc: "Amor, trabalho e espiritualidade" },
         { n: "10", name: "Prática Profissional", desc: "Ética, mesa e atendimento" },
       ].map((mod, i) => (
-        <div key={i} className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl" style={{
-          background: "rgba(250, 245, 239, 0.7)",
-          border: "1px solid #DCCFC2",
+        <div key={i} className="flex items-center gap-4 px-4 py-3.5 rounded-2xl shadow-sm" style={{
+          background: "rgba(255, 255, 255, 0.8)",
+          border: "2px solid #DCCFC240",
         }}>
           <span className="font-heading text-[10px] tracking-wider w-6 shrink-0" style={{ color: "#C8A66A", fontWeight: "bold" }}>{mod.n}</span>
           <div>
-            <h3 className="font-heading text-[12px] tracking-wide" style={{ color: "#5B1F3D" }}>{mod.name}</h3>
-            <p className="text-[10px] font-body italic" style={{ color: "#5B1F3D", opacity: 0.6 }}>{mod.desc}</p>
+            <h3 className="font-heading text-[13px] tracking-wide font-black" style={{ color: "#5B1F3D" }}>{mod.name}</h3>
+            <p className="text-[11px] font-accent italic font-bold" style={{ color: "#8B6A30" }}>{mod.desc}</p>
           </div>
         </div>
       ))}
