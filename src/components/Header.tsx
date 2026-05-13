@@ -1,9 +1,10 @@
-import { useNavigate } from "react-router-dom";
-import { KeyRound } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { KeyRound, Menu } from "lucide-react";
 import { StreakCounter } from "@/components/StreakCounter";
 import { XPBar } from "@/components/XPBar";
 import brandIcon from "@/assets/brand-icon.png";
 import { useState, useEffect, useRef } from "react";
+import GlobalMenu from "@/components/GlobalMenu";
 
 interface HeaderProps {
   streak: number;
@@ -13,7 +14,9 @@ interface HeaderProps {
 
 export const Header = ({ streak, xp, level }: HeaderProps) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isCompact, setIsCompact] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isCompactRef = useRef(false);
 
   useEffect(() => {
@@ -45,22 +48,23 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  if (location.pathname === "/" || location.pathname.startsWith("/admin")) return null;
+
   return (
     <header 
-      className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-xl border-b-2 border-[#C8A66A]/20 shadow-lg transition-shadow duration-300"
+      className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-xl border-b-2 border-[#C8A66A]/20 shadow-lg transition-shadow duration-300"
     >
       <div className="container max-w-lg px-6 py-4 md:py-6 relative">
         <div className={`flex items-center justify-between transition-all duration-500 ease-in-out ${isCompact ? "mb-1" : "mb-4 md:mb-6"}`}>
           <div className="flex items-center gap-3 md:gap-6">
-            <div className={`flex items-center justify-center shrink-0 p-1.5 bg-white rounded-2xl shadow-xl border border-[#C8A66A]/30 transition-all duration-500 ease-in-out transform ${
-              isCompact ? "w-11 h-11 scale-90" : "w-14 h-14 md:w-20 md:h-20 scale-100"
-            }`}>
-              <img 
-                src={brandIcon} 
-                alt="Tarô 78 Chaves" 
-                className="w-full h-full object-contain" 
-              />
-            </div>
+            <button 
+              onClick={() => setIsMenuOpen(true)}
+              className={`flex items-center justify-center shrink-0 p-1.5 bg-white rounded-2xl shadow-xl border border-[#C8A66A]/30 transition-all duration-500 ease-in-out transform hover:border-[#C8A66A] active:scale-95 ${
+                isCompact ? "w-11 h-11 scale-90" : "w-14 h-14 md:w-20 md:h-20 scale-100"
+              }`}
+            >
+              <Menu className={`${isCompact ? "w-5 h-5" : "w-6 h-6 md:w-8 md:h-8"} text-[#5B1F3D]`} />
+            </button>
             <div className="flex flex-col justify-center">
               <h1 className={`font-heading text-[#5B1F3D] font-black tracking-tight leading-none transition-all duration-500 ease-in-out ${
                 isCompact ? "text-lg" : "text-xl md:text-3xl mb-1.5 md:mb-3"
@@ -72,9 +76,6 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
               }`}>
                 <span className="font-heading text-[10px] md:text-[13px] tracking-[0.4em] uppercase text-[#5B1F3D] font-black leading-none">
                   Formação 78 Arcanos
-                </span>
-                <span className="hidden md:block text-[11px] font-body text-[#5B1F3D]/85 mt-2 leading-none font-bold italic">
-                  Sua jornada completa pelos 78 arcanos.
                 </span>
               </div>
             </div>
@@ -92,6 +93,7 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
             </button>
           </div>
         </div>
+        <GlobalMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
         <div className={`transition-all duration-500 ease-in-out origin-left transform ${isCompact ? "scale-[0.85] opacity-0 h-0 pointer-events-none" : "scale-100 opacity-100 h-auto"}`}>
           <XPBar xp={xp} level={level} />
         </div>
