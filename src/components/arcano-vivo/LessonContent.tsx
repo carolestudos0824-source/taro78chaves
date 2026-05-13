@@ -364,12 +364,24 @@ export function LessonContent({
             >
               Concluir Lição ✦
             </button>
-            <div className="flex gap-4">
-              <button onClick={onGoDeepDive} className="text-[10px] font-heading tracking-wider" style={{ color: "hsl(230 10% 45%)" }}>
-                🔮 Aprofundar
+            <div className="flex flex-wrap justify-center gap-3 mt-4 mb-6">
+              <button 
+                onClick={onGoDeepDive} 
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#C8A66A30] shadow-sm transition-all hover:scale-105 active:scale-95 group"
+              >
+                <span className="text-base filter grayscale-0 group-hover:scale-110 transition-transform">🔮</span>
+                <span className="text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">
+                  Aprofundar
+                </span>
               </button>
-              <button onClick={onGoExercise} className="text-[10px] font-heading tracking-wider" style={{ color: "hsl(230 10% 45%)" }}>
-                ✍️ Exercício
+              <button 
+                onClick={onGoExercise} 
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#C8A66A30] shadow-sm transition-all hover:scale-105 active:scale-95 group"
+              >
+                <span className="text-base filter grayscale-0 group-hover:scale-110 transition-transform">✍️</span>
+                <span className="text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">
+                  Exercício
+                </span>
               </button>
             </div>
           </motion.div>
