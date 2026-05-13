@@ -155,6 +155,3 @@ export function ReflectionSection({ arcanoId, lessonId }: ReflectionSectionProps
     </div>
   );
 }
-    </div>
-  );
-}
