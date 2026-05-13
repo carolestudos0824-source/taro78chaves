@@ -139,7 +139,7 @@ const ModulesPage = () => {
       <Header streak={progress.streak} xp={progress.xp} level={progress.level} />
 
       <main className="relative z-10 container max-w-lg px-6 pt-10 pb-24 md:pt-16 md:pb-32 space-y-12 md:space-y-16">
-        {/* ─── Global Training Progress — Dashboard style from /app ─── */}
+        {/* ─── Global Training Progress — Dashboard style ─── */}
         <div className="relative rounded-[2.5rem] overflow-hidden p-8 md:p-10 transition-all duration-500" style={{
           background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
           backdropFilter: "blur(24px)",
@@ -155,13 +155,13 @@ const ModulesPage = () => {
                 <SquareStack className="w-7 h-7 text-[#C8A66A]" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[11px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Sua Formação</span>
-                <span className="text-lg font-heading font-black text-[#5B1F3D]">Mapa dos 78 Arcanos</span>
+                <span className="text-[11px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Progresso Geral</span>
+                <span className="text-lg font-heading font-black text-[#5B1F3D]">Formação Tarô 78 Chaves</span>
               </div>
             </div>
             <div className="text-right">
-              <span className="text-3xl font-heading font-black text-[#5B1F3D]">{totalCompletedArcanos}</span>
-              <span className="text-[14px] font-black text-[#5B1F3D]/30 ml-1">/78</span>
+              <span className="text-3xl font-heading font-black text-[#5B1F3D]">{progress.level}</span>
+              <span className="text-[14px] font-black text-[#5B1F3D]/30 ml-1">Nível</span>
             </div>
           </div>
           
@@ -177,11 +177,18 @@ const ModulesPage = () => {
             </div>
           </div>
           
-          <p className="mt-5 text-[13px] font-body font-black text-[#5B1F3D]/70 italic text-center leading-relaxed">
-            {totalCompletedArcanos === 0 
-              ? "Inicie sua jornada para abrir os primeiros portais sagrados." 
-              : `Você já domina ${totalCompletedArcanos} das 78 chaves do tarô.`}
-          </p>
+          <div className="mt-6 flex flex-col gap-4">
+            <p className="text-[13px] font-body font-black text-[#5B1F3D]/70 italic text-center leading-relaxed">
+              Você já domina {totalCompletedArcanos} das 78 chaves do tarô ({globalProgressPct}%).
+            </p>
+            
+            <button
+              onClick={() => navigate("/trilhas")}
+              className="w-full py-4 rounded-2xl bg-[#5B1F3D] text-[#FAF5EF] font-heading text-[10px] tracking-[0.3em] uppercase font-black shadow-lg hover:bg-[#3D1429] transition-all flex items-center justify-center gap-2"
+            >
+              Ver Trilhas de Formação <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
         <ProgressCelebration xp={progress.xp} level={progress.level} streak={progress.streak} completedLessons={progress.completedLessons.length} />
