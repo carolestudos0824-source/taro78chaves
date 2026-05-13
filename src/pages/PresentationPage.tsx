@@ -505,7 +505,7 @@ const SlideJourney = () => {
               </div>
             </div>
             <span 
-              className="text-[7px] md:text-[8px] font-heading font-bold mt-2 text-[#5B1F3D] uppercase tracking-wider text-center leading-tight h-8 flex items-center justify-center px-0.5"
+              className="text-[9px] md:text-[10px] font-heading font-black mt-2 text-[#5B1F3D] uppercase tracking-wider text-center leading-tight h-10 flex items-center justify-center px-0.5"
               style={{ wordBreak: "normal", overflowWrap: "anywhere" }}
             >
               {card.name}
