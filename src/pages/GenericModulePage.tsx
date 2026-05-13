@@ -80,31 +80,25 @@ const GenericModulePage = ({
         }} />
       </div>
 
-      <div className="relative z-10 max-w-lg mx-auto px-4 pb-28 pt-6">
-        {/* ── Header with blur backdrop ── */}
+      <div className="relative z-10 max-w-lg mx-auto px-6 pb-28 pt-10">
+        {/* ── Header with premium style from /app ── */}
         <div
-          className="rounded-2xl p-6 mb-6 animate-fade-in relative overflow-hidden group"
+          className="rounded-[2.5rem] p-8 md:p-10 mb-10 animate-fade-in relative overflow-hidden transition-all duration-500"
           style={{
-            background: `rgba(250, 245, 239, 0.95)`,
-            border: `1.5px solid #C8A66A40`,
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-            boxShadow: `0 10px 30px rgba(91, 31, 61, 0.05)`,
+            background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
+            backdropFilter: "blur(24px)",
+            border: "2.5px solid #C8A66A",
+            boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08), 0 0 40px rgba(200, 166, 106, 0.1)"
           }}
         >
-          {/* Decorative icons */}
-          <div className="absolute top-2 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
-            <span className="text-xl">✨</span>
-          </div>
-
           {/* Back + Streak row */}
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center justify-between mb-8">
             <button
               onClick={() => navigate(backRoute)}
-              className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110 active:scale-95 bg-[#FAF5EF] border border-[#C8A66A30]"
+              className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 active:scale-95 bg-[#FAF5EF] border border-[#C8A66A30] shadow-sm"
               style={{ color: "#5B1F3D" }}
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft className="w-6 h-6" />
             </button>
             <StreakCounter streak={progress.streak} />
           </div>
@@ -112,15 +106,15 @@ const GenericModulePage = ({
           {/* Category label */}
           {categoryLabel && (
             <div
-              className="inline-block mb-3 animate-fade-in"
-              style={{ animationDelay: "80ms", animationFillMode: "both" }}
+              className="inline-block mb-4 animate-fade-in"
+              style={{ animationDelay: "100ms", animationFillMode: "both" }}
             >
               <span
-                className="text-[10px] font-heading uppercase tracking-[0.25em] px-4 py-1.5 rounded-full"
+                className="text-[11px] font-heading uppercase tracking-[0.35em] px-5 py-2 rounded-full font-black"
                 style={{
-                  color: "#5B1F3D",
-                  background: "rgba(200, 166, 106, 0.1)",
-                  border: "1px solid rgba(200, 166, 106, 0.2)",
+                  color: "#C8A66A",
+                  background: "rgba(91, 31, 61, 0.05)",
+                  border: "1.5px solid rgba(200, 166, 106, 0.3)",
                 }}
               >
                 {categoryLabel}
@@ -131,20 +125,20 @@ const GenericModulePage = ({
           {/* Title block */}
           <div
             className="animate-fade-in"
-            style={{ animationDelay: "120ms", animationFillMode: "both" }}
+            style={{ animationDelay: "150ms", animationFillMode: "both" }}
           >
-            <div className="flex items-center gap-3 mb-2">
-              <span className="text-2xl">{moduleIcon}</span>
+            <div className="flex items-center gap-4 mb-3">
+              <span className="text-3xl filter drop-shadow-sm">{moduleIcon}</span>
               <h1
-                className="font-heading text-2xl tracking-wide"
+                className="font-heading text-3xl md:text-4xl tracking-tight font-black"
                 style={{ color: "#5B1F3D" }}
               >
                 {moduleTitle}
               </h1>
             </div>
             <p
-              className="font-accent text-sm italic"
-              style={{ color: "#5B1F3D80" }}
+              className="font-accent text-lg md:text-xl italic font-black leading-snug"
+              style={{ color: "#5B1F3D99" }}
             >
               {moduleSubtitle}
             </p>
@@ -152,18 +146,18 @@ const GenericModulePage = ({
 
           {/* Editorial intro */}
           {editorialIntro && (
-            <div className="mt-4 pt-4 border-t border-[#C8A66A20]">
-              <div className="flex items-center justify-center gap-2 mb-3 opacity-90">
-                <span className="h-px w-8" style={{ background: "linear-gradient(90deg, transparent, #C8A66A80)" }} />
-                <span className="text-[11px]" style={{ color: "#C8A66A", letterSpacing: "0.3em" }}>✶ ◈ ✶</span>
-                <span className="h-px w-8" style={{ background: "linear-gradient(90deg, #C8A66A80, transparent)" }} />
+            <div className="mt-8 pt-8 border-t border-[#C8A66A20]">
+              <div className="flex items-center justify-center gap-4 mb-4 opacity-90">
+                <span className="h-px w-10" style={{ background: "linear-gradient(90deg, transparent, #C8A66A)" }} />
+                <span className="text-[12px] font-black" style={{ color: "#C8A66A", letterSpacing: "0.4em" }}>✶ ◈ ✶</span>
+                <span className="h-px w-10" style={{ background: "linear-gradient(90deg, #C8A66A, transparent)" }} />
               </div>
               <p
-                className="font-accent text-[14px] md:text-[15px] leading-relaxed italic animate-fade-in text-center"
+                className="font-accent text-[17px] md:text-[19px] leading-relaxed italic animate-fade-in text-center"
                 style={{
                   color: "#3D1429",
-                  fontWeight: 500,
-                  animationDelay: "200ms",
+                  fontWeight: 900,
+                  animationDelay: "250ms",
                   animationFillMode: "both",
                 }}
               >
