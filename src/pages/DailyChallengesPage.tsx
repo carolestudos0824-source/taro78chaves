@@ -434,7 +434,6 @@ const RevisaoRapidaContent = ({ data, onComplete }: { data: CartaDoDia | null; o
               </span>
             ))}
           </div>
-          </div>
           <CompleteButton onComplete={onComplete} label="Revisei ⚡" />
         </div>
       )}
