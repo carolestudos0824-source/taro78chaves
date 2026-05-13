@@ -106,7 +106,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
       />
 
       {/* Drawer */}
-      <div className="relative w-[320px] max-w-[85vw] h-full bg-[#FDFBF7] shadow-2xl flex flex-col border-r-2 border-[#C8A66A]/20 animate-in slide-in-from-left duration-500">
+      <div className="relative w-[320px] max-w-[85vw] h-full bg-[#FDFBF7] shadow-2xl flex flex-col border-r-2 border-[#C8A66A]/20 animate-in slide-in-from-left duration-500 overflow-hidden">
         {/* Header */}
         <div className="p-6 border-b-2 border-[#C8A66A]/20 flex items-center justify-between bg-white/50">
           <div className="flex flex-col">
@@ -126,7 +126,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
         </div>
 
         {/* Scrollable Content */}
-        <div className="flex-1 overflow-y-auto px-4 py-6 space-y-2 pb-24 scrollbar-hide">
+        <div className="flex-1 overflow-y-auto px-4 py-6 space-y-2 pb-32 scrollbar-hide overscroll-contain">
           {/* BLOCO 1 — Jornada */}
           <SectionTitle>Jornada</SectionTitle>
           <NavItem to="/app" icon={Home} label="Jornada Principal" />
