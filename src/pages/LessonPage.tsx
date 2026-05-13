@@ -239,12 +239,7 @@ const LessonPage = () => {
         {phase === "deepdive" && (
           <div className="space-y-8">
             <DeepDiveSection {...arcano.layers.deepDive} />
-            <button 
-              onClick={() => setPhase("exercise")} 
-              className="w-full bg-[#5B1F3D] text-white py-6 rounded-2xl font-heading font-black text-xs tracking-[0.2em] uppercase border-2 border-[#C8A66A] shadow-xl transition-all hover:scale-105 active:scale-95"
-            >
-              Continuar para Exercício
-            </button>
+            <Button onClick={() => setPhase("exercise")} className="btn-premium w-full py-7">Continuar para Exercício</Button>
           </div>
         )}
 
