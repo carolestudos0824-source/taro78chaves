@@ -250,9 +250,9 @@ const NaipePage = () => {
             <button
               key={tool.label}
               onClick={tool.onClick}
-              className="rounded-2xl p-5 text-center transition-all duration-300 hover:scale-[1.05] group bg-white border-2 border-[#C8A66A]/30 backdrop-blur-sm shadow-lg hover:border-[#C8A66A]/60"
+              className="rounded-2xl p-5 text-center transition-all duration-300 hover:scale-[1.05] group bg-white border-2 border-[#C8A66A]/30 backdrop-blur-sm shadow-xl hover:border-[#C8A66A]/60"
             >
-              <div className="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 transition-colors group-hover:bg-[#C8A66A]/10 bg-[#FAF5EF] border border-[#C8A66A]/20 shadow-inner">
+              <div className="w-14 h-14 mx-auto rounded-2xl flex items-center justify-center mb-3 transition-all duration-300 group-hover:bg-[#C8A66A]/15 bg-[#FAF5EF] border-2 border-[#C8A66A]/20 shadow-inner group-hover:shadow-md">
                 <div style={{ color: "#5B1F3D" }}>{tool.icon}</div>
               </div>
               <p className="font-heading text-[12px] tracking-[0.2em] uppercase mb-1 font-black" style={{ color: "#5B1F3D" }}>
