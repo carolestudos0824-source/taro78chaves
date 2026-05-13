@@ -93,7 +93,7 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
           alt={cardName}
           className={cn(
             "w-full h-full object-cover transition-all duration-700",
-            isLocked && "opacity-40 grayscale brightness-50",
+            isLocked && "opacity-60 grayscale-[0.7] brightness-[0.7]",
             isInProgress && "brightness-90 saturate-[0.8]",
             isAvailable && "brightness-100",
             isActive && "brightness-110 saturate-110"
@@ -102,8 +102,14 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
 
         {/* State Overlays */}
         {isLocked && (
-          <div className="absolute inset-0 bg-black/5 flex flex-col items-center justify-center p-4">
-            <LockKeyhole className="w-4 h-4 text-[#C8A66A]/30 mb-1" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
+            {/* Premium Lock Overlay */}
+            <div className="absolute inset-0 bg-[#5B1F3D]/20 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#5B1F3D]/10 to-[#5B1F3D]/40" />
+            
+            <div className="relative z-10 w-8 h-8 rounded-full bg-[#FAF5EF]/90 border border-[#C8A66A]/40 flex items-center justify-center shadow-lg backdrop-blur-sm">
+              <LockKeyhole className="w-4 h-4 text-[#C8A66A]" />
+            </div>
           </div>
         )}
 
