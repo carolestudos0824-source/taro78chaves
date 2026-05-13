@@ -143,15 +143,16 @@ const NaipeIntroPage = () => {
           ))}
         </div>
 
-        {/* Main text */}
+        {/* Main text — High readability */}
         {ped.essencia && (
-          <div className="rounded-xl p-6 mb-8" style={{
-            background: "hsl(38 30% 95% / 0.85)",
-            border: "1px solid hsl(36 45% 58% / 0.15)",
-            animation: "fade-up 0.5s ease-out 0.2s both",
+          <div className="rounded-[2rem] p-8 md:p-10 mb-10 transition-all duration-500" style={{
+            background: "rgba(255, 255, 255, 0.95)",
+            border: "2px solid #C8A66A30",
+            boxShadow: "0 20px 50px rgba(91, 31, 61, 0.05)",
+            animation: "fade-up 0.6s ease-out 0.2s both",
           }}>
             {ped.essencia.split("\n\n").map((p, i) => (
-              <p key={i} className="text-sm leading-relaxed mb-4 last:mb-0" style={{ color: "hsl(230 20% 25%)" }}>
+              <p key={i} className="text-[16px] md:text-[17px] leading-relaxed mb-6 last:mb-0 font-black" style={{ color: "#3D1429" }}>
                 {renderContent(p)}
               </p>
             ))}
