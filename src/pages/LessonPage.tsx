@@ -183,7 +183,7 @@ const LessonPage = () => {
   }
 
   return (
-    <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
+    <div className="min-h-screen relative pb-bottom-nav">
       {/* Background — Marfim Suave replicando /app */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         <div
