@@ -505,8 +505,8 @@ const SlideJourney = () => {
               </div>
             </div>
             <span 
-              className="text-[9px] md:text-[10px] font-heading font-black mt-2 text-[#5B1F3D] uppercase tracking-wider text-center leading-tight h-10 flex items-center justify-center px-0.5"
-              style={{ wordBreak: "normal", overflowWrap: "anywhere" }}
+              className="text-[8px] md:text-[9px] font-heading font-black mt-2 text-[#5B1F3D] uppercase tracking-wide text-center leading-tight min-h-[2.5rem] flex items-center justify-center px-0.5"
+              style={{ wordBreak: "break-word" }}
             >
               {card.name}
             </span>
