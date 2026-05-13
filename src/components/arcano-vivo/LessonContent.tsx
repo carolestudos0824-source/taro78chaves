@@ -277,221 +277,35 @@ export function LessonContent({
         </div>
       )}
 
-      {/* Applied interpretations — amor, trabalho, espiritualidade */}
-      {step >= 2 && appliedSections.length > 0 && (
-        <div className="space-y-3 pt-2" style={{ animation: "fade-up 0.4s ease-out" }}>
-          <div className="flex items-center gap-2 mb-1">
-            <Eye className="w-3.5 h-3.5" style={{ color: "hsl(340 42% 28% / 0.6)" }} />
-            <span className="text-[9px] font-heading tracking-[0.3em] uppercase" style={{ color: "hsl(340 42% 28% / 0.6)" }}>
-              Interpretações práticas
-            </span>
-          </div>
-          {appliedSections.map((section) => {
-            const isOpen = openSection === section.id;
-            const colors = appliedColors[section.id] || appliedColors.amor;
-            const Icon = appliedIcons[section.id] || Heart;
-            
-            const parts = section.content.split(/Na sombra:/);
-            const lightText = parts[0]?.replace(/^Na luz:\s*/, "").trim();
-            const shadowText = parts[1]?.trim();
-
-            return (
-              <div key={section.id} className="rounded-2xl overflow-hidden transition-all duration-300"
-                style={{
-                  background: isOpen ? "rgba(255, 255, 255, 0.7)" : "rgba(255, 255, 255, 0.4)",
-                  border: `1px solid ${isOpen ? "rgba(200, 166, 106, 0.3)" : "rgba(200, 166, 106, 0.15)"}`,
-                  boxShadow: isOpen ? "0 4px 15px rgba(91, 31, 61, 0.04)" : "none",
-                }}
-              >
-                <button
-                  onClick={() => setOpenSection(isOpen ? null : section.id)}
-                  className="w-full px-5 py-4 flex items-center gap-4 text-left transition-colors"
-                >
-                  <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style={{
-                    background: colors.bg,
-                    border: `1px solid ${colors.border}`,
-                  }}>
-                    <Icon className="w-4 h-4" style={{ color: colors.accent }} />
-                  </div>
-                  <span className="font-heading text-sm font-bold tracking-wide flex-1 text-[#5B1F3D]">{section.title}</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-                    style={{ color: "#C8A66A" }} />
-                </button>
-                {isOpen && (
-                  <div className="px-4 pb-4" style={{ animation: "fade-up 0.3s ease-out" }}>
-                    <div className="h-px mb-3" style={{ background: `linear-gradient(90deg, transparent, ${colors.border}, transparent)` }} />
-                    {lightText && shadowText ? (
-                      <div className="space-y-3">
-                        <div className="rounded-xl p-4" style={{ background: "rgba(200, 166, 106, 0.05)", border: "1px solid rgba(200, 166, 106, 0.15)" }}>
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className="text-sm">☀</span>
-                            <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#8B6A30]">Luz</span>
-                          </div>
-                          <p className="text-[14px] leading-[1.7] text-[#5B1F3D] font-medium">{lightText}</p>
-                        </div>
-                        <div className="rounded-xl p-4" style={{ background: "rgba(91, 31, 61, 0.04)", border: "1px solid rgba(91, 31, 61, 0.15)" }}>
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className="text-sm">☾</span>
-                            <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">Sombra</span>
-                          </div>
-                          <p className="text-[14px] leading-[1.7] text-[#5B1F3D] font-medium">{shadowText}</p>
-                        </div>
-                      </div>
-                    ) : (
-                      <p className="text-[14px] leading-[1.7] text-[#5B1F3D] font-medium">{section.content}</p>
-                    )}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      )}
-
-      {/* ── Reflection Questions ── */}
-      {step >= 2 && reflectionQuestions && reflectionQuestions.length > 0 && (
-        <div
-          className="rounded-2xl p-6 space-y-4"
-          style={{
-            background: "rgba(91, 31, 61, 0.04)",
-            border: "1px solid rgba(91, 31, 61, 0.15)",
-            animation: "fade-up 0.4s ease-out 0.1s both",
-          }}
-        >
-          <div className="flex items-center gap-3">
-            <Feather className="w-4 h-4 text-[#5B1F3D]" />
-            <span className="text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">
-              Perguntas para Reflexão
-            </span>
-          </div>
-          <div className="space-y-3">
-            {reflectionQuestions.map((q, i) => (
-              <div
-                key={q.id}
-                className="rounded-xl px-5 py-4 animate-fade-in"
-                style={{
-                  background: "rgba(255, 255, 255, 0.4)",
-                  border: "1px solid rgba(91, 31, 61, 0.1)",
-                  animationDelay: `${i * 80}ms`,
-                  animationFillMode: "both",
-                }}
-              >
-                <p className="text-[14px] leading-relaxed italic text-[#5B1F3D]/80">
-                  "{q.question}"
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* ── Quick Review Cards ── */}
-      {step >= 2 && quickReview && quickReview.length > 0 && (
-        <div
-          className="rounded-2xl p-6 space-y-4"
-          style={{
-            background: "rgba(200, 166, 106, 0.05)",
-            border: "1px solid rgba(200, 166, 106, 0.15)",
-            animation: "fade-up 0.4s ease-out 0.2s both",
-          }}
-        >
-          <div className="flex items-center gap-3 mb-2">
-            <ScrollText className="w-4 h-4 text-[#8B6A30]" />
-            <span className="text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#8B6A30]">
-              Revisão Rápida
-            </span>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            {quickReview.map((item, i) => (
-              <div
-                key={i}
-                className="rounded-xl px-4 py-3 animate-fade-in"
-                style={{
-                  background: "rgba(255, 255, 255, 0.5)",
-                  border: "1px solid rgba(200, 166, 106, 0.15)",
-                  animationDelay: `${i * 60}ms`,
-                  animationFillMode: "both",
-                }}
-              >
-                <p className="text-[10px] font-heading font-black tracking-wider uppercase mb-1 text-[#8B6A30]">
-                  {item.keyword}
-                </p>
-                <p className="text-[13px] leading-tight text-[#5B1F3D]" style={{ fontWeight: 500 }}>
-                  {item.meaning}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Expandable core lesson sections */}
-      {step >= 2 && [...coreSections, ...otherSections].length > 0 && (
-        <div className="space-y-2 pt-2" style={{ animation: "fade-up 0.4s ease-out" }}>
-          <div className="flex items-center gap-2 mb-2">
-            <Layers className="w-3.5 h-3.5" style={{ color: "hsl(36 40% 42%)" }} />
-            <span className="text-[9px] font-heading tracking-[0.3em] uppercase" style={{ color: "hsl(36 40% 42% / 0.7)" }}>
-              Conteúdo detalhado
-            </span>
-          </div>
-          {[...coreSections, ...otherSections].map((section) => {
-            const isOpen = openSection === section.id;
-            return (
-              <div key={section.id} className="rounded-2xl overflow-hidden transition-all duration-300"
-                style={{
-                  background: isOpen ? "rgba(255, 255, 255, 0.7)" : "rgba(255, 255, 255, 0.4)",
-                  border: `1px solid ${isOpen ? "rgba(200, 166, 106, 0.3)" : "rgba(200, 166, 106, 0.15)"}`,
-                  boxShadow: isOpen ? "0 4px 15px rgba(91, 31, 61, 0.04)" : "none",
-                }}
-              >
-                <button
-                  onClick={() => setOpenSection(isOpen ? null : section.id)}
-                  className="w-full px-5 py-4 flex items-center gap-4 text-left transition-colors"
-                >
-                  <span className="text-base w-8 h-8 rounded-full flex items-center justify-center bg-white/50 border border-[#C8A66A]/20">{section.icon}</span>
-                  <span className="font-heading text-sm font-bold tracking-wide flex-1 text-[#5B1F3D]">{section.title}</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-                    style={{ color: "#C8A66A" }} />
-                </button>
-                {isOpen && (
-                  <div className="px-5 pb-5" style={{ animation: "fade-up 0.3s ease-out" }}>
-                    <div className="h-px mb-4" style={{ background: "linear-gradient(90deg, transparent, rgba(200, 166, 106, 0.2), transparent)" }} />
-                    <p className="text-[14px] leading-[1.7] text-[#5B1F3D] font-medium">{section.content}</p>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      )}
-
-      {/* Action buttons */}
+      {/* Action buttons and pedagogy deep links */}
       <AnimatePresence>
         {step >= 2 && (
           <motion.div 
-            className="flex flex-col items-center gap-3 pt-4"
+            className="flex flex-col items-center gap-4 pt-8"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
             <button onClick={onComplete}
-              className="w-full py-6 rounded-2xl font-heading font-black text-xs tracking-[0.2em] uppercase transition-all shadow-xl hover:scale-105 active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A]"
+              className="w-full py-6 rounded-2xl font-heading font-black text-xs tracking-[0.2em] uppercase transition-all shadow-xl hover:scale-[1.02] active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A]"
             >
               Concluir Lição ✦
             </button>
-            <div className="flex flex-wrap justify-center gap-3 mt-4 mb-6">
+            
+            <div className="flex flex-wrap justify-center gap-3 mt-2 mb-4">
               <button 
                 onClick={onGoDeepDive} 
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#C8A66A30] shadow-sm transition-all hover:scale-105 active:scale-95 group"
+                className="flex items-center gap-2 px-6 py-3 rounded-full bg-white border-2 border-[#C8A66A]/30 shadow-md transition-all hover:scale-105 active:scale-95 group"
               >
                 <span className="text-base filter grayscale-0 group-hover:scale-110 transition-transform">🔮</span>
                 <span className="text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">
                   Aprofundar
                 </span>
               </button>
+              
               <button 
                 onClick={onGoExercise} 
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#C8A66A30] shadow-sm transition-all hover:scale-105 active:scale-95 group"
+                className="flex items-center gap-2 px-6 py-3 rounded-full bg-white border-2 border-[#C8A66A]/30 shadow-md transition-all hover:scale-105 active:scale-95 group"
               >
                 <span className="text-base filter grayscale-0 group-hover:scale-110 transition-transform">✍️</span>
                 <span className="text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">
