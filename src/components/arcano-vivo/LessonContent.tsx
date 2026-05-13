@@ -38,7 +38,7 @@ export function LessonContent(props: LessonContentProps) {
     quickReview, reflectionQuestions, initiationLesson,
   } = props;
   const [openSection, setOpenSection] = useState<string | null>(null);
-  const [step, setStep] = useState(0); // 0=essence, 1=light, 2=shadow, 3=initiation+applied
+  const [step, setStep] = useState(2); // Inicia desbloqueado para restaurar fluxo fixo
 
   const coreIds = ["essencia", "simbolos", "luz", "sombra", "licao"];
   const appliedIds = ["amor", "trabalho", "espiritualidade"];
