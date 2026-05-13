@@ -234,10 +234,10 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
       {/* Progress Bar */}
       <div className="space-y-3">
         <div className="flex justify-between items-end px-1">
-          <div className="text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A]/70">
+          <div className="text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A]">
             Jornada de Aprendizado
           </div>
-          <div className="text-[11px] font-heading font-black text-[#5B1F3D]">
+          <div className="text-[11px] font-heading font-black text-[#C8A66A]">
             {currentIndex + 1} de {questions.length}
           </div>
         </div>
@@ -256,7 +256,7 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
           <div className="w-10 h-10 rounded-full bg-[#5B1F3D]/5 flex items-center justify-center border border-[#C8A66A]/20">
             <Sparkles className="w-5 h-5 text-[#C8A66A]" />
           </div>
-          <span className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">
+          <span className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
             {isTrueFalse ? "Verdadeiro ou Falso" : "Múltipla Escolha"}
           </span>
         </div>
@@ -307,9 +307,9 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
                   <div 
                     className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 border-2 transition-colors"
                     style={{
-                      borderColor: isCorrectAnswer ? "#C8A66A" : isWrongSelected ? "#5B1F3D" : isSelected ? "#C8A66A" : "rgba(91, 31, 61, 0.1)",
+                      borderColor: isCorrectAnswer ? "#C8A66A" : isWrongSelected ? "#5B1F3D" : isSelected ? "#C8A66A" : "rgba(200, 166, 106, 0.4)",
                       background: isCorrectAnswer ? "#C8A66A" : isWrongSelected ? "#5B1F3D" : "transparent",
-                      color: isCorrectAnswer || isWrongSelected ? "white" : isSelected ? "#C8A66A" : "rgba(91, 31, 61, 0.3)",
+                      color: isCorrectAnswer || isWrongSelected ? "white" : isSelected ? "#C8A66A" : "#C8A66A",
                     }}
                   >
                     {isCorrectAnswer ? (
@@ -345,7 +345,7 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
                 <div className="absolute top-0 right-0 p-3 opacity-10">
                   <Book className="w-10 h-10 text-[#5B1F3D]" />
                 </div>
-                <div className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A] mb-3">
+                <div className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D] mb-3">
                   Sabedoria Integrada
                 </div>
                 <p className="text-[15px] font-accent italic font-bold leading-relaxed text-[#5B1F3D]/90">
