@@ -371,8 +371,8 @@ const QARotasPage = () => {
                         onClick={() => updateAudit(route.id, 'Aprovada')}
                         className={`flex-1 flex items-center justify-center py-4 rounded-2xl border-2 transition-all shadow-sm ${
                           audit.status === 'Aprovada' 
-                            ? 'bg-green-600 border-green-600 text-white' 
-                            : 'bg-white border-green-100 text-green-500 hover:bg-green-50'
+                            ? 'bg-[#C8A66A] border-[#C8A66A] text-white' 
+                            : 'bg-white border-[#C8A66A]/30 text-[#C8A66A] hover:bg-[#C8A66A]/10'
                         }`}
                         title="Aprovar"
                       >
