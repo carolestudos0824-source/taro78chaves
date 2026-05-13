@@ -293,13 +293,16 @@ const NaipePage = () => {
         </div>
 
         {/* Court cards */}
-        <div className="flex items-center gap-3 mb-6" style={{ animation: "fade-up 0.4s ease-out 0.5s both" }}>
-           <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#8B6A30] shadow-md">
-             <span className="text-ivory text-sm font-heading font-bold">♛</span>
+        <div className="flex items-center gap-4 mb-8" style={{ animation: "fade-up 0.4s ease-out 0.5s both" }}>
+           <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#8B6A30] shadow-lg border border-[#C8A66A]/30">
+             <span className="text-[#FAF5EF] text-lg font-heading font-black">♛</span>
            </div>
-           <h3 className="font-heading text-[13px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
-            Cartas da Corte
-          </h3>
+           <div className="flex flex-col">
+             <h3 className="font-heading text-sm tracking-[0.3em] uppercase font-black text-[#5B1F3D] leading-none">
+               Cartas da Corte
+             </h3>
+             <div className="h-0.5 w-12 bg-[#C8A66A]/30 mt-1.5" />
+           </div>
         </div>
         <div className="space-y-4 mb-16">
           {court.map((card, i) => renderCardRow(card, 10 + i, 520 + i * 40))}
