@@ -106,8 +106,14 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
         {isLocked && (
           <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
             {/* Soft Veil Overlay (Ameixa) */}
-            <div className="absolute inset-0 bg-[#5B1F3D]/10 mix-blend-multiply opacity-60" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#5B1F3D]/5 to-[#5B1F3D]/20" />
+            <div className={cn(
+              "absolute inset-0 bg-[#5B1F3D]/10 mix-blend-multiply",
+              variant === 'lesson' ? "opacity-20" : "opacity-60"
+            )} />
+            <div className={cn(
+              "absolute inset-0 bg-gradient-to-b from-transparent via-[#5B1F3D]/5 to-[#5B1F3D]/20",
+              variant === 'lesson' ? "opacity-30" : "opacity-100"
+            )} />
             
             {showLockIcon && (
               <div className="relative z-10 w-8 h-8 rounded-full bg-[#FAF5EF]/90 border border-[#C8A66A]/40 flex items-center justify-center shadow-lg backdrop-blur-sm">
