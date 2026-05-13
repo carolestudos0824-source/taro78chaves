@@ -269,13 +269,13 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
             let iconColor = "hsl(var(--gold))";
 
             if (isCorrectAnswer) {
-              optionClass = "bg-[#2d5a3d]/15 border-[#2d5a3d]/50";
-              textColorStyle = "#2d5a3d";
-              iconColor = "#2d5a3d";
+              optionClass = "bg-[#C8A66A]/12 border-[#C8A66A]/50";
+              textColorStyle = "#5B1F3D";
+              iconColor = "#C8A66A";
             } else if (isWrongSelected) {
-              optionClass = "bg-[#8b1a2e]/15 border-[#8b1a2e]/50";
-              textColorStyle = "#8b1a2e";
-              iconColor = "#8b1a2e";
+              optionClass = "bg-[#5B1F3D]/8 border-[#5B1F3D]/40";
+              textColorStyle = "#5B1F3D";
+              iconColor = "#5B1F3D";
             } else if (isAnswered) {
               optionClass = "bg-white/50 backdrop-blur-sm border-gold/20 opacity-70";
             }
