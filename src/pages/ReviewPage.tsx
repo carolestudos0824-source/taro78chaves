@@ -407,26 +407,28 @@ const ReviewPage = () => {
         )}
 
         {studiedArcanoIds.length === 0 && (
-          <div className="text-center py-16">
-            <span className="text-2xl block mb-3" style={{ color: "hsl(36 42% 45% / 0.40)" }}>◎</span>
-            <p className="font-accent italic text-sm mb-1" style={{ color: "hsl(230 20% 15% / 0.50)" }}>
+          <div className="text-center py-20 px-6 bg-white/40 rounded-[2.5rem] border-2 border-dashed border-[#C8A66A30] animate-fade-in">
+            <div className="w-16 h-16 rounded-full flex items-center justify-center bg-white border border-[#C8A66A20] shadow-sm mx-auto mb-6">
+              <span className="text-2xl" style={{ color: "#C8A66A" }}>◎</span>
+            </div>
+            <p className="font-accent italic font-black text-sm mb-2" style={{ color: "#5B1F3D" }}>
               Nenhum arcano estudado ainda
             </p>
-            <p className="text-[11px] font-body" style={{ color: "hsl(230 20% 15% / 0.35)" }}>
-              Complete sua primeira lição para desbloquear a revisão
+            <p className="text-[11px] font-body font-bold" style={{ color: "#5B1F3D80" }}>
+              Complete sua primeira lição para desbloquear a revisão.
             </p>
           </div>
         )}
 
         {/* Quick Review — all 22 arcanos */}
         <section>
-          <div className="flex items-center justify-center mb-3">
+          <div className="flex items-center justify-center mb-6">
             <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
           </div>
-          <h2 className="text-[9px] font-heading tracking-[0.35em] uppercase mb-1 text-center" style={{ color: "hsl(36 42% 40%)" }}>
-            ✦ Revisão Rápida
+          <h2 className="text-[10px] font-heading tracking-[0.4em] uppercase mb-1 text-center font-black" style={{ color: "#C8A66A" }}>
+            ✦ Revisão Rápida ✦
           </h2>
-          <p className="text-[10px] font-accent italic text-center mb-4" style={{ color: "hsl(230 20% 15% / 0.45)" }}>
+          <p className="text-[11px] font-accent italic text-center mb-6 font-black" style={{ color: "#5B1F3D80" }}>
             Resumo padronizado dos 22 Arcanos Maiores
           </p>
           <div className="space-y-2.5">
