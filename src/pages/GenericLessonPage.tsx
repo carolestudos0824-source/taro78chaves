@@ -313,29 +313,31 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
         {/* ── Editorial opening ── */}
         {phase === "lesson" && (
           <>
-            {/* Intro card */}
+            {/* Intro card — Premium style */}
             <div
-              className="rounded-2xl p-5 mb-5 animate-fade-in"
+              className="rounded-[2rem] p-8 mb-8 animate-fade-in relative overflow-hidden transition-all duration-500"
               style={{
-                background: `linear-gradient(135deg, hsl(${accent} / 0.05), hsl(36 33% 97% / 0.70), hsl(${accent} / 0.03))`,
-                border: `1px solid hsl(${accent} / 0.12)`,
-                backdropFilter: "blur(12px)",
-                boxShadow: `0 6px 24px hsl(${accent} / 0.05)`,
+                background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
+                backdropFilter: "blur(24px)",
+                border: "2.5px solid #C8A66A",
+                boxShadow: "0 20px 50px rgba(91, 31, 61, 0.08)"
               }}
             >
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-4 mb-6">
                 <StreakCounter streak={progress.streak} />
-                <span className="text-[10px] font-heading tracking-wider ml-auto" style={{ color: "hsl(230 20% 15% / 0.4)" }}>
+                <span className="text-[11px] font-heading tracking-[0.2em] ml-auto uppercase font-black" style={{ color: "#C8A66A" }}>
                   Lição {lessonOrder + 1} de {totalLessons}
                 </span>
               </div>
-              <div className="flex items-center gap-2.5 mb-1.5">
-                <span className="text-xl">{lesson.icon}</span>
-                <h1 className="font-heading text-lg tracking-wide" style={{ color: "hsl(230 25% 15%)" }}>
+              <div className="flex items-center gap-4 mb-3">
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-[#5B1F3D] border border-[#C8A66A40] shadow-lg">
+                   <span className="text-2xl filter drop-shadow-sm">{lesson.icon}</span>
+                </div>
+                <h1 className="font-heading text-2xl md:text-3xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
                   {lesson.title}
                 </h1>
               </div>
-              <p className="font-accent text-xs italic leading-relaxed" style={{ color: "hsl(230 20% 15% / 0.55)" }}>
+              <p className="font-accent text-[15px] italic leading-relaxed font-black" style={{ color: "#5B1F3D99" }}>
                 {lesson.subtitle}
               </p>
             </div>
