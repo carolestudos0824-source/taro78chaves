@@ -234,10 +234,10 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
       {/* Progress Bar */}
       <div className="space-y-3">
         <div className="flex justify-between items-end px-1">
-          <div className="text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A]/70">
+          <div className="text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A]">
             Jornada de Aprendizado
           </div>
-          <div className="text-[11px] font-heading font-black text-[#5B1F3D]">
+          <div className="text-[11px] font-heading font-black text-[#C8A66A]">
             {currentIndex + 1} de {questions.length}
           </div>
         </div>
