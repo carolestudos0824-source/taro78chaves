@@ -212,13 +212,13 @@ const DailyChallengesPage = () => {
         <div className="space-y-6">
           <div className="flex items-center gap-4">
             <span className="h-px flex-1 bg-[#C8A66A]/20" />
-            <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
-              Desafios Ativos
+            <h2 className="font-heading text-[11px] tracking-[0.4em] uppercase font-black text-[#C8A66A]">
+              Desafios Sagrados
             </h2>
             <span className="h-px flex-1 bg-[#C8A66A]/20" />
           </div>
 
-          <div className="space-y-4">
+          <div className="grid gap-6">
             {challenges.map((ch) => {
               const IconComponent = (() => {
                 switch (ch.icon) {
@@ -240,49 +240,49 @@ const DailyChallengesPage = () => {
                   className="w-full text-left group transition-all duration-500"
                 >
                   <div 
-                    className={`rounded-[2rem] p-6 flex items-center gap-5 transition-all duration-500 border-2 ${
+                    className={`rounded-[2.5rem] p-7 md:p-8 flex items-center gap-6 transition-all duration-500 border-2 shadow-xl ${
                       ch.completed 
-                        ? "bg-white/40 border-[#DCCFC2] opacity-60" 
-                        : "bg-white border-[#C8A66A]/30 hover:border-[#C8A66A] shadow-lg hover:shadow-2xl hover:-translate-y-1"
+                        ? "bg-[#F3E6E0]/40 border-[#DCCFC2] opacity-60" 
+                        : "bg-white border-[#C8A66A]/20 hover:border-[#C8A66A] hover:shadow-2xl hover:-translate-y-1.5"
                     }`}
                   >
-                    {/* Icon */}
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border-2 transition-all duration-500 ${
+                    {/* Icon Container — Premium Circle */}
+                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-[1.8rem] flex items-center justify-center shrink-0 border-2 transition-all duration-500 shadow-lg ${
                       ch.completed 
-                        ? "bg-[#DCCFC233] border-[#DCCFC2]" 
-                        : "bg-[#FAF5EF] border-[#C8A66A30] group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D] group-hover:shadow-[0_8px_20px_rgba(91,31,61,0.3)]"
+                        ? "bg-[#DCCFC233] border-[#DCCFC2] text-[#C8A66A]/50" 
+                        : "bg-[#FAF5EF] border-[#C8A66A30] text-[#5B1F3D] group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D] group-hover:text-white group-hover:shadow-[0_12px_30px_rgba(91,31,61,0.3)] group-hover:-rotate-3"
                     }`}>
                       {ch.completed ? (
-                        <Check className="w-6 h-6 text-[#C8A66A]" />
+                        <Check className="w-8 h-8" strokeWidth={3} />
                       ) : (
-                        <IconComponent className="w-6 h-6 text-[#5B1F3D] group-hover:text-white transition-colors duration-500" />
+                        <IconComponent className="w-8 h-8 transition-transform duration-500 group-hover:scale-110" />
                       )}
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <h3 className={`font-heading text-[17px] font-black tracking-tight ${
-                        ch.completed ? "text-[#5B1F3D]/40 line-through" : "text-[#5B1F3D]"
+                      <h3 className={`font-heading text-lg md:text-xl font-black tracking-tight mb-1.5 transition-colors ${
+                        ch.completed ? "text-[#5B1F3D]/40 line-through" : "text-[#5B1F3D] group-hover:text-[#5B1F3D]"
                       }`}>
                         {ch.title}
                       </h3>
-                      <p className={`font-body text-[13px] font-black mt-1 leading-snug ${
-                        ch.completed ? "text-[#5B1F3D]/30" : "text-[#5B1F3D]/70"
+                      <p className={`font-body text-[14px] font-black leading-snug transition-colors ${
+                        ch.completed ? "text-[#5B1F3D]/30" : "text-[#5B1F3D]/80 group-hover:text-[#5B1F3D]/90"
                       }`}>
                         {ch.subtitle}
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-3 shrink-0">
-                      <div className={`px-3 py-1 rounded-full text-[10px] font-heading font-black tracking-tighter border-2 ${
+                    <div className="flex flex-col items-end gap-3 shrink-0">
+                      <div className={`px-4 py-1.5 rounded-full text-[11px] font-heading font-black tracking-tighter border-2 shadow-sm ${
                         ch.completed 
                           ? "bg-[#DCCFC2]/20 border-[#DCCFC2] text-[#C8A66A]/50" 
-                          : "bg-[#C8A66A]/10 border-[#C8A66A]/20 text-[#C8A66A]"
+                          : "bg-[#C8A66A]/10 border-[#C8A66A]/30 text-[#C8A66A] group-hover:bg-[#C8A66A] group-hover:text-white transition-all"
                       }`}>
                         +{ch.xp} XP
                       </div>
                       {!ch.completed && (
-                        <div className="w-8 h-8 rounded-full border border-[#C8A66A30] flex items-center justify-center group-hover:bg-[#C8A66A10] transition-colors">
-                          <ChevronRight className="w-5 h-5 text-[#C8A66A] group-hover:translate-x-1 transition-transform duration-300" />
+                        <div className="w-10 h-10 rounded-full border-2 border-[#C8A66A20] flex items-center justify-center group-hover:bg-[#C8A66A10] group-hover:border-[#C8A66A] transition-all">
+                          <ChevronRight className="w-6 h-6 text-[#C8A66A] group-hover:translate-x-1.5 transition-transform duration-300" />
                         </div>
                       )}
                     </div>
