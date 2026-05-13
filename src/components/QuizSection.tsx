@@ -222,95 +222,111 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
   // Active quiz
   return (
     <motion.div 
-      className="bg-white/75 backdrop-blur-md rounded-2xl p-8 space-y-6 shadow-sm border border-gold/20"
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
+      className="bg-[#FAF5EF] backdrop-blur-xl rounded-[2rem] p-6 md:p-10 space-y-8 shadow-2xl border-2 border-[#C8A66A]/30 relative overflow-hidden"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ type: "spring", damping: 25 }}
     >
-      {/* Progress dots */}
-      <div className="flex items-center gap-1.5">
-        {questions.map((_, i) => (
+      {/* Decorative corners */}
+      <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[#C8A66A]/20 rounded-tl-[2rem] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#C8A66A]/20 rounded-br-[2rem] pointer-events-none" />
+
+      {/* Progress Bar */}
+      <div className="space-y-3">
+        <div className="flex justify-between items-end px-1">
+          <div className="text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A]/70">
+            Jornada de Aprendizado
+          </div>
+          <div className="text-[11px] font-heading font-black text-[#5B1F3D]">
+            {currentIndex + 1} de {questions.length}
+          </div>
+        </div>
+        <div className="h-2.5 w-full bg-white/50 rounded-full overflow-hidden border border-[#C8A66A]/10 shadow-inner">
           <motion.div
-            key={i}
-            className="h-1.5 flex-1 rounded-full"
-            initial={false}
-            animate={{
-              backgroundColor: i < currentIndex ? "hsl(36, 45%, 58%)" : i === currentIndex ? "rgba(200, 166, 106, 0.5)" : "rgba(220, 207, 194, 0.5)",
-              scaleY: i === currentIndex ? 1.5 : 1
-            }}
-            transition={{ duration: 0.3 }}
+            className="h-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] rounded-full"
+            initial={{ width: `${(currentIndex / questions.length) * 100}%` }}
+            animate={{ width: `${((currentIndex + (isAnswered ? 1 : 0)) / questions.length) * 100}%` }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
           />
-        ))}
+        </div>
       </div>
 
-      <div>
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-xs tracking-widest font-body uppercase opacity-60" style={{ color: "#3d1f2e" }}>
+      <div className="space-y-6">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-[#5B1F3D]/5 flex items-center justify-center border border-[#C8A66A]/20">
+            <Sparkles className="w-5 h-5 text-[#C8A66A]" />
+          </div>
+          <span className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">
             {isTrueFalse ? "Verdadeiro ou Falso" : "Múltipla Escolha"}
-          </span>
-          <span className="text-xs tracking-widest font-body uppercase opacity-60" style={{ color: "#3d1f2e" }}>
-            — {currentIndex + 1}/{questions.length}
           </span>
         </div>
 
-        <h4 className="font-display text-xl font-semibold leading-relaxed mb-6 flex items-start gap-2" style={{ color: "#3d1f2e" }}>
-          <span className="text-gold mt-1 shrink-0" aria-hidden="true">✦</span>
-          <span>{current.question}</span>
-        </h4>
+        <motion.h4 
+          key={currentIndex}
+          className="font-heading text-xl md:text-2xl font-black leading-tight text-[#5B1F3D]"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          {current.question}
+        </motion.h4>
 
-        <div className={`grid gap-3 ${isTrueFalse ? "grid-cols-2" : "grid-cols-1"}`}>
+        <div className={`grid gap-4 ${isTrueFalse ? "grid-cols-2" : "grid-cols-1"}`}>
           {current.options.map((option, i) => {
+            const isSelected = selectedOption === i;
             const isCorrectAnswer = isAnswered && i === current.correctIndex;
-            const isWrongSelected = isAnswered && i === selectedOption && i !== current.correctIndex;
-
-            let optionClass =
-              "bg-white/70 backdrop-blur-sm border-gold/30 hover:bg-white/90 hover:border-gold/60 hover:shadow-sm";
-            let textColorStyle: string = "#5B1F3D";
-            let iconColor = "#C8A66A";
-
-            if (isCorrectAnswer) {
-              optionClass = "bg-[#FAF5EF] border-[#C8A66A] shadow-inner";
-              textColorStyle = "#5B1F3D";
-              iconColor = "#5B1F3D";
-            } else if (isWrongSelected) {
-              optionClass = "bg-[#5B1F3D]/5 border-[#5B1F3D]/30";
-              textColorStyle = "#5B1F3D";
-              iconColor = "#5B1F3D";
-            } else if (isAnswered) {
-              optionClass = "bg-white/40 backdrop-blur-sm border-[#C8A66A]/20 opacity-60";
-            }
-
+            const isWrongSelected = isAnswered && isSelected && !isCorrectAnswer;
+            
             return (
               <motion.button
-                key={i}
+                key={`${currentIndex}-${i}`}
                 onClick={() => handleSelect(i)}
                 disabled={isAnswered}
-                className={`w-full text-left rounded-xl px-5 py-4 text-base font-body cursor-pointer transition-all duration-200 border flex items-center gap-3 ${optionClass} ${
-                  !isAnswered ? "active:scale-[0.99]" : "cursor-default"
-                } ${isTrueFalse ? "justify-center text-center" : ""}`}
-                animate={isWrongSelected ? { x: [-5, 5, -5, 5, 0] } : isCorrectAnswer ? { scale: [1, 1.02, 1] } : {}}
+                className="group relative w-full text-left rounded-2xl p-5 transition-all duration-300 border-2 overflow-hidden shadow-sm"
+                style={{
+                  background: isCorrectAnswer 
+                    ? "rgba(200, 166, 106, 0.15)" 
+                    : isWrongSelected 
+                      ? "rgba(91, 31, 61, 0.08)" 
+                      : isSelected 
+                        ? "#FAF5EF" 
+                        : "white",
+                  borderColor: isCorrectAnswer 
+                    ? "#C8A66A" 
+                    : isWrongSelected 
+                      ? "#5B1F3D" 
+                      : isSelected 
+                        ? "#C8A66A" 
+                        : "rgba(200, 166, 106, 0.15)",
+                }}
+                whileHover={!isAnswered ? { scale: 1.01, borderColor: "rgba(200, 166, 106, 0.4)" } : {}}
+                whileTap={!isAnswered ? { scale: 0.98 } : {}}
+                animate={isWrongSelected ? { x: [-4, 4, -4, 4, 0] } : isCorrectAnswer ? { scale: [1, 1.02, 1] } : {}}
               >
-                <span
-                  className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold shrink-0 border"
-                  style={{ borderColor: iconColor, color: iconColor, borderWidth: "1.5px" }}
-                  aria-hidden="true"
-                >
-                  {isCorrectAnswer ? (
-                    <Check className="w-3.5 h-3.5" />
-                  ) : isWrongSelected ? (
-                    <X className="w-3.5 h-3.5" />
-                  ) : isTrueFalse ? (
-                    i === 0 ? "V" : "F"
-                  ) : (
-                    String.fromCharCode(65 + i)
-                  )}
-                </span>
-                <span
-                  className="flex-1 break-words"
-                  style={{ color: textColorStyle, whiteSpace: "normal" }}
-                >
-                  {String(option ?? "")}
-                </span>
+                {/* Visual indicator for feedback */}
+                <div className="flex items-center gap-4">
+                  <div 
+                    className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 border-2 transition-colors"
+                    style={{
+                      borderColor: isCorrectAnswer ? "#C8A66A" : isWrongSelected ? "#5B1F3D" : isSelected ? "#C8A66A" : "rgba(91, 31, 61, 0.1)",
+                      background: isCorrectAnswer ? "#C8A66A" : isWrongSelected ? "#5B1F3D" : "transparent",
+                      color: isCorrectAnswer || isWrongSelected ? "white" : isSelected ? "#C8A66A" : "rgba(91, 31, 61, 0.3)",
+                    }}
+                  >
+                    {isCorrectAnswer ? (
+                      <Check className="w-5 h-5" />
+                    ) : isWrongSelected ? (
+                      <X className="w-5 h-5" />
+                    ) : (
+                      <span className="text-xs font-black">{String.fromCharCode(65 + i)}</span>
+                    )}
+                  </div>
+                  <span 
+                    className="text-[16px] font-medium leading-relaxed flex-1"
+                    style={{ color: isAnswered && !isCorrectAnswer && !isWrongSelected ? "rgba(91, 31, 61, 0.4)" : "#5B1F3D" }}
+                  >
+                    {option}
+                  </span>
+                </div>
               </motion.button>
             );
           })}
@@ -319,48 +335,39 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
         <AnimatePresence>
           {isAnswered && (
             <motion.div
-              className="mt-5 p-4 rounded-xl"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              style={{
-                background: "#FAF5EF",
-                border: "1px solid rgba(200, 166, 106, 0.4)",
-                boxShadow: "0 4px 12px rgba(91, 31, 61, 0.05)",
-                overflow: "hidden"
-              }}
-            >
-              <p className="text-sm font-accent italic leading-relaxed" style={{ color: "#5B1F3D" }}>
-                {current.explanation}
-              </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence>
-          {isAnswered && (
-            <motion.div 
-              className="mt-5 flex justify-end"
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              exit={{ opacity: 0, y: 10 }}
+              className="space-y-6 pt-2"
             >
-              <button
-                onClick={handleNext}
-                className="px-7 py-2.5 rounded-full font-heading text-sm tracking-wider flex items-center gap-2 transition-all duration-300 hover:scale-105"
-                style={{
-                  background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))",
-                  color: "hsl(36 33% 97%)",
-                  boxShadow: "0 4px 16px hsl(36 45% 58% / 0.2)",
-                }}
-              >
-                {currentIndex < questions.length - 1 ? "Próxima" : "Ver Resultado"}
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              {/* Box de Explicação */}
+              <div className="rounded-2xl p-6 bg-white border-2 border-[#C8A66A]/20 shadow-xl relative">
+                <div className="absolute top-0 right-0 p-3 opacity-10">
+                  <Book className="w-10 h-10 text-[#5B1F3D]" />
+                </div>
+                <div className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A] mb-3">
+                  Sabedoria Integrada
+                </div>
+                <p className="text-[15px] font-accent italic font-bold leading-relaxed text-[#5B1F3D]/90">
+                  {current.explanation}
+                </p>
+              </div>
+
+              {/* Botão Próxima */}
+              <div className="flex justify-end">
+                <button
+                  onClick={handleNext}
+                  className="px-10 py-4 rounded-full font-heading text-[12px] font-black tracking-[0.3em] uppercase transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-3 bg-[#5B1F3D] text-white shadow-2xl border-2 border-[#C8A66A]"
+                >
+                  {currentIndex < questions.length - 1 ? "Próxima" : "Ver Resultados"}
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
     </motion.div>
   );
+}
 }
