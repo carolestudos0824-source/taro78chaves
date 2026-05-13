@@ -39,7 +39,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
   const showParticles = (phase === 'presence' || phase === 'insight') && !shouldReduceMotion;
 
   return (
-    <div className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden py-16 px-6 sm:px-12">
+    <div className="relative min-h-[75vh] md:min-h-[85vh] flex flex-col items-center justify-center overflow-hidden py-12 md:py-20 px-6 sm:px-12">
       {/* Background Atmosphere - Enhanced ritualistic altar feel */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Ivory Base */}
@@ -106,19 +106,19 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 1.2 }}
-        className="text-center mb-16 z-20 relative"
+        className="text-center mb-10 md:mb-16 z-20 relative"
       >
-        <span className="text-[12px] font-heading font-bold tracking-[0.6em] uppercase text-[#C8A66A] block mb-4 opacity-90">
+        <span className="text-[11px] font-heading font-bold tracking-[0.5em] uppercase text-[#C8A66A] block mb-3 opacity-90">
           {arcanoId === 0 ? "O Início da Jornada" : `Arcano ${arcanoId}`}
         </span>
-        <h2 className="text-5xl md:text-7xl font-heading text-[#5B1F3D] font-black tracking-tighter drop-shadow-sm">
+        <h2 className="text-4xl md:text-7xl font-heading text-[#5B1F3D] font-black tracking-tighter drop-shadow-sm">
           {cardName}
         </h2>
-        <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-[#C8A66A]/40 to-transparent mx-auto mt-6" />
+        <div className="w-12 md:w-16 h-0.5 bg-gradient-to-r from-transparent via-[#C8A66A]/40 to-transparent mx-auto mt-4 md:mt-6" />
       </motion.div>
 
       {/* The Animated Card - Dominant Presence */}
-      <div className="relative z-10 mb-16 transition-transform duration-1000">
+      <div className="relative z-10 mb-10 md:mb-16 transition-transform duration-1000">
         <TarotAnimatedCard
           cardImage={cardImage}
           cardName={cardName}
@@ -126,7 +126,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
           arcanoSlug={arcanoSlug}
           state={phase === 'dormant' ? 'available' : 'active'}
           variant="portal"
-          className="scale-[1.3] sm:scale-[1.5] md:scale-[1.7] lg:scale-[1.8] drop-shadow-[0_35px_60px_rgba(91,31,61,0.3)]"
+          className="scale-[1.2] sm:scale-[1.5] md:scale-[1.7] lg:scale-[1.8] drop-shadow-[0_35px_60px_rgba(91,31,61,0.3)]"
         />
         
         {/* Ritualistic Floor Reflection */}
