@@ -326,48 +326,48 @@ const ModulesPage = () => {
                         key={mod.id}
                         onClick={() => unlocked && navigate(mod.route)}
                         disabled={!unlocked}
-                        className={`w-full text-left p-7 md:p-9 rounded-[2.5rem] border-2 transition-all duration-500 relative group overflow-hidden ${
+                        className={`w-full text-left p-8 md:p-10 rounded-[3rem] border-2 transition-all duration-500 relative group overflow-hidden ${
                           isCurrent 
-                            ? "bg-white border-[#C8A66A] shadow-2xl shadow-[#C8A66A]/30 scale-[1.02] ring-1 ring-[#C8A66A]/40" 
+                            ? "bg-white border-[#C8A66A] shadow-2xl shadow-[#C8A66A]/30 scale-[1.02] ring-2 ring-[#C8A66A]/40" 
                             : unlocked 
-                            ? "bg-white border-[#DCCFC2]/60 hover:border-[#C8A66A]/50 active:scale-[0.98] shadow-lg hover:shadow-xl" 
+                            ? "bg-white border-[#DCCFC2]/60 hover:border-[#C8A66A]/50 active:scale-[0.98] shadow-xl hover:shadow-2xl" 
                             : "bg-[#F3E6E0]/50 border-[#DCCFC2]/40 opacity-90 cursor-not-allowed grayscale-[0.3]"
                         }`}
                       >
                         {isCurrent && (
-                          <div className="absolute top-0 left-0 w-1.5 h-full bg-[#C8A66A]" />
+                          <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-[#C8A66A] to-transparent" />
                         )}
                         
-                        <div className="flex items-center gap-7 md:gap-10 relative z-10">
+                        <div className="flex items-center gap-8 md:gap-12 relative z-10">
                           {/* Icon Circle */}
-                          <div className={`w-16 h-16 md:w-20 md:h-20 rounded-3xl flex items-center justify-center shrink-0 border-2 transition-all duration-500 shadow-md ${
+                          <div className={`w-20 h-20 md:w-24 md:h-24 rounded-[1.8rem] flex items-center justify-center shrink-0 border-2 transition-all duration-500 shadow-lg ${
                             isCurrent 
-                              ? "bg-gradient-to-br from-[#C8A66A]/20 to-[#C8A66A]/5 border-[#C8A66A] text-[#5B1F3D] scale-110 rotate-3 shadow-xl" 
+                              ? "bg-gradient-to-br from-[#5B1F3D] to-[#3D1429] border-[#C8A66A] text-[#FAF5EF] scale-110 rotate-3 shadow-2xl" 
                               : unlocked 
-                              ? "bg-[#FAF5EF] border-[#DCCFC2]/40 text-[#5B1F3D]" 
+                              ? "bg-[#FAF5EF] border-[#C8A66A30] text-[#5B1F3D]" 
                               : "bg-[#F3E6E0] border-[#DCCFC2]/20 text-[#5B1F3D]/30"
                           }`}>
                             {isCompleted ? (
-                              <Check className="w-8 h-8 md:w-10 md:h-10 text-[#5B1F3D]" strokeWidth={3.5} />
+                              <Check className={`w-10 h-10 md:w-12 md:h-12 ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} strokeWidth={4} />
                             ) : unlocked ? (
-                              <IconComponent className="w-8 h-8 md:w-10 md:h-10" />
+                              <IconComponent className={`w-10 h-10 md:w-12 md:h-12 ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} />
                             ) : (
                               <div className="relative">
-                                <IconComponent className="w-8 h-8 md:w-10 md:h-10 opacity-20" />
-                                <LockKeyhole className="w-6 h-6 absolute -bottom-1 -right-1 text-[#5B1F3D] drop-shadow-md" />
+                                <IconComponent className="w-10 h-10 md:w-12 md:h-12 opacity-20" />
+                                <LockKeyhole className="w-8 h-8 absolute -bottom-2 -right-2 text-[#5B1F3D] drop-shadow-xl" />
                               </div>
                             )}
                           </div>
 
                           <div className="flex-1 min-w-0 py-2">
-                            <div className="flex items-center gap-3 mb-2 flex-wrap">
-                              <span className="text-[12px] md:text-[14px] font-black tracking-[0.3em] text-[#5B1F3D] opacity-40">{mod.symbol}</span>
-                              <h3 className={`font-heading text-xl md:text-2xl tracking-tight leading-tight transition-all ${
+                            <div className="flex items-center gap-4 mb-3 flex-wrap">
+                              <span className={`text-[14px] md:text-[16px] font-black tracking-[0.4em] transition-colors ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D] opacity-40"}`}>{mod.symbol}</span>
+                              <h3 className={`font-heading text-2xl md:text-3xl tracking-tight leading-tight transition-all ${
                                 isCurrent 
                                   ? "text-[#5B1F3D] font-black" 
                                   : unlocked 
-                                  ? "text-[#5B1F3D] font-bold" 
-                                  : "text-[#5B1F3D]/60 font-bold"
+                                  ? "text-[#5B1F3D] font-black" 
+                                  : "text-[#5B1F3D]/60 font-black"
                               }`}>
                                 {mod.name}
                               </h3>
