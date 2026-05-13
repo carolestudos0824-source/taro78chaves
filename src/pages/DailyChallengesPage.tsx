@@ -540,31 +540,33 @@ const PerguntasContent = ({ data, onComplete }: { data: PerguntasDoDia; onComple
 };
 
 const SimboloContent = ({ data, onComplete }: { data: SimboloDoDia | null; onComplete: () => void }) => {
-  if (!data) return <div className="text-center py-8"><p className="font-body text-sm" style={{ color: "hsl(230 15% 30% / 0.50)" }}>Símbolos carregando...</p><CompleteButton onComplete={onComplete} /></div>;
+  if (!data) return <div className="text-center py-8"><p className="font-body text-[13px] font-bold text-[#5B1F3D]/50">Símbolos carregando...</p><CompleteButton onComplete={onComplete} /></div>;
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <div className="text-center">
-        <h3 className="font-heading text-lg tracking-wide" style={{ color: "hsl(340 42% 22%)" }}>
+        <h3 className="font-heading text-2xl font-black text-[#5B1F3D]">
           {data.name}
         </h3>
       </div>
-      <p className="font-body text-sm leading-relaxed" style={{ color: "hsl(230 15% 20% / 0.70)" }}>
+      <p className="font-body text-[14px] leading-relaxed font-bold text-[#5B1F3D]/80">
         {data.explanation}
       </p>
-      <div>
-        <h4 className="text-[10px] tracking-[0.2em] uppercase font-body mb-2" style={{ color: "hsl(36 42% 40%)" }}>
+      <div className="space-y-4">
+        <h4 className="text-[10px] tracking-[0.3em] uppercase font-heading font-black text-[#C8A66A]">
           Leituras possíveis
         </h4>
-        <ul className="space-y-1.5">
+        <ul className="space-y-3">
           {data.readings.map((r, i) => (
-            <li key={i} className="font-body text-sm flex items-start gap-2" style={{ color: "hsl(230 15% 20% / 0.65)" }}>
-              <span style={{ color: "hsl(36 45% 58% / 0.50)" }}>·</span> {r}
+            <li key={i} className="font-body text-[13px] font-bold flex items-start gap-3 p-3 rounded-xl bg-white border border-[#C8A66A]/10" style={{ color: "#5B1F3D" }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C8A66A] mt-1.5 shrink-0" /> {r}
             </li>
           ))}
         </ul>
       </div>
-      <div className="text-[10px] font-body" style={{ color: "hsl(230 15% 30% / 0.40)" }}>
-        Aparece em: {data.cards.join(", ")}
+      <div className="p-4 rounded-xl bg-[#5B1F3D]/5 border border-[#5B1F3D]/10">
+        <p className="text-[10px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]/40">
+           Aparece em: <span className="text-[#5B1F3D]/60">{data.cards.join(", ")}</span>
+        </p>
       </div>
       <CompleteButton onComplete={onComplete} label="Aprendi ◎" />
     </div>
@@ -573,40 +575,37 @@ const SimboloContent = ({ data, onComplete }: { data: SimboloDoDia | null; onCom
 
 const CombinacaoContent = ({ data, onComplete }: { data: CombinacaoDoDia | null; onComplete: () => void }) => {
   const [showInsight, setShowInsight] = useState(false);
-  if (!data) return <div className="text-center py-8"><p className="font-body text-sm" style={{ color: "hsl(230 15% 30% / 0.50)" }}>Conteúdo carregando...</p><CompleteButton onComplete={onComplete} /></div>;
+  if (!data) return <div className="text-center py-8"><p className="font-body text-[13px] font-bold text-[#5B1F3D]/50">Conteúdo carregando...</p><CompleteButton onComplete={onComplete} /></div>;
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <div className="flex items-center justify-center gap-4">
-        <div className="rounded-xl p-4 text-center" style={{
-          background: "hsl(36 45% 58% / 0.08)",
-          border: "1px solid hsl(36 45% 58% / 0.20)",
-        }}>
-          <div className="font-heading text-lg" style={{ color: "hsl(340 42% 22%)" }}>{data.card1.numeral}</div>
-          <div className="font-body text-xs mt-1" style={{ color: "hsl(230 15% 20% / 0.60)" }}>{data.card1.name}</div>
+        <div className="rounded-[2rem] p-6 text-center w-full bg-white border-2 border-[#C8A66A]/20 shadow-sm">
+          <div className="font-heading text-2xl font-black text-[#C8A66A]">{data.card1.numeral}</div>
+          <div className="font-body text-[10px] font-black uppercase tracking-widest mt-2 text-[#5B1F3D]/60">{data.card1.name}</div>
         </div>
-        <span className="font-heading text-lg" style={{ color: "hsl(36 45% 58% / 0.40)" }}>+</span>
-        <div className="rounded-xl p-4 text-center" style={{
-          background: "hsl(340 42% 30% / 0.06)",
-          border: "1px solid hsl(340 42% 30% / 0.15)",
-        }}>
-          <div className="font-heading text-lg" style={{ color: "hsl(340 42% 22%)" }}>{data.card2.numeral}</div>
-          <div className="font-body text-xs mt-1" style={{ color: "hsl(230 15% 20% / 0.60)" }}>{data.card2.name}</div>
+        <div className="w-8 h-8 rounded-full bg-[#FAF5EF] border border-[#C8A66A]/30 flex items-center justify-center shrink-0">
+          <span className="font-heading text-lg font-black text-[#C8A66A]">✦</span>
+        </div>
+        <div className="rounded-[2rem] p-6 text-center w-full bg-[#5B1F3D] border-2 border-[#C8A66A]/30 shadow-sm">
+          <div className="font-heading text-2xl font-black text-[#C8A66A]">{data.card2.numeral}</div>
+          <div className="font-body text-[10px] font-black uppercase tracking-widest mt-2 text-white/60">{data.card2.name}</div>
         </div>
       </div>
-      <p className="font-accent text-sm italic text-center" style={{ color: "hsl(340 42% 28%)" }}>
-        {data.prompt}
-      </p>
+      <div className="text-center space-y-2">
+         <p className="font-body text-[14px] font-bold italic text-[#5B1F3D] leading-relaxed">
+          "{data.prompt}"
+        </p>
+      </div>
       {!showInsight ? (
         <button
           onClick={() => setShowInsight(true)}
-          className="w-full py-2.5 rounded-lg font-body text-sm"
-          style={{ background: "hsl(36 45% 58% / 0.10)", border: "1px solid hsl(36 45% 58% / 0.25)", color: "hsl(36 42% 38%)" }}
+          className="w-full py-4 rounded-2xl font-heading text-[12px] font-black tracking-[0.2em] uppercase transition-all bg-[#5B1F3D]/5 border-2 border-[#5B1F3D]/10 text-[#5B1F3D] hover:bg-[#5B1F3D] hover:text-white"
         >
-          Ver interpretação
+          Revelar Alquimia
         </button>
       ) : (
-        <div className="rounded-lg p-4" style={{ background: "hsl(36 33% 95%)", border: "1px solid hsl(36 25% 82% / 0.40)" }}>
-          <p className="font-body text-sm leading-relaxed" style={{ color: "hsl(230 15% 20% / 0.65)" }}>
+        <div className="rounded-[2rem] p-6 bg-white border-2 border-[#C8A66A]/10 shadow-sm animate-fade-in">
+          <p className="font-body text-[14px] leading-relaxed font-bold text-[#5B1F3D]/80">
             {data.insight}
           </p>
         </div>
@@ -618,39 +617,37 @@ const CombinacaoContent = ({ data, onComplete }: { data: CombinacaoDoDia | null;
 
 const InterpretacaoContent = ({ data, onComplete }: { data: MiniInterpretacao | null; onComplete: () => void }) => {
   const [showSample, setShowSample] = useState(false);
-  if (!data) return <div className="text-center py-8"><p className="font-body text-sm" style={{ color: "hsl(230 15% 30% / 0.50)" }}>Conteúdo carregando...</p><CompleteButton onComplete={onComplete} /></div>;
+  if (!data) return <div className="text-center py-8"><p className="font-body text-[13px] font-bold text-[#5B1F3D]/50">Conteúdo carregando...</p><CompleteButton onComplete={onComplete} /></div>;
   return (
-    <div className="space-y-4">
-      <div className="rounded-lg p-4" style={{ background: "hsl(340 42% 30% / 0.05)", border: "1px solid hsl(340 42% 30% / 0.12)" }}>
-        <p className="font-accent text-sm italic" style={{ color: "hsl(340 42% 28%)" }}>
-          {data.context}
+    <div className="space-y-6">
+      <div className="rounded-2xl p-5 bg-[#5B1F3D]/5 border-2 border-[#5B1F3D]/10">
+        <p className="font-body text-[13px] font-bold italic text-[#5B1F3D] leading-relaxed">
+          ✦ {data.context}
         </p>
       </div>
-      <div className="text-center">
-        <div className="text-[9px] tracking-[0.3em] uppercase font-body mb-1" style={{ color: "hsl(36 42% 40%)" }}>
+      <div className="text-center space-y-3">
+        <div className="text-[10px] tracking-[0.3em] uppercase font-heading font-black text-[#C8A66A]">
           Posição: {data.position}
         </div>
-        <div className="font-heading text-lg tracking-wide" style={{ color: "hsl(340 42% 22%)" }}>
+        <div className="font-heading text-2xl font-black text-[#5B1F3D]">
           {data.card.numeral} · {data.card.name}
         </div>
-        <div className="flex flex-wrap justify-center gap-1.5 mt-2">
+        <div className="flex flex-wrap justify-center gap-2">
           {data.card.keywords.slice(0, 4).map(k => (
-            <span key={k} className="text-[10px] font-body px-2 py-0.5 rounded-full" style={{
-              background: "hsl(36 45% 58% / 0.10)", color: "hsl(36 42% 38%)",
-            }}>
+            <span key={k} className="text-[10px] font-body font-black tracking-widest uppercase px-2.5 py-1.5 rounded-full bg-[#C8A66A]/10 text-[#C8A66A]">
               {k}
             </span>
           ))}
         </div>
       </div>
-      <div>
-        <h4 className="text-[10px] tracking-[0.2em] uppercase font-body mb-2" style={{ color: "hsl(340 42% 28% / 0.60)" }}>
-          Perguntas guia
+      <div className="space-y-4">
+        <h4 className="text-[10px] tracking-[0.3em] uppercase font-heading font-black text-[#C8A66A]">
+          Perguntas Guia
         </h4>
-        <ul className="space-y-2">
+        <ul className="space-y-3">
           {data.guidedQuestions.map((q, i) => (
-            <li key={i} className="font-body text-sm" style={{ color: "hsl(230 15% 20% / 0.65)" }}>
-              {i + 1}. {q}
+            <li key={i} className="font-body text-[13px] font-bold flex items-start gap-3 p-3 rounded-xl bg-white border border-[#C8A66A]/10 text-[#5B1F3D]">
+              <span className="w-5 h-5 rounded-full bg-[#5B1F3D]/5 flex items-center justify-center text-[10px] shrink-0 border border-[#5B1F3D]/10">{i + 1}</span> {q}
             </li>
           ))}
         </ul>
@@ -658,14 +655,13 @@ const InterpretacaoContent = ({ data, onComplete }: { data: MiniInterpretacao | 
       {!showSample ? (
         <button
           onClick={() => setShowSample(true)}
-          className="w-full py-2.5 rounded-lg font-body text-sm"
-          style={{ background: "hsl(340 42% 30% / 0.08)", border: "1px solid hsl(340 42% 30% / 0.18)", color: "hsl(340 42% 28%)" }}
+          className="w-full py-4 rounded-2xl font-heading text-[12px] font-black tracking-[0.2em] uppercase transition-all bg-[#5B1F3D]/5 border-2 border-[#5B1F3D]/10 text-[#5B1F3D] hover:bg-[#5B1F3D] hover:text-white"
         >
           Ver leitura modelo
         </button>
       ) : (
-        <div className="rounded-lg p-4" style={{ background: "hsl(36 33% 95%)", border: "1px solid hsl(36 25% 82% / 0.40)" }}>
-          <p className="font-body text-sm leading-relaxed" style={{ color: "hsl(230 15% 20% / 0.65)" }}>
+        <div className="rounded-[2rem] p-6 bg-white border-2 border-[#C8A66A]/10 shadow-sm animate-fade-in">
+          <p className="font-body text-[14px] leading-relaxed font-bold text-[#5B1F3D]/80">
             {data.sampleReading}
           </p>
         </div>
