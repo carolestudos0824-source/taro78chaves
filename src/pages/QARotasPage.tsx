@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { FULL_DECK } from "@/registry/deck-registry";
 import { MODULES_SEED } from "@/lib/content/seed-modules";
+import { ARCANOS_MAIORES_CATALOG } from "@/lib/content";
 
 // ==========================================
 // TYPES & INTERFACES
