@@ -307,12 +307,6 @@ const GenericModulePage = ({
                   )}
                 </div>
               </button>
-                  
-                  {completed && (
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#C8A66A20]" />
-                  )}
-                </div>
-              </button>
             );
           })}
         </div>
