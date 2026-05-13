@@ -256,7 +256,7 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
           <div className="w-10 h-10 rounded-full bg-[#5B1F3D]/5 flex items-center justify-center border border-[#C8A66A]/20">
             <Sparkles className="w-5 h-5 text-[#C8A66A]" />
           </div>
-          <span className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">
+          <span className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
             {isTrueFalse ? "Verdadeiro ou Falso" : "Múltipla Escolha"}
           </span>
         </div>
