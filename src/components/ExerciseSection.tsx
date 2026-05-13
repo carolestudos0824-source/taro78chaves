@@ -62,7 +62,7 @@ export function ExerciseSection({ instruction, type, duration, onComplete, compl
         <div className="flex justify-center">
           <button
             onClick={onComplete}
-            className="px-8 py-3 rounded-full bg-primary text-primary-foreground font-heading text-sm tracking-wider hover:glow-gold transition-all duration-300 hover:scale-105"
+            className="w-full py-6 rounded-2xl font-heading text-xs tracking-[0.2em] uppercase transition-all shadow-xl hover:scale-105 active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A] font-black"
           >
             Exercício Concluído
           </button>
