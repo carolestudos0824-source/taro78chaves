@@ -229,7 +229,7 @@ const QARotasPage = () => {
 
           <div className="flex flex-wrap items-center gap-3">
             <StatCard label="Total" value={stats.total} color="text-[#5B1F3D]" />
-            <StatCard label="Aprovadas" value={stats.approved} color="text-green-600" />
+            <StatCard label="Aprovadas" value={stats.approved} color="text-[#C8A66A]" />
             <StatCard label="Reprovadas" value={stats.rejected} color="text-red-600" />
             <StatCard label="Pendentes" value={stats.pending} color="text-slate-400" />
           </div>
