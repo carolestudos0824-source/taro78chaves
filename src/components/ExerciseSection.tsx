@@ -42,7 +42,7 @@ export function ExerciseSection({ instruction, type, duration, onComplete, compl
           </div>
         </div>
 
-        <div className="font-accent text-[#5B1F3D]/90 leading-relaxed italic mb-8 space-y-4 text-lg">
+        <div className="font-accent text-[#5B1F3D] leading-[1.8] italic mb-8 space-y-4 text-lg font-bold">
           {instruction.split("\n\n").map((line, i) => (
             <p key={i}>"{line}"</p>
           ))}
