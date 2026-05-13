@@ -27,6 +27,7 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
   state,
   variant = 'portal',
   isPremium = false,
+  showLockIcon = true,
   onClick,
   className
 }) => {
