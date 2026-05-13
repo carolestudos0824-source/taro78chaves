@@ -103,8 +103,8 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
                   key={i}
                   className="p-3.5 rounded-xl flex items-center gap-3 transition-all"
                   style={{
-                    background: isCorrect ? "hsl(120 30% 92%)" : isWrong ? "hsl(0 40% 94%)" : "hsl(38 25% 93% / 0.6)",
-                    border: `1.5px solid ${isCorrect ? "hsl(120 35% 60% / 0.4)" : isWrong ? "hsl(0 50% 65% / 0.4)" : "transparent"}`,
+                    background: isCorrect ? "rgba(200, 166, 106, 0.12)" : isWrong ? "rgba(91, 31, 61, 0.08)" : "rgba(250, 245, 239, 0.6)",
+                    border: `1.5px solid ${isCorrect ? "rgba(200, 166, 106, 0.4)" : isWrong ? "rgba(91, 31, 61, 0.3)" : "transparent"}`,
                   }}
                 >
                   <span
