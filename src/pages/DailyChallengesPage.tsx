@@ -295,18 +295,22 @@ const DailyChallengesPage = () => {
         {/* Streak encouragement */}
         {allDone && (
           <div className="text-center py-10 animate-fade-in">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#5B1F3D] to-[#C8A66A] flex items-center justify-center border-2 border-white shadow-xl mx-auto mb-6 transform rotate-3">
-              <Sparkles className="w-8 h-8 text-white animate-pulse" />
+            <div className="w-16 h-16 rounded-3xl flex items-center justify-center border-2 border-[#C8A66A] shadow-xl mx-auto mb-6 transform rotate-3" style={{
+              background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+            }}>
+              <Sparkles className="w-8 h-8 text-[#C8A66A] animate-pulse" />
             </div>
-            <h3 className="font-heading text-xl font-black tracking-tight mb-2" style={{ color: "#5B1F3D" }}>
+            <h3 className="font-heading text-2xl font-black tracking-tight mb-2" style={{ color: "#5B1F3D" }}>
               Ritual concluído!
             </h3>
-            <p className="font-body text-[13px] font-bold text-[#5B1F3D]/60 max-w-[240px] mx-auto leading-relaxed">
+            <p className="font-body text-[14px] font-bold text-[#5B1F3D]/60 max-w-[280px] mx-auto leading-relaxed">
               Sua conexão com o Tarô 78 Chaves está mais profunda hoje. Volte amanhã.
             </p>
-            <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#5B1F3D]/5 border border-[#5B1F3D]/10">
-              <Flame className="w-4 h-4 text-[#5B1F3D]" />
-              <p className="font-heading text-[10px] font-black uppercase tracking-widest text-[#5B1F3D]">
+            <div className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-[#C8A66A20]" style={{
+              background: "rgba(250, 245, 239, 0.8)",
+            }}>
+              <Flame className="w-5 h-5 text-[#5B1F3D]" />
+              <p className="font-heading text-[11px] font-black uppercase tracking-[0.2em] text-[#5B1F3D]">
                 Sequência: {progress.streak} {progress.streak === 1 ? "dia" : "dias"}
               </p>
             </div>
@@ -389,10 +393,11 @@ const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) =>
 const CompleteButton = ({ onComplete, label = "Concluir" }: { onComplete: () => void; label?: string }) => (
   <button
     onClick={onComplete}
-    className="w-full mt-10 py-4 rounded-2xl font-heading text-[12px] font-black tracking-[0.3em] uppercase shadow-lg shadow-[#5B1F3D]/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+    className="w-full mt-10 py-5 rounded-[2rem] font-heading text-[12px] font-black tracking-[0.3em] uppercase shadow-2xl transition-all duration-500 hover:scale-[1.02] active:scale-95 border-2 border-[#C8A66A40]"
     style={{
-      background: "linear-gradient(135deg, #5B1F3D, #C8A66A)",
-      color: "#FAF5EF",
+      background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+      color: "#C8A66A",
+      boxShadow: "0 15px 35px rgba(91, 31, 61, 0.3)"
     }}
   >
     {label}
