@@ -59,11 +59,10 @@ const PresentationPage = () => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex flex-col select-none"
-      style={{ background: "#FAF5EF" }}
+      className="fixed inset-0 z-50 flex flex-col select-none overflow-hidden"
     >
       {/* Background — Marfim Suave replicando /app */}
-      <div className="fixed inset-0 z-0">
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
         <div
           className="absolute inset-0"
           style={{
@@ -71,33 +70,48 @@ const PresentationPage = () => {
             opacity: 0.98,
           }}
         />
+        {/* Subtle atmosphere layers */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.8) 0%, transparent 30%, transparent 70%, rgba(239, 226, 210, 0.5) 100%)",
+          }}
+        />
       </div>
 
-      {/* Top bar */}
+      {/* Top bar — Premium Header style from /app */}
       <div className="relative z-10 flex items-center justify-between px-6 py-6" style={{
-        borderBottom: "2px solid #C8A66A40",
-        background: "rgba(255, 255, 255, 0.98)",
+        borderBottom: "1.5px solid #C8A66A40",
+        background: "rgba(250, 245, 239, 0.95)",
         backdropFilter: "blur(20px)",
         boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)",
       }}>
         <button 
           onClick={() => navigate(-1)} 
-          className="flex items-center gap-1 text-[11px] font-heading tracking-[0.2em] uppercase font-bold transition-colors hover:text-[#C8A66A]" 
+          className="flex items-center gap-2 text-[11px] font-heading tracking-[0.25em] uppercase font-black transition-all hover:scale-105" 
           style={{ color: "#5B1F3D" }}
         >
-          <ChevronLeft className="w-3.5 h-3.5" />
+          <ChevronLeft className="w-4 h-4" />
           Voltar
         </button>
-        <div className="flex items-center gap-2">
-          <Sparkles className="w-3 h-3" style={{ color: "#C8A66A" }} />
-          <span className="text-[11px] font-heading tracking-[0.3em] uppercase font-bold" style={{ color: "#5B1F3D" }}>
-            A Jornada do Louco
+        <div className="flex items-center gap-3">
+          <Sparkles className="w-4 h-4" style={{ color: "#C8A66A" }} />
+          <span className="text-[11px] font-heading tracking-[0.4em] uppercase font-black" style={{ color: "#5B1F3D" }}>
+            Apresentação <span className="hidden md:inline">Oficial</span>
           </span>
-          <Sparkles className="w-3 h-3" style={{ color: "#C8A66A" }} />
+          <Sparkles className="w-4 h-4" style={{ color: "#C8A66A" }} />
         </div>
-        <span className="text-[11px] font-heading tracking-widest font-black tabular-nums" style={{ color: "#5B1F3D" }}>
-          {current + 1} / {total}
-        </span>
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#C8A66A30] bg-[#FAF5EF]">
+          <span className="text-[11px] font-heading tracking-widest font-black tabular-nums" style={{ color: "#5B1F3D" }}>
+            {current + 1} <span className="opacity-30">/</span> {total}
+          </span>
+        </div>
       </div>
 
       {/* Slide area */}
