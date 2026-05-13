@@ -370,4 +370,3 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
     </motion.div>
   );
 }
-}
