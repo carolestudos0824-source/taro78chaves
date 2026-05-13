@@ -15,13 +15,14 @@ export function QuickReviewCard({ review, isStudied }: QuickReviewCardProps) {
       className="rounded-xl overflow-hidden transition-all duration-300"
       style={{
         background: isStudied
-          ? "hsl(38 28% 93% / 0.85)"
-          : "hsl(36 18% 90% / 0.45)",
+          ? "linear-gradient(135deg, #FFFFFF 0%, #FDFBF7 100%)"
+          : "rgba(243, 230, 224, 0.35)",
         border: isStudied
-          ? "1px solid hsl(36 45% 50% / 0.22)"
-          : "1px solid hsl(36 22% 80% / 0.35)",
+          ? "2px solid #C8A66A"
+          : "1.5px solid #DCCFC260",
         backdropFilter: "blur(12px)",
-        opacity: isStudied ? 1 : 0.6,
+        boxShadow: isStudied ? "0 10px 30px rgba(91, 31, 61, 0.05)" : "none",
+        opacity: isStudied ? 1 : 0.85,
       }}
     >
       {/* Header - always visible */}
