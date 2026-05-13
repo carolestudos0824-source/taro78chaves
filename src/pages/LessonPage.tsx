@@ -53,20 +53,35 @@ const LessonPage = () => {
 
   const nextArcano = isValidId && arcanoId < 21 ? ARCANOS_MAIORES[arcanoId + 1] : null;
 
-  if (isLiteralRoute) {
+  // 1. Estado de Carregamento (Loading Ritualístico)
+  if (isLiteralRoute || premiumLoading || roleLoading || accessLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
-        <div className="text-center space-y-6 animate-pulse">
-          <div className="w-12 h-12 border-4 border-[#C8A66A]/20 border-t-[#5B1F3D] animate-spin rounded-full mx-auto shadow-[0_0_15px_rgba(91,31,61,0.1)]" />
-          <p className="text-[11px] text-[#5B1F3D] font-heading tracking-[0.3em] uppercase font-black">Lendo Arcanos...</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+          <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-[#C8A66A] blur-[120px]" />
+          <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-[#C8A66A] blur-[120px]" />
+        </div>
+
+        <div className="text-center space-y-6 relative z-10 animate-fade-in">
+          <div className="relative">
+            <div className="w-12 h-12 rounded-full border-2 border-[#C8A66A]/20 border-t-[#C8A66A] animate-spin mx-auto" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#C8A66A]/40 animate-pulse" />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <p className="text-[10px] text-[#5B1F3D]/80 font-heading tracking-[0.3em] uppercase">Tarô 78 Chaves</p>
+            <p className="text-[11px] text-[#5B1F3D]/60 font-body italic">Preparando o portal...</p>
+          </div>
         </div>
       </div>
     );
   }
 
-  if (!arcano || !isValidId || premiumLoading || roleLoading) {
+  // 2. Estado de Arcano Inexistente
+  if (!arcano || !isValidId) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
+      <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7]">
         <div className="text-center space-y-8 max-w-xs px-6 animate-fade-in">
           <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-2 border-4 border-[#C8A66A] shadow-xl ring-8 ring-[#C8A66A]/10">
             <span className="text-3xl">🃏</span>
