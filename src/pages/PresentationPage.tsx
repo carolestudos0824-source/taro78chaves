@@ -529,53 +529,59 @@ const SlidePlans = () => (
     />
     <div className="grid md:grid-cols-2 gap-4 max-w-xl mx-auto">
       {/* Free */}
-      <div className="rounded-xl p-5 space-y-3" style={{
-        background: "rgba(250, 245, 239, 0.8)",
-        border: "1px solid #DCCFC2",
+      <div className="rounded-xl p-6 space-y-4" style={{
+        background: "#FAF5EF",
+        border: "2px solid #DCCFC2",
+        boxShadow: "0 4px 20px rgba(91, 31, 61, 0.04)"
       }}>
-        <div className="text-center pb-2" style={{ borderBottom: "1px solid rgba(220, 207, 194, 0.4)" }}>
-          <p className="text-[10px] font-heading tracking-[0.3em] uppercase" style={{ color: "#5B1F3D", opacity: 0.6 }}>Acesso Básico</p>
-          <p className="font-heading text-xl mt-1" style={{ color: "#5B1F3D" }}>Gratuito</p>
+        <div className="text-center pb-3" style={{ borderBottom: "1.5px solid rgba(220, 207, 194, 0.6)" }}>
+          <p className="text-[10px] font-heading tracking-[0.3em] uppercase font-black" style={{ color: "#5B1F3D", opacity: 0.7 }}>Acesso Básico</p>
+          <p className="font-heading text-xl md:text-2xl mt-1 font-black" style={{ color: "#5B1F3D" }}>Gratuito</p>
         </div>
-        {["Onboarding iniciático", "Fundamentos do Tarô", "O Louco completo", "Desafios diários", "Quizzes e XP"].map((f, i) => (
-          <div key={i} className="flex items-center gap-2">
-            <Check className="w-3 h-3 shrink-0" style={{ color: "#14532D" }} />
-            <span className="text-[11px] font-body" style={{ color: "#5B1F3D", opacity: 0.85 }}>{f}</span>
-          </div>
-        ))}
+        <div className="space-y-3">
+          {["Onboarding iniciático", "Fundamentos do Tarô", "O Louco completo", "Desafios diários", "Quizzes e XP"].map((f, i) => (
+            <div key={i} className="flex items-center gap-3">
+              <Check className="w-3.5 h-3.5 shrink-0" style={{ color: "#5B1F3D" }} />
+              <span className="text-[12px] font-body font-bold leading-tight" style={{ color: "#5B1F3D" }}>{f}</span>
+            </div>
+          ))}
+        </div>
       </div>
+
       {/* Premium */}
-      <div className="rounded-xl p-5 space-y-3 relative" style={{
-        background: "linear-gradient(170deg, #FAF5EF, rgba(91, 31, 61, 0.03))",
-        border: "1.5px solid #C8A66A",
-        boxShadow: "0 6px 30px rgba(91, 31, 61, 0.05)",
+      <div className="rounded-xl p-6 space-y-4 relative" style={{
+        background: "linear-gradient(170deg, #FAF5EF, rgba(200, 166, 106, 0.05))",
+        border: "2px solid #C8A66A",
+        boxShadow: "0 10px 40px rgba(91, 31, 61, 0.08)",
       }}>
-        <div className="absolute -top-2.5 left-1/2 -translate-x-1/2">
-          <span className="text-[8px] font-heading tracking-[0.2em] uppercase px-2.5 py-0.5 rounded-full" style={{
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+          <span className="text-[9px] font-heading tracking-[0.25em] uppercase px-4 py-1 rounded-full shadow-md font-black" style={{
             background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
             color: "#FAF5EF",
           }}>✦ Premium</span>
         </div>
-        <div className="text-center pb-2" style={{ borderBottom: "1px solid rgba(200, 166, 106, 0.18)" }}>
-          <p className="text-[10px] font-heading tracking-[0.3em] uppercase" style={{ color: "#5B1F3D" }}>Jornada Completa</p>
-          <div className="flex items-center justify-center gap-2 mt-1">
+        <div className="text-center pb-3" style={{ borderBottom: "1.5px solid rgba(200, 166, 106, 0.25)" }}>
+          <p className="text-[10px] font-heading tracking-[0.3em] uppercase font-black" style={{ color: "#8B6A30" }}>Jornada Completa</p>
+          <div className="flex items-center justify-center gap-3 mt-2">
              <div className="text-center">
-               <p className="text-[9px] uppercase font-bold text-[#C8A66A]">Mensal</p>
-               <p className="font-heading text-lg" style={{ color: "#5B1F3D" }}>R$ 29,90</p>
+               <p className="text-[9px] uppercase font-black text-[#C8A66A] tracking-tighter">Mensal</p>
+               <p className="font-heading text-xl" style={{ color: "#5B1F3D" }}>R$ 29,90</p>
              </div>
-             <div className="w-px h-6 bg-[#C8A66A40]" />
+             <div className="w-px h-8 bg-[#C8A66A40]" />
              <div className="text-center">
-               <p className="text-[9px] uppercase font-bold text-[#C8A66A]">Anual</p>
-               <p className="font-heading text-lg" style={{ color: "#5B1F3D" }}>R$ 197</p>
+               <p className="text-[11px] uppercase font-black text-[#5B1F3D] tracking-tighter bg-[#C8A66A30] px-1.5 rounded-sm">Anual</p>
+               <p className="font-heading text-xl" style={{ color: "#5B1F3D" }}>R$ 197</p>
              </div>
           </div>
         </div>
-        {["78 arcanos guiados", "Todos os módulos liberados", "Certificados de conclusão", "Tiragens e Combinações", "Mesa de Tarô e Ética"].map((f, i) => (
-          <div key={i} className="flex items-center gap-2">
-            <Sparkles className="w-3 h-3 shrink-0" style={{ color: "#C8A66A" }} />
-            <span className="text-[11px] font-body" style={{ color: "#5B1F3D", fontWeight: "600" }}>{f}</span>
-          </div>
-        ))}
+        <div className="space-y-3">
+          {["78 arcanos guiados", "Todos os módulos liberados", "Certificados de conclusão", "Tiragens e Combinações", "Mesa de Tarô e Ética"].map((f, i) => (
+            <div key={i} className="flex items-center gap-3">
+              <Sparkles className="w-3.5 h-3.5 shrink-0" style={{ color: "#C8A66A" }} />
+              <span className="text-[12px] font-body font-black leading-tight" style={{ color: "#5B1F3D" }}>{f}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </div>
