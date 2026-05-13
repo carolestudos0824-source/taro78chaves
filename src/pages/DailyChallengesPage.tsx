@@ -182,10 +182,15 @@ const DailyChallengesPage = () => {
 
         {/* Challenge list */}
         <div>
-          <div className="flex items-center justify-center mb-3">
-            <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
+          <div className="flex items-center gap-4 mb-6">
+            <span className="h-px flex-1 bg-[#C8A66A]/20" />
+            <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
+              Desafios Ativos
+            </h2>
+            <span className="h-px flex-1 bg-[#C8A66A]/20" />
           </div>
-          <div className="space-y-3">
+
+          <div className="space-y-4">
             {challenges.map((ch) => {
               const IconComponent = (() => {
                 switch (ch.icon) {
@@ -206,53 +211,49 @@ const DailyChallengesPage = () => {
                   disabled={ch.completed}
                   className="w-full text-left group transition-all duration-300"
                 >
-                  <div className="rounded-xl p-4 flex items-center gap-4 transition-all duration-300" style={ch.completed ? {
-                    background: "#FAF5EF",
-                    border: "1px solid #DCCFC2",
-                    opacity: 0.8
-                  } : {
-                    background: "linear-gradient(145deg, #FAF5EF, #F3E6E0)",
-                    border: "1.5px solid #C8A66A33",
-                    boxShadow: "0 2px 12px rgba(91, 31, 61, 0.04)",
-                  }}>
+                  <div 
+                    className={`rounded-2xl p-5 flex items-center gap-4 transition-all duration-300 border-2 ${
+                      ch.completed 
+                        ? "bg-white/40 border-[#DCCFC2] opacity-60" 
+                        : "bg-white border-[#C8A66A]/20 hover:border-[#C8A66A]/40 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                    }`}
+                  >
                     {/* Icon */}
-                    <div className="w-11 h-11 rounded-full flex items-center justify-center shrink-0" style={ch.completed ? {
-                      background: "#DCCFC233",
-                      border: "1.5px solid #DCCFC2",
-                    } : {
-                      background: "#F3E6E0",
-                      border: "1.5px solid #DCCFC2",
-                    }}>
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-colors ${
+                      ch.completed 
+                        ? "bg-[#DCCFC233] border-[#DCCFC2]" 
+                        : "bg-[#FAF5EF] border-[#C8A66A]/20 group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D]"
+                    }`}>
                       {ch.completed ? (
-                        <Check className="w-4 h-4" style={{ color: "#C8A66A" }} />
+                        <Check className="w-5 h-5 text-[#C8A66A]" />
                       ) : (
-                        <IconComponent className="w-5 h-5" style={{ color: "#5B1F3D" }} />
+                        <IconComponent className="w-6 h-6 text-[#5B1F3D] group-hover:text-white transition-colors" />
                       )}
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-heading text-[15px] tracking-wide font-semibold" style={{
-                        color: ch.completed ? "#5B1F3D80" : "#5B1F3D",
-                        textDecoration: ch.completed ? "line-through" : "none",
-                        textDecorationColor: "#C8A66A",
-                      }}>
+                      <h3 className={`font-heading text-[15px] font-black tracking-tight ${
+                        ch.completed ? "text-[#5B1F3D]/40 line-through" : "text-[#5B1F3D]"
+                      }`}>
                         {ch.title}
                       </h3>
-                      <p className="font-body text-[13px] leading-relaxed font-bold mt-1" style={{
-                        color: ch.completed ? "#5B1F3D60" : "#5B1F3D",
-                      }}>
+                      <p className={`font-body text-[12px] font-bold mt-0.5 leading-snug ${
+                        ch.completed ? "text-[#5B1F3D]/30" : "text-[#5B1F3D]/70"
+                      }`}>
                         {ch.subtitle}
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-2 shrink-0">
-                      <span className="text-[11px] font-bold font-heading tracking-tight" style={{
-                        color: ch.completed ? "#C8A66A80" : "#C8A66A",
-                      }}>
+                    <div className="flex items-center gap-3 shrink-0">
+                      <div className={`px-2.5 py-1 rounded-full text-[10px] font-heading font-black tracking-tighter border ${
+                        ch.completed 
+                          ? "bg-[#DCCFC2]/20 border-[#DCCFC2] text-[#C8A66A]/50" 
+                          : "bg-[#C8A66A]/10 border-[#C8A66A]/20 text-[#C8A66A]"
+                      }`}>
                         +{ch.xp} XP
-                      </span>
+                      </div>
                       {!ch.completed && (
-                        <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" style={{ color: "#C8A66A" }} />
+                        <ChevronRight className="w-4 h-4 text-[#C8A66A] group-hover:translate-x-1 transition-transform" />
                       )}
                     </div>
                   </div>
