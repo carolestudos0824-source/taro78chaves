@@ -182,7 +182,7 @@ const QARotasPage = () => {
 
   const getStatusColor = (status: AuditStatus) => {
     switch (status) {
-      case 'Aprovada': return 'text-green-600 bg-green-50 border-green-200';
+      case 'Aprovada': return 'text-[#8B6914] bg-[#C8A66A]/10 border-[#C8A66A]/30';
       case 'Reprovada': return 'text-red-600 bg-red-50 border-red-200';
       case 'Corrigir': return 'text-amber-600 bg-amber-50 border-amber-200';
       default: return 'text-slate-500 bg-slate-50 border-slate-200';
@@ -229,14 +229,14 @@ const QARotasPage = () => {
 
           <div className="flex flex-wrap items-center gap-3">
             <StatCard label="Total" value={stats.total} color="text-[#5B1F3D]" />
-            <StatCard label="Aprovadas" value={stats.approved} color="text-green-600" />
+            <StatCard label="Aprovadas" value={stats.approved} color="text-[#C8A66A]" />
             <StatCard label="Reprovadas" value={stats.rejected} color="text-red-600" />
             <StatCard label="Pendentes" value={stats.pending} color="text-slate-400" />
           </div>
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-6 py-12">
+      <main className="max-w-6xl mx-auto px-6 py-12 pb-28">
         {/* Filters & Search */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-12">
           <div className="lg:col-span-2 relative">
@@ -371,8 +371,8 @@ const QARotasPage = () => {
                         onClick={() => updateAudit(route.id, 'Aprovada')}
                         className={`flex-1 flex items-center justify-center py-4 rounded-2xl border-2 transition-all shadow-sm ${
                           audit.status === 'Aprovada' 
-                            ? 'bg-green-600 border-green-600 text-white' 
-                            : 'bg-white border-green-100 text-green-500 hover:bg-green-50'
+                            ? 'bg-[#C8A66A] border-[#C8A66A] text-white' 
+                            : 'bg-white border-[#C8A66A]/30 text-[#C8A66A] hover:bg-[#C8A66A]/10'
                         }`}
                         title="Aprovar"
                       >
