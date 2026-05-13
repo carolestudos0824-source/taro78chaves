@@ -265,19 +265,19 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
 
             let optionClass =
               "bg-white/70 backdrop-blur-sm border-gold/30 hover:bg-white/90 hover:border-gold/60 hover:shadow-sm";
-            let textColorStyle: string = "#3d1f2e";
-            let iconColor = "hsl(var(--gold))";
+            let textColorStyle: string = "#5B1F3D";
+            let iconColor = "#C8A66A";
 
             if (isCorrectAnswer) {
-              optionClass = "bg-[#C8A66A]/12 border-[#C8A66A]/50";
+              optionClass = "bg-[#FAF5EF] border-[#C8A66A] shadow-inner";
               textColorStyle = "#5B1F3D";
-              iconColor = "#C8A66A";
+              iconColor = "#5B1F3D";
             } else if (isWrongSelected) {
-              optionClass = "bg-[#5B1F3D]/8 border-[#5B1F3D]/40";
+              optionClass = "bg-[#5B1F3D]/5 border-[#5B1F3D]/30";
               textColorStyle = "#5B1F3D";
               iconColor = "#5B1F3D";
             } else if (isAnswered) {
-              optionClass = "bg-white/50 backdrop-blur-sm border-gold/20 opacity-70";
+              optionClass = "bg-white/40 backdrop-blur-sm border-[#C8A66A]/20 opacity-60";
             }
 
             return (
