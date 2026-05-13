@@ -250,12 +250,7 @@ const LessonPage = () => {
               onComplete={() => setExerciseCompleted(true)}
               completed={exerciseCompleted}
             />
-            <button 
-              onClick={() => setPhase("quiz")} 
-              className="w-full bg-[#5B1F3D] text-white py-6 rounded-2xl font-heading font-black text-xs tracking-[0.2em] uppercase border-2 border-[#C8A66A] shadow-xl transition-all hover:scale-105 active:scale-95"
-            >
-              Iniciar Quiz Final
-            </button>
+            <Button onClick={() => setPhase("quiz")} className="btn-premium w-full py-7">Iniciar Quiz Final</Button>
           </div>
         )}
 
