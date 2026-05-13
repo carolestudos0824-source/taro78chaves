@@ -161,49 +161,49 @@ const DailyChallengesPage = () => {
       </header>
 
       <div className="relative z-10 max-w-lg mx-auto px-6 pb-32 space-y-10 mt-12">
-        {/* Progress summary — Reforçado para ser Premium */}
+        {/* Progress summary — Reforçado para ser Premium (Estilo /app) */}
         <div className="relative rounded-[3rem] overflow-hidden p-8 md:p-10 transition-all duration-500" style={{
-          background: "linear-gradient(135deg, #FFFFFF 0%, #FAF5EF 100%)",
+          background: "linear-gradient(135deg, #FFFFFF 0%, #FDFBF7 100%)",
           backdropFilter: "blur(24px)",
-          border: "3px solid #C8A66A",
-          boxShadow: "0 40px 80px rgba(91, 31, 61, 0.12), 0 0 30px rgba(200, 166, 106, 0.15)"
+          border: "2.5px solid #C8A66A",
+          boxShadow: "0 35px 80px rgba(91, 31, 61, 0.1), 0 0 35px rgba(200, 166, 106, 0.12)"
         }}>
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-5">
-              <div className="w-16 h-16 rounded-[1.5rem] flex items-center justify-center border-2 border-[#C8A66A40] shadow-xl transform -rotate-3" style={{
+              <div className="w-16 h-16 rounded-[1.6rem] flex items-center justify-center border-2 border-[#C8A66A40] shadow-xl transform -rotate-3" style={{
                 background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
               }}>
                 <Flame className={`w-8 h-8 text-[#C8A66A] ${allDone ? "animate-pulse" : ""}`} />
               </div>
               <div className="flex flex-col">
-                <span className="text-[11px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase mb-1">
+                <span className="text-[10px] md:text-[11px] font-heading font-black tracking-[0.35em] text-[#C8A66A] uppercase mb-1">
                   {allDone ? "Ritual Cumprido" : "Seu Progresso"}
                 </span>
-                <span className="text-xl font-heading font-black text-[#5B1F3D]">
+                <span className="text-xl md:text-2xl font-heading font-black text-[#5B1F3D]">
                   {allDone ? "Portal Aberto!" : `${completedCount} de ${challenges.length} Portais`}
                 </span>
               </div>
             </div>
             <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl border-2 border-[#C8A66A20] shadow-sm" style={{
-              background: "rgba(255, 255, 255, 0.8)",
+              background: "linear-gradient(135deg, #FAF5EF, #FFFFFF)",
             }}>
               <Star className="w-5 h-5 text-[#C8A66A] fill-[#C8A66A20]" />
-              <span className="text-[14px] font-heading font-black text-[#5B1F3D]">
+              <span className="text-[14px] md:text-[16px] font-heading font-black text-[#5B1F3D]">
                 {totalXPEarned} XP
               </span>
             </div>
           </div>
           
-          <div className="h-4 rounded-full bg-[#E8DED3] overflow-hidden p-[2.5px] border border-[#D1C4B5]/50 shadow-inner">
+          <div className="h-5 rounded-full bg-[#E8DED3] overflow-hidden p-[3px] border-2 border-[#D1C4B5]/40 shadow-inner">
             <div 
               className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out relative overflow-hidden shadow-lg"
-              style={{ width: `${Math.max((completedCount / challenges.length) * 100, 2.5)}%` }}
+              style={{ width: `${Math.max((completedCount / challenges.length) * 100, 3)}%` }}
             >
-              <div className="absolute inset-0 w-1/3 h-full bg-white/30 skew-x-[-25deg] animate-pulse" style={{ left: '15%' }} />
+              <div className="absolute inset-0 w-1/3 h-full bg-white/40 skew-x-[-25deg] animate-pulse" style={{ left: '15%' }} />
             </div>
           </div>
           
-          <p className="mt-8 text-[13px] font-body font-black text-[#5B1F3D]/80 italic text-center leading-relaxed max-w-[280px] mx-auto">
+          <p className="mt-8 text-[13px] md:text-[14px] font-body font-black text-[#5B1F3D]/80 italic text-center leading-relaxed max-w-[300px] mx-auto">
             {allDone 
               ? "Você concluiu todos os portais do dia. Sua jornada está fortalecida." 
               : "Cada desafio concluído revela uma nova camada de sabedoria."}
