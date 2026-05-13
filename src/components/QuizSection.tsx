@@ -116,7 +116,7 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
                   >
                     {isCorrect ? <Check className="w-3.5 h-3.5" /> : isWrong ? <X className="w-3.5 h-3.5" /> : String.fromCharCode(65 + i)}
                   </span>
-                  <span className="text-sm" style={{ color: "hsl(230 20% 25%)" }}>{option}</span>
+                  <span className="text-sm font-medium" style={{ color: "#5B1F3D" }}>{option}</span>
                 </div>
               );
             })}
