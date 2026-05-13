@@ -205,11 +205,11 @@ export function LessonContent(props: LessonContentProps) {
       {/* 9, 10, 11, 12, 13: Essência, Símbolos, Luz, Sombra, Lição (Accordion) */}
       <div className="space-y-0">
         {/* Renderiza apenas se NÃO houver conteúdo exibido nos cards de destaque (essence, light, shadow) */}
-        {!essence && renderAccordionSection("essencia")}
+        {!essence && sections.some(s => s.id === "essencia") && renderAccordionSection("essencia")}
         {renderAccordionSection("simbolos")}
         {/* Caso a seção ID seja diferente das props (luz vs light, sombra vs shadow) */}
-        {!light && renderAccordionSection("luz")}
-        {!shadow && renderAccordionSection("sombra")}
+        {!light && sections.some(s => s.id === "luz") && renderAccordionSection("luz")}
+        {!shadow && sections.some(s => s.id === "sombra") && renderAccordionSection("sombra")}
         {renderAccordionSection("licao")}
         {renderAccordionSection("mitologia")}
         {renderAccordionSection("numerologia")}

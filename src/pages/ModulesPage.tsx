@@ -178,15 +178,15 @@ const ModulesPage = () => {
           </div>
           
           <div className="mt-6 flex flex-col gap-4">
-            <p className="text-[13px] font-body font-black text-[#5B1F3D]/70 italic text-center leading-relaxed">
+            <p className="text-[14px] font-body font-black text-[#5B1F3D]/70 italic text-center leading-relaxed">
               Você já domina {totalCompletedArcanos} das 78 chaves do tarô ({globalProgressPct}%).
             </p>
             
             <button
               onClick={() => navigate("/trilhas")}
-              className="w-full py-4 rounded-2xl bg-[#5B1F3D] text-[#FAF5EF] font-heading text-[10px] tracking-[0.3em] uppercase font-black shadow-lg hover:bg-[#3D1429] transition-all flex items-center justify-center gap-2"
+              className="w-full py-4 rounded-2xl bg-[#5B1F3D] text-[#FAF5EF] font-heading text-[11px] tracking-[0.3em] uppercase font-black shadow-lg hover:bg-[#3D1429] transition-all flex items-center justify-center gap-2 border-2 border-[#C8A66A]/30"
             >
-              Ver Trilhas de Formação <ChevronRight className="w-4 h-4" />
+              Ver Mapa Completo da Formação <ChevronRight className="w-4 h-4 text-[#C8A66A]" />
             </button>
           </div>
         </div>
