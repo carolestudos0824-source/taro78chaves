@@ -310,52 +310,54 @@ const RoutineCard = ({ icon, iconColor, title, subtitle, completed, accent, lock
   <button
     onClick={locked ? undefined : onClick}
     disabled={locked}
-    className="w-full text-left group transition-all duration-300"
+    className="w-full text-left group transition-all duration-500"
   >
-    <div className={`rounded-2xl p-5 flex items-center gap-4 transition-all duration-300 border-2 ${
+    <div className={`rounded-[2rem] p-6 flex items-center gap-5 transition-all duration-500 border-2 ${
       completed 
         ? "bg-white/40 border-[#DCCFC2] opacity-60" 
         : locked 
-          ? "bg-[#FAF5EF] border-[#D1C4B5]/20 opacity-40 grayscale" 
-          : "bg-white border-[#C8A66A]/20 hover:border-[#C8A66A]/40 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+          ? "bg-[#FAF5EF]/50 border-[#D1C4B5]/20 opacity-40 grayscale" 
+          : "bg-white border-[#C8A66A]/30 hover:border-[#C8A66A] shadow-lg hover:shadow-2xl hover:-translate-y-1"
     }`}>
-      <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-colors ${
+      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border-2 transition-all duration-500 ${
         completed 
           ? "bg-[#DCCFC233] border-[#DCCFC2]" 
-          : "bg-[#FAF5EF] border-[#C8A66A]/20 group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D]"
+          : "bg-[#FAF5EF] border-[#C8A66A30] group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D] group-hover:shadow-[0_8px_20px_rgba(91,31,61,0.3)]"
       }`}>
-        <div className="transition-colors group-hover:text-white" style={{ color: completed ? "#C8A66A" : iconColor }}>
-          {completed ? <Check className="w-5 h-5" /> : icon}
+        <div className="transition-colors duration-500 group-hover:text-white" style={{ color: completed ? "#C8A66A" : iconColor }}>
+          {completed ? <Check className="w-6 h-6" /> : icon}
         </div>
       </div>
       <div className="flex-1 min-w-0">
-        <h3 className={`font-heading text-[15px] font-black tracking-tight ${
+        <h3 className={`font-heading text-[17px] font-black tracking-tight ${
           completed ? "text-[#5B1F3D]/40 line-through" : "text-[#5B1F3D]"
         }`}>
           {title}
         </h3>
-        <p className={`font-body text-[12px] font-bold mt-0.5 leading-snug ${
-          completed ? "text-[#5B1F3D]/30" : "text-[#5B1F3D]/60"
+        <p className={`font-body text-[13px] font-black mt-1 leading-snug ${
+          completed ? "text-[#5B1F3D]/30" : "text-[#5B1F3D]/70"
         }`}>
           {subtitle}
         </p>
       </div>
       {!locked && !completed && (
-        <ChevronRight className="w-4 h-4 text-[#C8A66A] group-hover:translate-x-1 transition-transform" />
+        <div className="shrink-0 w-8 h-8 rounded-full border border-[#C8A66A30] flex items-center justify-center group-hover:bg-[#C8A66A10] transition-colors">
+          <ChevronRight className="w-5 h-5 text-[#C8A66A] group-hover:translate-x-1 transition-transform duration-300" />
+        </div>
       )}
     </div>
   </button>
 );
 
 const StatCard = ({ label, value, sub }: { label: string; value: string; sub: string }) => (
-  <div className="bg-white border-2 border-[#C8A66A]/20 rounded-2xl p-5 text-center shadow-sm">
-    <div className="font-heading text-xl font-black text-[#5B1F3D]">
+  <div className="bg-white border-2 border-[#C8A66A]/30 rounded-[2rem] p-6 text-center shadow-lg transition-all hover:shadow-xl hover:border-[#C8A66A] group">
+    <div className="font-heading text-3xl font-black text-[#5B1F3D] group-hover:scale-110 transition-transform duration-500">
       {value}
     </div>
-    <div className="text-[9px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A] mt-1">
+    <div className="text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A] mt-2">
       {label}
     </div>
-    <div className="text-[10px] font-body font-black italic text-[#5B1F3D]/40 mt-1">
+    <div className="text-[11px] font-body font-black italic text-[#5B1F3D]/50 mt-1">
       {sub}
     </div>
   </div>
