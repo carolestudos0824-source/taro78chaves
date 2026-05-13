@@ -97,67 +97,70 @@ const NaipePage = () => {
         onClick={() => filled && unlocked && navigate(`/arcano-menor/${card.id}`)}
         disabled={!unlocked || !filled}
         className="w-full text-left group transition-all duration-500"
-        style={{ animation: `fade-up 0.4s ease-out both`, animationDelay: `${delay}ms` }}
+        style={{ animation: `fade-up 0.5s ease-out both`, animationDelay: `${delay}ms` }}
       >
         <div 
-          className="relative overflow-hidden rounded-2xl transition-all duration-500" 
+          className="relative overflow-hidden rounded-[2rem] transition-all duration-500" 
           style={isCurrent && filled ? {
             background: "white",
-            border: `2px solid #C8A66A`,
-            boxShadow: `0 20px 40px -12px rgba(91, 31, 61, 0.18)`,
-            transform: "translateY(-2px)"
+            border: `2.5px solid #C8A66A`,
+            boxShadow: `0 30px 60px -12px rgba(91, 31, 61, 0.22)`,
+            transform: "translateY(-4px)"
           } : completed ? {
-            background: "rgba(255, 255, 255, 0.85)",
-            border: "1px solid rgba(200, 166, 106, 0.3)",
-            boxShadow: "0 4px 15px rgba(91, 31, 61, 0.03)"
+            background: "rgba(255, 255, 255, 0.9)",
+            border: "2px solid rgba(200, 166, 106, 0.35)",
+            boxShadow: "0 8px 25px rgba(91, 31, 61, 0.04)"
           } : {
-            background: "rgba(220, 207, 194, 0.1)",
-            border: "1px solid rgba(220, 207, 194, 0.2)",
+            background: "rgba(220, 207, 194, 0.15)",
+            border: "2px solid rgba(220, 207, 194, 0.25)",
           }}
         >
           {/* Hover effect overlay */}
-          <div className="absolute inset-0 bg-[#C8A66A]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-[#C8A66A]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           
-          <div className="p-5 flex items-center gap-5 relative z-10">
-            <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:shadow-md" style={completed ? {
-              border: "2.5px solid #5B1F3D",
+          <div className="p-6 flex items-center gap-6 relative z-10">
+            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-2xl ${
+              isCurrent && filled ? "scale-110" : ""
+            }`} style={completed ? {
+              border: "3px solid #5B1F3D",
               background: "#FAF5EF",
-              boxShadow: "inset 0 2px 4px rgba(91, 31, 61, 0.05)"
+              boxShadow: "inset 0 3px 6px rgba(91, 31, 61, 0.08)"
             } : unlocked ? {
-              border: `2.5px solid #5B1F3D`,
+              border: `3px solid #5B1F3D`,
               background: "#FAF5EF",
-              boxShadow: "inset 0 2px 4px rgba(91, 31, 61, 0.05)"
+              boxShadow: "inset 0 3px 6px rgba(91, 31, 61, 0.08)",
+              borderColor: isCurrent ? "#5B1F3D" : "#5B1F3D80"
             } : {
-              border: "1.5px solid rgba(91, 31, 61, 0.15)",
-              background: "rgba(220, 207, 194, 0.1)",
+              border: "2px solid rgba(91, 31, 61, 0.2)",
+              background: "rgba(220, 207, 194, 0.2)",
             }}>
               {completed ? (
-                <Check className="w-6 h-6" style={{ color: "#5B1F3D" }} strokeWidth={3.5} />
+                <Check className="w-7 h-7" style={{ color: "#5B1F3D" }} strokeWidth={4} />
               ) : unlocked ? (
-                <span className="text-sm font-heading font-black" style={{ color: "#5B1F3D" }}>
+                <span className="text-lg font-heading font-black" style={{ color: "#5B1F3D" }}>
                   {isNum ? card.posicao : courtIcon(card.posicao as string)}
                 </span>
               ) : (
-                <Lock className="w-4 h-4" style={{ color: "#5B1F3D30" }} />
+                <Lock className="w-5 h-5" style={{ color: "#5B1F3D40" }} />
               )}
             </div>
             
             <div className="flex-1 min-w-0">
-              <h3 className="font-heading text-lg tracking-tight truncate font-black leading-tight" style={{
+              <h3 className="font-heading text-xl tracking-tight truncate font-black leading-tight" style={{
                 color: unlocked ? "#5B1F3D" : "#5B1F3D60",
               }}>
                 {card.nome}
               </h3>
               {card.subtitulo && (
-                <p className="font-accent text-sm italic truncate font-bold mt-0.5" style={{ color: unlocked ? "#8B6A30" : "#5B1F3D30" }}>
+                <p className="font-accent text-[15px] italic truncate font-black mt-1" style={{ color: unlocked ? "#8B6A30" : "#5B1F3D40" }}>
                   {card.subtitulo}
                 </p>
               )}
             </div>
             
             {unlocked && filled && (
-              <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A]/20 transition-all duration-300 group-hover:bg-[#C8A66A]/10 group-hover:border-[#C8A66A]/40 group-hover:translate-x-1">
-                <ChevronRight className="w-5 h-5 shrink-0" style={{ color: "#C8A66A" }} />
+              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border-2 border-[#C8A66A]/30 transition-all duration-500 group-hover:bg-[#C8A66A]/20 group-hover:border-[#C8A66A] group-hover:translate-x-2 shadow-sm">
+                <ChevronRight className="w-6 h-6 shrink-0" style={{ color: "#C8A66A" }} />
               </div>
             )}
           </div>
