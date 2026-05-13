@@ -242,49 +242,49 @@ const DailyChallengesPage = () => {
                   className="w-full text-left group transition-all duration-500"
                 >
                   <div 
-                    className={`rounded-[2.5rem] p-7 md:p-8 flex items-center gap-6 transition-all duration-500 border-2 shadow-xl ${
+                    className={`rounded-[3rem] p-7 md:p-9 flex items-center gap-6 transition-all duration-500 border-2 shadow-xl ${
                       ch.completed 
                         ? "bg-[#F3E6E0]/40 border-[#DCCFC2] opacity-60" 
-                        : "bg-white border-[#C8A66A]/20 hover:border-[#C8A66A] hover:shadow-2xl hover:-translate-y-1.5"
+                        : "bg-white border-[#C8A66A]/20 hover:border-[#C8A66A]/60 hover:shadow-2xl hover:-translate-y-2 ring-1 ring-[#C8A66A]/5"
                     }`}
                   >
-                    {/* Icon Container — Premium Circle */}
-                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-[1.8rem] flex items-center justify-center shrink-0 border-2 transition-all duration-500 shadow-lg ${
+                    {/* Icon Container — Premium Circle (Estilo /app) */}
+                    <div className={`w-18 h-18 md:w-24 md:h-24 rounded-[2rem] flex items-center justify-center shrink-0 border-2 transition-all duration-700 shadow-lg ${
                       ch.completed 
                         ? "bg-[#DCCFC233] border-[#DCCFC2] text-[#C8A66A]/50" 
-                        : "bg-[#FAF5EF] border-[#C8A66A30] text-[#5B1F3D] group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D] group-hover:text-white group-hover:shadow-[0_12px_30px_rgba(91,31,61,0.3)] group-hover:-rotate-3"
+                        : "bg-[#FAF5EF] border-[#C8A66A20] text-[#5B1F3D] group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D] group-hover:text-[#FAF5EF] group-hover:shadow-[0_15px_40px_rgba(91,31,61,0.3)] group-hover:-rotate-3"
                     }`}>
                       {ch.completed ? (
-                        <Check className="w-8 h-8" strokeWidth={3} />
+                        <Check className="w-9 h-9 md:w-11 md:h-11" strokeWidth={4} />
                       ) : (
-                        <IconComponent className="w-8 h-8 transition-transform duration-500 group-hover:scale-110" />
+                        <IconComponent className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
                       )}
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <h3 className={`font-heading text-lg md:text-xl font-black tracking-tight mb-1.5 transition-colors ${
-                        ch.completed ? "text-[#5B1F3D]/40 line-through" : "text-[#5B1F3D] group-hover:text-[#5B1F3D]"
+                      <h3 className={`font-heading text-lg md:text-2xl font-black tracking-tight mb-2 transition-colors ${
+                        ch.completed ? "text-[#5B1F3D]/40 line-through" : "text-[#5B1F3D]"
                       }`}>
                         {ch.title}
                       </h3>
-                      <p className={`font-body text-[14px] font-black leading-snug transition-colors ${
+                      <p className={`font-body text-[14px] md:text-[16px] font-black leading-snug transition-colors ${
                         ch.completed ? "text-[#5B1F3D]/30" : "text-[#5B1F3D]/80 group-hover:text-[#5B1F3D]/90"
                       }`}>
                         {ch.subtitle}
                       </p>
                     </div>
 
-                    <div className="flex flex-col items-end gap-3 shrink-0">
-                      <div className={`px-4 py-1.5 rounded-full text-[11px] font-heading font-black tracking-tighter border-2 shadow-sm ${
+                    <div className="flex flex-col items-end gap-4 shrink-0">
+                      <div className={`px-5 py-2 rounded-full text-[11px] md:text-[12px] font-heading font-black tracking-tighter border-2 shadow-sm ${
                         ch.completed 
                           ? "bg-[#DCCFC2]/20 border-[#DCCFC2] text-[#C8A66A]/50" 
-                          : "bg-[#C8A66A]/10 border-[#C8A66A]/30 text-[#C8A66A] group-hover:bg-[#C8A66A] group-hover:text-white transition-all"
+                          : "bg-[#C8A66A]/10 border-[#C8A66A]/30 text-[#C8A66A] group-hover:bg-[#C8A66A] group-hover:text-white transition-all shadow-md"
                       }`}>
                         +{ch.xp} XP
                       </div>
                       {!ch.completed && (
-                        <div className="w-10 h-10 rounded-full border-2 border-[#C8A66A20] flex items-center justify-center group-hover:bg-[#C8A66A10] group-hover:border-[#C8A66A] transition-all">
-                          <ChevronRight className="w-6 h-6 text-[#C8A66A] group-hover:translate-x-1.5 transition-transform duration-300" />
+                        <div className="w-11 h-11 rounded-full border-2 border-[#C8A66A20] flex items-center justify-center group-hover:bg-[#C8A66A10] group-hover:border-[#C8A66A] transition-all shadow-sm">
+                          <ChevronRight className="w-7 h-7 text-[#C8A66A] group-hover:translate-x-2 transition-transform duration-300" />
                         </div>
                       )}
                     </div>
@@ -292,6 +292,7 @@ const DailyChallengesPage = () => {
                 </button>
               );
             })}
+          </div>
           </div>
         </div>
 
