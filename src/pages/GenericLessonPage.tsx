@@ -203,23 +203,25 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
     const a = accentOverride || accent;
     return (
       <div
-        className="rounded-xl overflow-hidden animate-fade-in"
+        className="rounded-[2rem] overflow-hidden animate-fade-in mb-6 transition-all duration-500 hover:shadow-2xl"
         style={{
-          background: "hsl(38 28% 93% / 0.85)",
-          border: `1px solid hsl(${a} / 0.12)`,
-          backdropFilter: "blur(8px)",
-          boxShadow: `0 4px 24px hsl(${a} / 0.04)`,
+          background: "rgba(255, 255, 255, 0.95)",
+          border: `2px solid #C8A66A40`,
+          backdropFilter: "blur(12px)",
+          boxShadow: `0 15px 35px rgba(91, 31, 61, 0.04)`,
           animationDelay: delay,
           animationFillMode: "both",
         }}
       >
         {label && (
-          <div className="px-5 pt-4 pb-0 flex items-center gap-2">
-            {icon}
-            <span className="text-[10px] font-heading tracking-[0.2em] uppercase" style={{ color: `hsl(${a})` }}>{label}</span>
+          <div className="px-8 pt-6 pb-2 flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#5B1F3D10] border border-[#5B1F3D20]">
+              {icon}
+            </div>
+            <span className="text-[11px] font-heading tracking-[0.3em] uppercase font-black" style={{ color: "#C8A66A" }}>{label}</span>
           </div>
         )}
-        <div className="p-5">
+        <div className="px-8 py-6">
           {children}
         </div>
       </div>
