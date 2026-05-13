@@ -37,7 +37,6 @@ export function LessonContent(props: LessonContentProps) {
     onComplete, onGoDeepDive, onGoExercise, onSkipToQuiz,
     initiationLesson,
   } = props;
-  console.log("LessonContent rendering with sections:", sections?.length);
   const [openSection, setOpenSection] = useState<string | null>(null);
 
   // Mapeamento manual para garantir ordem e existência
