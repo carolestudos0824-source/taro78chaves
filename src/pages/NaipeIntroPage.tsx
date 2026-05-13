@@ -105,32 +105,28 @@ const NaipeIntroPage = () => {
       </header>
 
       <main className="relative z-10 container max-w-3xl px-4 py-8">
-        {/* Hero */}
-        <div className="text-center space-y-4 mb-10" style={{ animation: "fade-up 0.6s ease-out" }}>
-          <div className="w-20 h-20 mx-auto rounded-full flex items-center justify-center text-3xl" style={{
-            background: info.color.surface,
-            border: `2px solid ${info.color.border}`,
-            boxShadow: `0 0 40px ${info.color.border}`,
+        {/* Hero — Redesigned for premium force */}
+        <div className="text-center space-y-6 mb-12" style={{ animation: "fade-up 0.7s ease-out" }}>
+          <div className="w-24 h-24 mx-auto rounded-3xl flex items-center justify-center text-4xl shadow-2xl transition-all duration-700 hover:rotate-12" style={{
+            background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+            border: `2.5px solid #C8A66A`,
+            boxShadow: `0 20px 50px rgba(91, 31, 61, 0.3), 0 0 30px rgba(200, 166, 106, 0.2)`,
           }}>
-            {info.icon}
+            <span className="filter drop-shadow-md">{info.icon}</span>
           </div>
-          <h1 className="font-heading text-2xl md:text-3xl tracking-wide" style={{
-            background: `linear-gradient(135deg, hsl(340 42% 22%), ${info.color.primary})`,
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}>
+          <h1 className="font-heading text-4xl md:text-5xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
             {ped.nome ?? info.name}
           </h1>
-          <p className="font-accent text-base italic" style={{ color: "hsl(230 20% 25% / 0.60)" }}>
+          <p className="font-accent text-lg md:text-xl italic font-black leading-snug" style={{ color: "#5B1F3D99" }}>
             {ped.subtitulo ?? info.subtitle}
           </p>
           {ped.fraseAbertura && (
-            <p className="font-accent text-sm italic max-w-md mx-auto leading-relaxed" style={{
-              color: info.color.primary,
-              filter: "brightness(0.85)",
-            }}>
-              "{ped.fraseAbertura}"
-            </p>
+            <div className="relative py-4 px-8 max-w-xl mx-auto">
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#C8A66A] to-transparent rounded-full" />
+              <p className="font-accent text-[18px] md:text-[20px] italic leading-relaxed font-black pl-4" style={{ color: "#5B1F3D" }}>
+                "{ped.fraseAbertura}"
+              </p>
+            </div>
           )}
         </div>
 
