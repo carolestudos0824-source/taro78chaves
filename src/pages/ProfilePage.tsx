@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import { ArrowLeft, Flame, Star, Trophy, Book, ChevronRight, KeyRound, LogOut, Type, MessageSquare, Shield, UserRound, Sparkles } from "lucide-react";
 import { useIsAdmin } from "@/hooks/use-admin";
 import { useProgress } from "@/hooks/use-progress";
@@ -213,19 +213,23 @@ const ProfilePage = () => {
           )}
         </div>
 
-        <div className="pt-12 flex flex-col items-center space-y-8">
-          <button onClick={signOut} className="flex items-center gap-2 text-[11px] font-heading font-black tracking-[0.3em] uppercase text-[#5B1F3D]/60 hover:text-[#5B1F3D] transition-colors">
+        <div className="pt-16 flex flex-col items-center space-y-10">
+          <button onClick={signOut} className="flex items-center gap-3 px-8 py-4 rounded-2xl border-2 border-[#5B1F3D20] text-[11px] font-heading font-black tracking-[0.4em] uppercase text-[#5B1F3D] hover:bg-[#5B1F3D] hover:text-white transition-all shadow-sm">
             <LogOut className="w-4 h-4" />
-            Sair da conta
+            ENCERRAR SESSÃO
           </button>
           
-          <nav className="flex items-center gap-8 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">
-            <a href="https://taro78chaves.lovable.app/suporte" className="hover:text-[#C8A66A] transition-colors">Suporte</a>
-            <span>•</span>
-            <a href="https://taro78chaves.lovable.app/termos" className="hover:text-[#C8A66A] transition-colors">Termos</a>
-            <span>•</span>
-            <a href="https://taro78chaves.lovable.app/excluir-conta" className="hover:text-[#C8A66A] transition-colors">Excluir</a>
+          <nav className="flex items-center gap-8 text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D60]">
+            <Link to="/suporte" className="hover:text-[#C8A66A] transition-colors">Suporte</Link>
+            <span className="text-[#C8A66A40]">✦</span>
+            <Link to="/termos" className="hover:text-[#C8A66A] transition-colors">Termos</Link>
+            <span className="text-[#C8A66A40]">✦</span>
+            <Link to="/excluir-conta" className="hover:text-[#C8A66A] transition-colors">Excluir</Link>
           </nav>
+
+          <p className="text-[9px] font-heading tracking-[0.4em] text-[#C8A66A80] uppercase">
+            Tarô 78 Chaves · © 2026
+          </p>
         </div>
       </main>
     </div>
