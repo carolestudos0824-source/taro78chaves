@@ -119,31 +119,35 @@ export function ReflectionSection({ arcanoId, lessonId }: ReflectionSectionProps
           if (saved) setSaved(false);
         }}
         placeholder="Registre sua reflexão curta aqui..."
-        className="w-full h-24 p-3 rounded-xl text-sm font-body bg-white/50 border border-hsl(36 45% 58% / 0.2) focus:outline-none focus:ring-1 focus:ring-hsl(36 45% 58% / 0.3) resize-none"
-        style={{ color: "hsl(230 25% 15%)" }}
+        className="w-full h-32 p-4 rounded-2xl text-[15px] font-body bg-[#FAF5EF]/50 border-2 border-[#C8A66A]/20 focus:border-[#C8A66A]/50 focus:bg-white transition-all outline-none resize-none placeholder:text-[#5B1F3D40] font-medium text-[#5B1F3D]"
       />
 
       <button
         onClick={handleSave}
         disabled={saving || !content.trim() || saved}
-        className="w-full py-2.5 rounded-full font-heading text-xs tracking-widest uppercase flex items-center justify-center gap-2 transition-all active:scale-95 disabled:opacity-50"
+        className="w-full py-4 rounded-full font-heading text-[11px] font-black tracking-[0.2em] uppercase flex items-center justify-center gap-3 transition-all active:scale-95 shadow-md"
         style={{
           background: saved 
-            ? "hsl(120 40% 50% / 0.08)" 
-            : "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))",
-          color: saved ? "hsl(120 40% 35%)" : "hsl(36 33% 97%)",
-          border: saved ? "1px solid hsl(120 40% 50% / 0.2)" : "none",
-          boxShadow: saved ? "none" : "0 4px 15px hsl(36 45% 58% / 0.15)",
+            ? "rgba(45, 90, 61, 0.1)" 
+            : content.trim() 
+              ? "#5B1F3D" 
+              : "rgba(91, 31, 61, 0.15)",
+          color: saved 
+            ? "#2D5A3D" 
+            : content.trim() 
+              ? "white" 
+              : "rgba(91, 31, 61, 0.4)",
+          border: saved ? "2px solid rgba(45, 90, 61, 0.3)" : "none",
         }}
       >
         {saved ? (
           <>
-            <CheckCircle2 className="w-4 h-4" />
+            <CheckCircle2 className="w-5 h-5" />
             <span>Reflexão Salva</span>
-          </>
+          </<>
         ) : (
           <>
-            <Save className="w-4 h-4" />
+            <Save className="w-5 h-5" />
             <span>{saving ? "Salvando..." : "Salvar Reflexão"}</span>
           </>
         )}
