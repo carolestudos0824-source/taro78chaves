@@ -218,90 +218,95 @@ const GenericModulePage = ({
                 key={lesson.id}
                 onClick={() => unlocked && navigate(`${lessonRoutePrefix}/${lesson.order}`)}
                 disabled={!unlocked}
-                className="w-full text-left group transition-all duration-300 animate-fade-in"
-                style={{ animationDelay: `${350 + idx * 60}ms`, animationFillMode: "both" }}
+                className="w-full text-left group transition-all duration-500 animate-fade-in"
+                style={{ animationDelay: `${400 + idx * 70}ms`, animationFillMode: "both" }}
               >
                 <div
-                  className="rounded-2xl p-4 flex items-center gap-4 transition-all relative overflow-hidden group-hover:translate-x-1"
+                  className="rounded-[2.5rem] p-6 flex items-center gap-6 transition-all duration-500 relative overflow-hidden group-hover:-translate-y-1 shadow-lg hover:shadow-2xl"
                   style={
                     isCurrent
                       ? {
                           background: "#FFFFFF",
-                          border: "1.5px solid #C8A66A",
-                          boxShadow: "0 10px 25px rgba(200, 166, 106, 0.12)",
+                          border: "2.5px solid #C8A66A",
+                          boxShadow: "0 20px 50px rgba(91, 31, 61, 0.1)",
                         }
                       : completed
                         ? {
-                            background: "rgba(250, 245, 239, 0.8)",
-                            border: "1px solid #C8A66A30",
+                            background: "rgba(255, 255, 255, 0.9)",
+                            border: "1.5px solid rgba(200, 166, 106, 0.3)",
                           }
                         : {
-                            background: "rgba(220, 207, 194, 0.3)",
-                            border: "1px solid #D1C4B540",
-                            opacity: 0.6,
+                            background: "rgba(220, 207, 194, 0.15)",
+                            border: "1.5px solid rgba(220, 207, 194, 0.25)",
+                            opacity: 0.8,
                           }
                   }
                 >
                   <div
-                    className="w-11 h-11 rounded-full flex items-center justify-center shrink-0 transition-all duration-300"
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-500 shadow-md group-hover:scale-110 group-hover:shadow-2xl"
                     style={
                       isCurrent
                         ? {
-                            background: "linear-gradient(135deg, #5B1F3D, #8B3D5A)",
+                            background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
                             color: "#FAF5EF",
-                            boxShadow: "0 4px 12px rgba(91, 31, 61, 0.2)",
+                            boxShadow: "0 8px 20px rgba(91, 31, 61, 0.25)",
+                            border: "2px solid #C8A66A40"
                           }
                         : completed
                           ? {
-                              background: "#F3E6E0",
-                              border: "1px solid #C8A66A",
-                              color: "#C8A66A",
+                              background: "#FAF5EF",
+                              border: "2.5px solid #5B1F3D",
+                              color: "#5B1F3D",
                             }
                           : {
-                              background: "#DCCFC240",
-                              border: "1px solid #DCCFC2",
-                              color: "#5B1F3D40",
+                              background: "rgba(220, 207, 194, 0.2)",
+                              border: "2px solid rgba(91, 31, 61, 0.15)",
+                              color: "#5B1F3D30",
                             }
                     }
                   >
                     {completed ? (
-                      <Check className="w-5 h-5" />
+                      <Check className="w-6 h-6" strokeWidth={4} />
                     ) : !unlocked ? (
-                      <Lock className="w-4 h-4" />
+                      <Lock className="w-5 h-5" />
                     ) : (
-                      <span className="text-lg">{lesson.icon}</span>
+                      <span className="text-2xl group-hover:rotate-12 transition-transform duration-500">{lesson.icon}</span>
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <span className="text-[9px] font-heading font-bold" style={{ color: unlocked ? "#5B1F3D" : "#5B1F3D40" }}>
+                    <div className="flex items-center gap-3 mb-1">
+                      <span className="text-[10px] font-heading font-black tracking-[0.25em]" style={{ color: unlocked ? "#C8A66A" : "#5B1F3D30" }}>
                         LIÇÃO {lesson.order + 1}
                       </span>
                       {isCurrent && (
-                        <span className="text-[7px] bg-[#C8A66A20] text-[#5B1F3D] px-2 py-0.5 rounded-full font-heading uppercase animate-pulse">
-                          Próxima
+                        <span className="text-[8px] bg-[#C8A66A20] text-[#5B1F3D] px-3 py-1 rounded-full font-heading font-black uppercase tracking-widest animate-pulse border border-[#C8A66A30]">
+                          Portal Aberto
                         </span>
                       )}
                     </div>
                     <h3
-                      className="font-heading text-sm md:text-base tracking-wide"
+                      className="font-heading text-lg md:text-xl tracking-tight font-black leading-tight"
                       style={{ color: unlocked ? "#5B1F3D" : "#5B1F3D40" }}
                     >
                       {lesson.title}
                     </h3>
                     <p
-                      className="font-body text-[12px] leading-relaxed truncate"
-                      style={{ color: unlocked ? "#5B1F3D" : "#5B1F3D40", fontWeight: 700 }}
+                      className="font-body text-[13px] leading-relaxed truncate font-black mt-1"
+                      style={{ color: unlocked ? "#5B1F3D80" : "#5B1F3D30" }}
                     >
                       {lesson.subtitle}
                     </p>
                   </div>
                   {unlocked && (
-                    <ChevronRight
-                      className="w-5 h-5 shrink-0 group-hover:translate-x-1 transition-transform"
-                      style={{ color: "#C8A66A" }}
-                    />
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border-2 border-[#C8A66A]/20 transition-all duration-500 group-hover:bg-[#C8A66A]/10 group-hover:border-[#C8A66A] group-hover:translate-x-2">
+                      <ChevronRight
+                        className="w-6 h-6 shrink-0"
+                        style={{ color: "#C8A66A" }}
+                      />
+                    </div>
                   )}
+                </div>
+              </button>
                   
                   {completed && (
                     <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#C8A66A20]" />
