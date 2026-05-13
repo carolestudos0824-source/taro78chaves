@@ -22,19 +22,27 @@ export function ExerciseSection({ instruction, type, duration, onComplete, compl
 
   return (
     <div className="space-y-4 animate-fade-up">
-      <div className="card-mystic p-6">
-        <div className="flex items-center gap-2 mb-4">
-          <TypeIcon className="w-5 h-5 text-primary" />
-          <h3 className="font-heading text-lg text-gradient-gold">{typeLabels[type].label}</h3>
-          {duration && (
-            <span className="ml-auto flex items-center gap-1 text-xs text-muted-foreground">
-              <Clock className="w-3 h-3" />
-              {duration}
-            </span>
-          )}
+      <div className="rounded-[2rem] p-8 space-y-6" style={{
+        background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
+        border: "2px solid rgba(200, 166, 106, 0.35)",
+        boxShadow: "0 20px 50px rgba(91, 31, 61, 0.08)"
+      }}>
+        <div className="flex items-center gap-4 mb-4">
+          <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#C8A66A10] border border-[#C8A66A30]">
+            <TypeIcon className="w-6 h-6 text-[#C8A66A]" />
+          </div>
+          <div>
+            <h3 className="font-heading text-xl font-black text-[#5B1F3D]">{typeLabels[type].label}</h3>
+            {duration && (
+              <span className="flex items-center gap-1.5 text-[10px] font-heading font-black tracking-widest uppercase text-[#C8A66A]">
+                <Clock className="w-3 h-3" />
+                {duration}
+              </span>
+            )}
+          </div>
         </div>
 
-        <div className="font-accent text-foreground/85 leading-relaxed italic mb-6 space-y-3">
+        <div className="font-accent text-[#5B1F3D]/90 leading-relaxed italic mb-8 space-y-4 text-lg">
           {instruction.split("\n\n").map((line, i) => (
             <p key={i}>"{line}"</p>
           ))}
@@ -45,7 +53,7 @@ export function ExerciseSection({ instruction, type, duration, onComplete, compl
             value={journalEntry}
             onChange={(e) => setJournalEntry(e.target.value)}
             placeholder="Escreva suas reflexões aqui... (opcional)"
-            className="w-full h-32 bg-muted/50 border border-border rounded-xl p-4 text-sm text-foreground placeholder:text-muted-foreground/50 resize-none focus:outline-none focus:border-primary/40 transition-colors"
+            className="w-full h-40 bg-white/50 border-2 border-[#C8A66A]/20 rounded-[1.5rem] p-5 text-[15px] text-[#5B1F3D] placeholder:text-[#5B1F3D]/30 resize-none focus:outline-none focus:border-[#C8A66A]/50 transition-all shadow-inner"
           />
         )}
       </div>
@@ -54,7 +62,7 @@ export function ExerciseSection({ instruction, type, duration, onComplete, compl
         <div className="flex justify-center">
           <button
             onClick={onComplete}
-            className="px-8 py-3 rounded-full bg-primary text-primary-foreground font-heading text-sm tracking-wider hover:glow-gold transition-all duration-300 hover:scale-105"
+            className="w-full py-6 rounded-2xl font-heading text-xs tracking-[0.2em] uppercase transition-all shadow-xl hover:scale-105 active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A] font-black"
           >
             Exercício Concluído
           </button>
