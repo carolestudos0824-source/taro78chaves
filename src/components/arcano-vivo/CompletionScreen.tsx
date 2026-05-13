@@ -57,33 +57,33 @@ export function CompletionScreen({
       </div>
 
       <div>
-        <h2 className="font-heading text-2xl mb-1" style={{
-          background: "linear-gradient(135deg, hsl(340 42% 20%), hsl(36 42% 42%))",
+        <h2 className="font-heading text-3xl font-black mb-2" style={{
+          background: "linear-gradient(135deg, #5B1F3D, #C8A66A)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
         }}>Lição Completa</h2>
-        <p className="text-sm" style={{ color: "hsl(230 20% 30%)" }}>
-          Você completou a jornada com <strong>{arcanoName}</strong>.
+        <p className="text-[15px] font-medium" style={{ color: "#5B1F3D" }}>
+          Você completou a jornada com <strong className="font-black text-[#C8A66A]">{arcanoName}</strong>.
         </p>
       </div>
 
       {/* Stats */}
       <div className="flex justify-center gap-6">
         <div className="text-center">
-          <span className="block font-heading text-xl" style={{ color: "hsl(36 45% 58%)" }}>{percentage}%</span>
-          <span className="text-[9px] font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(230 10% 50%)" }}>Quiz</span>
+          <span className="block font-heading text-2xl font-black" style={{ color: "#C8A66A" }}>{percentage}%</span>
+          <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase" style={{ color: "#5B1F3DCC" }}>Quiz</span>
         </div>
-        <div className="w-px h-10" style={{ background: "hsl(36 45% 58% / 0.2)" }} />
+        <div className="w-px h-10" style={{ background: "rgba(200, 166, 106, 0.3)" }} />
         <div className="text-center">
-          <span className="block font-heading text-xl" style={{ color: "hsl(36 45% 58%)" }}>+{xpEarned}</span>
-          <span className="text-[9px] font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(230 10% 50%)" }}>XP</span>
+          <span className="block font-heading text-2xl font-black" style={{ color: "#C8A66A" }}>+{xpEarned}</span>
+          <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase" style={{ color: "#5B1F3DCC" }}>XP</span>
         </div>
       </div>
 
       {/* Progress saved */}
       <div className="flex flex-col items-center gap-2">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-heading tracking-widest uppercase bg-success/10 border border-success/20 text-success">
-          <Check className="w-3 h-3" />
+        <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full text-[11px] font-heading font-black tracking-[0.2em] uppercase bg-[#2D5A3D]/10 border border-[#2D5A3D]/20 text-[#2D5A3D]">
+          <Check className="w-3.5 h-3.5" />
           Sabedoria Integrada
         </div>
       </div>
@@ -91,31 +91,31 @@ export function CompletionScreen({
       {/* Editorial transition to next arcano */}
       {nextArcano && (
         <div
-          className="rounded-xl p-5 text-left mx-auto max-w-sm animate-fade-in"
+          className="rounded-2xl p-6 text-left mx-auto max-w-sm animate-fade-in shadow-lg"
           style={{
-            background: "linear-gradient(135deg, hsl(36 42% 44% / 0.04), hsl(340 42% 28% / 0.03))",
-            border: "1px solid hsl(36 42% 44% / 0.12)",
+            background: "linear-gradient(135deg, rgba(200, 166, 106, 0.08), rgba(91, 31, 61, 0.05))",
+            border: "2px solid rgba(200, 166, 106, 0.3)",
             animationDelay: "300ms",
             animationFillMode: "both",
           }}
         >
-          <p className="text-[9px] font-heading tracking-[0.3em] uppercase mb-2" style={{ color: "hsl(36 40% 42% / 0.6)" }}>
+          <p className="text-[10px] font-heading font-black tracking-[0.3em] uppercase mb-4" style={{ color: "#C8A66A" }}>
             Próximo na jornada
           </p>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <div
-              className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+              className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 shadow-md"
               style={{
-                background: "hsl(36 42% 44% / 0.08)",
-                border: "1px solid hsl(36 42% 44% / 0.2)",
+                background: "white",
+                border: "2px solid rgba(200, 166, 106, 0.4)",
               }}
             >
-              <span className="font-heading text-xs" style={{ color: "hsl(36 40% 42%)" }}>{nextArcano.numeral}</span>
+              <span className="font-heading text-lg font-black" style={{ color: "#5B1F3D" }}>{nextArcano.numeral}</span>
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-heading text-sm" style={{ color: "hsl(230 25% 15%)" }}>{nextArcano.name}</p>
+              <p className="font-heading text-xl font-black" style={{ color: "#5B1F3D" }}>{nextArcano.name}</p>
               {nextArcano.subtitle && (
-                <p className="font-accent text-[11px] italic truncate" style={{ color: "hsl(230 20% 15% / 0.45)" }}>
+                <p className="font-accent text-[13px] italic truncate font-bold" style={{ color: "rgba(91, 31, 61, 0.7)" }}>
                   {nextArcano.subtitle}
                 </p>
               )}
@@ -130,26 +130,25 @@ export function CompletionScreen({
       />
 
       {/* Navigation */}
-      <div className="flex flex-col items-center gap-4 pt-2">
+      <div className="flex flex-col items-center gap-5 pt-4">
         {nextArcano && (
           <button onClick={onNextArcano}
-            className="px-12 py-4 rounded-full font-heading text-sm tracking-widest uppercase transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-3 shadow-xl shadow-gold/20"
+            className="w-full max-w-sm py-6 rounded-2xl font-heading text-xs font-black tracking-[0.3em] uppercase transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-4 shadow-2xl border-2 border-[#C8A66A]"
             style={{
-              background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))",
-              color: "hsl(36 33% 97%)",
+              background: "#5B1F3D",
+              color: "white",
             }}
           >
             <span>Seguir Travessia</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-5 h-5" />
           </button>
         )}
 
         <button onClick={onBackToMap}
-          className="px-8 py-3 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105 flex items-center gap-2"
+          className="w-full max-w-sm py-4 rounded-full font-heading text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 border-2 border-rgba(200, 166, 106, 0.4)"
           style={{
-            background: "transparent",
-            border: "1.5px solid hsl(36 45% 58% / 0.35)",
-            color: "hsl(36 40% 42%)",
+            background: "white",
+            color: "#5B1F3D",
           }}
         >
           <MapPin className="w-4 h-4" />

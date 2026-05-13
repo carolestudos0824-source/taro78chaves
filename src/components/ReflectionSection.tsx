@@ -93,21 +93,22 @@ export function ReflectionSection({ arcanoId, lessonId }: ReflectionSectionProps
 
   return (
     <div 
-      className="w-full max-w-sm mx-auto p-5 rounded-2xl space-y-4 text-left animate-fade-in"
+      className="w-full max-w-sm mx-auto p-6 rounded-[2rem] space-y-5 text-left animate-fade-in shadow-xl"
       style={{
-        background: "hsl(38 30% 95% / 0.85)",
-        border: "1px solid hsl(36 45% 58% / 0.15)",
-        boxShadow: "0 4px 20px hsl(36 45% 58% / 0.06)",
+        background: "white",
+        border: "2px solid rgba(200, 166, 106, 0.3)",
       }}
     >
-      <div className="flex items-center gap-2 mb-1">
-        <Book className="w-4 h-4" style={{ color: "hsl(36 45% 58%)" }} />
-        <h3 className="font-heading text-sm tracking-wide" style={{ color: "hsl(340 42% 22%)" }}>
+      <div className="flex items-center gap-3 mb-1">
+        <div className="w-8 h-8 rounded-full bg-[#FAF5EF] flex items-center justify-center border border-[#C8A66A]/30">
+          <Book className="w-4 h-4 text-[#C8A66A]" />
+        </div>
+        <h3 className="font-heading text-md font-black tracking-wide text-[#5B1F3D]">
           Caderno da Jornada
         </h3>
       </div>
 
-      <p className="font-accent text-sm italic" style={{ color: "hsl(230 20% 15% / 0.7)" }}>
+      <p className="font-accent text-[14px] italic font-bold text-[#5B1F3DCC]">
         “O que esta carta me ensinou hoje?”
       </p>
 
@@ -118,31 +119,35 @@ export function ReflectionSection({ arcanoId, lessonId }: ReflectionSectionProps
           if (saved) setSaved(false);
         }}
         placeholder="Registre sua reflexão curta aqui..."
-        className="w-full h-24 p-3 rounded-xl text-sm font-body bg-white/50 border border-hsl(36 45% 58% / 0.2) focus:outline-none focus:ring-1 focus:ring-hsl(36 45% 58% / 0.3) resize-none"
-        style={{ color: "hsl(230 25% 15%)" }}
+        className="w-full h-32 p-4 rounded-2xl text-[15px] font-body bg-[#FAF5EF]/50 border-2 border-[#C8A66A]/20 focus:border-[#C8A66A]/50 focus:bg-white transition-all outline-none resize-none placeholder:text-[#5B1F3D40] font-medium text-[#5B1F3D]"
       />
 
       <button
         onClick={handleSave}
         disabled={saving || !content.trim() || saved}
-        className="w-full py-2.5 rounded-full font-heading text-xs tracking-widest uppercase flex items-center justify-center gap-2 transition-all active:scale-95 disabled:opacity-50"
+        className="w-full py-4 rounded-full font-heading text-[11px] font-black tracking-[0.2em] uppercase flex items-center justify-center gap-3 transition-all active:scale-95 shadow-md"
         style={{
           background: saved 
-            ? "hsl(120 40% 50% / 0.08)" 
-            : "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))",
-          color: saved ? "hsl(120 40% 35%)" : "hsl(36 33% 97%)",
-          border: saved ? "1px solid hsl(120 40% 50% / 0.2)" : "none",
-          boxShadow: saved ? "none" : "0 4px 15px hsl(36 45% 58% / 0.15)",
+            ? "rgba(45, 90, 61, 0.1)" 
+            : content.trim() 
+              ? "#5B1F3D" 
+              : "rgba(91, 31, 61, 0.15)",
+          color: saved 
+            ? "#2D5A3D" 
+            : content.trim() 
+              ? "white" 
+              : "rgba(91, 31, 61, 0.4)",
+          border: saved ? "2px solid rgba(45, 90, 61, 0.3)" : "none",
         }}
       >
         {saved ? (
           <>
-            <CheckCircle2 className="w-4 h-4" />
+            <CheckCircle2 className="w-5 h-5" />
             <span>Reflexão Salva</span>
           </>
         ) : (
           <>
-            <Save className="w-4 h-4" />
+            <Save className="w-5 h-5" />
             <span>{saving ? "Salvando..." : "Salvar Reflexão"}</span>
           </>
         )}
