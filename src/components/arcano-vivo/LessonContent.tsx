@@ -94,24 +94,23 @@ export function LessonContent({
               key={s.id}
               className={`rounded-xl overflow-hidden transition-all duration-500 ${isActive ? "opacity-100" : "opacity-30 pointer-events-none"}`}
               style={{
-                background: isCurrent ? "rgba(255, 255, 255, 0.7)" : "rgba(255, 255, 255, 0.3)",
-                border: `1px solid ${isCurrent ? "rgba(200, 166, 106, 0.4)" : "rgba(200, 166, 106, 0.2)"}`,
-                boxShadow: isCurrent ? "0 8px 30px rgba(91, 31, 61, 0.08)" : "none",
+                background: isCurrent ? "hsl(38 30% 95% / 0.9)" : "hsl(38 30% 95% / 0.6)",
+                border: `1px solid ${isCurrent ? "hsl(36 45% 58% / 0.25)" : "hsl(36 25% 82% / 0.4)"}`,
+                boxShadow: isCurrent ? "0 4px 20px hsl(36 45% 58% / 0.06)" : "none",
                 animation: isActive ? `fade-up 0.4s ease-out ${idx * 0.1}s both` : undefined,
               }}
             >
-              <div className="px-6 py-5">
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="text-lg w-10 h-10 rounded-full flex items-center justify-center"
+              <div className="px-5 py-4">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-base w-7 h-7 rounded-full flex items-center justify-center"
                     style={{
-                      background: "rgba(200, 166, 106, 0.1)",
-                      border: "1px solid rgba(200, 166, 106, 0.3)",
-                      color: "#C8A66A",
+                      background: "hsl(36 45% 58% / 0.08)",
+                      border: "1px solid hsl(36 45% 58% / 0.2)",
                     }}
                   >{s.icon}</span>
-                  <h3 className="font-heading text-lg font-bold tracking-tight text-[#5B1F3D]">{s.title}</h3>
+                  <h3 className="font-heading text-sm tracking-wide" style={{ color: "hsl(230 25% 15%)" }}>{s.title}</h3>
                 </div>
-                <p className="text-[16px] leading-[1.75] text-[#5B1F3D]/80">{s.content}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "hsl(230 20% 25%)" }}>{s.content}</p>
               </div>
               {isCurrent && idx < 2 && (
                 <div className="px-5 pb-4">
