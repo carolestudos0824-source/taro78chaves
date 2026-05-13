@@ -78,7 +78,7 @@ const Index = () => {
               </button>
               <div>
                 <span className="text-[11px] tracking-[0.45em] uppercase font-heading font-black flex items-center gap-2" style={{ color: "#5B1F3D" }}>
-                  <span style={{ color: "#C8A66A" }}>✦</span> Trilha dos Arcanos Maiores <span style={{ color: "#C8A66A" }}>✦</span>
+                  Módulo 03 <span style={{ color: "#C8A66A" }}>•</span> Arcanos Maiores
                 </span>
               </div>
             </div>
