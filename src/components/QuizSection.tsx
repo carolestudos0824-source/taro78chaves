@@ -324,8 +324,9 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               style={{
-                background: "rgba(250, 245, 239, 0.85)",
-                border: "1px solid rgba(200, 166, 106, 0.25)",
+                background: "#FAF5EF",
+                border: "1px solid rgba(200, 166, 106, 0.4)",
+                boxShadow: "0 4px 12px rgba(91, 31, 61, 0.05)",
                 overflow: "hidden"
               }}
             >
