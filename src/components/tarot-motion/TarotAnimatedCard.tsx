@@ -95,7 +95,7 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
           alt={cardName}
           className={cn(
             "w-full h-full object-cover transition-all duration-700",
-            isLocked && "opacity-80 grayscale-[0.3] brightness-[0.9]",
+            isLocked && (variant === 'lesson' ? "opacity-90 grayscale-[0.1] brightness-95" : "opacity-80 grayscale-[0.3] brightness-[0.9]"),
             isInProgress && "brightness-90 saturate-[0.8]",
             isAvailable && "brightness-100",
             isActive && "brightness-110 saturate-110"
