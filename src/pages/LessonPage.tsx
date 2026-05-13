@@ -64,7 +64,7 @@ const LessonPage = () => {
     );
   }
 
-  if (!arcano || !isValidId || premiumLoading || roleLoading) {
+  if (!arcano || !isValidId) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
         <div className="text-center space-y-8 max-w-xs px-6 animate-fade-in">
