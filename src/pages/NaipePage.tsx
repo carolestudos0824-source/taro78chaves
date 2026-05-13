@@ -210,21 +210,21 @@ const NaipePage = () => {
           </p>
 
           {/* Progress */}
-          <div className="space-y-3 bg-[#FAF5EF] p-5 rounded-2xl border-2 border-[#C8A66A20] shadow-inner">
+          <div className="space-y-4 bg-[#FAF5EF] p-6 rounded-2xl border-2 border-[#C8A66A]/30 shadow-[inset_0_2px_10px_rgba(91,31,61,0.05)]">
             <div className="flex items-center justify-between px-1">
-              <span className="text-[12px] font-heading tracking-[0.25em] uppercase font-black" style={{ color: "#5B1F3D" }}>
-                {completedCount}/14 cartas estudadas
+              <span className="text-[12px] font-heading tracking-[0.3em] uppercase font-black" style={{ color: "#5B1F3D" }}>
+                {completedCount}/14 cartas concluídas
               </span>
-              <span className="text-[13px] font-heading font-black" style={{ color: "#8B6A30" }}>
+              <span className="text-[14px] font-heading font-black px-2 py-0.5 rounded-full bg-[#C8A66A]/10" style={{ color: "#8B6A30" }}>
                 {progressPct}%
               </span>
             </div>
-            <div className="h-3 rounded-full overflow-hidden p-[1.5px]" style={{ background: "#DCCFC240", border: "1px solid #DCCFC260" }}>
+            <div className="h-4 rounded-full overflow-hidden p-[2px]" style={{ background: "#DCCFC250", border: "1px solid #DCCFC260" }}>
               <div className="h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden" style={{ 
                 width: `${Math.max(progressPct, 4)}%`, 
-                background: `linear-gradient(90deg, #5B1F3D, #C8A66A)` 
+                background: `linear-gradient(90deg, #5B1F3D, #8B6A30, #C8A66A)` 
               }}>
-                 <div className="absolute inset-0 w-1/3 h-full bg-white/25 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+                 <div className="absolute inset-0 w-1/2 h-full bg-white/30 skew-x-[-25deg] animate-pulse" style={{ left: '10%' }} />
               </div>
             </div>
           </div>
