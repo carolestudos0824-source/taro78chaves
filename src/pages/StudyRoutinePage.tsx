@@ -97,60 +97,61 @@ const StudyRoutinePage = () => {
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-6 pb-16 space-y-5">
+      <div className="max-w-lg mx-auto px-6 pb-32 space-y-8 mt-10">
 
         {/* ═══════════════ WEEKLY OVERVIEW ═══════════════ */}
-        <div className="rounded-xl p-5" style={{
-          background: "hsl(38 28% 93% / 0.75)",
-          border: "1px solid hsl(36 45% 50% / 0.18)",
-        }}>
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <TrendingUp className="w-4 h-4" style={{ color: "hsl(340 42% 28%)" }} />
-              <span className="font-heading text-sm tracking-wide" style={{ color: "hsl(340 42% 22%)" }}>
-                Semana
-              </span>
+        <div className="bg-white border-2 border-[#C8A66A]/20 rounded-3xl p-6 shadow-md animate-fade-in">
+          <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[#5B1F3D] flex items-center justify-center border border-[#C8A66A]/30">
+                <TrendingUp className="w-5 h-5 text-[#C8A66A]" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#5B1F3D] uppercase">
+                  Consistência
+                </span>
+                <span className="text-sm font-heading font-black text-[#5B1F3D]">
+                  Sua Semana
+                </span>
+              </div>
             </div>
-            <div className="flex items-center gap-1.5">
-              <Flame className="w-3.5 h-3.5" style={{ color: "hsl(340 42% 28%)" }} />
-              <span className="font-heading text-xs" style={{ color: "hsl(340 42% 28%)" }}>
-                {progress.streak} {progress.streak === 1 ? "dia" : "dias"}
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF5EF] border border-[#C8A66A]/20">
+              <Flame className="w-3.5 h-3.5 text-[#5B1F3D]" />
+              <span className="text-[11px] font-heading font-black text-[#5B1F3D]">
+                {progress.streak} dias
               </span>
             </div>
           </div>
 
-          <div className="grid grid-cols-7 gap-1.5">
+          <div className="grid grid-cols-7 gap-2 mb-4">
             {weekDays.map((d, i) => (
               <div key={i} className="text-center">
-                <div className="text-[9px] font-body mb-1" style={{
-                  color: d.isToday ? "hsl(340 42% 28%)" : "hsl(230 15% 30% / 0.35)",
-                }}>
+                <div className={`text-[9px] font-heading font-black uppercase tracking-tighter mb-2 ${
+                  d.isToday ? "text-[#5B1F3D]" : "text-[#5B1F3D]/30"
+                }`}>
                   {d.day}
                 </div>
-                <div className="w-9 h-9 rounded-full flex items-center justify-center mx-auto transition-all" style={d.active ? {
-                  background: "linear-gradient(135deg, hsl(340 42% 26%), hsl(36 42% 44%))",
-                  color: "hsl(36 33% 97%)",
-                  boxShadow: "0 2px 8px hsl(340 42% 28% / 0.20)",
-                } : d.isToday ? {
-                  background: "hsl(36 45% 58% / 0.12)",
-                  border: "1.5px solid hsl(36 45% 58% / 0.30)",
-                  color: "hsl(340 42% 22%)",
-                } : {
-                  background: "hsl(36 18% 90% / 0.50)",
-                  color: "hsl(230 15% 30% / 0.30)",
-                }}>
+                <div className={`w-9 h-9 rounded-xl flex items-center justify-center mx-auto transition-all border-2 ${
+                  d.active 
+                    ? "bg-[#5B1F3D] border-[#C8A66A]/40 text-white shadow-sm" 
+                    : d.isToday 
+                      ? "bg-white border-[#C8A66A] text-[#5B1F3D]" 
+                      : "bg-[#FAF5EF] border-[#D1C4B5]/20 text-[#5B1F3D]/20"
+                }`}>
                   {d.active ? (
-                    <Check className="w-3.5 h-3.5" />
+                    <Check className="w-4 h-4" />
                   ) : (
-                    <span className="font-heading text-xs">{d.date}</span>
+                    <span className="text-[11px] font-heading font-black">{d.date}</span>
                   )}
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-[10px] font-body text-center mt-3" style={{ color: "hsl(230 15% 30% / 0.40)" }}>
-            {activeDaysThisWeek} de 7 dias ativos esta semana
+          <div className="pt-3 border-t border-[#C8A66A]/10 text-center">
+            <p className="text-[11px] font-body font-bold text-[#5B1F3D]/60 italic">
+              {activeDaysThisWeek} de 7 portais ativos esta semana
+            </p>
           </div>
         </div>
 
