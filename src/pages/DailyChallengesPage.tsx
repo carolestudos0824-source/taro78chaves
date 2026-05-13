@@ -110,24 +110,25 @@ const DailyChallengesPage = () => {
           </button>
 
           <div className="text-center">
-            <div className="flex flex-col items-center gap-2 mb-3">
-              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm border border-[#DCCFC2]">
-                <Key className="w-5 h-5" style={{ color: "#C8A66A" }} />
+            <div className="flex flex-col items-center gap-2 mb-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#5B1F3D] flex items-center justify-center border border-[#C8A66A]/30 shadow-lg group-hover:scale-110 transition-transform">
+                <Key className="w-6 h-6 text-[#C8A66A]" />
               </div>
-              <div className="text-[10px] tracking-[0.4em] uppercase font-heading font-bold" style={{ color: "#C8A66A" }}>
+              <div className="text-[10px] tracking-[0.4em] uppercase font-heading font-black" style={{ color: "#5B1F3D" }}>
                 Tarô 78 Chaves
               </div>
             </div>
             
-            <h1 className="font-heading text-3xl tracking-tight mb-2" style={{ color: "#5B1F3D" }}>
+            <h1 className="font-heading text-4xl font-black tracking-tight mb-3" style={{ color: "#5B1F3D" }}>
               Ritual Diário
             </h1>
             
             <div className="flex flex-col gap-1 items-center">
-              <p className="font-body text-sm font-bold" style={{ color: "#5B1F3D" }}>
+              <p className="font-body text-[13px] font-bold uppercase tracking-widest opacity-60" style={{ color: "#5B1F3D" }}>
                 Sua travessia de hoje
               </p>
-              <p className="font-accent text-[12px] italic font-black" style={{ color: "#C8A66A" }}>
+              <div className="h-0.5 w-12 bg-[#C8A66A]/30 my-2 rounded-full" />
+              <p className="font-body text-[12px] font-bold italic" style={{ color: "#C8A66A" }}>
                 Complete seu ritual e mantenha as chaves vivas.
               </p>
             </div>
@@ -135,39 +136,48 @@ const DailyChallengesPage = () => {
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-6 pb-32 space-y-6">
+      <div className="max-w-lg mx-auto px-6 pb-32 space-y-8 mt-10">
 
-        {/* Progress summary */}
-        <div className="rounded-2xl p-6 shadow-sm border" style={{
-          background: allDone
-            ? "linear-gradient(135deg, rgba(200, 166, 106, 0.12), rgba(91, 31, 61, 0.08))"
-            : "#FAF5EF",
-          borderColor: allDone
-            ? "#C8A66A80"
-            : "#DCCFC2",
-        }}>
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2.5">
-              <Flame className={`w-5 h-5 ${allDone ? "animate-pulse" : ""}`} style={{ color: "#5B1F3D" }} />
-              <span className="font-heading text-[15px] font-bold tracking-tight" style={{ color: "#5B1F3D" }}>
-                {allDone ? "Ritual completo!" : `${completedCount} de ${challenges.length} desafios`}
-              </span>
+        {/* Progress summary — Matching Matrices Visual /app */}
+        <div className="bg-white border-2 border-[#C8A66A]/20 rounded-3xl p-6 shadow-md animate-fade-in">
+          <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[#5B1F3D] flex items-center justify-center border border-[#C8A66A]/30">
+                <Flame className={`w-5 h-5 text-[#C8A66A] ${allDone ? "animate-pulse" : ""}`} />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#5B1F3D] uppercase">
+                  {allDone ? "Ritual Cumprido" : "Seu Progresso"}
+                </span>
+                <span className="text-sm font-heading font-black text-[#5B1F3D]">
+                  {allDone ? "Portal de Hoje Aberto!" : `${completedCount} de ${challenges.length} Desafios`}
+                </span>
+              </div>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/50 border border-[#DCCFC2]">
-              <Star className="w-4 h-4" style={{ color: "#C8A66A" }} />
-              <span className="font-heading text-xs font-bold" style={{ color: "#5B1F3D" }}>
-                {totalXPEarned} / {DAILY_TOTAL_XP} XP
-              </span>
+            <div className="text-right">
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF5EF] border border-[#C8A66A]/20">
+                <Star className="w-3.5 h-3.5 text-[#C8A66A]" />
+                <span className="text-[11px] font-heading font-black text-[#5B1F3D]">
+                  {totalXPEarned} XP
+                </span>
+              </div>
             </div>
           </div>
-          <div className="h-2.5 rounded-full overflow-hidden" style={{
-            background: "#DCCFC280",
-          }}>
-            <div className="h-full rounded-full transition-all duration-1000 ease-out" style={{
-              width: `${(completedCount / challenges.length) * 100}%`,
-              background: "#C8A66A",
-            }} />
+          
+          <div className="h-3 rounded-full bg-[#E8DED3] overflow-hidden p-[1.5px] border border-[#D1C4B5]/30">
+            <div 
+              className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out relative overflow-hidden"
+              style={{ width: `${Math.max((completedCount / challenges.length) * 100, 2)}%` }}
+            >
+              <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+            </div>
           </div>
+          
+          <p className="mt-4 text-[11px] font-body font-bold text-[#5B1F3D]/60 italic text-center">
+            {allDone 
+              ? "Você concluiu todos os portais do dia. Sua jornada está fortalecida." 
+              : "Cada desafio concluído revela uma nova camada de sabedoria."}
+          </p>
         </div>
 
         {/* Challenge list */}
