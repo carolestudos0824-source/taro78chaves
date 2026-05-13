@@ -141,7 +141,7 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
         )}
 
         {/* Available indicator */}
-        {isAvailable && (
+        {isAvailable && showLockIcon && (
           <div className="absolute bottom-2 right-2 z-20">
             <motion.div
               animate={{
