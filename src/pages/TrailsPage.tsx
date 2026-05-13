@@ -128,7 +128,7 @@ const TrailsPage = () => {
               <Compass className="w-12 h-12 animate-pulse-slow" />
             </div>
             <div className="text-[11px] tracking-[0.4em] uppercase font-heading font-black mb-2 text-[#5B1F3D]">
-              Arcano Vivo
+              Mapa Curricular
             </div>
             <h1
               className="font-heading text-3xl md:text-4xl tracking-tight font-black"
@@ -141,7 +141,7 @@ const TrailsPage = () => {
               Trilhas de Formação
             </h1>
             <p className="font-body text-[15px] font-bold italic mt-2 text-[#5B1F3D]/70">
-              Sua jornada do início à maestria real
+              A arquitetura completa da sua maestria no Tarô
             </p>
           </div>
         </div>
