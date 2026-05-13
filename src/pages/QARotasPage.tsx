@@ -285,6 +285,32 @@ const QARotasPage = () => {
           </button>
         </div>
 
+        {/* Evaluation Rubric Nudge */}
+        <div className="mb-12 p-8 rounded-[2.5rem] bg-gradient-to-br from-[#5B1F3D] to-[#3D1429] text-white shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#C8A66A] opacity-10 rounded-full -mr-20 -mt-20 blur-3xl" />
+          <div className="relative z-10">
+            <h2 className="font-heading text-lg font-black tracking-widest uppercase mb-6 flex items-center gap-3">
+              <Sparkles className="w-5 h-5 text-[#C8A66A]" /> Régua de Auditoria Premium
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-4">
+              {[
+                "Abre sem erros ou tela branca",
+                "Identidade Visual: Ameixa, Ouro e Marfim",
+                "Mobile 390px: Perfeita legibilidade",
+                "Continuidade: Parece parte da /app",
+                "Pedagogia: Conteúdo claro e fluido",
+                "CTA: Próximo passo evidente",
+                "Sem imagens quebradas ou pálidas"
+              ].map((text, i) => (
+                <div key={i} className="flex items-center gap-3 text-[11px] font-heading font-black tracking-wider uppercase opacity-80">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#C8A66A]" />
+                  {text}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* Route List */}
         <div className="space-y-6">
           {filteredRoutes.map((route, index) => {
