@@ -165,7 +165,10 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
         )}
 
         {/* Portal Overlay (Shadow/Gradient) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 pointer-events-none" />
+        <div className={cn(
+          "absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none",
+          variant === 'lesson' ? "opacity-30" : "opacity-60"
+        )} />
         
         {/* Label */}
         <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3 text-center pointer-events-none bg-gradient-to-t from-[#5B1F3D]/80 to-transparent">
