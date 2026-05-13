@@ -182,7 +182,7 @@ const QARotasPage = () => {
 
   const getStatusColor = (status: AuditStatus) => {
     switch (status) {
-      case 'Aprovada': return 'text-green-600 bg-green-50 border-green-200';
+      case 'Aprovada': return 'text-[#8B6914] bg-[#C8A66A]/10 border-[#C8A66A]/30';
       case 'Reprovada': return 'text-red-600 bg-red-50 border-red-200';
       case 'Corrigir': return 'text-amber-600 bg-amber-50 border-amber-200';
       default: return 'text-slate-500 bg-slate-50 border-slate-200';
