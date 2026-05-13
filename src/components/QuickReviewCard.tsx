@@ -12,36 +12,37 @@ export function QuickReviewCard({ review, isStudied }: QuickReviewCardProps) {
 
   return (
     <div
-      className="rounded-xl overflow-hidden transition-all duration-300"
+      className="rounded-[2rem] overflow-hidden transition-all duration-500"
       style={{
         background: isStudied
           ? "linear-gradient(135deg, #FFFFFF 0%, #FDFBF7 100%)"
-          : "rgba(243, 230, 224, 0.35)",
+          : "rgba(243, 230, 224, 0.45)",
         border: isStudied
-          ? "2px solid #C8A66A"
+          ? "2.5px solid #C8A66A"
           : "1.5px solid #DCCFC260",
         backdropFilter: "blur(12px)",
-        boxShadow: isStudied ? "0 10px 30px rgba(91, 31, 61, 0.05)" : "none",
+        boxShadow: isStudied ? "0 15px 40px rgba(91, 31, 61, 0.05)" : "none",
         opacity: isStudied ? 1 : 0.85,
+        transform: expanded ? "scale(1.02)" : "scale(1)",
       }}
     >
       {/* Header - always visible */}
       <button
         onClick={() => isStudied && setExpanded(!expanded)}
         disabled={!isStudied}
-        className="w-full p-4 flex items-center gap-3 text-left transition-all duration-200"
+        className="w-full p-6 flex items-center gap-4 text-left transition-all duration-300"
       >
         {/* Numeral badge */}
         <div
-          className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+          className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border-2 transition-all duration-500 shadow-sm"
           style={{
-            border: isStudied ? "1.5px solid hsl(36 42% 45% / 0.35)" : "1px solid hsl(36 22% 75% / 0.40)",
-            background: isStudied ? "hsl(38 28% 94% / 0.90)" : "hsl(36 18% 90% / 0.50)",
+            border: isStudied ? "2px solid #C8A66A40" : "1.5px solid #DCCFC2",
+            background: isStudied ? "#FAF5EF" : "#F3E6E0",
           }}
         >
           <span
-            className="font-heading text-xs"
-            style={{ color: isStudied ? "hsl(36 42% 40%)" : "hsl(230 10% 50% / 0.40)" }}
+            className="font-heading text-sm font-black"
+            style={{ color: isStudied ? "#5B1F3D" : "#5B1F3D40" }}
           >
             {review.numeral}
           </span>
@@ -50,14 +51,14 @@ export function QuickReviewCard({ review, isStudied }: QuickReviewCardProps) {
         {/* Name + keyword */}
         <div className="flex-1 min-w-0">
           <h3
-            className="font-heading text-sm tracking-wide"
-            style={{ color: isStudied ? "hsl(230 20% 12% / 0.85)" : "hsl(230 10% 50% / 0.40)" }}
+            className="font-heading text-lg tracking-tight font-black"
+            style={{ color: isStudied ? "#5B1F3D" : "#5B1F3D40" }}
           >
             {review.name}
           </h3>
           <p
-            className="text-[10px] font-accent italic truncate"
-            style={{ color: isStudied ? "hsl(230 20% 15% / 0.50)" : "hsl(230 10% 50% / 0.25)" }}
+            className="text-[12px] font-accent italic font-black truncate"
+            style={{ color: isStudied ? "#5B1F3D70" : "#5B1F3D20" }}
           >
             {review.keyword}
           </p>
@@ -65,17 +66,19 @@ export function QuickReviewCard({ review, isStudied }: QuickReviewCardProps) {
 
         {/* Expand icon */}
         {isStudied && (
-          <ChevronDown
-            className="w-4 h-4 shrink-0 transition-transform duration-300"
-            style={{
-              color: "hsl(230 10% 50%)",
-              transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
-            }}
-          />
+          <div className={`w-10 h-10 rounded-full border-2 border-[#C8A66A20] flex items-center justify-center transition-all ${expanded ? 'bg-[#5B1F3D] border-[#5B1F3D]' : 'bg-white'}`}>
+            <ChevronDown
+              className="w-5 h-5 transition-transform duration-500"
+              style={{
+                color: expanded ? "#FAF5EF" : "#C8A66A",
+                transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
+              }}
+            />
+          </div>
         )}
 
         {!isStudied && (
-          <span className="text-[9px] tracking-[0.2em] uppercase font-body shrink-0" style={{ color: "hsl(230 10% 50% / 0.30)" }}>
+          <span className="text-[10px] tracking-[0.2em] uppercase font-heading font-black shrink-0" style={{ color: "#5B1F3D40" }}>
             Bloqueado
           </span>
         )}
@@ -83,64 +86,64 @@ export function QuickReviewCard({ review, isStudied }: QuickReviewCardProps) {
 
       {/* Expanded content */}
       {expanded && isStudied && (
-        <div className="px-4 pb-5 space-y-3" style={{ animation: "fade-up 0.3s ease-out" }}>
-          <div className="h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(36 45% 50% / 0.20), transparent)" }} />
+        <div className="px-6 pb-8 space-y-5 animate-in fade-in slide-in-from-top-4 duration-500">
+          <div className="h-px bg-gradient-to-r from-transparent via-[#C8A66A]/30 to-transparent mb-6" />
 
           {/* Light */}
-          <div className="flex gap-3">
-            <div className="shrink-0 mt-0.5">
-              <Sun className="w-4 h-4" style={{ color: "hsl(36 42% 45%)" }} />
+          <div className="flex gap-4">
+            <div className="w-10 h-10 rounded-xl bg-[#FAF5EF] border border-[#C8A66A20] flex items-center justify-center shrink-0">
+              <Sun className="w-5 h-5" style={{ color: "#C8A66A" }} />
             </div>
-            <div>
-              <span className="text-[9px] font-heading tracking-[0.25em] uppercase block mb-0.5" style={{ color: "hsl(36 42% 40%)" }}>
+            <div className="flex-1">
+              <span className="text-[10px] font-heading tracking-[0.3em] uppercase block mb-1 font-black" style={{ color: "#C8A66A" }}>
                 Luz
               </span>
-              <p className="text-[12px] leading-relaxed font-body" style={{ color: "hsl(230 20% 20% / 0.80)" }}>
+              <p className="text-[14px] leading-relaxed font-body font-bold" style={{ color: "#5B1F3D" }}>
                 {review.light}
               </p>
             </div>
           </div>
 
           {/* Shadow */}
-          <div className="flex gap-3">
-            <div className="shrink-0 mt-0.5">
-              <Moon className="w-4 h-4" style={{ color: "hsl(325 35% 28%)" }} />
+          <div className="flex gap-4">
+            <div className="w-10 h-10 rounded-xl bg-[#F3E6E0] border border-[#5B1F3D20] flex items-center justify-center shrink-0">
+              <Moon className="w-5 h-5" style={{ color: "#5B1F3D" }} />
             </div>
-            <div>
-              <span className="text-[9px] font-heading tracking-[0.25em] uppercase block mb-0.5" style={{ color: "hsl(325 35% 28%)" }}>
+            <div className="flex-1">
+              <span className="text-[10px] font-heading tracking-[0.3em] uppercase block mb-1 font-black" style={{ color: "#5B1F3D" }}>
                 Sombra
               </span>
-              <p className="text-[12px] leading-relaxed font-body" style={{ color: "hsl(230 20% 20% / 0.80)" }}>
+              <p className="text-[14px] leading-relaxed font-body font-bold" style={{ color: "#5B1F3D" }}>
                 {review.shadow}
               </p>
             </div>
           </div>
 
           {/* Lesson */}
-          <div className="flex gap-3">
-            <div className="shrink-0 mt-0.5">
-              <Lightbulb className="w-4 h-4" style={{ color: "hsl(340 42% 28%)" }} />
+          <div className="flex gap-4">
+            <div className="w-10 h-10 rounded-xl bg-[#FAF5EF] border border-[#C8A66A20] flex items-center justify-center shrink-0">
+              <Lightbulb className="w-5 h-5" style={{ color: "#C8A66A" }} />
             </div>
-            <div>
-              <span className="text-[9px] font-heading tracking-[0.25em] uppercase block mb-0.5" style={{ color: "hsl(340 42% 28%)" }}>
+            <div className="flex-1">
+              <span className="text-[10px] font-heading tracking-[0.3em] uppercase block mb-1 font-black" style={{ color: "#5B1F3D" }}>
                 Lição Central
               </span>
-              <p className="text-[12px] leading-relaxed font-body" style={{ color: "hsl(230 20% 20% / 0.80)" }}>
+              <p className="text-[14px] leading-relaxed font-body font-bold" style={{ color: "#5B1F3D" }}>
                 {review.lesson}
               </p>
             </div>
           </div>
 
           {/* Practical Application */}
-          <div className="flex gap-3">
-            <div className="shrink-0 mt-0.5">
-              <Compass className="w-4 h-4" style={{ color: "hsl(230 25% 35%)" }} />
+          <div className="flex gap-4">
+            <div className="w-10 h-10 rounded-xl bg-[#F3E6E0] border border-[#5B1F3D20] flex items-center justify-center shrink-0">
+              <Compass className="w-5 h-5" style={{ color: "#5B1F3D" }} />
             </div>
-            <div>
-              <span className="text-[9px] font-heading tracking-[0.25em] uppercase block mb-0.5" style={{ color: "hsl(230 25% 35%)" }}>
+            <div className="flex-1">
+              <span className="text-[10px] font-heading tracking-[0.3em] uppercase block mb-1 font-black" style={{ color: "#5B1F3D" }}>
                 Aplicação Prática
               </span>
-              <p className="text-[12px] leading-relaxed font-body" style={{ color: "hsl(230 20% 20% / 0.80)" }}>
+              <p className="text-[14px] leading-relaxed font-body font-bold" style={{ color: "#5B1F3D" }}>
                 {review.practicalApplication}
               </p>
             </div>
@@ -148,18 +151,18 @@ export function QuickReviewCard({ review, isStudied }: QuickReviewCardProps) {
 
           {/* Fixation phrase */}
           <div
-            className="rounded-lg p-3 mt-2"
+            className="rounded-3xl p-6 mt-4 relative overflow-hidden"
             style={{
-              background: "linear-gradient(135deg, hsl(36 42% 44% / 0.06), hsl(340 42% 28% / 0.04))",
-              border: "1px solid hsl(36 45% 50% / 0.15)",
+              background: "linear-gradient(135deg, rgba(200, 166, 106, 0.1), rgba(91, 31, 61, 0.05))",
+              border: "1.5px solid #C8A66A40",
             }}
           >
-            <div className="flex items-start gap-2">
-              <Quote className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: "hsl(36 42% 45% / 0.60)" }} />
-              <p className="text-[11px] font-accent italic leading-relaxed" style={{ color: "hsl(230 20% 18% / 0.75)" }}>
-                {review.fixationPhrase}
-              </p>
+            <div className="absolute top-0 right-0 p-2 opacity-10">
+              <Quote className="w-12 h-12" style={{ color: "#C8A66A" }} />
             </div>
+            <p className="text-[13px] font-accent italic font-black leading-relaxed relative z-10 text-center" style={{ color: "#5B1F3D" }}>
+              "{review.fixationPhrase}"
+            </p>
           </div>
         </div>
       )}
