@@ -144,7 +144,7 @@ export function ReflectionSection({ arcanoId, lessonId }: ReflectionSectionProps
           <>
             <CheckCircle2 className="w-5 h-5" />
             <span>Reflexão Salva</span>
-          </<>
+          </>
         ) : (
           <>
             <Save className="w-5 h-5" />
@@ -152,6 +152,9 @@ export function ReflectionSection({ arcanoId, lessonId }: ReflectionSectionProps
           </>
         )}
       </button>
+    </div>
+  );
+}
     </div>
   );
 }
