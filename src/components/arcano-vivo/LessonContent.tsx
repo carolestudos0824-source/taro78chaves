@@ -158,7 +158,7 @@ export function LessonContent(props: LessonContentProps) {
               <span className="text-xl w-10 h-10 rounded-full flex items-center justify-center bg-[#C8A66A]/10 text-[#C8A66A] border border-[#C8A66A]/20">✦</span>
               <h3 className="font-heading text-xl font-black text-[#5B1F3D]">Essência</h3>
             </div>
-            <p className="text-[17px] leading-[1.8] text-[#5B1F3D] font-medium">{essence}</p>
+            <p className="text-[17px] leading-[1.8] text-[#5B1F3D] font-medium selection:bg-[#C8A66A]/20">{essence}</p>
           </div>
         )}
 
@@ -168,7 +168,7 @@ export function LessonContent(props: LessonContentProps) {
               <span className="text-xl w-10 h-10 rounded-full flex items-center justify-center bg-[#C8A66A]/10 text-[#C8A66A] border border-[#C8A66A]/20">☀</span>
               <h3 className="font-heading text-xl font-black text-[#5B1F3D]">Luz</h3>
             </div>
-            <p className="text-[17px] leading-[1.8] text-[#5B1F3D] font-medium">{light}</p>
+            <p className="text-[17px] leading-[1.8] text-[#5B1F3D] font-medium selection:bg-[#C8A66A]/20">{light}</p>
           </div>
         )}
 
@@ -178,7 +178,7 @@ export function LessonContent(props: LessonContentProps) {
               <span className="text-xl w-10 h-10 rounded-full flex items-center justify-center bg-[#C8A66A]/10 text-[#C8A66A] border border-[#C8A66A]/20">☾</span>
               <h3 className="font-heading text-xl font-black text-[#5B1F3D]">Sombra</h3>
             </div>
-            <p className="text-[17px] leading-[1.8] text-[#5B1F3D] font-medium">{shadow}</p>
+            <p className="text-[17px] leading-[1.8] text-[#5B1F3D] font-medium selection:bg-[#C8A66A]/20">{shadow}</p>
           </div>
         )}
       </div>
@@ -224,21 +224,27 @@ export function LessonContent(props: LessonContentProps) {
           Concluir Lição ✦
         </button>
 
-        <div className="flex flex-wrap justify-center gap-4 pb-4">
+        <div className="flex flex-col sm:flex-row justify-center gap-6 pb-4">
           <button 
             onClick={onGoDeepDive}
-            className="flex items-center gap-3 px-8 py-4 rounded-full bg-white border-2 border-[#C8A66A]/30 shadow-lg active:scale-95 transition-all group"
+            className="flex flex-1 items-center justify-center gap-4 px-10 py-5 rounded-[2rem] bg-white border-2 border-[#C8A66A]/30 shadow-xl active:scale-95 transition-all group hover:border-[#C8A66A]/60"
           >
-            <span className="text-xl">🔮</span>
-            <span className="text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">Aprofundar</span>
+            <span className="text-2xl transition-transform group-hover:scale-125 duration-300">🔮</span>
+            <div className="flex flex-col items-start">
+              <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#C8A66A]/80">Fase 2</span>
+              <span className="text-[14px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">Aprofundar</span>
+            </div>
           </button>
           
           <button 
             onClick={onGoExercise}
-            className="flex items-center gap-3 px-8 py-4 rounded-full bg-white border-2 border-[#C8A66A]/30 shadow-lg active:scale-95 transition-all group"
+            className="flex flex-1 items-center justify-center gap-4 px-10 py-5 rounded-[2rem] bg-white border-2 border-[#C8A66A]/30 shadow-xl active:scale-95 transition-all group hover:border-[#C8A66A]/60"
           >
-            <span className="text-xl">✍️</span>
-            <span className="text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">Exercício</span>
+            <span className="text-2xl transition-transform group-hover:scale-125 duration-300">✍️</span>
+            <div className="flex flex-col items-start">
+              <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#C8A66A]/80">Fase 3</span>
+              <span className="text-[14px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">Exercício</span>
+            </div>
           </button>
         </div>
       </div>
