@@ -151,8 +151,8 @@ export function CompletionScreen({
             color: "#5B1F3D",
           }}
         >
-          <MapPin className="w-4 h-4" />
-          Voltar à Jornada
+          <MapPin className="w-4 h-4 text-[#C8A66A]" />
+          Voltar para Home do App
         </button>
 
         {prevArcano && isPrevCompleted && (

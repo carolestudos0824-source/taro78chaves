@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { FULL_DECK } from "@/registry/deck-registry";
 import { MODULES_SEED } from "@/lib/content/seed-modules";
+import { ARCANOS_MAIORES_CATALOG } from "@/lib/content";
 
 // ==========================================
 // TYPES & INTERFACES
@@ -75,10 +76,10 @@ const ROUTE_LIST: RouteItem[] = [
   })),
 
   // BLOCO 5 — LIÇÕES DOS ARCANOS MAIORES
-  ...FULL_DECK.filter(c => c.category === "maior").map((c, idx) => ({
+  ...ARCANOS_MAIORES_CATALOG.map((c, idx) => ({
     id: `l${36 + idx}`,
-    path: `/lesson/${c.number}`,
-    name: `${c.numeral || c.number} - ${c.name}`,
+    path: `/lesson/${c.id}`,
+    name: `${c.numeral || c.id} - ${c.name}`,
     group: "Lições (Maiores)",
     type: "Lesson" as const
   })),
@@ -93,6 +94,7 @@ const ROUTE_LIST: RouteItem[] = [
   })),
 
   // BLOCO 7 — ESTADOS ESPECIAIS
+  { id: "s-jornada", path: "/jornada-do-louco", name: "Jornada do Louco (Intro)", group: "Introdução", type: "App" },
   { id: "s-quiz", path: "/lesson/0", name: "Quiz de lição", group: "Estados", type: "Quiz", instructions: "Acessar através de uma lição e avançar até o quiz" },
   { id: "s-concl", path: "/lesson/0", name: "Conclusão de lição", group: "Estados", type: "State", instructions: "Completar o quiz de uma lição" },
   { id: "s-load", path: "/qa-rotas", name: "Loading", group: "Estados", type: "State", instructions: "Simular carregamento ou observar transição de rota" },

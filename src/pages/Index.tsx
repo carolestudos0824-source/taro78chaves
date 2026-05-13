@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Sparkles, BookOpen, Check } from "lucide-react";
+import { ArrowLeft, Sparkles, BookOpen, Check, Stars, ChevronRight } from "lucide-react";
 import PremiumGate from "@/components/PremiumGate";
 import { XPBar } from "@/components/XPBar";
 import { StreakCounter } from "@/components/StreakCounter";
@@ -78,7 +78,7 @@ const Index = () => {
               </button>
               <div>
                 <span className="text-[11px] tracking-[0.45em] uppercase font-heading font-black flex items-center gap-2" style={{ color: "#5B1F3D" }}>
-                  <span style={{ color: "#C8A66A" }}>✦</span> Trilha dos Arcanos Maiores <span style={{ color: "#C8A66A" }}>✦</span>
+                  Módulo 03 <span style={{ color: "#C8A66A" }}>•</span> Arcanos Maiores
                 </span>
               </div>
             </div>
@@ -112,56 +112,52 @@ const Index = () => {
           </p>
         </section>
 
-        {/* ═══════════════ PROGRESS DASHBOARD ═══════════════ */}
+        {/* ═══════════════ MODULE PROGRESS ═══════════════ */}
         <section className="mb-16">
-          <div className="relative rounded-[2.5rem] overflow-hidden p-10 md:p-12" style={{
+          <div className="relative rounded-[2.5rem] overflow-hidden p-8 md:p-10" style={{
             background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
             backdropFilter: "blur(24px)",
-            border: "2px solid rgba(200, 166, 106, 0.35)",
-            boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8)"
+            border: "1.5px solid rgba(200, 166, 106, 0.25)",
+            boxShadow: "0 20px 50px rgba(91, 31, 61, 0.05)"
           }}>
-            {/* Stats row */}
-            <div className="grid grid-cols-3 gap-10 mb-12 relative z-10">
-              <div className="text-center">
-                <div className="font-heading text-5xl md:text-6xl tracking-tighter" style={{ color: "#5B1F3D" }}>
-                  {completedCount}
+            <div className="flex items-center justify-between mb-8 relative z-10">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A30]" style={{
+                  background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+                }}>
+                  <Stars className="w-6 h-6 text-[#C8A66A]" />
                 </div>
-                <div className="text-[11px] tracking-[0.4em] uppercase font-heading mt-4 font-black" style={{ color: "#C8A66A" }}>
-                  Concluídos
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="font-heading text-5xl md:text-6xl tracking-tighter" style={{ color: "#5B1F3D" }}>
-                  22
-                </div>
-                <div className="text-[11px] tracking-[0.4em] uppercase font-heading mt-4 font-black" style={{ color: "#C8A66A" }}>
-                  Arcanos
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Progresso do Módulo</span>
+                  <span className="text-lg font-heading font-black text-[#5B1F3D]">{completedCount}/22 Arcanos</span>
                 </div>
               </div>
-              <div className="text-center">
-                <div className="font-heading text-5xl md:text-6xl tracking-tighter" style={{ color: "#5B1F3D" }}>
-                  {journeyProgress}%
-                </div>
-                <div className="text-[11px] tracking-[0.4em] uppercase font-heading mt-4 font-black" style={{ color: "#C8A66A" }}>
-                  Progresso
-                </div>
+              <div className="text-right">
+                <span className="text-2xl font-heading font-black text-[#5B1F3D]">{journeyProgress}%</span>
               </div>
             </div>
 
-            {/* Module progress bar */}
-            <div className="relative z-10 px-2">
-              <div className="h-3.5 rounded-full overflow-hidden" style={{
+            <div className="relative z-10">
+              <div className="h-3 rounded-full overflow-hidden p-[2px]" style={{
                 background: "#E8DED3",
-                border: "1.5px solid rgba(209, 196, 181, 0.6)",
+                border: "1px solid rgba(209, 196, 181, 0.4)",
               }}>
                 <div className="h-full rounded-full transition-all duration-1000 ease-out relative" style={{
                   width: `${Math.max(journeyProgress, 2)}%`,
                   background: "linear-gradient(90deg, #5B1F3D, #C8A66A)",
-                  boxShadow: "0 0 10px rgba(91, 31, 61, 0.2)"
                 }}>
-                  <div className="absolute inset-0 w-1/3 h-full bg-white/30 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+                  <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
                 </div>
               </div>
+            </div>
+
+            <div className="mt-8 flex justify-center">
+              <button
+                onClick={() => navigate("/jornada-do-louco")}
+                className="px-8 py-3 rounded-xl bg-[#FAF5EF] text-[#5B1F3D] font-heading text-[10px] tracking-[0.2em] uppercase font-black border border-[#C8A66A30] hover:bg-[#5B1F3D] hover:text-white transition-all flex items-center gap-2"
+              >
+                Conhecer a Jornada do Louco <ChevronRight className="w-3 h-3" />
+              </button>
             </div>
           </div>
         </section>
