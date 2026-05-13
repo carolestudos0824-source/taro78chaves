@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, Layers, Eye, ChevronDown, Heart, Briefcase, Sparkles, ScrollText, Feather } from "lucide-react";
+import { BookOpen, Layers, Eye, ChevronDown, Heart, Briefcase, Sparkles, Feather } from "lucide-react";
 import { type LessonSection } from "@/lib/content/runtime-types";
 
 interface QuickReviewItem {
@@ -30,15 +29,15 @@ interface LessonContentProps {
 /**
  * Phase 2: Pedagogical content in progressive steps
  * Mobile-first card-based layout with expandable sections
+ * RESTORED VERSION: No pedagogical loss, all sections visible.
  */
 export function LessonContent(props: LessonContentProps) {
   const {
     sections, essence, light, shadow,
     onComplete, onGoDeepDive, onGoExercise, onSkipToQuiz,
-    quickReview, reflectionQuestions, initiationLesson,
+    initiationLesson,
   } = props;
   const [openSection, setOpenSection] = useState<string | null>(null);
-  const [step, setStep] = useState(2); // Inicia desbloqueado para restaurar fluxo fixo
 
   const coreIds = ["essencia", "simbolos", "luz", "sombra", "licao"];
   const appliedIds = ["amor", "trabalho", "espiritualidade"];
@@ -60,7 +59,7 @@ export function LessonContent(props: LessonContentProps) {
   };
 
   return (
-    <div className="space-y-8 pb-32">
+    <div className="space-y-8 pb-32 max-w-full overflow-x-hidden">
       {/* Header */}
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
@@ -74,9 +73,9 @@ export function LessonContent(props: LessonContentProps) {
         </button>
       </div>
 
-      {/* Essência, Luz, Sombra */}
-      <div className="space-y-4">
-        <div className="rounded-2xl bg-white/80 border border-[#C8A66A]/30 p-6 shadow-sm">
+      {/* 1, 2, 3: Essência, Luz, Sombra (Destaque Inicial) */}
+      <div className="grid gap-4">
+        <div className="rounded-2xl bg-white/90 border border-[#C8A66A]/30 p-6 shadow-sm">
           <div className="flex items-center gap-3 mb-4">
             <span className="text-xl w-10 h-10 rounded-full flex items-center justify-center bg-[#C8A66A]/10 text-[#C8A66A] border border-[#C8A66A]/20">✦</span>
             <h3 className="font-heading text-xl font-black text-[#5B1F3D]">Essência</h3>
@@ -84,7 +83,7 @@ export function LessonContent(props: LessonContentProps) {
           <p className="text-[16px] leading-[1.8] text-[#5B1F3D] font-medium">{essence}</p>
         </div>
 
-        <div className="rounded-2xl bg-white/80 border border-[#C8A66A]/30 p-6 shadow-sm">
+        <div className="rounded-2xl bg-white/90 border border-[#C8A66A]/30 p-6 shadow-sm">
           <div className="flex items-center gap-3 mb-4">
             <span className="text-xl w-10 h-10 rounded-full flex items-center justify-center bg-[#C8A66A]/10 text-[#C8A66A] border border-[#C8A66A]/20">☀</span>
             <h3 className="font-heading text-xl font-black text-[#5B1F3D]">Luz</h3>
@@ -92,7 +91,7 @@ export function LessonContent(props: LessonContentProps) {
           <p className="text-[16px] leading-[1.8] text-[#5B1F3D] font-medium">{light}</p>
         </div>
 
-        <div className="rounded-2xl bg-white/80 border border-[#C8A66A]/30 p-6 shadow-sm">
+        <div className="rounded-2xl bg-white/90 border border-[#C8A66A]/30 p-6 shadow-sm">
           <div className="flex items-center gap-3 mb-4">
             <span className="text-xl w-10 h-10 rounded-full flex items-center justify-center bg-[#C8A66A]/10 text-[#C8A66A] border border-[#C8A66A]/20">☾</span>
             <h3 className="font-heading text-xl font-black text-[#5B1F3D]">Sombra</h3>
@@ -101,7 +100,7 @@ export function LessonContent(props: LessonContentProps) {
         </div>
       </div>
 
-      {/* Interpretações Práticas */}
+      {/* 4, 5, 6, 7: Interpretações Práticas (Amor, Trabalho, Espiritualidade) */}
       {appliedSections.length > 0 && (
         <div className="space-y-4 pt-4">
           <div className="flex items-center gap-2 px-2">
@@ -119,7 +118,7 @@ export function LessonContent(props: LessonContentProps) {
             const shadowText = parts[1]?.trim();
 
             return (
-              <div key={section.id} className="rounded-2xl overflow-hidden bg-white/60 border border-[#C8A66A]/20 shadow-sm transition-all">
+              <div key={section.id} className="rounded-2xl overflow-hidden bg-white/80 border border-[#C8A66A]/20 shadow-sm">
                 <button
                   onClick={() => setOpenSection(isOpen ? null : section.id)}
                   className="w-full px-5 py-5 flex items-center gap-4 text-left"
@@ -132,7 +131,7 @@ export function LessonContent(props: LessonContentProps) {
                 </button>
                 
                 {isOpen && (
-                  <div className="px-5 pb-5 space-y-4 animate-fade-in">
+                  <div className="px-5 pb-5 space-y-4">
                     <div className="h-px bg-gradient-to-r from-transparent via-[#C8A66A]/20 to-transparent mb-4" />
                     {lightText && shadowText ? (
                       <div className="space-y-4">
@@ -162,7 +161,7 @@ export function LessonContent(props: LessonContentProps) {
         </div>
       )}
 
-      {/* Conteúdo Detalhado */}
+      {/* 8, 9, 10, 11, 12: Conteúdo Detalhado & Símbolos Centrais */}
       {[...coreSections, ...otherSections].length > 0 && (
         <div className="space-y-4 pt-4">
           <div className="flex items-center gap-2 px-2">
@@ -173,7 +172,7 @@ export function LessonContent(props: LessonContentProps) {
           {[...coreSections, ...otherSections].map((section) => {
             const isOpen = openSection === section.id;
             return (
-              <div key={section.id} className="rounded-2xl overflow-hidden bg-white/60 border border-[#C8A66A]/20 shadow-sm transition-all">
+              <div key={section.id} className="rounded-2xl overflow-hidden bg-white/80 border border-[#C8A66A]/20 shadow-sm">
                 <button
                   onClick={() => setOpenSection(isOpen ? null : section.id)}
                   className="w-full px-5 py-5 flex items-center gap-4 text-left"
@@ -186,7 +185,7 @@ export function LessonContent(props: LessonContentProps) {
                 </button>
                 
                 {isOpen && (
-                  <div className="px-5 pb-6 animate-fade-in">
+                  <div className="px-5 pb-6">
                     <div className="h-px bg-gradient-to-r from-transparent via-[#C8A66A]/20 to-transparent mb-4" />
                     <p className="text-[15px] leading-relaxed text-[#5B1F3D] font-medium whitespace-pre-line">{section.content}</p>
                   </div>
@@ -197,10 +196,10 @@ export function LessonContent(props: LessonContentProps) {
         </div>
       )}
 
-      {/* Lição Iniciática */}
+      {/* 13: Lição Iniciática */}
       {initiationLesson && (
-        <div className="rounded-2xl bg-gradient-to-br from-[#FAF5EF] to-[#F5EBDE] border-2 border-[#C8A66A]/30 p-8 shadow-md relative overflow-hidden group">
-          <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+        <div className="rounded-2xl bg-gradient-to-br from-[#FAF5EF] to-[#F5EBDE] border-2 border-[#C8A66A]/30 p-8 shadow-md relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-4 opacity-10">
             <Feather className="w-12 h-12 text-[#5B1F3D]" />
           </div>
           <div className="flex items-center gap-3 mb-4 relative z-10">
@@ -211,11 +210,11 @@ export function LessonContent(props: LessonContentProps) {
         </div>
       )}
 
-      {/* Botão Concluir Lição */}
+      {/* 14, 15, 16: CTAs Finais */}
       <div className="pt-8 space-y-6">
         <button 
           onClick={onComplete}
-          className="w-full py-7 rounded-2xl bg-[#5B1F3D] text-white font-heading font-black text-[13px] tracking-[0.3em] uppercase border-2 border-[#C8A66A] shadow-2xl hover:scale-[1.02] active:scale-95 transition-all duration-300"
+          className="w-full py-7 rounded-2xl bg-[#5B1F3D] text-white font-heading font-black text-[13px] tracking-[0.3em] uppercase border-2 border-[#C8A66A] shadow-2xl active:scale-95 transition-all duration-300"
         >
           Concluir Lição ✦
         </button>
@@ -223,17 +222,17 @@ export function LessonContent(props: LessonContentProps) {
         <div className="flex flex-wrap justify-center gap-4 pb-4">
           <button 
             onClick={onGoDeepDive}
-            className="flex items-center gap-3 px-8 py-4 rounded-full bg-white border-2 border-[#C8A66A]/30 shadow-lg hover:scale-105 active:scale-95 transition-all group"
+            className="flex items-center gap-3 px-8 py-4 rounded-full bg-white border-2 border-[#C8A66A]/30 shadow-lg active:scale-95 transition-all group"
           >
-            <span className="text-xl group-hover:scale-110 transition-transform">🔮</span>
+            <span className="text-xl">🔮</span>
             <span className="text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">Aprofundar</span>
           </button>
           
           <button 
             onClick={onGoExercise}
-            className="flex items-center gap-3 px-8 py-4 rounded-full bg-white border-2 border-[#C8A66A]/30 shadow-lg hover:scale-105 active:scale-95 transition-all group"
+            className="flex items-center gap-3 px-8 py-4 rounded-full bg-white border-2 border-[#C8A66A]/30 shadow-lg active:scale-95 transition-all group"
           >
-            <span className="text-xl group-hover:scale-110 transition-transform">✍️</span>
+            <span className="text-xl">✍️</span>
             <span className="text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">Exercício</span>
           </button>
         </div>
