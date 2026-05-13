@@ -119,42 +119,42 @@ const DailyChallengesPage = () => {
         />
       )}
 
-      {/* Header — Estilo Premium e Ritualístico reforçado */}
-      <header className="relative z-10" style={{
-        borderBottom: "2px solid #C8A66A40",
-        background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.98), rgba(253, 248, 243, 0.95))",
-        backdropFilter: "blur(20px)",
-        boxShadow: "0 10px 40px rgba(91, 31, 61, 0.08)"
+      {/* Header — Estilo Premium e Ritualístico reforçado (Sincronizado com /app) */}
+      <header className="relative z-20" style={{
+        borderBottom: "2.5px solid #C8A66A40",
+        background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.98), rgba(253, 248, 243, 0.96))",
+        backdropFilter: "blur(24px)",
+        boxShadow: "0 15px 50px rgba(91, 31, 61, 0.08)"
       }}>
         <div className="max-w-lg mx-auto pt-8 pb-10 px-6">
           <div className="flex items-center justify-between mb-8">
             <button
               onClick={() => navigate("/app")}
-              className="transition-all hover:scale-110 active:scale-95 duration-200 w-12 h-12 rounded-2xl flex items-center justify-center bg-white border-2 border-[#C8A66A40] shadow-sm"
+              className="transition-all hover:scale-110 active:scale-95 duration-200 w-11 h-11 rounded-2xl flex items-center justify-center bg-white border-2 border-[#C8A66A30] shadow-sm hover:border-[#C8A66A]"
               style={{ color: "#5B1F3D" }}
             >
               <ArrowLeft className="w-6 h-6" />
             </button>
             <div className="flex flex-col items-center">
-              <span className="text-[10px] tracking-[0.5em] uppercase font-heading font-black" style={{ color: "#C8A66A" }}>
-                ✦ Portal Diário ✦
+              <span className="text-[9px] md:text-[10px] tracking-[0.6em] uppercase font-heading font-black" style={{ color: "#C8A66A" }}>
+                ✦ Portal Sagrado ✦
               </span>
             </div>
-            <div className="w-12" /> {/* Spacer */}
+            <div className="w-11" /> {/* Spacer para manter o alinhamento */}
           </div>
 
           <div className="text-center">
-            <div className="text-[11px] tracking-[0.3em] uppercase font-heading font-black mb-3" style={{ color: "#5B1F3D80" }}>
+            <div className="text-[10px] md:text-[11px] tracking-[0.4em] uppercase font-heading font-black mb-3 opacity-70" style={{ color: "#5B1F3D" }}>
               {new Date().toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" })}
             </div>
-            <h1 className="font-heading text-5xl md:text-6xl font-black tracking-tighter mb-4 drop-shadow-sm" style={{ color: "#5B1F3D" }}>
+            <h1 className="font-heading text-4xl md:text-6xl font-black tracking-tighter mb-4 drop-shadow-sm leading-tight" style={{ color: "#5B1F3D" }}>
               Ritual Diário
             </h1>
             <div className="flex flex-col gap-1 items-center">
-              <p className="font-body text-[14px] font-black uppercase tracking-[0.25em]" style={{ color: "#C8A66A" }}>
+              <p className="font-body text-[13px] md:text-[14px] font-black uppercase tracking-[0.3em]" style={{ color: "#C8A66A" }}>
                 Sua travessia de hoje
               </p>
-              <div className="h-0.5 w-24 bg-gradient-to-r from-transparent via-[#C8A66A] to-transparent my-6 opacity-60" />
+              <div className="h-[2px] w-20 md:w-24 bg-gradient-to-r from-transparent via-[#C8A66A] to-transparent my-6" />
             </div>
           </div>
         </div>
