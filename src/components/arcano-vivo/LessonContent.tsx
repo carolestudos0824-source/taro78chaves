@@ -202,8 +202,9 @@ export function LessonContent(props: LessonContentProps) {
         <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Conteúdo Detalhado</span>
       </div>
 
-      {/* 9, 10, 11, 12: Essência, Símbolos, Luz, Sombra (Accordion) */}
+      {/* 9, 10, 11, 12, 13: Essência, Símbolos, Luz, Sombra, Lição (Accordion) */}
       <div className="space-y-0">
+        {/* Renderiza apenas se NÃO houver conteúdo exibido nos cards de destaque (essence, light, shadow) */}
         {!essence && renderAccordionSection("essencia")}
         {renderAccordionSection("simbolos")}
         {!light && renderAccordionSection("luz")}
