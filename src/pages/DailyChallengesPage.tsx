@@ -77,7 +77,7 @@ const DailyChallengesPage = () => {
   }, [addXP, updateStreak]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground pb-bottom-nav">
+    <div className="min-h-screen bg-[#FAF5EF] text-foreground pb-bottom-nav">
       {/* Active challenge modal */}
       {activeChallenge && (
         <ChallengeModal
@@ -95,18 +95,18 @@ const DailyChallengesPage = () => {
       )}
 
       {/* Header */}
-      <div className="relative overflow-hidden bg-[#FAF5EF]">
+      <div className="relative overflow-hidden bg-[#FAF5EF] border-b border-[#C8A66A]/10">
         <div className="absolute inset-0" style={{
           background: "radial-gradient(ellipse at 50% 0%, #C8A66A1A 0%, transparent 70%)",
         }} />
-        <div className="relative max-w-2xl mx-auto px-6 pt-10 pb-8">
+        <div className="relative max-w-lg mx-auto px-6 pt-10 pb-8">
           <button
             onClick={() => navigate("/app")}
             className="flex items-center gap-2 hover:opacity-70 transition-all mb-8 group"
             style={{ color: "#5B1F3D" }}
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="text-[11px] font-heading font-black tracking-widest uppercase">Voltar</span>
+            <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase">Voltar</span>
           </button>
 
           <div className="text-center">
