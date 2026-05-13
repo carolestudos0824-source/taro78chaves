@@ -269,62 +269,50 @@ const RoutineCard = ({ icon, iconColor, title, subtitle, completed, accent, lock
     disabled={locked}
     className="w-full text-left group transition-all duration-300"
   >
-    <div className="rounded-xl p-4 flex items-center gap-3.5 transition-all duration-300" style={completed ? {
-      background: "hsl(38 28% 94% / 0.70)",
-      border: "1px solid hsl(36 42% 52% / 0.20)",
-    } : locked ? {
-      background: "hsl(36 18% 90% / 0.40)",
-      border: "1px solid hsl(36 22% 80% / 0.25)",
-      opacity: 0.5,
-    } : {
-      background: "linear-gradient(145deg, hsl(38 28% 93% / 0.94), hsl(36 33% 95% / 0.90))",
-      border: `1.5px solid ${accent}30`,
-      boxShadow: `0 2px 12px ${accent}08`,
-    }}>
-      <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={completed ? {
-        background: `${accent}10`,
-        border: `1.5px solid ${accent}25`,
-      } : {
-        background: `${accent}08`,
-        border: `1.5px solid ${accent}20`,
-      }}>
-        <div style={{ color: completed ? `${accent}80` : iconColor }}>
-          {completed ? <Check className="w-4 h-4" style={{ color: "hsl(36 42% 40%)" }} /> : icon}
+    <div className={`rounded-2xl p-5 flex items-center gap-4 transition-all duration-300 border-2 ${
+      completed 
+        ? "bg-white/40 border-[#DCCFC2] opacity-60" 
+        : locked 
+          ? "bg-[#FAF5EF] border-[#D1C4B5]/20 opacity-40 grayscale" 
+          : "bg-white border-[#C8A66A]/20 hover:border-[#C8A66A]/40 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+    }`}>
+      <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-colors ${
+        completed 
+          ? "bg-[#DCCFC233] border-[#DCCFC2]" 
+          : "bg-[#FAF5EF] border-[#C8A66A]/20 group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D]"
+      }`}>
+        <div className="transition-colors group-hover:text-white" style={{ color: completed ? "#C8A66A" : iconColor }}>
+          {completed ? <Check className="w-5 h-5" /> : icon}
         </div>
       </div>
       <div className="flex-1 min-w-0">
-        <h3 className="font-heading text-sm tracking-wide truncate" style={{
-          color: completed ? "hsl(230 20% 12% / 0.50)" : locked ? "hsl(230 10% 45% / 0.30)" : "hsl(340 42% 22%)",
-          textDecoration: completed ? "line-through" : "none",
-          textDecorationColor: "hsl(36 45% 58% / 0.30)",
-        }}>
+        <h3 className={`font-heading text-[15px] font-black tracking-tight ${
+          completed ? "text-[#5B1F3D]/40 line-through" : "text-[#5B1F3D]"
+        }`}>
           {title}
         </h3>
-        <p className="font-accent text-[11px] italic truncate" style={{
-          color: completed ? "hsl(230 15% 30% / 0.30)" : locked ? "hsl(230 10% 45% / 0.18)" : "hsl(230 20% 15% / 0.50)",
-        }}>
+        <p className={`font-body text-[12px] font-bold mt-0.5 leading-snug ${
+          completed ? "text-[#5B1F3D]/30" : "text-[#5B1F3D]/60"
+        }`}>
           {subtitle}
         </p>
       </div>
       {!locked && !completed && (
-        <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" style={{ color: `${accent}50` }} />
+        <ChevronRight className="w-4 h-4 text-[#C8A66A] group-hover:translate-x-1 transition-transform" />
       )}
     </div>
   </button>
 );
 
 const StatCard = ({ label, value, sub }: { label: string; value: string; sub: string }) => (
-  <div className="rounded-xl p-4 text-center" style={{
-    background: "hsl(38 28% 93% / 0.75)",
-    border: "1px solid hsl(36 45% 50% / 0.18)",
-  }}>
-    <div className="font-heading text-xl tracking-wide" style={{ color: "hsl(340 42% 22%)" }}>
+  <div className="bg-white border-2 border-[#C8A66A]/20 rounded-2xl p-5 text-center shadow-sm">
+    <div className="font-heading text-xl font-black text-[#5B1F3D]">
       {value}
     </div>
-    <div className="text-[9px] tracking-[0.2em] uppercase font-body mt-0.5" style={{ color: "hsl(230 15% 30% / 0.45)" }}>
+    <div className="text-[9px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A] mt-1">
       {label}
     </div>
-    <div className="text-[10px] font-body mt-0.5" style={{ color: "hsl(36 42% 40% / 0.60)" }}>
+    <div className="text-[10px] font-body font-black italic text-[#5B1F3D]/40 mt-1">
       {sub}
     </div>
   </div>
