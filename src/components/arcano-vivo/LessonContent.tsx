@@ -84,7 +84,7 @@ export function LessonContent({
         </button>
       </div>
 
-      {/* Progressive steps */}
+      {/* Progressive steps - Essence, Light, Shadow */}
       <div className="space-y-3">
         {steps.map((s, idx) => {
           const isActive = idx <= step;
@@ -142,23 +142,138 @@ export function LessonContent({
         })}
       </div>
 
-      {/* ── Initiation Lesson ── */}
-      {step >= 2 && initiationLesson && (
-        <div
-          className="rounded-xl p-5"
-          style={{
-            background: "linear-gradient(135deg, hsl(36 42% 44% / 0.04), hsl(270 30% 35% / 0.03))",
-            border: "1px solid hsl(36 42% 44% / 0.15)",
-            animation: "fade-up 0.4s ease-out",
-          }}
-        >
-          <div className="flex items-center gap-2 mb-3">
-            <span className="text-base w-7 h-7 rounded-full flex items-center justify-center"
-              style={{ background: "hsl(36 42% 44% / 0.08)", border: "1px solid hsl(36 42% 44% / 0.2)" }}
-            >⟡</span>
-            <span className="text-[10px] font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(36 40% 42%)" }}>Lição Iniciática</span>
-          </div>
-          <p className="text-sm leading-relaxed italic" style={{ color: "hsl(230 20% 25%)" }}>{initiationLesson}</p>
+      {/* ── All Sections (Ordered as requested) ── */}
+      {step >= 2 && (
+        <div className="space-y-6 pt-4" style={{ animation: "fade-up 0.4s ease-out" }}>
+          
+          {/* Detailed Content sections (including symbols, etc) */}
+          {[...coreSections, ...otherSections].length > 0 && (
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 mb-2">
+                <Layers className="w-3.5 h-3.5" style={{ color: "hsl(36 40% 42%)" }} />
+                <span className="text-[9px] font-heading tracking-[0.3em] uppercase" style={{ color: "hsl(36 40% 42% / 0.7)" }}>
+                  Conteúdo detalhado
+                </span>
+              </div>
+              {[...coreSections, ...otherSections].map((section) => {
+                const isOpen = openSection === section.id;
+                return (
+                  <div key={section.id} className="rounded-2xl overflow-hidden transition-all duration-300"
+                    style={{
+                      background: isOpen ? "rgba(255, 255, 255, 0.7)" : "rgba(255, 255, 255, 0.4)",
+                      border: `1px solid ${isOpen ? "rgba(200, 166, 106, 0.3)" : "rgba(200, 166, 106, 0.15)"}`,
+                      boxShadow: isOpen ? "0 4px 15px rgba(91, 31, 61, 0.04)" : "none",
+                    }}
+                  >
+                    <button
+                      onClick={() => setOpenSection(isOpen ? null : section.id)}
+                      className="w-full px-5 py-4 flex items-center gap-4 text-left transition-colors"
+                    >
+                      <span className="text-base w-8 h-8 rounded-full flex items-center justify-center bg-white/50 border border-[#C8A66A]/20">{section.icon}</span>
+                      <span className="font-heading text-sm font-bold tracking-wide flex-1 text-[#5B1F3D]">{section.title}</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                        style={{ color: "#C8A66A" }} />
+                    </button>
+                    {isOpen && (
+                      <div className="px-5 pb-5" style={{ animation: "fade-up 0.3s ease-out" }}>
+                        <div className="h-px mb-4" style={{ background: "linear-gradient(90deg, transparent, rgba(200, 166, 106, 0.2), transparent)" }} />
+                        <p className="text-[14px] leading-[1.7] text-[#5B1F3D] font-medium whitespace-pre-line">{section.content}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Initiation Lesson Card */}
+          {initiationLesson && (
+            <div
+              className="rounded-xl p-6"
+              style={{
+                background: "linear-gradient(135deg, hsl(36 42% 44% / 0.04), hsl(270 30% 35% / 0.03))",
+                border: "1px solid hsl(36 42% 44% / 0.15)",
+                boxShadow: "0 8px 24px rgba(91, 31, 61, 0.04)",
+              }}
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-base w-8 h-8 rounded-full flex items-center justify-center bg-white/50 border border-[#C8A66A]/30">⟡</span>
+                <span className="text-[10px] font-heading tracking-[0.25em] uppercase font-black" style={{ color: "hsl(36 40% 42%)" }}>Lição Iniciática</span>
+              </div>
+              <p className="text-[15px] leading-relaxed italic text-[#5B1F3D] font-medium">{initiationLesson}</p>
+            </div>
+          )}
+
+          {/* Applied interpretations — amor, trabalho, espiritualidade */}
+          {appliedSections.length > 0 && (
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 mb-1">
+                <Eye className="w-3.5 h-3.5" style={{ color: "hsl(340 42% 28% / 0.6)" }} />
+                <span className="text-[9px] font-heading tracking-[0.3em] uppercase" style={{ color: "hsl(340 42% 28% / 0.6)" }}>
+                  Interpretações práticas
+                </span>
+              </div>
+              {appliedSections.map((section) => {
+                const isOpen = openSection === section.id;
+                const colors = appliedColors[section.id] || appliedColors.amor;
+                const Icon = appliedIcons[section.id] || Heart;
+                
+                const parts = section.content.split(/Na sombra:/);
+                const lightText = parts[0]?.replace(/^Na luz:\s*/, "").trim();
+                const shadowText = parts[1]?.trim();
+
+                return (
+                  <div key={section.id} className="rounded-2xl overflow-hidden transition-all duration-300"
+                    style={{
+                      background: isOpen ? "rgba(255, 255, 255, 0.7)" : "rgba(255, 255, 255, 0.4)",
+                      border: `1px solid ${isOpen ? "rgba(200, 166, 106, 0.3)" : "rgba(200, 166, 106, 0.15)"}`,
+                      boxShadow: isOpen ? "0 4px 15px rgba(91, 31, 61, 0.04)" : "none",
+                    }}
+                  >
+                    <button
+                      onClick={() => setOpenSection(isOpen ? null : section.id)}
+                      className="w-full px-5 py-4 flex items-center gap-4 text-left transition-colors"
+                    >
+                      <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style={{
+                        background: colors.bg,
+                        border: `1px solid ${colors.border}`,
+                      }}>
+                        <Icon className="w-4 h-4" style={{ color: colors.accent }} />
+                      </div>
+                      <span className="font-heading text-sm font-bold tracking-wide flex-1 text-[#5B1F3D]">{section.title}</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                        style={{ color: "#C8A66A" }} />
+                    </button>
+                    {isOpen && (
+                      <div className="px-4 pb-4" style={{ animation: "fade-up 0.3s ease-out" }}>
+                        <div className="h-px mb-3" style={{ background: `linear-gradient(90deg, transparent, ${colors.border}, transparent)` }} />
+                        {lightText && shadowText ? (
+                          <div className="space-y-3">
+                            <div className="rounded-xl p-4" style={{ background: "rgba(200, 166, 106, 0.05)", border: "1px solid rgba(200, 166, 106, 0.15)" }}>
+                              <div className="flex items-center gap-2 mb-2">
+                                <span className="text-sm">☀</span>
+                                <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#8B6A30]">Luz</span>
+                              </div>
+                              <p className="text-[14px] leading-[1.7] text-[#5B1F3D] font-medium">{lightText}</p>
+                            </div>
+                            <div className="rounded-xl p-4" style={{ background: "rgba(91, 31, 61, 0.04)", border: "1px solid rgba(91, 31, 61, 0.15)" }}>
+                              <div className="flex items-center gap-2 mb-2">
+                                <span className="text-sm">☾</span>
+                                <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">Sombra</span>
+                              </div>
+                              <p className="text-[14px] leading-[1.7] text-[#5B1F3D] font-medium">{shadowText}</p>
+                            </div>
+                          </div>
+                        ) : (
+                          <p className="text-[14px] leading-[1.7] text-[#5B1F3D] font-medium whitespace-pre-line">{section.content}</p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
 
