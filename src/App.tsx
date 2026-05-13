@@ -75,8 +75,8 @@ const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage.tsx"));
 const PrivacyPage = lazy(() => import("./pages/legal/PrivacyPage.tsx"));
 const TermsPage = lazy(() => import("./pages/legal/TermsPage.tsx"));
 const SupportPage = lazy(() => import("./pages/legal/SupportPage.tsx"));
-79: const DeleteAccountPage = lazy(() => import("./pages/legal/DeleteAccountPage.tsx"));
-80: const QARotasPage = lazy(() => import("./pages/QARotasPage.tsx"));
+const DeleteAccountPage = lazy(() => import("./pages/legal/DeleteAccountPage.tsx"));
+const QARotasPage = lazy(() => import("./pages/QARotasPage.tsx"));
 
 const queryClient = new QueryClient();
 
