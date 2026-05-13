@@ -54,23 +54,28 @@ export function LessonSections({ sections }: LessonSectionsProps) {
           >
             <button
               onClick={() => setOpenSection(isOpen ? null : section.id)}
-              className="w-full px-6 py-5 flex items-center gap-4 text-left transition-colors duration-200"
+              className="w-full px-5 py-4 flex items-center gap-3 text-left transition-colors duration-200"
             >
               <span
-                className="text-lg shrink-0 w-10 h-10 rounded-full flex items-center justify-center bg-white/50 border border-[#C8A66A30]"
-                style={{ color: "#C8A66A" }}
+                className="text-lg shrink-0 w-8 h-8 rounded-full flex items-center justify-center"
+                style={{
+                  background: `${colors.bg}`,
+                  border: `1px solid ${colors.border}`,
+                  color: colors.icon,
+                }}
               >
                 {section.icon}
               </span>
               <span
-                className="font-heading text-base font-bold tracking-tight flex-1 text-[#5B1F3D]"
+                className="font-heading text-sm tracking-wide flex-1"
+                style={{ color: "hsl(230 25% 15%)" }}
               >
                 {section.title}
               </span>
               <ChevronDown
-                className="w-5 h-5 shrink-0 transition-transform duration-300"
+                className="w-4 h-4 shrink-0 transition-transform duration-300"
                 style={{
-                  color: "#C8A66A",
+                  color: "hsl(230 10% 50%)",
                   transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
                 }}
               />
