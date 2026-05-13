@@ -1,5 +1,6 @@
 import { ArrowLeft, ArrowRight, MapPin, Sparkles, Check } from "lucide-react";
 import { ReflectionSection } from "../ReflectionSection";
+import { useNavigate } from "react-router-dom";
 
 
 interface CompletionScreenProps {
@@ -24,6 +25,7 @@ export function CompletionScreen({
   nextArcano, prevArcano, isPrevCompleted,
   onNextArcano, onPrevArcano, onBackToMap, isLastArcano, arcanoId,
 }: CompletionScreenProps & { arcanoId?: number }) {
+  const navigate = useNavigate();
   const percentage = Math.round((quizScore / quizTotal) * 100);
   const isExcellent = percentage >= 80;
 
@@ -144,14 +146,14 @@ export function CompletionScreen({
           </button>
         )}
 
-        <button onClick={onBackToMap}
-          className="w-full max-w-sm py-4 rounded-full font-heading text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 border-2 border-rgba(200, 166, 106, 0.4)"
+        <button onClick={() => navigate("/app")}
+          className="w-full max-w-sm py-4 rounded-full font-heading text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 border-2 border-[#C8A66A]/40"
           style={{
             background: "white",
             color: "#5B1F3D",
           }}
         >
-          <MapPin className="w-4 h-4 text-[#C8A66A]" />
+          <ArrowLeft className="w-4 h-4 text-[#C8A66A]" />
           Voltar para Home do App
         </button>
 

@@ -136,7 +136,7 @@ export function LessonContent(props: LessonContentProps) {
   };
 
   return (
-    <div className="flex flex-col space-y-8 pb-32 w-full max-w-full overflow-x-hidden">
+    <div className="flex flex-col space-y-10 pb-32 w-full max-w-full overflow-x-hidden">
       {/* 0. Header */}
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
@@ -158,7 +158,7 @@ export function LessonContent(props: LessonContentProps) {
               <span className="text-xl w-10 h-10 rounded-full flex items-center justify-center bg-[#C8A66A]/10 text-[#C8A66A] border border-[#C8A66A]/20">✦</span>
               <h3 className="font-heading text-xl font-black text-[#5B1F3D]">Essência</h3>
             </div>
-            <p className="text-[16px] leading-[1.8] text-[#5B1F3D] font-medium">{essence}</p>
+            <p className="text-[17px] leading-[1.8] text-[#5B1F3D] font-medium">{essence}</p>
           </div>
         )}
 
@@ -168,7 +168,7 @@ export function LessonContent(props: LessonContentProps) {
               <span className="text-xl w-10 h-10 rounded-full flex items-center justify-center bg-[#C8A66A]/10 text-[#C8A66A] border border-[#C8A66A]/20">☀</span>
               <h3 className="font-heading text-xl font-black text-[#5B1F3D]">Luz</h3>
             </div>
-            <p className="text-[16px] leading-[1.8] text-[#5B1F3D] font-medium">{light}</p>
+            <p className="text-[17px] leading-[1.8] text-[#5B1F3D] font-medium">{light}</p>
           </div>
         )}
 
@@ -178,7 +178,7 @@ export function LessonContent(props: LessonContentProps) {
               <span className="text-xl w-10 h-10 rounded-full flex items-center justify-center bg-[#C8A66A]/10 text-[#C8A66A] border border-[#C8A66A]/20">☾</span>
               <h3 className="font-heading text-xl font-black text-[#5B1F3D]">Sombra</h3>
             </div>
-            <p className="text-[16px] leading-[1.8] text-[#5B1F3D] font-medium">{shadow}</p>
+            <p className="text-[17px] leading-[1.8] text-[#5B1F3D] font-medium">{shadow}</p>
           </div>
         )}
       </div>
