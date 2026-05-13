@@ -20,29 +20,11 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
   const [reviewMode, setReviewMode] = useState(false);
   const [reviewIndex, setReviewIndex] = useState(0);
 
-  if (!questions || questions.length === 0) {
-    return (
-      <div className="bg-white/75 backdrop-blur-md rounded-2xl p-8 text-center space-y-4 border border-gold/20 shadow-sm">
-        <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-2">
-          <Sparkles className="w-8 h-8 text-gold" />
-        </div>
-        <h3 className="font-heading text-lg text-plum">Quiz não disponível</h3>
-        <p className="text-sm text-plum/60 italic">"O conhecimento se manifesta através da prática, mas esta lição ainda está sendo preparada."</p>
-        <button 
-          onClick={() => onComplete(0, 0)}
-          className="px-8 py-3 rounded-full bg-gold text-plum font-heading text-sm tracking-wider"
-        >
-          Continuar Jornada
-        </button>
-      </div>
-    );
-  }
-
-  const current = questions[currentIndex];
+  const current = useMemo(() => questions[currentIndex], [questions, currentIndex]);
   const isTrueFalse = current?.type === "true-false";
 
-  const handleSelect = (optionIndex: number) => {
-    if (isAnswered) return;
+  const handleSelect = useCallback((optionIndex: number) => {
+    if (isAnswered || !current) return;
     setSelectedOption(optionIndex);
     setIsAnswered(true);
     const isCorrect = optionIndex === current.correctIndex;
@@ -52,18 +34,36 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
       setMistakes((m) => [...m, { question: current, selected: optionIndex }]);
     }
     onAnswer?.(currentIndex, optionIndex, isCorrect);
-  };
+  }, [isAnswered, current, currentIndex, onAnswer]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (currentIndex < questions.length - 1) {
       setCurrentIndex((i) => i + 1);
       setSelectedOption(null);
       setIsAnswered(false);
     } else {
       setIsFinished(true);
-      onComplete(score + (selectedOption === current.correctIndex ? 1 : 0), questions.length);
+      onComplete(score, questions.length);
     }
-  };
+  }, [currentIndex, questions.length, score, onComplete]);
+
+  if (!questions || questions.length === 0) {
+    return (
+      <div className="bg-[#FAF5EF] backdrop-blur-md rounded-2xl p-8 text-center space-y-4 border border-[#C8A66A]/20 shadow-sm">
+        <div className="w-16 h-16 bg-[#C8A66A]/10 rounded-full flex items-center justify-center mx-auto mb-2">
+          <Sparkles className="w-8 h-8 text-[#C8A66A]" />
+        </div>
+        <h3 className="font-heading text-lg text-[#5B1F3D]">Quiz não disponível</h3>
+        <p className="text-sm text-[#5B1F3D]/60 italic">"O conhecimento se manifesta através da prática, mas esta lição ainda está sendo preparada."</p>
+        <button 
+          onClick={() => onComplete(0, 0)}
+          className="px-8 py-3 rounded-full bg-[#C8A66A] text-white font-heading text-sm tracking-wider"
+        >
+          Continuar Jornada
+        </button>
+      </div>
+    );
+  }
 
   const handleReview = () => {
     setReviewMode(true);
