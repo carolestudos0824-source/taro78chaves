@@ -500,8 +500,8 @@ const SlideJourney = () => {
                 variant="lesson"
                 className="w-full"
               />
-              <div className="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full bg-[#FAF5EF] border border-[#C8A66A] flex items-center justify-center shadow-md z-30">
-                <span className="text-[10px] font-heading font-black text-[#5B1F3D]">{card.n}</span>
+              <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#FAF5EF] border border-[#C8A66A] flex items-center justify-center shadow-md z-30">
+                <span className="text-[9px] font-heading font-black text-[#5B1F3D]">{card.n}</span>
               </div>
             </div>
             <span 
