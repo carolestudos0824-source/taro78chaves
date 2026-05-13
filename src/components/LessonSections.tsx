@@ -34,7 +34,7 @@ export function LessonSections({ sections }: LessonSectionsProps) {
   const [openSection, setOpenSection] = useState<string | null>(null);
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-4">
       {sections.map((section, idx) => {
         const isOpen = openSection === section.id;
         const colors = section.accent ? accentColors[section.accent] : defaultAccent;
@@ -42,56 +42,50 @@ export function LessonSections({ sections }: LessonSectionsProps) {
         return (
           <div
             key={section.id}
-            className="rounded-xl overflow-hidden transition-all duration-300"
+            className="rounded-[1.5rem] overflow-hidden transition-all duration-300"
             style={{
-              background: isOpen ? colors.bg : "hsl(38 30% 95% / 0.7)",
-              border: `1px solid ${isOpen ? colors.border : "hsl(36 25% 82% / 0.5)"}`,
+              background: isOpen ? "rgba(255, 255, 255, 0.7)" : "rgba(255, 255, 255, 0.4)",
+              border: `1px solid ${isOpen ? "rgba(200, 166, 106, 0.35)" : "rgba(200, 166, 106, 0.15)"}`,
               boxShadow: isOpen
-                ? "0 4px 20px hsl(36 45% 58% / 0.06)"
-                : "0 1px 4px hsl(36 45% 58% / 0.03)",
+                ? "0 12px 30px rgba(91, 31, 61, 0.08)"
+                : "0 1px 4px rgba(91, 31, 61, 0.02)",
               animation: `fade-up 0.4s ease-out ${idx * 0.05}s both`,
             }}
           >
             <button
               onClick={() => setOpenSection(isOpen ? null : section.id)}
-              className="w-full px-5 py-4 flex items-center gap-3 text-left transition-colors duration-200"
+              className="w-full px-6 py-5 flex items-center gap-4 text-left transition-colors duration-200"
             >
               <span
-                className="text-lg shrink-0 w-8 h-8 rounded-full flex items-center justify-center"
-                style={{
-                  background: `${colors.bg}`,
-                  border: `1px solid ${colors.border}`,
-                  color: colors.icon,
-                }}
+                className="text-lg shrink-0 w-10 h-10 rounded-full flex items-center justify-center bg-white/50 border border-[#C8A66A30]"
+                style={{ color: "#C8A66A" }}
               >
                 {section.icon}
               </span>
               <span
-                className="font-heading text-sm tracking-wide flex-1"
-                style={{ color: "hsl(230 25% 15%)" }}
+                className="font-heading text-base font-bold tracking-tight flex-1 text-[#5B1F3D]"
               >
                 {section.title}
               </span>
               <ChevronDown
-                className="w-4 h-4 shrink-0 transition-transform duration-300"
+                className="w-5 h-5 shrink-0 transition-transform duration-300"
                 style={{
-                  color: "hsl(230 10% 50%)",
+                  color: "#C8A66A",
                   transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
                 }}
               />
             </button>
 
             {isOpen && (
-              <div className="px-5 pb-5" style={{ animation: "fade-up 0.3s ease-out" }}>
+              <div className="px-6 pb-6" style={{ animation: "fade-up 0.3s ease-out" }}>
                 <div
-                  className="h-px mb-4"
+                  className="h-px mb-5"
                   style={{
-                    background: `linear-gradient(90deg, transparent, ${colors.border}, transparent)`,
+                    background: "linear-gradient(90deg, transparent, rgba(200, 166, 106, 0.2), transparent)",
                   }}
                 />
                 <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: "hsl(230 20% 25%)" }}
+                  className="text-[15px] leading-[1.75] text-[#5B1F3D]/80"
                 >
                   {section.content}
                 </p>
