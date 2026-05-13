@@ -237,6 +237,9 @@ const LessonPage = () => {
             essence={arcano.layers.main.essence}
             light={arcano.layers.main.light}
             shadow={arcano.layers.main.shadow}
+            quickReview={arcano.quickReview}
+            reflectionQuestions={arcano.reflectionQuestions}
+            initiationLesson={arcano.initiationLesson}
             onComplete={() => setPhase(arcano.symbolsMap?.length ? "symbols" : "quiz")}
             onGoDeepDive={() => setPhase("deepdive")}
             onGoExercise={() => setPhase("exercise")}
