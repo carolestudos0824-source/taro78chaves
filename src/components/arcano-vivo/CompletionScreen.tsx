@@ -130,26 +130,25 @@ export function CompletionScreen({
       />
 
       {/* Navigation */}
-      <div className="flex flex-col items-center gap-4 pt-2">
+      <div className="flex flex-col items-center gap-5 pt-4">
         {nextArcano && (
           <button onClick={onNextArcano}
-            className="px-12 py-4 rounded-full font-heading text-sm tracking-widest uppercase transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-3 shadow-xl shadow-gold/20"
+            className="w-full max-w-sm py-6 rounded-2xl font-heading text-xs font-black tracking-[0.3em] uppercase transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-4 shadow-2xl border-2 border-[#C8A66A]"
             style={{
-              background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))",
-              color: "hsl(36 33% 97%)",
+              background: "#5B1F3D",
+              color: "white",
             }}
           >
             <span>Seguir Travessia</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-5 h-5" />
           </button>
         )}
 
         <button onClick={onBackToMap}
-          className="px-8 py-3 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105 flex items-center gap-2"
+          className="w-full max-w-sm py-4 rounded-full font-heading text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 border-2 border-rgba(200, 166, 106, 0.4)"
           style={{
-            background: "transparent",
-            border: "1.5px solid hsl(36 45% 58% / 0.35)",
-            color: "hsl(36 40% 42%)",
+            background: "white",
+            color: "#5B1F3D",
           }}
         >
           <MapPin className="w-4 h-4" />
