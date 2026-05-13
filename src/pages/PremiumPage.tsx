@@ -129,18 +129,18 @@ const PremiumPage = () => {
 
       <main className="max-w-lg mx-auto px-6 -mt-12 relative z-20 space-y-12">
         <div className="space-y-4">
-          <h2 className="text-center font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
-            O que você desbloqueia:
+          <h2 className="text-center font-heading text-[11px] tracking-[0.4em] uppercase font-black text-[#C8A66A] mb-8">
+            ✦ O QUE VOCÊ DESBLOQUEIA ✦
           </h2>
-          <div className="grid grid-cols-1 gap-3">
+          <div className="grid grid-cols-1 gap-4">
             {PREMIUM_BENEFITS.map((b) => (
-              <div key={b.title} className="bg-white border-2 border-[#DCCFC2]/40 p-5 rounded-2xl flex items-center gap-5 shadow-md">
-                <div className="w-12 h-12 rounded-xl bg-[#FAF5EF] border border-[#C8A66A]/30 flex items-center justify-center shrink-0">
-                  <b.icon className="w-6 h-6 text-[#5B1F3D]" />
+              <div key={b.title} className="bg-white border-2 border-[#C8A66A20] p-6 rounded-[2rem] flex items-center gap-6 shadow-xl hover:border-[#C8A66A40] transition-all">
+                <div className="w-16 h-16 rounded-[1.2rem] bg-[#FAF5EF] border-2 border-[#C8A66A30] flex items-center justify-center shrink-0 shadow-inner">
+                  <b.icon className="w-8 h-8 text-[#5B1F3D]" />
                 </div>
-                <div className="space-y-0.5">
-                  <h3 className="font-heading text-base font-black text-[#5B1F3D]">{b.title}</h3>
-                  <p className="text-xs text-[#5B1F3D]/70 font-body font-bold italic">{b.desc}</p>
+                <div className="space-y-1">
+                  <h3 className="font-heading text-lg font-black text-[#5B1F3D] tracking-tight">{b.title}</h3>
+                  <p className="text-[13px] text-[#5B1F3D80] font-body font-bold italic leading-snug">{b.desc}</p>
                 </div>
               </div>
             ))}
