@@ -55,7 +55,7 @@ export function DeepDiveSection({ text, symbolism, cabala, history }: DeepDiveSe
             </button>
             {isOpen && (
               <div className="px-6 pb-6 animate-fade-up">
-                <p className="text-[#5B1F3D]/80 leading-[1.75] text-[15px]">{section.content}</p>
+                <p className="text-[#5B1F3D] leading-[1.8] text-[15px] font-medium">{section.content}</p>
               </div>
             )}
           </div>
