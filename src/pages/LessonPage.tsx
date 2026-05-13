@@ -220,7 +220,7 @@ const LessonPage = () => {
         <PhaseIndicator phases={phases} currentIndex={phases.indexOf(phase)} />
       </header>
 
-      <main className="container max-w-lg mx-auto px-4 py-8">
+      <main className="relative z-10 container max-w-lg mx-auto px-4 py-8">
         {phase === "intro" && (
           <ArcanoVivoStage
             arcanoId={arcanoId}
