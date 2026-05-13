@@ -158,10 +158,10 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 pointer-events-none" />
         
         {/* Label */}
-        <div className="absolute bottom-0 left-0 right-0 p-3 text-center pointer-events-none">
+        <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3 text-center pointer-events-none bg-gradient-to-t from-[#5B1F3D]/80 to-transparent">
           <span className={cn(
-            "text-[10px] sm:text-[11px] font-heading tracking-widest uppercase truncate block",
-            isLocked ? "text-white/30" : "text-white drop-shadow-md"
+            "text-[9px] sm:text-[10px] md:text-[11px] font-heading tracking-widest uppercase truncate block font-black",
+            isLocked ? "text-[#FAF5EF]/90" : "text-white drop-shadow-md"
           )}>
             {cardName}
           </span>
