@@ -59,12 +59,7 @@ export function LessonContent({
   };
 
   return (
-    <motion.div 
-      className="space-y-8 pb-12"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
+    <div className="space-y-8 pb-32">
       {/* Header */}
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
