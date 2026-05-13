@@ -61,24 +61,52 @@ const AuthPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12">
-      <div className="w-full max-w-sm space-y-8">
-        <button onClick={() => navigate("/")} className="flex items-center gap-2 text-xs font-heading tracking-widest uppercase opacity-40 hover:opacity-100 transition-opacity">
+    <div className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center px-6 py-12">
+      {/* Background — Marfim Suave refined from /app */}
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+            opacity: 0.98,
+          }}
+        />
+        {/* Subtle atmosphere layers */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.8) 0%, transparent 30%, transparent 70%, rgba(239, 226, 210, 0.5) 100%)",
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 w-full max-w-sm space-y-10">
+        <button onClick={() => navigate("/")} className="flex items-center gap-3 text-[11px] font-heading tracking-[0.3em] uppercase opacity-60 hover:opacity-100 transition-all font-black text-[#5B1F3D]">
           <ArrowLeft className="w-4 h-4" />
           Voltar
         </button>
 
-        <div className="text-center space-y-3">
-          <img
-            src={brandIcon}
-            alt="Tarô 78 Chaves"
-            className="w-20 h-20 mx-auto rounded-2xl shadow-sm"
-          />
-          <h1 className="font-heading text-2xl tracking-wide text-secondary">
-            {mode === "signup" ? "Criar conta" : mode === "login" ? "Entrar" : "Recuperar senha"}
-          </h1>
-          <div className="space-y-2">
-            <p className="text-xs font-body text-muted-foreground max-w-[240px] mx-auto leading-relaxed">
+        <div className="text-center space-y-6">
+          <div className="relative inline-block group">
+            <div className="absolute inset-0 bg-[#C8A66A]/20 rounded-3xl blur-2xl group-hover:bg-[#C8A66A]/40 transition-all duration-700" />
+            <img
+              src={brandIcon}
+              alt="Tarô 78 Chaves"
+              className="relative z-10 w-24 h-24 mx-auto rounded-3xl shadow-2xl border-2 border-[#C8A66A40] transition-transform duration-700 hover:rotate-6"
+            />
+          </div>
+          
+          <div className="space-y-4">
+            <h1 className="font-heading text-4xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
+              {mode === "signup" ? "Criar conta" : mode === "login" ? "Entrar" : "Recuperar senha"}
+            </h1>
+            <p className="text-[14px] font-body text-[#5B1F3D99] max-w-[280px] mx-auto leading-relaxed font-bold">
               {mode === "signup" ? "Crie sua conta para salvar seu progresso e começar sua jornada pelo Louco." : mode === "login" ? "Boas-vindas de volta à sua jornada." : "Enviaremos um link de acesso."}
             </p>
             {mode === "signup" && (
