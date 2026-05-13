@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 import type { QuizQuestion } from "@/lib/content";
-import { Check, X, ArrowRight, Trophy, RotateCcw, Sparkles } from "lucide-react";
+import { Check, X, ArrowRight, Trophy, RotateCcw, Sparkles, Star } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface QuizSectionProps {
