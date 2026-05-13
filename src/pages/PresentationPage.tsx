@@ -486,7 +486,7 @@ const SlideJourney = () => {
         title="Do Louco ao Mundo"
         subtitle="Você percorre os 22 Arcanos Maiores como etapas de uma transformação interior."
       />
-      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-11 gap-2 md:gap-3 max-w-5xl mx-auto overflow-y-auto max-h-[55vh] md:max-h-none py-4 px-4 scrollbar-hide justify-items-center">
+      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-11 gap-x-1.5 gap-y-4 md:gap-3 max-w-5xl mx-auto overflow-y-auto max-h-[55vh] md:max-h-none py-4 px-4 scrollbar-hide justify-items-center">
         {majores.map((card, i) => (
           <div key={i} className="flex flex-col items-center group">
             <div className="relative w-full">
@@ -495,18 +495,18 @@ const SlideJourney = () => {
                 cardName={card.name}
                 arcanoId={i}
                 arcanoSlug={card.name.toLowerCase().replace(/ /g, "-")}
-                state={i === 0 ? "available" : i === 8 || i === 11 || i === 21 ? "active" : "locked"}
+                state={i === 0 || i === 8 || i === 11 || i === 21 ? "active" : "available"}
                 showLockIcon={false}
                 variant="lesson"
                 className="w-full"
               />
-              <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#FAF5EF] border border-[#C8A66A40] flex items-center justify-center shadow-sm z-30">
-                <span className="text-[8px] font-heading font-black text-[#5B1F3D]">{card.n}</span>
+              <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#FAF5EF] border border-[#C8A66A] flex items-center justify-center shadow-md z-30">
+                <span className="text-[9px] font-heading font-black text-[#5B1F3D]">{card.n}</span>
               </div>
             </div>
             <span 
-              className="text-[7px] md:text-[8px] font-heading font-bold mt-2 text-[#5B1F3D] uppercase tracking-wider text-center leading-tight h-8 flex items-center justify-center px-0.5"
-              style={{ wordBreak: "normal", overflowWrap: "anywhere" }}
+              className="text-[8px] md:text-[9px] font-heading font-black mt-2 text-[#5B1F3D] uppercase tracking-wide text-center leading-tight min-h-[2.5rem] flex items-center justify-center px-0.5"
+              style={{ wordBreak: "break-word" }}
             >
               {card.name}
             </span>

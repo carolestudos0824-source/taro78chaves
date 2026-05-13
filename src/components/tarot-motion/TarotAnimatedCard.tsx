@@ -95,7 +95,7 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
           alt={cardName}
           className={cn(
             "w-full h-full object-cover transition-all duration-700",
-            isLocked && "opacity-80 grayscale-[0.3] brightness-[0.9]",
+            isLocked && (variant === 'lesson' ? "opacity-90 grayscale-[0.1] brightness-95" : "opacity-80 grayscale-[0.3] brightness-[0.9]"),
             isInProgress && "brightness-90 saturate-[0.8]",
             isAvailable && "brightness-100",
             isActive && "brightness-110 saturate-110"
@@ -106,8 +106,14 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
         {isLocked && (
           <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
             {/* Soft Veil Overlay (Ameixa) */}
-            <div className="absolute inset-0 bg-[#5B1F3D]/10 mix-blend-multiply opacity-60" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#5B1F3D]/5 to-[#5B1F3D]/20" />
+            <div className={cn(
+              "absolute inset-0 bg-[#5B1F3D]/10 mix-blend-multiply",
+              variant === 'lesson' ? "opacity-20" : "opacity-60"
+            )} />
+            <div className={cn(
+              "absolute inset-0 bg-gradient-to-b from-transparent via-[#5B1F3D]/5 to-[#5B1F3D]/20",
+              variant === 'lesson' ? "opacity-30" : "opacity-100"
+            )} />
             
             {showLockIcon && (
               <div className="relative z-10 w-8 h-8 rounded-full bg-[#FAF5EF]/90 border border-[#C8A66A]/40 flex items-center justify-center shadow-lg backdrop-blur-sm">
@@ -159,17 +165,22 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
         )}
 
         {/* Portal Overlay (Shadow/Gradient) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 pointer-events-none" />
+        <div className={cn(
+          "absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none",
+          variant === 'lesson' ? "opacity-30" : "opacity-60"
+        )} />
         
-        {/* Label */}
-        <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3 text-center pointer-events-none bg-gradient-to-t from-[#5B1F3D]/80 to-transparent">
-          <span className={cn(
-            "text-[9px] sm:text-[10px] md:text-[11px] font-heading tracking-widest uppercase truncate block font-black",
-            isLocked ? "text-[#FAF5EF]/90" : "text-white drop-shadow-md"
-          )}>
-            {cardName}
-          </span>
-        </div>
+        {/* Label - Hidden in lesson variant as it has external label */}
+        {variant !== 'lesson' && (
+          <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3 text-center pointer-events-none bg-gradient-to-t from-[#5B1F3D]/80 to-transparent">
+            <span className={cn(
+              "text-[9px] sm:text-[10px] md:text-[11px] font-heading tracking-widest uppercase truncate block font-black",
+              isLocked ? "text-[#FAF5EF]/90" : "text-white drop-shadow-md"
+            )}>
+              {cardName}
+            </span>
+          </div>
+        )}
       </motion.div>
     </motion.div>
   );
