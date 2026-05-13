@@ -345,7 +345,7 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
                 <div className="absolute top-0 right-0 p-3 opacity-10">
                   <Book className="w-10 h-10 text-[#5B1F3D]" />
                 </div>
-                <div className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A] mb-3">
+                <div className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D] mb-3">
                   Sabedoria Integrada
                 </div>
                 <p className="text-[15px] font-accent italic font-bold leading-relaxed text-[#5B1F3D]/90">
