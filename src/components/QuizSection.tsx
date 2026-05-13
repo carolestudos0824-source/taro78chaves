@@ -103,26 +103,26 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
                   key={i}
                   className="p-3.5 rounded-xl flex items-center gap-3 transition-all"
                   style={{
-                    background: isCorrect ? "hsl(120 30% 92%)" : isWrong ? "hsl(0 40% 94%)" : "hsl(38 25% 93% / 0.6)",
-                    border: `1.5px solid ${isCorrect ? "hsl(120 35% 60% / 0.4)" : isWrong ? "hsl(0 50% 65% / 0.4)" : "transparent"}`,
+                    background: isCorrect ? "rgba(200, 166, 106, 0.12)" : isWrong ? "rgba(91, 31, 61, 0.08)" : "rgba(250, 245, 239, 0.6)",
+                    border: `1.5px solid ${isCorrect ? "rgba(200, 166, 106, 0.4)" : isWrong ? "rgba(91, 31, 61, 0.3)" : "transparent"}`,
                   }}
                 >
                   <span
                     className="w-7 h-7 rounded-full flex items-center justify-center text-xs shrink-0"
                     style={{
-                      border: `1.5px solid ${isCorrect ? "hsl(120 35% 50%)" : isWrong ? "hsl(0 50% 55%)" : "hsl(230 10% 70%)"}`,
-                      color: isCorrect ? "hsl(120 35% 40%)" : isWrong ? "hsl(0 50% 45%)" : "hsl(230 10% 50%)",
+                      border: `1.5px solid ${isCorrect ? "#C8A66A" : isWrong ? "#5B1F3D" : "rgba(91, 31, 61, 0.2)"}`,
+                      color: isCorrect ? "#5B1F3D" : isWrong ? "#5B1F3D" : "rgba(91, 31, 61, 0.5)",
                     }}
                   >
                     {isCorrect ? <Check className="w-3.5 h-3.5" /> : isWrong ? <X className="w-3.5 h-3.5" /> : String.fromCharCode(65 + i)}
                   </span>
-                  <span className="text-sm" style={{ color: "hsl(230 20% 25%)" }}>{option}</span>
+                  <span className="text-sm font-medium" style={{ color: "#5B1F3D" }}>{option}</span>
                 </div>
               );
             })}
           </div>
-          <div className="mt-4 p-4 rounded-xl" style={{ background: "hsl(36 45% 58% / 0.08)", border: "1px solid hsl(36 45% 58% / 0.12)" }}>
-            <p className="text-sm font-accent italic" style={{ color: "hsl(230 20% 30% / 0.85)" }}>{item.question.explanation}</p>
+          <div className="mt-4 p-4 rounded-xl" style={{ background: "rgba(250, 245, 239, 0.8)", border: "1px solid rgba(200, 166, 106, 0.25)" }}>
+            <p className="text-sm font-accent italic leading-relaxed" style={{ color: "#5B1F3D" }}>{item.question.explanation}</p>
           </div>
         </div>
 
@@ -269,13 +269,13 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
             let iconColor = "hsl(var(--gold))";
 
             if (isCorrectAnswer) {
-              optionClass = "bg-[#2d5a3d]/15 border-[#2d5a3d]/50";
-              textColorStyle = "#2d5a3d";
-              iconColor = "#2d5a3d";
+              optionClass = "bg-[#C8A66A]/12 border-[#C8A66A]/50";
+              textColorStyle = "#5B1F3D";
+              iconColor = "#C8A66A";
             } else if (isWrongSelected) {
-              optionClass = "bg-[#8b1a2e]/15 border-[#8b1a2e]/50";
-              textColorStyle = "#8b1a2e";
-              iconColor = "#8b1a2e";
+              optionClass = "bg-[#5B1F3D]/8 border-[#5B1F3D]/40";
+              textColorStyle = "#5B1F3D";
+              iconColor = "#5B1F3D";
             } else if (isAnswered) {
               optionClass = "bg-white/50 backdrop-blur-sm border-gold/20 opacity-70";
             }
@@ -324,12 +324,12 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               style={{
-                background: "hsl(36 45% 58% / 0.08)",
-                border: "1px solid hsl(36 45% 58% / 0.18)",
+                background: "rgba(250, 245, 239, 0.85)",
+                border: "1px solid rgba(200, 166, 106, 0.25)",
                 overflow: "hidden"
               }}
             >
-              <p className="text-sm font-accent italic leading-relaxed" style={{ color: "hsl(230 20% 30% / 0.85)" }}>
+              <p className="text-sm font-accent italic leading-relaxed" style={{ color: "#5B1F3D" }}>
                 {current.explanation}
               </p>
             </motion.div>
