@@ -1,10 +1,11 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { BookOpen, UserRound, MessageCircle, KeyRound } from "lucide-react";
+import { Home, Compass, Flame, KeyRound, UserRound } from "lucide-react";
 
 const NAV_ITEMS = [
-  { path: "/app", label: "Módulos", icon: BookOpen, microcopy: "Sua jornada" },
-  { path: "/feedback", label: "Feedback", icon: MessageCircle, microcopy: "Envie uma mensagem" },
+  { path: "/app", label: "Módulos", icon: Home, microcopy: "Sua jornada" },
+  { path: "/desafios", label: "Ritual", icon: Flame, microcopy: "Seu ritual diário" },
+  { path: "/trilhas", label: "Formação", icon: Compass, microcopy: "Mapa da trilha" },
   { path: "/premium", label: "Premium", icon: KeyRound, microcopy: "Jornada completa" },
   { path: "/perfil", label: "Perfil", icon: UserRound, microcopy: "Suas chaves" },
 ];
