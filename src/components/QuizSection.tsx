@@ -324,12 +324,12 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               style={{
-                background: "hsl(36 45% 58% / 0.08)",
-                border: "1px solid hsl(36 45% 58% / 0.18)",
+                background: "rgba(250, 245, 239, 0.85)",
+                border: "1px solid rgba(200, 166, 106, 0.25)",
                 overflow: "hidden"
               }}
             >
-              <p className="text-sm font-accent italic leading-relaxed" style={{ color: "hsl(230 20% 30% / 0.85)" }}>
+              <p className="text-sm font-accent italic leading-relaxed" style={{ color: "#5B1F3D" }}>
                 {current.explanation}
               </p>
             </motion.div>
