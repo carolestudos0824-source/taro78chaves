@@ -76,24 +76,24 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
     return (
       <motion.div 
         className="space-y-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -20 }}
       >
         <div className="flex items-center justify-between">
-          <span className="text-xs font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(36 40% 42%)" }}>
+          <span className="text-xs font-heading tracking-[0.2em] uppercase text-[#C8A66A]">
             Revisão — {reviewIndex + 1} de {mistakes.length}
           </span>
           <button
             onClick={() => setReviewMode(false)}
-            className="text-xs font-heading tracking-wider"
-            style={{ color: "hsl(230 10% 45%)" }}
+            className="text-xs font-heading font-black tracking-wider text-[#5B1F3D] hover:underline"
           >
             Fechar revisão
           </button>
         </div>
 
-        <div className="rounded-xl p-6" style={{ background: "hsl(38 30% 95% / 0.9)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
-          <p className="font-accent text-lg mb-5" style={{ color: "hsl(230 25% 15%)" }}>{item.question.question}</p>
+        <div className="rounded-2xl p-6 bg-[#FAF5EF] border-2 border-[#C8A66A]/20 shadow-xl">
+          <p className="font-heading text-lg font-black mb-5 text-[#5B1F3D]">{item.question.question}</p>
           <div className="space-y-3">
             {item.question.options.map((option, i) => {
               const isCorrect = i === item.question.correctIndex;
@@ -101,45 +101,43 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
               return (
                 <div
                   key={i}
-                  className="p-3.5 rounded-xl flex items-center gap-3 transition-all"
+                  className="p-4 rounded-xl flex items-center gap-3 transition-all border-2"
                   style={{
-                    background: isCorrect ? "rgba(200, 166, 106, 0.12)" : isWrong ? "rgba(91, 31, 61, 0.08)" : "rgba(250, 245, 239, 0.6)",
-                    border: `1.5px solid ${isCorrect ? "rgba(200, 166, 106, 0.4)" : isWrong ? "rgba(91, 31, 61, 0.3)" : "transparent"}`,
+                    background: isCorrect ? "rgba(200, 166, 106, 0.1)" : isWrong ? "rgba(91, 31, 61, 0.05)" : "white",
+                    borderColor: isCorrect ? "rgba(200, 166, 106, 0.4)" : isWrong ? "rgba(91, 31, 61, 0.2)" : "rgba(200, 166, 106, 0.1)",
                   }}
                 >
                   <span
-                    className="w-7 h-7 rounded-full flex items-center justify-center text-xs shrink-0"
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-black shrink-0 border-2"
                     style={{
-                      border: `1.5px solid ${isCorrect ? "#C8A66A" : isWrong ? "#5B1F3D" : "rgba(91, 31, 61, 0.2)"}`,
-                      color: isCorrect ? "#5B1F3D" : isWrong ? "#5B1F3D" : "rgba(91, 31, 61, 0.5)",
+                      borderColor: isCorrect ? "#C8A66A" : isWrong ? "#5B1F3D" : "rgba(91, 31, 61, 0.2)",
+                      color: isCorrect ? "#C8A66A" : isWrong ? "#5B1F3D" : "rgba(91, 31, 61, 0.5)",
                     }}
                   >
-                    {isCorrect ? <Check className="w-3.5 h-3.5" /> : isWrong ? <X className="w-3.5 h-3.5" /> : String.fromCharCode(65 + i)}
+                    {isCorrect ? <Check className="w-4 h-4" /> : isWrong ? <X className="w-4 h-4" /> : String.fromCharCode(65 + i)}
                   </span>
-                  <span className="text-sm font-medium" style={{ color: "#5B1F3D" }}>{option}</span>
+                  <span className="text-sm font-medium text-[#5B1F3D]">{option}</span>
                 </div>
               );
             })}
           </div>
-          <div className="mt-4 p-4 rounded-xl" style={{ background: "rgba(250, 245, 239, 0.8)", border: "1px solid rgba(200, 166, 106, 0.25)" }}>
-            <p className="text-sm font-accent italic leading-relaxed" style={{ color: "#5B1F3D" }}>{item.question.explanation}</p>
+          <div className="mt-5 p-5 rounded-xl bg-white border border-[#C8A66A]/30 shadow-inner">
+            <p className="text-sm font-accent italic leading-relaxed text-[#5B1F3D]/80">{item.question.explanation}</p>
           </div>
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-4">
           {reviewIndex < mistakes.length - 1 ? (
             <button
               onClick={() => setReviewIndex((i) => i + 1)}
-              className="px-8 py-3 rounded-full font-heading text-sm tracking-wider flex items-center gap-2 transition-all hover:scale-105"
-              style={{ background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))", color: "hsl(36 33% 97%)" }}
+              className="px-10 py-4 rounded-full font-heading text-xs font-black tracking-widest uppercase flex items-center gap-3 transition-all hover:scale-105 bg-[#5B1F3D] text-white shadow-xl"
             >
               Próximo erro <ArrowRight className="w-4 h-4" />
             </button>
           ) : (
             <button
               onClick={() => setReviewMode(false)}
-              className="px-8 py-3 rounded-full font-heading text-sm tracking-wider flex items-center gap-2 transition-all hover:scale-105"
-              style={{ background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))", color: "hsl(36 33% 97%)" }}
+              className="px-10 py-4 rounded-full font-heading text-xs font-black tracking-widest uppercase flex items-center gap-3 transition-all hover:scale-105 bg-[#C8A66A] text-white shadow-xl"
             >
               Concluir revisão <Sparkles className="w-4 h-4" />
             </button>
