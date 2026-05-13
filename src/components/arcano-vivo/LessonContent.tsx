@@ -196,23 +196,23 @@ export function LessonContent({
                     <div className="h-px mb-3" style={{ background: `linear-gradient(90deg, transparent, ${colors.border}, transparent)` }} />
                     {lightText && shadowText ? (
                       <div className="space-y-3">
-                        <div className="rounded-xl p-4" style={{ background: "rgba(200, 166, 106, 0.05)", border: "1px solid rgba(200, 166, 106, 0.15)" }}>
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className="text-sm">☀</span>
-                            <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#8B6A30]">Luz</span>
+                        <div className="rounded-lg p-3" style={{ background: "hsl(36 45% 58% / 0.05)", border: "1px solid hsl(36 45% 58% / 0.10)" }}>
+                          <div className="flex items-center gap-1.5 mb-1.5">
+                            <span className="text-xs">☀</span>
+                            <span className="text-[9px] font-heading tracking-wider uppercase" style={{ color: "hsl(36 42% 40%)" }}>Luz</span>
                           </div>
-                          <p className="text-[14px] leading-[1.65] text-[#5B1F3D]/90">{lightText}</p>
+                          <p className="text-xs leading-relaxed" style={{ color: "hsl(230 20% 25%)" }}>{lightText}</p>
                         </div>
-                        <div className="rounded-xl p-4" style={{ background: "rgba(91, 31, 61, 0.04)", border: "1px solid rgba(91, 31, 61, 0.15)" }}>
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className="text-sm">☾</span>
-                            <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]/70">Sombra</span>
+                        <div className="rounded-lg p-3" style={{ background: "hsl(270 30% 30% / 0.04)", border: "1px solid hsl(270 30% 30% / 0.10)" }}>
+                          <div className="flex items-center gap-1.5 mb-1.5">
+                            <span className="text-xs">☾</span>
+                            <span className="text-[9px] font-heading tracking-wider uppercase" style={{ color: "hsl(270 30% 35%)" }}>Sombra</span>
                           </div>
-                          <p className="text-[14px] leading-[1.65] text-[#5B1F3D]/90">{shadowText}</p>
+                          <p className="text-xs leading-relaxed" style={{ color: "hsl(230 20% 25%)" }}>{shadowText}</p>
                         </div>
                       </div>
                     ) : (
-                      <p className="text-[14px] leading-[1.65] text-[#5B1F3D]/90">{section.content}</p>
+                      <p className="text-xs leading-relaxed" style={{ color: "hsl(230 20% 25%)" }}>{section.content}</p>
                     )}
                   </div>
                 )}
