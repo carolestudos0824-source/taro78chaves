@@ -204,10 +204,10 @@ export function LessonContent(props: LessonContentProps) {
 
       {/* 9, 10, 11, 12: Essência, Símbolos, Luz, Sombra (Accordion) */}
       <div className="space-y-0">
-        {renderAccordionSection("essencia")}
+        {!essence && renderAccordionSection("essencia")}
         {renderAccordionSection("simbolos")}
-        {renderAccordionSection("luz")}
-        {renderAccordionSection("sombra")}
+        {!light && renderAccordionSection("luz")}
+        {!shadow && renderAccordionSection("sombra")}
         {renderAccordionSection("licao")}
       </div>
 
