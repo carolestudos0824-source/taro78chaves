@@ -91,31 +91,31 @@ export function CompletionScreen({
       {/* Editorial transition to next arcano */}
       {nextArcano && (
         <div
-          className="rounded-xl p-5 text-left mx-auto max-w-sm animate-fade-in"
+          className="rounded-2xl p-6 text-left mx-auto max-w-sm animate-fade-in shadow-lg"
           style={{
-            background: "linear-gradient(135deg, hsl(36 42% 44% / 0.04), hsl(340 42% 28% / 0.03))",
-            border: "1px solid hsl(36 42% 44% / 0.12)",
+            background: "linear-gradient(135deg, rgba(200, 166, 106, 0.08), rgba(91, 31, 61, 0.05))",
+            border: "2px solid rgba(200, 166, 106, 0.3)",
             animationDelay: "300ms",
             animationFillMode: "both",
           }}
         >
-          <p className="text-[9px] font-heading tracking-[0.3em] uppercase mb-2" style={{ color: "hsl(36 40% 42% / 0.6)" }}>
+          <p className="text-[10px] font-heading font-black tracking-[0.3em] uppercase mb-4" style={{ color: "#C8A66A" }}>
             Próximo na jornada
           </p>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <div
-              className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+              className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 shadow-md"
               style={{
-                background: "hsl(36 42% 44% / 0.08)",
-                border: "1px solid hsl(36 42% 44% / 0.2)",
+                background: "white",
+                border: "2px solid rgba(200, 166, 106, 0.4)",
               }}
             >
-              <span className="font-heading text-xs" style={{ color: "hsl(36 40% 42%)" }}>{nextArcano.numeral}</span>
+              <span className="font-heading text-lg font-black" style={{ color: "#5B1F3D" }}>{nextArcano.numeral}</span>
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-heading text-sm" style={{ color: "hsl(230 25% 15%)" }}>{nextArcano.name}</p>
+              <p className="font-heading text-xl font-black" style={{ color: "#5B1F3D" }}>{nextArcano.name}</p>
               {nextArcano.subtitle && (
-                <p className="font-accent text-[11px] italic truncate" style={{ color: "hsl(230 20% 15% / 0.45)" }}>
+                <p className="font-accent text-[13px] italic truncate font-bold" style={{ color: "rgba(91, 31, 61, 0.7)" }}>
                   {nextArcano.subtitle}
                 </p>
               )}
