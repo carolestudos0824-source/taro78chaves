@@ -121,8 +121,8 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
               );
             })}
           </div>
-          <div className="mt-4 p-4 rounded-xl" style={{ background: "hsl(36 45% 58% / 0.08)", border: "1px solid hsl(36 45% 58% / 0.12)" }}>
-            <p className="text-sm font-accent italic" style={{ color: "hsl(230 20% 30% / 0.85)" }}>{item.question.explanation}</p>
+          <div className="mt-4 p-4 rounded-xl" style={{ background: "rgba(250, 245, 239, 0.8)", border: "1px solid rgba(200, 166, 106, 0.25)" }}>
+            <p className="text-sm font-accent italic leading-relaxed" style={{ color: "#5B1F3D" }}>{item.question.explanation}</p>
           </div>
         </div>
 
