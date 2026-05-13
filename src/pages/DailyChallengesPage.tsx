@@ -77,27 +77,26 @@ const DailyChallengesPage = () => {
   }, [addXP, updateStreak]);
 
   return (
-    <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
-      {/* Background — Marfim Suave #FAF5EF base refined from /app */}
+    <div className="min-h-screen relative overflow-hidden pb-bottom-nav bg-[#FAF5EF]">
+      {/* Background — Reforçado para evitar aspecto lavado */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
-            opacity: 0.98,
+            background: "linear-gradient(180deg, #FAF5EF 0%, #FDF8F3 45%, #F5EBDE 100%)",
           }}
         />
-        {/* Subtle atmosphere layers */}
+        {/* Camadas de atmosfera ritualística */}
         <div
           className="absolute inset-0"
           style={{
-            background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
+            background: "radial-gradient(circle at 50% -10%, rgba(91, 31, 61, 0.08) 0%, transparent 60%)",
           }}
         />
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.8) 0%, transparent 30%, transparent 70%, rgba(239, 226, 210, 0.5) 100%)",
+            background: "linear-gradient(to bottom, rgba(200, 166, 106, 0.05) 0%, transparent 50%, rgba(91, 31, 61, 0.03) 100%)",
           }}
         />
       </div>
