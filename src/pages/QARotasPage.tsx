@@ -7,13 +7,31 @@ import {
 } from "lucide-react";
 import { DECK_REGISTRY, FULL_DECK } from "@/registry/deck-registry";
 import { MODULES_SEED } from "@/lib/content/seed-modules";
-import { NAIPES } from "@/registry/naipes";
+
+interface RouteItem {
+  path: string;
+  name: string;
+  status: string;
+  id?: string;
+  isStaff?: boolean;
+  audit?: {
+    exists: string;
+    needed: string;
+    risky: string;
+    replace: string;
+  };
+}
+
+interface RouteGroup {
+  title: string;
+  items: RouteItem[];
+}
 
 const QARotasPage = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearch] = useState("");
 
-  const groups = [
+  const groups: RouteGroup[] = [
     {
       title: "Rotas Públicas",
       items: [
@@ -183,7 +201,7 @@ const QARotasPage = () => {
                       <span className={`px-2 py-0.5 rounded-full text-[9px] font-heading font-black tracking-widest uppercase border ${getStatusColor(item.status)}`}>
                         {item.status}
                       </span>
-                      {item.path.includes(":") && <Code className="w-3.5 h-3.5 text-purple-400" title="Rota Dinâmica" />}
+                      {item.path.includes(":") && <Code className="w-3.5 h-3.5 text-purple-400" />}
                     </div>
                     <h3 className="font-heading text-[15px] font-black text-[#5B1F3D] leading-tight group-hover:text-[#8B6A30] transition-colors">{item.name}</h3>
                     <p className="text-[11px] font-body font-bold text-[#5B1F3D]/60 break-all">{item.path}</p>
