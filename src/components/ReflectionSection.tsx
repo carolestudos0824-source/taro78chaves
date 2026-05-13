@@ -93,21 +93,22 @@ export function ReflectionSection({ arcanoId, lessonId }: ReflectionSectionProps
 
   return (
     <div 
-      className="w-full max-w-sm mx-auto p-5 rounded-2xl space-y-4 text-left animate-fade-in"
+      className="w-full max-w-sm mx-auto p-6 rounded-[2rem] space-y-5 text-left animate-fade-in shadow-xl"
       style={{
-        background: "hsl(38 30% 95% / 0.85)",
-        border: "1px solid hsl(36 45% 58% / 0.15)",
-        boxShadow: "0 4px 20px hsl(36 45% 58% / 0.06)",
+        background: "white",
+        border: "2px solid rgba(200, 166, 106, 0.3)",
       }}
     >
-      <div className="flex items-center gap-2 mb-1">
-        <Book className="w-4 h-4" style={{ color: "hsl(36 45% 58%)" }} />
-        <h3 className="font-heading text-sm tracking-wide" style={{ color: "hsl(340 42% 22%)" }}>
+      <div className="flex items-center gap-3 mb-1">
+        <div className="w-8 h-8 rounded-full bg-[#FAF5EF] flex items-center justify-center border border-[#C8A66A]/30">
+          <Book className="w-4 h-4 text-[#C8A66A]" />
+        </div>
+        <h3 className="font-heading text-md font-black tracking-wide text-[#5B1F3D]">
           Caderno da Jornada
         </h3>
       </div>
 
-      <p className="font-accent text-sm italic" style={{ color: "hsl(230 20% 15% / 0.7)" }}>
+      <p className="font-accent text-[14px] italic font-bold text-[#5B1F3DCC]">
         “O que esta carta me ensinou hoje?”
       </p>
 
