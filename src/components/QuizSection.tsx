@@ -153,65 +153,67 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
     const isPerfect = percentage === 100;
     return (
       <motion.div 
-        className="text-center py-8 space-y-5"
+        className="text-center py-10 space-y-8"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
+        transition={{ type: "spring", damping: 20 }}
       >
-        <motion.div
-          className="w-20 h-20 mx-auto rounded-full flex items-center justify-center"
-          style={{
-            background: isPerfect
-              ? "linear-gradient(135deg, hsl(36 45% 58% / 0.2), hsl(42 70% 80% / 0.15))"
-              : "hsl(38 25% 93% / 0.8)",
-            border: `2px solid ${isPerfect ? "hsl(36 45% 58% / 0.4)" : "hsl(230 10% 75% / 0.3)"}`,
-          }}
-          animate={isPerfect ? {
-            boxShadow: ["0 0 0px hsl(36 45% 58% / 0)", "0 0 20px hsl(36 45% 58% / 0.4)", "0 0 0px hsl(36 45% 58% / 0)"]
-          } : {}}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <Trophy className="w-10 h-10" style={{ color: isPerfect ? "hsl(36 45% 58%)" : "hsl(230 10% 50%)" }} />
-        </motion.div>
+        <div className="relative inline-block">
+          <motion.div
+            className="w-24 h-24 mx-auto rounded-full flex items-center justify-center bg-white border-4 border-[#C8A66A] shadow-2xl"
+            initial={{ rotate: -20, scale: 0.5 }}
+            animate={{ rotate: 0, scale: 1 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+          >
+            <Trophy className="w-12 h-12 text-[#C8A66A]" />
+          </motion.div>
+          {isPerfect && (
+            <motion.div 
+              className="absolute -top-2 -right-2 bg-[#5B1F3D] p-2 rounded-full border-2 border-white shadow-lg"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <Star className="w-4 h-4 text-[#C8A66A]" />
+            </motion.div>
+          )}
+        </div>
 
         <div>
-          <h3 className="font-heading text-2xl mb-1" style={{ color: "hsl(36 40% 42%)" }}>
-            {isPerfect ? "Perfeito!" : percentage >= 70 ? "Muito Bem!" : "Continue Praticando"}
+          <h3 className="font-heading text-3xl font-black mb-2 bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] bg-clip-text text-transparent">
+            {isPerfect ? "Perfeição Pura!" : percentage >= 70 ? "Brilhante!" : "Jornada de Sabedoria"}
           </h3>
-          <p className="text-lg font-accent" style={{ color: "hsl(230 20% 30%)" }}>
-            {score}/{questions.length} corretas ({percentage}%)
+          <p className="text-[17px] font-accent font-bold text-[#5B1F3D]">
+            Você integrou {score} de {questions.length} saberes ({percentage}%)
           </p>
         </div>
 
-        <p className="text-sm" style={{ color: "hsl(36 40% 42%)" }}>
-          +{score * 10} XP ganhos
-        </p>
+        <div className="flex flex-col items-center gap-2">
+          <div className="text-[11px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A]">
+            Energia de Troca
+          </div>
+          <div className="text-2xl font-heading font-black text-[#5B1F3D]">
+            +{score * 10} XP
+          </div>
+        </div>
 
-        {isPerfect && (
-          <motion.p 
-            className="text-sm font-heading tracking-wider" 
-            style={{ color: "hsl(36 45% 58%)" }}
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            ⭐ Badge de Mestre desbloqueado!
-          </motion.p>
-        )}
-
-        <div className="flex flex-col items-center gap-3 pt-2">
+        <div className="flex flex-col items-center gap-4 pt-4">
           {mistakes.length > 0 && (
             <button
               onClick={handleReview}
-              className="px-8 py-3 rounded-full font-heading text-sm tracking-wider flex items-center gap-2 transition-all hover:scale-105"
-              style={{
-                background: "transparent",
-                border: "1.5px solid hsl(36 45% 58% / 0.4)",
-                color: "hsl(36 40% 42%)",
-              }}
+              className="w-full max-w-xs py-4 rounded-full font-heading text-[11px] font-black tracking-[0.2em] uppercase transition-all hover:scale-105 flex items-center justify-center gap-3 bg-white border-2 border-[#C8A66A]/40 text-[#5B1F3D] shadow-lg"
             >
-              <RotateCcw className="w-4 h-4" />
-              Revisar {mistakes.length} {mistakes.length === 1 ? "erro" : "erros"}
+              <RotateCcw className="w-4 h-4 text-[#C8A66A]" />
+              Revisar {mistakes.length} {mistakes.length === 1 ? "Aprendizado" : "Aprendizados"}
             </button>
           )}
+          
+          <button
+            onClick={() => onComplete(score, questions.length)}
+            className="w-full max-w-xs py-5 rounded-2xl font-heading text-[12px] font-black tracking-[0.3em] uppercase transition-all hover:scale-105 bg-[#5B1F3D] text-white shadow-2xl border-2 border-[#C8A66A]"
+          >
+            Continuar Travessia
+          </button>
         </div>
       </motion.div>
     );
