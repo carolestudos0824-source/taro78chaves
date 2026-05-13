@@ -106,7 +106,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
       />
 
       {/* Drawer */}
-      <div className="relative w-[320px] max-w-[85vw] h-full bg-[#FDFBF7] shadow-2xl flex flex-col border-r-2 border-[#C8A66A]/20 animate-in slide-in-from-left duration-500 overflow-hidden" style={{ zIndex: 100 }}>
+      <div className="fixed top-0 left-0 w-[320px] max-w-[85vw] h-full bg-[#FDFBF7] shadow-2xl flex flex-col border-r-2 border-[#C8A66A]/20 animate-in slide-in-from-left duration-500 overflow-hidden" style={{ zIndex: 100 }}>
         {/* Header */}
         <div className="p-6 border-b-2 border-[#C8A66A]/20 flex items-center justify-between bg-white/50">
           <div className="flex flex-col">
