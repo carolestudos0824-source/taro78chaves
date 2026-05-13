@@ -307,9 +307,9 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
                   <div 
                     className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 border-2 transition-colors"
                     style={{
-                      borderColor: isCorrectAnswer ? "#C8A66A" : isWrongSelected ? "#5B1F3D" : isSelected ? "#C8A66A" : "rgba(91, 31, 61, 0.1)",
+                      borderColor: isCorrectAnswer ? "#C8A66A" : isWrongSelected ? "#5B1F3D" : isSelected ? "#C8A66A" : "rgba(200, 166, 106, 0.4)",
                       background: isCorrectAnswer ? "#C8A66A" : isWrongSelected ? "#5B1F3D" : "transparent",
-                      color: isCorrectAnswer || isWrongSelected ? "white" : isSelected ? "#C8A66A" : "rgba(91, 31, 61, 0.3)",
+                      color: isCorrectAnswer || isWrongSelected ? "white" : isSelected ? "#C8A66A" : "#C8A66A",
                     }}
                   >
                     {isCorrectAnswer ? (
