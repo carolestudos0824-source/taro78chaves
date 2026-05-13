@@ -207,9 +207,12 @@ export function LessonContent(props: LessonContentProps) {
         {/* Renderiza apenas se NÃO houver conteúdo exibido nos cards de destaque (essence, light, shadow) */}
         {!essence && renderAccordionSection("essencia")}
         {renderAccordionSection("simbolos")}
+        {/* Caso a seção ID seja diferente das props (luz vs light, sombra vs shadow) */}
         {!light && renderAccordionSection("luz")}
         {!shadow && renderAccordionSection("sombra")}
         {renderAccordionSection("licao")}
+        {renderAccordionSection("mitologia")}
+        {renderAccordionSection("numerologia")}
       </div>
 
       {/* 14, 15, 16: CTAs Finais */}
