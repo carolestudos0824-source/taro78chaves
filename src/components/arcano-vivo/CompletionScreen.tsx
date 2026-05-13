@@ -70,13 +70,13 @@ export function CompletionScreen({
       {/* Stats */}
       <div className="flex justify-center gap-6">
         <div className="text-center">
-          <span className="block font-heading text-xl" style={{ color: "hsl(36 45% 58%)" }}>{percentage}%</span>
-          <span className="text-[9px] font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(230 10% 50%)" }}>Quiz</span>
+          <span className="block font-heading text-2xl font-black" style={{ color: "#C8A66A" }}>{percentage}%</span>
+          <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase" style={{ color: "#5B1F3DCC" }}>Quiz</span>
         </div>
-        <div className="w-px h-10" style={{ background: "hsl(36 45% 58% / 0.2)" }} />
+        <div className="w-px h-10" style={{ background: "rgba(200, 166, 106, 0.3)" }} />
         <div className="text-center">
-          <span className="block font-heading text-xl" style={{ color: "hsl(36 45% 58%)" }}>+{xpEarned}</span>
-          <span className="text-[9px] font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(230 10% 50%)" }}>XP</span>
+          <span className="block font-heading text-2xl font-black" style={{ color: "#C8A66A" }}>+{xpEarned}</span>
+          <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase" style={{ color: "#5B1F3DCC" }}>XP</span>
         </div>
       </div>
 
