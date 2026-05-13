@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 import type { QuizQuestion } from "@/lib/content";
-import { Check, X, ArrowRight, Trophy, RotateCcw, Sparkles } from "lucide-react";
+import { Check, X, ArrowRight, Trophy, RotateCcw, Sparkles, Star, Book } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface QuizSectionProps {
@@ -20,29 +20,11 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
   const [reviewMode, setReviewMode] = useState(false);
   const [reviewIndex, setReviewIndex] = useState(0);
 
-  if (!questions || questions.length === 0) {
-    return (
-      <div className="bg-white/75 backdrop-blur-md rounded-2xl p-8 text-center space-y-4 border border-gold/20 shadow-sm">
-        <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-2">
-          <Sparkles className="w-8 h-8 text-gold" />
-        </div>
-        <h3 className="font-heading text-lg text-plum">Quiz não disponível</h3>
-        <p className="text-sm text-plum/60 italic">"O conhecimento se manifesta através da prática, mas esta lição ainda está sendo preparada."</p>
-        <button 
-          onClick={() => onComplete(0, 0)}
-          className="px-8 py-3 rounded-full bg-gold text-plum font-heading text-sm tracking-wider"
-        >
-          Continuar Jornada
-        </button>
-      </div>
-    );
-  }
-
-  const current = questions[currentIndex];
+  const current = useMemo(() => questions[currentIndex], [questions, currentIndex]);
   const isTrueFalse = current?.type === "true-false";
 
-  const handleSelect = (optionIndex: number) => {
-    if (isAnswered) return;
+  const handleSelect = useCallback((optionIndex: number) => {
+    if (isAnswered || !current) return;
     setSelectedOption(optionIndex);
     setIsAnswered(true);
     const isCorrect = optionIndex === current.correctIndex;
@@ -52,18 +34,36 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
       setMistakes((m) => [...m, { question: current, selected: optionIndex }]);
     }
     onAnswer?.(currentIndex, optionIndex, isCorrect);
-  };
+  }, [isAnswered, current, currentIndex, onAnswer]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (currentIndex < questions.length - 1) {
       setCurrentIndex((i) => i + 1);
       setSelectedOption(null);
       setIsAnswered(false);
     } else {
       setIsFinished(true);
-      onComplete(score + (selectedOption === current.correctIndex ? 1 : 0), questions.length);
+      onComplete(score, questions.length);
     }
-  };
+  }, [currentIndex, questions.length, score, onComplete]);
+
+  if (!questions || questions.length === 0) {
+    return (
+      <div className="bg-[#FAF5EF] backdrop-blur-md rounded-2xl p-8 text-center space-y-4 border border-[#C8A66A]/20 shadow-sm">
+        <div className="w-16 h-16 bg-[#C8A66A]/10 rounded-full flex items-center justify-center mx-auto mb-2">
+          <Sparkles className="w-8 h-8 text-[#C8A66A]" />
+        </div>
+        <h3 className="font-heading text-lg text-[#5B1F3D]">Quiz não disponível</h3>
+        <p className="text-sm text-[#5B1F3D]/60 italic">"O conhecimento se manifesta através da prática, mas esta lição ainda está sendo preparada."</p>
+        <button 
+          onClick={() => onComplete(0, 0)}
+          className="px-8 py-3 rounded-full bg-[#C8A66A] text-white font-heading text-sm tracking-wider"
+        >
+          Continuar Jornada
+        </button>
+      </div>
+    );
+  }
 
   const handleReview = () => {
     setReviewMode(true);
@@ -76,24 +76,24 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
     return (
       <motion.div 
         className="space-y-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -20 }}
       >
         <div className="flex items-center justify-between">
-          <span className="text-xs font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(36 40% 42%)" }}>
+          <span className="text-xs font-heading tracking-[0.2em] uppercase text-[#C8A66A]">
             Revisão — {reviewIndex + 1} de {mistakes.length}
           </span>
           <button
             onClick={() => setReviewMode(false)}
-            className="text-xs font-heading tracking-wider"
-            style={{ color: "hsl(230 10% 45%)" }}
+            className="text-xs font-heading font-black tracking-wider text-[#5B1F3D] hover:underline"
           >
             Fechar revisão
           </button>
         </div>
 
-        <div className="rounded-xl p-6" style={{ background: "hsl(38 30% 95% / 0.9)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
-          <p className="font-accent text-lg mb-5" style={{ color: "hsl(230 25% 15%)" }}>{item.question.question}</p>
+        <div className="rounded-2xl p-6 bg-[#FAF5EF] border-2 border-[#C8A66A]/20 shadow-xl">
+          <p className="font-heading text-lg font-black mb-5 text-[#5B1F3D]">{item.question.question}</p>
           <div className="space-y-3">
             {item.question.options.map((option, i) => {
               const isCorrect = i === item.question.correctIndex;
@@ -101,45 +101,43 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
               return (
                 <div
                   key={i}
-                  className="p-3.5 rounded-xl flex items-center gap-3 transition-all"
+                  className="p-4 rounded-xl flex items-center gap-3 transition-all border-2"
                   style={{
-                    background: isCorrect ? "rgba(200, 166, 106, 0.12)" : isWrong ? "rgba(91, 31, 61, 0.08)" : "rgba(250, 245, 239, 0.6)",
-                    border: `1.5px solid ${isCorrect ? "rgba(200, 166, 106, 0.4)" : isWrong ? "rgba(91, 31, 61, 0.3)" : "transparent"}`,
+                    background: isCorrect ? "rgba(200, 166, 106, 0.1)" : isWrong ? "rgba(91, 31, 61, 0.05)" : "white",
+                    borderColor: isCorrect ? "rgba(200, 166, 106, 0.4)" : isWrong ? "rgba(91, 31, 61, 0.2)" : "rgba(200, 166, 106, 0.1)",
                   }}
                 >
                   <span
-                    className="w-7 h-7 rounded-full flex items-center justify-center text-xs shrink-0"
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-black shrink-0 border-2"
                     style={{
-                      border: `1.5px solid ${isCorrect ? "#C8A66A" : isWrong ? "#5B1F3D" : "rgba(91, 31, 61, 0.2)"}`,
-                      color: isCorrect ? "#5B1F3D" : isWrong ? "#5B1F3D" : "rgba(91, 31, 61, 0.5)",
+                      borderColor: isCorrect ? "#C8A66A" : isWrong ? "#5B1F3D" : "rgba(91, 31, 61, 0.2)",
+                      color: isCorrect ? "#C8A66A" : isWrong ? "#5B1F3D" : "rgba(91, 31, 61, 0.5)",
                     }}
                   >
-                    {isCorrect ? <Check className="w-3.5 h-3.5" /> : isWrong ? <X className="w-3.5 h-3.5" /> : String.fromCharCode(65 + i)}
+                    {isCorrect ? <Check className="w-4 h-4" /> : isWrong ? <X className="w-4 h-4" /> : String.fromCharCode(65 + i)}
                   </span>
-                  <span className="text-sm font-medium" style={{ color: "#5B1F3D" }}>{option}</span>
+                  <span className="text-sm font-medium text-[#5B1F3D]">{option}</span>
                 </div>
               );
             })}
           </div>
-          <div className="mt-4 p-4 rounded-xl" style={{ background: "rgba(250, 245, 239, 0.8)", border: "1px solid rgba(200, 166, 106, 0.25)" }}>
-            <p className="text-sm font-accent italic leading-relaxed" style={{ color: "#5B1F3D" }}>{item.question.explanation}</p>
+          <div className="mt-5 p-5 rounded-xl bg-white border border-[#C8A66A]/30 shadow-inner">
+            <p className="text-sm font-accent italic leading-relaxed text-[#5B1F3D]/80">{item.question.explanation}</p>
           </div>
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-4">
           {reviewIndex < mistakes.length - 1 ? (
             <button
               onClick={() => setReviewIndex((i) => i + 1)}
-              className="px-8 py-3 rounded-full font-heading text-sm tracking-wider flex items-center gap-2 transition-all hover:scale-105"
-              style={{ background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))", color: "hsl(36 33% 97%)" }}
+              className="px-10 py-4 rounded-full font-heading text-xs font-black tracking-widest uppercase flex items-center gap-3 transition-all hover:scale-105 bg-[#5B1F3D] text-white shadow-xl"
             >
               Próximo erro <ArrowRight className="w-4 h-4" />
             </button>
           ) : (
             <button
               onClick={() => setReviewMode(false)}
-              className="px-8 py-3 rounded-full font-heading text-sm tracking-wider flex items-center gap-2 transition-all hover:scale-105"
-              style={{ background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))", color: "hsl(36 33% 97%)" }}
+              className="px-10 py-4 rounded-full font-heading text-xs font-black tracking-widest uppercase flex items-center gap-3 transition-all hover:scale-105 bg-[#C8A66A] text-white shadow-xl"
             >
               Concluir revisão <Sparkles className="w-4 h-4" />
             </button>
@@ -155,65 +153,67 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
     const isPerfect = percentage === 100;
     return (
       <motion.div 
-        className="text-center py-8 space-y-5"
+        className="text-center py-10 space-y-8"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
+        transition={{ type: "spring", damping: 20 }}
       >
-        <motion.div
-          className="w-20 h-20 mx-auto rounded-full flex items-center justify-center"
-          style={{
-            background: isPerfect
-              ? "linear-gradient(135deg, hsl(36 45% 58% / 0.2), hsl(42 70% 80% / 0.15))"
-              : "hsl(38 25% 93% / 0.8)",
-            border: `2px solid ${isPerfect ? "hsl(36 45% 58% / 0.4)" : "hsl(230 10% 75% / 0.3)"}`,
-          }}
-          animate={isPerfect ? {
-            boxShadow: ["0 0 0px hsl(36 45% 58% / 0)", "0 0 20px hsl(36 45% 58% / 0.4)", "0 0 0px hsl(36 45% 58% / 0)"]
-          } : {}}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <Trophy className="w-10 h-10" style={{ color: isPerfect ? "hsl(36 45% 58%)" : "hsl(230 10% 50%)" }} />
-        </motion.div>
+        <div className="relative inline-block">
+          <motion.div
+            className="w-24 h-24 mx-auto rounded-full flex items-center justify-center bg-white border-4 border-[#C8A66A] shadow-2xl"
+            initial={{ rotate: -20, scale: 0.5 }}
+            animate={{ rotate: 0, scale: 1 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+          >
+            <Trophy className="w-12 h-12 text-[#C8A66A]" />
+          </motion.div>
+          {isPerfect && (
+            <motion.div 
+              className="absolute -top-2 -right-2 bg-[#5B1F3D] p-2 rounded-full border-2 border-white shadow-lg"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <Star className="w-4 h-4 text-[#C8A66A]" />
+            </motion.div>
+          )}
+        </div>
 
         <div>
-          <h3 className="font-heading text-2xl mb-1" style={{ color: "hsl(36 40% 42%)" }}>
-            {isPerfect ? "Perfeito!" : percentage >= 70 ? "Muito Bem!" : "Continue Praticando"}
+          <h3 className="font-heading text-3xl font-black mb-2 bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] bg-clip-text text-transparent">
+            {isPerfect ? "Perfeição Pura!" : percentage >= 70 ? "Brilhante!" : "Jornada de Sabedoria"}
           </h3>
-          <p className="text-lg font-accent" style={{ color: "hsl(230 20% 30%)" }}>
-            {score}/{questions.length} corretas ({percentage}%)
+          <p className="text-[17px] font-accent font-bold text-[#5B1F3D]">
+            Você integrou {score} de {questions.length} saberes ({percentage}%)
           </p>
         </div>
 
-        <p className="text-sm" style={{ color: "hsl(36 40% 42%)" }}>
-          +{score * 10} XP ganhos
-        </p>
+        <div className="flex flex-col items-center gap-2">
+          <div className="text-[11px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A]">
+            Energia de Troca
+          </div>
+          <div className="text-2xl font-heading font-black text-[#5B1F3D]">
+            +{score * 10} XP
+          </div>
+        </div>
 
-        {isPerfect && (
-          <motion.p 
-            className="text-sm font-heading tracking-wider" 
-            style={{ color: "hsl(36 45% 58%)" }}
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            ⭐ Badge de Mestre desbloqueado!
-          </motion.p>
-        )}
-
-        <div className="flex flex-col items-center gap-3 pt-2">
+        <div className="flex flex-col items-center gap-4 pt-4">
           {mistakes.length > 0 && (
             <button
               onClick={handleReview}
-              className="px-8 py-3 rounded-full font-heading text-sm tracking-wider flex items-center gap-2 transition-all hover:scale-105"
-              style={{
-                background: "transparent",
-                border: "1.5px solid hsl(36 45% 58% / 0.4)",
-                color: "hsl(36 40% 42%)",
-              }}
+              className="w-full max-w-xs py-4 rounded-full font-heading text-[11px] font-black tracking-[0.2em] uppercase transition-all hover:scale-105 flex items-center justify-center gap-3 bg-white border-2 border-[#C8A66A]/40 text-[#5B1F3D] shadow-lg"
             >
-              <RotateCcw className="w-4 h-4" />
-              Revisar {mistakes.length} {mistakes.length === 1 ? "erro" : "erros"}
+              <RotateCcw className="w-4 h-4 text-[#C8A66A]" />
+              Revisar {mistakes.length} {mistakes.length === 1 ? "Aprendizado" : "Aprendizados"}
             </button>
           )}
+          
+          <button
+            onClick={() => onComplete(score, questions.length)}
+            className="w-full max-w-xs py-5 rounded-2xl font-heading text-[12px] font-black tracking-[0.3em] uppercase transition-all hover:scale-105 bg-[#5B1F3D] text-white shadow-2xl border-2 border-[#C8A66A]"
+          >
+            Continuar Travessia
+          </button>
         </div>
       </motion.div>
     );
@@ -222,95 +222,111 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
   // Active quiz
   return (
     <motion.div 
-      className="bg-white/75 backdrop-blur-md rounded-2xl p-8 space-y-6 shadow-sm border border-gold/20"
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
+      className="bg-[#FAF5EF] backdrop-blur-xl rounded-[2rem] p-6 md:p-10 space-y-8 shadow-2xl border-2 border-[#C8A66A]/30 relative overflow-hidden"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ type: "spring", damping: 25 }}
     >
-      {/* Progress dots */}
-      <div className="flex items-center gap-1.5">
-        {questions.map((_, i) => (
+      {/* Decorative corners */}
+      <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[#C8A66A]/20 rounded-tl-[2rem] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#C8A66A]/20 rounded-br-[2rem] pointer-events-none" />
+
+      {/* Progress Bar */}
+      <div className="space-y-3">
+        <div className="flex justify-between items-end px-1">
+          <div className="text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A]/70">
+            Jornada de Aprendizado
+          </div>
+          <div className="text-[11px] font-heading font-black text-[#5B1F3D]">
+            {currentIndex + 1} de {questions.length}
+          </div>
+        </div>
+        <div className="h-2.5 w-full bg-white/50 rounded-full overflow-hidden border border-[#C8A66A]/10 shadow-inner">
           <motion.div
-            key={i}
-            className="h-1.5 flex-1 rounded-full"
-            initial={false}
-            animate={{
-              backgroundColor: i < currentIndex ? "hsl(36, 45%, 58%)" : i === currentIndex ? "rgba(200, 166, 106, 0.5)" : "rgba(220, 207, 194, 0.5)",
-              scaleY: i === currentIndex ? 1.5 : 1
-            }}
-            transition={{ duration: 0.3 }}
+            className="h-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] rounded-full"
+            initial={{ width: `${(currentIndex / questions.length) * 100}%` }}
+            animate={{ width: `${((currentIndex + (isAnswered ? 1 : 0)) / questions.length) * 100}%` }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
           />
-        ))}
+        </div>
       </div>
 
-      <div>
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-xs tracking-widest font-body uppercase opacity-60" style={{ color: "#3d1f2e" }}>
+      <div className="space-y-6">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-[#5B1F3D]/5 flex items-center justify-center border border-[#C8A66A]/20">
+            <Sparkles className="w-5 h-5 text-[#C8A66A]" />
+          </div>
+          <span className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">
             {isTrueFalse ? "Verdadeiro ou Falso" : "Múltipla Escolha"}
-          </span>
-          <span className="text-xs tracking-widest font-body uppercase opacity-60" style={{ color: "#3d1f2e" }}>
-            — {currentIndex + 1}/{questions.length}
           </span>
         </div>
 
-        <h4 className="font-display text-xl font-semibold leading-relaxed mb-6 flex items-start gap-2" style={{ color: "#3d1f2e" }}>
-          <span className="text-gold mt-1 shrink-0" aria-hidden="true">✦</span>
-          <span>{current.question}</span>
-        </h4>
+        <motion.h4 
+          key={currentIndex}
+          className="font-heading text-xl md:text-2xl font-black leading-tight text-[#5B1F3D]"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          {current.question}
+        </motion.h4>
 
-        <div className={`grid gap-3 ${isTrueFalse ? "grid-cols-2" : "grid-cols-1"}`}>
+        <div className={`grid gap-4 ${isTrueFalse ? "grid-cols-2" : "grid-cols-1"}`}>
           {current.options.map((option, i) => {
+            const isSelected = selectedOption === i;
             const isCorrectAnswer = isAnswered && i === current.correctIndex;
-            const isWrongSelected = isAnswered && i === selectedOption && i !== current.correctIndex;
-
-            let optionClass =
-              "bg-white/70 backdrop-blur-sm border-gold/30 hover:bg-white/90 hover:border-gold/60 hover:shadow-sm";
-            let textColorStyle: string = "#5B1F3D";
-            let iconColor = "#C8A66A";
-
-            if (isCorrectAnswer) {
-              optionClass = "bg-[#FAF5EF] border-[#C8A66A] shadow-inner";
-              textColorStyle = "#5B1F3D";
-              iconColor = "#5B1F3D";
-            } else if (isWrongSelected) {
-              optionClass = "bg-[#5B1F3D]/5 border-[#5B1F3D]/30";
-              textColorStyle = "#5B1F3D";
-              iconColor = "#5B1F3D";
-            } else if (isAnswered) {
-              optionClass = "bg-white/40 backdrop-blur-sm border-[#C8A66A]/20 opacity-60";
-            }
-
+            const isWrongSelected = isAnswered && isSelected && !isCorrectAnswer;
+            
             return (
               <motion.button
-                key={i}
+                key={`${currentIndex}-${i}`}
                 onClick={() => handleSelect(i)}
                 disabled={isAnswered}
-                className={`w-full text-left rounded-xl px-5 py-4 text-base font-body cursor-pointer transition-all duration-200 border flex items-center gap-3 ${optionClass} ${
-                  !isAnswered ? "active:scale-[0.99]" : "cursor-default"
-                } ${isTrueFalse ? "justify-center text-center" : ""}`}
-                animate={isWrongSelected ? { x: [-5, 5, -5, 5, 0] } : isCorrectAnswer ? { scale: [1, 1.02, 1] } : {}}
+                className="group relative w-full text-left rounded-2xl p-5 transition-all duration-300 border-2 overflow-hidden shadow-sm"
+                style={{
+                  background: isCorrectAnswer 
+                    ? "rgba(200, 166, 106, 0.15)" 
+                    : isWrongSelected 
+                      ? "rgba(91, 31, 61, 0.08)" 
+                      : isSelected 
+                        ? "#FAF5EF" 
+                        : "white",
+                  borderColor: isCorrectAnswer 
+                    ? "#C8A66A" 
+                    : isWrongSelected 
+                      ? "#5B1F3D" 
+                      : isSelected 
+                        ? "#C8A66A" 
+                        : "rgba(200, 166, 106, 0.15)",
+                }}
+                whileHover={!isAnswered ? { scale: 1.01, borderColor: "rgba(200, 166, 106, 0.4)" } : {}}
+                whileTap={!isAnswered ? { scale: 0.98 } : {}}
+                animate={isWrongSelected ? { x: [-4, 4, -4, 4, 0] } : isCorrectAnswer ? { scale: [1, 1.02, 1] } : {}}
               >
-                <span
-                  className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold shrink-0 border"
-                  style={{ borderColor: iconColor, color: iconColor, borderWidth: "1.5px" }}
-                  aria-hidden="true"
-                >
-                  {isCorrectAnswer ? (
-                    <Check className="w-3.5 h-3.5" />
-                  ) : isWrongSelected ? (
-                    <X className="w-3.5 h-3.5" />
-                  ) : isTrueFalse ? (
-                    i === 0 ? "V" : "F"
-                  ) : (
-                    String.fromCharCode(65 + i)
-                  )}
-                </span>
-                <span
-                  className="flex-1 break-words"
-                  style={{ color: textColorStyle, whiteSpace: "normal" }}
-                >
-                  {String(option ?? "")}
-                </span>
+                {/* Visual indicator for feedback */}
+                <div className="flex items-center gap-4">
+                  <div 
+                    className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 border-2 transition-colors"
+                    style={{
+                      borderColor: isCorrectAnswer ? "#C8A66A" : isWrongSelected ? "#5B1F3D" : isSelected ? "#C8A66A" : "rgba(91, 31, 61, 0.1)",
+                      background: isCorrectAnswer ? "#C8A66A" : isWrongSelected ? "#5B1F3D" : "transparent",
+                      color: isCorrectAnswer || isWrongSelected ? "white" : isSelected ? "#C8A66A" : "rgba(91, 31, 61, 0.3)",
+                    }}
+                  >
+                    {isCorrectAnswer ? (
+                      <Check className="w-5 h-5" />
+                    ) : isWrongSelected ? (
+                      <X className="w-5 h-5" />
+                    ) : (
+                      <span className="text-xs font-black">{String.fromCharCode(65 + i)}</span>
+                    )}
+                  </div>
+                  <span 
+                    className="text-[16px] font-medium leading-relaxed flex-1"
+                    style={{ color: isAnswered && !isCorrectAnswer && !isWrongSelected ? "rgba(91, 31, 61, 0.4)" : "#5B1F3D" }}
+                  >
+                    {option}
+                  </span>
+                </div>
               </motion.button>
             );
           })}
@@ -319,44 +335,34 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
         <AnimatePresence>
           {isAnswered && (
             <motion.div
-              className="mt-5 p-4 rounded-xl"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              style={{
-                background: "#FAF5EF",
-                border: "1px solid rgba(200, 166, 106, 0.4)",
-                boxShadow: "0 4px 12px rgba(91, 31, 61, 0.05)",
-                overflow: "hidden"
-              }}
-            >
-              <p className="text-sm font-accent italic leading-relaxed" style={{ color: "#5B1F3D" }}>
-                {current.explanation}
-              </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence>
-          {isAnswered && (
-            <motion.div 
-              className="mt-5 flex justify-end"
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              exit={{ opacity: 0, y: 10 }}
+              className="space-y-6 pt-2"
             >
-              <button
-                onClick={handleNext}
-                className="px-7 py-2.5 rounded-full font-heading text-sm tracking-wider flex items-center gap-2 transition-all duration-300 hover:scale-105"
-                style={{
-                  background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))",
-                  color: "hsl(36 33% 97%)",
-                  boxShadow: "0 4px 16px hsl(36 45% 58% / 0.2)",
-                }}
-              >
-                {currentIndex < questions.length - 1 ? "Próxima" : "Ver Resultado"}
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              {/* Box de Explicação */}
+              <div className="rounded-2xl p-6 bg-white border-2 border-[#C8A66A]/20 shadow-xl relative">
+                <div className="absolute top-0 right-0 p-3 opacity-10">
+                  <Book className="w-10 h-10 text-[#5B1F3D]" />
+                </div>
+                <div className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A] mb-3">
+                  Sabedoria Integrada
+                </div>
+                <p className="text-[15px] font-accent italic font-bold leading-relaxed text-[#5B1F3D]/90">
+                  {current.explanation}
+                </p>
+              </div>
+
+              {/* Botão Próxima */}
+              <div className="flex justify-end">
+                <button
+                  onClick={handleNext}
+                  className="px-10 py-4 rounded-full font-heading text-[12px] font-black tracking-[0.3em] uppercase transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-3 bg-[#5B1F3D] text-white shadow-2xl border-2 border-[#C8A66A]"
+                >
+                  {currentIndex < questions.length - 1 ? "Próxima" : "Ver Resultados"}
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
