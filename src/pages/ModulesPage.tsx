@@ -111,29 +111,64 @@ const ModulesPage = () => {
   const globalProgressPct = Math.round((totalCompletedArcanos / totalArcanosCount) * 100);
 
   return (
-    <div className="min-h-screen bg-[#FAF5EF]">
+    <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
+      {/* Background — Marfim Suave refined from /app */}
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+            opacity: 0.98,
+          }}
+        />
+        {/* Subtle atmosphere layers */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.8) 0%, transparent 30%, transparent 70%, rgba(239, 226, 210, 0.5) 100%)",
+          }}
+        />
+      </div>
+
       <Header streak={progress.streak} xp={progress.xp} level={progress.level} />
 
-      <main className="container max-w-lg px-6 pt-10 pb-24 md:pt-16 md:pb-32 space-y-12 md:space-y-16">
-        {/* ─── Global Training Progress ─── */}
-        <div className="bg-white border-2 border-[#C8A66A]/20 rounded-3xl p-6 shadow-sm animate-fade-in">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#5B1F3D] flex items-center justify-center border border-[#C8A66A]/30">
-                <SquareStack className="w-5 h-5 text-[#C8A66A]" />
+      <main className="relative z-10 container max-w-lg px-6 pt-10 pb-24 md:pt-16 md:pb-32 space-y-12 md:space-y-16">
+        {/* ─── Global Training Progress — Dashboard style from /app ─── */}
+        <div className="relative rounded-[2.5rem] overflow-hidden p-8 md:p-10 transition-all duration-500" style={{
+          background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
+          backdropFilter: "blur(24px)",
+          border: "2.5px solid #C8A66A",
+          boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08), 0 0 40px rgba(200, 166, 106, 0.1)"
+        }}>
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A30]" style={{
+                background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+                boxShadow: "0 10px 25px rgba(91, 31, 61, 0.25)"
+              }}>
+                <SquareStack className="w-7 h-7 text-[#C8A66A]" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#5B1F3D] uppercase">Sua Formação</span>
-                <span className="text-sm font-heading font-black text-[#5B1F3D]">Mapa dos 78 Arcanos</span>
+                <span className="text-[11px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Sua Formação</span>
+                <span className="text-lg font-heading font-black text-[#5B1F3D]">Mapa dos 78 Arcanos</span>
               </div>
             </div>
             <div className="text-right">
-              <span className="text-xl font-heading font-black text-[#5B1F3D]">{totalCompletedArcanos}</span>
-              <span className="text-[10px] font-black text-[#5B1F3D]/30 ml-1">/78</span>
+              <span className="text-3xl font-heading font-black text-[#5B1F3D]">{totalCompletedArcanos}</span>
+              <span className="text-[14px] font-black text-[#5B1F3D]/30 ml-1">/78</span>
             </div>
           </div>
           
-          <div className="h-2.5 rounded-full bg-[#E8DED3] overflow-hidden p-[1.5px] border border-[#D1C4B5]/30">
+          <div className="h-4 rounded-full overflow-hidden p-[2.5px]" style={{ 
+            background: "#E8DED3", 
+            border: "1.5px solid rgba(209, 196, 181, 0.6)" 
+          }}>
             <div 
               className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out relative overflow-hidden"
               style={{ width: `${Math.max(globalProgressPct, 2)}%` }}
@@ -142,9 +177,9 @@ const ModulesPage = () => {
             </div>
           </div>
           
-          <p className="mt-3 text-[11px] font-body font-bold text-[#5B1F3D]/60 italic text-center">
+          <p className="mt-5 text-[13px] font-body font-black text-[#5B1F3D]/70 italic text-center leading-relaxed">
             {totalCompletedArcanos === 0 
-              ? "Inicie sua jornada para abrir os primeiros portais." 
+              ? "Inicie sua jornada para abrir os primeiros portais sagrados." 
               : `Você já domina ${totalCompletedArcanos} das 78 chaves do tarô.`}
           </p>
         </div>
