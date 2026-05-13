@@ -356,10 +356,10 @@ const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) =>
 const CompleteButton = ({ onComplete, label = "Concluir" }: { onComplete: () => void; label?: string }) => (
   <button
     onClick={onComplete}
-    className="w-full mt-6 py-3 rounded-lg font-heading text-sm tracking-wide transition-all duration-300 hover:shadow-md"
+    className="w-full mt-10 py-4 rounded-2xl font-heading text-[12px] font-black tracking-[0.3em] uppercase shadow-lg shadow-[#5B1F3D]/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
     style={{
-      background: "linear-gradient(135deg, hsl(340 42% 26%), hsl(36 42% 44%))",
-      color: "hsl(36 33% 97%)",
+      background: "linear-gradient(135deg, #5B1F3D, #C8A66A)",
+      color: "#FAF5EF",
     }}
   >
     {label}
@@ -367,27 +367,23 @@ const CompleteButton = ({ onComplete, label = "Concluir" }: { onComplete: () => 
 );
 
 const CartaDoDiaContent = ({ data, onComplete }: { data: CartaDoDia | null; onComplete: () => void }) => {
-  if (!data) return <div className="text-center py-8"><p className="font-body text-sm" style={{ color: "hsl(230 15% 30% / 0.50)" }}>Conteúdo carregando...</p><CompleteButton onComplete={onComplete} /></div>;
+  if (!data) return <div className="text-center py-8"><p className="font-body text-[13px] font-bold text-[#5B1F3D]/50">Conteúdo carregando...</p><CompleteButton onComplete={onComplete} /></div>;
   return (
-    <div className="space-y-4">
-      <div className="text-center">
-        <div className="font-heading text-3xl tracking-wider mb-1" style={{ color: "hsl(340 42% 22%)" }}>
+    <div className="space-y-6">
+      <div className="text-center space-y-2">
+        <div className="font-heading text-4xl font-black text-[#C8A66A] tracking-widest opacity-40">
           {data.numeral}
         </div>
-        <h3 className="font-heading text-lg tracking-wide" style={{ color: "hsl(340 42% 22%)" }}>
+        <h3 className="font-heading text-2xl font-black text-[#5B1F3D]">
           {data.name}
         </h3>
-        <p className="font-accent text-sm italic" style={{ color: "hsl(230 20% 15% / 0.50)" }}>
+        <p className="font-body text-[12px] font-bold italic text-[#C8A66A] uppercase tracking-widest">
           {data.subtitle}
         </p>
       </div>
-      <div className="flex flex-wrap justify-center gap-2">
+      <div className="flex flex-wrap justify-center gap-2 py-2">
         {data.keywords.map(k => (
-          <span key={k} className="text-[10px] tracking-[0.2em] uppercase font-body px-2.5 py-1 rounded-full" style={{
-            background: "hsl(36 45% 58% / 0.10)",
-            color: "hsl(36 42% 38%)",
-            border: "1px solid hsl(36 45% 58% / 0.20)",
-          }}>
+          <span key={k} className="text-[10px] tracking-[0.2em] uppercase font-body font-black px-3 py-1.5 rounded-full bg-[#C8A66A]/10 text-[#C8A66A] border border-[#C8A66A]/20">
             {k}
           </span>
         ))}
