@@ -89,29 +89,38 @@ export function LessonContent({
         {steps.map((s, idx) => {
           const isActive = idx <= step;
           const isCurrent = idx === step;
+          const isUpcoming = idx > step;
+          
           return (
             <div
               key={s.id}
-              className={`rounded-xl overflow-hidden transition-all duration-500 ${isActive ? "opacity-100" : "opacity-30 pointer-events-none"}`}
+              className={`rounded-2xl overflow-hidden transition-all duration-700 ${isActive ? "opacity-100" : "opacity-40"}`}
               style={{
-                background: isCurrent ? "rgba(255, 255, 255, 0.7)" : "rgba(255, 255, 255, 0.3)",
-                border: `1px solid ${isCurrent ? "rgba(200, 166, 106, 0.4)" : "rgba(200, 166, 106, 0.2)"}`,
-                boxShadow: isCurrent ? "0 8px 30px rgba(91, 31, 61, 0.08)" : "none",
+                background: isCurrent ? "rgba(255, 255, 255, 0.85)" : "rgba(255, 255, 255, 0.4)",
+                border: `1px solid ${isCurrent ? "rgba(200, 166, 106, 0.5)" : "rgba(200, 166, 106, 0.2)"}`,
+                boxShadow: isCurrent ? "0 12px 40px rgba(91, 31, 61, 0.1)" : "none",
                 animation: isActive ? `fade-up 0.4s ease-out ${idx * 0.1}s both` : undefined,
               }}
             >
-              <div className="px-6 py-5">
+              <div className="px-6 py-6">
                 <div className="flex items-center gap-4 mb-4">
-                  <span className="text-lg w-10 h-10 rounded-full flex items-center justify-center"
+                  <span className="text-xl w-11 h-11 rounded-full flex items-center justify-center"
                     style={{
-                      background: "rgba(200, 166, 106, 0.1)",
-                      border: "1px solid rgba(200, 166, 106, 0.3)",
-                      color: "#C8A66A",
+                      background: isUpcoming ? "rgba(200, 166, 106, 0.05)" : "rgba(200, 166, 106, 0.15)",
+                      border: `1px solid ${isUpcoming ? "rgba(200, 166, 106, 0.2)" : "rgba(200, 166, 106, 0.4)"}`,
+                      color: isUpcoming ? "#C8A66A80" : "#C8A66A",
                     }}
                   >{s.icon}</span>
-                  <h3 className="font-heading text-lg font-bold tracking-tight text-[#5B1F3D]">{s.title}</h3>
+                  <h3 className="font-heading text-xl font-black tracking-tight text-[#5B1F3D]">{s.title}</h3>
                 </div>
-                <p className="text-[16px] leading-[1.75] text-[#5B1F3D]/80">{s.content}</p>
+                {!isUpcoming ? (
+                  <p className="text-[16px] leading-[1.8] text-[#5B1F3D] font-medium">{s.content}</p>
+                ) : (
+                  <div className="flex items-center gap-2 py-2">
+                    <div className="h-1.5 w-1.5 rounded-full bg-[#C8A66A]/40 animate-pulse" />
+                    <span className="text-[11px] font-heading font-black tracking-widest uppercase text-[#C8A66A]/60">Conteúdo em estado velado</span>
+                  </div>
+                )}
               </div>
               {isCurrent && idx < 2 && (
                 <div className="px-5 pb-4">
@@ -203,18 +212,18 @@ export function LessonContent({
                             <span className="text-sm">☀</span>
                             <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#8B6A30]">Luz</span>
                           </div>
-                          <p className="text-[14px] leading-[1.65] text-[#5B1F3D]/90">{lightText}</p>
+                          <p className="text-[14px] leading-[1.7] text-[#5B1F3D] font-medium">{lightText}</p>
                         </div>
                         <div className="rounded-xl p-4" style={{ background: "rgba(91, 31, 61, 0.04)", border: "1px solid rgba(91, 31, 61, 0.15)" }}>
                           <div className="flex items-center gap-2 mb-2">
                             <span className="text-sm">☾</span>
-                            <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]/70">Sombra</span>
+                            <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">Sombra</span>
                           </div>
-                          <p className="text-[14px] leading-[1.65] text-[#5B1F3D]/90">{shadowText}</p>
+                          <p className="text-[14px] leading-[1.7] text-[#5B1F3D] font-medium">{shadowText}</p>
                         </div>
                       </div>
                     ) : (
-                      <p className="text-[14px] leading-[1.65] text-[#5B1F3D]/90">{section.content}</p>
+                      <p className="text-[14px] leading-[1.7] text-[#5B1F3D] font-medium">{section.content}</p>
                     )}
                   </div>
                 )}
@@ -332,7 +341,7 @@ export function LessonContent({
                 {isOpen && (
                   <div className="px-5 pb-5" style={{ animation: "fade-up 0.3s ease-out" }}>
                     <div className="h-px mb-4" style={{ background: "linear-gradient(90deg, transparent, rgba(200, 166, 106, 0.2), transparent)" }} />
-                    <p className="text-[14px] leading-[1.7] text-[#5B1F3D]/80">{section.content}</p>
+                    <p className="text-[14px] leading-[1.7] text-[#5B1F3D] font-medium">{section.content}</p>
                   </div>
                 )}
               </div>
