@@ -64,92 +64,135 @@ const StudyRoutinePage = () => {
   const activeDaysThisWeek = weekDays.filter(d => d.active).length;
 
   return (
-    <div className="min-h-screen bg-[#FAF5EF] text-foreground pb-bottom-nav">
-      {/* Header */}
-      <div className="relative overflow-hidden bg-[#FAF5EF] border-b border-[#C8A66A]/10">
-        <div className="absolute inset-0" style={{
-          background: "radial-gradient(ellipse at 50% 0%, #C8A66A1A 0%, transparent 70%)",
-        }} />
-        
-        <div className="relative max-w-lg mx-auto px-6 pt-10 pb-8">
-          <button
-            onClick={() => navigate("/app")}
-            className="flex items-center gap-2 hover:opacity-70 transition-all mb-8 group text-[#5B1F3D]"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase">Voltar</span>
-          </button>
+    <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
+      {/* Background — Marfim Suave #FAF5EF base refined from /app */}
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+            opacity: 0.98,
+          }}
+        />
+        {/* Subtle atmosphere layers */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.8) 0%, transparent 30%, transparent 70%, rgba(239, 226, 210, 0.5) 100%)",
+          }}
+        />
+      </div>
 
-          <div className="text-center">
-            <div className="text-[10px] tracking-[0.4em] uppercase font-heading font-black mb-3" style={{ color: "#C8A66A" }}>
+      {/* Header — Premium Style from /app */}
+      <header className="relative z-10" style={{
+        borderBottom: "1.5px solid #C8A66A40",
+        background: "rgba(250, 245, 239, 0.95)",
+        backdropFilter: "blur(20px)",
+        boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)"
+      }}>
+        <div className="max-w-lg mx-auto py-6 px-6">
+          <div className="flex items-center gap-4 mb-6">
+            <button
+              onClick={() => navigate("/app")}
+              className="transition-all hover:scale-110 duration-200 w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30]"
+              style={{ color: "#5B1F3D" }}
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+            <span className="text-[11px] tracking-[0.45em] uppercase font-heading font-black" style={{ color: "#5B1F3D" }}>
+              <span style={{ color: "#C8A66A" }}>✦</span> Seu Ritual Sagrado <span style={{ color: "#C8A66A" }}>✦</span>
+            </span>
+          </div>
+
+          <div className="text-center pt-2 pb-2">
+            <div className="text-[11px] tracking-[0.4em] uppercase font-heading font-black mb-4" style={{ color: "#C8A66A" }}>
               {new Date().toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" })}
             </div>
-            <h1 className="font-heading text-4xl font-black tracking-tight mb-2" style={{ color: "#5B1F3D" }}>
+            <h1 className="font-heading text-5xl font-black tracking-tight mb-4" style={{ color: "#5B1F3D" }}>
               Seu Ritual
             </h1>
             <div className="flex flex-col gap-1 items-center">
-              <p className="font-body text-[13px] font-bold uppercase tracking-widest opacity-60" style={{ color: "#5B1F3D" }}>
+              <p className="font-body text-[14px] font-bold uppercase tracking-[0.2em]" style={{ color: "#5B1F3D99" }}>
                 O caminho de hoje na jornada
               </p>
-              <div className="h-0.5 w-12 bg-[#C8A66A]/30 my-2 rounded-full" />
+              <div className="h-0.5 w-16 bg-gradient-to-r from-transparent via-[#C8A66A] to-transparent my-4 opacity-40" />
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
-      <div className="max-w-lg mx-auto px-6 pb-32 space-y-8 mt-10">
+      <div className="relative z-10 max-w-lg mx-auto px-6 pb-32 space-y-10 mt-12">
 
         {/* ═══════════════ WEEKLY OVERVIEW ═══════════════ */}
-        <div className="bg-white border-2 border-[#C8A66A]/20 rounded-3xl p-6 shadow-md animate-fade-in">
-          <div className="flex items-center justify-between mb-5">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#5B1F3D] flex items-center justify-center border border-[#C8A66A]/30">
-                <TrendingUp className="w-5 h-5 text-[#C8A66A]" />
+        <div className="relative rounded-[2.5rem] overflow-hidden p-8 transition-all duration-500" style={{
+          background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
+          backdropFilter: "blur(24px)",
+          border: "2.5px solid #C8A66A",
+          boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08), 0 0 40px rgba(200, 166, 106, 0.1)"
+        }}>
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A30]" style={{
+                background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+                boxShadow: "0 10px 20px rgba(91, 31, 61, 0.2)"
+              }}>
+                <TrendingUp className="w-6 h-6 text-[#C8A66A]" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#5B1F3D] uppercase">
+                <span className="text-[11px] font-heading font-black tracking-[0.25em] text-[#C8A66A] uppercase">
                   Consistência
                 </span>
-                <span className="text-sm font-heading font-black text-[#5B1F3D]">
+                <span className="text-lg font-heading font-black text-[#5B1F3D]">
                   Sua Semana
                 </span>
               </div>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF5EF] border border-[#C8A66A]/20">
-              <Flame className="w-3.5 h-3.5 text-[#5B1F3D]" />
-              <span className="text-[11px] font-heading font-black text-[#5B1F3D]">
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full border-2 border-[#C8A66A20]" style={{
+              background: "rgba(250, 245, 239, 0.8)",
+            }}>
+              <Flame className="w-4 h-4 text-[#5B1F3D]" />
+              <span className="text-[12px] font-heading font-black text-[#5B1F3D]">
                 {progress.streak} dias
               </span>
             </div>
           </div>
 
-          <div className="grid grid-cols-7 gap-2 mb-4">
+          <div className="grid grid-cols-7 gap-3 mb-6">
             {weekDays.map((d, i) => (
               <div key={i} className="text-center">
-                <div className={`text-[9px] font-heading font-black uppercase tracking-tighter mb-2 ${
-                  d.isToday ? "text-[#5B1F3D]" : "text-[#5B1F3D]/30"
+                <div className={`text-[10px] font-heading font-black uppercase tracking-tighter mb-3 ${
+                  d.isToday ? "text-[#5B1F3D]" : "text-[#5B1F3D]/40"
                 }`}>
                   {d.day}
                 </div>
-                <div className={`w-9 h-9 rounded-xl flex items-center justify-center mx-auto transition-all border-2 ${
+                <div className={`w-10 h-10 rounded-2xl flex items-center justify-center mx-auto transition-all duration-300 border-2 ${
                   d.active 
-                    ? "bg-[#5B1F3D] border-[#C8A66A]/40 text-white shadow-sm" 
+                    ? "text-white shadow-lg scale-110" 
                     : d.isToday 
-                      ? "bg-white border-[#C8A66A] text-[#5B1F3D]" 
-                      : "bg-[#FAF5EF] border-[#D1C4B5]/20 text-[#5B1F3D]/20"
-                }`}>
+                      ? "bg-white border-[#C8A66A] text-[#5B1F3D] shadow-md" 
+                      : "bg-[#FAF5EF]/50 border-[#D1C4B5]/20 text-[#5B1F3D]/20"
+                }`} style={{
+                  background: d.active ? "linear-gradient(135deg, #5B1F3D, #3D1429)" : undefined,
+                  borderColor: d.active ? "#C8A66A" : undefined,
+                }}>
                   {d.active ? (
-                    <Check className="w-4 h-4" />
+                    <Check className="w-5 h-5" />
                   ) : (
-                    <span className="text-[11px] font-heading font-black">{d.date}</span>
+                    <span className="text-[13px] font-heading font-black">{d.date}</span>
                   )}
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="pt-3 border-t border-[#C8A66A]/10 text-center">
-            <p className="text-[11px] font-body font-bold text-[#5B1F3D]/60 italic">
+          <div className="pt-4 border-t border-[#C8A66A20] text-center">
+            <p className="text-[12px] font-body font-bold text-[#5B1F3D]/60 italic">
               {activeDaysThisWeek} de 7 portais ativos esta semana
             </p>
           </div>
