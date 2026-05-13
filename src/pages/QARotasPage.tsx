@@ -210,7 +210,17 @@ const QARotasPage = () => {
             </button>
             <div>
               <h1 className="font-heading text-2xl font-black tracking-tight leading-tight">Auditoria Tarô 78 Chaves</h1>
-              <p className="text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A]">Validação tela por tela</p>
+              <div className="flex items-center gap-2">
+                <p className="text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A]">Validação tela por tela</p>
+                {Object.values(auditData).length > 0 && (
+                  <>
+                    <span className="text-[#C8A66A]/40 text-[10px]">•</span>
+                    <p className="text-[10px] font-heading font-black text-[#5B1F3D]/40 uppercase tracking-widest">
+                      Última ação: {new Date(Math.max(...Object.values(auditData).map(a => new Date(a.updatedAt).getTime()))).toLocaleDateString('pt-BR')}
+                    </p>
+                  </>
+                )}
+              </div>
             </div>
           </div>
 
