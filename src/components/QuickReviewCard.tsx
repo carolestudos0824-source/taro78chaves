@@ -16,13 +16,13 @@ export function QuickReviewCard({ review, isStudied }: QuickReviewCardProps) {
       style={{
         background: isStudied
           ? "linear-gradient(135deg, #FFFFFF 0%, #FDFBF7 100%)"
-          : "rgba(243, 230, 224, 0.45)",
+          : "rgba(243, 230, 224, 0.75)",
         border: isStudied
           ? "2.5px solid #C8A66A"
-          : "1.5px solid #DCCFC260",
+          : "1.5px solid #DCCFC2",
         backdropFilter: "blur(12px)",
         boxShadow: isStudied ? "0 15px 40px rgba(91, 31, 61, 0.05)" : "none",
-        opacity: isStudied ? 1 : 0.85,
+        opacity: isStudied ? 1 : 0.95,
         transform: expanded ? "scale(1.02)" : "scale(1)",
       }}
     >
