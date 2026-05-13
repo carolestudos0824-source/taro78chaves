@@ -225,32 +225,32 @@ export function LessonContent({
       {/* ── Reflection Questions ── */}
       {step >= 2 && reflectionQuestions && reflectionQuestions.length > 0 && (
         <div
-          className="rounded-2xl p-6 space-y-4"
+          className="rounded-xl p-5 space-y-3"
           style={{
-            background: "rgba(91, 31, 61, 0.04)",
-            border: "1px solid rgba(91, 31, 61, 0.15)",
+            background: "hsl(270 30% 35% / 0.04)",
+            border: "1px solid hsl(270 30% 35% / 0.12)",
             animation: "fade-up 0.4s ease-out 0.1s both",
           }}
         >
-          <div className="flex items-center gap-3">
-            <Feather className="w-4 h-4 text-[#5B1F3D]" />
-            <span className="text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">
+          <div className="flex items-center gap-2">
+            <Feather className="w-3.5 h-3.5" style={{ color: "hsl(270 30% 35%)" }} />
+            <span className="text-[10px] font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(270 30% 35%)" }}>
               Perguntas para Reflexão
             </span>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-2.5">
             {reflectionQuestions.map((q, i) => (
               <div
                 key={q.id}
-                className="rounded-xl px-5 py-4 animate-fade-in"
+                className="rounded-lg px-4 py-3 animate-fade-in"
                 style={{
-                  background: "rgba(255, 255, 255, 0.4)",
-                  border: "1px solid rgba(91, 31, 61, 0.1)",
+                  background: "hsl(270 30% 35% / 0.03)",
+                  border: "1px solid hsl(270 30% 35% / 0.08)",
                   animationDelay: `${i * 80}ms`,
                   animationFillMode: "both",
                 }}
               >
-                <p className="text-[14px] leading-relaxed italic text-[#5B1F3D]/80">
+                <p className="text-xs leading-relaxed italic" style={{ color: "hsl(230 20% 20% / 0.75)" }}>
                   "{q.question}"
                 </p>
               </div>
