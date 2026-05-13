@@ -55,7 +55,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
     onClose();
   }, [location.pathname]);
 
-  if (!isOpen) return null;
+  // Removido if (!isOpen) return null para permitir animações CSS
 
   const NavItem = ({ to, icon: Icon, label, badge }: { to: string; icon: any; label: string; badge?: string }) => {
     const isActive = location.pathname === to;
