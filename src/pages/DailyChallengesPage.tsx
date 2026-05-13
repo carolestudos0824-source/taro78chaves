@@ -307,27 +307,33 @@ interface ModalProps {
 
 const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) => {
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center" style={{
-      background: "hsl(230 25% 10% / 0.50)",
-      backdropFilter: "blur(8px)",
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4" style={{
+      background: "rgba(91, 31, 61, 0.4)",
+      backdropFilter: "blur(12px)",
     }}>
-      <div className="w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-t-2xl sm:rounded-2xl" style={{
-        background: "hsl(36 33% 97%)",
-        boxShadow: "0 -8px 40px hsl(230 25% 10% / 0.15)",
+      <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-t-[2.5rem] sm:rounded-[2.5rem] border-t sm:border-2 border-[#C8A66A]/30 shadow-2xl animate-in fade-in slide-in-from-bottom-8 duration-500" style={{
+        background: "#FAF5EF",
       }}>
         {/* Modal header */}
-        <div className="sticky top-0 flex items-center justify-between p-4 border-b" style={{
-          borderColor: "hsl(36 25% 82% / 0.50)",
-          background: "hsl(36 33% 97%)",
+        <div className="sticky top-0 flex items-center justify-between px-8 py-6 border-b border-[#C8A66A]/10 z-10" style={{
+          background: "#FAF5EF",
         }}>
-          <div className="flex items-center gap-2">
-            <span className="text-lg">{challenge.icon}</span>
-            <h2 className="font-heading text-base tracking-wide" style={{ color: "hsl(340 42% 22%)" }}>
-              {challenge.title}
-            </h2>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-[#5B1F3D] flex items-center justify-center border border-[#C8A66A]/20">
+               <Sparkles className="w-5 h-5 text-[#C8A66A]" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#C8A66A] uppercase">Desafio</span>
+              <h2 className="font-heading text-lg font-black text-[#5B1F3D] leading-tight">
+                {challenge.title}
+              </h2>
+            </div>
           </div>
-          <button onClick={onClose} className="p-1">
-            <X className="w-5 h-5" style={{ color: "hsl(230 15% 30% / 0.40)" }} />
+          <button 
+            onClick={onClose} 
+            className="w-10 h-10 rounded-full bg-white border border-[#C8A66A]/20 flex items-center justify-center hover:bg-[#FAF5EF] transition-colors"
+          >
+            <X className="w-5 h-5 text-[#5B1F3D]" />
           </button>
         </div>
 
