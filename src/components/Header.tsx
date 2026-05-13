@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { KeyRound, Menu } from "lucide-react";
 import { StreakCounter } from "@/components/StreakCounter";
 import { XPBar } from "@/components/XPBar";
@@ -14,6 +14,7 @@ interface HeaderProps {
 
 export const Header = ({ streak, xp, level }: HeaderProps) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isCompact, setIsCompact] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isCompactRef = useRef(false);
@@ -46,6 +47,8 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  if (location.pathname === "/" || location.pathname.startsWith("/admin")) return null;
 
   return (
     <header 
