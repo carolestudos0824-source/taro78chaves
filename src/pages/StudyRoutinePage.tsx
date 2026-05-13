@@ -64,131 +64,128 @@ const StudyRoutinePage = () => {
   const activeDaysThisWeek = weekDays.filter(d => d.active).length;
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-[#FAF5EF] text-foreground pb-bottom-nav">
       {/* Header */}
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden bg-[#FAF5EF] border-b border-[#C8A66A]/10">
         <div className="absolute inset-0" style={{
-          background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
+          background: "radial-gradient(ellipse at 50% 0%, #C8A66A1A 0%, transparent 70%)",
         }} />
-        <div className="absolute inset-0" style={{
-          background: "radial-gradient(ellipse at 20% 100%, hsl(340 42% 30% / 0.06) 0%, transparent 50%)",
-        }} />
-
-        <div className="relative max-w-2xl mx-auto px-6 pt-8 pb-6">
+        
+        <div className="relative max-w-lg mx-auto px-6 pt-10 pb-8">
           <button
             onClick={() => navigate("/app")}
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6"
+            className="flex items-center gap-2 hover:opacity-70 transition-all mb-8 group text-[#5B1F3D]"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm font-body">Voltar</span>
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase">Voltar</span>
           </button>
 
           <div className="text-center">
-            <div className="text-[10px] tracking-[0.4em] uppercase font-body mb-2" style={{ color: "hsl(36 45% 58% / 0.60)" }}>
+            <div className="text-[10px] tracking-[0.4em] uppercase font-heading font-black mb-3" style={{ color: "#C8A66A" }}>
               {new Date().toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" })}
             </div>
-            <h1 className="font-heading text-2xl tracking-wide" style={{
-              background: "linear-gradient(135deg, hsl(340 42% 20%), hsl(36 35% 28%), hsl(36 42% 42%))",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}>
-              Sua Rotina de Estudo
+            <h1 className="font-heading text-4xl font-black tracking-tight mb-2" style={{ color: "#5B1F3D" }}>
+              Seu Ritual
             </h1>
-            <p className="font-accent text-sm italic mt-1" style={{ color: "hsl(230 20% 15% / 0.50)" }}>
-              O caminho de hoje na jornada iniciática
-            </p>
+            <div className="flex flex-col gap-1 items-center">
+              <p className="font-body text-[13px] font-bold uppercase tracking-widest opacity-60" style={{ color: "#5B1F3D" }}>
+                O caminho de hoje na jornada
+              </p>
+              <div className="h-0.5 w-12 bg-[#C8A66A]/30 my-2 rounded-full" />
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-6 pb-16 space-y-5">
+      <div className="max-w-lg mx-auto px-6 pb-32 space-y-8 mt-10">
 
         {/* ═══════════════ WEEKLY OVERVIEW ═══════════════ */}
-        <div className="rounded-xl p-5" style={{
-          background: "hsl(38 28% 93% / 0.75)",
-          border: "1px solid hsl(36 45% 50% / 0.18)",
-        }}>
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <TrendingUp className="w-4 h-4" style={{ color: "hsl(340 42% 28%)" }} />
-              <span className="font-heading text-sm tracking-wide" style={{ color: "hsl(340 42% 22%)" }}>
-                Semana
-              </span>
+        <div className="bg-white border-2 border-[#C8A66A]/20 rounded-3xl p-6 shadow-md animate-fade-in">
+          <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[#5B1F3D] flex items-center justify-center border border-[#C8A66A]/30">
+                <TrendingUp className="w-5 h-5 text-[#C8A66A]" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#5B1F3D] uppercase">
+                  Consistência
+                </span>
+                <span className="text-sm font-heading font-black text-[#5B1F3D]">
+                  Sua Semana
+                </span>
+              </div>
             </div>
-            <div className="flex items-center gap-1.5">
-              <Flame className="w-3.5 h-3.5" style={{ color: "hsl(340 42% 28%)" }} />
-              <span className="font-heading text-xs" style={{ color: "hsl(340 42% 28%)" }}>
-                {progress.streak} {progress.streak === 1 ? "dia" : "dias"}
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF5EF] border border-[#C8A66A]/20">
+              <Flame className="w-3.5 h-3.5 text-[#5B1F3D]" />
+              <span className="text-[11px] font-heading font-black text-[#5B1F3D]">
+                {progress.streak} dias
               </span>
             </div>
           </div>
 
-          <div className="grid grid-cols-7 gap-1.5">
+          <div className="grid grid-cols-7 gap-2 mb-4">
             {weekDays.map((d, i) => (
               <div key={i} className="text-center">
-                <div className="text-[9px] font-body mb-1" style={{
-                  color: d.isToday ? "hsl(340 42% 28%)" : "hsl(230 15% 30% / 0.35)",
-                }}>
+                <div className={`text-[9px] font-heading font-black uppercase tracking-tighter mb-2 ${
+                  d.isToday ? "text-[#5B1F3D]" : "text-[#5B1F3D]/30"
+                }`}>
                   {d.day}
                 </div>
-                <div className="w-9 h-9 rounded-full flex items-center justify-center mx-auto transition-all" style={d.active ? {
-                  background: "linear-gradient(135deg, hsl(340 42% 26%), hsl(36 42% 44%))",
-                  color: "hsl(36 33% 97%)",
-                  boxShadow: "0 2px 8px hsl(340 42% 28% / 0.20)",
-                } : d.isToday ? {
-                  background: "hsl(36 45% 58% / 0.12)",
-                  border: "1.5px solid hsl(36 45% 58% / 0.30)",
-                  color: "hsl(340 42% 22%)",
-                } : {
-                  background: "hsl(36 18% 90% / 0.50)",
-                  color: "hsl(230 15% 30% / 0.30)",
-                }}>
+                <div className={`w-9 h-9 rounded-xl flex items-center justify-center mx-auto transition-all border-2 ${
+                  d.active 
+                    ? "bg-[#5B1F3D] border-[#C8A66A]/40 text-white shadow-sm" 
+                    : d.isToday 
+                      ? "bg-white border-[#C8A66A] text-[#5B1F3D]" 
+                      : "bg-[#FAF5EF] border-[#D1C4B5]/20 text-[#5B1F3D]/20"
+                }`}>
                   {d.active ? (
-                    <Check className="w-3.5 h-3.5" />
+                    <Check className="w-4 h-4" />
                   ) : (
-                    <span className="font-heading text-xs">{d.date}</span>
+                    <span className="text-[11px] font-heading font-black">{d.date}</span>
                   )}
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-[10px] font-body text-center mt-3" style={{ color: "hsl(230 15% 30% / 0.40)" }}>
-            {activeDaysThisWeek} de 7 dias ativos esta semana
+          <div className="pt-3 border-t border-[#C8A66A]/10 text-center">
+            <p className="text-[11px] font-body font-bold text-[#5B1F3D]/60 italic">
+              {activeDaysThisWeek} de 7 portais ativos esta semana
+            </p>
           </div>
         </div>
 
         {/* ═══════════════ TODAY'S ACTIONS ═══════════════ */}
-        <div>
-          <div className="flex items-center justify-center mb-3">
-            <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <span className="h-px flex-1 bg-[#C8A66A]/20" />
+            <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
+              Ações de Hoje
+            </h2>
+            <span className="h-px flex-1 bg-[#C8A66A]/20" />
           </div>
-          <h2 className="font-heading text-sm tracking-wide text-center mb-4" style={{ color: "hsl(340 42% 22%)" }}>
-            O que fazer hoje
-          </h2>
 
-          <div className="space-y-2.5">
-
+          <div className="space-y-3">
             {/* 1. Daily Ritual */}
             <RoutineCard
-              icon={<Sun className="w-4 h-4" />}
-              iconColor="hsl(36 45% 50%)"
+              icon={<Sun className="w-5 h-5" />}
+              iconColor="#C8A66A"
               title="Ritual Diário"
-              subtitle={dailyDone ? "Completo ✦" : `${dailyCompleted}/${dailyTotal} desafios`}
+              subtitle={dailyDone ? "Portal Cumprido ✦" : `${dailyCompleted}/${dailyTotal} desafios disponíveis`}
               completed={dailyDone}
-              accent="hsl(36 45% 58%)"
+              accent="#C8A66A"
               onClick={() => navigate("/desafios")}
             />
 
             {/* 2. Current lesson */}
             {currentArcano && completedCount < 22 && (
               <RoutineCard
-                icon={<BookOpen className="w-4 h-4" />}
-                iconColor="hsl(340 42% 28%)"
+                icon={<BookOpen className="w-5 h-5" />}
+                iconColor="#5B1F3D"
                 title={`Continuar: ${currentArcano.name}`}
-                subtitle={currentArcano.subtitle}
+                subtitle="Sua próxima lição nos Arcanos Maiores"
                 completed={false}
-                accent="hsl(340 42% 30%)"
+                accent="#5B1F3D"
                 onClick={() => navigate(`/lesson/${currentArcanoId}`)}
               />
             )}
@@ -197,11 +194,11 @@ const StudyRoutinePage = () => {
             {currentModule && currentModule.id !== "arcanos-maiores" && (
               <RoutineCard
                 icon={<span className="text-sm">{currentModule.icon}</span>}
-                iconColor="hsl(340 42% 28%)"
+                iconColor="#5B1F3D"
                 title={`Módulo: ${currentModule.name}`}
                 subtitle={currentModule.subtitle}
                 completed={false}
-                accent="hsl(340 42% 30%)"
+                accent="#5B1F3D"
                 onClick={() => navigate(currentModule.route)}
               />
             )}
@@ -209,56 +206,42 @@ const StudyRoutinePage = () => {
             {/* 4. Pending review */}
             {pendingReviews.length > 0 && (
               <RoutineCard
-                icon={<RefreshCw className="w-4 h-4" />}
-                iconColor="hsl(280 35% 45%)"
-                title="Revisão Pendente"
-                subtitle={`${pendingReviews.length} arcano${pendingReviews.length > 1 ? "s" : ""} sem quiz concluído`}
+                icon={<RefreshCw className="w-5 h-5" />}
+                iconColor="#5B1F3D"
+                title="Revisão de Arcanos"
+                subtitle={`${pendingReviews.length} arcano${pendingReviews.length > 1 ? "s" : ""} aguardando quiz`}
                 completed={false}
-                accent="hsl(280 35% 45%)"
+                accent="#5B1F3D"
                 onClick={() => navigate("/revisao")}
               />
             )}
-
-            {/* 5. Next module preview */}
-            {currentModule && (() => {
-              const nextMod = MODULES.find(m => m.order === currentModule.order + 1);
-              if (!nextMod || progress.completedModules.includes(nextMod.id)) return null;
-              return (
-                <RoutineCard
-                  icon={<Target className="w-4 h-4" />}
-                  iconColor="hsl(230 15% 30% / 0.40)"
-                  title={`Próximo: ${nextMod.name}`}
-                  subtitle={nextMod.subtitle}
-                  completed={false}
-                  accent="hsl(230 15% 30%)"
-                  locked
-                />
-              );
-            })()}
           </div>
         </div>
 
         {/* ═══════════════ JOURNEY PROGRESS ═══════════════ */}
-        <div>
-          <div className="flex items-center justify-center mb-3">
-            <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <span className="h-px flex-1 bg-[#C8A66A]/20" />
+            <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
+              Sua Maestria
+            </h2>
+            <span className="h-px flex-1 bg-[#C8A66A]/20" />
           </div>
-          <h2 className="font-heading text-sm tracking-wide text-center mb-4" style={{ color: "hsl(340 42% 22%)" }}>
-            Visão Geral
-          </h2>
 
-          <div className="grid grid-cols-2 gap-3">
-            <StatCard label="Arcanos" value={`${completedCount}/22`} sub={`${journeyProgress}%`} />
-            <StatCard label="Módulos" value={`${progress.completedModules.length}/${MODULES.length}`} sub={`${Math.round((progress.completedModules.length / MODULES.length) * 100)}%`} />
-            <StatCard label="Sequência" value={`${progress.streak}`} sub="dias" />
-            <StatCard label="XP Total" value={`${progress.xp}`} sub={`Nível ${progress.level}`} />
+          <div className="grid grid-cols-2 gap-4">
+            <StatCard label="Arcanos" value={`${completedCount}/22`} sub={`${journeyProgress}% concluído`} />
+            <StatCard label="Módulos" value={`${progress.completedModules.length}`} sub="Especialidades" />
+            <StatCard label="Sequência" value={`${progress.streak}`} sub="Dias seguidos" />
+            <StatCard label="Nível" value={`${progress.level}`} sub={`${progress.xp} XP acumulados`} />
           </div>
         </div>
 
         {/* Motivational */}
-        <div className="text-center pt-4">
-          <div className="text-lg mb-2" style={{ color: "hsl(36 45% 58% / 0.40)" }}>⟡</div>
-          <p className="font-accent text-sm italic" style={{ color: "hsl(230 20% 15% / 0.35)" }}>
+        <div className="text-center py-10">
+          <div className="w-10 h-10 rounded-full bg-white border border-[#C8A66A]/20 flex items-center justify-center mx-auto mb-4">
+             <span className="text-[#C8A66A]">✦</span>
+          </div>
+          <p className="font-body text-[13px] font-bold italic text-[#5B1F3D]/40 max-w-[200px] mx-auto leading-relaxed">
             "A constância transforma a estudante em mestra."
           </p>
         </div>
@@ -286,62 +269,50 @@ const RoutineCard = ({ icon, iconColor, title, subtitle, completed, accent, lock
     disabled={locked}
     className="w-full text-left group transition-all duration-300"
   >
-    <div className="rounded-xl p-4 flex items-center gap-3.5 transition-all duration-300" style={completed ? {
-      background: "hsl(38 28% 94% / 0.70)",
-      border: "1px solid hsl(36 42% 52% / 0.20)",
-    } : locked ? {
-      background: "hsl(36 18% 90% / 0.40)",
-      border: "1px solid hsl(36 22% 80% / 0.25)",
-      opacity: 0.5,
-    } : {
-      background: "linear-gradient(145deg, hsl(38 28% 93% / 0.94), hsl(36 33% 95% / 0.90))",
-      border: `1.5px solid ${accent}30`,
-      boxShadow: `0 2px 12px ${accent}08`,
-    }}>
-      <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={completed ? {
-        background: `${accent}10`,
-        border: `1.5px solid ${accent}25`,
-      } : {
-        background: `${accent}08`,
-        border: `1.5px solid ${accent}20`,
-      }}>
-        <div style={{ color: completed ? `${accent}80` : iconColor }}>
-          {completed ? <Check className="w-4 h-4" style={{ color: "hsl(36 42% 40%)" }} /> : icon}
+    <div className={`rounded-2xl p-5 flex items-center gap-4 transition-all duration-300 border-2 ${
+      completed 
+        ? "bg-white/40 border-[#DCCFC2] opacity-60" 
+        : locked 
+          ? "bg-[#FAF5EF] border-[#D1C4B5]/20 opacity-40 grayscale" 
+          : "bg-white border-[#C8A66A]/20 hover:border-[#C8A66A]/40 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+    }`}>
+      <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-colors ${
+        completed 
+          ? "bg-[#DCCFC233] border-[#DCCFC2]" 
+          : "bg-[#FAF5EF] border-[#C8A66A]/20 group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D]"
+      }`}>
+        <div className="transition-colors group-hover:text-white" style={{ color: completed ? "#C8A66A" : iconColor }}>
+          {completed ? <Check className="w-5 h-5" /> : icon}
         </div>
       </div>
       <div className="flex-1 min-w-0">
-        <h3 className="font-heading text-sm tracking-wide truncate" style={{
-          color: completed ? "hsl(230 20% 12% / 0.50)" : locked ? "hsl(230 10% 45% / 0.30)" : "hsl(340 42% 22%)",
-          textDecoration: completed ? "line-through" : "none",
-          textDecorationColor: "hsl(36 45% 58% / 0.30)",
-        }}>
+        <h3 className={`font-heading text-[15px] font-black tracking-tight ${
+          completed ? "text-[#5B1F3D]/40 line-through" : "text-[#5B1F3D]"
+        }`}>
           {title}
         </h3>
-        <p className="font-accent text-[11px] italic truncate" style={{
-          color: completed ? "hsl(230 15% 30% / 0.30)" : locked ? "hsl(230 10% 45% / 0.18)" : "hsl(230 20% 15% / 0.50)",
-        }}>
+        <p className={`font-body text-[12px] font-bold mt-0.5 leading-snug ${
+          completed ? "text-[#5B1F3D]/30" : "text-[#5B1F3D]/60"
+        }`}>
           {subtitle}
         </p>
       </div>
       {!locked && !completed && (
-        <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" style={{ color: `${accent}50` }} />
+        <ChevronRight className="w-4 h-4 text-[#C8A66A] group-hover:translate-x-1 transition-transform" />
       )}
     </div>
   </button>
 );
 
 const StatCard = ({ label, value, sub }: { label: string; value: string; sub: string }) => (
-  <div className="rounded-xl p-4 text-center" style={{
-    background: "hsl(38 28% 93% / 0.75)",
-    border: "1px solid hsl(36 45% 50% / 0.18)",
-  }}>
-    <div className="font-heading text-xl tracking-wide" style={{ color: "hsl(340 42% 22%)" }}>
+  <div className="bg-white border-2 border-[#C8A66A]/20 rounded-2xl p-5 text-center shadow-sm">
+    <div className="font-heading text-xl font-black text-[#5B1F3D]">
       {value}
     </div>
-    <div className="text-[9px] tracking-[0.2em] uppercase font-body mt-0.5" style={{ color: "hsl(230 15% 30% / 0.45)" }}>
+    <div className="text-[9px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A] mt-1">
       {label}
     </div>
-    <div className="text-[10px] font-body mt-0.5" style={{ color: "hsl(36 42% 40% / 0.60)" }}>
+    <div className="text-[10px] font-body font-black italic text-[#5B1F3D]/40 mt-1">
       {sub}
     </div>
   </div>
