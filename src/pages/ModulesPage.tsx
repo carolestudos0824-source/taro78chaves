@@ -197,14 +197,14 @@ const ModulesPage = () => {
               <span className="h-px flex-1 bg-[#C8A66A]/20" />
             </div>
             
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-4">
               {[
-                { id: "foundation", label: "Base", icon: Compass, color: "bg-[#F3E6E0]" },
-                { id: "major-arcana", label: "Maiores", icon: Stars, color: "bg-[#FAF5EF]" },
-                { id: "minor-arcana", label: "Menores", icon: Layers, color: "bg-[#E8DED3]" },
-                { id: "advanced", label: "Métodos", icon: Layout, color: "bg-[#DCCFC2]" },
-                { id: "practice", label: "Prática", icon: Sparkles, color: "bg-[#FAF5EF]" },
-                { id: "professional", label: "Ofício", icon: Briefcase, color: "bg-[#F3E6E0]" },
+                { id: "foundation", label: "Base", icon: Compass, color: "linear-gradient(135deg, #F3E6E0, #FAF5EF)" },
+                { id: "major-arcana", label: "Maiores", icon: Stars, color: "linear-gradient(135deg, #FAF5EF, #F5EBDE)" },
+                { id: "minor-arcana", label: "Menores", icon: Layers, color: "linear-gradient(135deg, #E8DED3, #FAF5EF)" },
+                { id: "advanced", label: "Métodos", icon: Layout, color: "linear-gradient(135deg, #DCCFC2, #FAF5EF)" },
+                { id: "practice", label: "Prática", icon: Sparkles, color: "linear-gradient(135deg, #FAF5EF, #F3E6E0)" },
+                { id: "professional", label: "Ofício", icon: Briefcase, color: "linear-gradient(135deg, #F3E6E0, #E8DED3)" },
               ].map((trail) => (
                 <button
                   key={trail.id}
@@ -212,12 +212,12 @@ const ModulesPage = () => {
                     const el = document.getElementById(`cat-${trail.id}`);
                     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
-                  className="flex flex-col items-center gap-2 p-3 rounded-2xl border border-[#C8A66A]/20 bg-white/60 hover:bg-white transition-all shadow-sm group"
+                  className="flex flex-col items-center gap-3 p-5 rounded-[2rem] border-2 border-[#C8A66A]/20 bg-white/60 hover:bg-white transition-all shadow-lg hover:shadow-2xl hover:-translate-y-1 group"
                 >
-                  <div className={`w-10 h-10 rounded-xl ${trail.color} flex items-center justify-center border border-[#C8A66A]/10 group-hover:scale-110 transition-transform`}>
-                    <trail.icon className="w-5 h-5 text-[#5B1F3D]" />
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A]/10 group-hover:scale-110 transition-all duration-500 group-hover:bg-[#5B1F3D] group-hover:shadow-[0_8px_20px_rgba(91,31,61,0.3)] shadow-inner`} style={{ background: trail.color }}>
+                    <trail.icon className="w-7 h-7 text-[#5B1F3D] group-hover:text-white transition-colors duration-500" />
                   </div>
-                  <span className="text-[9px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">
+                  <span className="text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D] group-hover:text-[#C8A66A] transition-colors">
                     {trail.label}
                   </span>
                 </button>
