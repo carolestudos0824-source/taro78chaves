@@ -156,36 +156,36 @@ const StudyRoutinePage = () => {
         </div>
 
         {/* ═══════════════ TODAY'S ACTIONS ═══════════════ */}
-        <div>
-          <div className="flex items-center justify-center mb-3">
-            <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <span className="h-px flex-1 bg-[#C8A66A]/20" />
+            <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
+              Ações de Hoje
+            </h2>
+            <span className="h-px flex-1 bg-[#C8A66A]/20" />
           </div>
-          <h2 className="font-heading text-sm tracking-wide text-center mb-4" style={{ color: "hsl(340 42% 22%)" }}>
-            O que fazer hoje
-          </h2>
 
-          <div className="space-y-2.5">
-
+          <div className="space-y-3">
             {/* 1. Daily Ritual */}
             <RoutineCard
-              icon={<Sun className="w-4 h-4" />}
-              iconColor="hsl(36 45% 50%)"
+              icon={<Sun className="w-5 h-5" />}
+              iconColor="#C8A66A"
               title="Ritual Diário"
-              subtitle={dailyDone ? "Completo ✦" : `${dailyCompleted}/${dailyTotal} desafios`}
+              subtitle={dailyDone ? "Portal Cumprido ✦" : `${dailyCompleted}/${dailyTotal} desafios disponíveis`}
               completed={dailyDone}
-              accent="hsl(36 45% 58%)"
+              accent="#C8A66A"
               onClick={() => navigate("/desafios")}
             />
 
             {/* 2. Current lesson */}
             {currentArcano && completedCount < 22 && (
               <RoutineCard
-                icon={<BookOpen className="w-4 h-4" />}
-                iconColor="hsl(340 42% 28%)"
+                icon={<BookOpen className="w-5 h-5" />}
+                iconColor="#5B1F3D"
                 title={`Continuar: ${currentArcano.name}`}
-                subtitle={currentArcano.subtitle}
+                subtitle="Sua próxima lição nos Arcanos Maiores"
                 completed={false}
-                accent="hsl(340 42% 30%)"
+                accent="#5B1F3D"
                 onClick={() => navigate(`/lesson/${currentArcanoId}`)}
               />
             )}
@@ -194,11 +194,11 @@ const StudyRoutinePage = () => {
             {currentModule && currentModule.id !== "arcanos-maiores" && (
               <RoutineCard
                 icon={<span className="text-sm">{currentModule.icon}</span>}
-                iconColor="hsl(340 42% 28%)"
+                iconColor="#5B1F3D"
                 title={`Módulo: ${currentModule.name}`}
                 subtitle={currentModule.subtitle}
                 completed={false}
-                accent="hsl(340 42% 30%)"
+                accent="#5B1F3D"
                 onClick={() => navigate(currentModule.route)}
               />
             )}
@@ -206,56 +206,42 @@ const StudyRoutinePage = () => {
             {/* 4. Pending review */}
             {pendingReviews.length > 0 && (
               <RoutineCard
-                icon={<RefreshCw className="w-4 h-4" />}
-                iconColor="hsl(280 35% 45%)"
-                title="Revisão Pendente"
-                subtitle={`${pendingReviews.length} arcano${pendingReviews.length > 1 ? "s" : ""} sem quiz concluído`}
+                icon={<RefreshCw className="w-5 h-5" />}
+                iconColor="#5B1F3D"
+                title="Revisão de Arcanos"
+                subtitle={`${pendingReviews.length} arcano${pendingReviews.length > 1 ? "s" : ""} aguardando quiz`}
                 completed={false}
-                accent="hsl(280 35% 45%)"
+                accent="#5B1F3D"
                 onClick={() => navigate("/revisao")}
               />
             )}
-
-            {/* 5. Next module preview */}
-            {currentModule && (() => {
-              const nextMod = MODULES.find(m => m.order === currentModule.order + 1);
-              if (!nextMod || progress.completedModules.includes(nextMod.id)) return null;
-              return (
-                <RoutineCard
-                  icon={<Target className="w-4 h-4" />}
-                  iconColor="hsl(230 15% 30% / 0.40)"
-                  title={`Próximo: ${nextMod.name}`}
-                  subtitle={nextMod.subtitle}
-                  completed={false}
-                  accent="hsl(230 15% 30%)"
-                  locked
-                />
-              );
-            })()}
           </div>
         </div>
 
         {/* ═══════════════ JOURNEY PROGRESS ═══════════════ */}
-        <div>
-          <div className="flex items-center justify-center mb-3">
-            <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <span className="h-px flex-1 bg-[#C8A66A]/20" />
+            <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
+              Sua Maestria
+            </h2>
+            <span className="h-px flex-1 bg-[#C8A66A]/20" />
           </div>
-          <h2 className="font-heading text-sm tracking-wide text-center mb-4" style={{ color: "hsl(340 42% 22%)" }}>
-            Visão Geral
-          </h2>
 
-          <div className="grid grid-cols-2 gap-3">
-            <StatCard label="Arcanos" value={`${completedCount}/22`} sub={`${journeyProgress}%`} />
-            <StatCard label="Módulos" value={`${progress.completedModules.length}/${MODULES.length}`} sub={`${Math.round((progress.completedModules.length / MODULES.length) * 100)}%`} />
-            <StatCard label="Sequência" value={`${progress.streak}`} sub="dias" />
-            <StatCard label="XP Total" value={`${progress.xp}`} sub={`Nível ${progress.level}`} />
+          <div className="grid grid-cols-2 gap-4">
+            <StatCard label="Arcanos" value={`${completedCount}/22`} sub={`${journeyProgress}% concluído`} />
+            <StatCard label="Módulos" value={`${progress.completedModules.length}`} sub="Especialidades" />
+            <StatCard label="Sequência" value={`${progress.streak}`} sub="Dias seguidos" />
+            <StatCard label="Nível" value={`${progress.level}`} sub={`${progress.xp} XP acumulados`} />
           </div>
         </div>
 
         {/* Motivational */}
-        <div className="text-center pt-4">
-          <div className="text-lg mb-2" style={{ color: "hsl(36 45% 58% / 0.40)" }}>⟡</div>
-          <p className="font-accent text-sm italic" style={{ color: "hsl(230 20% 15% / 0.35)" }}>
+        <div className="text-center py-10">
+          <div className="w-10 h-10 rounded-full bg-white border border-[#C8A66A]/20 flex items-center justify-center mx-auto mb-4">
+             <span className="text-[#C8A66A]">✦</span>
+          </div>
+          <p className="font-body text-[13px] font-bold italic text-[#5B1F3D]/40 max-w-[200px] mx-auto leading-relaxed">
             "A constância transforma a estudante em mestra."
           </p>
         </div>
