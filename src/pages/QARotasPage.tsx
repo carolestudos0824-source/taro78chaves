@@ -278,7 +278,7 @@ const QARotasPage = () => {
         {/* Route List */}
         <div className="space-y-6">
           {filteredRoutes.map((route, index) => {
-            const audit = auditData[route.id] || { status: 'Pendente', observation: '' };
+            const audit = auditData[route.id] || { status: 'Pendente' as AuditStatus, observation: '', updatedAt: '' };
             
             return (
               <div 
