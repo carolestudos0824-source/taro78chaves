@@ -265,17 +265,22 @@ const DailyChallengesPage = () => {
 
         {/* Streak encouragement */}
         {allDone && (
-          <div className="text-center py-6">
-            <div className="text-3xl mb-3">✦</div>
-            <h3 className="font-heading text-base tracking-wide mb-1" style={{ color: "hsl(340 42% 22%)" }}>
-              Ritual do dia completo
+          <div className="text-center py-10 animate-fade-in">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#5B1F3D] to-[#C8A66A] flex items-center justify-center border-2 border-white shadow-xl mx-auto mb-6 transform rotate-3">
+              <Sparkles className="w-8 h-8 text-white animate-pulse" />
+            </div>
+            <h3 className="font-heading text-xl font-black tracking-tight mb-2" style={{ color: "#5B1F3D" }}>
+              Ritual concluído!
             </h3>
-            <p className="font-body text-sm" style={{ color: "hsl(230 15% 30% / 0.50)" }}>
-              Volte amanhã para um novo conjunto de desafios.
+            <p className="font-body text-[13px] font-bold text-[#5B1F3D]/60 max-w-[240px] mx-auto leading-relaxed">
+              Sua conexão com o Tarô 78 Chaves está mais profunda hoje. Volte amanhã.
             </p>
-            <p className="font-accent text-xs italic mt-2" style={{ color: "hsl(36 45% 58% / 0.60)" }}>
-              Sequência: {progress.streak} {progress.streak === 1 ? "dia" : "dias"}
-            </p>
+            <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#5B1F3D]/5 border border-[#5B1F3D]/10">
+              <Flame className="w-4 h-4 text-[#5B1F3D]" />
+              <p className="font-heading text-[10px] font-black uppercase tracking-widest text-[#5B1F3D]">
+                Sequência: {progress.streak} {progress.streak === 1 ? "dia" : "dias"}
+              </p>
+            </div>
           </div>
         )}
       </div>
