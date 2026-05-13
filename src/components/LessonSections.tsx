@@ -77,16 +77,15 @@ export function LessonSections({ sections }: LessonSectionsProps) {
             </button>
 
             {isOpen && (
-              <div className="px-5 pb-5" style={{ animation: "fade-up 0.3s ease-out" }}>
+              <div className="px-6 pb-6" style={{ animation: "fade-up 0.3s ease-out" }}>
                 <div
-                  className="h-px mb-4"
+                  className="h-px mb-5"
                   style={{
-                    background: `linear-gradient(90deg, transparent, ${colors.border}, transparent)`,
+                    background: "linear-gradient(90deg, transparent, rgba(200, 166, 106, 0.2), transparent)",
                   }}
                 />
                 <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: "hsl(230 20% 25%)" }}
+                  className="text-[15px] leading-[1.75] text-[#5B1F3D]/80"
                 >
                   {section.content}
                 </p>
