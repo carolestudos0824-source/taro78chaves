@@ -59,9 +59,9 @@ export function LessonContent({
   };
 
   const appliedColors: Record<string, { bg: string; border: string; accent: string }> = {
-    amor: { bg: "rgba(91, 31, 61, 0.05)", border: "rgba(91, 31, 61, 0.2)", accent: "#5B1F3D" },
-    trabalho: { bg: "rgba(200, 166, 106, 0.05)", border: "rgba(200, 166, 106, 0.2)", accent: "#C8A66A" },
-    espiritualidade: { bg: "rgba(91, 31, 61, 0.03)", border: "rgba(91, 31, 61, 0.15)", accent: "#5B1F3D" },
+    amor: { bg: "hsl(340 42% 28% / 0.06)", border: "hsl(340 42% 28% / 0.20)", accent: "hsl(340 42% 28%)" },
+    trabalho: { bg: "hsl(36 42% 44% / 0.06)", border: "hsl(36 42% 44% / 0.20)", accent: "hsl(36 42% 40%)" },
+    espiritualidade: { bg: "hsl(270 30% 35% / 0.06)", border: "hsl(270 30% 35% / 0.18)", accent: "hsl(270 30% 35%)" },
   };
 
   return (
