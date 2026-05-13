@@ -293,7 +293,6 @@ const DailyChallengesPage = () => {
               );
             })}
           </div>
-          </div>
         </div>
 
         {/* Streak encouragement */}
