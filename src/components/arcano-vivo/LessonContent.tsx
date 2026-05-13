@@ -341,7 +341,7 @@ export function LessonContent({
                 {isOpen && (
                   <div className="px-5 pb-5" style={{ animation: "fade-up 0.3s ease-out" }}>
                     <div className="h-px mb-4" style={{ background: "linear-gradient(90deg, transparent, rgba(200, 166, 106, 0.2), transparent)" }} />
-                    <p className="text-[14px] leading-[1.7] text-[#5B1F3D]/80">{section.content}</p>
+                    <p className="text-[14px] leading-[1.7] text-[#5B1F3D] font-medium">{section.content}</p>
                   </div>
                 )}
               </div>
