@@ -64,39 +64,35 @@ const StudyRoutinePage = () => {
   const activeDaysThisWeek = weekDays.filter(d => d.active).length;
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-[#FAF5EF] text-foreground pb-bottom-nav">
       {/* Header */}
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden bg-[#FAF5EF] border-b border-[#C8A66A]/10">
         <div className="absolute inset-0" style={{
-          background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
+          background: "radial-gradient(ellipse at 50% 0%, #C8A66A1A 0%, transparent 70%)",
         }} />
-        <div className="absolute inset-0" style={{
-          background: "radial-gradient(ellipse at 20% 100%, hsl(340 42% 30% / 0.06) 0%, transparent 50%)",
-        }} />
-
-        <div className="relative max-w-2xl mx-auto px-6 pt-8 pb-6">
+        
+        <div className="relative max-w-lg mx-auto px-6 pt-10 pb-8">
           <button
             onClick={() => navigate("/app")}
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6"
+            className="flex items-center gap-2 hover:opacity-70 transition-all mb-8 group text-[#5B1F3D]"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm font-body">Voltar</span>
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase">Voltar</span>
           </button>
 
           <div className="text-center">
-            <div className="text-[10px] tracking-[0.4em] uppercase font-body mb-2" style={{ color: "hsl(36 45% 58% / 0.60)" }}>
+            <div className="text-[10px] tracking-[0.4em] uppercase font-heading font-black mb-3" style={{ color: "#C8A66A" }}>
               {new Date().toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" })}
             </div>
-            <h1 className="font-heading text-2xl tracking-wide" style={{
-              background: "linear-gradient(135deg, hsl(340 42% 20%), hsl(36 35% 28%), hsl(36 42% 42%))",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}>
-              Sua Rotina de Estudo
+            <h1 className="font-heading text-4xl font-black tracking-tight mb-2" style={{ color: "#5B1F3D" }}>
+              Seu Ritual
             </h1>
-            <p className="font-accent text-sm italic mt-1" style={{ color: "hsl(230 20% 15% / 0.50)" }}>
-              O caminho de hoje na jornada iniciática
-            </p>
+            <div className="flex flex-col gap-1 items-center">
+              <p className="font-body text-[13px] font-bold uppercase tracking-widest opacity-60" style={{ color: "#5B1F3D" }}>
+                O caminho de hoje na jornada
+              </p>
+              <div className="h-0.5 w-12 bg-[#C8A66A]/30 my-2 rounded-full" />
+            </div>
           </div>
         </div>
       </div>
