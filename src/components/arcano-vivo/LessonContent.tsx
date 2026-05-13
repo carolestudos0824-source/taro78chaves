@@ -171,26 +171,25 @@ export function LessonContent({
             const shadowText = parts[1]?.trim();
 
             return (
-              <div key={section.id} className="rounded-2xl overflow-hidden transition-all duration-300"
+              <div key={section.id} className="rounded-xl overflow-hidden"
                 style={{
-                  background: isOpen ? "rgba(255, 255, 255, 0.7)" : "rgba(255, 255, 255, 0.4)",
-                  border: `1px solid ${isOpen ? "rgba(200, 166, 106, 0.3)" : "rgba(200, 166, 106, 0.15)"}`,
-                  boxShadow: isOpen ? "0 4px 15px rgba(91, 31, 61, 0.04)" : "none",
+                  background: isOpen ? colors.bg : "hsl(38 30% 95% / 0.5)",
+                  border: `1px solid ${isOpen ? colors.border : "hsl(36 25% 82% / 0.3)"}`,
                 }}
               >
                 <button
                   onClick={() => setOpenSection(isOpen ? null : section.id)}
-                  className="w-full px-5 py-4 flex items-center gap-4 text-left transition-colors"
+                  className="w-full px-4 py-3.5 flex items-center gap-3 text-left"
                 >
-                  <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style={{
+                  <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={{
                     background: colors.bg,
                     border: `1px solid ${colors.border}`,
                   }}>
-                    <Icon className="w-4 h-4" style={{ color: colors.accent }} />
+                    <Icon className="w-3.5 h-3.5" style={{ color: colors.accent }} />
                   </div>
-                  <span className="font-heading text-sm font-bold tracking-wide flex-1 text-[#5B1F3D]">{section.title}</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-                    style={{ color: "#C8A66A" }} />
+                  <span className="font-heading text-xs tracking-wide flex-1" style={{ color: "hsl(230 25% 15%)" }}>{section.title}</span>
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                    style={{ color: colors.accent }} />
                 </button>
                 {isOpen && (
                   <div className="px-4 pb-4" style={{ animation: "fade-up 0.3s ease-out" }}>
