@@ -81,10 +81,10 @@ const ArcanoMenorLessonPage = () => {
 
   if (roleLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="text-center space-y-3">
-          <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin mx-auto" />
-          <p className="text-xs text-muted-foreground font-heading tracking-wider">Carregando...</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
+        <div className="text-center space-y-6 animate-pulse">
+          <div className="w-12 h-12 border-4 border-[#C8A66A]/20 border-t-[#5B1F3D] animate-spin rounded-full mx-auto shadow-[0_0_15px_rgba(91,31,61,0.1)]" />
+          <p className="text-[11px] text-[#5B1F3D] font-heading tracking-[0.3em] uppercase font-black">Lendo Arcanos...</p>
         </div>
       </div>
     );
@@ -92,15 +92,20 @@ const ArcanoMenorLessonPage = () => {
 
   if (!card) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: "hsl(36 33% 97%)" }}>
-        <div className="text-center space-y-4">
-          <p className="font-heading text-lg" style={{ color: "hsl(230 25% 15%)" }}>
-            Carta não encontrada
-          </p>
-          <button
-            onClick={() => navigate("/app")}
-            className="text-sm font-heading tracking-wider"
-            style={{ color: "hsl(36 45% 58%)" }}
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
+        <div className="text-center space-y-8 max-w-xs px-6 animate-fade-in">
+          <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-2 border-4 border-[#C8A66A] shadow-xl ring-8 ring-[#C8A66A]/10">
+            <span className="text-3xl">🃏</span>
+          </div>
+          <div className="space-y-3">
+            <h2 className="font-heading text-2xl text-[#5B1F3D] font-black tracking-tight">Carta não encontrada</h2>
+            <p className="font-accent text-sm text-[#5B1F3D]/70 italic leading-relaxed font-bold">
+              "Nem toda porta deve ser aberta antes do tempo."
+            </p>
+          </div>
+          <button 
+            onClick={() => navigate("/app")} 
+            className="w-full py-5 px-6 rounded-2xl font-heading text-[11px] tracking-[0.2em] uppercase transition-all shadow-xl hover:scale-105 active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A] font-black"
           >
             Voltar aos módulos
           </button>
@@ -166,15 +171,14 @@ const ArcanoMenorLessonPage = () => {
   const progressPct = Math.round(((phaseIdx + 1) / PHASE_ORDER.length) * 100);
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Background */}
+    <div className="min-h-screen relative overflow-hidden bg-[#FAF5EF]">
+      {/* Background — Marfim Suave replicando /app */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
-        
         <div
           className="absolute inset-0"
           style={{
-            background:
-              "linear-gradient(to bottom, hsl(36 33% 97% / 0.12) 0%, hsl(36 33% 97% / 0.06) 30%, hsl(36 33% 97% / 0.10) 70%, hsl(36 33% 97% / 0.24) 100%)",
+            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+            opacity: 0.98,
           }}
         />
       </div>
@@ -183,37 +187,31 @@ const ArcanoMenorLessonPage = () => {
       <header
         className="relative z-10 sticky top-0"
         style={{
-          borderBottom: `1px solid ${naipeInfo.color.border}`,
-          background:
-            "linear-gradient(180deg, hsl(36 33% 96% / 0.96) 0%, hsl(38 28% 93% / 0.94) 100%)",
-          backdropFilter: "blur(28px)",
-          boxShadow: "0 6px 36px hsl(36 45% 50% / 0.08)",
+          borderBottom: "2px solid #C8A66A40",
+          background: "rgba(255, 255, 255, 0.98)",
+          backdropFilter: "blur(20px)",
+          boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)",
         }}
       >
         <div className="container max-w-3xl py-4 px-6">
-          <div className="flex items-center gap-4 mb-3">
+          <div className="flex items-center gap-5 mb-4">
             <button
               onClick={goBack}
-              className="transition-colors hover:scale-105 duration-200"
-              style={{ color: "hsl(230 10% 40%)" }}
+              className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30] text-[#5B1F3D] hover:scale-110 transition-all duration-200"
               aria-label="Voltar"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
             <div className="flex-1 min-w-0">
               <span
-                className="text-[10px] tracking-[0.35em] uppercase font-body flex items-center gap-1.5"
-                style={{ color: naipeInfo.color.primary }}
+                className="text-[10px] tracking-[0.35em] uppercase font-heading font-black flex items-center gap-1.5"
+                style={{ color: "#8B6A30" }}
               >
                 {naipeInfo.icon} {naipeInfo.name}
               </span>
               <h1
-                className="font-heading text-lg md:text-xl tracking-wide truncate"
-                style={{
-                  background: `linear-gradient(135deg, hsl(340 42% 22%), ${naipeInfo.color.primary})`,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
+                className="font-heading text-lg md:text-xl tracking-wide truncate font-black"
+                style={{ color: "#5B1F3D" }}
               >
                 {card.nome}
               </h1>
@@ -237,19 +235,21 @@ const ArcanoMenorLessonPage = () => {
               </span>
             </div>
             <div
-              className="h-1.5 rounded-full overflow-hidden"
+              className="h-2 rounded-full overflow-hidden"
               style={{
-                background: "hsl(36 18% 84%)",
-                border: "1px solid hsl(36 22% 75% / 0.50)",
+                background: "#DCCFC240",
+                border: "1px solid #C8A66A20",
               }}
             >
               <div
-                className="h-full rounded-full transition-all duration-700"
+                className="h-full rounded-full transition-all duration-700 relative overflow-hidden"
                 style={{
                   width: `${progressPct}%`,
-                  background: `linear-gradient(90deg, ${naipeInfo.color.primary}, hsl(36 45% 55%))`,
+                  background: "linear-gradient(90deg, #5B1F3D, #C8A66A)",
                 }}
-              />
+              >
+                <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+              </div>
             </div>
           </div>
         </div>
@@ -265,11 +265,11 @@ const ArcanoMenorLessonPage = () => {
           <div
             className="relative rounded-xl overflow-hidden"
             style={{
-              border: `1.5px solid ${naipeInfo.color.border}`,
-              boxShadow: `0 12px 40px ${naipeInfo.color.border}, 0 2px 8px hsl(36 45% 50% / 0.10)`,
-              background: naipeInfo.color.surface,
+              border: "2.5px solid #C8A66A",
+              boxShadow: "0 20px 50px rgba(91, 31, 61, 0.15)",
+              background: "white",
               maxWidth: phase === "intro" ? "260px" : "180px",
-              transition: "max-width 0.6s cubic-bezier(0.16,1,0.3,1)",
+              transition: "all 0.6s cubic-bezier(0.16,1,0.3,1)",
             }}
           >
             <img
@@ -284,7 +284,7 @@ const ArcanoMenorLessonPage = () => {
         {/* Fase atual */}
         <section
           key={`phase-${phase}`}
-          className="space-y-5 bg-white/60 backdrop-blur-sm rounded-2xl px-6 py-5"
+          className="space-y-6 bg-white/70 backdrop-blur-md rounded-[2rem] px-8 py-8 border-2 border-[#C8A66A]/20 shadow-xl"
           style={{ animation: "fade-up 0.5s ease-out" }}
         >
           {phase === "intro" && <PhaseIntro card={card} accent={naipeInfo.color.primary} />}
@@ -329,31 +329,30 @@ const ArcanoMenorLessonPage = () => {
           paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 80px)",
         }}
       >
-        <div className="max-w-xs mx-auto px-6 pointer-events-auto">
+        <div className="max-w-sm mx-auto px-6 pointer-events-auto">
           <button
             onClick={goNext}
             disabled={phase === "quiz" && !allQuizSubmitted}
-            className="w-full py-3 rounded-xl font-heading text-sm tracking-wider flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed hover:scale-[1.01]"
+            className="w-full py-5 rounded-2xl font-heading text-xs tracking-[0.2em] uppercase font-black flex items-center justify-center gap-3 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed border-2 border-[#C8A66A] shadow-[0_15px_40px_-10px_rgba(91,31,61,0.4)] active:scale-95 hover:scale-105"
             style={{
-              background: `linear-gradient(135deg, ${naipeInfo.color.primary}, hsl(36 50% 50%))`,
-              color: "hsl(36 33% 98%)",
-              boxShadow: `0 8px 28px ${naipeInfo.color.border}`,
+              background: "#5B1F3D",
+              color: "#FAF5EF",
             }}
           >
             {isLast ? (
               completed ? (
-                <>Voltar ao naipe <ArrowRight className="w-4 h-4" /></>
+                <>Voltar ao naipe <ArrowRight className="w-5 h-5" /></>
               ) : (
-                <>Concluir lição <Check className="w-4 h-4" /></>
+                <>Concluir lição <Check className="w-5 h-5" /></>
               )
             ) : (
-              <>Continuar <ArrowRight className="w-4 h-4" /></>
+              <>Continuar <ArrowRight className="w-5 h-5" /></>
             )}
           </button>
           {phase === "quiz" && !allQuizSubmitted && (
             <p
-              className="text-[10px] font-body tracking-wider text-center mt-2"
-              style={{ color: "hsl(230 10% 50%)" }}
+              className="text-[10px] font-heading font-black tracking-widest uppercase text-center mt-3"
+              style={{ color: "#5B1F3D60" }}
             >
               Responda todas as perguntas para continuar
             </p>
@@ -367,11 +366,11 @@ const ArcanoMenorLessonPage = () => {
 // ─── Componentes de fase ────────────────────────────────────────────
 
 const SectionTitle = ({ children, accent }: { children: React.ReactNode; accent: string }) => (
-  <div className="flex items-center gap-2 mb-2">
-    <Sparkles className="w-3.5 h-3.5" style={{ color: accent }} />
+  <div className="flex items-center gap-3 mb-3">
+    <Sparkles className="w-4 h-4" style={{ color: "#C8A66A" }} />
     <h2
-      className="font-heading text-xs tracking-[0.25em] uppercase"
-      style={{ color: accent }}
+      className="font-heading text-xs tracking-[0.3em] uppercase font-black"
+      style={{ color: "#5B1F3D" }}
     >
       {children}
     </h2>
@@ -380,8 +379,8 @@ const SectionTitle = ({ children, accent }: { children: React.ReactNode; accent:
 
 const Prose = ({ children }: { children: React.ReactNode }) => (
   <p
-    className="font-body text-[15px] leading-[1.75] whitespace-pre-line"
-    style={{ color: "hsl(230 25% 18% / 0.92)" }}
+    className="font-body text-[16px] leading-[1.8] font-medium"
+    style={{ color: "#5B1F3D" }}
   >
     {children}
   </p>
@@ -391,8 +390,8 @@ const PhaseIntro = ({ card, accent }: { card: ArcanoMenorEditorial; accent: stri
   <>
     {card.subtitulo && (
       <p
-        className="font-accent italic text-center text-base"
-        style={{ color: "hsl(230 20% 25% / 0.65)" }}
+        className="font-accent italic text-center text-xl font-bold leading-relaxed mb-6"
+        style={{ color: "#8B6A30" }}
       >
         {card.subtitulo}
       </p>
@@ -445,10 +444,10 @@ const PhaseVoz = ({ card, accent }: { card: ArcanoMenorEditorial; accent: string
   <>
     <SectionTitle accent={accent}>Voz da carta</SectionTitle>
     <blockquote
-      className="font-accent italic text-lg leading-[1.7] pl-5 border-l-2"
+      className="font-accent italic text-2xl leading-[1.7] pl-6 border-l-4 font-bold"
       style={{
-        borderColor: accent,
-        color: "hsl(230 25% 18% / 0.85)",
+        borderColor: "#C8A66A",
+        color: "#5B1F3D",
       }}
     >
       {card.vozDaCarta}

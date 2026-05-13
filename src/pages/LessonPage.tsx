@@ -55,10 +55,10 @@ const LessonPage = () => {
 
   if (isLiteralRoute) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7]">
-        <div className="text-center space-y-4 animate-pulse">
-          <div className="w-12 h-12 border-4 border-[#C8A66A]/20 border-t-[#5B1F3D] animate-spin rounded-full mx-auto" />
-          <p className="text-[12px] text-[#5B1F3D] font-heading tracking-widest uppercase font-bold">Redirecionando...</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
+        <div className="text-center space-y-6 animate-pulse">
+          <div className="w-12 h-12 border-4 border-[#C8A66A]/20 border-t-[#5B1F3D] animate-spin rounded-full mx-auto shadow-[0_0_15px_rgba(91,31,61,0.1)]" />
+          <p className="text-[11px] text-[#5B1F3D] font-heading tracking-[0.3em] uppercase font-black">Lendo Arcanos...</p>
         </div>
       </div>
     );
@@ -66,20 +66,20 @@ const LessonPage = () => {
 
   if (!arcano || !isValidId || premiumLoading || roleLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7]">
-        <div className="text-center space-y-6 max-w-xs px-6 animate-fade-in">
-          <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-2 border border-gold/30">
-            <span className="text-2xl text-plum">🃏</span>
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
+        <div className="text-center space-y-8 max-w-xs px-6 animate-fade-in">
+          <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-2 border-4 border-[#C8A66A] shadow-xl ring-8 ring-[#C8A66A]/10">
+            <span className="text-3xl">🃏</span>
           </div>
-          <div className="space-y-2">
-            <h2 className="font-heading text-xl text-midnight">Arcano não encontrado</h2>
-            <p className="font-body text-sm text-muted-foreground italic leading-relaxed">
+          <div className="space-y-3">
+            <h2 className="font-heading text-2xl text-[#5B1F3D] font-black tracking-tight">Arcano não encontrado</h2>
+            <p className="font-accent text-sm text-[#5B1F3D]/70 italic leading-relaxed font-bold">
               "Nem toda porta deve ser aberta antes do tempo."
             </p>
           </div>
           <button 
             onClick={() => navigate("/module/arcanos-maiores")} 
-            className="w-full py-3.5 px-6 rounded-full font-heading text-[12px] tracking-[0.2em] uppercase transition-all shadow-md hover:scale-105 active:scale-95 bg-gold text-plum"
+            className="w-full py-5 px-6 rounded-2xl font-heading text-[11px] tracking-[0.2em] uppercase transition-all shadow-xl hover:scale-105 active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A] font-black"
           >
             Voltar à Jornada
           </button>
@@ -125,38 +125,61 @@ const LessonPage = () => {
   if (!hasAccess) {
     const isPerformanceLocked = arcanoId === 1 && !hasFullAccess;
     return (
-      <div className="min-h-screen bg-background p-6 flex flex-col items-center justify-center text-center space-y-8">
-        <div className="w-20 h-20 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center font-heading text-2xl text-plum font-bold">
-          {arcano.numeral}
+      <div className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center p-6">
+        {/* Background — Marfim Suave replicando /app */}
+        <div className="fixed inset-0 z-0">
+          <div
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+              opacity: 0.98,
+            }}
+          />
         </div>
-        <div className="space-y-2">
-          <h1 className="font-heading text-3xl text-midnight">{arcano.name}</h1>
-          <p className="font-accent italic text-muted-foreground">{arcano.subtitle}</p>
+
+        <div className="relative z-10 max-w-sm w-full text-center space-y-8">
+          <div className="w-24 h-24 mx-auto rounded-full bg-white border-2 border-[#C8A66A] flex items-center justify-center font-heading text-3xl text-[#5B1F3D] font-black shadow-xl ring-8 ring-[#C8A66A]/10">
+            {arcano.numeral}
+          </div>
+          <div className="space-y-3">
+            <h1 className="font-heading text-4xl text-[#5B1F3D] font-black tracking-tight">{arcano.name}</h1>
+            <p className="font-accent italic text-[#5B1F3DCC] font-bold text-lg leading-relaxed">{arcano.subtitle}</p>
+          </div>
+          <div className="bg-white/60 backdrop-blur-xl border-2 border-[#C8A66A]/30 p-8 rounded-[2rem] shadow-xl">
+            <PremiumGate 
+              featureName={arcano.name}
+              message={isPerformanceLocked 
+                ? "Desbloqueie O Mago acertando 80% ou mais no quiz do Louco."
+                : "Conteúdo exclusivo para assinantes da Jornada Completa."
+              }
+            />
+          </div>
+          {isPerformanceLocked && (
+            <button 
+              onClick={() => navigate("/lesson/0")} 
+              className="w-full bg-[#5B1F3D] text-white py-6 rounded-2xl font-heading font-black text-xs tracking-[0.2em] uppercase border-2 border-[#C8A66A] shadow-xl transition-all hover:scale-105 active:scale-95"
+            >
+              Refazer Quiz do Louco
+            </button>
+          )}
         </div>
-        <PremiumGate 
-          featureName={arcano.name}
-          message={isPerformanceLocked 
-            ? "Desbloqueie O Mago acertando 80% ou mais no quiz do Louco."
-            : "Conteúdo exclusivo para assinantes da Jornada Completa."
-          }
-        />
-        {isPerformanceLocked && (
-          <button onClick={() => navigate("/lesson/0")} className="btn-gold">
-            Refazer Quiz do Louco
-          </button>
-        )}
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#FAF5EF]">
       {/* ─── Header ─── */}
-      <header className="sticky top-0 z-30 bg-background/80 backdrop-blur-xl border-b border-gold/10 px-4 py-3 flex items-center gap-4">
-        <button onClick={() => navigate(-1)} className="p-2 opacity-50 hover:opacity-100"><ArrowLeft className="w-5 h-5" /></button>
+      <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-xl border-b-2 border-[#C8A66A]/30 px-6 py-4 flex items-center gap-5 shadow-sm">
+        <button 
+          onClick={() => navigate(-1)} 
+          className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30] text-[#5B1F3D] hover:scale-110 transition-all duration-200"
+        >
+          <ArrowLeft className="w-5 h-5" />
+        </button>
         <div className="flex-1 min-w-0">
-          <p className="t-section-title text-[9px] mb-0.5">ETAPA {arcanoId + 1} DE 22 • {arcano.numeral}</p>
-          <h2 className="font-heading text-sm text-midnight truncate">{arcano.name}</h2>
+          <p className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#8B6A30] mb-0.5">ETAPA {arcanoId + 1} DE 22 • {arcano.numeral}</p>
+          <h2 className="font-heading text-lg text-[#5B1F3D] font-black truncate">{arcano.name}</h2>
         </div>
         <PhaseIndicator phases={phases} currentIndex={phases.indexOf(phase)} />
       </header>
