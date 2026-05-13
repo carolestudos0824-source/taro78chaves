@@ -39,24 +39,12 @@ export function LessonContent({
   const [openSection, setOpenSection] = useState<string | null>(null);
   const [step, setStep] = useState(0); // 0=essence, 1=light, 2=shadow, 3=initiation+applied
 
-  const steps = [
-    { id: "essence", title: "Essência", icon: "✦", content: essence },
-    { id: "light", title: "Luz", icon: "☀", content: light },
-    { id: "shadow", title: "Sombra", icon: "☾", content: shadow },
-  ];
-
-  // Separate sections into core and applied
   const coreIds = ["essencia", "simbolos", "luz", "sombra", "licao"];
   const appliedIds = ["amor", "trabalho", "espiritualidade"];
   
   const coreSections = sections.filter(s => coreIds.includes(s.id));
   const appliedSections = sections.filter(s => appliedIds.includes(s.id));
   const otherSections = sections.filter(s => !coreIds.includes(s.id) && !appliedIds.includes(s.id));
-  
-  // Debug para garantir que as seções estão sendo recebidas
-  console.log("LessonContent sections received:", sections.map(s => s.id));
-  console.log("Applied sections filtered:", appliedSections.map(s => s.id));
-  console.log("Core sections filtered:", coreSections.map(s => s.id));
 
   const appliedIcons: Record<string, typeof Heart> = {
     amor: Heart,
@@ -72,20 +60,20 @@ export function LessonContent({
 
   return (
     <motion.div 
-      className="space-y-6 pb-8"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      className="space-y-8 pb-12"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
     >
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
-          <BookOpen className="w-4 h-4" style={{ color: "hsl(36 40% 42%)" }} />
-          <span className="text-[10px] font-heading tracking-[0.25em] uppercase" style={{ color: "hsl(36 40% 42%)" }}>
+          <BookOpen className="w-4 h-4 text-[#C8A66A]" />
+          <span className="text-[10px] font-heading tracking-[0.25em] uppercase text-[#C8A66A]">
             Lição do Arcano
           </span>
         </div>
-        <button onClick={onSkipToQuiz} className="text-[10px] font-heading tracking-wider" style={{ color: "hsl(36 45% 58%)" }}>
+        <button onClick={onSkipToQuiz} className="text-[10px] font-heading tracking-wider text-[#C8A66A]/80 hover:text-[#C8A66A]">
           Ir ao Quiz →
         </button>
       </div>
