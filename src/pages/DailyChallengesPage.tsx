@@ -77,7 +77,31 @@ const DailyChallengesPage = () => {
   }, [addXP, updateStreak]);
 
   return (
-    <div className="min-h-screen bg-[#FAF5EF] text-foreground pb-bottom-nav">
+    <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
+      {/* Background — Marfim Suave #FAF5EF base refined from /app */}
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+            opacity: 0.98,
+          }}
+        />
+        {/* Subtle atmosphere layers */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.8) 0%, transparent 30%, transparent 70%, rgba(239, 226, 210, 0.5) 100%)",
+          }}
+        />
+      </div>
+
       {/* Active challenge modal */}
       {activeChallenge && (
         <ChallengeModal
@@ -94,77 +118,80 @@ const DailyChallengesPage = () => {
         />
       )}
 
-      {/* Header */}
-      <div className="relative overflow-hidden bg-[#FAF5EF] border-b border-[#C8A66A]/10">
-        <div className="absolute inset-0" style={{
-          background: "radial-gradient(ellipse at 50% 0%, #C8A66A1A 0%, transparent 70%)",
-        }} />
-        <div className="relative max-w-lg mx-auto px-6 pt-10 pb-8">
-          <button
-            onClick={() => navigate("/app")}
-            className="flex items-center gap-2 hover:opacity-70 transition-all mb-8 group"
-            style={{ color: "#5B1F3D" }}
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase">Voltar</span>
-          </button>
+      {/* Header — Premium Style from /app */}
+      <header className="relative z-10" style={{
+        borderBottom: "1.5px solid #C8A66A40",
+        background: "rgba(250, 245, 239, 0.95)",
+        backdropFilter: "blur(20px)",
+        boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)"
+      }}>
+        <div className="max-w-lg mx-auto py-6 px-6">
+          <div className="flex items-center gap-4 mb-6">
+            <button
+              onClick={() => navigate("/app")}
+              className="transition-all hover:scale-110 duration-200 w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30]"
+              style={{ color: "#5B1F3D" }}
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+            <span className="text-[11px] tracking-[0.45em] uppercase font-heading font-black" style={{ color: "#5B1F3D" }}>
+              <span style={{ color: "#C8A66A" }}>✦</span> Ritual Sagrado <span style={{ color: "#C8A66A" }}>✦</span>
+            </span>
+          </div>
 
-          <div className="text-center">
-            <div className="flex flex-col items-center gap-2 mb-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#5B1F3D] flex items-center justify-center border border-[#C8A66A]/30 shadow-lg group-hover:scale-110 transition-transform">
-                <Key className="w-6 h-6 text-[#C8A66A]" />
-              </div>
-              <div className="text-[10px] tracking-[0.4em] uppercase font-heading font-black" style={{ color: "#5B1F3D" }}>
-                Tarô 78 Chaves
-              </div>
+          <div className="text-center pt-2 pb-2">
+            <div className="text-[11px] tracking-[0.4em] uppercase font-heading font-black mb-4" style={{ color: "#C8A66A" }}>
+              {new Date().toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" })}
             </div>
-            
-            <h1 className="font-heading text-4xl font-black tracking-tight mb-3" style={{ color: "#5B1F3D" }}>
+            <h1 className="font-heading text-5xl font-black tracking-tight mb-4" style={{ color: "#5B1F3D" }}>
               Ritual Diário
             </h1>
-            
             <div className="flex flex-col gap-1 items-center">
-              <p className="font-body text-[13px] font-bold uppercase tracking-widest opacity-60" style={{ color: "#5B1F3D" }}>
+              <p className="font-body text-[14px] font-bold uppercase tracking-[0.2em]" style={{ color: "#5B1F3D99" }}>
                 Sua travessia de hoje
               </p>
-              <div className="h-0.5 w-12 bg-[#C8A66A]/30 my-2 rounded-full" />
-              <p className="font-body text-[12px] font-bold italic" style={{ color: "#C8A66A" }}>
-                Complete seu ritual e mantenha as chaves vivas.
-              </p>
+              <div className="h-0.5 w-16 bg-gradient-to-r from-transparent via-[#C8A66A] to-transparent my-4 opacity-40" />
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
-      <div className="max-w-lg mx-auto px-6 pb-32 space-y-8 mt-10">
-
+      <div className="relative z-10 max-w-lg mx-auto px-6 pb-32 space-y-10 mt-12">
         {/* Progress summary — Matching Matrices Visual /app */}
-        <div className="bg-white border-2 border-[#C8A66A]/20 rounded-3xl p-6 shadow-md animate-fade-in">
-          <div className="flex items-center justify-between mb-5">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#5B1F3D] flex items-center justify-center border border-[#C8A66A]/30">
-                <Flame className={`w-5 h-5 text-[#C8A66A] ${allDone ? "animate-pulse" : ""}`} />
+        <div className="relative rounded-[2.5rem] overflow-hidden p-8 transition-all duration-500" style={{
+          background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
+          backdropFilter: "blur(24px)",
+          border: "2.5px solid #C8A66A",
+          boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08), 0 0 40px rgba(200, 166, 106, 0.1)"
+        }}>
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A30]" style={{
+                background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+                boxShadow: "0 10px 20px rgba(91, 31, 61, 0.2)"
+              }}>
+                <Flame className={`w-6 h-6 text-[#C8A66A] ${allDone ? "animate-pulse" : ""}`} />
               </div>
               <div className="flex flex-col">
-                <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#5B1F3D] uppercase">
+                <span className="text-[11px] font-heading font-black tracking-[0.25em] text-[#C8A66A] uppercase">
                   {allDone ? "Ritual Cumprido" : "Seu Progresso"}
                 </span>
-                <span className="text-sm font-heading font-black text-[#5B1F3D]">
+                <span className="text-lg font-heading font-black text-[#5B1F3D]">
                   {allDone ? "Portal de Hoje Aberto!" : `${completedCount} de ${challenges.length} Desafios`}
                 </span>
               </div>
             </div>
-            <div className="text-right">
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF5EF] border border-[#C8A66A]/20">
-                <Star className="w-3.5 h-3.5 text-[#C8A66A]" />
-                <span className="text-[11px] font-heading font-black text-[#5B1F3D]">
-                  {totalXPEarned} XP
-                </span>
-              </div>
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full border-2 border-[#C8A66A20]" style={{
+              background: "rgba(250, 245, 239, 0.8)",
+            }}>
+              <Star className="w-4 h-4 text-[#C8A66A]" />
+              <span className="text-[12px] font-heading font-black text-[#5B1F3D]">
+                {totalXPEarned} XP
+              </span>
             </div>
           </div>
           
-          <div className="h-3 rounded-full bg-[#E8DED3] overflow-hidden p-[1.5px] border border-[#D1C4B5]/30">
+          <div className="h-3.5 rounded-full bg-[#E8DED3] overflow-hidden p-[1.5px] border border-[#D1C4B5]/30">
             <div 
               className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out relative overflow-hidden"
               style={{ width: `${Math.max((completedCount / challenges.length) * 100, 2)}%` }}
@@ -173,7 +200,7 @@ const DailyChallengesPage = () => {
             </div>
           </div>
           
-          <p className="mt-4 text-[11px] font-body font-bold text-[#5B1F3D]/60 italic text-center">
+          <p className="mt-6 text-[12px] font-body font-bold text-[#5B1F3D]/60 italic text-center leading-relaxed">
             {allDone 
               ? "Você concluiu todos os portais do dia. Sua jornada está fortalecida." 
               : "Cada desafio concluído revela uma nova camada de sabedoria."}
@@ -181,8 +208,8 @@ const DailyChallengesPage = () => {
         </div>
 
         {/* Challenge list */}
-        <div>
-          <div className="flex items-center gap-4 mb-6">
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
             <span className="h-px flex-1 bg-[#C8A66A]/20" />
             <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
               Desafios Ativos
@@ -209,35 +236,35 @@ const DailyChallengesPage = () => {
                   key={ch.id}
                   onClick={() => !ch.completed && setActiveChallenge(ch)}
                   disabled={ch.completed}
-                  className="w-full text-left group transition-all duration-300"
+                  className="w-full text-left group transition-all duration-500"
                 >
                   <div 
-                    className={`rounded-2xl p-5 flex items-center gap-4 transition-all duration-300 border-2 ${
+                    className={`rounded-[2rem] p-6 flex items-center gap-5 transition-all duration-500 border-2 ${
                       ch.completed 
                         ? "bg-white/40 border-[#DCCFC2] opacity-60" 
-                        : "bg-white border-[#C8A66A]/20 hover:border-[#C8A66A]/40 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                        : "bg-white border-[#C8A66A]/30 hover:border-[#C8A66A] shadow-lg hover:shadow-2xl hover:-translate-y-1"
                     }`}
                   >
                     {/* Icon */}
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-colors ${
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border-2 transition-all duration-500 ${
                       ch.completed 
                         ? "bg-[#DCCFC233] border-[#DCCFC2]" 
-                        : "bg-[#FAF5EF] border-[#C8A66A]/20 group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D]"
+                        : "bg-[#FAF5EF] border-[#C8A66A30] group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D] group-hover:shadow-[0_8px_20px_rgba(91,31,61,0.3)]"
                     }`}>
                       {ch.completed ? (
-                        <Check className="w-5 h-5 text-[#C8A66A]" />
+                        <Check className="w-6 h-6 text-[#C8A66A]" />
                       ) : (
-                        <IconComponent className="w-6 h-6 text-[#5B1F3D] group-hover:text-white transition-colors" />
+                        <IconComponent className="w-6 h-6 text-[#5B1F3D] group-hover:text-white transition-colors duration-500" />
                       )}
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <h3 className={`font-heading text-[15px] font-black tracking-tight ${
+                      <h3 className={`font-heading text-[17px] font-black tracking-tight ${
                         ch.completed ? "text-[#5B1F3D]/40 line-through" : "text-[#5B1F3D]"
                       }`}>
                         {ch.title}
                       </h3>
-                      <p className={`font-body text-[12px] font-bold mt-0.5 leading-snug ${
+                      <p className={`font-body text-[13px] font-black mt-1 leading-snug ${
                         ch.completed ? "text-[#5B1F3D]/30" : "text-[#5B1F3D]/70"
                       }`}>
                         {ch.subtitle}
@@ -245,7 +272,7 @@ const DailyChallengesPage = () => {
                     </div>
 
                     <div className="flex items-center gap-3 shrink-0">
-                      <div className={`px-2.5 py-1 rounded-full text-[10px] font-heading font-black tracking-tighter border ${
+                      <div className={`px-3 py-1 rounded-full text-[10px] font-heading font-black tracking-tighter border-2 ${
                         ch.completed 
                           ? "bg-[#DCCFC2]/20 border-[#DCCFC2] text-[#C8A66A]/50" 
                           : "bg-[#C8A66A]/10 border-[#C8A66A]/20 text-[#C8A66A]"
@@ -253,7 +280,9 @@ const DailyChallengesPage = () => {
                         +{ch.xp} XP
                       </div>
                       {!ch.completed && (
-                        <ChevronRight className="w-4 h-4 text-[#C8A66A] group-hover:translate-x-1 transition-transform" />
+                        <div className="w-8 h-8 rounded-full border border-[#C8A66A30] flex items-center justify-center group-hover:bg-[#C8A66A10] transition-colors">
+                          <ChevronRight className="w-5 h-5 text-[#C8A66A] group-hover:translate-x-1 transition-transform duration-300" />
+                        </div>
                       )}
                     </div>
                   </div>
@@ -266,18 +295,22 @@ const DailyChallengesPage = () => {
         {/* Streak encouragement */}
         {allDone && (
           <div className="text-center py-10 animate-fade-in">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#5B1F3D] to-[#C8A66A] flex items-center justify-center border-2 border-white shadow-xl mx-auto mb-6 transform rotate-3">
-              <Sparkles className="w-8 h-8 text-white animate-pulse" />
+            <div className="w-16 h-16 rounded-3xl flex items-center justify-center border-2 border-[#C8A66A] shadow-xl mx-auto mb-6 transform rotate-3" style={{
+              background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+            }}>
+              <Sparkles className="w-8 h-8 text-[#C8A66A] animate-pulse" />
             </div>
-            <h3 className="font-heading text-xl font-black tracking-tight mb-2" style={{ color: "#5B1F3D" }}>
+            <h3 className="font-heading text-2xl font-black tracking-tight mb-2" style={{ color: "#5B1F3D" }}>
               Ritual concluído!
             </h3>
-            <p className="font-body text-[13px] font-bold text-[#5B1F3D]/60 max-w-[240px] mx-auto leading-relaxed">
+            <p className="font-body text-[14px] font-bold text-[#5B1F3D]/60 max-w-[280px] mx-auto leading-relaxed">
               Sua conexão com o Tarô 78 Chaves está mais profunda hoje. Volte amanhã.
             </p>
-            <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#5B1F3D]/5 border border-[#5B1F3D]/10">
-              <Flame className="w-4 h-4 text-[#5B1F3D]" />
-              <p className="font-heading text-[10px] font-black uppercase tracking-widest text-[#5B1F3D]">
+            <div className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-[#C8A66A20]" style={{
+              background: "rgba(250, 245, 239, 0.8)",
+            }}>
+              <Flame className="w-5 h-5 text-[#5B1F3D]" />
+              <p className="font-heading text-[11px] font-black uppercase tracking-[0.2em] text-[#5B1F3D]">
                 Sequência: {progress.streak} {progress.streak === 1 ? "dia" : "dias"}
               </p>
             </div>
@@ -308,19 +341,23 @@ interface ModalProps {
 const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) => {
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4" style={{
-      background: "rgba(91, 31, 61, 0.4)",
-      backdropFilter: "blur(12px)",
+      background: "rgba(91, 31, 61, 0.6)",
+      backdropFilter: "blur(16px)",
     }}>
-      <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-t-[2.5rem] sm:rounded-[2.5rem] border-t sm:border-2 border-[#C8A66A]/30 shadow-2xl animate-in fade-in slide-in-from-bottom-8 duration-500" style={{
-        background: "#FAF5EF",
+      <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-t-[3rem] sm:rounded-[3rem] border-t-2 sm:border-2 border-[#C8A66A]/40 shadow-2xl animate-in fade-in slide-in-from-bottom-8 duration-500" style={{
+        background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 100%)",
       }}>
         {/* Modal header */}
-        <div className="sticky top-0 flex items-center justify-between px-8 py-6 border-b border-[#C8A66A]/10 z-10" style={{
-          background: "#FAF5EF",
+        <div className="sticky top-0 flex items-center justify-between px-8 py-8 border-b border-[#C8A66A]/20 z-10" style={{
+          background: "rgba(250, 245, 239, 0.95)",
+          backdropFilter: "blur(20px)",
         }}>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#5B1F3D] flex items-center justify-center border border-[#C8A66A]/20">
-               <Sparkles className="w-5 h-5 text-[#C8A66A]" />
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A]/30" style={{
+              background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+              boxShadow: "0 10px 20px rgba(91, 31, 61, 0.2)"
+            }}>
+               <Sparkles className="w-6 h-6 text-[#C8A66A]" />
             </div>
             <div className="flex flex-col">
               <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#C8A66A] uppercase">Desafio</span>
@@ -356,10 +393,11 @@ const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) =>
 const CompleteButton = ({ onComplete, label = "Concluir" }: { onComplete: () => void; label?: string }) => (
   <button
     onClick={onComplete}
-    className="w-full mt-10 py-4 rounded-2xl font-heading text-[12px] font-black tracking-[0.3em] uppercase shadow-lg shadow-[#5B1F3D]/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+    className="w-full mt-10 py-5 rounded-[2rem] font-heading text-[12px] font-black tracking-[0.3em] uppercase shadow-2xl transition-all duration-500 hover:scale-[1.02] active:scale-95 border-2 border-[#C8A66A40]"
     style={{
-      background: "linear-gradient(135deg, #5B1F3D, #C8A66A)",
-      color: "#FAF5EF",
+      background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+      color: "#C8A66A",
+      boxShadow: "0 15px 35px rgba(91, 31, 61, 0.3)"
     }}
   >
     {label}
