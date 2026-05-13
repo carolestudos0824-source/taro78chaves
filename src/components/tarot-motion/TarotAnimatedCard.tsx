@@ -14,6 +14,7 @@ interface TarotAnimatedCardProps {
   state: 'locked' | 'available' | 'active' | 'inProgress' | 'completed';
   variant?: 'lesson' | 'portal' | 'unlock' | 'review' | 'daily';
   isPremium?: boolean;
+  showLockIcon?: boolean;
   onClick?: () => void;
   className?: string;
 }
