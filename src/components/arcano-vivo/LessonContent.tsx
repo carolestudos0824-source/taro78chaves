@@ -262,35 +262,35 @@ export function LessonContent({
       {/* ── Quick Review Cards ── */}
       {step >= 2 && quickReview && quickReview.length > 0 && (
         <div
-          className="rounded-2xl p-6 space-y-4"
+          className="rounded-xl p-5 space-y-3"
           style={{
-            background: "rgba(200, 166, 106, 0.05)",
-            border: "1px solid rgba(200, 166, 106, 0.15)",
+            background: "hsl(36 42% 44% / 0.04)",
+            border: "1px solid hsl(36 42% 44% / 0.12)",
             animation: "fade-up 0.4s ease-out 0.2s both",
           }}
         >
-          <div className="flex items-center gap-3 mb-2">
-            <ScrollText className="w-4 h-4 text-[#8B6A30]" />
-            <span className="text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#8B6A30]">
+          <div className="flex items-center gap-2 mb-1">
+            <ScrollText className="w-3.5 h-3.5" style={{ color: "hsl(36 40% 42%)" }} />
+            <span className="text-[10px] font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(36 40% 42%)" }}>
               Revisão Rápida
             </span>
           </div>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-2">
             {quickReview.map((item, i) => (
               <div
                 key={i}
-                className="rounded-xl px-4 py-3 animate-fade-in"
+                className="rounded-lg px-3 py-2.5 animate-fade-in"
                 style={{
-                  background: "rgba(255, 255, 255, 0.5)",
-                  border: "1px solid rgba(200, 166, 106, 0.15)",
+                  background: "hsl(36 42% 44% / 0.04)",
+                  border: "1px solid hsl(36 42% 44% / 0.10)",
                   animationDelay: `${i * 60}ms`,
                   animationFillMode: "both",
                 }}
               >
-                <p className="text-[10px] font-heading font-black tracking-wider uppercase mb-1 text-[#8B6A30]">
+                <p className="text-[9px] font-heading tracking-wider uppercase mb-0.5" style={{ color: "hsl(36 40% 42%)" }}>
                   {item.keyword}
                 </p>
-                <p className="text-[13px] leading-tight text-[#5B1F3D]" style={{ fontWeight: 500 }}>
+                <p className="text-[11px] leading-snug" style={{ color: "hsl(230 20% 25%)" }}>
                   {item.meaning}
                 </p>
               </div>
