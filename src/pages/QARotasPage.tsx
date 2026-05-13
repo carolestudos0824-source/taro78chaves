@@ -236,7 +236,7 @@ const QARotasPage = () => {
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-6 py-12">
+      <main className="max-w-6xl mx-auto px-6 py-12 pb-28">
         {/* Filters & Search */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-12">
           <div className="lg:col-span-2 relative">
