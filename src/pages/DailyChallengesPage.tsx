@@ -388,14 +388,14 @@ const CartaDoDiaContent = ({ data, onComplete }: { data: CartaDoDia | null; onCo
           </span>
         ))}
       </div>
-      <p className="font-body text-sm leading-relaxed" style={{ color: "hsl(230 15% 20% / 0.70)" }}>
+      <p className="font-body text-[14px] leading-relaxed font-bold text-[#5B1F3D]/80 text-center px-4">
         {data.essence}
       </p>
-      <div className="rounded-lg p-4" style={{
-        background: "hsl(340 42% 30% / 0.05)",
-        border: "1px solid hsl(340 42% 30% / 0.12)",
-      }}>
-        <p className="font-accent text-sm italic" style={{ color: "hsl(340 42% 28%)" }}>
+      <div className="rounded-[2rem] p-6 bg-white border-2 border-[#C8A66A]/10 shadow-sm relative overflow-hidden group">
+        <div className="absolute top-0 right-0 p-3 opacity-10">
+          <Sparkles className="w-8 h-8 text-[#5B1F3D]" />
+        </div>
+        <p className="font-body text-[13px] font-bold italic text-[#5B1F3D] leading-relaxed relative z-10">
           ✦ {data.reflection}
         </p>
       </div>
@@ -406,41 +406,34 @@ const CartaDoDiaContent = ({ data, onComplete }: { data: CartaDoDia | null; onCo
 
 const RevisaoRapidaContent = ({ data, onComplete }: { data: CartaDoDia | null; onComplete: () => void }) => {
   const [revealed, setRevealed] = useState(false);
-  if (!data) return <div className="text-center py-8"><p className="font-body text-sm" style={{ color: "hsl(230 15% 30% / 0.50)" }}>Conteúdo carregando...</p><CompleteButton onComplete={onComplete} /></div>;
+  if (!data) return <div className="text-center py-8"><p className="font-body text-[13px] font-bold text-[#5B1F3D]/50">Conteúdo carregando...</p><CompleteButton onComplete={onComplete} /></div>;
   return (
-    <div className="space-y-4 text-center">
-      <p className="font-body text-sm" style={{ color: "hsl(230 15% 30% / 0.50)" }}>
+    <div className="space-y-6 text-center py-4">
+      <p className="font-body text-[12px] font-bold uppercase tracking-widest text-[#5B1F3D]/40">
         O que você lembra sobre...
       </p>
-      <h3 className="font-heading text-xl tracking-wide" style={{ color: "hsl(340 42% 22%)" }}>
+      <h3 className="font-heading text-3xl font-black text-[#5B1F3D]">
         {data.name}
       </h3>
       {!revealed ? (
         <button
           onClick={() => setRevealed(true)}
-          className="px-6 py-2.5 rounded-lg font-body text-sm transition-all"
-          style={{
-            background: "hsl(36 45% 58% / 0.10)",
-            border: "1px solid hsl(36 45% 58% / 0.25)",
-            color: "hsl(36 42% 38%)",
-          }}
+          className="px-10 py-4 rounded-2xl font-heading text-[12px] font-black tracking-[0.2em] uppercase transition-all bg-[#5B1F3D]/5 border-2 border-[#5B1F3D]/10 text-[#5B1F3D] hover:bg-[#5B1F3D] hover:text-white"
         >
           Revelar essência
         </button>
       ) : (
-        <div className="text-left space-y-3">
-          <p className="font-body text-sm leading-relaxed" style={{ color: "hsl(230 15% 20% / 0.70)" }}>
+        <div className="text-left space-y-6 animate-fade-in">
+          <p className="font-body text-[14px] leading-relaxed font-bold text-[#5B1F3D]/80">
             {data.essence}
           </p>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-2">
             {data.keywords.map(k => (
-              <span key={k} className="text-[10px] font-body px-2 py-0.5 rounded-full" style={{
-                background: "hsl(36 45% 58% / 0.10)",
-                color: "hsl(36 42% 38%)",
-              }}>
+              <span key={k} className="text-[10px] font-body font-black tracking-widest uppercase px-3 py-1.5 rounded-full bg-[#C8A66A]/10 text-[#C8A66A] border border-[#C8A66A]/10">
                 {k}
               </span>
             ))}
+          </div>
           </div>
           <CompleteButton onComplete={onComplete} label="Revisei ⚡" />
         </div>
