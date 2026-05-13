@@ -348,7 +348,12 @@ export function LessonContent({
             transition={{ duration: 0.5 }}
           >
             <button onClick={onComplete}
-              className="w-full py-6 rounded-2xl font-heading font-black text-xs tracking-[0.2em] uppercase transition-all shadow-xl hover:scale-105 active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A]"
+              className="px-10 py-3.5 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105 active:scale-95"
+              style={{
+                background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))",
+                color: "hsl(36 33% 97%)",
+                boxShadow: "0 4px 20px hsl(36 45% 58% / 0.2)",
+              }}
             >
               Concluir Lição ✦
             </button>
