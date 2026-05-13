@@ -179,5 +179,4 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
       </div>
     </div>
   );
-  );
 };
