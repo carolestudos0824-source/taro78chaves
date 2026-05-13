@@ -57,13 +57,13 @@ export function CompletionScreen({
       </div>
 
       <div>
-        <h2 className="font-heading text-2xl mb-1" style={{
-          background: "linear-gradient(135deg, hsl(340 42% 20%), hsl(36 42% 42%))",
+        <h2 className="font-heading text-3xl font-black mb-2" style={{
+          background: "linear-gradient(135deg, #5B1F3D, #C8A66A)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
         }}>Lição Completa</h2>
-        <p className="text-sm" style={{ color: "hsl(230 20% 30%)" }}>
-          Você completou a jornada com <strong>{arcanoName}</strong>.
+        <p className="text-[15px] font-medium" style={{ color: "#5B1F3D" }}>
+          Você completou a jornada com <strong className="font-black text-[#C8A66A]">{arcanoName}</strong>.
         </p>
       </div>
 
