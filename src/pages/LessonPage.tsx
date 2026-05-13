@@ -183,34 +183,17 @@ const LessonPage = () => {
   }
 
   return (
-    <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
-      {/* Background — Marfim Suave replicando /app */}
-      <div className="fixed inset-0 z-0 mystic-bg-procedural">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
-            opacity: 0.98,
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
-          }}
-        />
-      </div>
-
-      {/* ─── Header replicando /app ─── */}
-      <header className="sticky top-0 z-40 px-6 py-5 flex items-center gap-5 shadow-sm border-b border-[#C8A66A40] bg-[#FAF5EF]/95 backdrop-blur-xl">
+    <div className="min-h-screen bg-[#FDFBF7]">
+      {/* ─── Header ─── */}
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#C8A66A]/20 px-6 py-4 flex items-center gap-5 shadow-sm">
         <button 
           onClick={() => navigate(-1)} 
-          className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30] text-[#5B1F3D] hover:scale-110 transition-all duration-300"
+          className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FDFBF7] border border-[#C8A66A]/20 text-[#5B1F3D] hover:bg-[#5B1F3D] hover:text-white transition-all duration-300"
         >
           <ArrowLeft className="w-5 h-5" />
         </button>
         <div className="flex-1 min-w-0">
-          <p className="text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A] mb-0.5 leading-none">
+          <p className="text-[10px] font-heading font-bold tracking-[0.2em] uppercase text-[#8B6A30] mb-0.5 leading-none">
             Arcano {arcano.numeral} • Lição {arcanoId + 1}
           </p>
           <h2 className="font-heading text-lg text-[#5B1F3D] font-black truncate leading-tight tracking-tight">
@@ -256,12 +239,7 @@ const LessonPage = () => {
         {phase === "deepdive" && (
           <div className="space-y-8">
             <DeepDiveSection {...arcano.layers.deepDive} />
-            <button 
-              onClick={() => setPhase("exercise")} 
-              className="w-full bg-[#5B1F3D] text-white py-6 rounded-2xl font-heading font-black text-xs tracking-[0.2em] uppercase border-2 border-[#C8A66A] shadow-xl transition-all hover:scale-105 active:scale-95"
-            >
-              Continuar para Exercício
-            </button>
+            <Button onClick={() => setPhase("exercise")} className="btn-premium w-full py-7">Continuar para Exercício</Button>
           </div>
         )}
 
@@ -272,12 +250,7 @@ const LessonPage = () => {
               onComplete={() => setExerciseCompleted(true)}
               completed={exerciseCompleted}
             />
-            <button 
-              onClick={() => setPhase("quiz")} 
-              className="w-full bg-[#5B1F3D] text-white py-6 rounded-2xl font-heading font-black text-xs tracking-[0.2em] uppercase border-2 border-[#C8A66A] shadow-xl transition-all hover:scale-105 active:scale-95"
-            >
-              Iniciar Quiz Final
-            </button>
+            <Button onClick={() => setPhase("quiz")} className="btn-premium w-full py-7">Iniciar Quiz Final</Button>
           </div>
         )}
 

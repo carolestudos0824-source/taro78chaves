@@ -32,30 +32,22 @@ export function DeepDiveSection({ text, symbolism, cabala, history }: DeepDiveSe
         const isOpen = expanded === section.id;
 
         return (
-          <div key={section.id} className="rounded-2xl overflow-hidden transition-all duration-300"
-            style={{
-              background: isOpen ? "rgba(255, 255, 255, 0.7)" : "rgba(255, 255, 255, 0.4)",
-              border: `1px solid ${isOpen ? "rgba(200, 166, 106, 0.3)" : "rgba(200, 166, 106, 0.15)"}`,
-              boxShadow: isOpen ? "0 4px 15px rgba(91, 31, 61, 0.04)" : "none",
-            }}
-          >
+          <div key={section.id} className="card-mystic overflow-hidden">
             <button
               onClick={() => setExpanded(isOpen ? null : section.id)}
-              className="w-full p-5 flex items-center gap-4 hover:bg-white/40 transition-colors text-left"
+              className="w-full p-4 flex items-center gap-3 hover:bg-muted/30 transition-colors text-left"
             >
-              <div className="w-9 h-9 rounded-full flex items-center justify-center bg-[#C8A66A10] border border-[#C8A66A30]">
-                <Icon className="w-4 h-4 text-[#C8A66A] shrink-0" />
-              </div>
-              <span className="font-heading text-sm font-bold tracking-wide flex-1 text-[#5B1F3D]">{section.title}</span>
+              <Icon className="w-4 h-4 text-primary shrink-0" />
+              <span className="font-heading text-sm text-foreground flex-1">{section.title}</span>
               {isOpen ? (
-                <ChevronUp className="w-4 h-4 text-[#C8A66A]" />
+                <ChevronUp className="w-4 h-4 text-muted-foreground" />
               ) : (
-                <ChevronDown className="w-4 h-4 text-[#C8A66A]" />
+                <ChevronDown className="w-4 h-4 text-muted-foreground" />
               )}
             </button>
             {isOpen && (
-              <div className="px-6 pb-6 animate-fade-up">
-                <p className="text-[#5B1F3D]/80 leading-[1.75] text-[15px]">{section.content}</p>
+              <div className="px-4 pb-4 animate-fade-up">
+                <p className="text-foreground/75 leading-relaxed text-sm">{section.content}</p>
               </div>
             )}
           </div>
