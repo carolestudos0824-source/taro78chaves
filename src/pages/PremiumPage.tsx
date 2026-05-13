@@ -92,28 +92,36 @@ const PremiumPage = () => {
   };
 
   return (
-    <div className="min-h-screen pb-bottom-nav bg-[#FAF5EF]">
-      <header className="px-6 pt-12 pb-24 relative overflow-hidden bg-white/40 border-b border-[#C8A66A]/20 shadow-sm">
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
-          <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-[#C8A66A]/40 blur-[120px] rounded-full" />
-        </div>
+    <div className="min-h-screen pb-bottom-nav relative overflow-hidden">
+      {/* Background — Sincronizado com /app */}
+      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, #FAF5EF 0%, #FDF8F3 45%, #F2E7D9 100%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"
+        />
+      </div>
 
-        <div className="max-w-lg mx-auto relative z-10 space-y-6">
-          <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-[#5B1F3D] hover:opacity-70 transition-all font-heading font-black text-xs uppercase tracking-widest">
-            <ArrowLeft className="w-4 h-4" />
-            Voltar
+      <header className="px-6 pt-12 pb-24 relative z-10 overflow-hidden bg-white/40 border-b-2 border-[#C8A66A30] shadow-sm backdrop-blur-md">
+        <div className="max-w-lg mx-auto relative z-10 space-y-8">
+          <button onClick={() => navigate(-1)} className="w-11 h-11 rounded-2xl flex items-center justify-center bg-white border-2 border-[#C8A66A20] shadow-sm hover:border-[#C8A66A] transition-all" style={{ color: "#5B1F3D" }}>
+            <ArrowLeft className="w-6 h-6" />
           </button>
           
-          <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#5B1F3D] border-2 border-[#C8A66A]">
-              <KeyRound className="w-3.5 h-3.5 text-[#C8A66A]" />
-              <span className="text-[10px] font-heading tracking-[0.2em] uppercase text-[#FAF5EF] font-black">Jornada Completa</span>
+          <div className="space-y-5">
+            <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-[#5B1F3D] border-2 border-[#C8A66A] shadow-lg">
+              <KeyRound className="w-4 h-4 text-[#C8A66A]" />
+              <span className="text-[11px] font-heading tracking-[0.3em] uppercase text-[#FAF5EF] font-black">Jornada Completa</span>
             </div>
-            <h1 className="font-heading text-4xl text-[#5B1F3D] leading-tight font-black">
-              Aprenda Tarô como uma jornada.
+            <h1 className="font-heading text-4xl md:text-5xl text-[#5B1F3D] leading-[1.1] font-black tracking-tight drop-shadow-sm">
+              Aprenda Tarô como uma jornada sagrada.
             </h1>
-            <p className="text-[#5B1F3D]/80 font-body text-base font-bold italic leading-relaxed">
-              Estude os 78 arcanos com uma trilha progressiva, fiel ao Rider-Waite-Smith e pensada para criar prática, continuidade e domínio simbólico.
+            <p className="text-[#5B1F3D] font-body text-[15px] md:text-[16px] font-bold italic leading-relaxed opacity-90">
+              Estude os 78 arcanos com uma trilha progressiva, fiel ao simbolismo original e pensada para criar domínio real e prático.
             </p>
           </div>
         </div>
