@@ -14,6 +14,7 @@ interface TarotAnimatedCardProps {
   state: 'locked' | 'available' | 'active' | 'inProgress' | 'completed';
   variant?: 'lesson' | 'portal' | 'unlock' | 'review' | 'daily';
   isPremium?: boolean;
+  showLockIcon?: boolean;
   onClick?: () => void;
   className?: string;
 }
@@ -26,6 +27,7 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
   state,
   variant = 'portal',
   isPremium = false,
+  showLockIcon = true,
   onClick,
   className
 }) => {
@@ -93,7 +95,7 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
           alt={cardName}
           className={cn(
             "w-full h-full object-cover transition-all duration-700",
-            isLocked && "opacity-60 grayscale-[0.7] brightness-[0.7]",
+            isLocked && "opacity-80 grayscale-[0.3] brightness-[0.9]",
             isInProgress && "brightness-90 saturate-[0.8]",
             isAvailable && "brightness-100",
             isActive && "brightness-110 saturate-110"
@@ -103,13 +105,15 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
         {/* State Overlays */}
         {isLocked && (
           <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
-            {/* Premium Lock Overlay */}
-            <div className="absolute inset-0 bg-[#5B1F3D]/20 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#5B1F3D]/10 to-[#5B1F3D]/40" />
+            {/* Soft Veil Overlay (Ameixa) */}
+            <div className="absolute inset-0 bg-[#5B1F3D]/10 mix-blend-multiply opacity-60" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#5B1F3D]/5 to-[#5B1F3D]/20" />
             
-            <div className="relative z-10 w-8 h-8 rounded-full bg-[#FAF5EF]/90 border border-[#C8A66A]/40 flex items-center justify-center shadow-lg backdrop-blur-sm">
-              <LockKeyhole className="w-4 h-4 text-[#C8A66A]" />
-            </div>
+            {showLockIcon && (
+              <div className="relative z-10 w-8 h-8 rounded-full bg-[#FAF5EF]/90 border border-[#C8A66A]/40 flex items-center justify-center shadow-lg backdrop-blur-sm">
+                <LockKeyhole className="w-4 h-4 text-[#C8A66A]" />
+              </div>
+            )}
           </div>
         )}
 
@@ -139,7 +143,7 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
         )}
 
         {/* Available indicator */}
-        {isAvailable && (
+        {isAvailable && showLockIcon && (
           <div className="absolute bottom-2 right-2 z-20">
             <motion.div
               animate={{
