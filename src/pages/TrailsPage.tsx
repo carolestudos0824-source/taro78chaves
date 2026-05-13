@@ -112,10 +112,10 @@ const TrailsPage = () => {
           <div className="flex justify-between items-start mb-8">
             <button
               onClick={() => navigate("/app")}
-              className="flex items-center gap-2 text-[#5B1F3D] hover:text-[#C8A66A] transition-colors group"
+              className="flex items-center gap-3 text-[#5B1F3D] hover:text-[#C8A66A] transition-all group bg-white/60 px-4 py-2 rounded-full border border-[#C8A66A]/20 shadow-sm"
             >
               <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-              <span className="text-sm font-heading font-black uppercase tracking-widest">Módulos</span>
+              <span className="text-[10px] font-heading font-black uppercase tracking-widest">Voltar para Home</span>
             </button>
             <div className="flex -space-x-4 opacity-40 hover:opacity-100 transition-opacity duration-500">
               <img src={imgLouco} alt="" className="w-12 h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />

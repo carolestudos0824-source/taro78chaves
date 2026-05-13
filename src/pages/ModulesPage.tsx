@@ -21,7 +21,8 @@ import {
   Target,
   Briefcase,
   SquareStack,
-  Stars
+  Stars,
+  MapPin
 } from "lucide-react";
 import { 
   MODULES_CATALOG as MODULES, 
@@ -178,15 +179,15 @@ const ModulesPage = () => {
           </div>
           
           <div className="mt-6 flex flex-col gap-4">
-            <p className="text-[13px] font-body font-black text-[#5B1F3D]/70 italic text-center leading-relaxed">
+            <p className="text-[14px] font-body font-black text-[#5B1F3D]/70 italic text-center leading-relaxed">
               Você já domina {totalCompletedArcanos} das 78 chaves do tarô ({globalProgressPct}%).
             </p>
             
             <button
               onClick={() => navigate("/trilhas")}
-              className="w-full py-4 rounded-2xl bg-[#5B1F3D] text-[#FAF5EF] font-heading text-[10px] tracking-[0.3em] uppercase font-black shadow-lg hover:bg-[#3D1429] transition-all flex items-center justify-center gap-2"
+              className="w-full py-4 rounded-2xl bg-[#5B1F3D] text-[#FAF5EF] font-heading text-[11px] tracking-[0.3em] uppercase font-black shadow-lg hover:bg-[#3D1429] transition-all flex items-center justify-center gap-2 border-2 border-[#C8A66A]/30"
             >
-              Ver Trilhas de Formação <ChevronRight className="w-4 h-4" />
+              Ver Mapa Completo da Formação <ChevronRight className="w-4 h-4 text-[#C8A66A]" />
             </button>
           </div>
         </div>
@@ -194,14 +195,53 @@ const ModulesPage = () => {
         <ProgressCelebration xp={progress.xp} level={progress.level} streak={progress.streak} completedLessons={progress.completedLessons.length} />
         
         <div className="space-y-8 md:space-y-12">
+          {/* ─── Dashboard Actions ─── */}
+          <div className="grid grid-cols-2 gap-4">
+            <button
+              onClick={() => navigate("/desafios")}
+              className="group relative overflow-hidden rounded-[2rem] p-6 text-center border-2 border-[#C8A66A]/30 bg-white transition-all hover:scale-[1.03] active:scale-95 shadow-lg"
+            >
+              <div className="absolute top-0 right-0 p-3 opacity-10">
+                <Sparkles className="w-8 h-8 text-[#5B1F3D]" />
+              </div>
+              <div className="flex flex-col items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-[#FAF5EF] border border-[#C8A66A]/20 flex items-center justify-center group-hover:bg-[#5B1F3D] group-hover:text-white transition-all">
+                  <Flame className="w-6 h-6 text-[#C8A66A]" />
+                </div>
+                <div className="space-y-1">
+                  <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">Diário</span>
+                  <p className="font-heading text-sm font-black text-[#5B1F3D]">Ritual Diário</p>
+                </div>
+              </div>
+            </button>
+
+            <button
+              onClick={() => navigate("/trilhas")}
+              className="group relative overflow-hidden rounded-[2rem] p-6 text-center border-2 border-[#C8A66A]/30 bg-white transition-all hover:scale-[1.03] active:scale-95 shadow-lg"
+            >
+              <div className="absolute top-0 right-0 p-3 opacity-10">
+                <MapPin className="w-8 h-8 text-[#5B1F3D]" />
+              </div>
+              <div className="flex flex-col items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-[#FAF5EF] border border-[#C8A66A]/20 flex items-center justify-center group-hover:bg-[#5B1F3D] group-hover:text-white transition-all">
+                  <Compass className="w-6 h-6 text-[#C8A66A]" />
+                </div>
+                <div className="space-y-1">
+                  <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">Formação</span>
+                  <p className="font-heading text-sm font-black text-[#5B1F3D]">Mapa da Trilha</p>
+                </div>
+              </div>
+            </button>
+          </div>
+
           {/* ─── Study Trails Selector ─── */}
-          <div className="space-y-4">
+          <div className="space-y-6">
             <div className="flex items-center gap-4">
-              <span className="h-px flex-1 bg-[#C8A66A]/20" />
-              <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
-                Seu Centro de Formação
+              <span className="h-px flex-1 bg-[#C8A66A]/30" />
+              <h2 className="font-heading text-[11px] tracking-[0.4em] uppercase font-black text-[#5B1F3D]">
+                Módulos de Estudo
               </h2>
-              <span className="h-px flex-1 bg-[#C8A66A]/20" />
+              <span className="h-px flex-1 bg-[#C8A66A]/30" />
             </div>
             
             <div className="grid grid-cols-3 gap-4">
@@ -219,12 +259,12 @@ const ModulesPage = () => {
                     const el = document.getElementById(`cat-${trail.id}`);
                     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
-                  className="flex flex-col items-center gap-3 p-5 rounded-[2rem] border-2 border-[#C8A66A]/20 bg-white/60 hover:bg-white transition-all shadow-lg hover:shadow-2xl hover:-translate-y-1 group"
+                  className="flex flex-col items-center gap-3 p-5 rounded-[2rem] border-2 border-[#C8A66A]/20 bg-white/60 hover:bg-white transition-all shadow-md hover:shadow-xl hover:-translate-y-1 group"
                 >
                   <div className={`w-14 h-14 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A]/10 group-hover:scale-110 transition-all duration-500 group-hover:bg-[#5B1F3D] group-hover:shadow-[0_8px_20px_rgba(91,31,61,0.3)] shadow-inner`} style={{ background: trail.color }}>
                     <trail.icon className="w-7 h-7 text-[#5B1F3D] group-hover:text-white transition-colors duration-500" />
                   </div>
-                  <span className="text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D] group-hover:text-[#C8A66A] transition-colors">
+                  <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D] group-hover:text-[#C8A66A] transition-colors">
                     {trail.label}
                   </span>
                 </button>

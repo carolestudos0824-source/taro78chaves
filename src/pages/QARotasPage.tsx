@@ -53,7 +53,8 @@ const ROUTE_LIST: RouteItem[] = [
 
   // BLOCO 2 — APP PRINCIPAL
   { id: "a09", path: "/app", name: "Jornada Principal (Dashboard)", group: "App", type: "App" },
-  { id: "a10", path: "/perfil", name: "Perfil", group: "App", type: "App" },
+  { id: "a10", path: "/trilhas", name: "Trilhas de Formação (Mapa)", group: "Trilhas", type: "App" },
+  { id: "a11", path: "/perfil", name: "Perfil", group: "App", type: "App" },
   { id: "a11", path: "/premium", name: "Premium", group: "App", type: "App" },
   { id: "a12", path: "/feedback", name: "Feedback", group: "App", type: "App" },
 
