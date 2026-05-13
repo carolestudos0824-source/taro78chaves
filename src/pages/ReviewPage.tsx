@@ -183,17 +183,15 @@ const ReviewPage = () => {
       }}>
         <div className="container max-w-3xl py-4 px-6">
           <div className="flex items-center gap-3">
-            <button onClick={() => navigate("/app")} className="transition-all hover:scale-105 duration-200" style={{ color: "hsl(230 10% 40%)" }}>
+            <button onClick={() => navigate("/app")} className="transition-all hover:scale-110 active:scale-95 duration-200 w-10 h-10 rounded-xl flex items-center justify-center bg-white border border-[#C8A66A30] shadow-sm hover:border-[#C8A66A]" style={{ color: "#5B1F3D" }}>
               <ArrowLeft className="w-5 h-5" />
             </button>
             <div>
-              <span className="text-[9px] tracking-[0.4em] uppercase font-body flex items-center gap-1.5" style={{ color: "hsl(340 42% 28% / 0.70)" }}>
-                <span style={{ color: "hsl(36 40% 42%)" }}>◎</span> Revisão <span style={{ color: "hsl(36 40% 42%)" }}>◎</span>
+              <span className="text-[9px] tracking-[0.4em] uppercase font-heading font-black flex items-center gap-1.5" style={{ color: "#C8A66A" }}>
+                ◎ REVISÃO ◎
               </span>
-              <h1 className="font-heading text-xl md:text-2xl tracking-wide" style={{
-                background: "linear-gradient(135deg, hsl(340 42% 20%), hsl(36 35% 28%), hsl(36 42% 42%))",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+              <h1 className="font-heading text-xl md:text-2xl tracking-tight font-black" style={{
+                color: "#5B1F3D"
               }}>
                 Revisão Inteligente
               </h1>
