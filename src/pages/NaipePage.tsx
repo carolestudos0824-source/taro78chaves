@@ -99,24 +99,34 @@ const NaipePage = () => {
         className="w-full text-left group transition-all duration-500"
         style={{ animation: `fade-up 0.4s ease-out both`, animationDelay: `${delay}ms` }}
       >
-        <div className="relative overflow-hidden rounded-xl transition-all duration-300" style={isCurrent && filled ? {
-          background: "white",
-          border: `2px solid #C8A66A`,
-          boxShadow: `0 12px 35px -10px rgba(91, 31, 61, 0.15)`,
-        } : completed ? {
-          background: "hsl(36 33% 97% / 0.8)",
-          border: "1px solid #C8A66A40",
-        } : {
-          background: "rgba(220, 207, 194, 0.15)",
-          border: "1px solid rgba(220, 207, 194, 0.3)",
-        }}>
-          <div className="p-4 flex items-center gap-4">
-            <div className="w-11 h-11 rounded-full flex items-center justify-center shrink-0 shadow-sm transition-transform group-hover:scale-105" style={completed ? {
+        <div 
+          className="relative overflow-hidden rounded-2xl transition-all duration-500" 
+          style={isCurrent && filled ? {
+            background: "white",
+            border: `2px solid #C8A66A`,
+            boxShadow: `0 20px 40px -12px rgba(91, 31, 61, 0.18)`,
+            transform: "translateY(-2px)"
+          } : completed ? {
+            background: "rgba(255, 255, 255, 0.85)",
+            border: "1px solid rgba(200, 166, 106, 0.3)",
+            boxShadow: "0 4px 15px rgba(91, 31, 61, 0.03)"
+          } : {
+            background: "rgba(220, 207, 194, 0.1)",
+            border: "1px solid rgba(220, 207, 194, 0.2)",
+          }}
+        >
+          {/* Hover effect overlay */}
+          <div className="absolute inset-0 bg-[#C8A66A]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          
+          <div className="p-5 flex items-center gap-5 relative z-10">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:shadow-md" style={completed ? {
               border: "2.5px solid #5B1F3D",
               background: "#FAF5EF",
+              boxShadow: "inset 0 2px 4px rgba(91, 31, 61, 0.05)"
             } : unlocked ? {
               border: `2.5px solid #5B1F3D`,
               background: "#FAF5EF",
+              boxShadow: "inset 0 2px 4px rgba(91, 31, 61, 0.05)"
             } : {
               border: "1.5px solid rgba(91, 31, 61, 0.15)",
               background: "rgba(220, 207, 194, 0.1)",
@@ -131,20 +141,24 @@ const NaipePage = () => {
                 <Lock className="w-4 h-4" style={{ color: "#5B1F3D30" }} />
               )}
             </div>
+            
             <div className="flex-1 min-w-0">
-              <h3 className="font-heading text-base tracking-tight truncate font-black" style={{
+              <h3 className="font-heading text-lg tracking-tight truncate font-black leading-tight" style={{
                 color: unlocked ? "#5B1F3D" : "#5B1F3D60",
               }}>
                 {card.nome}
               </h3>
               {card.subtitulo && (
-                <p className="font-accent text-[13px] italic truncate font-bold" style={{ color: unlocked ? "#8B6A30" : "#5B1F3D40" }}>
+                <p className="font-accent text-sm italic truncate font-bold mt-0.5" style={{ color: unlocked ? "#8B6A30" : "#5B1F3D30" }}>
                   {card.subtitulo}
                 </p>
               )}
             </div>
+            
             {unlocked && filled && (
-              <ChevronRight className="w-5 h-5 shrink-0 group-hover:translate-x-1.5 transition-transform" style={{ color: "#C8A66A" }} />
+              <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A]/20 transition-all duration-300 group-hover:bg-[#C8A66A]/10 group-hover:border-[#C8A66A]/40 group-hover:translate-x-1">
+                <ChevronRight className="w-5 h-5 shrink-0" style={{ color: "#C8A66A" }} />
+              </div>
             )}
           </div>
         </div>
