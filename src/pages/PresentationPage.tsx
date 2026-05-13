@@ -165,28 +165,34 @@ const PresentationPage = () => {
         )}
       </div>
 
-      {/* Progress dots */}
-      <div className="relative z-10 flex items-center justify-center gap-3 py-6 md:py-8" style={{
-        borderTop: "2px solid #C8A66A30",
-        background: "rgba(255, 255, 255, 0.95)"
+      {/* Progress dots — Redesigned with premium feel */}
+      <div className="relative z-10 flex items-center justify-center gap-4 py-8 md:py-10" style={{
+        borderTop: "1.5px solid #C8A66A30",
+        background: "rgba(250, 245, 239, 0.95)",
+        backdropFilter: "blur(20px)"
       }}>
         {SLIDES.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className="rounded-full transition-all duration-300"
-            style={{
-              width: i === current ? 24 : 7,
-              height: 7,
-              background: i === current
-                ? "#5B1F3D"
-                : i < current
-                ? "#C8A66A80"
-                : "#DCCFC2",
-              border: i === current ? "none" : "1px solid rgba(91, 31, 61, 0.10)"
-            }}
+            className="group relative transition-all duration-500"
             aria-label={`Ir para slide ${i + 1}`}
-          />
+          >
+            <div
+              className="rounded-full transition-all duration-500"
+              style={{
+                width: i === current ? 32 : 10,
+                height: 10,
+                background: i === current
+                  ? "linear-gradient(90deg, #5B1F3D, #8B6A30)"
+                  : i < current
+                  ? "#C8A66A"
+                  : "#E8DED3",
+                boxShadow: i === current ? "0 4px 12px rgba(91, 31, 61, 0.3)" : "none",
+                opacity: i === current ? 1 : 0.6
+              }}
+            />
+          </button>
         ))}
       </div>
     </div>
