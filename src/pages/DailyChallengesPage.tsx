@@ -159,50 +159,49 @@ const DailyChallengesPage = () => {
       </header>
 
       <div className="relative z-10 max-w-lg mx-auto px-6 pb-32 space-y-10 mt-12">
-        {/* Progress summary — Matching Matrices Visual /app */}
-        <div className="relative rounded-[2.5rem] overflow-hidden p-8 transition-all duration-500" style={{
-          background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
+        {/* Progress summary — Reforçado para ser Premium */}
+        <div className="relative rounded-[3rem] overflow-hidden p-8 md:p-10 transition-all duration-500" style={{
+          background: "linear-gradient(135deg, #FFFFFF 0%, #FAF5EF 100%)",
           backdropFilter: "blur(24px)",
-          border: "2.5px solid #C8A66A",
-          boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08), 0 0 40px rgba(200, 166, 106, 0.1)"
+          border: "3px solid #C8A66A",
+          boxShadow: "0 40px 80px rgba(91, 31, 61, 0.12), 0 0 30px rgba(200, 166, 106, 0.15)"
         }}>
           <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A30]" style={{
+            <div className="flex items-center gap-5">
+              <div className="w-16 h-16 rounded-[1.5rem] flex items-center justify-center border-2 border-[#C8A66A40] shadow-xl transform -rotate-3" style={{
                 background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
-                boxShadow: "0 10px 20px rgba(91, 31, 61, 0.2)"
               }}>
-                <Flame className={`w-6 h-6 text-[#C8A66A] ${allDone ? "animate-pulse" : ""}`} />
+                <Flame className={`w-8 h-8 text-[#C8A66A] ${allDone ? "animate-pulse" : ""}`} />
               </div>
               <div className="flex flex-col">
-                <span className="text-[11px] font-heading font-black tracking-[0.25em] text-[#C8A66A] uppercase">
+                <span className="text-[11px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase mb-1">
                   {allDone ? "Ritual Cumprido" : "Seu Progresso"}
                 </span>
-                <span className="text-lg font-heading font-black text-[#5B1F3D]">
-                  {allDone ? "Portal de Hoje Aberto!" : `${completedCount} de ${challenges.length} Desafios`}
+                <span className="text-xl font-heading font-black text-[#5B1F3D]">
+                  {allDone ? "Portal Aberto!" : `${completedCount} de ${challenges.length} Portais`}
                 </span>
               </div>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full border-2 border-[#C8A66A20]" style={{
-              background: "rgba(250, 245, 239, 0.8)",
+            <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl border-2 border-[#C8A66A20] shadow-sm" style={{
+              background: "rgba(255, 255, 255, 0.8)",
             }}>
-              <Star className="w-4 h-4 text-[#C8A66A]" />
-              <span className="text-[12px] font-heading font-black text-[#5B1F3D]">
+              <Star className="w-5 h-5 text-[#C8A66A] fill-[#C8A66A20]" />
+              <span className="text-[14px] font-heading font-black text-[#5B1F3D]">
                 {totalXPEarned} XP
               </span>
             </div>
           </div>
           
-          <div className="h-3.5 rounded-full bg-[#E8DED3] overflow-hidden p-[1.5px] border border-[#D1C4B5]/30">
+          <div className="h-4 rounded-full bg-[#E8DED3] overflow-hidden p-[2.5px] border border-[#D1C4B5]/50 shadow-inner">
             <div 
-              className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out relative overflow-hidden"
-              style={{ width: `${Math.max((completedCount / challenges.length) * 100, 2)}%` }}
+              className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out relative overflow-hidden shadow-lg"
+              style={{ width: `${Math.max((completedCount / challenges.length) * 100, 2.5)}%` }}
             >
-              <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+              <div className="absolute inset-0 w-1/3 h-full bg-white/30 skew-x-[-25deg] animate-pulse" style={{ left: '15%' }} />
             </div>
           </div>
           
-          <p className="mt-6 text-[12px] font-body font-bold text-[#5B1F3D]/60 italic text-center leading-relaxed">
+          <p className="mt-8 text-[13px] font-body font-black text-[#5B1F3D]/80 italic text-center leading-relaxed max-w-[280px] mx-auto">
             {allDone 
               ? "Você concluiu todos os portais do dia. Sua jornada está fortalecida." 
               : "Cada desafio concluído revela uma nova camada de sabedoria."}
