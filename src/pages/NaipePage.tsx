@@ -99,24 +99,34 @@ const NaipePage = () => {
         className="w-full text-left group transition-all duration-500"
         style={{ animation: `fade-up 0.4s ease-out both`, animationDelay: `${delay}ms` }}
       >
-        <div className="relative overflow-hidden rounded-xl transition-all duration-300" style={isCurrent && filled ? {
-          background: "white",
-          border: `2px solid #C8A66A`,
-          boxShadow: `0 12px 35px -10px rgba(91, 31, 61, 0.15)`,
-        } : completed ? {
-          background: "hsl(36 33% 97% / 0.8)",
-          border: "1px solid #C8A66A40",
-        } : {
-          background: "rgba(220, 207, 194, 0.15)",
-          border: "1px solid rgba(220, 207, 194, 0.3)",
-        }}>
-          <div className="p-4 flex items-center gap-4">
-            <div className="w-11 h-11 rounded-full flex items-center justify-center shrink-0 shadow-sm transition-transform group-hover:scale-105" style={completed ? {
+        <div 
+          className="relative overflow-hidden rounded-2xl transition-all duration-500" 
+          style={isCurrent && filled ? {
+            background: "white",
+            border: `2px solid #C8A66A`,
+            boxShadow: `0 20px 40px -12px rgba(91, 31, 61, 0.18)`,
+            transform: "translateY(-2px)"
+          } : completed ? {
+            background: "rgba(255, 255, 255, 0.85)",
+            border: "1px solid rgba(200, 166, 106, 0.3)",
+            boxShadow: "0 4px 15px rgba(91, 31, 61, 0.03)"
+          } : {
+            background: "rgba(220, 207, 194, 0.1)",
+            border: "1px solid rgba(220, 207, 194, 0.2)",
+          }}
+        >
+          {/* Hover effect overlay */}
+          <div className="absolute inset-0 bg-[#C8A66A]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          
+          <div className="p-5 flex items-center gap-5 relative z-10">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:shadow-md" style={completed ? {
               border: "2.5px solid #5B1F3D",
               background: "#FAF5EF",
+              boxShadow: "inset 0 2px 4px rgba(91, 31, 61, 0.05)"
             } : unlocked ? {
               border: `2.5px solid #5B1F3D`,
               background: "#FAF5EF",
+              boxShadow: "inset 0 2px 4px rgba(91, 31, 61, 0.05)"
             } : {
               border: "1.5px solid rgba(91, 31, 61, 0.15)",
               background: "rgba(220, 207, 194, 0.1)",
@@ -131,20 +141,24 @@ const NaipePage = () => {
                 <Lock className="w-4 h-4" style={{ color: "#5B1F3D30" }} />
               )}
             </div>
+            
             <div className="flex-1 min-w-0">
-              <h3 className="font-heading text-base tracking-tight truncate font-black" style={{
+              <h3 className="font-heading text-lg tracking-tight truncate font-black leading-tight" style={{
                 color: unlocked ? "#5B1F3D" : "#5B1F3D60",
               }}>
                 {card.nome}
               </h3>
               {card.subtitulo && (
-                <p className="font-accent text-[13px] italic truncate font-bold" style={{ color: unlocked ? "#8B6A30" : "#5B1F3D40" }}>
+                <p className="font-accent text-sm italic truncate font-bold mt-0.5" style={{ color: unlocked ? "#8B6A30" : "#5B1F3D30" }}>
                   {card.subtitulo}
                 </p>
               )}
             </div>
+            
             {unlocked && filled && (
-              <ChevronRight className="w-5 h-5 shrink-0 group-hover:translate-x-1.5 transition-transform" style={{ color: "#C8A66A" }} />
+              <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A]/20 transition-all duration-300 group-hover:bg-[#C8A66A]/10 group-hover:border-[#C8A66A]/40 group-hover:translate-x-1">
+                <ChevronRight className="w-5 h-5 shrink-0" style={{ color: "#C8A66A" }} />
+              </div>
             )}
           </div>
         </div>
@@ -156,9 +170,10 @@ const NaipePage = () => {
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         <div className="absolute inset-0" style={{
-          background: "linear-gradient(to bottom, #FAF5EF 0%, #DCCFC2 100%)",
-          opacity: 0.8,
+          background: "linear-gradient(135deg, #FAF5EF 0%, #F5E6D3 50%, #DCCFC2 100%)",
+          opacity: 0.95,
         }} />
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
       </div>
 
       {/* Header */}
@@ -190,26 +205,26 @@ const NaipePage = () => {
             <StreakCounter streak={progress.streak} />
           </div>
 
-          <p className="font-accent text-[17px] italic leading-relaxed mb-8 font-bold border-l-4 border-[#C8A66A40] pl-5 py-1" style={{ color: "#5B1F3D" }}>
+          <p className="font-accent text-[18px] md:text-[20px] italic leading-relaxed mb-10 font-black border-l-4 border-[#C8A66A] pl-6 py-2" style={{ color: "#5B1F3D" }}>
             "{NAIPE_PHRASES[naipe]}"
           </p>
 
           {/* Progress */}
-          <div className="space-y-3 bg-[#FAF5EF] p-5 rounded-2xl border-2 border-[#C8A66A20] shadow-inner">
+          <div className="space-y-4 bg-[#FAF5EF] p-6 rounded-2xl border-2 border-[#C8A66A]/30 shadow-[inset_0_2px_10px_rgba(91,31,61,0.05)]">
             <div className="flex items-center justify-between px-1">
-              <span className="text-[12px] font-heading tracking-[0.25em] uppercase font-black" style={{ color: "#5B1F3D" }}>
-                {completedCount}/14 cartas estudadas
+              <span className="text-[12px] font-heading tracking-[0.3em] uppercase font-black" style={{ color: "#5B1F3D" }}>
+                {completedCount}/14 cartas concluídas
               </span>
-              <span className="text-[13px] font-heading font-black" style={{ color: "#8B6A30" }}>
+              <span className="text-[14px] font-heading font-black px-2 py-0.5 rounded-full bg-[#C8A66A]/10" style={{ color: "#8B6A30" }}>
                 {progressPct}%
               </span>
             </div>
-            <div className="h-3 rounded-full overflow-hidden p-[1.5px]" style={{ background: "#DCCFC240", border: "1px solid #DCCFC260" }}>
+            <div className="h-4 rounded-full overflow-hidden p-[2px]" style={{ background: "#DCCFC250", border: "1px solid #DCCFC260" }}>
               <div className="h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden" style={{ 
                 width: `${Math.max(progressPct, 4)}%`, 
-                background: `linear-gradient(90deg, #5B1F3D, #C8A66A)` 
+                background: `linear-gradient(90deg, #5B1F3D, #8B6A30, #C8A66A)` 
               }}>
-                 <div className="absolute inset-0 w-1/3 h-full bg-white/25 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+                 <div className="absolute inset-0 w-1/2 h-full bg-white/30 skew-x-[-25deg] animate-pulse" style={{ left: '10%' }} />
               </div>
             </div>
           </div>
@@ -235,9 +250,9 @@ const NaipePage = () => {
             <button
               key={tool.label}
               onClick={tool.onClick}
-              className="rounded-2xl p-5 text-center transition-all duration-300 hover:scale-[1.05] group bg-white border-2 border-[#C8A66A]/30 backdrop-blur-sm shadow-lg hover:border-[#C8A66A]/60"
+              className="rounded-2xl p-5 text-center transition-all duration-300 hover:scale-[1.05] group bg-white border-2 border-[#C8A66A]/30 backdrop-blur-sm shadow-xl hover:border-[#C8A66A]/60"
             >
-              <div className="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 transition-colors group-hover:bg-[#C8A66A]/10 bg-[#FAF5EF] border border-[#C8A66A]/20 shadow-inner">
+              <div className="w-14 h-14 mx-auto rounded-2xl flex items-center justify-center mb-3 transition-all duration-300 group-hover:bg-[#C8A66A]/15 bg-[#FAF5EF] border-2 border-[#C8A66A]/20 shadow-inner group-hover:shadow-md">
                 <div style={{ color: "#5B1F3D" }}>{tool.icon}</div>
               </div>
               <p className="font-heading text-[12px] tracking-[0.2em] uppercase mb-1 font-black" style={{ color: "#5B1F3D" }}>
@@ -251,35 +266,44 @@ const NaipePage = () => {
         </div>
 
         {/* Divider */}
-        <div className="flex items-center gap-5 mb-10" style={{ animation: "fade-up 0.4s ease-out 0.05s both" }}>
-          <div className="flex-1 h-[2px] bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-          <span className="text-[11px] font-heading tracking-[0.4em] uppercase text-[#5B1F3D] font-black">
-            Trilha de Estudo
-          </span>
-          <div className="flex-1 h-[2px] bg-gradient-to-l from-transparent to-[#C8A66A40]" />
+        <div className="flex items-center gap-6 mb-12" style={{ animation: "fade-up 0.4s ease-out 0.05s both" }}>
+          <div className="flex-1 h-[1.5px] bg-gradient-to-r from-transparent via-[#C8A66A]/40 to-transparent" />
+          <div className="flex flex-col items-center gap-1">
+            <span className="text-[12px] font-heading tracking-[0.5em] uppercase text-[#5B1F3D] font-black">
+              Trilha de Estudo
+            </span>
+            <div className="w-8 h-[2px] bg-[#C8A66A]" />
+          </div>
+          <div className="flex-1 h-[1.5px] bg-gradient-to-r from-transparent via-[#C8A66A]/40 to-transparent" />
         </div>
 
         {/* Numbered cards */}
-        <div className="flex items-center gap-3 mb-6" style={{ animation: "fade-up 0.4s ease-out 0.1s both" }}>
-           <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#5B1F3D] shadow-md">
-             <span className="text-ivory text-sm font-heading font-bold">◈</span>
+        <div className="flex items-center gap-4 mb-8" style={{ animation: "fade-up 0.4s ease-out 0.1s both" }}>
+           <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#5B1F3D] shadow-lg border border-[#C8A66A]/30">
+             <span className="text-[#FAF5EF] text-lg font-heading font-black">◈</span>
            </div>
-           <h3 className="font-heading text-[13px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
-            Ás ao Dez
-          </h3>
+           <div className="flex flex-col">
+             <h3 className="font-heading text-sm tracking-[0.3em] uppercase font-black text-[#5B1F3D] leading-none">
+               Ás ao Dez
+             </h3>
+             <div className="h-0.5 w-12 bg-[#C8A66A]/30 mt-1.5" />
+           </div>
         </div>
         <div className="space-y-4 mb-14">
           {numbered.map((card, i) => renderCardRow(card, i, 120 + i * 40))}
         </div>
 
         {/* Court cards */}
-        <div className="flex items-center gap-3 mb-6" style={{ animation: "fade-up 0.4s ease-out 0.5s both" }}>
-           <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#8B6A30] shadow-md">
-             <span className="text-ivory text-sm font-heading font-bold">♛</span>
+        <div className="flex items-center gap-4 mb-8" style={{ animation: "fade-up 0.4s ease-out 0.5s both" }}>
+           <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#8B6A30] shadow-lg border border-[#C8A66A]/30">
+             <span className="text-[#FAF5EF] text-lg font-heading font-black">♛</span>
            </div>
-           <h3 className="font-heading text-[13px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
-            Cartas da Corte
-          </h3>
+           <div className="flex flex-col">
+             <h3 className="font-heading text-sm tracking-[0.3em] uppercase font-black text-[#5B1F3D] leading-none">
+               Cartas da Corte
+             </h3>
+             <div className="h-0.5 w-12 bg-[#C8A66A]/30 mt-1.5" />
+           </div>
         </div>
         <div className="space-y-4 mb-16">
           {court.map((card, i) => renderCardRow(card, 10 + i, 520 + i * 40))}
