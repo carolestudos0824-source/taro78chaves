@@ -48,9 +48,15 @@ export function LessonContent({
   // Separate sections into core and applied
   const coreIds = ["essencia", "simbolos", "luz", "sombra", "licao"];
   const appliedIds = ["amor", "trabalho", "espiritualidade"];
+  
   const coreSections = sections.filter(s => coreIds.includes(s.id));
   const appliedSections = sections.filter(s => appliedIds.includes(s.id));
   const otherSections = sections.filter(s => !coreIds.includes(s.id) && !appliedIds.includes(s.id));
+  
+  // Debug para garantir que as seções estão sendo recebidas
+  console.log("LessonContent sections received:", sections.map(s => s.id));
+  console.log("Applied sections filtered:", appliedSections.map(s => s.id));
+  console.log("Core sections filtered:", coreSections.map(s => s.id));
 
   const appliedIcons: Record<string, typeof Heart> = {
     amor: Heart,
