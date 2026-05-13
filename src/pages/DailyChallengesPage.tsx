@@ -450,7 +450,7 @@ const PerguntasContent = ({ data, onComplete }: { data: PerguntasDoDia; onComple
   if (data.questions.length === 0) {
     return (
       <div className="text-center py-8">
-        <p className="font-body text-sm" style={{ color: "hsl(230 15% 30% / 0.50)" }}>Nenhuma pergunta disponível hoje.</p>
+        <p className="font-body text-[13px] font-bold text-[#5B1F3D]/50">Nenhuma pergunta disponível hoje.</p>
         <CompleteButton onComplete={onComplete} />
       </div>
     );
@@ -458,14 +458,18 @@ const PerguntasContent = ({ data, onComplete }: { data: PerguntasDoDia; onComple
 
   if (finished) {
     return (
-      <div className="text-center space-y-3">
-        <div className="text-3xl">✦</div>
-        <h3 className="font-heading text-lg" style={{ color: "hsl(340 42% 22%)" }}>
-          {score}/{data.questions.length} acertos
-        </h3>
-        <p className="font-accent text-sm italic" style={{ color: "hsl(230 20% 15% / 0.50)" }}>
-          {score === data.questions.length ? "Perfeito!" : "Continue praticando!"}
-        </p>
+      <div className="text-center space-y-6 animate-fade-in py-6">
+        <div className="w-16 h-16 rounded-2xl bg-[#5B1F3D]/5 flex items-center justify-center mx-auto border-2 border-[#C8A66A]/20">
+          <Sparkles className="w-8 h-8 text-[#C8A66A]" />
+        </div>
+        <div className="space-y-1">
+          <h3 className="font-heading text-2xl font-black text-[#5B1F3D]">
+            {score}/{data.questions.length} acertos
+          </h3>
+          <p className="font-body text-[12px] font-bold italic text-[#C8A66A] uppercase tracking-widest">
+            {score === data.questions.length ? "Sabedoria Plena!" : "A prática leva à maestria."}
+          </p>
+        </div>
         <CompleteButton onComplete={onComplete} label="Concluir ✦" />
       </div>
     );
@@ -474,15 +478,17 @@ const PerguntasContent = ({ data, onComplete }: { data: PerguntasDoDia; onComple
   const q = data.questions[current];
 
   return (
-    <div className="space-y-4">
-      <div className="flex justify-between text-[10px] font-body" style={{ color: "hsl(230 15% 30% / 0.40)" }}>
-        <span>Pergunta {current + 1} de {data.questions.length}</span>
-        <span>{score} acerto{score !== 1 ? "s" : ""}</span>
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]/40">Pergunta {current + 1} de {data.questions.length}</span>
+        <div className="px-3 py-1 rounded-full bg-[#5B1F3D]/5 border border-[#5B1F3D]/10">
+          <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">{score} acerto{score !== 1 ? "s" : ""}</span>
+        </div>
       </div>
-      <h3 className="font-heading text-sm tracking-wide" style={{ color: "hsl(340 42% 22%)" }}>
+      <h3 className="font-heading text-lg font-black text-[#5B1F3D] leading-tight">
         {q.question}
       </h3>
-      <div className="space-y-2">
+      <div className="space-y-3">
         {q.options.map((opt, i) => (
           <button
             key={i}
@@ -499,23 +505,23 @@ const PerguntasContent = ({ data, onComplete }: { data: PerguntasDoDia; onComple
                 }
               }, 1500);
             }}
-            className="w-full text-left rounded-lg p-3 font-body text-sm transition-all"
+            className="w-full text-left rounded-2xl p-4 font-body text-[14px] font-bold transition-all duration-300 border-2"
             style={selected === null ? {
-              background: "hsl(38 28% 93% / 0.80)",
-              border: "1px solid hsl(36 25% 82% / 0.50)",
-              color: "hsl(230 15% 20%)",
+              background: "white",
+              borderColor: "rgba(200, 166, 106, 0.1)",
+              color: "#5B1F3D",
             } : i === q.correctIndex ? {
-              background: "hsl(120 35% 45% / 0.10)",
-              border: "1.5px solid hsl(120 35% 45% / 0.40)",
-              color: "hsl(120 35% 30%)",
+              background: "rgba(34, 197, 94, 0.1)",
+              borderColor: "rgba(34, 197, 94, 0.4)",
+              color: "#166534",
             } : i === selected ? {
-              background: "hsl(0 50% 50% / 0.08)",
-              border: "1.5px solid hsl(0 50% 50% / 0.30)",
-              color: "hsl(0 50% 35%)",
+              background: "rgba(239, 68, 68, 0.1)",
+              borderColor: "rgba(239, 68, 68, 0.4)",
+              color: "#991b1b",
             } : {
-              background: "hsl(38 28% 93% / 0.50)",
-              border: "1px solid hsl(36 25% 82% / 0.30)",
-              color: "hsl(230 15% 20% / 0.40)",
+              background: "rgba(91, 31, 61, 0.02)",
+              borderColor: "rgba(91, 31, 61, 0.05)",
+              color: "rgba(91, 31, 61, 0.4)",
             }}
           >
             {opt}
@@ -523,9 +529,11 @@ const PerguntasContent = ({ data, onComplete }: { data: PerguntasDoDia; onComple
         ))}
       </div>
       {selected !== null && (
-        <p className="font-accent text-xs italic" style={{ color: "hsl(230 20% 15% / 0.50)" }}>
-          {q.explanation}
-        </p>
+        <div className="p-4 rounded-xl bg-[#5B1F3D]/5 border border-[#5B1F3D]/10 animate-fade-in">
+          <p className="font-body text-[12px] font-bold italic text-[#5B1F3D]/70 leading-relaxed">
+            {q.explanation}
+          </p>
+        </div>
       )}
     </div>
   );
