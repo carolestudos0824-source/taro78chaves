@@ -34,7 +34,7 @@ export function LessonSections({ sections }: LessonSectionsProps) {
   const [openSection, setOpenSection] = useState<string | null>(null);
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-4">
       {sections.map((section, idx) => {
         const isOpen = openSection === section.id;
         const colors = section.accent ? accentColors[section.accent] : defaultAccent;
@@ -42,13 +42,13 @@ export function LessonSections({ sections }: LessonSectionsProps) {
         return (
           <div
             key={section.id}
-            className="rounded-xl overflow-hidden transition-all duration-300"
+            className="rounded-[1.5rem] overflow-hidden transition-all duration-300"
             style={{
-              background: isOpen ? colors.bg : "hsl(38 30% 95% / 0.7)",
-              border: `1px solid ${isOpen ? colors.border : "hsl(36 25% 82% / 0.5)"}`,
+              background: isOpen ? "rgba(255, 255, 255, 0.7)" : "rgba(255, 255, 255, 0.4)",
+              border: `1px solid ${isOpen ? "rgba(200, 166, 106, 0.35)" : "rgba(200, 166, 106, 0.15)"}`,
               boxShadow: isOpen
-                ? "0 4px 20px hsl(36 45% 58% / 0.06)"
-                : "0 1px 4px hsl(36 45% 58% / 0.03)",
+                ? "0 12px 30px rgba(91, 31, 61, 0.08)"
+                : "0 1px 4px rgba(91, 31, 61, 0.02)",
               animation: `fade-up 0.4s ease-out ${idx * 0.05}s both`,
             }}
           >
