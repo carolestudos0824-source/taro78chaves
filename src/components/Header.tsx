@@ -93,7 +93,7 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
             </button>
           </div>
         </div>
-        <GlobalMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+        {isMenuOpen && <GlobalMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />}
         <div className={`transition-all duration-500 ease-in-out origin-left transform ${isCompact ? "scale-[0.85] opacity-0 h-0 pointer-events-none" : "scale-100 opacity-100 h-auto"}`}>
           <XPBar xp={xp} level={level} />
         </div>
