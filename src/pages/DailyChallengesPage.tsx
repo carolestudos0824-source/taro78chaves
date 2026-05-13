@@ -78,27 +78,29 @@ const DailyChallengesPage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav bg-[#FAF5EF]">
-      {/* Background — Reforçado para evitar aspecto lavado */}
+      {/* Background — Reforçado para evitar aspecto lavado e garantir profundidade */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(180deg, #FAF5EF 0%, #FDF8F3 45%, #F5EBDE 100%)",
+            background: "linear-gradient(180deg, #FAF5EF 0%, #FDF8F3 45%, #F2E7D9 100%)",
           }}
         />
-        {/* Camadas de atmosfera ritualística */}
+        {/* Camadas de atmosfera ritualística reforçadas */}
         <div
           className="absolute inset-0"
           style={{
-            background: "radial-gradient(circle at 50% -10%, rgba(91, 31, 61, 0.08) 0%, transparent 60%)",
+            background: "radial-gradient(circle at 50% -10%, rgba(91, 31, 61, 0.12) 0%, transparent 70%)",
           }}
         />
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to bottom, rgba(200, 166, 106, 0.05) 0%, transparent 50%, rgba(91, 31, 61, 0.03) 100%)",
+            background: "linear-gradient(to bottom, rgba(200, 166, 106, 0.08) 0%, transparent 50%, rgba(91, 31, 61, 0.05) 100%)",
           }}
         />
+        {/* Adição de uma textura sutil de "grão" ou atmosfera que o /app costuma ter */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
       </div>
 
       {/* Active challenge modal */}
