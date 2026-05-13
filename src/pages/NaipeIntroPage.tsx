@@ -56,26 +56,49 @@ const NaipeIntroPage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
+      {/* Background — Marfim Suave refined from /app */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
-        
-        <div className="absolute inset-0" style={{
-          background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.88), hsl(36 33% 97% / 0.82), hsl(36 33% 97% / 0.92))",
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+            opacity: 0.98,
+          }}
+        />
+        {/* Subtle atmosphere layers */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.8) 0%, transparent 30%, transparent 70%, rgba(239, 226, 210, 0.5) 100%)",
+          }}
+        />
       </div>
 
-      {/* Header */}
-      <header className="relative z-10 backdrop-blur-md" style={{
-        background: "hsl(36 33% 97% / 0.85)",
-        borderBottom: `1px solid ${info.color.border}`,
+      {/* Header — Premium Header style from /app */}
+      <header className="relative z-10" style={{
+        borderBottom: "1.5px solid #C8A66A40",
+        background: "rgba(250, 245, 239, 0.95)",
+        backdropFilter: "blur(20px)",
+        boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)"
       }}>
-        <div className="container max-w-3xl py-3 px-4 flex items-center gap-4">
-          <button onClick={() => navigate(`/module/${naipe}`)} className="transition-colors hover:scale-105 duration-200" style={{ color: "hsl(230 10% 40%)" }}>
+        <div className="container max-w-3xl py-4 px-6 flex items-center gap-4">
+          <button 
+            onClick={() => navigate(`/module/${naipe}`)} 
+            className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30] shadow-sm transition-all hover:scale-110 duration-200" 
+            style={{ color: "#5B1F3D" }}
+          >
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <div className="flex items-center gap-2 flex-1">
-            <span className="text-lg">{info.icon}</span>
-            <span className="font-heading text-sm" style={{ color: "hsl(230 25% 15%)" }}>
-              Introdução — {info.name}
+          <div className="flex items-center gap-3 flex-1">
+            <span className="text-xl filter drop-shadow-sm">{info.icon}</span>
+            <span className="font-heading text-base font-black tracking-tight" style={{ color: "#5B1F3D" }}>
+              Introdução · {info.name}
             </span>
           </div>
         </div>
