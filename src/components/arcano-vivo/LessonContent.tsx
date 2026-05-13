@@ -237,6 +237,6 @@ export function LessonContent({
           </button>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
