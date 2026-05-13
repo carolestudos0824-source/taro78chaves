@@ -31,11 +31,12 @@ interface LessonContentProps {
  * Phase 2: Pedagogical content in progressive steps
  * Mobile-first card-based layout with expandable sections
  */
-export function LessonContent({
-  sections, essence, light, shadow,
-  onComplete, onGoDeepDive, onGoExercise, onSkipToQuiz,
-  quickReview, reflectionQuestions, initiationLesson,
-}: LessonContentProps) {
+export function LessonContent(props: LessonContentProps) {
+  const {
+    sections, essence, light, shadow,
+    onComplete, onGoDeepDive, onGoExercise, onSkipToQuiz,
+    quickReview, reflectionQuestions, initiationLesson,
+  } = props;
   const [openSection, setOpenSection] = useState<string | null>(null);
   const [step, setStep] = useState(0); // 0=essence, 1=light, 2=shadow, 3=initiation+applied
 
