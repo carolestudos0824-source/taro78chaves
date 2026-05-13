@@ -39,24 +39,30 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
   const showParticles = (phase === 'presence' || phase === 'insight') && !shouldReduceMotion;
 
   return (
-    <div className="relative min-h-[80vh] flex flex-col items-center justify-center overflow-hidden py-12 px-6">
+    <div className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden py-16 px-6 sm:px-12">
       {/* Background Atmosphere - Enhanced ritualistic altar feel */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Ivory Base */}
         <div className="absolute inset-0 bg-[#FDFBF7]" />
         
-        {/* Central Glow */}
+        {/* Central Glow - More intense on desktop */}
         <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full aspect-square transition-all duration-[3000ms] blur-[120px]"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl aspect-square transition-all duration-[3000ms] blur-[140px] opacity-60"
           style={{
             background: phase === 'dormant' 
               ? 'transparent' 
-              : `radial-gradient(circle, hsl(${theme.palette.primary} / 0.15) 0%, transparent 60%)`
+              : `radial-gradient(circle, hsl(${theme.palette.primary} / 0.2) 0%, transparent 70%)`
           }}
         />
         
         {/* Subtle texture or border to define the "altar" area */}
-        <div className="absolute inset-4 border border-[#C8A66A]/5 rounded-[3rem]" />
+        <div className="absolute inset-6 md:inset-12 border border-[#C8A66A]/10 rounded-[4rem] opacity-30" />
+        
+        {/* Decorative corner elements (ritualistic) */}
+        <div className="absolute top-10 left-10 w-24 h-24 border-t border-l border-[#C8A66A]/20 rounded-tl-3xl hidden md:block" />
+        <div className="absolute top-10 right-10 w-24 h-24 border-t border-r border-[#C8A66A]/20 rounded-tr-3xl hidden md:block" />
+        <div className="absolute bottom-10 left-10 w-24 h-24 border-b border-l border-[#C8A66A]/20 rounded-bl-3xl hidden md:block" />
+        <div className="absolute bottom-10 right-10 w-24 h-24 border-b border-r border-[#C8A66A]/20 rounded-br-3xl hidden md:block" />
       </div>
 
       {/* Particles */}
@@ -77,14 +83,14 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
                   x: (Math.random() * 20 - 10) + "%"
                 }}
                 transition={{ 
-                  duration: 5 + Math.random() * 5, 
+                  duration: 6 + Math.random() * 6, 
                   repeat: Infinity, 
                   delay: i * 0.5,
                   ease: "linear"
                 }}
-                className="absolute text-sm"
+                className="absolute text-base"
                 style={{ 
-                  color: `hsl(${theme.palette.primary} / 0.3)`,
+                  color: `hsl(${theme.palette.primary} / 0.35)`,
                   left: `${10 + Math.random() * 80}%`
                 }}
               >
@@ -99,19 +105,20 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 1 }}
-        className="text-center mb-12 z-20"
+        transition={{ delay: 0.5, duration: 1.2 }}
+        className="text-center mb-16 z-20 relative"
       >
-        <span className="text-[11px] font-heading font-bold tracking-[0.5em] uppercase text-[#C8A66A] block mb-3 opacity-80">
+        <span className="text-[12px] font-heading font-bold tracking-[0.6em] uppercase text-[#C8A66A] block mb-4 opacity-90">
           {arcanoId === 0 ? "O Início da Jornada" : `Arcano ${arcanoId}`}
         </span>
-        <h2 className="text-4xl md:text-5xl font-heading text-[#5B1F3D] font-black tracking-tighter">
+        <h2 className="text-5xl md:text-7xl font-heading text-[#5B1F3D] font-black tracking-tighter drop-shadow-sm">
           {cardName}
         </h2>
+        <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-[#C8A66A]/40 to-transparent mx-auto mt-6" />
       </motion.div>
 
-      {/* The Animated Card - Bigger & More Presence */}
-      <div className="relative z-10 mb-12 transition-transform duration-1000">
+      {/* The Animated Card - Dominant Presence */}
+      <div className="relative z-10 mb-16 transition-transform duration-1000">
         <TarotAnimatedCard
           cardImage={cardImage}
           cardName={cardName}
@@ -119,47 +126,48 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
           arcanoSlug={arcanoSlug}
           state={phase === 'dormant' ? 'available' : 'active'}
           variant="portal"
-          className="scale-[1.2] sm:scale-[1.4] md:scale-[1.5] drop-shadow-[0_25px_50px_rgba(91,31,61,0.25)]"
+          className="scale-[1.3] sm:scale-[1.5] md:scale-[1.7] lg:scale-[1.8] drop-shadow-[0_35px_60px_rgba(91,31,61,0.3)]"
         />
         
         {/* Ritualistic Floor Reflection */}
         <motion.div 
           initial={{ opacity: 0 }}
-          animate={{ opacity: phase === 'presence' || phase === 'insight' ? 0.3 : 0 }}
-          className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#C8A66A] blur-2xl rounded-full"
+          animate={{ opacity: phase === 'presence' || phase === 'insight' ? 0.4 : 0 }}
+          className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-48 h-8 bg-[#C8A66A] blur-3xl rounded-full"
         />
       </div>
 
       {/* Microcopy & CTA */}
-      <div className="max-w-xs md:max-w-md w-full text-center z-20 min-h-[160px] flex flex-col items-center justify-start">
+      <div className="max-w-xs md:max-w-xl w-full text-center z-20 min-h-[180px] flex flex-col items-center justify-start pb-12">
         <AnimatePresence mode="wait">
           {phase === 'insight' || phase === 'presence' ? (
             <motion.div
               key="insight-text"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              exit={{ opacity: 0, y: -30 }}
               className="flex flex-col items-center"
             >
-              <p className="font-accent italic text-xl md:text-2xl text-[#5B1F3D] mb-8 leading-relaxed max-w-[280px] md:max-w-xs">
+              <p className="font-accent italic text-2xl md:text-3xl text-[#5B1F3D] mb-10 leading-relaxed font-bold tracking-tight">
                 "{phase === 'insight' ? theme.microcopy.presence : theme.microcopy.intro}"
               </p>
               
               {phase === 'insight' && (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ delay: 0.8, type: "spring", stiffness: 100 }}
+                  transition={{ delay: 1, type: "spring", stiffness: 80 }}
+                  className="space-y-6"
                 >
                   <Button
                     onClick={onContinue}
-                    className="bg-[#5B1F3D] hover:bg-[#4A1932] text-white rounded-full px-10 py-7 text-sm font-heading font-black tracking-widest uppercase border-2 border-[#C8A66A]/40 shadow-xl group transition-all duration-300 hover:scale-105 active:scale-95"
+                    className="bg-[#5B1F3D] hover:bg-[#4A1932] text-white rounded-full px-12 py-8 text-base font-heading font-black tracking-[0.2em] uppercase border-2 border-[#C8A66A]/50 shadow-2xl group transition-all duration-300 hover:scale-110 active:scale-95 ring-4 ring-[#5B1F3D]/10"
                   >
                     Começar Lição
-                    <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
                   </Button>
                   
-                  <p className="mt-4 text-[10px] font-heading font-bold text-[#C8A66A] tracking-[0.2em] uppercase opacity-70">
+                  <p className="text-[11px] font-heading font-bold text-[#C8A66A] tracking-[0.3em] uppercase opacity-80 animate-pulse">
                     Toque para despertar o conhecimento
                   </p>
                 </motion.div>
@@ -169,8 +177,8 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
             <motion.div
               key="dormant-text"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.4 }}
-              className="text-[12px] font-heading font-bold tracking-[0.3em] uppercase text-[#5B1F3D]"
+              animate={{ opacity: 0.6 }}
+              className="text-[14px] font-heading font-bold tracking-[0.4em] uppercase text-[#5B1F3D] animate-pulse"
             >
               O portal está despertando...
             </motion.div>
