@@ -313,25 +313,26 @@ export function LessonContent({
           {[...coreSections, ...otherSections].map((section) => {
             const isOpen = openSection === section.id;
             return (
-              <div key={section.id} className="rounded-xl overflow-hidden"
+              <div key={section.id} className="rounded-2xl overflow-hidden transition-all duration-300"
                 style={{
-                  background: isOpen ? "hsl(38 30% 95% / 0.8)" : "hsl(38 30% 95% / 0.5)",
-                  border: `1px solid ${isOpen ? "hsl(36 45% 58% / 0.2)" : "hsl(36 25% 82% / 0.3)"}`,
+                  background: isOpen ? "rgba(255, 255, 255, 0.7)" : "rgba(255, 255, 255, 0.4)",
+                  border: `1px solid ${isOpen ? "rgba(200, 166, 106, 0.3)" : "rgba(200, 166, 106, 0.15)"}`,
+                  boxShadow: isOpen ? "0 4px 15px rgba(91, 31, 61, 0.04)" : "none",
                 }}
               >
                 <button
                   onClick={() => setOpenSection(isOpen ? null : section.id)}
-                  className="w-full px-4 py-3 flex items-center gap-3 text-left"
+                  className="w-full px-5 py-4 flex items-center gap-4 text-left transition-colors"
                 >
-                  <span className="text-sm">{section.icon}</span>
-                  <span className="font-heading text-xs tracking-wide flex-1" style={{ color: "hsl(230 25% 15%)" }}>{section.title}</span>
-                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-                    style={{ color: "hsl(230 10% 50%)" }} />
+                  <span className="text-base w-8 h-8 rounded-full flex items-center justify-center bg-white/50 border border-[#C8A66A]/20">{section.icon}</span>
+                  <span className="font-heading text-sm font-bold tracking-wide flex-1 text-[#5B1F3D]">{section.title}</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                    style={{ color: "#C8A66A" }} />
                 </button>
                 {isOpen && (
-                  <div className="px-4 pb-4" style={{ animation: "fade-up 0.3s ease-out" }}>
-                    <div className="h-px mb-3" style={{ background: "linear-gradient(90deg, transparent, hsl(36 45% 58% / 0.15), transparent)" }} />
-                    <p className="text-xs leading-relaxed" style={{ color: "hsl(230 20% 25%)" }}>{section.content}</p>
+                  <div className="px-5 pb-5" style={{ animation: "fade-up 0.3s ease-out" }}>
+                    <div className="h-px mb-4" style={{ background: "linear-gradient(90deg, transparent, rgba(200, 166, 106, 0.2), transparent)" }} />
+                    <p className="text-[14px] leading-[1.7] text-[#5B1F3D]/80">{section.content}</p>
                   </div>
                 )}
               </div>
