@@ -271,16 +271,24 @@ const AppRouteProbe = () => {
   );
 };
 
-/** Layout shell for authenticated app pages — includes BottomNav */
-const AppShell = () => (
-  <>
-    {/* Layout shell for authenticated app pages — includes BottomNav */}
-    <div className="pb-bottom-nav">
-      <Outlet />
+/** Layout shell for authenticated app pages — includes Header and BottomNav */
+const AppShell = () => {
+  const { progress } = useProgress();
+  
+  return (
+    <div className="min-h-screen bg-[#FDFBF7] flex flex-col">
+      <Header 
+        streak={progress.streak} 
+        xp={progress.xp} 
+        level={progress.level} 
+      />
+      <main className="flex-1 pb-28">
+        <Outlet />
+      </main>
+      <BottomNav />
     </div>
-    <BottomNav />
-  </>
-);
+  );
+};
 
 const App = () => {
   return (
