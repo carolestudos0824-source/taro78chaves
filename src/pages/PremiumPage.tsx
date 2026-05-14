@@ -112,7 +112,7 @@ const PremiumPage = () => {
           
           <div className="space-y-5">
             <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-[#5B1F3D] border-2 border-[#C8A66A] shadow-lg">
-              <KeyRound className="w-4 h-4 text-[#C8A66A]" />
+              <TarotIcon name="premium" className="w-4 h-4 text-[#C8A66A]" />
               <span className="text-[11px] font-heading tracking-[0.3em] uppercase text-[#FAF5EF] font-black">Jornada Completa</span>
             </div>
             <h1 className="font-heading text-4xl md:text-5xl text-[#5B1F3D] leading-[1.1] font-black tracking-tight drop-shadow-sm">
