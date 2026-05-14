@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, ChevronDown, ChevronRight } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import { type Naipe, NAIPES } from "@/registry/naipes";
 import { useSuitIntroContent } from "@/hooks/use-content";
 
