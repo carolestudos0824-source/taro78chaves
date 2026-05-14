@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
-import { ArrowLeft, Flame, Star, Trophy, Book, ChevronRight, KeyRound, LogOut, Type, MessageSquare, Shield, UserRound, Sparkles } from "lucide-react";
+import { ArrowLeft, ChevronRight, LogOut, Type, MessageSquare, Link as LucideLink } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import { useIsAdmin } from "@/hooks/use-admin";
 import { useProgress } from "@/hooks/use-progress";
 import { usePremium } from "@/hooks/use-premium";
