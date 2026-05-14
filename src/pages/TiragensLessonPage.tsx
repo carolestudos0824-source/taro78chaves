@@ -241,10 +241,10 @@ const TiragensLessonPage = () => {
               <h3 className="font-heading text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "hsl(36 40% 42%)" }}>
                 ✦ Pontos-chave
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {lesson.keyPoints.map((point, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm font-bold" style={{ color: "#2D2D2D" }}>
-                    <span style={{ color: "hsl(36 42% 44%)" }} className="mt-0.5 shrink-0">◆</span>
+                  <li key={i} className="flex items-start gap-3 text-base font-black text-[#2D2D2D]">
+                    <span className="text-[#5B1F3D] mt-1 shrink-0 font-black">◆</span>
                     {point}
                   </li>
                 ))}
@@ -443,9 +443,9 @@ const TiragensLessonPage = () => {
             </div>
             <div className="rounded-xl p-6" style={{ background: "hsl(38 30% 95% / 0.85)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
               {lesson.deepDive.split("\n\n").map((p, i) => (
-                <p key={i} className="text-sm leading-relaxed mb-4 last:mb-0" style={{ color: "hsl(230 20% 25%)" }}>
+                <div key={i} className="mb-4 last:mb-0">
                   {renderContent(p)}
-                </p>
+                </div>
               ))}
             </div>
             <div className="flex justify-center pt-4">
