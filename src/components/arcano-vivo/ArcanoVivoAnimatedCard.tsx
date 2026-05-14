@@ -106,15 +106,11 @@ export function ArcanoVivoAnimatedCard({
               initial={{ opacity: 0, scale: 0 }}
               animate={{ 
                 opacity: isActive ? 0.8 : 0,
-                scale: isActive ? [1, 1.2, 1] : 0 
+                scale: isActive ? 1 : 0 
               }}
               transition={{ 
                 opacity: { duration: 0.8 },
-                scale: { 
-                  duration: spot.duration || 3, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }
+                scale: { duration: 0.4 }
               }}
             />
           );
