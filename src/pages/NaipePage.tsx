@@ -270,9 +270,9 @@ const NaipePage = () => {
         {/* Study tools — Card style from /app */}
         <div className="grid grid-cols-3 gap-5 mb-16" style={{ animation: "fade-up 0.5s ease-out" }}>
           {[
-            { icon: <BookOpen className="w-6 h-6" />, label: "Introdução", desc: "Simbologia", onClick: () => navigate(`/naipe/${naipe}/intro`) },
-            { icon: <Hash className="w-6 h-6" />, label: "Números", desc: "Ás ao Dez", onClick: () => navigate("/numerologia") },
-            { icon: <Crown className="w-6 h-6" />, label: "Corte", desc: "Pajem ao Rei", onClick: () => navigate("/module/cartas-corte") },
+            { icon: "jornada", label: "Introdução", desc: "Simbologia", onClick: () => navigate(`/naipe/${naipe}/intro`) },
+            { icon: "progresso", label: "Números", desc: "Ás ao Dez", onClick: () => navigate("/numerologia") },
+            { icon: "rainha", label: "Corte", desc: "Pajem ao Rei", onClick: () => navigate("/module/cartas-corte") },
           ].map((tool) => (
             <button
               key={tool.label}
@@ -280,7 +280,9 @@ const NaipePage = () => {
               className="rounded-[2rem] p-6 text-center transition-all duration-500 hover:scale-[1.05] group bg-white border-2 border-[#C8A66A]/30 backdrop-blur-md shadow-lg hover:shadow-2xl hover:border-[#C8A66A]"
             >
               <div className="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 group-hover:bg-[#5B1F3D] group-hover:shadow-[0_10px_25px_rgba(91,31,61,0.3)] bg-[#FAF5EF] border-2 border-[#C8A66A]/20 shadow-inner">
-                <div className="group-hover:text-white transition-colors duration-500" style={{ color: "#5B1F3D" }}>{tool.icon}</div>
+                <div className="group-hover:text-white transition-colors duration-500" style={{ color: "#5B1F3D" }}>
+                  <TarotIcon name={tool.icon} className="w-6 h-6" />
+                </div>
               </div>
               <p className="font-heading text-[13px] tracking-[0.25em] uppercase mb-1 font-black" style={{ color: "#5B1F3D" }}>
                 {tool.label}
