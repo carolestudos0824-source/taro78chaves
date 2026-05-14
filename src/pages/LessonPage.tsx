@@ -55,6 +55,8 @@ const LessonPage = () => {
 
   const nextArcano = isValidId && arcanoId < 21 ? ARCANOS_MAIORES[arcanoId + 1] : null;
 
+  const phases = getPhases();
+
   useEffect(() => {
     if (arcano) {
       setHeader({
@@ -65,7 +67,7 @@ const LessonPage = () => {
       });
     }
     return () => resetHeader();
-  }, [arcano, phase, arcanoId]);
+  }, [arcano, phase, arcanoId, phases]);
 
   // 1. Estado de Carregamento (Loading Ritualístico)
   if (isLiteralRoute || premiumLoading || roleLoading || accessLoading) {
