@@ -261,10 +261,10 @@ const Index = () => {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { icon: "◈", label: "Essência e arquétipos" },
-              { icon: "◎", label: "Símbolos e significados" },
-              { icon: "☀", label: "Luz e sombra" },
-              { icon: "♡", label: "Amor, trabalho e espírito" },
+              { icon: "Stars", label: "Essência e arquétipos" },
+              { icon: "Sparkles", label: "Símbolos e significados" },
+              { icon: "sol", label: "Luz e sombra" },
+              { icon: "enamorados", label: "Amor, trabalho e espírito" },
             ].map((item) => (
               <div key={item.label} className="rounded-[1.5rem] p-7 text-center transition-all hover:bg-white border border-[#C8A66A25] group shadow-sm hover:shadow-xl" style={{
                 background: "rgba(255, 255, 255, 0.85)",
