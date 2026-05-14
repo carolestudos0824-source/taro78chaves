@@ -19,7 +19,7 @@ export interface TiragemLesson {
 
 export interface TiragemLayout {
   name: string;
-  positions: { label: string; description: string }[];
+  positions: { label: string; description: string; x: number; y: number }[];
 }
 
 export interface TiragemExample {
@@ -214,7 +214,7 @@ Toda manhã, tire 1 carta perguntando: "Que energia acompanha meu dia hoje?" À 
     layoutDiagram: {
       name: "Tiragem de 1 Carta",
       positions: [
-        { label: "Carta Única", description: "A mensagem central — o essencial" },
+        { label: "Carta Única", description: "A mensagem central — o essencial", x: 50, y: 50 },
       ],
     },
     examples: [
@@ -299,11 +299,11 @@ Ideal para: quando há uma escolha a fazer.
       "Base de todas as tiragens mais complexas",
     ],
     layoutDiagram: {
-      name: "Tiragem de 3 Cartas",
+      name: "Tiragem de 3 Cartas (Linear)",
       positions: [
-        { label: "Posição 1", description: "Passado / Situação / Mente / Opção A" },
-        { label: "Posição 2", description: "Presente / Obstáculo / Corpo / O que considerar" },
-        { label: "Posição 3", description: "Futuro / Conselho / Espírito / Opção B" },
+        { label: "Posição 1", description: "Passado / Situação / Mente / Opção A", x: 20, y: 50 },
+        { label: "Posição 2", description: "Presente / Obstáculo / Corpo / O que considerar", x: 50, y: 50 },
+        { label: "Posição 3", description: "Futuro / Conselho / Espírito / Opção B", x: 80, y: 50 },
       ],
     },
     examples: [
@@ -393,9 +393,9 @@ O futuro no tarô **não é destino fixo**. É tendência. É "se tudo continuar
     layoutDiagram: {
       name: "Passado / Presente / Futuro",
       positions: [
-        { label: "Passado", description: "O que causou a situação — o padrão a reconhecer" },
-        { label: "Presente", description: "A energia dominante agora — o ponto de poder" },
-        { label: "Futuro", description: "A tendência — para onde a energia flui" },
+        { label: "Passado", description: "O que causou a situação — o padrão a reconhecer", x: 20, y: 50 },
+        { label: "Presente", description: "A energia dominante agora — o ponto de poder", x: 50, y: 50 },
+        { label: "Futuro", description: "A tendência — para onde a energia flui", x: 80, y: 50 },
       ],
     },
     examples: [
@@ -474,9 +474,9 @@ O que as cartas recomendam. Esta posição deve ser lida como AÇÃO — não co
     layoutDiagram: {
       name: "Situação / Obstáculo / Conselho",
       positions: [
-        { label: "Situação", description: "O que está realmente acontecendo" },
-        { label: "Obstáculo", description: "O que bloqueia o caminho" },
-        { label: "Conselho", description: "A ação recomendada" },
+        { label: "Situação", description: "O que está realmente acontecendo", x: 20, y: 50 },
+        { label: "Obstáculo", description: "O que bloqueia o caminho", x: 50, y: 50 },
+        { label: "Conselho", description: "A ação recomendada", x: 80, y: 50 },
       ],
     },
     examples: [
@@ -562,11 +562,11 @@ A Cruz permite ler duas histórias simultâneas: o que está acontecendo no temp
     layoutDiagram: {
       name: "Leitura em Cruz",
       positions: [
-        { label: "Centro", description: "O tema — a essência da questão" },
-        { label: "Esquerda", description: "O passado — a causa, a raiz" },
-        { label: "Direita", description: "O futuro — a tendência" },
-        { label: "Acima", description: "O consciente — o que se sabe" },
-        { label: "Abaixo", description: "O inconsciente — o que se esconde" },
+        { label: "Esquerda", description: "O passado — a causa, a raiz", x: 20, y: 50 },
+        { label: "Centro", description: "O tema — a essência da questão", x: 50, y: 50 },
+        { label: "Direita", description: "O futuro — a tendência", x: 80, y: 50 },
+        { label: "Acima", description: "O consciente — o que se sabe", x: 50, y: 20 },
+        { label: "Abaixo", description: "O inconsciente — o que se esconde", x: 50, y: 80 },
       ],
     },
     examples: [
@@ -653,11 +653,11 @@ Ele mostra a energia de cada caminho. A decisão final é sempre da consulente. 
     layoutDiagram: {
       name: "Leitura para Decisões",
       positions: [
-        { label: "Você Agora", description: "Seu estado interno ao enfrentar a decisão" },
-        { label: "Caminho A", description: "A energia da primeira opção" },
-        { label: "Resultado A", description: "Onde o Caminho A provavelmente leva" },
-        { label: "Caminho B", description: "A energia da segunda opção" },
-        { label: "Resultado B", description: "Onde o Caminho B provavelmente leva" },
+        { label: "Caminho A", description: "A energia da primeira opção", x: 20, y: 30 },
+        { label: "Resultado A", description: "Onde o Caminho A provavelmente leva", x: 20, y: 70 },
+        { label: "Você Agora", description: "Seu estado interno ao enfrentar a decisão", x: 50, y: 50 },
+        { label: "Caminho B", description: "A energia da segunda opção", x: 80, y: 30 },
+        { label: "Resultado B", description: "Onde o Caminho B provavelmente leva", x: 80, y: 70 },
       ],
     },
     examples: [
@@ -740,13 +740,13 @@ No domingo, tire 7 cartas para a semana. A cada dia, releia a carta daquele dia 
     layoutDiagram: {
       name: "Leitura Semanal de Tendência",
       positions: [
-        { label: "Segunda", description: "Energia dominante do dia" },
-        { label: "Terça", description: "Energia dominante do dia" },
-        { label: "Quarta", description: "Energia dominante do dia" },
-        { label: "Quinta", description: "Energia dominante do dia" },
-        { label: "Sexta", description: "Energia dominante do dia" },
-        { label: "Sábado", description: "Energia dominante do dia" },
-        { label: "Domingo", description: "Energia dominante do dia" },
+        { label: "Segunda", description: "Energia dominante do dia", x: 15, y: 40 },
+        { label: "Terça", description: "Energia dominante do dia", x: 38, y: 40 },
+        { label: "Quarta", description: "Energia dominante do dia", x: 61, y: 40 },
+        { label: "Quinta", description: "Energia dominante do dia", x: 84, y: 40 },
+        { label: "Sexta", description: "Energia dominante do dia", x: 25, y: 70 },
+        { label: "Sábado", description: "Energia dominante do dia", x: 50, y: 70 },
+        { label: "Domingo", description: "Energia dominante do dia", x: 75, y: 70 },
       ],
     },
     exercise: {
@@ -820,12 +820,12 @@ Esta tiragem NÃO é sobre o mundo externo — é sobre a paisagem interna. Leia
     layoutDiagram: {
       name: "A Tiragem do Espelho",
       positions: [
-        { label: "Como me vejo", description: "Autoimagem — precisa ou distorcida" },
-        { label: "Como os outros me veem", description: "A imagem que projeto para o mundo" },
-        { label: "O que me fortalece", description: "Recurso interno mais poderoso agora" },
-        { label: "O que me enfraquece", description: "Ponto cego, vulnerabilidade" },
-        { label: "O que preciso liberar", description: "Crença, padrão ou medo para soltar" },
-        { label: "O que preciso abraçar", description: "Talento, verdade ou direção para acolher" },
+        { label: "Como me vejo", description: "Autoimagem — precisa ou distorcida", x: 30, y: 30 },
+        { label: "Como os outros me veem", description: "A imagem que projeto para o mundo", x: 70, y: 30 },
+        { label: "O que me fortalece", description: "Recurso interno mais poderoso agora", x: 30, y: 55 },
+        { label: "O que me enfraquece", description: "Ponto cego, vulnerabilidade", x: 70, y: 55 },
+        { label: "O que preciso liberar", description: "Crença, padrão ou medo para soltar", x: 30, y: 80 },
+        { label: "O que preciso abraçar", description: "Talento, verdade ou direção para acolher", x: 70, y: 80 },
       ],
     },
     examples: [
@@ -952,11 +952,11 @@ Quando a outra pessoa já foi clara sobre não querer o vínculo, o tarô não v
     layoutDiagram: {
       name: "Tiragem dos 5 Vínculos",
       positions: [
-        { label: "Você no vínculo", description: "Como você está chegando — emoções, expectativas, padrões" },
-        { label: "A outra pessoa ou energia relacional", description: "A energia que ela traz, ou o clima geral do tema relacional" },
-        { label: "O que aproxima", description: "O que está vivo, magnético, genuíno entre os dois" },
-        { label: "O que bloqueia", description: "O obstáculo real — timing, ferida, padrão, comunicação" },
-        { label: "Conselho do tarô", description: "O passo possível e ético para quem consulta" },
+        { label: "Você no vínculo", description: "Como você está chegando — emoções, expectativas, padrões", x: 20, y: 50 },
+        { label: "A outra pessoa", description: "A energia que ela traz, ou o clima geral relacional", x: 80, y: 50 },
+        { label: "O que aproxima", description: "O que está vivo, magnético, genuíno entre os dois", x: 50, y: 30 },
+        { label: "O que bloqueia", description: "O obstáculo real — timing, ferida, padrão, comunicação", x: 50, y: 70 },
+        { label: "Conselho", description: "O passo possível e ético para quem consulta", x: 50, y: 15 },
       ],
     },
     examples: [
