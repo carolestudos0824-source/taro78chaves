@@ -291,7 +291,7 @@ const QARotasPage = () => {
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#C8A66A] opacity-10 rounded-full -mr-20 -mt-20 blur-3xl" />
           <div className="relative z-10">
             <h2 className="font-heading text-lg font-black tracking-widest uppercase mb-6 flex items-center gap-3">
-              <Sparkles className="w-5 h-5 text-[#C8A66A]" /> Régua de Auditoria Premium
+              <TarotIcon name="Sparkles" className="w-5 h-5 text-[#C8A66A]" /> Régua de Auditoria Premium
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-4">
               {[
