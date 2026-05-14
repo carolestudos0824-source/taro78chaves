@@ -68,7 +68,6 @@ const Index = () => {
           }}
         />
       </div>
-      </header>
 
       <main className="relative z-10 container max-w-3xl px-6 pb-12">
 
