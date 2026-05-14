@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider, useAuth } from "@/hooks/use-auth";
 import { FontSizeProvider } from "@/contexts/font-size-context";
+import { HeaderProvider } from "@/contexts/header-context";
 import { useProgress } from "@/hooks/use-progress";
 import { Header } from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
