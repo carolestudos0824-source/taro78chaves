@@ -81,7 +81,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
       />
 
       {/* Drawer */}
-      <div className={`fixed top-0 left-0 w-[320px] max-w-[85vw] h-full bg-[#FDFBF7] shadow-2xl flex flex-col border-r-2 border-[#C8A66A]/20 transition-transform duration-500 overflow-hidden z-[1000000] ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div className={`fixed top-0 left-0 w-[320px] max-w-[85vw] h-full bg-[#FDFBF7] shadow-2xl flex flex-col border-r-2 border-[#C8A66A]/20 transition-transform duration-500 overflow-hidden z-[1000001] ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         {/* Header */}
         <div className="p-6 border-b-2 border-[#C8A66A]/20 flex items-center justify-between bg-white/50">
           <div className="flex flex-col">
