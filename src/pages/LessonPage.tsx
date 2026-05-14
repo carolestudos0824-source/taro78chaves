@@ -29,6 +29,7 @@ const LessonPage = () => {
   const { loading: premiumLoading } = usePremium();
   const { isStaff, loading: roleLoading } = useRole();
   const { canAccessArcano, hasFullAccess, loading: accessLoading } = useAccess();
+  const { setHeader, resetHeader } = useHeader();
   const [phase, setPhase] = useState<LessonPhase>("intro");
   const [exerciseCompleted, setExerciseCompleted] = useState(false);
   const [xpEarned, setXpEarned] = useState(0);
