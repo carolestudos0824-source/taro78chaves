@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Check, ChevronRight, Flame, Gift, Star, X, Scroll, Sparkles, HelpCircle, Eye, Layers, BookOpen as BookOpenIcon, Key } from "lucide-react";
+import { ArrowLeft, ChevronRight, Gift, X, Scroll } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import { useProgress } from "@/hooks/use-progress";
 import { useArcanosList, useSymbolsContent } from "@/hooks/use-content";
 import {
