@@ -242,8 +242,8 @@ const AppRoutes = () => {
           <Route path="/perfil" element={<P><ProfilePage /></P>} />
           <Route path="/minha-jornada" element={<P><JourneyJournalPage /></P>} />
           <Route path="/feedback" element={<P><FeedbackPage /></P>} />
-243:           <Route path="/admin" element={<P><AdminPage /></P>} />
-244:           <Route path="/qa-rotas" element={<P><QARotasPage /></P>} />
+          <Route path="/admin" element={<P><AdminPage /></P>} />
+          <Route path="/qa-rotas" element={<P><QARotasPage /></P>} />
           
           {/* Aliases for bad URLs */}
           <Route path="/undefined" element={<Navigate to="/app" replace />} />
