@@ -18,7 +18,6 @@ export function PhaseIndicator({ phases, currentIndex }: PhaseIndicatorProps) {
           initial={false}
           animate={{
             backgroundColor: i <= currentIndex ? "hsl(36, 45%, 58%)" : "rgba(220, 207, 194, 0.6)",
-            scale: i === currentIndex ? 1.2 : 1
           }}
           transition={{ duration: 0.5 }}
         />
