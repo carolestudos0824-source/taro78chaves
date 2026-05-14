@@ -60,9 +60,9 @@ const LessonPage = () => {
   const [lastQuizTotal, setLastQuizTotal] = useState(0);
 
   // Fallback defensivo para rota literal /lesson/:id ou IDs inválidos
-  const isLiteralRoute = id === ":id";
   const arcanoId = parseInt(id || "0", 10);
   const isValidId = !isNaN(arcanoId) && arcanoId >= 0 && arcanoId <= 21;
+  const isLiteralRoute = id === ":id";
 
   // Redirecionamento defensivo se a rota for literal
   useEffect(() => {
