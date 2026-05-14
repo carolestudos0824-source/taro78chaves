@@ -32,7 +32,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
 
   // Removido if (!isOpen) return null para permitir animações CSS
 
-  const NavItem = ({ to, icon: Icon, label, badge }: { to: string; icon: any; label: string; badge?: string }) => {
+  const NavItem = ({ to, icon, label, badge }: { to: string; icon: TarotIconType | string; label: string; badge?: string }) => {
     const isActive = location.pathname === to;
     return (
       <Link
@@ -47,7 +47,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
           <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
             isActive ? "bg-white/20" : "bg-[#FAF5EF] border border-[#C8A66A]/20"
           }`}>
-            <Icon className={`w-5 h-5 ${isActive ? "text-white" : "text-[#C8A66A]"}`} />
+            <TarotIcon name={icon} className={`w-5 h-5 ${isActive ? "text-white" : "text-[#C8A66A]"}`} />
           </div>
           <span className={`text-[13px] font-heading font-black tracking-tight ${isActive ? "text-white" : "text-[#5B1F3D]"}`}>
             {label}
