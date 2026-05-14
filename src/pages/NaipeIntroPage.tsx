@@ -97,7 +97,7 @@ const NaipeIntroPage = () => {
             <ArrowLeft className="w-5 h-5" />
           </button>
           <div className="flex items-center gap-3 flex-1">
-            <span className="text-xl filter drop-shadow-sm">{info.icon}</span>
+            <TarotIcon name={naipe} className="w-6 h-6" />
             <span className="font-heading text-base font-black tracking-tight" style={{ color: "#5B1F3D" }}>
               Introdução · {info.name}
             </span>
