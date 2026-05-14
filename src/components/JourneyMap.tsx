@@ -170,7 +170,7 @@ export function JourneyMap({ progress }: JourneyMapProps) {
 
       {/* Decorative bottom */}
       <div className="flex flex-col items-center mt-8 opacity-42">
-        <Sparkles className="w-4 h-4" style={{ color: "#C8A66A" }} />
+        <TarotIcon name="Sparkles" className="w-4 h-4" color="#C8A66A" />
         <div className="w-px h-10" style={{ background: "linear-gradient(to top, transparent, #C8A66A80)" }} />
       </div>
     </div>
