@@ -10,12 +10,12 @@ import { trackEvent } from "@/lib/analytics";
 import { isWebCheckoutAllowed } from "@/lib/platform";
 
 const PREMIUM_BENEFITS = [
-  { icon: SquareStack, title: "78 arcanos guiados", desc: "Abra todas as portas do deck completo." },
-  { icon: Compass, title: "Jornada progressiva", desc: "A trilha mística para o domínio real." },
-  { icon: Sparkles, title: "Quizzes e XP", desc: "Teste seu olhar e conquiste energia." },
-  { icon: WandSparkles, title: "Práticas guiadas", desc: "Rituais de leitura para o cotidiano." },
-  { icon: CircleCheck, title: "Progresso salvo", desc: "Suas chaves sempre com você." },
-  { icon: Stars, title: "Arcanos Vivos", desc: "A essência profunda de cada símbolo." },
+  { icon: "jornada", title: "78 arcanos guiados", desc: "Abra todas as portas do deck completo." },
+  { icon: "formacao", title: "Jornada progressiva", desc: "A trilha mística para o domínio real." },
+  { icon: "quiz", title: "Quizzes e XP", desc: "Teste seu olhar e conquiste energia." },
+  { icon: "mago", title: "Práticas guiadas", desc: "Rituais de leitura para o cotidiano." },
+  { icon: "concluido", title: "Progresso salvo", desc: "Suas chaves sempre com você." },
+  { icon: "Stars", title: "Arcanos Vivos", desc: "A essência profunda de cada símbolo." },
 ];
 
 const PremiumPage = () => {
