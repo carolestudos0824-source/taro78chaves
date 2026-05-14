@@ -121,7 +121,7 @@ const TiragensLessonPage = () => {
       
       if (line.startsWith("### ")) {
         return (
-          <h4 key={i} className="font-heading text-lg font-black mt-10 mb-4 tracking-tight" style={{ color: "#5B1F3D" }}>
+          <h4 key={i} className="font-heading text-lg font-bold mt-10 mb-4 tracking-tight" style={{ color: "#5B1F3D" }}>
             {line.replace("### ", "")}
           </h4>
         );
@@ -130,14 +130,14 @@ const TiragensLessonPage = () => {
         return (
           <div key={i} className="flex gap-3 mb-4 pl-2 items-start">
             <span className="text-[#C8A66A] mt-2.5 shrink-0 w-2 h-2 rounded-full" style={{ background: "#C8A66A" }} />
-            <span className="text-[16px] md:text-[17px] leading-relaxed font-semibold text-[#2D2D2D]">
+            <span className="text-[16px] md:text-[17px] leading-relaxed font-medium text-[#2D2D2D]">
               {renderInlineBold(line.replace("- ", ""))}
             </span>
           </div>
         );
       }
       return (
-        <p key={i} className="text-[16px] md:text-[17px] leading-relaxed mb-6 last:mb-0 font-semibold text-[#2D2D2D]">
+        <p key={i} className="text-[16px] md:text-[17px] leading-relaxed mb-6 last:mb-0 font-medium text-[#2D2D2D]">
           {renderInlineBold(line)}
         </p>
       );
@@ -148,7 +148,7 @@ const TiragensLessonPage = () => {
     const parts = text.split(/(\*\*[^*]+\*\*)/g);
     return parts.map((part, i) => {
       if (part.startsWith("**") && part.endsWith("**")) {
-        return <strong key={i} className="font-black text-[#5B1F3D]">{part.slice(2, -2)}</strong>;
+        return <strong key={i} className="font-bold text-[#5B1F3D]">{part.slice(2, -2)}</strong>;
       }
       return <span key={i}>{part}</span>;
     });
@@ -187,13 +187,13 @@ const TiragensLessonPage = () => {
           <div className="space-y-8" style={{ animation: "fade-up 0.5s ease-out" }}>
             <div className="text-center space-y-2">
               <span className="text-4xl">{lesson.icon}</span>
-              <h2 className="font-heading text-3xl tracking-wide font-black" style={{
+              <h2 className="font-heading text-3xl tracking-wide font-bold" style={{
                 background: "linear-gradient(135deg, hsl(340 42% 22%), hsl(36 35% 28%), hsl(36 45% 44%))",
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
               }}>
                 {lesson.title}
               </h2>
-              <p className="font-accent text-lg italic font-black text-[#5B1F3D]">{lesson.subtitle}</p>
+              <p className="font-accent text-lg italic font-semibold text-[#5B1F3D]">{lesson.subtitle}</p>
             </div>
 
             <div className="rounded-xl p-6" style={{ background: "hsl(38 30% 95% / 0.85)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
@@ -203,14 +203,14 @@ const TiragensLessonPage = () => {
             {/* When to Use */}
             {lesson.whenToUse && (
               <div className="rounded-xl p-5" style={{ background: "rgba(200, 166, 106, 0.05)", border: "1px solid rgba(200, 166, 106, 0.2)" }}>
-                <h3 className="font-heading text-xs tracking-[0.2em] uppercase mb-4 font-black flex items-center gap-2" style={{ color: "#5B1F3D" }}>
+                <h3 className="font-heading text-xs tracking-[0.2em] uppercase mb-4 font-bold flex items-center gap-2" style={{ color: "#5B1F3D" }}>
                   <Sparkles className="w-4 h-4 text-[#C8A66A]" /> Quando Usar
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {lesson.whenToUse.map((item, i) => (
                     <div key={i} className="flex items-center gap-3 bg-white p-4 rounded-xl border-2 border-[#C8A66A]/20 shadow-sm">
                       <div className="w-2 h-2 rounded-full bg-[#C8A66A]" />
-                      <span className="text-sm font-black text-[#5B1F3D]">{item}</span>
+                      <span className="text-sm font-semibold text-[#5B1F3D]">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -220,15 +220,15 @@ const TiragensLessonPage = () => {
             {/* Info Blocks (Mini Cards) */}
             {lesson.infoBlocks && (
               <div className="space-y-4">
-                <h3 className="font-heading text-xs tracking-[0.2em] uppercase px-1 font-black text-[#5B1F3D]">Formatos e Estruturas</h3>
+                <h3 className="font-heading text-xs tracking-[0.2em] uppercase px-1 font-bold text-[#5B1F3D]">Formatos e Estruturas</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {lesson.infoBlocks.map((block, i) => (
                     <div key={i} className="bg-white p-6 rounded-2xl border-2 border-[#C8A66A]/20 shadow-md transition-all hover:shadow-lg group">
-                      <h4 className="font-heading text-base font-black text-[#5B1F3D] mb-3 flex items-center gap-2">
+                      <h4 className="font-heading text-base font-bold text-[#5B1F3D] mb-3 flex items-center gap-2">
                         <span className="w-1.5 h-5 bg-[#C8A66A] rounded-full group-hover:h-7 transition-all duration-300" />
                         {block.title}
                       </h4>
-                      <p className="text-[15px] font-body text-[#5B1F3D] leading-relaxed italic font-black">
+                      <p className="text-[15px] font-body text-[#5B1F3D] leading-relaxed italic font-medium">
                         {block.content}
                       </p>
                     </div>
@@ -243,8 +243,8 @@ const TiragensLessonPage = () => {
               </h3>
               <ul className="space-y-3">
                 {lesson.keyPoints.map((point, i) => (
-                  <li key={i} className="flex items-start gap-3 text-base font-black text-[#2D2D2D]">
-                    <span className="text-[#5B1F3D] mt-1 shrink-0 font-black">◆</span>
+                  <li key={i} className="flex items-start gap-3 text-base font-medium text-[#2D2D2D]">
+                    <span className="text-[#5B1F3D] mt-1 shrink-0 font-bold">◆</span>
                     {point}
                   </li>
                 ))}
@@ -256,12 +256,12 @@ const TiragensLessonPage = () => {
               <div className="space-y-6">
                 <div className="flex items-center gap-2 px-1">
                   <MapPin className="w-5 h-5 text-[#C8A66A]" />
-                  <span className="text-[12px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]">Mapa Visual da Tiragem</span>
+                  <span className="text-[12px] font-heading font-bold tracking-[0.2em] uppercase text-[#5B1F3D]">Mapa Visual da Tiragem</span>
                 </div>
                 
                 <div className="rounded-[2rem] bg-white border-2 border-[#C8A66A]/20 shadow-xl overflow-hidden">
                   <div className="p-8 bg-[#FAF5EF]/50">
-                    <h3 className="font-heading text-lg font-black text-center mb-10 text-[#5B1F3D]">
+                    <h3 className="font-heading text-lg font-bold text-center mb-10 text-[#5B1F3D]">
                       {lesson.layoutDiagram.name}
                     </h3>
                     
@@ -280,7 +280,7 @@ const TiragensLessonPage = () => {
                              <span className="font-heading text-3xl md:text-4xl font-black text-[#5B1F3D] drop-shadow-md z-10">{i + 1}</span>
                           </div>
                           <div className="mt-3 text-center px-1">
-                             <span className="text-[11px] md:text-[13px] font-heading font-black uppercase tracking-[0.1em] text-[#5B1F3D] leading-tight block whitespace-normal break-words max-w-[120px] mx-auto">
+                             <span className="text-[11px] md:text-[13px] font-heading font-bold uppercase tracking-[0.1em] text-[#5B1F3D] leading-tight block whitespace-normal break-words max-w-[120px] mx-auto">
                                {pos.label}
                              </span>
                           </div>
@@ -291,13 +291,13 @@ const TiragensLessonPage = () => {
 
                   <div className="p-6 bg-white space-y-3">
                     <div className="flex flex-col items-center gap-1 mb-4 px-2">
-                       <span className="text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">Legenda das Posições</span>
-                       <span className="text-[12px] font-body font-black uppercase tracking-[0.25em] text-[#5B1F3D] text-center">Siga a ordem numérica para a leitura</span>
+                        <span className="text-[11px] font-heading font-bold tracking-widest uppercase text-[#5B1F3D]">Legenda das Posições</span>
+                        <span className="text-[12px] font-body font-semibold uppercase tracking-[0.25em] text-[#5B1F3D] text-center">Siga a ordem numérica para a leitura</span>
                        <div className="h-px w-12 bg-[#C8A66A]/20 mt-1" />
                     </div>
                     {lesson.layoutDiagram.positions.map((pos, i) => (
                       <div key={i} className="flex gap-4 p-4 rounded-2xl bg-[#FAF5EF]/30 border border-[#C8A66A]/10 transition-all hover:bg-[#FAF5EF]/60">
-                        <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-xs font-heading font-black shadow-sm" style={{
+                        <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-xs font-heading font-bold shadow-sm" style={{
                           background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
                           border: "1px solid #C8A66A40",
                           color: "#FAF5EF",
@@ -305,8 +305,8 @@ const TiragensLessonPage = () => {
                           {i + 1}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <span className="font-heading text-base font-black text-[#5B1F3D] block mb-1">{pos.label}</span>
-                          <p className="text-[15px] font-body font-black italic text-[#5B1F3D] leading-relaxed">{pos.description}</p>
+                          <span className="font-heading text-base font-bold text-[#5B1F3D] block mb-1">{pos.label}</span>
+                          <p className="text-[15px] font-body font-medium italic text-[#5B1F3D] leading-relaxed">{pos.description}</p>
                         </div>
                       </div>
                     ))}
@@ -328,23 +328,23 @@ const TiragensLessonPage = () => {
                     boxShadow: "0 20px 40px rgba(91,31,61,0.05)"
                   }}>
                     <div className="flex flex-col items-center gap-1 border-b border-[#C8A66A]/10 pb-4">
-                      <p className="text-[12px] font-heading tracking-[0.3em] uppercase font-black text-[#C8A66A]">
+                      <p className="text-[12px] font-heading tracking-[0.3em] uppercase font-bold text-[#C8A66A]">
                         {ex.spread}
                       </p>
-                      <p className="text-xl font-accent italic font-black text-center text-[#5B1F3D]">
+                      <p className="text-xl font-accent italic font-semibold text-center text-[#5B1F3D]">
                         "{ex.question}"
                       </p>
                     </div>
 
                     <div className="space-y-4">
-                      <p className="text-[11px] font-heading tracking-widest uppercase font-black text-[#5B1F3D]">Cartas Sorteadas</p>
+                      <p className="text-[11px] font-heading tracking-widest uppercase font-bold text-[#5B1F3D]">Cartas Sorteadas</p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {ex.cards.map((c, ci) => (
                           <div key={ci} className="bg-[#FAF5EF] border-2 border-[#C8A66A]/30 px-5 py-3.5 rounded-2xl flex items-center gap-4 shadow-md">
-                            <span className="w-7 h-7 rounded-full bg-[#5B1F3D] flex items-center justify-center text-[12px] font-heading font-black text-[#C8A66A] shrink-0">{ci + 1}</span>
+                            <span className="w-7 h-7 rounded-full bg-[#5B1F3D] flex items-center justify-center text-[12px] font-heading font-bold text-[#C8A66A] shrink-0">{ci + 1}</span>
                             <div className="flex flex-col min-w-0">
-                              <span className="text-[10px] font-heading font-black uppercase tracking-widest text-[#5B1F3D] truncate">{c.position}</span>
-                              <span className="text-[15px] font-black text-[#5B1F3D] truncate">{c.card}</span>
+                              <span className="text-[10px] font-heading font-bold uppercase tracking-widest text-[#5B1F3D] truncate">{c.position}</span>
+                              <span className="text-[15px] font-semibold text-[#5B1F3D] truncate">{c.card}</span>
                             </div>
                           </div>
                         ))}
@@ -352,10 +352,12 @@ const TiragensLessonPage = () => {
                     </div>
 
                     <div className="space-y-3 bg-[#FAF5EF]/30 p-5 rounded-2xl border border-[#C8A66A]/10">
-                      <p className="text-[11px] font-heading tracking-widest uppercase font-black text-[#5B1F3D]">Interpretação e Síntese</p>
-                      <p className="text-[17px] leading-relaxed text-[#2D2D2D] font-black italic">
-                        {ex.interpretation}
-                      </p>
+                      <p className="text-[11px] font-heading tracking-widest uppercase font-bold text-[#5B1F3D]">Interpretação e Síntese</p>
+                      <div className="text-[17px] leading-relaxed text-[#2D2D2D] font-medium italic space-y-4">
+                        {ex.interpretation.split("\n\n").map((para, pi) => (
+                          <p key={pi}>{para}</p>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -368,7 +370,7 @@ const TiragensLessonPage = () => {
                 <h3 className="font-heading text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "#5B1F3D" }}>
                   ✍️ Reflexão
                 </h3>
-                <p className="font-accent text-base italic leading-relaxed font-black text-[#5B1F3D]">
+                <p className="font-accent text-base italic leading-relaxed font-semibold text-[#5B1F3D]">
                   {lesson.reflection}
                 </p>
               </div>
