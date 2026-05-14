@@ -311,7 +311,8 @@ const LessonPage = () => {
             onNextArcano={() => {
               if (nextArcano) {
                 navigate(`/lesson/${arcanoId + 1}`);
-                window.location.reload();
+                window.scrollTo(0, 0);
+                setPhase("intro");
               }
             }}
             onBackToMap={() => navigate("/module/arcanos-maiores")}
