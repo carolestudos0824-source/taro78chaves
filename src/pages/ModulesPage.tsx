@@ -230,12 +230,12 @@ const ModulesPage = () => {
             
             <div className="grid grid-cols-3 gap-4">
               {[
-                { id: "foundation", label: "Base", icon: Compass, color: "linear-gradient(135deg, #F3E6E0, #FAF5EF)" },
-                { id: "major-arcana", label: "Maiores", icon: Stars, color: "linear-gradient(135deg, #FAF5EF, #F5EBDE)" },
-                { id: "minor-arcana", label: "Menores", icon: Layers, color: "linear-gradient(135deg, #E8DED3, #FAF5EF)" },
-                { id: "advanced", label: "Métodos", icon: Layout, color: "linear-gradient(135deg, #DCCFC2, #FAF5EF)" },
-                { id: "practice", label: "Prática", icon: Sparkles, color: "linear-gradient(135deg, #FAF5EF, #F3E6E0)" },
-                { id: "professional", label: "Ofício", icon: Briefcase, color: "linear-gradient(135deg, #F3E6E0, #E8DED3)" },
+                { id: "foundation", label: "Base", icon: "Compass", color: "linear-gradient(135deg, #F3E6E0, #FAF5EF)" },
+                { id: "major-arcana", label: "Maiores", icon: "Stars", color: "linear-gradient(135deg, #FAF5EF, #F5EBDE)" },
+                { id: "minor-arcana", label: "Menores", icon: "Layers", color: "linear-gradient(135deg, #E8DED3, #FAF5EF)" },
+                { id: "advanced", label: "Métodos", icon: "Layout", color: "linear-gradient(135deg, #DCCFC2, #FAF5EF)" },
+                { id: "practice", label: "Prática", icon: "Sparkles", color: "linear-gradient(135deg, #FAF5EF, #F3E6E0)" },
+                { id: "professional", label: "Ofício", icon: "Briefcase", color: "linear-gradient(135deg, #F3E6E0, #E8DED3)" },
               ].map((trail) => (
                 <button
                   key={trail.id}
