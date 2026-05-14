@@ -270,7 +270,9 @@ const Index = () => {
                 background: "rgba(255, 255, 255, 0.85)",
                 backdropFilter: "blur(12px)",
               }}>
-                <span className="text-3xl block mb-4 transition-transform group-hover:scale-110 duration-500" style={{ color: "#C8A66A" }}>{item.icon}</span>
+                <span className="block mb-4 transition-transform group-hover:scale-110 duration-500">
+                  <TarotIcon name={item.icon} className="w-8 h-8 mx-auto" color="#C8A66A" />
+                </span>
                 <span className="text-[12px] font-heading tracking-wide uppercase leading-snug block font-black" style={{ color: "#5B1F3D" }}>
                   {item.label}
                 </span>
