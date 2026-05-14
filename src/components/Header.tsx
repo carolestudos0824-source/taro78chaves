@@ -74,7 +74,7 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
               <div className={`flex flex-col transition-all duration-500 ease-in-out ${
                 isCompact ? "h-0 opacity-0 pointer-events-none" : "h-auto opacity-100"
               }`}>
-                <span className="font-heading text-[10px] md:text-[13px] tracking-[0.4em] uppercase text-[#5B1F3D] font-black leading-none">
+                <span className="font-heading text-[11px] md:text-[14px] tracking-[0.4em] uppercase text-[#5B1F3D] font-black leading-none">
                   Formação 78 Arcanos
                 </span>
               </div>
