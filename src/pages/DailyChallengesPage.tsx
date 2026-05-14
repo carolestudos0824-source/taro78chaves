@@ -303,7 +303,7 @@ const DailyChallengesPage = () => {
             <div className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-[#C8A66A20]" style={{
               background: "rgba(250, 245, 239, 0.8)",
             }}>
-              <Flame className="w-5 h-5 text-[#5B1F3D]" />
+              <TarotIcon name="ritual" className="w-5 h-5 text-[#5B1F3D]" />
               <p className="font-heading text-[11px] font-black uppercase tracking-[0.2em] text-[#5B1F3D]">
                 Sequência: {progress.streak} {progress.streak === 1 ? "dia" : "dias"}
               </p>
