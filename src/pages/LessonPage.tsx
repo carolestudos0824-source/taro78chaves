@@ -25,6 +25,12 @@ type LessonPhase = "intro" | "lesson" | "symbols" | "deepdive" | "exercise" | "q
 const LessonPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  
+  // Fallback defensivo para rota literal /lesson/:id ou IDs inválidos
+  const arcanoId = parseInt(id || "0", 10);
+  const isValidId = !isNaN(arcanoId) && arcanoId >= 0 && arcanoId <= 21;
+  const isLiteralRoute = id === ":id";
+
   const { addXP, completeLesson, completeQuiz, earnBadge } = useProgress();
   const { loading: premiumLoading } = usePremium();
   const { isStaff, loading: roleLoading } = useRole();
