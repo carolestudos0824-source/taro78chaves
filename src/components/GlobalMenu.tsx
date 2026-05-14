@@ -47,7 +47,8 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
     if (isOpen) onClose();
   }, [location.pathname]);
 
-  if (!render) return null;
+  // Closed state handled by visibility animations
+  // if (!render) return null;
 
   const NavItem = ({ to, icon, label, badge }: { to: string; icon: TarotIconType | string; label: string; badge?: string }) => {
     const isActive = location.pathname === to;
