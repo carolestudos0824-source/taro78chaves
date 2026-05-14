@@ -43,7 +43,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
       {/* Background Atmosphere - Enhanced ritualistic altar feel */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Ivory Base */}
-        <div className="absolute inset-0 bg-[#FDFBF7]" />
+        {/* Removed ivory base to prevent covering content */}
         
         {/* Central Glow - More intense on desktop */}
         <div 
