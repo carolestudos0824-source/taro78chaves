@@ -37,7 +37,7 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
         overflow: 'visible'
       }}
     >
-      <div className="container max-w-lg px-6 py-4 relative">
+      <div className="container max-w-3xl px-6 py-4 relative">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-3 overflow-hidden">
             <div className="flex items-center gap-2 shrink-0">
