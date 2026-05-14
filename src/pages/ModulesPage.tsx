@@ -208,7 +208,7 @@ const ModulesPage = () => {
               </div>
               <div className="flex flex-col items-center gap-3">
                 <div className="w-12 h-12 rounded-xl bg-[#FAF5EF] border border-[#C8A66A]/20 flex items-center justify-center group-hover:bg-[#5B1F3D] group-hover:text-white transition-all">
-                  <Compass className="w-6 h-6 text-[#C8A66A]" />
+                  <TarotIcon name="formacao" className="w-6 h-6 text-[#C8A66A]" />
                 </div>
                 <div className="space-y-1">
                   <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">Formação</span>
