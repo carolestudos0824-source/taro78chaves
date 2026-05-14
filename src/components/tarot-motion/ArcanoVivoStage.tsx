@@ -39,11 +39,11 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
   const showParticles = (phase === 'presence' || phase === 'insight') && !shouldReduceMotion;
 
   return (
-    <div className="relative min-h-[60vh] md:min-h-[85vh] flex flex-col items-center justify-center overflow-hidden py-8 md:py-20 px-6 sm:px-12">
+    <div className="relative min-h-[60vh] md:min-h-[85vh] flex flex-col items-center justify-center py-8 md:py-20 px-6 sm:px-12">
       {/* Background Atmosphere - Enhanced ritualistic altar feel */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Ivory Base */}
-        {/* Removed ivory base to prevent covering content */}
+        <div className="absolute inset-0 bg-[#FDFBF7]" />
         
         {/* Central Glow - More intense on desktop */}
         <div 
@@ -126,7 +126,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
           arcanoSlug={arcanoSlug}
           state={phase === 'dormant' ? 'available' : 'active'}
           variant="portal"
-          className="scale-[1.2] sm:scale-[1.5] md:scale-[1.7] lg:scale-[1.8] drop-shadow-[0_35px_60px_rgba(91,31,61,0.3)]"
+          className="scale-[1.2] sm:scale-[1.5] md:scale-[1.7] lg:scale-[1.8] drop-shadow-[0_35px_60px_rgba(91,31,61,0.3)] min-h-[210px] min-w-[140px]"
         />
         
         {/* Ritualistic Floor Reflection */}

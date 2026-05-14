@@ -25,12 +25,35 @@ type LessonPhase = "intro" | "lesson" | "symbols" | "deepdive" | "exercise" | "q
 const LessonPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  
+  // Fallback defensivo para rota literal /lesson/:id ou IDs inválidos
+  const arcanoId = parseInt(id || "0", 10);
+  const isValidId = !isNaN(arcanoId) && arcanoId >= 0 && arcanoId <= 21;
+  const isLiteralRoute = id === ":id";
+
   const { addXP, completeLesson, completeQuiz, earnBadge } = useProgress();
   const { loading: premiumLoading } = usePremium();
   const { isStaff, loading: roleLoading } = useRole();
   const { canAccessArcano, hasFullAccess, loading: accessLoading } = useAccess();
   const { setHeader, resetHeader } = useHeader();
   const [phase, setPhase] = useState<LessonPhase>("intro");
+  const [mounted, setMounted] = useState(false);
+  
+  const arcano = getArcanoById(isValidId ? arcanoId : 0);
+  const hasAccess = isValidId ? canAccessArcano(arcanoId) : false;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  
+  const getPhases = () => {
+    const p: LessonPhase[] = ["intro", "lesson"];
+    if (arcano?.symbolsMap?.length) p.push("symbols");
+    p.push("deepdive", "exercise", "quiz", "complete");
+    return p;
+  };
+  const phases = getPhases();
+  
   const [exerciseCompleted, setExerciseCompleted] = useState(false);
   const [xpEarned, setXpEarned] = useState(0);
   const [showXpReward, setShowXpReward] = useState(false);
@@ -39,24 +62,22 @@ const LessonPage = () => {
   const [lastQuizTotal, setLastQuizTotal] = useState(0);
 
   // Fallback defensivo para rota literal /lesson/:id ou IDs inválidos
-  const isLiteralRoute = id === ":id";
-  const arcanoId = parseInt(id || "0", 10);
-  const isValidId = !isNaN(arcanoId) && arcanoId >= 0 && arcanoId <= 21;
 
   // Redirecionamento defensivo se a rota for literal
   useEffect(() => {
+    
     if (isLiteralRoute) {
       navigate("/module/arcanos-maiores", { replace: true });
     }
   }, [isLiteralRoute, navigate]);
 
-  const arcano = getArcanoById(isValidId ? arcanoId : 0);
-  const hasAccess = isValidId ? canAccessArcano(arcanoId) : false;
 
   const nextArcano = isValidId && arcanoId < 21 ? ARCANOS_MAIORES[arcanoId + 1] : null;
 
+
   useEffect(() => {
     if (arcano) {
+      
       setHeader({
         title: arcano.name,
         subtitle: `Arcano ${arcano.numeral} • Lição ${arcanoId + 1}`,
@@ -65,10 +86,10 @@ const LessonPage = () => {
       });
     }
     return () => resetHeader();
-  }, [arcano, phase, arcanoId]);
+  }, [arcano, phase, arcanoId, phases, setHeader, resetHeader]);
 
   // 1. Estado de Carregamento (Loading Ritualístico)
-  if (isLiteralRoute || premiumLoading || roleLoading || accessLoading) {
+  if (!mounted || isLiteralRoute) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7] relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
@@ -117,14 +138,6 @@ const LessonPage = () => {
     );
   }
 
-  const getPhases = () => {
-    const p: LessonPhase[] = ["intro", "lesson"];
-    if (arcano?.symbolsMap?.length) p.push("symbols");
-    p.push("deepdive", "exercise", "quiz", "complete");
-    return p;
-  };
-  const phases = getPhases();
-
   const handleStartLesson = () => {
     if (!isStaff) {
       addXP(10);
@@ -155,7 +168,7 @@ const LessonPage = () => {
     window.scrollTo(0, 0);
   };
 
-  if (!hasAccess) {
+  if (!hasAccess && !accessLoading) {
     const isPerformanceLocked = arcanoId === 1 && !hasFullAccess;
     return (
       <div className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center p-6">
@@ -203,15 +216,19 @@ const LessonPage = () => {
   return (
     <div className="min-h-screen relative pb-bottom-nav">
       {/* Background — Marfim Suave replicando /app */}
-      <div className="fixed inset-0 z-0">
+      <div className="fixed inset-0 z-0 bg-[#FAF5EF]">
         <div
-          className="absolute inset-0 bg-[#FAF5EF]"
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+            opacity: 0.98,
+          }}
         />
       </div>
 
       {/* Global Header is handled by AppShell and Context */}
 
-      <main className="relative z-10 container max-w-lg mx-auto px-4 py-8">
+      <main className="relative z-10 container max-w-lg mx-auto px-4 py-8 bg-transparent">
         {phase === "intro" && (
           <ArcanoVivoStage
             arcanoId={arcanoId}
