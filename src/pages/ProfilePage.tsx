@@ -206,7 +206,7 @@ const ProfilePage = () => {
           {isAdmin && (
             <button onClick={() => navigate("/admin")} className="w-full flex items-center justify-between p-6 rounded-2xl bg-[#5B1F3D] border-2 border-[#C8A66A] text-white group shadow-xl">
               <div className="flex items-center gap-4">
-                <Shield className="w-6 h-6 text-[#C8A66A]" />
+                <TarotIcon name="privacidade" className="w-6 h-6 text-[#C8A66A]" />
                 <p className="font-heading text-base font-black tracking-tight">Painel Administrativo</p>
               </div>
               <ChevronRight className="w-5 h-5 text-[#C8A66A]" />
