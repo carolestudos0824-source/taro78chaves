@@ -79,8 +79,6 @@ const LessonPage = () => {
     }
   }, [isLiteralRoute, navigate]);
 
-  const arcano = getArcanoById(isValidId ? arcanoId : 0);
-  const hasAccess = isValidId ? canAccessArcano(arcanoId) : false;
 
   const nextArcano = isValidId && arcanoId < 21 ? ARCANOS_MAIORES[arcanoId + 1] : null;
 
