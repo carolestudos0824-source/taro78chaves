@@ -176,7 +176,7 @@ const LessonPage = () => {
     window.scrollTo(0, 0);
   };
 
-  if (!hasAccess) {
+  if (!hasAccess && !accessLoading) {
     const isPerformanceLocked = arcanoId === 1 && !hasFullAccess;
     return (
       <div className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center p-6">
