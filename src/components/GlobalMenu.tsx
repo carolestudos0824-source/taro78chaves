@@ -21,34 +21,17 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
   const location = useLocation();
   const { signOut } = useAuth();
   const { isAdmin } = useIsAdmin();
-  const { progress, getCurrentArcanoId } = useProgress();
-  const [isVisible, setIsVisible] = useState(false);
-  const [render, setRender] = useState(isOpen);
+  const { getCurrentArcanoId } = useProgress();
 
   const currentArcanoId = getCurrentArcanoId();
 
-  // Manage visibility for animations and unmounting
-  useEffect(() => {
-    if (isOpen) {
-      setRender(true);
-      // Small delay to ensure render is true before starting entry animation
-      const timer = setTimeout(() => setIsVisible(true), 10);
-      return () => clearTimeout(timer);
-    } else {
-      setIsVisible(false);
-      // Wait for exit animation to finish before unmounting (matches duration-500)
-      const timer = setTimeout(() => setRender(false), 500);
-      return () => clearTimeout(timer);
-    }
-  }, [isOpen]);
-
   // Close menu on route change
   useEffect(() => {
-    if (isOpen) onClose();
+    if (isOpen) {
+      const timer = setTimeout(onClose, 100);
+      return () => clearTimeout(timer);
+    }
   }, [location.pathname]);
-
-  // Closed state handled by visibility animations
-  // if (!render) return null;
 
   const NavItem = ({ to, icon, label, badge }: { to: string; icon: TarotIconType | string; label: string; badge?: string }) => {
     const isActive = location.pathname === to;
