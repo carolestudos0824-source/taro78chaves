@@ -1,22 +1,32 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Sparkles, BookOpen, Check, Stars, ChevronRight } from "lucide-react";
+import { Sparkles, Check, Stars, ChevronRight } from "lucide-react";
 import { TarotIcon } from "@/components/TarotIcon";
 import PremiumGate from "@/components/PremiumGate";
-import { XPBar } from "@/components/XPBar";
-import { StreakCounter } from "@/components/StreakCounter";
 import { JourneyMap } from "@/components/JourneyMap";
 import { useProgress } from "@/hooks/use-progress";
 import { ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull as getArcanoById } from "@/lib/content";
+import { useHeader } from "@/contexts/header-context";
+
 const Index = () => {
-  const { progress, loading: progressLoading, updateStreak, isArcanoCompleted, getCurrentArcanoId, completedCount, journeyProgress } = useProgress();
+  const { progress, loading: progressLoading, updateStreak, getCurrentArcanoId, completedCount, journeyProgress } = useProgress();
   const navigate = useNavigate();
+  const { setHeader, resetHeader } = useHeader();
+
+  useEffect(() => {
+    setHeader({
+      title: "Arcanos Maiores",
+      subtitle: "Módulo 03 • A Jornada do Louco",
+      backRoute: "/app"
+    });
+    return () => resetHeader();
+  }, [setHeader, resetHeader]);
 
   useEffect(() => {
     if (!progressLoading) {
       updateStreak();
     }
-  }, [progressLoading]);
+  }, [progressLoading, updateStreak]);
 
   if (progressLoading) {
     return (
@@ -31,7 +41,6 @@ const Index = () => {
 
   const currentArcanoId = getCurrentArcanoId();
   const currentArcano = ARCANOS_MAIORES.find(a => a.id === currentArcanoId);
-  const currentArcanoData = getArcanoById(currentArcanoId);
   const allComplete = completedCount >= 22;
 
   return (
@@ -59,34 +68,6 @@ const Index = () => {
           }}
         />
       </div>
-
-      {/* Header */}
-      <header className="relative z-10" style={{
-        borderBottom: "1.5px solid #C8A66A40",
-        background: "rgba(250, 245, 239, 0.95)",
-        backdropFilter: "blur(20px)",
-        boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)"
-      }}>
-        <div className="container max-w-3xl py-5 px-6">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-4">
-              <button 
-                onClick={() => navigate("/app")} 
-                className="transition-all hover:scale-110 duration-200 w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30]" 
-                style={{ color: "#5B1F3D" }}
-              >
-                <ArrowLeft className="w-5 h-5" />
-              </button>
-              <div>
-                <span className="text-[11px] tracking-[0.45em] uppercase font-heading font-black flex items-center gap-2" style={{ color: "#5B1F3D" }}>
-                  Módulo 03 <span style={{ color: "#C8A66A" }}>•</span> Arcanos Maiores
-                </span>
-              </div>
-            </div>
-            <StreakCounter streak={progress.streak} />
-          </div>
-          <XPBar xp={progress.xp} level={progress.level} />
-        </div>
       </header>
 
       <main className="relative z-10 container max-w-3xl px-6 pb-12">
