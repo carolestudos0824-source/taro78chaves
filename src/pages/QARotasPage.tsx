@@ -374,7 +374,7 @@ const QARotasPage = () => {
                         }`}
                         title="Aprovar"
                       >
-                        <CheckCircle2 className="w-6 h-6" />
+                        <TarotIcon name="concluido" className="w-6 h-6" />
                       </button>
                       <button 
                         onClick={() => updateAudit(route.id, 'Reprovada')}
@@ -385,7 +385,7 @@ const QARotasPage = () => {
                         }`}
                         title="Reprovar"
                       >
-                        <XCircle2 className="w-6 h-6" />
+                        <TarotIcon name="excluir-conta" className="w-6 h-6" />
                       </button>
                       <button 
                         onClick={() => updateAudit(route.id, 'Corrigir')}
@@ -396,7 +396,7 @@ const QARotasPage = () => {
                         }`}
                         title="Sinalizar Correção"
                       >
-                        <AlertTriangle className="w-6 h-6" />
+                        <TarotIcon name="auditoria" className="w-6 h-6" />
                       </button>
                     </div>
 
