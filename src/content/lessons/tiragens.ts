@@ -6,6 +6,8 @@ export interface TiragemLesson {
   icon: string;
   content: string;
   keyPoints: string[];
+  whenToUse?: string[];
+  infoBlocks?: { title: string; content: string }[];
   deepDive?: string;
   reflection?: string;
   layoutDiagram?: TiragemLayout;
@@ -270,33 +272,41 @@ Toda manhã, tire 1 carta perguntando: "Que energia acompanha meu dia hoje?" À 
     subtitle: "A tiragem mais versátil do tarô",
     icon: "3️⃣",
     content: `A tiragem de 3 cartas é a mais versátil que existe. Com apenas 3 posições, ela pode responder a quase qualquer pergunta — e é a base de todas as tiragens mais complexas.
+    
+### A Regra de Ouro
+Antes de virar qualquer carta, **defina o formato**. Não vire as cartas e depois decida o que cada posição significa — isso é improvisação, não leitura.
 
-**Os 4 formatos clássicos:**
-
-**Formato 1 — Passado / Presente / Futuro**
-A narrativa temporal. De onde vim, onde estou, para onde vou.
-Ideal para: entender a trajetória de uma situação.
-
-**Formato 2 — Situação / Obstáculo / Conselho**
-A narrativa de problema. O que está acontecendo, o que atrapalha, o que fazer.
-Ideal para: quando a pessoa precisa de orientação prática.
-
-**Formato 3 — Mente / Corpo / Espírito**
-A narrativa holística. O que pensa, o que sente no corpo, o que a alma pede.
-Ideal para: autoconhecimento e questões de saúde/bem-estar.
-
-**Formato 4 — Opção A / O Que Considerar / Opção B**
-A narrativa de decisão. Dois caminhos e o que pesar entre eles.
-Ideal para: quando há uma escolha a fazer.
-
-**A regra de ouro das 3 cartas:** Antes de virar, **defina o formato**. Não vire as cartas e depois decida o que cada posição significa — isso é improvisação, não leitura.
-
-**Leitura cruzada:** Além de ler cada posição isoladamente, leia os pares (1-2, 2-3, 1-3) e a tríade completa. A riqueza está nas conexões.`,
+### Leitura Cruzada
+Além de ler cada posição isoladamente, leia os pares (1-2, 2-3, 1-3) e a tríade completa. A riqueza está nas conexões.`,
+    whenToUse: [
+      "Perguntas de complexidade média",
+      "Entender a trajetória de uma situação",
+      "Tomar decisões entre dois caminhos",
+      "Análise holística (mente, corpo, espírito)",
+    ],
+    infoBlocks: [
+      {
+        title: "1. Passado / Presente / Futuro",
+        content: "A narrativa temporal clássica. Revela de onde a situação veio, onde está agora e para onde tende a ir."
+      },
+      {
+        title: "2. Situação / Obstáculo / Conselho",
+        content: "Focado em resolução. Identifica o cenário real, o que está travando e a ação prática recomendada."
+      },
+      {
+        title: "3. Mente / Corpo / Espírito",
+        content: "Análise do ser. O que se pensa, o que se sente no físico e o que a alma está processando."
+      },
+      {
+        title: "4. Opção A / O Que Considerar / Opção B",
+        content: "Apoio à decisão. Compara dois caminhos e traz um elemento neutro para pesar a escolha."
+      }
+    ],
     keyPoints: [
-      "4 formatos: Passado/Presente/Futuro, Situação/Obstáculo/Conselho, Mente/Corpo/Espírito, Opção A/Considerar/Opção B",
       "Defina o formato ANTES de virar as cartas",
-      "Leia posições + pares + tríade completa",
-      "Base de todas as tiragens mais complexas",
+      "Leia posições individuais + pares + tríade completa",
+      "Base para todas as tiragens complexas do tarô",
+      "Versatilidade total para qualquer tema",
     ],
     layoutDiagram: {
       name: "Tiragem de 3 Cartas (Linear)",

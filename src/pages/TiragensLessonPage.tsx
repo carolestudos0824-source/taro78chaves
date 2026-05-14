@@ -115,6 +115,34 @@ const TiragensLessonPage = () => {
   };
 
   const renderContent = (text: string) => {
+    const lines = text.split("\n");
+    return lines.map((line, i) => {
+      if (line.startsWith("### ")) {
+        return (
+          <h4 key={i} className="font-heading text-base font-black mt-6 mb-2 tracking-tight" style={{ color: "#5B1F3D" }}>
+            {line.replace("### ", "")}
+          </h4>
+        );
+      }
+      if (line.startsWith("- ")) {
+        return (
+          <div key={i} className="flex gap-2 mb-2 pl-2">
+            <span className="text-[#C8A66A] mt-1">•</span>
+            <span className="text-sm leading-relaxed" style={{ color: "hsl(230 20% 25%)" }}>
+              {renderInlineBold(line.replace("- ", ""))}
+            </span>
+          </div>
+        );
+      }
+      return (
+        <p key={i} className="text-sm leading-relaxed mb-4 last:mb-0" style={{ color: "hsl(230 20% 25%)" }}>
+          {renderInlineBold(line)}
+        </p>
+      );
+    });
+  };
+
+  const renderInlineBold = (text: string) => {
     const parts = text.split(/(\*\*[^*]+\*\*)/g);
     return parts.map((part, i) => {
       if (part.startsWith("**") && part.endsWith("**")) {
@@ -167,12 +195,45 @@ const TiragensLessonPage = () => {
             </div>
 
             <div className="rounded-xl p-6" style={{ background: "hsl(38 30% 95% / 0.85)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
-              {lesson.content.split("\n\n").map((paragraph, i) => (
-                <p key={i} className="text-sm leading-relaxed mb-4 last:mb-0" style={{ color: "hsl(230 20% 25%)" }}>
-                  {renderContent(paragraph)}
-                </p>
-              ))}
+              {renderContent(lesson.content)}
             </div>
+
+            {/* When to Use */}
+            {lesson.whenToUse && (
+              <div className="rounded-xl p-5" style={{ background: "rgba(200, 166, 106, 0.05)", border: "1px solid rgba(200, 166, 106, 0.2)" }}>
+                <h3 className="font-heading text-[10px] tracking-[0.2em] uppercase mb-4 font-black flex items-center gap-2" style={{ color: "#8B6A30" }}>
+                  <Sparkles className="w-3.5 h-3.5" /> Quando Usar
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {lesson.whenToUse.map((item, i) => (
+                    <div key={i} className="flex items-center gap-2 bg-white/50 p-3 rounded-lg border border-[#C8A66A]/10">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#C8A66A]" />
+                      <span className="text-xs font-medium text-[#5B1F3D]/80">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Info Blocks (Mini Cards) */}
+            {lesson.infoBlocks && (
+              <div className="space-y-4">
+                <h3 className="font-heading text-[10px] tracking-[0.2em] uppercase px-1 font-black text-[#5B1F3D]/40">Formatos e Estruturas</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {lesson.infoBlocks.map((block, i) => (
+                    <div key={i} className="bg-white p-5 rounded-2xl border-2 border-[#C8A66A]/10 shadow-sm transition-all hover:shadow-md hover:border-[#C8A66A]/30 group">
+                      <h4 className="font-heading text-sm font-black text-[#5B1F3D] mb-2 flex items-center gap-2">
+                        <span className="w-1 h-4 bg-[#C8A66A] rounded-full group-hover:h-6 transition-all duration-300" />
+                        {block.title}
+                      </h4>
+                      <p className="text-[13px] font-body text-[#5B1F3D]/70 leading-relaxed italic">
+                        {block.content}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div className="rounded-xl p-5" style={{ background: "hsl(36 45% 58% / 0.06)", border: "1px solid hsl(36 45% 58% / 0.18)" }}>
               <h3 className="font-heading text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "hsl(36 40% 42%)" }}>
