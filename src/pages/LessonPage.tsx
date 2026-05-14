@@ -32,10 +32,16 @@ const LessonPage = () => {
   const { setHeader, resetHeader } = useHeader();
   const [phase, setPhase] = useState<LessonPhase>("intro");
   const [mounted, setMounted] = useState(false);
+  const [debugLog, setDebugLog] = useState<string[]>([]);
   
   useEffect(() => {
     setMounted(true);
-    console.log("LessonPage mounted, phase set to intro");
+    const log = (msg: string) => {
+      console.log(`[DEBUG_UI] ${msg}`);
+      setDebugLog(prev => [...prev, `${new Date().toLocaleTimeString()}: ${msg}`]);
+    };
+    log("LessonPage mounted");
+    log(`arcanoId: ${arcanoId}, isValidId: ${isValidId}, isLiteral: ${isLiteralRoute}`);
   }, []);
   
   const getPhases = () => {
