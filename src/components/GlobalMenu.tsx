@@ -73,7 +73,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
   };
 
   const blocks = useMemo(() => (
-    <div className="flex-1 overflow-y-auto px-4 py-6 space-y-2 pb-32 scrollbar-hide overscroll-contain">
+    <div className="flex-1 overflow-y-auto px-4 py-6 space-y-2 pb-32 overscroll-contain">
       {/* BLOCO 1 — Jornada */}
       <SectionTitle>Jornada</SectionTitle>
       <NavItem to="/app" icon="jornada" label="Jornada Principal" />
@@ -144,15 +144,15 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
 
   return (
     <div className={`fixed inset-0 z-[2000000] flex transition-all duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-      {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-[#5B1F3D]/60 backdrop-blur-md" 
         onClick={onClose}
       />
 
-      {/* Drawer */}
-      <div className={`fixed top-0 left-0 w-[320px] max-w-[85vw] h-full bg-[#FDFBF7] shadow-2xl flex flex-col border-r-2 border-[#C8A66A]/30 transition-transform duration-500 overflow-hidden z-[2000001] ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-        {/* Header */}
+      <div 
+        className={`fixed top-0 left-0 w-[320px] max-w-[85vw] h-full bg-[#FDFBF7] shadow-2xl flex flex-col border-r-2 border-[#C8A66A]/30 transition-transform duration-500 overflow-hidden z-[2000001] ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        style={{ height: '100dvh' }}
+      >
         <div className="p-6 border-b-2 border-[#C8A66A]/20 flex items-center justify-between bg-white/50 shrink-0">
           <div className="flex flex-col">
             <span className="text-[10px] font-heading font-black tracking-[0.4em] uppercase text-[#C8A66A]">
@@ -170,10 +170,8 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
           </button>
         </div>
 
-        {/* Scrollable Content Area */}
         {blocks}
 
-        {/* Footer */}
         <div className="p-6 bg-white border-t-2 border-[#C8A66A]/20 shrink-0">
           <p className="text-[10px] font-heading font-black tracking-[0.4em] text-[#C8A66A] uppercase text-center">
             Tarô 78 Chaves · © 2026
