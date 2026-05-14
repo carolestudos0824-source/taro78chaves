@@ -126,23 +126,15 @@ export function ArcanoVivoAnimatedCard({
             <LockKeyhole className="w-16 h-16 text-white/50" />
           </div>
         )}
-      </motion.div>
+      </div>
 
-      {/* Decorative Halo */}
+      {/* Decorative Halo (static) */}
       {isBreathing && !shouldReduceMotion && (
-        <motion.div 
+        <div 
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] rounded-full pointer-events-none blur-3xl"
           style={{
             background: `radial-gradient(circle, hsl(${config.glowColor} / 0.15) 0%, transparent 70%)`,
-          }}
-          animate={{
-            opacity: [0.1, 0.3, 0.1],
-            scale: [0.8, 1.1, 0.8],
-          }}
-          transition={{
-            duration: (config.breatheSpeed || 4) * 2,
-            repeat: Infinity,
-            ease: "easeInOut"
+            opacity: 0.2
           }}
         />
       )}
