@@ -29,11 +29,13 @@ const HeaderContext = createContext<HeaderContextType | undefined>(undefined);
 export const HeaderProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<HeaderState>(defaultState);
 
-  const setHeader = (newState: HeaderState) => setState(newState);
-  const resetHeader = () => setState(defaultState);
+  const setHeader = useCallback((newState: HeaderState) => setState(newState), []);
+  const resetHeader = useCallback(() => setState(defaultState), []);
+
+  const value = useMemo(() => ({ state, setHeader, resetHeader }), [state, setHeader, resetHeader]);
 
   return (
-    <HeaderContext.Provider value={{ state, setHeader, resetHeader }}>
+    <HeaderContext.Provider value={value}>
       {children}
     </HeaderContext.Provider>
   );
