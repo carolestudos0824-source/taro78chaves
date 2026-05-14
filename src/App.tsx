@@ -294,10 +294,11 @@ const AppShell = () => {
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <FontSizeProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
+      <HeaderProvider>
+        <FontSizeProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
           <BrowserRouter>
             <AuthProvider>
               <AppRoutes />
