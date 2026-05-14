@@ -18,8 +18,8 @@ import { QuizSection } from "@/components/QuizSection";
 import PremiumGate from "@/components/PremiumGate";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-type LessonPhase = "intro" | "lesson" | "symbols" | "deepdive" | "exercise" | "quiz" | "complete";
+import { useHeader } from "@/contexts/header-context";
+import { PhaseIndicator } from "@/components/arcano-vivo/PhaseIndicator";
 
 const LessonPage = () => {
   const { id } = useParams();
