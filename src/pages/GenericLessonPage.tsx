@@ -530,7 +530,6 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
                     background: `linear-gradient(135deg, hsl(${accent} / 0.15), hsl(${accent} / 0.08))`,
                     border: `2px solid hsl(${accent} / 0.30)`,
                     boxShadow: `0 0 40px hsl(${accent} / 0.12)`,
-                    animation: "glow-breathe 3s ease-in-out infinite",
                   }}
                 >
                   <Sparkles className="w-8 h-8" style={{ color: `hsl(${accent})` }} />
