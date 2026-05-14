@@ -77,7 +77,7 @@ const LessonPage = () => {
 
   useEffect(() => {
     if (arcano) {
-      console.log("Setting header for:", arcano.name);
+      
       setHeader({
         title: arcano.name,
         subtitle: `Arcano ${arcano.numeral} • Lição ${arcanoId + 1}`,
