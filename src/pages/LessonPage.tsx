@@ -31,10 +31,10 @@ const LessonPage = () => {
   const { canAccessArcano, hasFullAccess, loading: accessLoading } = useAccess();
   const { setHeader, resetHeader } = useHeader();
   const [phase, setPhase] = useState<LessonPhase>("intro");
+  const [mounted, setMounted] = useState(false);
   
   useEffect(() => {
-    // Force intro phase on initial mount to ensure visibility
-    setPhase("intro");
+    setMounted(true);
     console.log("LessonPage mounted, phase set to intro");
   }, []);
   
