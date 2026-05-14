@@ -292,7 +292,7 @@ const DailyChallengesPage = () => {
             <div className="w-16 h-16 rounded-3xl flex items-center justify-center border-2 border-[#C8A66A] shadow-xl mx-auto mb-6 transform rotate-3" style={{
               background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
             }}>
-              <Sparkles className="w-8 h-8 text-[#C8A66A] animate-pulse" />
+              <TarotIcon name="Sparkles" className="w-8 h-8 text-[#C8A66A] animate-pulse" />
             </div>
             <h3 className="font-heading text-2xl font-black tracking-tight mb-2" style={{ color: "#5B1F3D" }}>
               Ritual concluído!
