@@ -39,7 +39,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
   const showParticles = (phase === 'presence' || phase === 'insight') && !shouldReduceMotion;
 
   return (
-    <div className="relative min-h-[60vh] md:min-h-[85vh] flex flex-col items-center justify-center overflow-hidden py-8 md:py-20 px-6 sm:px-12">
+    <div className="relative min-h-[60vh] md:min-h-[85vh] flex flex-col items-center justify-center py-8 md:py-20 px-6 sm:px-12">
       {/* Background Atmosphere - Enhanced ritualistic altar feel */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Ivory Base */}
