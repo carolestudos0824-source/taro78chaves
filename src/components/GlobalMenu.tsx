@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { 
   X, 
@@ -24,13 +24,13 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
 
   const currentArcanoId = getCurrentArcanoId();
 
-  // Close menu on route change
+  // Fecha o menu apenas em MUDANÇA real de rota, nunca na montagem inicial.
+  const initialPathRef = useRef(location.pathname);
   useEffect(() => {
-    if (isOpen) {
-      const timer = setTimeout(onClose, 100);
-      return () => clearTimeout(timer);
-    }
-  }, [location.pathname]);
+    if (!isOpen) return;
+    if (location.pathname === initialPathRef.current) return;
+    onClose();
+  }, [location.pathname, isOpen, onClose]);
 
   const SectionTitle = ({ children }: { children: React.ReactNode }) => (
     <h3 className="px-4 pt-6 pb-2 text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A]">
