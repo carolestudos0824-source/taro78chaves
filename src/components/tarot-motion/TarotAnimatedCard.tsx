@@ -128,9 +128,9 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
             <motion.div
               initial={{ scale: 0, rotate: -20 }}
               animate={{ scale: 1, rotate: 0 }}
-              className="bg-green-500/90 text-white p-1 rounded-full shadow-lg"
+              className="bg-[#C8A66A]/90 text-white p-1 rounded-full shadow-lg"
             >
-              <CheckCircle2 className="w-4 h-4" />
+              <TarotIcon name="concluido" className="w-4 h-4" />
             </motion.div>
           </div>
         )}
