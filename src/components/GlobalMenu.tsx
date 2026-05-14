@@ -158,59 +158,8 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
           </button>
         </div>
 
-        {/* Scrollable Content */}
         <div className="flex-1 overflow-y-auto px-4 py-6 space-y-2 pb-32 scrollbar-hide overscroll-contain">
-          {/* BLOCO 1 — Jornada */}
-          <SectionTitle>Jornada</SectionTitle>
-          <NavItem to="/app" icon="jornada" label="Jornada Principal" />
-          <NavItem to="/trilhas" icon="formacao" label="Mapa da Formação" />
-          <NavItem to="/desafios" icon="ritual" label="Ritual Diário" />
-          <NavItem 
-            to={`/lesson/${currentArcanoId}`} 
-            icon="proximo" 
-            label="Continuar Jornada" 
-            badge="Agora" 
-          />
-
-          {/* BLOCO 2 — Formação */}
-          <SectionTitle>Formação</SectionTitle>
-          <NavItem to="/module/fundamentos" icon="jornada" label="Fundamentos do Tarô" />
-          <NavItem to="/module/leitura-simbolica" icon="perfil" label="Leitura Simbólica e Método" />
-          <NavItem to="/module/arcanos-maiores" icon="louco" label="Arcanos Maiores" />
-          <NavItem to="/module/arquitetura-menores" icon="formacao" label="Arquitetura Menores" />
-          <NavItem to="/module/copas" icon="copas" label="Naipe de Copas" />
-          <NavItem to="/module/paus" icon="paus" label="Naipe de Paus" />
-          <NavItem to="/module/espadas" icon="espadas" label="Naipe de Espadas" />
-          <NavItem to="/module/ouros" icon="ouros" label="Naipe de Ouros" />
-          <NavItem to="/module/cartas-corte" icon="rainha" label="Cartas da Corte" />
-          <NavItem to="/module/combinacoes" icon="mago" label="Combinações" />
-          <NavItem to="/module/tiragens" icon="trilhas" label="Tiragens" />
-          <NavItem to="/module/espiritualidade" icon="sacerdotisa" label="Tarô e Espiritualidade" />
-          <NavItem to="/module/mesa-taro" icon="mundo" label="Como Montar Mesa" />
-          <NavItem to="/module/leitura-aplicada" icon="justica" label="Leitura Aplicada por Tema" />
-          <NavItem to="/module/pratica" icon="Sparkles" label="Prática Guiada" />
-          <NavItem to="/module/trabalhar-taro" icon="premium" label="Como Trabalhar com Tarô" />
-
-          {/* BLOCO 3 — Conta */}
-          <SectionTitle>Conta</SectionTitle>
-          <NavItem to="/perfil" icon="perfil" label="Meu Perfil" />
-          <NavItem to="/premium" icon="premium" label="Plano Premium" />
-          <NavItem to="/feedback" icon="feedback" label="Enviar Feedback" />
-          <NavItem to="/suporte" icon="suporte" label="Suporte Técnico" />
-
-          {/* BLOCO 4 — Legal */}
-          <SectionTitle>Legal</SectionTitle>
-          <NavItem to="/privacidade" icon="privacidade" label="Privacidade" />
-          <NavItem to="/termos" icon="termos" label="Termos de Uso" />
-          <NavItem to="/excluir-conta" icon="excluir-conta" label="Excluir Conta" />
-
-          {/* BLOCO 5 — Auditoria interna */}
-          {(isAdmin || process.env.NODE_ENV === 'development') && (
-            <>
-              <SectionTitle>Auditoria</SectionTitle>
-              <NavItem to="/qa-rotas" icon="auditoria" label="Auditoria de Rotas" />
-            </>
-          )}
+          {blocks}
 
           <div className="pt-8 pb-4">
             <button 
