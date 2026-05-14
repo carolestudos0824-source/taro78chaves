@@ -64,7 +64,6 @@ const LessonPage = () => {
 
   const nextArcano = isValidId && arcanoId < 21 ? ARCANOS_MAIORES[arcanoId + 1] : null;
 
-  const phases = getPhases();
 
   useEffect(() => {
     if (arcano) {
