@@ -4,6 +4,11 @@
  * Estrutura fixa para os 22 Arcanos Maiores.
  * Cada arcano deve preencher TODOS os campos obrigatórios.
  * 
+ * PADRÃO PEDAGÓGICO (Fase 6.0):
+ * - 6 Fases Estruturais: Intro, Conteúdo, Símbolos, Aprofundamento, Exercício, Quiz.
+ * - Consome ~16 subseções editoriais (essence, symbols, layers, deepDive, quiz, etc).
+ * - Obs: Diferente dos Arcanos Menores, que utilizam 9 fases.
+ * 
  * Campos mapeiam para:
  * - Página do Arcano Vivo (UI)
  * - Banco de dados (futura migração)
