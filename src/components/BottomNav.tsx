@@ -1,13 +1,20 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { Home, Compass, Flame, KeyRound, UserRound } from "lucide-react";
+import { TarotIcon, TarotIconType } from "./TarotIcon";
 
-const NAV_ITEMS = [
-  { path: "/app", label: "Módulos", icon: Home, microcopy: "Sua jornada" },
-  { path: "/desafios", label: "Ritual", icon: Flame, microcopy: "Seu ritual diário" },
-  { path: "/trilhas", label: "Formação", icon: Compass, microcopy: "Mapa da trilha" },
-  { path: "/premium", label: "Premium", icon: KeyRound, microcopy: "Jornada completa" },
-  { path: "/perfil", label: "Perfil", icon: UserRound, microcopy: "Suas chaves" },
+interface NavItem {
+  path: string;
+  label: string;
+  icon: TarotIconType;
+  microcopy: string;
+}
+
+const NAV_ITEMS: NavItem[] = [
+  { path: "/app", label: "Módulos", icon: "jornada", microcopy: "Sua jornada" },
+  { path: "/desafios", label: "Ritual", icon: "ritual", microcopy: "Seu ritual diário" },
+  { path: "/trilhas", label: "Formação", icon: "formacao", microcopy: "Mapa da trilha" },
+  { path: "/premium", label: "Premium", icon: "premium", microcopy: "Jornada completa" },
+  { path: "/perfil", label: "Perfil", icon: "perfil", microcopy: "Suas chaves" },
 ];
 
 const BottomNav = () => {
