@@ -2,39 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { 
   X, 
-  Home, 
-  Map, 
-  Flame, 
-  Play, 
-  Compass, 
-  Eye, 
-  Stars, 
-  Layers, 
-  Droplets, 
-  Swords, 
-  Gem, 
-  Crown, 
-  GitBranch, 
-  Layout, 
-  Moon, 
-  SquareStack, 
-  Target, 
-  Sparkles, 
-  Briefcase, 
-  UserRound, 
-  KeyRound, 
-  MessageCircle, 
-  Headphones, 
-  ShieldCheck, 
-  FileText, 
-  UserX, 
-  ClipboardCheck,
   ChevronRight,
   LogOut
 } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import { useIsAdmin } from "@/hooks/use-admin";
 import { useProgress } from "@/hooks/use-progress";
+import { TarotIcon, TarotIconType } from "./TarotIcon";
+
 
 interface GlobalMenuProps {
   isOpen: boolean;
