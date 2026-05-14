@@ -39,21 +39,12 @@ export function ArcanoVivoAnimatedCard({
       animate={isRevealed ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
     >
-      {/* Outer aura (breathing) */}
-      <motion.div
+      {/* Outer aura (static when revealed) */}
+      <div
         className="absolute -inset-16 rounded-[4rem] pointer-events-none transition-opacity duration-1000"
         style={{
           background: `radial-gradient(circle, hsl(${config.glowColor} / 0.25) 0%, transparent 75%)`,
-          opacity: isBreathing ? 1 : 0,
-        }}
-        animate={isBreathing && !shouldReduceMotion ? {
-          scale: [1, 1.05, 1],
-          opacity: [0.4, 0.7, 0.4]
-        } : {}}
-        transition={{
-          duration: config.breatheSpeed || 4,
-          repeat: Infinity,
-          ease: "easeInOut"
+          opacity: isBreathing ? 0.5 : 0,
         }}
       />
 
