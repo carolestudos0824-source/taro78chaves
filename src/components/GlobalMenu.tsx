@@ -74,7 +74,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
   );
 
   return (
-    <div className={`fixed inset-0 z-[2000000] flex transition-all duration-300 ${isVisible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+    <div className={`fixed inset-0 z-[2000000] flex transition-all duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
       {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-[#5B1F3D]/60 backdrop-blur-md" 
@@ -82,7 +82,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
       />
 
       {/* Drawer */}
-      <div className={`fixed top-0 left-0 w-[320px] max-w-[85vw] h-full bg-[#FDFBF7] shadow-2xl flex flex-col border-r-2 border-[#C8A66A]/30 transition-transform duration-500 overflow-hidden z-[2000001] ${isVisible ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div className={`fixed top-0 left-0 w-[320px] max-w-[85vw] h-full bg-[#FDFBF7] shadow-2xl flex flex-col border-r-2 border-[#C8A66A]/30 transition-transform duration-500 overflow-hidden z-[2000001] ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         {/* Header */}
         <div className="p-6 border-b-2 border-[#C8A66A]/20 flex items-center justify-between bg-white/50">
           <div className="flex flex-col">
