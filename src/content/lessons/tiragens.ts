@@ -70,6 +70,26 @@ Não existe tiragem "melhor". Existe a tiragem certa para a pergunta certa. Esco
       "A posição é o filtro que dá tom ao significado da carta",
       "Escolher a tiragem certa é o primeiro passo da maestria",
     ],
+    layoutDiagram: {
+      name: "Anatomia de uma Tiragem",
+      positions: [
+        { label: "A Função", description: "O papel específico da carta na leitura", x: 50, y: 30 },
+        { label: "O Contexto", description: "A situação onde a carta se aplica", x: 25, y: 70 },
+        { label: "A Resposta", description: "A conclusão do arco narrativo", x: 75, y: 70 },
+      ],
+    },
+    examples: [
+      {
+        spread: "Exemplo de Estrutura",
+        question: "Como entender uma tiragem simples?",
+        cards: [
+          { position: "A Função", card: "O Mago" },
+          { position: "O Contexto", card: "3 de Ouros" },
+          { position: "A Resposta", card: "O Carro" },
+        ],
+        interpretation: "Aqui vemos como a tiragem organiza a informação: O Mago (habilidade) no contexto do 3 de Ouros (trabalho em equipe) resulta no Carro (progresso rápido). Sem a tiragem, seriam apenas três cartas soltas.",
+      },
+    ],
     deepDive: `As tiragens como conhecemos hoje são relativamente recentes na história do tarô. Nos séculos XV e XVI, as cartas eram usadas para jogos — não para leitura. As primeiras "tiragens" documentadas aparecem no século XVIII com Etteilla (Jean-Baptiste Alliette), que criou layouts sistemáticos para adivinhação.
 
 A Cruz Celta, a tiragem mais famosa do mundo, foi popularizada por Arthur Edward Waite no início do século XX (em seu livro "The Pictorial Key to the Tarot", 1910). Desde então, centenas de tiragens foram criadas — mas as melhores seguem princípios simples:
