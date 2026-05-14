@@ -40,6 +40,9 @@ const LessonPage = () => {
   const [mounted, setMounted] = useState(false);
   const [debugLog, setDebugLog] = useState<string[]>([]);
   
+  const arcano = getArcanoById(isValidId ? arcanoId : 0);
+  const hasAccess = isValidId ? canAccessArcano(arcanoId) : false;
+
   useEffect(() => {
     setMounted(true);
     const logMsg = (msg: string) => {
@@ -48,7 +51,8 @@ const LessonPage = () => {
     };
     logMsg("LessonPage mounted");
     logMsg(`arcanoId: ${arcanoId}, isValidId: ${isValidId}, isLiteral: ${isLiteralRoute}`);
-  }, [arcanoId, isValidId, isLiteralRoute]);
+    logMsg(`Arcano resolved: ${arcano?.name}, Access: ${hasAccess}`);
+  }, [arcanoId, isValidId, isLiteralRoute, arcano?.name, hasAccess]);
   
   const getPhases = () => {
     const p: LessonPhase[] = ["intro", "lesson"];
