@@ -55,6 +55,18 @@ const LessonPage = () => {
 
   const nextArcano = isValidId && arcanoId < 21 ? ARCANOS_MAIORES[arcanoId + 1] : null;
 
+  useEffect(() => {
+    if (arcano) {
+      setHeader({
+        title: arcano.name,
+        subtitle: `Arcano ${arcano.numeral} • Lição ${arcanoId + 1}`,
+        backRoute: "/module/arcanos-maiores",
+        rightElement: <PhaseIndicator phases={phases} currentIndex={phases.indexOf(phase)} />
+      });
+    }
+    return () => resetHeader();
+  }, [arcano, phase, arcanoId]);
+
   // 1. Estado de Carregamento (Loading Ritualístico)
   if (isLiteralRoute || premiumLoading || roleLoading || accessLoading) {
     return (
