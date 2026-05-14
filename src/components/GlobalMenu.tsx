@@ -116,22 +116,22 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
 
           {/* BLOCO 2 — Formação */}
           <SectionTitle>Formação</SectionTitle>
-          <NavItem to="/module/fundamentos" icon="Compass" label="Fundamentos do Tarô" />
-          <NavItem to="/module/leitura-simbolica" icon="Eye" label="Leitura Simbólica" />
-          <NavItem to="/module/arcanos-maiores" icon="Stars" label="Arcanos Maiores" />
-          <NavItem to="/module/arquitetura-menores" icon="Layers" label="Arquitetura Menores" />
+          <NavItem to="/module/fundamentos" icon="jornada" label="Fundamentos do Tarô" />
+          <NavItem to="/module/leitura-simbolica" icon="perfil" label="Leitura Simbólica e Método" />
+          <NavItem to="/module/arcanos-maiores" icon="louco" label="Arcanos Maiores" />
+          <NavItem to="/module/arquitetura-menores" icon="formacao" label="Arquitetura Menores" />
           <NavItem to="/module/copas" icon="copas" label="Naipe de Copas" />
           <NavItem to="/module/paus" icon="paus" label="Naipe de Paus" />
           <NavItem to="/module/espadas" icon="espadas" label="Naipe de Espadas" />
           <NavItem to="/module/ouros" icon="ouros" label="Naipe de Ouros" />
-          <NavItem to="/module/cartas-corte" icon="Crown" label="Cartas da Corte" />
-          <NavItem to="/module/combinacoes" icon="GitBranch" label="Combinações" />
-          <NavItem to="/module/tiragens" icon="Layout" label="Tiragens" />
-          <NavItem to="/module/espiritualidade" icon="Moon" label="Tarô e Espiritualidade" />
-          <NavItem to="/module/mesa-taro" icon="SquareStack" label="Como Montar Mesa" />
-          <NavItem to="/module/leitura-aplicada" icon="Target" label="Leitura Aplicada" />
+          <NavItem to="/module/cartas-corte" icon="rainha" label="Cartas da Corte" />
+          <NavItem to="/module/combinacoes" icon="mago" label="Combinações" />
+          <NavItem to="/module/tiragens" icon="trilhas" label="Tiragens" />
+          <NavItem to="/module/espiritualidade" icon="sacerdotisa" label="Tarô e Espiritualidade" />
+          <NavItem to="/module/mesa-taro" icon="mundo" label="Como Montar Mesa" />
+          <NavItem to="/module/leitura-aplicada" icon="justica" label="Leitura Aplicada por Tema" />
           <NavItem to="/module/pratica" icon="Sparkles" label="Prática Guiada" />
-          <NavItem to="/module/trabalhar-taro" icon="Briefcase" label="Trabalhar com Tarô" />
+          <NavItem to="/module/trabalhar-taro" icon="premium" label="Como Trabalhar com Tarô" />
 
           {/* BLOCO 3 — Conta */}
           <SectionTitle>Conta</SectionTitle>
