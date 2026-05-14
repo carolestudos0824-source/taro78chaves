@@ -36,13 +36,13 @@ const LessonPage = () => {
   
   useEffect(() => {
     setMounted(true);
-    const log = (msg: string) => {
+    const logMsg = (msg: string) => {
       console.log(`[DEBUG_UI] ${msg}`);
       setDebugLog(prev => [...prev, `${new Date().toLocaleTimeString()}: ${msg}`]);
     };
-    log("LessonPage mounted");
-    log(`arcanoId: ${arcanoId}, isValidId: ${isValidId}, isLiteral: ${isLiteralRoute}`);
-  }, []);
+    logMsg("LessonPage mounted");
+    logMsg(`arcanoId: ${arcanoId}, isValidId: ${isValidId}, isLiteral: ${isLiteralRoute}`);
+  }, [arcanoId, isValidId, isLiteralRoute]);
   
   const getPhases = () => {
     const p: LessonPhase[] = ["intro", "lesson"];
