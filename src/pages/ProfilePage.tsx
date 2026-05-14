@@ -104,13 +104,13 @@ const ProfilePage = () => {
       <main className="max-w-lg mx-auto px-6 -mt-12 relative z-20 space-y-8">
         <div className="grid grid-cols-3 gap-4">
           {[
-            { label: "Ritual", val: progress.streak, icon: Flame, color: "#5B1F3D" },
-            { label: "Portais", val: completedCount, icon: KeyRound, color: "#C8A66A" },
-            { label: "Insignias", val: progress.badges.filter(b => b.earned).length, icon: Sparkles, color: "#5B1F3D" },
+            { label: "Ritual", val: progress.streak, icon: "ritual", color: "#5B1F3D" },
+            { label: "Portais", val: completedCount, icon: "premium", color: "#C8A66A" },
+            { label: "Insignias", val: progress.badges.filter(b => b.earned).length, icon: "Sparkles", color: "#5B1F3D" },
           ].map(s => (
             <div key={s.label} className="bg-white border-2 border-[#DCCFC2]/30 p-5 rounded-[1.5rem] text-center shadow-lg transform transition-transform hover:scale-[1.02]">
               <div className="w-8 h-8 mx-auto mb-2 bg-[#FAF5EF] rounded-lg flex items-center justify-center">
-                <s.icon className="w-4 h-4" style={{ color: s.color }} />
+                <TarotIcon name={s.icon} className="w-4 h-4" color={s.color} />
               </div>
               <div className="font-heading text-xl font-black text-[#5B1F3D]">{s.val}</div>
               <div className="text-[9px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">{s.label}</div>
