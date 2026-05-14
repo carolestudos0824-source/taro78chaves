@@ -108,12 +108,10 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
           </div>
         </div>
         
-        {isMenuOpen && (
-          <GlobalMenu isOpen={isMenuOpen} onClose={() => {
-            console.log("Closing GlobalMenu");
-            setIsMenuOpen(false);
-          }} />
-        )}
+        <GlobalMenu isOpen={isMenuOpen} onClose={() => {
+          console.log("Closing GlobalMenu");
+          setIsMenuOpen(false);
+        }} />
         
         {!state.hideXP && (
           <div className={`transition-all duration-500 origin-top overflow-hidden ${isCompact ? "h-0 opacity-0" : "h-auto opacity-100"}`}>
