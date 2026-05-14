@@ -62,7 +62,12 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
-            {!state.hideStreak && <StreakCounter streak={streak} />}
+            {!state.hideStreak && (
+              <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white rounded-xl border border-[#C8A66A]/20 shadow-sm">
+                <span className="text-[#C8A66A]">🔥</span>
+                <span className="font-heading text-[13px] font-black text-[#5B1F3D]">{streak}</span>
+              </div>
+            )}
             <button 
               onClick={() => navigate("/perfil")} 
               className="rounded-xl flex items-center justify-center bg-white border border-[#C8A66A]/30 shadow-sm transition-all hover:border-[#C8A66A]/60 active:scale-95 group w-10 h-10"
