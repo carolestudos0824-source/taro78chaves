@@ -136,13 +136,17 @@ const NaipePage = () => {
               background: "rgba(220, 207, 194, 0.2)",
             }}>
               {completed ? (
-                <Check className="w-7 h-7" style={{ color: "#5B1F3D" }} strokeWidth={4} />
+                <TarotIcon name="concluido" className="w-7 h-7" color="#5B1F3D" strokeWidth={4} />
               ) : unlocked ? (
-                <span className="text-lg font-heading font-black" style={{ color: "#5B1F3D" }}>
-                  {isNum ? card.posicao : courtIcon(card.posicao as string)}
-                </span>
+                isNum ? (
+                  <span className="text-lg font-heading font-black" style={{ color: "#5B1F3D" }}>
+                    {card.posicao}
+                  </span>
+                ) : (
+                  <TarotIcon name={courtIcon(card.posicao as string)} className="w-8 h-8" color="#5B1F3D" />
+                )
               ) : (
-                <Lock className="w-5 h-5" style={{ color: "#5B1F3D40" }} />
+                <TarotIcon name="bloqueado" className="w-5 h-5" color="#5B1F3D40" />
               )}
             </div>
             
