@@ -6,7 +6,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider, useAuth } from "@/hooks/use-auth";
 import { FontSizeProvider } from "@/contexts/font-size-context";
-// Beta components removed
+import { useProgress } from "@/hooks/use-progress";
+import { Header } from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import SessionInitializer from "@/components/SessionInitializer";
 import { initGA, trackPageView, useUTMTracker } from "@/lib/analytics";
