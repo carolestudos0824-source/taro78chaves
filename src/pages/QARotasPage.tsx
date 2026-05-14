@@ -422,7 +422,7 @@ const QARotasPage = () => {
                   </div>
                   {audit.updatedAt && (
                     <div className="mt-3 flex items-center gap-2 text-[10px] font-heading font-black text-[#5B1F3D]/30 uppercase tracking-widest">
-                      <Clock className="w-3 h-3" />
+                      <TarotIcon name="proximo" className="w-3 h-3" />
                       Última atualização: {new Date(audit.updatedAt).toLocaleString('pt-BR')}
                     </div>
                   )}
@@ -433,7 +433,7 @@ const QARotasPage = () => {
 
           {filteredRoutes.length === 0 && (
             <div className="text-center py-24 bg-white rounded-[3rem] border-2 border-dashed border-[#DCCFC2]">
-              <HelpCircle className="w-16 h-16 text-[#C8A66A]/20 mx-auto mb-6" />
+              <TarotIcon name="suporte" className="w-16 h-16 text-[#C8A66A]/20 mx-auto mb-6" />
               <h3 className="font-heading text-xl font-black mb-2">Nenhuma rota encontrada</h3>
               <p className="font-body text-[#5B1F3D]/60 font-bold">Tente ajustar seus filtros ou busca.</p>
             </div>
