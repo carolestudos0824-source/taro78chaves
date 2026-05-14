@@ -31,6 +31,15 @@ const LessonPage = () => {
   const { canAccessArcano, hasFullAccess, loading: accessLoading } = useAccess();
   const { setHeader, resetHeader } = useHeader();
   const [phase, setPhase] = useState<LessonPhase>("intro");
+  const [debugForceContent, setDebugForceContent] = useState(false);
+  
+  useEffect(() => {
+    // Forçar renderização se a tela ficar branca por mais de 3 segundos
+    const timer = setTimeout(() => {
+      setDebugForceContent(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
   
   const getPhases = () => {
     const p: LessonPhase[] = ["intro", "lesson"];
