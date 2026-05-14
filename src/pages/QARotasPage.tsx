@@ -412,7 +412,7 @@ const QARotasPage = () => {
                 {/* Observation Area */}
                 <div className="mt-8 pt-8 border-t border-[#DCCFC2]/20">
                   <div className="relative">
-                    <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-[#C8A66A]/40" />
+                    <TarotIcon name="feedback" className="absolute left-4 top-4 w-5 h-5 text-[#C8A66A]/40" />
                     <textarea 
                       placeholder="Adicione observações sobre esta tela..."
                       value={audit.observation}
