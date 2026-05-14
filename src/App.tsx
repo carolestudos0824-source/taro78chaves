@@ -299,13 +299,14 @@ const App = () => {
           <TooltipProvider>
             <Toaster />
             <Sonner />
-          <BrowserRouter>
-            <AuthProvider>
-              <AppRoutes />
-            </AuthProvider>
-          </BrowserRouter>
-        </TooltipProvider>
-      </FontSizeProvider>
+            <BrowserRouter>
+              <AuthProvider>
+                <AppRoutes />
+              </AuthProvider>
+            </BrowserRouter>
+          </TooltipProvider>
+        </FontSizeProvider>
+      </HeaderProvider>
     </QueryClientProvider>
   );
 };
