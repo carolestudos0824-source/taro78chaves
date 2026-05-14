@@ -258,7 +258,7 @@ const ModulesPage = () => {
 
           <SmartReviewCard />
           
-          {progress.completedLessons.length === 0 && (
+          {progress.completedLessons.length === 0 ? (
             <div className="space-y-6 animate-fade-in">
               <div className="bg-[#5B1F3D] border-2 border-[#C8A66A] rounded-[2.5rem] p-8 text-center space-y-4 relative overflow-hidden group shadow-2xl ring-8 ring-[#C8A66A]/5">
                 <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#C8A66A]/20 rounded-full blur-3xl" />
@@ -278,26 +278,19 @@ const ModulesPage = () => {
                 </div>
               </div>
             </div>
+          ) : (
+            <div className="space-y-6">
+              <ContinuityCard 
+                lastLessonId={null} 
+                lastLessonName={null} 
+                completedLessons={progress.completedLessons.length} 
+                completedQuizzes={progress.completedQuizzes.length} 
+                hasUnfinishedReview={false} 
+                completedLessonIds={progress.completedLessons} 
+                currentModuleId="arcanos-maiores" 
+              />
+            </div>
           )}
-          
-          {/* ─── Hero Visuals ─── */}
-          <div className="flex justify-center -space-x-4 py-4 md:py-6 opacity-90 scale-100">
-            <img src={imgLouco} alt="" className="w-24 rounded-2xl shadow-xl -rotate-12 border-2 border-white/50" />
-            <img src={imgSacerdotisa} alt="" className="w-24 rounded-2xl shadow-xl z-10 border-2 border-white" />
-            <img src={imgEstrela} alt="" className="w-24 rounded-2xl shadow-xl rotate-12 border-2 border-white/50" />
-          </div>
-          
-          <div className="space-y-6">
-            <ContinuityCard 
-              lastLessonId={null} 
-              lastLessonName={null} 
-              completedLessons={progress.completedLessons.length} 
-              completedQuizzes={progress.completedQuizzes.length} 
-              hasUnfinishedReview={false} 
-              completedLessonIds={progress.completedLessons} 
-              currentModuleId="arcanos-maiores" 
-            />
-          </div>
 
           {/* ─── Premium Conversion Card ─── */}
           <div 
