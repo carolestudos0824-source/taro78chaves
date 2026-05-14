@@ -179,12 +179,12 @@ const NaipeIntroPage = () => {
                   onClick={() => setOpenSection(isOpen ? null : section.id)}
                   className="w-full px-5 py-4 flex items-center gap-3 text-left transition-colors duration-200"
                 >
-                  <span className="text-lg shrink-0 w-8 h-8 rounded-full flex items-center justify-center" style={{
+                  <span className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center" style={{
                     background: info.color.surface,
                     border: `1px solid ${info.color.border}`,
                     color: info.color.primary,
                   }}>
-                    {section.icon}
+                    <TarotIcon name={section.id === 'elemental' ? naipe : section.icon} className="w-4 h-4" />
                   </span>
                   <span className="font-heading text-sm tracking-wide flex-1" style={{ color: "hsl(230 25% 15%)" }}>
                     {section.title}
