@@ -1,12 +1,10 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
-  ArrowLeft, Search, Shield, Globe, Lock, 
-  BookOpen, Sparkles, AlertTriangle, ExternalLink, 
-  Layout, Code, CheckCircle, XCircle, Info,
-  Filter, RotateCcw, ChevronRight, MessageSquare,
-  Clock, CheckCircle2, XCircle as XCircle2, HelpCircle
+  ArrowLeft, Search, Filter, RotateCcw, ExternalLink, 
+  Code, Info, ChevronRight
 } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import { FULL_DECK } from "@/registry/deck-registry";
 import { MODULES_SEED } from "@/lib/content/seed-modules";
 import { ARCANOS_MAIORES_CATALOG } from "@/lib/content";
