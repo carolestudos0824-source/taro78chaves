@@ -32,6 +32,8 @@ import {
 } from "@/lib/content";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
+import { useHeader } from "@/contexts/header-context";
+import { useEffect, useState } from "react";
 import ContinuityCard from "@/components/ContinuityCard";
 import ProgressCelebration from "@/components/ProgressCelebration";
 import { SmartReviewCard } from "@/components/SmartReviewCard";
