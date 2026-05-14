@@ -87,12 +87,11 @@ export function CinematicIntro({
       <div className={`relative transition-all duration-[1.5s] ease-out ${
         revealed ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-90"
       }`}>
-        {/* Outer glow */}
+        {/* Outer glow (static) */}
         <div
           className="absolute -inset-4 rounded-3xl pointer-events-none"
           style={{
             background: "radial-gradient(ellipse, hsl(36 45% 58% / 0.15) 0%, transparent 70%)",
-            animation: "glow-breathe 4s ease-in-out infinite",
           }}
         />
 
