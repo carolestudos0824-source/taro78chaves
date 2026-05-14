@@ -72,6 +72,16 @@ const TrailsPage = () => {
   const navigate = useNavigate();
   const { progress } = useProgress();
   const { bypassLocks } = useAccess();
+  const { setHeader, resetHeader } = useHeader();
+
+  useEffect(() => {
+    setHeader({
+      title: "Mapa da Formação",
+      subtitle: "Sua jornada rumo à maestria",
+      backRoute: "/app"
+    });
+    return () => resetHeader();
+  }, []);
 
   const isLevelComplete = (level: TrailLevel): boolean => {
     return level.modules.every(m => progress.completedModules.includes(m));
