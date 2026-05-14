@@ -61,7 +61,7 @@ const LessonPage = () => {
         title: arcano.name,
         subtitle: `Arcano ${arcano.numeral} • Lição ${arcanoId + 1}`,
         backRoute: "/module/arcanos-maiores",
-        rightElement: phases ? <PhaseIndicator phases={phases} currentIndex={phases.indexOf(phase)} /> : null
+        rightElement: <PhaseIndicator phases={phases} currentIndex={phases.indexOf(phase)} />
       });
     }
     return () => resetHeader();
