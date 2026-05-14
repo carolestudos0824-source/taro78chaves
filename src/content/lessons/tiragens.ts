@@ -6,6 +6,8 @@ export interface TiragemLesson {
   icon: string;
   content: string;
   keyPoints: string[];
+  whenToUse?: string[];
+  infoBlocks?: { title: string; content: string }[];
   deepDive?: string;
   reflection?: string;
   layoutDiagram?: TiragemLayout;
@@ -51,22 +53,22 @@ export const TIRAGENS_LESSONS: TiragemLesson[] = [
 
 Pense na tiragem como um **mapa**: cada posição é um território com função definida. A carta que cai ali não fala "em geral" — ela fala **sobre aquele aspecto específico** da situação.
 
-Uma tiragem faz três coisas fundamentais:
+### As Três Funções Fundamentais
+1. **Organiza a informação**: Cada carta tem um papel claro (passado, obstáculo, conselho).
+2. **Cria narrativa**: Define o roteiro da história — começo, meio e fim.
+3. **Ancora o contexto**: A mesma carta muda de significado conforme a posição.
 
-**1. Organiza a informação.** Em vez de interpretar cartas aleatoriamente, cada uma tem um papel claro: "esta fala do passado", "esta fala do obstáculo", "esta fala do conselho".
-
-**2. Cria narrativa.** As posições definem a ordem da história — começo, meio e fim. A tiragem é o roteiro; as cartas são as personagens.
-
-**3. Ancora o contexto.** A mesma carta muda de significado conforme a posição. O 10 de Espadas na posição "passado" é diferente do 10 de Espadas na posição "conselho". A posição é o filtro.
-
-**Não existe tiragem "melhor".** Existe a tiragem certa para a pergunta certa. Uma dúvida simples pede uma tiragem simples. Uma questão complexa pede uma tiragem com mais posições. Escolher a tiragem certa é a primeira decisão da leitora.
-
-Neste módulo, você vai aprender as tiragens mais poderosas e práticas — do básico ao avançado — e quando usar cada uma.`,
+Não existe tiragem "melhor". Existe a tiragem certa para a pergunta certa. Escolher o layout adequado é a primeira decisão da leitora.`,
+    whenToUse: [
+      "No início de qualquer consulta",
+      "Para dar estrutura a perguntas complexas",
+      "Quando se busca uma narrativa fluida",
+    ],
     keyPoints: [
-      "Tiragem é a estrutura organizada que transforma cartas em leitura",
-      "Cada posição tem função definida — a carta fala sobre aquele aspecto",
-      "A mesma carta muda de significado conforme a posição",
-      "Escolher a tiragem certa é a primeira decisão da leitora",
+      "Tiragem é o mapa que transforma cartas em leitura",
+      "Cada posição tem uma função pedagógica definida",
+      "A posição é o filtro que dá tom ao significado da carta",
+      "Escolher a tiragem certa é o primeiro passo da maestria",
     ],
     deepDive: `As tiragens como conhecemos hoje são relativamente recentes na história do tarô. Nos séculos XV e XVI, as cartas eram usadas para jogos — não para leitura. As primeiras "tiragens" documentadas aparecem no século XVIII com Etteilla (Jean-Baptiste Alliette), que criou layouts sistemáticos para adivinhação.
 
@@ -114,34 +116,32 @@ Leitoras experientes frequentemente criam suas próprias tiragens para situaçõ
     id: "tir-2",
     order: 1,
     title: "A Arte da Pergunta",
-    subtitle: "Como formular perguntas que geram leituras claras",
+    subtitle: "Como formular perguntas para leituras claras",
     icon: "❓",
-    content: `A qualidade da leitura começa **antes** de virar qualquer carta. Começa na pergunta. Uma boa pergunta gera uma boa leitura. Uma pergunta vaga gera uma leitura confusa.
+    content: `A qualidade da leitura começa **antes** de virar qualquer carta. Uma boa pergunta gera uma boa leitura. Uma pergunta vaga gera uma leitura confusa.
 
-**As 5 Regras da Boa Pergunta:**
-
-**1. Seja específica.** "O que vai acontecer?" é vago demais. "Como posso melhorar minha situação financeira nos próximos 3 meses?" é preciso.
-
-**2. Foque no que você pode influenciar.** "Ele vai voltar?" tira o poder da consulente. "O que posso fazer para lidar com essa separação?" devolve o poder.
-
-**3. Evite perguntas de sim/não.** O tarô não é moeda — é espelho. Perguntas como "Vou conseguir o emprego?" limitam a leitura. "Que energias cercam esse processo seletivo?" abre possibilidades.
-
-**4. Defina o horizonte temporal.** "O que preciso saber sobre minha carreira?" é eterno. "O que preciso saber sobre minha carreira nos próximos 6 meses?" é prático.
-
-**5. Inclua "eu" ou "meu/minha".** A leitura é sobre a consulente, não sobre o universo. "Qual meu papel nessa dinâmica?" é melhor que "O que está acontecendo nessa dinâmica?"
-
-**Fórmulas de pergunta poderosas:**
-- "O que preciso saber sobre ___ neste momento?"
-- "Como posso lidar melhor com ___?"
-- "Que energia está influenciando ___?"
-- "O que está bloqueando meu progresso em ___?"
-- "Que conselho as cartas têm para mim sobre ___?"`,
+### As 5 Regras da Boa Pergunta
+1. **Seja específica**: Evite generalizações exageradas.
+2. **Foco na influência**: Pergunte sobre o que você pode agir.
+3. **Evite Sim/Não**: O tarô é um espelho, não uma moeda.
+4. **Horizonte temporal**: Defina se a leitura é para agora ou para 6 meses.
+5. **Foco pessoal**: A leitura é sobre você e sua jornada.`,
+    whenToUse: [
+      "Antes de embaralhar as cartas",
+      "Sempre que a dúvida parecer confusa",
+      "Para calibrar a intenção da consulta",
+    ],
+    infoBlocks: [
+      {
+        title: "Fórmulas Poderosas",
+        content: "'O que preciso saber sobre ___ neste momento?' ou 'Como posso lidar melhor com ___?'"
+      }
+    ],
     keyPoints: [
-      "A qualidade da leitura começa na pergunta",
-      "Seja específica, focada, com horizonte temporal",
-      "Evite sim/não — use perguntas abertas",
-      "Inclua 'eu/meu' — a leitura é sobre a consulente",
-      "Use fórmulas: 'O que preciso saber sobre... neste momento?'",
+      "A pergunta é a semente de toda a leitura",
+      "Prefira perguntas abertas que geram reflexão",
+      "Mantenha o foco no que está sob seu controle",
+      "Defina o tempo da leitura para evitar ansiedade",
     ],
     reflection: "Pense nas últimas perguntas que você fez ao tarô. Elas seguiam essas 5 regras? Reescreva 3 perguntas antigas usando as fórmulas sugeridas e observe como ficam mais poderosas.",
     exercise: {
@@ -182,34 +182,40 @@ Leitoras experientes frequentemente criam suas próprias tiragens para situaçõ
     title: "Tiragem de 1 Carta",
     subtitle: "A resposta direta — simples e poderosa",
     icon: "1️⃣",
-    content: `A tiragem de 1 carta é a mais simples e, paradoxalmente, uma das mais difíceis de ler bem. Com apenas uma carta, não há contexto adicional — toda a leitura depende da sua capacidade de conectar essa única carta à pergunta.
+    content: `A tiragem de 1 carta é a mais simples e, paradoxalmente, uma das mais difíceis de ler bem. Toda a leitura depende da sua capacidade de conectar uma única imagem à pergunta.
 
-**Quando usar:**
-- Pergunta simples e direta
-- "Carta do dia" — energia geral para o dia
-- Conselho rápido
-- Confirmação de intuição
-- Treinamento diário (essencial para iniciantes)
-
-**Como ler:**
-A carta fala diretamente sobre a pergunta. Sem passado, sem futuro — é o **agora**, o **essencial**, a **mensagem central**.
-
-**Técnica da Imersão:**
-1. Vire a carta e olhe por 30 segundos sem pensar
+### Técnica da Imersão
+1. Vire a carta e olhe por 30 segundos sem pensar.
 2. Que emoção a imagem provoca em você?
 3. Que detalhe visual chama mais atenção?
 4. Conecte: como isso responde à pergunta?
 
-**Carta do Dia — o exercício mais importante:**
-Toda manhã, tire 1 carta perguntando: "Que energia acompanha meu dia hoje?" À noite, revise: a energia da carta se manifestou? Como? Este exercício diário constrói fluência no tarô mais rápido que qualquer estudo teórico.
+### A Carta do Dia
+Este é o exercício mais importante para quem estuda tarô. Toda manhã, pergunte: "Que energia acompanha meu dia hoje?" À noite, revise como essa energia se manifestou.
 
-**A armadilha:** Não tire uma segunda carta porque "não entendeu" a primeira. A dificuldade é a mensagem — sente-se com ela.`,
+### A Armadilha
+Não tire uma segunda carta porque "não entendeu" a primeira. A dificuldade é a mensagem — sente-se com ela.`,
+    whenToUse: [
+      "Perguntas simples e diretas",
+      "Conselho rápido para o momento",
+      "Exercício de 'Carta do Dia'",
+      "Confirmação de uma intuição",
+    ],
+    infoBlocks: [
+      {
+        title: "O Essencial",
+        content: "Sem passado ou futuro, o foco é a mensagem central e imediata do arcano."
+      },
+      {
+        title: "Fluência Prática",
+        content: "A melhor forma de memorizar significados é conectando uma carta a um evento real do seu dia."
+      }
+    ],
     keyPoints: [
-      "Simples mas poderosa — toda a leitura depende de uma única conexão",
-      "Ideal para perguntas diretas, carta do dia, conselho rápido",
-      "Técnica da Imersão: 30 segundos de observação, emoção, detalhe, conexão",
-      "Carta do Dia é o exercício mais importante para iniciantes",
-      "Nunca tire segunda carta porque 'não entendeu' a primeira",
+      "Mensagem direta e sem distrações",
+      "Ideal para treinamento diário e conselhos rápidos",
+      "Exige foco total na conexão simbólica única",
+      "Nunca tire uma 'carta de apoio' por insegurança",
     ],
     layoutDiagram: {
       name: "Tiragem de 1 Carta",
@@ -270,33 +276,41 @@ Toda manhã, tire 1 carta perguntando: "Que energia acompanha meu dia hoje?" À 
     subtitle: "A tiragem mais versátil do tarô",
     icon: "3️⃣",
     content: `A tiragem de 3 cartas é a mais versátil que existe. Com apenas 3 posições, ela pode responder a quase qualquer pergunta — e é a base de todas as tiragens mais complexas.
+    
+### A Regra de Ouro
+Antes de virar qualquer carta, **defina o formato**. Não vire as cartas e depois decida o que cada posição significa — isso é improvisação, não leitura.
 
-**Os 4 formatos clássicos:**
-
-**Formato 1 — Passado / Presente / Futuro**
-A narrativa temporal. De onde vim, onde estou, para onde vou.
-Ideal para: entender a trajetória de uma situação.
-
-**Formato 2 — Situação / Obstáculo / Conselho**
-A narrativa de problema. O que está acontecendo, o que atrapalha, o que fazer.
-Ideal para: quando a pessoa precisa de orientação prática.
-
-**Formato 3 — Mente / Corpo / Espírito**
-A narrativa holística. O que pensa, o que sente no corpo, o que a alma pede.
-Ideal para: autoconhecimento e questões de saúde/bem-estar.
-
-**Formato 4 — Opção A / O Que Considerar / Opção B**
-A narrativa de decisão. Dois caminhos e o que pesar entre eles.
-Ideal para: quando há uma escolha a fazer.
-
-**A regra de ouro das 3 cartas:** Antes de virar, **defina o formato**. Não vire as cartas e depois decida o que cada posição significa — isso é improvisação, não leitura.
-
-**Leitura cruzada:** Além de ler cada posição isoladamente, leia os pares (1-2, 2-3, 1-3) e a tríade completa. A riqueza está nas conexões.`,
+### Leitura Cruzada
+Além de ler cada posição isoladamente, leia os pares (1-2, 2-3, 1-3) e a tríade completa. A riqueza está nas conexões.`,
+    whenToUse: [
+      "Perguntas de complexidade média",
+      "Entender a trajetória de uma situação",
+      "Tomar decisões entre dois caminhos",
+      "Análise holística (mente, corpo, espírito)",
+    ],
+    infoBlocks: [
+      {
+        title: "1. Passado / Presente / Futuro",
+        content: "A narrativa temporal clássica. Revela de onde a situação veio, onde está agora e para onde tende a ir."
+      },
+      {
+        title: "2. Situação / Obstáculo / Conselho",
+        content: "Focado em resolução. Identifica o cenário real, o que está travando e a ação prática recomendada."
+      },
+      {
+        title: "3. Mente / Corpo / Espírito",
+        content: "Análise do ser. O que se pensa, o que se sente no físico e o que a alma está processando."
+      },
+      {
+        title: "4. Opção A / O Que Considerar / Opção B",
+        content: "Apoio à decisão. Compara dois caminhos e traz um elemento neutro para pesar a escolha."
+      }
+    ],
     keyPoints: [
-      "4 formatos: Passado/Presente/Futuro, Situação/Obstáculo/Conselho, Mente/Corpo/Espírito, Opção A/Considerar/Opção B",
       "Defina o formato ANTES de virar as cartas",
-      "Leia posições + pares + tríade completa",
-      "Base de todas as tiragens mais complexas",
+      "Leia posições individuais + pares + tríade completa",
+      "Base para todas as tiragens complexas do tarô",
+      "Versatilidade total para qualquer tema",
     ],
     layoutDiagram: {
       name: "Tiragem de 3 Cartas (Linear)",
@@ -356,39 +370,38 @@ Ideal para: quando há uma escolha a fazer.
     title: "Passado, Presente e Futuro",
     subtitle: "A tiragem temporal — o arco da história",
     icon: "⏳",
-    content: `A tiragem temporal é a mais intuitiva que existe — e por isso merece atenção especial. "De onde vim, onde estou, para onde vou" é a pergunta fundamental da experiência humana.
+    content: `A tiragem temporal é a mais intuitiva. "De onde vim, onde estou, para onde vou" é a pergunta fundamental da jornada humana.
 
-**Cuidado com a posição "Futuro":**
-O futuro no tarô **não é destino fixo**. É tendência. É "se tudo continuar assim, é para lá que vai". A consulente sempre tem poder de mudar a direção — e uma boa leitora deixa isso claro.
+### O Futuro não é Destino
+No tarô, o futuro é uma **tendência**. É o resultado provável se nada mudar. Você sempre tem o poder de alterar a direção.
 
-**Como ler cada posição:**
-
-**Passado (Carta 1):**
-- O que causou a situação atual
-- A energia que a consulente está trazendo
-- O padrão que precisa ser reconhecido
-- Pergunte: "O que aconteceu que levou até aqui?"
-
-**Presente (Carta 2):**
-- A energia dominante AGORA
-- A situação tal como ela é — sem filtro
-- O ponto de poder — onde a mudança é possível
-- Pergunte: "O que está realmente acontecendo?"
-
-**Futuro (Carta 3):**
-- A tendência — para onde a energia está fluindo
-- O resultado provável SE nada mudar
-- O conselho implícito — o que considerar
-- Pergunte: "Para onde isso está levando?"
-
-**O arco narrativo:** A leitura mais poderosa é aquela que conecta as 3 posições numa história coerente: "Porque [passado], a situação atual é [presente], e a tendência é [futuro]." Se a narrativa não flui, reavalie.
-
-**Quando NÃO usar:** Evite para perguntas que não têm dimensão temporal ("Quem eu sou?" não tem passado/presente/futuro — use Mente/Corpo/Espírito).`,
+### O Arco Narrativo
+A leitura poderosa conecta as 3 posições numa história: "Porque [passado] aconteceu, o cenário atual é [presente], e a tendência é [futuro]."`,
+    whenToUse: [
+      "Entender a trajetória de um problema",
+      "Identificar raízes de comportamentos",
+      "Visualizar para onde uma situação caminha",
+      "Relacionamentos e carreira",
+    ],
+    infoBlocks: [
+      {
+        title: "Passado: A Causa",
+        content: "O que gerou a situação atual. O padrão ou evento que nos trouxe até aqui."
+      },
+      {
+        title: "Presente: O Poder",
+        content: "A energia dominante agora. É o único momento onde a mudança é possível."
+      },
+      {
+        title: "Futuro: A Tendência",
+        content: "Para onde a energia está fluindo. O desdobramento lógico do momento."
+      }
+    ],
     keyPoints: [
       "Futuro = tendência, não destino fixo",
-      "Passado = causa; Presente = ponto de poder; Futuro = direção",
-      "Conecte as 3 posições num arco narrativo coerente",
-      "Não use para perguntas sem dimensão temporal",
+      "Passado revela a causa; Presente revela o ponto de ação",
+      "Crie uma história fluida entre os três tempos",
+      "Evite para perguntas puramente existenciais",
     ],
     layoutDiagram: {
       name: "Passado / Presente / Futuro",
@@ -448,28 +461,38 @@ O futuro no tarô **não é destino fixo**. É tendência. É "se tudo continuar
     title: "Situação, Obstáculo e Conselho",
     subtitle: "A tiragem de orientação prática",
     icon: "🧭",
-    content: `Esta é a tiragem mais **prática** e **orientadora** do tarô. Enquanto a temporal conta uma história, esta tiragem **resolve um problema**. É a que mais se aproxima de uma sessão de coaching com cartas.
+    content: `Esta é a tiragem mais **prática** do tarô. Enquanto outras contam histórias, esta tiragem **resolve problemas**. É o formato ideal para quem busca uma direção imediata.
 
-**Posição 1 — Situação:**
-O que está realmente acontecendo. Não o que a consulente acha que está acontecendo — o que as cartas mostram. Frequentemente, essa posição já traz uma revelação: "Ah, então é ISSO que está acontecendo..."
+### O Valor do Obstáculo
+A posição do obstáculo é frequentemente a mais desconfortável e valiosa. Ele pode ser externo (uma pessoa) ou interno (um medo). O bloqueio que você não vê é o que mais te prende.
 
-**Posição 2 — Obstáculo:**
-O que está bloqueando o caminho. Pode ser externo (uma pessoa, uma circunstância) ou interno (um medo, uma crença, um padrão). Esta posição é a mais desconfortável — e a mais valiosa. O obstáculo que você não vê é o que mais te prende.
-
-**Atenção:** Uma carta "positiva" no obstáculo (como O Sol ou 9 de Copas) não é contradição. Pode significar: excesso de otimismo cegando para problemas reais, ou satisfação prematura impedindo progresso.
-
-**Posição 3 — Conselho:**
-O que as cartas recomendam. Esta posição deve ser lida como AÇÃO — não como previsão. "O que posso FAZER?" Mesmo cartas passivas (como 4 de Espadas = descanso) são ações: "descanse", "pare", "reflita antes de agir".
-
-**Quando usar:**
-- A consulente tem um problema e quer direção
-- Situações de bloqueio ou estagnação
-- Quando a pergunta é: "O que faço?"`,
+### Conselho como Ação
+Leia sempre o conselho como uma **ação concreta**. Mesmo cartas passivas indicam um movimento: "pare", "espere", "reflita".`,
+    whenToUse: [
+      "Quando você tem um problema claro",
+      "Situações de bloqueio ou estagnação",
+      "Quando a pergunta é: 'O que eu faço?'",
+      "Busca por conselhos objetivos",
+    ],
+    infoBlocks: [
+      {
+        title: "1. Situação",
+        content: "O cenário tal como ele é, sem os filtros da nossa percepção ou desejo."
+      },
+      {
+        title: "2. Obstáculo",
+        content: "O que trava o fluxo. Pode ser um desafio real ou uma autossabotagem."
+      },
+      {
+        title: "3. Conselho",
+        content: "A bússola. A melhor postura ou ação para lidar com o cenário apresentado."
+      }
+    ],
     keyPoints: [
-      "Situação = o que realmente está acontecendo (pode surpreender)",
-      "Obstáculo = o bloqueio — externo ou interno — a posição mais valiosa",
-      "Conselho = ação recomendada, não previsão",
-      "Carta positiva no obstáculo = pode indicar excesso ou cegueira",
+      "Foco total em resolução e direção prática",
+      "O Obstáculo revela o que você está ignorando",
+      "O Conselho deve ser traduzido em ação esta semana",
+      "Cartas positivas no obstáculo indicam excesso ou cegueira",
     ],
     layoutDiagram: {
       name: "Situação / Obstáculo / Conselho",
@@ -529,35 +552,31 @@ O que as cartas recomendam. Esta posição deve ser lida como AÇÃO — não co
     title: "Leitura em Cruz",
     subtitle: "A tiragem de 5 posições — panorama completo",
     icon: "✝️",
-    content: `A Leitura em Cruz é uma tiragem de 5 posições que oferece um **panorama completo** de uma situação sem a complexidade da Cruz Celta. É a tiragem intermediária perfeita — mais profunda que 3 cartas, mais acessível que 10.
+    content: `A Cruz oferece um panorama completo sem a complexidade da Cruz Celta. É o formato intermediário perfeito — mais profundo que 3 cartas, mais acessível que 10.
 
-**As 5 posições:**
-
-**Centro — O Tema:**
-A essência da questão. A carta que define sobre o quê estamos realmente falando. Às vezes surpreende: a consulente acha que a pergunta é sobre trabalho, mas o centro mostra um problema emocional.
-
-**Esquerda — O Passado / A Causa:**
-O que trouxe a situação até aqui. A raiz, a origem, o padrão antigo.
-
-**Direita — O Futuro / A Tendência:**
-Para onde a energia está fluindo. O desdobramento provável.
-
-**Acima — O Consciente / O que se sabe:**
-O que a consulente já percebe, reconhece, entende. O que está "na superfície".
-
-**Abaixo — O Inconsciente / O que se esconde:**
-O que a consulente não vê, não admite, ou não quer enxergar. Frequentemente a carta mais reveladora de toda a tiragem.
-
-**Leitura em dois eixos:**
-- **Eixo horizontal** (esquerda-centro-direita) = a narrativa temporal
-- **Eixo vertical** (acima-centro-abaixo) = a narrativa psicológica
-
-A Cruz permite ler duas histórias simultâneas: o que está acontecendo no tempo E o que está acontecendo na psique.`,
+### Leitura em Dois Eixos
+A grande força desta tiragem é permitir a leitura de duas histórias simultâneas no mesmo layout.`,
+    whenToUse: [
+      "Análise profunda de uma situação",
+      "Mapear influências conscientes e ocultas",
+      "Visão de longo prazo com raízes no passado",
+      "Transições de vida importantes",
+    ],
+    infoBlocks: [
+      {
+        title: "Eixo Horizontal (Temporal)",
+        content: "Esquerda (Causa) ➔ Centro (Tema) ➔ Direita (Tendência). Conta a história no tempo."
+      },
+      {
+        title: "Eixo Vertical (Psicológico)",
+        content: "Acima (Consciente) ➔ Centro (Tema) ➔ Abaixo (Inconsciente). Revela o que se esconde."
+      }
+    ],
     keyPoints: [
-      "5 posições: Centro (tema), Esquerda (causa), Direita (tendência), Acima (consciente), Abaixo (inconsciente)",
-      "Dois eixos: horizontal = tempo, vertical = psique",
-      "Mais profunda que 3 cartas, mais acessível que 10",
-      "A carta 'Abaixo' (inconsciente) é frequentemente a mais reveladora",
+      "Equilíbrio entre profundidade e simplicidade",
+      "O Eixo vertical revela a motivação oculta (inconsciente)",
+      "O Centro ancora toda a interpretação",
+      "Ideal para quando a situação parece confusa ou nebulosa",
     ],
     layoutDiagram: {
       name: "Leitura em Cruz",
@@ -621,34 +640,35 @@ A Cruz permite ler duas histórias simultâneas: o que está acontecendo no temp
     title: "Leitura para Decisões",
     subtitle: "Quando há dois caminhos — e é preciso escolher",
     icon: "⚖️",
-    content: `Uma das perguntas mais comuns no tarô é: "Devo fazer A ou B?" A Leitura para Decisões foi criada especificamente para isso — comparar dois caminhos de forma estruturada.
+    content: `Uma das perguntas mais comuns é: "Devo fazer A ou B?". Este layout compara dois caminhos de forma estruturada, trazendo lucidez para a escolha.
 
-**Formato de 5 posições:**
-
-**Carta 1 — Você Agora:**
-A energia atual da consulente — seu estado interno ao enfrentar essa decisão.
-
-**Carta 2 — Caminho A:**
-A energia do primeiro caminho. O que essa opção traz? Que experiência oferece?
-
-**Carta 3 — Resultado A:**
-Onde o Caminho A provavelmente leva. O desfecho provável se escolher essa opção.
-
-**Carta 4 — Caminho B:**
-A energia do segundo caminho. O que essa opção traz?
-
-**Carta 5 — Resultado B:**
-Onde o Caminho B provavelmente leva.
-
-**IMPORTANTE — O tarô não decide por você.**
-Ele mostra a energia de cada caminho. A decisão final é sempre da consulente. Uma boa leitora apresenta os dois cenários sem julgar e sem recomendar — o poder está nas mãos de quem pergunta.
-
-**Dica avançada:** Compare as cartas 2-3 (Caminho A e Resultado A) como um par, e as cartas 4-5 (Caminho B e Resultado B) como outro par. Qual par conta uma história mais coerente? Qual tem energia mais sustentável a longo prazo?`,
+### O Tarô não Decide
+O tarô mostra a **experiência** de cada caminho. A decisão final é sempre sua. Apresente os cenários sem julgar — o poder está na sua mão.`,
+    whenToUse: [
+      "Dúvida entre duas opções claras",
+      "Troca de emprego ou residência",
+      "Decisões de investimento",
+      "Caminhos afetivos divergentes",
+    ],
+    infoBlocks: [
+      {
+        title: "Caminho A",
+        content: "Analisa a energia da primeira opção e qual o resultado provável se você segui-la."
+      },
+      {
+        title: "Caminho B",
+        content: "Analisa a energia da segunda opção e o desdobramento natural desta escolha."
+      },
+      {
+        title: "Você Agora",
+        content: "O filtro central: seu estado emocional e mental diante da decisão."
+      }
+    ],
     keyPoints: [
-      "5 posições: Você Agora + Caminho A/Resultado A + Caminho B/Resultado B",
-      "O tarô mostra cenários — não decide por você",
-      "Compare os pares de cada caminho como narrativas separadas",
-      "Busque sustentabilidade a longo prazo, não apenas resultado imediato",
+      "Foca na comparação de energias e resultados",
+      "Não busca o 'certo', mas o mais coerente para você",
+      "A carta central revela se você está decidindo pelo medo ou lucidez",
+      "Compare os pares (Energia + Resultado) de cada lado",
     ],
     layoutDiagram: {
       name: "Leitura para Decisões",
@@ -712,30 +732,35 @@ Ele mostra a energia de cada caminho. A decisão final é sempre da consulente. 
     title: "Leitura de Tendência",
     subtitle: "Mapeando energias da semana ou do mês",
     icon: "📅",
-    content: `A Leitura de Tendência não responde a uma pergunta específica — ela **mapeia as energias** de um período. É como uma previsão meteorológica: não diz exatamente o que vai acontecer, mas indica o "clima" que se aproxima.
+    content: `A Leitura de Tendência mapeia o "clima" de um período. Não busca eventos isolados, mas a atmosfera que cerca seus dias.
 
-**Formato Semanal (7 cartas):**
-Uma carta para cada dia da semana. Cada carta indica a energia dominante daquele dia — não um evento, mas um tom, uma atmosfera.
-
-**Formato Mensal (4 cartas):**
-Uma carta para cada semana do mês. Visão mais ampla das fases e transições.
-
-**Formato Trimestral (3 cartas):**
-Uma carta para cada mês. Ideal para planejamento e visão de longo prazo.
-
-**Como ler tendências:**
-1. **Não busque eventos** — busque energias. "Dia de paciência" em vez de "vai acontecer algo bom"
-2. **Observe padrões** — muitas cartas do mesmo naipe? Mesmo número? Isso indica tema dominante
-3. **Note a transição** — a energia muda de leve para pesada? De ação para reflexão? O fluxo conta uma história
-4. **Identifique o pico** — qual carta é a mais intensa? Esse é o momento que pede mais atenção
-
-**Prática semanal:**
-No domingo, tire 7 cartas para a semana. A cada dia, releia a carta daquele dia à noite. No domingo seguinte, revise: as energias bateram? Esse ciclo semanal é o melhor treino prático que existe.`,
+### Não Busque Eventos
+Busque **tons**. "Dia de paciência" em vez de "vai acontecer algo bom". Note se a energia flui da ação para a reflexão ao longo do tempo.`,
+    whenToUse: [
+      "Planejamento semanal ou mensal",
+      "Virada de mês ou novos ciclos",
+      "Treinamento diário sistemático",
+      "Observação de padrões de humor",
+    ],
+    infoBlocks: [
+      {
+        title: "Formato Semanal",
+        content: "7 cartas, uma para cada dia. Ótimo para guiar o tom de cada jornada diária."
+      },
+      {
+        title: "Formato Mensal",
+        content: "4 cartas, uma para cada semana. Visão ampla das fases e transições do mês."
+      },
+      {
+        title: "Formato Trimestral",
+        content: "3 cartas, uma para cada mês. Ideal para projetos e metas de médio prazo."
+      }
+    ],
     keyPoints: [
-      "Tendência = mapa de energias, não previsão de eventos",
-      "Formatos: Semanal (7 cartas), Mensal (4), Trimestral (3)",
-      "Observe padrões, transições e picos de intensidade",
-      "O ciclo semanal é o melhor treino prático",
+      "Funciona como uma 'previsão do tempo' energética",
+      "Identifique o 'Pico': a carta mais intensa do layout",
+      "Observe o naipe dominante para saber o tema do período",
+      "Excelente para conferir acertos e desenvolver intuição",
     ],
     layoutDiagram: {
       name: "Leitura Semanal de Tendência",
@@ -800,38 +825,38 @@ No domingo, tire 7 cartas para a semana. A cada dia, releia a carta daquele dia 
   {
     id: "tir-10",
     order: 9,
-    title: "Leitura para Autoconhecimento",
-    subtitle: "O tarô como espelho — a tiragem mais pessoal",
+    title: "Tiragem do Espelho",
+    subtitle: "A leitura para autoconhecimento profundo",
     icon: "🪞",
-    content: `Todas as tiragens anteriores podem ser usadas para perguntas externas. Esta tiragem é exclusivamente **interna** — um espelho para olhar para dentro de si.
+    content: `Esta é uma das tiragens mais reveladoras. O tarô funciona como um espelho da psique, mostrando o que você projeta, o que você esconde e o que você realmente é.
 
-**A Tiragem do Espelho (6 posições):**
-
-**1. Como me vejo** — A imagem que tenho de mim mesma. Pode ser precisa ou distorcida.
-
-**2. Como os outros me veem** — A imagem que projeto para o mundo. Nem sempre coincide com a posição 1.
-
-**3. O que me fortalece** — Meu recurso interno mais poderoso neste momento. Minha maior força.
-
-**4. O que me enfraquece** — Meu ponto cego, minha vulnerabilidade. O que mina minha energia.
-
-**5. O que preciso liberar** — O que está na hora de soltar: uma crença, um padrão, uma relação, um medo.
-
-**6. O que preciso abraçar** — O que está esperando para ser acolhido: um talento, uma verdade, uma direção.
-
-**Como ler:**
-Esta tiragem NÃO é sobre o mundo externo — é sobre a paisagem interna. Leia com suavidade, sem julgamento. As cartas não estão criticando — estão espelhando.
-
-**O par 1-2 (como me vejo / como os outros me veem)** revela a dissonância entre autoimagem e imagem projetada. Quanto maior a diferença, mais trabalho interno é necessário.
-
-**O par 5-6 (liberar / abraçar)** é o conselho central: o que soltar e o que acolher. Juntas, essas cartas indicam a transformação que está pedindo para acontecer.
-
-**Quando usar:** Momentos de transição, aniversários, virada de ano, crises de identidade, ou simplesmente quando sentir necessidade de "se ver" com mais clareza.`,
+### O Poder do Oculto
+A posição "O que eu nego" ou "escondo" é o coração desta leitura. Ela traz à luz a Sombra — aqueles aspectos nossos que não queremos admitir, mas que governam nossas ações.`,
+    whenToUse: [
+      "Momentos de crise de identidade",
+      "Trabalho de autoconhecimento e terapia",
+      "Viradas de ciclo (aniversários)",
+      "Sentimento de estar perdido de si mesmo",
+    ],
+    infoBlocks: [
+      {
+        title: "O Que Eu Mostro",
+        content: "A persona. Como você se apresenta ao mundo e o que deseja que os outros vejam."
+      },
+      {
+        title: "O Que Eu Escondo",
+        content: "A sombra. Medos, desejos ou potenciais que você mantém guardados sob a superfície."
+      },
+      {
+        title: "O Que Eu Sou",
+        content: "A essência. A verdade do seu momento atual, despida de pretensões ou medos."
+      }
+    ],
     keyPoints: [
-      "6 posições: Como me vejo / Como os outros me veem / Fortalece / Enfraquece / Liberar / Abraçar",
-      "Tiragem exclusivamente interna — espelho, não previsão",
-      "O par 1-2 revela dissonância entre autoimagem e imagem projetada",
-      "O par 5-6 é o conselho central: o que soltar e o que acolher",
+      "Foco total na jornada interna",
+      "Não serve para perguntas sobre os outros",
+      "Exige coragem para encarar a própria sombra",
+      "Forma o panorama da sua verdade atual",
     ],
     layoutDiagram: {
       name: "A Tiragem do Espelho",
@@ -903,56 +928,33 @@ Esta tiragem NÃO é sobre o mundo externo — é sobre a paisagem interna. Leia
     id: "tir-11",
     order: 10,
     title: "Tiragem para Amor e Relacionamentos",
-    subtitle: "Uma leitura ética sobre vínculo, desejo e caminho possível",
+    subtitle: "Uma leitura ética sobre vínculo e desejo",
     icon: "❤️",
-    content: `Tiragens sobre amor são as mais procuradas — e também as mais delicadas. Quando o coração está em jogo, é fácil escorregar para a leitura que **promete** em vez da leitura que **revela**. Esta lição ensina o caminho ético: olhar o vínculo com clareza adulta, sem manipular o futuro nem invadir a vontade do outro.
+    content: `Leituras de amor são as mais procuradas — e as mais delicadas. É fácil escorregar para a promessa em vez da revelação. Aqui, aprendemos o caminho ético: olhar o vínculo com lucidez.
 
-**A premissa fundamental:** o tarô não tem o poder — nem o direito — de forçar uma pessoa a voltar, ficar, amar ou desejar. O que ele faz é **mostrar a paisagem do vínculo**: o que está vivo, o que bloqueia, o que pede atenção. A decisão sempre é das pessoas envolvidas.
-
-**Quando usar esta tiragem:**
-- Você quer entender a dinâmica de um relacionamento (atual, passado ou em construção)
-- Há uma pergunta honesta sobre o seu papel no vínculo
-- Você precisa de clareza para decidir como agir
-- Você quer ver bloqueios e potenciais que talvez esteja ignorando
-
-**Quando NÃO usar:**
-- Para "saber se ele/ela vai voltar" (isso retira o poder de quem consulta e invade a vontade do outro)
-- Para vigiar uma pessoa ("o que ela está fazendo agora?")
-- Para insistir em alguém que já foi claro sobre não querer
-- Como muleta emocional repetida (toda semana, todo dia)
-- Quando você só quer ouvir o que deseja ouvir
-
-**Pergunta boa:**
-"O que preciso ver sobre o vínculo entre mim e [pessoa] neste momento — e o que posso fazer com clareza?"
-
-**Pergunta ruim:**
-"Ele/ela vai voltar para mim?" — fechada, dependente do outro, e tira o seu poder de escolha.
-
-**A Tiragem dos 5 Vínculos:**
-
-**Posição 1 — Você no vínculo.** Como você está chegando nesse relacionamento agora: emoções, expectativas, padrões. É o seu espelho dentro da relação.
-
-**Posição 2 — A outra pessoa ou energia relacional.** A energia que a outra pessoa traz, ou — quando o vínculo ainda não tem rosto — a energia geral que cerca o tema relacional na sua vida. Não é mente-leitura: é o clima que se manifesta entre vocês.
-
-**Posição 3 — O que aproxima.** O que existe de vivo, magnético ou genuíno entre os dois. Pode ser afeto, projeto comum, química, valores compartilhados, história.
-
-**Posição 4 — O que bloqueia.** O obstáculo real. Pode ser timing, ferida pessoal, padrão repetido, comunicação travada, terceiros, fase de vida — algo que impede o vínculo de fluir como poderia.
-
-**Posição 5 — Conselho do tarô.** O passo possível e ético para você. Não promessa, não previsão fechada — direção. O que cabe à sua parte fazer agora.
-
-**Como ler com ética:**
-- Leia primeiro a posição 1. Antes de falar do outro, olhe para si.
-- O par 3-4 (aproxima + bloqueia) é o coração da leitura: mostra a tensão real do vínculo.
-- A posição 5 sempre se dirige a quem consulta. Nunca diga "você precisa fazer ele mudar".
-- Se cair uma carta dura (Torre, Diabo, 3 de Espadas, 5 de Copas), nomeie com cuidado: a carta descreve a paisagem, não condena o relacionamento.
-- Termine devolvendo a escolha à consulente. O tarô abre o mapa; o caminho é dela.`,
+### O Tarô não Força o Amor
+O tarô mostra a **paisagem do vínculo**: o que está vivo, o que bloqueia, o que pede atenção. A decisão é sempre das pessoas. Nunca use para vigiar ou controlar o outro.`,
+    whenToUse: [
+      "Entender a dinâmica de um relacionamento",
+      "Identificar bloqueios na comunicação",
+      "Ver o que aproxima e o que afasta o casal",
+      "Ganhar clareza para decidir o próximo passo",
+    ],
+    infoBlocks: [
+      {
+        title: "O Vínculo",
+        content: "O foco é na relação como um terceiro elemento, não apenas no desejo de uma das partes."
+      },
+      {
+        title: "Ética e Poder",
+        content: "A leitura deve devolver o poder de escolha para a consulente, não torná-la dependente de previsões."
+      }
+    ],
     keyPoints: [
-      "O tarô revela a paisagem do vínculo — não força ninguém a amar, ficar ou voltar",
-      "Pergunta boa foca em você e no vínculo, não em prever a vontade do outro",
-      "5 posições: Você / A outra pessoa ou energia / O que aproxima / O que bloqueia / Conselho",
-      "O par 3-4 (aproxima + bloqueia) é o coração da leitura",
-      "O conselho sempre se dirige a quem consulta — nunca a terceiros",
-      "Não usar como vigilância, insistência ou muleta emocional",
+      "Revele a paisagem, não prometa futuros fixos",
+      "Pergunta ética: 'O que preciso ver sobre o vínculo?'",
+      "O conselho é sempre para quem consulta, nunca para o outro",
+      "Não use como muleta emocional ou vigilância",
     ],
     deepDive: `Leituras de amor pedem uma postura adulta da leitora. Três armadilhas são comuns:
 
