@@ -1,16 +1,29 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Check, Lock, ChevronRight } from "lucide-react";
+import { Check, Lock, ChevronRight } from "lucide-react";
 import { TIRAGENS_LESSONS } from "@/content/lessons/tiragens";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { useResolvedModule } from "@/hooks/use-resolved-module";
+import { useHeader } from "@/contexts/header-context";
+import { useEffect } from "react";
 
 const TiragensPage = () => {
   const navigate = useNavigate();
   const { progress } = useProgress();
   const { bypassLocks } = useAccess();
+  const { setHeader, resetHeader } = useHeader();
+  
   // Fase 4B — telemetria invisível: módulo via adaptador (DB-first com fallback).
   useResolvedModule("tiragens");
+
+  useEffect(() => {
+    setHeader({
+      title: "Tiragens",
+      subtitle: "Módulo Avançado • Organizando a Leitura",
+      backRoute: "/app"
+    });
+    return () => resetHeader();
+  }, [setHeader, resetHeader]);
 
   const isLessonCompleted = (lessonId: string) =>
     progress.completedLessons.includes(lessonId);
@@ -41,81 +54,32 @@ const TiragensPage = () => {
         />
       </div>
 
-      {/* Header */}
-      <header
-        className="relative z-10"
-        style={{
-          borderBottom: "1.5px solid #C8A66A40",
-          background: "rgba(250, 245, 239, 0.95)",
-          backdropFilter: "blur(20px)",
-          boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)",
-        }}
-      >
-        <div className="container max-w-3xl py-6 px-6">
-          <div className="flex items-center gap-4 mb-5">
-            <button
-              onClick={() => navigate("/app")}
-              className="transition-all hover:scale-110 duration-200 w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30]"
-              style={{ color: "#5B1F3D" }}
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-            <div className="flex flex-col flex-1">
-              <span
-                className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1.5 flex items-center gap-2"
-                style={{ color: "#5B1F3D" }}
-              >
-                <span style={{ color: "#C8A66A" }}>◎</span>
-                Módulo Avançado
+      {/* Main Content */}
+      <main className="relative z-10 container max-w-3xl py-8 px-6">
+        
+        {/* Progress summary for this module */}
+        <div className="mb-10 bg-white/60 backdrop-blur-md p-6 rounded-[2rem] border-2 border-[#C8A66A]/30 shadow-xl">
+            <div className="flex items-center justify-between mb-4 px-1">
+              <span className="text-[11px] font-heading tracking-widest uppercase font-black text-[#5B1F3D]">
+                Progresso no Módulo
               </span>
-              <h1
-                className="font-heading text-2xl md:text-3xl tracking-wide"
-                style={{ color: "#5B1F3D" }}
-              >
-                Tiragens
-              </h1>
-            </div>
-          </div>
-
-          {/* Progress bar */}
-          <div className="space-y-2 bg-white/40 p-3 rounded-xl border border-[#C8A66A20]">
-            <div className="flex items-center justify-between px-1">
-              <span
-                className="text-[11px] font-heading tracking-wider"
-                style={{ color: "#5B1F3DAA" }}
-              >
-                {completedCount}/{TIRAGENS_LESSONS.length} lições concluídas
-              </span>
-              <span
-                className="text-[11px] font-heading tracking-wider"
-                style={{ color: "#5B1F3D" }}
-              >
+              <span className="text-[13px] font-heading font-black px-3 py-1 rounded-full bg-[#C8A66A]/10 border border-[#C8A66A]/20" style={{ color: "#8B6A30" }}>
                 {progressPct}%
               </span>
             </div>
-            <div
-              className="h-2.5 rounded-full overflow-hidden"
-              style={{
-                background: "#E8DED3",
-                border: "1px solid #D1C4B5",
-              }}
-            >
-              <div
-                className="h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
-                style={{
-                  width: `${progressPct}%`,
-                  background: "linear-gradient(90deg, #5B1F3D, #C8A66A)",
-                }}
-              >
-                 <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+            <div className="h-3 rounded-full overflow-hidden p-[2px]" style={{ background: "#E8DED3", border: "1px solid rgba(209, 196, 181, 0.4)" }}>
+              <div className="h-full rounded-full transition-all duration-1000 ease-out relative" style={{ 
+                width: `${Math.max(progressPct, 4)}%`, 
+                background: `linear-gradient(90deg, #5B1F3D, #C8A66A)` 
+              }}>
+                 <div className="absolute inset-0 w-1/2 h-full bg-white/30 skew-x-[-25deg] animate-pulse" style={{ left: '10%' }} />
               </div>
             </div>
-          </div>
+            <p className="mt-4 text-center text-[11px] font-heading font-black tracking-tight text-[#5B1F3D]/60 uppercase">
+               {completedCount} de {TIRAGENS_LESSONS.length} lições dominadas
+            </p>
         </div>
-      </header>
 
-      {/* Main Content */}
-      <main className="relative z-10 container max-w-3xl py-8 px-6">
         {/* Intro text */}
         <div
           className="rounded-2xl p-6 mb-10 text-center relative overflow-hidden group"
@@ -316,6 +280,15 @@ const TiragensPage = () => {
             </div>
           </div>
         )}
+
+        <div className="text-center pt-10 pb-16">
+           <button 
+             onClick={() => navigate("/app")}
+             className="text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#5B1F3D]/60 hover:text-[#C8A66A] transition-colors"
+           >
+             ← Voltar à Jornada
+           </button>
+        </div>
       </main>
     </div>
   );
