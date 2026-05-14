@@ -117,7 +117,7 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
             
             {showLockIcon && (
               <div className="relative z-10 w-8 h-8 rounded-full bg-[#FAF5EF]/90 border border-[#C8A66A]/40 flex items-center justify-center shadow-lg backdrop-blur-sm">
-                <LockKeyhole className="w-4 h-4 text-[#C8A66A]" />
+                <TarotIcon name="bloqueado" className="w-4 h-4" color="#C8A66A" />
               </div>
             )}
           </div>
