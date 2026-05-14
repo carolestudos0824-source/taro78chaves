@@ -74,6 +74,7 @@ const LessonPage = () => {
 
   useEffect(() => {
     if (arcano) {
+      console.log("Setting header for:", arcano.name);
       setHeader({
         title: arcano.name,
         subtitle: `Arcano ${arcano.numeral} • Lição ${arcanoId + 1}`,
@@ -82,7 +83,7 @@ const LessonPage = () => {
       });
     }
     return () => resetHeader();
-  }, [arcano, phase, arcanoId, phases]);
+  }, [arcano, phase, arcanoId, phases, setHeader, resetHeader]);
 
   // 1. Estado de Carregamento (Loading Ritualístico)
   if (!mounted || isLiteralRoute || premiumLoading || roleLoading || accessLoading) {
