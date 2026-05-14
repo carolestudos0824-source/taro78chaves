@@ -73,6 +73,15 @@ const ModulesPage = () => {
   
   const { progress, loading: progressLoading } = useProgress();
   const { bypassLocks } = useAccess();
+  const { setHeader, resetHeader } = useHeader();
+  
+  useEffect(() => {
+    setHeader({
+      title: "Tarô 78 Chaves",
+      subtitle: "Formação 78 Arcanos",
+    });
+    return () => resetHeader();
+  }, []);
 
   if (progressLoading) {
     return (
