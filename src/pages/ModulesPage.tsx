@@ -381,11 +381,11 @@ const ModulesPage = () => {
                             {isCompleted ? (
                               <Check className={`w-10 h-10 md:w-12 md:h-12 ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} strokeWidth={4} />
                             ) : unlocked ? (
-                              <IconComponent className={`w-10 h-10 md:w-12 md:h-12 ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} />
+                              <TarotIcon name={iconName} className={`w-10 h-10 md:w-12 md:h-12 ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} />
                             ) : (
                               <div className="relative">
-                                <IconComponent className="w-10 h-10 md:w-12 md:h-12 opacity-20" />
-                                <LockKeyhole className="w-8 h-8 absolute -bottom-2 -right-2 text-[#5B1F3D] drop-shadow-xl" />
+                                <TarotIcon name={iconName} className="w-10 h-10 md:w-12 md:h-12 opacity-20" />
+                                <TarotIcon name="bloqueado" className="w-8 h-8 absolute -bottom-2 -right-2 text-[#5B1F3D] drop-shadow-xl" />
                               </div>
                             )}
                           </div>
