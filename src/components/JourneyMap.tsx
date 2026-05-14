@@ -101,7 +101,6 @@ export function JourneyMap({ progress }: JourneyMapProps) {
                     className="absolute inset-0 -m-3 rounded-full"
                     style={{
                       border: "1px solid rgba(91, 31, 61, 0.15)",
-                      animation: "glow-breathe 4s ease-in-out infinite"
                     }}
                   />
                 )}
