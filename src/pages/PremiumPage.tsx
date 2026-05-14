@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  ArrowLeft, KeyRound, SquareStack, Compass,
-  Sparkles, WandSparkles, CircleCheck, Eye, Stars, ChevronRight
-} from "lucide-react";
+import { ArrowLeft, ChevronRight } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import { Button } from "@/components/ui/button";
 import { usePremium } from "@/hooks/use-premium";
 import { supabase } from "@/integrations/supabase/client";
