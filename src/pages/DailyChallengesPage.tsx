@@ -350,7 +350,7 @@ const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) =>
             <div className="w-16 h-16 rounded-[1.5rem] flex items-center justify-center border-2 border-[#C8A66A40] shadow-2xl rotate-3" style={{
               background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
             }}>
-               <Sparkles className="w-8 h-8 text-[#C8A66A] animate-pulse" />
+               <TarotIcon name="Sparkles" className="w-8 h-8 text-[#C8A66A] animate-pulse" />
             </div>
             <div className="flex flex-col">
               <span className="text-[11px] font-heading font-black tracking-[0.35em] text-[#C8A66A] uppercase mb-1">Desafio Sagrado</span>
