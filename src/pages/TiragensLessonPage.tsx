@@ -266,26 +266,28 @@ const TiragensLessonPage = () => {
                     </h3>
                     
                     {/* The Visual Grid/Map */}
-                    <div className="relative aspect-[4/5] max-w-[340px] mx-auto bg-white/60 rounded-[2.5rem] border-2 border-[#C8A66A]/20 shadow-inner p-8">
-                      {lesson.layoutDiagram.positions.map((pos, i) => (
-                        <div 
-                          key={i} 
-                          className="absolute w-16 h-22 md:w-20 md:h-28 -translate-x-1/2 -translate-y-1/2 transition-all duration-700"
-                          style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
-                        >
-                          {/* Card Placeholder Visual */}
-                          <div className="w-full h-full rounded-xl border-[2.5px] border-[#C8A66A] bg-white shadow-[0_15px_35px_-5px_rgba(91,31,61,0.25)] flex items-center justify-center relative group-hover:scale-110 transition-all duration-500 overflow-hidden ring-4 ring-[#C8A66A]/10">
-                             <div className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_center,_#5B1F3D,_transparent)]" />
-                             <div className="absolute top-1.5 left-1.5 right-1.5 bottom-1.5 border border-[#C8A66A]/20 rounded-lg pointer-events-none" />
-                             <span className="font-heading text-3xl md:text-4xl font-black text-[#5B1F3D] drop-shadow-md z-10">{i + 1}</span>
+                    <div className="relative aspect-[4/5] min-h-[480px] md:min-h-[550px] max-w-[440px] mx-auto bg-white/60 rounded-[2.5rem] border-2 border-[#C8A66A]/20 shadow-inner p-10 flex items-center justify-center">
+                      <div className="w-full h-full relative">
+                        {lesson.layoutDiagram.positions.map((pos, i) => (
+                          <div 
+                            key={i} 
+                            className="absolute -translate-x-1/2 -translate-y-1/2 transition-all duration-700 w-24 md:w-28 text-center"
+                            style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
+                          >
+                            {/* Card Placeholder Visual */}
+                            <div className="w-16 h-22 md:w-20 md:h-28 mx-auto rounded-xl border-[2.5px] border-[#C8A66A] bg-white shadow-[0_15px_35px_-5px_rgba(91,31,61,0.25)] flex items-center justify-center relative group-hover:scale-110 transition-all duration-500 overflow-hidden ring-4 ring-[#C8A66A]/10">
+                               <div className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_center,_#5B1F3D,_transparent)]" />
+                               <div className="absolute top-1.5 left-1.5 right-1.5 bottom-1.5 border border-[#C8A66A]/20 rounded-lg pointer-events-none" />
+                               <span className="font-heading text-3xl md:text-4xl font-bold text-[#5B1F3D] drop-shadow-md z-10">{i + 1}</span>
+                            </div>
+                            <div className="mt-4">
+                               <span className="text-[12px] md:text-[14px] font-heading font-bold uppercase tracking-[0.02em] text-[#5B1F3D] leading-tight block w-full px-1">
+                                 {pos.label}
+                               </span>
+                            </div>
                           </div>
-                          <div className="mt-3 text-center px-1">
-                             <span className="text-[11px] md:text-[13px] font-heading font-bold uppercase tracking-[0.1em] text-[#5B1F3D] leading-tight block whitespace-normal break-words max-w-[120px] mx-auto">
-                               {pos.label}
-                             </span>
-                          </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   </div>
 
