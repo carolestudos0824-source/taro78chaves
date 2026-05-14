@@ -91,12 +91,12 @@ const LessonPage = () => {
 
   useEffect(() => {
     if (arcano) {
-      
       setHeader({
         title: arcano.name,
         subtitle: `Arcano ${arcano.numeral} • Lição ${arcanoId + 1}`,
         backRoute: "/module/arcanos-maiores",
-        rightElement: <PhaseIndicator phases={phases} currentIndex={phases.indexOf(phase)} />
+        rightElement: <PhaseIndicator phases={phases} currentIndex={phases.indexOf(phase)} />,
+        hideXP: true
       });
     }
     return () => resetHeader();
