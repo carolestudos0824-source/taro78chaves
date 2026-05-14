@@ -1,5 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { KeyRound, Menu, ArrowLeft } from "lucide-react";
+import { Menu, ArrowLeft } from "lucide-react";
+import { TarotIcon } from "./TarotIcon";
 import { StreakCounter } from "@/components/StreakCounter";
 import { XPBar } from "@/components/XPBar";
 import { useState, useEffect, useRef } from "react";
