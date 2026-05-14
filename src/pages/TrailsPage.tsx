@@ -98,52 +98,47 @@ const TrailsPage = () => {
   const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : null;
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0" style={{
-          background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
-        }} />
-        <div className="absolute inset-0" style={{
-          background: "radial-gradient(ellipse at 80% 100%, hsl(340 42% 30% / 0.06) 0%, transparent 50%)",
-        }} />
+    <div className="relative">
+      {/* Background - kept subtle as main container handles overall bg */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
+      }} />
 
-        <div className="relative max-w-2xl mx-auto px-6 pt-10 pb-8">
-          <div className="flex justify-between items-start mb-8">
-            <button
-              onClick={() => navigate("/app")}
-              className="flex items-center gap-3 text-[#5B1F3D] hover:text-[#C8A66A] transition-all group bg-white/60 px-4 py-2 rounded-full border border-[#C8A66A]/20 shadow-sm"
-            >
-              <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-              <span className="text-[10px] font-heading font-black uppercase tracking-widest">Voltar para Home</span>
-            </button>
-            <div className="flex -space-x-4 opacity-40 hover:opacity-100 transition-opacity duration-500">
-              <img src={imgLouco} alt="" className="w-12 h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
-              <img src={imgMago} alt="" className="w-12 h-18 object-cover rounded-md border border-[#C8A66A]/30 rotate-12 shadow-lg" />
-            </div>
+      <div className="relative max-w-2xl mx-auto px-6 pt-10 pb-8">
+        <div className="flex justify-between items-start mb-8">
+          <button
+            onClick={() => navigate("/app")}
+            className="flex items-center gap-3 text-[#5B1F3D] hover:text-[#C8A66A] transition-all group bg-white/60 px-4 py-2 rounded-full border border-[#C8A66A]/20 shadow-sm active:scale-95"
+          >
+            <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+            <span className="text-[10px] font-heading font-black uppercase tracking-widest">Início</span>
+          </button>
+          <div className="flex -space-x-4 opacity-40 hover:opacity-100 transition-opacity duration-500">
+            <img src={imgLouco} alt="" className="w-12 h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
+            <img src={imgMago} alt="" className="w-12 h-18 object-cover rounded-md border border-[#C8A66A]/30 rotate-12 shadow-lg" />
           </div>
+        </div>
 
-          <div className="text-center relative">
-            <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[#C8A66A]/20">
-              <Compass className="w-12 h-12 animate-pulse-slow" />
-            </div>
-            <div className="text-[11px] tracking-[0.4em] uppercase font-heading font-black mb-2 text-[#5B1F3D]">
-              Mapa Curricular
-            </div>
-            <h1
-              className="font-heading text-3xl md:text-4xl tracking-tight font-black"
-              style={{
-                background: "linear-gradient(135deg, #5B1F3D, #C8A66A)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              Trilhas de Formação
-            </h1>
-            <p className="font-body text-[15px] font-bold italic mt-2 text-[#5B1F3D]/70">
-              A arquitetura completa da sua maestria no Tarô
-            </p>
+        <div className="text-center relative">
+          <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[#C8A66A]/20">
+            <Compass className="w-12 h-12 animate-pulse-slow" />
           </div>
+          <div className="text-[11px] tracking-[0.4em] uppercase font-heading font-black mb-2 text-[#5B1F3D]">
+            Mapa Curricular
+          </div>
+          <h1
+            className="font-heading text-3xl md:text-4xl tracking-tight font-black"
+            style={{
+              background: "linear-gradient(135deg, #5B1F3D, #C8A66A)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Trilhas de Formação
+          </h1>
+          <p className="font-body text-[15px] font-bold italic mt-2 text-[#5B1F3D]/70">
+            A arquitetura completa da sua maestria no Tarô
+          </p>
         </div>
       </div>
 
