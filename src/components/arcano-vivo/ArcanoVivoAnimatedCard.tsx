@@ -49,7 +49,7 @@ export function ArcanoVivoAnimatedCard({
       />
 
       {/* The card itself */}
-      <motion.div
+      <div
         className="relative w-64 h-[24rem] sm:w-80 sm:h-[30rem] rounded-2xl overflow-hidden shadow-2xl"
         style={{
           border: `2.5px solid hsl(${config.glowColor} / 0.5)`,
@@ -57,15 +57,6 @@ export function ArcanoVivoAnimatedCard({
           boxShadow: isEmerged
             ? `0 25px 80px hsl(${config.glowColor} / 0.3), 0 0 120px hsl(${config.ambientColor} / 0.15)`
             : `0 20px 60px hsl(${config.glowColor} / 0.2)`,
-        }}
-        animate={isBreathing && !shouldReduceMotion ? {
-          y: [0, -8, 0],
-          rotateY: [0, 1, -1, 0]
-        } : { y: 0, rotateY: 0 }}
-        transition={{
-          duration: config.breatheSpeed || 4,
-          repeat: Infinity,
-          ease: "easeInOut"
         }}
       >
         {/* Card image */}
