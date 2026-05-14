@@ -554,35 +554,31 @@ Leia sempre o conselho como uma **ação concreta**. Mesmo cartas passivas indic
     title: "Leitura em Cruz",
     subtitle: "A tiragem de 5 posições — panorama completo",
     icon: "✝️",
-    content: `A Leitura em Cruz é uma tiragem de 5 posições que oferece um **panorama completo** de uma situação sem a complexidade da Cruz Celta. É a tiragem intermediária perfeita — mais profunda que 3 cartas, mais acessível que 10.
+    content: `A Cruz oferece um panorama completo sem a complexidade da Cruz Celta. É o formato intermediário perfeito — mais profundo que 3 cartas, mais acessível que 10.
 
-**As 5 posições:**
-
-**Centro — O Tema:**
-A essência da questão. A carta que define sobre o quê estamos realmente falando. Às vezes surpreende: a consulente acha que a pergunta é sobre trabalho, mas o centro mostra um problema emocional.
-
-**Esquerda — O Passado / A Causa:**
-O que trouxe a situação até aqui. A raiz, a origem, o padrão antigo.
-
-**Direita — O Futuro / A Tendência:**
-Para onde a energia está fluindo. O desdobramento provável.
-
-**Acima — O Consciente / O que se sabe:**
-O que a consulente já percebe, reconhece, entende. O que está "na superfície".
-
-**Abaixo — O Inconsciente / O que se esconde:**
-O que a consulente não vê, não admite, ou não quer enxergar. Frequentemente a carta mais reveladora de toda a tiragem.
-
-**Leitura em dois eixos:**
-- **Eixo horizontal** (esquerda-centro-direita) = a narrativa temporal
-- **Eixo vertical** (acima-centro-abaixo) = a narrativa psicológica
-
-A Cruz permite ler duas histórias simultâneas: o que está acontecendo no tempo E o que está acontecendo na psique.`,
+### Leitura em Dois Eixos
+A grande força desta tiragem é permitir a leitura de duas histórias simultâneas no mesmo layout.`,
+    whenToUse: [
+      "Análise profunda de uma situação",
+      "Mapear influências conscientes e ocultas",
+      "Visão de longo prazo com raízes no passado",
+      "Transições de vida importantes",
+    ],
+    infoBlocks: [
+      {
+        title: "Eixo Horizontal (Temporal)",
+        content: "Esquerda (Causa) ➔ Centro (Tema) ➔ Direita (Tendência). Conta a história no tempo."
+      },
+      {
+        title: "Eixo Vertical (Psicológico)",
+        content: "Acima (Consciente) ➔ Centro (Tema) ➔ Abaixo (Inconsciente). Revela o que se esconde."
+      }
+    ],
     keyPoints: [
-      "5 posições: Centro (tema), Esquerda (causa), Direita (tendência), Acima (consciente), Abaixo (inconsciente)",
-      "Dois eixos: horizontal = tempo, vertical = psique",
-      "Mais profunda que 3 cartas, mais acessível que 10",
-      "A carta 'Abaixo' (inconsciente) é frequentemente a mais reveladora",
+      "Equilíbrio entre profundidade e simplicidade",
+      "O Eixo vertical revela a motivação oculta (inconsciente)",
+      "O Centro ancora toda a interpretação",
+      "Ideal para quando a situação parece confusa ou nebulosa",
     ],
     layoutDiagram: {
       name: "Leitura em Cruz",
@@ -646,34 +642,35 @@ A Cruz permite ler duas histórias simultâneas: o que está acontecendo no temp
     title: "Leitura para Decisões",
     subtitle: "Quando há dois caminhos — e é preciso escolher",
     icon: "⚖️",
-    content: `Uma das perguntas mais comuns no tarô é: "Devo fazer A ou B?" A Leitura para Decisões foi criada especificamente para isso — comparar dois caminhos de forma estruturada.
+    content: `Uma das perguntas mais comuns é: "Devo fazer A ou B?". Este layout compara dois caminhos de forma estruturada, trazendo lucidez para a escolha.
 
-**Formato de 5 posições:**
-
-**Carta 1 — Você Agora:**
-A energia atual da consulente — seu estado interno ao enfrentar essa decisão.
-
-**Carta 2 — Caminho A:**
-A energia do primeiro caminho. O que essa opção traz? Que experiência oferece?
-
-**Carta 3 — Resultado A:**
-Onde o Caminho A provavelmente leva. O desfecho provável se escolher essa opção.
-
-**Carta 4 — Caminho B:**
-A energia do segundo caminho. O que essa opção traz?
-
-**Carta 5 — Resultado B:**
-Onde o Caminho B provavelmente leva.
-
-**IMPORTANTE — O tarô não decide por você.**
-Ele mostra a energia de cada caminho. A decisão final é sempre da consulente. Uma boa leitora apresenta os dois cenários sem julgar e sem recomendar — o poder está nas mãos de quem pergunta.
-
-**Dica avançada:** Compare as cartas 2-3 (Caminho A e Resultado A) como um par, e as cartas 4-5 (Caminho B e Resultado B) como outro par. Qual par conta uma história mais coerente? Qual tem energia mais sustentável a longo prazo?`,
+### O Tarô não Decide
+O tarô mostra a **experiência** de cada caminho. A decisão final é sempre sua. Apresente os cenários sem julgar — o poder está na sua mão.`,
+    whenToUse: [
+      "Dúvida entre duas opções claras",
+      "Troca de emprego ou residência",
+      "Decisões de investimento",
+      "Caminhos afetivos divergentes",
+    ],
+    infoBlocks: [
+      {
+        title: "Caminho A",
+        content: "Analisa a energia da primeira opção e qual o resultado provável se você segui-la."
+      },
+      {
+        title: "Caminho B",
+        content: "Analisa a energia da segunda opção e o desdobramento natural desta escolha."
+      },
+      {
+        title: "Você Agora",
+        content: "O filtro central: seu estado emocional e mental diante da decisão."
+      }
+    ],
     keyPoints: [
-      "5 posições: Você Agora + Caminho A/Resultado A + Caminho B/Resultado B",
-      "O tarô mostra cenários — não decide por você",
-      "Compare os pares de cada caminho como narrativas separadas",
-      "Busque sustentabilidade a longo prazo, não apenas resultado imediato",
+      "Foca na comparação de energias e resultados",
+      "Não busca o 'certo', mas o mais coerente para você",
+      "A carta central revela se você está decidindo pelo medo ou lucidez",
+      "Compare os pares (Energia + Resultado) de cada lado",
     ],
     layoutDiagram: {
       name: "Leitura para Decisões",
