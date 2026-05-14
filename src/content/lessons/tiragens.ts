@@ -143,6 +143,26 @@ Leitoras experientes frequentemente criam suas próprias tiragens para situaçõ
       "Mantenha o foco no que está sob seu controle",
       "Defina o tempo da leitura para evitar ansiedade",
     ],
+    layoutDiagram: {
+      name: "O Ciclo da Pergunta",
+      positions: [
+        { label: "O Alvo", description: "Sobre quem ou o que se pergunta", x: 50, y: 20 },
+        { label: "A Intenção", description: "O que se busca descobrir", x: 50, y: 50 },
+        { label: "O Tempo", description: "O horizonte da resposta", x: 50, y: 80 },
+      ],
+    },
+    examples: [
+      {
+        spread: "Estrutura da Pergunta",
+        question: "Como formular 'O que preciso saber sobre meu trabalho?'",
+        cards: [
+          { position: "O Alvo", card: "Carreira atual" },
+          { position: "A Intenção", card: "Clareza de próximos passos" },
+          { position: "O Tempo", card: "Próximos 3 meses" },
+        ],
+        interpretation: "Este exemplo mostra como uma pergunta vaga se torna estruturada ao definir quem é o alvo, qual a intenção real e qual o tempo da leitura.",
+      },
+    ],
     reflection: "Pense nas últimas perguntas que você fez ao tarô. Elas seguiam essas 5 regras? Reescreva 3 perguntas antigas usando as fórmulas sugeridas e observe como ficam mais poderosas.",
     exercise: {
       instruction: "Escreva 10 perguntas sobre diferentes áreas da sua vida usando as 5 regras e as fórmulas sugeridas. Para cada uma, identifique: qual tiragem seria mais adequada? (Você ainda não aprendeu todas — use sua intuição.) Ao final do módulo, volte aqui e reavalie suas escolhas.",
@@ -584,8 +604,8 @@ A grande força desta tiragem é permitir a leitura de duas histórias simultân
         { label: "Esquerda", description: "O passado — a causa, a raiz", x: 20, y: 50 },
         { label: "Centro", description: "O tema — a essência da questão", x: 50, y: 50 },
         { label: "Direita", description: "O futuro — a tendência", x: 80, y: 50 },
-        { label: "Acima", description: "O consciente — o que se sabe", x: 50, y: 20 },
-        { label: "Abaixo", description: "O inconsciente — o que se esconde", x: 50, y: 80 },
+        { label: "Acima", description: "O consciente — o que se sabe", x: 50, y: 15 },
+        { label: "Abaixo", description: "O inconsciente — o que se esconde", x: 50, y: 85 },
       ],
     },
     examples: [
@@ -861,10 +881,10 @@ A posição "O que eu nego" ou "escondo" é o coração desta leitura. Ela traz 
     layoutDiagram: {
       name: "A Tiragem do Espelho",
       positions: [
-        { label: "Como me vejo", description: "Autoimagem — precisa ou distorcida", x: 30, y: 30 },
-        { label: "Como os outros me veem", description: "A imagem que projeto para o mundo", x: 70, y: 30 },
-        { label: "O que me fortalece", description: "Recurso interno mais poderoso agora", x: 30, y: 55 },
-        { label: "O que me enfraquece", description: "Ponto cego, vulnerabilidade", x: 70, y: 55 },
+        { label: "Como me vejo", description: "Autoimagem — precisa ou distorcida", x: 30, y: 20 },
+        { label: "Como os outros me veem", description: "A imagem que projeto para o mundo", x: 70, y: 20 },
+        { label: "O que me fortalece", description: "Recurso interno mais poderoso agora", x: 30, y: 50 },
+        { label: "O que me enfraquece", description: "Ponto cego, vulnerabilidade", x: 70, y: 50 },
         { label: "O que preciso liberar", description: "Crença, padrão ou medo para soltar", x: 30, y: 80 },
         { label: "O que preciso abraçar", description: "Talento, verdade ou direção para acolher", x: 70, y: 80 },
       ],

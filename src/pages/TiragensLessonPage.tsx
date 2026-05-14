@@ -336,13 +336,13 @@ const TiragensLessonPage = () => {
 
                     <div className="space-y-4">
                       <p className="text-[10px] font-heading tracking-widest uppercase font-black text-[#5B1F3D]/40">Cartas Sorteadas</p>
-                      <div className="flex flex-wrap gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {ex.cards.map((c, ci) => (
-                          <div key={ci} className="bg-[#FAF5EF] border-2 border-[#C8A66A]/20 px-4 py-2.5 rounded-2xl flex items-center gap-3">
-                            <span className="text-[11px] font-heading font-black text-[#C8A66A]">{ci + 1}</span>
-                            <div className="flex flex-col">
-                              <span className="text-[9px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]/40">{c.position}</span>
-                              <span className="text-[13px] font-bold text-[#5B1F3D]">{c.card}</span>
+                          <div key={ci} className="bg-[#FAF5EF] border-2 border-[#C8A66A]/20 px-4 py-2.5 rounded-2xl flex items-center gap-3 shadow-sm">
+                            <span className="w-6 h-6 rounded-full bg-[#C8A66A] flex items-center justify-center text-[10px] font-heading font-black text-[#5B1F3D] shrink-0">{ci + 1}</span>
+                            <div className="flex flex-col min-w-0">
+                              <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]/40 truncate">{c.position}</span>
+                              <span className="text-[13px] font-bold text-[#5B1F3D] truncate">{c.card}</span>
                             </div>
                           </div>
                         ))}
