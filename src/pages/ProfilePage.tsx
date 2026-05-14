@@ -125,7 +125,7 @@ const ProfilePage = () => {
                 <p className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/80">
                   {isAdmin ? "O Oráculo" : "Seu Acesso"}
                 </p>
-                {isPremium && <KeyRound className="w-3.5 h-3.5 text-[#C8A66A]" />}
+                {isPremium && <TarotIcon name="premium" className="w-3.5 h-3.5 text-[#C8A66A]" />}
               </div>
               <h3 className="font-heading text-xl font-black text-[#5B1F3D]">
                 {isAdmin ? "Acesso Total" : (
