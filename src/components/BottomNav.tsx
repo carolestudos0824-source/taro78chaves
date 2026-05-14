@@ -41,7 +41,6 @@ const BottomNav = () => {
     >
       <div className="max-w-lg mx-auto flex items-center justify-around py-2 px-2">
         {NAV_ITEMS.map(item => {
-          const Icon = item.icon;
           const isActive = location.pathname === item.path || location.pathname.startsWith(item.path + "/");
           return (
             <button
@@ -50,12 +49,11 @@ const BottomNav = () => {
               className="flex flex-col items-center gap-1 px-3 py-1 rounded-2xl transition-all duration-300 relative group"
               title={item.microcopy}
             >
-              <Icon 
+              <TarotIcon 
+                name={item.icon}
                 className={`w-6 h-6 transition-all duration-300 ${isActive ? "scale-110" : "opacity-70 group-hover:opacity-100"}`} 
                 strokeWidth={isActive ? 2.5 : 2} 
-                style={{
-                  color: isActive ? "#5B1F3D" : "#5B1F3D",
-                }}
+                color={isActive ? "#5B1F3D" : "#5B1F3D"}
               />
               <span className={`text-[10px] font-heading tracking-widest uppercase transition-all duration-300 ${
                 isActive ? "font-black text-[#5B1F3D]" : "font-bold text-[#5B1F3D]/70"
