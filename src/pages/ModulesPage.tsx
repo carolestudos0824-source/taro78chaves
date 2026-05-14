@@ -50,23 +50,23 @@ const CATEGORY_LABELS: Record<ModuleCategory, string> = {
   "professional": "Trilha 6 · Formação Profissional",
 };
 
-const MODULE_ICON_MAP: Record<string, any> = {
-  "fundamentos": Compass,
-  "leitura-simbolica": Eye,
-  "arcanos-maiores": Stars,
-  "arquitetura-menores": Layers,
-  "copas": Droplets,
-  "paus": Flame,
-  "espadas": Swords,
-  "ouros": Gem,
-  "cartas-corte": Crown,
-  "combinacoes": GitBranch,
-  "tiragens": Layout,
-  "espiritualidade": Moon,
-  "mesa-taro": SquareStack,
-  "leitura-aplicada": Target,
-  "pratica": Sparkles,
-  "trabalhar-taro": Briefcase,
+const MODULE_ICON_MAP: Record<string, string> = {
+  "fundamentos": "Compass",
+  "leitura-simbolica": "Eye",
+  "arcanos-maiores": "Stars",
+  "arquitetura-menores": "Layers",
+  "copas": "copas",
+  "paus": "paus",
+  "espadas": "espadas",
+  "ouros": "ouros",
+  "cartas-corte": "Crown",
+  "combinacoes": "GitBranch",
+  "tiragens": "Layout",
+  "espiritualidade": "Moon",
+  "mesa-taro": "SquareStack",
+  "leitura-aplicada": "Target",
+  "pratica": "Sparkles",
+  "trabalhar-taro": "Briefcase",
 };
 
 const ModulesPage = () => {
