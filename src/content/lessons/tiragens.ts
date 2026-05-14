@@ -825,38 +825,38 @@ Busque **tons**. "Dia de paciência" em vez de "vai acontecer algo bom". Note se
   {
     id: "tir-10",
     order: 9,
-    title: "Leitura para Autoconhecimento",
-    subtitle: "O tarô como espelho — a tiragem mais pessoal",
+    title: "Tiragem do Espelho",
+    subtitle: "A leitura para autoconhecimento profundo",
     icon: "🪞",
-    content: `Todas as tiragens anteriores podem ser usadas para perguntas externas. Esta tiragem é exclusivamente **interna** — um espelho para olhar para dentro de si.
+    content: `Esta é uma das tiragens mais reveladoras. O tarô funciona como um espelho da psique, mostrando o que você projeta, o que você esconde e o que você realmente é.
 
-**A Tiragem do Espelho (6 posições):**
-
-**1. Como me vejo** — A imagem que tenho de mim mesma. Pode ser precisa ou distorcida.
-
-**2. Como os outros me veem** — A imagem que projeto para o mundo. Nem sempre coincide com a posição 1.
-
-**3. O que me fortalece** — Meu recurso interno mais poderoso neste momento. Minha maior força.
-
-**4. O que me enfraquece** — Meu ponto cego, minha vulnerabilidade. O que mina minha energia.
-
-**5. O que preciso liberar** — O que está na hora de soltar: uma crença, um padrão, uma relação, um medo.
-
-**6. O que preciso abraçar** — O que está esperando para ser acolhido: um talento, uma verdade, uma direção.
-
-**Como ler:**
-Esta tiragem NÃO é sobre o mundo externo — é sobre a paisagem interna. Leia com suavidade, sem julgamento. As cartas não estão criticando — estão espelhando.
-
-**O par 1-2 (como me vejo / como os outros me veem)** revela a dissonância entre autoimagem e imagem projetada. Quanto maior a diferença, mais trabalho interno é necessário.
-
-**O par 5-6 (liberar / abraçar)** é o conselho central: o que soltar e o que acolher. Juntas, essas cartas indicam a transformação que está pedindo para acontecer.
-
-**Quando usar:** Momentos de transição, aniversários, virada de ano, crises de identidade, ou simplesmente quando sentir necessidade de "se ver" com mais clareza.`,
+### O Poder do Oculto
+A posição "O que eu nego" ou "escondo" é o coração desta leitura. Ela traz à luz a Sombra — aqueles aspectos nossos que não queremos admitir, mas que governam nossas ações.`,
+    whenToUse: [
+      "Momentos de crise de identidade",
+      "Trabalho de autoconhecimento e terapia",
+      "Viradas de ciclo (aniversários)",
+      "Sentimento de estar perdido de si mesmo",
+    ],
+    infoBlocks: [
+      {
+        title: "O Que Eu Mostro",
+        content: "A persona. Como você se apresenta ao mundo e o que deseja que os outros vejam."
+      },
+      {
+        title: "O Que Eu Escondo",
+        content: "A sombra. Medos, desejos ou potenciais que você mantém guardados sob a superfície."
+      },
+      {
+        title: "O Que Eu Sou",
+        content: "A essência. A verdade do seu momento atual, despida de pretensões ou medos."
+      }
+    ],
     keyPoints: [
-      "6 posições: Como me vejo / Como os outros me veem / Fortalece / Enfraquece / Liberar / Abraçar",
-      "Tiragem exclusivamente interna — espelho, não previsão",
-      "O par 1-2 revela dissonância entre autoimagem e imagem projetada",
-      "O par 5-6 é o conselho central: o que soltar e o que acolher",
+      "Foco total na jornada interna",
+      "Não serve para perguntas sobre os outros",
+      "Exige coragem para encarar a própria sombra",
+      "Forma o panorama da sua verdade atual",
     ],
     layoutDiagram: {
       name: "A Tiragem do Espelho",
