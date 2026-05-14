@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { LockKeyhole, Key, CheckCircle2 } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import { useReducedMotionSafe } from "./useReducedMotionSafe";
 import { cardBreathe, auraAwaken, portalReveal, unlockGlow } from "./motion-presets";
 import { getArcanoTheme } from "./arcano-motion-themes";
