@@ -424,7 +424,7 @@ const CartaDoDiaContent = ({ data, onComplete }: { data: CartaDoDia | null; onCo
       </p>
       <div className="rounded-[2rem] p-6 bg-white border-2 border-[#C8A66A]/10 shadow-sm relative overflow-hidden group">
         <div className="absolute top-0 right-0 p-3 opacity-10">
-          <Sparkles className="w-8 h-8 text-[#5B1F3D]" />
+          <TarotIcon name="Sparkles" className="w-8 h-8 text-[#5B1F3D]" />
         </div>
         <p className="font-body text-[13px] font-bold italic text-[#5B1F3D] leading-relaxed relative z-10">
           ✦ {data.reflection}
