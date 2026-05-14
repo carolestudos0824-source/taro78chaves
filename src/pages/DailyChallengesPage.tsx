@@ -188,7 +188,7 @@ const DailyChallengesPage = () => {
             <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl border-2 border-[#C8A66A20] shadow-sm" style={{
               background: "linear-gradient(135deg, #FAF5EF, #FFFFFF)",
             }}>
-              <Star className="w-5 h-5 text-[#C8A66A] fill-[#C8A66A20]" />
+              <TarotIcon name="estrela" className="w-5 h-5" color="#C8A66A" />
               <span className="text-[14px] md:text-[16px] font-heading font-black text-[#5B1F3D]">
                 {totalXPEarned} XP
               </span>
