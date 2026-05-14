@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { 
   X, 
@@ -22,15 +22,33 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
   const { signOut } = useAuth();
   const { isAdmin } = useIsAdmin();
   const { progress, getCurrentArcanoId } = useProgress();
+  const [isVisible, setIsVisible] = useState(false);
+  const [render, setRender] = useState(isOpen);
 
   const currentArcanoId = getCurrentArcanoId();
 
+  // Manage visibility for animations and unmounting
+  useEffect(() => {
+    if (isOpen) {
+      setRender(true);
+      // Small delay to ensure render is true before starting entry animation
+      const timer = setTimeout(() => setIsVisible(true), 10);
+      return () => clearTimeout(timer);
+    } else {
+      setIsVisible(false);
+      // Wait for exit animation to finish before unmounting (matches duration-500)
+      const timer = setTimeout(() => setRender(false), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
+
   // Close menu on route change
   useEffect(() => {
-    onClose();
+    if (isOpen) onClose();
   }, [location.pathname]);
 
-  // Removido if (!isOpen) return null para permitir animações CSS
+  // Closed state handled by visibility animations
+  // if (!render) return null;
 
   const NavItem = ({ to, icon, label, badge }: { to: string; icon: TarotIconType | string; label: string; badge?: string }) => {
     const isActive = location.pathname === to;
@@ -73,15 +91,15 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
   );
 
   return (
-    <div className={`fixed inset-0 z-[999999] flex transition-all duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+    <div className={`fixed inset-0 z-[2000000] flex transition-all duration-300 ${isVisible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
       {/* Backdrop */}
       <div 
-        className="absolute inset-0 bg-[#5B1F3D]/40 backdrop-blur-sm" 
+        className="absolute inset-0 bg-[#5B1F3D]/60 backdrop-blur-md" 
         onClick={onClose}
       />
 
       {/* Drawer */}
-      <div className={`fixed top-0 left-0 w-[320px] max-w-[85vw] h-full bg-[#FDFBF7] shadow-2xl flex flex-col border-r-2 border-[#C8A66A]/20 transition-transform duration-500 overflow-hidden z-[1000000] ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div className={`fixed top-0 left-0 w-[320px] max-w-[85vw] h-full bg-[#FDFBF7] shadow-2xl flex flex-col border-r-2 border-[#C8A66A]/30 transition-transform duration-500 overflow-hidden z-[2000001] ${isVisible ? 'translate-x-0' : '-translate-x-full'}`}>
         {/* Header */}
         <div className="p-6 border-b-2 border-[#C8A66A]/20 flex items-center justify-between bg-white/50">
           <div className="flex flex-col">
@@ -116,22 +134,22 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
 
           {/* BLOCO 2 — Formação */}
           <SectionTitle>Formação</SectionTitle>
-          <NavItem to="/module/fundamentos" icon="Compass" label="Fundamentos do Tarô" />
-          <NavItem to="/module/leitura-simbolica" icon="Eye" label="Leitura Simbólica" />
-          <NavItem to="/module/arcanos-maiores" icon="Stars" label="Arcanos Maiores" />
-          <NavItem to="/module/arquitetura-menores" icon="Layers" label="Arquitetura Menores" />
+          <NavItem to="/module/fundamentos" icon="jornada" label="Fundamentos do Tarô" />
+          <NavItem to="/module/leitura-simbolica" icon="perfil" label="Leitura Simbólica e Método" />
+          <NavItem to="/module/arcanos-maiores" icon="louco" label="Arcanos Maiores" />
+          <NavItem to="/module/arquitetura-menores" icon="formacao" label="Arquitetura Menores" />
           <NavItem to="/module/copas" icon="copas" label="Naipe de Copas" />
           <NavItem to="/module/paus" icon="paus" label="Naipe de Paus" />
           <NavItem to="/module/espadas" icon="espadas" label="Naipe de Espadas" />
           <NavItem to="/module/ouros" icon="ouros" label="Naipe de Ouros" />
-          <NavItem to="/module/cartas-corte" icon="Crown" label="Cartas da Corte" />
-          <NavItem to="/module/combinacoes" icon="GitBranch" label="Combinações" />
-          <NavItem to="/module/tiragens" icon="Layout" label="Tiragens" />
-          <NavItem to="/module/espiritualidade" icon="Moon" label="Tarô e Espiritualidade" />
-          <NavItem to="/module/mesa-taro" icon="SquareStack" label="Como Montar Mesa" />
-          <NavItem to="/module/leitura-aplicada" icon="Target" label="Leitura Aplicada" />
+          <NavItem to="/module/cartas-corte" icon="rainha" label="Cartas da Corte" />
+          <NavItem to="/module/combinacoes" icon="mago" label="Combinações" />
+          <NavItem to="/module/tiragens" icon="trilhas" label="Tiragens" />
+          <NavItem to="/module/espiritualidade" icon="sacerdotisa" label="Tarô e Espiritualidade" />
+          <NavItem to="/module/mesa-taro" icon="mundo" label="Como Montar Mesa" />
+          <NavItem to="/module/leitura-aplicada" icon="justica" label="Leitura Aplicada por Tema" />
           <NavItem to="/module/pratica" icon="Sparkles" label="Prática Guiada" />
-          <NavItem to="/module/trabalhar-taro" icon="Briefcase" label="Trabalhar com Tarô" />
+          <NavItem to="/module/trabalhar-taro" icon="premium" label="Como Trabalhar com Tarô" />
 
           {/* BLOCO 3 — Conta */}
           <SectionTitle>Conta</SectionTitle>
