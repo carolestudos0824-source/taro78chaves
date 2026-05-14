@@ -417,16 +417,16 @@ const TiragensLessonPage = () => {
                 Pular para Quiz →
               </button>
             </div>
-            <div className="rounded-xl p-6" style={{ background: "hsl(340 42% 28% / 0.04)", border: "1px solid hsl(340 42% 28% / 0.18)" }}>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm" style={{
+            <div className="rounded-[2rem] p-10" style={{ background: "hsl(340 42% 28% / 0.04)", border: "1px solid hsl(340 42% 28% / 0.18)" }}>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="w-10 h-10 rounded-full flex items-center justify-center text-lg shadow-sm" style={{
                   background: "hsl(340 42% 28% / 0.08)", border: "1px solid hsl(340 42% 28% / 0.20)", color: "hsl(340 42% 26%)",
                 }}>🎴</span>
-                <span className="text-xs font-heading tracking-wider uppercase" style={{ color: "hsl(340 42% 26%)" }}>
-                  {lesson.exercise.type === "writing" ? "Escrita" : lesson.exercise.type === "observation" ? "Observação" : lesson.exercise.type === "practice" ? "Prática" : "Reflexão"}
+                <span className="text-sm font-heading font-bold tracking-wider uppercase" style={{ color: "hsl(340 42% 26%)" }}>
+                  {lesson.exercise.type === "writing" ? "Exercício de Escrita" : lesson.exercise.type === "observation" ? "Exercício de Observação" : lesson.exercise.type === "practice" ? "Exercício de Prática" : "Exercício de Reflexão"}
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "hsl(230 20% 25%)" }}>
+              <p className="text-[17px] md:text-[18px] leading-relaxed font-medium" style={{ color: "hsl(230 20% 25%)" }}>
                 {lesson.exercise.instruction}
               </p>
             </div>
@@ -447,7 +447,7 @@ const TiragensLessonPage = () => {
               <span className="text-xs font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(36 40% 42%)" }}>Aprofundamento</span>
               <button onClick={handleStartQuiz} className="text-xs font-heading tracking-wider" style={{ color: "hsl(36 45% 58%)" }}>Ir ao Quiz →</button>
             </div>
-            <div className="rounded-xl p-6" style={{ background: "hsl(38 30% 95% / 0.85)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
+            <div className="rounded-[2rem] p-10 md:p-12 shadow-sm" style={{ background: "hsl(38 30% 95% / 0.85)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
               {lesson.deepDive.split("\n\n").map((p, i) => (
                 <div key={i} className="mb-4 last:mb-0">
                   {renderContent(p)}
@@ -472,11 +472,11 @@ const TiragensLessonPage = () => {
               }}>Quiz de Fixação</h2>
               <p className="text-xs" style={{ color: "hsl(230 10% 45%)" }}>Pergunta {quizIndex + 1} de {lesson.quiz.length}</p>
             </div>
-            <div className="rounded-xl p-6" style={{ background: "hsl(38 30% 95% / 0.85)", border: "1px solid hsl(36 45% 58% / 0.15)", boxShadow: "0 4px 20px hsl(36 45% 58% / 0.06)" }}>
-              <p className="font-heading text-sm tracking-wide mb-5" style={{ color: "hsl(230 25% 15%)" }}>
+            <div className="rounded-[2rem] p-8 md:p-12 shadow-lg" style={{ background: "hsl(38 30% 95% / 0.85)", border: "1px solid hsl(36 45% 58% / 0.15)", boxShadow: "0 10px 40px hsl(36 45% 58% / 0.08)" }}>
+              <p className="font-heading text-lg md:text-xl font-bold tracking-tight mb-8" style={{ color: "hsl(230 25% 15%)" }}>
                 {lesson.quiz[quizIndex].question}
               </p>
-              <div className="space-y-2.5">
+              <div className="space-y-3.5">
                 {lesson.quiz[quizIndex].options.map((opt, i) => {
                   const isCorrect = i === lesson.quiz[quizIndex].correctIndex;
                   const isSelected = selectedAnswer === i;
@@ -490,15 +490,15 @@ const TiragensLessonPage = () => {
                   }
                   return (
                     <button key={i} onClick={() => handleAnswer(i)} disabled={selectedAnswer !== null}
-                      className="w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-200" style={optStyle}>
+                      className="w-full text-left px-6 py-4 rounded-xl text-base font-medium transition-all duration-200" style={optStyle}>
                       {opt}
                     </button>
                   );
                 })}
               </div>
               {showExplanation && (
-                <div className="mt-4 p-4 rounded-lg" style={{ background: "hsl(36 45% 58% / 0.06)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
-                  <p className="text-xs leading-relaxed" style={{ color: "hsl(230 20% 25% / 0.80)" }}>
+                <div className="mt-8 p-6 rounded-2xl" style={{ background: "hsl(36 45% 58% / 0.06)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
+                  <p className="text-[15px] leading-relaxed font-medium" style={{ color: "hsl(230 20% 25% / 0.90)" }}>
                     {lesson.quiz[quizIndex].explanation}
                   </p>
                   <button onClick={handleNextQuestion} className="mt-3 px-6 py-2 rounded-full font-heading text-xs tracking-wider transition-all duration-300 hover:scale-105" style={{
