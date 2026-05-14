@@ -227,10 +227,10 @@ const TiragensLessonPage = () => {
                   </div>
 
                   <div className="p-6 bg-white space-y-3">
-                    <div className="flex items-center gap-2 mb-4 px-2">
-                       <span className="h-px flex-1 bg-[#C8A66A]/20" />
+                    <div className="flex flex-col items-center gap-1 mb-4 px-2">
                        <span className="text-[9px] font-heading font-black tracking-widest uppercase text-[#C8A66A]">Legenda das Posições</span>
-                       <span className="h-px flex-1 bg-[#C8A66A]/20" />
+                       <span className="text-[8px] font-body font-black uppercase tracking-[0.2em] text-[#5B1F3D]/30">Siga a ordem numérica para a leitura</span>
+                       <div className="h-px w-12 bg-[#C8A66A]/20 mt-1" />
                     </div>
                     {lesson.layoutDiagram.positions.map((pos, i) => (
                       <div key={i} className="flex gap-4 p-4 rounded-2xl bg-[#FAF5EF]/30 border border-[#C8A66A]/10 transition-all hover:bg-[#FAF5EF]/60">
