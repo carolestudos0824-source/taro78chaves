@@ -137,7 +137,7 @@ const ModulesPage = () => {
                 background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
                 boxShadow: "0 10px 25px rgba(91, 31, 61, 0.25)"
               }}>
-                <SquareStack className="w-7 h-7 text-[#C8A66A]" />
+                <TarotIcon name="SquareStack" className="w-7 h-7 text-[#C8A66A]" />
               </div>
               <div className="flex flex-col">
                 <span className="text-[11px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Progresso Geral</span>
