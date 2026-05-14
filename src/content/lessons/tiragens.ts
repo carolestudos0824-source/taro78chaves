@@ -942,7 +942,7 @@ Esta tiragem NÃO é sobre o mundo externo — é sobre a paisagem interna. Leia
 
 **1. A leitura-promessa.** "As cartas dizem que ele volta em 3 meses." Isso não é leitura — é projeção do desejo da consulente, vestido de tarô. Nenhuma carta promete o futuro de outra pessoa.
 
-**2. A leitura-vigilância.** Tirar cartas para saber "o que ela está sentindo agora", "com quem ele está", "se está pensando em mim". Isso invade a privacidade de quem nem está na sala. Ético é olhar o vínculo, não espionar a pessoa.
+**2. O olhar que tenta controlar.** Evite perguntas que tentam controlar ou decifrar a outra pessoa. Em leituras afetivas, o melhor caminho é observar o vínculo, a sua postura e o que pode trazer mais clareza emocional.
 
 **3. A leitura-dependência.** Consultar todo dia sobre a mesma pessoa. O tarô vira muleta para não sentir a ausência. Aí ele deixa de ser ferramenta e vira fuga.
 
