@@ -749,6 +749,22 @@ No domingo, tire 7 cartas para a semana. A cada dia, releia a carta daquele dia 
         { label: "Domingo", description: "Energia dominante do dia", x: 75, y: 70 },
       ],
     },
+    examples: [
+      {
+        spread: "Leitura Semanal",
+        question: "Como será minha energia nesta semana?",
+        cards: [
+          { position: "Segunda", card: "2 de Copas" },
+          { position: "Terça", card: "A Torre" },
+          { position: "Quarta", card: "3 de Ouros" },
+          { position: "Quinta", card: "A Temperança" },
+          { position: "Sexta", card: "9 de Copas" },
+          { position: "Sábado", card: "O Louco" },
+          { position: "Domingo", card: "A Estrela" },
+        ],
+        interpretation: "A semana começa com boa conexão afetiva (2 de Copas), mas a terça-feira traz uma ruptura necessária ou imprevisto (A Torre). O meio da semana pede foco no trabalho e colaboração (3 de Ouros) com muita paciência e moderação (A Temperança). O final de semana promete muita satisfação pessoal (9 de Copas), um novo começo livre e espontâneo (O Louco) e termina com renovada esperança e calma (A Estrela).",
+      }
+    ],
     exercise: {
       instruction: "Faça uma Leitura Semanal de 7 cartas para esta semana. Anote cada carta e, sem pensar demais, escreva uma palavra-chave para cada dia (ex: 'paciência', 'ação', 'surpresa'). A cada noite, volte e anote o que aconteceu. No final da semana, compare suas previsões com a realidade. Isso treina calibragem — a habilidade de ler energias com precisão crescente.",
       type: "practice",

@@ -211,12 +211,13 @@ const TiragensLessonPage = () => {
                           style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
                         >
                           {/* Card Placeholder Visual */}
-                          <div className="w-full h-full rounded-lg border-2 border-[#C8A66A]/40 bg-[#FAF5EF] shadow-md flex items-center justify-center relative group-hover:scale-105 transition-transform overflow-hidden">
-                             <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#5B1F3D] to-transparent" />
-                             <span className="font-heading text-xl md:text-2xl font-black text-[#5B1F3D] z-10">{i + 1}</span>
+                          <div className="w-full h-full rounded-lg border-2 border-[#C8A66A]/60 bg-white shadow-[0_10px_25px_-5px_rgba(91,31,61,0.15)] flex items-center justify-center relative group-hover:scale-110 transition-all duration-500 overflow-hidden ring-4 ring-[#C8A66A]/5">
+                             <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#5B1F3D] to-transparent" />
+                             <div className="absolute top-1 left-1 right-1 bottom-1 border border-[#C8A66A]/10 rounded-md pointer-events-none" />
+                             <span className="font-heading text-2xl md:text-3xl font-black text-[#5B1F3D] drop-shadow-sm z-10">{i + 1}</span>
                           </div>
                           <div className="mt-2 text-center">
-                             <span className="text-[8px] md:text-[9px] font-heading font-black uppercase tracking-tighter text-[#5B1F3D]/40 leading-none block px-1 truncate">
+                             <span className="text-[7px] md:text-[9px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]/60 leading-none block px-1 truncate">
                                {pos.label}
                              </span>
                           </div>
@@ -226,10 +227,10 @@ const TiragensLessonPage = () => {
                   </div>
 
                   <div className="p-6 bg-white space-y-3">
-                    <div className="flex items-center gap-2 mb-4 px-2">
-                       <span className="h-px flex-1 bg-[#C8A66A]/20" />
+                    <div className="flex flex-col items-center gap-1 mb-4 px-2">
                        <span className="text-[9px] font-heading font-black tracking-widest uppercase text-[#C8A66A]">Legenda das Posições</span>
-                       <span className="h-px flex-1 bg-[#C8A66A]/20" />
+                       <span className="text-[8px] font-body font-black uppercase tracking-[0.2em] text-[#5B1F3D]/30">Siga a ordem numérica para a leitura</span>
+                       <div className="h-px w-12 bg-[#C8A66A]/20 mt-1" />
                     </div>
                     {lesson.layoutDiagram.positions.map((pos, i) => (
                       <div key={i} className="flex gap-4 p-4 rounded-2xl bg-[#FAF5EF]/30 border border-[#C8A66A]/10 transition-all hover:bg-[#FAF5EF]/60">
