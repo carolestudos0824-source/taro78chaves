@@ -180,7 +180,7 @@ export function CinematicIntro({
               {displayed}
               {!typingDone && (
                 <span className="inline-block w-0.5 h-4 ml-0.5 align-middle"
-                  style={{ background: "hsl(36 45% 58%)", animation: "pulse-gold 1s ease-in-out infinite" }}
+                  style={{ background: "hsl(36 45% 58%)" }}
                 />
               )}
             </p>
