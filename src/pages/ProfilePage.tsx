@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
-import { ArrowLeft, Flame, Star, Trophy, Book, ChevronRight, KeyRound, LogOut, Type, MessageSquare, Shield, UserRound, Sparkles } from "lucide-react";
+import { ArrowLeft, ChevronRight, LogOut, Type, MessageSquare, Link as LucideLink } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import { useIsAdmin } from "@/hooks/use-admin";
 import { useProgress } from "@/hooks/use-progress";
 import { usePremium } from "@/hooks/use-premium";
@@ -103,13 +104,13 @@ const ProfilePage = () => {
       <main className="max-w-lg mx-auto px-6 -mt-12 relative z-20 space-y-8">
         <div className="grid grid-cols-3 gap-4">
           {[
-            { label: "Ritual", val: progress.streak, icon: Flame, color: "#5B1F3D" },
-            { label: "Portais", val: completedCount, icon: KeyRound, color: "#C8A66A" },
-            { label: "Insignias", val: progress.badges.filter(b => b.earned).length, icon: Sparkles, color: "#5B1F3D" },
+            { label: "Ritual", val: progress.streak, icon: "ritual", color: "#5B1F3D" },
+            { label: "Portais", val: completedCount, icon: "premium", color: "#C8A66A" },
+            { label: "Insignias", val: progress.badges.filter(b => b.earned).length, icon: "Sparkles", color: "#5B1F3D" },
           ].map(s => (
             <div key={s.label} className="bg-white border-2 border-[#DCCFC2]/30 p-5 rounded-[1.5rem] text-center shadow-lg transform transition-transform hover:scale-[1.02]">
               <div className="w-8 h-8 mx-auto mb-2 bg-[#FAF5EF] rounded-lg flex items-center justify-center">
-                <s.icon className="w-4 h-4" style={{ color: s.color }} />
+                <TarotIcon name={s.icon} className="w-4 h-4" color={s.color} />
               </div>
               <div className="font-heading text-xl font-black text-[#5B1F3D]">{s.val}</div>
               <div className="text-[9px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">{s.label}</div>
@@ -124,7 +125,7 @@ const ProfilePage = () => {
                 <p className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/80">
                   {isAdmin ? "O Oráculo" : "Seu Acesso"}
                 </p>
-                {isPremium && <KeyRound className="w-3.5 h-3.5 text-[#C8A66A]" />}
+                {isPremium && <TarotIcon name="premium" className="w-3.5 h-3.5 text-[#C8A66A]" />}
               </div>
               <h3 className="font-heading text-xl font-black text-[#5B1F3D]">
                 {isAdmin ? "Acesso Total" : (
@@ -193,7 +194,7 @@ const ProfilePage = () => {
         <div className="space-y-3">
           <button onClick={() => navigate("/minha-jornada")} className="w-full flex items-center justify-between p-6 rounded-2xl bg-white border-2 border-[#DCCFC2]/40 group active:scale-[0.98] transition-all shadow-md">
             <div className="flex items-center gap-4">
-              <Book className="w-6 h-6 text-[#C8A66A]" />
+              <TarotIcon name="jornada" className="w-6 h-6 text-[#C8A66A]" />
               <div className="text-left">
                 <p className="font-heading text-base font-black text-[#5B1F3D]">Caderno da Jornada</p>
                 <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/70 leading-none">Suas reflexões rituais</p>
@@ -205,7 +206,7 @@ const ProfilePage = () => {
           {isAdmin && (
             <button onClick={() => navigate("/admin")} className="w-full flex items-center justify-between p-6 rounded-2xl bg-[#5B1F3D] border-2 border-[#C8A66A] text-white group shadow-xl">
               <div className="flex items-center gap-4">
-                <Shield className="w-6 h-6 text-[#C8A66A]" />
+                <TarotIcon name="privacidade" className="w-6 h-6 text-[#C8A66A]" />
                 <p className="font-heading text-base font-black tracking-tight">Painel Administrativo</p>
               </div>
               <ChevronRight className="w-5 h-5 text-[#C8A66A]" />

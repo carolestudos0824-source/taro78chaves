@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Sparkles, BookOpen, Check, Stars, ChevronRight } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import PremiumGate from "@/components/PremiumGate";
 import { XPBar } from "@/components/XPBar";
 import { StreakCounter } from "@/components/StreakCounter";
@@ -260,16 +261,18 @@ const Index = () => {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { icon: "◈", label: "Essência e arquétipos" },
-              { icon: "◎", label: "Símbolos e significados" },
-              { icon: "☀", label: "Luz e sombra" },
-              { icon: "♡", label: "Amor, trabalho e espírito" },
+              { icon: "Stars", label: "Essência e arquétipos" },
+              { icon: "Sparkles", label: "Símbolos e significados" },
+              { icon: "sol", label: "Luz e sombra" },
+              { icon: "enamorados", label: "Amor, trabalho e espírito" },
             ].map((item) => (
               <div key={item.label} className="rounded-[1.5rem] p-7 text-center transition-all hover:bg-white border border-[#C8A66A25] group shadow-sm hover:shadow-xl" style={{
                 background: "rgba(255, 255, 255, 0.85)",
                 backdropFilter: "blur(12px)",
               }}>
-                <span className="text-3xl block mb-4 transition-transform group-hover:scale-110 duration-500" style={{ color: "#C8A66A" }}>{item.icon}</span>
+                <span className="block mb-4 transition-transform group-hover:scale-110 duration-500">
+                  <TarotIcon name={item.icon} className="w-8 h-8 mx-auto" color="#C8A66A" />
+                </span>
                 <span className="text-[12px] font-heading tracking-wide uppercase leading-snug block font-black" style={{ color: "#5B1F3D" }}>
                   {item.label}
                 </span>

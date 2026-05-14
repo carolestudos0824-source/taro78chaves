@@ -2,39 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { 
   X, 
-  Home, 
-  Map, 
-  Flame, 
-  Play, 
-  Compass, 
-  Eye, 
-  Stars, 
-  Layers, 
-  Droplets, 
-  Swords, 
-  Gem, 
-  Crown, 
-  GitBranch, 
-  Layout, 
-  Moon, 
-  SquareStack, 
-  Target, 
-  Sparkles, 
-  Briefcase, 
-  UserRound, 
-  KeyRound, 
-  MessageCircle, 
-  Headphones, 
-  ShieldCheck, 
-  FileText, 
-  UserX, 
-  ClipboardCheck,
   ChevronRight,
   LogOut
 } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import { useIsAdmin } from "@/hooks/use-admin";
 import { useProgress } from "@/hooks/use-progress";
+import { TarotIcon, TarotIconType } from "./TarotIcon";
+
 
 interface GlobalMenuProps {
   isOpen: boolean;
@@ -57,7 +32,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
 
   // Removido if (!isOpen) return null para permitir animações CSS
 
-  const NavItem = ({ to, icon: Icon, label, badge }: { to: string; icon: any; label: string; badge?: string }) => {
+  const NavItem = ({ to, icon, label, badge }: { to: string; icon: TarotIconType | string; label: string; badge?: string }) => {
     const isActive = location.pathname === to;
     return (
       <Link
@@ -72,7 +47,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
           <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
             isActive ? "bg-white/20" : "bg-[#FAF5EF] border border-[#C8A66A]/20"
           }`}>
-            <Icon className={`w-5 h-5 ${isActive ? "text-white" : "text-[#C8A66A]"}`} />
+            <TarotIcon name={icon} className={`w-5 h-5 ${isActive ? "text-white" : "text-[#C8A66A]"}`} />
           </div>
           <span className={`text-[13px] font-heading font-black tracking-tight ${isActive ? "text-white" : "text-[#5B1F3D]"}`}>
             {label}
@@ -129,53 +104,53 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
         <div className="flex-1 overflow-y-auto px-4 py-6 space-y-2 pb-32 scrollbar-hide overscroll-contain">
           {/* BLOCO 1 — Jornada */}
           <SectionTitle>Jornada</SectionTitle>
-          <NavItem to="/app" icon={Home} label="Jornada Principal" />
-          <NavItem to="/trilhas" icon={Map} label="Mapa da Formação" />
-          <NavItem to="/desafios" icon={Flame} label="Ritual Diário" />
+          <NavItem to="/app" icon="jornada" label="Jornada Principal" />
+          <NavItem to="/trilhas" icon="formacao" label="Mapa da Formação" />
+          <NavItem to="/desafios" icon="ritual" label="Ritual Diário" />
           <NavItem 
             to={`/lesson/${currentArcanoId}`} 
-            icon={Play} 
+            icon="proximo" 
             label="Continuar Jornada" 
             badge="Agora" 
           />
 
           {/* BLOCO 2 — Formação */}
           <SectionTitle>Formação</SectionTitle>
-          <NavItem to="/module/fundamentos" icon={Compass} label="Fundamentos do Tarô" />
-          <NavItem to="/module/leitura-simbolica" icon={Eye} label="Leitura Simbólica" />
-          <NavItem to="/module/arcanos-maiores" icon={Stars} label="Arcanos Maiores" />
-          <NavItem to="/module/arquitetura-menores" icon={Layers} label="Arquitetura Menores" />
-          <NavItem to="/module/copas" icon={Droplets} label="Naipe de Copas" />
-          <NavItem to="/module/paus" icon={Flame} label="Naipe de Paus" />
-          <NavItem to="/module/espadas" icon={Swords} label="Naipe de Espadas" />
-          <NavItem to="/module/ouros" icon={Gem} label="Naipe de Ouros" />
-          <NavItem to="/module/cartas-corte" icon={Crown} label="Cartas da Corte" />
-          <NavItem to="/module/combinacoes" icon={GitBranch} label="Combinações" />
-          <NavItem to="/module/tiragens" icon={Layout} label="Tiragens" />
-          <NavItem to="/module/espiritualidade" icon={Moon} label="Tarô e Espiritualidade" />
-          <NavItem to="/module/mesa-taro" icon={SquareStack} label="Como Montar Mesa" />
-          <NavItem to="/module/leitura-aplicada" icon={Target} label="Leitura Aplicada" />
-          <NavItem to="/module/pratica" icon={Sparkles} label="Prática Guiada" />
-          <NavItem to="/module/trabalhar-taro" icon={Briefcase} label="Trabalhar com Tarô" />
+          <NavItem to="/module/fundamentos" icon="Compass" label="Fundamentos do Tarô" />
+          <NavItem to="/module/leitura-simbolica" icon="Eye" label="Leitura Simbólica" />
+          <NavItem to="/module/arcanos-maiores" icon="Stars" label="Arcanos Maiores" />
+          <NavItem to="/module/arquitetura-menores" icon="Layers" label="Arquitetura Menores" />
+          <NavItem to="/module/copas" icon="copas" label="Naipe de Copas" />
+          <NavItem to="/module/paus" icon="paus" label="Naipe de Paus" />
+          <NavItem to="/module/espadas" icon="espadas" label="Naipe de Espadas" />
+          <NavItem to="/module/ouros" icon="ouros" label="Naipe de Ouros" />
+          <NavItem to="/module/cartas-corte" icon="Crown" label="Cartas da Corte" />
+          <NavItem to="/module/combinacoes" icon="GitBranch" label="Combinações" />
+          <NavItem to="/module/tiragens" icon="Layout" label="Tiragens" />
+          <NavItem to="/module/espiritualidade" icon="Moon" label="Tarô e Espiritualidade" />
+          <NavItem to="/module/mesa-taro" icon="SquareStack" label="Como Montar Mesa" />
+          <NavItem to="/module/leitura-aplicada" icon="Target" label="Leitura Aplicada" />
+          <NavItem to="/module/pratica" icon="Sparkles" label="Prática Guiada" />
+          <NavItem to="/module/trabalhar-taro" icon="Briefcase" label="Trabalhar com Tarô" />
 
           {/* BLOCO 3 — Conta */}
           <SectionTitle>Conta</SectionTitle>
-          <NavItem to="/perfil" icon={UserRound} label="Meu Perfil" />
-          <NavItem to="/premium" icon={KeyRound} label="Plano Premium" />
-          <NavItem to="/feedback" icon={MessageCircle} label="Enviar Feedback" />
-          <NavItem to="/suporte" icon={Headphones} label="Suporte Técnico" />
+          <NavItem to="/perfil" icon="perfil" label="Meu Perfil" />
+          <NavItem to="/premium" icon="premium" label="Plano Premium" />
+          <NavItem to="/feedback" icon="feedback" label="Enviar Feedback" />
+          <NavItem to="/suporte" icon="suporte" label="Suporte Técnico" />
 
           {/* BLOCO 4 — Legal */}
           <SectionTitle>Legal</SectionTitle>
-          <NavItem to="/privacidade" icon={ShieldCheck} label="Privacidade" />
-          <NavItem to="/termos" icon={FileText} label="Termos de Uso" />
-          <NavItem to="/excluir-conta" icon={UserX} label="Excluir Conta" />
+          <NavItem to="/privacidade" icon="privacidade" label="Privacidade" />
+          <NavItem to="/termos" icon="termos" label="Termos de Uso" />
+          <NavItem to="/excluir-conta" icon="excluir-conta" label="Excluir Conta" />
 
           {/* BLOCO 5 — Auditoria interna */}
           {(isAdmin || process.env.NODE_ENV === 'development') && (
             <>
               <SectionTitle>Auditoria</SectionTitle>
-              <NavItem to="/qa-rotas" icon={ClipboardCheck} label="Auditoria de Rotas" />
+              <NavItem to="/qa-rotas" icon="auditoria" label="Auditoria de Rotas" />
             </>
           )}
 

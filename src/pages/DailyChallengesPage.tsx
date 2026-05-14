@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Check, ChevronRight, Flame, Gift, Star, X, Scroll, Sparkles, HelpCircle, Eye, Layers, BookOpen as BookOpenIcon, Key } from "lucide-react";
+import { ArrowLeft, ChevronRight, Gift, X, Scroll } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import { useProgress } from "@/hooks/use-progress";
 import { useArcanosList, useSymbolsContent } from "@/hooks/use-content";
 import {
@@ -173,7 +174,7 @@ const DailyChallengesPage = () => {
               <div className="w-16 h-16 rounded-[1.6rem] flex items-center justify-center border-2 border-[#C8A66A40] shadow-xl transform -rotate-3" style={{
                 background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
               }}>
-                <Flame className={`w-8 h-8 text-[#C8A66A] ${allDone ? "animate-pulse" : ""}`} />
+                <TarotIcon name="ritual" className={`w-8 h-8 text-[#C8A66A] ${allDone ? "animate-pulse" : ""}`} />
               </div>
               <div className="flex flex-col">
                 <span className="text-[10px] md:text-[11px] font-heading font-black tracking-[0.35em] text-[#C8A66A] uppercase mb-1">
@@ -187,7 +188,7 @@ const DailyChallengesPage = () => {
             <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl border-2 border-[#C8A66A20] shadow-sm" style={{
               background: "linear-gradient(135deg, #FAF5EF, #FFFFFF)",
             }}>
-              <Star className="w-5 h-5 text-[#C8A66A] fill-[#C8A66A20]" />
+              <TarotIcon name="estrela" className="w-5 h-5" color="#C8A66A" />
               <span className="text-[14px] md:text-[16px] font-heading font-black text-[#5B1F3D]">
                 {totalXPEarned} XP
               </span>
@@ -222,17 +223,7 @@ const DailyChallengesPage = () => {
 
           <div className="grid gap-6">
             {challenges.map((ch) => {
-              const IconComponent = (() => {
-                switch (ch.icon) {
-                  case "scroll": return Scroll;
-                  case "sparkles": return Sparkles;
-                  case "help-circle": return HelpCircle;
-                  case "eye": return Eye;
-                  case "layers": return Layers;
-                  case "book-open": return BookOpenIcon;
-                  default: return Star;
-                }
-              })();
+              const iconName = ch.icon;
 
               return (
                 <button
@@ -255,9 +246,9 @@ const DailyChallengesPage = () => {
                         : "bg-[#FAF5EF] border-[#C8A66A20] text-[#5B1F3D] group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D] group-hover:text-[#FAF5EF] group-hover:shadow-[0_15px_40px_rgba(91,31,61,0.3)] group-hover:-rotate-3"
                     }`}>
                       {ch.completed ? (
-                        <Check className="w-9 h-9 md:w-11 md:h-11" strokeWidth={4} />
+                        <TarotIcon name="concluido" className="w-9 h-9 md:w-11 md:h-11" strokeWidth={4} />
                       ) : (
-                        <IconComponent className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
+                        <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
                       )}
                     </div>
 
@@ -301,7 +292,7 @@ const DailyChallengesPage = () => {
             <div className="w-16 h-16 rounded-3xl flex items-center justify-center border-2 border-[#C8A66A] shadow-xl mx-auto mb-6 transform rotate-3" style={{
               background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
             }}>
-              <Sparkles className="w-8 h-8 text-[#C8A66A] animate-pulse" />
+              <TarotIcon name="Sparkles" className="w-8 h-8 text-[#C8A66A] animate-pulse" />
             </div>
             <h3 className="font-heading text-2xl font-black tracking-tight mb-2" style={{ color: "#5B1F3D" }}>
               Ritual concluído!
@@ -312,7 +303,7 @@ const DailyChallengesPage = () => {
             <div className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-[#C8A66A20]" style={{
               background: "rgba(250, 245, 239, 0.8)",
             }}>
-              <Flame className="w-5 h-5 text-[#5B1F3D]" />
+              <TarotIcon name="ritual" className="w-5 h-5 text-[#5B1F3D]" />
               <p className="font-heading text-[11px] font-black uppercase tracking-[0.2em] text-[#5B1F3D]">
                 Sequência: {progress.streak} {progress.streak === 1 ? "dia" : "dias"}
               </p>
@@ -359,7 +350,7 @@ const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) =>
             <div className="w-16 h-16 rounded-[1.5rem] flex items-center justify-center border-2 border-[#C8A66A40] shadow-2xl rotate-3" style={{
               background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
             }}>
-               <Sparkles className="w-8 h-8 text-[#C8A66A] animate-pulse" />
+               <TarotIcon name="Sparkles" className="w-8 h-8 text-[#C8A66A] animate-pulse" />
             </div>
             <div className="flex flex-col">
               <span className="text-[11px] font-heading font-black tracking-[0.35em] text-[#C8A66A] uppercase mb-1">Desafio Sagrado</span>
@@ -433,7 +424,7 @@ const CartaDoDiaContent = ({ data, onComplete }: { data: CartaDoDia | null; onCo
       </p>
       <div className="rounded-[2rem] p-6 bg-white border-2 border-[#C8A66A]/10 shadow-sm relative overflow-hidden group">
         <div className="absolute top-0 right-0 p-3 opacity-10">
-          <Sparkles className="w-8 h-8 text-[#5B1F3D]" />
+          <TarotIcon name="Sparkles" className="w-8 h-8 text-[#5B1F3D]" />
         </div>
         <p className="font-body text-[13px] font-bold italic text-[#5B1F3D] leading-relaxed relative z-10">
           ✦ {data.reflection}
@@ -500,7 +491,7 @@ const PerguntasContent = ({ data, onComplete }: { data: PerguntasDoDia; onComple
     return (
       <div className="text-center space-y-6 animate-fade-in py-6">
         <div className="w-16 h-16 rounded-2xl bg-[#5B1F3D]/5 flex items-center justify-center mx-auto border-2 border-[#C8A66A]/20">
-          <Sparkles className="w-8 h-8 text-[#C8A66A]" />
+          <TarotIcon name="Sparkles" className="w-8 h-8 text-[#C8A66A]" />
         </div>
         <div className="space-y-1">
           <h3 className="font-heading text-2xl font-black text-[#5B1F3D]">

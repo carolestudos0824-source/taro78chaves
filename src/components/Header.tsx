@@ -1,5 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { KeyRound, Menu, ArrowLeft } from "lucide-react";
+import { Menu, ArrowLeft } from "lucide-react";
+import { TarotIcon } from "./TarotIcon";
 import { StreakCounter } from "@/components/StreakCounter";
 import { XPBar } from "@/components/XPBar";
 import { useState, useEffect, useRef } from "react";
@@ -102,7 +103,7 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
               }`}
               title="Meu Perfil"
             >
-              <KeyRound className={`${isCompact ? "w-4 h-4" : "w-5 h-5"} text-[#C8A66A] group-hover:rotate-12 transition-transform`} />
+              <TarotIcon name="perfil" className={`${isCompact ? "w-4 h-4" : "w-5 h-5"} text-[#C8A66A] group-hover:rotate-12 transition-transform`} />
             </button>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { ArrowLeft, Lock, Check, ChevronRight, BookOpen, Hash, Crown, Sparkles } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import {
   type Naipe,
   NAIPES,
@@ -81,8 +82,8 @@ const NaipePage = () => {
   const completedCount = cards.filter((c) => isCardCompleted(c.id)).length;
   const progressPct = Math.round((completedCount / 14) * 100);
 
-  const courtIcon = (pos: string) =>
-    pos === "pajem" ? "♟" : pos === "cavaleiro" ? "♞" : pos === "rainha" ? "♛" : "♚";
+  const courtIcon = (pos: string) => pos; // Returns "pajem", "cavaleiro", "rainha", "rei"
+
 
   const renderCardRow = (card: typeof cards[0], globalIdx: number, delay: number) => {
     const completed = isCardCompleted(card.id);
@@ -135,13 +136,17 @@ const NaipePage = () => {
               background: "rgba(220, 207, 194, 0.2)",
             }}>
               {completed ? (
-                <Check className="w-7 h-7" style={{ color: "#5B1F3D" }} strokeWidth={4} />
+                <TarotIcon name="concluido" className="w-7 h-7" color="#5B1F3D" strokeWidth={4} />
               ) : unlocked ? (
-                <span className="text-lg font-heading font-black" style={{ color: "#5B1F3D" }}>
-                  {isNum ? card.posicao : courtIcon(card.posicao as string)}
-                </span>
+                isNum ? (
+                  <span className="text-lg font-heading font-black" style={{ color: "#5B1F3D" }}>
+                    {card.posicao}
+                  </span>
+                ) : (
+                  <TarotIcon name={courtIcon(card.posicao as string)} className="w-8 h-8" color="#5B1F3D" />
+                )
               ) : (
-                <Lock className="w-5 h-5" style={{ color: "#5B1F3D40" }} />
+                <TarotIcon name="bloqueado" className="w-5 h-5" color="#5B1F3D40" />
               )}
             </div>
             
@@ -265,9 +270,9 @@ const NaipePage = () => {
         {/* Study tools — Card style from /app */}
         <div className="grid grid-cols-3 gap-5 mb-16" style={{ animation: "fade-up 0.5s ease-out" }}>
           {[
-            { icon: <BookOpen className="w-6 h-6" />, label: "Introdução", desc: "Simbologia", onClick: () => navigate(`/naipe/${naipe}/intro`) },
-            { icon: <Hash className="w-6 h-6" />, label: "Números", desc: "Ás ao Dez", onClick: () => navigate("/numerologia") },
-            { icon: <Crown className="w-6 h-6" />, label: "Corte", desc: "Pajem ao Rei", onClick: () => navigate("/module/cartas-corte") },
+            { icon: "jornada", label: "Introdução", desc: "Simbologia", onClick: () => navigate(`/naipe/${naipe}/intro`) },
+            { icon: "progresso", label: "Números", desc: "Ás ao Dez", onClick: () => navigate("/numerologia") },
+            { icon: "rainha", label: "Corte", desc: "Pajem ao Rei", onClick: () => navigate("/module/cartas-corte") },
           ].map((tool) => (
             <button
               key={tool.label}
@@ -275,7 +280,9 @@ const NaipePage = () => {
               className="rounded-[2rem] p-6 text-center transition-all duration-500 hover:scale-[1.05] group bg-white border-2 border-[#C8A66A]/30 backdrop-blur-md shadow-lg hover:shadow-2xl hover:border-[#C8A66A]"
             >
               <div className="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 group-hover:bg-[#5B1F3D] group-hover:shadow-[0_10px_25px_rgba(91,31,61,0.3)] bg-[#FAF5EF] border-2 border-[#C8A66A]/20 shadow-inner">
-                <div className="group-hover:text-white transition-colors duration-500" style={{ color: "#5B1F3D" }}>{tool.icon}</div>
+                <div className="group-hover:text-white transition-colors duration-500" style={{ color: "#5B1F3D" }}>
+                  <TarotIcon name={tool.icon} className="w-6 h-6" />
+                </div>
               </div>
               <p className="font-heading text-[13px] tracking-[0.25em] uppercase mb-1 font-black" style={{ color: "#5B1F3D" }}>
                 {tool.label}

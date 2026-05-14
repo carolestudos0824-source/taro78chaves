@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { LockKeyhole, Key, CheckCircle2 } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import { useReducedMotionSafe } from "./useReducedMotionSafe";
 import { cardBreathe, auraAwaken, portalReveal, unlockGlow } from "./motion-presets";
 import { getArcanoTheme } from "./arcano-motion-themes";
@@ -117,7 +117,7 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
             
             {showLockIcon && (
               <div className="relative z-10 w-8 h-8 rounded-full bg-[#FAF5EF]/90 border border-[#C8A66A]/40 flex items-center justify-center shadow-lg backdrop-blur-sm">
-                <LockKeyhole className="w-4 h-4 text-[#C8A66A]" />
+                <TarotIcon name="bloqueado" className="w-4 h-4" color="#C8A66A" />
               </div>
             )}
           </div>
@@ -128,9 +128,9 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
             <motion.div
               initial={{ scale: 0, rotate: -20 }}
               animate={{ scale: 1, rotate: 0 }}
-              className="bg-green-500/90 text-white p-1 rounded-full shadow-lg"
+              className="bg-[#C8A66A]/90 text-white p-1 rounded-full shadow-lg"
             >
-              <CheckCircle2 className="w-4 h-4" />
+              <TarotIcon name="concluido" className="w-4 h-4" />
             </motion.div>
           </div>
         )}
@@ -159,7 +159,7 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
               transition={{ duration: 2, repeat: Infinity }}
               className="bg-[#C8A66A]/80 p-1.5 rounded-full backdrop-blur-sm"
             >
-              <Key className="w-3 h-3 text-white" />
+              <TarotIcon name="liberado" className="w-3 h-3 text-white" />
             </motion.div>
           </div>
         )}

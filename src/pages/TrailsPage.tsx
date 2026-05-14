@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ChevronRight, Lock, Check, Star, Sparkles, Crown, Compass, Key } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { useHeader } from "@/contexts/header-context";
@@ -27,7 +28,7 @@ const TRAIL_LEVELS: TrailLevel[] = [
     level: 1,
     title: "Iniciante",
     subtitle: "Desperte sua conexão com o Tarô",
-    icon: "🌱",
+    icon: "formacao",
     accentColor: "hsl(36 45% 58%)",
     accentBorder: "hsl(36 45% 58% / 0.30)",
     modules: ["fundamentos", "leitura-simbolica", "arcanos-maiores"],
@@ -38,7 +39,7 @@ const TRAIL_LEVELS: TrailLevel[] = [
     level: 2,
     title: "Intermediário",
     subtitle: "Domine todas as cartas e técnicas",
-    icon: "⚜️",
+    icon: "rainha",
     accentColor: "hsl(340 42% 30%)",
     accentBorder: "hsl(340 42% 30% / 0.30)",
     modules: ["arquitetura-menores", "copas", "paus", "espadas", "ouros", "cartas-corte"],
@@ -49,7 +50,7 @@ const TRAIL_LEVELS: TrailLevel[] = [
     level: 3,
     title: "Avançado",
     subtitle: "Domine combinações, tiragens e espiritualidade",
-    icon: "🔮",
+    icon: "Stars",
     accentColor: "hsl(280 35% 45%)",
     accentBorder: "hsl(280 35% 45% / 0.30)",
     modules: ["combinacoes", "tiragens", "espiritualidade", "mesa-taro"],
@@ -60,7 +61,7 @@ const TRAIL_LEVELS: TrailLevel[] = [
     level: 4,
     title: "Profissional",
     subtitle: "Torne-se uma leitora formada",
-    icon: "👑",
+    icon: "rei",
     accentColor: "hsl(36 50% 42%)",
     accentBorder: "hsl(36 50% 42% / 0.30)",
     modules: ["leitura-aplicada", "pratica", "trabalhar-taro"],
@@ -126,7 +127,7 @@ const TrailsPage = () => {
 
         <div className="text-center relative">
           <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[#C8A66A]/20">
-            <Compass className="w-12 h-12 animate-pulse-slow" />
+            <TarotIcon name="formacao" className="w-12 h-12 animate-pulse-slow" />
           </div>
           <div className="text-[11px] tracking-[0.4em] uppercase font-heading font-black mb-2 text-[#5B1F3D]">
             Mapa Curricular
@@ -220,7 +221,7 @@ const TrailsPage = () => {
                     opacity: unlocked ? 1 : 0.6,
                   }}
                 >
-                  {unlocked ? level.icon : <Lock className="w-6 h-6 text-[#5B1F3D40]" />}
+                  {unlocked ? <TarotIcon name={level.icon} className="w-7 h-7" /> : <TarotIcon name="bloqueado" className="w-6 h-6 text-[#5B1F3D40]" />}
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
@@ -312,14 +313,14 @@ const TrailsPage = () => {
                           border: "1px solid #DCCFC240",
                         }}>
                           {modComplete ? (
-                            <Check className="w-6 h-6" style={{ color: level.accentColor }} />
+                            <TarotIcon name="concluido" className="w-6 h-6" color={level.accentColor} />
                           ) : modCurrent ? (
                             <div className="relative">
-                              <Key className={`w-6 h-6 ${modId === nextGlobalModuleId ? 'text-[#C8A66A]' : 'text-[#5B1F3D50]'}`} />
-                              {modId === nextGlobalModuleId && <Sparkles className="w-3 h-3 absolute -top-1 -right-1 text-[#C8A66A] animate-pulse" />}
+                              <TarotIcon name="premium" className={`w-6 h-6 ${modId === nextGlobalModuleId ? 'text-[#C8A66A]' : 'text-[#5B1F3D50]'}`} />
+                              {modId === nextGlobalModuleId && <TarotIcon name="Sparkles" className="w-3 h-3 absolute -top-1 -right-1 text-[#C8A66A] animate-pulse" />}
                             </div>
                           ) : (
-                            <Lock className="w-5 h-5 text-[#5B1F3D20]" />
+                            <TarotIcon name="bloqueado" className="w-5 h-5 text-[#5B1F3D20]" />
                           )}
                         </div>
 

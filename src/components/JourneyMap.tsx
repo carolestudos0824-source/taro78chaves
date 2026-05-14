@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Lock, Check, Sparkles, Crown } from "lucide-react";
+import { TarotIcon } from "./TarotIcon";
 import { ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, FREE_ARCANO_IDS, getArcanoFull } from "@/lib/content";
 import type { UserProgress } from "@/lib/content";
 import { useAccess } from "@/hooks/use-access";
@@ -21,7 +22,7 @@ export function JourneyMap({ progress }: JourneyMapProps) {
       {/* Decorative top */}
       <div className="flex flex-col items-center mb-6 opacity-50">
         <div className="w-px h-10" style={{ background: "linear-gradient(to bottom, transparent, #C8A66A80)" }} />
-        <Sparkles className="w-4 h-4" style={{ color: "#C8A66A" }} />
+        <TarotIcon name="Sparkles" className="w-4 h-4" color="#C8A66A" />
       </div>
 
       {/* Central path line */}
@@ -131,16 +132,16 @@ export function JourneyMap({ progress }: JourneyMapProps) {
                   
                   {isCompleted && (
                     <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#C8A66A] flex items-center justify-center border border-white shadow-sm">
-                      <Check className="w-2.5 h-2.5 text-white" strokeWidth={4} />
+                      <TarotIcon name="concluido" className="w-2.5 h-2.5 text-white" strokeWidth={4} />
                     </div>
                   )}
                   
                   {!isUnlocked && !isFree && !isCompleted && !bypassLocks && (
                     <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-white flex items-center justify-center border border-[#DCCFC2] shadow-sm">
                       {isPremium ? (
-                        <Crown className="w-2.5 h-2.5 text-[#C8A66A]" />
+                        <TarotIcon name="rei" className="w-2.5 h-2.5" color="#C8A66A" />
                       ) : (
-                        <Lock className="w-2.5 h-2.5 text-[#5B1F3D40]" />
+                        <TarotIcon name="bloqueado" className="w-2.5 h-2.5" color="#5B1F3D40" />
                       )}
                     </div>
                   )}
@@ -169,7 +170,7 @@ export function JourneyMap({ progress }: JourneyMapProps) {
 
       {/* Decorative bottom */}
       <div className="flex flex-col items-center mt-8 opacity-42">
-        <Sparkles className="w-4 h-4" style={{ color: "#C8A66A" }} />
+        <TarotIcon name="Sparkles" className="w-4 h-4" color="#C8A66A" />
         <div className="w-px h-10" style={{ background: "linear-gradient(to top, transparent, #C8A66A80)" }} />
       </div>
     </div>

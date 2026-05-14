@@ -23,6 +23,7 @@ import {
   Stars,
   MapPin
 } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import { 
   MODULES_CATALOG as MODULES, 
   isModuleUnlocked, 
@@ -49,23 +50,23 @@ const CATEGORY_LABELS: Record<ModuleCategory, string> = {
   "professional": "Trilha 6 · Formação Profissional",
 };
 
-const MODULE_ICON_MAP: Record<string, any> = {
-  "fundamentos": Compass,
-  "leitura-simbolica": Eye,
-  "arcanos-maiores": Stars,
-  "arquitetura-menores": Layers,
-  "copas": Droplets,
-  "paus": Flame,
-  "espadas": Swords,
-  "ouros": Gem,
-  "cartas-corte": Crown,
-  "combinacoes": GitBranch,
-  "tiragens": Layout,
-  "espiritualidade": Moon,
-  "mesa-taro": SquareStack,
-  "leitura-aplicada": Target,
-  "pratica": Sparkles,
-  "trabalhar-taro": Briefcase,
+const MODULE_ICON_MAP: Record<string, string> = {
+  "fundamentos": "Compass",
+  "leitura-simbolica": "Eye",
+  "arcanos-maiores": "Stars",
+  "arquitetura-menores": "Layers",
+  "copas": "copas",
+  "paus": "paus",
+  "espadas": "espadas",
+  "ouros": "ouros",
+  "cartas-corte": "Crown",
+  "combinacoes": "GitBranch",
+  "tiragens": "Layout",
+  "espiritualidade": "Moon",
+  "mesa-taro": "SquareStack",
+  "leitura-aplicada": "Target",
+  "pratica": "Sparkles",
+  "trabalhar-taro": "Briefcase",
 };
 
 const ModulesPage = () => {
@@ -136,7 +137,7 @@ const ModulesPage = () => {
                 background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
                 boxShadow: "0 10px 25px rgba(91, 31, 61, 0.25)"
               }}>
-                <SquareStack className="w-7 h-7 text-[#C8A66A]" />
+                <TarotIcon name="SquareStack" className="w-7 h-7 text-[#C8A66A]" />
               </div>
               <div className="flex flex-col">
                 <span className="text-[11px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Progresso Geral</span>
@@ -189,7 +190,7 @@ const ModulesPage = () => {
               </div>
               <div className="flex flex-col items-center gap-3">
                 <div className="w-12 h-12 rounded-xl bg-[#FAF5EF] border border-[#C8A66A]/20 flex items-center justify-center group-hover:bg-[#5B1F3D] group-hover:text-white transition-all">
-                  <Flame className="w-6 h-6 text-[#C8A66A]" />
+                  <TarotIcon name="ritual" className="w-6 h-6 text-[#C8A66A]" />
                 </div>
                 <div className="space-y-1">
                   <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">Diário</span>
@@ -207,7 +208,7 @@ const ModulesPage = () => {
               </div>
               <div className="flex flex-col items-center gap-3">
                 <div className="w-12 h-12 rounded-xl bg-[#FAF5EF] border border-[#C8A66A]/20 flex items-center justify-center group-hover:bg-[#5B1F3D] group-hover:text-white transition-all">
-                  <Compass className="w-6 h-6 text-[#C8A66A]" />
+                  <TarotIcon name="formacao" className="w-6 h-6 text-[#C8A66A]" />
                 </div>
                 <div className="space-y-1">
                   <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">Formação</span>
@@ -229,12 +230,12 @@ const ModulesPage = () => {
             
             <div className="grid grid-cols-3 gap-4">
               {[
-                { id: "foundation", label: "Base", icon: Compass, color: "linear-gradient(135deg, #F3E6E0, #FAF5EF)" },
-                { id: "major-arcana", label: "Maiores", icon: Stars, color: "linear-gradient(135deg, #FAF5EF, #F5EBDE)" },
-                { id: "minor-arcana", label: "Menores", icon: Layers, color: "linear-gradient(135deg, #E8DED3, #FAF5EF)" },
-                { id: "advanced", label: "Métodos", icon: Layout, color: "linear-gradient(135deg, #DCCFC2, #FAF5EF)" },
-                { id: "practice", label: "Prática", icon: Sparkles, color: "linear-gradient(135deg, #FAF5EF, #F3E6E0)" },
-                { id: "professional", label: "Ofício", icon: Briefcase, color: "linear-gradient(135deg, #F3E6E0, #E8DED3)" },
+                { id: "foundation", label: "Base", icon: "Compass", color: "linear-gradient(135deg, #F3E6E0, #FAF5EF)" },
+                { id: "major-arcana", label: "Maiores", icon: "Stars", color: "linear-gradient(135deg, #FAF5EF, #F5EBDE)" },
+                { id: "minor-arcana", label: "Menores", icon: "Layers", color: "linear-gradient(135deg, #E8DED3, #FAF5EF)" },
+                { id: "advanced", label: "Métodos", icon: "Layout", color: "linear-gradient(135deg, #DCCFC2, #FAF5EF)" },
+                { id: "practice", label: "Prática", icon: "Sparkles", color: "linear-gradient(135deg, #FAF5EF, #F3E6E0)" },
+                { id: "professional", label: "Ofício", icon: "Briefcase", color: "linear-gradient(135deg, #F3E6E0, #E8DED3)" },
               ].map((trail) => (
                 <button
                   key={trail.id}
@@ -245,7 +246,7 @@ const ModulesPage = () => {
                   className="flex flex-col items-center gap-3 p-5 rounded-[2rem] border-2 border-[#C8A66A]/20 bg-white/60 hover:bg-white transition-all shadow-md hover:shadow-xl hover:-translate-y-1 group"
                 >
                   <div className={`w-14 h-14 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A]/10 group-hover:scale-110 transition-all duration-500 group-hover:bg-[#5B1F3D] group-hover:shadow-[0_8px_20px_rgba(91,31,61,0.3)] shadow-inner`} style={{ background: trail.color }}>
-                    <trail.icon className="w-7 h-7 text-[#5B1F3D] group-hover:text-white transition-colors duration-500" />
+                    <TarotIcon name={trail.icon} className="w-7 h-7 text-[#5B1F3D] group-hover:text-white transition-colors duration-500" />
                   </div>
                   <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D] group-hover:text-[#C8A66A] transition-colors">
                     {trail.label}
@@ -349,7 +350,7 @@ const ModulesPage = () => {
                     const isCompleted = progress.completedModules.includes(mod.id);
                     const prog = getModuleProgress(mod);
                     const isCurrent = unlocked && !isCompleted;
-                    const IconComponent = MODULE_ICON_MAP[mod.id] || Sparkles;
+                    const iconName = MODULE_ICON_MAP[mod.id] || "Sparkles";
 
                     return (
                       <button
@@ -380,11 +381,11 @@ const ModulesPage = () => {
                             {isCompleted ? (
                               <Check className={`w-10 h-10 md:w-12 md:h-12 ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} strokeWidth={4} />
                             ) : unlocked ? (
-                              <IconComponent className={`w-10 h-10 md:w-12 md:h-12 ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} />
+                              <TarotIcon name={iconName} className={`w-10 h-10 md:w-12 md:h-12 ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} />
                             ) : (
                               <div className="relative">
-                                <IconComponent className="w-10 h-10 md:w-12 md:h-12 opacity-20" />
-                                <LockKeyhole className="w-8 h-8 absolute -bottom-2 -right-2 text-[#5B1F3D] drop-shadow-xl" />
+                                <TarotIcon name={iconName} className="w-10 h-10 md:w-12 md:h-12 opacity-20" />
+                                <TarotIcon name="bloqueado" className="w-8 h-8 absolute -bottom-2 -right-2 text-[#5B1F3D] drop-shadow-xl" />
                               </div>
                             )}
                           </div>

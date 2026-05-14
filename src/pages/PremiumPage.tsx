@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  ArrowLeft, KeyRound, SquareStack, Compass,
-  Sparkles, WandSparkles, CircleCheck, Eye, Stars, ChevronRight
-} from "lucide-react";
+import { ArrowLeft, ChevronRight } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import { Button } from "@/components/ui/button";
 import { usePremium } from "@/hooks/use-premium";
 import { supabase } from "@/integrations/supabase/client";
@@ -12,12 +10,12 @@ import { trackEvent } from "@/lib/analytics";
 import { isWebCheckoutAllowed } from "@/lib/platform";
 
 const PREMIUM_BENEFITS = [
-  { icon: SquareStack, title: "78 arcanos guiados", desc: "Abra todas as portas do deck completo." },
-  { icon: Compass, title: "Jornada progressiva", desc: "A trilha mística para o domínio real." },
-  { icon: Sparkles, title: "Quizzes e XP", desc: "Teste seu olhar e conquiste energia." },
-  { icon: WandSparkles, title: "Práticas guiadas", desc: "Rituais de leitura para o cotidiano." },
-  { icon: CircleCheck, title: "Progresso salvo", desc: "Suas chaves sempre com você." },
-  { icon: Stars, title: "Arcanos Vivos", desc: "A essência profunda de cada símbolo." },
+  { icon: "jornada", title: "78 arcanos guiados", desc: "Abra todas as portas do deck completo." },
+  { icon: "formacao", title: "Jornada progressiva", desc: "A trilha mística para o domínio real." },
+  { icon: "quiz", title: "Quizzes e XP", desc: "Teste seu olhar e conquiste energia." },
+  { icon: "mago", title: "Práticas guiadas", desc: "Rituais de leitura para o cotidiano." },
+  { icon: "concluido", title: "Progresso salvo", desc: "Suas chaves sempre com você." },
+  { icon: "Stars", title: "Arcanos Vivos", desc: "A essência profunda de cada símbolo." },
 ];
 
 const PremiumPage = () => {
@@ -114,7 +112,7 @@ const PremiumPage = () => {
           
           <div className="space-y-5">
             <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-[#5B1F3D] border-2 border-[#C8A66A] shadow-lg">
-              <KeyRound className="w-4 h-4 text-[#C8A66A]" />
+              <TarotIcon name="premium" className="w-4 h-4 text-[#C8A66A]" />
               <span className="text-[11px] font-heading tracking-[0.3em] uppercase text-[#FAF5EF] font-black">Jornada Completa</span>
             </div>
             <h1 className="font-heading text-4xl md:text-5xl text-[#5B1F3D] leading-[1.1] font-black tracking-tight drop-shadow-sm">
@@ -136,7 +134,7 @@ const PremiumPage = () => {
             {PREMIUM_BENEFITS.map((b) => (
               <div key={b.title} className="bg-white border-2 border-[#C8A66A20] p-6 rounded-[2rem] flex items-center gap-6 shadow-xl hover:border-[#C8A66A40] transition-all">
                 <div className="w-16 h-16 rounded-[1.2rem] bg-[#FAF5EF] border-2 border-[#C8A66A30] flex items-center justify-center shrink-0 shadow-inner">
-                  <b.icon className="w-8 h-8 text-[#5B1F3D]" />
+                  <TarotIcon name={b.icon} className="w-8 h-8 text-[#5B1F3D]" />
                 </div>
                 <div className="space-y-1">
                   <h3 className="font-heading text-lg font-black text-[#5B1F3D] tracking-tight">{b.title}</h3>

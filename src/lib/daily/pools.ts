@@ -32,12 +32,12 @@ export const DAILY_INTERPRETATION_CONTEXTS = [
 ] as const;
 
 export const DAILY_TITLES = {
-  "carta-do-dia": { title: "Carta do Dia", subtitle: "Receba e contemple o arcano de hoje", icon: "scroll", xp: 10 },
-  "revisao-rapida": { title: "Revisão Rápida", subtitle: "Relembre um conceito essencial", icon: "sparkles", xp: 15 },
-  "perguntas-do-dia": { title: "3 Perguntas do Dia", subtitle: "Teste seu conhecimento em 3 questões", icon: "help-circle", xp: 20 },
-  "simbolo-do-dia": { title: "Símbolo do Dia", subtitle: "Descubra um símbolo e seu significado", icon: "eye", xp: 10 },
-  "combinacao-do-dia": { title: "Combinação do Dia", subtitle: "Interprete duas cartas juntas", icon: "layers", xp: 15 },
-  "mini-interpretacao": { title: "Mini Interpretação", subtitle: "Pratique uma leitura guiada", icon: "book-open", xp: 25 },
+  "carta-do-dia": { title: "Carta do Dia", subtitle: "Receba e contemple o arcano de hoje", icon: "legal", xp: 10 },
+  "revisao-rapida": { title: "Revisão Rápida", subtitle: "Relembre um conceito essencial", icon: "Sparkles", xp: 15 },
+  "perguntas-do-dia": { title: "3 Perguntas do Dia", subtitle: "Teste seu conhecimento em 3 questões", icon: "quiz", xp: 20 },
+  "simbolo-do-dia": { title: "Símbolo do Dia", subtitle: "Descubra um símbolo e seu significado", icon: "formacao", xp: 10 },
+  "combinacao-do-dia": { title: "Combinação do Dia", subtitle: "Interprete duas cartas juntas", icon: "Layers", xp: 15 },
+  "mini-interpretacao": { title: "Mini Interpretação", subtitle: "Pratique uma leitura guiada", icon: "jornada", xp: 25 },
 } as const;
 
 export const DAILY_TOTAL_XP = 95;

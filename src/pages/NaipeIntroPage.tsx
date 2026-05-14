@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, ChevronDown, ChevronRight } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import { type Naipe, NAIPES } from "@/registry/naipes";
 import { useSuitIntroContent } from "@/hooks/use-content";
 
@@ -49,9 +50,9 @@ const NaipeIntroPage = () => {
 
   const sections = [
     { id: "elemental", icon: info.elementSymbol, title: `${ped.elemento ?? info.element} — O Elemento de ${info.name.replace("Naipe de ", "")}`, content: ped.atmosfera ?? "" },
-    { id: "psicologico", icon: "🧠", title: "A Psicologia do Naipe", content: ped.potencial ?? "" },
-    { id: "pratico", icon: "🎯", title: `${info.name.replace("Naipe de ", "")} na Vida Real`, content: ped.funcaoNaLeitura ?? "" },
-    { id: "simbolico", icon: "◎", title: "Aprofundamento Simbólico", content: ped.linguagemEditorial ?? "" },
+    { id: "psicologico", icon: "Eye", title: "A Psicologia do Naipe", content: ped.potencial ?? "" },
+    { id: "pratico", icon: "ritual", title: `${info.name.replace("Naipe de ", "")} na Vida Real`, content: ped.funcaoNaLeitura ?? "" },
+    { id: "simbolico", icon: "Sparkles", title: "Aprofundamento Simbólico", content: ped.linguagemEditorial ?? "" },
   ].filter((s) => s.content && s.content.length > 0);
 
   return (
@@ -96,7 +97,7 @@ const NaipeIntroPage = () => {
             <ArrowLeft className="w-5 h-5" />
           </button>
           <div className="flex items-center gap-3 flex-1">
-            <span className="text-xl filter drop-shadow-sm">{info.icon}</span>
+            <TarotIcon name={naipe} className="w-6 h-6" />
             <span className="font-heading text-base font-black tracking-tight" style={{ color: "#5B1F3D" }}>
               Introdução · {info.name}
             </span>
@@ -112,7 +113,7 @@ const NaipeIntroPage = () => {
             border: `2.5px solid #C8A66A`,
             boxShadow: `0 20px 50px rgba(91, 31, 61, 0.3), 0 0 30px rgba(200, 166, 106, 0.2)`,
           }}>
-            <span className="filter drop-shadow-md">{info.icon}</span>
+            <TarotIcon name={naipe} className="w-12 h-12 text-[#FAF5EF]" />
           </div>
           <h1 className="font-heading text-4xl md:text-5xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
             {ped.nome ?? info.name}
@@ -178,12 +179,12 @@ const NaipeIntroPage = () => {
                   onClick={() => setOpenSection(isOpen ? null : section.id)}
                   className="w-full px-5 py-4 flex items-center gap-3 text-left transition-colors duration-200"
                 >
-                  <span className="text-lg shrink-0 w-8 h-8 rounded-full flex items-center justify-center" style={{
+                  <span className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center" style={{
                     background: info.color.surface,
                     border: `1px solid ${info.color.border}`,
                     color: info.color.primary,
                   }}>
-                    {section.icon}
+                    <TarotIcon name={section.id === 'elemental' ? naipe : section.icon} className="w-4 h-4" />
                   </span>
                   <span className="font-heading text-sm tracking-wide flex-1" style={{ color: "hsl(230 25% 15%)" }}>
                     {section.title}

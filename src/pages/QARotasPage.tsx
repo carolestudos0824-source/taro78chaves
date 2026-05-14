@@ -1,12 +1,10 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
-  ArrowLeft, Search, Shield, Globe, Lock, 
-  BookOpen, Sparkles, AlertTriangle, ExternalLink, 
-  Layout, Code, CheckCircle, XCircle, Info,
-  Filter, RotateCcw, ChevronRight, MessageSquare,
-  Clock, CheckCircle2, XCircle as XCircle2, HelpCircle
+  ArrowLeft, Search, Filter, RotateCcw, ExternalLink, 
+  Code, Info, ChevronRight
 } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import { FULL_DECK } from "@/registry/deck-registry";
 import { MODULES_SEED } from "@/lib/content/seed-modules";
 import { ARCANOS_MAIORES_CATALOG } from "@/lib/content";
@@ -293,7 +291,7 @@ const QARotasPage = () => {
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#C8A66A] opacity-10 rounded-full -mr-20 -mt-20 blur-3xl" />
           <div className="relative z-10">
             <h2 className="font-heading text-lg font-black tracking-widest uppercase mb-6 flex items-center gap-3">
-              <Sparkles className="w-5 h-5 text-[#C8A66A]" /> Régua de Auditoria Premium
+              <TarotIcon name="Sparkles" className="w-5 h-5 text-[#C8A66A]" /> Régua de Auditoria Premium
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-4">
               {[
@@ -376,7 +374,7 @@ const QARotasPage = () => {
                         }`}
                         title="Aprovar"
                       >
-                        <CheckCircle2 className="w-6 h-6" />
+                        <TarotIcon name="concluido" className="w-6 h-6" />
                       </button>
                       <button 
                         onClick={() => updateAudit(route.id, 'Reprovada')}
@@ -387,7 +385,7 @@ const QARotasPage = () => {
                         }`}
                         title="Reprovar"
                       >
-                        <XCircle2 className="w-6 h-6" />
+                        <TarotIcon name="excluir-conta" className="w-6 h-6" />
                       </button>
                       <button 
                         onClick={() => updateAudit(route.id, 'Corrigir')}
@@ -398,7 +396,7 @@ const QARotasPage = () => {
                         }`}
                         title="Sinalizar Correção"
                       >
-                        <AlertTriangle className="w-6 h-6" />
+                        <TarotIcon name="auditoria" className="w-6 h-6" />
                       </button>
                     </div>
 
@@ -414,7 +412,7 @@ const QARotasPage = () => {
                 {/* Observation Area */}
                 <div className="mt-8 pt-8 border-t border-[#DCCFC2]/20">
                   <div className="relative">
-                    <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-[#C8A66A]/40" />
+                    <TarotIcon name="feedback" className="absolute left-4 top-4 w-5 h-5 text-[#C8A66A]/40" />
                     <textarea 
                       placeholder="Adicione observações sobre esta tela..."
                       value={audit.observation}
@@ -424,7 +422,7 @@ const QARotasPage = () => {
                   </div>
                   {audit.updatedAt && (
                     <div className="mt-3 flex items-center gap-2 text-[10px] font-heading font-black text-[#5B1F3D]/30 uppercase tracking-widest">
-                      <Clock className="w-3 h-3" />
+                      <TarotIcon name="proximo" className="w-3 h-3" />
                       Última atualização: {new Date(audit.updatedAt).toLocaleString('pt-BR')}
                     </div>
                   )}
@@ -435,7 +433,7 @@ const QARotasPage = () => {
 
           {filteredRoutes.length === 0 && (
             <div className="text-center py-24 bg-white rounded-[3rem] border-2 border-dashed border-[#DCCFC2]">
-              <HelpCircle className="w-16 h-16 text-[#C8A66A]/20 mx-auto mb-6" />
+              <TarotIcon name="suporte" className="w-16 h-16 text-[#C8A66A]/20 mx-auto mb-6" />
               <h3 className="font-heading text-xl font-black mb-2">Nenhuma rota encontrada</h3>
               <p className="font-body text-[#5B1F3D]/60 font-bold">Tente ajustar seus filtros ou busca.</p>
             </div>
