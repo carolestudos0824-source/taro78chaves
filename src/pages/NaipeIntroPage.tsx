@@ -113,7 +113,7 @@ const NaipeIntroPage = () => {
             border: `2.5px solid #C8A66A`,
             boxShadow: `0 20px 50px rgba(91, 31, 61, 0.3), 0 0 30px rgba(200, 166, 106, 0.2)`,
           }}>
-            <span className="filter drop-shadow-md">{info.icon}</span>
+            <TarotIcon name={naipe} className="w-12 h-12 text-[#FAF5EF]" />
           </div>
           <h1 className="font-heading text-4xl md:text-5xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
             {ped.nome ?? info.name}
