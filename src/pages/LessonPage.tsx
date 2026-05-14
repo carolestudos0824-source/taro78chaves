@@ -214,7 +214,7 @@ const LessonPage = () => {
   }
 
   return (
-    <div className="min-h-screen relative pb-bottom-nav">
+    <div className="min-h-screen relative">
       {/* Background — Marfim Suave replicando /app */}
       <div className="fixed inset-0 z-0 bg-[#FAF5EF]">
         <div
@@ -228,7 +228,7 @@ const LessonPage = () => {
 
       {/* Global Header is handled by AppShell and Context */}
 
-      <main className="relative z-10 container max-w-lg mx-auto px-4 py-8 bg-transparent">
+      <main className="relative z-10 container max-w-lg mx-auto px-4 py-4 bg-transparent">
         {phase === "intro" && (
           <ArcanoVivoStage
             arcanoId={arcanoId}

@@ -29,9 +29,9 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
     
-    timers.push(setTimeout(() => setPhase('awakening'), 800));
-    timers.push(setTimeout(() => setPhase('presence'), 2500));
-    timers.push(setTimeout(() => setPhase('insight'), 4500));
+    timers.push(setTimeout(() => setPhase('awakening'), 400));
+    timers.push(setTimeout(() => setPhase('presence'), 1200));
+    timers.push(setTimeout(() => setPhase('insight'), 2200));
 
     return () => timers.forEach(clearTimeout);
   }, []);
@@ -39,7 +39,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
   const showParticles = (phase === 'presence' || phase === 'insight') && !shouldReduceMotion;
 
   return (
-    <div className="relative min-h-[60vh] md:min-h-[85vh] flex flex-col items-center justify-center py-8 md:py-20 px-6 sm:px-12">
+    <div className="relative min-h-[50vh] md:min-h-[80vh] flex flex-col items-center justify-center py-4 md:py-16 px-6 sm:px-12">
       {/* Background Atmosphere - Enhanced ritualistic altar feel */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Ivory Base */}
@@ -106,7 +106,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 1.2 }}
-        className="text-center mb-10 md:mb-16 z-20 relative"
+        className="text-center mb-6 md:mb-12 z-20 relative"
       >
         <span className="text-[11px] font-heading font-bold tracking-[0.5em] uppercase text-[#C8A66A] block mb-3 opacity-90">
           {arcanoId === 0 ? "O Início da Jornada" : `Arcano ${arcanoId}`}
@@ -118,7 +118,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
       </motion.div>
 
       {/* The Animated Card - Dominant Presence */}
-      <div className="relative z-10 mb-10 md:mb-16 transition-transform duration-1000">
+      <div className="relative z-10 mb-6 md:mb-12 transition-transform duration-1000">
         <TarotAnimatedCard
           cardImage={cardImage}
           cardName={cardName}
@@ -138,7 +138,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
       </div>
 
       {/* Microcopy & CTA */}
-      <div className="max-w-xs md:max-w-xl w-full text-center z-20 min-h-[180px] flex flex-col items-center justify-start pb-12">
+      <div className="max-w-xs md:max-w-xl w-full text-center z-20 min-h-[140px] flex flex-col items-center justify-start pb-16">
         <AnimatePresence mode="wait">
           {phase === 'insight' || phase === 'presence' ? (
             <motion.div
@@ -148,7 +148,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
               exit={{ opacity: 0, y: -30 }}
               className="flex flex-col items-center"
             >
-              <p className="font-accent italic text-2xl md:text-3xl text-[#5B1F3D] mb-10 leading-relaxed font-bold tracking-tight">
+              <p className="font-accent italic text-xl md:text-3xl text-[#5B1F3D] mb-6 md:mb-10 leading-relaxed font-bold tracking-tight">
                 "{phase === 'insight' ? theme.microcopy.presence : theme.microcopy.intro}"
               </p>
               
@@ -161,7 +161,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
                 >
                   <Button
                     onClick={onContinue}
-                    className="bg-[#5B1F3D] hover:bg-[#4A1932] text-white rounded-full px-12 py-8 text-base font-heading font-black tracking-[0.2em] uppercase border-2 border-[#C8A66A]/50 shadow-2xl group transition-all duration-300 hover:scale-110 active:scale-95 ring-4 ring-[#5B1F3D]/10"
+                    className="bg-[#5B1F3D] hover:bg-[#4A1932] text-white rounded-full px-10 py-6 md:px-12 md:py-8 text-sm md:text-base font-heading font-black tracking-[0.2em] uppercase border-2 border-[#C8A66A]/50 shadow-2xl group transition-all duration-300 hover:scale-110 active:scale-95 ring-4 ring-[#5B1F3D]/10"
                   >
                     Começar Lição
                     <ChevronRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
