@@ -38,21 +38,13 @@ const LessonPage = () => {
   const { setHeader, resetHeader } = useHeader();
   const [phase, setPhase] = useState<LessonPhase>("intro");
   const [mounted, setMounted] = useState(false);
-  const [debugLog, setDebugLog] = useState<string[]>([]);
   
   const arcano = getArcanoById(isValidId ? arcanoId : 0);
   const hasAccess = isValidId ? canAccessArcano(arcanoId) : false;
 
   useEffect(() => {
     setMounted(true);
-    const logMsg = (msg: string) => {
-      console.log(`[DEBUG_UI] ${msg}`);
-      setDebugLog(prev => [...prev, `${new Date().toLocaleTimeString()}: ${msg}`]);
-    };
-    logMsg("LessonPage mounted");
-    logMsg(`arcanoId: ${arcanoId}, isValidId: ${isValidId}, isLiteral: ${isLiteralRoute}`);
-    logMsg(`Arcano resolved: ${arcano?.name}, Access: ${hasAccess}`);
-  }, [arcanoId, isValidId, isLiteralRoute, arcano?.name, hasAccess]);
+  }, []);
   
   const getPhases = () => {
     const p: LessonPhase[] = ["intro", "lesson"];
