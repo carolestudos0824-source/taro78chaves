@@ -126,7 +126,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
           arcanoSlug={arcanoSlug}
           state={phase === 'dormant' ? 'available' : 'active'}
           variant="portal"
-          className="scale-[1.2] sm:scale-[1.5] md:scale-[1.7] lg:scale-[1.8] drop-shadow-[0_35px_60px_rgba(91,31,61,0.3)]"
+          className="scale-[1.2] sm:scale-[1.5] md:scale-[1.7] lg:scale-[1.8] drop-shadow-[0_35px_60px_rgba(91,31,61,0.3)] min-h-[210px] min-w-[140px]"
         />
         
         {/* Ritualistic Floor Reflection */}
