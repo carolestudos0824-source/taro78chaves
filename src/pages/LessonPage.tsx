@@ -11,7 +11,6 @@ import { XPRewardMotion } from "@/components/tarot-motion/XPRewardMotion";
 import { LessonContent } from "@/components/arcano-vivo/LessonContent";
 import { SymbolMap } from "@/components/arcano-vivo/SymbolMap";
 import { CompletionScreen } from "@/components/arcano-vivo/CompletionScreen";
-import { PhaseIndicator } from "@/components/arcano-vivo/PhaseIndicator";
 import { DeepDiveSection } from "@/components/DeepDiveSection";
 import { ExerciseSection } from "@/components/ExerciseSection";
 import { QuizSection } from "@/components/QuizSection";
@@ -20,6 +19,8 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useHeader } from "@/contexts/header-context";
 import { PhaseIndicator } from "@/components/arcano-vivo/PhaseIndicator";
+
+type LessonPhase = "intro" | "lesson" | "symbols" | "deepdive" | "exercise" | "quiz" | "complete";
 
 const LessonPage = () => {
   const { id } = useParams();
