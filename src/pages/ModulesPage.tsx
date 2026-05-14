@@ -350,7 +350,7 @@ const ModulesPage = () => {
                     const isCompleted = progress.completedModules.includes(mod.id);
                     const prog = getModuleProgress(mod);
                     const isCurrent = unlocked && !isCompleted;
-                    const IconComponent = MODULE_ICON_MAP[mod.id] || Sparkles;
+                    const iconName = MODULE_ICON_MAP[mod.id] || "Sparkles";
 
                     return (
                       <button
