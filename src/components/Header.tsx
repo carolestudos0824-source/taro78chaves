@@ -80,7 +80,7 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
             </div>
 
             <div className="flex flex-col justify-center min-w-0">
-              <h1 className={`font-heading text-[#5B1F3D] font-black tracking-tight leading-none truncate transition-all duration-500 ${
+              <h1 className={`font-heading text-[#5B1F3D] font-black tracking-tight leading-none transition-all duration-500 ${
                 isCompact ? "text-base" : "text-lg mb-1"
               }`}>
                 {state.title}
