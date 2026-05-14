@@ -805,13 +805,13 @@ Busque **tons**. "Dia de paciência" em vez de "vai acontecer algo bom". Note se
     layoutDiagram: {
       name: "Leitura Semanal de Tendência",
       positions: [
-        { label: "Segunda", description: "Energia dominante do dia", x: 15, y: 40 },
-        { label: "Terça", description: "Energia dominante do dia", x: 38, y: 40 },
-        { label: "Quarta", description: "Energia dominante do dia", x: 61, y: 40 },
-        { label: "Quinta", description: "Energia dominante do dia", x: 84, y: 40 },
-        { label: "Sexta", description: "Energia dominante do dia", x: 25, y: 70 },
-        { label: "Sábado", description: "Energia dominante do dia", x: 50, y: 70 },
-        { label: "Domingo", description: "Energia dominante do dia", x: 75, y: 70 },
+        { label: "Segunda", description: "Energia dominante do dia", x: 15, y: 35 },
+        { label: "Terça", description: "Energia dominante do dia", x: 38, y: 35 },
+        { label: "Quarta", description: "Energia dominante do dia", x: 61, y: 35 },
+        { label: "Quinta", description: "Energia dominante do dia", x: 84, y: 35 },
+        { label: "Sexta", description: "Energia dominante do dia", x: 25, y: 75 },
+        { label: "Sábado", description: "Energia dominante do dia", x: 50, y: 75 },
+        { label: "Domingo", description: "Energia dominante do dia", x: 75, y: 75 },
       ],
     },
     examples: [
