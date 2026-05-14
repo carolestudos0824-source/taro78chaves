@@ -179,7 +179,7 @@ const TiragensLessonPage = () => {
         </div>
       </header>
 
-      <main className="relative z-10 container max-w-3xl px-4 py-8">
+      <main className="relative z-10 container max-w-3xl px-4 py-8 pb-32">
         {/* LESSON */}
         {phase === "lesson" && (
           <div className="space-y-8" style={{ animation: "fade-up 0.5s ease-out" }}>

@@ -184,34 +184,40 @@ Leitoras experientes frequentemente criam suas próprias tiragens para situaçõ
     title: "Tiragem de 1 Carta",
     subtitle: "A resposta direta — simples e poderosa",
     icon: "1️⃣",
-    content: `A tiragem de 1 carta é a mais simples e, paradoxalmente, uma das mais difíceis de ler bem. Com apenas uma carta, não há contexto adicional — toda a leitura depende da sua capacidade de conectar essa única carta à pergunta.
+    content: `A tiragem de 1 carta é a mais simples e, paradoxalmente, uma das mais difíceis de ler bem. Toda a leitura depende da sua capacidade de conectar uma única imagem à pergunta.
 
-**Quando usar:**
-- Pergunta simples e direta
-- "Carta do dia" — energia geral para o dia
-- Conselho rápido
-- Confirmação de intuição
-- Treinamento diário (essencial para iniciantes)
-
-**Como ler:**
-A carta fala diretamente sobre a pergunta. Sem passado, sem futuro — é o **agora**, o **essencial**, a **mensagem central**.
-
-**Técnica da Imersão:**
-1. Vire a carta e olhe por 30 segundos sem pensar
+### Técnica da Imersão
+1. Vire a carta e olhe por 30 segundos sem pensar.
 2. Que emoção a imagem provoca em você?
 3. Que detalhe visual chama mais atenção?
 4. Conecte: como isso responde à pergunta?
 
-**Carta do Dia — o exercício mais importante:**
-Toda manhã, tire 1 carta perguntando: "Que energia acompanha meu dia hoje?" À noite, revise: a energia da carta se manifestou? Como? Este exercício diário constrói fluência no tarô mais rápido que qualquer estudo teórico.
+### A Carta do Dia
+Este é o exercício mais importante para quem estuda tarô. Toda manhã, pergunte: "Que energia acompanha meu dia hoje?" À noite, revise como essa energia se manifestou.
 
-**A armadilha:** Não tire uma segunda carta porque "não entendeu" a primeira. A dificuldade é a mensagem — sente-se com ela.`,
+### A Armadilha
+Não tire uma segunda carta porque "não entendeu" a primeira. A dificuldade é a mensagem — sente-se com ela.`,
+    whenToUse: [
+      "Perguntas simples e diretas",
+      "Conselho rápido para o momento",
+      "Exercício de 'Carta do Dia'",
+      "Confirmação de uma intuição",
+    ],
+    infoBlocks: [
+      {
+        title: "O Essencial",
+        content: "Sem passado ou futuro, o foco é a mensagem central e imediata do arcano."
+      },
+      {
+        title: "Fluência Prática",
+        content: "A melhor forma de memorizar significados é conectando uma carta a um evento real do seu dia."
+      }
+    ],
     keyPoints: [
-      "Simples mas poderosa — toda a leitura depende de uma única conexão",
-      "Ideal para perguntas diretas, carta do dia, conselho rápido",
-      "Técnica da Imersão: 30 segundos de observação, emoção, detalhe, conexão",
-      "Carta do Dia é o exercício mais importante para iniciantes",
-      "Nunca tire segunda carta porque 'não entendeu' a primeira",
+      "Mensagem direta e sem distrações",
+      "Ideal para treinamento diário e conselhos rápidos",
+      "Exige foco total na conexão simbólica única",
+      "Nunca tire uma 'carta de apoio' por insegurança",
     ],
     layoutDiagram: {
       name: "Tiragem de 1 Carta",
@@ -366,39 +372,38 @@ Além de ler cada posição isoladamente, leia os pares (1-2, 2-3, 1-3) e a trí
     title: "Passado, Presente e Futuro",
     subtitle: "A tiragem temporal — o arco da história",
     icon: "⏳",
-    content: `A tiragem temporal é a mais intuitiva que existe — e por isso merece atenção especial. "De onde vim, onde estou, para onde vou" é a pergunta fundamental da experiência humana.
+    content: `A tiragem temporal é a mais intuitiva. "De onde vim, onde estou, para onde vou" é a pergunta fundamental da jornada humana.
 
-**Cuidado com a posição "Futuro":**
-O futuro no tarô **não é destino fixo**. É tendência. É "se tudo continuar assim, é para lá que vai". A consulente sempre tem poder de mudar a direção — e uma boa leitora deixa isso claro.
+### O Futuro não é Destino
+No tarô, o futuro é uma **tendência**. É o resultado provável se nada mudar. Você sempre tem o poder de alterar a direção.
 
-**Como ler cada posição:**
-
-**Passado (Carta 1):**
-- O que causou a situação atual
-- A energia que a consulente está trazendo
-- O padrão que precisa ser reconhecido
-- Pergunte: "O que aconteceu que levou até aqui?"
-
-**Presente (Carta 2):**
-- A energia dominante AGORA
-- A situação tal como ela é — sem filtro
-- O ponto de poder — onde a mudança é possível
-- Pergunte: "O que está realmente acontecendo?"
-
-**Futuro (Carta 3):**
-- A tendência — para onde a energia está fluindo
-- O resultado provável SE nada mudar
-- O conselho implícito — o que considerar
-- Pergunte: "Para onde isso está levando?"
-
-**O arco narrativo:** A leitura mais poderosa é aquela que conecta as 3 posições numa história coerente: "Porque [passado], a situação atual é [presente], e a tendência é [futuro]." Se a narrativa não flui, reavalie.
-
-**Quando NÃO usar:** Evite para perguntas que não têm dimensão temporal ("Quem eu sou?" não tem passado/presente/futuro — use Mente/Corpo/Espírito).`,
+### O Arco Narrativo
+A leitura poderosa conecta as 3 posições numa história: "Porque [passado] aconteceu, o cenário atual é [presente], e a tendência é [futuro]."`,
+    whenToUse: [
+      "Entender a trajetória de um problema",
+      "Identificar raízes de comportamentos",
+      "Visualizar para onde uma situação caminha",
+      "Relacionamentos e carreira",
+    ],
+    infoBlocks: [
+      {
+        title: "Passado: A Causa",
+        content: "O que gerou a situação atual. O padrão ou evento que nos trouxe até aqui."
+      },
+      {
+        title: "Presente: O Poder",
+        content: "A energia dominante agora. É o único momento onde a mudança é possível."
+      },
+      {
+        title: "Futuro: A Tendência",
+        content: "Para onde a energia está fluindo. O desdobramento lógico do momento."
+      }
+    ],
     keyPoints: [
       "Futuro = tendência, não destino fixo",
-      "Passado = causa; Presente = ponto de poder; Futuro = direção",
-      "Conecte as 3 posições num arco narrativo coerente",
-      "Não use para perguntas sem dimensão temporal",
+      "Passado revela a causa; Presente revela o ponto de ação",
+      "Crie uma história fluida entre os três tempos",
+      "Evite para perguntas puramente existenciais",
     ],
     layoutDiagram: {
       name: "Passado / Presente / Futuro",
@@ -458,28 +463,38 @@ O futuro no tarô **não é destino fixo**. É tendência. É "se tudo continuar
     title: "Situação, Obstáculo e Conselho",
     subtitle: "A tiragem de orientação prática",
     icon: "🧭",
-    content: `Esta é a tiragem mais **prática** e **orientadora** do tarô. Enquanto a temporal conta uma história, esta tiragem **resolve um problema**. É a que mais se aproxima de uma sessão de coaching com cartas.
+    content: `Esta é a tiragem mais **prática** do tarô. Enquanto outras contam histórias, esta tiragem **resolve problemas**. É o formato ideal para quem busca uma direção imediata.
 
-**Posição 1 — Situação:**
-O que está realmente acontecendo. Não o que a consulente acha que está acontecendo — o que as cartas mostram. Frequentemente, essa posição já traz uma revelação: "Ah, então é ISSO que está acontecendo..."
+### O Valor do Obstáculo
+A posição do obstáculo é frequentemente a mais desconfortável e valiosa. Ele pode ser externo (uma pessoa) ou interno (um medo). O bloqueio que você não vê é o que mais te prende.
 
-**Posição 2 — Obstáculo:**
-O que está bloqueando o caminho. Pode ser externo (uma pessoa, uma circunstância) ou interno (um medo, uma crença, um padrão). Esta posição é a mais desconfortável — e a mais valiosa. O obstáculo que você não vê é o que mais te prende.
-
-**Atenção:** Uma carta "positiva" no obstáculo (como O Sol ou 9 de Copas) não é contradição. Pode significar: excesso de otimismo cegando para problemas reais, ou satisfação prematura impedindo progresso.
-
-**Posição 3 — Conselho:**
-O que as cartas recomendam. Esta posição deve ser lida como AÇÃO — não como previsão. "O que posso FAZER?" Mesmo cartas passivas (como 4 de Espadas = descanso) são ações: "descanse", "pare", "reflita antes de agir".
-
-**Quando usar:**
-- A consulente tem um problema e quer direção
-- Situações de bloqueio ou estagnação
-- Quando a pergunta é: "O que faço?"`,
+### Conselho como Ação
+Leia sempre o conselho como uma **ação concreta**. Mesmo cartas passivas indicam um movimento: "pare", "espere", "reflita".`,
+    whenToUse: [
+      "Quando você tem um problema claro",
+      "Situações de bloqueio ou estagnação",
+      "Quando a pergunta é: 'O que eu faço?'",
+      "Busca por conselhos objetivos",
+    ],
+    infoBlocks: [
+      {
+        title: "1. Situação",
+        content: "O cenário tal como ele é, sem os filtros da nossa percepção ou desejo."
+      },
+      {
+        title: "2. Obstáculo",
+        content: "O que trava o fluxo. Pode ser um desafio real ou uma autossabotagem."
+      },
+      {
+        title: "3. Conselho",
+        content: "A bússola. A melhor postura ou ação para lidar com o cenário apresentado."
+      }
+    ],
     keyPoints: [
-      "Situação = o que realmente está acontecendo (pode surpreender)",
-      "Obstáculo = o bloqueio — externo ou interno — a posição mais valiosa",
-      "Conselho = ação recomendada, não previsão",
-      "Carta positiva no obstáculo = pode indicar excesso ou cegueira",
+      "Foco total em resolução e direção prática",
+      "O Obstáculo revela o que você está ignorando",
+      "O Conselho deve ser traduzido em ação esta semana",
+      "Cartas positivas no obstáculo indicam excesso ou cegueira",
     ],
     layoutDiagram: {
       name: "Situação / Obstáculo / Conselho",
