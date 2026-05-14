@@ -203,19 +203,9 @@ const LessonPage = () => {
   return (
     <div className="min-h-screen relative pb-bottom-nav">
       {/* Background — Marfim Suave replicando /app */}
-      <div className="fixed inset-0 z-0 mystic-bg-procedural">
+      <div className="fixed inset-0 z-0">
         <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
-            opacity: 0.98,
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
-          }}
+          className="absolute inset-0 bg-[#FAF5EF]"
         />
       </div>
 
