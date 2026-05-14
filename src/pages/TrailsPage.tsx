@@ -221,7 +221,7 @@ const TrailsPage = () => {
                     opacity: unlocked ? 1 : 0.6,
                   }}
                 >
-                  {unlocked ? level.icon : <Lock className="w-6 h-6 text-[#5B1F3D40]" />}
+                  {unlocked ? <TarotIcon name={level.icon} className="w-7 h-7" /> : <TarotIcon name="bloqueado" className="w-6 h-6 text-[#5B1F3D40]" />}
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
