@@ -37,7 +37,6 @@ export function CompletionScreen({
           style={{
             background: "linear-gradient(135deg, hsl(36 45% 58% / 0.15), hsl(42 70% 80% / 0.1))",
             border: "2px solid hsl(36 45% 58% / 0.3)",
-            animation: "glow-breathe 3s ease-in-out infinite",
             boxShadow: "0 0 40px hsl(36 45% 58% / 0.12)",
           }}
         >
