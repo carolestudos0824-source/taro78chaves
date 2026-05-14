@@ -190,26 +190,63 @@ const TiragensLessonPage = () => {
 
             {/* Layout Diagram */}
             {lesson.layoutDiagram && (
-              <div className="rounded-xl p-5" style={{ background: "linear-gradient(145deg, hsl(340 42% 28% / 0.04), hsl(36 45% 58% / 0.04))", border: "1px solid hsl(340 42% 28% / 0.15)" }}>
-                <h3 className="font-heading text-xs tracking-[0.2em] uppercase mb-4 text-center" style={{ color: "hsl(340 42% 26%)" }}>
-                  🗺️ {lesson.layoutDiagram.name}
-                </h3>
-                <div className="space-y-2">
-                  {lesson.layoutDiagram.positions.map((pos, i) => (
-                    <div key={i} className="flex items-center gap-3 p-3 rounded-lg" style={{ background: "hsl(38 30% 95% / 0.60)", border: "1px solid hsl(36 45% 58% / 0.12)" }}>
-                      <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-xs font-heading" style={{
-                        background: "linear-gradient(135deg, hsl(36 45% 58% / 0.15), hsl(340 42% 28% / 0.08))",
-                        border: "1px solid hsl(36 45% 58% / 0.25)",
-                        color: "hsl(36 40% 35%)",
-                      }}>
-                        {i + 1}
-                      </div>
-                      <div>
-                        <span className="font-heading text-xs tracking-wide" style={{ color: "hsl(230 25% 15%)" }}>{pos.label}</span>
-                        <p className="text-[11px] font-accent italic" style={{ color: "hsl(230 20% 25% / 0.55)" }}>{pos.description}</p>
-                      </div>
+              <div className="space-y-6">
+                <div className="flex items-center gap-2 px-1">
+                  <MapPin className="w-4 h-4 text-[#C8A66A]" />
+                  <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Mapa Visual da Tiragem</span>
+                </div>
+                
+                <div className="rounded-[2rem] bg-white border-2 border-[#C8A66A]/20 shadow-xl overflow-hidden">
+                  <div className="p-8 bg-[#FAF5EF]/50">
+                    <h3 className="font-heading text-lg font-black text-center mb-10 text-[#5B1F3D]">
+                      {lesson.layoutDiagram.name}
+                    </h3>
+                    
+                    {/* The Visual Grid/Map */}
+                    <div className="relative aspect-square max-w-[320px] mx-auto bg-white/40 rounded-3xl border border-[#C8A66A]/10 shadow-inner p-4">
+                      {lesson.layoutDiagram.positions.map((pos, i) => (
+                        <div 
+                          key={i} 
+                          className="absolute w-14 h-20 md:w-16 md:h-24 -translate-x-1/2 -translate-y-1/2 transition-all duration-700"
+                          style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
+                        >
+                          {/* Card Placeholder Visual */}
+                          <div className="w-full h-full rounded-lg border-2 border-[#C8A66A]/40 bg-[#FAF5EF] shadow-md flex items-center justify-center relative group-hover:scale-105 transition-transform overflow-hidden">
+                             <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#5B1F3D] to-transparent" />
+                             <span className="font-heading text-xl md:text-2xl font-black text-[#5B1F3D] z-10">{i + 1}</span>
+                          </div>
+                          <div className="mt-2 text-center">
+                             <span className="text-[8px] md:text-[9px] font-heading font-black uppercase tracking-tighter text-[#5B1F3D]/40 leading-none block px-1 truncate">
+                               {pos.label}
+                             </span>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
+
+                  <div className="p-6 bg-white space-y-3">
+                    <div className="flex items-center gap-2 mb-4 px-2">
+                       <span className="h-px flex-1 bg-[#C8A66A]/20" />
+                       <span className="text-[9px] font-heading font-black tracking-widest uppercase text-[#C8A66A]">Legenda das Posições</span>
+                       <span className="h-px flex-1 bg-[#C8A66A]/20" />
+                    </div>
+                    {lesson.layoutDiagram.positions.map((pos, i) => (
+                      <div key={i} className="flex gap-4 p-4 rounded-2xl bg-[#FAF5EF]/30 border border-[#C8A66A]/10 transition-all hover:bg-[#FAF5EF]/60">
+                        <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-xs font-heading font-black shadow-sm" style={{
+                          background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+                          border: "1px solid #C8A66A40",
+                          color: "#FAF5EF",
+                        }}>
+                          {i + 1}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <span className="font-heading text-sm font-black text-[#5B1F3D] block mb-0.5">{pos.label}</span>
+                          <p className="text-[12px] font-body font-bold italic text-[#5B1F3D]/70 leading-relaxed">{pos.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
