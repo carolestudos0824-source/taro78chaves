@@ -132,16 +132,16 @@ export function JourneyMap({ progress }: JourneyMapProps) {
                   
                   {isCompleted && (
                     <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#C8A66A] flex items-center justify-center border border-white shadow-sm">
-                      <Check className="w-2.5 h-2.5 text-white" strokeWidth={4} />
+                      <TarotIcon name="concluido" className="w-2.5 h-2.5 text-white" strokeWidth={4} />
                     </div>
                   )}
                   
                   {!isUnlocked && !isFree && !isCompleted && !bypassLocks && (
                     <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-white flex items-center justify-center border border-[#DCCFC2] shadow-sm">
                       {isPremium ? (
-                        <Crown className="w-2.5 h-2.5 text-[#C8A66A]" />
+                        <TarotIcon name="rei" className="w-2.5 h-2.5" color="#C8A66A" />
                       ) : (
-                        <Lock className="w-2.5 h-2.5 text-[#5B1F3D40]" />
+                        <TarotIcon name="bloqueado" className="w-2.5 h-2.5" color="#5B1F3D40" />
                       )}
                     </div>
                   )}
