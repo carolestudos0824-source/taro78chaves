@@ -23,6 +23,7 @@ import {
   Stars,
   MapPin
 } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import { 
   MODULES_CATALOG as MODULES, 
   isModuleUnlocked, 
