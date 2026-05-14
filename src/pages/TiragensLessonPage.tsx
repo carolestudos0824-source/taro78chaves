@@ -119,23 +119,23 @@ const TiragensLessonPage = () => {
     return lines.map((line, i) => {
       if (line.startsWith("### ")) {
         return (
-          <h4 key={i} className="font-heading text-base font-black mt-6 mb-2 tracking-tight" style={{ color: "#5B1F3D" }}>
+          <h4 key={i} className="font-heading text-base font-black mt-8 mb-3 tracking-tight" style={{ color: "#5B1F3D" }}>
             {line.replace("### ", "")}
           </h4>
         );
       }
       if (line.startsWith("- ")) {
         return (
-          <div key={i} className="flex gap-2 mb-2 pl-2">
-            <span className="text-[#C8A66A] mt-1">•</span>
-            <span className="text-sm leading-relaxed" style={{ color: "hsl(230 20% 25%)" }}>
+          <div key={i} className="flex gap-3 mb-3 pl-2">
+            <span className="text-[#C8A66A] mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full" style={{ background: "#C8A66A" }} />
+            <span className="text-[15px] leading-relaxed font-medium" style={{ color: "#2D2D2D" }}>
               {renderInlineBold(line.replace("- ", ""))}
             </span>
           </div>
         );
       }
       return (
-        <p key={i} className="text-sm leading-relaxed mb-4 last:mb-0" style={{ color: "hsl(230 20% 25%)" }}>
+        <p key={i} className="text-[15px] leading-relaxed mb-5 last:mb-0 font-medium" style={{ color: "#2D2D2D" }}>
           {renderInlineBold(line)}
         </p>
       );
@@ -146,7 +146,7 @@ const TiragensLessonPage = () => {
     const parts = text.split(/(\*\*[^*]+\*\*)/g);
     return parts.map((part, i) => {
       if (part.startsWith("**") && part.endsWith("**")) {
-        return <strong key={i} style={{ color: "hsl(340 42% 22%)" }}>{part.slice(2, -2)}</strong>;
+        return <strong key={i} className="font-black" style={{ color: "#5B1F3D" }}>{part.slice(2, -2)}</strong>;
       }
       return <span key={i}>{part}</span>;
     });
@@ -191,7 +191,7 @@ const TiragensLessonPage = () => {
               }}>
                 {lesson.title}
               </h2>
-              <p className="font-accent text-sm italic" style={{ color: "hsl(230 20% 25% / 0.60)" }}>{lesson.subtitle}</p>
+              <p className="font-accent text-sm italic font-bold" style={{ color: "#5B1F3D" }}>{lesson.subtitle}</p>
             </div>
 
             <div className="rounded-xl p-6" style={{ background: "hsl(38 30% 95% / 0.85)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
@@ -208,7 +208,7 @@ const TiragensLessonPage = () => {
                   {lesson.whenToUse.map((item, i) => (
                     <div key={i} className="flex items-center gap-2 bg-white/50 p-3 rounded-lg border border-[#C8A66A]/10">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#C8A66A]" />
-                      <span className="text-xs font-medium text-[#5B1F3D]/80">{item}</span>
+                      <span className="text-xs font-bold text-[#5B1F3D]">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -226,7 +226,7 @@ const TiragensLessonPage = () => {
                         <span className="w-1 h-4 bg-[#C8A66A] rounded-full group-hover:h-6 transition-all duration-300" />
                         {block.title}
                       </h4>
-                      <p className="text-[13px] font-body text-[#5B1F3D]/70 leading-relaxed italic">
+                      <p className="text-[14px] font-body text-[#5B1F3D] leading-relaxed italic font-bold">
                         {block.content}
                       </p>
                     </div>
@@ -241,7 +241,7 @@ const TiragensLessonPage = () => {
               </h3>
               <ul className="space-y-2">
                 {lesson.keyPoints.map((point, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm" style={{ color: "hsl(230 20% 20%)" }}>
+                  <li key={i} className="flex items-start gap-2 text-sm font-bold" style={{ color: "#2D2D2D" }}>
                     <span style={{ color: "hsl(36 42% 44%)" }} className="mt-0.5 shrink-0">◆</span>
                     {point}
                   </li>
@@ -254,7 +254,7 @@ const TiragensLessonPage = () => {
               <div className="space-y-6">
                 <div className="flex items-center gap-2 px-1">
                   <MapPin className="w-4 h-4 text-[#C8A66A]" />
-                  <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Mapa Visual da Tiragem</span>
+                  <span className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]">Mapa Visual da Tiragem</span>
                 </div>
                 
                 <div className="rounded-[2rem] bg-white border-2 border-[#C8A66A]/20 shadow-xl overflow-hidden">
@@ -264,21 +264,21 @@ const TiragensLessonPage = () => {
                     </h3>
                     
                     {/* The Visual Grid/Map */}
-                    <div className="relative aspect-square max-w-[320px] mx-auto bg-white/40 rounded-3xl border border-[#C8A66A]/10 shadow-inner p-4">
+                    <div className="relative aspect-square max-w-[340px] mx-auto bg-white/60 rounded-[2.5rem] border-2 border-[#C8A66A]/20 shadow-inner p-6">
                       {lesson.layoutDiagram.positions.map((pos, i) => (
                         <div 
                           key={i} 
-                          className="absolute w-14 h-20 md:w-16 md:h-24 -translate-x-1/2 -translate-y-1/2 transition-all duration-700"
+                          className="absolute w-16 h-22 md:w-20 md:h-28 -translate-x-1/2 -translate-y-1/2 transition-all duration-700"
                           style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
                         >
                           {/* Card Placeholder Visual */}
-                          <div className="w-full h-full rounded-lg border-2 border-[#C8A66A]/60 bg-white shadow-[0_10px_25px_-5px_rgba(91,31,61,0.15)] flex items-center justify-center relative group-hover:scale-110 transition-all duration-500 overflow-hidden ring-4 ring-[#C8A66A]/5">
-                             <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#5B1F3D] to-transparent" />
-                             <div className="absolute top-1 left-1 right-1 bottom-1 border border-[#C8A66A]/10 rounded-md pointer-events-none" />
-                             <span className="font-heading text-2xl md:text-3xl font-black text-[#5B1F3D] drop-shadow-sm z-10">{i + 1}</span>
+                          <div className="w-full h-full rounded-xl border-[2.5px] border-[#C8A66A] bg-white shadow-[0_15px_35px_-5px_rgba(91,31,61,0.25)] flex items-center justify-center relative group-hover:scale-110 transition-all duration-500 overflow-hidden ring-4 ring-[#C8A66A]/10">
+                             <div className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_center,_#5B1F3D,_transparent)]" />
+                             <div className="absolute top-1.5 left-1.5 right-1.5 bottom-1.5 border border-[#C8A66A]/20 rounded-lg pointer-events-none" />
+                             <span className="font-heading text-3xl md:text-4xl font-black text-[#5B1F3D] drop-shadow-md z-10">{i + 1}</span>
                           </div>
-                          <div className="mt-2 text-center">
-                             <span className="text-[7px] md:text-[9px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]/60 leading-none block px-1 truncate">
+                          <div className="mt-2.5 text-center px-1">
+                             <span className="text-[9px] md:text-[11px] font-heading font-black uppercase tracking-[0.15em] text-[#5B1F3D] leading-tight block whitespace-normal break-words">
                                {pos.label}
                              </span>
                           </div>
@@ -290,7 +290,7 @@ const TiragensLessonPage = () => {
                   <div className="p-6 bg-white space-y-3">
                     <div className="flex flex-col items-center gap-1 mb-4 px-2">
                        <span className="text-[9px] font-heading font-black tracking-widest uppercase text-[#C8A66A]">Legenda das Posições</span>
-                       <span className="text-[8px] font-body font-black uppercase tracking-[0.2em] text-[#5B1F3D]/30">Siga a ordem numérica para a leitura</span>
+                       <span className="text-[10px] font-body font-black uppercase tracking-[0.25em] text-[#5B1F3D]/40">Siga a ordem numérica para a leitura</span>
                        <div className="h-px w-12 bg-[#C8A66A]/20 mt-1" />
                     </div>
                     {lesson.layoutDiagram.positions.map((pos, i) => (
@@ -304,7 +304,7 @@ const TiragensLessonPage = () => {
                         </div>
                         <div className="flex-1 min-w-0">
                           <span className="font-heading text-sm font-black text-[#5B1F3D] block mb-0.5">{pos.label}</span>
-                          <p className="text-[12px] font-body font-bold italic text-[#5B1F3D]/70 leading-relaxed">{pos.description}</p>
+                          <p className="text-[13px] font-body font-bold italic text-[#5B1F3D] leading-relaxed">{pos.description}</p>
                         </div>
                       </div>
                     ))}
@@ -320,30 +320,41 @@ const TiragensLessonPage = () => {
                   🎴 Exemplo Prático
                 </h3>
                 {lesson.examples.map((ex, i) => (
-                  <div key={i} className="rounded-xl p-5" style={{
-                    background: "linear-gradient(145deg, hsl(340 42% 28% / 0.04), hsl(36 45% 58% / 0.04))",
-                    border: "1px solid hsl(340 42% 28% / 0.15)",
+                  <div key={i} className="rounded-[2rem] p-6 md:p-8 space-y-6" style={{
+                    background: "white",
+                    border: "2px solid #C8A66A30",
+                    boxShadow: "0 20px 40px rgba(91,31,61,0.05)"
                   }}>
-                    <p className="text-xs font-heading tracking-wider uppercase mb-1" style={{ color: "hsl(36 40% 38%)" }}>
-                      {ex.spread}
-                    </p>
-                    <p className="text-sm font-accent italic mb-3" style={{ color: "hsl(230 20% 25% / 0.60)" }}>
-                      "{ex.question}"
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {ex.cards.map((c, ci) => (
-                        <span key={ci} className="text-xs font-heading tracking-wide px-3 py-1.5 rounded-lg" style={{
-                          background: "hsl(38 30% 95%)",
-                          border: "1px solid hsl(36 45% 58% / 0.25)",
-                          color: "hsl(230 25% 15%)",
-                        }}>
-                          <span className="opacity-50">{c.position}:</span> {c.card}
-                        </span>
-                      ))}
+                    <div className="flex flex-col items-center gap-1 border-b border-[#C8A66A]/10 pb-4">
+                      <p className="text-[11px] font-heading tracking-[0.3em] uppercase font-black text-[#C8A66A]">
+                        {ex.spread}
+                      </p>
+                      <p className="text-base font-accent italic font-black text-center" style={{ color: "#5B1F3D" }}>
+                        "{ex.question}"
+                      </p>
                     </div>
-                    <p className="text-sm leading-relaxed" style={{ color: "hsl(230 20% 25% / 0.80)" }}>
-                      {ex.interpretation}
-                    </p>
+
+                    <div className="space-y-4">
+                      <p className="text-[10px] font-heading tracking-widest uppercase font-black text-[#5B1F3D]/40">Cartas Sorteadas</p>
+                      <div className="flex flex-wrap gap-3">
+                        {ex.cards.map((c, ci) => (
+                          <div key={ci} className="bg-[#FAF5EF] border-2 border-[#C8A66A]/20 px-4 py-2.5 rounded-2xl flex items-center gap-3">
+                            <span className="text-[11px] font-heading font-black text-[#C8A66A]">{ci + 1}</span>
+                            <div className="flex flex-col">
+                              <span className="text-[9px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]/40">{c.position}</span>
+                              <span className="text-[13px] font-bold text-[#5B1F3D]">{c.card}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="space-y-3 bg-[#FAF5EF]/30 p-5 rounded-2xl border border-[#C8A66A]/10">
+                      <p className="text-[10px] font-heading tracking-widest uppercase font-black text-[#5B1F3D]/40">Interpretação e Síntese</p>
+                      <p className="text-[15px] leading-relaxed text-[#2D2D2D] font-medium italic">
+                        {ex.interpretation}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -355,7 +366,7 @@ const TiragensLessonPage = () => {
                 <h3 className="font-heading text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "hsl(340 42% 26%)" }}>
                   ✍️ Reflexão
                 </h3>
-                <p className="font-accent text-sm italic leading-relaxed" style={{ color: "hsl(230 20% 25% / 0.70)" }}>
+                <p className="font-accent text-sm italic leading-relaxed font-bold" style={{ color: "#5B1F3D" }}>
                   {lesson.reflection}
                 </p>
               </div>
