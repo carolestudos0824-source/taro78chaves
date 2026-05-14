@@ -10,7 +10,6 @@ import { useIsAdmin } from "@/hooks/use-admin";
 import { useProgress } from "@/hooks/use-progress";
 import { TarotIcon, TarotIconType } from "./TarotIcon";
 
-
 interface GlobalMenuProps {
   isOpen: boolean;
   onClose: () => void;
@@ -21,7 +20,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
   const location = useLocation();
   const { signOut } = useAuth();
   const { isAdmin } = useIsAdmin();
-  const { progress, getCurrentArcanoId } = useProgress();
+  const { getCurrentArcanoId } = useProgress();
 
   const currentArcanoId = getCurrentArcanoId();
 
@@ -33,9 +32,48 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
     }
   }, [location.pathname]);
 
-  // Memoize sections to ensure stability
+  const SectionTitle = ({ children }: { children: React.ReactNode }) => (
+    <h3 className="px-4 pt-6 pb-2 text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A]">
+      {children}
+    </h3>
+  );
+
+  const NavItem = ({ to, icon, label, badge }: { to: string; icon: TarotIconType | string; label: string; badge?: string }) => {
+    const isActive = location.pathname === to;
+    return (
+      <Link
+        to={to}
+        className={`flex items-center justify-between p-4 rounded-2xl transition-all duration-300 group ${
+          isActive 
+            ? "bg-[#5B1F3D] text-white shadow-lg" 
+            : "hover:bg-[#5B1F3D]/5 text-[#5B1F3D]"
+        }`}
+      >
+        <div className="flex items-center gap-4">
+          <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
+            isActive ? "bg-white/20" : "bg-[#FAF5EF] border border-[#C8A66A]/20"
+          }`}>
+            <TarotIcon name={icon} className={`w-5 h-5 ${isActive ? "text-white" : "text-[#C8A66A]"}`} />
+          </div>
+          <span className={`text-[13px] font-heading font-black tracking-tight ${isActive ? "text-white" : "text-[#5B1F3D]"}`}>
+            {label}
+          </span>
+        </div>
+        {badge ? (
+          <span className={`text-[8px] font-heading font-black uppercase tracking-widest px-2 py-1 rounded-full ${
+            isActive ? "bg-white/20 text-white" : "bg-[#C8A66A] text-white"
+          }`}>
+            {badge}
+          </span>
+        ) : (
+          <ChevronRight className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${isActive ? "text-white/40" : "text-[#C8A66A]/40"}`} />
+        )}
+      </Link>
+    );
+  };
+
   const blocks = useMemo(() => (
-    <>
+    <div className="flex-1 overflow-y-auto px-4 py-6 space-y-2 pb-32 scrollbar-hide overscroll-contain">
       {/* BLOCO 1 — Jornada */}
       <SectionTitle>Jornada</SectionTitle>
       <NavItem to="/app" icon="jornada" label="Jornada Principal" />
@@ -87,48 +125,22 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
           <NavItem to="/qa-rotas" icon="auditoria" label="Auditoria de Rotas" />
         </>
       )}
-    </>
-  ), [currentArcanoId, isAdmin, location.pathname]);
 
-  const NavItem = ({ to, icon, label, badge }: { to: string; icon: TarotIconType | string; label: string; badge?: string }) => {
-    const isActive = location.pathname === to;
-    return (
-      <Link
-        to={to}
-        className={`flex items-center justify-between p-4 rounded-2xl transition-all duration-300 group ${
-          isActive 
-            ? "bg-[#5B1F3D] text-white shadow-lg" 
-            : "hover:bg-[#5B1F3D]/5 text-[#5B1F3D]"
-        }`}
-      >
-        <div className="flex items-center gap-4">
-          <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
-            isActive ? "bg-white/20" : "bg-[#FAF5EF] border border-[#C8A66A]/20"
-          }`}>
-            <TarotIcon name={icon} className={`w-5 h-5 ${isActive ? "text-white" : "text-[#C8A66A]"}`} />
+      <div className="pt-8 pb-4">
+        <button 
+          onClick={() => signOut()}
+          className="w-full flex items-center gap-4 p-4 rounded-2xl text-[#5B1F3D]/60 hover:text-[#5B1F3D] hover:bg-red-50 transition-all border-2 border-transparent hover:border-red-100"
+        >
+          <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center">
+            <LogOut className="w-5 h-5 text-red-400" />
           </div>
-          <span className={`text-[13px] font-heading font-black tracking-tight ${isActive ? "text-white" : "text-[#5B1F3D]"}`}>
-            {label}
+          <span className="text-[13px] font-heading font-black tracking-tight uppercase">
+            Encerrar Sessão
           </span>
-        </div>
-        {badge ? (
-          <span className={`text-[8px] font-heading font-black uppercase tracking-widest px-2 py-1 rounded-full ${
-            isActive ? "bg-white/20 text-white" : "bg-[#C8A66A] text-white"
-          }`}>
-            {badge}
-          </span>
-        ) : (
-          <ChevronRight className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${isActive ? "text-white/40" : "text-[#C8A66A]/40"}`} />
-        )}
-      </Link>
-    );
-  };
-
-  const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-    <h3 className="px-4 pt-6 pb-2 text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A]">
-      {children}
-    </h3>
-  );
+        </button>
+      </div>
+    </div>
+  ), [currentArcanoId, isAdmin, location.pathname, signOut]);
 
   return (
     <div className={`fixed inset-0 z-[2000000] flex transition-all duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
@@ -141,7 +153,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
       {/* Drawer */}
       <div className={`fixed top-0 left-0 w-[320px] max-w-[85vw] h-full bg-[#FDFBF7] shadow-2xl flex flex-col border-r-2 border-[#C8A66A]/30 transition-transform duration-500 overflow-hidden z-[2000001] ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         {/* Header */}
-        <div className="p-6 border-b-2 border-[#C8A66A]/20 flex items-center justify-between bg-white/50">
+        <div className="p-6 border-b-2 border-[#C8A66A]/20 flex items-center justify-between bg-white/50 shrink-0">
           <div className="flex flex-col">
             <span className="text-[10px] font-heading font-black tracking-[0.4em] uppercase text-[#C8A66A]">
               Menu Global
@@ -158,26 +170,11 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto px-4 py-6 space-y-2 pb-32 scrollbar-hide overscroll-contain">
-          {blocks}
-
-          <div className="pt-8 pb-4">
-            <button 
-              onClick={() => signOut()}
-              className="w-full flex items-center gap-4 p-4 rounded-2xl text-[#5B1F3D]/60 hover:text-[#5B1F3D] hover:bg-red-50 transition-all border-2 border-transparent hover:border-red-100"
-            >
-              <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center">
-                <LogOut className="w-5 h-5 text-red-400" />
-              </div>
-              <span className="text-[13px] font-heading font-black tracking-tight uppercase">
-                Encerrar Sessão
-              </span>
-            </button>
-          </div>
-        </div>
+        {/* Scrollable Content Area */}
+        {blocks}
 
         {/* Footer */}
-        <div className="p-6 bg-white border-t-2 border-[#C8A66A]/20">
+        <div className="p-6 bg-white border-t-2 border-[#C8A66A]/20 shrink-0">
           <p className="text-[10px] font-heading font-black tracking-[0.4em] text-[#C8A66A] uppercase text-center">
             Tarô 78 Chaves · © 2026
           </p>
