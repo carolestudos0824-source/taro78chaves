@@ -879,6 +879,168 @@ Esta tiragem NÃO é sobre o mundo externo — é sobre a paisagem interna. Leia
       },
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════
+  // LIÇÃO 11 — Tiragem para Amor e Relacionamentos
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "tir-11",
+    order: 10,
+    title: "Tiragem para Amor e Relacionamentos",
+    subtitle: "Uma leitura ética sobre vínculo, desejo e caminho possível",
+    icon: "❤️",
+    content: `Tiragens sobre amor são as mais procuradas — e também as mais delicadas. Quando o coração está em jogo, é fácil escorregar para a leitura que **promete** em vez da leitura que **revela**. Esta lição ensina o caminho ético: olhar o vínculo com clareza adulta, sem manipular o futuro nem invadir a vontade do outro.
+
+**A premissa fundamental:** o tarô não tem o poder — nem o direito — de forçar uma pessoa a voltar, ficar, amar ou desejar. O que ele faz é **mostrar a paisagem do vínculo**: o que está vivo, o que bloqueia, o que pede atenção. A decisão sempre é das pessoas envolvidas.
+
+**Quando usar esta tiragem:**
+- Você quer entender a dinâmica de um relacionamento (atual, passado ou em construção)
+- Há uma pergunta honesta sobre o seu papel no vínculo
+- Você precisa de clareza para decidir como agir
+- Você quer ver bloqueios e potenciais que talvez esteja ignorando
+
+**Quando NÃO usar:**
+- Para "saber se ele/ela vai voltar" (isso retira o poder de quem consulta e invade a vontade do outro)
+- Para vigiar uma pessoa ("o que ela está fazendo agora?")
+- Para insistir em alguém que já foi claro sobre não querer
+- Como muleta emocional repetida (toda semana, todo dia)
+- Quando você só quer ouvir o que deseja ouvir
+
+**Pergunta boa:**
+"O que preciso ver sobre o vínculo entre mim e [pessoa] neste momento — e o que posso fazer com clareza?"
+
+**Pergunta ruim:**
+"Ele/ela vai voltar para mim?" — fechada, dependente do outro, e tira o seu poder de escolha.
+
+**A Tiragem dos 5 Vínculos:**
+
+**Posição 1 — Você no vínculo.** Como você está chegando nesse relacionamento agora: emoções, expectativas, padrões. É o seu espelho dentro da relação.
+
+**Posição 2 — A outra pessoa ou energia relacional.** A energia que a outra pessoa traz, ou — quando o vínculo ainda não tem rosto — a energia geral que cerca o tema relacional na sua vida. Não é mente-leitura: é o clima que se manifesta entre vocês.
+
+**Posição 3 — O que aproxima.** O que existe de vivo, magnético ou genuíno entre os dois. Pode ser afeto, projeto comum, química, valores compartilhados, história.
+
+**Posição 4 — O que bloqueia.** O obstáculo real. Pode ser timing, ferida pessoal, padrão repetido, comunicação travada, terceiros, fase de vida — algo que impede o vínculo de fluir como poderia.
+
+**Posição 5 — Conselho do tarô.** O passo possível e ético para você. Não promessa, não previsão fechada — direção. O que cabe à sua parte fazer agora.
+
+**Como ler com ética:**
+- Leia primeiro a posição 1. Antes de falar do outro, olhe para si.
+- O par 3-4 (aproxima + bloqueia) é o coração da leitura: mostra a tensão real do vínculo.
+- A posição 5 sempre se dirige a quem consulta. Nunca diga "você precisa fazer ele mudar".
+- Se cair uma carta dura (Torre, Diabo, 3 de Espadas, 5 de Copas), nomeie com cuidado: a carta descreve a paisagem, não condena o relacionamento.
+- Termine devolvendo a escolha à consulente. O tarô abre o mapa; o caminho é dela.`,
+    keyPoints: [
+      "O tarô revela a paisagem do vínculo — não força ninguém a amar, ficar ou voltar",
+      "Pergunta boa foca em você e no vínculo, não em prever a vontade do outro",
+      "5 posições: Você / A outra pessoa ou energia / O que aproxima / O que bloqueia / Conselho",
+      "O par 3-4 (aproxima + bloqueia) é o coração da leitura",
+      "O conselho sempre se dirige a quem consulta — nunca a terceiros",
+      "Não usar como vigilância, insistência ou muleta emocional",
+    ],
+    deepDive: `Leituras de amor pedem uma postura adulta da leitora. Três armadilhas são comuns:
+
+**1. A leitura-promessa.** "As cartas dizem que ele volta em 3 meses." Isso não é leitura — é projeção do desejo da consulente, vestido de tarô. Nenhuma carta promete o futuro de outra pessoa.
+
+**2. A leitura-vigilância.** Tirar cartas para saber "o que ela está sentindo agora", "com quem ele está", "se está pensando em mim". Isso invade a privacidade de quem nem está na sala. Ético é olhar o vínculo, não espionar a pessoa.
+
+**3. A leitura-dependência.** Consultar todo dia sobre a mesma pessoa. O tarô vira muleta para não sentir a ausência. Aí ele deixa de ser ferramenta e vira fuga.
+
+**O caminho ético:** o tarô serve para **clarear**, não para controlar. Uma boa leitura de amor termina com a consulente mais lúcida sobre si mesma e mais livre — não mais grudada na pessoa. Se a leitura aumenta a obsessão, algo está errado: na pergunta, na postura ou na frequência.
+
+Quando a outra pessoa já foi clara sobre não querer o vínculo, o tarô não vai "desfazer" essa escolha. Pode, sim, mostrar à consulente o que existe **dela** ali — luto, ferida, padrão — e por onde recomeçar a vida própria.`,
+    layoutDiagram: {
+      name: "Tiragem dos 5 Vínculos",
+      positions: [
+        { label: "Você no vínculo", description: "Como você está chegando — emoções, expectativas, padrões" },
+        { label: "A outra pessoa ou energia relacional", description: "A energia que ela traz, ou o clima geral do tema relacional" },
+        { label: "O que aproxima", description: "O que está vivo, magnético, genuíno entre os dois" },
+        { label: "O que bloqueia", description: "O obstáculo real — timing, ferida, padrão, comunicação" },
+        { label: "Conselho do tarô", description: "O passo possível e ético para quem consulta" },
+      ],
+    },
+    examples: [
+      {
+        spread: "Tiragem dos 5 Vínculos",
+        question: "O que preciso ver sobre o vínculo entre mim e essa pessoa neste momento — e o que posso fazer com clareza?",
+        cards: [
+          { position: "Você no vínculo", card: "2 de Copas" },
+          { position: "A outra pessoa ou energia relacional", card: "Cavaleiro de Espadas" },
+          { position: "O que aproxima", card: "Os Enamorados" },
+          { position: "O que bloqueia", card: "4 de Paus invertido" },
+          { position: "Conselho do tarô", card: "A Sacerdotisa" },
+        ],
+        interpretation: "Você chega no vínculo com o coração aberto e disposição genuína de troca (2 de Copas). A outra pessoa está em movimento mental rápido, racional, talvez evasiva ou ainda processando ideias (Cavaleiro de Espadas) — não é frieza, é ritmo diferente do seu. O que aproxima é forte: há uma escolha consciente de afinidade e valores entre vocês (Os Enamorados). O que bloqueia é a falta de uma base estável compartilhada — talvez timing, talvez compromisso ainda não definido (4 de Paus invertido). O conselho não é avançar nem cobrar: é silenciar e observar (A Sacerdotisa). Não force a definição agora. Dê espaço para que a verdade do vínculo apareça por si — e use esse tempo para ouvir sua própria intuição sobre o que **você** quer, não só sobre o que ele/ela vai decidir.",
+      },
+    ],
+    reflection: "Pense em uma leitura de amor que você fez (para si ou para outra pessoa) que terminou em mais ansiedade do que clareza. O que aconteceu? A pergunta era sobre o vínculo, ou sobre forçar uma resposta? Como essa leitura teria sido diferente se a pergunta fosse: 'O que preciso ver sobre esse vínculo — e o que cabe a mim?'",
+    exercise: {
+      instruction: "Escolha um relacionamento real da sua vida (romântico, atual ou recente) e faça a Tiragem dos 5 Vínculos para si mesma. Antes de virar as cartas, escreva sua pergunta seguindo a fórmula ética da lição. Depois interprete cada posição, lendo o par 3-4 com atenção especial. Termine respondendo por escrito: 'O que esta leitura me devolve sobre MIM — não sobre a outra pessoa?' Guarde essa anotação e releia daqui a 30 dias.",
+      type: "writing",
+    },
+    quiz: [
+      {
+        id: "tir-11-q1",
+        question: "Qual é a postura ética central de uma leitura sobre amor?",
+        options: [
+          "Prever se a pessoa volta",
+          "Descobrir o que a outra pessoa está sentindo agora",
+          "Revelar a paisagem do vínculo e devolver à consulente o poder de escolha",
+          "Garantir que o relacionamento dê certo",
+        ],
+        correctIndex: 2,
+        explanation: "O tarô abre o mapa — quem caminha é a consulente. Nunca força a vontade de terceiros nem promete desfechos.",
+      },
+      {
+        id: "tir-11-q2",
+        question: "Qual é uma pergunta ética para esta tiragem?",
+        options: [
+          "Ele/ela vai voltar para mim?",
+          "O que preciso ver sobre o vínculo entre mim e essa pessoa — e o que posso fazer com clareza?",
+          "Com quem ela está agora?",
+          "Quando vamos casar?",
+        ],
+        correctIndex: 1,
+        explanation: "A pergunta boa é aberta, foca no vínculo e na ação possível de quem consulta — não em prever a vontade do outro.",
+      },
+      {
+        id: "tir-11-q3",
+        question: "O par de posições 3 (o que aproxima) e 4 (o que bloqueia) revela:",
+        options: [
+          "O passado e o futuro do casal",
+          "A tensão real do vínculo — o que está vivo e o que precisa de atenção",
+          "Quem está certo na briga",
+          "A data do próximo encontro",
+        ],
+        correctIndex: 1,
+        explanation: "Esse par é o coração da leitura: mostra simultaneamente a força e o obstáculo do vínculo.",
+      },
+      {
+        id: "tir-11-q4",
+        question: "Quando NÃO se deve usar esta tiragem?",
+        options: [
+          "Para entender a dinâmica de um relacionamento atual",
+          "Como vigilância, insistência sobre quem já se afastou, ou muleta emocional repetida",
+          "Para ver bloqueios que você está ignorando",
+          "Para clarear o seu papel no vínculo",
+        ],
+        correctIndex: 1,
+        explanation: "O tarô serve para clarear, não para controlar. Vigiar, insistir ou consultar compulsivamente desvirtua a ferramenta.",
+      },
+      {
+        id: "tir-11-q5",
+        question: "A posição 5 (Conselho do tarô) sempre se dirige a:",
+        options: [
+          "À outra pessoa do vínculo",
+          "Aos familiares envolvidos",
+          "A quem está consultando — nunca a terceiros",
+          "Ao terapeuta da consulente",
+        ],
+        correctIndex: 2,
+        explanation: "O conselho é para quem consulta. O tarô não dá ordens a quem nem está na leitura.",
+      },
+    ],
+  },
 ];
 
 export function getTiragensLessonByOrder(order: number): TiragemLesson | undefined {
