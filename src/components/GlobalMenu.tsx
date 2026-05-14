@@ -145,7 +145,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
   return (
     <div className={`fixed inset-0 z-[2000000] flex transition-all duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
       <div 
-        className="absolute inset-0 bg-[#5B1F3D]/60 backdrop-blur-md" 
+        className="absolute inset-0 bg-black/40" 
         onClick={onClose}
       />
 
