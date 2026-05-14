@@ -159,7 +159,7 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
               transition={{ duration: 2, repeat: Infinity }}
               className="bg-[#C8A66A]/80 p-1.5 rounded-full backdrop-blur-sm"
             >
-              <Key className="w-3 h-3 text-white" />
+              <TarotIcon name="liberado" className="w-3 h-3 text-white" />
             </motion.div>
           </div>
         )}
