@@ -194,7 +194,7 @@ const ProfilePage = () => {
         <div className="space-y-3">
           <button onClick={() => navigate("/minha-jornada")} className="w-full flex items-center justify-between p-6 rounded-2xl bg-white border-2 border-[#DCCFC2]/40 group active:scale-[0.98] transition-all shadow-md">
             <div className="flex items-center gap-4">
-              <Book className="w-6 h-6 text-[#C8A66A]" />
+              <TarotIcon name="jornada" className="w-6 h-6 text-[#C8A66A]" />
               <div className="text-left">
                 <p className="font-heading text-base font-black text-[#5B1F3D]">Caderno da Jornada</p>
                 <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/70 leading-none">Suas reflexões rituais</p>
