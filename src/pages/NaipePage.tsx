@@ -1,5 +1,6 @@
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { ArrowLeft, Lock, Check, ChevronRight, BookOpen, Hash, Crown, Sparkles } from "lucide-react";
+import { TarotIcon } from "@/components/TarotIcon";
 import {
   type Naipe,
   NAIPES,
