@@ -246,9 +246,9 @@ const DailyChallengesPage = () => {
                         : "bg-[#FAF5EF] border-[#C8A66A20] text-[#5B1F3D] group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D] group-hover:text-[#FAF5EF] group-hover:shadow-[0_15px_40px_rgba(91,31,61,0.3)] group-hover:-rotate-3"
                     }`}>
                       {ch.completed ? (
-                        <Check className="w-9 h-9 md:w-11 md:h-11" strokeWidth={4} />
+                        <TarotIcon name="concluido" className="w-9 h-9 md:w-11 md:h-11" strokeWidth={4} />
                       ) : (
-                        <IconComponent className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
+                        <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
                       )}
                     </div>
 
