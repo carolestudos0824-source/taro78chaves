@@ -174,7 +174,7 @@ const DailyChallengesPage = () => {
               <div className="w-16 h-16 rounded-[1.6rem] flex items-center justify-center border-2 border-[#C8A66A40] shadow-xl transform -rotate-3" style={{
                 background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
               }}>
-                <Flame className={`w-8 h-8 text-[#C8A66A] ${allDone ? "animate-pulse" : ""}`} />
+                <TarotIcon name="ritual" className={`w-8 h-8 text-[#C8A66A] ${allDone ? "animate-pulse" : ""}`} />
               </div>
               <div className="flex flex-col">
                 <span className="text-[10px] md:text-[11px] font-heading font-black tracking-[0.35em] text-[#C8A66A] uppercase mb-1">
