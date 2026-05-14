@@ -39,26 +39,17 @@ export function ArcanoVivoAnimatedCard({
       animate={isRevealed ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
     >
-      {/* Outer aura (breathing) */}
-      <motion.div
+      {/* Outer aura (static when revealed) */}
+      <div
         className="absolute -inset-16 rounded-[4rem] pointer-events-none transition-opacity duration-1000"
         style={{
           background: `radial-gradient(circle, hsl(${config.glowColor} / 0.25) 0%, transparent 75%)`,
-          opacity: isBreathing ? 1 : 0,
-        }}
-        animate={isBreathing && !shouldReduceMotion ? {
-          scale: [1, 1.05, 1],
-          opacity: [0.4, 0.7, 0.4]
-        } : {}}
-        transition={{
-          duration: config.breatheSpeed || 4,
-          repeat: Infinity,
-          ease: "easeInOut"
+          opacity: isBreathing ? 0.5 : 0,
         }}
       />
 
       {/* The card itself */}
-      <motion.div
+      <div
         className="relative w-64 h-[24rem] sm:w-80 sm:h-[30rem] rounded-2xl overflow-hidden shadow-2xl"
         style={{
           border: `2.5px solid hsl(${config.glowColor} / 0.5)`,
@@ -66,15 +57,6 @@ export function ArcanoVivoAnimatedCard({
           boxShadow: isEmerged
             ? `0 25px 80px hsl(${config.glowColor} / 0.3), 0 0 120px hsl(${config.ambientColor} / 0.15)`
             : `0 20px 60px hsl(${config.glowColor} / 0.2)`,
-        }}
-        animate={isBreathing && !shouldReduceMotion ? {
-          y: [0, -8, 0],
-          rotateY: [0, 1, -1, 0]
-        } : { y: 0, rotateY: 0 }}
-        transition={{
-          duration: config.breatheSpeed || 4,
-          repeat: Infinity,
-          ease: "easeInOut"
         }}
       >
         {/* Card image */}
@@ -124,15 +106,11 @@ export function ArcanoVivoAnimatedCard({
               initial={{ opacity: 0, scale: 0 }}
               animate={{ 
                 opacity: isActive ? 0.8 : 0,
-                scale: isActive ? [1, 1.2, 1] : 0 
+                scale: isActive ? 1 : 0 
               }}
               transition={{ 
                 opacity: { duration: 0.8 },
-                scale: { 
-                  duration: spot.duration || 3, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }
+                scale: { duration: 0.4 }
               }}
             />
           );
@@ -144,23 +122,15 @@ export function ArcanoVivoAnimatedCard({
             <LockKeyhole className="w-16 h-16 text-white/50" />
           </div>
         )}
-      </motion.div>
+      </div>
 
-      {/* Decorative Halo */}
+      {/* Decorative Halo (static) */}
       {isBreathing && !shouldReduceMotion && (
-        <motion.div 
+        <div 
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] rounded-full pointer-events-none blur-3xl"
           style={{
             background: `radial-gradient(circle, hsl(${config.glowColor} / 0.15) 0%, transparent 70%)`,
-          }}
-          animate={{
-            opacity: [0.1, 0.3, 0.1],
-            scale: [0.8, 1.1, 0.8],
-          }}
-          transition={{
-            duration: (config.breatheSpeed || 4) * 2,
-            repeat: Infinity,
-            ease: "easeInOut"
+            opacity: 0.2
           }}
         />
       )}

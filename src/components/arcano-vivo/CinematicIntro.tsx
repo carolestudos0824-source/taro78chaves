@@ -87,12 +87,11 @@ export function CinematicIntro({
       <div className={`relative transition-all duration-[1.5s] ease-out ${
         revealed ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-90"
       }`}>
-        {/* Outer glow */}
+        {/* Outer glow (static) */}
         <div
           className="absolute -inset-4 rounded-3xl pointer-events-none"
           style={{
             background: "radial-gradient(ellipse, hsl(36 45% 58% / 0.15) 0%, transparent 70%)",
-            animation: "glow-breathe 4s ease-in-out infinite",
           }}
         />
 
@@ -126,8 +125,6 @@ export function CinematicIntro({
             className={`absolute ${pos} w-1.5 h-1.5 rounded-full`}
             style={{
               background: "hsl(36 45% 58% / 0.5)",
-              animation: `twinkle ${2 + i * 0.5}s ease-in-out infinite`,
-              animationDelay: `${i * 0.3}s`,
             }}
           />
         ))}
@@ -183,7 +180,7 @@ export function CinematicIntro({
               {displayed}
               {!typingDone && (
                 <span className="inline-block w-0.5 h-4 ml-0.5 align-middle"
-                  style={{ background: "hsl(36 45% 58%)", animation: "pulse-gold 1s ease-in-out infinite" }}
+                  style={{ background: "hsl(36 45% 58%)" }}
                 />
               )}
             </p>

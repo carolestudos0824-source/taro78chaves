@@ -97,7 +97,7 @@ export function ArcanoVivoVideo({
           }}
         >
           <span
-            className="flex items-center justify-center w-20 h-20 rounded-full transition-transform duration-300 group-hover:scale-110 group-active:scale-95"
+            className="flex items-center justify-center w-20 h-20 rounded-full transition-transform duration-300 group-active:scale-95"
             style={{
               background: `radial-gradient(circle, hsl(${glowColor} / 0.95) 0%, hsl(${glowColor} / 0.75) 70%)`,
               boxShadow: `0 8px 32px hsl(${glowColor} / 0.5), 0 0 40px hsl(${glowColor} / 0.35)`,

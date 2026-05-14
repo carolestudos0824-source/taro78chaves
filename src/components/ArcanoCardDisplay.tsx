@@ -32,13 +32,12 @@ export function ArcanoCardDisplay({ name, numeral, subtitle, keywords, cardImage
           revealed ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
         }`}
       >
-        {/* Outer glow */}
+        {/* Outer glow (static) */}
         <div
           className="absolute -inset-3 rounded-3xl pointer-events-none"
           style={{
             background:
               "radial-gradient(ellipse, hsl(36 45% 58% / 0.12) 0%, transparent 70%)",
-            animation: "glow-breathe 4s ease-in-out infinite",
           }}
         />
 
@@ -121,8 +120,6 @@ export function ArcanoCardDisplay({ name, numeral, subtitle, keywords, cardImage
             className={`absolute ${pos} w-1.5 h-1.5 rounded-full`}
             style={{
               background: "hsl(36 45% 58% / 0.4)",
-              animation: `twinkle ${2 + i * 0.5}s ease-in-out infinite`,
-              animationDelay: `${i * 0.3}s`,
             }}
           />
         ))}
