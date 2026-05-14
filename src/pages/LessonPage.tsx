@@ -97,7 +97,7 @@ const LessonPage = () => {
   }, [arcano, phase, arcanoId, phases, setHeader, resetHeader]);
 
   // 1. Estado de Carregamento (Loading Ritualístico)
-  if (!mounted || isLiteralRoute || premiumLoading || roleLoading || accessLoading) {
+  if (!mounted || isLiteralRoute) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7] relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
