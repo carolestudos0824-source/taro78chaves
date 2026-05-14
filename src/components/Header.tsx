@@ -1,10 +1,10 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { KeyRound, Menu } from "lucide-react";
+import { KeyRound, Menu, ArrowLeft } from "lucide-react";
 import { StreakCounter } from "@/components/StreakCounter";
 import { XPBar } from "@/components/XPBar";
-import brandIcon from "@/assets/brand-icon.png";
 import { useState, useEffect, useRef } from "react";
 import GlobalMenu from "@/components/GlobalMenu";
+import { useHeader } from "@/contexts/header-context";
 
 interface HeaderProps {
   streak: number;
@@ -15,14 +15,15 @@ interface HeaderProps {
 export const Header = ({ streak, xp, level }: HeaderProps) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { state } = useHeader();
   const [isCompact, setIsCompact] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isCompactRef = useRef(false);
 
   useEffect(() => {
     let ticking = false;
-    const threshold = 80;
-    const hysteresis = 40;
+    const threshold = 60;
+    const hysteresis = 30;
 
     const handleScroll = () => {
       if (!ticking) {
@@ -43,60 +44,82 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    // Initial check
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  if (location.pathname === "/" || location.pathname.startsWith("/admin")) return null;
+  if (location.pathname === "/" || location.pathname.startsWith("/admin") || state.hideHeader) return null;
 
   return (
     <header 
-      className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-xl border-b-2 border-[#C8A66A]/20 shadow-lg transition-shadow duration-300"
+      className="sticky top-0 z-50 w-full bg-[#FDFBF7]/95 backdrop-blur-xl border-b-2 border-[#C8A66A]/20 shadow-lg transition-all duration-300"
     >
-      <div className="container max-w-lg px-6 py-4 md:py-6 relative">
-        <div className={`flex items-center justify-between transition-all duration-500 ease-in-out ${isCompact ? "mb-1" : "mb-4 md:mb-6"}`}>
-          <div className="flex items-center gap-3 md:gap-6">
-            <button 
-              onClick={() => setIsMenuOpen(true)}
-              className={`flex items-center justify-center shrink-0 p-1.5 bg-white rounded-2xl shadow-xl border border-[#C8A66A]/30 transition-all duration-500 ease-in-out transform hover:border-[#C8A66A] active:scale-95 ${
-                isCompact ? "w-11 h-11 scale-90" : "w-14 h-14 md:w-20 md:h-20 scale-100"
-              }`}
-            >
-              <Menu className={`${isCompact ? "w-5 h-5" : "w-6 h-6 md:w-8 md:h-8"} text-[#5B1F3D]`} />
-            </button>
-            <div className="flex flex-col justify-center">
-              <h1 className={`font-heading text-[#5B1F3D] font-black tracking-tight leading-none transition-all duration-500 ease-in-out ${
-                isCompact ? "text-lg" : "text-xl md:text-3xl mb-1.5 md:mb-3"
+      <div className="container max-w-lg px-6 py-4 relative">
+        <div className={`flex items-center justify-between transition-all duration-500 ease-in-out ${isCompact ? "mb-0" : "mb-4"}`}>
+          <div className="flex items-center gap-3 overflow-hidden">
+            <div className="flex items-center gap-2 shrink-0">
+              <button 
+                onClick={() => setIsMenuOpen(true)}
+                className={`flex items-center justify-center p-1.5 bg-white rounded-xl shadow-md border border-[#C8A66A]/30 transition-all active:scale-95 ${
+                  isCompact ? "w-9 h-9" : "w-11 h-11"
+                }`}
+              >
+                <Menu className={`${isCompact ? "w-4 h-4" : "w-5 h-5"} text-[#5B1F3D]`} />
+              </button>
+              
+              {state.backRoute && (
+                <button 
+                  onClick={() => navigate(state.backRoute!)}
+                  className={`flex items-center justify-center p-1.5 bg-[#FAF5EF] rounded-xl border border-[#C8A66A]/20 text-[#5B1F3D] hover:bg-white transition-all active:scale-95 ${
+                    isCompact ? "w-9 h-9" : "w-11 h-11"
+                  }`}
+                >
+                  <ArrowLeft className={`${isCompact ? "w-4 h-4" : "w-5 h-5"}`} />
+                </button>
+              )}
+            </div>
+
+            <div className="flex flex-col justify-center min-w-0">
+              <h1 className={`font-heading text-[#5B1F3D] font-black tracking-tight leading-none transition-all duration-500 ${
+                isCompact ? "text-base" : "text-lg mb-1"
               }`}>
-                Tarô 78 Chaves
+                {state.title}
               </h1>
-              <div className={`flex flex-col transition-all duration-500 ease-in-out ${
-                isCompact ? "h-0 opacity-0 pointer-events-none" : "h-auto opacity-100"
-              }`}>
-                <span className="font-heading text-[10px] md:text-[13px] tracking-[0.4em] uppercase text-[#5B1F3D] font-black leading-none">
-                  Formação 78 Arcanos
+              {!isCompact && state.subtitle && (
+                <span className="font-heading text-[10px] tracking-[0.3em] uppercase text-[#5B1F3D]/60 font-black leading-none truncate">
+                  {state.subtitle}
                 </span>
-              </div>
+              )}
             </div>
           </div>
-          <div className="flex items-center gap-2 md:gap-4">
-            <StreakCounter streak={streak} />
+
+          <div className="flex items-center gap-2 shrink-0">
+            {!state.hideStreak && <StreakCounter streak={streak} />}
             <button 
               onClick={() => navigate("/perfil")} 
-              className={`rounded-2xl flex items-center justify-center bg-white border border-[#C8A66A]/30 shadow-sm transition-all hover:border-[#C8A66A]/60 active:scale-95 group ${
-                isCompact ? "w-9 h-9" : "w-10 h-10 md:w-12 md:h-12"
+              className={`rounded-xl flex items-center justify-center bg-white border border-[#C8A66A]/30 shadow-sm transition-all hover:border-[#C8A66A]/60 active:scale-95 group ${
+                isCompact ? "w-9 h-9" : "w-11 h-11"
               }`}
               title="Meu Perfil"
             >
-              <KeyRound className={`${isCompact ? "w-4 h-4" : "w-4 h-4 md:w-6 md:h-6"} text-[#C8A66A] group-hover:rotate-12 transition-transform`} />
+              <KeyRound className={`${isCompact ? "w-4 h-4" : "w-5 h-5"} text-[#C8A66A] group-hover:rotate-12 transition-transform`} />
             </button>
           </div>
         </div>
+        
         <GlobalMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-        <div className={`transition-all duration-500 ease-in-out origin-left transform ${isCompact ? "scale-[0.85] opacity-0 h-0 pointer-events-none" : "scale-100 opacity-100 h-auto"}`}>
-          <XPBar xp={xp} level={level} />
-        </div>
+        
+        {!state.hideXP && (
+          <div className={`transition-all duration-500 origin-top overflow-hidden ${isCompact ? "h-0 opacity-0" : "h-auto opacity-100"}`}>
+            <XPBar xp={xp} level={level} />
+          </div>
+        )}
+
+        {state.rightElement && (
+          <div className="mt-2">
+            {state.rightElement}
+          </div>
+        )}
       </div>
     </header>
   );

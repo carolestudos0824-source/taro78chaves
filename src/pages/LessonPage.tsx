@@ -11,13 +11,14 @@ import { XPRewardMotion } from "@/components/tarot-motion/XPRewardMotion";
 import { LessonContent } from "@/components/arcano-vivo/LessonContent";
 import { SymbolMap } from "@/components/arcano-vivo/SymbolMap";
 import { CompletionScreen } from "@/components/arcano-vivo/CompletionScreen";
-import { PhaseIndicator } from "@/components/arcano-vivo/PhaseIndicator";
 import { DeepDiveSection } from "@/components/DeepDiveSection";
 import { ExerciseSection } from "@/components/ExerciseSection";
 import { QuizSection } from "@/components/QuizSection";
 import PremiumGate from "@/components/PremiumGate";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useHeader } from "@/contexts/header-context";
+import { PhaseIndicator } from "@/components/arcano-vivo/PhaseIndicator";
 
 type LessonPhase = "intro" | "lesson" | "symbols" | "deepdive" | "exercise" | "quiz" | "complete";
 
@@ -28,6 +29,7 @@ const LessonPage = () => {
   const { loading: premiumLoading } = usePremium();
   const { isStaff, loading: roleLoading } = useRole();
   const { canAccessArcano, hasFullAccess, loading: accessLoading } = useAccess();
+  const { setHeader, resetHeader } = useHeader();
   const [phase, setPhase] = useState<LessonPhase>("intro");
   const [exerciseCompleted, setExerciseCompleted] = useState(false);
   const [xpEarned, setXpEarned] = useState(0);
@@ -52,6 +54,18 @@ const LessonPage = () => {
   const hasAccess = isValidId ? canAccessArcano(arcanoId) : false;
 
   const nextArcano = isValidId && arcanoId < 21 ? ARCANOS_MAIORES[arcanoId + 1] : null;
+
+  useEffect(() => {
+    if (arcano) {
+      setHeader({
+        title: arcano.name,
+        subtitle: `Arcano ${arcano.numeral} • Lição ${arcanoId + 1}`,
+        backRoute: "/module/arcanos-maiores",
+        rightElement: <PhaseIndicator phases={phases} currentIndex={phases.indexOf(phase)} />
+      });
+    }
+    return () => resetHeader();
+  }, [arcano, phase, arcanoId]);
 
   // 1. Estado de Carregamento (Loading Ritualístico)
   if (isLiteralRoute || premiumLoading || roleLoading || accessLoading) {
@@ -201,24 +215,7 @@ const LessonPage = () => {
         />
       </div>
 
-      {/* ─── Header replicando /app ─── */}
-      <header className="sticky top-0 z-40 px-6 py-5 flex items-center gap-5 shadow-sm border-b border-[#C8A66A40] bg-[#FAF5EF]/95 backdrop-blur-xl">
-        <button 
-          onClick={() => navigate(-1)} 
-          className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30] text-[#5B1F3D] hover:scale-110 transition-all duration-300"
-        >
-          <ArrowLeft className="w-5 h-5" />
-        </button>
-        <div className="flex-1 min-w-0">
-          <p className="text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A] mb-0.5 leading-none">
-            Arcano {arcano.numeral} • Lição {arcanoId + 1}
-          </p>
-          <h2 className="font-heading text-lg text-[#5B1F3D] font-black truncate leading-tight tracking-tight">
-            {arcano.name}
-          </h2>
-        </div>
-        <PhaseIndicator phases={phases} currentIndex={phases.indexOf(phase)} />
-      </header>
+      {/* Global Header is handled by AppShell and Context */}
 
       <main className="relative z-10 container max-w-lg mx-auto px-4 py-8">
         {phase === "intro" && (

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { 
   Check, 
@@ -32,7 +31,8 @@ import {
 } from "@/lib/content";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
-import { Header } from "@/components/Header";
+import { useHeader } from "@/contexts/header-context";
+import { useEffect, useState } from "react";
 import ContinuityCard from "@/components/ContinuityCard";
 import ProgressCelebration from "@/components/ProgressCelebration";
 import { SmartReviewCard } from "@/components/SmartReviewCard";
@@ -73,6 +73,15 @@ const ModulesPage = () => {
   
   const { progress, loading: progressLoading } = useProgress();
   const { bypassLocks } = useAccess();
+  const { setHeader, resetHeader } = useHeader();
+  
+  useEffect(() => {
+    setHeader({
+      title: "Tarô 78 Chaves",
+      subtitle: "Formação 78 Arcanos",
+    });
+    return () => resetHeader();
+  }, []);
 
   if (progressLoading) {
     return (
@@ -112,33 +121,7 @@ const ModulesPage = () => {
   const globalProgressPct = Math.round((totalCompletedArcanos / totalArcanosCount) * 100);
 
   return (
-    <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
-      {/* Background — Marfim Suave refined from /app */}
-      <div className="fixed inset-0 z-0 mystic-bg-procedural">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
-            opacity: 0.98,
-          }}
-        />
-        {/* Subtle atmosphere layers */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.8) 0%, transparent 30%, transparent 70%, rgba(239, 226, 210, 0.5) 100%)",
-          }}
-        />
-      </div>
-
-      <Header streak={progress.streak} xp={progress.xp} level={progress.level} />
-
+    <div className="relative overflow-hidden">
       <main className="relative z-10 container max-w-lg px-6 pt-10 pb-24 md:pt-16 md:pb-32 space-y-12 md:space-y-16">
         {/* ─── Global Training Progress — Dashboard style ─── */}
         <div className="relative rounded-[2.5rem] overflow-hidden p-8 md:p-10 transition-all duration-500" style={{

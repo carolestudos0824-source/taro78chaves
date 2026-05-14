@@ -6,7 +6,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider, useAuth } from "@/hooks/use-auth";
 import { FontSizeProvider } from "@/contexts/font-size-context";
-// Beta components removed
+import { HeaderProvider } from "@/contexts/header-context";
+import { useProgress } from "@/hooks/use-progress";
+import { Header } from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import SessionInitializer from "@/components/SessionInitializer";
 import { initGA, trackPageView, useUTMTracker } from "@/lib/analytics";
@@ -270,31 +272,41 @@ const AppRouteProbe = () => {
   );
 };
 
-/** Layout shell for authenticated app pages — includes BottomNav */
-const AppShell = () => (
-  <>
-    {/* Layout shell for authenticated app pages — includes BottomNav */}
-    <div className="pb-bottom-nav">
-      <Outlet />
+/** Layout shell for authenticated app pages — includes Header and BottomNav */
+const AppShell = () => {
+  const { progress } = useProgress();
+  
+  return (
+    <div className="min-h-screen bg-[#FDFBF7] flex flex-col">
+      <Header 
+        streak={progress.streak} 
+        xp={progress.xp} 
+        level={progress.level} 
+      />
+      <main className="flex-1 pb-28">
+        <Outlet />
+      </main>
+      <BottomNav />
     </div>
-    <BottomNav />
-  </>
-);
+  );
+};
 
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <FontSizeProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <AuthProvider>
-              <AppRoutes />
-            </AuthProvider>
-          </BrowserRouter>
-        </TooltipProvider>
-      </FontSizeProvider>
+      <HeaderProvider>
+        <FontSizeProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <AuthProvider>
+                <AppRoutes />
+              </AuthProvider>
+            </BrowserRouter>
+          </TooltipProvider>
+        </FontSizeProvider>
+      </HeaderProvider>
     </QueryClientProvider>
   );
 };
