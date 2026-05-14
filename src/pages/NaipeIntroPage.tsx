@@ -50,9 +50,9 @@ const NaipeIntroPage = () => {
 
   const sections = [
     { id: "elemental", icon: info.elementSymbol, title: `${ped.elemento ?? info.element} — O Elemento de ${info.name.replace("Naipe de ", "")}`, content: ped.atmosfera ?? "" },
-    { id: "psicologico", icon: "🧠", title: "A Psicologia do Naipe", content: ped.potencial ?? "" },
-    { id: "pratico", icon: "🎯", title: `${info.name.replace("Naipe de ", "")} na Vida Real`, content: ped.funcaoNaLeitura ?? "" },
-    { id: "simbolico", icon: "◎", title: "Aprofundamento Simbólico", content: ped.linguagemEditorial ?? "" },
+    { id: "psicologico", icon: "Eye", title: "A Psicologia do Naipe", content: ped.potencial ?? "" },
+    { id: "pratico", icon: "ritual", title: `${info.name.replace("Naipe de ", "")} na Vida Real`, content: ped.funcaoNaLeitura ?? "" },
+    { id: "simbolico", icon: "Sparkles", title: "Aprofundamento Simbólico", content: ped.linguagemEditorial ?? "" },
   ].filter((s) => s.content && s.content.length > 0);
 
   return (
