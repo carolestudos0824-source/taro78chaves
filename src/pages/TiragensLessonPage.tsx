@@ -168,7 +168,7 @@ const TiragensLessonPage = () => {
           </button>
           <div className="flex items-center gap-2 flex-1">
             <span className="text-lg">{lesson.icon}</span>
-            <span className="font-heading text-sm truncate" style={{ color: "hsl(230 25% 15%)" }}>{lesson.title}</span>
+            <span className="font-heading text-base font-bold truncate" style={{ color: "hsl(230 25% 15%)" }}>{lesson.title}</span>
           </div>
           <span className="text-[10px] font-body tracking-wider" style={{ color: "hsl(230 10% 50%)" }}>
             {lessonOrder + 1}/{TIRAGENS_LESSONS.length}
@@ -447,9 +447,9 @@ const TiragensLessonPage = () => {
               <span className="text-xs font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(36 40% 42%)" }}>Aprofundamento</span>
               <button onClick={handleStartQuiz} className="text-xs font-heading tracking-wider" style={{ color: "hsl(36 45% 58%)" }}>Ir ao Quiz →</button>
             </div>
-            <div className="rounded-[2rem] p-10 md:p-12 shadow-sm" style={{ background: "hsl(38 30% 95% / 0.85)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
+            <div className="rounded-[2rem] p-10 md:p-14 shadow-sm" style={{ background: "hsl(38 30% 95% / 0.85)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
               {lesson.deepDive.split("\n\n").map((p, i) => (
-                <div key={i} className="mb-4 last:mb-0">
+                <div key={i} className="mb-6 last:mb-0">
                   {renderContent(p)}
                 </div>
               ))}
@@ -528,21 +528,21 @@ const TiragensLessonPage = () => {
             </p>
             <div className="flex flex-col items-center gap-4 pt-4">
               {nextLesson && (
-                <button onClick={handleNextLesson} className="px-10 py-3.5 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105 flex items-center gap-3" style={{
+                <button onClick={handleNextLesson} className="px-12 py-5 rounded-full font-heading text-base tracking-wider transition-all duration-300 hover:scale-105 flex items-center gap-4 shadow-xl" style={{
                   background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))",
-                  color: "hsl(36 33% 97%)", boxShadow: "0 4px 20px hsl(36 45% 58% / 0.2)",
+                  color: "hsl(36 33% 97%)", boxShadow: "0 10px 30px hsl(36 45% 58% / 0.3)",
                 }}>
                   <span className="flex flex-col items-start">
-                    <span className="text-[9px] tracking-[0.3em] uppercase opacity-75">Próxima Lição</span>
+                    <span className="text-[10px] tracking-[0.3em] uppercase opacity-80">Próxima Lição</span>
                     <span className="flex items-center gap-2">
                       {nextLesson.title}
-                      <ArrowRight className="w-4 h-4" />
+                      <ArrowRight className="w-5 h-5" />
                     </span>
                   </span>
                 </button>
               )}
-              <button onClick={() => navigate("/module/tiragens")} className="px-8 py-3 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105 flex items-center gap-2" style={{
-                background: "transparent", border: "1.5px solid hsl(36 45% 58% / 0.35)", color: "hsl(36 40% 42%)",
+              <button onClick={() => navigate("/module/tiragens")} className="px-10 py-4 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105 flex items-center gap-3" style={{
+                background: "transparent", border: "1.5px solid hsl(36 45% 58% / 0.45)", color: "hsl(36 40% 42%)",
               }}>
                 <MapPin className="w-4 h-4" />
                 Voltar ao Módulo
