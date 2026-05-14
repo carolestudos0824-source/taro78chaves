@@ -16,7 +16,6 @@ import { initGA, trackPageView, useUTMTracker } from "@/lib/analytics";
 // Eager: critical path
 import LandingPage from "./pages/LandingPage.tsx";
 import AuthPage from "./pages/AuthPage.tsx";
-// import ModulesPage from "./pages/ModulesPage.tsx"; // Replaced by lazy in AppRouteProbe
 
 // Lazy: everything else
 const Index = lazy(() => import("./pages/Index.tsx"));
@@ -32,7 +31,6 @@ const BetaInvitePage = lazy(() => import("./pages/BetaInvitePage.tsx"));
 
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 const JourneyJournalPage = lazy(() => import("./pages/JourneyJournalPage.tsx"));
-
 
 // Module pages
 const NaipePage = lazy(() => import("./pages/NaipePage.tsx"));
@@ -84,7 +82,6 @@ const queryClient = new QueryClient();
 
 const LoadingFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7] relative overflow-hidden">
-    {/* Decorative background elements consistent with the brand */}
     <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
       <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-gold blur-[120px]" />
       <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold blur-[120px]" />
@@ -105,7 +102,6 @@ const LoadingFallback = () => (
   </div>
 );
 
-/** Redirects to /auth if not logged in */
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading } = useAuth();
   if (loading) return <LoadingFallback />;
@@ -118,7 +114,6 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-/** Redirects to /app if already logged in */
 const PublicOnlyRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading } = useAuth();
   if (loading) return <LoadingFallback />;
@@ -156,7 +151,6 @@ const AppRoutes = () => {
     <Suspense fallback={<LoadingFallback />}>
       <AnalyticsTracker />
       <Routes>
-        {/* ═══ Public Routes (No Shell) ═══ */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
@@ -164,22 +158,14 @@ const AppRoutes = () => {
         <Route path="/termos" element={<TermsPage />} />
         <Route path="/apresentacao" element={<PresentationPage />} />
 
-        {/* ═══ App Shell Routes (Layout Wrapper) ═══ */}
         <Route element={<AppShell />}>
-          {/* Dashboard */}
           <Route path="/app" element={<P><AppRouteProbe /></P>} />
           <Route path="/trilhas" element={<P><TrailsPage /></P>} />
-
-          {/* Fundamentos */}
           <Route path="/module/fundamentos" element={<P><FundamentosPage /></P>} />
           <Route path="/fundamentos/:order" element={<P><FundamentosLessonPage /></P>} />
-
-          {/* Arcanos Maiores */}
           <Route path="/module/arcanos-maiores" element={<P><Index /></P>} />
           <Route path="/lesson/:id" element={<P><LessonPage /></P>} />
           <Route path="/jornada-do-louco" element={<P><FoolsJourneyPage /></P>} />
-
-          {/* Arcanos Menores — Naipes */}
           <Route path="/module/copas" element={<P><NaipePage /></P>} />
           <Route path="/module/paus" element={<P><NaipePage /></P>} />
           <Route path="/module/espadas" element={<P><NaipePage /></P>} />
@@ -189,69 +175,41 @@ const AppRoutes = () => {
           <Route path="/cartas-corte" element={<Navigate to="/module/cartas-corte" replace />} />
           <Route path="/numerologia" element={<P><NumerologiaPage /></P>} />
           <Route path="/arcano-menor/:id" element={<P><ArcanoMenorLessonPage /></P>} />
-
-          {/* Combinações */}
           <Route path="/module/combinacoes" element={<P><CombinacoesPage /></P>} />
           <Route path="/combinacoes/:order" element={<P><CombinacoesLessonPage /></P>} />
-
-          {/* Tiragens */}
           <Route path="/module/tiragens" element={<P><TiragensPage /></P>} />
           <Route path="/tiragens/:order" element={<P><TiragensLessonPage /></P>} />
-
-          {/* Amor */}
           <Route path="/module/amor" element={<P><AmorPage /></P>} />
           <Route path="/amor/:order" element={<P><AmorLessonPage /></P>} />
-
-          {/* Prática */}
           <Route path="/module/pratica" element={<P><PraticaPage /></P>} />
           <Route path="/pratica/:order" element={<P><PraticaLessonPage /></P>} />
-
-          {/* Leitura Simbólica */}
           <Route path="/module/leitura-simbolica" element={<P><LeituraSimbolicaPage /></P>} />
           <Route path="/leitura-simbolica/:order" element={<P><LeituraSimbolicaLessonPage /></P>} />
-
-          {/* Arquitetura dos Menores */}
           <Route path="/module/arquitetura-menores" element={<P><ArquiteturaMenoresPage /></P>} />
           <Route path="/arquitetura-menores/:order" element={<P><ArquiteturaMenoresLessonPage /></P>} />
-
-          {/* Espiritualidade */}
           <Route path="/module/espiritualidade" element={<P><EspiritualidadePage /></P>} />
           <Route path="/espiritualidade/:order" element={<P><EspiritualidadeLessonPage /></P>} />
-
-          {/* Mesa de Tarô */}
           <Route path="/module/mesa-taro" element={<P><MesaTaroPage /></P>} />
           <Route path="/mesa-taro/:order" element={<P><MesaTaroLessonPage /></P>} />
-
-          {/* Leitura Aplicada */}
           <Route path="/module/leitura-aplicada" element={<P><LeituraAplicadaPage /></P>} />
           <Route path="/leitura-aplicada/:order" element={<P><LeituraAplicadaLessonPage /></P>} />
-
-          {/* Trabalhar com Tarô */}
           <Route path="/module/trabalhar-taro" element={<P><TrabalharTaroPage /></P>} />
           <Route path="/trabalhar-taro/:order" element={<P><TrabalharTaroLessonPage /></P>} />
-
-          {/* Ferramentas de estudo */}
           <Route path="/revisao" element={<P><ReviewPage /></P>} />
           <Route path="/desafios" element={<P><DailyChallengesPage /></P>} />
           <Route path="/certificados" element={<P><CertificatesPage /></P>} />
           <Route path="/biblioteca" element={<P><SymbolLibraryPage /></P>} />
           <Route path="/rotina" element={<P><StudyRoutinePage /></P>} />
-
-          {/* Premium & Profile */}
           <Route path="/premium" element={<P><PremiumPage /></P>} />
           <Route path="/perfil" element={<P><ProfilePage /></P>} />
           <Route path="/minha-jornada" element={<P><JourneyJournalPage /></P>} />
           <Route path="/feedback" element={<P><FeedbackPage /></P>} />
           <Route path="/admin" element={<P><AdminPage /></P>} />
           <Route path="/qa-rotas" element={<P><QARotasPage /></P>} />
-          
-          {/* Aliases for bad URLs */}
           <Route path="/undefined" element={<Navigate to="/app" replace />} />
           <Route path="/null" element={<Navigate to="/app" replace />} />
           <Route path="/NaN" element={<Navigate to="/app" replace />} />
         </Route>
-
-        {/* Catch-all final */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
@@ -272,7 +230,6 @@ const AppRouteProbe = () => {
   );
 };
 
-/** Layout shell for authenticated app pages — includes Header and BottomNav */
 const AppShell = () => {
   const { progress } = useProgress();
   
