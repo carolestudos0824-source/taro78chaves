@@ -223,17 +223,7 @@ const DailyChallengesPage = () => {
 
           <div className="grid gap-6">
             {challenges.map((ch) => {
-              const IconComponent = (() => {
-                switch (ch.icon) {
-                  case "scroll": return Scroll;
-                  case "sparkles": return Sparkles;
-                  case "help-circle": return HelpCircle;
-                  case "eye": return Eye;
-                  case "layers": return Layers;
-                  case "book-open": return BookOpenIcon;
-                  default: return Star;
-                }
-              })();
+              const iconName = ch.icon;
 
               return (
                 <button
