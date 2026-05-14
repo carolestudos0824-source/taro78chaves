@@ -264,7 +264,7 @@ const TiragensLessonPage = () => {
                     </h3>
                     
                     {/* The Visual Grid/Map */}
-                    <div className="relative aspect-square max-w-[340px] mx-auto bg-white/60 rounded-[2.5rem] border-2 border-[#C8A66A]/20 shadow-inner p-6">
+                    <div className="relative aspect-[4/5] max-w-[340px] mx-auto bg-white/60 rounded-[2.5rem] border-2 border-[#C8A66A]/20 shadow-inner p-8">
                       {lesson.layoutDiagram.positions.map((pos, i) => (
                         <div 
                           key={i} 
@@ -277,8 +277,8 @@ const TiragensLessonPage = () => {
                              <div className="absolute top-1.5 left-1.5 right-1.5 bottom-1.5 border border-[#C8A66A]/20 rounded-lg pointer-events-none" />
                              <span className="font-heading text-3xl md:text-4xl font-black text-[#5B1F3D] drop-shadow-md z-10">{i + 1}</span>
                           </div>
-                          <div className="mt-2.5 text-center px-1">
-                             <span className="text-[9px] md:text-[11px] font-heading font-black uppercase tracking-[0.15em] text-[#5B1F3D] leading-tight block whitespace-normal break-words">
+                          <div className="mt-3 text-center px-1">
+                             <span className="text-[9px] md:text-[11px] font-heading font-black uppercase tracking-[0.15em] text-[#5B1F3D] leading-[1.2] block whitespace-normal break-words max-w-[110px] mx-auto">
                                {pos.label}
                              </span>
                           </div>

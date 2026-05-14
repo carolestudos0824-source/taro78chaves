@@ -973,8 +973,8 @@ Quando a outra pessoa já foi clara sobre não querer o vínculo, o tarô não v
         { label: "Você no vínculo", description: "Como você está chegando — emoções, expectativas, padrões", x: 18, y: 50 },
         { label: "A outra pessoa", description: "A energia que ela traz ou o clima geral", x: 82, y: 50 },
         { label: "O que aproxima", description: "O que está vivo e magnético entre os dois", x: 50, y: 50 },
-        { label: "O que bloqueia", description: "O obstáculo real ou padrão limitante", x: 50, y: 80 },
-        { label: "Conselho", description: "O passo possível e ético para quem consulta", x: 50, y: 20 },
+        { label: "O que bloqueia", description: "O obstáculo real ou padrão limitante", x: 50, y: 83 },
+        { label: "Conselho", description: "O passo possível e ético para quem consulta", x: 50, y: 17 },
       ],
     },
     examples: [
