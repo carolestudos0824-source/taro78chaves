@@ -65,7 +65,7 @@ const LessonPage = () => {
 
   // Redirecionamento defensivo se a rota for literal
   useEffect(() => {
-    console.log("LessonPage rendering - arcano:", arcano?.name, "phase:", phase, "isValidId:", isValidId, "hasAccess:", hasAccess);
+    
     if (isLiteralRoute) {
       navigate("/module/arcanos-maiores", { replace: true });
     }
