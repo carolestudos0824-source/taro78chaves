@@ -120,8 +120,6 @@ export function ArcanoCardDisplay({ name, numeral, subtitle, keywords, cardImage
             className={`absolute ${pos} w-1.5 h-1.5 rounded-full`}
             style={{
               background: "hsl(36 45% 58% / 0.4)",
-              animation: `twinkle ${2 + i * 0.5}s ease-in-out infinite`,
-              animationDelay: `${i * 0.3}s`,
             }}
           />
         ))}
