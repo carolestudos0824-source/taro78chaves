@@ -134,7 +134,7 @@ const PremiumPage = () => {
             {PREMIUM_BENEFITS.map((b) => (
               <div key={b.title} className="bg-white border-2 border-[#C8A66A20] p-6 rounded-[2rem] flex items-center gap-6 shadow-xl hover:border-[#C8A66A40] transition-all">
                 <div className="w-16 h-16 rounded-[1.2rem] bg-[#FAF5EF] border-2 border-[#C8A66A30] flex items-center justify-center shrink-0 shadow-inner">
-                  <b.icon className="w-8 h-8 text-[#5B1F3D]" />
+                  <TarotIcon name={b.icon} className="w-8 h-8 text-[#5B1F3D]" />
                 </div>
                 <div className="space-y-1">
                   <h3 className="font-heading text-lg font-black text-[#5B1F3D] tracking-tight">{b.title}</h3>
