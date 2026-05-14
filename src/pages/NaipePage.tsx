@@ -82,8 +82,8 @@ const NaipePage = () => {
   const completedCount = cards.filter((c) => isCardCompleted(c.id)).length;
   const progressPct = Math.round((completedCount / 14) * 100);
 
-  const courtIcon = (pos: string) =>
-    pos === "pajem" ? "♟" : pos === "cavaleiro" ? "♞" : pos === "rainha" ? "♛" : "♚";
+  const courtIcon = (pos: string) => pos; // Returns "pajem", "cavaleiro", "rainha", "rei"
+
 
   const renderCardRow = (card: typeof cards[0], globalIdx: number, delay: number) => {
     const completed = isCardCompleted(card.id);
