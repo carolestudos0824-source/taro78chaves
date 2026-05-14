@@ -117,9 +117,13 @@ const LessonPage = () => {
     );
   }
 
-  const phases: LessonPhase[] = ["intro", "lesson"];
-  if (arcano.symbolsMap?.length) phases.push("symbols");
-  phases.push("deepdive", "exercise", "quiz");
+  const getPhases = () => {
+    const p: LessonPhase[] = ["intro", "lesson"];
+    if (arcano?.symbolsMap?.length) p.push("symbols");
+    p.push("deepdive", "exercise", "quiz", "complete");
+    return p;
+  };
+  const phases = getPhases();
 
   const handleStartLesson = () => {
     if (!isStaff) {
