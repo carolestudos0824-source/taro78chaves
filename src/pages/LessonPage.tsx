@@ -118,7 +118,7 @@ const LessonPage = () => {
   }
 
   const phases: LessonPhase[] = ["intro", "lesson"];
-  if (arcano.symbolsMap?.length) phases.push("symbols");
+  if (arcano?.symbolsMap?.length) phases.push("symbols");
   phases.push("deepdive", "exercise", "quiz", "complete");
 
   const handleStartLesson = () => {
