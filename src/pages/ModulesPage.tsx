@@ -123,7 +123,7 @@ const ModulesPage = () => {
 
   return (
     <div className="relative overflow-hidden">
-      <main className="relative z-10 container max-w-lg px-6 pt-10 pb-24 md:pt-16 md:pb-32 space-y-12 md:space-y-16">
+      <main className="relative z-10 container max-w-3xl px-6 pt-10 pb-24 md:pt-16 md:pb-32 space-y-12 md:space-y-16">
         {/* ─── Global Training Progress — Dashboard style ─── */}
         <div className="relative rounded-[2.5rem] overflow-hidden p-8 md:p-10 transition-all duration-500" style={{
           background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
@@ -180,7 +180,7 @@ const ModulesPage = () => {
         
         <div className="space-y-8 md:space-y-12">
           {/* ─── Dashboard Actions ─── */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <button
               onClick={() => navigate("/desafios")}
               className="group relative overflow-hidden rounded-[2rem] p-6 text-center border-2 border-[#C8A66A]/30 bg-white transition-all hover:scale-[1.03] active:scale-95 shadow-lg"
@@ -216,6 +216,34 @@ const ModulesPage = () => {
                 </div>
               </div>
             </button>
+
+            {/* Achievements/Icons Block */}
+            <div className="col-span-2 group relative overflow-hidden rounded-[2rem] p-6 border-2 border-[#C8A66A]/20 bg-[#FAF5EF]/50 shadow-inner flex items-center justify-around">
+              <div className="flex flex-col items-center gap-1 opacity-80 hover:opacity-100 transition-opacity">
+                <div className="w-10 h-10 rounded-full bg-white border border-[#C8A66A]/20 flex items-center justify-center">
+                  <Stars className={`w-5 h-5 ${completedMaiores >= 22 ? "text-[#C8A66A]" : "text-[#5B1F3D]/20"}`} />
+                </div>
+                <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]/60">Maiores</span>
+              </div>
+              <div className="flex flex-col items-center gap-1 opacity-80 hover:opacity-100 transition-opacity">
+                <div className="w-10 h-10 rounded-full bg-white border border-[#C8A66A]/20 flex items-center justify-center">
+                  <Check className={`w-5 h-5 ${progress.level >= 5 ? "text-[#C8A66A]" : "text-[#5B1F3D]/20"}`} />
+                </div>
+                <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]/60">Nível 5</span>
+              </div>
+              <div className="flex flex-col items-center gap-1 opacity-80 hover:opacity-100 transition-opacity">
+                <div className="w-10 h-10 rounded-full bg-white border border-[#C8A66A]/20 flex items-center justify-center">
+                  <Flame className={`w-5 h-5 ${progress.streak >= 7 ? "text-[#C8A66A]" : "text-[#5B1F3D]/20"}`} />
+                </div>
+                <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]/60">7 Dias</span>
+              </div>
+              <div className="flex flex-col items-center gap-1 opacity-80 hover:opacity-100 transition-opacity">
+                <div className="w-10 h-10 rounded-full bg-white border border-[#C8A66A]/20 flex items-center justify-center">
+                  <Gem className={`w-5 h-5 ${progress.xp >= 1000 ? "text-[#C8A66A]" : "text-[#5B1F3D]/20"}`} />
+                </div>
+                <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]/60">Elite</span>
+              </div>
+            </div>
           </div>
 
           {/* ─── Study Trails Selector ─── */}
@@ -295,27 +323,42 @@ const ModulesPage = () => {
           {/* ─── Premium Conversion Card ─── */}
           <div 
             onClick={() => navigate("/premium")}
-            className="cursor-pointer bg-[#5B1F3D] border-2 border-[#C8A66A]/50 rounded-[2.5rem] p-6 md:p-8 shadow-2xl relative overflow-hidden group transition-all hover:scale-[1.03] active:scale-[0.98] ring-4 ring-[#C8A66A]/10"
+            className={`cursor-pointer border-2 rounded-[2.5rem] p-6 md:p-8 shadow-2xl relative overflow-hidden group transition-all hover:scale-[1.03] active:scale-[0.98] ring-4 ring-[#C8A66A]/10 ${
+              progress.completedLessons.length === 0 
+                ? "bg-white border-[#C8A66A]/30" 
+                : "bg-[#5B1F3D] border-[#C8A66A]/50"
+            }`}
           >
-            <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#C8A66A]/20 rounded-full blur-3xl group-hover:bg-[#C8A66A]/30 transition-colors" />
-            <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-[#FAF5EF]/10 rounded-full blur-2xl" />
+            <div className={`absolute -top-12 -right-12 w-48 h-48 rounded-full blur-3xl transition-colors ${
+              progress.completedLessons.length === 0 ? "bg-[#C8A66A]/10 group-hover:bg-[#C8A66A]/20" : "bg-[#C8A66A]/20 group-hover:bg-[#C8A66A]/30"
+            }`} />
             
             <div className="relative z-10 flex items-center gap-6">
-              <div className="w-16 h-16 rounded-2xl bg-[#C8A66A] flex items-center justify-center shrink-0 shadow-lg group-hover:rotate-12 transition-transform duration-500 border-2 border-[#FAF5EF]/30">
-                <Key className="w-9 h-9 text-[#5B1F3D]" />
+              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 shadow-lg group-hover:rotate-12 transition-transform duration-500 border-2 ${
+                progress.completedLessons.length === 0 ? "bg-[#FAF5EF] border-[#C8A66A]/30" : "bg-[#C8A66A] border-[#FAF5EF]/30"
+              }`}>
+                <Key className={`w-9 h-9 ${progress.completedLessons.length === 0 ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} />
               </div>
               <div className="flex-1">
-                <h3 className="font-heading text-xl md:text-2xl font-black text-white leading-tight mb-2">
+                <h3 className={`font-heading text-xl md:text-2xl font-black leading-tight mb-2 ${
+                  progress.completedLessons.length === 0 ? "text-[#5B1F3D]" : "text-white"
+                }`}>
                   A Jornada dos 78 Arcanos
                 </h3>
-                <p className="text-[14px] text-white/95 font-body font-bold leading-relaxed italic">
+                <p className={`text-[14px] font-body font-bold leading-relaxed italic ${
+                  progress.completedLessons.length === 0 ? "text-[#5B1F3D]/70" : "text-white/95"
+                }`}>
                   Abra as portas mais profundas e continue a Jornada do Louco.
                 </p>
               </div>
               <ChevronRight className="w-8 h-8 text-[#C8A66A] group-hover:translate-x-2 transition-all" />
             </div>
             
-            <div className="mt-6 flex items-center justify-center py-4 bg-gradient-to-r from-[#C8A66A] to-[#DCCFC2] rounded-2xl font-heading text-[14px] font-black text-[#5B1F3D] tracking-[0.3em] uppercase shadow-xl group-hover:brightness-110 transition-all border-2 border-white/30">
+            <div className={`mt-6 flex items-center justify-center py-4 rounded-2xl font-heading text-[14px] font-black tracking-[0.3em] uppercase shadow-xl group-hover:brightness-110 transition-all border-2 ${
+              progress.completedLessons.length === 0 
+                ? "bg-[#5B1F3D] text-white border-[#C8A66A]/50" 
+                : "bg-gradient-to-r from-[#C8A66A] to-[#DCCFC2] text-[#5B1F3D] border-white/30"
+            }`}>
               Desbloquear Jornada Completa
             </div>
           </div>
