@@ -117,14 +117,7 @@ const TrailsPage = () => {
       }} />
 
       <div className="relative max-w-2xl mx-auto px-6 pt-10 pb-8">
-        <div className="flex justify-between items-start mb-8">
-          <button
-            onClick={() => navigate("/app")}
-            className="flex items-center gap-3 text-[#5B1F3D] hover:text-[#C8A66A] transition-all group bg-white/60 px-4 py-2 rounded-full border border-[#C8A66A]/20 shadow-sm active:scale-95"
-          >
-            <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-            <span className="text-[10px] font-heading font-black uppercase tracking-widest">Início</span>
-          </button>
+        <div className="flex justify-end items-start mb-8">
           <div className="flex -space-x-4 opacity-40 hover:opacity-100 transition-opacity duration-500">
             <img src={imgLouco} alt="" className="w-12 h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
             <img src={imgMago} alt="" className="w-12 h-18 object-cover rounded-md border border-[#C8A66A]/30 rotate-12 shadow-lg" />
