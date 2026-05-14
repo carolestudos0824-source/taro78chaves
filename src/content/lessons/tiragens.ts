@@ -70,6 +70,26 @@ Não existe tiragem "melhor". Existe a tiragem certa para a pergunta certa. Esco
       "A posição é o filtro que dá tom ao significado da carta",
       "Escolher a tiragem certa é o primeiro passo da maestria",
     ],
+    layoutDiagram: {
+      name: "Anatomia de uma Tiragem",
+      positions: [
+        { label: "A Função", description: "O papel específico da carta na leitura", x: 50, y: 30 },
+        { label: "O Contexto", description: "A situação onde a carta se aplica", x: 25, y: 70 },
+        { label: "A Resposta", description: "A conclusão do arco narrativo", x: 75, y: 70 },
+      ],
+    },
+    examples: [
+      {
+        spread: "Exemplo de Estrutura",
+        question: "Como entender uma tiragem simples?",
+        cards: [
+          { position: "A Função", card: "O Mago" },
+          { position: "O Contexto", card: "3 de Ouros" },
+          { position: "A Resposta", card: "O Carro" },
+        ],
+        interpretation: "Aqui vemos como a tiragem organiza a informação: O Mago (habilidade) no contexto do 3 de Ouros (trabalho em equipe) resulta no Carro (progresso rápido). Sem a tiragem, seriam apenas três cartas soltas.",
+      },
+    ],
     deepDive: `As tiragens como conhecemos hoje são relativamente recentes na história do tarô. Nos séculos XV e XVI, as cartas eram usadas para jogos — não para leitura. As primeiras "tiragens" documentadas aparecem no século XVIII com Etteilla (Jean-Baptiste Alliette), que criou layouts sistemáticos para adivinhação.
 
 A Cruz Celta, a tiragem mais famosa do mundo, foi popularizada por Arthur Edward Waite no início do século XX (em seu livro "The Pictorial Key to the Tarot", 1910). Desde então, centenas de tiragens foram criadas — mas as melhores seguem princípios simples:
@@ -142,6 +162,26 @@ Leitoras experientes frequentemente criam suas próprias tiragens para situaçõ
       "Prefira perguntas abertas que geram reflexão",
       "Mantenha o foco no que está sob seu controle",
       "Defina o tempo da leitura para evitar ansiedade",
+    ],
+    layoutDiagram: {
+      name: "O Ciclo da Pergunta",
+      positions: [
+        { label: "O Alvo", description: "Sobre quem ou o que se pergunta", x: 50, y: 20 },
+        { label: "A Intenção", description: "O que se busca descobrir", x: 50, y: 50 },
+        { label: "O Tempo", description: "O horizonte da resposta", x: 50, y: 80 },
+      ],
+    },
+    examples: [
+      {
+        spread: "Estrutura da Pergunta",
+        question: "Como formular 'O que preciso saber sobre meu trabalho?'",
+        cards: [
+          { position: "O Alvo", card: "Carreira atual" },
+          { position: "A Intenção", card: "Clareza de próximos passos" },
+          { position: "O Tempo", card: "Próximos 3 meses" },
+        ],
+        interpretation: "Este exemplo mostra como uma pergunta vaga se torna estruturada ao definir quem é o alvo, qual a intenção real e qual o tempo da leitura.",
+      },
     ],
     reflection: "Pense nas últimas perguntas que você fez ao tarô. Elas seguiam essas 5 regras? Reescreva 3 perguntas antigas usando as fórmulas sugeridas e observe como ficam mais poderosas.",
     exercise: {
@@ -584,8 +624,8 @@ A grande força desta tiragem é permitir a leitura de duas histórias simultân
         { label: "Esquerda", description: "O passado — a causa, a raiz", x: 20, y: 50 },
         { label: "Centro", description: "O tema — a essência da questão", x: 50, y: 50 },
         { label: "Direita", description: "O futuro — a tendência", x: 80, y: 50 },
-        { label: "Acima", description: "O consciente — o que se sabe", x: 50, y: 20 },
-        { label: "Abaixo", description: "O inconsciente — o que se esconde", x: 50, y: 80 },
+        { label: "Acima", description: "O consciente — o que se sabe", x: 50, y: 15 },
+        { label: "Abaixo", description: "O inconsciente — o que se esconde", x: 50, y: 85 },
       ],
     },
     examples: [
@@ -765,13 +805,13 @@ Busque **tons**. "Dia de paciência" em vez de "vai acontecer algo bom". Note se
     layoutDiagram: {
       name: "Leitura Semanal de Tendência",
       positions: [
-        { label: "Segunda", description: "Energia dominante do dia", x: 15, y: 40 },
-        { label: "Terça", description: "Energia dominante do dia", x: 38, y: 40 },
-        { label: "Quarta", description: "Energia dominante do dia", x: 61, y: 40 },
-        { label: "Quinta", description: "Energia dominante do dia", x: 84, y: 40 },
-        { label: "Sexta", description: "Energia dominante do dia", x: 25, y: 70 },
-        { label: "Sábado", description: "Energia dominante do dia", x: 50, y: 70 },
-        { label: "Domingo", description: "Energia dominante do dia", x: 75, y: 70 },
+        { label: "Segunda", description: "Energia dominante do dia", x: 15, y: 35 },
+        { label: "Terça", description: "Energia dominante do dia", x: 38, y: 35 },
+        { label: "Quarta", description: "Energia dominante do dia", x: 61, y: 35 },
+        { label: "Quinta", description: "Energia dominante do dia", x: 84, y: 35 },
+        { label: "Sexta", description: "Energia dominante do dia", x: 25, y: 75 },
+        { label: "Sábado", description: "Energia dominante do dia", x: 50, y: 75 },
+        { label: "Domingo", description: "Energia dominante do dia", x: 75, y: 75 },
       ],
     },
     examples: [
@@ -861,10 +901,10 @@ A posição "O que eu nego" ou "escondo" é o coração desta leitura. Ela traz 
     layoutDiagram: {
       name: "A Tiragem do Espelho",
       positions: [
-        { label: "Como me vejo", description: "Autoimagem — precisa ou distorcida", x: 30, y: 30 },
-        { label: "Como os outros me veem", description: "A imagem que projeto para o mundo", x: 70, y: 30 },
-        { label: "O que me fortalece", description: "Recurso interno mais poderoso agora", x: 30, y: 55 },
-        { label: "O que me enfraquece", description: "Ponto cego, vulnerabilidade", x: 70, y: 55 },
+        { label: "Como me vejo", description: "Autoimagem — precisa ou distorcida", x: 30, y: 20 },
+        { label: "Como os outros me veem", description: "A imagem que projeto para o mundo", x: 70, y: 20 },
+        { label: "O que me fortalece", description: "Recurso interno mais poderoso agora", x: 30, y: 50 },
+        { label: "O que me enfraquece", description: "Ponto cego, vulnerabilidade", x: 70, y: 50 },
         { label: "O que preciso liberar", description: "Crença, padrão ou medo para soltar", x: 30, y: 80 },
         { label: "O que preciso abraçar", description: "Talento, verdade ou direção para acolher", x: 70, y: 80 },
       ],
@@ -973,8 +1013,8 @@ Quando a outra pessoa já foi clara sobre não querer o vínculo, o tarô não v
         { label: "Você no vínculo", description: "Como você está chegando — emoções, expectativas, padrões", x: 18, y: 50 },
         { label: "A outra pessoa", description: "A energia que ela traz ou o clima geral", x: 82, y: 50 },
         { label: "O que aproxima", description: "O que está vivo e magnético entre os dois", x: 50, y: 50 },
-        { label: "O que bloqueia", description: "O obstáculo real ou padrão limitante", x: 50, y: 80 },
-        { label: "Conselho", description: "O passo possível e ético para quem consulta", x: 50, y: 20 },
+        { label: "O que bloqueia", description: "O obstáculo real ou padrão limitante", x: 50, y: 83 },
+        { label: "Conselho", description: "O passo possível e ético para quem consulta", x: 50, y: 17 },
       ],
     },
     examples: [

@@ -264,7 +264,7 @@ const TiragensLessonPage = () => {
                     </h3>
                     
                     {/* The Visual Grid/Map */}
-                    <div className="relative aspect-square max-w-[340px] mx-auto bg-white/60 rounded-[2.5rem] border-2 border-[#C8A66A]/20 shadow-inner p-6">
+                    <div className="relative aspect-[4/5] max-w-[340px] mx-auto bg-white/60 rounded-[2.5rem] border-2 border-[#C8A66A]/20 shadow-inner p-8">
                       {lesson.layoutDiagram.positions.map((pos, i) => (
                         <div 
                           key={i} 
@@ -277,8 +277,8 @@ const TiragensLessonPage = () => {
                              <div className="absolute top-1.5 left-1.5 right-1.5 bottom-1.5 border border-[#C8A66A]/20 rounded-lg pointer-events-none" />
                              <span className="font-heading text-3xl md:text-4xl font-black text-[#5B1F3D] drop-shadow-md z-10">{i + 1}</span>
                           </div>
-                          <div className="mt-2.5 text-center px-1">
-                             <span className="text-[9px] md:text-[11px] font-heading font-black uppercase tracking-[0.15em] text-[#5B1F3D] leading-tight block whitespace-normal break-words">
+                          <div className="mt-3 text-center px-1">
+                             <span className="text-[9px] md:text-[11px] font-heading font-black uppercase tracking-[0.15em] text-[#5B1F3D] leading-[1.2] block whitespace-normal break-words max-w-[110px] mx-auto">
                                {pos.label}
                              </span>
                           </div>
@@ -290,7 +290,7 @@ const TiragensLessonPage = () => {
                   <div className="p-6 bg-white space-y-3">
                     <div className="flex flex-col items-center gap-1 mb-4 px-2">
                        <span className="text-[9px] font-heading font-black tracking-widest uppercase text-[#C8A66A]">Legenda das Posições</span>
-                       <span className="text-[10px] font-body font-black uppercase tracking-[0.25em] text-[#5B1F3D]/40">Siga a ordem numérica para a leitura</span>
+                       <span className="text-[10px] font-body font-black uppercase tracking-[0.25em] text-[#5B1F3D]/70 text-center">Siga a ordem numérica para a leitura</span>
                        <div className="h-px w-12 bg-[#C8A66A]/20 mt-1" />
                     </div>
                     {lesson.layoutDiagram.positions.map((pos, i) => (
@@ -336,13 +336,13 @@ const TiragensLessonPage = () => {
 
                     <div className="space-y-4">
                       <p className="text-[10px] font-heading tracking-widest uppercase font-black text-[#5B1F3D]/40">Cartas Sorteadas</p>
-                      <div className="flex flex-wrap gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {ex.cards.map((c, ci) => (
-                          <div key={ci} className="bg-[#FAF5EF] border-2 border-[#C8A66A]/20 px-4 py-2.5 rounded-2xl flex items-center gap-3">
-                            <span className="text-[11px] font-heading font-black text-[#C8A66A]">{ci + 1}</span>
-                            <div className="flex flex-col">
-                              <span className="text-[9px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]/40">{c.position}</span>
-                              <span className="text-[13px] font-bold text-[#5B1F3D]">{c.card}</span>
+                          <div key={ci} className="bg-[#FAF5EF] border-2 border-[#C8A66A]/20 px-4 py-2.5 rounded-2xl flex items-center gap-3 shadow-sm">
+                            <span className="w-6 h-6 rounded-full bg-[#C8A66A] flex items-center justify-center text-[10px] font-heading font-black text-[#5B1F3D] shrink-0">{ci + 1}</span>
+                            <div className="flex flex-col min-w-0">
+                              <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]/40 truncate">{c.position}</span>
+                              <span className="text-[13px] font-bold text-[#5B1F3D] truncate">{c.card}</span>
                             </div>
                           </div>
                         ))}
