@@ -225,7 +225,6 @@ const LessonPage = () => {
       {/* Global Header is handled by AppShell and Context */}
 
       <main className="relative z-10 container max-w-lg mx-auto px-4 py-8 bg-transparent">
-        {debugForceContent && <div className="sr-only">Render forced</div>}
         {phase === "intro" && (
           <ArcanoVivoStage
             arcanoId={arcanoId}
