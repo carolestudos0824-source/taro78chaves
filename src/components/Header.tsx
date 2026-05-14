@@ -1,10 +1,10 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { KeyRound, Menu } from "lucide-react";
+import { KeyRound, Menu, ArrowLeft } from "lucide-react";
 import { StreakCounter } from "@/components/StreakCounter";
 import { XPBar } from "@/components/XPBar";
-import brandIcon from "@/assets/brand-icon.png";
 import { useState, useEffect, useRef } from "react";
 import GlobalMenu from "@/components/GlobalMenu";
+import { useHeader } from "@/contexts/header-context";
 
 interface HeaderProps {
   streak: number;
