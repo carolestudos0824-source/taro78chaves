@@ -246,7 +246,7 @@ const ModulesPage = () => {
                   className="flex flex-col items-center gap-3 p-5 rounded-[2rem] border-2 border-[#C8A66A]/20 bg-white/60 hover:bg-white transition-all shadow-md hover:shadow-xl hover:-translate-y-1 group"
                 >
                   <div className={`w-14 h-14 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A]/10 group-hover:scale-110 transition-all duration-500 group-hover:bg-[#5B1F3D] group-hover:shadow-[0_8px_20px_rgba(91,31,61,0.3)] shadow-inner`} style={{ background: trail.color }}>
-                    <trail.icon className="w-7 h-7 text-[#5B1F3D] group-hover:text-white transition-colors duration-500" />
+                    <TarotIcon name={trail.icon} className="w-7 h-7 text-[#5B1F3D] group-hover:text-white transition-colors duration-500" />
                   </div>
                   <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D] group-hover:text-[#C8A66A] transition-colors">
                     {trail.label}
