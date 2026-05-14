@@ -87,7 +87,7 @@ Não existe tiragem "melhor". Existe a tiragem certa para a pergunta certa. Esco
           { position: "O Contexto", card: "3 de Ouros" },
           { position: "A Resposta", card: "O Carro" },
         ],
-        interpretation: "Aqui vemos como a tiragem organiza a informação: O Mago (habilidade) no contexto do 3 de Ouros (trabalho em equipe) resulta no Carro (progresso rápido). Sem a tiragem, seriam apenas três cartas soltas.",
+        interpretation: "Aqui vemos como a tiragem organiza a informação:\n\n**O Mago** (habilidade) no contexto do **3 de Ouros** (trabalho em equipe) resulta no **O Carro** (progresso rápido).\n\nSem a tiragem, seriam apenas três cartas soltas — a estrutura é o que dá o sentido final.",
       },
     ],
     deepDive: `As tiragens como conhecemos hoje são relativamente recentes na história do tarô. Nos séculos XV e XVI, as cartas eram usadas para jogos — não para leitura. As primeiras "tiragens" documentadas aparecem no século XVIII com Etteilla (Jean-Baptiste Alliette), que criou layouts sistemáticos para adivinhação.
@@ -180,7 +180,7 @@ Leitoras experientes frequentemente criam suas próprias tiragens para situaçõ
           { position: "A Intenção", card: "Clareza de próximos passos" },
           { position: "O Tempo", card: "Próximos 3 meses" },
         ],
-        interpretation: "Este exemplo mostra como uma pergunta vaga se torna estruturada ao definir quem é o alvo, qual a intenção real e qual o tempo da leitura.",
+        interpretation: "Este exemplo mostra como uma pergunta vaga se torna estruturada ao definir quem é o alvo, qual a intenção real e qual o tempo da leitura.\n\n**Síntese:** Ao calibrar esses três eixos, você garante que as cartas respondam exatamente ao que você precisa saber, sem ruído.",
       },
     ],
     reflection: "Pense nas últimas perguntas que você fez ao tarô. Elas seguiam essas 5 regras? Reescreva 3 perguntas antigas usando as fórmulas sugeridas e observe como ficam mais poderosas.",
@@ -268,13 +268,13 @@ Não tire uma segunda carta porque "não entendeu" a primeira. A dificuldade é 
         spread: "Carta do Dia",
         question: "Que energia acompanha meu dia hoje?",
         cards: [{ position: "Carta Única", card: "A Temperança" }],
-        interpretation: "Hoje pede equilíbrio e paciência. Não force, não apresse — o dia flui melhor quando você mistura diferentes demandas com calma e moderação. É um dia de harmonizar, não de revolucionar.",
+        interpretation: "Hoje pede equilíbrio e paciência. Não force, não apresse — o dia flui melhor quando você mistura diferentes demandas com calma e moderação.\n\n**Síntese:** É um dia de harmonizar, não de revolucionar. A Temperança pede que você seja o alquimista do seu próprio tempo.",
       },
       {
         spread: "Conselho Rápido",
         question: "O que preciso saber sobre essa reunião de trabalho?",
         cards: [{ position: "Carta Única", card: "7 de Espadas" }],
-        interpretation: "Atenção: nem tudo será dito abertamente. Alguém pode ter uma agenda oculta. Vá preparada, ouça mais do que fala, e confie na sua percepção — não nas palavras.",
+        interpretation: "Atenção: nem tudo será dito abertamente nesta reunião. Alguém pode ter uma agenda oculta ou estar omitindo detalhes importantes.\n\n**Orientação:** Vá preparada, ouça mais do que fala, e confie na sua percepção estratégica — não apenas nas palavras oficiais.",
       },
     ],
     exercise: {
@@ -369,7 +369,7 @@ Além de ler cada posição isoladamente, leia os pares (1-2, 2-3, 1-3) e a trí
           { position: "Obstáculo", card: "4 de Copas" },
           { position: "Conselho", card: "Ás de Paus" },
         ],
-        interpretation: "Você está fazendo o trabalho necessário (8 de Ouros — dedicação e prática), mas o obstáculo é a apatia emocional (4 de Copas — não enxergar oportunidades por desânimo). O conselho é buscar uma nova inspiração (Ás de Paus — um impulso criativo, uma abordagem completamente nova). Talvez o emprego certo esteja em uma área que você ainda não considerou.",
+        interpretation: "Você está fazendo o trabalho necessário (**8 de Ouros** — dedicação), mas o obstáculo é a apatia emocional (**4 de Copas** — não enxergar oportunidades por desânimo).\n\n**O Conselho:** Busque uma nova inspiração (**Ás de Paus** — um impulso criativo). Talvez o emprego certo esteja em uma área que você ainda não considerou ou exige uma abordagem completamente nova.",
       },
     ],
     exercise: {
@@ -460,7 +460,7 @@ A leitura poderosa conecta as 3 posições numa história: "Porque [passado] aco
           { position: "Presente", card: "2 de Espadas" },
           { position: "Futuro", card: "A Estrela" },
         ],
-        interpretation: "O relacionamento nasceu de uma conexão nostálgica, talvez um amor antigo ou um padrão afetivo da infância (6 de Copas). Agora há uma decisão sendo evitada — algo precisa ser enfrentado, mas há medo de ver claramente (2 de Espadas). Se a consulente tiver coragem de abrir os olhos, a tendência é de cura e renovação (A Estrela) — mas é preciso sair da negação primeiro.",
+        interpretation: "O relacionamento nasceu de uma conexão nostálgica, talvez um amor antigo (**6 de Copas**). Agora há uma decisão sendo evitada — algo precisa ser enfrentado (**2 de Espadas**).\n\n**Tendência:** Se a consulente tiver coragem de abrir os olhos, o caminho é de cura e renovação (**A Estrela**) — mas é preciso sair da negação primeiro para que a luz brilhe.",
       },
     ],
     exercise: {
@@ -551,7 +551,7 @@ Leia sempre o conselho como uma **ação concreta**. Mesmo cartas passivas indic
           { position: "Obstáculo", card: "A Lua" },
           { position: "Conselho", card: "Rei de Espadas" },
         ],
-        interpretation: "Você está num momento de espera e investimento a longo prazo (7 de Ouros — os frutos ainda não vieram). O obstáculo é a confusão e os medos inconscientes (A Lua — ilusões sobre si mesma ou sobre o mercado). O conselho é adotar clareza mental e liderança intelectual (Rei de Espadas — cortar as ilusões com lógica, tomar decisões racionais, e comunicar com autoridade).",
+        interpretation: "Você está num momento de espera e investimento a longo prazo (**7 de Ouros**). O obstáculo é a confusão e os medos inconscientes (**A Lua**).\n\n**O Conselho:** Adote clareza mental e liderança intelectual (**Rei de Espadas**). Corte as ilusões com lógica, tome decisões racionais e comunique sua autoridade com firmeza.",
       },
     ],
     exercise: {
@@ -639,7 +639,7 @@ A grande força desta tiragem é permitir a leitura de duas histórias simultân
           { position: "Acima (Consciente)", card: "4 de Ouros" },
           { position: "Abaixo (Inconsciente)", card: "A Imperatriz" },
         ],
-        interpretation: "O tema é escassez e insegurança material (5 de Ouros). A causa foi um colapso — talvez uma perda financeira traumática ou um fim doloroso (10 de Espadas). A tendência é positiva — um novo começo material está surgindo (Ás de Ouros). Conscientemente, a consulente se agarra ao pouco que tem por medo (4 de Ouros — controle excessivo). Mas inconscientemente, há uma energia de abundância e criatividade reprimida (A Imperatriz) — ela tem capacidade de gerar riqueza, mas o medo do trauma passado impede que essa capacidade floresça.",
+        interpretation: "O tema é escassez e insegurança (**5 de Ouros**). A causa foi um colapso passado (**10 de Espadas**). Conscientemente, você se agarra ao pouco que tem por medo (**4 de Ouros**).\n\n**Oculto:** Inconscientemente, há uma energia de abundância reprimida (**A Imperatriz**).\n\n**Síntese:** A tendência é positiva (**Ás de Ouros**), mas exige liberar o medo do trauma passado para que a nova semente de prosperidade possa florescer.",
       },
     ],
     exercise: {
@@ -731,7 +731,7 @@ O tarô mostra a **experiência** de cada caminho. A decisão final é sempre su
           { position: "Caminho B (Ficar)", card: "4 de Copas" },
           { position: "Resultado B", card: "9 de Ouros" },
         ],
-        interpretation: "Você está em paralisia decisória (2 de Espadas — vendas nos olhos). Aceitar o novo emprego traz energia de ação e aventura (Cavaleiro de Paus) e leva a aprendizado e trabalho em equipe (3 de Ouros). Ficar traz apatia e tédio (4 de Copas — olhar para as oportunidades sem vê-las) mas leva a conforto material (9 de Ouros — segurança solitária). A questão é: você quer crescimento com risco ou conforto com estagnação?",
+        interpretation: "Você está em paralisia decisória (**2 de Espadas**). Aceitar o novo emprego traz energia de ação (**Cavaleiro de Paus**) e leva a aprendizado (**3 de Ouros**).\n\n**Contraste:** Ficar traz apatia (**4 de Copas**) mas mantém o conforto material (**9 de Ouros**).\n\n**Síntese:** A questão final é: você busca o crescimento com risco ou a segurança com estagnação? O tarô revela o preço de cada escolha.",
       },
     ],
     exercise: {
@@ -827,7 +827,7 @@ Busque **tons**. "Dia de paciência" em vez de "vai acontecer algo bom". Note se
           { position: "Sábado", card: "O Louco" },
           { position: "Domingo", card: "A Estrela" },
         ],
-        interpretation: "A semana começa com boa conexão afetiva (2 de Copas), mas a terça-feira traz uma ruptura necessária ou imprevisto (A Torre). O meio da semana pede foco no trabalho e colaboração (3 de Ouros) com muita paciência e moderação (A Temperança). O final de semana promete muita satisfação pessoal (9 de Copas), um novo começo livre e espontâneo (O Louco) e termina com renovada esperança e calma (A Estrela).",
+        interpretation: "A semana começa com boa conexão (**2 de Copas**), mas a terça-feira traz uma ruptura necessária ou imprevisto (**A Torre**). O meio da semana pede foco e paciência (**3 de Ouros** e **A Temperança**).\n\n**Desfecho:** O final de semana promete muita satisfação pessoal (**9 de Copas**), um novo começo livre (**O Louco**) e termina com renovada esperança e calma (**A Estrela**).",
       }
     ],
     exercise: {
@@ -921,7 +921,7 @@ A posição "O que eu nego" ou "escondo" é o coração desta leitura. Ela traz 
           { position: "O que preciso liberar", card: "O Diabo" },
           { position: "O que preciso abraçar", card: "A Estrela" },
         ],
-        interpretation: "Você se vê como alguém que ainda está investindo e esperando resultados (7 de Ouros), mas os outros te veem como uma força criativa e abundante (A Imperatriz) — há uma dissonância entre sua autopercepção modesta e o impacto real que você causa. Sua maior força é a clareza mental (Ás de Espadas), mas o luto por algo perdido está minando sua energia (5 de Copas). É hora de liberar padrões de dependência ou obsessão (O Diabo) e abraçar a esperança e a confiança no futuro (A Estrela).",
+        interpretation: "Você se vê investindo e esperando (**7 de Ouros**), mas os outros te veem como uma força criativa e abundante (**A Imperatriz**). Sua maior força é a clareza mental (**Ás de Espadas**), mas o luto por algo perdido mina sua energia (**5 de Copas**).\n\n**O Conselho:** É hora de liberar padrões de dependência ou obsessão (**O Diabo**) e abraçar a esperança e a confiança no futuro (**A Estrela**). A dissonância entre como você se vê e o que projeta pede cura emocional.",
       },
     ],
     reflection: "Ao terminar este módulo, olhe para trás: qual tiragem mais te chamou atenção? Qual você sente que vai usar mais na prática? E qual te dá mais medo — porque é exatamente essa que provavelmente trará as revelações mais importantes.",
@@ -1013,8 +1013,8 @@ Quando a outra pessoa já foi clara sobre não querer o vínculo, o tarô não v
         { label: "Você no vínculo", description: "Como você está chegando — emoções, expectativas, padrões", x: 18, y: 50 },
         { label: "A outra pessoa", description: "A energia que ela traz ou o clima geral", x: 82, y: 50 },
         { label: "O que aproxima", description: "O que está vivo e magnético entre os dois", x: 50, y: 50 },
-        { label: "O que bloqueia", description: "O obstáculo real ou padrão limitante", x: 50, y: 83 },
-        { label: "Conselho", description: "O passo possível e ético para quem consulta", x: 50, y: 17 },
+        { label: "O que bloqueia", description: "O obstáculo real ou padrão limitante", x: 50, y: 88 },
+        { label: "Conselho", description: "O passo possível e ético para quem consulta", x: 50, y: 12 },
       ],
     },
     examples: [
@@ -1028,7 +1028,7 @@ Quando a outra pessoa já foi clara sobre não querer o vínculo, o tarô não v
           { position: "O que bloqueia", card: "4 de Paus invertido" },
           { position: "Conselho do tarô", card: "A Sacerdotisa" },
         ],
-        interpretation: "Você chega no vínculo com o coração aberto e disposição genuína de troca (2 de Copas). A outra pessoa está em movimento mental rápido, racional, talvez evasiva ou ainda processando ideias (Cavaleiro de Espadas) — não é frieza, é ritmo diferente do seu. O que aproxima é forte: há uma escolha consciente de afinidade e valores entre vocês (Os Enamorados). O que bloqueia é a falta de uma base estável compartilhada — talvez timing, talvez compromisso ainda não definido (4 de Paus invertido). O conselho não é avançar nem cobrar: é silenciar e observar (A Sacerdotisa). Não force a definição agora. Dê espaço para que a verdade do vínculo apareça por si — e use esse tempo para ouvir sua própria intuição sobre o que **você** quer, não só sobre o que ele/ela vai decidir.",
+        interpretation: "Você chega no vínculo com o coração aberto e disposição genuína de troca (2 de Copas). A outra pessoa está em movimento mental rápido, racional, talvez evasiva ou ainda processando ideias (Cavaleiro de Espadas) — não é frieza, é ritmo diferente do seu.\n\nO que aproxima é forte: há uma escolha consciente de afinidade e valores entre vocês (Os Enamorados). O que bloqueia é a falta de uma base estável compartilhada — talvez timing, talvez compromisso ainda não definido (4 de Paus invertido).\n\nO conselho não é avançar nem cobrar: é silenciar e observar (A Sacerdotisa). Não force a definição agora. Dê espaço para que a verdade do vínculo apareça por si.\n\n**Síntese e Orientação Ética:** Use esse tempo para ouvir sua própria intuição sobre o que **você** quer, não só sobre o que ele/ela vai decidir. O tarô devolve a você a autonomia emocional.",
       },
     ],
     reflection: "Pense em uma leitura de amor que você fez (para si ou para outra pessoa) que terminou em mais ansiedade do que clareza. O que aconteceu? A pergunta era sobre o vínculo, ou sobre forçar uma resposta? Como essa leitura teria sido diferente se a pergunta fosse: 'O que preciso ver sobre esse vínculo — e o que cabe a mim?'",
