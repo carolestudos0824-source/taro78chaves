@@ -12,6 +12,8 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { trackEvent } from "@/lib/analytics";
 
+import { isWebCheckoutAllowed } from "@/lib/platform";
+
 const LEVEL_TITLES: Record<number, string> = {
   1: "Neófito", 2: "Aprendiz", 3: "Estudante", 4: "Buscador", 5: "Iniciado", 6: "Adepto", 7: "Guardião", 8: "Mestre", 9: "Oráculo", 10: "Iluminado",
 };
@@ -24,6 +26,7 @@ const ProfilePage = () => {
   const { fontSize, setFontSize } = useFontSize();
   const { isPremium, premiumUntil, premiumSource, stripeCustomerId } = usePremium();
   const { signOut } = useAuth();
+  const webCheckoutAllowed = isWebCheckoutAllowed();
   const [portalLoading, setPortalLoading] = useState(false);
 
   const isStripeRecurring = isPremium && !!stripeCustomerId && ["store_monthly", "store_annual"].includes(premiumSource || "");
@@ -143,7 +146,7 @@ const ProfilePage = () => {
             {isAdmin ? (
               <span className="text-[10px] font-heading font-black tracking-widest uppercase text-white bg-[#5B1F3D] px-3 py-1.5 rounded-lg border border-[#C8A66A]">Admin</span>
             ) : isPremium ? (
-              isStripeRecurring && (
+              isStripeRecurring && webCheckoutAllowed && (
                 <button 
                   onClick={handleOpenPortal} 
                   disabled={portalLoading} 
@@ -153,7 +156,9 @@ const ProfilePage = () => {
                 </button>
               )
             ) : (
-              <button onClick={() => navigate("/premium")} className="bg-[#5B1F3D] text-white px-6 py-2.5 rounded-xl font-heading font-black text-[10px] tracking-widest uppercase border border-[#C8A66A]">Upgrade</button>
+              webCheckoutAllowed && (
+                <button onClick={() => navigate("/premium")} className="bg-[#5B1F3D] text-white px-6 py-2.5 rounded-xl font-heading font-black text-[10px] tracking-widest uppercase border border-[#C8A66A]">Upgrade</button>
+              )
             )}
           </div>
         </div>
