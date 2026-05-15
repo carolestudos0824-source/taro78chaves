@@ -46,29 +46,29 @@ const AdminSidebar = ({ active, onChange, role }: AdminSidebarProps) => {
   const groups = [...new Set(visible.map(s => s.group))];
 
   return (
-    <aside className="w-64 shrink-0 border-r border-[#C8A66A]/20 bg-white/40 min-h-[calc(100vh-57px)] overflow-y-auto hidden md:block backdrop-blur-sm">
-      <nav className="p-4 space-y-8">
-        <div className="px-4 pb-4 border-b border-[#C8A66A]/10">
-          <p className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#C8A66A] font-black mb-1">Acesso Atual</p>
-          <p className={`text-sm font-heading font-black tracking-tight ${role === "admin" ? "text-[#5B1F3D]" : "text-[#8B6A30]"}`}>
+    <aside className="w-72 shrink-0 border-r border-[#C8A66A]/20 bg-white/60 min-h-[calc(100vh-57px)] overflow-y-auto hidden md:block backdrop-blur-md">
+      <nav className="p-6 space-y-10">
+        <div className="px-4 pb-6 border-b border-[#C8A66A]/20">
+          <p className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#C8A66A] font-black mb-1">Operando como</p>
+          <p className={`text-base font-heading font-black tracking-tight ${role === "admin" ? "text-[#5B1F3D]" : "text-[#8B6A30]"}`}>
             {role === "admin" ? "Administrador" : role === "moderator" ? "Moderador" : "Usuário"}
           </p>
         </div>
         
         {groups.map(group => (
-          <div key={group} className="space-y-3">
-            <p className="text-[11px] font-heading tracking-[0.4em] uppercase text-[#5B1F3D]/40 px-4 font-black">
+          <div key={group} className="space-y-4">
+            <p className="text-[11px] font-heading tracking-[0.4em] uppercase text-[#5B1F3D]/50 px-4 font-black">
               {group}
             </p>
-            <div className="space-y-1">
+            <div className="space-y-1.5">
               {visible.filter(s => s.group === group).map(s => (
                 <button
                   key={s.id}
                   onClick={() => onChange(s.id)}
-                  className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-[13px] transition-all duration-300 group ${
+                  className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl text-[14px] transition-all duration-300 group ${
                     active === s.id
-                      ? "bg-[#5B1F3D] text-white font-black shadow-lg shadow-[#5B1F3D]/20 border border-[#C8A66A]/40"
-                      : "text-[#5B1F3D]/70 hover:text-[#5B1F3D] hover:bg-white/60 font-bold"
+                      ? "bg-[#5B1F3D] text-white font-black shadow-xl shadow-[#5B1F3D]/20 border border-[#C8A66A]/40"
+                      : "text-[#5B1F3D]/80 hover:text-[#5B1F3D] hover:bg-white/80 font-bold"
                   }`}
                 >
                   <div className={`transition-transform duration-300 ${active === s.id ? "scale-110" : "group-hover:scale-110 opacity-70 group-hover:opacity-100"}`}>
