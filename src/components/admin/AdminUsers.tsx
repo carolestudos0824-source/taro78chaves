@@ -155,14 +155,14 @@ const AdminUsers = () => {
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap gap-3 bg-white/40 p-4 rounded-[2rem] border border-[#C8A66A]/20 backdrop-blur-sm">
-        <div className="relative flex-1 min-w-[200px]">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5B1F3D]/40" />
+      <div className="flex flex-wrap gap-4 bg-white/60 p-6 rounded-[2.5rem] border-2 border-[#C8A66A]/20 backdrop-blur-md shadow-sm">
+        <div className="relative flex-1 min-w-[300px]">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#5B1F3D]/50" />
           <Input 
             value={search} 
             onChange={e => setSearch(e.target.value)} 
-            placeholder="Buscar por nome ou e-mail..." 
-            className="pl-10 h-11 text-sm bg-white border-[#C8A66A]/20 rounded-xl focus-visible:ring-[#5B1F3D]" 
+            placeholder="Buscar por nome, e-mail ou ID..." 
+            className="pl-12 h-12 text-base font-body font-bold bg-white border-[#C8A66A]/30 rounded-2xl focus-visible:ring-[#5B1F3D] shadow-inner" 
           />
         </div>
         <Select value={statusFilter} onValueChange={v => setStatusFilter(v as StatusFilter)}>
