@@ -199,12 +199,15 @@ const AdminSupport = () => {
   );
 };
 
-const StatCard = ({ label, value, icon, accent }: { label: string; value: number; icon: React.ReactNode; accent: "amber" | "blue" | "emerald" }) => {
-  const cls = accent === "amber" ? "text-amber-600" : accent === "blue" ? "text-secondary" : "text-primary";
+const SupportStatCard = ({ label, value, icon, accent }: { label: string; value: number; icon: React.ReactNode; accent: "amber" | "blue" | "emerald" }) => {
+  const accentCls = accent === "amber" ? "bg-amber-500/10 text-amber-600 border-amber-500/30" : accent === "blue" ? "bg-secondary/10/10 text-secondary border-secondary/30/20" : "bg-primary/10/10 text-primary border-primary/30/20";
   return (
-    <div className="rounded-lg border border-border/40 bg-card/40 p-3">
-      <div className={`flex items-center gap-1.5 text-xs ${cls}`}>{icon}<span>{label}</span></div>
-      <p className="text-2xl font-heading text-foreground mt-1">{value}</p>
+    <div className={`rounded-[2rem] border-2 p-6 shadow-lg bg-white transition-all hover:scale-105 ${accentCls}`}>
+      <div className="flex items-center justify-between mb-2">
+        <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase opacity-70">{label}</span>
+        {icon}
+      </div>
+      <p className="text-3xl font-heading font-black tracking-tighter">{value}</p>
     </div>
   );
 };
