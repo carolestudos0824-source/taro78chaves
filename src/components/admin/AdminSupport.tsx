@@ -10,6 +10,7 @@ import { toast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/use-auth";
 import { useRole } from "@/hooks/use-role";
 import { logAdminAction } from "@/lib/admin-audit";
+import { AdminSectionHeading } from "./AdminComponents";
 
 type Status = "aberto" | "em_andamento" | "resolvido";
 type StatusFilter = "all" | Status;
