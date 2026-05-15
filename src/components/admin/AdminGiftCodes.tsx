@@ -246,54 +246,58 @@ const AdminGiftCodes = () => {
           <p className="text-sm text-muted-foreground">Nenhum código encontrado.</p>
         </div>
       ) : (
-        <div className="rounded-xl border border-border/50 bg-card/50 overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-border/30 bg-card/60">
-                <th className="text-left p-3 text-xs text-muted-foreground font-medium">Código</th>
-                <th className="text-center p-3 text-xs text-muted-foreground font-medium">Acesso</th>
-                <th className="text-center p-3 text-xs text-muted-foreground font-medium">Usos</th>
-                <th className="text-center p-3 text-xs text-muted-foreground font-medium">Validade</th>
-                <th className="text-center p-3 text-xs text-muted-foreground font-medium">Criado</th>
-                <th className="text-center p-3 text-xs text-muted-foreground font-medium">Status</th>
-                <th className="text-right p-3 text-xs text-muted-foreground font-medium">Ações</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.map((gc) => (
-                <tr key={gc.id} className="border-b border-border/10 last:border-0 hover:bg-card/80 transition-colors">
-                  <td className="p-3 font-mono text-xs text-foreground">{gc.code}</td>
-                  <td className="p-3 text-center text-muted-foreground text-xs">{gc.duration_days} dias</td>
-                  <td className="p-3 text-center text-muted-foreground text-xs">{gc.current_uses}/{gc.max_uses}</td>
-                  <td className="p-3 text-center text-muted-foreground text-xs">
+        <AdminTable>
+          <AdminTableHeader>
+            <AdminTableHead>Código</AdminTableHead>
+            <AdminTableHead className="text-center">Acesso</AdminTableHead>
+            <AdminTableHead className="text-center">Usos</AdminTableHead>
+            <AdminTableHead className="text-center">Validade</AdminTableHead>
+            <AdminTableHead className="text-center">Criado</AdminTableHead>
+            <AdminTableHead className="text-center">Status</AdminTableHead>
+            <AdminTableHead className="text-right">Ações</AdminTableHead>
+          </AdminTableHeader>
+          <tbody>
+            {filtered.map((gc) => {
+              const resolveVariant = (statusKey: string): any => {
+                if (statusKey === "active") return "primary";
+                if (statusKey === "disabled" || statusKey === "expired") return "destructive";
+                if (statusKey === "exhausted") return "warning";
+                return "default";
+              };
+              return (
+                <AdminTableRow key={gc.id}>
+                  <AdminTableCell className="font-mono text-sm text-[#5B1F3D] font-black">{gc.code}</AdminTableCell>
+                  <AdminTableCell className="text-center text-[#5B1F3D] font-body font-bold text-sm">{gc.duration_days} dias</AdminTableCell>
+                  <AdminTableCell className="text-center text-[#5B1F3D]/60 font-body font-bold text-sm">{gc.current_uses}/{gc.max_uses}</AdminTableCell>
+                  <AdminTableCell className="text-center text-[#5B1F3D]/60 font-body font-bold text-sm">
                     {gc.expires_at ? new Date(gc.expires_at).toLocaleDateString("pt-BR") : "—"}
-                  </td>
-                  <td className="p-3 text-center text-muted-foreground text-xs">
+                  </AdminTableCell>
+                  <AdminTableCell className="text-center text-[#5B1F3D]/60 font-body font-bold text-sm">
                     {new Date(gc.created_at).toLocaleDateString("pt-BR")}
-                  </td>
-                  <td className="p-3 text-center">
-                    <span className={`text-[10px] font-heading tracking-wide px-2 py-0.5 rounded-full ${gc.status.cls}`}>
+                  </AdminTableCell>
+                  <AdminTableCell className="text-center">
+                    <AdminBadge variant={resolveVariant(gc.status.key)}>
                       {gc.status.label}
-                    </span>
-                  </td>
-                  <td className="p-3 text-right">
-                    <div className="inline-flex gap-1">
-                      <button onClick={() => copyCode(gc.code)} className="p-1.5 rounded hover:bg-muted text-muted-foreground hover:text-foreground" title="Copiar">
-                        {copied === gc.code ? <Check className="w-3.5 h-3.5 text-primary" /> : <Copy className="w-3.5 h-3.5" />}
-                      </button>
-                      <button onClick={() => setHistoryCode(gc)} className="p-1.5 rounded hover:bg-muted text-muted-foreground hover:text-foreground" title="Histórico">
-                        <History className="w-3.5 h-3.5" />
-                      </button>
-                      <button onClick={() => toggleActive(gc)} className="p-1.5 rounded hover:bg-muted text-muted-foreground hover:text-foreground" title={gc.is_active ? "Desativar" : "Reativar"}>
-                        {gc.is_active ? <Ban className="w-3.5 h-3.5" /> : <RotateCcw className="w-3.5 h-3.5" />}
-                      </button>
+                    </AdminBadge>
+                  </AdminTableCell>
+                  <AdminTableCell className="text-right">
+                    <div className="inline-flex gap-2">
+                      <Button variant="outline" size="sm" onClick={() => copyCode(gc.code)} className="h-9 w-9 p-0 border-[#C8A66A]/30">
+                        {copied === gc.code ? <Check className="w-4 h-4 text-primary" /> : <Copy className="w-4 h-4" />}
+                      </Button>
+                      <Button variant="outline" size="sm" onClick={() => setHistoryCode(gc)} className="h-9 w-9 p-0 border-[#C8A66A]/30">
+                        <History className="w-4 h-4" />
+                      </Button>
+                      <Button variant="outline" size="sm" onClick={() => toggleActive(gc)} className="h-9 w-9 p-0 border-[#C8A66A]/30">
+                        {gc.is_active ? <Ban className="w-4 h-4 text-red-500" /> : <RotateCcw className="w-4 h-4" />}
+                      </Button>
                     </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                  </AdminTableCell>
+                </AdminTableRow>
+              );
+            })}
+          </tbody>
+        </AdminTable>
       )}
 
       {/* Redemption history */}
