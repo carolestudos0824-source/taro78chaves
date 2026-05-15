@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast } from "sonner";
 import { logAdminAction } from "@/lib/admin-audit";
-import { AdminSectionHeading } from "./AdminComponents";
+import { AdminSectionHeading, KPICard, AdminBadge, AdminTable, AdminTableHeader, AdminTableHead, AdminTableRow, AdminTableCell } from "./AdminComponents";
 
 interface GiftCode {
   id: string;
