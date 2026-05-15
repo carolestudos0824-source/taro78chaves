@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { toast } from "@/hooks/use-toast";
 import { logAdminAction, type AdminAction } from "@/lib/admin-audit";
 import { useRole } from "@/hooks/use-role";
-import { AdminSectionHeading } from "./AdminComponents";
+import { AdminSectionHeading, KPICard, AdminBadge, AdminTable, AdminTableHeader, AdminTableHead, AdminTableRow, AdminTableCell } from "./AdminComponents";
 
 interface ProfileRow {
   user_id: string;
@@ -85,12 +85,12 @@ const AdminUsers = () => {
   }, [progress]);
 
   const getStatus = (u: ProfileRow) => {
-    if (adminIds.has(u.user_id)) return { label: "Admin", cls: "bg-amber-500/10 text-amber-600", key: "admin" as const };
-    if (!u.is_premium) return { label: "Gratuito", cls: "bg-muted text-muted-foreground", key: "free" as const };
+    if (adminIds.has(u.user_id)) return { label: "Admin", variant: "warning" as const, key: "admin" as const };
+    if (!u.is_premium) return { label: "Gratuito", variant: "default" as const, key: "free" as const };
     const until = u.premium_until ? new Date(u.premium_until) : null;
-    if (until && until <= now) return { label: "Expirado", cls: "bg-destructive/10 text-destructive", key: "expired" as const };
-    if (u.premium_source === "gift" || u.premium_source === "admin") return { label: "Presenteado", cls: "bg-secondary/10/10 text-secondary", key: "gift" as const };
-    return { label: "Assinante", cls: "bg-primary/10 text-primary", key: "premium" as const };
+    if (until && until <= now) return { label: "Expirado", variant: "destructive" as const, key: "expired" as const };
+    if (u.premium_source === "gift" || u.premium_source === "admin") return { label: "Presenteado", variant: "secondary" as const, key: "gift" as const };
+    return { label: "Assinante", variant: "primary" as const, key: "premium" as const };
   };
 
   const enriched = useMemo(() => {
@@ -147,11 +147,11 @@ const AdminUsers = () => {
       />
 
       {/* Stat cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <StatCard icon={<Users className="w-6 h-6" />} label="Total" value={stats.total} />
-        <StatCard icon={<Crown className="w-6 h-6" />} label="Premium ativos" value={stats.premium} accent />
-        <StatCard icon={<AlertTriangle className="w-6 h-6" />} label="Expirados" value={stats.expired} />
-        <StatCard icon={<Shield className="w-6 h-6" />} label="Admins" value={stats.admins} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <KPICard icon={<Users />} label="Total" value={stats.total} />
+        <KPICard icon={<Crown />} label="Premium ativos" value={stats.premium} accent="text-primary" />
+        <KPICard icon={<AlertTriangle />} label="Expirados" value={stats.expired} accent="text-red-600" />
+        <KPICard icon={<Shield />} label="Admins" value={stats.admins} accent="text-amber-600" />
       </div>
 
       {/* Filters */}
@@ -162,11 +162,11 @@ const AdminUsers = () => {
             value={search} 
             onChange={e => setSearch(e.target.value)} 
             placeholder="Buscar por nome, e-mail ou ID..." 
-            className="pl-12 h-12 text-base font-body font-bold bg-white border-[#C8A66A]/30 rounded-2xl focus-visible:ring-[#5B1F3D] shadow-inner" 
+            className="pl-12 h-14 text-base font-body font-bold bg-white border-[#C8A66A]/30 rounded-2xl focus-visible:ring-[#5B1F3D] shadow-inner" 
           />
         </div>
         <Select value={statusFilter} onValueChange={v => setStatusFilter(v as StatusFilter)}>
-          <SelectTrigger className="w-44 h-12 text-xs font-heading font-black tracking-widest uppercase border-2 border-[#C8A66A]/30 bg-white rounded-2xl shadow-sm"><SelectValue /></SelectTrigger>
+          <SelectTrigger className="w-44 h-14 text-xs font-heading font-black tracking-widest uppercase border-2 border-[#C8A66A]/30 bg-white rounded-2xl shadow-sm"><SelectValue /></SelectTrigger>
           <SelectContent className="font-heading text-[11px] font-black tracking-widest uppercase">
             <SelectItem value="all">Todos os Status</SelectItem>
             <SelectItem value="free">Gratuitos</SelectItem>
@@ -177,7 +177,7 @@ const AdminUsers = () => {
           </SelectContent>
         </Select>
         <Select value={sortBy} onValueChange={v => setSortBy(v as SortField)}>
-          <SelectTrigger className="w-56 h-12 text-xs font-heading font-black tracking-widest uppercase border-2 border-[#C8A66A]/30 bg-white rounded-2xl shadow-sm">
+          <SelectTrigger className="w-56 h-14 text-xs font-heading font-black tracking-widest uppercase border-2 border-[#C8A66A]/30 bg-white rounded-2xl shadow-sm">
             <ArrowUpDown className="w-4 h-4 mr-2 text-[#C8A66A]" />
             <SelectValue />
           </SelectTrigger>
@@ -196,68 +196,63 @@ const AdminUsers = () => {
           <p className="text-sm text-muted-foreground">Nenhum usuário encontrado.</p>
         </div>
       ) : (
-        <div className="rounded-[3rem] border-2 border-[#C8A66A]/20 bg-white overflow-hidden shadow-2xl">
-          <div className="overflow-x-auto">
-            <table className="w-full text-base">
-              <thead>
-                <tr className="border-b-2 border-[#C8A66A]/20 bg-[#FAF5EF]/60">
-                  <th className="text-left p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Usuário</th>
-                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Status</th>
-                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Plano Até</th>
-                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Cadastro</th>
-                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Atividade</th>
-                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Lições</th>
-                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">XP</th>
-                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Streak</th>
-                  <th className="text-right p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.slice(0, 100).map(u => (
-                  <tr key={u.user_id} className="border-b border-[#C8A66A]/10 last:border-0 hover:bg-[#FAF5EF]/30 transition-colors">
-                    <td className="p-4">
-                      <p className="text-[#5B1F3D] font-black leading-tight text-[15px]">{u.display_name || "Sem nome"}</p>
-                      <p className="text-[11px] font-body font-bold text-[#5B1F3D]/50 mt-1">{u.email || `${u.user_id.slice(0, 8)}...`}</p>
-                    </td>
-                    <td className="p-4 text-center">
-                      <span className={`text-[10px] font-heading font-black tracking-widest px-3 py-1 rounded-full border shadow-sm ${u.status.cls}`}>
-                        {u.status.label.toUpperCase()}
-                      </span>
-                    </td>
-                    <td className="p-4 text-center text-[#5B1F3D] font-body font-bold text-xs">
-                      {u.premium_until ? new Date(u.premium_until).toLocaleDateString("pt-BR") : "—"}
-                    </td>
-                    <td className="p-4 text-center text-[#5B1F3D]/70 font-body font-bold text-xs">{new Date(u.created_at).toLocaleDateString("pt-BR")}</td>
-                    <td className="p-4 text-center text-[#5B1F3D]/70 font-body font-bold text-xs">
-                      {u.progress?.last_active ? new Date(u.progress.last_active).toLocaleDateString("pt-BR") : "—"}
-                    </td>
-                    <td className="p-4 text-center text-[#5B1F3D] font-heading font-black text-xs">{u.progress?.completed_lessons?.length || 0}</td>
-                    <td className="p-4 text-center text-[#5B1F3D] font-heading font-black text-xs">{u.progress?.xp || 0}</td>
-                    <td className="p-4 text-center">
-                      {u.progress?.streak ? (
-                        <span className="text-[10px] px-2 py-1 rounded-full bg-[#5B1F3D] text-white font-heading font-black shadow-sm tracking-widest">🔥 {u.progress.streak}</span>
-                      ) : <span className="text-xs text-[#5B1F3D]/20 font-black">—</span>}
-                    </td>
-                    <td className="p-4 text-right">
-                      <Button 
-                        size="sm" 
-                        variant="ghost" 
-                        className="h-9 px-4 text-[10px] font-heading font-black tracking-widest uppercase border border-[#C8A66A]/30 rounded-xl hover:bg-[#5B1F3D] hover:text-white transition-all" 
-                        onClick={() => setSelected(u.user_id)}
-                      >
-                        Abrir
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          {filtered.length > 100 && (
-            <div className="p-4 text-center text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/40 border-t border-[#C8A66A]/20 bg-[#FAF5EF]/30">
-              Mostrando 100 de {filtered.length} usuários
-            </div>
-          )}
+        <AdminTable>
+          <AdminTableHeader>
+            <AdminTableHead>Usuário</AdminTableHead>
+            <AdminTableHead className="text-center">Status</AdminTableHead>
+            <AdminTableHead className="text-center">Plano Até</AdminTableHead>
+            <AdminTableHead className="text-center">Cadastro</AdminTableHead>
+            <AdminTableHead className="text-center">Atividade</AdminTableHead>
+            <AdminTableHead className="text-center">Lições</AdminTableHead>
+            <AdminTableHead className="text-center">XP</AdminTableHead>
+            <AdminTableHead className="text-center">Streak</AdminTableHead>
+            <AdminTableHead className="text-right">Ações</AdminTableHead>
+          </AdminTableHeader>
+          <tbody>
+            {filtered.slice(0, 100).map(u => (
+              <AdminTableRow key={u.user_id}>
+                <AdminTableCell>
+                  <p className="text-[#5B1F3D] font-black leading-tight text-lg">{u.display_name || "Sem nome"}</p>
+                  <p className="text-xs font-body font-bold text-[#5B1F3D]/50 mt-1">{u.email || `${u.user_id.slice(0, 8)}...`}</p>
+                </AdminTableCell>
+                <AdminTableCell className="text-center">
+                  <AdminBadge variant={u.status.variant}>
+                    {u.status.label}
+                  </AdminBadge>
+                </AdminTableCell>
+                <AdminTableCell className="text-center text-[#5B1F3D] font-body font-bold text-sm">
+                  {u.premium_until ? new Date(u.premium_until).toLocaleDateString("pt-BR") : "—"}
+                </AdminTableCell>
+                <AdminTableCell className="text-center text-[#5B1F3D]/70 font-body font-bold text-sm">{new Date(u.created_at).toLocaleDateString("pt-BR")}</AdminTableCell>
+                <AdminTableCell className="text-center text-[#5B1F3D]/70 font-body font-bold text-sm">
+                  {u.progress?.last_active ? new Date(u.progress.last_active).toLocaleDateString("pt-BR") : "—"}
+                </AdminTableCell>
+                <AdminTableCell className="text-center text-[#5B1F3D] font-heading font-black text-sm">{u.progress?.completed_lessons?.length || 0}</AdminTableCell>
+                <AdminTableCell className="text-center text-[#5B1F3D] font-heading font-black text-sm">{u.progress?.xp || 0}</AdminTableCell>
+                <AdminTableCell className="text-center">
+                  {u.progress?.streak ? (
+                    <span className="text-xs px-3 py-1.5 rounded-full bg-[#5B1F3D] text-white font-heading font-black shadow-sm tracking-widest">🔥 {u.progress.streak}</span>
+                  ) : <span className="text-sm text-[#5B1F3D]/20 font-black">—</span>}
+                </AdminTableCell>
+                <AdminTableCell className="text-right">
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    className="h-11 px-6 text-xs font-heading font-black tracking-widest uppercase border-2 border-[#C8A66A]/30 rounded-xl hover:bg-[#5B1F3D] hover:text-white transition-all shadow-sm" 
+                    onClick={() => setSelected(u.user_id)}
+                  >
+                    Abrir
+                  </Button>
+                </AdminTableCell>
+              </AdminTableRow>
+            ))}
+          </tbody>
+        </AdminTable>
+      )}
+
+      {filtered.length > 100 && (
+        <div className="p-6 text-center text-xs font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/40 border-2 border-t-0 border-[#C8A66A]/20 bg-white rounded-b-[3rem] -mt-10">
+          Mostrando 100 de {filtered.length} usuários
         </div>
       )}
 
