@@ -5,6 +5,7 @@ import {
   DollarSign, XCircle, BarChart3, BookOpen, Target,
   ArrowUp, ArrowDown
 } from "lucide-react";
+import { KPICard } from "./AdminComponents";
 
 const MONTHLY_PRICE = 29.9;
 const ANNUAL_PRICE = 197;
