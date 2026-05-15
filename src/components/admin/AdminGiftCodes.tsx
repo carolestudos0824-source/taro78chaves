@@ -178,11 +178,11 @@ const AdminGiftCodes = () => {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <GiftStatCard icon={<Gift className="w-6 h-6" />} label="Total Criados" value={stats.total} />
-        <GiftStatCard icon={<Check className="w-6 h-6" />} label="Ativos" value={stats.active} accent />
-        <GiftStatCard icon={<Users className="w-6 h-6" />} label="Resgatados" value={stats.redeemed} />
-        <GiftStatCard icon={<Ban className="w-6 h-6" />} label="Esgotados" value={stats.exhausted} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <KPICard icon={<Gift />} label="Total Criados" value={stats.total} />
+        <KPICard icon={<Check />} label="Ativos" value={stats.active} accent="text-primary" />
+        <KPICard icon={<Users />} label="Resgatados" value={stats.redeemed} accent="text-[#8B6A30]" />
+        <KPICard icon={<Ban />} label="Esgotados" value={stats.exhausted} accent="text-red-600" />
       </div>
 
       {/* Create form */}
