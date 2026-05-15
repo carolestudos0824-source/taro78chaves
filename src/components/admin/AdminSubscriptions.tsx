@@ -66,14 +66,14 @@ const STATUS_LABELS: Record<SubStatus, string> = {
 };
 
 const STATUS_COLORS: Record<SubStatus, string> = {
-  monthly_active: "bg-primary/10/10 text-primary",
-  annual_active: "bg-primary/10/10 text-primary",
-  gift_active: "bg-secondary/10/10 text-secondary",
-  admin_grant: "bg-amber-500/10 text-amber-600",
-  expired: "bg-red-500/10 text-red-500",
-  cancelled_with_access: "bg-amber-500/10 text-amber-600",
-  cancelled_expired: "bg-red-500/10 text-red-400",
-  free: "bg-muted text-muted-foreground",
+  monthly_active: "bg-[#5B1F3D] text-white border-[#C8A66A]",
+  annual_active: "bg-[#5B1F3D] text-white border-[#C8A66A]",
+  gift_active: "bg-[#8B6A30] text-white border-[#C8A66A]/40",
+  admin_grant: "bg-[#8B6A30]/10 text-[#8B6A30] border-[#8B6A30]/20",
+  expired: "bg-red-500/10 text-red-600 border-red-200",
+  cancelled_with_access: "bg-amber-500/10 text-amber-600 border-amber-200",
+  cancelled_expired: "bg-red-500 text-white border-red-600",
+  free: "bg-[#FAF5EF] text-[#5B1F3D]/40 border-[#C8A66A]/20",
 };
 
 const SOURCE_LABELS: Record<string, string> = {
@@ -205,77 +205,82 @@ const AdminSubscriptions = () => {
   }
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h2 className="font-heading text-lg text-foreground">Receita & Assinaturas</h2>
-        <p className="text-sm text-muted-foreground">
-          Painel comercial — receita estimada (calculada internamente) e receita real (a partir do provedor de pagamento).
+    <div className="space-y-12">
+      <div className="relative">
+        <div className="absolute -left-4 top-0 bottom-0 w-1 bg-[#C8A66A] rounded-full" />
+        <h2 className="font-heading text-2xl md:text-3xl text-[#5B1F3D] font-black tracking-tight pl-4">Receita & Assinaturas</h2>
+        <p className="text-sm font-body font-bold italic text-[#5B1F3D]/60 pl-4 mt-1">
+          Painel comercial — receita estimada (cálculo interno) e receita real (Stripe).
         </p>
       </div>
 
       {/* ═══════════ RECEITA ESTIMADA ═══════════ */}
-      <section>
-        <div className="flex items-center justify-between mb-3">
-          <h3 className="font-heading text-[10px] tracking-[0.2em] uppercase text-muted-foreground/60">
+      <section className="space-y-6">
+        <div className="flex items-center gap-4">
+          <h3 className="font-heading text-[11px] tracking-[0.3em] uppercase text-[#5B1F3D]/40 font-black">
             Receita estimada
           </h3>
-          <span className="text-[9px] font-heading tracking-wider uppercase px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600">
+          <div className="h-px flex-1 bg-[#C8A66A]/20" />
+          <span className="text-[9px] font-heading font-black tracking-[0.2em] uppercase px-3 py-1 rounded-full bg-[#C8A66A]/10 text-[#8B6A30] border border-[#C8A66A]/20">
             Cálculo interno
           </span>
         </div>
-        <p className="text-[11px] text-muted-foreground mb-3 leading-relaxed">
-          Projeção a partir de assinantes ativos × preço de catálogo (Mensal R$ {MONTHLY_PRICE.toFixed(2)} ·
-          Anual R$ {ANNUAL_PRICE.toFixed(0)}). Não representa faturamento confirmado.
+        
+        <p className="text-xs font-body font-medium text-[#5B1F3D]/70 leading-relaxed bg-white/40 p-4 rounded-2xl border border-[#C8A66A]/10">
+          Projeção baseada em assinantes ativos × preço de catálogo. <strong className="text-[#5B1F3D] font-black">Não representa faturamento confirmado.</strong>
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <KPICard icon={<DollarSign className="w-4 h-4" />} label="MRR estimado" value={`R$ ${stats.mrrEstimated.toFixed(2)}`} accent="text-amber-600" />
-          <KPICard icon={<Repeat className="w-4 h-4" />} label="ARR estimada" value={`R$ ${stats.arrEstimated.toFixed(0)}`} accent="text-amber-600" />
-          <KPICard icon={<Crown className="w-4 h-4" />} label="Assinaturas pagantes" value={stats.totalPaying} accent="text-primary" />
-          <KPICard icon={<TrendingUp className="w-4 h-4" />} label="Conversão Premium" value={`${stats.conversionRate}%`} accent="text-secondary" />
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <KPICard icon={<DollarSign className="w-5 h-5" />} label="MRR estimado" value={`R$ ${stats.mrrEstimated.toFixed(2)}`} accent="text-[#8B6A30]" />
+          <KPICard icon={<Repeat className="w-5 h-5" />} label="ARR estimada" value={`R$ ${stats.arrEstimated.toFixed(0)}`} accent="text-[#8B6A30]" />
+          <KPICard icon={<Crown className="w-5 h-5" />} label="Assinaturas pagantes" value={stats.totalPaying} accent="text-[#5B1F3D]" />
+          <KPICard icon={<TrendingUp className="w-5 h-5" />} label="Conversão Premium" value={`${stats.conversionRate}%`} accent="text-[#5B1F3D]" />
         </div>
       </section>
 
       {/* ═══════════ RECEITA REAL ═══════════ */}
-      <section>
-        <div className="flex items-center justify-between mb-3">
-          <h3 className="font-heading text-[10px] tracking-[0.2em] uppercase text-muted-foreground/60">
+      <section className="space-y-6">
+        <div className="flex items-center gap-4">
+          <h3 className="font-heading text-[11px] tracking-[0.3em] uppercase text-[#5B1F3D]/40 font-black">
             Receita real
           </h3>
-          <span className={`text-[9px] font-heading tracking-wider uppercase px-2 py-0.5 rounded-full inline-flex items-center gap-1 ${
-            realRevenueEnabled ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
+          <div className="h-px flex-1 bg-[#C8A66A]/20" />
+          <span className={`text-[9px] font-heading font-black tracking-[0.2em] uppercase px-3 py-1 rounded-full inline-flex items-center gap-2 border ${
+            realRevenueEnabled ? "bg-[#5B1F3D] text-white border-[#C8A66A] shadow-sm animate-pulse" : "bg-white/50 text-[#5B1F3D]/40 border-[#C8A66A]/10"
           }`}>
-            <Plug className="w-2.5 h-2.5" />
+            <Plug className="w-3 h-3" />
             {realRevenueEnabled ? "Stripe conectado" : "Aguardando Stripe"}
           </span>
         </div>
         {!realRevenueEnabled ? (
-          <div className="rounded-xl border border-dashed border-border/50 bg-card/20 p-5 text-center">
-            <Plug className="w-8 h-8 text-muted-foreground/40 mx-auto mb-2" />
-            <p className="text-sm text-foreground font-medium mb-1">Faturamento confirmado ainda não disponível</p>
-            <p className="text-xs text-muted-foreground max-w-md mx-auto leading-relaxed">
-              A tabela <code className="text-[10px] px-1 bg-muted/50 rounded">subscription_events</code> está pronta
-              para receber os webhooks do Stripe. Quando a integração for ativada, MRR/ARR reais, churn confirmado
-              e ciclo de vida de cada cobrança aparecerão aqui automaticamente.
+          <div className="rounded-[2.5rem] border-2 border-dashed border-[#C8A66A]/30 bg-white/40 p-8 text-center shadow-inner">
+            <Plug className="w-10 h-10 text-[#C8A66A]/20 mx-auto mb-4" />
+            <p className="text-base font-heading font-black text-[#5B1F3D] mb-2">Faturamento confirmado não disponível</p>
+            <p className="text-sm font-body font-bold italic text-[#5B1F3D]/50 max-w-md mx-auto leading-relaxed">
+              A estrutura está pronta para receber os webhooks do Stripe. MRR real, churn e ciclo de vida de cobranças aparecerão aqui automaticamente após a ativação.
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <KPICard icon={<DollarSign className="w-4 h-4" />} label="MRR real" value="R$ 0,00" accent="text-primary" />
-            <KPICard icon={<Repeat className="w-4 h-4" />} label="ARR real" value="R$ 0" accent="text-primary" />
-            <KPICard icon={<Crown className="w-4 h-4" />} label="Cobranças confirmadas" value={0} accent="text-primary" />
-            <KPICard icon={<TrendingDown className="w-4 h-4" />} label="Reembolsos" value={0} accent="text-red-500" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <KPICard icon={<DollarSign className="w-5 h-5" />} label="MRR real" value="R$ 0,00" accent="text-[#5B1F3D]" />
+            <KPICard icon={<Repeat className="w-5 h-5" />} label="ARR real" value="R$ 0" accent="text-[#5B1F3D]" />
+            <KPICard icon={<Crown className="w-5 h-5" />} label="Cobranças confirmadas" value={0} accent="text-[#5B1F3D]" />
+            <KPICard icon={<TrendingDown className="w-5 h-5" />} label="Reembolsos" value={0} accent="text-red-600" />
           </div>
         )}
       </section>
 
       {/* ═══════════ Crescimento e churn ═══════════ */}
-      <section>
-        <h3 className="font-heading text-[10px] tracking-[0.2em] uppercase text-muted-foreground/60 mb-3">Crescimento (últimos 30 dias)</h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <KPICard icon={<Sparkles className="w-4 h-4" />} label="Novos cadastros" value={stats.newSignups30} accent="text-secondary" />
-          <KPICard icon={<TrendingDown className="w-4 h-4" />} label="Churn (taxa)" value={`${stats.churnRate}%`} accent="text-red-500" />
-          <KPICard icon={<AlertCircle className="w-4 h-4" />} label="Expiram em 30d" value={stats.expiringSoon} accent="text-amber-600" />
-          <KPICard icon={<Gift className="w-4 h-4" />} label="Resgates de presente" value={stats.giftRedemptions} accent="text-secondary" />
+      <section className="space-y-6">
+        <div className="flex items-center gap-4">
+          <h3 className="font-heading text-[11px] tracking-[0.3em] uppercase text-[#5B1F3D]/40 font-black">Crescimento (últimos 30 dias)</h3>
+          <div className="h-px flex-1 bg-[#C8A66A]/20" />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <KPICard icon={<Sparkles className="w-5 h-5" />} label="Novos cadastros" value={stats.newSignups30} accent="text-[#5B1F3D]" />
+          <KPICard icon={<TrendingDown className="w-5 h-5" />} label="Churn (taxa)" value={`${stats.churnRate}%`} accent="text-red-600" />
+          <KPICard icon={<AlertCircle className="w-5 h-5" />} label="Expiram em 30d" value={stats.expiringSoon} accent="text-[#8B6A30]" />
+          <KPICard icon={<Gift className="w-5 h-5" />} label="Resgates de presente" value={stats.giftRedemptions} accent="text-[#5B1F3D]" />
         </div>
       </section>
 

@@ -57,15 +57,23 @@ const AdminPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b border-border/50 bg-card/30 sticky top-0 z-20">
-        <div className="px-4 sm:px-6 py-3 flex items-center gap-4">
-          <button onClick={() => navigate("/app")} className="text-muted-foreground hover:text-primary transition-colors">
+    <div className="min-h-screen bg-[#FAF5EF]">
+      <header className="border-b border-[#C8A66A]/20 bg-white/80 backdrop-blur-xl sticky top-0 z-20 shadow-sm">
+        <div className="px-4 sm:px-8 py-4 flex items-center gap-6">
+          <button 
+            onClick={() => navigate("/app")} 
+            className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A]/30 text-[#5B1F3D] hover:scale-110 transition-all duration-200"
+          >
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <h1 className="font-heading text-lg text-foreground tracking-wider">Painel Administrativo</h1>
-          <span className={`ml-auto text-[10px] font-heading tracking-[0.2em] uppercase px-2 py-1 rounded-full ${
-            role === "admin" ? "bg-amber-500/10 text-amber-600" : "bg-primary/10 text-primary"
+          <div className="flex flex-col">
+            <h1 className="font-heading text-xl md:text-2xl text-[#5B1F3D] font-black tracking-tight">Painel Administrativo</h1>
+            <p className="text-[10px] font-heading tracking-[0.2em] uppercase text-[#C8A66A] font-bold">Gestão Tarô 78 Chaves</p>
+          </div>
+          <span className={`ml-auto text-[10px] font-heading tracking-[0.3em] uppercase px-4 py-1.5 rounded-full border-2 font-black shadow-sm ${
+            role === "admin" 
+              ? "bg-[#5B1F3D] text-white border-[#C8A66A]" 
+              : "bg-white text-[#5B1F3D] border-[#C8A66A]/40"
           }`}>
             {role === "admin" ? "Admin" : "Moderador"}
           </span>

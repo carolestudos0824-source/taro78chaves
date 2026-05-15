@@ -139,29 +139,35 @@ const AdminUsers = () => {
   if (loading) return <div className="p-8 text-center text-sm text-muted-foreground">Carregando usuários...</div>;
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h2 className="font-heading text-lg text-foreground">Usuários</h2>
-        <p className="text-sm text-muted-foreground">Gestão completa de pessoas, acesso e progresso.</p>
+    <div className="space-y-10">
+      <div className="relative">
+        <div className="absolute -left-4 top-0 bottom-0 w-1 bg-[#C8A66A] rounded-full" />
+        <h2 className="font-heading text-2xl md:text-3xl text-[#5B1F3D] font-black tracking-tight pl-4">Usuários</h2>
+        <p className="text-sm font-body font-bold italic text-[#5B1F3D]/60 pl-4 mt-1">Gestão completa de pessoas, acesso e progresso.</p>
       </div>
 
       {/* Stat cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <StatCard icon={<Users className="w-4 h-4" />} label="Total" value={stats.total} />
-        <StatCard icon={<Crown className="w-4 h-4" />} label="Premium ativos" value={stats.premium} accent />
-        <StatCard icon={<AlertTriangle className="w-4 h-4" />} label="Expirados" value={stats.expired} />
-        <StatCard icon={<Shield className="w-4 h-4" />} label="Admins" value={stats.admins} />
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <StatCard icon={<Users className="w-5 h-5" />} label="Total" value={stats.total} />
+        <StatCard icon={<Crown className="w-5 h-5" />} label="Premium ativos" value={stats.premium} accent />
+        <StatCard icon={<AlertTriangle className="w-5 h-5" />} label="Expirados" value={stats.expired} />
+        <StatCard icon={<Shield className="w-5 h-5" />} label="Admins" value={stats.admins} />
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-3 bg-white/40 p-4 rounded-[2rem] border border-[#C8A66A]/20 backdrop-blur-sm">
         <div className="relative flex-1 min-w-[200px]">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" />
-          <Input value={search} onChange={e => setSearch(e.target.value)} placeholder="Buscar por nome ou e-mail..." className="pl-8 h-9 text-sm" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5B1F3D]/40" />
+          <Input 
+            value={search} 
+            onChange={e => setSearch(e.target.value)} 
+            placeholder="Buscar por nome ou e-mail..." 
+            className="pl-10 h-11 text-sm bg-white border-[#C8A66A]/20 rounded-xl focus-visible:ring-[#5B1F3D]" 
+          />
         </div>
         <Select value={statusFilter} onValueChange={v => setStatusFilter(v as StatusFilter)}>
-          <SelectTrigger className="w-36 h-9 text-xs"><SelectValue /></SelectTrigger>
-          <SelectContent>
+          <SelectTrigger className="w-36 h-11 text-xs font-heading font-black tracking-widest uppercase border-[#C8A66A]/20 bg-white rounded-xl"><SelectValue /></SelectTrigger>
+          <SelectContent className="font-heading text-[10px] font-black tracking-widest uppercase">
             <SelectItem value="all">Todos</SelectItem>
             <SelectItem value="free">Gratuitos</SelectItem>
             <SelectItem value="premium">Assinantes</SelectItem>
@@ -171,11 +177,11 @@ const AdminUsers = () => {
           </SelectContent>
         </Select>
         <Select value={sortBy} onValueChange={v => setSortBy(v as SortField)}>
-          <SelectTrigger className="w-40 h-9 text-xs">
-            <ArrowUpDown className="w-3 h-3 mr-1" />
+          <SelectTrigger className="w-48 h-11 text-xs font-heading font-black tracking-widest uppercase border-[#C8A66A]/20 bg-white rounded-xl">
+            <ArrowUpDown className="w-3.5 h-3.5 mr-2 text-[#C8A66A]" />
             <SelectValue />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="font-heading text-[10px] font-black tracking-widest uppercase">
             <SelectItem value="created_at">Cadastro recente</SelectItem>
             <SelectItem value="last_active">Última atividade</SelectItem>
             <SelectItem value="xp">XP</SelectItem>
@@ -190,50 +196,55 @@ const AdminUsers = () => {
           <p className="text-sm text-muted-foreground">Nenhum usuário encontrado.</p>
         </div>
       ) : (
-        <div className="rounded-xl border border-border/50 bg-card/50 overflow-hidden">
+        <div className="rounded-[2.5rem] border-2 border-[#C8A66A]/20 bg-white overflow-hidden shadow-2xl">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-border/30 bg-card/60">
-                  <th className="text-left p-3 text-xs text-muted-foreground font-medium">Usuário</th>
-                  <th className="text-center p-3 text-xs text-muted-foreground font-medium">Status</th>
-                  <th className="text-center p-3 text-xs text-muted-foreground font-medium">Plano</th>
-                  <th className="text-center p-3 text-xs text-muted-foreground font-medium">Cadastro</th>
-                  <th className="text-center p-3 text-xs text-muted-foreground font-medium">Último acesso</th>
-                  <th className="text-center p-3 text-xs text-muted-foreground font-medium">Lições</th>
-                  <th className="text-center p-3 text-xs text-muted-foreground font-medium">XP</th>
-                  <th className="text-center p-3 text-xs text-muted-foreground font-medium">Streak</th>
-                  <th className="text-right p-3 text-xs text-muted-foreground font-medium">Ações</th>
+                <tr className="border-b border-[#C8A66A]/20 bg-[#FAF5EF]/50">
+                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Usuário</th>
+                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Status</th>
+                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Plano</th>
+                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Cadastro</th>
+                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Atividade</th>
+                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Lições</th>
+                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">XP</th>
+                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Streak</th>
+                  <th className="text-right p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Ações</th>
                 </tr>
               </thead>
               <tbody>
                 {filtered.slice(0, 100).map(u => (
-                  <tr key={u.user_id} className="border-b border-border/10 last:border-0 hover:bg-card/80 transition-colors">
-                    <td className="p-3">
-                      <p className="text-foreground font-medium leading-tight">{u.display_name || "Sem nome"}</p>
-                      <p className="text-[11px] text-muted-foreground">{u.email || `${u.user_id.slice(0, 8)}...`}</p>
+                  <tr key={u.user_id} className="border-b border-[#C8A66A]/10 last:border-0 hover:bg-[#FAF5EF]/30 transition-colors">
+                    <td className="p-4">
+                      <p className="text-[#5B1F3D] font-black leading-tight text-[15px]">{u.display_name || "Sem nome"}</p>
+                      <p className="text-[11px] font-body font-bold text-[#5B1F3D]/50 mt-1">{u.email || `${u.user_id.slice(0, 8)}...`}</p>
                     </td>
-                    <td className="p-3 text-center">
-                      <span className={`text-[10px] font-heading tracking-wide px-2 py-0.5 rounded-full ${u.status.cls}`}>
-                        {u.status.label}
+                    <td className="p-4 text-center">
+                      <span className={`text-[10px] font-heading font-black tracking-widest px-3 py-1 rounded-full border shadow-sm ${u.status.cls}`}>
+                        {u.status.label.toUpperCase()}
                       </span>
                     </td>
-                    <td className="p-3 text-center text-muted-foreground text-xs">
+                    <td className="p-4 text-center text-[#5B1F3D] font-body font-bold text-xs">
                       {u.premium_until ? new Date(u.premium_until).toLocaleDateString("pt-BR") : "—"}
                     </td>
-                    <td className="p-3 text-center text-muted-foreground text-xs">{new Date(u.created_at).toLocaleDateString("pt-BR")}</td>
-                    <td className="p-3 text-center text-muted-foreground text-xs">
+                    <td className="p-4 text-center text-[#5B1F3D]/70 font-body font-bold text-xs">{new Date(u.created_at).toLocaleDateString("pt-BR")}</td>
+                    <td className="p-4 text-center text-[#5B1F3D]/70 font-body font-bold text-xs">
                       {u.progress?.last_active ? new Date(u.progress.last_active).toLocaleDateString("pt-BR") : "—"}
                     </td>
-                    <td className="p-3 text-center text-muted-foreground text-xs">{u.progress?.completed_lessons?.length || 0}</td>
-                    <td className="p-3 text-center text-muted-foreground text-xs">{u.progress?.xp || 0}</td>
-                    <td className="p-3 text-center">
+                    <td className="p-4 text-center text-[#5B1F3D] font-heading font-black text-xs">{u.progress?.completed_lessons?.length || 0}</td>
+                    <td className="p-4 text-center text-[#5B1F3D] font-heading font-black text-xs">{u.progress?.xp || 0}</td>
+                    <td className="p-4 text-center">
                       {u.progress?.streak ? (
-                        <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-primary/10 text-primary font-medium">🔥 {u.progress.streak}</span>
-                      ) : <span className="text-xs text-muted-foreground">—</span>}
+                        <span className="text-[10px] px-2 py-1 rounded-full bg-[#5B1F3D] text-white font-heading font-black shadow-sm tracking-widest">🔥 {u.progress.streak}</span>
+                      ) : <span className="text-xs text-[#5B1F3D]/20 font-black">—</span>}
                     </td>
-                    <td className="p-3 text-right">
-                      <Button size="sm" variant="ghost" className="h-7 text-xs" onClick={() => setSelected(u.user_id)}>
+                    <td className="p-4 text-right">
+                      <Button 
+                        size="sm" 
+                        variant="ghost" 
+                        className="h-9 px-4 text-[10px] font-heading font-black tracking-widest uppercase border border-[#C8A66A]/30 rounded-xl hover:bg-[#5B1F3D] hover:text-white transition-all" 
+                        onClick={() => setSelected(u.user_id)}
+                      >
                         Abrir
                       </Button>
                     </td>
@@ -243,7 +254,7 @@ const AdminUsers = () => {
             </table>
           </div>
           {filtered.length > 100 && (
-            <div className="p-3 text-center text-xs text-muted-foreground border-t border-border/30">
+            <div className="p-4 text-center text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/40 border-t border-[#C8A66A]/20 bg-[#FAF5EF]/30">
               Mostrando 100 de {filtered.length} usuários
             </div>
           )}
@@ -260,12 +271,14 @@ const AdminUsers = () => {
 };
 
 const StatCard = ({ icon, label, value, accent }: { icon: React.ReactNode; label: string; value: number; accent?: boolean }) => (
-  <div className={`rounded-xl border border-border/50 bg-card/50 p-3 ${accent ? "ring-1 ring-primary/20" : ""}`}>
-    <div className="flex items-center justify-between">
-      <span className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</span>
-      <span className={accent ? "text-primary" : "text-muted-foreground"}>{icon}</span>
+  <div className={`rounded-2xl border-2 p-5 shadow-lg transition-all hover:scale-105 bg-white ${accent ? "border-[#C8A66A] ring-4 ring-[#C8A66A]/10" : "border-[#C8A66A]/20"}`}>
+    <div className="flex items-center justify-between mb-3">
+      <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/40">{label}</span>
+      <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${accent ? "bg-[#5B1F3D] text-white" : "bg-[#FAF5EF] text-[#C8A66A] border border-[#C8A66A]/10"}`}>
+        {icon}
+      </div>
     </div>
-    <p className="font-heading text-2xl text-foreground mt-1">{value}</p>
+    <p className="font-heading text-3xl font-black text-[#5B1F3D] tracking-tighter">{value}</p>
   </div>
 );
 

@@ -94,112 +94,133 @@ const AdminOverview = () => {
   if (loading) return <div className="p-8 text-center text-sm text-muted-foreground">Carregando...</div>;
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h2 className="font-heading text-lg text-foreground">Visão Geral</h2>
-        <p className="text-sm text-muted-foreground">Resumo operacional da plataforma em tempo real.</p>
+    <div className="space-y-12">
+      <div className="relative">
+        <div className="absolute -left-4 top-0 bottom-0 w-1 bg-[#C8A66A] rounded-full" />
+        <h2 className="font-heading text-2xl md:text-3xl text-[#5B1F3D] font-black tracking-tight pl-4">Visão Geral</h2>
+        <p className="text-sm font-body font-bold italic text-[#5B1F3D]/60 pl-4 mt-1">Resumo operacional da plataforma em tempo real.</p>
       </div>
 
       {/* Revenue — Estimated */}
-      <div>
-        <div className="flex items-baseline justify-between mb-3">
-          <h3 className="font-heading text-xs tracking-[0.15em] uppercase text-muted-foreground/60">Receita estimada</h3>
-          <span className="text-[10px] uppercase tracking-wider text-amber-600/80">cálculo interno</span>
+      <section className="space-y-6">
+        <div className="flex items-center gap-4">
+          <h3 className="font-heading text-[11px] tracking-[0.3em] uppercase text-[#5B1F3D]/40 font-black">Receita estimada</h3>
+          <div className="h-px flex-1 bg-[#C8A66A]/20" />
+          <span className="text-[9px] uppercase tracking-[0.2em] px-3 py-1 bg-[#C8A66A]/10 text-[#8B6A30] rounded-full font-black border border-[#C8A66A]/20">cálculo interno</span>
         </div>
-        <p className="text-[11px] text-muted-foreground mb-3 leading-relaxed">
-          Projeção baseada em assinantes ativos × preço de tabela. <strong className="text-foreground/80">Não reflete faturamento real</strong> — não considera reembolsos, cancelamentos no meio do ciclo, descontos ou impostos.
+        
+        <p className="text-xs font-body font-medium text-[#5B1F3D]/70 leading-relaxed bg-white/40 p-4 rounded-2xl border border-[#C8A66A]/10">
+          Projeção baseada em assinantes ativos × preço de tabela. <strong className="text-[#5B1F3D] font-black">Não reflete faturamento real</strong> — não considera reembolsos, cancelamentos no meio do ciclo, descontos ou impostos.
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <KPICard icon={<DollarSign className="w-4 h-4" />} label="MRR estimado" value={`R$ ${stats.mrr.toFixed(2)}`} accent="text-amber-600" badge="est." />
-          <KPICard icon={<TrendingUp className="w-4 h-4" />} label="Conversão Premium" value={`${stats.conversionRate}%`} accent="text-secondary" />
-          <KPICard icon={<XCircle className="w-4 h-4" />} label="Premiums expirados (30d)" value={stats.recentExpired} accent={stats.recentExpired > 0 ? "text-red-400" : "text-muted-foreground"} />
-          <KPICard icon={<UserPlus className="w-4 h-4" />} label="Novos cadastros (7d)" value={stats.recentSignups} accent="text-primary" />
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <KPICard icon={<DollarSign className="w-5 h-5" />} label="MRR estimado" value={`R$ ${stats.mrr.toFixed(2)}`} accent="text-[#8B6A30]" badge="est." />
+          <KPICard icon={<TrendingUp className="w-5 h-5" />} label="Conversão Premium" value={`${stats.conversionRate}%`} accent="text-[#5B1F3D]" />
+          <KPICard icon={<XCircle className="w-5 h-5" />} label="Premiums expirados (30d)" value={stats.recentExpired} accent={stats.recentExpired > 0 ? "text-red-600" : "text-[#5B1F3D]/40"} />
+          <KPICard icon={<UserPlus className="w-5 h-5" />} label="Novos cadastros (7d)" value={stats.recentSignups} accent="text-[#5B1F3D]" />
         </div>
-      </div>
+      </section>
 
       {/* Revenue — Real (Stripe) */}
-      <div>
-        <div className="flex items-baseline justify-between mb-3">
-          <h3 className="font-heading text-xs tracking-[0.15em] uppercase text-muted-foreground/60">Receita real (Stripe)</h3>
-          <span className="text-[10px] uppercase tracking-wider text-primary/80">
+      <section className="space-y-6">
+        <div className="flex items-center gap-4">
+          <h3 className="font-heading text-[11px] tracking-[0.3em] uppercase text-[#5B1F3D]/40 font-black">Receita real (Stripe)</h3>
+          <div className="h-px flex-1 bg-[#C8A66A]/20" />
+          <span className={`text-[9px] uppercase tracking-[0.2em] px-3 py-1 rounded-full font-black border ${
+            stripeLoading ? "bg-white/50 text-[#5B1F3D]/40 border-[#C8A66A]/10" : 
+            stripeError ? "bg-red-50 text-red-600 border-red-200" : 
+            "bg-[#5B1F3D] text-white border-[#C8A66A] shadow-sm animate-pulse"
+          }`}>
             {stripeLoading ? "carregando…" : stripeError ? "erro" : "ao vivo"}
           </span>
         </div>
+
         {stripeError ? (
-          <div className="p-4 rounded-xl border border-dashed border-red-300/50 bg-red-50/40 text-[11px] text-red-700">
+          <div className="p-6 rounded-[2rem] border-2 border-dashed border-red-200 bg-red-50/50 text-sm font-body font-bold text-red-700 text-center">
             Não foi possível carregar dados do Stripe: {stripeError}
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <KPICard
-              icon={<Crown className="w-4 h-4" />}
+              icon={<Crown className="w-5 h-5" />}
               label="Assinaturas ativas (Stripe)"
               value={stripeLoading ? "…" : stripeMetrics?.activeSubscriptions ?? 0}
-              accent="text-primary"
+              accent="text-[#5B1F3D]"
             />
             <KPICard
-              icon={<DollarSign className="w-4 h-4" />}
+              icon={<DollarSign className="w-5 h-5" />}
               label="MRR real"
               value={stripeLoading ? "…" : `R$ ${(stripeMetrics?.mrr ?? 0).toFixed(2)}`}
-              accent="text-primary"
+              accent="text-[#5B1F3D]"
             />
             <KPICard
-              icon={<TrendingUp className="w-4 h-4" />}
+              icon={<TrendingUp className="w-5 h-5" />}
               label="Receita (últ. 100 cobranças)"
               value={stripeLoading ? "…" : `R$ ${(stripeMetrics?.totalRevenue ?? 0).toFixed(2)}`}
-              accent="text-primary"
+              accent="text-[#5B1F3D]"
             />
             <PlaceholderCard label="Churn real (em desenvolvimento)" />
           </div>
         )}
-        <p className="text-[11px] text-muted-foreground mt-3 leading-relaxed">
+        <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/50 bg-white/40 p-4 rounded-2xl border border-[#C8A66A]/10">
           Dados consultados diretamente da API do Stripe. Receita considera as últimas 100 cobranças bem-sucedidas, líquido de reembolsos.
         </p>
-      </div>
+      </section>
 
       {/* User Breakdown */}
-      <div>
-        <h3 className="font-heading text-xs tracking-[0.15em] uppercase text-muted-foreground/60 mb-3">Assinantes & Usuários</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <KPICard icon={<Users className="w-4 h-4" />} label="Total de Usuários" value={stats.totalUsers} />
-          <KPICard icon={<Crown className="w-4 h-4" />} label="Assinantes Ativos" value={stats.premiumUsers} accent="text-primary" />
-          <KPICard icon={<Users className="w-4 h-4" />} label="Usuários Gratuitos" value={stats.freeUsers} />
-          <KPICard icon={<Gift className="w-4 h-4" />} label="Presenteados" value={stats.giftedUsers} accent="text-secondary" />
+      <section className="space-y-6">
+        <div className="flex items-center gap-4">
+          <h3 className="font-heading text-[11px] tracking-[0.3em] uppercase text-[#5B1F3D]/40 font-black">Assinantes & Usuários</h3>
+          <div className="h-px flex-1 bg-[#C8A66A]/20" />
         </div>
-      </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <KPICard icon={<Users className="w-5 h-5" />} label="Total de Usuários" value={stats.totalUsers} />
+          <KPICard icon={<Crown className="w-5 h-5" />} label="Assinantes Ativos" value={stats.premiumUsers} accent="text-[#5B1F3D]" />
+          <KPICard icon={<Users className="w-5 h-5" />} label="Usuários Gratuitos" value={stats.freeUsers} />
+          <KPICard icon={<Gift className="w-5 h-5" />} label="Presenteados" value={stats.giftedUsers} accent="text-[#8B6A30]" />
+        </div>
+      </section>
 
       {/* Engagement */}
-      <div>
-        <h3 className="font-heading text-xs tracking-[0.15em] uppercase text-muted-foreground/60 mb-3">Engajamento</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <KPICard icon={<Users className="w-4 h-4" />} label="Ativos (7d)" value={stats.activeWeek} accent="text-primary" />
-          <KPICard icon={<BookOpen className="w-4 h-4" />} label="Lições Concluídas" value={stats.totalLessons} />
-          <KPICard icon={<Target className="w-4 h-4" />} label="Quizzes Feitos" value={stats.totalQuizzes} />
-          <KPICard icon={<BarChart3 className="w-4 h-4" />} label="Streaks Ativos" value={stats.activeStreaks} />
+      <section className="space-y-6">
+        <div className="flex items-center gap-4">
+          <h3 className="font-heading text-[11px] tracking-[0.3em] uppercase text-[#5B1F3D]/40 font-black">Engajamento</h3>
+          <div className="h-px flex-1 bg-[#C8A66A]/20" />
         </div>
-      </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <KPICard icon={<Users className="w-5 h-5" />} label="Ativos (7d)" value={stats.activeWeek} accent="text-[#5B1F3D]" />
+          <KPICard icon={<BookOpen className="w-5 h-5" />} label="Lições Concluídas" value={stats.totalLessons} />
+          <KPICard icon={<Target className="w-5 h-5" />} label="Quizzes Feitos" value={stats.totalQuizzes} />
+          <KPICard icon={<BarChart3 className="w-5 h-5" />} label="Streaks Ativos" value={stats.activeStreaks} />
+        </div>
+      </section>
     </div>
   );
 };
 
-const KPICard = ({ icon, label, value, accent = "text-foreground", badge }: { icon: React.ReactNode; label: string; value: string | number; accent?: string; badge?: string }) => (
-  <div className="p-4 rounded-xl border border-border/50 bg-card/50 relative">
+const KPICard = ({ icon, label, value, accent = "text-[#5B1F3D]", badge }: { icon: React.ReactNode; label: string; value: string | number; accent?: string; badge?: string }) => (
+  <div className="p-6 rounded-[2rem] border-2 border-[#C8A66A]/20 bg-white shadow-xl hover:shadow-2xl transition-all duration-300 relative group overflow-hidden">
+    <div className="absolute -top-10 -right-10 w-24 h-24 bg-[#C8A66A]/5 rounded-full blur-2xl group-hover:bg-[#C8A66A]/10 transition-colors" />
     {badge && (
-      <span className="absolute top-2 right-2 text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-600">{badge}</span>
+      <span className="absolute top-4 right-4 text-[9px] uppercase tracking-[0.3em] px-3 py-1 rounded-full bg-[#C8A66A] text-white font-black shadow-sm">{badge}</span>
     )}
-    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-2">{icon}</div>
-    <p className={`text-xl font-heading ${accent}`}>{value}</p>
-    <p className="text-[10px] text-muted-foreground mt-0.5">{label}</p>
+    <div className="w-12 h-12 rounded-2xl bg-[#FAF5EF] border-2 border-[#C8A66A]/20 flex items-center justify-center text-[#5B1F3D] mb-4 group-hover:scale-110 transition-transform shadow-inner">
+      {icon}
+    </div>
+    <div className="space-y-1">
+      <p className={`text-3xl font-heading font-black tracking-tighter ${accent}`}>{value}</p>
+      <p className="text-[10px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D]/50 font-black leading-tight">{label}</p>
+    </div>
   </div>
 );
 
 const PlaceholderCard = ({ label }: { label: string }) => (
-  <div className="p-4 rounded-xl border border-dashed border-border/40 bg-card/20">
-    <div className="w-8 h-8 rounded-lg bg-muted/40 flex items-center justify-center text-muted-foreground/50 mb-2">
-      <DollarSign className="w-4 h-4" />
+  <div className="p-6 rounded-[2rem] border-2 border-dashed border-[#C8A66A]/30 bg-[#FAF5EF]/30 flex flex-col justify-center">
+    <div className="w-12 h-12 rounded-2xl bg-white/50 border border-[#C8A66A]/10 flex items-center justify-center text-[#5B1F3D]/20 mb-4">
+      <DollarSign className="w-6 h-6" />
     </div>
-    <p className="text-xl font-heading text-muted-foreground/40">—</p>
-    <p className="text-[10px] text-muted-foreground mt-0.5">{label}</p>
+    <p className="text-3xl font-heading font-black text-[#5B1F3D]/10 tracking-tighter">—</p>
+    <p className="text-[10px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D]/30 font-black leading-tight">{label}</p>
   </div>
 );
 
