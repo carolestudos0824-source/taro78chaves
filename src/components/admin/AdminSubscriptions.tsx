@@ -13,7 +13,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { AdminSectionHeading, KPICard as AdminKPICard } from "./AdminComponents";
-import { AdminSectionHeading, KPICard } from "./AdminComponents";
 
 /* ═══════════ TYPES ═══════════ */
 
