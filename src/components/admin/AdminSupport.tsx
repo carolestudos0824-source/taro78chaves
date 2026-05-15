@@ -175,9 +175,9 @@ const AdminSupport = () => {
                 </div>
                 <p className="text-base font-body font-bold text-[#5B1F3D] line-clamp-2 leading-relaxed">{t.message}</p>
                 <div className="flex items-center gap-3 mt-1.5 text-[10px] text-muted-foreground">
-                  <span className="flex items-center gap-1"><UserIcon className="w-3 h-3" />{profiles[t.user_id] || t.user_id.slice(0, 8)}</span>
-                  {t.page && <span className="flex items-center gap-1"><ExternalLink className="w-3 h-3" />{t.page}</span>}
-                  {t.admin_notes && <span className="text-primary">• com nota interna</span>}
+                  <span className="flex items-center gap-1.5 font-bold"><UserIcon className="w-4 h-4 text-[#C8A66A]" />{profiles[t.user_id] || t.user_id.slice(0, 8)}</span>
+                  {t.page && <span className="flex items-center gap-1.5 font-bold"><ExternalLink className="w-4 h-4 text-[#C8A66A]" />{t.page}</span>}
+                  {t.admin_notes && <span className="text-[#8B6A30] font-black uppercase tracking-widest">• POSSUI NOTA INTERNA</span>}
                 </div>
               </button>
             );
