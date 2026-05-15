@@ -95,29 +95,28 @@ const AdminOverview = () => {
 
   return (
     <div className="space-y-12">
-      <div className="relative">
-        <div className="absolute -left-4 top-0 bottom-0 w-1 bg-[#C8A66A] rounded-full" />
-        <h2 className="font-heading text-2xl md:text-3xl text-[#5B1F3D] font-black tracking-tight pl-4">Visão Geral</h2>
-        <p className="text-sm font-body font-bold italic text-[#5B1F3D]/60 pl-4 mt-1">Resumo operacional da plataforma em tempo real.</p>
+      <div className="relative mb-8">
+        <h2 className="font-heading text-3xl md:text-4xl text-[#5B1F3D] font-black tracking-tight mb-2">Visão Geral</h2>
+        <p className="text-base font-body font-bold text-[#5B1F3D]/60">Resumo operacional da plataforma em tempo real.</p>
       </div>
 
       {/* Revenue — Estimated */}
       <section className="space-y-6">
         <div className="flex items-center gap-4">
-          <h3 className="font-heading text-[11px] tracking-[0.3em] uppercase text-[#5B1F3D]/40 font-black">Receita estimada</h3>
-          <div className="h-px flex-1 bg-[#C8A66A]/20" />
-          <span className="text-[9px] uppercase tracking-[0.2em] px-3 py-1 bg-[#C8A66A]/10 text-[#8B6A30] rounded-full font-black border border-[#C8A66A]/20">cálculo interno</span>
+          <h3 className="font-heading text-xs tracking-[0.3em] uppercase text-[#5B1F3D] font-black">Receita estimada</h3>
+          <div className="h-[2px] flex-1 bg-[#C8A66A]/30" />
+          <span className="text-[10px] uppercase tracking-[0.2em] px-4 py-1.5 bg-[#C8A66A]/20 text-[#8B6A30] rounded-full font-black border border-[#C8A66A]/30">CÁLCULO INTERNO</span>
         </div>
         
-        <p className="text-xs font-body font-medium text-[#5B1F3D]/70 leading-relaxed bg-white/40 p-4 rounded-2xl border border-[#C8A66A]/10">
+        <p className="text-sm font-body font-bold text-[#5B1F3D]/80 leading-relaxed bg-white/60 p-5 rounded-[2rem] border border-[#C8A66A]/20 shadow-sm">
           Projeção baseada em assinantes ativos × preço de tabela. <strong className="text-[#5B1F3D] font-black">Não reflete faturamento real</strong> — não considera reembolsos, cancelamentos no meio do ciclo, descontos ou impostos.
         </p>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <KPICard icon={<DollarSign className="w-5 h-5" />} label="MRR estimado" value={`R$ ${stats.mrr.toFixed(2)}`} accent="text-[#8B6A30]" badge="est." />
-          <KPICard icon={<TrendingUp className="w-5 h-5" />} label="Conversão Premium" value={`${stats.conversionRate}%`} accent="text-[#5B1F3D]" />
-          <KPICard icon={<XCircle className="w-5 h-5" />} label="Premiums expirados (30d)" value={stats.recentExpired} accent={stats.recentExpired > 0 ? "text-red-600" : "text-[#5B1F3D]/40"} />
-          <KPICard icon={<UserPlus className="w-5 h-5" />} label="Novos cadastros (7d)" value={stats.recentSignups} accent="text-[#5B1F3D]" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <KPICard icon={<DollarSign className="w-6 h-6" />} label="MRR estimado" value={`R$ ${stats.mrr.toFixed(2)}`} accent="text-[#8B6A30]" badge="est." description="Projeção de receita mensal" />
+          <KPICard icon={<TrendingUp className="w-6 h-6" />} label="Conversão Premium" value={`${stats.conversionRate}%`} accent="text-[#5B1F3D]" description="Total usuários vs assinantes" />
+          <KPICard icon={<XCircle className="w-6 h-6" />} label="Premiums expirados (30d)" value={stats.recentExpired} accent={stats.recentExpired > 0 ? "text-red-600" : "text-[#5B1F3D]"} description="Perda de acesso recente" />
+          <KPICard icon={<UserPlus className="w-6 h-6" />} label="Novos cadastros (7d)" value={stats.recentSignups} accent="text-[#5B1F3D]" description="Crescimento semanal" />
         </div>
       </section>
 
