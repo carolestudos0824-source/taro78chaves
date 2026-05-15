@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast } from "sonner";
 import { logAdminAction } from "@/lib/admin-audit";
+import { AdminSectionHeading } from "./AdminComponents";
 
 interface GiftCode {
   id: string;
@@ -165,23 +166,23 @@ const AdminGiftCodes = () => {
   if (loading) return <div className="p-8 text-center text-sm text-muted-foreground">Carregando...</div>;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8 pb-12">
       <div className="flex items-start justify-between gap-4 flex-wrap">
-        <div>
-          <h2 className="font-heading text-lg text-foreground">Presentes & Códigos</h2>
-          <p className="text-sm text-muted-foreground">Crie, gerencie e audite acessos premium presenteados.</p>
-        </div>
-        <Button size="sm" variant="outline" onClick={() => setGrantOpen(true)}>
-          <Crown className="w-4 h-4" /> Conceder direto
+        <AdminSectionHeading 
+          title="Presentes & Códigos" 
+          subtitle="Gestão estratégica de acesso premium — criação, distribuição e auditoria de chaves de acesso." 
+        />
+        <Button size="sm" variant="outline" className="mt-4 border-[#C8A66A]/40 text-[#5B1F3D] font-bold" onClick={() => setGrantOpen(true)}>
+          <Crown className="w-4 h-4 mr-1.5" /> Conceder direto
         </Button>
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <StatCard icon={<Gift className="w-4 h-4" />} label="Total criados" value={stats.total} />
-        <StatCard icon={<Check className="w-4 h-4" />} label="Ativos" value={stats.active} accent />
-        <StatCard icon={<Users className="w-4 h-4" />} label="Resgatados" value={stats.redeemed} />
-        <StatCard icon={<Ban className="w-4 h-4" />} label="Esgotados" value={stats.exhausted} />
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <GiftStatCard icon={<Gift className="w-6 h-6" />} label="Total Criados" value={stats.total} />
+        <GiftStatCard icon={<Check className="w-6 h-6" />} label="Ativos" value={stats.active} accent />
+        <GiftStatCard icon={<Users className="w-6 h-6" />} label="Resgatados" value={stats.redeemed} />
+        <GiftStatCard icon={<Ban className="w-6 h-6" />} label="Esgotados" value={stats.exhausted} />
       </div>
 
       {/* Create form */}
@@ -309,13 +310,15 @@ const AdminGiftCodes = () => {
   );
 };
 
-const StatCard = ({ icon, label, value, accent }: { icon: React.ReactNode; label: string; value: number; accent?: boolean }) => (
-  <div className={`rounded-xl border border-border/50 bg-card/50 p-3 ${accent ? "ring-1 ring-primary/20" : ""}`}>
-    <div className="flex items-center justify-between">
-      <span className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</span>
-      <span className={accent ? "text-primary" : "text-muted-foreground"}>{icon}</span>
+const GiftStatCard = ({ icon, label, value, accent }: { icon: React.ReactNode; label: string; value: number; accent?: boolean }) => (
+  <div className={`rounded-[2rem] border-2 p-6 shadow-lg transition-all hover:scale-105 bg-white ${accent ? "border-[#C8A66A] ring-4 ring-[#C8A66A]/10 shadow-[#C8A66A]/20" : "border-[#C8A66A]/20"}`}>
+    <div className="flex items-center justify-between mb-3">
+      <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">{label}</span>
+      <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${accent ? "bg-[#5B1F3D] text-white" : "bg-[#FAF5EF] text-[#C8A66A] border-2 border-[#C8A66A]/20"}`}>
+        {icon}
+      </div>
     </div>
-    <p className="font-heading text-2xl text-foreground mt-1">{value}</p>
+    <p className="font-heading text-4xl font-black text-[#5B1F3D] tracking-tighter">{value}</p>
   </div>
 );
 

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { AdminSectionHeading } from "./AdminComponents";
 import {
   Plus,
   Edit,
@@ -240,20 +241,20 @@ const AdminQuizzes = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-4 flex-wrap">
-        <div>
-          <h2 className="font-heading text-lg text-foreground">Quizzes</h2>
-          <p className="text-sm text-muted-foreground">Editor pedagógico — perguntas, respostas e métricas reais.</p>
-        </div>
-        <Button size="sm" className="gap-2" onClick={() => setCreateOpen(true)}>
+        <AdminSectionHeading 
+          title="Quizzes & Desafios" 
+          subtitle="Editor pedagógico — criação e monitoramento de questões, recompensas de XP e desempenho real." 
+        />
+        <Button size="sm" className="gap-2 mt-4" onClick={() => setCreateOpen(true)}>
           <Plus className="w-4 h-4" /> Novo Quiz
         </Button>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-        <StatCard label="Total" value={quizzes.length} />
-        <StatCard label="Publicados" value={quizzes.filter((q) => q.status === "published").length} tone="primary" />
-        <StatCard label="Validados" value={quizzes.filter((q) => q.queue === "validado").length} tone="emerald" />
-        <StatCard label="Acerto médio" value={avgAccuracy} suffix="%" tone="amber" />
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+        <QuizStatCard label="Total" value={quizzes.length} />
+        <QuizStatCard label="Publicados" value={quizzes.filter((q) => q.status === "published").length} tone="primary" />
+        <QuizStatCard label="Validados" value={quizzes.filter((q) => q.queue === "validado").length} tone="emerald" />
+        <QuizStatCard label="Acerto Médio" value={avgAccuracy} suffix="%" tone="amber" />
       </div>
 
       {/* Régua editorial — fila de fechamento */}
@@ -1067,6 +1068,35 @@ const CreateQuizDialog = ({
         </DialogFooter>
       </DialogContent>
     </Dialog>
+  );
+};
+
+const QuizStatCard = ({
+  label,
+  value,
+  suffix = "",
+  tone = "default",
+}: {
+  label: string;
+  value: number;
+  suffix?: string;
+  tone?: "default" | "primary" | "emerald" | "amber";
+}) => {
+  const tones = {
+    default: "border-[#C8A66A]/20 text-[#5B1F3D]",
+    primary: "border-[#5B1F3D]/30 bg-[#5B1F3D]/5 text-[#5B1F3D]",
+    emerald: "border-emerald-200 bg-emerald-50 text-emerald-700",
+    amber: "border-amber-200 bg-amber-50 text-amber-700",
+  };
+
+  return (
+    <div className={`p-6 rounded-[2rem] border-2 shadow-lg text-center transition-all hover:scale-105 bg-white ${tones[tone]}`}>
+      <p className="text-[10px] font-heading font-black tracking-[0.2em] uppercase opacity-70 mb-1">{label}</p>
+      <p className="text-3xl font-heading font-black tracking-tighter">
+        {value}
+        {suffix && <span className="text-lg ml-0.5 opacity-60">{suffix}</span>}
+      </p>
+    </div>
   );
 };
 

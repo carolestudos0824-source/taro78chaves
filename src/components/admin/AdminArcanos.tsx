@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { AdminSectionHeading } from "./AdminComponents";
 import {
   Search,
   ArrowLeft,
@@ -284,13 +285,11 @@ const AdminArcanos = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-4 flex-wrap">
-        <div>
-          <h2 className="font-heading text-lg text-foreground">Arcanos</h2>
-          <p className="text-sm text-muted-foreground">
-            CMS editorial — duas réguas: <strong className="text-foreground">essencial de publicação</strong> ({ESSENTIAL_FIELDS.length} campos · obrigatórios) e <strong className="text-foreground">editorial total</strong> ({EDITORIAL_FIELDS.length} campos · contador completo do admin).
-          </p>
-        </div>
-        <Button size="sm" className="gap-2" onClick={() => setCreateOpen(true)}>
+        <AdminSectionHeading 
+          title="78 Arcanos" 
+          subtitle="CMS editorial estratégico — gestão de conteúdo canônico e régua de publicação." 
+        />
+        <Button size="sm" className="gap-2 mt-4" onClick={() => setCreateOpen(true)}>
           <Plus className="w-4 h-4" /> Novo Arcano
         </Button>
       </div>
@@ -407,13 +406,13 @@ const AdminArcanos = () => {
         </div>
       )}
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2">
-        <StatCard label="Total" value={stats.total} />
-        <StatCard label="Publicados" value={stats.published} tone="primary" />
-        <StatCard label="Validados" value={stats.validated} tone="emerald" />
-        <StatCard label="Pub. s/ validação" value={stats.publishedUnvalidated} tone="amber" />
-        <StatCard label="Críticos" value={stats.critical} tone="destructive" />
-        <StatCard label="Quase prontos" value={stats.almost} tone="blue" />
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
+        <ArcanoStatCard label="Total" value={stats.total} />
+        <ArcanoStatCard label="Publicados" value={stats.published} tone="primary" />
+        <ArcanoStatCard label="Validados" value={stats.validated} tone="emerald" />
+        <ArcanoStatCard label="Pub. s/ Validação" value={stats.publishedUnvalidated} tone="amber" />
+        <ArcanoStatCard label="Críticos" value={stats.critical} tone="destructive" />
+        <ArcanoStatCard label="Quase Prontos" value={stats.almost} tone="blue" />
       </div>
 
       <Tabs
@@ -1062,6 +1061,32 @@ const CreateArcanoDialog = ({
         </DialogFooter>
       </DialogContent>
     </Dialog>
+  );
+};
+
+const ArcanoStatCard = ({
+  label,
+  value,
+  tone = "default",
+}: {
+  label: string;
+  value: number;
+  tone?: "default" | "primary" | "emerald" | "amber" | "destructive" | "blue";
+}) => {
+  const tones = {
+    default: "border-[#C8A66A]/20 text-[#5B1F3D]",
+    primary: "border-[#5B1F3D]/30 bg-[#5B1F3D]/5 text-[#5B1F3D]",
+    emerald: "border-emerald-200 bg-emerald-50 text-emerald-700",
+    amber: "border-amber-200 bg-amber-50 text-amber-700",
+    destructive: "border-red-200 bg-red-50 text-red-700",
+    blue: "border-blue-200 bg-blue-50 text-blue-700",
+  };
+
+  return (
+    <div className={`p-4 rounded-2xl border-2 shadow-sm text-center transition-all hover:scale-105 bg-white ${tones[tone]}`}>
+      <p className="text-[9px] font-heading font-black tracking-widest uppercase opacity-70 mb-1 truncate">{label}</p>
+      <p className="text-2xl font-heading font-black tracking-tighter">{value}</p>
+    </div>
   );
 };
 

@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Users, Search, Crown, Gift, RotateCcw, Shield, ArrowUpDown, X, Mail, Calendar, Activity, Award, Flame, BookOpen, CheckCircle2, AlertTriangle } from "lucide-react";
+import { Users, Search, Crown, Gift, RotateCcw, Shield, ArrowUpDown, X, Mail, Calendar, Activity, Award, Flame, BookOpen, CheckCircle2, AlertTriangle, ArrowLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { toast } from "@/hooks/use-toast";
 import { logAdminAction, type AdminAction } from "@/lib/admin-audit";
 import { useRole } from "@/hooks/use-role";
+import { AdminSectionHeading } from "./AdminComponents";
 
 interface ProfileRow {
   user_id: string;
@@ -140,52 +141,51 @@ const AdminUsers = () => {
 
   return (
     <div className="space-y-10">
-      <div className="relative">
-        <div className="absolute -left-4 top-0 bottom-0 w-1 bg-[#C8A66A] rounded-full" />
-        <h2 className="font-heading text-2xl md:text-3xl text-[#5B1F3D] font-black tracking-tight pl-4">Usuários</h2>
-        <p className="text-sm font-body font-bold italic text-[#5B1F3D]/60 pl-4 mt-1">Gestão completa de pessoas, acesso e progresso.</p>
-      </div>
+      <AdminSectionHeading 
+        title="Usuários" 
+        subtitle="Gestão completa de pessoas, acesso e progresso na jornada Tarô 78 Chaves." 
+      />
 
       {/* Stat cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <StatCard icon={<Users className="w-5 h-5" />} label="Total" value={stats.total} />
-        <StatCard icon={<Crown className="w-5 h-5" />} label="Premium ativos" value={stats.premium} accent />
-        <StatCard icon={<AlertTriangle className="w-5 h-5" />} label="Expirados" value={stats.expired} />
-        <StatCard icon={<Shield className="w-5 h-5" />} label="Admins" value={stats.admins} />
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <StatCard icon={<Users className="w-6 h-6" />} label="Total" value={stats.total} />
+        <StatCard icon={<Crown className="w-6 h-6" />} label="Premium ativos" value={stats.premium} accent />
+        <StatCard icon={<AlertTriangle className="w-6 h-6" />} label="Expirados" value={stats.expired} />
+        <StatCard icon={<Shield className="w-6 h-6" />} label="Admins" value={stats.admins} />
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap gap-3 bg-white/40 p-4 rounded-[2rem] border border-[#C8A66A]/20 backdrop-blur-sm">
-        <div className="relative flex-1 min-w-[200px]">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5B1F3D]/40" />
+      <div className="flex flex-wrap gap-4 bg-white/60 p-6 rounded-[2.5rem] border-2 border-[#C8A66A]/20 backdrop-blur-md shadow-sm">
+        <div className="relative flex-1 min-w-[300px]">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#5B1F3D]/50" />
           <Input 
             value={search} 
             onChange={e => setSearch(e.target.value)} 
-            placeholder="Buscar por nome ou e-mail..." 
-            className="pl-10 h-11 text-sm bg-white border-[#C8A66A]/20 rounded-xl focus-visible:ring-[#5B1F3D]" 
+            placeholder="Buscar por nome, e-mail ou ID..." 
+            className="pl-12 h-12 text-base font-body font-bold bg-white border-[#C8A66A]/30 rounded-2xl focus-visible:ring-[#5B1F3D] shadow-inner" 
           />
         </div>
         <Select value={statusFilter} onValueChange={v => setStatusFilter(v as StatusFilter)}>
-          <SelectTrigger className="w-36 h-11 text-xs font-heading font-black tracking-widest uppercase border-[#C8A66A]/20 bg-white rounded-xl"><SelectValue /></SelectTrigger>
-          <SelectContent className="font-heading text-[10px] font-black tracking-widest uppercase">
-            <SelectItem value="all">Todos</SelectItem>
+          <SelectTrigger className="w-44 h-12 text-xs font-heading font-black tracking-widest uppercase border-2 border-[#C8A66A]/30 bg-white rounded-2xl shadow-sm"><SelectValue /></SelectTrigger>
+          <SelectContent className="font-heading text-[11px] font-black tracking-widest uppercase">
+            <SelectItem value="all">Todos os Status</SelectItem>
             <SelectItem value="free">Gratuitos</SelectItem>
             <SelectItem value="premium">Assinantes</SelectItem>
             <SelectItem value="gift">Presenteados</SelectItem>
             <SelectItem value="expired">Expirados</SelectItem>
-            <SelectItem value="admin">Admins</SelectItem>
+            <SelectItem value="admin">Administradores</SelectItem>
           </SelectContent>
         </Select>
         <Select value={sortBy} onValueChange={v => setSortBy(v as SortField)}>
-          <SelectTrigger className="w-48 h-11 text-xs font-heading font-black tracking-widest uppercase border-[#C8A66A]/20 bg-white rounded-xl">
-            <ArrowUpDown className="w-3.5 h-3.5 mr-2 text-[#C8A66A]" />
+          <SelectTrigger className="w-56 h-12 text-xs font-heading font-black tracking-widest uppercase border-2 border-[#C8A66A]/30 bg-white rounded-2xl shadow-sm">
+            <ArrowUpDown className="w-4 h-4 mr-2 text-[#C8A66A]" />
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="font-heading text-[10px] font-black tracking-widest uppercase">
-            <SelectItem value="created_at">Cadastro recente</SelectItem>
-            <SelectItem value="last_active">Última atividade</SelectItem>
-            <SelectItem value="xp">XP</SelectItem>
-            <SelectItem value="lessons">Lições concluídas</SelectItem>
+          <SelectContent className="font-heading text-[11px] font-black tracking-widest uppercase">
+            <SelectItem value="created_at">Cadastro Recente</SelectItem>
+            <SelectItem value="last_active">Última Atividade</SelectItem>
+            <SelectItem value="xp">Maior XP</SelectItem>
+            <SelectItem value="lessons">Mais Lições</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -196,20 +196,20 @@ const AdminUsers = () => {
           <p className="text-sm text-muted-foreground">Nenhum usuário encontrado.</p>
         </div>
       ) : (
-        <div className="rounded-[2.5rem] border-2 border-[#C8A66A]/20 bg-white overflow-hidden shadow-2xl">
+        <div className="rounded-[3rem] border-2 border-[#C8A66A]/20 bg-white overflow-hidden shadow-2xl">
           <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+            <table className="w-full text-base">
               <thead>
-                <tr className="border-b border-[#C8A66A]/20 bg-[#FAF5EF]/50">
-                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Usuário</th>
-                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Status</th>
-                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Plano</th>
-                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Cadastro</th>
-                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Atividade</th>
-                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Lições</th>
-                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">XP</th>
-                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Streak</th>
-                  <th className="text-right p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Ações</th>
+                <tr className="border-b-2 border-[#C8A66A]/20 bg-[#FAF5EF]/60">
+                  <th className="text-left p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Usuário</th>
+                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Status</th>
+                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Plano Até</th>
+                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Cadastro</th>
+                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Atividade</th>
+                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Lições</th>
+                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">XP</th>
+                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Streak</th>
+                  <th className="text-right p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Ações</th>
                 </tr>
               </thead>
               <tbody>

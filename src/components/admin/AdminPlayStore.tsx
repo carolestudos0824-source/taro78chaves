@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { CheckCircle2, Circle, ExternalLink, Smartphone } from "lucide-react";
+import { AdminSectionHeading } from "./AdminComponents";
 
 interface Item {
   id: string;
@@ -47,40 +48,33 @@ const AdminPlayStore = () => {
   const completed = ITEMS.filter((i) => done[i.id]).length;
 
   return (
-    <div className="space-y-6">
-      <header className="flex items-start gap-3">
-        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-          <Smartphone className="w-5 h-5 text-primary" />
-        </div>
-        <div>
-          <h2 className="font-heading text-lg tracking-wide">Play Store — Checklist</h2>
-          <p className="text-xs text-muted-foreground mt-0.5">
-            Pendências para publicação do Tarô 78 Chaves no Google Play. {completed}/{total} concluídos.
-          </p>
-        </div>
-      </header>
+    <div className="space-y-8">
+      <AdminSectionHeading 
+        title="Play Store" 
+        subtitle={`Checklist estratégico para publicação na Google Play Store. ${completed}/${total} itens concluídos.`} 
+      />
 
-      <div className="rounded-xl border border-border/50 bg-card/40 divide-y divide-border/40">
+      <div className="rounded-[2.5rem] border-2 border-[#C8A66A]/20 bg-white/60 shadow-xl overflow-hidden backdrop-blur-md">
         {ITEMS.map((item) => {
           const isDone = !!done[item.id];
           return (
-            <div key={item.id} className="p-4 flex items-start gap-3">
+            <div key={item.id} className="p-6 flex items-start gap-4 border-b border-[#C8A66A]/10 last:border-0 hover:bg-[#FAF5EF]/40 transition-colors">
               <button onClick={() => toggle(item.id)} className="mt-0.5 shrink-0" aria-label={isDone ? "Desmarcar" : "Marcar como concluído"}>
                 {isDone
-                  ? <CheckCircle2 className="w-5 h-5 text-primary" />
-                  : <Circle className="w-5 h-5 text-muted-foreground/60" />}
+                  ? <CheckCircle2 className="w-6 h-6 text-[#5B1F3D]" />
+                  : <Circle className="w-6 h-6 text-[#C8A66A]/40 group-hover:text-[#C8A66A]" />}
               </button>
               <div className="flex-1 min-w-0">
-                <p className={`text-sm font-medium ${isDone ? "line-through text-muted-foreground" : "text-foreground"}`}>
+                <p className={`text-base font-heading font-black ${isDone ? "line-through text-[#5B1F3D]/40" : "text-[#5B1F3D]"}`}>
                   {item.title}
                 </p>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{item.detail}</p>
+                <p className="text-sm font-body font-bold text-[#5B1F3D]/60 mt-1 leading-relaxed">{item.detail}</p>
                 {item.link && (
                   <a
                     href={item.link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 mt-2 text-[11px] text-primary hover:underline"
+                    className="inline-flex items-center gap-1.5 mt-2.5 text-xs font-heading font-black tracking-widest uppercase text-[#8B6A30] hover:text-[#5B1F3D] transition-colors"
                   >
                     {item.link.label}
                     <ExternalLink className="w-3 h-3" />

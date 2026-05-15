@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { AdminSectionHeading } from "./AdminComponents";
 import {
   Plus,
   Edit,
@@ -48,10 +49,10 @@ const STATUS_LABEL: Record<ModuleStatus, string> = {
 };
 
 const STATUS_TONE: Record<ModuleStatus, string> = {
-  empty: "bg-muted/40 text-muted-foreground border-border/50",
-  partial: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
-  draft: "bg-secondary/10/10 text-secondary dark:text-secondary border-secondary/30/20",
-  published: "bg-primary/10 text-primary border-primary/20",
+  empty: "border-muted-foreground/20 text-muted-foreground",
+  partial: "border-amber-200 bg-amber-50 text-amber-700",
+  draft: "border-secondary/20 bg-secondary/5 text-secondary",
+  published: "border-[#C8A66A]/40 bg-[#5B1F3D] text-white",
 };
 
 const StatusIcon = ({ status }: { status: ModuleStatus }) => {
@@ -123,10 +124,10 @@ const RANK_LABEL: Record<EditorialRank, string> = {
 };
 
 const RANK_TONE: Record<EditorialRank, string> = {
-  validado: "bg-primary/10/10 text-primary dark:text-primary border-primary/30/20",
-  quase_pronto: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
-  incompleto: "bg-secondary/10/10 text-secondary dark:text-secondary border-secondary/30/20",
-  critico: "bg-destructive/10 text-destructive border-destructive/20",
+  validado: "border-emerald-200 text-emerald-700",
+  quase_pronto: "border-amber-200 text-amber-700",
+  incompleto: "border-secondary/30 text-secondary",
+  critico: "border-red-200 text-red-700",
 };
 
 const AdminModules = () => {
@@ -341,23 +342,20 @@ const AdminModules = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-4 flex-wrap">
-        <div>
-          <h2 className="font-heading text-lg text-foreground">Módulos do Curso</h2>
-          <p className="text-sm text-muted-foreground">
-            Central editorial — crie, organize e publique todos os módulos da plataforma.
-          </p>
-        </div>
-        <Button size="sm" className="gap-2" onClick={openCreate}>
+        <AdminSectionHeading 
+          title="Módulos do Curso" 
+          subtitle="Central editorial — crie, organize e publique todos os módulos da plataforma." 
+        />
+        <Button size="sm" className="gap-2 mt-4" onClick={openCreate}>
           <Plus className="w-4 h-4" /> Novo Módulo
         </Button>
       </div>
 
-      {/* Régua editorial */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
         {(["validado", "quase_pronto", "incompleto", "critico"] as EditorialRank[]).map((r) => (
-          <div key={r} className={`p-3 rounded-xl border ${RANK_TONE[r]}`}>
-            <div className="text-[10px] uppercase tracking-wider opacity-80">{RANK_LABEL[r]}</div>
-            <div className="text-2xl font-heading mt-1">{ranks[r]}</div>
+          <div key={r} className={`p-6 rounded-[2rem] border-2 shadow-lg transition-all hover:scale-105 bg-white ${RANK_TONE[r]}`}>
+            <div className="text-[10px] font-heading font-black tracking-widest uppercase opacity-70 mb-1">{RANK_LABEL[r]}</div>
+            <div className="text-3xl font-heading font-black tracking-tighter">{ranks[r]}</div>
           </div>
         ))}
       </div>

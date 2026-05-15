@@ -5,6 +5,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { ScrollText, Loader2, Eye } from "lucide-react";
 import { useRole } from "@/hooks/use-role";
+import { AdminSectionHeading } from "./AdminComponents";
 
 interface AuditRow {
   id: string;
@@ -70,13 +71,10 @@ const AdminAuditLog = () => {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="font-heading text-lg text-foreground flex items-center gap-2">
-          <ScrollText className="w-5 h-5 text-primary" />
-          Auditoria Administrativa
-        </h2>
-        <p className="text-sm text-muted-foreground">Rastro completo e imutável de todas as ações administrativas.</p>
-      </div>
+      <AdminSectionHeading 
+        title="Auditoria Administrativa" 
+        subtitle="Rastro completo e imutável de todas as ações administrativas realizadas na plataforma." 
+      />
 
       {!isAdmin && (
         <div className="flex items-start gap-2 rounded-lg border border-border/50 bg-muted/30 p-3 text-xs text-muted-foreground">
@@ -116,7 +114,7 @@ const AdminAuditLog = () => {
         </Select>
       </div>
 
-      <div className="rounded-xl border border-border/50 bg-card/50 overflow-hidden">
+      <div className="rounded-[2.5rem] border-2 border-[#C8A66A]/20 bg-white/60 shadow-xl overflow-hidden backdrop-blur-md">
         {loading ? (
           <div className="p-12 flex items-center justify-center text-muted-foreground">
             <Loader2 className="w-5 h-5 animate-spin mr-2" /> Carregando registros…
@@ -129,31 +127,31 @@ const AdminAuditLog = () => {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-border/30 text-xs text-muted-foreground">
-                  <th className="text-left p-3 font-medium">Data</th>
-                  <th className="text-left p-3 font-medium">Admin</th>
-                  <th className="text-left p-3 font-medium">Ação</th>
-                  <th className="text-left p-3 font-medium">Alvo</th>
-                  <th className="text-left p-3 font-medium">Detalhes</th>
+                <tr className="border-b-2 border-[#C8A66A]/20 bg-[#FAF5EF]/60">
+                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Data</th>
+                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Admin</th>
+                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Ação</th>
+                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Alvo</th>
+                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Detalhes</th>
                 </tr>
               </thead>
               <tbody>
                 {filtered.map(r => (
-                  <tr key={r.id} className="border-b border-border/10 last:border-0 hover:bg-muted/20">
-                    <td className="p-3 text-xs text-muted-foreground whitespace-nowrap">
+                  <tr key={r.id} className="border-b border-[#C8A66A]/10 last:border-0 hover:bg-[#FAF5EF]/40 transition-colors">
+                    <td className="p-4 text-xs font-body font-bold text-[#5B1F3D]/60 whitespace-nowrap">
                       {new Date(r.created_at).toLocaleString("pt-BR")}
                     </td>
-                    <td className="p-3 text-foreground">{r.admin_email ?? r.admin_id.slice(0, 8)}</td>
-                    <td className="p-3">
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-primary/10 text-primary text-xs">
+                    <td className="p-4 text-sm font-heading font-black text-[#5B1F3D]">{r.admin_email ?? r.admin_id.slice(0, 8)}</td>
+                    <td className="p-4">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#5B1F3D] text-white text-[10px] font-heading font-black tracking-widest uppercase shadow-sm border border-[#C8A66A]/30">
                         {ACTION_LABELS[r.action as AdminAction] ?? r.action}
                       </span>
                     </td>
-                    <td className="p-3 text-foreground">
-                      <span className="text-muted-foreground text-xs">{r.target_type}</span>
-                      {r.target_label && <div>{r.target_label}</div>}
+                    <td className="p-4">
+                      <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#8B6A30] block mb-1">{r.target_type}</span>
+                      {r.target_label && <div className="text-sm font-body font-bold text-[#5B1F3D]">{r.target_label}</div>}
                     </td>
-                    <td className="p-3 text-xs text-muted-foreground max-w-xs truncate">
+                    <td className="p-4 text-xs font-body font-bold text-[#5B1F3D]/70 max-w-xs truncate">
                       {Object.keys(r.details ?? {}).length > 0 ? JSON.stringify(r.details) : "—"}
                     </td>
                   </tr>

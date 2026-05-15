@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
 import { logAdminAction } from "@/lib/admin-audit";
+import { AdminSectionHeading } from "./AdminComponents";
 
 interface RoleRow {
   id: string;
@@ -102,20 +103,18 @@ const AdminRoles = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h2 className="font-heading text-lg text-foreground">Funções administrativas</h2>
-        <p className="text-sm text-muted-foreground">
-          Gerencie quem é administrador, moderador ou usuário comum.
-        </p>
-      </div>
+    <div className="space-y-10 pb-12">
+      <AdminSectionHeading 
+        title="Funções Administrativas" 
+        subtitle="Gestão estratégica de governança — controle de privilégios para administradores e moderadores." 
+      />
 
       {/* Permission matrix */}
-      <div className="rounded-xl border border-border/50 bg-card/30 p-4">
-        <p className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground/60 mb-3">
-          O que cada papel pode fazer
+      <div className="rounded-[2.5rem] border-2 border-[#C8A66A]/20 bg-white/60 p-8 shadow-xl backdrop-blur-md">
+        <p className="text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]/60 mb-6 border-b border-[#C8A66A]/20 pb-4">
+          MATRIZ DE PERMISSÕES E ACESSOS
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
           <RoleCard
             icon={<ShieldCheck className="w-4 h-4" />}
             color="bg-amber-500/10 text-amber-600"
@@ -223,13 +222,13 @@ const AdminRoles = () => {
 };
 
 const RoleCard = ({ icon, color, title, perms }: { icon: React.ReactNode; color: string; title: string; perms: string[] }) => (
-  <div className="rounded-lg border border-border/40 bg-card/40 p-3">
-    <div className="flex items-center gap-2 mb-2">
-      <span className={`w-7 h-7 rounded-full flex items-center justify-center ${color}`}>{icon}</span>
-      <span className="font-heading text-sm text-foreground">{title}</span>
+  <div className="rounded-2xl border-2 border-[#C8A66A]/20 bg-white p-6 shadow-md transition-all hover:border-[#C8A66A]/40">
+    <div className="flex items-center gap-3 mb-4">
+      <span className={`w-10 h-10 rounded-xl flex items-center justify-center border-2 border-white shadow-sm ${color}`}>{icon}</span>
+      <span className="font-heading text-base font-black text-[#5B1F3D]">{title}</span>
     </div>
-    <ul className="space-y-1 text-xs text-muted-foreground">
-      {perms.map(p => <li key={p} className="leading-snug">• {p}</li>)}
+    <ul className="space-y-2 text-xs font-body font-bold text-[#5B1F3D]/70">
+      {perms.map(p => <li key={p} className="leading-snug flex items-start gap-2"><span className="text-[#C8A66A] mt-1">•</span> {p}</li>)}
     </ul>
   </div>
 );

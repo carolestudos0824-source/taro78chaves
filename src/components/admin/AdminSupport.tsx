@@ -10,6 +10,7 @@ import { toast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/use-auth";
 import { useRole } from "@/hooks/use-role";
 import { logAdminAction } from "@/lib/admin-audit";
+import { AdminSectionHeading } from "./AdminComponents";
 
 type Status = "aberto" | "em_andamento" | "resolvido";
 type StatusFilter = "all" | Status;
@@ -102,16 +103,16 @@ const AdminSupport = () => {
 
   return (
     <div className="space-y-6 pb-8">
-      <div>
-        <h2 className="font-heading text-lg text-foreground">Suporte</h2>
-        <p className="text-sm text-muted-foreground">Triagem de tickets vindos do feedback dos usuários.</p>
-      </div>
+      <AdminSectionHeading 
+        title="Suporte & Feedback" 
+        subtitle="Triagem estratégica de tickets e orientações vindas diretamente dos usuários e testadores beta." 
+      />
 
       {/* Stats */}
-      <div className="grid grid-cols-3 gap-3">
-        <StatCard label="Abertos" value={counts.aberto} icon={<Inbox className="w-4 h-4" />} accent="amber" />
-        <StatCard label="Em andamento" value={counts.em_andamento} icon={<Clock className="w-4 h-4" />} accent="blue" />
-        <StatCard label="Resolvidos" value={counts.resolvido} icon={<CheckCircle2 className="w-4 h-4" />} accent="emerald" />
+      <div className="grid grid-cols-3 gap-6">
+        <SupportStatCard label="Abertos" value={counts.aberto} icon={<Inbox className="w-5 h-5" />} accent="amber" />
+        <SupportStatCard label="Em andamento" value={counts.em_andamento} icon={<Clock className="w-5 h-5" />} accent="blue" />
+        <SupportStatCard label="Resolvidos" value={counts.resolvido} icon={<CheckCircle2 className="w-5 h-5" />} accent="emerald" />
       </div>
 
       {/* Filters */}
@@ -160,23 +161,23 @@ const AdminSupport = () => {
               <button
                 key={t.id}
                 onClick={() => setSelected(t)}
-                className="w-full text-left p-3 rounded-lg border border-border/40 bg-card/40 hover:bg-card/60 transition-colors"
+                className="w-full text-left p-6 rounded-[2rem] border-2 border-[#C8A66A]/20 bg-white/60 hover:bg-white hover:border-[#C8A66A]/40 transition-all hover:shadow-lg group"
               >
                 <div className="flex items-center justify-between gap-3 mb-1.5">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className={`text-[10px] font-heading tracking-wide px-2 py-0.5 rounded-full inline-flex items-center gap-1 ${meta.cls}`}>
+                    <span className={`text-[10px] font-heading font-black tracking-widest uppercase px-3 py-1.5 rounded-full inline-flex items-center gap-1.5 border-2 shadow-sm ${meta.cls}`}>
                       {meta.icon} {meta.label}
                     </span>
-                    <span className="text-[10px] font-heading tracking-wide px-2 py-0.5 rounded-full bg-primary/10 text-primary uppercase">{t.type}</span>
-                    {t.rating != null && <span className="text-[10px] text-muted-foreground">★ {t.rating}</span>}
+                    <span className="text-[10px] font-heading font-black tracking-widest uppercase px-3 py-1.5 rounded-full bg-[#5B1F3D] text-white border-2 border-[#C8A66A]/30 shadow-sm">{t.type}</span>
+                    {t.rating != null && <span className="text-xs font-body font-black text-[#8B6A30]">★ {t.rating}</span>}
                   </div>
                   <span className="text-[10px] text-muted-foreground shrink-0">{new Date(t.created_at).toLocaleDateString("pt-BR")}</span>
                 </div>
-                <p className="text-sm text-foreground line-clamp-2">{t.message}</p>
+                <p className="text-base font-body font-bold text-[#5B1F3D] line-clamp-2 leading-relaxed">{t.message}</p>
                 <div className="flex items-center gap-3 mt-1.5 text-[10px] text-muted-foreground">
-                  <span className="flex items-center gap-1"><UserIcon className="w-3 h-3" />{profiles[t.user_id] || t.user_id.slice(0, 8)}</span>
-                  {t.page && <span className="flex items-center gap-1"><ExternalLink className="w-3 h-3" />{t.page}</span>}
-                  {t.admin_notes && <span className="text-primary">• com nota interna</span>}
+                  <span className="flex items-center gap-1.5 font-bold"><UserIcon className="w-4 h-4 text-[#C8A66A]" />{profiles[t.user_id] || t.user_id.slice(0, 8)}</span>
+                  {t.page && <span className="flex items-center gap-1.5 font-bold"><ExternalLink className="w-4 h-4 text-[#C8A66A]" />{t.page}</span>}
+                  {t.admin_notes && <span className="text-[#8B6A30] font-black uppercase tracking-widest">• POSSUI NOTA INTERNA</span>}
                 </div>
               </button>
             );
@@ -198,12 +199,15 @@ const AdminSupport = () => {
   );
 };
 
-const StatCard = ({ label, value, icon, accent }: { label: string; value: number; icon: React.ReactNode; accent: "amber" | "blue" | "emerald" }) => {
-  const cls = accent === "amber" ? "text-amber-600" : accent === "blue" ? "text-secondary" : "text-primary";
+const SupportStatCard = ({ label, value, icon, accent }: { label: string; value: number; icon: React.ReactNode; accent: "amber" | "blue" | "emerald" }) => {
+  const accentCls = accent === "amber" ? "bg-amber-500/10 text-amber-600 border-amber-500/30" : accent === "blue" ? "bg-secondary/10/10 text-secondary border-secondary/30/20" : "bg-primary/10/10 text-primary border-primary/30/20";
   return (
-    <div className="rounded-lg border border-border/40 bg-card/40 p-3">
-      <div className={`flex items-center gap-1.5 text-xs ${cls}`}>{icon}<span>{label}</span></div>
-      <p className="text-2xl font-heading text-foreground mt-1">{value}</p>
+    <div className={`rounded-[2rem] border-2 p-6 shadow-lg bg-white transition-all hover:scale-105 ${accentCls}`}>
+      <div className="flex items-center justify-between mb-2">
+        <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase opacity-70">{label}</span>
+        {icon}
+      </div>
+      <p className="text-3xl font-heading font-black tracking-tighter">{value}</p>
     </div>
   );
 };

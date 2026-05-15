@@ -46,29 +46,29 @@ const AdminSidebar = ({ active, onChange, role }: AdminSidebarProps) => {
   const groups = [...new Set(visible.map(s => s.group))];
 
   return (
-    <aside className="w-64 shrink-0 border-r border-[#C8A66A]/20 bg-white/40 min-h-[calc(100vh-57px)] overflow-y-auto hidden md:block backdrop-blur-sm">
-      <nav className="p-4 space-y-8">
-        <div className="px-4 pb-4 border-b border-[#C8A66A]/10">
-          <p className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#C8A66A] font-black mb-1">Acesso Atual</p>
-          <p className={`text-sm font-heading font-black tracking-tight ${role === "admin" ? "text-[#5B1F3D]" : "text-[#8B6A30]"}`}>
+    <aside className="w-72 shrink-0 border-r border-[#C8A66A]/20 bg-white/60 min-h-[calc(100vh-57px)] overflow-y-auto hidden md:block backdrop-blur-md">
+      <nav className="p-6 space-y-10">
+        <div className="px-4 pb-6 border-b border-[#C8A66A]/20">
+          <p className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#C8A66A] font-black mb-1">Operando como</p>
+          <p className={`text-base font-heading font-black tracking-tight ${role === "admin" ? "text-[#5B1F3D]" : "text-[#8B6A30]"}`}>
             {role === "admin" ? "Administrador" : role === "moderator" ? "Moderador" : "Usuário"}
           </p>
         </div>
         
         {groups.map(group => (
-          <div key={group} className="space-y-3">
-            <p className="text-[11px] font-heading tracking-[0.4em] uppercase text-[#5B1F3D]/40 px-4 font-black">
+          <div key={group} className="space-y-4">
+            <p className="text-[11px] font-heading tracking-[0.4em] uppercase text-[#5B1F3D]/50 px-4 font-black">
               {group}
             </p>
-            <div className="space-y-1">
+            <div className="space-y-1.5">
               {visible.filter(s => s.group === group).map(s => (
                 <button
                   key={s.id}
                   onClick={() => onChange(s.id)}
-                  className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-[13px] transition-all duration-300 group ${
+                  className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl text-[14px] transition-all duration-300 group ${
                     active === s.id
-                      ? "bg-[#5B1F3D] text-white font-black shadow-lg shadow-[#5B1F3D]/20 border border-[#C8A66A]/40"
-                      : "text-[#5B1F3D]/70 hover:text-[#5B1F3D] hover:bg-white/60 font-bold"
+                      ? "bg-[#5B1F3D] text-white font-black shadow-xl shadow-[#5B1F3D]/20 border border-[#C8A66A]/40"
+                      : "text-[#5B1F3D]/80 hover:text-[#5B1F3D] hover:bg-white/80 font-bold"
                   }`}
                 >
                   <div className={`transition-transform duration-300 ${active === s.id ? "scale-110" : "group-hover:scale-110 opacity-70 group-hover:opacity-100"}`}>
@@ -89,19 +89,19 @@ const AdminSidebar = ({ active, onChange, role }: AdminSidebarProps) => {
 export const AdminMobileNav = ({ active, onChange, role }: AdminSidebarProps) => {
   const visible = sections.filter((s) => canAccessSection(role, s.id));
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-xl border-t border-[#C8A66A]/20 px-2 py-2 flex justify-around overflow-x-auto shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-xl border-t-2 border-[#C8A66A]/30 px-2 py-3 flex justify-around overflow-x-auto shadow-[0_-8px_30px_rgba(0,0,0,0.12)]">
       {visible.map(s => (
         <button
           key={s.id}
           onClick={() => onChange(s.id)}
-          className={`flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl text-[10px] transition-all shrink-0 font-heading font-black tracking-widest uppercase ${
-            active === s.id ? "text-[#5B1F3D] bg-[#5B1F3D]/10" : "text-[#5B1F3D]/50"
+          className={`flex flex-col items-center gap-1.5 px-4 py-2 rounded-2xl text-[10px] transition-all shrink-0 font-heading font-black tracking-widest uppercase ${
+            active === s.id ? "text-white bg-[#5B1F3D] shadow-lg border border-[#C8A66A]/40" : "text-[#5B1F3D]/60 hover:text-[#5B1F3D]"
           }`}
         >
-          <div className={`${active === s.id ? "scale-110" : "opacity-70"}`}>
+          <div className={`${active === s.id ? "scale-110" : "opacity-70 group-hover:opacity-100"}`}>
             {s.icon}
           </div>
-          <span className="truncate max-w-[60px]">{s.label.split(" ")[0]}</span>
+          <span className="truncate max-w-[70px]">{s.label.split(" ")[0]}</span>
         </button>
       ))}
     </nav>

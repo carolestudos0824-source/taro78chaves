@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { BarChart3, BookOpen, Star, Target, Users, TrendingUp, Clock, Eye, ArrowDown, ArrowUp, RefreshCw } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { AdminSectionHeading } from "./AdminComponents";
 
 const ARCANO_NAMES: Record<string, string> = {
   "0": "O Louco", "1": "O Mago", "2": "A Sacerdotisa", "3": "A Imperatriz",
@@ -161,36 +162,36 @@ const AdminProgress = () => {
   if (loading) return <div className="p-8 text-center text-sm text-muted-foreground">Carregando dados de uso...</div>;
 
   return (
-    <div className="space-y-8">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="font-heading text-lg text-foreground">Progresso & Uso</h2>
-          <p className="text-sm text-muted-foreground">Como os estudantes estão usando a plataforma.</p>
-        </div>
+    <div className="space-y-12 pb-12">
+      <div className="flex items-start justify-between gap-4 flex-wrap">
+        <AdminSectionHeading 
+          title="Progresso & Uso" 
+          subtitle="Análise estratégica do engajamento — monitoramento de lições, retenção e comportamento dos estudantes." 
+        />
         <Select value={period} onValueChange={v => setPeriod(v as any)}>
-          <SelectTrigger className="w-36 h-8 text-xs"><SelectValue /></SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">Todo período</SelectItem>
-            <SelectItem value="7d">Últimos 7 dias</SelectItem>
-            <SelectItem value="30d">Últimos 30 dias</SelectItem>
+          <SelectTrigger className="w-44 h-12 text-xs font-heading font-black tracking-widest uppercase border-2 border-[#C8A66A]/30 bg-white rounded-2xl shadow-sm mt-4"><SelectValue /></SelectTrigger>
+          <SelectContent className="font-heading text-[11px] font-black tracking-widest uppercase">
+            <SelectItem value="all">Todo o Período</SelectItem>
+            <SelectItem value="7d">Últimos 7 Dias</SelectItem>
+            <SelectItem value="30d">Últimos 30 Dias</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       {/* KPIs */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <KPI icon={<BookOpen className="w-4 h-4" />} label="Lições Concluídas" value={stats.totalLessons} />
-        <KPI icon={<Star className="w-4 h-4" />} label="Quizzes Concluídos" value={stats.totalQuizzes} />
-        <KPI icon={<Target className="w-4 h-4" />} label="Exercícios Feitos" value={stats.totalExercises} />
-        <KPI icon={<Users className="w-4 h-4" />} label="Estudantes Ativos" value={stats.activeUsers} />
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+        <KPI icon={<BookOpen className="w-6 h-6" />} label="Lições Concluídas" value={stats.totalLessons} />
+        <KPI icon={<Star className="w-6 h-6" />} label="Quizzes Concluídos" value={stats.totalQuizzes} />
+        <KPI icon={<Target className="w-6 h-6" />} label="Exercícios Feitos" value={stats.totalExercises} />
+        <KPI icon={<Users className="w-6 h-6" />} label="Estudantes Ativos" value={stats.activeUsers} />
       </div>
 
       {/* Retention & Engagement */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
         <MiniStat label="Retenção (7d)" value={`${stats.retentionRate}%`} detail={`${stats.recentlyActive} ativos`} trend={stats.retentionRate >= 50 ? "up" : "down"} />
-        <MiniStat label="Abandono" value={`${stats.abandonRate}%`} detail={`${stats.neverStarted} nunca começaram`} trend={stats.abandonRate <= 30 ? "up" : "down"} />
+        <MiniStat label="Abandono" value={`${stats.abandonRate}%`} detail={`${stats.neverStarted} sem progresso`} trend={stats.abandonRate <= 30 ? "up" : "down"} />
         <MiniStat label="Streaks Ativos" value={String(stats.activeStreaks)} detail={`média: ${stats.avgStreak}d`} trend="neutral" />
-        <MiniStat label="Módulos Completos" value={String(stats.totalModules)} detail="total geral" trend="neutral" />
+        <MiniStat label="Módulos Completos" value={String(stats.totalModules)} detail="total acumulado" trend="neutral" />
       </div>
 
       {/* Arcano-specific completion */}
@@ -252,10 +253,10 @@ const AdminProgress = () => {
 /* ═══════════ SUB-COMPONENTS ═══════════ */
 
 const KPI = ({ icon, label, value }: { icon: React.ReactNode; label: string; value: number }) => (
-  <div className="p-4 rounded-xl border border-border/50 bg-card/50 text-center">
-    <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2 text-primary">{icon}</div>
-    <p className="text-xl font-heading text-foreground">{value}</p>
-    <p className="text-[10px] text-muted-foreground mt-0.5">{label}</p>
+  <div className="p-6 rounded-[2rem] border-2 border-[#C8A66A]/20 bg-white shadow-lg text-center transition-all hover:scale-105">
+    <div className="w-12 h-12 rounded-xl bg-[#FAF5EF] flex items-center justify-center mx-auto mb-3 text-[#5B1F3D] border-2 border-[#C8A66A]/20 shadow-inner">{icon}</div>
+    <p className="text-3xl font-heading font-black text-[#5B1F3D] tracking-tighter">{value}</p>
+    <p className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/50 mt-1">{label}</p>
   </div>
 );
 
