@@ -284,13 +284,10 @@ const AdminArcanos = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-start justify-between gap-4 flex-wrap">
-        <div>
-          <h2 className="font-heading text-lg text-foreground">Arcanos</h2>
-          <p className="text-sm text-muted-foreground">
-            CMS editorial — duas réguas: <strong className="text-foreground">essencial de publicação</strong> ({ESSENTIAL_FIELDS.length} campos · obrigatórios) e <strong className="text-foreground">editorial total</strong> ({EDITORIAL_FIELDS.length} campos · contador completo do admin).
-          </p>
-        </div>
+      <AdminSectionHeading 
+        title="78 Arcanos" 
+        subtitle="CMS editorial estratégico — gestão de conteúdo canônico e régua de publicação." 
+      />
         <Button size="sm" className="gap-2" onClick={() => setCreateOpen(true)}>
           <Plus className="w-4 h-4" /> Novo Arcano
         </Button>
