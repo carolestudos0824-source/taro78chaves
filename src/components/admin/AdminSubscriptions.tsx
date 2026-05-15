@@ -285,15 +285,15 @@ const AdminSubscriptions = () => {
       {/* ═══════════ Estados de assinatura ═══════════ */}
       <section>
         <h3 className="font-heading text-[10px] tracking-[0.2em] uppercase text-muted-foreground/60 mb-3">Estados de assinatura</h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2">
-          <MiniStat label="Mensal" value={stats.monthlyActive} color="bg-primary/10/10 text-primary" />
-          <MiniStat label="Anual" value={stats.annualActive} color="bg-primary/10/10 text-primary" />
-          <MiniStat label="Presente" value={stats.giftActive} color="bg-secondary/10/10 text-secondary" />
-          <MiniStat label="Admin" value={stats.adminGrant} color="bg-amber-500/10 text-amber-600" />
-          <MiniStat label="Canc. c/ acesso" value={stats.cancelledAccess} color="bg-amber-500/10 text-amber-600" />
-          <MiniStat label="Expirado" value={stats.expired} color="bg-red-500/10 text-red-500" />
-          <MiniStat label="Cancelado" value={stats.cancelledExpired} color="bg-red-500/10 text-red-400" />
-          <MiniStat label="Gratuito" value={stats.free} color="bg-muted text-muted-foreground" />
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+          <MiniStat label="Mensal" value={stats.monthlyActive} variant="primary" />
+          <MiniStat label="Anual" value={stats.annualActive} variant="primary" />
+          <MiniStat label="Presente" value={stats.giftActive} variant="secondary" />
+          <MiniStat label="Admin" value={stats.adminGrant} variant="warning" />
+          <MiniStat label="Canc. c/ acesso" value={stats.cancelledAccess} variant="warning" />
+          <MiniStat label="Expirado" value={stats.expired} variant="destructive" />
+          <MiniStat label="Cancelado" value={stats.cancelledExpired} variant="destructive" />
+          <MiniStat label="Gratuito" value={stats.free} variant="default" />
         </div>
       </section>
 
