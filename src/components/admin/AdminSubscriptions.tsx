@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { AdminSectionHeading, KPICard as AdminKPICard } from "./AdminComponents";
+import { AdminSectionHeading, KPICard as AdminKPICard, AdminBadge, AdminTable, AdminTableHeader, AdminTableHead, AdminTableRow, AdminTableCell } from "./AdminComponents";
 
 /* ═══════════ TYPES ═══════════ */
 
@@ -285,15 +285,15 @@ const AdminSubscriptions = () => {
       {/* ═══════════ Estados de assinatura ═══════════ */}
       <section>
         <h3 className="font-heading text-[10px] tracking-[0.2em] uppercase text-muted-foreground/60 mb-3">Estados de assinatura</h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2">
-          <MiniStat label="Mensal" value={stats.monthlyActive} color="bg-primary/10/10 text-primary" />
-          <MiniStat label="Anual" value={stats.annualActive} color="bg-primary/10/10 text-primary" />
-          <MiniStat label="Presente" value={stats.giftActive} color="bg-secondary/10/10 text-secondary" />
-          <MiniStat label="Admin" value={stats.adminGrant} color="bg-amber-500/10 text-amber-600" />
-          <MiniStat label="Canc. c/ acesso" value={stats.cancelledAccess} color="bg-amber-500/10 text-amber-600" />
-          <MiniStat label="Expirado" value={stats.expired} color="bg-red-500/10 text-red-500" />
-          <MiniStat label="Cancelado" value={stats.cancelledExpired} color="bg-red-500/10 text-red-400" />
-          <MiniStat label="Gratuito" value={stats.free} color="bg-muted text-muted-foreground" />
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+          <MiniStat label="Mensal" value={stats.monthlyActive} variant="primary" />
+          <MiniStat label="Anual" value={stats.annualActive} variant="primary" />
+          <MiniStat label="Presente" value={stats.giftActive} variant="secondary" />
+          <MiniStat label="Admin" value={stats.adminGrant} variant="warning" />
+          <MiniStat label="Canc. c/ acesso" value={stats.cancelledAccess} variant="warning" />
+          <MiniStat label="Expirado" value={stats.expired} variant="destructive" />
+          <MiniStat label="Cancelado" value={stats.cancelledExpired} variant="destructive" />
+          <MiniStat label="Gratuito" value={stats.free} variant="default" />
         </div>
       </section>
 
@@ -363,77 +363,80 @@ const AdminSubscriptions = () => {
             <p className="text-sm text-muted-foreground">Nenhum resultado para os filtros selecionados.</p>
           </div>
         ) : (
-          <div className="rounded-xl border border-border/50 bg-card/50 overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-border/30 bg-card/60">
-                  <th className="text-left p-3 text-xs text-muted-foreground font-medium">Usuário</th>
-                  <th className="text-center p-3 text-xs text-muted-foreground font-medium">Plano</th>
-                  <th className="text-center p-3 text-xs text-muted-foreground font-medium">Origem</th>
-                  <th className="text-center p-3 text-xs text-muted-foreground font-medium">Válido até</th>
-                  <th className="text-center p-3 text-xs text-muted-foreground font-medium">Status</th>
-                  <th className="text-center p-3 text-xs text-muted-foreground font-medium">Cadastro</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filtered
-                  .sort((a, b) => {
-                    const order: Record<SubStatus, number> = {
-                      monthly_active: 0, annual_active: 0, gift_active: 1, admin_grant: 1,
-                      cancelled_with_access: 2, expired: 3, cancelled_expired: 4, free: 5,
-                    };
-                    const diff = order[a.status] - order[b.status];
-                    if (diff !== 0) return diff;
-                    return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
-                  })
-                  .slice(0, 200)
-                  .map((sub) => {
-                    const until = sub.premium_until ? new Date(sub.premium_until) : null;
-                    return (
-                      <tr key={sub.user_id} className="border-b border-border/10 last:border-0 hover:bg-card/80 transition-colors">
-                        <td className="p-3 text-foreground font-medium">{sub.display_name || "Sem nome"}</td>
-                        <td className="p-3 text-center text-muted-foreground text-xs">
-                          {sub.status === "free" ? "—"
-                            : sub.premium_source === "store_annual" ? "Anual"
-                            : sub.premium_source === "store_monthly" ? "Mensal"
-                            : sub.premium_source === "admin" ? "Admin"
-                            : "Presente"}
-                        </td>
-                        <td className="p-3 text-center text-muted-foreground text-xs">
-                          {SOURCE_LABELS[sub.premium_source || ""] || "—"}
-                        </td>
-                        <td className="p-3 text-center text-muted-foreground text-xs">
-                          {until ? until.toLocaleDateString("pt-BR") : "—"}
-                        </td>
-                        <td className="p-3 text-center">
-                          <span className={`text-[10px] font-heading tracking-wide px-2 py-0.5 rounded-full ${STATUS_COLORS[sub.status]}`}>
-                            {STATUS_LABELS[sub.status]}
-                          </span>
-                        </td>
-                        <td className="p-3 text-center text-muted-foreground text-xs">
-                          {new Date(sub.created_at).toLocaleDateString("pt-BR")}
-                        </td>
-                      </tr>
-                    );
-                  })}
-              </tbody>
-            </table>
-            {filtered.length > 200 && (
-              <div className="p-3 text-center text-xs text-muted-foreground border-t border-border/30">
-                Mostrando 200 de {filtered.length}
-              </div>
-            )}
+          <AdminTable>
+            <AdminTableHeader>
+              <AdminTableHead>Usuário</AdminTableHead>
+              <AdminTableHead className="text-center">Plano</AdminTableHead>
+              <AdminTableHead className="text-center">Origem</AdminTableHead>
+              <AdminTableHead className="text-center">Válido até</AdminTableHead>
+              <AdminTableHead className="text-center">Status</AdminTableHead>
+              <AdminTableHead className="text-center">Cadastro</AdminTableHead>
+            </AdminTableHeader>
+            <tbody>
+              {filtered
+                .sort((a, b) => {
+                  const order: Record<SubStatus, number> = {
+                    monthly_active: 0, annual_active: 0, gift_active: 1, admin_grant: 1,
+                    cancelled_with_access: 2, expired: 3, cancelled_expired: 4, free: 5,
+                  };
+                  const diff = order[a.status] - order[b.status];
+                  if (diff !== 0) return diff;
+                  return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+                })
+                .slice(0, 200)
+                .map((sub) => {
+                  const until = sub.premium_until ? new Date(sub.premium_until) : null;
+                  const resolveVariant = (s: SubStatus): "default" | "primary" | "secondary" | "success" | "warning" | "destructive" | "outline" => {
+                    if (s === "monthly_active" || s === "annual_active") return "primary";
+                    if (s === "gift_active" || s === "admin_grant") return "secondary";
+                    if (s === "expired" || s === "cancelled_expired") return "destructive";
+                    if (s === "cancelled_with_access") return "warning";
+                    return "default";
+                  };
+                  return (
+                    <AdminTableRow key={sub.user_id}>
+                      <AdminTableCell className="text-[#5B1F3D] font-black text-lg">{sub.display_name || "Sem nome"}</AdminTableCell>
+                      <AdminTableCell className="text-center text-[#5B1F3D] font-body font-bold text-sm">
+                        {sub.status === "free" ? "—"
+                          : sub.premium_source === "store_annual" ? "Anual"
+                          : sub.premium_source === "store_monthly" ? "Mensal"
+                          : sub.premium_source === "admin" ? "Admin"
+                          : "Presente"}
+                      </AdminTableCell>
+                      <AdminTableCell className="text-center text-[#5B1F3D]/60 font-body font-bold text-sm">
+                        {SOURCE_LABELS[sub.premium_source || ""] || "—"}
+                      </AdminTableCell>
+                      <AdminTableCell className="text-center text-[#5B1F3D]/60 font-body font-bold text-sm">
+                        {until ? until.toLocaleDateString("pt-BR") : "—"}
+                      </AdminTableCell>
+                      <AdminTableCell className="text-center">
+                        <AdminBadge variant={resolveVariant(sub.status)}>
+                          {STATUS_LABELS[sub.status]}
+                        </AdminBadge>
+                      </AdminTableCell>
+                      <AdminTableCell className="text-center text-[#5B1F3D]/60 font-body font-bold text-sm">
+                        {new Date(sub.created_at).toLocaleDateString("pt-BR")}
+                      </AdminTableCell>
+                    </AdminTableRow>
+                  );
+                })}
+            </tbody>
+          </AdminTable>
+        )}
+        {filtered.length > 200 && (
+          <div className="p-4 text-center text-xs text-[#5B1F3D]/40 font-heading font-black tracking-widest uppercase border-2 border-t-0 border-[#C8A66A]/20 bg-white rounded-b-[3rem] -mt-10 mb-10">
+            Mostrando 200 de {filtered.length}
           </div>
         )}
       </section>
 
       {/* ═══════════ INTEGRATION STATUS ═══════════ */}
-      <section className="rounded-xl border border-border/50 bg-card/30 p-4">
-        <div className="flex items-start gap-3">
-          <AlertCircle className="w-4 h-4 text-amber-600 mt-0.5 shrink-0" />
-          <div className="text-xs text-muted-foreground leading-relaxed">
-            <p className="text-foreground font-medium mb-1">Integração de pagamentos: <span className="text-amber-600">pendente</span></p>
-            <p>O gateway de pagamento (Stripe/Paddle) ainda não foi conectado. Por enquanto, a receita exibida é estimada com base nos perfis premium ativos com origem da loja. Assinaturas presenteadas e concedidas pelo admin não geram receita. Para ativar cobrança real, conecte um provedor de pagamentos.</p>
+      <section className="rounded-[2.5rem] border-2 border-[#C8A66A]/20 bg-[#FAF5EF]/60 p-8 shadow-inner">
+        <div className="flex items-start gap-4">
+          <AlertCircle className="w-6 h-6 text-[#8B6A30] shrink-0" />
+          <div className="space-y-2">
+            <p className="text-[#5B1F3D] font-black text-lg">Integração de pagamentos: <span className="text-[#8B6A30] uppercase tracking-widest text-sm">pendente</span></p>
+            <p className="text-sm font-body font-bold text-[#5B1F3D]/60 leading-relaxed">O gateway de pagamento (Stripe/Paddle) ainda não foi conectado. Por enquanto, a receita exibida é estimada com base nos perfis premium ativos com origem da loja. Assinaturas presenteadas e concedidas pelo admin não geram receita. Para ativar cobrança real, conecte um provedor de pagamentos.</p>
           </div>
         </div>
       </section>
@@ -445,10 +448,10 @@ const AdminSubscriptions = () => {
 
 const KPICard = AdminKPICard;
 
-const MiniStat = ({ label, value, color }: { label: string; value: number; color: string }) => (
-  <div className="p-2.5 rounded-lg border border-border/30 bg-card/30 text-center">
-    <span className={`text-[10px] font-heading tracking-wide px-1.5 py-0.5 rounded-full ${color}`}>{value}</span>
-    <p className="text-[9px] text-muted-foreground mt-1">{label}</p>
+const MiniStat = ({ label, value, variant = "default" }: { label: string; value: number; variant?: any }) => (
+  <div className="p-4 rounded-2xl border-2 border-[#C8A66A]/20 bg-white text-center shadow-md transition-all hover:scale-105">
+    <AdminBadge variant={variant}>{value}</AdminBadge>
+    <p className="text-[10px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]/50 mt-2">{label}</p>
   </div>
 );
 
