@@ -5,7 +5,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { ScrollText, Loader2, Eye } from "lucide-react";
 import { useRole } from "@/hooks/use-role";
-import { AdminSectionHeading } from "./AdminComponents";
+import { AdminSectionHeading, AdminBadge, AdminTable, AdminTableHeader, AdminTableHead, AdminTableRow, AdminTableCell } from "./AdminComponents";
 
 interface AuditRow {
   id: string;
