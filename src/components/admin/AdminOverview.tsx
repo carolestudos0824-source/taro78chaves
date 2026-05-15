@@ -197,8 +197,6 @@ const AdminOverview = () => {
     </div>
   );
 };
-  );
-};
 
 const KPICard = ({ icon, label, value, accent = "text-[#5B1F3D]", badge }: { icon: React.ReactNode; label: string; value: string | number; accent?: string; badge?: string }) => (
   <div className="p-6 rounded-[2rem] border-2 border-[#C8A66A]/20 bg-white shadow-xl hover:shadow-2xl transition-all duration-300 relative group overflow-hidden">
