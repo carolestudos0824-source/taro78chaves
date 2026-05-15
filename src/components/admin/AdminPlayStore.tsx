@@ -48,18 +48,11 @@ const AdminPlayStore = () => {
   const completed = ITEMS.filter((i) => done[i.id]).length;
 
   return (
-    <div className="space-y-6">
-      <header className="flex items-start gap-3">
-        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-          <Smartphone className="w-5 h-5 text-primary" />
-        </div>
-        <div>
-          <h2 className="font-heading text-lg tracking-wide">Play Store — Checklist</h2>
-          <p className="text-xs text-muted-foreground mt-0.5">
-            Pendências para publicação do Tarô 78 Chaves no Google Play. {completed}/{total} concluídos.
-          </p>
-        </div>
-      </header>
+    <div className="space-y-8">
+      <AdminSectionHeading 
+        title="Play Store" 
+        subtitle={`Checklist estratégico para publicação na Google Play Store. ${completed}/${total} itens concluídos.`} 
+      />
 
       <div className="rounded-xl border border-border/50 bg-card/40 divide-y divide-border/40">
         {ITEMS.map((item) => {
