@@ -1,0 +1,1 @@
+Versão: Beta 1.0.0 (Smoke Test Aprovado)\nData: 2026-05-15\nStatus: Congelada para Testes Internos\n\nFoco da Auditoria:\n- Login/Logout\n- Progresso 78 Arcanos\n- XP e Níveis\n- Stripe Customer Portal
