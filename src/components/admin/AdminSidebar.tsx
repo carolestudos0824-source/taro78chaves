@@ -26,19 +26,19 @@ interface AdminSidebarProps {
 }
 
 const sections: { id: AdminSection; label: string; icon: React.ReactNode; group: string }[] = [
-  { id: "overview", label: "Visão Geral", icon: <LayoutDashboard className="w-4 h-4" />, group: "Principal" },
-  { id: "users", label: "Usuários", icon: <Users className="w-4 h-4" />, group: "Principal" },
-  { id: "subscriptions", label: "Assinaturas & Vendas", icon: <Crown className="w-4 h-4" />, group: "Comercial" },
-  { id: "gifts", label: "Presentes & Chaves", icon: <Gift className="w-4 h-4" />, group: "Comercial" },
-  { id: "modules", label: "Módulos", icon: <BookOpen className="w-4 h-4" />, group: "Curso" },
-  { id: "arcanos", label: "Arcanos", icon: <Sparkles className="w-4 h-4" />, group: "Curso" },
-  { id: "quizzes", label: "Quizzes", icon: <HelpCircle className="w-4 h-4" />, group: "Curso" },
-  { id: "progress", label: "Progresso & Uso", icon: <BarChart3 className="w-4 h-4" />, group: "Curso" },
-  { id: "roles", label: "Funções", icon: <Shield className="w-4 h-4" />, group: "Operação" },
-  { id: "audit", label: "Auditoria", icon: <ScrollText className="w-4 h-4" />, group: "Operação" },
-  { id: "support", label: "Suporte", icon: <HeadphonesIcon className="w-4 h-4" />, group: "Operação" },
-  { id: "settings", label: "Configurações", icon: <Settings className="w-4 h-4" />, group: "Operação" },
-  { id: "playstore", label: "Play Store", icon: <Smartphone className="w-4 h-4" />, group: "Operação" },
+  { id: "overview", label: "Visão Geral", icon: <LayoutDashboard className="w-5 h-5" />, group: "Principal" },
+  { id: "users", label: "Usuários", icon: <Users className="w-5 h-5" />, group: "Principal" },
+  { id: "subscriptions", label: "Assinaturas & Vendas", icon: <Crown className="w-5 h-5" />, group: "Comercial" },
+  { id: "gifts", label: "Presentes & Chaves", icon: <Gift className="w-5 h-5" />, group: "Comercial" },
+  { id: "modules", label: "Módulos", icon: <BookOpen className="w-5 h-5" />, group: "Curso" },
+  { id: "arcanos", label: "Arcanos", icon: <Sparkles className="w-5 h-5" />, group: "Curso" },
+  { id: "quizzes", label: "Quizzes", icon: <HelpCircle className="w-5 h-5" />, group: "Curso" },
+  { id: "progress", label: "Progresso & Uso", icon: <BarChart3 className="w-5 h-5" />, group: "Curso" },
+  { id: "roles", label: "Funções", icon: <Shield className="w-5 h-5" />, group: "Operação" },
+  { id: "audit", label: "Auditoria", icon: <ScrollText className="w-5 h-5" />, group: "Operação" },
+  { id: "support", label: "Suporte", icon: <HeadphonesIcon className="w-5 h-5" />, group: "Operação" },
+  { id: "settings", label: "Configurações", icon: <Settings className="w-5 h-5" />, group: "Operação" },
+  { id: "playstore", label: "Play Store", icon: <Smartphone className="w-5 h-5" />, group: "Operação" },
 ];
 
 const AdminSidebar = ({ active, onChange, role }: AdminSidebarProps) => {
