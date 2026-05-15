@@ -74,7 +74,7 @@ const AdminPlayStore = () => {
                     href={item.link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 mt-2 text-[11px] text-primary hover:underline"
+                    className="inline-flex items-center gap-1.5 mt-2.5 text-xs font-heading font-black tracking-widest uppercase text-[#8B6A30] hover:text-[#5B1F3D] transition-colors"
                   >
                     {item.link.label}
                     <ExternalLink className="w-3 h-3" />
