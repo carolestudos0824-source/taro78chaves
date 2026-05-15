@@ -2,22 +2,23 @@ import { useEffect, useMemo, useState } from "react";
 import { AdminSectionHeading, KPICard, AdminBadge } from "./AdminComponents";
 import {
   Search,
-  ArrowLeft,
   CheckCircle2,
   AlertCircle,
   Circle,
   CircleDashed,
-  ShieldCheck,
-  ShieldAlert,
   Eye,
   EyeOff,
-  Lock,
-  Unlock,
   Plus,
   Save,
   Trash2,
   AlertTriangle,
-  FileText
+  FileText,
+  ShieldCheck,
+  ShieldAlert,
+  Lock,
+  Unlock,
+  BookOpen,
+  ArrowLeft
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -37,26 +38,7 @@ type ArcanoType = Database["public"]["Enums"]["arcano_type"];
 type ArcanoNaipe = Database["public"]["Enums"]["arcano_naipe"];
 type ArcanoRow = Database["public"]["Tables"]["cms_arcanos"]["Row"];
 
-const STATUS_LABEL: Record<ArcanoStatus, string> = {
-  empty: "Vazio",
-  partial: "Parcial",
-  draft: "Rascunho",
-  published: "Publicado",
-};
-
-const STATUS_TONE: Record<ArcanoStatus, string> = {
-  empty: "bg-muted",
-  partial: "bg-amber-100 text-amber-800",
-  draft: "bg-secondary/10",
-  published: "bg-primary/10",
-};
-
-const STATUS_ICON = {
-  published: <CheckCircle2 className="w-3 h-3" />,
-  draft: <CircleDashed className="w-3 h-3" />,
-  partial: <AlertCircle className="w-3 h-3" />,
-  empty: <Circle className="w-3 h-3" />,
-};
+const STATUS_LABEL: Record<ArcanoStatus, string> = { empty: "Vazio", partial: "Parcial", draft: "Rascunho", published: "Publicado" };
 
 const EDITORIAL_FIELDS: Array<{ key: keyof ArcanoRow; label: string; long?: boolean; essential?: boolean }> = [
   { key: "essencia", label: "Essência", long: true, essential: true },
@@ -113,9 +95,6 @@ function priorityOf(a: ArcanoRow): Priority {
 
 export type Priority = "validated" | "almost" | "incomplete" | "critical";
 
-const PRIORITY_LABEL: Record<Priority, string> = { validated: "Validado", almost: "Quase pronto", incomplete: "Incompleto", critical: "Crítico" };
-const PRIORITY_TONE: Record<Priority, string> = { validated: "success", almost: "secondary", incomplete: "warning", critical: "destructive" };
-
 function checkInconsistency(a: ArcanoRow): string | null {
   if (a.type !== "maior") return null;
   const fromCode = EDITORIAL_REGISTRY[a.number];
@@ -123,6 +102,14 @@ function checkInconsistency(a: ArcanoRow): string | null {
   if (fromCode.name && a.name && fromCode.name.trim() !== a.name.trim()) return `Divergência: nome no código é "${fromCode.name}"`;
   return null;
 }
+
+const NAIPES: ArcanoNaipe[] = ["copas", "ouros", "espadas", "paus"];
+const NAIPE_LABEL: Record<ArcanoNaipe, string> = {
+  copas: "Copas",
+  ouros: "Ouros",
+  espadas: "Espadas",
+  paus: "Paus",
+};
 
 const AdminArcanos = () => {
   const [arcanos, setArcanos] = useState<ArcanoRow[]>([]);
@@ -179,7 +166,7 @@ const AdminArcanos = () => {
       </div>
       <div className="flex items-center gap-4 flex-wrap bg-white p-4 rounded-3xl border border-[#C8A66A]/20 shadow-sm">
         <Tabs value={group} onValueChange={(v) => setGroup(v as any)} className="flex-1">
-          <TabsList className="h-12 bg-transparent">
+          <TabsList className="h-12 bg-transparent flex flex-wrap justify-start">
             <TabsTrigger value="all">Todos</TabsTrigger>
             <TabsTrigger value="maior">Maiores</TabsTrigger>
             <TabsTrigger value="corte">Corte</TabsTrigger>
@@ -195,24 +182,28 @@ const AdminArcanos = () => {
         </div>
         <Button onClick={() => setCreateOpen(true)} className="gap-2"><Plus className="w-4 h-4" /> Novo</Button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filtered.map((a) => (
-          <div key={a.id} className="bg-white p-5 rounded-2xl border border-[#C8A66A]/20 hover:border-[#C8A66A]/50 transition-all flex flex-col gap-3">
+          <div key={a.id} className="bg-white p-6 rounded-[2rem] border-2 border-[#C8A66A]/20 hover:border-[#C8A66A]/50 transition-all flex flex-col gap-4 shadow-xl">
             <div className="flex items-center justify-between">
-                <span className="font-heading font-black text-2xl text-[#C8A66A]">{a.numeral || a.number}</span>
+                <span className="font-heading font-black text-3xl text-[#C8A66A]">{a.numeral || a.number}</span>
                 <AdminBadge variant={a.validated ? "success" : "warning"}>{a.validated ? "Validado" : "Pendente"}</AdminBadge>
             </div>
-            <h3 className="font-heading text-lg font-bold text-[#5B1F3D]">{a.name}</h3>
-            <div className="flex gap-2 flex-wrap">
-                <AdminBadge variant="secondary">{a.type === "maior" ? "Maior" : `${a.naipe} (${a.number > 10 ? 'Corte' : 'Numerado'})`}</AdminBadge>
-                <AdminBadge variant={a.status === "published" ? "primary" : "outline"}>{a.status}</AdminBadge>
+            <div>
+              <h3 className="font-heading text-xl font-black text-[#5B1F3D] leading-tight">{a.name}</h3>
+              <p className="text-xs font-body font-bold text-[#5B1F3D]/40 mt-1">{a.subtitle || "Sem subtítulo"}</p>
             </div>
-            <Button variant="outline" className="w-full mt-2" onClick={() => setDrill(a)}>
+            <div className="flex gap-2 flex-wrap mt-auto">
+                <AdminBadge variant="secondary">{a.type === "maior" ? "Maior" : `${NAIPE_LABEL[a.naipe as ArcanoNaipe] || ""} (${a.number > 10 ? 'Corte' : 'Numerado'})`}</AdminBadge>
+                <AdminBadge variant={a.status === "published" ? "primary" : "outline"}>{STATUS_LABEL[a.status] || a.status}</AdminBadge>
+            </div>
+            <Button variant="outline" className="w-full h-11 text-xs font-heading font-black tracking-widest uppercase border-2 border-[#C8A66A]/30 rounded-xl hover:bg-[#5B1F3D] hover:text-white transition-all" onClick={() => setDrill(a)}>
               <FileText className="w-4 h-4 mr-2" /> Auditar
             </Button>
           </div>
         ))}
       </div>
+      <CreateArcanoDialog open={createOpen} onOpenChange={setCreateOpen} onCreated={() => { setCreateOpen(false); load(); }} />
     </div>
   );
 };
@@ -228,7 +219,7 @@ const ArcanoEditor = ({ arcano, onBack }: { arcano: ArcanoRow; onBack: () => voi
     const saveSection = async (fields: Array<keyof ArcanoRow>) => {
         setSaving(true);
         const payload: Partial<ArcanoRow> = {};
-        fields.forEach((f) => { (payload as Record<string, unknown>)[f as string] = draft[f] as unknown; });
+        fields.forEach((f) => { (payload as any)[f] = draft[f]; });
         const { error } = await supabase.from("cms_arcanos").update(payload).eq("id", draft.id);
         setSaving(false);
         if (error) {
@@ -246,37 +237,72 @@ const ArcanoEditor = ({ arcano, onBack }: { arcano: ArcanoRow; onBack: () => voi
     };
 
     return (
-        <div className="space-y-6">
-            <Button variant="ghost" onClick={onBack}><ArrowLeft className="w-4 h-4 mr-2" /> Voltar</Button>
-            <h1 className="font-heading text-2xl text-[#5B1F3D] font-black">{arcano.name}</h1>
-            <Section title="Identidade" onSave={() => saveSection(["name", "subtitle", "numeral", "image_url", "keywords", "tags"])}>
-                <div className="grid grid-cols-2 gap-3">
-                    <Field label="Nome"><Input value={draft.name} onChange={(e) => update("name", e.target.value)} /></Field>
-                    <Field label="Subtítulo"><Input value={draft.subtitle ?? ""} onChange={(e) => update("subtitle", e.target.value)} /></Field>
+        <div className="space-y-10">
+            <div className="flex items-center gap-6">
+                <Button 
+                    variant="ghost" 
+                    onClick={onBack}
+                    className="w-12 h-12 rounded-full flex items-center justify-center bg-[#FAF5EF] border-2 border-[#C8A66A]/30 text-[#5B1F3D] hover:scale-110 transition-all"
+                >
+                    <ArrowLeft className="w-6 h-6" />
+                </Button>
+                <div>
+                  <h1 className="font-heading text-3xl text-[#5B1F3D] font-black tracking-tight uppercase">{arcano.name}</h1>
+                  <p className="text-[11px] font-heading tracking-[0.2em] uppercase text-[#C8A66A] font-bold">Editor Editorial</p>
                 </div>
-            </Section>
-            <Section title="Conteúdo editorial" onSave={() => saveSection(EDITORIAL_FIELDS.map((f) => f.key))} disabled={saving}>
-                <div className="grid gap-3">
-                    {EDITORIAL_FIELDS.map((f) => (
-                        <Field key={String(f.key)} label={`${f.essential ? "★ " : ""}${f.label}`} full>
-                            {f.long ? (
-                                <Textarea rows={3} value={(draft[f.key] as string) ?? ""} onChange={(e) => update(f.key, e.target.value as ArcanoRow[typeof f.key])} />
-                            ) : (
-                                <Input value={(draft[f.key] as string) ?? ""} onChange={(e) => update(f.key, e.target.value as ArcanoRow[typeof f.key])} />
-                            )}
-                        </Field>
-                    ))}
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2 space-y-8">
+                <Section title="Identidade" onSave={() => saveSection(["name", "subtitle", "numeral", "image_url", "keywords", "tags"])}>
+                    <div className="grid grid-cols-2 gap-6">
+                        <Field label="Nome"><Input value={draft.name} onChange={(e) => update("name", e.target.value)} className="h-12" /></Field>
+                        <Field label="Subtítulo"><Input value={draft.subtitle ?? ""} onChange={(e) => update("subtitle", e.target.value)} className="h-12" /></Field>
+                        <Field label="Numeral Romano"><Input value={draft.numeral ?? ""} onChange={(e) => update("numeral", e.target.value)} className="h-12" /></Field>
+                        <Field label="Imagem URL"><Input value={draft.image_url ?? ""} onChange={(e) => update("image_url", e.target.value)} className="h-12" /></Field>
+                    </div>
+                </Section>
+                
+                <Section title="Conteúdo Editorial" onSave={() => saveSection(EDITORIAL_FIELDS.map((f) => f.key))} disabled={saving}>
+                    <div className="grid gap-6">
+                        {EDITORIAL_FIELDS.map((f) => (
+                            <Field key={String(f.key)} label={`${f.essential ? "★ " : ""}${f.label}`} full>
+                                {f.long ? (
+                                    <Textarea rows={4} value={(draft[f.key] as string) ?? ""} onChange={(e) => update(f.key, e.target.value as any)} className="bg-white" />
+                                ) : (
+                                    <Input value={(draft[f.key] as string) ?? ""} onChange={(e) => update(f.key, e.target.value as any)} className="h-12" />
+                                )}
+                            </Field>
+                        ))}
+                    </div>
+                </Section>
+              </div>
+
+              <div className="space-y-8">
+                <div className="bg-white p-8 rounded-[2.5rem] border-2 border-[#C8A66A]/20 shadow-xl">
+                  <h3 className="font-heading text-sm font-black text-[#5B1F3D] tracking-[0.2em] uppercase mb-6 border-b border-[#C8A66A]/10 pb-4">Ações do Editor</h3>
+                  <div className="grid gap-4">
+                    <Button variant="outline" className="w-full justify-start h-12 gap-3" onClick={() => saveSection(["status"])}>
+                      <Save className="w-4 h-4 text-[#C8A66A]" /> Salvar Rascunho
+                    </Button>
+                    <Button variant="default" className="w-full justify-start h-12 gap-3 bg-[#5B1F3D] hover:bg-[#5B1F3D]/90" onClick={() => saveSection(["validated"])}>
+                      <ShieldCheck className="w-4 h-4" /> Marcar como Validado
+                    </Button>
+                  </div>
                 </div>
-            </Section>
+              </div>
+            </div>
         </div>
     );
 };
 
 const Section = ({ title, children, onSave, disabled }: { title: string; children: React.ReactNode; onSave: () => void; disabled?: boolean }) => (
-    <div className="rounded-xl border border-border/50 bg-card/30 p-4 space-y-3">
-        <div className="flex items-center justify-between">
-            <h3 className="font-heading text-sm tracking-wider text-foreground">{title}</h3>
-            <Button size="sm" variant="outline" className="gap-1.5 h-8" onClick={onSave} disabled={disabled}><Save className="w-3.5 h-3.5" /> Salvar</Button>
+    <div className="rounded-[2.5rem] border-2 border-[#C8A66A]/20 bg-white/40 p-8 space-y-6 shadow-sm backdrop-blur-sm">
+        <div className="flex items-center justify-between border-b border-[#C8A66A]/10 pb-4">
+            <h3 className="font-heading text-sm font-black text-[#5B1F3D] tracking-[0.2em] uppercase">{title}</h3>
+            <Button size="sm" variant="outline" className="gap-2 h-10 px-4 text-[10px] font-heading font-black tracking-widest uppercase border-[#C8A66A]/30" onClick={onSave} disabled={disabled}>
+                <Save className="w-3.5 h-3.5" /> Salvar Seção
+            </Button>
         </div>
         {children}
     </div>
@@ -284,7 +310,7 @@ const Section = ({ title, children, onSave, disabled }: { title: string; childre
 
 const Field = ({ label, children, full }: { label: string; children: React.ReactNode; full?: boolean }) => (
     <div className={full ? "col-span-2" : ""}>
-        <label className="text-[11px] text-muted-foreground mb-1 block uppercase tracking-wider">{label}</label>
+        <label className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/50 mb-2 block">{label}</label>
         {children}
     </div>
 );
@@ -292,17 +318,46 @@ const Field = ({ label, children, full }: { label: string; children: React.React
 const CreateArcanoDialog = ({ open, onOpenChange, onCreated }: { open: boolean; onOpenChange: (v: boolean) => void; onCreated: (row: ArcanoRow) => void }) => {
     const [type, setType] = useState<ArcanoType>("maior");
     const [name, setName] = useState("");
+    const [loading, setLoading] = useState(false);
+
     const handleCreate = async () => {
-        const { data, error } = await supabase.from("cms_arcanos").insert({ type, name: name.trim() }).select().single();
-        if (error) return;
+        if (!name.trim()) return;
+        setLoading(true);
+        const { data, error } = await supabase.from("cms_arcanos").insert({ type, name: name.trim(), number: 0, status: 'draft', tier: 'premium' }).select().single();
+        setLoading(false);
+        if (error) {
+          toast({ title: "Erro", description: error.message, variant: "destructive" });
+          return;
+        }
         onCreated(data as ArcanoRow);
+        setName("");
     };
+
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent>
-                <DialogHeader><DialogTitle>Novo Arcano</DialogTitle></DialogHeader>
-                <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Nome" />
-                <DialogFooter><Button onClick={handleCreate}>Criar</Button></DialogFooter>
+            <DialogContent className="rounded-[3rem] border-4 border-[#C8A66A]/20 p-10 bg-[#FAF5EF]">
+                <DialogHeader>
+                  <DialogTitle className="font-heading text-2xl font-black text-[#5B1F3D] uppercase tracking-tight">Novo Arcano</DialogTitle>
+                </DialogHeader>
+                <div className="space-y-6 mt-4">
+                  <Field label="Nome">
+                    <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Ex: O Mago" className="h-12" />
+                  </Field>
+                  <Field label="Tipo">
+                    <Select value={type} onValueChange={(v) => setType(v as ArcanoType)}>
+                      <SelectTrigger className="h-12"><SelectValue /></SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="maior">Arcano Maior</SelectItem>
+                        <SelectItem value="menor">Arcano Menor</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </Field>
+                </div>
+                <DialogFooter className="mt-8">
+                  <Button onClick={handleCreate} disabled={loading} className="w-full h-12 bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white font-heading font-black tracking-widest uppercase rounded-xl">
+                    {loading ? "Criando..." : "Criar Arcano"}
+                  </Button>
+                </DialogFooter>
             </DialogContent>
         </Dialog>
     );
