@@ -284,11 +284,12 @@ const AdminArcanos = () => {
 
   return (
     <div className="space-y-6">
-      <AdminSectionHeading 
-        title="78 Arcanos" 
-        subtitle="CMS editorial estratégico — gestão de conteúdo canônico e régua de publicação." 
-      />
-        <Button size="sm" className="gap-2" onClick={() => setCreateOpen(true)}>
+      <div className="flex items-start justify-between gap-4 flex-wrap">
+        <AdminSectionHeading 
+          title="78 Arcanos" 
+          subtitle="CMS editorial estratégico — gestão de conteúdo canônico e régua de publicação." 
+        />
+        <Button size="sm" className="gap-2 mt-4" onClick={() => setCreateOpen(true)}>
           <Plus className="w-4 h-4" /> Novo Arcano
         </Button>
       </div>
