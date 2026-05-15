@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { AdminSectionHeading } from "./AdminComponents";
+import { AdminSectionHeading, KPICard, AdminBadge } from "./AdminComponents";
 import {
   Search,
   ArrowLeft,
@@ -17,14 +17,14 @@ import {
   Save,
   Trash2,
   AlertTriangle,
+  FileText
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Switch } from "@/components/ui/switch";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import type { Database } from "@/integrations/supabase/types";
@@ -44,27 +44,15 @@ const STATUS_LABEL: Record<ArcanoStatus, string> = {
   published: "Publicado",
 };
 
-const STATUS_TONE: Record<ArcanoStatus, string> = {
-  empty: "bg-muted/40 text-muted-foreground border-border/50",
-  partial: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
-  draft: "bg-secondary/10/10 text-secondary dark:text-secondary border-secondary/30/20",
-  published: "bg-primary/10 text-primary border-primary/20",
-};
-
 const StatusIcon = ({ status }: { status: ArcanoStatus }) => {
   switch (status) {
-    case "published":
-      return <CheckCircle2 className="w-3 h-3" />;
-    case "draft":
-      return <CircleDashed className="w-3 h-3" />;
-    case "partial":
-      return <AlertCircle className="w-3 h-3" />;
-    default:
-      return <Circle className="w-3 h-3" />;
+    case "published": return <CheckCircle2 className="w-3 h-3" />;
+    case "draft": return <CircleDashed className="w-3 h-3" />;
+    case "partial": return <AlertCircle className="w-3 h-3" />;
+    default: return <Circle className="w-3 h-3" />;
   }
 };
 
-// 17 editorial fields config — `essential: true` define campos obrigatórios para validação
 const EDITORIAL_FIELDS: Array<{ key: keyof ArcanoRow; label: string; long?: boolean; essential?: boolean }> = [
   { key: "essencia", label: "Essência", long: true, essential: true },
   { key: "simbolos_centrais", label: "Símbolos centrais", long: true, essential: true },
@@ -87,39 +75,25 @@ const EDITORIAL_FIELDS: Array<{ key: keyof ArcanoRow; label: string; long?: bool
 
 const ESSENTIAL_FIELDS = EDITORIAL_FIELDS.filter((f) => f.essential);
 
-/** Quantos dos 8 campos essenciais estão preenchidos */
 function countEssentialFilled(a: ArcanoRow): number {
-  return ESSENTIAL_FIELDS.filter((f) => {
-    const v = a[f.key];
-    return typeof v === "string" && v.trim().length > 0;
-  }).length;
+  return ESSENTIAL_FIELDS.filter((f) => typeof a[f.key] === "string" && (a[f.key] as string).trim().length > 0).length;
 }
 
-/** Régua mínima para publicar: 100% dos essenciais */
-function meetsPublishBar(a: ArcanoRow): boolean {
-  return countEssentialFilled(a) === ESSENTIAL_FIELDS.length;
-}
+function meetsPublishBar(a: ArcanoRow): boolean { return countEssentialFilled(a) === ESSENTIAL_FIELDS.length; }
 
-/** Régua mínima para validar: essenciais + revisão rápida + keywords */
 function meetsValidationBar(a: ArcanoRow): boolean {
   const revOk = typeof a.revisao_rapida === "string" && a.revisao_rapida.trim().length > 0;
   const kwOk = Array.isArray(a.keywords) && a.keywords.length > 0;
   return meetsPublishBar(a) && revOk && kwOk;
 }
 
-/** Ordem de prioridade da fila de fechamento editorial */
 function queueRank(a: ArcanoRow): number {
   if (a.validated) return 999;
   const prio = priorityOf(a);
-  // 1) quase prontos primeiro
   if (prio === "almost") return 0;
-  // 2) críticos gratuitos
   if (prio === "critical" && a.tier === "free") return 1;
-  // 3) críticos premium maiores (mais centrais)
   if (prio === "critical" && a.tier === "premium" && a.type === "maior") return 2;
-  // 4) críticos premium menores
   if (prio === "critical") return 3;
-  // 5) incompletos
   return 4;
 }
 
@@ -133,44 +107,22 @@ const NAIPE_LABEL: Record<ArcanoNaipe, string> = {
 
 function effectiveStatus(a: ArcanoRow): ArcanoStatus {
   if (a.status === "published" || a.status === "draft") return a.status;
-  const filled = countFilled(a);
+  const filled = EDITORIAL_FIELDS.filter((f) => typeof a[f.key] === "string" && (a[f.key] as string).trim().length > 0).length;
   if (filled === 0) return "empty";
   if (filled < EDITORIAL_FIELDS.length) return "partial";
   return "draft";
 }
 
-function countFilled(a: ArcanoRow): number {
-  return EDITORIAL_FIELDS.filter((f) => {
-    const v = a[f.key];
-    return typeof v === "string" && v.trim().length > 0;
-  }).length;
-}
-
-function missingFields(a: ArcanoRow): string[] {
-  return EDITORIAL_FIELDS.filter((f) => {
-    const v = a[f.key];
-    return !(typeof v === "string" && v.trim().length > 0);
-  }).map((f) => f.label);
-}
-
-function completionPercent(a: ArcanoRow): number {
-  return Math.round((countFilled(a) / EDITORIAL_FIELDS.length) * 100);
-}
-
-/** Régua editorial de prioridade */
-export type Priority = "validated" | "almost" | "incomplete" | "critical";
-
 function priorityOf(a: ArcanoRow): Priority {
   if (a.validated) return "validated";
-  const filled = countFilled(a);
+  const filled = EDITORIAL_FIELDS.filter((f) => typeof a[f.key] === "string" && (a[f.key] as string).trim().length > 0).length;
   const total = EDITORIAL_FIELDS.length;
-  // Crítico: publicado sem validação E com menos de 30% preenchido
   if (a.status === "published" && filled / total < 0.3) return "critical";
-  // Quase pronto: faltam 3 campos ou menos
   if (total - filled <= 3) return "almost";
-  // Incompleto: estrutura existe, mas faltam vários
   return "incomplete";
 }
+
+export type Priority = "validated" | "almost" | "incomplete" | "critical";
 
 const PRIORITY_LABEL: Record<Priority, string> = {
   validated: "Validado",
@@ -179,33 +131,11 @@ const PRIORITY_LABEL: Record<Priority, string> = {
   critical: "Crítico",
 };
 
-const PRIORITY_TONE: Record<Priority, string> = {
-  validated: "bg-primary/10/10 text-primary dark:text-primary border-primary/30/20",
-  almost: "bg-secondary/10/10 text-secondary dark:text-secondary border-secondary/30/20",
-  incomplete: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
-  critical: "bg-destructive/10 text-destructive border-destructive/30",
-};
-
-function checkInconsistency(a: ArcanoRow): string | null {
-  if (a.type !== "maior") return null;
-  const fromCode = EDITORIAL_REGISTRY[a.number];
-  if (!fromCode) return null;
-  if (fromCode.name && a.name && fromCode.name.trim() !== a.name.trim()) {
-    return `Divergência: nome no código é "${fromCode.name}"`;
-  }
-  return null;
-}
-
 const AdminArcanos = () => {
   const [arcanos, setArcanos] = useState<ArcanoRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [filterType, setFilterType] = useState<"all" | ArcanoType>("all");
-  const [filterStatus, setFilterStatus] = useState<"all" | "published" | "draft">("all");
-  const [filterTier, setFilterTier] = useState<"all" | ArcanoTier>("all");
-  const [filterValidated, setFilterValidated] = useState<"all" | "yes" | "no">("all");
-  const [filterNaipe, setFilterNaipe] = useState<"all" | ArcanoNaipe>("all");
-  const [filterPriority, setFilterPriority] = useState<"all" | Priority | "published_unvalidated">("all");
+  const [group, setGroup] = useState<"all" | "maior" | "copas" | "ouros" | "espadas" | "paus" | "corte">("all");
   const [drill, setDrill] = useState<ArcanoRow | null>(null);
   const [createOpen, setCreateOpen] = useState(false);
 
@@ -217,404 +147,93 @@ const AdminArcanos = () => {
       .order("type", { ascending: true })
       .order("naipe", { ascending: true, nullsFirst: true })
       .order("number", { ascending: true });
-    if (error) {
-      toast({ title: "Erro ao carregar arcanos", description: error.message, variant: "destructive" });
-    }
+    if (error) toast({ title: "Erro ao carregar arcanos", description: error.message, variant: "destructive" });
     setArcanos(data ?? []);
     setLoading(false);
   };
 
-  useEffect(() => {
-    load();
-  }, []);
+  useEffect(() => { load(); }, []);
 
   const filtered = useMemo(() => {
-    const list = arcanos.filter((a) => {
-      if (filterType !== "all" && a.type !== filterType) return false;
-      if (filterNaipe !== "all" && a.naipe !== filterNaipe) return false;
-      if (filterStatus !== "all" && a.status !== filterStatus) return false;
-      if (filterTier !== "all" && a.tier !== filterTier) return false;
-      if (filterValidated === "yes" && !a.validated) return false;
-      if (filterValidated === "no" && a.validated) return false;
-      if (filterPriority !== "all") {
-        if (filterPriority === "published_unvalidated") {
-          if (!(a.status === "published" && !a.validated)) return false;
-        } else if (priorityOf(a) !== filterPriority) return false;
-      }
+    return arcanos.filter((a) => {
+      if (group === "maior" && a.type !== "maior") return false;
+      if (group === "copas" && (a.type !== "menor" || a.naipe !== "copas")) return false;
+      if (group === "ouros" && (a.type !== "menor" || a.naipe !== "ouros")) return false;
+      if (group === "espadas" && (a.type !== "menor" || a.naipe !== "espadas")) return false;
+      if (group === "paus" && (a.type !== "menor" || a.naipe !== "paus")) return false;
+      if (group === "corte" && a.type !== "corte") return false;
       if (search.trim()) {
         const q = search.toLowerCase();
-        if (!a.name.toLowerCase().includes(q) && !(a.subtitle ?? "").toLowerCase().includes(q)) return false;
+        return a.name.toLowerCase().includes(q) || (a.subtitle ?? "").toLowerCase().includes(q);
       }
       return true;
+    }).sort((a, b) => {
+        const ra = queueRank(a);
+        const rb = queueRank(b);
+        if (ra !== rb) return ra - rb;
+        return (EDITORIAL_FIELDS.filter((f) => typeof b[f.key] === "string" && (b[f.key] as string).trim().length > 0).length) - (EDITORIAL_FIELDS.filter((f) => typeof a[f.key] === "string" && (a[f.key] as string).trim().length > 0).length);
     });
-    // ordenação por fila editorial: quase prontos → críticos free → críticos premium maiores → críticos premium menores → incompletos → validados
-    return list.sort((a, b) => {
-      const ra = queueRank(a);
-      const rb = queueRank(b);
-      if (ra !== rb) return ra - rb;
-      // dentro do mesmo grupo: mais completos primeiro
-      return countFilled(b) - countFilled(a);
-    });
-  }, [arcanos, filterType, filterStatus, filterTier, filterValidated, filterNaipe, filterPriority, search]);
+  }, [arcanos, group, search]);
 
   const stats = useMemo(() => {
     const total = arcanos.length;
-    const published = arcanos.filter((a) => a.status === "published").length;
     const validated = arcanos.filter((a) => a.validated).length;
-    const inconsistent = arcanos.filter((a) => checkInconsistency(a)).length;
+    const published = arcanos.filter((a) => a.status === "published").length;
     const critical = arcanos.filter((a) => priorityOf(a) === "critical").length;
-    const almost = arcanos.filter((a) => priorityOf(a) === "almost").length;
-    const incomplete = arcanos.filter((a) => priorityOf(a) === "incomplete").length;
-    const publishedUnvalidated = arcanos.filter((a) => a.status === "published" && !a.validated).length;
-    const queue = arcanos.filter((a) => !a.validated).sort((a, b) => queueRank(a) - queueRank(b));
-    return { total, published, validated, inconsistent, critical, almost, incomplete, publishedUnvalidated, queue };
+    return { total, validated, published, critical };
   }, [arcanos]);
 
-  if (drill) {
-    return (
-      <ArcanoEditor
-        arcano={drill}
-        onBack={() => {
-          setDrill(null);
-          load();
-        }}
-      />
-    );
-  }
+  if (drill) return <ArcanoEditor arcano={drill} onBack={() => { setDrill(null); load(); }} />;
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-start justify-between gap-4 flex-wrap">
-        <AdminSectionHeading 
-          title="78 Arcanos" 
-          subtitle="CMS editorial estratégico — gestão de conteúdo canônico e régua de publicação." 
-        />
-        <Button size="sm" className="gap-2 mt-4" onClick={() => setCreateOpen(true)}>
-          <Plus className="w-4 h-4" /> Novo Arcano
-        </Button>
+    <div className="space-y-8">
+      <AdminSectionHeading title="78 Arcanos" subtitle="Auditoria central e gestão do conteúdo canônico." />
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <KPICard label="Total" value={stats.total} icon={<BookOpen />} />
+        <KPICard label="Validados" value={stats.validated} icon={<ShieldCheck />} accent="text-emerald-600" />
+        <KPICard label="Publicados" value={stats.published} icon={<Eye />} accent="text-primary" />
+        <KPICard label="Críticos" value={stats.critical} icon={<AlertTriangle />} accent="text-red-600" />
       </div>
 
-      {stats.critical > 0 && (
-        <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-3 space-y-2">
-          <div className="flex items-start gap-2">
-            <AlertTriangle className="w-4 h-4 text-destructive shrink-0 mt-0.5" />
-            <div className="text-xs text-destructive flex-1">
-              <strong>Contenção editorial ativa.</strong> {stats.critical} arcano{stats.critical > 1 ? "s estão" : " está"} publicado{stats.critical > 1 ? "s" : ""} sem validação e com menos de 30% do conteúdo editorial preenchido no DB.
-              <div className="mt-1 text-[11px] text-destructive/80">
-                Regra objetiva: <strong>validação só é permitida com ≥6 dos 10 campos essenciais</strong> (essência, símbolos, luz, sombra, amor, trabalho, espiritualidade, voz, revisão rápida, palavras-chave). O DB bloqueia automaticamente validações abaixo desse limite. Conteúdo é servido por arquivos editoriais até a sincronização.
-              </div>
-            </div>
-          </div>
-          <div className="flex gap-2 flex-wrap pl-6">
-            <button
-              onClick={() => setFilterPriority("critical")}
-              className="text-[11px] px-2.5 py-1 rounded-full border border-destructive/30 bg-destructive/10 text-destructive hover:bg-destructive/20 transition-colors"
-            >
-              Filtrar críticos
-            </button>
-            <button
-              onClick={async () => {
-                if (!confirm(`Rebaixar ${stats.critical} arcano(s) críticos para rascunho? A exibição no app será contida até atingirem a régua editorial.`)) return;
-                const ids = arcanos.filter((a) => priorityOf(a) === "critical").map((a) => a.id);
-                const { error } = await supabase.from("cms_arcanos").update({ status: "draft" }).in("id", ids);
-                if (error) {
-                  toast({ title: "Erro", description: error.message, variant: "destructive" });
-                  return;
-                }
-                await logAdminAction({
-                  action: "arcano.bulk_demote_critical",
-                  targetType: "arcano",
-                  targetId: null,
-                  targetLabel: `${ids.length} críticos`,
-                  details: { count: ids.length, ids },
-                });
-                toast({ title: `${ids.length} arcano(s) rebaixados para rascunho` });
-                load();
-              }}
-              className="text-[11px] px-2.5 py-1 rounded-full border border-destructive/40 bg-destructive text-destructive-foreground hover:bg-destructive/90 transition-colors"
-            >
-              Rebaixar todos para rascunho
-            </button>
-          </div>
-        </div>
-      )}
-
-      {stats.queue.length > 0 && (
-        <div className="rounded-xl border border-border/50 bg-card/30 p-4 space-y-3">
-          <div className="flex items-center justify-between flex-wrap gap-2">
-            <div>
-              <h3 className="font-heading text-sm tracking-wider text-foreground">Fila de fechamento editorial</h3>
-              <p className="text-[11px] text-muted-foreground">
-                {stats.queue.length} arcano{stats.queue.length > 1 ? "s" : ""} pendente{stats.queue.length > 1 ? "s" : ""} até {stats.total}/{stats.total} validados.
-                Ordem: quase prontos → críticos gratuitos → críticos premium maiores → críticos premium menores → incompletos.
-              </p>
-            </div>
-            <div className="flex gap-1.5 flex-wrap">
-              <button
-                onClick={() => setFilterPriority("almost")}
-                className="text-[11px] px-2 py-1 rounded-full border border-secondary/30/20 bg-secondary/10/10 text-secondary dark:text-secondary"
-              >
-                {stats.almost} quase prontos
-              </button>
-              <button
-                onClick={() => setFilterPriority("incomplete")}
-                className="text-[11px] px-2 py-1 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-400"
-              >
-                {stats.incomplete} incompletos
-              </button>
-              <button
-                onClick={() => setFilterPriority("critical")}
-                className="text-[11px] px-2 py-1 rounded-full border border-destructive/30 bg-destructive/10 text-destructive"
-              >
-                {stats.critical} críticos
-              </button>
-            </div>
-          </div>
-          <div className="grid gap-1">
-            {stats.queue.slice(0, 5).map((a, idx) => {
-              const filled = countFilled(a);
-              const total = EDITORIAL_FIELDS.length;
-              const missing = missingFields(a);
-              const prio = priorityOf(a);
-              return (
-                <button
-                  key={a.id}
-                  onClick={() => setDrill(a)}
-                  className="text-left flex items-center gap-2 p-2 rounded-lg hover:bg-muted/40 transition-colors"
-                >
-                  <span className="text-[10px] font-mono text-muted-foreground w-5">#{idx + 1}</span>
-                  <span
-                    className={`text-[10px] px-1.5 py-0.5 rounded-full border font-medium ${PRIORITY_TONE[prio]}`}
-                  >
-                    {PRIORITY_LABEL[prio]}
-                  </span>
-                  <span className="text-xs font-medium text-foreground truncate flex-1">
-                    {a.name} <span className="text-muted-foreground">· {a.type === "maior" ? "Maior" : `Menor (${a.naipe ?? ""})`} · {a.tier}</span>
-                  </span>
-                  <span className="text-[11px] text-muted-foreground whitespace-nowrap" title={`Essencial ${countEssentialFilled(a)}/${ESSENTIAL_FIELDS.length} · Editorial ${filled}/${total}`}>
-                    Ess {countEssentialFilled(a)}/{ESSENTIAL_FIELDS.length} · Ed {filled}/{total}
-                  </span>
-                </button>
-              );
-            })}
-            {stats.queue.length > 5 && (
-              <p className="text-[11px] text-muted-foreground text-center pt-1">
-                +{stats.queue.length - 5} na fila — use o filtro abaixo para ver todos.
-              </p>
-            )}
-          </div>
-        </div>
-      )}
-
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
-        <ArcanoStatCard label="Total" value={stats.total} />
-        <ArcanoStatCard label="Publicados" value={stats.published} tone="primary" />
-        <ArcanoStatCard label="Validados" value={stats.validated} tone="emerald" />
-        <ArcanoStatCard label="Pub. s/ Validação" value={stats.publishedUnvalidated} tone="amber" />
-        <ArcanoStatCard label="Críticos" value={stats.critical} tone="destructive" />
-        <ArcanoStatCard label="Quase Prontos" value={stats.almost} tone="blue" />
-      </div>
-
-      <Tabs
-        value={filterType === "all" ? "all" : filterType}
-        onValueChange={(v) => setFilterType(v as "all" | ArcanoType)}
-      >
-        <TabsList>
-          <TabsTrigger value="all">Todos</TabsTrigger>
-          <TabsTrigger value="maior">Maiores</TabsTrigger>
-          <TabsTrigger value="menor">Menores</TabsTrigger>
-        </TabsList>
-      </Tabs>
-
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
-        <div className="relative col-span-2 sm:col-span-2">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" />
-          <Input
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Buscar arcano..."
-            className="pl-8 h-9 text-sm"
-          />
-        </div>
-        <Select value={filterStatus} onValueChange={(v) => setFilterStatus(v as typeof filterStatus)}>
-          <SelectTrigger className="h-9 text-xs">
-            <SelectValue placeholder="Status" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">Todos status</SelectItem>
-            <SelectItem value="published">Publicados</SelectItem>
-            <SelectItem value="draft">Rascunhos</SelectItem>
-          </SelectContent>
-        </Select>
-        <Select value={filterTier} onValueChange={(v) => setFilterTier(v as typeof filterTier)}>
-          <SelectTrigger className="h-9 text-xs">
-            <SelectValue placeholder="Acesso" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">Todos acessos</SelectItem>
-            <SelectItem value="free">Gratuito</SelectItem>
-            <SelectItem value="premium">Premium</SelectItem>
-          </SelectContent>
-        </Select>
-        <Select value={filterValidated} onValueChange={(v) => setFilterValidated(v as typeof filterValidated)}>
-          <SelectTrigger className="h-9 text-xs">
-            <SelectValue placeholder="Validação" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">Todos</SelectItem>
-            <SelectItem value="yes">Validados</SelectItem>
-            <SelectItem value="no">Pendentes</SelectItem>
-          </SelectContent>
-        </Select>
-        <Select value={filterPriority} onValueChange={(v) => setFilterPriority(v as typeof filterPriority)}>
-          <SelectTrigger className="h-9 text-xs">
-            <SelectValue placeholder="Prioridade" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">Todas prioridades</SelectItem>
-            <SelectItem value="critical">🔴 Críticos</SelectItem>
-            <SelectItem value="incomplete">🟡 Incompletos</SelectItem>
-            <SelectItem value="almost">🔵 Quase prontos</SelectItem>
-            <SelectItem value="validated">🟢 Validados</SelectItem>
-            <SelectItem value="published_unvalidated">⚠️ Publicados sem validação</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-
-      {filterType === "menor" && (
-        <Tabs value={filterNaipe} onValueChange={(v) => setFilterNaipe(v as typeof filterNaipe)}>
-          <TabsList>
-            <TabsTrigger value="all">Todos naipes</TabsTrigger>
-            {NAIPES.map((n) => (
-              <TabsTrigger key={n} value={n}>
-                {NAIPE_LABEL[n]}
-              </TabsTrigger>
-            ))}
+      <div className="flex items-center gap-4 flex-wrap bg-white p-4 rounded-3xl border border-[#C8A66A]/20 shadow-sm">
+        <Tabs value={group} onValueChange={(v) => setGroup(v as any)} className="flex-1">
+          <TabsList className="h-12 bg-transparent flex flex-wrap justify-start">
+            <TabsTrigger value="all">Todos</TabsTrigger>
+            <TabsTrigger value="maior">Maiores</TabsTrigger>
+            <TabsTrigger value="copas">Copas</TabsTrigger>
+            <TabsTrigger value="ouros">Ouros</TabsTrigger>
+            <TabsTrigger value="espadas">Espadas</TabsTrigger>
+            <TabsTrigger value="paus">Paus</TabsTrigger>
+            <TabsTrigger value="corte">Cortes</TabsTrigger>
           </TabsList>
         </Tabs>
-      )}
-
-      {loading ? (
-        <div className="text-sm text-muted-foreground py-8 text-center">Carregando arcanos...</div>
-      ) : filtered.length === 0 ? (
-        <div className="p-8 text-center border border-dashed border-border/50 rounded-xl">
-          <p className="text-sm text-muted-foreground">Nenhum arcano encontrado.</p>
+        <div className="relative w-full lg:w-72">
+          <Search className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
+          <Input placeholder="Buscar..." className="pl-9" value={search} onChange={(e) => setSearch(e.target.value)} />
         </div>
-      ) : (
-        <div className="grid gap-1.5">
-          {filtered.map((a) => {
-            const eff = effectiveStatus(a);
-            const inc = checkInconsistency(a);
-            const filled = countFilled(a);
-            const total = EDITORIAL_FIELDS.length;
-            const missing = missingFields(a);
-            const prio = priorityOf(a);
-            const isPubUnvalidated = a.status === "published" && !a.validated;
-            return (
-              <button
-                key={a.id}
-                onClick={() => setDrill(a)}
-                className={`text-left flex items-center gap-3 p-2.5 rounded-xl border transition-all ${
-                  prio === "critical"
-                    ? "border-destructive/30 bg-destructive/5 hover:bg-destructive/10"
-                    : "border-border/50 bg-card/50 hover:bg-card/80 hover:border-primary/30"
-                }`}
-              >
-                <span className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center font-heading text-xs text-primary shrink-0">
-                  {a.numeral || a.number}
-                </span>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="text-sm font-medium text-foreground truncate">{a.name}</h3>
-                    {a.naipe && (
-                      <span className="text-[10px] text-muted-foreground">de {NAIPE_LABEL[a.naipe]}</span>
-                    )}
-                    <span
-                      className={`inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-full border font-medium ${PRIORITY_TONE[prio]}`}
-                    >
-                      {PRIORITY_LABEL[prio]}
-                    </span>
-                    <span
-                      className={`inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-full border font-medium ${STATUS_TONE[eff]}`}
-                    >
-                      <StatusIcon status={eff} />
-                      {STATUS_LABEL[eff]}
-                    </span>
-                    <span
-                      className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium ${
-                        a.tier === "premium"
-                          ? "bg-primary/10 text-primary"
-                          : "bg-primary/10/10 text-primary dark:text-primary"
-                      }`}
-                    >
-                      {a.tier === "premium" ? "Premium" : "Gratuito"}
-                    </span>
-                    {isPubUnvalidated && (
-                      <span className="inline-flex items-center gap-1 text-[10px] text-amber-600 dark:text-amber-400">
-                        <ShieldAlert className="w-3 h-3" /> Publicado sem validação
-                      </span>
-                    )}
-                    {inc && (
-                      <span className="inline-flex items-center gap-1 text-[10px] text-amber-600 dark:text-amber-400">
-                        <AlertTriangle className="w-3 h-3" /> Inconsistência
-                      </span>
-                    )}
-                  </div>
-                  {a.subtitle && <p className="text-[11px] text-muted-foreground truncate">{a.subtitle}</p>}
-                  <div className="mt-1 flex items-center gap-2 flex-wrap">
-                    <span className="text-[11px] font-medium text-foreground">
-                      {filled}/{total} campos
-                    </span>
-                    {missing.length > 0 && (
-                      <span className="text-[10px] text-muted-foreground truncate">
-                        · faltam: {missing.slice(0, 3).join(", ")}
-                        {missing.length > 3 && ` +${missing.length - 3}`}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </button>
-            );
-          })}
-        </div>
-      )}
+        <Button onClick={() => setCreateOpen(true)} className="gap-2"><Plus className="w-4 h-4" /> Novo</Button>
+      </div>
 
-      <CreateArcanoDialog
-        open={createOpen}
-        onOpenChange={setCreateOpen}
-        onCreated={(row) => {
-          setCreateOpen(false);
-          setDrill(row);
-          load();
-        }}
-      />
-    </div>
-  );
-};
-
-/* ═══════════ Stat Card ═══════════ */
-
-const StatCard = ({
-  label,
-  value,
-  tone = "default",
-}: {
-  label: string;
-  value: number;
-  tone?: "default" | "primary" | "emerald" | "amber" | "destructive" | "blue";
-}) => {
-  const toneClass = {
-    default: "border-border/50 text-foreground",
-    primary: "border-primary/20 text-primary bg-primary/5",
-    emerald: "border-primary/30/20 text-primary dark:text-primary bg-primary/10/5",
-    amber: "border-amber-500/20 text-amber-600 dark:text-amber-400 bg-amber-500/5",
-    destructive: "border-destructive/30 text-destructive bg-destructive/5",
-    blue: "border-secondary/30/20 text-secondary dark:text-secondary bg-secondary/10/5",
-  }[tone];
-  return (
-    <div className={`p-3 rounded-xl border ${toneClass}`}>
-      <div className="text-[10px] uppercase tracking-wider opacity-80">{label}</div>
-      <div className="text-2xl font-heading mt-1">{value}</div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {filtered.map((a) => (
+          <div key={a.id} className="bg-white p-5 rounded-2xl border border-[#C8A66A]/20 shadow-sm hover:shadow-md transition-all flex flex-col gap-3">
+            <div className="flex items-center justify-between">
+                <span className="font-heading font-black text-2xl text-[#C8A66A]">{a.numeral || a.number}</span>
+                <AdminBadge variant={a.validated ? "success" : "warning"}>{a.validated ? "Validado" : "Pendente"}</AdminBadge>
+            </div>
+            <h3 className="font-heading text-lg font-bold text-[#5B1F3D]">{a.name}</h3>
+            <div className="flex gap-2 flex-wrap">
+                <AdminBadge variant="secondary">{a.type === "maior" ? "Maior" : a.naipe}</AdminBadge>
+                <AdminBadge variant={a.status === "published" ? "primary" : "outline"}>{a.status}</AdminBadge>
+            </div>
+            <Button variant="outline" className="w-full mt-2" onClick={() => setDrill(a)}>
+              <FileText className="w-4 h-4 mr-2" /> Auditar
+            </Button>
+          </div>
+        ))}
+      </div>
+      <CreateArcanoDialog open={createOpen} onOpenChange={setCreateOpen} onCreated={(row) => { setCreateOpen(false); setDrill(row); load(); }} />
     </div>
   );
 };
