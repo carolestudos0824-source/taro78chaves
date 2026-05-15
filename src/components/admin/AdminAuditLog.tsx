@@ -114,7 +114,7 @@ const AdminAuditLog = () => {
         </Select>
       </div>
 
-      <div className="rounded-xl border border-border/50 bg-card/50 overflow-hidden">
+      <div className="rounded-[2.5rem] border-2 border-[#C8A66A]/20 bg-white/60 shadow-xl overflow-hidden backdrop-blur-md">
         {loading ? (
           <div className="p-12 flex items-center justify-center text-muted-foreground">
             <Loader2 className="w-5 h-5 animate-spin mr-2" /> Carregando registros…
