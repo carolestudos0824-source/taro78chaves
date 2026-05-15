@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { CheckCircle2, Circle, ExternalLink, Smartphone } from "lucide-react";
+import { AdminSectionHeading } from "./AdminComponents";
 
 interface Item {
   id: string;
