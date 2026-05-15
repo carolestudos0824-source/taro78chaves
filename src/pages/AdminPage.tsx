@@ -82,7 +82,7 @@ const AdminPage = () => {
 
       <div className="flex">
         <AdminSidebar active={activeSection} onChange={setActiveSection} role={role} />
-        <main className="flex-1 p-4 sm:p-8 max-w-5xl pb-24 md:pb-8">
+        <main className="flex-1 p-6 sm:p-10 max-w-[1400px] mx-auto pb-24 md:pb-12">
           {ActiveComponent ? (
             <ActiveComponent />
           ) : (
