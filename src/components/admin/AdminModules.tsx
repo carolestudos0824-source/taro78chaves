@@ -342,13 +342,11 @@ const AdminModules = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-4 flex-wrap">
-        <div>
-          <h2 className="font-heading text-lg text-foreground">Módulos do Curso</h2>
-          <p className="text-sm text-muted-foreground">
-            Central editorial — crie, organize e publique todos os módulos da plataforma.
-          </p>
-        </div>
-        <Button size="sm" className="gap-2" onClick={openCreate}>
+        <AdminSectionHeading 
+          title="Módulos do Curso" 
+          subtitle="Central editorial — crie, organize e publique todos os módulos da plataforma." 
+        />
+        <Button size="sm" className="gap-2 mt-4" onClick={openCreate}>
           <Plus className="w-4 h-4" /> Novo Módulo
         </Button>
       </div>
