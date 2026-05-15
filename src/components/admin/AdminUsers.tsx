@@ -196,20 +196,20 @@ const AdminUsers = () => {
           <p className="text-sm text-muted-foreground">Nenhum usuário encontrado.</p>
         </div>
       ) : (
-        <div className="rounded-[2.5rem] border-2 border-[#C8A66A]/20 bg-white overflow-hidden shadow-2xl">
+        <div className="rounded-[3rem] border-2 border-[#C8A66A]/20 bg-white overflow-hidden shadow-2xl">
           <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+            <table className="w-full text-base">
               <thead>
-                <tr className="border-b border-[#C8A66A]/20 bg-[#FAF5EF]/50">
-                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Usuário</th>
-                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Status</th>
-                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Plano</th>
-                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Cadastro</th>
-                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Atividade</th>
-                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Lições</th>
-                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">XP</th>
-                  <th className="text-center p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Streak</th>
-                  <th className="text-right p-4 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">Ações</th>
+                <tr className="border-b-2 border-[#C8A66A]/20 bg-[#FAF5EF]/60">
+                  <th className="text-left p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Usuário</th>
+                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Status</th>
+                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Plano Até</th>
+                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Cadastro</th>
+                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Atividade</th>
+                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Lições</th>
+                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">XP</th>
+                  <th className="text-center p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Streak</th>
+                  <th className="text-right p-6 text-[11px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Ações</th>
                 </tr>
               </thead>
               <tbody>
