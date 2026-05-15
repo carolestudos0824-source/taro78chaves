@@ -1,6 +1,6 @@
-Versão: Beta 1.0.1 — Admin UI Fix (Aprovada para Testadores)
+Versão: Beta 1.0.1 — Admin UI Fix (LIBERADA PARA TESTADORES BETA CONTROLADOS)
 Data: 2026-05-15
-Status: Congelada e Disponível para Beta
+Status: CONGELADA E LIBERADA PARA TESTADORES
 URL: https://taro78chaves.lovable.app
 
 Foco da Auditoria (Beta 1.0.1):
