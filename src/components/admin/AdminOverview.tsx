@@ -173,49 +173,33 @@ const AdminOverview = () => {
       {/* User Breakdown */}
       <section className="space-y-6">
         <div className="flex items-center gap-4">
-          <h3 className="font-heading text-[11px] tracking-[0.3em] uppercase text-[#5B1F3D]/40 font-black">Assinantes & Usuários</h3>
-          <div className="h-px flex-1 bg-[#C8A66A]/20" />
+          <h3 className="font-heading text-xs tracking-[0.3em] uppercase text-[#5B1F3D] font-black">Assinantes & Usuários</h3>
+          <div className="h-[2px] flex-1 bg-[#C8A66A]/20" />
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <KPICard icon={<Users className="w-5 h-5" />} label="Total de Usuários" value={stats.totalUsers} />
-          <KPICard icon={<Crown className="w-5 h-5" />} label="Assinantes Ativos" value={stats.premiumUsers} accent="text-[#5B1F3D]" />
-          <KPICard icon={<Users className="w-5 h-5" />} label="Usuários Gratuitos" value={stats.freeUsers} />
-          <KPICard icon={<Gift className="w-5 h-5" />} label="Presenteados" value={stats.giftedUsers} accent="text-[#8B6A30]" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <KPICard icon={<Users className="w-6 h-6" />} label="Total de Usuários" value={stats.totalUsers} description="Base total cadastrada" />
+          <KPICard icon={<Crown className="w-6 h-6" />} label="Assinantes Ativos" value={stats.premiumUsers} accent="text-[#5B1F3D]" description="Acesso premium vigente" />
+          <KPICard icon={<Users className="w-6 h-6" />} label="Usuários Gratuitos" value={stats.freeUsers} description="Acesso limitado" />
+          <KPICard icon={<Gift className="w-6 h-6" />} label="Presenteados" value={stats.giftedUsers} accent="text-[#8B6A30]" description="Códigos ou admin grant" />
         </div>
       </section>
 
       {/* Engagement */}
       <section className="space-y-6">
         <div className="flex items-center gap-4">
-          <h3 className="font-heading text-[11px] tracking-[0.3em] uppercase text-[#5B1F3D]/40 font-black">Engajamento</h3>
-          <div className="h-px flex-1 bg-[#C8A66A]/20" />
+          <h3 className="font-heading text-xs tracking-[0.3em] uppercase text-[#5B1F3D] font-black">Engajamento</h3>
+          <div className="h-[2px] flex-1 bg-[#C8A66A]/20" />
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <KPICard icon={<Users className="w-5 h-5" />} label="Ativos (7d)" value={stats.activeWeek} accent="text-[#5B1F3D]" />
-          <KPICard icon={<BookOpen className="w-5 h-5" />} label="Lições Concluídas" value={stats.totalLessons} />
-          <KPICard icon={<Target className="w-5 h-5" />} label="Quizzes Feitos" value={stats.totalQuizzes} />
-          <KPICard icon={<BarChart3 className="w-5 h-5" />} label="Streaks Ativos" value={stats.activeStreaks} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <KPICard icon={<Users className="w-6 h-6" />} label="Ativos (7d)" value={stats.activeWeek} accent="text-[#5B1F3D]" description="Retenção semanal" />
+          <KPICard icon={<BookOpen className="w-6 h-6" />} label="Lições Concluídas" value={stats.totalLessons} description="Progresso total no curso" />
+          <KPICard icon={<Target className="w-6 h-6" />} label="Quizzes Feitos" value={stats.totalQuizzes} description="Engajamento com desafios" />
+          <KPICard icon={<BarChart3 className="w-6 h-6" />} label="Streaks Ativos" value={stats.activeStreaks} description="Frequência de estudo" />
         </div>
       </section>
     </div>
   );
 };
-
-const KPICard = ({ icon, label, value, accent = "text-[#5B1F3D]", badge }: { icon: React.ReactNode; label: string; value: string | number; accent?: string; badge?: string }) => (
-  <div className="p-6 rounded-[2rem] border-2 border-[#C8A66A]/20 bg-white shadow-xl hover:shadow-2xl transition-all duration-300 relative group overflow-hidden">
-    <div className="absolute -top-10 -right-10 w-24 h-24 bg-[#C8A66A]/5 rounded-full blur-2xl group-hover:bg-[#C8A66A]/10 transition-colors" />
-    {badge && (
-      <span className="absolute top-4 right-4 text-[9px] uppercase tracking-[0.3em] px-3 py-1 rounded-full bg-[#C8A66A] text-white font-black shadow-sm">{badge}</span>
-    )}
-    <div className="w-12 h-12 rounded-2xl bg-[#FAF5EF] border-2 border-[#C8A66A]/20 flex items-center justify-center text-[#5B1F3D] mb-4 group-hover:scale-110 transition-transform shadow-inner">
-      {icon}
-    </div>
-    <div className="space-y-1">
-      <p className={`text-3xl font-heading font-black tracking-tighter ${accent}`}>{value}</p>
-      <p className="text-[10px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D]/50 font-black leading-tight">{label}</p>
-    </div>
-  </div>
-);
 
 const PlaceholderCard = ({ label }: { label: string }) => (
   <div className="p-6 rounded-[2rem] border-2 border-dashed border-[#C8A66A]/30 bg-[#FAF5EF]/30 flex flex-col justify-center">
