@@ -166,12 +166,11 @@ const AdminGiftCodes = () => {
   if (loading) return <div className="p-8 text-center text-sm text-muted-foreground">Carregando...</div>;
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-start justify-between gap-4 flex-wrap">
-        <div>
-          <h2 className="font-heading text-lg text-foreground">Presentes & Códigos</h2>
-          <p className="text-sm text-muted-foreground">Crie, gerencie e audite acessos premium presenteados.</p>
-        </div>
+    <div className="space-y-8 pb-12">
+      <AdminSectionHeading 
+        title="Presentes & Códigos" 
+        subtitle="Gestão estratégica de acesso premium — criação, distribuição e auditoria de chaves de acesso." 
+      />
         <Button size="sm" variant="outline" onClick={() => setGrantOpen(true)}>
           <Crown className="w-4 h-4" /> Conceder direto
         </Button>
