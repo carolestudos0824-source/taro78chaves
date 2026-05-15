@@ -14,6 +14,7 @@
 declare global {
   interface Window {
     __IS_ANDROID_APP__?: boolean;
+    Capacitor?: any;
   }
 }
 
@@ -30,7 +31,7 @@ export const isAndroidApp = (): boolean => {
   }
 
   // 2. Global window flag (injected by Capacitor/WebView)
-  if (window.__IS_ANDROID_APP__ === true) return true;
+  if (window.__IS_ANDROID_APP__ === true || !!window.Capacitor) return true;
 
   // 3. Persisted flag (to maintain state after navigation)
   try {
