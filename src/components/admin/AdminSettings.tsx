@@ -357,11 +357,11 @@ const AdminSettings = () => {
   ).length;
 
   return (
-    <div className="space-y-10">
-      <header>
-        <h2 className="font-heading text-lg text-foreground">Configurações</h2>
-        <p className="text-sm text-muted-foreground">
-          Governança da plataforma — escopo da fase web atual.
+    <div className="space-y-12">
+      <header className="mb-8">
+        <h2 className="font-heading text-3xl md:text-4xl text-[#5B1F3D] font-black tracking-tight mb-2">Configurações</h2>
+        <p className="text-base font-body font-bold text-[#5B1F3D]/60">
+          Governança da plataforma — monitoramento e status da fase web atual.
         </p>
       </header>
 
