@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Users, Search, Crown, Gift, RotateCcw, Shield, ArrowUpDown, X, Mail, Calendar, Activity, Award, Flame, BookOpen, CheckCircle2, AlertTriangle } from "lucide-react";
+import { Users, Search, Crown, Gift, RotateCcw, Shield, ArrowUpDown, X, Mail, Calendar, Activity, Award, Flame, BookOpen, CheckCircle2, AlertTriangle, ArrowLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { toast } from "@/hooks/use-toast";
 import { logAdminAction, type AdminAction } from "@/lib/admin-audit";
 import { useRole } from "@/hooks/use-role";
+import { AdminSectionHeading } from "./AdminComponents";
 
 interface ProfileRow {
   user_id: string;
