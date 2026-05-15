@@ -161,7 +161,7 @@ const AdminSupport = () => {
               <button
                 key={t.id}
                 onClick={() => setSelected(t)}
-                className="w-full text-left p-3 rounded-lg border border-border/40 bg-card/40 hover:bg-card/60 transition-colors"
+                className="w-full text-left p-6 rounded-[2rem] border-2 border-[#C8A66A]/20 bg-white/60 hover:bg-white hover:border-[#C8A66A]/40 transition-all hover:shadow-lg group"
               >
                 <div className="flex items-center justify-between gap-3 mb-1.5">
                   <div className="flex items-center gap-2 flex-wrap">
