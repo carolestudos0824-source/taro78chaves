@@ -250,11 +250,11 @@ const AdminQuizzes = () => {
         </Button>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-        <StatCard label="Total" value={quizzes.length} />
-        <StatCard label="Publicados" value={quizzes.filter((q) => q.status === "published").length} tone="primary" />
-        <StatCard label="Validados" value={quizzes.filter((q) => q.queue === "validado").length} tone="emerald" />
-        <StatCard label="Acerto médio" value={avgAccuracy} suffix="%" tone="amber" />
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+        <QuizStatCard label="Total" value={quizzes.length} />
+        <QuizStatCard label="Publicados" value={quizzes.filter((q) => q.status === "published").length} tone="primary" />
+        <QuizStatCard label="Validados" value={quizzes.filter((q) => q.queue === "validado").length} tone="emerald" />
+        <QuizStatCard label="Acerto Médio" value={avgAccuracy} suffix="%" tone="amber" />
       </div>
 
       {/* Régua editorial — fila de fechamento */}
