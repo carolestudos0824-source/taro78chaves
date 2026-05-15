@@ -166,26 +166,26 @@ const AdminUsers = () => {
           />
         </div>
         <Select value={statusFilter} onValueChange={v => setStatusFilter(v as StatusFilter)}>
-          <SelectTrigger className="w-36 h-11 text-xs font-heading font-black tracking-widest uppercase border-[#C8A66A]/20 bg-white rounded-xl"><SelectValue /></SelectTrigger>
-          <SelectContent className="font-heading text-[10px] font-black tracking-widest uppercase">
-            <SelectItem value="all">Todos</SelectItem>
+          <SelectTrigger className="w-44 h-12 text-xs font-heading font-black tracking-widest uppercase border-2 border-[#C8A66A]/30 bg-white rounded-2xl shadow-sm"><SelectValue /></SelectTrigger>
+          <SelectContent className="font-heading text-[11px] font-black tracking-widest uppercase">
+            <SelectItem value="all">Todos os Status</SelectItem>
             <SelectItem value="free">Gratuitos</SelectItem>
             <SelectItem value="premium">Assinantes</SelectItem>
             <SelectItem value="gift">Presenteados</SelectItem>
             <SelectItem value="expired">Expirados</SelectItem>
-            <SelectItem value="admin">Admins</SelectItem>
+            <SelectItem value="admin">Administradores</SelectItem>
           </SelectContent>
         </Select>
         <Select value={sortBy} onValueChange={v => setSortBy(v as SortField)}>
-          <SelectTrigger className="w-48 h-11 text-xs font-heading font-black tracking-widest uppercase border-[#C8A66A]/20 bg-white rounded-xl">
-            <ArrowUpDown className="w-3.5 h-3.5 mr-2 text-[#C8A66A]" />
+          <SelectTrigger className="w-56 h-12 text-xs font-heading font-black tracking-widest uppercase border-2 border-[#C8A66A]/30 bg-white rounded-2xl shadow-sm">
+            <ArrowUpDown className="w-4 h-4 mr-2 text-[#C8A66A]" />
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="font-heading text-[10px] font-black tracking-widest uppercase">
-            <SelectItem value="created_at">Cadastro recente</SelectItem>
-            <SelectItem value="last_active">Última atividade</SelectItem>
-            <SelectItem value="xp">XP</SelectItem>
-            <SelectItem value="lessons">Lições concluídas</SelectItem>
+          <SelectContent className="font-heading text-[11px] font-black tracking-widest uppercase">
+            <SelectItem value="created_at">Cadastro Recente</SelectItem>
+            <SelectItem value="last_active">Última Atividade</SelectItem>
+            <SelectItem value="xp">Maior XP</SelectItem>
+            <SelectItem value="lessons">Mais Lições</SelectItem>
           </SelectContent>
         </Select>
       </div>
