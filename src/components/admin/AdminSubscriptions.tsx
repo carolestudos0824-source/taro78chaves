@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { AdminSectionHeading, KPICard as AdminKPICard } from "./AdminComponents";
+import { AdminSectionHeading, KPICard as AdminKPICard, AdminBadge, AdminTable, AdminTableHeader, AdminTableHead, AdminTableRow, AdminTableCell } from "./AdminComponents";
 
 /* ═══════════ TYPES ═══════════ */
 
