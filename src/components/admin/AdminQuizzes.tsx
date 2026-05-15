@@ -241,11 +241,11 @@ const AdminQuizzes = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-4 flex-wrap">
-        <div>
-          <h2 className="font-heading text-lg text-foreground">Quizzes</h2>
-          <p className="text-sm text-muted-foreground">Editor pedagógico — perguntas, respostas e métricas reais.</p>
-        </div>
-        <Button size="sm" className="gap-2" onClick={() => setCreateOpen(true)}>
+        <AdminSectionHeading 
+          title="Quizzes & Desafios" 
+          subtitle="Editor pedagógico — criação e monitoramento de questões, recompensas de XP e desempenho real." 
+        />
+        <Button size="sm" className="gap-2 mt-4" onClick={() => setCreateOpen(true)}>
           <Plus className="w-4 h-4" /> Novo Quiz
         </Button>
       </div>
