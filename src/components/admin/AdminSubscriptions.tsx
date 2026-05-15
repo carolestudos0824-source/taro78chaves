@@ -443,15 +443,7 @@ const AdminSubscriptions = () => {
 
 /* ═══════════ SUB-COMPONENTS ═══════════ */
 
-const KPICard = ({ icon, label, value, accent = "text-foreground" }: { icon: React.ReactNode; label: string; value: string | number; accent?: string }) => (
-  <div className="p-4 rounded-xl border border-border/50 bg-card/50">
-    <div className="flex items-center justify-between mb-2">
-      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">{icon}</div>
-    </div>
-    <p className={`text-xl font-heading ${accent}`}>{value}</p>
-    <p className="text-[10px] text-muted-foreground mt-0.5">{label}</p>
-  </div>
-);
+const KPICard = AdminKPICard;
 
 const MiniStat = ({ label, value, color }: { label: string; value: number; color: string }) => (
   <div className="p-2.5 rounded-lg border border-border/30 bg-card/30 text-center">
