@@ -65,10 +65,10 @@ const AdminPlayStore = () => {
                   : <Circle className="w-6 h-6 text-[#C8A66A]/40 group-hover:text-[#C8A66A]" />}
               </button>
               <div className="flex-1 min-w-0">
-                <p className={`text-sm font-medium ${isDone ? "line-through text-muted-foreground" : "text-foreground"}`}>
+                <p className={`text-base font-heading font-black ${isDone ? "line-through text-[#5B1F3D]/40" : "text-[#5B1F3D]"}`}>
                   {item.title}
                 </p>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{item.detail}</p>
+                <p className="text-sm font-body font-bold text-[#5B1F3D]/60 mt-1 leading-relaxed">{item.detail}</p>
                 {item.link && (
                   <a
                     href={item.link.href}
