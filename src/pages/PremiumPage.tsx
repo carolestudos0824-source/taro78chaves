@@ -7,7 +7,7 @@ import { usePremium } from "@/hooks/use-premium";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { trackEvent } from "@/lib/analytics";
-import { isWebCheckoutAllowed } from "@/lib/platform";
+import { isWebCheckoutAllowed, STRIPE_BLOCKED_ANDROID_MSG } from "@/lib/platform";
 
 const PREMIUM_BENEFITS = [
   { icon: "jornada", title: "78 arcanos guiados", desc: "Abra todas as portas do deck completo." },
@@ -55,7 +55,7 @@ const PremiumPage = () => {
     }
 
     if (!webCheckoutAllowed) {
-      toast.info("Assinaturas pelo app Android estão em desenvolvimento. Usuários com acesso ativo podem entrar normalmente.");
+      toast.info(STRIPE_BLOCKED_ANDROID_MSG);
       return;
     }
 
@@ -201,7 +201,7 @@ const PremiumPage = () => {
         <div className="bg-white border-2 border-[#DCCFC2] p-6 rounded-3xl text-center space-y-2">
           <h2 className="font-heading text-base font-black text-[#5B1F3D]">Acesso Premium</h2>
           <p className="text-xs font-body font-bold text-[#5B1F3D]/70 leading-relaxed">
-            Assinaturas pelo app Android estão em desenvolvimento. Usuários com acesso ativo podem entrar normalmente.
+            {STRIPE_BLOCKED_ANDROID_MSG}
           </p>
         </div>
         )}
