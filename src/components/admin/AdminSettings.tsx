@@ -226,28 +226,28 @@ const ItemRow = ({ item, onClick }: { item: Item; onClick: () => void }) => {
   return (
     <button
       onClick={onClick}
-      className={`w-full flex items-center gap-3 p-3 rounded-lg border border-border/40 bg-card/30 hover:bg-card/60 hover:border-border/60 transition-all text-left group ${
-        muted ? "opacity-70 hover:opacity-100" : ""
+      className={`w-full flex items-center gap-4 p-4 rounded-2xl border-2 border-[#C8A66A]/10 bg-white hover:bg-[#FAF5EF] hover:border-[#C8A66A]/40 hover:shadow-md transition-all text-left group ${
+        muted ? "opacity-60 hover:opacity-100" : ""
       }`}
     >
       <div
-        className={`w-9 h-9 rounded-md flex items-center justify-center shrink-0 ${
-          active ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
+        className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border-2 ${
+          active ? "bg-[#5B1F3D] text-white border-[#C8A66A]/40" : "bg-[#FAF5EF] text-[#C8A66A] border-[#C8A66A]/20"
         }`}
       >
-        <Icon className="w-4 h-4" />
+        <Icon className="w-5 h-5" />
       </div>
       <div className="min-w-0 flex-1">
-        <p className="text-xs font-medium text-foreground">{item.name}</p>
-        <p className="text-[11px] text-muted-foreground truncate">{item.detail}</p>
+        <p className="text-sm font-heading font-black text-[#5B1F3D]">{item.name}</p>
+        <p className="text-xs font-body font-bold text-[#5B1F3D]/50 truncate">{item.detail}</p>
       </div>
       <span
-        className={`flex items-center gap-1.5 text-[10px] font-heading tracking-wide px-2 py-0.5 rounded-full shrink-0 border ${meta.cls}`}
+        className={`flex items-center gap-1.5 text-[10px] font-heading font-black tracking-widest uppercase px-3 py-1.5 rounded-full shrink-0 border-2 shadow-sm ${meta.cls}`}
       >
-        <StatusIcon className="w-3 h-3" />
+        <StatusIcon className="w-3.5 h-3.5" />
         {meta.label}
       </span>
-      <ChevronRight className="w-4 h-4 text-muted-foreground/40 group-hover:text-muted-foreground transition-colors shrink-0" />
+      <ChevronRight className="w-5 h-5 text-[#C8A66A]/40 group-hover:text-[#5B1F3D] transition-colors shrink-0" />
     </button>
   );
 };
