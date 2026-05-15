@@ -207,13 +207,10 @@ const AdminSubscriptions = () => {
 
   return (
     <div className="space-y-12">
-      <div className="relative">
-        <div className="absolute -left-4 top-0 bottom-0 w-1 bg-[#C8A66A] rounded-full" />
-        <h2 className="font-heading text-2xl md:text-3xl text-[#5B1F3D] font-black tracking-tight pl-4">Receita & Assinaturas</h2>
-        <p className="text-sm font-body font-bold italic text-[#5B1F3D]/60 pl-4 mt-1">
-          Painel comercial — receita estimada (cálculo interno) e receita real (Stripe).
-        </p>
-      </div>
+      <AdminSectionHeading 
+        title="Receita & Assinaturas" 
+        subtitle="Painel comercial completo — análise de receita estimada, real e ciclo de vida do cliente." 
+      />
 
       {/* ═══════════ RECEITA ESTIMADA ═══════════ */}
       <section className="space-y-6">
