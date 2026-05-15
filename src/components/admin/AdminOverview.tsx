@@ -123,45 +123,48 @@ const AdminOverview = () => {
       {/* Revenue — Real (Stripe) */}
       <section className="space-y-6">
         <div className="flex items-center gap-4">
-          <h3 className="font-heading text-[11px] tracking-[0.3em] uppercase text-[#5B1F3D]/40 font-black">Receita real (Stripe)</h3>
-          <div className="h-px flex-1 bg-[#C8A66A]/20" />
-          <span className={`text-[9px] uppercase tracking-[0.2em] px-3 py-1 rounded-full font-black border ${
+          <h3 className="font-heading text-xs tracking-[0.3em] uppercase text-[#5B1F3D] font-black">Receita real (Stripe)</h3>
+          <div className="h-[2px] flex-1 bg-[#C8A66A]/30" />
+          <span className={`text-[10px] uppercase tracking-[0.2em] px-4 py-1.5 rounded-full font-black border-2 ${
             stripeLoading ? "bg-white/50 text-[#5B1F3D]/40 border-[#C8A66A]/10" : 
             stripeError ? "bg-red-50 text-red-600 border-red-200" : 
-            "bg-[#5B1F3D] text-white border-[#C8A66A] shadow-sm animate-pulse"
+            "bg-[#5B1F3D] text-white border-[#C8A66A] shadow-md animate-pulse"
           }`}>
-            {stripeLoading ? "carregando…" : stripeError ? "erro" : "ao vivo"}
+            {stripeLoading ? "CARREGANDO…" : stripeError ? "ERRO" : "AO VIVO"}
           </span>
         </div>
 
         {stripeError ? (
-          <div className="p-6 rounded-[2rem] border-2 border-dashed border-red-200 bg-red-50/50 text-sm font-body font-bold text-red-700 text-center">
+          <div className="p-8 rounded-[2rem] border-2 border-dashed border-red-200 bg-red-50/50 text-sm font-body font-bold text-red-700 text-center shadow-inner">
             Não foi possível carregar dados do Stripe: {stripeError}
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <KPICard
-              icon={<Crown className="w-5 h-5" />}
+              icon={<Crown className="w-6 h-6" />}
               label="Assinaturas ativas (Stripe)"
               value={stripeLoading ? "…" : stripeMetrics?.activeSubscriptions ?? 0}
               accent="text-[#5B1F3D]"
+              description="Contagem oficial do gateway"
             />
             <KPICard
-              icon={<DollarSign className="w-5 h-5" />}
+              icon={<DollarSign className="w-6 h-6" />}
               label="MRR real"
               value={stripeLoading ? "…" : `R$ ${(stripeMetrics?.mrr ?? 0).toFixed(2)}`}
               accent="text-[#5B1F3D]"
+              description="Mensalidade recorrente confirmada"
             />
             <KPICard
-              icon={<TrendingUp className="w-5 h-5" />}
+              icon={<TrendingUp className="w-6 h-6" />}
               label="Receita (últ. 100 cobranças)"
               value={stripeLoading ? "…" : `R$ ${(stripeMetrics?.totalRevenue ?? 0).toFixed(2)}`}
               accent="text-[#5B1F3D]"
+              description="Volume de vendas bruto"
             />
             <PlaceholderCard label="Churn real (em desenvolvimento)" />
           </div>
         )}
-        <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/50 bg-white/40 p-4 rounded-2xl border border-[#C8A66A]/10">
+        <p className="text-xs font-body font-bold text-[#5B1F3D]/60 bg-white/60 p-5 rounded-[2rem] border border-[#C8A66A]/20 shadow-sm leading-relaxed">
           Dados consultados diretamente da API do Stripe. Receita considera as últimas 100 cobranças bem-sucedidas, líquido de reembolsos.
         </p>
       </section>
