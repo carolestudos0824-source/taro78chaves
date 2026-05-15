@@ -215,24 +215,24 @@ const AdminSubscriptions = () => {
       {/* ═══════════ RECEITA ESTIMADA ═══════════ */}
       <section className="space-y-6">
         <div className="flex items-center gap-4">
-          <h3 className="font-heading text-[11px] tracking-[0.3em] uppercase text-[#5B1F3D]/40 font-black">
+          <h3 className="font-heading text-xs tracking-[0.3em] uppercase text-[#5B1F3D] font-black">
             Receita estimada
           </h3>
-          <div className="h-px flex-1 bg-[#C8A66A]/20" />
-          <span className="text-[9px] font-heading font-black tracking-[0.2em] uppercase px-3 py-1 rounded-full bg-[#C8A66A]/10 text-[#8B6A30] border border-[#C8A66A]/20">
-            Cálculo interno
+          <div className="h-[2px] flex-1 bg-[#C8A66A]/30" />
+          <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase px-4 py-1.5 rounded-full bg-[#C8A66A]/20 text-[#8B6A30] border-2 border-[#C8A66A]/40 shadow-sm">
+            CÁLCULO INTERNO
           </span>
         </div>
         
-        <p className="text-xs font-body font-medium text-[#5B1F3D]/70 leading-relaxed bg-white/40 p-4 rounded-2xl border border-[#C8A66A]/10">
+        <p className="text-sm font-body font-bold text-[#5B1F3D]/80 leading-relaxed bg-white/60 p-5 rounded-[2.5rem] border border-[#C8A66A]/20 shadow-sm">
           Projeção baseada em assinantes ativos × preço de catálogo. <strong className="text-[#5B1F3D] font-black">Não representa faturamento confirmado.</strong>
         </p>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <KPICard icon={<DollarSign className="w-5 h-5" />} label="MRR estimado" value={`R$ ${stats.mrrEstimated.toFixed(2)}`} accent="text-[#8B6A30]" />
-          <KPICard icon={<Repeat className="w-5 h-5" />} label="ARR estimada" value={`R$ ${stats.arrEstimated.toFixed(0)}`} accent="text-[#8B6A30]" />
-          <KPICard icon={<Crown className="w-5 h-5" />} label="Assinaturas pagantes" value={stats.totalPaying} accent="text-[#5B1F3D]" />
-          <KPICard icon={<TrendingUp className="w-5 h-5" />} label="Conversão Premium" value={`${stats.conversionRate}%`} accent="text-[#5B1F3D]" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <KPICard icon={<DollarSign className="w-6 h-6" />} label="MRR estimado" value={`R$ ${stats.mrrEstimated.toFixed(2)}`} accent="text-[#8B6A30]" description="Baseado no plano mensal" />
+          <KPICard icon={<Repeat className="w-6 h-6" />} label="ARR estimada" value={`R$ ${stats.arrEstimated.toFixed(0)}`} accent="text-[#8B6A30]" description="Projeção para 12 meses" />
+          <KPICard icon={<Crown className="w-6 h-6" />} label="Assinaturas pagantes" value={stats.totalPaying} accent="text-[#5B1F3D]" description="Exclui presentes e admin" />
+          <KPICard icon={<TrendingUp className="w-6 h-6" />} label="Conversão Premium" value={`${stats.conversionRate}%`} accent="text-[#5B1F3D]" description="Fatia de usuários pagantes" />
         </div>
       </section>
 
