@@ -124,10 +124,10 @@ const RANK_LABEL: Record<EditorialRank, string> = {
 };
 
 const RANK_TONE: Record<EditorialRank, string> = {
-  validado: "bg-primary/10/10 text-primary dark:text-primary border-primary/30/20",
-  quase_pronto: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
-  incompleto: "bg-secondary/10/10 text-secondary dark:text-secondary border-secondary/30/20",
-  critico: "bg-destructive/10 text-destructive border-destructive/20",
+  validado: "border-emerald-200 text-emerald-700",
+  quase_pronto: "border-amber-200 text-amber-700",
+  incompleto: "border-secondary/30 text-secondary",
+  critico: "border-red-200 text-red-700",
 };
 
 const AdminModules = () => {
