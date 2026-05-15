@@ -103,10 +103,10 @@ const AdminSupport = () => {
 
   return (
     <div className="space-y-6 pb-8">
-      <div>
-        <h2 className="font-heading text-lg text-foreground">Suporte</h2>
-        <p className="text-sm text-muted-foreground">Triagem de tickets vindos do feedback dos usuários.</p>
-      </div>
+      <AdminSectionHeading 
+        title="Suporte & Feedback" 
+        subtitle="Triagem estratégica de tickets e orientações vindas diretamente dos usuários e testadores beta." 
+      />
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-3">
