@@ -1064,4 +1064,30 @@ const CreateArcanoDialog = ({
   );
 };
 
+const ArcanoStatCard = ({
+  label,
+  value,
+  tone = "default",
+}: {
+  label: string;
+  value: number;
+  tone?: "default" | "primary" | "emerald" | "amber" | "destructive" | "blue";
+}) => {
+  const tones = {
+    default: "border-[#C8A66A]/20 text-[#5B1F3D]",
+    primary: "border-[#5B1F3D]/30 bg-[#5B1F3D]/5 text-[#5B1F3D]",
+    emerald: "border-emerald-200 bg-emerald-50 text-emerald-700",
+    amber: "border-amber-200 bg-amber-50 text-amber-700",
+    destructive: "border-red-200 bg-red-50 text-red-700",
+    blue: "border-blue-200 bg-blue-50 text-blue-700",
+  };
+
+  return (
+    <div className={`p-4 rounded-2xl border-2 shadow-sm text-center transition-all hover:scale-105 bg-white ${tones[tone]}`}>
+      <p className="text-[9px] font-heading font-black tracking-widest uppercase opacity-70 mb-1 truncate">{label}</p>
+      <p className="text-2xl font-heading font-black tracking-tighter">{value}</p>
+    </div>
+  );
+};
+
 export default AdminArcanos;
