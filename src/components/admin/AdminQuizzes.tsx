@@ -1071,4 +1071,33 @@ const CreateQuizDialog = ({
   );
 };
 
+const QuizStatCard = ({
+  label,
+  value,
+  suffix = "",
+  tone = "default",
+}: {
+  label: string;
+  value: number;
+  suffix?: string;
+  tone?: "default" | "primary" | "emerald" | "amber";
+}) => {
+  const tones = {
+    default: "border-[#C8A66A]/20 text-[#5B1F3D]",
+    primary: "border-[#5B1F3D]/30 bg-[#5B1F3D]/5 text-[#5B1F3D]",
+    emerald: "border-emerald-200 bg-emerald-50 text-emerald-700",
+    amber: "border-amber-200 bg-amber-50 text-amber-700",
+  };
+
+  return (
+    <div className={`p-6 rounded-[2rem] border-2 shadow-lg text-center transition-all hover:scale-105 bg-white ${tones[tone]}`}>
+      <p className="text-[10px] font-heading font-black tracking-[0.2em] uppercase opacity-70 mb-1">{label}</p>
+      <p className="text-3xl font-heading font-black tracking-tighter">
+        {value}
+        {suffix && <span className="text-lg ml-0.5 opacity-60">{suffix}</span>}
+      </p>
+    </div>
+  );
+};
+
 export default AdminQuizzes;
