@@ -408,11 +408,12 @@ const AdminSettings = () => {
 
       {/* ═══ CAMADA 2: ITENS POR ÁREA ═══ */}
       <section className="space-y-6">
-        <div className="flex items-center gap-2">
-          <Wrench className="w-3.5 h-3.5 text-muted-foreground" />
-          <h3 className="font-heading text-xs tracking-[0.2em] uppercase text-muted-foreground/70">
+        <div className="flex items-center gap-4 mb-8">
+          <Wrench className="w-5 h-5 text-[#C8A66A]" />
+          <h3 className="font-heading text-xs tracking-[0.3em] uppercase text-[#5B1F3D] font-black">
             Itens por área
           </h3>
+          <div className="h-[2px] flex-1 bg-[#C8A66A]/20" />
         </div>
 
         {SECTIONS.map((section) => (
