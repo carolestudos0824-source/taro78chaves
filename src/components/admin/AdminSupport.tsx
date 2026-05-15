@@ -165,11 +165,11 @@ const AdminSupport = () => {
               >
                 <div className="flex items-center justify-between gap-3 mb-1.5">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className={`text-[10px] font-heading tracking-wide px-2 py-0.5 rounded-full inline-flex items-center gap-1 ${meta.cls}`}>
+                    <span className={`text-[10px] font-heading font-black tracking-widest uppercase px-3 py-1.5 rounded-full inline-flex items-center gap-1.5 border-2 shadow-sm ${meta.cls}`}>
                       {meta.icon} {meta.label}
                     </span>
-                    <span className="text-[10px] font-heading tracking-wide px-2 py-0.5 rounded-full bg-primary/10 text-primary uppercase">{t.type}</span>
-                    {t.rating != null && <span className="text-[10px] text-muted-foreground">★ {t.rating}</span>}
+                    <span className="text-[10px] font-heading font-black tracking-widest uppercase px-3 py-1.5 rounded-full bg-[#5B1F3D] text-white border-2 border-[#C8A66A]/30 shadow-sm">{t.type}</span>
+                    {t.rating != null && <span className="text-xs font-body font-black text-[#8B6A30]">★ {t.rating}</span>}
                   </div>
                   <span className="text-[10px] text-muted-foreground shrink-0">{new Date(t.created_at).toLocaleDateString("pt-BR")}</span>
                 </div>
