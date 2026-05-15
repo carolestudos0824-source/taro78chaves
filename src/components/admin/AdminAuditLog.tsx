@@ -127,12 +127,12 @@ const AdminAuditLog = () => {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-border/30 text-xs text-muted-foreground">
-                  <th className="text-left p-3 font-medium">Data</th>
-                  <th className="text-left p-3 font-medium">Admin</th>
-                  <th className="text-left p-3 font-medium">Ação</th>
-                  <th className="text-left p-3 font-medium">Alvo</th>
-                  <th className="text-left p-3 font-medium">Detalhes</th>
+                <tr className="border-b-2 border-[#C8A66A]/20 bg-[#FAF5EF]/60">
+                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Data</th>
+                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Admin</th>
+                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Ação</th>
+                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Alvo</th>
+                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Detalhes</th>
                 </tr>
               </thead>
               <tbody>
