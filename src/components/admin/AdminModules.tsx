@@ -351,12 +351,11 @@ const AdminModules = () => {
         </Button>
       </div>
 
-      {/* Régua editorial */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
         {(["validado", "quase_pronto", "incompleto", "critico"] as EditorialRank[]).map((r) => (
-          <div key={r} className={`p-3 rounded-xl border ${RANK_TONE[r]}`}>
-            <div className="text-[10px] uppercase tracking-wider opacity-80">{RANK_LABEL[r]}</div>
-            <div className="text-2xl font-heading mt-1">{ranks[r]}</div>
+          <div key={r} className={`p-6 rounded-[2rem] border-2 shadow-lg transition-all hover:scale-105 bg-white ${RANK_TONE[r]}`}>
+            <div className="text-[10px] font-heading font-black tracking-widest uppercase opacity-70 mb-1">{RANK_LABEL[r]}</div>
+            <div className="text-3xl font-heading font-black tracking-tighter">{ranks[r]}</div>
           </div>
         ))}
       </div>
