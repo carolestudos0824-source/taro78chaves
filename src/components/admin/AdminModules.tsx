@@ -49,10 +49,10 @@ const STATUS_LABEL: Record<ModuleStatus, string> = {
 };
 
 const STATUS_TONE: Record<ModuleStatus, string> = {
-  empty: "bg-muted/40 text-muted-foreground border-border/50",
-  partial: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
-  draft: "bg-secondary/10/10 text-secondary dark:text-secondary border-secondary/30/20",
-  published: "bg-primary/10 text-primary border-primary/20",
+  empty: "border-muted-foreground/20 text-muted-foreground",
+  partial: "border-amber-200 bg-amber-50 text-amber-700",
+  draft: "border-secondary/20 bg-secondary/5 text-secondary",
+  published: "border-[#C8A66A]/40 bg-[#5B1F3D] text-white",
 };
 
 const StatusIcon = ({ status }: { status: ModuleStatus }) => {
