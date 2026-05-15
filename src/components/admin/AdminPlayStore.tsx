@@ -54,7 +54,7 @@ const AdminPlayStore = () => {
         subtitle={`Checklist estratégico para publicação na Google Play Store. ${completed}/${total} itens concluídos.`} 
       />
 
-      <div className="rounded-xl border border-border/50 bg-card/40 divide-y divide-border/40">
+      <div className="rounded-[2.5rem] border-2 border-[#C8A66A]/20 bg-white/60 shadow-xl overflow-hidden backdrop-blur-md">
         {ITEMS.map((item) => {
           const isDone = !!done[item.id];
           return (
