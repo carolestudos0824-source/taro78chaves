@@ -1,24 +1,36 @@
-# Checklist de Envio - Google Play Store
+# Checklist Google Play Store - Tarô 78 Chaves
 
-## BLOCO A: Play Console (Configuração)
-- [ ] **App Access:** "All functionality is available without special access". Caso o revisor precise de login, fornecer e-mail e senha de teste.
-- [ ] **Data Safety:**
-  - Declarar: E-mail (Identificação), Progresso (App Functionality), Eventos de Uso (Analytics).
-- [ ] **Account Deletion:**
-  - Informar link web: `https://taro78chaves.lovable.app/excluir-conta`
-  - Informar que a opção está disponível In-App em: Perfil > Excluir conta.
-- [ ] **Content Rating:** Preencher o questionário (Classificação indicativa livre/educacional).
+## BLOCO 1: Status de Prontidão
+- **PWA BETA 1.0.1 CONTINUA APROVADO:** SIM
+- **ANDROID CODE-READY:** SIM
+- **TARGET SDK 35+ CONFIGURADO:** SIM
+- **STRIPE BLOQUEADO NO ANDROID:** SIM
+- **AAB REAL GERADO E ASSINADO:** NÃO
+- **APP INSTALADO EM DISPOSITIVO REAL:** NÃO
+- **APP INSTALADO VIA PLAY INTERNAL TESTING:** NÃO
+- **PLAY CONSOLE PREENCHIDO:** NÃO
+- **STORE LISTING COM ASSETS FINAIS:** NÃO
+- **PRE-LAUNCH REPORT SEM ERRO CRÍTICO:** NÃO
+
+## BLOCO 2: Validação Pós-Instalação (Dispositivo Real)
+- [ ] **Login:** Funciona via e-mail/senha ou social.
+- [ ] **Home do Aluno (/app):** Renderiza corretamente.
+- [ ] **Conteúdo:** Lição do Louco carrega e contabiliza progresso.
+- [ ] **Progresso:** Salva corretamente no Supabase.
+- [ ] **Tiragens/Combinações:** Funcionam sem crashes.
+- [ ] **Botão Voltar:** Navegação nativa respeitada.
+- [ ] **Checkout Stripe:** Botão de Upgrade deve exibir aviso: "Pagamentos via Android em breve. Use a versão web para assinar agora."
+
+## BLOCO 3: Formulários Play Console
+- [ ] **App Access:** "All functionality is available without special access".
+- [ ] **Data Safety:** Declarar coleta de E-mail, Progresso e Analytics.
+- [ ] **Account Deletion:** Link `https://taro78chaves.lovable.app/excluir-conta`.
 - [ ] **Privacy Policy:** URL `https://taro78chaves.lovable.app/privacidade`.
+- [ ] **Target Audience:** 13+ ou 18+ (Conforme conteúdo).
 
-## BLOCO B: Store Listing (Marketing)
-- [ ] **Descrição Curta:** "Aprenda Tarô de forma prática e profunda com a jornada dos 78 arcanos."
-- [ ] **Descrição Completa:** "O Tarô 78 Chaves é seu guia místico para o domínio dos arcanos. Através do método Arcano Vivo, você percorre uma trilha progressiva de aprendizado, com quizzes, práticas rituais e aprofundamento simbólico. Ideal para iniciantes e buscadores."
-- [ ] **Ícone:** 512x512px (PNG/WebP).
-- [ ] **Feature Graphic:** 1024x500px.
-- [ ] **Screenshots:** No mínimo 4 capturas de tela do celular.
+## BLOCO 4: Assets de Loja
+- [ ] Ícone (512x512).
+- [ ] Feature Graphic (1024x500).
+- [ ] Screenshots Celular (mínimo 4).
+- [ ] Screenshots Tablet (Opcional, mas recomendado).
 
-## BLOCO C: Validação Técnica (Pós-Build)
-- [ ] **Target SDK:** 36 (Confirmado em variables.gradle).
-- [ ] **Billing Policy:** Confirmar que Stripe NÃO abre no Android (Botão de Upgrade deve mostrar mensagem informativa).
-- [ ] **Back Button:** O botão voltar do Android deve fechar modais ou navegar para a página anterior.
-- [ ] **Pre-launch Report:** Verificar se o Google gerou erros críticos de acessibilidade ou crashes em modelos específicos.
