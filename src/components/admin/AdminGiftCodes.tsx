@@ -167,12 +167,13 @@ const AdminGiftCodes = () => {
 
   return (
     <div className="space-y-8 pb-12">
-      <AdminSectionHeading 
-        title="Presentes & Códigos" 
-        subtitle="Gestão estratégica de acesso premium — criação, distribuição e auditoria de chaves de acesso." 
-      />
-        <Button size="sm" variant="outline" onClick={() => setGrantOpen(true)}>
-          <Crown className="w-4 h-4" /> Conceder direto
+      <div className="flex items-start justify-between gap-4 flex-wrap">
+        <AdminSectionHeading 
+          title="Presentes & Códigos" 
+          subtitle="Gestão estratégica de acesso premium — criação, distribuição e auditoria de chaves de acesso." 
+        />
+        <Button size="sm" variant="outline" className="mt-4 border-[#C8A66A]/40 text-[#5B1F3D] font-bold" onClick={() => setGrantOpen(true)}>
+          <Crown className="w-4 h-4 mr-1.5" /> Conceder direto
         </Button>
       </div>
 
