@@ -406,13 +406,13 @@ const AdminArcanos = () => {
         </div>
       )}
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2">
-        <StatCard label="Total" value={stats.total} />
-        <StatCard label="Publicados" value={stats.published} tone="primary" />
-        <StatCard label="Validados" value={stats.validated} tone="emerald" />
-        <StatCard label="Pub. s/ validação" value={stats.publishedUnvalidated} tone="amber" />
-        <StatCard label="Críticos" value={stats.critical} tone="destructive" />
-        <StatCard label="Quase prontos" value={stats.almost} tone="blue" />
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
+        <ArcanoStatCard label="Total" value={stats.total} />
+        <ArcanoStatCard label="Publicados" value={stats.published} tone="primary" />
+        <ArcanoStatCard label="Validados" value={stats.validated} tone="emerald" />
+        <ArcanoStatCard label="Pub. s/ Validação" value={stats.publishedUnvalidated} tone="amber" />
+        <ArcanoStatCard label="Críticos" value={stats.critical} tone="destructive" />
+        <ArcanoStatCard label="Quase Prontos" value={stats.almost} tone="blue" />
       </div>
 
       <Tabs
