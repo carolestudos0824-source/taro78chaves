@@ -137,21 +137,21 @@ const AdminAuditLog = () => {
               </thead>
               <tbody>
                 {filtered.map(r => (
-                  <tr key={r.id} className="border-b border-border/10 last:border-0 hover:bg-muted/20">
-                    <td className="p-3 text-xs text-muted-foreground whitespace-nowrap">
+                  <tr key={r.id} className="border-b border-[#C8A66A]/10 last:border-0 hover:bg-[#FAF5EF]/40 transition-colors">
+                    <td className="p-4 text-xs font-body font-bold text-[#5B1F3D]/60 whitespace-nowrap">
                       {new Date(r.created_at).toLocaleString("pt-BR")}
                     </td>
-                    <td className="p-3 text-foreground">{r.admin_email ?? r.admin_id.slice(0, 8)}</td>
-                    <td className="p-3">
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-primary/10 text-primary text-xs">
+                    <td className="p-4 text-sm font-heading font-black text-[#5B1F3D]">{r.admin_email ?? r.admin_id.slice(0, 8)}</td>
+                    <td className="p-4">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#5B1F3D] text-white text-[10px] font-heading font-black tracking-widest uppercase shadow-sm border border-[#C8A66A]/30">
                         {ACTION_LABELS[r.action as AdminAction] ?? r.action}
                       </span>
                     </td>
-                    <td className="p-3 text-foreground">
-                      <span className="text-muted-foreground text-xs">{r.target_type}</span>
-                      {r.target_label && <div>{r.target_label}</div>}
+                    <td className="p-4">
+                      <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#8B6A30] block mb-1">{r.target_type}</span>
+                      {r.target_label && <div className="text-sm font-body font-bold text-[#5B1F3D]">{r.target_label}</div>}
                     </td>
-                    <td className="p-3 text-xs text-muted-foreground max-w-xs truncate">
+                    <td className="p-4 text-xs font-body font-bold text-[#5B1F3D]/70 max-w-xs truncate">
                       {Object.keys(r.details ?? {}).length > 0 ? JSON.stringify(r.details) : "—"}
                     </td>
                   </tr>
