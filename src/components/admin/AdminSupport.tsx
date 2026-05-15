@@ -109,10 +109,10 @@ const AdminSupport = () => {
       />
 
       {/* Stats */}
-      <div className="grid grid-cols-3 gap-3">
-        <StatCard label="Abertos" value={counts.aberto} icon={<Inbox className="w-4 h-4" />} accent="amber" />
-        <StatCard label="Em andamento" value={counts.em_andamento} icon={<Clock className="w-4 h-4" />} accent="blue" />
-        <StatCard label="Resolvidos" value={counts.resolvido} icon={<CheckCircle2 className="w-4 h-4" />} accent="emerald" />
+      <div className="grid grid-cols-3 gap-6">
+        <SupportStatCard label="Abertos" value={counts.aberto} icon={<Inbox className="w-5 h-5" />} accent="amber" />
+        <SupportStatCard label="Em andamento" value={counts.em_andamento} icon={<Clock className="w-5 h-5" />} accent="blue" />
+        <SupportStatCard label="Resolvidos" value={counts.resolvido} icon={<CheckCircle2 className="w-5 h-5" />} accent="emerald" />
       </div>
 
       {/* Filters */}
