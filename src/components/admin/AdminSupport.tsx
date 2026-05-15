@@ -173,7 +173,7 @@ const AdminSupport = () => {
                   </div>
                   <span className="text-[10px] text-muted-foreground shrink-0">{new Date(t.created_at).toLocaleDateString("pt-BR")}</span>
                 </div>
-                <p className="text-sm text-foreground line-clamp-2">{t.message}</p>
+                <p className="text-base font-body font-bold text-[#5B1F3D] line-clamp-2 leading-relaxed">{t.message}</p>
                 <div className="flex items-center gap-3 mt-1.5 text-[10px] text-muted-foreground">
                   <span className="flex items-center gap-1"><UserIcon className="w-3 h-3" />{profiles[t.user_id] || t.user_id.slice(0, 8)}</span>
                   {t.page && <span className="flex items-center gap-1"><ExternalLink className="w-3 h-3" />{t.page}</span>}
