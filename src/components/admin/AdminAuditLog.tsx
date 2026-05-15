@@ -114,53 +114,51 @@ const AdminAuditLog = () => {
         </Select>
       </div>
 
-      <div className="rounded-[2.5rem] border-2 border-[#C8A66A]/20 bg-white/60 shadow-xl overflow-hidden backdrop-blur-md">
+      <AdminTable>
         {loading ? (
-          <div className="p-12 flex items-center justify-center text-muted-foreground">
-            <Loader2 className="w-5 h-5 animate-spin mr-2" /> Carregando registros…
+          <div className="p-12 flex items-center justify-center text-[#5B1F3D]">
+            <Loader2 className="w-6 h-6 animate-spin mr-3" /> <span className="font-heading font-black tracking-widest uppercase text-xs">Carregando registros…</span>
           </div>
         ) : filtered.length === 0 ? (
-          <div className="p-12 text-center text-sm text-muted-foreground">
+          <div className="p-12 text-center text-sm font-body font-bold text-[#5B1F3D]/50 italic">
             Nenhum registro encontrado para os filtros atuais.
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b-2 border-[#C8A66A]/20 bg-[#FAF5EF]/60">
-                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Data</th>
-                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Admin</th>
-                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Ação</th>
-                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Alvo</th>
-                  <th className="text-left p-4 text-[10px] font-heading font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Detalhes</th>
-                </tr>
-              </thead>
+            <table className="w-full">
+              <AdminTableHeader>
+                <AdminTableHead>Data</AdminTableHead>
+                <AdminTableHead>Admin</AdminTableHead>
+                <AdminTableHead>Ação</AdminTableHead>
+                <AdminTableHead>Alvo</AdminTableHead>
+                <AdminTableHead>Detalhes</AdminTableHead>
+              </AdminTableHeader>
               <tbody>
                 {filtered.map(r => (
-                  <tr key={r.id} className="border-b border-[#C8A66A]/10 last:border-0 hover:bg-[#FAF5EF]/40 transition-colors">
-                    <td className="p-4 text-xs font-body font-bold text-[#5B1F3D]/60 whitespace-nowrap">
+                  <AdminTableRow key={r.id}>
+                    <AdminTableCell className="text-xs font-body font-bold text-[#5B1F3D]/60 whitespace-nowrap">
                       {new Date(r.created_at).toLocaleString("pt-BR")}
-                    </td>
-                    <td className="p-4 text-sm font-heading font-black text-[#5B1F3D]">{r.admin_email ?? r.admin_id.slice(0, 8)}</td>
-                    <td className="p-4">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#5B1F3D] text-white text-[10px] font-heading font-black tracking-widest uppercase shadow-sm border border-[#C8A66A]/30">
+                    </AdminTableCell>
+                    <AdminTableCell className="text-base font-heading font-black text-[#5B1F3D]">{r.admin_email ?? r.admin_id.slice(0, 8)}</AdminTableCell>
+                    <AdminTableCell>
+                      <AdminBadge variant="primary">
                         {ACTION_LABELS[r.action as AdminAction] ?? r.action}
-                      </span>
-                    </td>
-                    <td className="p-4">
-                      <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#8B6A30] block mb-1">{r.target_type}</span>
-                      {r.target_label && <div className="text-sm font-body font-bold text-[#5B1F3D]">{r.target_label}</div>}
-                    </td>
-                    <td className="p-4 text-xs font-body font-bold text-[#5B1F3D]/70 max-w-xs truncate">
+                      </AdminBadge>
+                    </AdminTableCell>
+                    <AdminTableCell>
+                      <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#8B6A30] block mb-1 opacity-70">{r.target_type}</span>
+                      {r.target_label && <div className="text-base font-body font-black text-[#5B1F3D] leading-tight">{r.target_label}</div>}
+                    </AdminTableCell>
+                    <AdminTableCell className="text-xs font-body font-bold text-[#5B1F3D]/70 max-w-xs truncate">
                       {Object.keys(r.details ?? {}).length > 0 ? JSON.stringify(r.details) : "—"}
-                    </td>
-                  </tr>
+                    </AdminTableCell>
+                  </AdminTableRow>
                 ))}
               </tbody>
             </table>
           </div>
         )}
-      </div>
+      </AdminTable>
 
       <p className="text-xs text-muted-foreground">
         Mostrando até 500 registros mais recentes. Os logs são imutáveis e não podem ser editados nem apagados.
