@@ -58,7 +58,7 @@ const AdminPlayStore = () => {
         {ITEMS.map((item) => {
           const isDone = !!done[item.id];
           return (
-            <div key={item.id} className="p-4 flex items-start gap-3">
+            <div key={item.id} className="p-6 flex items-start gap-4 border-b border-[#C8A66A]/10 last:border-0 hover:bg-[#FAF5EF]/40 transition-colors">
               <button onClick={() => toggle(item.id)} className="mt-0.5 shrink-0" aria-label={isDone ? "Desmarcar" : "Marcar como concluído"}>
                 {isDone
                   ? <CheckCircle2 className="w-5 h-5 text-primary" />
