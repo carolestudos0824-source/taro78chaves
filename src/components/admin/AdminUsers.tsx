@@ -141,18 +141,17 @@ const AdminUsers = () => {
 
   return (
     <div className="space-y-10">
-      <div className="relative">
-        <div className="absolute -left-4 top-0 bottom-0 w-1 bg-[#C8A66A] rounded-full" />
-        <h2 className="font-heading text-2xl md:text-3xl text-[#5B1F3D] font-black tracking-tight pl-4">Usuários</h2>
-        <p className="text-sm font-body font-bold italic text-[#5B1F3D]/60 pl-4 mt-1">Gestão completa de pessoas, acesso e progresso.</p>
-      </div>
+      <AdminSectionHeading 
+        title="Usuários" 
+        subtitle="Gestão completa de pessoas, acesso e progresso na jornada Tarô 78 Chaves." 
+      />
 
       {/* Stat cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <StatCard icon={<Users className="w-5 h-5" />} label="Total" value={stats.total} />
-        <StatCard icon={<Crown className="w-5 h-5" />} label="Premium ativos" value={stats.premium} accent />
-        <StatCard icon={<AlertTriangle className="w-5 h-5" />} label="Expirados" value={stats.expired} />
-        <StatCard icon={<Shield className="w-5 h-5" />} label="Admins" value={stats.admins} />
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <StatCard icon={<Users className="w-6 h-6" />} label="Total" value={stats.total} />
+        <StatCard icon={<Crown className="w-6 h-6" />} label="Premium ativos" value={stats.premium} accent />
+        <StatCard icon={<AlertTriangle className="w-6 h-6" />} label="Expirados" value={stats.expired} />
+        <StatCard icon={<Shield className="w-6 h-6" />} label="Admins" value={stats.admins} />
       </div>
 
       {/* Filters */}
