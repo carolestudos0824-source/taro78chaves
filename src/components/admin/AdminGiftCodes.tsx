@@ -310,13 +310,15 @@ const AdminGiftCodes = () => {
   );
 };
 
-const StatCard = ({ icon, label, value, accent }: { icon: React.ReactNode; label: string; value: number; accent?: boolean }) => (
-  <div className={`rounded-xl border border-border/50 bg-card/50 p-3 ${accent ? "ring-1 ring-primary/20" : ""}`}>
-    <div className="flex items-center justify-between">
-      <span className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</span>
-      <span className={accent ? "text-primary" : "text-muted-foreground"}>{icon}</span>
+const GiftStatCard = ({ icon, label, value, accent }: { icon: React.ReactNode; label: string; value: number; accent?: boolean }) => (
+  <div className={`rounded-[2rem] border-2 p-6 shadow-lg transition-all hover:scale-105 bg-white ${accent ? "border-[#C8A66A] ring-4 ring-[#C8A66A]/10 shadow-[#C8A66A]/20" : "border-[#C8A66A]/20"}`}>
+    <div className="flex items-center justify-between mb-3">
+      <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/60">{label}</span>
+      <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${accent ? "bg-[#5B1F3D] text-white" : "bg-[#FAF5EF] text-[#C8A66A] border-2 border-[#C8A66A]/20"}`}>
+        {icon}
+      </div>
     </div>
-    <p className="font-heading text-2xl text-foreground mt-1">{value}</p>
+    <p className="font-heading text-4xl font-black text-[#5B1F3D] tracking-tighter">{value}</p>
   </div>
 );
 
