@@ -374,7 +374,7 @@ const AdminSettings = () => {
           </h3>
           <div className="h-[2px] flex-1 bg-[#C8A66A]/20" />
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
           {[
             { label: "Ativos", value: ativos, status: "ativo" as Status },
             { label: "Pendentes", value: pendentes, status: "pendente" as Status },
@@ -385,24 +385,24 @@ const AdminSettings = () => {
             return (
               <div
                 key={s.label}
-                className="p-3 rounded-lg border border-border/40 bg-card/30 text-center"
+                className="p-6 rounded-[2rem] border-2 border-[#C8A66A]/20 bg-white shadow-lg text-center transition-all hover:scale-105"
               >
-                <div className="flex items-center justify-center gap-1.5 mb-1">
-                  <span className={`w-1.5 h-1.5 rounded-full ${meta.dot}`} />
-                  <p className="font-heading text-xl text-foreground">{s.value}</p>
+                <div className="flex items-center justify-center gap-3 mb-2">
+                  <span className={`w-3 h-3 rounded-full shadow-sm ${meta.dot}`} />
+                  <p className="font-heading text-3xl text-[#5B1F3D] font-black">{s.value}</p>
                 </div>
-                <p className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-[#5B1F3D]/60 font-black">
                   {s.label}
                 </p>
               </div>
             );
           })}
         </div>
-        <p className="text-[11px] text-muted-foreground/80 leading-relaxed px-1">
-          Apenas itens <span className="text-foreground">Ativos</span> e{" "}
-          <span className="text-foreground">Pendentes</span> impactam o lançamento web.{" "}
-          <span className="text-foreground">Opcionais</span> não bloqueiam.{" "}
-          <span className="text-foreground">Próxima fase</span> entra no roadmap mobile.
+        <p className="text-sm font-body font-bold text-[#5B1F3D]/70 leading-relaxed px-1 mt-4">
+          Apenas itens <span className="text-[#5B1F3D] font-black">Ativos</span> e{" "}
+          <span className="text-[#5B1F3D] font-black">Pendentes</span> impactam o lançamento web.{" "}
+          <span className="text-[#5B1F3D] font-black">Opcionais</span> não bloqueiam.{" "}
+          <span className="text-[#5B1F3D] font-black">Próxima fase</span> entra no roadmap mobile.
         </p>
       </section>
 
