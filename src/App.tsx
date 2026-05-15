@@ -156,6 +156,8 @@ const AppRoutes = () => {
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/privacidade" element={<PrivacyPage />} />
         <Route path="/termos" element={<TermsPage />} />
+        <Route path="/suporte" element={<SupportPage />} />
+        <Route path="/excluir-conta" element={<DeleteAccountPage />} />
         <Route path="/apresentacao" element={<PresentationPage />} />
 
         <Route element={<AppShell />}>
