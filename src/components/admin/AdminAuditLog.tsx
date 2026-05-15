@@ -71,13 +71,10 @@ const AdminAuditLog = () => {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="font-heading text-lg text-foreground flex items-center gap-2">
-          <ScrollText className="w-5 h-5 text-primary" />
-          Auditoria Administrativa
-        </h2>
-        <p className="text-sm text-muted-foreground">Rastro completo e imutável de todas as ações administrativas.</p>
-      </div>
+      <AdminSectionHeading 
+        title="Auditoria Administrativa" 
+        subtitle="Rastro completo e imutável de todas as ações administrativas realizadas na plataforma." 
+      />
 
       {!isAdmin && (
         <div className="flex items-start gap-2 rounded-lg border border-border/50 bg-muted/30 p-3 text-xs text-muted-foreground">
