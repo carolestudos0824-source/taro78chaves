@@ -43,8 +43,8 @@ const STATUS_META: Record<
   ativo: {
     label: "Ativo",
     icon: CheckCircle2,
-    cls: "bg-primary/10 text-primary border-primary/20",
-    dot: "bg-primary",
+    cls: "bg-[#5B1F3D] text-white border-[#C8A66A] shadow-md",
+    dot: "bg-[#C8A66A]",
   },
   pendente: {
     label: "Pendente desta fase",
