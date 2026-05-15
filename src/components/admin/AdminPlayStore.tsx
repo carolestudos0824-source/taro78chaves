@@ -61,8 +61,8 @@ const AdminPlayStore = () => {
             <div key={item.id} className="p-6 flex items-start gap-4 border-b border-[#C8A66A]/10 last:border-0 hover:bg-[#FAF5EF]/40 transition-colors">
               <button onClick={() => toggle(item.id)} className="mt-0.5 shrink-0" aria-label={isDone ? "Desmarcar" : "Marcar como concluído"}>
                 {isDone
-                  ? <CheckCircle2 className="w-5 h-5 text-primary" />
-                  : <Circle className="w-5 h-5 text-muted-foreground/60" />}
+                  ? <CheckCircle2 className="w-6 h-6 text-[#5B1F3D]" />
+                  : <Circle className="w-6 h-6 text-[#C8A66A]/40 group-hover:text-[#C8A66A]" />}
               </button>
               <div className="flex-1 min-w-0">
                 <p className={`text-sm font-medium ${isDone ? "line-through text-muted-foreground" : "text-foreground"}`}>
