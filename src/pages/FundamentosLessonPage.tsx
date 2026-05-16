@@ -245,8 +245,8 @@ const FundamentosLessonPage = () => {
               </h3>
               <ul className="space-y-2">
                 {lesson.keyPoints.map((point, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm" style={{ color: "hsl(230 20% 20%)" }}>
-                    <span style={{ color: "hsl(36 42% 44%)" }} className="mt-0.5 shrink-0">◆</span>
+                  <li key={i} className="flex items-start gap-4 text-[15px] md:text-[16px] font-black leading-relaxed" style={{ color: "#3D1429" }}>
+                    <span style={{ color: "#C8A66A" }} className="mt-1.5 shrink-0 w-2 h-2 rounded-full" />
                     {point}
                   </li>
                 ))}
