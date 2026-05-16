@@ -259,7 +259,7 @@ const FundamentosLessonPage = () => {
                 <h3 className="font-heading text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "hsl(340 42% 26%)" }}>
                   ✍️ Reflexão
                 </h3>
-                <p className="font-accent text-sm italic leading-relaxed" style={{ color: "hsl(230 20% 25% / 0.70)" }}>
+                <p className="font-accent text-[17px] md:text-[19px] italic leading-relaxed font-black" style={{ color: "#3D1429" }}>
                   {lesson.reflection}
                 </p>
               </div>
