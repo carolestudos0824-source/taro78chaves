@@ -390,10 +390,10 @@ const PhaseIntro = ({ card, accent }: { card: ArcanoMenorEditorial; accent: stri
   <>
     {card.subtitulo && (
       <p
-        className="font-accent italic text-center text-xl font-bold leading-relaxed mb-6"
+        className="font-accent italic text-center text-[22px] md:text-[24px] font-black leading-relaxed mb-8"
         style={{ color: "#8B6A30" }}
       >
-        {card.subtitulo}
+        "{card.subtitulo}"
       </p>
     )}
     <SectionTitle accent={accent}>Essência</SectionTitle>
