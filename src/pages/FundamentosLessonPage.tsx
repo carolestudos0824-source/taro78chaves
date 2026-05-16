@@ -184,21 +184,27 @@ const FundamentosLessonPage = () => {
       </div>
 
       {/* Header */}
-      <header className="relative z-10 backdrop-blur-md" style={{ background: "hsl(36 33% 97% / 0.85)", borderBottom: "1px solid hsl(36 45% 58% / 0.15)" }}>
-        <div className="container max-w-3xl py-3 px-4 flex items-center gap-4">
-          <button onClick={() => navigate("/module/fundamentos")} className="transition-colors hover:scale-105 duration-200" style={{ color: "hsl(230 10% 40%)" }}>
+      <header className="relative z-10 sticky top-0" style={{
+        borderBottom: "1.5px solid #C8A66A40",
+        background: "rgba(250, 245, 239, 0.95)",
+        backdropFilter: "blur(20px)",
+        boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)"
+      }}>
+        <div className="container max-w-3xl py-4 px-6 flex items-center gap-4">
+          <button onClick={() => navigate("/module/fundamentos")} className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30] shadow-sm transition-all hover:scale-110 duration-200" style={{ color: "#5B1F3D" }}>
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <div className="flex items-center gap-2 flex-1">
-            <span className="text-lg">{lesson.icon}</span>
-            <span className="font-heading text-sm truncate" style={{ color: "hsl(230 25% 15%)" }}>{lesson.title}</span>
+          <div className="flex flex-col flex-1 min-w-0">
+            <span className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1 flex items-center gap-2 font-black" style={{ color: "#C8A66A" }}>
+              <MapPin className="w-3 h-3" /> {lessonOrder + 1}/{FUNDAMENTOS_LESSONS.length}
+            </span>
+            <h2 className="font-heading text-base truncate font-black" style={{ color: "#5B1F3D" }}>
+              {lesson.title}
+            </h2>
           </div>
-          <span className="text-[10px] font-body tracking-wider" style={{ color: "hsl(230 10% 50%)" }}>
-            {lessonOrder + 1}/{FUNDAMENTOS_LESSONS.length}
-          </span>
-          <div className="flex gap-1.5">
+          <div className="flex gap-1">
             {phaseSteps.map((p, i) => (
-              <div key={p} className="h-1.5 w-5 rounded-full transition-all duration-500" style={{ background: i <= currentIdx ? "hsl(36 45% 58%)" : "hsl(36 25% 82% / 0.6)" }} />
+              <div key={p} className="h-1.5 w-4 rounded-full transition-all duration-500" style={{ background: i <= currentIdx ? "#C8A66A" : "rgba(200, 166, 106, 0.2)" }} />
             ))}
           </div>
         </div>
