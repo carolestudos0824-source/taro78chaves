@@ -370,7 +370,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
                 >
                   <ul className="space-y-2">
                     {lesson.keyPoints.map((kp, i) => (
-                      <li key={i} className="text-[14px] leading-relaxed flex gap-3 items-start font-black" style={{ color: "#3D1429" }}>
+                      <li key={i} className="text-[15px] md:text-[16px] leading-relaxed flex gap-4 items-start font-black" style={{ color: "#3D1429" }}>
                         <span className="mt-1.5 w-2 h-2 rounded-full shrink-0" style={{ background: "#C8A66A" }} />
                         {kp}
                       </li>
