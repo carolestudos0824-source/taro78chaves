@@ -416,9 +416,9 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
               {lesson.deepDive.split("\n\n").map((p, i) => (
                 <p
                   key={i}
-                  className="text-sm leading-relaxed mb-3 last:mb-0"
-                  style={{ color: "hsl(230 20% 25%)" }}
-                  dangerouslySetInnerHTML={{ __html: p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }}
+                  className="text-[16px] md:text-[17px] leading-relaxed mb-4 last:mb-0 font-black"
+                  style={{ color: "#3D1429" }}
+                  dangerouslySetInnerHTML={{ __html: p.replace(/\*\*(.*?)\*\*/g, '<strong style="color: #5B1F3D">$1</strong>') }}
                 />
               ))}
             </SectionBlock>
