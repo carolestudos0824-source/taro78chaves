@@ -354,13 +354,13 @@ const CartasCortePage = () => {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-10" style={{ animation: "fade-up 0.5s ease-out 0.5s both" }}>
+        <div className="text-center mt-16 animate-fade-up" style={{ animationDelay: "0.6s" }}>
           <button
             onClick={() => navigate("/app")}
-            className="text-xs font-heading tracking-wider transition-colors"
-            style={{ color: "hsl(230 10% 45%)" }}
+            className="text-[11px] font-heading tracking-[0.3em] uppercase transition-all hover:text-[#5B1F3D] hover:scale-105 font-black"
+            style={{ color: "#C8A66A" }}
           >
-            ← Voltar aos módulos
+            ← Voltar ao Portal
           </button>
         </div>
       </main>
