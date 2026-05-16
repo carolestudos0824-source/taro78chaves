@@ -354,7 +354,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
                 {lesson.content.split("\n\n").map((p, i) => (
                   <p
                     key={i}
-                    className="text-[15px] leading-relaxed mb-4 last:mb-0 font-black"
+                    className="text-[17px] md:text-[18px] leading-relaxed mb-6 last:mb-0 font-black"
                     style={{ color: "#3D1429" }}
                     dangerouslySetInnerHTML={{ __html: p.replace(/\*\*(.*?)\*\*/g, '<strong style="color: #5B1F3D">$1</strong>') }}
                   />
