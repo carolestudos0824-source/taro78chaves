@@ -446,7 +446,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
                 delay="120ms"
                 accentOverride="270 30% 35%"
               >
-                <p className="text-xs leading-relaxed italic" style={{ color: "hsl(230 20% 25% / 0.8)" }}>
+                <p className="text-[16px] italic leading-relaxed font-black" style={{ color: "#5B1F3D" }}>
                   {lesson.reflection}
                 </p>
               </SectionBlock>
