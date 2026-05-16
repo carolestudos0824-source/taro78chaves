@@ -379,8 +379,8 @@ const SectionTitle = ({ children, accent }: { children: React.ReactNode; accent:
 
 const Prose = ({ children }: { children: React.ReactNode }) => (
   <p
-    className="font-body text-[16px] leading-[1.8] font-medium"
-    style={{ color: "#5B1F3D" }}
+    className="font-body text-[17px] md:text-[18px] leading-[1.8] font-black"
+    style={{ color: "#3D1429" }}
   >
     {children}
   </p>
