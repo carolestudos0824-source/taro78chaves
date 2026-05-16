@@ -434,7 +434,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
               label="Exercício"
               accentOverride="340 42% 28%"
             >
-              <p className="text-sm leading-relaxed" style={{ color: "hsl(230 20% 25%)" }}>
+              <p className="text-[17px] md:text-[18px] leading-relaxed font-black" style={{ color: "#3D1429" }}>
                 {lesson.exercise.instruction}
               </p>
             </SectionBlock>
