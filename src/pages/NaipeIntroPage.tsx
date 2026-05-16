@@ -105,9 +105,9 @@ const NaipeIntroPage = () => {
         </div>
       </header>
 
-      <main className="relative z-10 container max-w-3xl px-4 py-8">
-        {/* Hero — Redesigned for premium force */}
-        <div className="text-center space-y-6 mb-12" style={{ animation: "fade-up 0.7s ease-out" }}>
+      <main className="relative z-10 container max-w-3xl px-6 py-10">
+        {/* Hero Section */}
+        <div className="text-center space-y-6 mb-12 animate-fade-up">
           <div className="w-24 h-24 mx-auto rounded-3xl flex items-center justify-center text-4xl shadow-2xl transition-all duration-700 hover:rotate-12" style={{
             background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
             border: `2.5px solid #C8A66A`,
@@ -115,28 +115,32 @@ const NaipeIntroPage = () => {
           }}>
             <TarotIcon name={naipe} className="w-12 h-12 text-[#FAF5EF]" />
           </div>
-          <h1 className="font-heading text-4xl md:text-5xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
-            {ped.nome ?? info.name}
-          </h1>
-          <p className="font-accent text-lg md:text-xl italic font-black leading-snug" style={{ color: "#5B1F3D99" }}>
-            {ped.subtitulo ?? info.subtitle}
-          </p>
+          
+          <div className="space-y-3">
+            <h1 className="font-heading text-4xl md:text-5xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
+              {ped.nome ?? info.name}
+            </h1>
+            <p className="font-accent text-lg md:text-xl italic font-black leading-snug" style={{ color: "#8B6A30" }}>
+              {ped.subtitulo ?? info.subtitle}
+            </p>
+          </div>
+
           {ped.fraseAbertura && (
-            <div className="relative py-4 px-8 max-w-xl mx-auto">
+            <div className="relative py-6 px-10 max-w-xl mx-auto">
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#C8A66A] to-transparent rounded-full" />
-              <p className="font-accent text-[18px] md:text-[20px] italic leading-relaxed font-black pl-4" style={{ color: "#5B1F3D" }}>
+              <p className="font-accent text-[20px] md:text-[22px] italic leading-relaxed font-black pl-6" style={{ color: "#5B1F3D" }}>
                 "{ped.fraseAbertura}"
               </p>
             </div>
           )}
         </div>
 
-        {/* Keywords */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8" style={{ animation: "fade-up 0.5s ease-out 0.1s both" }}>
+        {/* Keywords Tags */}
+        <div className="flex flex-wrap justify-center gap-2 mb-10 animate-fade-up" style={{ animationDelay: "0.1s" }}>
           {(ped.palavrasAncora.length > 0 ? ped.palavrasAncora : info.keywords).map((kw) => (
-            <span key={kw} className="text-xs font-heading tracking-wider px-3 py-1.5 rounded-full" style={{
-              background: info.color.surface,
-              border: `1px solid ${info.color.border}`,
+            <span key={kw} className="text-[11px] font-heading tracking-[0.2em] uppercase px-5 py-2 rounded-full border-2 font-black" style={{
+              background: "white",
+              border: `2px solid ${info.color.border}`,
               color: info.color.primary,
             }}>
               {kw}
@@ -144,19 +148,26 @@ const NaipeIntroPage = () => {
           ))}
         </div>
 
-        {/* Main text — High readability */}
+        {/* Essential Definition Card */}
         {ped.essencia && (
-          <div className="rounded-[2rem] p-8 md:p-10 mb-10 transition-all duration-500" style={{
-            background: "rgba(255, 255, 255, 0.95)",
-            border: "2px solid #C8A66A30",
-            boxShadow: "0 20px 50px rgba(91, 31, 61, 0.05)",
-            animation: "fade-up 0.6s ease-out 0.2s both",
+          <div className="rounded-[2.5rem] p-10 mb-12 animate-fade-up" style={{
+            background: "rgba(255, 255, 255, 0.98)",
+            border: "2.5px solid #C8A66A",
+            boxShadow: "0 25px 60px rgba(91, 31, 61, 0.08)",
+            animationDelay: "0.2s",
           }}>
-            {ped.essencia.split("\n\n").map((p, i) => (
-              <p key={i} className="text-[16px] md:text-[17px] leading-relaxed mb-6 last:mb-0 font-black" style={{ color: "#3D1429" }}>
-                {renderContent(p)}
-              </p>
-            ))}
+            <div className="flex items-center justify-center gap-4 mb-8 opacity-90">
+              <span className="h-px w-10" style={{ background: "linear-gradient(90deg, transparent, #C8A66A)" }} />
+              <span className="text-[12px] font-black" style={{ color: "#C8A66A", letterSpacing: "0.4em" }}>✶ A ESSÊNCIA ✶</span>
+              <span className="h-px w-10" style={{ background: "linear-gradient(90deg, #C8A66A, transparent)" }} />
+            </div>
+            <div className="space-y-6 max-w-2xl mx-auto">
+              {ped.essencia.split("\n\n").map((p, i) => (
+                <p key={i} className="text-[18px] md:text-[20px] leading-relaxed font-black text-center" style={{ color: "#3D1429" }}>
+                  {renderContent(p)}
+                </p>
+              ))}
+            </div>
           </div>
         )}
 
