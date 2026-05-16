@@ -673,8 +673,8 @@ const ReviewRow = ({
       {label}
     </span>
     <span
-      className="font-body text-[14px] leading-relaxed"
-      style={{ color: "hsl(230 25% 18% / 0.90)" }}
+      className="font-body text-[16px] leading-relaxed font-black"
+      style={{ color: "#3D1429" }}
     >
       {value}
     </span>
