@@ -140,13 +140,13 @@ const ModulesPage = () => {
                 <TarotIcon name="SquareStack" className="w-7 h-7 text-[#C8A66A]" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[11px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Progresso Geral</span>
-                <span className="text-lg font-heading font-black text-[#5B1F3D]">Formação Tarô 78 Chaves</span>
+                <span className="text-[10px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Onde estou</span>
+                <span className="text-lg font-heading font-black text-[#5B1F3D]">Meu Painel Diário</span>
               </div>
             </div>
             <div className="text-right">
-              <span className="text-3xl font-heading font-black text-[#5B1F3D]">{progress.level}</span>
-              <span className="text-[14px] font-black text-[#5B1F3D]/30 ml-1">Nível</span>
+              <span className="text-3xl font-heading font-black text-[#5B1F3D]">{globalProgressPct}%</span>
+              <span className="text-[14px] font-black text-[#5B1F3D]/30 ml-1">Total</span>
             </div>
           </div>
           
@@ -171,7 +171,7 @@ const ModulesPage = () => {
               onClick={() => navigate("/trilhas")}
               className="w-full py-4 rounded-2xl bg-[#5B1F3D] text-[#FAF5EF] font-heading text-[11px] tracking-[0.3em] uppercase font-black shadow-lg hover:bg-[#3D1429] transition-all flex items-center justify-center gap-2 border-2 border-[#C8A66A]/30"
             >
-              Ver Mapa Completo da Formação <ChevronRight className="w-4 h-4 text-[#C8A66A]" />
+              Ver Mapa Curricular <ChevronRight className="w-4 h-4 text-[#C8A66A]" />
             </button>
           </div>
         </div>
@@ -211,8 +211,8 @@ const ModulesPage = () => {
                   <TarotIcon name="formacao" className="w-6 h-6 text-[#C8A66A]" />
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">Formação</span>
-                  <p className="font-heading text-sm font-black text-[#5B1F3D]">Mapa da Trilha</p>
+                  <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">Currículo</span>
+                  <p className="font-heading text-sm font-black text-[#5B1F3D]">Mapa Completo</p>
                 </div>
               </div>
             </button>
@@ -251,7 +251,7 @@ const ModulesPage = () => {
             <div className="flex items-center gap-4">
               <span className="h-px flex-1 bg-[#C8A66A]/30" />
               <h2 className="font-heading text-[11px] tracking-[0.4em] uppercase font-black text-[#5B1F3D]">
-                Módulos de Estudo
+                Estudo Imediato
               </h2>
               <span className="h-px flex-1 bg-[#C8A66A]/30" />
             </div>
