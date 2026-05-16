@@ -280,14 +280,14 @@ const LandingPage = () => {
       <section id="como-funciona" className="py-20 md:py-24 bg-white/30 border-y border-gold/10 relative overflow-hidden">
         <div className="absolute top-1/2 left-0 w-full h-px bg-gold/10 -translate-y-1/2 z-0" />
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 space-y-4">
+        <div className="max-w-7xl mx-auto px-0 md:px-6 relative z-10">
+          <div className="text-center mb-16 px-6 space-y-4">
             <h2 className="font-heading text-3xl md:text-4xl text-midnight">Explore a Trilha do Conhecimento</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto font-body">Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, Pontos de Jornada e progresso real.</p>
           </div>
 
           <div className="relative">
-            <div className="flex overflow-x-auto gap-4 md:gap-6 pb-8 px-4 scrollbar-elegant snap-x items-end min-h-[340px] justify-start md:justify-center">
+            <div className="flex overflow-x-auto gap-4 md:gap-6 pb-8 px-6 md:px-8 scrollbar-elegant snap-x items-end min-h-[340px] justify-start md:justify-center">
               {[
                 { id: 0, img: imgLouco, name: "O Louco", badge: "Grátis" },
                 { id: 1, img: imgMago, name: "O Mago", badge: "Desbloqueável" },
