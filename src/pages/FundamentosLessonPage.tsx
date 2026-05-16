@@ -180,7 +180,7 @@ const FundamentosLessonPage = () => {
     <div className="min-h-screen relative overflow-hidden">
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.88), hsl(36 33% 97% / 0.82), hsl(36 33% 97% / 0.92))" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)", opacity: 0.98 }} />
       </div>
 
       {/* Header */}
