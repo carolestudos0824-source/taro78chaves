@@ -226,9 +226,13 @@ const FundamentosLessonPage = () => {
             </div>
 
             {/* Content */}
-            <div className="rounded-xl p-6" style={{ background: "hsl(38 30% 95% / 0.85)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
+            <div className="rounded-[2rem] p-8 md:p-10" style={{
+              background: "rgba(255, 255, 255, 0.98)",
+              border: "2.5px solid #C8A66A40",
+              boxShadow: "0 20px 50px rgba(91, 31, 61, 0.05)"
+            }}>
               {lesson.content.split("\n\n").map((paragraph, i) => (
-                <p key={i} className="text-sm leading-relaxed mb-4 last:mb-0" style={{ color: "hsl(230 20% 25%)" }}>
+                <p key={i} className="text-[17px] md:text-[18px] leading-relaxed mb-6 last:mb-0 font-black" style={{ color: "#3D1429" }}>
                   {renderContent(paragraph)}
                 </p>
               ))}
