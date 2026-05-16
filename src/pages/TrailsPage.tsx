@@ -129,7 +129,7 @@ const TrailsPage = () => {
           <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[#C8A66A]/20">
             <TarotIcon name="formacao" className="w-12 h-12 animate-pulse-slow" />
           </div>
-          <div className="text-[11px] tracking-[0.4em] uppercase font-heading font-black mb-2 text-[#5B1F3D]">
+          <div className="text-[12px] tracking-[0.45em] uppercase font-heading font-black mb-3 text-[#5B1F3D]">
             Mapa Curricular
           </div>
           <h1
@@ -158,11 +158,11 @@ const TrailsPage = () => {
           <div className="flex items-center justify-between mb-5">
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-[#C8A66A]" />
-              <h2 className="font-heading text-xs font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
+              <h2 className="font-heading text-sm font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
                 Progresso Geral
               </h2>
             </div>
-            <span className="font-heading text-[11px] font-black tracking-widest uppercase px-3 py-1 rounded-full bg-[#5B1F3D] text-[#FAF5EF]">
+            <span className="font-heading text-[12px] font-black tracking-widest uppercase px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40]">
               {currentLevel ? `Em fase de ${currentLevel.title}` : "Formação Completa ✦"}
             </span>
           </div>
@@ -174,8 +174,8 @@ const TrailsPage = () => {
               return (
                 <div key={level.id} className="flex-1 space-y-2">
                   <div className="h-3 rounded-full overflow-hidden p-[1px]" style={{
-                    background: unlocked ? "#DCCFC260" : "#DCCFC230",
-                    border: `1px solid ${unlocked ? "#C8A66A50" : "#DCCFC240"}`,
+                    background: unlocked ? "#E8DED3" : "#DCCFC260",
+                    border: `1.5px solid ${unlocked ? "#C8A66A80" : "#DCCFC2"}`,
                   }}>
                     <div className="h-full rounded-full transition-all duration-1000 shadow-[0_0_8px_rgba(200,166,106,0.3)]" style={{
                       width: `${Math.max(prog, complete ? 100 : 0)}%`,
@@ -184,7 +184,7 @@ const TrailsPage = () => {
                         : `linear-gradient(90deg, #5B1F3D, #C8A66A)`,
                     }} />
                   </div>
-                  <div className="text-[10px] font-heading font-black text-center uppercase tracking-tighter" style={{
+                  <div className="text-[11px] font-heading font-black text-center uppercase tracking-normal mt-1" style={{
                     color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                   }}>
                     {level.title}
@@ -225,13 +225,13 @@ const TrailsPage = () => {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[10px] tracking-[0.3em] uppercase font-heading font-black" style={{
-                      color: unlocked ? "#5B1F3D" : "#5B1F3D40",
+                    <span className="text-[12px] tracking-[0.35em] uppercase font-heading font-black" style={{
+                      color: unlocked ? "#5B1F3D" : "#5B1F3D70",
                     }}>
                       Portal {level.level}
                     </span>
                     {complete && (
-                      <span className="text-[10px] tracking-[0.1em] uppercase font-heading font-black px-2 py-0.5 rounded-md border border-[#C8A66A]" style={{
+                      <span className="text-[11px] tracking-[0.15em] uppercase font-heading font-black px-3 py-1 rounded-lg border-2 border-[#C8A66A]" style={{
                         background: "#FAF5EF",
                         color: "#5B1F3D",
                       }}>
@@ -239,7 +239,7 @@ const TrailsPage = () => {
                       </span>
                     )}
                     {isCurrent && (
-                      <span className="text-[10px] tracking-[0.1em] uppercase font-heading font-black px-2 py-0.5 rounded-md border border-[#5B1F3D]" style={{
+                      <span className="text-[11px] tracking-[0.15em] uppercase font-heading font-black px-3 py-1 rounded-lg border-2 border-[#5B1F3D]" style={{
                         background: "#FAF5EF",
                         color: "#5B1F3D",
                       }}>
@@ -252,15 +252,15 @@ const TrailsPage = () => {
                   }}>
                     {level.title}
                   </h2>
-                  <p className="font-body text-sm font-bold italic" style={{
-                    color: unlocked ? "#5B1F3D" : "#5B1F3D40",
+                  <p className="font-body text-[15px] font-black italic mt-1" style={{
+                    color: unlocked ? "#5B1F3D95" : "#5B1F3D60",
                   }}>
                     {level.subtitle}
                   </p>
                 </div>
                 {isCurrent && (
                   <div className="flex flex-col items-center shrink-0">
-                    <span className="font-heading text-xl font-black text-[#5B1F3D]">
+                    <span className="font-heading text-2xl font-black text-[#5B1F3D]">
                       {prog}%
                     </span>
                     <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]">Chaves</span>
@@ -297,9 +297,9 @@ const TrailsPage = () => {
                         background: "#FAF5EF90",
                         border: "1px solid #DCCFC240",
                       } : {
-                        background: "#DCCFC210",
-                        border: "1px solid #DCCFC220",
-                        opacity: 0.8,
+                        background: "rgba(220, 207, 194, 0.15)",
+                        border: "1.5px solid rgba(220, 207, 194, 0.4)",
+                        opacity: 0.95,
                       }}>
                         {/* Status icon */}
                         <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:scale-110" style={modComplete ? {
@@ -309,8 +309,8 @@ const TrailsPage = () => {
                           background: modId === nextGlobalModuleId ? "#5B1F3D" : "#FAF5EF",
                           border: `1.5px solid ${modId === nextGlobalModuleId ? level.accentColor : '#DCCFC2'}`,
                         } : {
-                          background: "#DCCFC220",
-                          border: "1px solid #DCCFC240",
+                          background: "rgba(220, 207, 194, 0.25)",
+                          border: "1.5px solid rgba(220, 207, 194, 0.5)",
                         }}>
                           {modComplete ? (
                             <TarotIcon name="concluido" className="w-6 h-6" color={level.accentColor} />
@@ -327,16 +327,16 @@ const TrailsPage = () => {
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1">
                             <h3 className="font-heading text-[15px] font-black tracking-tight truncate" style={{
-                              color: modCurrent ? "#5B1F3D" : modComplete ? "#5B1F3D95" : "#5B1F3D40",
+                              color: modCurrent ? "#5B1F3D" : modComplete ? "#5B1F3D" : "#5B1F3D70",
                             }}>
                               {mod.name}
                             </h3>
                             {modId === nextGlobalModuleId && (
-                              <span className="text-[8px] font-heading font-black uppercase tracking-[0.2em] px-2 py-0.5 rounded-full bg-[#C8A66A] text-white">Próximo</span>
+                              <span className="text-[9px] font-heading font-black uppercase tracking-[0.25em] px-3 py-1 rounded-lg bg-[#C8A66A] text-white shadow-sm border border-[#5B1F3D10]">Próximo</span>
                             )}
                           </div>
-                          <p className="font-body text-xs font-bold italic truncate" style={{
-                            color: modCurrent ? "#5B1F3D90" : modComplete ? "#5B1F3D70" : "#5B1F3D35",
+                          <p className="font-body text-[13px] font-black italic truncate mt-1" style={{
+                            color: modCurrent ? "#5B1F3DBB" : modComplete ? "#5B1F3D90" : "#5B1F3D60",
                           }}>
                             {mod.subtitle}
                           </p>
