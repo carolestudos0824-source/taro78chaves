@@ -73,14 +73,14 @@ const FundamentosPage = () => {
             </button>
             <div className="flex flex-col flex-1">
               <span
-                className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1.5 flex items-center gap-2"
+                className="text-[11px] tracking-[0.45em] uppercase font-heading mb-1.5 flex items-center gap-2 font-bold"
                 style={{ color: "#5B1F3D" }}
               >
                 <span style={{ color: "#C8A66A" }}>◈</span>
                 Módulo Introdutório
               </span>
               <h1
-                className="font-heading text-2xl md:text-3xl tracking-wide"
+                className="font-heading text-3xl md:text-4xl tracking-tight font-black"
                 style={{ color: "#5B1F3D" }}
               >
                 Fundamentos do Tarô
@@ -89,23 +89,23 @@ const FundamentosPage = () => {
           </div>
 
           {/* Progress bar */}
-          <div className="space-y-2 bg-white/40 p-3 rounded-xl border border-[#C8A66A20]">
+          <div className="space-y-3 bg-white/60 p-4 rounded-2xl border border-[#C8A66A40] shadow-sm">
             <div className="flex items-center justify-between px-1">
               <span
-                className="text-[11px] font-heading tracking-wider"
-                style={{ color: "#5B1F3DCC" }}
+                className="text-[12px] font-heading tracking-wider font-bold"
+                style={{ color: "#5B1F3D" }}
               >
                 {completedCount}/{FUNDAMENTOS_LESSONS.length} lições concluídas
               </span>
               <span
-                className="text-[11px] font-heading tracking-wider"
+                className="text-[12px] font-heading tracking-wider font-black"
                 style={{ color: "#5B1F3D" }}
               >
                 {progressPct}%
               </span>
             </div>
             <div
-              className="h-2.5 rounded-full overflow-hidden"
+              className="h-3 rounded-full overflow-hidden p-[1px]"
               style={{
                 background: "#E8DED3",
                 border: "1px solid #D1C4B5",
@@ -114,11 +114,11 @@ const FundamentosPage = () => {
               <div
                 className="h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
                 style={{
-                  width: `${progressPct}%`,
+                  width: `${Math.max(progressPct, 2)}%`,
                   background: "linear-gradient(90deg, #5B1F3D, #C8A66A)",
                 }}
               >
-                <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+                <div className="absolute inset-0 w-1/3 h-full bg-white/30 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
               </div>
             </div>
           </div>
@@ -152,8 +152,8 @@ const FundamentosPage = () => {
           </div>
 
           <p
-            className="font-accent text-[16px] md:text-[17px] italic leading-relaxed max-w-xl mx-auto"
-            style={{ color: "#3D1429", fontWeight: 500 }}
+            className="font-accent text-[17px] md:text-[18px] italic leading-relaxed max-w-xl mx-auto"
+            style={{ color: "#5B1F3D", fontWeight: 700 }}
           >
             "Este módulo é a sua base. Aqui você vai entender o que é o tarô,
             como ele funciona e como estudá-lo com profundidade e clareza —
@@ -252,32 +252,32 @@ const FundamentosPage = () => {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
                         <span
-                          className="text-[9px] font-heading tracking-[0.2em] font-bold"
+                          className="text-[10px] font-heading tracking-[0.25em] font-black"
                           style={{
-                            color: unlocked ? "#5B1F3D" : "#5B1F3D40",
+                            color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                           }}
                         >
                           LIÇÃO {lesson.order + 1}
                         </span>
                         {isCurrent && (
-                          <span className="text-[8px] bg-[#C8A66A20] text-[#5B1F3D] px-2 py-0.5 rounded-full font-heading tracking-widest uppercase animate-pulse">
+                          <span className="text-[9px] bg-[#C8A66A] text-[#FAF5EF] px-2.5 py-0.5 rounded-full font-heading tracking-widest uppercase font-black animate-pulse shadow-sm">
                             Atual
                           </span>
                         )}
                       </div>
                       <h3
-                        className="font-heading text-base md:text-lg tracking-wide mb-0.5"
+                        className="font-heading text-lg md:text-xl tracking-wide mb-1 font-black"
                         style={{
-                          color: unlocked ? "#5B1F3D" : "#5B1F3D40",
+                          color: unlocked ? "#5B1F3D" : "#5B1F3D50",
                         }}
                       >
                         {lesson.title}
                       </h3>
                       <p
-                        className="font-body text-[12.5px] leading-relaxed"
+                        className="font-body text-[13.5px] leading-relaxed"
                         style={{
-                          color: unlocked ? "#5B1F3D" : "#5B1F3D40",
-                          fontWeight: isCurrent ? 700 : 500,
+                          color: unlocked ? "#5B1F3D" : "#5B1F3D60",
+                          fontWeight: (isCurrent || completed) ? 700 : 500,
                         }}
                       >
                         {lesson.subtitle}
