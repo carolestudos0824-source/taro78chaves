@@ -211,8 +211,8 @@ const ModulesPage = () => {
                   <TarotIcon name="formacao" className="w-6 h-6 text-[#C8A66A]" />
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">Formação</span>
-                  <p className="font-heading text-sm font-black text-[#5B1F3D]">Mapa da Trilha</p>
+                  <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">Currículo</span>
+                  <p className="font-heading text-sm font-black text-[#5B1F3D]">Mapa Completo</p>
                 </div>
               </div>
             </button>
@@ -251,7 +251,7 @@ const ModulesPage = () => {
             <div className="flex items-center gap-4">
               <span className="h-px flex-1 bg-[#C8A66A]/30" />
               <h2 className="font-heading text-[11px] tracking-[0.4em] uppercase font-black text-[#5B1F3D]">
-                Módulos de Estudo
+                Estudo Imediato
               </h2>
               <span className="h-px flex-1 bg-[#C8A66A]/30" />
             </div>

@@ -26,7 +26,7 @@ const TRAIL_LEVELS: TrailLevel[] = [
   {
     id: "iniciante",
     level: 1,
-    title: "Iniciante",
+    title: "Portal 1 — Iniciante",
     subtitle: "Desperte sua conexão com o Tarô",
     icon: "formacao",
     accentColor: "hsl(36 45% 58%)",
@@ -37,7 +37,7 @@ const TRAIL_LEVELS: TrailLevel[] = [
   {
     id: "intermediario",
     level: 2,
-    title: "Intermediário",
+    title: "Portal 2 — Intermediário",
     subtitle: "Domine todas as cartas e técnicas",
     icon: "rainha",
     accentColor: "hsl(340 42% 30%)",
@@ -48,7 +48,7 @@ const TRAIL_LEVELS: TrailLevel[] = [
   {
     id: "avancado",
     level: 3,
-    title: "Avançado",
+    title: "Portal 3 — Avançado",
     subtitle: "Domine combinações, tiragens e espiritualidade",
     icon: "Stars",
     accentColor: "hsl(280 35% 45%)",
@@ -59,7 +59,7 @@ const TRAIL_LEVELS: TrailLevel[] = [
   {
     id: "profissional",
     level: 4,
-    title: "Profissional",
+    title: "Portal 4 — Profissional",
     subtitle: "Torne-se uma leitora formada",
     icon: "rei",
     accentColor: "hsl(36 50% 42%)",
@@ -163,7 +163,7 @@ const TrailsPage = () => {
               </h2>
             </div>
             <span className="font-heading text-[11px] font-black tracking-widest uppercase px-3 py-1 rounded-full bg-[#5B1F3D] text-[#FAF5EF]">
-              {currentLevel ? `Nível ${currentLevel.level} • ${currentLevel.title}` : "Completo ✦"}
+              {currentLevel ? `Em fase de ${currentLevel.title}` : "Formação Completa ✦"}
             </span>
           </div>
           <div className="flex gap-2">
