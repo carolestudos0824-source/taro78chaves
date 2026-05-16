@@ -352,7 +352,7 @@ const FundamentosLessonPage = () => {
             </div>
             <div className="rounded-xl p-6" style={{ background: "hsl(38 30% 95% / 0.85)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
               {lesson.deepDive.split("\n\n").map((p, i) => (
-                <p key={i} className="text-sm leading-relaxed mb-4 last:mb-0" style={{ color: "hsl(230 20% 25%)" }}>
+                <p key={i} className="text-[17px] md:text-[18px] leading-relaxed mb-6 last:mb-0 font-black" style={{ color: "#3D1429" }}>
                   {renderContent(p)}
                 </p>
               ))}
