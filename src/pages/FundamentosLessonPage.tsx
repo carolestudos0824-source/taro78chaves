@@ -319,7 +319,7 @@ const FundamentosLessonPage = () => {
                   {lesson.exercise.type === "writing" ? "Escrita" : lesson.exercise.type === "observation" ? "Observação" : lesson.exercise.type === "practice" ? "Prática" : "Reflexão"}
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "hsl(230 20% 25%)" }}>
+              <p className="text-[17px] md:text-[18px] leading-relaxed font-black" style={{ color: "#3D1429" }}>
                 {lesson.exercise.instruction}
               </p>
             </div>
