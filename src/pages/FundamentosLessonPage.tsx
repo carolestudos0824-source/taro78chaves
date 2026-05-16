@@ -217,13 +217,12 @@ const FundamentosLessonPage = () => {
             {/* Title */}
             <div className="text-center space-y-2">
               <span className="text-3xl">{lesson.icon}</span>
-              <h2 className="font-heading text-2xl tracking-wide" style={{
-                background: "linear-gradient(135deg, hsl(340 42% 22%), hsl(36 35% 28%), hsl(36 45% 44%))",
-                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-              }}>
+              <h2 className="font-heading text-3xl md:text-4xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
                 {lesson.title}
               </h2>
-              <p className="font-accent text-sm italic" style={{ color: "hsl(230 20% 25% / 0.60)" }}>{lesson.subtitle}</p>
+              <p className="font-accent text-lg md:text-xl italic font-black" style={{ color: "#8B6A30" }}>
+                {lesson.subtitle}
+              </p>
             </div>
 
             {/* Content */}
