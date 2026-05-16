@@ -132,8 +132,8 @@ const CartasCortePage = () => {
           </div>
         </div>
 
-        {/* Cards */}
-        <div className="space-y-5">
+        {/* Court Cards Accordion */}
+        <div className="space-y-6">
           {CARTAS_CORTE.map((carta, idx) => {
             const isOpen = openCard === carta.id;
             const colors = progressColors[idx];
@@ -141,52 +141,59 @@ const CartasCortePage = () => {
             return (
               <div
                 key={carta.id}
-                className="rounded-xl overflow-hidden transition-all duration-300"
+                className="rounded-[2.5rem] overflow-hidden transition-all duration-500"
                 style={{
-                  background: isOpen ? "hsl(38 30% 95% / 0.95)" : "hsl(38 30% 95% / 0.70)",
-                  border: `1px solid ${isOpen ? colors.border : "hsl(36 25% 82% / 0.40)"}`,
-                  boxShadow: isOpen ? `0 4px 25px ${colors.border}` : "none",
-                  animation: `fade-up 0.4s ease-out ${idx * 0.08}s both`,
+                  background: isOpen ? "#FFFFFF" : "rgba(255, 255, 255, 0.7)",
+                  border: `2.5px solid ${isOpen ? colors.accent : "rgba(200, 166, 106, 0.3)"}`,
+                  boxShadow: isOpen ? `0 20px 60px rgba(91, 31, 61, 0.12)` : "0 8px 30px rgba(91, 31, 61, 0.04)",
+                  transform: isOpen ? "translateY(-4px)" : "none",
+                  animation: `fade-up 0.5s ease-out ${idx * 0.1}s both`,
                 }}
               >
-                {/* Header */}
+                {/* Accordion Header */}
                 <button
                   onClick={() => setOpenCard(isOpen ? null : carta.id)}
-                  className="w-full px-5 py-4 flex items-center gap-4 text-left"
+                  className="w-full px-8 py-7 flex items-center gap-6 text-left group"
                 >
-                  <div className="w-11 h-11 rounded-full flex items-center justify-center text-xl shrink-0" style={{
-                    background: colors.bg,
-                    border: `1.5px solid ${colors.border}`,
+                  <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl shrink-0 transition-all duration-500 shadow-md group-hover:scale-110" style={{
+                    background: "#FAF5EF",
+                    border: `3px solid ${colors.accent}`,
+                    color: colors.accent,
                   }}>
                     {carta.simbolo}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-heading text-base tracking-wide" style={{ color: "hsl(230 25% 15%)" }}>
+                    <div className="flex items-center gap-3 mb-1">
+                      <span className="text-[10px] font-heading font-black tracking-[0.25em]" style={{ color: "#C8A66A" }}>
+                        GRAU DE MATURIDADE
+                      </span>
+                    </div>
+                    <h3 className="font-heading text-2xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
                       {carta.nome}
                     </h3>
-                    <p className="text-xs font-accent italic" style={{ color: "hsl(230 20% 25% / 0.50)" }}>
+                    <p className="font-accent text-[15px] italic font-black truncate mt-1" style={{ color: colors.accent }}>
                       {carta.subtitulo} — {carta.principio}
                     </p>
                   </div>
-                  <ChevronDown className="w-4 h-4 shrink-0 transition-transform duration-300" style={{
-                    color: "hsl(230 10% 50%)",
-                    transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                  }} />
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border-2 transition-all duration-500 ${isOpen ? "rotate-180" : ""}`} style={{
+                    borderColor: `${colors.accent}40`,
+                    color: colors.accent
+                  }}>
+                    <ChevronDown className="w-6 h-6 shrink-0" />
+                  </div>
                 </button>
 
-                {/* Expanded */}
+                {/* Accordion Content */}
                 {isOpen && (
-                  <div className="px-5 pb-6 space-y-5" style={{ animation: "fade-up 0.3s ease-out" }}>
-                    <div className="h-px" style={{
-                      background: `linear-gradient(90deg, transparent, ${colors.border}, transparent)`,
-                    }} />
+                  <div className="px-8 pb-10 space-y-10 animate-fade-in">
+                    <div className="h-px w-full bg-gradient-to-r from-transparent via-[#C8A66A40] to-transparent" />
 
-                    {/* Keywords */}
-                    <div className="flex flex-wrap gap-1.5">
+                    {/* Keywords Section */}
+                    <div className="flex flex-wrap gap-2 justify-center">
                       {carta.palavrasChave.map((kw) => (
-                        <span key={kw} className="text-xs px-2.5 py-1 rounded-full font-heading tracking-wider" style={{
-                          background: colors.bg,
-                          border: `1px solid ${colors.border}`,
+                        <span key={kw} className="text-[11px] px-5 py-2 rounded-full font-heading font-black tracking-[0.2em] uppercase border-2 transition-all" style={{
+                          background: `${colors.accent}08`,
+                          borderColor: `${colors.accent}30`,
                           color: colors.accent,
                         }}>
                           {kw}
@@ -194,56 +201,74 @@ const CartasCortePage = () => {
                       ))}
                     </div>
 
-                    {/* Main text */}
-                    {carta.textoPrincipal.split("\n\n").map((p, i) => (
-                      <p key={i} className="text-sm leading-relaxed" style={{ color: "hsl(230 20% 25%)" }}>{p}</p>
-                    ))}
-
-                    {/* Symbolic explanation */}
-                    <div className="rounded-lg p-4" style={{
-                      background: "hsl(340 42% 28% / 0.03)",
-                      border: "1px solid hsl(340 42% 28% / 0.10)",
-                    }}>
-                      <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "hsl(340 42% 26%)" }}>
-                        ✦ Explicação Simbólica
-                      </h4>
-                      {carta.explicacaoSimbolica.split("\n\n").map((p, i) => (
-                        <p key={i} className="text-xs leading-relaxed mb-2 last:mb-0" style={{ color: "hsl(230 20% 25% / 0.80)" }}>{p}</p>
+                    {/* Main Narrative Text */}
+                    <div className="space-y-6 max-w-2xl mx-auto">
+                      {carta.textoPrincipal.split("\n\n").map((p, i) => (
+                        <p key={i} className="text-[17px] md:text-[18px] leading-relaxed font-black text-center" style={{ color: "#3D1429" }}>
+                          {p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}
+                        </p>
                       ))}
                     </div>
 
-                    {/* Psychological reading */}
-                    <div className="rounded-lg p-4" style={{
-                      background: "hsl(270 35% 40% / 0.03)",
-                      border: "1px solid hsl(270 35% 40% / 0.10)",
-                    }}>
-                      <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "hsl(270 35% 35%)" }}>
-                        🧠 Leitura Psicológica
-                      </h4>
-                      {carta.leituraPsicologica.split("\n\n").map((p, i) => (
-                        <p key={i} className="text-xs leading-relaxed mb-2 last:mb-0" style={{ color: "hsl(230 20% 25% / 0.80)" }}>{p}</p>
-                      ))}
+                    {/* Pedagogical Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {/* Symbolic */}
+                      <div className="rounded-3xl p-6 transition-all duration-500 hover:shadow-xl" style={{
+                        background: "rgba(91, 31, 61, 0.03)",
+                        border: "2px solid rgba(91, 31, 61, 0.1)",
+                      }}>
+                        <h4 className="font-heading text-[10px] tracking-[0.3em] uppercase mb-4 font-black flex items-center gap-2" style={{ color: "#5B1F3D" }}>
+                          <Sparkles className="w-3.5 h-3.5 text-[#C8A66A]" /> Simbolismo
+                        </h4>
+                        <div className="space-y-3">
+                          {carta.explicacaoSimbolica.split("\n\n").map((p, i) => (
+                            <p key={i} className="text-[14px] leading-relaxed font-black" style={{ color: "#3D1429CC" }}>{p}</p>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Psychological */}
+                      <div className="rounded-3xl p-6 transition-all duration-500 hover:shadow-xl" style={{
+                        background: "rgba(139, 106, 48, 0.03)",
+                        border: "2px solid rgba(139, 106, 48, 0.1)",
+                      }}>
+                        <h4 className="font-heading text-[10px] tracking-[0.3em] uppercase mb-4 font-black flex items-center gap-2" style={{ color: "#8B6A30" }}>
+                          🧠 Psicologia
+                        </h4>
+                        <div className="space-y-3">
+                          {carta.leituraPsicologica.split("\n\n").map((p, i) => (
+                            <p key={i} className="text-[14px] leading-relaxed font-black" style={{ color: "#3D1429CC" }}>{p}</p>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Practical */}
+                      <div className="rounded-3xl p-6 transition-all duration-500 hover:shadow-xl" style={{
+                        background: "rgba(200, 166, 106, 0.03)",
+                        border: "2px solid rgba(200, 166, 106, 0.15)",
+                      }}>
+                        <h4 className="font-heading text-[10px] tracking-[0.3em] uppercase mb-4 font-black flex items-center gap-2" style={{ color: "#C8A66A" }}>
+                          🎯 Na Prática
+                        </h4>
+                        <div className="space-y-3">
+                          {carta.leituraPratica.split("\n\n").map((p, i) => (
+                            <p key={i} className="text-[14px] leading-relaxed font-black" style={{ color: "#3D1429CC" }}>{p}</p>
+                          ))}
+                        </div>
+                      </div>
                     </div>
 
-                    {/* Practical reading */}
-                    <div className="rounded-lg p-4" style={{
-                      background: "hsl(36 45% 58% / 0.05)",
-                      border: "1px solid hsl(36 45% 58% / 0.15)",
-                    }}>
-                      <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "hsl(36 45% 40%)" }}>
-                        🎯 Leitura Prática
-                      </h4>
-                      {carta.leituraPratica.split("\n\n").map((p, i) => (
-                        <p key={i} className="text-xs leading-relaxed mb-2 last:mb-0" style={{ color: "hsl(230 20% 25% / 0.80)" }}>{p}</p>
-                      ))}
-                    </div>
+                    {/* Manifestations across Suits */}
+                    <div className="space-y-6">
+                      <div className="flex items-center gap-4">
+                        <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
+                        <h4 className="font-heading text-[11px] tracking-[0.35em] uppercase font-black" style={{ color: "#5B1F3D" }}>
+                          {carta.nome} nos 4 Naipes
+                        </h4>
+                        <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A40]" />
+                      </div>
 
-                    {/* Per-suit manifestation */}
-                    <div>
-                      <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "hsl(230 20% 25% / 0.60)" }}>
-                        {carta.nome} em cada naipe
-                      </h4>
-                      <div className="space-y-2">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {(["copas", "paus", "espadas", "ouros"] as const).map((naipe) => {
                           const info = NAIPES[naipe];
                           const manifest = carta.manifestacao[naipe];
@@ -251,26 +276,34 @@ const CartasCortePage = () => {
                           const isNaipeOpen = openNaipe === naipeKey;
 
                           return (
-                            <div key={naipe} className="rounded-lg overflow-hidden" style={{
-                              background: info.color.surface,
-                              border: `1px solid ${info.color.border}`,
+                            <div key={naipe} className="rounded-3xl overflow-hidden transition-all duration-500" style={{
+                              background: isNaipeOpen ? "white" : "rgba(255, 255, 255, 0.5)",
+                              border: `2px solid ${isNaipeOpen ? info.color.primary : "rgba(200, 166, 106, 0.2)"}`,
+                              boxShadow: isNaipeOpen ? "0 15px 40px rgba(91, 31, 61, 0.08)" : "none"
                             }}>
                               <button
                                 onClick={() => setOpenNaipe(isNaipeOpen ? null : naipeKey)}
-                                className="w-full px-3.5 py-2.5 flex items-center gap-2.5 text-left"
+                                className="w-full px-6 py-5 flex items-center gap-4 text-left group"
                               >
-                                <span className="text-sm">{info.icon}</span>
-                                <span className="font-heading text-xs tracking-wide flex-1" style={{ color: info.color.primary }}>
-                                  {manifest.titulo}
-                                </span>
-                                <ChevronDown className="w-3.5 h-3.5 shrink-0 transition-transform duration-200" style={{
-                                  color: "hsl(230 10% 55%)",
-                                  transform: isNaipeOpen ? "rotate(180deg)" : "rotate(0deg)",
+                                <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl shadow-inner transition-all duration-500 group-hover:scale-110" style={{
+                                  background: "#FAF5EF",
+                                  border: `2px solid ${info.color.primary}40`,
+                                }}>
+                                  {info.icon}
+                                </div>
+                                <div className="flex-1">
+                                  <span className="font-heading text-sm font-black tracking-tight" style={{ color: info.color.primary }}>
+                                    {manifest.titulo}
+                                  </span>
+                                </div>
+                                <ChevronDown className={`w-5 h-5 transition-transform duration-500 ${isNaipeOpen ? "rotate-180" : ""}`} style={{
+                                  color: info.color.primary
                                 }} />
                               </button>
                               {isNaipeOpen && (
-                                <div className="px-3.5 pb-3" style={{ animation: "fade-up 0.2s ease-out" }}>
-                                  <p className="text-xs leading-relaxed" style={{ color: "hsl(230 20% 20%)" }}>
+                                <div className="px-6 pb-6 animate-fade-in">
+                                  <div className="h-px w-full bg-gradient-to-r from-transparent via-[#C8A66A20] to-transparent mb-4" />
+                                  <p className="text-[14px] leading-relaxed font-black" style={{ color: "#3D1429" }}>
                                     {manifest.texto}
                                   </p>
                                 </div>
@@ -281,31 +314,37 @@ const CartasCortePage = () => {
                       </div>
                     </div>
 
-                    {/* Interpretation examples */}
-                    <div className="rounded-lg p-4" style={{
-                      background: "hsl(160 30% 45% / 0.04)",
-                      border: "1px solid hsl(160 30% 45% / 0.12)",
-                    }}>
-                      <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "hsl(160 30% 35%)" }}>
-                        💡 Exemplos de Interpretação
-                      </h4>
-                      <ul className="space-y-2">
-                        {carta.exemplosInterpretacao.map((ex, i) => (
-                          <li key={i} className="text-xs leading-relaxed" style={{ color: "hsl(230 20% 20%)" }}>
-                            <span style={{ color: "hsl(160 30% 35%)" }}>◆ </span>{ex}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    {/* Interpretation & Reflection Footer */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                      {/* Interpretation Examples */}
+                      <div className="rounded-3xl p-7" style={{
+                        background: "rgba(200, 166, 106, 0.06)",
+                        border: "2.5px solid rgba(200, 166, 106, 0.2)",
+                      }}>
+                        <h4 className="font-heading text-[10px] tracking-[0.3em] uppercase mb-4 font-black flex items-center gap-2" style={{ color: "#8B6A30" }}>
+                          💡 Interpretação
+                        </h4>
+                        <ul className="space-y-3">
+                          {carta.exemplosInterpretacao.map((ex, i) => (
+                            <li key={i} className="text-[13px] leading-relaxed font-black flex gap-3 items-start" style={{ color: "#3D1429" }}>
+                              <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "#C8A66A" }} />
+                              {ex}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
 
-                    {/* Reflection */}
-                    <div className="rounded-lg p-4" style={{
-                      background: colors.bg,
-                      border: `1px solid ${colors.border}`,
-                    }}>
-                      <p className="font-accent text-xs italic leading-relaxed" style={{ color: "hsl(230 20% 25% / 0.65)" }}>
-                        💭 {carta.reflexao}
-                      </p>
+                      {/* Reflection */}
+                      <div className="rounded-3xl p-7 flex flex-col justify-center text-center italic relative overflow-hidden" style={{
+                        background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+                        border: "2px solid #C8A66A",
+                        boxShadow: "0 15px 40px rgba(91, 31, 61, 0.2)"
+                      }}>
+                        <div className="absolute top-2 right-4 text-2xl opacity-10">💭</div>
+                        <p className="font-accent text-[17px] leading-relaxed font-black" style={{ color: "#FAF5EF" }}>
+                          "{carta.reflexao}"
+                        </p>
+                      </div>
                     </div>
                   </div>
                 )}
