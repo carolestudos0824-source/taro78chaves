@@ -49,69 +49,83 @@ const CartasCortePage = () => {
   ];
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
-        
         <div className="absolute inset-0" style={{
-          background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.90), hsl(36 33% 97% / 0.85), hsl(36 33% 97% / 0.95))",
+          background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
+          opacity: 0.98,
+        }} />
+        <div className="absolute inset-0" style={{
+          background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
         }} />
       </div>
 
-      {/* Header */}
-      <header className="relative z-10 backdrop-blur-md" style={{
-        background: "hsl(36 33% 97% / 0.85)",
-        borderBottom: "1px solid hsl(36 45% 58% / 0.15)",
+      {/* Header — Premium Style */}
+      <header className="relative z-10" style={{
+        borderBottom: "1.5px solid #C8A66A40",
+        background: "rgba(250, 245, 239, 0.95)",
+        backdropFilter: "blur(20px)",
+        boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)"
       }}>
-        <div className="container max-w-3xl py-3 px-4 flex items-center gap-4">
-          <button onClick={() => navigate("/app")} className="transition-colors hover:scale-105 duration-200" style={{ color: "hsl(230 10% 40%)" }}>
+        <div className="container max-w-3xl py-6 px-6 flex items-center gap-6">
+          <button 
+            onClick={() => navigate("/app")} 
+            className="transition-all hover:scale-110 duration-200 w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30] shadow-sm" 
+            style={{ color: "#5B1F3D" }}
+          >
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <span className="font-heading text-sm" style={{ color: "hsl(230 25% 15%)" }}>
-            Cartas da Corte
-          </span>
+          <div>
+            <span className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1.5 flex items-center gap-2 font-black" style={{ color: "#C8A66A" }}>
+              <Sparkles className="w-3.5 h-3.5" /> Módulo Formação
+            </span>
+            <h1 className="font-heading text-xl md:text-2xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
+              As Cartas da Corte
+            </h1>
+          </div>
         </div>
       </header>
 
-      <main className="relative z-10 container max-w-3xl px-4 py-8">
-        {/* Fase 3 — telemetria invisível dos itens-piloto das cortes */}
+      <main className="relative z-10 container max-w-3xl px-6 py-10">
         <PilotCortePilots />
-        {/* Hero */}
-        <div className="text-center space-y-4 mb-10" style={{ animation: "fade-up 0.6s ease-out" }}>
-          <div className="w-16 h-16 mx-auto rounded-full flex items-center justify-center text-2xl" style={{
-            background: "hsl(340 42% 28% / 0.08)",
-            border: "2px solid hsl(340 42% 28% / 0.20)",
-            boxShadow: "0 0 40px hsl(340 42% 28% / 0.10)",
+        
+        {/* Hero Section */}
+        <div className="text-center space-y-6 mb-12 animate-fade-up">
+          <div className="w-20 h-20 mx-auto rounded-3xl flex items-center justify-center text-3xl shadow-2xl transition-all duration-700" style={{
+            background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+            border: `2.5px solid #C8A66A`,
+            boxShadow: `0 20px 50px rgba(91, 31, 61, 0.2), 0 0 30px rgba(200, 166, 106, 0.1)`,
           }}>
             👑
           </div>
-          <h1 className="font-heading text-2xl md:text-3xl tracking-wide" style={{
-            background: "linear-gradient(135deg, hsl(340 42% 22%), hsl(36 45% 45%))",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}>
-            As Cartas da Corte
-          </h1>
-          <p className="font-accent text-sm italic max-w-lg mx-auto leading-relaxed" style={{ color: "hsl(230 20% 25% / 0.55)" }}>
-            Pajem, Cavaleiro, Rainha e Rei — quatro estágios de maturidade que se repetem em cada naipe. Compreendê-los é entender como a energia evolui de aprendiz a mestre.
-          </p>
+          
+          <div className="space-y-3">
+            <h2 className="font-heading text-3xl md:text-4xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
+              A Hierarquia da Alma
+            </h2>
+            <p className="font-accent text-[17px] md:text-[19px] italic leading-relaxed font-black max-w-xl mx-auto" style={{ color: "#5B1F3D" }}>
+              "Pajem, Cavaleiro, Rainha e Rei — quatro estágios de maturidade que se repetem em cada naipe. Compreendê-los é entender como a energia evolui de aprendiz a mestre."
+            </p>
+          </div>
 
-          {/* Progression visual */}
-          <div className="flex items-center justify-center gap-2 pt-2">
+          {/* Progression Visual */}
+          <div className="flex items-center justify-center gap-4 pt-4">
             {CARTAS_CORTE.map((carta, i) => (
-              <div key={carta.id} className="flex items-center gap-2">
-                <div className="flex flex-col items-center gap-1">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg" style={{
-                    background: progressColors[i].bg,
-                    border: `1.5px solid ${progressColors[i].border}`,
+              <div key={carta.id} className="flex items-center gap-3">
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl transition-all duration-500 shadow-md border-2" style={{
+                    background: "#FAF5EF",
+                    borderColor: progressColors[i].accent,
+                    color: progressColors[i].accent,
                   }}>
                     {carta.simbolo}
                   </div>
-                  <span className="text-[10px] font-heading tracking-wider" style={{ color: progressColors[i].accent }}>
+                  <span className="text-[10px] font-heading tracking-[0.2em] uppercase font-black" style={{ color: progressColors[i].accent }}>
                     {carta.nome}
                   </span>
                 </div>
                 {i < CARTAS_CORTE.length - 1 && (
-                  <ChevronRight className="w-3 h-3 mb-4" style={{ color: "hsl(230 10% 60%)" }} />
+                  <ChevronRight className="w-4 h-4 text-[#C8A66A40]" />
                 )}
               </div>
             ))}
