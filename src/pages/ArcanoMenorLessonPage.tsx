@@ -499,7 +499,7 @@ const PhaseReflexao = ({ card, accent }: { card: ArcanoMenorEditorial; accent: s
           >
             {String(i + 1).padStart(2, "0")}
           </span>
-          <span className="font-body text-[15px]" style={{ color: "hsl(230 25% 18% / 0.90)" }}>
+          <span className="font-body text-[17px] font-black leading-relaxed" style={{ color: "#3D1429" }}>
             {q}
           </span>
         </li>
