@@ -170,7 +170,7 @@ const FundamentosLessonPage = () => {
     const parts = text.split(/(\*\*[^*]+\*\*)/g);
     return parts.map((part, i) => {
       if (part.startsWith("**") && part.endsWith("**")) {
-        return <strong key={i} style={{ color: "hsl(340 42% 22%)" }}>{part.slice(2, -2)}</strong>;
+        return <strong key={i} style={{ color: "#5B1F3D" }}>{part.slice(2, -2)}</strong>;
       }
       return <span key={i}>{part}</span>;
     });
@@ -180,25 +180,31 @@ const FundamentosLessonPage = () => {
     <div className="min-h-screen relative overflow-hidden">
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, hsl(36 33% 97% / 0.88), hsl(36 33% 97% / 0.82), hsl(36 33% 97% / 0.92))" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)", opacity: 0.98 }} />
       </div>
 
       {/* Header */}
-      <header className="relative z-10 backdrop-blur-md" style={{ background: "hsl(36 33% 97% / 0.85)", borderBottom: "1px solid hsl(36 45% 58% / 0.15)" }}>
-        <div className="container max-w-3xl py-3 px-4 flex items-center gap-4">
-          <button onClick={() => navigate("/module/fundamentos")} className="transition-colors hover:scale-105 duration-200" style={{ color: "hsl(230 10% 40%)" }}>
+      <header className="relative z-10 sticky top-0" style={{
+        borderBottom: "1.5px solid #C8A66A40",
+        background: "rgba(250, 245, 239, 0.95)",
+        backdropFilter: "blur(20px)",
+        boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)"
+      }}>
+        <div className="container max-w-3xl py-4 px-6 flex items-center gap-4">
+          <button onClick={() => navigate("/module/fundamentos")} className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30] shadow-sm transition-all hover:scale-110 duration-200" style={{ color: "#5B1F3D" }}>
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <div className="flex items-center gap-2 flex-1">
-            <span className="text-lg">{lesson.icon}</span>
-            <span className="font-heading text-sm truncate" style={{ color: "hsl(230 25% 15%)" }}>{lesson.title}</span>
+          <div className="flex flex-col flex-1 min-w-0">
+            <span className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1 flex items-center gap-2 font-black" style={{ color: "#C8A66A" }}>
+              <MapPin className="w-3 h-3" /> {lessonOrder + 1}/{FUNDAMENTOS_LESSONS.length}
+            </span>
+            <h2 className="font-heading text-base truncate font-black" style={{ color: "#5B1F3D" }}>
+              {lesson.title}
+            </h2>
           </div>
-          <span className="text-[10px] font-body tracking-wider" style={{ color: "hsl(230 10% 50%)" }}>
-            {lessonOrder + 1}/{FUNDAMENTOS_LESSONS.length}
-          </span>
-          <div className="flex gap-1.5">
+          <div className="flex gap-1">
             {phaseSteps.map((p, i) => (
-              <div key={p} className="h-1.5 w-5 rounded-full transition-all duration-500" style={{ background: i <= currentIdx ? "hsl(36 45% 58%)" : "hsl(36 25% 82% / 0.6)" }} />
+              <div key={p} className="h-1.5 w-4 rounded-full transition-all duration-500" style={{ background: i <= currentIdx ? "#C8A66A" : "rgba(200, 166, 106, 0.2)" }} />
             ))}
           </div>
         </div>
@@ -211,19 +217,22 @@ const FundamentosLessonPage = () => {
             {/* Title */}
             <div className="text-center space-y-2">
               <span className="text-3xl">{lesson.icon}</span>
-              <h2 className="font-heading text-2xl tracking-wide" style={{
-                background: "linear-gradient(135deg, hsl(340 42% 22%), hsl(36 35% 28%), hsl(36 45% 44%))",
-                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-              }}>
+              <h2 className="font-heading text-3xl md:text-4xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
                 {lesson.title}
               </h2>
-              <p className="font-accent text-sm italic" style={{ color: "hsl(230 20% 25% / 0.60)" }}>{lesson.subtitle}</p>
+              <p className="font-accent text-lg md:text-xl italic font-black" style={{ color: "#8B6A30" }}>
+                {lesson.subtitle}
+              </p>
             </div>
 
             {/* Content */}
-            <div className="rounded-xl p-6" style={{ background: "hsl(38 30% 95% / 0.85)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
+            <div className="rounded-[2rem] p-8 md:p-10" style={{
+              background: "rgba(255, 255, 255, 0.98)",
+              border: "2.5px solid #C8A66A40",
+              boxShadow: "0 20px 50px rgba(91, 31, 61, 0.05)"
+            }}>
               {lesson.content.split("\n\n").map((paragraph, i) => (
-                <p key={i} className="text-sm leading-relaxed mb-4 last:mb-0" style={{ color: "hsl(230 20% 25%)" }}>
+                <p key={i} className="text-[17px] md:text-[18px] leading-relaxed mb-6 last:mb-0 font-black" style={{ color: "#3D1429" }}>
                   {renderContent(paragraph)}
                 </p>
               ))}
@@ -236,8 +245,8 @@ const FundamentosLessonPage = () => {
               </h3>
               <ul className="space-y-2">
                 {lesson.keyPoints.map((point, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm" style={{ color: "hsl(230 20% 20%)" }}>
-                    <span style={{ color: "hsl(36 42% 44%)" }} className="mt-0.5 shrink-0">◆</span>
+                  <li key={i} className="flex items-start gap-4 text-[15px] md:text-[16px] font-black leading-relaxed" style={{ color: "#3D1429" }}>
+                    <span style={{ color: "#C8A66A" }} className="mt-1.5 shrink-0 w-2 h-2 rounded-full" />
                     {point}
                   </li>
                 ))}
@@ -250,7 +259,7 @@ const FundamentosLessonPage = () => {
                 <h3 className="font-heading text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "hsl(340 42% 26%)" }}>
                   ✍️ Reflexão
                 </h3>
-                <p className="font-accent text-sm italic leading-relaxed" style={{ color: "hsl(230 20% 25% / 0.70)" }}>
+                <p className="font-accent text-[17px] md:text-[19px] italic leading-relaxed font-black" style={{ color: "#3D1429" }}>
                   {lesson.reflection}
                 </p>
               </div>
@@ -310,7 +319,7 @@ const FundamentosLessonPage = () => {
                   {lesson.exercise.type === "writing" ? "Escrita" : lesson.exercise.type === "observation" ? "Observação" : lesson.exercise.type === "practice" ? "Prática" : "Reflexão"}
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "hsl(230 20% 25%)" }}>
+              <p className="text-[17px] md:text-[18px] leading-relaxed font-black" style={{ color: "#3D1429" }}>
                 {lesson.exercise.instruction}
               </p>
             </div>
@@ -343,7 +352,7 @@ const FundamentosLessonPage = () => {
             </div>
             <div className="rounded-xl p-6" style={{ background: "hsl(38 30% 95% / 0.85)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
               {lesson.deepDive.split("\n\n").map((p, i) => (
-                <p key={i} className="text-sm leading-relaxed mb-4 last:mb-0" style={{ color: "hsl(230 20% 25%)" }}>
+                <p key={i} className="text-[17px] md:text-[18px] leading-relaxed mb-6 last:mb-0 font-black" style={{ color: "#3D1429" }}>
                   {renderContent(p)}
                 </p>
               ))}

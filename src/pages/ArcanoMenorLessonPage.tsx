@@ -379,8 +379,8 @@ const SectionTitle = ({ children, accent }: { children: React.ReactNode; accent:
 
 const Prose = ({ children }: { children: React.ReactNode }) => (
   <p
-    className="font-body text-[16px] leading-[1.8] font-medium"
-    style={{ color: "#5B1F3D" }}
+    className="font-body text-[17px] md:text-[18px] leading-[1.8] font-black"
+    style={{ color: "#3D1429" }}
   >
     {children}
   </p>
@@ -390,10 +390,10 @@ const PhaseIntro = ({ card, accent }: { card: ArcanoMenorEditorial; accent: stri
   <>
     {card.subtitulo && (
       <p
-        className="font-accent italic text-center text-xl font-bold leading-relaxed mb-6"
+        className="font-accent italic text-center text-[22px] md:text-[24px] font-black leading-relaxed mb-8"
         style={{ color: "#8B6A30" }}
       >
-        {card.subtitulo}
+        "{card.subtitulo}"
       </p>
     )}
     <SectionTitle accent={accent}>Essência</SectionTitle>
@@ -499,7 +499,7 @@ const PhaseReflexao = ({ card, accent }: { card: ArcanoMenorEditorial; accent: s
           >
             {String(i + 1).padStart(2, "0")}
           </span>
-          <span className="font-body text-[15px]" style={{ color: "hsl(230 25% 18% / 0.90)" }}>
+          <span className="font-body text-[17px] font-black leading-relaxed" style={{ color: "#3D1429" }}>
             {q}
           </span>
         </li>
@@ -673,8 +673,8 @@ const ReviewRow = ({
       {label}
     </span>
     <span
-      className="font-body text-[14px] leading-relaxed"
-      style={{ color: "hsl(230 25% 18% / 0.90)" }}
+      className="font-body text-[16px] leading-relaxed font-black"
+      style={{ color: "#3D1429" }}
     >
       {value}
     </span>

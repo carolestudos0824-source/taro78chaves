@@ -105,9 +105,9 @@ const NaipeIntroPage = () => {
         </div>
       </header>
 
-      <main className="relative z-10 container max-w-3xl px-4 py-8">
-        {/* Hero — Redesigned for premium force */}
-        <div className="text-center space-y-6 mb-12" style={{ animation: "fade-up 0.7s ease-out" }}>
+      <main className="relative z-10 container max-w-3xl px-6 py-10">
+        {/* Hero Section */}
+        <div className="text-center space-y-6 mb-12 animate-fade-up">
           <div className="w-24 h-24 mx-auto rounded-3xl flex items-center justify-center text-4xl shadow-2xl transition-all duration-700 hover:rotate-12" style={{
             background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
             border: `2.5px solid #C8A66A`,
@@ -115,28 +115,32 @@ const NaipeIntroPage = () => {
           }}>
             <TarotIcon name={naipe} className="w-12 h-12 text-[#FAF5EF]" />
           </div>
-          <h1 className="font-heading text-4xl md:text-5xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
-            {ped.nome ?? info.name}
-          </h1>
-          <p className="font-accent text-lg md:text-xl italic font-black leading-snug" style={{ color: "#5B1F3D99" }}>
-            {ped.subtitulo ?? info.subtitle}
-          </p>
+          
+          <div className="space-y-3">
+            <h1 className="font-heading text-4xl md:text-5xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
+              {ped.nome ?? info.name}
+            </h1>
+            <p className="font-accent text-lg md:text-xl italic font-black leading-snug" style={{ color: "#8B6A30" }}>
+              {ped.subtitulo ?? info.subtitle}
+            </p>
+          </div>
+
           {ped.fraseAbertura && (
-            <div className="relative py-4 px-8 max-w-xl mx-auto">
+            <div className="relative py-6 px-10 max-w-xl mx-auto">
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#C8A66A] to-transparent rounded-full" />
-              <p className="font-accent text-[18px] md:text-[20px] italic leading-relaxed font-black pl-4" style={{ color: "#5B1F3D" }}>
+              <p className="font-accent text-[20px] md:text-[22px] italic leading-relaxed font-black pl-6" style={{ color: "#5B1F3D" }}>
                 "{ped.fraseAbertura}"
               </p>
             </div>
           )}
         </div>
 
-        {/* Keywords */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8" style={{ animation: "fade-up 0.5s ease-out 0.1s both" }}>
+        {/* Keywords Tags */}
+        <div className="flex flex-wrap justify-center gap-2 mb-10 animate-fade-up" style={{ animationDelay: "0.1s" }}>
           {(ped.palavrasAncora.length > 0 ? ped.palavrasAncora : info.keywords).map((kw) => (
-            <span key={kw} className="text-xs font-heading tracking-wider px-3 py-1.5 rounded-full" style={{
-              background: info.color.surface,
-              border: `1px solid ${info.color.border}`,
+            <span key={kw} className="text-[11px] font-heading tracking-[0.2em] uppercase px-5 py-2 rounded-full border-2 font-black" style={{
+              background: "white",
+              border: `2px solid ${info.color.border}`,
               color: info.color.primary,
             }}>
               {kw}
@@ -144,70 +148,77 @@ const NaipeIntroPage = () => {
           ))}
         </div>
 
-        {/* Main text — High readability */}
+        {/* Essential Definition Card */}
         {ped.essencia && (
-          <div className="rounded-[2rem] p-8 md:p-10 mb-10 transition-all duration-500" style={{
-            background: "rgba(255, 255, 255, 0.95)",
-            border: "2px solid #C8A66A30",
-            boxShadow: "0 20px 50px rgba(91, 31, 61, 0.05)",
-            animation: "fade-up 0.6s ease-out 0.2s both",
+          <div className="rounded-[2.5rem] p-10 mb-12 animate-fade-up" style={{
+            background: "rgba(255, 255, 255, 0.98)",
+            border: "2.5px solid #C8A66A",
+            boxShadow: "0 25px 60px rgba(91, 31, 61, 0.08)",
+            animationDelay: "0.2s",
           }}>
-            {ped.essencia.split("\n\n").map((p, i) => (
-              <p key={i} className="text-[16px] md:text-[17px] leading-relaxed mb-6 last:mb-0 font-black" style={{ color: "#3D1429" }}>
-                {renderContent(p)}
-              </p>
-            ))}
+            <div className="flex items-center justify-center gap-4 mb-8 opacity-90">
+              <span className="h-px w-10" style={{ background: "linear-gradient(90deg, transparent, #C8A66A)" }} />
+              <span className="text-[12px] font-black" style={{ color: "#C8A66A", letterSpacing: "0.4em" }}>✶ A ESSÊNCIA ✶</span>
+              <span className="h-px w-10" style={{ background: "linear-gradient(90deg, #C8A66A, transparent)" }} />
+            </div>
+            <div className="space-y-6 max-w-2xl mx-auto">
+              {ped.essencia.split("\n\n").map((p, i) => (
+                <p key={i} className="text-[18px] md:text-[20px] leading-relaxed font-black text-center" style={{ color: "#3D1429" }}>
+                  {renderContent(p)}
+                </p>
+              ))}
+            </div>
           </div>
         )}
 
-        {/* Expandable sections */}
-        <div className="space-y-3 mb-8">
+        {/* Deep Dive Accordion */}
+        <div className="space-y-4 mb-10">
           {sections.map((section, idx) => {
             const isOpen = openSection === section.id;
             return (
               <div
                 key={section.id}
-                className="rounded-xl overflow-hidden transition-all duration-300"
+                className="rounded-[2rem] overflow-hidden transition-all duration-500 animate-fade-up"
                 style={{
-                  background: isOpen ? info.color.surface : "hsl(38 30% 95% / 0.7)",
-                  border: `1px solid ${isOpen ? info.color.border : "hsl(36 25% 82% / 0.5)"}`,
-                  boxShadow: isOpen ? `0 4px 20px ${info.color.border}` : "none",
-                  animation: `fade-up 0.4s ease-out ${(idx + 3) * 0.05}s both`,
+                  background: isOpen ? "#FFFFFF" : "rgba(255, 255, 255, 0.7)",
+                  border: `2.5px solid ${isOpen ? info.color.primary : "rgba(200, 166, 106, 0.3)"}`,
+                  boxShadow: isOpen ? `0 20px 50px rgba(91, 31, 61, 0.1)` : "0 8px 30px rgba(91, 31, 61, 0.04)",
+                  animationDelay: `${(idx + 3) * 0.08}s`,
+                  animationFillMode: "both",
                 }}
               >
                 <button
                   onClick={() => setOpenSection(isOpen ? null : section.id)}
-                  className="w-full px-5 py-4 flex items-center gap-3 text-left transition-colors duration-200"
+                  className="w-full px-8 py-6 flex items-center gap-5 text-left transition-all duration-300 group"
                 >
-                  <span className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center" style={{
-                    background: info.color.surface,
-                    border: `1px solid ${info.color.border}`,
+                  <span className="shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center shadow-md transition-all duration-500 group-hover:scale-110" style={{
+                    background: "#FAF5EF",
+                    border: `2px solid ${info.color.primary}40`,
                     color: info.color.primary,
                   }}>
-                    <TarotIcon name={section.id === 'elemental' ? naipe : section.icon} className="w-4 h-4" />
+                    <TarotIcon name={section.id === 'elemental' ? naipe : section.icon} className="w-6 h-6" />
                   </span>
-                  <span className="font-heading text-sm tracking-wide flex-1" style={{ color: "hsl(230 25% 15%)" }}>
+                  <span className="font-heading text-lg font-black tracking-tight flex-1" style={{ color: "#5B1F3D" }}>
                     {section.title}
                   </span>
-                  <ChevronDown
-                    className="w-4 h-4 shrink-0 transition-transform duration-300"
-                    style={{
-                      color: "hsl(230 10% 50%)",
-                      transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                    }}
-                  />
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border-2 transition-all duration-500 ${isOpen ? "rotate-180" : ""}`} style={{
+                    borderColor: `${info.color.primary}40`,
+                    color: info.color.primary
+                  }}>
+                    <ChevronDown className="w-6 h-6 shrink-0" />
+                  </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-5" style={{ animation: "fade-up 0.3s ease-out" }}>
-                    <div className="h-px mb-4" style={{
-                      background: `linear-gradient(90deg, transparent, ${info.color.border}, transparent)`,
-                    }} />
-                    {section.content.split("\n\n").map((p, i) => (
-                      <p key={i} className="text-sm leading-relaxed mb-3 last:mb-0" style={{ color: "hsl(230 20% 25%)" }}>
-                        {renderContent(p)}
-                      </p>
-                    ))}
+                  <div className="px-8 pb-8 animate-fade-in">
+                    <div className="h-px mb-6 w-full bg-gradient-to-r from-transparent via-[#C8A66A40] to-transparent" />
+                    <div className="space-y-4 max-w-2xl mx-auto">
+                      {section.content.split("\n\n").map((p, i) => (
+                        <p key={i} className="text-[16px] leading-relaxed font-black" style={{ color: "#3D1429" }}>
+                          {renderContent(p)}
+                        </p>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -215,20 +226,22 @@ const NaipeIntroPage = () => {
           })}
         </div>
 
-        {/* Applications in reading */}
+        {/* Practical Applications Card */}
         {ped.aplicacoesLeitura.length > 0 && (
-          <div className="rounded-xl p-6 mb-8" style={{
-            background: `${info.color.primary}08`,
-            border: `1px solid ${info.color.border}`,
-            animation: "fade-up 0.5s ease-out 0.4s both",
+          <div className="rounded-[2.5rem] p-8 mb-10 animate-fade-up" style={{
+            background: "rgba(200, 166, 106, 0.06)",
+            border: "2.5px solid rgba(200, 166, 106, 0.2)",
+            animationDelay: "0.5s",
+            animationFillMode: "both",
           }}>
-            <h3 className="font-heading text-xs tracking-[0.2em] uppercase mb-4" style={{ color: info.color.primary }}>
-              ✦ Aplicações em Leitura
+            <h3 className="font-heading text-[11px] tracking-[0.35em] uppercase mb-6 font-black flex items-center gap-3" style={{ color: info.color.primary }}>
+              <span className="w-2 h-2 rounded-full" style={{ background: info.color.primary }} />
+              Aplicações na Leitura
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-4">
               {ped.aplicacoesLeitura.map((app, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: "hsl(230 20% 20%)" }}>
-                  <span style={{ color: info.color.primary }} className="mt-0.5 shrink-0">◆</span>
+                <li key={i} className="flex items-start gap-4 text-[15px] leading-relaxed font-black" style={{ color: "#3D1429" }}>
+                  <span style={{ color: info.color.primary }} className="mt-1.5 shrink-0 text-xs">◆</span>
                   {app}
                 </li>
               ))}
@@ -236,44 +249,47 @@ const NaipeIntroPage = () => {
           </div>
         )}
 
-        {/* Reflection */}
+        {/* Final Reflection Card */}
         {ped.reflexao && (
-          <div className="rounded-xl p-5 mb-8" style={{
-            background: "hsl(340 42% 28% / 0.04)",
-            border: "1px solid hsl(340 42% 28% / 0.15)",
-            animation: "fade-up 0.5s ease-out 0.5s both",
+          <div className="rounded-[2.5rem] p-8 mb-12 animate-fade-up" style={{
+            background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+            border: "2.5px solid #C8A66A",
+            boxShadow: "0 20px 50px rgba(91, 31, 61, 0.2)",
+            animationDelay: "0.6s",
+            animationFillMode: "both",
           }}>
-            <h3 className="font-heading text-xs tracking-[0.2em] uppercase mb-3" style={{ color: "hsl(340 42% 26%)" }}>
-              💭 Reflexão
+            <h3 className="font-heading text-[10px] tracking-[0.3em] uppercase mb-4 font-black flex items-center gap-2" style={{ color: "#C8A66A" }}>
+              💭 Momento de Reflexão
             </h3>
-            <p className="font-accent text-sm italic leading-relaxed" style={{ color: "hsl(230 20% 25% / 0.70)" }}>
-              {ped.reflexao}
+            <p className="font-accent text-[18px] md:text-[20px] italic leading-relaxed font-black text-center" style={{ color: "#FAF5EF" }}>
+              "{ped.reflexao}"
             </p>
           </div>
         )}
 
-        {/* CTA */}
-        <div className="flex flex-col items-center gap-4 pt-4" style={{ animation: "fade-up 0.5s ease-out 0.6s both" }}>
+        {/* Final CTA Action */}
+        <div className="flex flex-col items-center gap-6 pt-6 animate-fade-up" style={{ animationDelay: "0.7s", animationFillMode: "both" }}>
           <button
             onClick={() => navigate(`/module/${naipe}`)}
-            className="px-10 py-3.5 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105"
+            className="group relative px-12 py-4 rounded-full font-heading text-sm tracking-[0.2em] transition-all duration-500 hover:scale-105 active:scale-95"
             style={{
-              background: `linear-gradient(135deg, hsl(340 42% 28%), ${info.color.primary})`,
-              color: "hsl(36 33% 97%)",
-              boxShadow: `0 4px 20px ${info.color.border}`,
+              background: "#C8A66A",
+              color: "#5B1F3D",
+              boxShadow: "0 10px 30px rgba(200, 166, 106, 0.4)",
             }}
           >
-            <span className="flex items-center gap-2">
-              Explorar as Cartas
-              <ChevronRight className="w-4 h-4" />
+            <span className="relative z-10 flex items-center gap-3 font-black">
+              EXPLORAR AS CARTAS
+              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </button>
+          
           <button
             onClick={() => navigate("/app")}
-            className="text-xs font-heading tracking-wider transition-colors"
-            style={{ color: "hsl(230 10% 45%)" }}
+            className="text-[11px] font-heading tracking-[0.3em] uppercase transition-all hover:text-[#5B1F3D] hover:scale-105 font-black"
+            style={{ color: "#C8A66A" }}
           >
-            ← Voltar aos módulos
+            ← Voltar ao Portal
           </button>
         </div>
       </main>

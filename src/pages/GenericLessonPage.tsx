@@ -354,7 +354,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
                 {lesson.content.split("\n\n").map((p, i) => (
                   <p
                     key={i}
-                    className="text-[15px] leading-relaxed mb-4 last:mb-0 font-black"
+                    className="text-[17px] md:text-[18px] leading-relaxed mb-6 last:mb-0 font-black"
                     style={{ color: "#3D1429" }}
                     dangerouslySetInnerHTML={{ __html: p.replace(/\*\*(.*?)\*\*/g, '<strong style="color: #5B1F3D">$1</strong>') }}
                   />
@@ -370,7 +370,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
                 >
                   <ul className="space-y-2">
                     {lesson.keyPoints.map((kp, i) => (
-                      <li key={i} className="text-[14px] leading-relaxed flex gap-3 items-start font-black" style={{ color: "#3D1429" }}>
+                      <li key={i} className="text-[15px] md:text-[16px] leading-relaxed flex gap-4 items-start font-black" style={{ color: "#3D1429" }}>
                         <span className="mt-1.5 w-2 h-2 rounded-full shrink-0" style={{ background: "#C8A66A" }} />
                         {kp}
                       </li>
@@ -416,9 +416,9 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
               {lesson.deepDive.split("\n\n").map((p, i) => (
                 <p
                   key={i}
-                  className="text-sm leading-relaxed mb-3 last:mb-0"
-                  style={{ color: "hsl(230 20% 25%)" }}
-                  dangerouslySetInnerHTML={{ __html: p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }}
+                  className="text-[16px] md:text-[17px] leading-relaxed mb-4 last:mb-0 font-black"
+                  style={{ color: "#3D1429" }}
+                  dangerouslySetInnerHTML={{ __html: p.replace(/\*\*(.*?)\*\*/g, '<strong style="color: #5B1F3D">$1</strong>') }}
                 />
               ))}
             </SectionBlock>
@@ -434,7 +434,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
               label="Exercício"
               accentOverride="340 42% 28%"
             >
-              <p className="text-sm leading-relaxed" style={{ color: "hsl(230 20% 25%)" }}>
+              <p className="text-[17px] md:text-[18px] leading-relaxed font-black" style={{ color: "#3D1429" }}>
                 {lesson.exercise.instruction}
               </p>
             </SectionBlock>
@@ -446,7 +446,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
                 delay="120ms"
                 accentOverride="270 30% 35%"
               >
-                <p className="text-xs leading-relaxed italic" style={{ color: "hsl(230 20% 25% / 0.8)" }}>
+                <p className="text-[16px] italic leading-relaxed font-black" style={{ color: "#5B1F3D" }}>
                   {lesson.reflection}
                 </p>
               </SectionBlock>
