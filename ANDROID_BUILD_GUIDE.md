@@ -1,6 +1,6 @@
 # Guia de Build Android - Tarô 78 Chaves
 
-Este documento contém o passo a passo para gerar o binário de produção (.aab) do app Tarô 78 Chaves para a Google Play Store.
+Este documento contém o passo a passo para gerar o binário de produção (.aab) do app Tarô 78 Chaves para a Google Play Store. O app está atualmente em estado **Android Code-Ready**.
 
 ## 1. Nomenclatura de Prontidão
 1. **Code-Ready:** Código Android preparado (Estado Atual).
