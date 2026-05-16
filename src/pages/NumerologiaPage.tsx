@@ -246,9 +246,5 @@ const NumerologiaPage = () => {
     </div>
   );
 };
-      </main>
-    </div>
-  );
-};
 
 export default NumerologiaPage;
