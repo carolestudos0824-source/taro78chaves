@@ -123,13 +123,13 @@ const TrailsPage = () => {
   const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : null;
 
   return (
-    <div className="relative overflow-hidden w-full max-w-full" id="trails-page-root" style={{ minHeight: '100vh', background: '#FDFBF7' }}>
+    <div className="relative w-full max-w-full overflow-x-hidden" id="trails-page-root" style={{ minHeight: '100vh', background: '#FDFBF7' }}>
       {/* Background - kept subtle as main container handles overall bg */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
       }} />
 
-      <div className="relative max-w-2xl mx-auto px-4 sm:px-6 pt-6 pb-8 overflow-hidden w-full box-border">
+      <div className="relative max-w-2xl mx-auto px-4 sm:px-6 pt-6 pb-8 w-full box-border overflow-x-hidden">
         <div className="flex justify-end items-start mb-6">
           <div className="flex -space-x-3 opacity-40 hover:opacity-100 transition-opacity duration-500">
             <img src={imgLouco} alt="" className="w-8 h-12 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
@@ -160,10 +160,10 @@ const TrailsPage = () => {
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 pb-16 space-y-6 overflow-hidden w-full box-border">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 pb-24 space-y-6 w-full box-border overflow-x-hidden">
 
         {/* Overall progress */}
-        <div className="rounded-2xl p-4 sm:p-6 shadow-xl border-2 overflow-hidden w-full max-w-full box-border" style={{
+        <div className="rounded-2xl p-4 sm:p-6 shadow-xl border-2 w-full max-w-full box-border" style={{
           background: "linear-gradient(145deg, #FAF5EF, #F3E6E0)",
           borderColor: "#C8A66A4D",
         }}>
@@ -178,7 +178,7 @@ const TrailsPage = () => {
               {currentLevel ? `Em fase de ${currentLevel.title.split(' — ')[1] || currentLevel.title}` : "Formação Completa ✦"}
             </span>
           </div>
-          <div className="grid grid-cols-2 min-[430px]:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 min-[480px]:grid-cols-4 gap-3">
             {TRAIL_LEVELS.map(level => {
               const prog = getLevelProgress(level);
               const complete = isLevelComplete(level);
@@ -261,7 +261,7 @@ const TrailsPage = () => {
                         </span>
                       )}
                     </div>
-                    <h2 className="font-heading text-lg sm:text-xl font-black tracking-tight truncate" style={{
+                    <h2 className="font-heading text-base min-[360px]:text-lg sm:text-xl font-black tracking-tight" style={{
                       color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                     }}>
                       {level.title}
@@ -358,7 +358,7 @@ const TrailsPage = () => {
                               <span className="text-[8px] sm:text-[9px] font-heading font-black uppercase tracking-[0.15em] sm:tracking-[0.25em] px-2 sm:px-3 py-1 rounded-lg bg-[#C8A66A] text-white shadow-sm border border-[#5B1F3D10] shrink-0">Próximo</span>
                             )}
                           </div>
-                          <p className="font-body text-[13px] font-black italic truncate mt-1" style={{
+                          <p className="font-body text-[13px] font-black italic mt-1" style={{
                             color: modCurrent ? "#5B1F3DBB" : modComplete ? "#5B1F3D90" : "#5B1F3D60",
                           }}>
                             {mod.subtitle}
