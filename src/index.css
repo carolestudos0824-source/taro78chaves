@@ -10,24 +10,31 @@
 
 @layer base {
   :root {
+    /* ─── Tarô 78 Chaves — Official Brand Palette ─── */
+    /* Marfim Suave #FAF5EF — base background */
     --background: 35 56% 96%;
-    --foreground: 335 35% 18%;
+    --foreground: 335 35% 18%; /* deep ameixa */
 
+    /* Greige Quente #DCCFC2 — neutral cards */
     --card: 35 25% 94%;
     --card-foreground: 335 35% 18%;
 
     --popover: 35 56% 97%;
     --popover-foreground: 335 35% 18%;
 
+    /* ─── Brand Theme ─── */
+    /* Ouro Antigo #C8A66A — primary accent */
     --primary: 38 47% 60%;
     --primary-foreground: 35 56% 96%;
 
+    /* Ameixa Profundo #5B1F3D — main brand color */
     --secondary: 333 50% 24%;
     --secondary-foreground: 35 56% 96%;
 
     --accent: 38 47% 60%;
     --accent-foreground: 333 50% 24%;
 
+    /* Greige Quente #DCCFC2 — muted */
     --muted: 30 22% 84%;
     --muted-foreground: 333 18% 38%;
 
@@ -40,36 +47,43 @@
 
     --radius: 1rem;
 
+    /* ─── Named brand tokens ─── */
+    /* Ouro Antigo */
     --gold: 38 47% 60%;
     --gold-light: 38 50% 78%;
     --gold-dark: 36 42% 44%;
     --gold-muted: 35 30% 78%;
 
+    /* Ameixa Profundo */
     --wine: 333 50% 24%;
     --plum: 333 50% 24%;
     --crimson: 333 50% 24%;
     --crimson-light: 335 38% 38%;
 
-    --midnight: 335 35% 18%;
-    --parchment: 35 56% 96%;
+    /* Neutral surfaces */
+    --midnight: 335 35% 18%;            /* dark text */
+    --parchment: 35 56% 96%;            /* Marfim */
     --ivory: 35 56% 97%;
-    --moonlight: 18 38% 92%;
+    --moonlight: 18 38% 92%;            /* Rosa Aveludado #F3E6E0 */
 
+    /* Mystic surfaces — light, soft, premium */
     --mystic-bg: 35 56% 96%;
-    --mystic-surface: 18 38% 94%;
-    --mystic-elevated: 30 25% 92%;
+    --mystic-surface: 18 38% 94%;       /* Rosa Aveludado very soft */
+    --mystic-elevated: 30 25% 92%;      /* Greige Quente lighter */
 
-    --success: 38 42% 44%;
+    --success: 38 42% 44%;              /* Ouro escuro — concluído elegante */
     --success-foreground: 35 56% 96%;
-    --warning: 36 60% 50%;
+    --warning: 36 60% 50%;              /* Ouro mais quente */
     --warning-foreground: 333 50% 18%;
 
-    --brand-plum: 333 50% 24%;
-    --brand-gold: 38 47% 60%;
-    --brand-greige: 30 22% 82%;
-    --brand-rose: 18 38% 92%;
-    --brand-ivory: 35 56% 96%;
+    /* Brand semantic aliases (oficial Tarô 78 Chaves) */
+    --brand-plum: 333 50% 24%;          /* #5B1F3D */
+    --brand-gold: 38 47% 60%;           /* #C8A66A */
+    --brand-greige: 30 22% 82%;         /* #DCCFC2 */
+    --brand-rose: 18 38% 92%;           /* #F3E6E0 */
+    --brand-ivory: 35 56% 96%;          /* #FAF5EF */
 
+    /* Sidebar */
     --sidebar-background: 35 56% 96%;
     --sidebar-foreground: 333 50% 24%;
     --sidebar-primary: 333 50% 24%;
@@ -102,8 +116,8 @@
   body {
     @apply bg-background text-foreground font-body antialiased;
     line-height: 1.65;
-    background-color: hsl(var(--background));
-    background-image: linear-gradient(180deg, hsl(35 56% 96%) 0%, hsl(30 35% 94%) 100%);
+    background-color: #FAF5EF;
+    background-image: linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 100%);
     background-size: 100% 100%;
     background-attachment: fixed;
   }
@@ -127,6 +141,8 @@
   .pb-safe {
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
+
+  /* ─── Brand UI Components ─── */
 
   .btn-premium {
     @apply font-heading tracking-[0.2em] uppercase text-[11px] px-8 py-4 rounded-full transition-all duration-300 active:scale-95;
@@ -179,6 +195,7 @@
     background-image: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold)), hsl(var(--gold-dark)));
   }
 
+  /* ─── Typography Scales ─── */
   .t-section-title {
     @apply text-[10px] tracking-[0.3em] font-heading uppercase opacity-85 font-black;
     color: hsl(var(--secondary));
@@ -188,6 +205,7 @@
     color: hsl(var(--secondary) / 0.9);
   }
 
+  /* ─── Elegant horizontal scrollbar (premium) ─── */
   .scrollbar-elegant {
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--gold) / 0.35) transparent;
@@ -214,6 +232,7 @@
     display: none;
   }
 
+  /* ─── Procedural Brand Elements (No image dependencies) ─── */
   .mystic-bg-procedural {
     background-color: hsl(var(--background));
     background-image: 
@@ -247,6 +266,7 @@
   }
 }
 
+/* ─── Global Overrides for Shadcn ─── */
 .shadcn-input-premium {
   @apply bg-white/70 rounded-xl;
   border-color: hsl(var(--gold) / 0.3);
