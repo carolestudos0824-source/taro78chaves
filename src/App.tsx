@@ -210,7 +210,7 @@ const AppRoutes = () => {
           <Route path="/admin" element={<P><AdminPage /></P>} />
           <Route path="/qa-rotas" element={<P><QARotasPage /></P>} />
           
-          <Route path="/undefined" element={<Navigate to="/app" replace />} />
+          <Route path="/auditoria-mobile-trilhas" element={<P><MobileAuditPage /></P>} />
           <Route path="/null" element={<Navigate to="/app" replace />} />
           <Route path="/NaN" element={<Navigate to="/app" replace />} />
         </Route>
