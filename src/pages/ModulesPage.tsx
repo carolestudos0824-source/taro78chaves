@@ -295,7 +295,7 @@ const ModulesPage = () => {
           <SmartReviewCard />
           
           <div className="space-y-4 md:space-y-6 animate-fade-in">
-            <div className="bg-[#5B1F3D] border-2 border-[#C8A66A] rounded-[2.5rem] p-8 text-center space-y-4 relative overflow-hidden group shadow-2xl ring-8 ring-[#C8A66A]/5">
+            <div className="bg-[#5B1F3D] border-2 border-[#C8A66A] rounded-[2.5rem] p-6 md:p-10 text-center space-y-4 relative overflow-hidden group shadow-2xl ring-8 ring-[#C8A66A]/5">
               <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#C8A66A]/20 rounded-full blur-3xl" />
               
               {/* Imagem canônica do Arcano Atual */}
@@ -304,23 +304,23 @@ const ModulesPage = () => {
               </div>
 
               <div className="relative z-10 space-y-4">
-                <p className="text-[11px] font-heading tracking-[0.4em] uppercase font-black text-white/80">
-                  {isInitialState ? "✦ Portal de Início ✦" : "✦ Continue sua jornada por ✦"}
+                <p className="text-[10px] md:text-[11px] font-heading tracking-[0.3em] md:tracking-[0.4em] uppercase font-black text-white/80">
+                  {isInitialState ? "✦ Meu Painel Diário ✦" : "✦ Meu Painel Diário ✦"}
                 </p>
-                <h3 className="font-heading text-2xl md:text-3xl text-white font-black tracking-tight leading-tight">
+                <h3 className="font-heading text-xl md:text-3xl text-white font-black tracking-tight leading-tight">
                   {isInitialState ? "Seu primeiro Arcano" : "Seu próximo Arcano"}: <br/>
-                  {currentArcano.name}
+                  <span className="text-[#C8A66A]">{currentArcano.name}</span>
                 </h3>
                 <p className="text-[15px] font-body font-bold text-white/90 italic leading-relaxed">
                   {isInitialState 
-                    ? "Sua jornada começa pelos Arcanos Maiores." 
+                    ? "Inicie seu despertar pelo Arcano 0." 
                     : `${totalCompletedArcanos} de 78 chaves concluídas.`
                   }
-                  {!isInitialState && <span className="text-white/70 not-italic block mt-1 uppercase tracking-widest text-[10px] font-bold">Portal: {currentArcano.subtitle}</span>}
+                  {!isInitialState && <span className="text-white/70 not-italic block mt-1 uppercase tracking-widest text-[9px] md:text-[10px] font-bold">Portal: {currentArcano.subtitle}</span>}
                 </p>
                 <Link 
                   to={isInitialState ? "/lesson/0" : `/lesson/${currentArcanoId}`}
-                  className="block w-full py-5 bg-[#C8A66A] hover:bg-[#C8A66A]/90 text-[#5B1F3D] rounded-2xl font-heading text-[12px] font-black tracking-[0.3em] uppercase transition-all shadow-xl hover:scale-[1.02] active:scale-[0.95]"
+                  className="block w-full py-4 md:py-5 bg-[#C8A66A] hover:bg-[#C8A66A]/90 text-[#5B1F3D] rounded-2xl font-heading text-[11px] md:text-[12px] font-black tracking-[0.2em] md:tracking-[0.3em] uppercase transition-all shadow-xl hover:scale-[1.02] active:scale-[0.95]"
                 >
                   {isInitialState ? "INICIAR JORNADA" : "CONTINUAR DE ONDE PAREI"}
                 </Link>
