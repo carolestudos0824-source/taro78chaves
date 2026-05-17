@@ -10,8 +10,7 @@
 
 @layer base {
   :root {
-    /* ─── Tarô 78 Chaves — Official Brand Palette ─── */
-    /* Marfim Suave #FAF5EF — base background */
+    /* Brand Palette */
     --background: 35 56% 96%;
     --foreground: 335 35% 18%;
 
