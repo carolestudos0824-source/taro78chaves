@@ -71,8 +71,8 @@ const TRAIL_LEVELS: TrailLevel[] = [
 
 const TrailsPage = () => {
   const navigate = useNavigate();
-  const { progress } = useProgress();
-  const { bypassLocks } = useAccess();
+  const { progress, loading: progressLoading } = useProgress();
+  const { bypassLocks, loading: accessLoading } = useAccess();
   const { setHeader, resetHeader } = useHeader();
 
   useEffect(() => {
@@ -83,6 +83,18 @@ const TrailsPage = () => {
     });
     return () => resetHeader();
   }, []);
+
+  if (progressLoading || accessLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
+        <div className="text-center space-y-4 animate-fade-in">
+          <div className="w-10 h-10 border-4 border-[#C8A66A]/20 border-t-[#5B1F3D] animate-spin rounded-full mx-auto" />
+          <p className="text-[11px] text-[#5B1F3D] font-heading tracking-[0.2em] uppercase font-black">Sincronizando Jornada</p>
+        </div>
+      </div>
+    );
+  }
+
 
   const isLevelComplete = (level: TrailLevel): boolean => {
     return level.modules.every(m => progress.completedModules.includes(m));
@@ -111,29 +123,29 @@ const TrailsPage = () => {
   const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : null;
 
   return (
-    <div className="relative overflow-hidden w-full max-w-full">
+    <div className="relative overflow-hidden w-full max-w-full" id="trails-page-root" style={{ minHeight: '100vh', background: '#FDFBF7' }}>
       {/* Background - kept subtle as main container handles overall bg */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
       }} />
 
-      <div className="relative max-w-2xl mx-auto px-4 sm:px-6 pt-10 pb-8 overflow-hidden w-full box-border">
-        <div className="flex justify-end items-start mb-8">
-          <div className="flex -space-x-4 opacity-40 hover:opacity-100 transition-opacity duration-500">
-            <img src={imgLouco} alt="" className="w-10 h-14 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
-            <img src={imgMago} alt="" className="w-10 h-14 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 rotate-12 shadow-lg" />
+      <div className="relative max-w-2xl mx-auto px-4 sm:px-6 pt-6 pb-8 overflow-hidden w-full box-border">
+        <div className="flex justify-end items-start mb-6">
+          <div className="flex -space-x-3 opacity-40 hover:opacity-100 transition-opacity duration-500">
+            <img src={imgLouco} alt="" className="w-8 h-12 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
+            <img src={imgMago} alt="" className="w-8 h-12 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 rotate-12 shadow-lg" />
           </div>
         </div>
 
         <div className="text-center relative">
-          <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[#C8A66A]/20">
-            <TarotIcon name="formacao" className="w-12 h-12 animate-pulse-slow" />
+          <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-[#C8A66A]/20">
+            <TarotIcon name="formacao" className="w-10 h-10 animate-pulse-slow" />
           </div>
-          <div className="text-[12px] tracking-[0.45em] uppercase font-heading font-black mb-3 text-[#5B1F3D]">
+          <div className="text-[10px] sm:text-[12px] tracking-[0.3em] sm:tracking-[0.45em] uppercase font-heading font-black mb-2 text-[#5B1F3D]">
             Mapa Curricular
           </div>
           <h1
-            className="font-heading text-2xl min-[360px]:text-3xl md:text-4xl tracking-tight font-black"
+            className="font-heading text-xl min-[360px]:text-2xl md:text-4xl tracking-tight font-black"
             style={{
               background: "linear-gradient(135deg, #5B1F3D, #C8A66A)",
               WebkitBackgroundClip: "text",
@@ -142,7 +154,7 @@ const TrailsPage = () => {
           >
             Trilhas de Formação
           </h1>
-          <p className="font-body text-[13px] min-[360px]:text-[15px] font-bold italic mt-2 text-[#5B1F3D]/70 px-4">
+          <p className="font-body text-[12px] min-[360px]:text-[14px] font-bold italic mt-1.5 text-[#5B1F3D]/70 px-4">
             A arquitetura completa da sua maestria no Tarô
           </p>
         </div>

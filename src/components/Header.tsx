@@ -33,17 +33,17 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
       className="sticky top-0 z-50 w-full bg-[#FDFBF7] border-b-2 border-[#C8A66A]/20 shadow-sm"
       style={{ 
         height: 'auto',
-        minHeight: '70px',
+        minHeight: '72px',
         overflow: 'visible'
       }}
     >
-      <div className="container max-w-3xl px-4 sm:px-6 py-4 relative overflow-hidden">
+      <div className="container max-w-3xl px-4 sm:px-6 py-3.5 relative">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-3 overflow-hidden">
             <div className="flex items-center gap-2 shrink-0">
               <button 
                 onClick={() => setIsMenuOpen(true)}
-                className="flex items-center justify-center p-1.5 bg-white rounded-xl shadow-sm border border-[#C8A66A]/30 active:scale-95 w-10 h-10"
+                className="flex items-center justify-center p-1 bg-white rounded-xl shadow-sm border border-[#C8A66A]/30 active:scale-95 w-9 h-9"
                 style={{ transform: 'none' }}
               >
                 <Menu className="w-5 h-5 text-[#5B1F3D]" />
@@ -52,7 +52,7 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
               {state.backRoute && (
                 <button 
                   onClick={() => navigate(state.backRoute!)}
-                  className="flex items-center justify-center p-1.5 bg-[#FAF5EF] rounded-xl border border-[#C8A66A]/20 text-[#5B1F3D] active:scale-95 w-10 h-10"
+                  className="flex items-center justify-center p-1 bg-[#FAF5EF] rounded-xl border border-[#C8A66A]/20 text-[#5B1F3D] active:scale-95 w-9 h-9"
                   style={{ transform: 'none' }}
                 >
                   <ArrowLeft className="w-5 h-5" />
@@ -61,7 +61,7 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
             </div>
 
             <div className="flex flex-col justify-center min-w-0 flex-1">
-              <h1 className="font-heading text-[#5B1F3D] font-black tracking-tight leading-tight text-[13px] min-[360px]:text-sm sm:text-base truncate w-full">
+              <h1 className="font-heading text-[#5B1F3D] font-black tracking-tight leading-tight text-[12px] min-[360px]:text-[13px] sm:text-base truncate w-full">
                 {state.title}
               </h1>
               {state.subtitle && (
@@ -75,13 +75,13 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
           <div className="flex items-center gap-2 shrink-0">
             {!state.hideStreak && (
               <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white rounded-xl border border-[#C8A66A]/20 shadow-sm">
-                <span className="text-[#C8A66A] text-sm">🔥</span>
+                <span className="text-[#C8A66A] text-xs">🔥</span>
                 <span className="font-heading text-[13px] font-black text-[#5B1F3D]">{streak}</span>
               </div>
             )}
             <button 
               onClick={() => navigate("/perfil")} 
-              className="rounded-xl flex items-center justify-center bg-white border border-[#C8A66A]/30 shadow-sm active:scale-95 w-10 h-10"
+              className="rounded-xl flex items-center justify-center bg-white border border-[#C8A66A]/30 shadow-sm active:scale-95 w-9 h-9"
               style={{ transform: 'none' }}
               title="Meu Perfil"
             >
