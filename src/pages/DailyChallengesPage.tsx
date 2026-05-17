@@ -149,13 +149,16 @@ const DailyChallengesPage = () => {
               {new Date().toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" })}
             </div>
             <h1 className="font-heading text-4xl md:text-6xl font-black tracking-tighter mb-4 drop-shadow-sm leading-tight" style={{ color: "#5B1F3D" }}>
-              Ritual Diário
+              Leitura de Conexão Diária
             </h1>
             <div className="flex flex-col gap-1 items-center">
-              <p className="font-body text-[13px] md:text-[14px] font-black uppercase tracking-[0.3em]" style={{ color: "#C8A66A" }}>
-                Sua travessia de hoje
+              <p className="font-body text-[13px] md:text-[14px] font-black uppercase tracking-[0.3em] text-[#C8A66A]">
+                Um encontro breve com o Tarô para orientar sua jornada
               </p>
               <div className="h-[2px] w-20 md:w-24 bg-gradient-to-r from-transparent via-[#C8A66A] to-transparent my-6" />
+              <p className="font-body text-[14px] font-medium text-[#5B1F3D]/70 italic max-w-sm mx-auto">
+                "O Tarô não entrega respostas prontas. Ele revela caminhos para a sua consciência."
+              </p>
             </div>
           </div>
         </div>
@@ -216,7 +219,7 @@ const DailyChallengesPage = () => {
           <div className="flex items-center gap-4">
             <span className="h-px flex-1 bg-[#C8A66A]/20" />
             <h2 className="font-heading text-[11px] tracking-[0.4em] uppercase font-black text-[#C8A66A]">
-              Desafios Sagrados
+              Portais de Sabedoria
             </h2>
             <span className="h-px flex-1 bg-[#C8A66A]/20" />
           </div>
@@ -383,7 +386,7 @@ const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) =>
 
 // ─── Individual challenge contents ───
 
-const CompleteButton = ({ onComplete, label = "Concluir" }: { onComplete: () => void; label?: string }) => (
+const CompleteButton = ({ onComplete, label = "Integrar Sabedoria" }: { onComplete: () => void; label?: string }) => (
   <button
     onClick={onComplete}
     className="w-full mt-10 py-5 rounded-[2rem] font-heading text-[12px] font-black tracking-[0.3em] uppercase shadow-2xl transition-all duration-500 hover:scale-[1.02] active:scale-95 border-2 border-[#C8A66A40]"
@@ -501,7 +504,7 @@ const PerguntasContent = ({ data, onComplete }: { data: PerguntasDoDia; onComple
             {score === data.questions.length ? "Sabedoria Plena!" : "A prática leva à maestria."}
           </p>
         </div>
-        <CompleteButton onComplete={onComplete} label="Concluir ✦" />
+        <CompleteButton onComplete={onComplete} label="Integrar Sabedoria ✦" />
       </div>
     );
   }
