@@ -123,13 +123,13 @@ const TrailsPage = () => {
   const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : (progress.completedModules.length === allModulesOrdered.length ? null : TRAIL_LEVELS[0]);
 
   return (
-    <div className="relative w-full max-w-full flex flex-col items-center overflow-x-hidden" id="trails-page-root" style={{ minHeight: '100vh', background: '#FDFBF7' }}>
+    <div className="relative w-full max-w-full flex flex-col items-center overflow-x-hidden box-border" id="trails-page-root" style={{ minHeight: '100vh', background: '#FDFBF7' }}>
       {/* Background - kept subtle as main container handles overall bg */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
       }} />
 
-      <div className="relative w-full max-w-2xl px-3 sm:px-6 pt-6 pb-8 box-border overflow-hidden">
+      <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-6 pb-8 box-border">
         <div className="flex justify-end items-start mb-6">
           <div className="flex -space-x-3 opacity-40">
             <img src={imgLouco} alt="" className="w-8 h-12 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
@@ -160,7 +160,7 @@ const TrailsPage = () => {
         </div>
       </div>
 
-      <div className="relative w-full max-w-2xl px-3 sm:px-6 pb-24 space-y-6 box-border overflow-hidden">
+      <div className="relative w-full max-w-2xl px-4 sm:px-6 pb-32 space-y-6 box-border">
 
         {/* Overall progress */}
         <div className="rounded-2xl p-4 sm:p-6 shadow-xl border-2 w-full box-border relative overflow-hidden" style={{
@@ -174,8 +174,8 @@ const TrailsPage = () => {
                 Progresso Geral
               </h2>
             </div>
-            <span className="font-heading text-[8px] min-[360px]:text-[10px] sm:text-[12px] font-black tracking-widest uppercase px-2 sm:px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40] truncate max-w-[120px] min-[360px]:max-w-[150px] min-[400px]:max-w-none">
-              {currentLevel ? `Em fase de ${currentLevel.title.split(' — ')[1] || currentLevel.title}` : (progress.completedModules.length === allModulesOrdered.length ? "Formação Completa ✦" : "Iniciando Jornada")}
+            <span className="font-heading text-[8px] min-[360px]:text-[10px] sm:text-[12px] font-black tracking-widest uppercase px-2 min-[360px]:px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40] whitespace-nowrap overflow-hidden text-ellipsis max-w-[120px] min-[360px]:max-w-[140px] min-[400px]:max-w-none">
+              {currentLevel ? `${currentLevel.title.split(' — ')[1] || currentLevel.title}` : (progress.completedModules.length === allModulesOrdered.length ? "Completo ✦" : "Início")}
             </span>
           </div>
           <div className="grid grid-cols-4 gap-1 min-[360px]:gap-1.5 sm:gap-3">
@@ -261,7 +261,7 @@ const TrailsPage = () => {
                         </span>
                       )}
                     </div>
-                    <h2 className="font-heading text-[11px] min-[360px]:text-[15px] sm:text-xl font-black tracking-tight" style={{
+                    <h2 className="font-heading text-[11px] min-[360px]:text-[14px] sm:text-xl font-black tracking-tight leading-tight break-words" style={{
                       color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                     }}>
                       {level.title}
@@ -307,12 +307,12 @@ const TrailsPage = () => {
                       key={mod.id}
                       onClick={() => modUnlocked && navigate(mod.route)}
                       disabled={!modUnlocked}
-                      className="w-full text-left group transition-all duration-500 relative"
+                      className="w-full text-left group transition-all duration-500 relative box-border"
                     >
                       {modCurrent && (
                         <div className="absolute -left-[20px] min-[360px]:-left-[23px] sm:-left-[31px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 sm:w-4 sm:h-4 rounded-full bg-[#5B1F3D] border-2 border-[#FAF5EF] z-10 animate-pulse" />
                       )}
-                      <div className="rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-5 transition-all duration-500 group-hover:translate-x-1" style={modCurrent ? {
+                      <div className="rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-5 transition-all duration-500 group-hover:translate-x-1 box-border overflow-hidden" style={modCurrent ? {
                         background: "linear-gradient(145deg, #FFF, #FAF5EF)",
                         border: `2px solid ${modId === nextGlobalModuleId ? level.accentColor : '#DCCFC2'}`,
                         boxShadow: modId === nextGlobalModuleId ? `0 8px 30px ${level.accentColor}15` : 'none',
@@ -349,7 +349,7 @@ const TrailsPage = () => {
 
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1">
-                             <h3 className="font-heading text-[13px] sm:text-[15px] font-black tracking-tight truncate" style={{
+                             <h3 className="font-heading text-[13px] sm:text-[15px] font-black tracking-tight leading-tight break-words" style={{
                               color: modCurrent ? "#5B1F3D" : modComplete ? "#5B1F3D" : "#5B1F3D70",
                             }}>
                               {mod.name}
