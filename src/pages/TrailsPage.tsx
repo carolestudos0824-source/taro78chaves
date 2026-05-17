@@ -125,8 +125,9 @@ const TrailsPage = () => {
   return (
     <div className="relative w-full max-w-full flex flex-col items-center" id="trails-page-root" style={{ minHeight: '100vh', background: '#FDFBF7' }}>
       {/* Background - kept subtle as main container handles overall bg */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
+      <div className="fixed inset-0 pointer-events-none" style={{
+        background: "radial-gradient(ellipse at 50% 0%, rgba(243, 230, 224, 0.15) 0%, transparent 60%)",
+        zIndex: 0
       }} />
 
       <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-6 pb-8 box-border overflow-x-hidden">
