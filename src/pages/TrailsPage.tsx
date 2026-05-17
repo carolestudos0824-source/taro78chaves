@@ -82,6 +82,8 @@ const TrailsPage = () => {
       backRoute: "/app"
     });
     return () => resetHeader();
+  }, []);
+
   if (progressLoading || accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
