@@ -39,14 +39,14 @@ const BottomNav = () => {
         borderColor: "#C8A66A33",
       }}
     >
-      <div className="max-w-3xl mx-auto flex items-center justify-around py-2 px-2">
+      <div className="mx-auto flex items-center justify-around py-2 px-1 w-full max-w-full overflow-hidden">
         {NAV_ITEMS.map(item => {
           const isActive = location.pathname === item.path || location.pathname.startsWith(item.path + "/");
           return (
             <button
               key={item.path}
               onClick={() => navigate(item.path)}
-              className="flex flex-col items-center gap-1 px-3 py-1 rounded-2xl transition-all duration-300 relative group"
+              className="flex flex-col items-center gap-1 px-1 py-1 rounded-2xl transition-all duration-300 relative group flex-1 min-w-0"
               title={item.microcopy}
             >
               <TarotIcon 
@@ -55,7 +55,7 @@ const BottomNav = () => {
                 strokeWidth={isActive ? 2.5 : 2} 
                 color={isActive ? "#5B1F3D" : "#5B1F3D"}
               />
-              <span className={`text-[10px] font-heading tracking-widest uppercase transition-all duration-300 ${
+              <span className={`text-[9px] min-[375px]:text-[10px] font-heading tracking-widest uppercase transition-all duration-300 truncate w-full text-center ${
                 isActive ? "font-black text-[#5B1F3D]" : "font-bold text-[#5B1F3D]/70"
               }`}>
                 {item.label}
