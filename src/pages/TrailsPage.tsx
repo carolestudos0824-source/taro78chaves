@@ -184,7 +184,7 @@ const TrailsPage = () => {
               const complete = isLevelComplete(level);
               const unlocked = isLevelUnlocked(level);
               return (
-                <div key={level.id} className="space-y-2 flex flex-col items-center sm:items-stretch min-w-0">
+                <div key={level.id} className="space-y-2 flex flex-col items-center sm:items-stretch">
                   <div className="h-2 sm:h-3 w-full rounded-full overflow-hidden p-[1px]" style={{
                     background: unlocked ? "#E8DED3" : "#DCCFC260",
                     border: `1px solid ${unlocked ? "#C8A66A80" : "#DCCFC2"}`,
