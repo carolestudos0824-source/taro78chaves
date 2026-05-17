@@ -77,8 +77,8 @@ const TrailsPage = () => {
 
   useEffect(() => {
     setHeader({
-      title: "Mapa da Formação",
-      subtitle: "Sua jornada rumo à maestria",
+      title: "Trilhas de Formação",
+      subtitle: "Mapa da Maestria",
       backRoute: "/app"
     });
     return () => resetHeader();
@@ -120,7 +120,7 @@ const TrailsPage = () => {
 
   // Determine current level
   const currentLevelIdx = TRAIL_LEVELS.findIndex(l => isLevelUnlocked(l) && !isLevelComplete(l));
-  const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : null;
+  const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : (progress.completedModules.length === allModulesOrdered.length ? null : TRAIL_LEVELS[0]);
 
   return (
     <div className="relative w-full max-w-full overflow-x-hidden flex flex-col items-center" id="trails-page-root" style={{ minHeight: '100vh', background: '#FDFBF7' }}>
@@ -175,7 +175,7 @@ const TrailsPage = () => {
               </h2>
             </div>
             <span className="font-heading text-[8px] min-[360px]:text-[10px] sm:text-[12px] font-black tracking-widest uppercase px-2 sm:px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40] truncate max-w-[180px] min-[360px]:max-w-none">
-              {currentLevel ? `Em fase de ${currentLevel.title.split(' — ')[1] || currentLevel.title}` : "Formação Completa ✦"}
+              {currentLevel ? `Em fase de ${currentLevel.title.split(' — ')[1] || currentLevel.title}` : (progress.completedModules.length === allModulesOrdered.length ? "Formação Completa ✦" : "Iniciando Jornada")}
             </span>
           </div>
           <div className="grid grid-cols-4 gap-2 sm:gap-3">
