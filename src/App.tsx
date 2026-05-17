@@ -76,7 +76,7 @@ const PrivacyPage = lazy(() => import("./pages/legal/PrivacyPage.tsx"));
 const TermsPage = lazy(() => import("./pages/legal/TermsPage.tsx"));
 const SupportPage = lazy(() => import("./pages/legal/SupportPage.tsx"));
 const DeleteAccountPage = lazy(() => import("./pages/legal/DeleteAccountPage.tsx"));
-const QARotasPage = lazy(() => import("./pages/QARotasPage.tsx"));
+// QARotasPage removed
 
 const queryClient = new QueryClient();
 
@@ -207,7 +207,7 @@ const AppRoutes = () => {
           <Route path="/minha-jornada" element={<P><JourneyJournalPage /></P>} />
           <Route path="/feedback" element={<P><FeedbackPage /></P>} />
           <Route path="/admin" element={<P><AdminPage /></P>} />
-          <Route path="/qa-rotas" element={<P><QARotasPage /></P>} />
+          {/* QA route removed */}
           
           <Route path="/undefined" element={<Navigate to="/app" replace />} />
           <Route path="/null" element={<Navigate to="/app" replace />} />
@@ -237,13 +237,13 @@ const AppShell = () => {
   const { progress } = useProgress();
   
   return (
-    <div className="min-h-screen bg-[#FDFBF7] flex flex-col overflow-x-hidden w-full max-w-full relative">
+    <div className="min-h-screen bg-[#FDFBF7] flex flex-col w-full relative">
       <Header 
         streak={progress.streak} 
         xp={progress.xp} 
         level={progress.level} 
       />
-      <main className="flex-1 pb-28">
+      <main className="flex-1">
         <Outlet />
       </main>
       <BottomNav />
