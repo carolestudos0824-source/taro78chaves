@@ -261,7 +261,7 @@ const TrailsPage = () => {
                         </span>
                       )}
                     </div>
-                    <h2 className="font-heading text-[11px] min-[360px]:text-[15px] sm:text-xl font-black tracking-tight" style={{
+                    <h2 className="font-heading text-[11px] min-[360px]:text-[14px] sm:text-xl font-black tracking-tight leading-tight break-words" style={{
                       color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                     }}>
                       {level.title}
