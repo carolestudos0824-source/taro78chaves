@@ -239,7 +239,7 @@ const TrailsPage = () => {
                   
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-2 mb-1">
-                      <span className="text-[9px] min-[360px]:text-[10px] sm:text-[12px] tracking-[0.25em] sm:tracking-[0.35em] uppercase font-heading font-black" style={{
+                      <span className="text-[9px] min-[360px]:text-[9.5px] sm:text-[12px] tracking-[0.2em] sm:tracking-[0.35em] uppercase font-heading font-black truncate" style={{
                         color: unlocked ? "#5B1F3D" : "#5B1F3D70",
                       }}>
                         Portal {level.level}
