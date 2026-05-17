@@ -178,7 +178,7 @@ const TrailsPage = () => {
               {currentLevel ? `Em fase de ${currentLevel.title.split(' — ')[1] || currentLevel.title}` : (progress.completedModules.length === allModulesOrdered.length ? "Formação Completa ✦" : "Iniciando Jornada")}
             </span>
           </div>
-          <div className="grid grid-cols-4 gap-1.5 sm:gap-3 w-full max-w-full">
+          <div className="grid grid-cols-4 gap-1.5 sm:gap-3">
             {TRAIL_LEVELS.map(level => {
               const prog = getLevelProgress(level);
               const complete = isLevelComplete(level);
