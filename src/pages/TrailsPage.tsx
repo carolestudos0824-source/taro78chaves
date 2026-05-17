@@ -167,7 +167,7 @@ const TrailsPage = () => {
           background: "linear-gradient(145deg, #FAF5EF, #F3E6E0)",
           borderColor: "#C8A66A4D",
         }}>
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
+          <div className="flex items-center justify-between mb-4 gap-3">
             <div className="flex items-center gap-2">
               <Sparkles className="w-3 h-3 min-[360px]:w-4 min-[360px]:h-4 text-[#C8A66A] shrink-0" />
               <h2 className="font-heading text-[9px] min-[360px]:text-[10px] sm:text-sm font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
