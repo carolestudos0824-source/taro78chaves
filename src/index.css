@@ -262,7 +262,7 @@
   }
 }
 
-/* ─── Global Overrides for Shadcn ─── */
+/*  Global Overrides for Shadcn  */
 .shadcn-input-premium {
   @apply bg-white/70 rounded-xl;
   border-color: hsl(var(--gold) / 0.3);
