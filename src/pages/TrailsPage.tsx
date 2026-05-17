@@ -111,7 +111,7 @@ const TrailsPage = () => {
   const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : null;
 
   return (
-    <div className="relative overflow-x-hidden w-full">
+    <div className="relative overflow-hidden w-full max-w-full">
       {/* Background - kept subtle as main container handles overall bg */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
@@ -120,8 +120,8 @@ const TrailsPage = () => {
       <div className="relative max-w-2xl mx-auto px-4 sm:px-6 pt-10 pb-8 overflow-hidden">
         <div className="flex justify-end items-start mb-8">
           <div className="flex -space-x-4 opacity-40 hover:opacity-100 transition-opacity duration-500">
-            <img src={imgLouco} alt="" className="w-12 h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
-            <img src={imgMago} alt="" className="w-12 h-18 object-cover rounded-md border border-[#C8A66A]/30 rotate-12 shadow-lg" />
+            <img src={imgLouco} alt="" className="w-10 h-14 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
+            <img src={imgMago} alt="" className="w-10 h-14 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 rotate-12 shadow-lg" />
           </div>
         </div>
 
@@ -133,7 +133,7 @@ const TrailsPage = () => {
             Mapa Curricular
           </div>
           <h1
-            className="font-heading text-3xl md:text-4xl tracking-tight font-black"
+            className="font-heading text-2xl min-[360px]:text-3xl md:text-4xl tracking-tight font-black"
             style={{
               background: "linear-gradient(135deg, #5B1F3D, #C8A66A)",
               WebkitBackgroundClip: "text",
@@ -142,7 +142,7 @@ const TrailsPage = () => {
           >
             Trilhas de Formação
           </h1>
-          <p className="font-body text-[15px] font-bold italic mt-2 text-[#5B1F3D]/70">
+          <p className="font-body text-[13px] min-[360px]:text-[15px] font-bold italic mt-2 text-[#5B1F3D]/70 px-4">
             A arquitetura completa da sua maestria no Tarô
           </p>
         </div>
