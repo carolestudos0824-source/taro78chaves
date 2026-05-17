@@ -34,19 +34,19 @@ const BottomNav = () => {
 
   return (
     <nav
-      className="fixed bottom-0 inset-x-0 z-40 border-t bg-white/98 backdrop-blur-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe w-full overflow-hidden"
+      className="fixed bottom-0 inset-x-0 z-40 border-t bg-white/98 backdrop-blur-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe w-full overflow-hidden touch-none"
       style={{
         borderColor: "#C8A66A33",
       }}
     >
-      <div className="mx-auto flex items-center justify-between py-1.5 px-0.5 w-full max-w-full">
+      <div className="mx-auto flex items-center justify-between py-1.5 px-0 w-full max-w-full">
         {NAV_ITEMS.map(item => {
           const isActive = location.pathname === item.path || location.pathname.startsWith(item.path + "/");
           return (
             <button
               key={item.path}
               onClick={() => navigate(item.path)}
-              className="flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 transition-all duration-300 relative group py-1"
+              className="flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 transition-all duration-300 relative group py-1 select-none"
               title={item.microcopy}
             >
               <div className="relative flex items-center justify-center">
