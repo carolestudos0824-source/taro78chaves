@@ -111,17 +111,17 @@ const TrailsPage = () => {
   const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : null;
 
   return (
-    <div className="relative overflow-x-hidden w-full">
+    <div className="relative overflow-hidden w-full max-w-full">
       {/* Background - kept subtle as main container handles overall bg */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
       }} />
 
-      <div className="relative max-w-2xl mx-auto px-4 sm:px-6 pt-10 pb-8 overflow-hidden">
+      <div className="relative max-w-2xl mx-auto px-4 sm:px-6 pt-10 pb-8 overflow-hidden w-full box-border">
         <div className="flex justify-end items-start mb-8">
           <div className="flex -space-x-4 opacity-40 hover:opacity-100 transition-opacity duration-500">
-            <img src={imgLouco} alt="" className="w-12 h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
-            <img src={imgMago} alt="" className="w-12 h-18 object-cover rounded-md border border-[#C8A66A]/30 rotate-12 shadow-lg" />
+            <img src={imgLouco} alt="" className="w-10 h-14 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
+            <img src={imgMago} alt="" className="w-10 h-14 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 rotate-12 shadow-lg" />
           </div>
         </div>
 
@@ -133,7 +133,7 @@ const TrailsPage = () => {
             Mapa Curricular
           </div>
           <h1
-            className="font-heading text-3xl md:text-4xl tracking-tight font-black"
+            className="font-heading text-2xl min-[360px]:text-3xl md:text-4xl tracking-tight font-black"
             style={{
               background: "linear-gradient(135deg, #5B1F3D, #C8A66A)",
               WebkitBackgroundClip: "text",
@@ -142,38 +142,38 @@ const TrailsPage = () => {
           >
             Trilhas de Formação
           </h1>
-          <p className="font-body text-[15px] font-bold italic mt-2 text-[#5B1F3D]/70">
+          <p className="font-body text-[13px] min-[360px]:text-[15px] font-bold italic mt-2 text-[#5B1F3D]/70 px-4">
             A arquitetura completa da sua maestria no Tarô
           </p>
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 pb-16 space-y-6 overflow-hidden">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 pb-16 space-y-6 overflow-hidden w-full box-border">
 
         {/* Overall progress */}
         <div className="rounded-2xl p-4 sm:p-6 shadow-xl border-2 overflow-hidden w-full max-w-full box-border" style={{
           background: "linear-gradient(145deg, #FAF5EF, #F3E6E0)",
           borderColor: "#C8A66A4D",
         }}>
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-5 gap-3">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-[#C8A66A]" />
-              <h2 className="font-heading text-sm font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
+              <Sparkles className="w-4 h-4 text-[#C8A66A] shrink-0" />
+              <h2 className="font-heading text-[10px] sm:text-sm font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
                 Progresso Geral
               </h2>
             </div>
-            <span className="font-heading text-[12px] font-black tracking-widest uppercase px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40]">
-              {currentLevel ? `Em fase de ${currentLevel.title}` : "Formação Completa ✦"}
+            <span className="font-heading text-[9px] sm:text-[12px] font-black tracking-widest uppercase px-3 sm:px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40] truncate max-w-full">
+              {currentLevel ? `Em fase de ${currentLevel.title.split(' — ')[1] || currentLevel.title}` : "Formação Completa ✦"}
             </span>
           </div>
-          <div className="grid grid-cols-2 min-[375px]:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 min-[430px]:grid-cols-4 gap-3">
             {TRAIL_LEVELS.map(level => {
               const prog = getLevelProgress(level);
               const complete = isLevelComplete(level);
               const unlocked = isLevelUnlocked(level);
               return (
-                <div key={level.id} className="space-y-2">
-                  <div className="h-3 rounded-full overflow-hidden p-[1px]" style={{
+                <div key={level.id} className="space-y-2 flex flex-col items-center sm:items-stretch">
+                  <div className="h-2.5 sm:h-3 w-full rounded-full overflow-hidden p-[1px]" style={{
                     background: unlocked ? "#E8DED3" : "#DCCFC260",
                     border: `1.5px solid ${unlocked ? "#C8A66A80" : "#DCCFC2"}`,
                   }}>
@@ -184,7 +184,7 @@ const TrailsPage = () => {
                         : `linear-gradient(90deg, #5B1F3D, #C8A66A)`,
                     }} />
                   </div>
-                  <div className="text-[11px] font-heading font-black text-center uppercase tracking-normal mt-1" style={{
+                  <div className="text-[9px] sm:text-[11px] font-heading font-black text-center uppercase tracking-tight mt-1 truncate w-full" style={{
                     color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                   }}>
                     {level.title.split(" — ")[0]}
@@ -205,72 +205,83 @@ const TrailsPage = () => {
           return (
             <div key={level.id}>
               {/* Divider */}
-              <div className="flex items-center justify-center mb-3">
-                <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
+              <div className="flex items-center justify-center mb-3 w-full overflow-hidden">
+                <div className="ornament-divider-procedural max-w-full"><div className="ornament-divider-procedural-diamond" /></div>
               </div>
 
               {/* Level header */}
-              <div className="flex items-center gap-4 mb-6">
-                <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shrink-0 shadow-lg transition-transform duration-500 hover:rotate-3"
-                  style={{
-                    background: unlocked
-                      ? `linear-gradient(135deg, ${level.accentColor}20, #FAF5EF)`
-                      : "#DCCFC230",
-                    border: `2px solid ${unlocked ? level.accentColor : "#DCCFC260"}`,
-                    opacity: unlocked ? 1 : 0.6,
-                  }}
-                >
-                  {unlocked ? <TarotIcon name={level.icon} className="w-7 h-7" /> : <TarotIcon name="bloqueado" className="w-6 h-6 text-[#5B1F3D40]" />}
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[12px] tracking-[0.35em] uppercase font-heading font-black" style={{
-                      color: unlocked ? "#5B1F3D" : "#5B1F3D70",
-                    }}>
-                      Portal {level.level}
-                    </span>
-                    {complete && (
-                      <span className="text-[11px] tracking-[0.15em] uppercase font-heading font-black px-3 py-1 rounded-lg border-2 border-[#C8A66A]" style={{
-                        background: "#FAF5EF",
-                        color: "#5B1F3D",
-                      }}>
-                        Concluído
-                      </span>
-                    )}
-                    {isCurrent && (
-                      <span className="text-[11px] tracking-[0.15em] uppercase font-heading font-black px-3 py-1 rounded-lg border-2 border-[#5B1F3D]" style={{
-                        background: "#FAF5EF",
-                        color: "#5B1F3D",
-                      }}>
-                        Em progresso
-                      </span>
-                    )}
+              <div className="flex flex-col min-[480px]:flex-row items-start min-[480px]:items-center gap-4 mb-6">
+                <div className="flex items-center gap-4 w-full min-[480px]:w-auto">
+                  <div
+                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-xl sm:text-2xl shrink-0 shadow-lg transition-transform duration-500 hover:rotate-3"
+                    style={{
+                      background: unlocked
+                        ? `linear-gradient(135deg, ${level.accentColor}20, #FAF5EF)`
+                        : "#DCCFC230",
+                      border: `2px solid ${unlocked ? level.accentColor : "#DCCFC260"}`,
+                      opacity: unlocked ? 1 : 0.6,
+                    }}
+                  >
+                    {unlocked ? <TarotIcon name={level.icon} className="w-6 h-6 sm:w-7 sm:h-7" /> : <TarotIcon name="bloqueado" className="w-5 h-5 sm:w-6 sm:h-6 text-[#5B1F3D40]" />}
                   </div>
-                  <h2 className="font-heading text-xl font-black tracking-tight" style={{
-                    color: unlocked ? "#5B1F3D" : "#5B1F3D60",
-                  }}>
-                    {level.title}
-                  </h2>
-                  <p className="font-body text-[15px] font-black italic mt-1" style={{
+                  
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      <span className="text-[10px] sm:text-[12px] tracking-[0.25em] sm:tracking-[0.35em] uppercase font-heading font-black" style={{
+                        color: unlocked ? "#5B1F3D" : "#5B1F3D70",
+                      }}>
+                        Portal {level.level}
+                      </span>
+                      {complete && (
+                        <span className="text-[9px] sm:text-[11px] tracking-[0.1em] sm:tracking-[0.15em] uppercase font-heading font-black px-2 sm:px-3 py-1 rounded-lg border-2 border-[#C8A66A]" style={{
+                          background: "#FAF5EF",
+                          color: "#5B1F3D",
+                        }}>
+                          Concluído
+                        </span>
+                      )}
+                      {isCurrent && (
+                        <span className="text-[9px] sm:text-[11px] tracking-[0.1em] sm:tracking-[0.15em] uppercase font-heading font-black px-2 sm:px-3 py-1 rounded-lg border-2 border-[#5B1F3D]" style={{
+                          background: "#FAF5EF",
+                          color: "#5B1F3D",
+                        }}>
+                          Em progresso
+                        </span>
+                      )}
+                    </div>
+                    <h2 className="font-heading text-lg sm:text-xl font-black tracking-tight truncate" style={{
+                      color: unlocked ? "#5B1F3D" : "#5B1F3D60",
+                    }}>
+                      {level.title}
+                    </h2>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between w-full min-[480px]:w-auto min-[480px]:flex-col min-[480px]:items-center shrink-0">
+                  <p className="font-body text-[13px] sm:text-[15px] font-black italic min-[480px]:hidden" style={{
                     color: unlocked ? "#5B1F3D95" : "#5B1F3D60",
                   }}>
                     {level.subtitle}
                   </p>
+                  {isCurrent && (
+                    <div className="flex flex-col items-center">
+                      <span className="font-heading text-xl sm:text-2xl font-black text-[#5B1F3D]">
+                        {prog}%
+                      </span>
+                      <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]">Chaves</span>
+                    </div>
+                  )}
                 </div>
-                {isCurrent && (
-                  <div className="flex flex-col items-center shrink-0">
-                    <span className="font-heading text-2xl font-black text-[#5B1F3D]">
-                      {prog}%
-                    </span>
-                    <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]">Chaves</span>
-                  </div>
-                )}
+                <p className="font-body text-[14px] sm:text-[15px] font-black italic mt-1 hidden min-[480px]:block" style={{
+                  color: unlocked ? "#5B1F3D95" : "#5B1F3D60",
+                }}>
+                  {level.subtitle}
+                </p>
               </div>
 
               {/* Module cards */}
-              <div className="space-y-4 ml-7 border-l pl-6" style={{
-                borderColor: unlocked ? `${level.accentColor}20` : "#DCCFC230",
+              <div className="space-y-4 ml-4 min-[360px]:ml-5 sm:ml-7 border-l-2 pl-3 min-[360px]:pl-4 sm:pl-6" style={{
+                borderColor: unlocked ? `${level.accentColor}30` : "#DCCFC230",
               }}>
                 {level.modules.map(modId => {
                   const mod = MODULES.find(m => m.id === modId);
@@ -287,9 +298,9 @@ const TrailsPage = () => {
                       className="w-full text-left group transition-all duration-500 relative"
                     >
                       {modCurrent && (
-                        <div className="absolute -left-[31px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#5B1F3D] border-2 border-[#FAF5EF] z-10 animate-pulse" />
+                        <div className="absolute -left-[20px] min-[360px]:-left-[23px] sm:-left-[31px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 sm:w-4 sm:h-4 rounded-full bg-[#5B1F3D] border-2 border-[#FAF5EF] z-10 animate-pulse" />
                       )}
-                      <div className="rounded-2xl p-5 flex items-center gap-5 transition-all duration-500 group-hover:translate-x-1" style={modCurrent ? {
+                      <div className="rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-5 transition-all duration-500 group-hover:translate-x-1" style={modCurrent ? {
                         background: "linear-gradient(145deg, #FFF, #FAF5EF)",
                         border: `2px solid ${modId === nextGlobalModuleId ? level.accentColor : '#DCCFC2'}`,
                         boxShadow: modId === nextGlobalModuleId ? `0 8px 30px ${level.accentColor}15` : 'none',
@@ -302,7 +313,7 @@ const TrailsPage = () => {
                         opacity: 0.95,
                       }}>
                         {/* Status icon */}
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:scale-110" style={modComplete ? {
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:scale-110" style={modComplete ? {
                           background: "#FAF5EF",
                           border: `1px solid ${level.accentColor}30`,
                         } : modCurrent ? {
@@ -312,27 +323,27 @@ const TrailsPage = () => {
                           background: "rgba(220, 207, 194, 0.25)",
                           border: "1.5px solid rgba(220, 207, 194, 0.5)",
                         }}>
-                          {modComplete ? (
-                            <TarotIcon name="concluido" className="w-6 h-6" color={level.accentColor} />
+                           {modComplete ? (
+                            <TarotIcon name="concluido" className="w-5 h-5 sm:w-6 sm:h-6" color={level.accentColor} />
                           ) : modCurrent ? (
                             <div className="relative">
-                              <TarotIcon name="premium" className={`w-6 h-6 ${modId === nextGlobalModuleId ? 'text-[#C8A66A]' : 'text-[#5B1F3D50]'}`} />
-                              {modId === nextGlobalModuleId && <TarotIcon name="Sparkles" className="w-3 h-3 absolute -top-1 -right-1 text-[#C8A66A] animate-pulse" />}
+                              <TarotIcon name="premium" className={`w-5 h-5 sm:w-6 sm:h-6 ${modId === nextGlobalModuleId ? 'text-[#C8A66A]' : 'text-[#5B1F3D50]'}`} />
+                              {modId === nextGlobalModuleId && <TarotIcon name="Sparkles" className="w-2.5 h-2.5 sm:w-3 sm:h-3 absolute -top-1 -right-1 text-[#C8A66A] animate-pulse" />}
                             </div>
                           ) : (
-                            <TarotIcon name="bloqueado" className="w-5 h-5 text-[#5B1F3D20]" />
+                            <TarotIcon name="bloqueado" className="w-4 h-4 sm:w-5 sm:h-5 text-[#5B1F3D20]" />
                           )}
                         </div>
 
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1">
-                            <h3 className="font-heading text-[15px] font-black tracking-tight truncate" style={{
+                             <h3 className="font-heading text-[13px] sm:text-[15px] font-black tracking-tight truncate" style={{
                               color: modCurrent ? "#5B1F3D" : modComplete ? "#5B1F3D" : "#5B1F3D70",
                             }}>
                               {mod.name}
                             </h3>
                             {modId === nextGlobalModuleId && (
-                              <span className="text-[9px] font-heading font-black uppercase tracking-[0.25em] px-3 py-1 rounded-lg bg-[#C8A66A] text-white shadow-sm border border-[#5B1F3D10]">Próximo</span>
+                              <span className="text-[8px] sm:text-[9px] font-heading font-black uppercase tracking-[0.15em] sm:tracking-[0.25em] px-2 sm:px-3 py-1 rounded-lg bg-[#C8A66A] text-white shadow-sm border border-[#5B1F3D10] shrink-0">Próximo</span>
                             )}
                           </div>
                           <p className="font-body text-[13px] font-black italic truncate mt-1" style={{
