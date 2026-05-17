@@ -6,8 +6,8 @@ import { FontSizeProvider } from "@/contexts/font-size-context";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-// Componente para garantir renderização independente dentro da mesma página
-const TrailsPage = lazy(() => import("./TrailsPage"));
+// Importação direta para evitar problemas de lazy loading circular durante auditoria
+import TrailsPage from "./TrailsPage";
 
 const queryClient = new QueryClient();
 
@@ -18,9 +18,7 @@ const AuditFrame = ({ width, height, label }: { width: number; height: number; l
     </div>
     <div className="relative border-[12px] border-slate-800 rounded-[3rem] shadow-2xl overflow-hidden bg-white ring-1 ring-white/10 flex flex-col" style={{ width: `${width}px`, height: `${height}px` }}>
       <div className="flex-1 overflow-y-auto overflow-x-hidden relative bg-[#FDFBF7]">
-        <Suspense fallback={<div className="p-8 text-slate-400">Carregando {label}...</div>}>
-          <TrailsPage />
-        </Suspense>
+        <TrailsPage />
       </div>
     </div>
   </div>
@@ -48,7 +46,7 @@ const MobileAuditPageContent = () => {
       <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 text-white w-full max-w-5xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-2xl font-bold">Auditoria Mobile - Renderização Nativa</h1>
+            <h1 className="text-2xl font-bold">Auditoria Mobile - Renderização Direta</h1>
             <p className="text-slate-400 text-sm font-mono uppercase tracking-tighter">URL: /auditoria-mobile-trilhas</p>
           </div>
           <div className="flex gap-2">
