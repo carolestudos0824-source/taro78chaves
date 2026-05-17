@@ -115,7 +115,7 @@ const PremiumPage = () => {
               <TarotIcon name="premium" className="w-4 h-4 text-[#C8A66A]" />
               <span className="text-[11px] font-heading tracking-[0.3em] uppercase text-[#FAF5EF] font-black">Jornada Completa</span>
             </div>
-            <h1 className="font-heading text-4xl md:text-5xl text-[#5B1F3D] leading-[1.1] font-black tracking-tight drop-shadow-sm">
+            <h1 className="font-heading text-3xl min-[400px]:text-4xl md:text-5xl text-[#5B1F3D] leading-[1.1] font-black tracking-tight drop-shadow-sm break-words">
               Aprenda Tarô como uma jornada sagrada.
             </h1>
             <p className="text-[#5B1F3D] font-body text-[15px] md:text-[16px] font-bold italic leading-relaxed opacity-90">
@@ -125,19 +125,19 @@ const PremiumPage = () => {
         </div>
       </header>
 
-      <main className="max-w-lg mx-auto px-6 -mt-12 relative z-20 space-y-12">
+      <main className="max-w-lg mx-auto px-4 min-[400px]:px-6 -mt-12 relative z-20 space-y-12 pb-32">
         <div className="space-y-4">
           <h2 className="text-center font-heading text-[11px] tracking-[0.4em] uppercase font-black text-[#C8A66A] mb-8">
             ✦ O QUE VOCÊ DESBLOQUEIA ✦
           </h2>
           <div className="grid grid-cols-1 gap-4">
             {PREMIUM_BENEFITS.map((b) => (
-              <div key={b.title} className="bg-white border-2 border-[#C8A66A20] p-6 rounded-[2rem] flex items-center gap-6 shadow-xl hover:border-[#C8A66A40] transition-all">
+              <div key={b.title} className="bg-white border-2 border-[#C8A66A20] p-5 min-[400px]:p-6 rounded-[2rem] flex items-center gap-4 min-[400px]:gap-6 shadow-xl hover:border-[#C8A66A40] transition-all">
                 <div className="w-16 h-16 rounded-[1.2rem] bg-[#FAF5EF] border-2 border-[#C8A66A30] flex items-center justify-center shrink-0 shadow-inner">
                   <TarotIcon name={b.icon} className="w-8 h-8 text-[#5B1F3D]" />
                 </div>
                 <div className="space-y-1">
-                  <h3 className="font-heading text-lg font-black text-[#5B1F3D] tracking-tight">{b.title}</h3>
+                  <h3 className="font-heading text-base min-[400px]:text-lg font-black text-[#5B1F3D] tracking-tight break-words">{b.title}</h3>
                   <p className="text-[13px] text-[#5B1F3D80] font-body font-bold italic leading-snug">{b.desc}</p>
                 </div>
               </div>
@@ -156,7 +156,7 @@ const PremiumPage = () => {
             <button 
               onClick={() => handleSubscribe("monthly")} 
               disabled={loading} 
-              className="w-full text-left bg-white border-2 border-[#DCCFC2] p-6 rounded-3xl flex items-center justify-between group active:scale-[0.98] transition-all shadow-sm hover:border-[#C8A66A]"
+              className="w-full text-left bg-white border-2 border-[#DCCFC2] p-5 min-[400px]:p-6 rounded-3xl flex items-center justify-between group active:scale-[0.98] transition-all shadow-sm hover:border-[#C8A66A] gap-3"
             >
               <div className="space-y-1">
                 <p className="text-[11px] font-heading tracking-[0.2em] uppercase font-black text-[#5B1F3D]">Plano Mensal</p>
@@ -171,7 +171,7 @@ const PremiumPage = () => {
               </div>
             </button>
 
-            <div className="w-full text-left bg-white border-4 border-[#C8A66A] p-8 rounded-[2.5rem] flex flex-col space-y-6 shadow-2xl relative overflow-hidden active:scale-[0.98] transition-all ring-8 ring-[#C8A66A]/5">
+            <div className="w-full text-left bg-white border-4 border-[#C8A66A] p-6 min-[400px]:p-8 rounded-[2.5rem] flex flex-col space-y-6 shadow-2xl relative overflow-hidden active:scale-[0.98] transition-all ring-8 ring-[#C8A66A]/5">
               <div className="absolute top-0 right-0 bg-[#C8A66A] px-6 py-2.5 rounded-bl-3xl text-[10px] font-heading font-black tracking-widest text-[#FAF5EF] uppercase shadow-md">
                 Melhor Valor
               </div>
@@ -179,7 +179,7 @@ const PremiumPage = () => {
               <div className="space-y-2">
                 <p className="text-[11px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D] font-black">Acesso Anual</p>
                 <div className="flex items-baseline gap-1">
-                  <span className="font-heading text-5xl text-[#5B1F3D] font-black tracking-tighter">R$ 197</span>
+                  <span className="font-heading text-4xl min-[400px]:text-5xl text-[#5B1F3D] font-black tracking-tighter">R$ 197</span>
                   <span className="text-xs font-heading font-black text-[#5B1F3D]/40">/único</span>
                 </div>
                 <p className="text-sm font-black text-[#5B1F3D] italic leading-relaxed">
@@ -190,7 +190,7 @@ const PremiumPage = () => {
               <Button 
                 onClick={() => handleSubscribe("yearly")} 
                 disabled={loading} 
-                className="w-full py-8 text-sm bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.2em] shadow-xl border-2 border-[#C8A66A]"
+                className="w-full py-7 min-[400px]:py-8 text-[11px] min-[400px]:text-sm bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.15em] min-[400px]:tracking-[0.2em] shadow-xl border-2 border-[#C8A66A] h-auto whitespace-normal leading-tight"
               >
                 COMEÇAR JORNADA COMPLETA
               </Button>
