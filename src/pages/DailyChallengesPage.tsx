@@ -386,7 +386,7 @@ const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) =>
 
 // ─── Individual challenge contents ───
 
-const CompleteButton = ({ onComplete, label = "Concluir" }: { onComplete: () => void; label?: string }) => (
+const CompleteButton = ({ onComplete, label = "Integrar Sabedoria" }: { onComplete: () => void; label?: string }) => (
   <button
     onClick={onComplete}
     className="w-full mt-10 py-5 rounded-[2rem] font-heading text-[12px] font-black tracking-[0.3em] uppercase shadow-2xl transition-all duration-500 hover:scale-[1.02] active:scale-95 border-2 border-[#C8A66A40]"
@@ -504,7 +504,7 @@ const PerguntasContent = ({ data, onComplete }: { data: PerguntasDoDia; onComple
             {score === data.questions.length ? "Sabedoria Plena!" : "A prática leva à maestria."}
           </p>
         </div>
-        <CompleteButton onComplete={onComplete} label="Concluir ✦" />
+        <CompleteButton onComplete={onComplete} label="Integrar Sabedoria ✦" />
       </div>
     );
   }
