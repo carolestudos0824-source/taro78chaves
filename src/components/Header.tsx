@@ -60,12 +60,12 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
               )}
             </div>
 
-            <div className="flex flex-col justify-center min-w-0">
-              <h1 className="font-heading text-[#5B1F3D] font-black tracking-tight leading-tight text-sm sm:text-base truncate max-w-[120px] min-[375px]:max-w-none">
+            <div className="flex flex-col justify-center min-w-0 flex-1">
+              <h1 className="font-heading text-[#5B1F3D] font-black tracking-tight leading-tight text-[13px] min-[360px]:text-sm sm:text-base truncate w-full">
                 {state.title}
               </h1>
               {state.subtitle && (
-                <span className="font-heading text-[9px] tracking-[0.2em] uppercase text-[#5B1F3D]/60 font-black leading-none truncate">
+                <span className="font-heading text-[8px] min-[360px]:text-[9px] tracking-[0.15em] min-[360px]:tracking-[0.2em] uppercase text-[#5B1F3D]/60 font-black leading-none truncate w-full">
                   {state.subtitle}
                 </span>
               )}

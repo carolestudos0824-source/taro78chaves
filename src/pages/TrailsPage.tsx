@@ -155,25 +155,25 @@ const TrailsPage = () => {
           background: "linear-gradient(145deg, #FAF5EF, #F3E6E0)",
           borderColor: "#C8A66A4D",
         }}>
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-5 gap-3">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-[#C8A66A]" />
-              <h2 className="font-heading text-sm font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
+              <Sparkles className="w-4 h-4 text-[#C8A66A] shrink-0" />
+              <h2 className="font-heading text-[10px] sm:text-sm font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
                 Progresso Geral
               </h2>
             </div>
-            <span className="font-heading text-[12px] font-black tracking-widest uppercase px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40]">
-              {currentLevel ? `Em fase de ${currentLevel.title}` : "Formação Completa ✦"}
+            <span className="font-heading text-[9px] sm:text-[12px] font-black tracking-widest uppercase px-3 sm:px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40] truncate max-w-full">
+              {currentLevel ? `Em fase de ${currentLevel.title.split(' — ')[1] || currentLevel.title}` : "Formação Completa ✦"}
             </span>
           </div>
-          <div className="grid grid-cols-2 min-[375px]:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 min-[430px]:grid-cols-4 gap-3">
             {TRAIL_LEVELS.map(level => {
               const prog = getLevelProgress(level);
               const complete = isLevelComplete(level);
               const unlocked = isLevelUnlocked(level);
               return (
-                <div key={level.id} className="space-y-2">
-                  <div className="h-3 rounded-full overflow-hidden p-[1px]" style={{
+                <div key={level.id} className="space-y-2 flex flex-col items-center sm:items-stretch">
+                  <div className="h-2.5 sm:h-3 w-full rounded-full overflow-hidden p-[1px]" style={{
                     background: unlocked ? "#E8DED3" : "#DCCFC260",
                     border: `1.5px solid ${unlocked ? "#C8A66A80" : "#DCCFC2"}`,
                   }}>
@@ -184,7 +184,7 @@ const TrailsPage = () => {
                         : `linear-gradient(90deg, #5B1F3D, #C8A66A)`,
                     }} />
                   </div>
-                  <div className="text-[11px] font-heading font-black text-center uppercase tracking-normal mt-1" style={{
+                  <div className="text-[9px] sm:text-[11px] font-heading font-black text-center uppercase tracking-tight mt-1 truncate w-full" style={{
                     color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                   }}>
                     {level.title.split(" — ")[0]}
@@ -210,62 +210,73 @@ const TrailsPage = () => {
               </div>
 
               {/* Level header */}
-              <div className="flex items-center gap-4 mb-6">
-                <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shrink-0 shadow-lg transition-transform duration-500 hover:rotate-3"
-                  style={{
-                    background: unlocked
-                      ? `linear-gradient(135deg, ${level.accentColor}20, #FAF5EF)`
-                      : "#DCCFC230",
-                    border: `2px solid ${unlocked ? level.accentColor : "#DCCFC260"}`,
-                    opacity: unlocked ? 1 : 0.6,
-                  }}
-                >
-                  {unlocked ? <TarotIcon name={level.icon} className="w-7 h-7" /> : <TarotIcon name="bloqueado" className="w-6 h-6 text-[#5B1F3D40]" />}
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[12px] tracking-[0.35em] uppercase font-heading font-black" style={{
-                      color: unlocked ? "#5B1F3D" : "#5B1F3D70",
-                    }}>
-                      Portal {level.level}
-                    </span>
-                    {complete && (
-                      <span className="text-[11px] tracking-[0.15em] uppercase font-heading font-black px-3 py-1 rounded-lg border-2 border-[#C8A66A]" style={{
-                        background: "#FAF5EF",
-                        color: "#5B1F3D",
-                      }}>
-                        Concluído
-                      </span>
-                    )}
-                    {isCurrent && (
-                      <span className="text-[11px] tracking-[0.15em] uppercase font-heading font-black px-3 py-1 rounded-lg border-2 border-[#5B1F3D]" style={{
-                        background: "#FAF5EF",
-                        color: "#5B1F3D",
-                      }}>
-                        Em progresso
-                      </span>
-                    )}
+              <div className="flex flex-col min-[480px]:flex-row items-start min-[480px]:items-center gap-4 mb-6">
+                <div className="flex items-center gap-4 w-full min-[480px]:w-auto">
+                  <div
+                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-xl sm:text-2xl shrink-0 shadow-lg transition-transform duration-500 hover:rotate-3"
+                    style={{
+                      background: unlocked
+                        ? `linear-gradient(135deg, ${level.accentColor}20, #FAF5EF)`
+                        : "#DCCFC230",
+                      border: `2px solid ${unlocked ? level.accentColor : "#DCCFC260"}`,
+                      opacity: unlocked ? 1 : 0.6,
+                    }}
+                  >
+                    {unlocked ? <TarotIcon name={level.icon} className="w-6 h-6 sm:w-7 sm:h-7" /> : <TarotIcon name="bloqueado" className="w-5 h-5 sm:w-6 sm:h-6 text-[#5B1F3D40]" />}
                   </div>
-                  <h2 className="font-heading text-xl font-black tracking-tight" style={{
-                    color: unlocked ? "#5B1F3D" : "#5B1F3D60",
-                  }}>
-                    {level.title}
-                  </h2>
-                  <p className="font-body text-[15px] font-black italic mt-1" style={{
+                  
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      <span className="text-[10px] sm:text-[12px] tracking-[0.25em] sm:tracking-[0.35em] uppercase font-heading font-black" style={{
+                        color: unlocked ? "#5B1F3D" : "#5B1F3D70",
+                      }}>
+                        Portal {level.level}
+                      </span>
+                      {complete && (
+                        <span className="text-[9px] sm:text-[11px] tracking-[0.1em] sm:tracking-[0.15em] uppercase font-heading font-black px-2 sm:px-3 py-1 rounded-lg border-2 border-[#C8A66A]" style={{
+                          background: "#FAF5EF",
+                          color: "#5B1F3D",
+                        }}>
+                          Concluído
+                        </span>
+                      )}
+                      {isCurrent && (
+                        <span className="text-[9px] sm:text-[11px] tracking-[0.1em] sm:tracking-[0.15em] uppercase font-heading font-black px-2 sm:px-3 py-1 rounded-lg border-2 border-[#5B1F3D]" style={{
+                          background: "#FAF5EF",
+                          color: "#5B1F3D",
+                        }}>
+                          Em progresso
+                        </span>
+                      )}
+                    </div>
+                    <h2 className="font-heading text-lg sm:text-xl font-black tracking-tight truncate" style={{
+                      color: unlocked ? "#5B1F3D" : "#5B1F3D60",
+                    }}>
+                      {level.title}
+                    </h2>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between w-full min-[480px]:w-auto min-[480px]:flex-col min-[480px]:items-center shrink-0">
+                  <p className="font-body text-[13px] sm:text-[15px] font-black italic min-[480px]:hidden" style={{
                     color: unlocked ? "#5B1F3D95" : "#5B1F3D60",
                   }}>
                     {level.subtitle}
                   </p>
+                  {isCurrent && (
+                    <div className="flex flex-col items-center">
+                      <span className="font-heading text-xl sm:text-2xl font-black text-[#5B1F3D]">
+                        {prog}%
+                      </span>
+                      <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]">Chaves</span>
+                    </div>
+                  )}
                 </div>
-                {isCurrent && (
-                  <div className="flex flex-col items-center shrink-0">
-                    <span className="font-heading text-2xl font-black text-[#5B1F3D]">
-                      {prog}%
-                    </span>
-                    <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]">Chaves</span>
-                  </div>
-                )}
+                <p className="font-body text-[14px] sm:text-[15px] font-black italic mt-1 hidden min-[480px]:block" style={{
+                  color: unlocked ? "#5B1F3D95" : "#5B1F3D60",
+                }}>
+                  {level.subtitle}
+                </p>
               </div>
 
               {/* Module cards */}
