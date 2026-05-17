@@ -84,7 +84,7 @@ const TrailsPage = () => {
     return () => resetHeader();
   }, []);
 
-  if (progressLoading || accessLoading) {
+  if (progressLoading || accessLoading || !progress) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
         <div className="text-center space-y-4">
