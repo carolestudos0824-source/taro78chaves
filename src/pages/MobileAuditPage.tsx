@@ -1,4 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense, lazy } from "react";
+import { useProgress } from "@/hooks/use-progress";
+import { useAccess } from "@/hooks/use-access";
+import { HeaderProvider } from "@/contexts/header-context";
+import { FontSizeProvider } from "@/contexts/font-size-context";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter } from "react-router-dom";
+
+// Eagerly import the component we want to test to avoid iframe issues if possible,
+// but for the audit we'll use frames to show different sizes simultaneously.
+const TrailsPage = lazy(() => import("./TrailsPage"));
+
+const queryClient = new QueryClient();
 
 const MobileAuditPage = () => {
   const [metrics, setMetrics] = useState<any>({});
