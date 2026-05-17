@@ -21,7 +21,13 @@ const BottomNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // REMOVIDO: Auditoria que causava inconsistência visual
+  useEffect(() => {
+    const marker = document.getElementById("boot-marker");
+    if (marker) {
+      marker.innerText += " | BOTTOM NAV RENDERED";
+      console.log("BottomNav rendered at", location.pathname);
+    }
+  }, [location.pathname]);
 
   if (location.pathname === "/") return null;
   if (location.pathname.startsWith("/admin")) return null;

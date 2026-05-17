@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ChevronRight, Sparkles } from "lucide-react";
+import { ArrowLeft, ChevronRight, Lock, Check, Star, Sparkles, Crown, Compass, Key } from "lucide-react";
 import { TarotIcon } from "@/components/TarotIcon";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
@@ -84,10 +84,10 @@ const TrailsPage = () => {
     return () => resetHeader();
   }, []);
 
-  if (progressLoading || accessLoading || !progress) {
+  if (progressLoading || accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
-        <div className="text-center space-y-4">
+        <div className="text-center space-y-4 animate-fade-in">
           <div className="w-10 h-10 border-4 border-[#C8A66A]/20 border-t-[#5B1F3D] animate-spin rounded-full mx-auto" />
           <p className="text-[11px] text-[#5B1F3D] font-heading tracking-[0.2em] uppercase font-black">Sincronizando Jornada</p>
         </div>
@@ -110,27 +110,26 @@ const TrailsPage = () => {
   };
 
   const getLevelProgress = (level: TrailLevel): number => {
-    if (!progress || !progress.completedModules) return 0;
     const completed = level.modules.filter(m => progress.completedModules.includes(m)).length;
     return Math.round((completed / level.modules.length) * 100);
   };
 
   // Find the single absolute next module in the entire journey
   const allModulesOrdered = TRAIL_LEVELS.flatMap(l => l.modules);
-  const nextGlobalModuleId = progress ? allModulesOrdered.find(mId => !progress.completedModules.includes(mId)) : null;
+  const nextGlobalModuleId = allModulesOrdered.find(mId => !progress.completedModules.includes(mId));
 
   // Determine current level
   const currentLevelIdx = TRAIL_LEVELS.findIndex(l => isLevelUnlocked(l) && !isLevelComplete(l));
-  const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : (progress && progress.completedModules.length === allModulesOrdered.length ? null : TRAIL_LEVELS[0]);
+  const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : (progress.completedModules.length === allModulesOrdered.length ? null : TRAIL_LEVELS[0]);
 
   return (
-    <div className="relative w-full max-w-full overflow-hidden flex flex-col items-center" id="trails-page-root" style={{ minHeight: '100vh', background: '#FDFBF7' }}>
+    <div className="relative w-full max-w-full overflow-x-hidden flex flex-col items-center" id="trails-page-root" style={{ minHeight: '100vh', background: '#FDFBF7' }}>
       {/* Background - kept subtle as main container handles overall bg */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
       }} />
 
-      <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-6 pb-8 box-border overflow-hidden">
+      <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-6 pb-8 box-border overflow-x-hidden">
         <div className="flex justify-end items-start mb-6">
           <div className="flex -space-x-3 opacity-40">
             <img src={imgLouco} alt="" className="w-8 h-12 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
@@ -161,10 +160,10 @@ const TrailsPage = () => {
         </div>
       </div>
 
-      <div className="relative w-full max-w-2xl px-4 sm:px-6 pb-24 space-y-6 box-border overflow-hidden">
+      <div className="relative w-full max-w-2xl px-4 sm:px-6 pb-24 space-y-6 box-border overflow-x-hidden">
 
         {/* Overall progress */}
-        <div className="rounded-2xl p-4 sm:p-6 shadow-xl border-2 w-full max-w-full box-border relative overflow-hidden flex flex-col" style={{
+        <div className="rounded-2xl p-4 sm:p-6 shadow-xl border-2 w-full max-w-full box-border relative overflow-hidden" style={{
           background: "linear-gradient(145deg, #FAF5EF, #F3E6E0)",
           borderColor: "#C8A66A4D",
         }}>
@@ -175,17 +174,17 @@ const TrailsPage = () => {
                 Progresso Geral
               </h2>
             </div>
-            <span className="font-heading text-[8px] min-[360px]:text-[10px] sm:text-[12px] font-black tracking-widest uppercase px-2 sm:px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40] truncate max-w-[120px] min-[360px]:max-w-[180px]">
+            <span className="font-heading text-[8px] min-[360px]:text-[10px] sm:text-[12px] font-black tracking-widest uppercase px-2 sm:px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40] truncate max-w-[180px] min-[360px]:max-w-none">
               {currentLevel ? `Em fase de ${currentLevel.title.split(' — ')[1] || currentLevel.title}` : (progress.completedModules.length === allModulesOrdered.length ? "Formação Completa ✦" : "Iniciando Jornada")}
             </span>
           </div>
-          <div className="grid grid-cols-4 gap-1.5 sm:gap-3 w-full max-w-full">
+          <div className="grid grid-cols-4 gap-1.5 sm:gap-3">
             {TRAIL_LEVELS.map(level => {
               const prog = getLevelProgress(level);
               const complete = isLevelComplete(level);
               const unlocked = isLevelUnlocked(level);
               return (
-                <div key={level.id} className="space-y-2 flex flex-col items-center sm:items-stretch min-w-0">
+                <div key={level.id} className="space-y-2 flex flex-col items-center sm:items-stretch">
                   <div className="h-2 sm:h-3 w-full rounded-full overflow-hidden p-[1px]" style={{
                     background: unlocked ? "#E8DED3" : "#DCCFC260",
                     border: `1px solid ${unlocked ? "#C8A66A80" : "#DCCFC2"}`,
@@ -197,7 +196,7 @@ const TrailsPage = () => {
                         : `linear-gradient(90deg, #5B1F3D, #C8A66A)`,
                     }} />
                   </div>
-                  <div className="text-[7.5px] min-[360px]:text-[8px] sm:text-[11px] font-heading font-black text-center uppercase tracking-tighter sm:tracking-tight mt-1 truncate w-full" style={{
+                  <div className="text-[7.5px] min-[360px]:text-[9px] sm:text-[11px] font-heading font-black text-center uppercase tracking-tighter sm:tracking-tight mt-1 truncate w-full" style={{
                     color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                   }}>
                     {level.title.split(" — ")[0]}
@@ -240,7 +239,7 @@ const TrailsPage = () => {
                   
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-2 mb-1">
-                      <span className="text-[9px] min-[360px]:text-[9.5px] sm:text-[12px] tracking-[0.2em] sm:tracking-[0.35em] uppercase font-heading font-black truncate" style={{
+                      <span className="text-[9px] min-[360px]:text-[10px] sm:text-[12px] tracking-[0.25em] sm:tracking-[0.35em] uppercase font-heading font-black" style={{
                         color: unlocked ? "#5B1F3D" : "#5B1F3D70",
                       }}>
                         Portal {level.level}
@@ -262,7 +261,7 @@ const TrailsPage = () => {
                         </span>
                       )}
                     </div>
-                    <h2 className="font-heading text-[13px] min-[360px]:text-[16px] sm:text-xl font-black tracking-tight truncate" style={{
+                    <h2 className="font-heading text-[13px] min-[360px]:text-lg sm:text-xl font-black tracking-tight truncate" style={{
                       color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                     }}>
                       {level.title}
@@ -278,7 +277,7 @@ const TrailsPage = () => {
                   </p>
                   {isCurrent && (
                     <div className="flex flex-col items-center">
-                      <span className="font-heading text-lg sm:text-2xl font-black text-[#5B1F3D]">
+                      <span className="font-heading text-xl sm:text-2xl font-black text-[#5B1F3D]">
                         {prog}%
                       </span>
                       <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]">Chaves</span>
@@ -308,12 +307,12 @@ const TrailsPage = () => {
                       key={mod.id}
                       onClick={() => modUnlocked && navigate(mod.route)}
                       disabled={!modUnlocked}
-                      className="w-full text-left group relative max-w-full"
+                      className="w-full text-left group transition-all duration-500 relative"
                     >
                       {modCurrent && (
-                        <div className="absolute -left-[20px] min-[360px]:-left-[23px] sm:-left-[31px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 sm:w-4 sm:h-4 rounded-full bg-[#5B1F3D] border-2 border-[#FAF5EF] z-10" />
+                        <div className="absolute -left-[20px] min-[360px]:-left-[23px] sm:-left-[31px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 sm:w-4 sm:h-4 rounded-full bg-[#5B1F3D] border-2 border-[#FAF5EF] z-10 animate-pulse" />
                       )}
-                      <div className="rounded-2xl p-4 sm:p-5 flex items-center gap-2 sm:gap-5 max-w-full overflow-hidden" style={modCurrent ? {
+                      <div className="rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-5 transition-all duration-500 group-hover:translate-x-1" style={modCurrent ? {
                         background: "linear-gradient(145deg, #FFF, #FAF5EF)",
                         border: `2px solid ${modId === nextGlobalModuleId ? level.accentColor : '#DCCFC2'}`,
                         boxShadow: modId === nextGlobalModuleId ? `0 8px 30px ${level.accentColor}15` : 'none',
@@ -326,7 +325,7 @@ const TrailsPage = () => {
                         opacity: 0.95,
                       }}>
                         {/* Status icon */}
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0 shadow-sm" style={modComplete ? {
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:scale-110" style={modComplete ? {
                           background: "#FAF5EF",
                           border: `1px solid ${level.accentColor}30`,
                         } : modCurrent ? {
@@ -341,7 +340,7 @@ const TrailsPage = () => {
                           ) : modCurrent ? (
                             <div className="relative">
                               <TarotIcon name="premium" className={`w-5 h-5 sm:w-6 sm:h-6 ${modId === nextGlobalModuleId ? 'text-[#C8A66A]' : 'text-[#5B1F3D50]'}`} />
-                              {modId === nextGlobalModuleId && <TarotIcon name="Sparkles" className="w-2.5 h-2.5 sm:w-3 sm:h-3 absolute -top-1 -right-1 text-[#C8A66A]" />}
+                              {modId === nextGlobalModuleId && <TarotIcon name="Sparkles" className="w-2.5 h-2.5 sm:w-3 sm:h-3 absolute -top-1 -right-1 text-[#C8A66A] animate-pulse" />}
                             </div>
                           ) : (
                             <TarotIcon name="bloqueado" className="w-4 h-4 sm:w-5 sm:h-5 text-[#5B1F3D20]" />
@@ -350,7 +349,7 @@ const TrailsPage = () => {
 
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1">
-                             <h3 className="font-heading text-[12px] min-[360px]:text-[14px] sm:text-[15px] font-black tracking-tight truncate" style={{
+                             <h3 className="font-heading text-[13px] sm:text-[15px] font-black tracking-tight truncate" style={{
                               color: modCurrent ? "#5B1F3D" : modComplete ? "#5B1F3D" : "#5B1F3D70",
                             }}>
                               {mod.name}
