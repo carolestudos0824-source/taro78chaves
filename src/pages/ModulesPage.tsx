@@ -131,9 +131,9 @@ const ModulesPage = () => {
 
   return (
     <div className="relative overflow-hidden">
-      <main className="relative z-10 container max-w-3xl px-6 pt-10 pb-24 md:pt-16 md:pb-32 space-y-12 md:space-y-16">
+      <main className="relative z-10 container max-w-3xl px-6 pt-6 pb-24 md:pt-16 md:pb-32 space-y-8 md:space-y-16">
         {/* ─── Global Training Progress — Dashboard style ─── */}
-        <div className="relative rounded-[2.5rem] overflow-hidden p-8 md:p-10 transition-all duration-500" style={{
+        <div className="relative rounded-[2.5rem] overflow-hidden p-6 md:p-10 transition-all duration-500" style={{
           background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
           backdropFilter: "blur(24px)",
           border: "2.5px solid #C8A66A",
@@ -255,7 +255,7 @@ const ModulesPage = () => {
           </div>
 
           {/* ─── Study Trails Selector ─── */}
-          <div className="space-y-6">
+          <div className="space-y-4 md:space-y-6">
             <div className="flex items-center gap-4">
               <span className="h-px flex-1 bg-[#C8A66A]/30" />
               <h2 className="font-heading text-[11px] tracking-[0.4em] uppercase font-black text-[#5B1F3D]">
@@ -294,7 +294,7 @@ const ModulesPage = () => {
 
           <SmartReviewCard />
           
-          <div className="space-y-6 animate-fade-in">
+          <div className="space-y-4 md:space-y-6 animate-fade-in">
             <div className="bg-[#5B1F3D] border-2 border-[#C8A66A] rounded-[2.5rem] p-8 text-center space-y-4 relative overflow-hidden group shadow-2xl ring-8 ring-[#C8A66A]/5">
               <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#C8A66A]/20 rounded-full blur-3xl" />
               
