@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Lock, Check, Star, Sparkles, Crown, Compass, Key } from "lucide-react";
+import { ChevronRight, Sparkles } from "lucide-react";
 import { TarotIcon } from "@/components/TarotIcon";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
@@ -84,7 +84,7 @@ const TrailsPage = () => {
     return () => resetHeader();
   }, []);
 
-  if (progressLoading || accessLoading) {
+  if (progressLoading || accessLoading || !progress) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
         <div className="text-center space-y-4">
@@ -110,17 +110,18 @@ const TrailsPage = () => {
   };
 
   const getLevelProgress = (level: TrailLevel): number => {
+    if (!progress || !progress.completedModules) return 0;
     const completed = level.modules.filter(m => progress.completedModules.includes(m)).length;
     return Math.round((completed / level.modules.length) * 100);
   };
 
   // Find the single absolute next module in the entire journey
   const allModulesOrdered = TRAIL_LEVELS.flatMap(l => l.modules);
-  const nextGlobalModuleId = allModulesOrdered.find(mId => !progress.completedModules.includes(mId));
+  const nextGlobalModuleId = progress ? allModulesOrdered.find(mId => !progress.completedModules.includes(mId)) : null;
 
   // Determine current level
   const currentLevelIdx = TRAIL_LEVELS.findIndex(l => isLevelUnlocked(l) && !isLevelComplete(l));
-  const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : (progress.completedModules.length === allModulesOrdered.length ? null : TRAIL_LEVELS[0]);
+  const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : (progress && progress.completedModules.length === allModulesOrdered.length ? null : TRAIL_LEVELS[0]);
 
   return (
     <div className="relative w-full max-w-full overflow-hidden flex flex-col items-center" id="trails-page-root" style={{ minHeight: '100vh', background: '#FDFBF7' }}>
