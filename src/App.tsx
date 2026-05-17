@@ -207,7 +207,7 @@ const AppRoutes = () => {
           <Route path="/minha-jornada" element={<P><JourneyJournalPage /></P>} />
           <Route path="/feedback" element={<P><FeedbackPage /></P>} />
           <Route path="/admin" element={<P><AdminPage /></P>} />
-          <Route path="/qa-rotas" element={<P><QARotasPage /></P>} />
+          {/* QA route removed */}
           
           <Route path="/undefined" element={<Navigate to="/app" replace />} />
           <Route path="/null" element={<Navigate to="/app" replace />} />
