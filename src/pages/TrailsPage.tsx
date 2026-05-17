@@ -123,13 +123,13 @@ const TrailsPage = () => {
   const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : (progress.completedModules.length === allModulesOrdered.length ? null : TRAIL_LEVELS[0]);
 
   return (
-    <div className="relative w-full max-w-full flex flex-col items-center" id="trails-page-root" style={{ minHeight: '100vh', background: '#FDFBF7' }}>
+    <div className="relative w-full max-w-full flex flex-col items-center overflow-x-hidden" id="trails-page-root" style={{ minHeight: '100vh', background: '#FDFBF7' }}>
       {/* Background - kept subtle as main container handles overall bg */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
       }} />
 
-      <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-6 pb-8 box-border overflow-x-hidden">
+      <div className="relative w-full max-w-2xl px-3 sm:px-6 pt-6 pb-8 box-border overflow-hidden">
         <div className="flex justify-end items-start mb-6">
           <div className="flex -space-x-3 opacity-40">
             <img src={imgLouco} alt="" className="w-8 h-12 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
@@ -154,31 +154,31 @@ const TrailsPage = () => {
           >
             Trilhas de Formação
           </h1>
-          <p className="font-body text-[12px] min-[360px]:text-[14px] font-bold italic mt-1.5 text-[#5B1F3D]/70 px-4">
+          <p className="font-body text-[11px] min-[360px]:text-[14px] font-bold italic mt-1.5 text-[#5B1F3D]/70 px-4">
             A arquitetura completa da sua maestria no Tarô
           </p>
         </div>
       </div>
 
-      <div className="relative w-full max-w-2xl px-4 sm:px-6 pb-24 space-y-6 box-border overflow-x-hidden">
+      <div className="relative w-full max-w-2xl px-3 sm:px-6 pb-24 space-y-6 box-border overflow-hidden">
 
         {/* Overall progress */}
-        <div className="rounded-2xl p-4 sm:p-6 shadow-xl border-2 w-full max-w-full box-border relative overflow-hidden" style={{
+        <div className="rounded-2xl p-4 sm:p-6 shadow-xl border-2 w-full box-border relative overflow-hidden" style={{
           background: "linear-gradient(145deg, #FAF5EF, #F3E6E0)",
           borderColor: "#C8A66A4D",
         }}>
           <div className="flex items-center justify-between mb-4 gap-3">
             <div className="flex items-center gap-2">
               <Sparkles className="w-3 h-3 min-[360px]:w-4 min-[360px]:h-4 text-[#C8A66A] shrink-0" />
-              <h2 className="font-heading text-[9px] min-[360px]:text-[10px] sm:text-sm font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
+              <h2 className="font-heading text-[8px] min-[360px]:text-[10px] sm:text-sm font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
                 Progresso Geral
               </h2>
             </div>
-            <span className="font-heading text-[8px] min-[360px]:text-[10px] sm:text-[12px] font-black tracking-widest uppercase px-2 sm:px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40] truncate max-w-[180px] min-[360px]:max-w-none">
+            <span className="font-heading text-[8px] min-[360px]:text-[10px] sm:text-[12px] font-black tracking-widest uppercase px-2 sm:px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40] truncate max-w-[120px] min-[360px]:max-w-[150px] min-[400px]:max-w-none">
               {currentLevel ? `Em fase de ${currentLevel.title.split(' — ')[1] || currentLevel.title}` : (progress.completedModules.length === allModulesOrdered.length ? "Formação Completa ✦" : "Iniciando Jornada")}
             </span>
           </div>
-          <div className="grid grid-cols-4 gap-1.5 sm:gap-3">
+          <div className="grid grid-cols-4 gap-1 min-[360px]:gap-1.5 sm:gap-3">
             {TRAIL_LEVELS.map(level => {
               const prog = getLevelProgress(level);
               const complete = isLevelComplete(level);
@@ -238,7 +238,7 @@ const TrailsPage = () => {
                   </div>
                   
                   <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                    <div className="flex flex-wrap items-center gap-1 min-[360px]:gap-2 mb-1">
                       <span className="text-[9px] min-[360px]:text-[10px] sm:text-[12px] tracking-[0.25em] sm:tracking-[0.35em] uppercase font-heading font-black" style={{
                         color: unlocked ? "#5B1F3D" : "#5B1F3D70",
                       }}>
@@ -261,7 +261,7 @@ const TrailsPage = () => {
                         </span>
                       )}
                     </div>
-                    <h2 className="font-heading text-[13px] min-[360px]:text-lg sm:text-xl font-black tracking-tight truncate" style={{
+                    <h2 className="font-heading text-[11px] min-[360px]:text-[15px] sm:text-xl font-black tracking-tight" style={{
                       color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                     }}>
                       {level.title}
@@ -277,7 +277,7 @@ const TrailsPage = () => {
                   </p>
                   {isCurrent && (
                     <div className="flex flex-col items-center">
-                      <span className="font-heading text-xl sm:text-2xl font-black text-[#5B1F3D]">
+                      <span className="font-heading text-lg sm:text-2xl font-black text-[#5B1F3D]">
                         {prog}%
                       </span>
                       <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]">Chaves</span>
