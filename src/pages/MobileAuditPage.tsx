@@ -45,13 +45,15 @@ const MobileAuditPage = () => {
     </div>
   );
 
+  const queryParams = "?__lovable_force_render=1&__lovable_no_auth=1";
+
   return (
     <div className="min-h-screen bg-slate-900 p-4 md:p-8 flex flex-col items-center gap-8 overflow-y-auto pb-32 w-full">
       <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 text-white w-full max-w-5xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-2xl font-bold">Auditoria Mobile</h1>
-            <p className="text-slate-400 text-sm">Validando rota: <code className="bg-black/30 px-2 py-1 rounded">/trilhas</code></p>
+            <h1 className="text-2xl font-bold">Auditoria Mobile - Preview Real</h1>
+            <p className="text-slate-400 text-sm">URL Atual: <code className="bg-black/30 px-2 py-1 rounded text-pink-400">/auditoria-mobile-trilhas</code></p>
           </div>
           <div className="flex gap-2">
             <span className="px-3 py-1 bg-green-500/20 text-green-400 text-[10px] font-bold rounded-full border border-green-500/30">360x800</span>
@@ -62,19 +64,19 @@ const MobileAuditPage = () => {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
           <div className="bg-black/20 p-3 rounded-lg border border-white/5">
-            <p className="opacity-60 uppercase text-[9px] font-bold tracking-tighter">scrollWidth</p>
+            <p className="opacity-60 uppercase text-[9px] font-bold tracking-tighter">document.documentElement.scrollWidth</p>
             <p className="text-xl font-mono">{metrics.scrollWidth}px</p>
           </div>
           <div className="bg-black/20 p-3 rounded-lg border border-white/5">
-            <p className="opacity-60 uppercase text-[9px] font-bold tracking-tighter">clientWidth</p>
+            <p className="opacity-60 uppercase text-[9px] font-bold tracking-tighter">document.documentElement.clientWidth</p>
             <p className="text-xl font-mono">{metrics.clientWidth}px</p>
           </div>
           <div className="bg-black/20 p-3 rounded-lg border border-white/5">
-            <p className="opacity-60 uppercase text-[9px] font-bold tracking-tighter">bodyScrollWidth</p>
+            <p className="opacity-60 uppercase text-[9px] font-bold tracking-tighter">document.body.scrollWidth</p>
             <p className="text-xl font-mono">{metrics.bodyScrollWidth}px</p>
           </div>
           <div className="bg-black/20 p-3 rounded-lg border border-white/5">
-            <p className="opacity-60 uppercase text-[9px] font-bold tracking-tighter">innerWidth</p>
+            <p className="opacity-60 uppercase text-[9px] font-bold tracking-tighter">window.innerWidth</p>
             <p className="text-xl font-mono">{metrics.innerWidth}px</p>
           </div>
         </div>
@@ -82,18 +84,26 @@ const MobileAuditPage = () => {
         <div className="mt-4 flex items-center gap-2">
           <div className={`w-2 h-2 rounded-full ${metrics.scrollWidth > metrics.clientWidth ? 'bg-red-500 animate-pulse' : 'bg-green-500'}`} />
           <p className={`text-sm font-bold uppercase tracking-wide ${metrics.scrollWidth > metrics.clientWidth ? 'text-red-400' : 'text-green-400'}`}>
-            {metrics.scrollWidth > metrics.clientWidth ? "Overflow Horizontal Detectado" : "Nenhum Overflow Horizontal"}
+            {metrics.scrollWidth > metrics.clientWidth ? "Status: Overflow Horizontal Detectado" : "Status: Nenhum Overflow Horizontal"}
           </p>
         </div>
       </div>
 
       <div className="flex flex-wrap justify-center gap-12 items-start w-full">
-        <AuditFrame width={360} height={800} label="Samsung/Pixel" src="/trilhas?__lovable_force_render=1&__lovable_no_auth=1" />
-        <AuditFrame width={390} height={844} label="iPhone 13/14" src="/trilhas?__lovable_force_render=1&__lovable_no_auth=1" />
-        <AuditFrame width={430} height={932} label="iPhone Pro Max" src="/trilhas?__lovable_force_render=1&__lovable_no_auth=1" />
+        <AuditFrame width={360} height={800} label="Samsung/Pixel" src={`/trilhas${queryParams}`} />
+        <AuditFrame width={390} height={844} label="iPhone 13/14" src={`/trilhas${queryParams}`} />
+        <AuditFrame width={430} height={932} label="iPhone Pro Max" src={`/trilhas${queryParams}`} />
+      </div>
+
+      <div className="mt-16 bg-white/5 p-8 rounded-3xl border border-white/10 w-full max-w-2xl text-center">
+        <p className="text-slate-500 text-xs uppercase tracking-[0.2em] mb-4">Fim do Relatório de Auditoria</p>
+        <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent w-full" />
       </div>
     </div>
   );
+};
+
+export default MobileAuditPage;
 };
 
 export default MobileAuditPage;
