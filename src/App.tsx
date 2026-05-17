@@ -78,7 +78,6 @@ const SupportPage = lazy(() => import("./pages/legal/SupportPage.tsx"));
 const DeleteAccountPage = lazy(() => import("./pages/legal/DeleteAccountPage.tsx"));
 const QARotasPage = lazy(() => import("./pages/QARotasPage.tsx"));
 
-
 const queryClient = new QueryClient();
 
 const LoadingFallback = () => (
@@ -210,7 +209,7 @@ const AppRoutes = () => {
           <Route path="/admin" element={<P><AdminPage /></P>} />
           <Route path="/qa-rotas" element={<P><QARotasPage /></P>} />
           
-          
+          <Route path="/undefined" element={<Navigate to="/app" replace />} />
           <Route path="/null" element={<Navigate to="/app" replace />} />
           <Route path="/NaN" element={<Navigate to="/app" replace />} />
         </Route>
