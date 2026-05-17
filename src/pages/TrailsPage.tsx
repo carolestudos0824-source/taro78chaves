@@ -154,7 +154,7 @@ const TrailsPage = () => {
           >
             Trilhas de Formação
           </h1>
-          <p className="font-body text-[12px] min-[360px]:text-[14px] font-bold italic mt-1.5 text-[#5B1F3D]/70 px-4">
+          <p className="font-body text-[11px] min-[360px]:text-[14px] font-bold italic mt-1.5 text-[#5B1F3D]/70 px-4">
             A arquitetura completa da sua maestria no Tarô
           </p>
         </div>
@@ -170,7 +170,7 @@ const TrailsPage = () => {
           <div className="flex items-center justify-between mb-4 gap-3">
             <div className="flex items-center gap-2">
               <Sparkles className="w-3 h-3 min-[360px]:w-4 min-[360px]:h-4 text-[#C8A66A] shrink-0" />
-              <h2 className="font-heading text-[9px] min-[360px]:text-[10px] sm:text-sm font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
+              <h2 className="font-heading text-[8px] min-[360px]:text-[10px] sm:text-sm font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
                 Progresso Geral
               </h2>
             </div>
@@ -277,7 +277,7 @@ const TrailsPage = () => {
                   </p>
                   {isCurrent && (
                     <div className="flex flex-col items-center">
-                      <span className="font-heading text-xl sm:text-2xl font-black text-[#5B1F3D]">
+                      <span className="font-heading text-lg sm:text-2xl font-black text-[#5B1F3D]">
                         {prog}%
                       </span>
                       <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]">Chaves</span>
