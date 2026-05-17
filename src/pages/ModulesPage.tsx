@@ -313,7 +313,7 @@ const ModulesPage = () => {
                 </h3>
                 <p className="text-[15px] font-body font-bold text-white/90 italic leading-relaxed">
                   {isInitialState 
-                    ? "Sua jornada pelos 78 arcanos começa aqui." 
+                    ? "Sua jornada começa pelos Arcanos Maiores." 
                     : `${totalCompletedArcanos} de 78 chaves concluídas.`
                   }
                   {!isInitialState && <span className="text-white/70 not-italic block mt-1 uppercase tracking-widest text-[10px] font-bold">Portal: {currentArcano.subtitle}</span>}
@@ -322,7 +322,7 @@ const ModulesPage = () => {
                   to={isInitialState ? "/lesson/0" : `/lesson/${currentArcanoId}`}
                   className="block w-full py-5 bg-[#C8A66A] hover:bg-[#C8A66A]/90 text-[#5B1F3D] rounded-2xl font-heading text-[12px] font-black tracking-[0.3em] uppercase transition-all shadow-xl hover:scale-[1.02] active:scale-[0.95]"
                 >
-                  {isInitialState ? "INICIAR JORNADA PELOS 78 ARCANOS" : "CONTINUAR DE ONDE PAREI"}
+                  {isInitialState ? "INICIAR JORNADA" : "CONTINUAR DE ONDE PAREI"}
                 </Link>
               </div>
             </div>
