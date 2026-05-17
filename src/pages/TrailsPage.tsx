@@ -117,7 +117,7 @@ const TrailsPage = () => {
         background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
       }} />
 
-      <div className="relative max-w-2xl mx-auto px-6 pt-10 pb-8">
+      <div className="relative max-w-2xl mx-auto px-4 sm:px-6 pt-10 pb-8 overflow-hidden">
         <div className="flex justify-end items-start mb-8">
           <div className="flex -space-x-4 opacity-40 hover:opacity-100 transition-opacity duration-500">
             <img src={imgLouco} alt="" className="w-12 h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
@@ -148,10 +148,10 @@ const TrailsPage = () => {
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-6 pb-16 space-y-6">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 pb-16 space-y-6 overflow-hidden">
 
         {/* Overall progress */}
-        <div className="rounded-2xl p-6 shadow-xl border-2" style={{
+        <div className="rounded-2xl p-4 sm:p-6 shadow-xl border-2 overflow-hidden w-full max-w-full box-border" style={{
           background: "linear-gradient(145deg, #FAF5EF, #F3E6E0)",
           borderColor: "#C8A66A4D",
         }}>
@@ -166,13 +166,13 @@ const TrailsPage = () => {
               {currentLevel ? `Em fase de ${currentLevel.title}` : "Formação Completa ✦"}
             </span>
           </div>
-          <div className="flex gap-2">
+          <div className="grid grid-cols-2 xs:grid-cols-4 gap-3">
             {TRAIL_LEVELS.map(level => {
               const prog = getLevelProgress(level);
               const complete = isLevelComplete(level);
               const unlocked = isLevelUnlocked(level);
               return (
-                <div key={level.id} className="flex-1 space-y-2">
+                <div key={level.id} className="space-y-2">
                   <div className="h-3 rounded-full overflow-hidden p-[1px]" style={{
                     background: unlocked ? "#E8DED3" : "#DCCFC260",
                     border: `1.5px solid ${unlocked ? "#C8A66A80" : "#DCCFC2"}`,
@@ -187,7 +187,7 @@ const TrailsPage = () => {
                   <div className="text-[11px] font-heading font-black text-center uppercase tracking-normal mt-1" style={{
                     color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                   }}>
-                    {level.title}
+                    {level.title.split(" — ")[0]}
                   </div>
                 </div>
               );

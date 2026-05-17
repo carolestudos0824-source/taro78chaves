@@ -37,7 +37,7 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
         overflow: 'visible'
       }}
     >
-      <div className="container max-w-3xl px-6 py-4 relative">
+      <div className="container max-w-3xl px-4 sm:px-6 py-4 relative overflow-hidden">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-3 overflow-hidden">
             <div className="flex items-center gap-2 shrink-0">
@@ -61,7 +61,7 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
             </div>
 
             <div className="flex flex-col justify-center min-w-0">
-              <h1 className="font-heading text-[#5B1F3D] font-black tracking-tight leading-tight text-base truncate">
+              <h1 className="font-heading text-[#5B1F3D] font-black tracking-tight leading-tight text-sm sm:text-base truncate max-w-[120px] xs:max-w-none">
                 {state.title}
               </h1>
               {state.subtitle && (
