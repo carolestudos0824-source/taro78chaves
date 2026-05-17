@@ -116,7 +116,7 @@ const TrailsPage = () => {
 
   // Find the single absolute next module in the entire journey
   const allModulesOrdered = TRAIL_LEVELS.flatMap(l => l.modules);
-  const nextGlobalModuleId = progress ? allModulesOrdered.find(mId => !progress.completedModules.includes(mId)) : null;
+  const nextGlobalModuleId = allModulesOrdered.find(mId => !progress.completedModules.includes(mId));
 
   // Determine current level
   const currentLevelIdx = TRAIL_LEVELS.findIndex(l => isLevelUnlocked(l) && !isLevelComplete(l));
