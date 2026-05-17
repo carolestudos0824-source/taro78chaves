@@ -277,7 +277,7 @@ const TrailsPage = () => {
                   </p>
                   {isCurrent && (
                     <div className="flex flex-col items-center">
-                      <span className="font-heading text-lg sm:text-2xl font-black text-[#5B1F3D]">
+                      <span className="font-heading text-xl sm:text-2xl font-black text-[#5B1F3D]">
                         {prog}%
                       </span>
                       <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]">Chaves</span>
