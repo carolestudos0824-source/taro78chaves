@@ -76,13 +76,13 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
     <div className="flex-1 overflow-y-auto px-4 py-6 space-y-2 pb-32 overscroll-contain">
       {/* BLOCO 1 — Jornada */}
       <SectionTitle>Jornada</SectionTitle>
-      <NavItem to="/app" icon="jornada" label="Jornada Principal" />
+      <NavItem to="/app" icon="jornada" label="Início da Jornada" />
       <NavItem to="/trilhas" icon="formacao" label="Mapa da Formação" />
       <NavItem to="/desafios" icon="ritual" label="Ritual Diário" />
       <NavItem 
         to={`/lesson/${currentArcanoId}`} 
         icon="proximo" 
-        label="Continuar Jornada" 
+        label="Continuar de Onde Parei" 
         badge="Agora" 
       />
 
