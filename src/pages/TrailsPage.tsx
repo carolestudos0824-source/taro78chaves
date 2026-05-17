@@ -110,7 +110,6 @@ const TrailsPage = () => {
   };
 
   const getLevelProgress = (level: TrailLevel): number => {
-    if (!progress || !progress.completedModules) return 0;
     const completed = level.modules.filter(m => progress.completedModules.includes(m)).length;
     return Math.round((completed / level.modules.length) * 100);
   };
