@@ -341,14 +341,14 @@ const ModulesPage = () => {
               progress.completedLessons.length === 0 ? "bg-[#C8A66A]/10 group-hover:bg-[#C8A66A]/20" : "bg-[#C8A66A]/20 group-hover:bg-[#C8A66A]/30"
             }`} />
             
-            <div className="relative z-10 flex items-center gap-6">
-              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 shadow-lg group-hover:rotate-12 transition-transform duration-500 border-2 ${
+            <div className="relative z-10 flex items-center gap-4 md:gap-6">
+              <div className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center shrink-0 shadow-lg group-hover:rotate-12 transition-transform duration-500 border-2 ${
                 progress.completedLessons.length === 0 ? "bg-[#FAF5EF] border-[#C8A66A]/30" : "bg-[#C8A66A] border-[#FAF5EF]/30"
               }`}>
-                <Key className={`w-9 h-9 ${progress.completedLessons.length === 0 ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} />
+                <Key className={`w-7 h-7 md:w-9 md:h-9 ${progress.completedLessons.length === 0 ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} />
               </div>
               <div className="flex-1">
-                <h3 className={`font-heading text-xl md:text-2xl font-black leading-tight mb-2 ${
+                <h3 className={`font-heading text-lg md:text-2xl font-black leading-tight mb-2 ${
                   progress.completedLessons.length === 0 ? "text-[#5B1F3D]" : "text-white"
                 }`}>
                   A Jornada dos 78 Arcanos
@@ -362,7 +362,7 @@ const ModulesPage = () => {
               <ChevronRight className="w-8 h-8 text-[#C8A66A] group-hover:translate-x-2 transition-all" />
             </div>
             
-            <div className={`mt-6 flex items-center justify-center py-4 rounded-2xl font-heading text-[14px] font-black tracking-[0.3em] uppercase shadow-xl group-hover:brightness-110 transition-all border-2 ${
+            <div className={`mt-6 flex items-center justify-center py-4 px-4 text-center rounded-2xl font-heading text-[12px] md:text-[14px] font-black tracking-[0.2em] md:tracking-[0.3em] uppercase shadow-xl group-hover:brightness-110 transition-all border-2 ${
               progress.completedLessons.length === 0 
                 ? "bg-[#5B1F3D] text-white border-[#C8A66A]/50" 
                 : "bg-gradient-to-r from-[#C8A66A] to-[#DCCFC2] text-[#5B1F3D] border-white/30"
@@ -401,7 +401,7 @@ const ModulesPage = () => {
                         key={mod.id}
                         onClick={() => unlocked && navigate(mod.route)}
                         disabled={!unlocked}
-                        className={`w-full text-left p-8 md:p-10 rounded-[3rem] border-2 transition-all duration-500 relative group overflow-hidden ${
+                        className={`w-full text-left p-5 md:p-10 rounded-[2.5rem] md:rounded-[3rem] border-2 transition-all duration-500 relative group overflow-hidden ${
                           isCurrent 
                             ? "bg-white border-[#C8A66A] shadow-2xl shadow-[#C8A66A]/30 scale-[1.02] ring-2 ring-[#C8A66A]/40" 
                             : unlocked 
@@ -413,9 +413,9 @@ const ModulesPage = () => {
                           <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-[#C8A66A] to-transparent" />
                         )}
                         
-                        <div className="flex items-center gap-8 md:gap-12 relative z-10">
+                        <div className="flex items-center gap-4 md:gap-12 relative z-10 min-w-0">
                           {/* Icon Circle */}
-                          <div className={`w-20 h-20 md:w-24 md:h-24 rounded-[1.8rem] flex items-center justify-center shrink-0 border-2 transition-all duration-500 shadow-lg ${
+                          <div className={`w-16 h-16 md:w-24 md:h-24 rounded-[1.2rem] md:rounded-[1.8rem] flex items-center justify-center shrink-0 border-2 transition-all duration-500 shadow-lg ${
                             isCurrent 
                               ? "bg-gradient-to-br from-[#5B1F3D] to-[#3D1429] border-[#C8A66A] text-[#FAF5EF] scale-110 rotate-3 shadow-2xl" 
                               : unlocked 
@@ -423,21 +423,21 @@ const ModulesPage = () => {
                               : "bg-[#F3E6E0] border-[#DCCFC2]/20 text-[#5B1F3D]/30"
                           }`}>
                             {isCompleted ? (
-                              <Check className={`w-10 h-10 md:w-12 md:h-12 ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} strokeWidth={4} />
+                              <Check className={`w-8 h-8 md:w-12 md:h-12 ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} strokeWidth={4} />
                             ) : unlocked ? (
-                              <TarotIcon name={iconName} className={`w-10 h-10 md:w-12 md:h-12 ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} />
+                              <TarotIcon name={iconName} className={`w-8 h-8 md:w-12 md:h-12 ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D]"}`} />
                             ) : (
                               <div className="relative">
-                                <TarotIcon name={iconName} className="w-10 h-10 md:w-12 md:h-12 opacity-20" />
-                                <TarotIcon name="bloqueado" className="w-8 h-8 absolute -bottom-2 -right-2 text-[#5B1F3D] drop-shadow-xl" />
+                                <TarotIcon name={iconName} className="w-8 h-8 md:w-12 md:h-12 opacity-20" />
+                                <TarotIcon name="bloqueado" className="w-6 h-6 absolute -bottom-1 -right-1 text-[#5B1F3D] drop-shadow-xl" />
                               </div>
                             )}
                           </div>
 
                           <div className="flex-1 min-w-0 py-2">
-                            <div className="flex items-center gap-4 mb-3 flex-wrap">
-                              <span className={`text-[14px] md:text-[16px] font-black tracking-[0.4em] transition-colors ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D] opacity-40"}`}>{mod.symbol}</span>
-                              <h3 className={`font-heading text-2xl md:text-3xl tracking-tight leading-tight transition-all ${
+                            <div className="flex items-center gap-2 mb-1 flex-wrap">
+                              <span className={`text-[12px] md:text-[16px] font-black tracking-[0.2em] md:tracking-[0.4em] transition-colors shrink-0 ${isCurrent ? "text-[#C8A66A]" : "text-[#5B1F3D] opacity-40"}`}>{mod.symbol}</span>
+                              <h3 className={`font-heading text-lg md:text-3xl tracking-tight leading-tight transition-all break-words ${
                                 isCurrent 
                                   ? "text-[#5B1F3D] font-black" 
                                   : unlocked 
@@ -449,18 +449,18 @@ const ModulesPage = () => {
                               
                               <div className="ml-auto flex items-center gap-2">
                                 {mod.id === "arcanos-maiores" && (
-                                  <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase px-4 py-2 rounded-xl bg-gold/10 text-plum border border-gold/40 font-black shadow-sm">
+                                  <span className="text-[8px] md:text-[11px] font-heading tracking-[0.1em] md:tracking-[0.2em] uppercase px-2 md:px-4 py-1 md:py-2 rounded-lg md:xl bg-gold/10 text-plum border border-gold/40 font-black shadow-sm shrink-0">
                                     Início Grátis
                                   </span>
                                 )}
                                 {!unlocked && !isCompleted && mod.id !== "arcanos-maiores" && (
-                                  <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase px-4 py-2 rounded-xl bg-[#5B1F3D] text-white border border-[#C8A66A] font-black flex items-center gap-2 shadow-lg">
+                                  <span className="text-[8px] md:text-[11px] font-heading tracking-[0.1em] md:tracking-[0.2em] uppercase px-2 md:px-4 py-1 md:py-2 rounded-lg md:xl bg-[#5B1F3D] text-white border border-[#C8A66A] font-black flex items-center gap-1.5 md:gap-2 shadow-lg shrink-0">
                                     <KeyRound className="w-3.5 h-3.5 text-[#C8A66A]" />
                                     Premium
                                   </span>
                                 )}
                                 {isCompleted && (
-                                  <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase px-4 py-2 rounded-xl bg-[#DCCFC2]/30 text-[#5B1F3D]/80 border border-[#DCCFC2]/50 font-black shadow-sm">
+                                  <span className="text-[8px] md:text-[11px] font-heading tracking-[0.1em] md:tracking-[0.2em] uppercase px-2 md:px-4 py-1 md:py-2 rounded-lg md:xl bg-[#DCCFC2]/30 text-[#5B1F3D]/80 border border-[#DCCFC2]/50 font-black shadow-sm shrink-0">
                                     Concluído
                                   </span>
                                 )}
@@ -500,7 +500,7 @@ const ModulesPage = () => {
           })}
         </div>
 
-        <div className="pt-20 pb-48 md:pb-64 flex justify-center opacity-30">
+        <div className="pt-20 pb-64 md:pb-64 flex justify-center opacity-30">
           ✦ ✦ ✦
         </div>
       </main>
