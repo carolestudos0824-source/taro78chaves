@@ -225,7 +225,7 @@ const TrailsPage = () => {
               <div className="flex flex-col min-[480px]:flex-row items-start min-[480px]:items-center gap-3 min-[360px]:gap-4 mb-6">
                 <div className="flex items-center gap-3 min-[360px]:gap-4 w-full min-[480px]:w-auto">
                   <div
-                    className="w-10 h-10 min-[360px]:w-12 min-[360px]:h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-xl sm:text-2xl shrink-0 shadow-lg transition-transform duration-500 hover:rotate-3"
+                    className="w-10 h-10 min-[360px]:w-12 min-[360px]:h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-xl sm:text-2xl shrink-0 shadow-lg"
                     style={{
                       background: unlocked
                         ? `linear-gradient(135deg, ${level.accentColor}20, #FAF5EF)`
