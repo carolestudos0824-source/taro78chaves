@@ -189,7 +189,7 @@ const TrailsPage = () => {
                     background: unlocked ? "#E8DED3" : "#DCCFC260",
                     border: `1px solid ${unlocked ? "#C8A66A80" : "#DCCFC2"}`,
                   }}>
-                    <div className="h-full rounded-full transition-all duration-1000 shadow-[0_0_4px_rgba(200,166,106,0.2)]" style={{
+                    <div className="h-full rounded-full shadow-[0_0_4px_rgba(200,166,106,0.2)]" style={{
                       width: `${Math.max(prog, complete ? 100 : 0)}%`,
                       background: complete
                         ? `linear-gradient(90deg, ${level.accentColor}, #C8A66A)`
