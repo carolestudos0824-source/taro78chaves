@@ -76,7 +76,7 @@ const PrivacyPage = lazy(() => import("./pages/legal/PrivacyPage.tsx"));
 const TermsPage = lazy(() => import("./pages/legal/TermsPage.tsx"));
 const SupportPage = lazy(() => import("./pages/legal/SupportPage.tsx"));
 const DeleteAccountPage = lazy(() => import("./pages/legal/DeleteAccountPage.tsx"));
-const QARotasPage = lazy(() => import("./pages/QARotasPage.tsx"));
+// QARotasPage removed
 
 
 const queryClient = new QueryClient();
@@ -209,7 +209,7 @@ const AppRoutes = () => {
           <Route path="/minha-jornada" element={<P><JourneyJournalPage /></P>} />
           <Route path="/feedback" element={<P><FeedbackPage /></P>} />
           <Route path="/admin" element={<P><AdminPage /></P>} />
-          <Route path="/qa-rotas" element={<P><QARotasPage /></P>} />
+          {/* QA route removed */}
           
           
           <Route path="/null" element={<Navigate to="/app" replace />} />
