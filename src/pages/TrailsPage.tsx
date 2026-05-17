@@ -77,8 +77,8 @@ const TrailsPage = () => {
 
   useEffect(() => {
     setHeader({
-      title: "Mapa da Formação",
-      subtitle: "Sua jornada rumo à maestria",
+      title: "Trilhas de Formação",
+      subtitle: "Mapa da Maestria",
       backRoute: "/app"
     });
     return () => resetHeader();
@@ -120,16 +120,16 @@ const TrailsPage = () => {
 
   // Determine current level
   const currentLevelIdx = TRAIL_LEVELS.findIndex(l => isLevelUnlocked(l) && !isLevelComplete(l));
-  const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : null;
+  const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : (progress.completedModules.length === allModulesOrdered.length ? null : TRAIL_LEVELS[0]);
 
   return (
-    <div className="relative w-full max-w-full overflow-x-hidden" id="trails-page-root" style={{ minHeight: '100vh', background: '#FDFBF7' }}>
+    <div className="relative w-full max-w-full overflow-x-hidden flex flex-col items-center" id="trails-page-root" style={{ minHeight: '100vh', background: '#FDFBF7' }}>
       {/* Background - kept subtle as main container handles overall bg */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
       }} />
 
-      <div className="relative max-w-2xl mx-auto px-4 sm:px-6 pt-6 pb-8 w-full box-border overflow-x-hidden">
+      <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-6 pb-8 box-border overflow-x-hidden">
         <div className="flex justify-end items-start mb-6">
           <div className="flex -space-x-3 opacity-40 hover:opacity-100 transition-opacity duration-500">
             <img src={imgLouco} alt="" className="w-8 h-12 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
@@ -160,43 +160,43 @@ const TrailsPage = () => {
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 pb-24 space-y-6 w-full box-border overflow-x-hidden">
+      <div className="relative w-full max-w-2xl px-4 sm:px-6 pb-24 space-y-6 box-border overflow-x-hidden">
 
         {/* Overall progress */}
-        <div className="rounded-2xl p-4 sm:p-6 shadow-xl border-2 w-full max-w-full box-border" style={{
+        <div className="rounded-2xl p-4 sm:p-6 shadow-xl border-2 w-full max-w-full box-border relative overflow-hidden" style={{
           background: "linear-gradient(145deg, #FAF5EF, #F3E6E0)",
           borderColor: "#C8A66A4D",
         }}>
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-5 gap-3">
+          <div className="flex items-center justify-between mb-4 gap-3">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-[#C8A66A] shrink-0" />
-              <h2 className="font-heading text-[10px] sm:text-sm font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
+              <Sparkles className="w-3 h-3 min-[360px]:w-4 min-[360px]:h-4 text-[#C8A66A] shrink-0" />
+              <h2 className="font-heading text-[9px] min-[360px]:text-[10px] sm:text-sm font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
                 Progresso Geral
               </h2>
             </div>
-            <span className="font-heading text-[9px] sm:text-[12px] font-black tracking-widest uppercase px-3 sm:px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40] truncate max-w-full">
-              {currentLevel ? `Em fase de ${currentLevel.title.split(' — ')[1] || currentLevel.title}` : "Formação Completa ✦"}
+            <span className="font-heading text-[8px] min-[360px]:text-[10px] sm:text-[12px] font-black tracking-widest uppercase px-2 sm:px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40] truncate max-w-[180px] min-[360px]:max-w-none">
+              {currentLevel ? `Em fase de ${currentLevel.title.split(' — ')[1] || currentLevel.title}` : (progress.completedModules.length === allModulesOrdered.length ? "Formação Completa ✦" : "Iniciando Jornada")}
             </span>
           </div>
-          <div className="grid grid-cols-2 min-[480px]:grid-cols-4 gap-3">
+          <div className="grid grid-cols-4 gap-1.5 sm:gap-3">
             {TRAIL_LEVELS.map(level => {
               const prog = getLevelProgress(level);
               const complete = isLevelComplete(level);
               const unlocked = isLevelUnlocked(level);
               return (
                 <div key={level.id} className="space-y-2 flex flex-col items-center sm:items-stretch">
-                  <div className="h-2.5 sm:h-3 w-full rounded-full overflow-hidden p-[1px]" style={{
+                  <div className="h-2 sm:h-3 w-full rounded-full overflow-hidden p-[1px]" style={{
                     background: unlocked ? "#E8DED3" : "#DCCFC260",
-                    border: `1.5px solid ${unlocked ? "#C8A66A80" : "#DCCFC2"}`,
+                    border: `1px solid ${unlocked ? "#C8A66A80" : "#DCCFC2"}`,
                   }}>
-                    <div className="h-full rounded-full transition-all duration-1000 shadow-[0_0_8px_rgba(200,166,106,0.3)]" style={{
+                    <div className="h-full rounded-full transition-all duration-1000 shadow-[0_0_4px_rgba(200,166,106,0.2)]" style={{
                       width: `${Math.max(prog, complete ? 100 : 0)}%`,
                       background: complete
                         ? `linear-gradient(90deg, ${level.accentColor}, #C8A66A)`
                         : `linear-gradient(90deg, #5B1F3D, #C8A66A)`,
                     }} />
                   </div>
-                  <div className="text-[9px] sm:text-[11px] font-heading font-black text-center uppercase tracking-tight mt-1 truncate w-full" style={{
+                  <div className="text-[7.5px] min-[360px]:text-[9px] sm:text-[11px] font-heading font-black text-center uppercase tracking-tighter sm:tracking-tight mt-1 truncate w-full" style={{
                     color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                   }}>
                     {level.title.split(" — ")[0]}
@@ -222,10 +222,10 @@ const TrailsPage = () => {
               </div>
 
               {/* Level header */}
-              <div className="flex flex-col min-[480px]:flex-row items-start min-[480px]:items-center gap-4 mb-6">
-                <div className="flex items-center gap-4 w-full min-[480px]:w-auto">
+              <div className="flex flex-col min-[480px]:flex-row items-start min-[480px]:items-center gap-3 min-[360px]:gap-4 mb-6">
+                <div className="flex items-center gap-3 min-[360px]:gap-4 w-full min-[480px]:w-auto">
                   <div
-                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-xl sm:text-2xl shrink-0 shadow-lg transition-transform duration-500 hover:rotate-3"
+                    className="w-10 h-10 min-[360px]:w-12 min-[360px]:h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-xl sm:text-2xl shrink-0 shadow-lg transition-transform duration-500 hover:rotate-3"
                     style={{
                       background: unlocked
                         ? `linear-gradient(135deg, ${level.accentColor}20, #FAF5EF)`
@@ -234,18 +234,18 @@ const TrailsPage = () => {
                       opacity: unlocked ? 1 : 0.6,
                     }}
                   >
-                    {unlocked ? <TarotIcon name={level.icon} className="w-6 h-6 sm:w-7 sm:h-7" /> : <TarotIcon name="bloqueado" className="w-5 h-5 sm:w-6 sm:h-6 text-[#5B1F3D40]" />}
+                    {unlocked ? <TarotIcon name={level.icon} className="w-5 h-5 min-[360px]:w-6 min-[360px]:h-6 sm:w-7 sm:h-7" /> : <TarotIcon name="bloqueado" className="w-4 h-4 min-[360px]:w-5 min-[360px]:h-5 sm:w-6 sm:h-6 text-[#5B1F3D40]" />}
                   </div>
                   
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-2 mb-1">
-                      <span className="text-[10px] sm:text-[12px] tracking-[0.25em] sm:tracking-[0.35em] uppercase font-heading font-black" style={{
+                      <span className="text-[9px] min-[360px]:text-[10px] sm:text-[12px] tracking-[0.25em] sm:tracking-[0.35em] uppercase font-heading font-black" style={{
                         color: unlocked ? "#5B1F3D" : "#5B1F3D70",
                       }}>
                         Portal {level.level}
                       </span>
                       {complete && (
-                        <span className="text-[9px] sm:text-[11px] tracking-[0.1em] sm:tracking-[0.15em] uppercase font-heading font-black px-2 sm:px-3 py-1 rounded-lg border-2 border-[#C8A66A]" style={{
+                        <span className="text-[8px] min-[360px]:text-[9px] sm:text-[11px] tracking-[0.1em] sm:tracking-[0.15em] uppercase font-heading font-black px-1.5 min-[360px]:px-2 sm:px-3 py-1 rounded-lg border-2 border-[#C8A66A]" style={{
                           background: "#FAF5EF",
                           color: "#5B1F3D",
                         }}>
@@ -253,7 +253,7 @@ const TrailsPage = () => {
                         </span>
                       )}
                       {isCurrent && (
-                        <span className="text-[9px] sm:text-[11px] tracking-[0.1em] sm:tracking-[0.15em] uppercase font-heading font-black px-2 sm:px-3 py-1 rounded-lg border-2 border-[#5B1F3D]" style={{
+                        <span className="text-[8px] min-[360px]:text-[9px] sm:text-[11px] tracking-[0.1em] sm:tracking-[0.15em] uppercase font-heading font-black px-1.5 min-[360px]:px-2 sm:px-3 py-1 rounded-lg border-2 border-[#5B1F3D]" style={{
                           background: "#FAF5EF",
                           color: "#5B1F3D",
                         }}>
@@ -261,7 +261,7 @@ const TrailsPage = () => {
                         </span>
                       )}
                     </div>
-                    <h2 className="font-heading text-base min-[360px]:text-lg sm:text-xl font-black tracking-tight" style={{
+                    <h2 className="font-heading text-[13px] min-[360px]:text-lg sm:text-xl font-black tracking-tight truncate" style={{
                       color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                     }}>
                       {level.title}
