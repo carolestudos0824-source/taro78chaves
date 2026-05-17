@@ -39,7 +39,7 @@ const BottomNav = () => {
         borderColor: "#C8A66A33",
       }}
     >
-      <div className="mx-auto flex items-center justify-between py-1.5 px-1 w-full max-w-full">
+      <div className="mx-auto flex items-center justify-between py-1.5 px-0.5 w-full max-w-full">
         {NAV_ITEMS.map(item => {
           const isActive = location.pathname === item.path || location.pathname.startsWith(item.path + "/");
           return (
