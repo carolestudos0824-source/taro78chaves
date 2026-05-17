@@ -349,7 +349,7 @@ const TrailsPage = () => {
 
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1">
-                             <h3 className="font-heading text-[13px] sm:text-[15px] font-black tracking-tight truncate" style={{
+                             <h3 className="font-heading text-[12px] min-[360px]:text-[14px] sm:text-[15px] font-black tracking-tight truncate" style={{
                               color: modCurrent ? "#5B1F3D" : modComplete ? "#5B1F3D" : "#5B1F3D70",
                             }}>
                               {mod.name}
