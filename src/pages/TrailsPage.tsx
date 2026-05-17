@@ -129,7 +129,7 @@ const TrailsPage = () => {
         background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
       }} />
 
-      <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-6 pb-8 box-border overflow-x-hidden">
+      <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-6 pb-8 box-border overflow-hidden">
         <div className="flex justify-end items-start mb-6">
           <div className="flex -space-x-3 opacity-40 hover:opacity-100 transition-opacity duration-500">
             <img src={imgLouco} alt="" className="w-8 h-12 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
