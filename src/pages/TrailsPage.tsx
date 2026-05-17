@@ -325,7 +325,7 @@ const TrailsPage = () => {
                         opacity: 0.95,
                       }}>
                         {/* Status icon */}
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0 shadow-sm" style={modComplete ? {
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:scale-110" style={modComplete ? {
                           background: "#FAF5EF",
                           border: `1px solid ${level.accentColor}30`,
                         } : modCurrent ? {
