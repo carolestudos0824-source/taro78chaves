@@ -84,10 +84,10 @@ const TrailsPage = () => {
     return () => resetHeader();
   }, []);
 
-  if (progressLoading || accessLoading || !progress) {
+  if (progressLoading || accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
-        <div className="text-center space-y-4">
+        <div className="text-center space-y-4 animate-fade-in">
           <div className="w-10 h-10 border-4 border-[#C8A66A]/20 border-t-[#5B1F3D] animate-spin rounded-full mx-auto" />
           <p className="text-[11px] text-[#5B1F3D] font-heading tracking-[0.2em] uppercase font-black">Sincronizando Jornada</p>
         </div>
