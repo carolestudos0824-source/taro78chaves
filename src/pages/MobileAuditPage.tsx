@@ -1,5 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
+import { HeaderProvider } from "@/contexts/header-context";
+import { AuthProvider } from "@/hooks/use-auth";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import TrailsPage from "./TrailsPage";
+
+const queryClient = new QueryClient();
 
 const MobileAuditPage = () => {
   const [metrics, setMetrics] = useState<any>({});
@@ -17,6 +22,25 @@ const MobileAuditPage = () => {
     window.addEventListener("resize", updateMetrics);
     return () => window.removeEventListener("resize", updateMetrics);
   }, []);
+
+  const AuditFrame = ({ width, height, label }: { width: number; height: number; label: string }) => (
+    <div className="flex flex-col items-center gap-4">
+      <p className="text-white font-heading font-black tracking-widest uppercase text-sm">{label}</p>
+      <div className="relative border-[8px] border-slate-700 rounded-[3rem] shadow-2xl overflow-hidden bg-white" style={{ width: `${width}px`, height: `${height}px` }}>
+        <div className="absolute inset-0 overflow-y-auto overflow-x-hidden w-full">
+          <QueryClientProvider client={queryClient}>
+            <AuthProvider>
+              <HeaderProvider>
+                <Suspense fallback={<div className="p-4 text-plum font-bold">Carregando...</div>}>
+                  <TrailsPage />
+                </Suspense>
+              </HeaderProvider>
+            </AuthProvider>
+          </QueryClientProvider>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-slate-900 p-8 flex flex-col items-center gap-12 overflow-y-auto pb-32 w-full">
@@ -46,35 +70,9 @@ const MobileAuditPage = () => {
       </div>
 
       <div className="flex flex-wrap justify-center gap-16 items-start">
-        {/* Frame 360px */}
-        <div className="flex flex-col items-center gap-4">
-          <p className="text-white font-heading font-black tracking-widest uppercase text-sm">Preview 360x800</p>
-          <div className="relative border-[8px] border-slate-700 rounded-[3rem] shadow-2xl overflow-hidden bg-white" style={{ width: '360px', height: '800px' }}>
-             <div className="absolute inset-0 overflow-y-auto overflow-x-hidden w-full">
-                <TrailsPage />
-             </div>
-          </div>
-        </div>
-
-        {/* Frame 390px */}
-        <div className="flex flex-col items-center gap-4">
-          <p className="text-white font-heading font-black tracking-widest uppercase text-sm">Preview 390x844</p>
-          <div className="relative border-[8px] border-slate-700 rounded-[3rem] shadow-2xl overflow-hidden bg-white" style={{ width: '390px', height: '844px' }}>
-             <div className="absolute inset-0 overflow-y-auto overflow-x-hidden w-full">
-                <TrailsPage />
-             </div>
-          </div>
-        </div>
-
-        {/* Frame 430px */}
-        <div className="flex flex-col items-center gap-4">
-          <p className="text-white font-heading font-black tracking-widest uppercase text-sm">Preview 430x932</p>
-          <div className="relative border-[8px] border-slate-700 rounded-[3rem] shadow-2xl overflow-hidden bg-white" style={{ width: '430px', height: '932px' }}>
-             <div className="absolute inset-0 overflow-y-auto overflow-x-hidden w-full">
-                <TrailsPage />
-             </div>
-          </div>
-        </div>
+        <AuditFrame width={360} height={800} label="Preview 360x800" />
+        <AuditFrame width={390} height={844} label="Preview 390x844" />
+        <AuditFrame width={430} height={932} label="Preview 430x932" />
       </div>
     </div>
   );
