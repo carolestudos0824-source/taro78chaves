@@ -83,7 +83,6 @@ const ModulesPage = () => {
   const arcanoVisual = resolveMaiorVisual(currentArcanoId);
   const cardImage = arcanoVisual.resolvedAssetUrl || imgLouco;
   const isInitialState = progress.completedLessons.length === 0;
-  const totalCompletedArcanos = progress.completedLessons.filter(l => l.startsWith("arcano-")).length;
   
   useEffect(() => {
     setHeader({
