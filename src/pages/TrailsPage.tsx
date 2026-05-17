@@ -1,4 +1,4 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ChevronRight, Lock, Check, Star, Sparkles, Crown, Compass, Key } from "lucide-react";
 import { TarotIcon } from "@/components/TarotIcon";
 import { useProgress } from "@/hooks/use-progress";
@@ -71,8 +71,6 @@ const TRAIL_LEVELS: TrailLevel[] = [
 
 const TrailsPage = () => {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const bypassAuth = searchParams.get("bypass_auth") === "true";
   const { progress, loading: progressLoading } = useProgress();
   const { bypassLocks, loading: accessLoading } = useAccess();
   const { setHeader, resetHeader } = useHeader();
@@ -86,7 +84,7 @@ const TrailsPage = () => {
     return () => resetHeader();
   }, []);
 
-  if (!bypassAuth && (progressLoading || accessLoading)) {
+  if (progressLoading || accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
         <div className="text-center space-y-4 animate-fade-in">
