@@ -140,7 +140,7 @@ const ModulesPage = () => {
                 <TarotIcon name="SquareStack" className="w-7 h-7 text-[#C8A66A]" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[10px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Onde estou</span>
+                <span className="text-[10px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Tarô 78 Chaves</span>
                 <span className="text-lg font-heading font-black text-[#5B1F3D]">Meu Painel Diário</span>
               </div>
             </div>
@@ -290,18 +290,24 @@ const ModulesPage = () => {
             <div className="space-y-6 animate-fade-in">
               <div className="bg-[#5B1F3D] border-2 border-[#C8A66A] rounded-[2.5rem] p-8 text-center space-y-4 relative overflow-hidden group shadow-2xl ring-8 ring-[#C8A66A]/5">
                 <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#C8A66A]/20 rounded-full blur-3xl" />
+                
+                {/* Imagem canônica O Louco */}
+                <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none">
+                   <img src={imgLouco} alt="" className="w-16 h-24 object-cover rounded-lg border border-[#C8A66A]/30 rotate-12 shadow-2xl" />
+                </div>
+
                 <div className="relative z-10 space-y-4">
                   <p className="text-[11px] font-heading tracking-[0.4em] uppercase font-black text-white/80">✦ Portal de Início ✦</p>
                   <h3 className="font-heading text-2xl md:text-3xl text-white font-black tracking-tight leading-tight">Começar Jornada: <br/>O Louco</h3>
                   <p className="text-[15px] font-body font-bold text-white/90 italic leading-relaxed">
-                    O primeiro portal da sua travessia grátis. <br/>
+                    Sua jornada pelos 78 arcanos começa aqui. <br/>
                     <span className="text-white/70 not-italic block mt-1 uppercase tracking-widest text-[10px] font-bold">Vá bem e desbloqueie O Mago.</span>
                   </p>
                   <Link 
                     to="/lesson/0"
                     className="block w-full py-5 bg-[#C8A66A] hover:bg-[#C8A66A]/90 text-[#5B1F3D] rounded-2xl font-heading text-[12px] font-black tracking-[0.3em] uppercase transition-all shadow-xl hover:scale-[1.02] active:scale-[0.95]"
                   >
-                    ABRIR PORTAL DO LOUCO
+                    INICIAR JORNADA PELOS 78 ARCANOS
                   </Link>
                 </div>
               </div>
