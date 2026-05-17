@@ -166,7 +166,7 @@ const TrailsPage = () => {
               {currentLevel ? `Em fase de ${currentLevel.title}` : "Formação Completa ✦"}
             </span>
           </div>
-          <div className="grid grid-cols-2 xs:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 min-[375px]:grid-cols-4 gap-3">
             {TRAIL_LEVELS.map(level => {
               const prog = getLevelProgress(level);
               const complete = isLevelComplete(level);

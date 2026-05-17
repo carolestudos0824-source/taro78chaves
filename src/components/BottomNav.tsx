@@ -55,7 +55,7 @@ const BottomNav = () => {
                 strokeWidth={isActive ? 2.5 : 2} 
                 color={isActive ? "#5B1F3D" : "#5B1F3D"}
               />
-              <span className={`text-[9px] xs:text-[10px] font-heading tracking-widest uppercase transition-all duration-300 truncate w-full text-center ${
+              <span className={`text-[9px] min-[375px]:text-[10px] font-heading tracking-widest uppercase transition-all duration-300 truncate w-full text-center ${
                 isActive ? "font-black text-[#5B1F3D]" : "font-bold text-[#5B1F3D]/70"
               }`}>
                 {item.label}
