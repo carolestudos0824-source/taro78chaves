@@ -123,13 +123,13 @@ const TrailsPage = () => {
   const currentLevel = currentLevelIdx >= 0 ? TRAIL_LEVELS[currentLevelIdx] : (progress.completedModules.length === allModulesOrdered.length ? null : TRAIL_LEVELS[0]);
 
   return (
-    <div className="relative w-full max-w-full flex flex-col items-center" id="trails-page-root" style={{ minHeight: '100vh', background: '#FDFBF7' }}>
+    <div className="relative w-full max-w-full flex flex-col items-center overflow-x-hidden" id="trails-page-root" style={{ minHeight: '100vh', background: '#FDFBF7' }}>
       {/* Background - kept subtle as main container handles overall bg */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
       }} />
 
-      <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-6 pb-8 box-border overflow-x-hidden">
+      <div className="relative w-full max-w-2xl px-3 sm:px-6 pt-6 pb-8 box-border overflow-hidden">
         <div className="flex justify-end items-start mb-6">
           <div className="flex -space-x-3 opacity-40">
             <img src={imgLouco} alt="" className="w-8 h-12 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
@@ -160,7 +160,7 @@ const TrailsPage = () => {
         </div>
       </div>
 
-      <div className="relative w-full max-w-2xl px-4 sm:px-6 pb-24 space-y-6 box-border overflow-x-hidden">
+      <div className="relative w-full max-w-2xl px-3 sm:px-6 pb-24 space-y-6 box-border overflow-hidden">
 
         {/* Overall progress */}
         <div className="rounded-2xl p-4 sm:p-6 shadow-xl border-2 w-full box-border relative overflow-hidden" style={{
