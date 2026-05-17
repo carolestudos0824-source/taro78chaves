@@ -119,12 +119,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
       <NavItem to="/excluir-conta" icon="excluir-conta" label="Excluir Conta" />
 
       {/* BLOCO 5 — Auditoria interna */}
-      {(isAdmin || process.env.NODE_ENV === 'development') && (
-        <>
-          <SectionTitle>Auditoria</SectionTitle>
-          <NavItem to="/qa-rotas" icon="auditoria" label="Auditoria de Rotas" />
-        </>
-      )}
+      {/* QA removed */}
 
       <div className="pt-8 pb-4">
         <button 

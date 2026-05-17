@@ -78,6 +78,7 @@ const SupportPage = lazy(() => import("./pages/legal/SupportPage.tsx"));
 const DeleteAccountPage = lazy(() => import("./pages/legal/DeleteAccountPage.tsx"));
 // QARotasPage removed
 
+
 const queryClient = new QueryClient();
 
 const LoadingFallback = () => (
@@ -161,6 +162,7 @@ const AppRoutes = () => {
         <Route path="/apresentacao" element={<PresentationPage />} />
 
         <Route element={<AppShell />}>
+          <Route index element={<Navigate to="/app" replace />} />
           <Route path="/app" element={<P><AppRouteProbe /></P>} />
           <Route path="/trilhas" element={<P><TrailsPage /></P>} />
           <Route path="/module/fundamentos" element={<P><FundamentosPage /></P>} />
@@ -209,7 +211,7 @@ const AppRoutes = () => {
           <Route path="/admin" element={<P><AdminPage /></P>} />
           {/* QA route removed */}
           
-          <Route path="/undefined" element={<Navigate to="/app" replace />} />
+          
           <Route path="/null" element={<Navigate to="/app" replace />} />
           <Route path="/NaN" element={<Navigate to="/app" replace />} />
         </Route>
@@ -237,13 +239,13 @@ const AppShell = () => {
   const { progress } = useProgress();
   
   return (
-    <div className="min-h-screen bg-[#FDFBF7] flex flex-col w-full relative">
+    <div className="min-h-screen bg-[#FDFBF7] flex flex-col overflow-x-hidden w-full max-w-full relative">
       <Header 
         streak={progress.streak} 
         xp={progress.xp} 
         level={progress.level} 
       />
-      <main className="flex-1">
+      <main className="flex-1 pb-28">
         <Outlet />
       </main>
       <BottomNav />
