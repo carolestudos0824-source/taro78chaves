@@ -5,15 +5,28 @@ import { HeaderProvider } from "@/contexts/header-context";
 import { FontSizeProvider } from "@/contexts/font-size-context";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter } from "react-router-dom";
 
-// Eagerly import the component we want to test to avoid iframe issues if possible,
-// but for the audit we'll use frames to show different sizes simultaneously.
+// Componente para garantir renderização independente dentro da mesma página
 const TrailsPage = lazy(() => import("./TrailsPage"));
 
 const queryClient = new QueryClient();
 
-const MobileAuditPage = () => {
+const AuditFrame = ({ width, height, label }: { width: number; height: number; label: string }) => (
+  <div className="flex flex-col items-center gap-4">
+    <div className="bg-slate-800/80 px-4 py-1 rounded-full border border-white/10">
+      <p className="text-white font-heading font-black tracking-widest uppercase text-[10px]">{label} ({width}x{height})</p>
+    </div>
+    <div className="relative border-[12px] border-slate-800 rounded-[3rem] shadow-2xl overflow-hidden bg-white ring-1 ring-white/10 flex flex-col" style={{ width: `${width}px`, height: `${height}px` }}>
+      <div className="flex-1 overflow-y-auto overflow-x-hidden relative bg-[#FDFBF7]">
+        <Suspense fallback={<div className="p-8 text-slate-400">Carregando {label}...</div>}>
+          <TrailsPage />
+        </Suspense>
+      </div>
+    </div>
+  </div>
+);
+
+const MobileAuditPageContent = () => {
   const [metrics, setMetrics] = useState<any>({});
 
   useEffect(() => {
@@ -30,30 +43,13 @@ const MobileAuditPage = () => {
     return () => window.removeEventListener("resize", updateMetrics);
   }, []);
 
-  const AuditFrame = ({ width, height, label, src }: { width: number; height: number; label: string; src: string }) => (
-    <div className="flex flex-col items-center gap-4">
-      <div className="bg-slate-800/80 px-4 py-1 rounded-full border border-white/10">
-        <p className="text-white font-heading font-black tracking-widest uppercase text-[10px]">{label} ({width}x{height})</p>
-      </div>
-      <div className="relative border-[12px] border-slate-800 rounded-[3rem] shadow-2xl overflow-hidden bg-white ring-1 ring-white/10" style={{ width: `${width}px`, height: `${height}px` }}>
-        <iframe 
-          src={src} 
-          style={{ width: '100%', height: '100%', border: 'none' }}
-          title={label}
-        />
-      </div>
-    </div>
-  );
-
-  const queryParams = "?__lovable_force_render=1&__lovable_no_auth=1";
-
   return (
     <div className="min-h-screen bg-slate-900 p-4 md:p-8 flex flex-col items-center gap-8 overflow-y-auto pb-32 w-full">
       <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 text-white w-full max-w-5xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-2xl font-bold">Auditoria Mobile - Preview Real</h1>
-            <p className="text-slate-400 text-sm">URL Atual: <code className="bg-black/30 px-2 py-1 rounded text-pink-400">/auditoria-mobile-trilhas</code></p>
+            <h1 className="text-2xl font-bold">Auditoria Mobile - Renderização Nativa</h1>
+            <p className="text-slate-400 text-sm font-mono uppercase tracking-tighter">URL: /auditoria-mobile-trilhas</p>
           </div>
           <div className="flex gap-2">
             <span className="px-3 py-1 bg-green-500/20 text-green-400 text-[10px] font-bold rounded-full border border-green-500/30">360x800</span>
@@ -90,9 +86,9 @@ const MobileAuditPage = () => {
       </div>
 
       <div className="flex flex-wrap justify-center gap-12 items-start w-full">
-        <AuditFrame width={360} height={800} label="Samsung/Pixel" src={`/trilhas${queryParams}`} />
-        <AuditFrame width={390} height={844} label="iPhone 13/14" src={`/trilhas${queryParams}`} />
-        <AuditFrame width={430} height={932} label="iPhone Pro Max" src={`/trilhas${queryParams}`} />
+        <AuditFrame width={360} height={800} label="Samsung/Pixel" />
+        <AuditFrame width={390} height={844} label="iPhone 13/14" />
+        <AuditFrame width={430} height={932} label="iPhone Pro Max" />
       </div>
 
       <div className="mt-16 bg-white/5 p-8 rounded-3xl border border-white/10 w-full max-w-2xl text-center">
@@ -100,6 +96,21 @@ const MobileAuditPage = () => {
         <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent w-full" />
       </div>
     </div>
+  );
+};
+
+// Wrapper para prover os contextos necessários sem depender do App principal (para evitar loops)
+const MobileAuditPage = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <HeaderProvider>
+        <FontSizeProvider>
+          <TooltipProvider>
+            <MobileAuditPageContent />
+          </TooltipProvider>
+        </FontSizeProvider>
+      </HeaderProvider>
+    </QueryClientProvider>
   );
 };
 
