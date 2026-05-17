@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense, lazy } from "react";
+import React, { useEffect, useState } from "react";
 import { HeaderProvider } from "@/contexts/header-context";
 import { FontSizeProvider } from "@/contexts/font-size-context";
 import { TooltipProvider } from "@/components/ui/tooltip";
