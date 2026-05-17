@@ -12,10 +12,10 @@ export default {
         "2xl": "1400px",
       },
     },
-     extend: {
-+      screens: {
-+        xs: "375px",
-+      },
+    extend: {
+      screens: {
+        xs: "375px",
+      },
       fontFamily: {
         heading: ["Cinzel", "Cormorant Garamond", "Georgia", "serif"],
         display: ["Cinzel", "Cormorant Garamond", "Georgia", "serif"],
