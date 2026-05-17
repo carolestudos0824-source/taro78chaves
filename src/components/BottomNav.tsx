@@ -34,7 +34,7 @@ const BottomNav = () => {
 
   return (
     <nav
-      className="fixed bottom-0 inset-x-0 z-40 border-t bg-white/98 backdrop-blur-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe"
+      className="fixed bottom-0 inset-x-0 z-40 border-t bg-white/98 backdrop-blur-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe w-full max-w-full"
       style={{
         borderColor: "#C8A66A33",
       }}
@@ -46,7 +46,7 @@ const BottomNav = () => {
             <button
               key={item.path}
               onClick={() => navigate(item.path)}
-              className="flex flex-col items-center gap-1 px-1 py-1 rounded-2xl transition-all duration-300 relative group flex-1 min-w-0"
+              className="flex flex-col items-center gap-1 px-0.5 py-1 rounded-2xl transition-all duration-300 relative group flex-1 min-w-0"
               title={item.microcopy}
             >
               <TarotIcon 

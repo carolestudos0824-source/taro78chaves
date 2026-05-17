@@ -117,7 +117,7 @@ const TrailsPage = () => {
         background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
       }} />
 
-      <div className="relative max-w-2xl mx-auto px-4 sm:px-6 pt-10 pb-8 overflow-hidden">
+      <div className="relative max-w-2xl mx-auto px-4 sm:px-6 pt-10 pb-8 overflow-hidden w-full box-border">
         <div className="flex justify-end items-start mb-8">
           <div className="flex -space-x-4 opacity-40 hover:opacity-100 transition-opacity duration-500">
             <img src={imgLouco} alt="" className="w-10 h-14 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
@@ -148,7 +148,7 @@ const TrailsPage = () => {
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 pb-16 space-y-6 overflow-hidden">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 pb-16 space-y-6 overflow-hidden w-full box-border">
 
         {/* Overall progress */}
         <div className="rounded-2xl p-4 sm:p-6 shadow-xl border-2 overflow-hidden w-full max-w-full box-border" style={{
@@ -205,8 +205,8 @@ const TrailsPage = () => {
           return (
             <div key={level.id}>
               {/* Divider */}
-              <div className="flex items-center justify-center mb-3">
-                <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
+              <div className="flex items-center justify-center mb-3 w-full overflow-hidden">
+                <div className="ornament-divider-procedural max-w-full"><div className="ornament-divider-procedural-diamond" /></div>
               </div>
 
               {/* Level header */}
@@ -280,7 +280,7 @@ const TrailsPage = () => {
               </div>
 
               {/* Module cards */}
-              <div className="space-y-4 ml-4 sm:ml-7 border-l-2 pl-4 sm:pl-6" style={{
+              <div className="space-y-4 ml-4 min-[360px]:ml-5 sm:ml-7 border-l-2 pl-3 min-[360px]:pl-4 sm:pl-6" style={{
                 borderColor: unlocked ? `${level.accentColor}30` : "#DCCFC230",
               }}>
                 {level.modules.map(modId => {
@@ -298,7 +298,7 @@ const TrailsPage = () => {
                       className="w-full text-left group transition-all duration-500 relative"
                     >
                       {modCurrent && (
-                        <div className="absolute -left-[25px] sm:-left-[31px] top-1/2 -translate-y-1/2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#5B1F3D] border-2 border-[#FAF5EF] z-10 animate-pulse" />
+                        <div className="absolute -left-[20px] min-[360px]:-left-[23px] sm:-left-[31px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 sm:w-4 sm:h-4 rounded-full bg-[#5B1F3D] border-2 border-[#FAF5EF] z-10 animate-pulse" />
                       )}
                       <div className="rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-5 transition-all duration-500 group-hover:translate-x-1" style={modCurrent ? {
                         background: "linear-gradient(145deg, #FFF, #FAF5EF)",
