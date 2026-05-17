@@ -19,7 +19,7 @@ const MobileAuditPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-900 p-8 flex flex-col items-center gap-12 overflow-y-auto pb-32">
+    <div className="min-h-screen bg-slate-900 p-8 flex flex-col items-center gap-12 overflow-y-auto pb-32 w-full">
       <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 text-white w-full max-w-4xl">
         <h1 className="text-2xl font-bold mb-4">Auditoria Mobile - Rota /trilhas</h1>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
@@ -50,7 +50,7 @@ const MobileAuditPage = () => {
         <div className="flex flex-col items-center gap-4">
           <p className="text-white font-heading font-black tracking-widest uppercase text-sm">Preview 360x800</p>
           <div className="relative border-[8px] border-slate-700 rounded-[3rem] shadow-2xl overflow-hidden bg-white" style={{ width: '360px', height: '800px' }}>
-             <div className="absolute inset-0 overflow-y-auto overflow-x-hidden">
+             <div className="absolute inset-0 overflow-y-auto overflow-x-hidden w-full">
                 <TrailsPage />
              </div>
           </div>
@@ -60,7 +60,7 @@ const MobileAuditPage = () => {
         <div className="flex flex-col items-center gap-4">
           <p className="text-white font-heading font-black tracking-widest uppercase text-sm">Preview 390x844</p>
           <div className="relative border-[8px] border-slate-700 rounded-[3rem] shadow-2xl overflow-hidden bg-white" style={{ width: '390px', height: '844px' }}>
-             <div className="absolute inset-0 overflow-y-auto overflow-x-hidden">
+             <div className="absolute inset-0 overflow-y-auto overflow-x-hidden w-full">
                 <TrailsPage />
              </div>
           </div>
@@ -70,7 +70,7 @@ const MobileAuditPage = () => {
         <div className="flex flex-col items-center gap-4">
           <p className="text-white font-heading font-black tracking-widest uppercase text-sm">Preview 430x932</p>
           <div className="relative border-[8px] border-slate-700 rounded-[3rem] shadow-2xl overflow-hidden bg-white" style={{ width: '430px', height: '932px' }}>
-             <div className="absolute inset-0 overflow-y-auto overflow-x-hidden">
+             <div className="absolute inset-0 overflow-y-auto overflow-x-hidden w-full">
                 <TrailsPage />
              </div>
           </div>
