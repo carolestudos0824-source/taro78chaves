@@ -115,7 +115,7 @@ function progressToDbCore(p: UserProgress) {
 }
 
 export function useProgress() {
-  const { user, loading: authLoading } = useAuth();
+  const { user } = useAuth();
   const { isStaff } = useRole();
   const [progress, setProgress] = useState<UserProgress>({ ...DEFAULT_PROGRESS, ...getLocalExtras() });
   const [loading, setLoading] = useState(true);
@@ -129,7 +129,6 @@ export function useProgress() {
 
   // ─── Fetch from Supabase when user is available ───
   useEffect(() => {
-    if (authLoading) return;
     const marker = document.getElementById("boot-marker");
     if (!user) {
       setProgress({ ...DEFAULT_PROGRESS, ...getLocalExtras() });
