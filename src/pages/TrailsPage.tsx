@@ -312,7 +312,7 @@ const TrailsPage = () => {
                       {modCurrent && (
                         <div className="absolute -left-[20px] min-[360px]:-left-[23px] sm:-left-[31px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 sm:w-4 sm:h-4 rounded-full bg-[#5B1F3D] border-2 border-[#FAF5EF] z-10" />
                       )}
-                      <div className="rounded-2xl p-4 sm:p-5 flex items-center gap-2 sm:gap-5 transition-all duration-500 group-hover:translate-x-1 max-w-full overflow-hidden" style={modCurrent ? {
+                      <div className="rounded-2xl p-4 sm:p-5 flex items-center gap-2 sm:gap-5 max-w-full overflow-hidden" style={modCurrent ? {
                         background: "linear-gradient(145deg, #FFF, #FAF5EF)",
                         border: `2px solid ${modId === nextGlobalModuleId ? level.accentColor : '#DCCFC2'}`,
                         boxShadow: modId === nextGlobalModuleId ? `0 8px 30px ${level.accentColor}15` : 'none',
