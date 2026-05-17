@@ -160,7 +160,7 @@ const TrailsPage = () => {
         </div>
       </div>
 
-      <div className="relative w-full max-w-2xl px-4 sm:px-6 pb-24 space-y-6 box-border overflow-x-hidden">
+      <div className="relative w-full max-w-2xl px-4 sm:px-6 pb-24 space-y-6 box-border overflow-hidden">
 
         {/* Overall progress */}
         <div className="rounded-2xl p-4 sm:p-6 shadow-xl border-2 w-full max-w-full box-border relative overflow-hidden" style={{
