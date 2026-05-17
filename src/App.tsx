@@ -162,6 +162,7 @@ const AppRoutes = () => {
         <Route path="/apresentacao" element={<PresentationPage />} />
 
         <Route element={<AppShell />}>
+          <Route index element={<Navigate to="/app" replace />} />
           <Route path="/app" element={<P><AppRouteProbe /></P>} />
           <Route path="/trilhas" element={<P><TrailsPage /></P>} />
           <Route path="/module/fundamentos" element={<P><FundamentosPage /></P>} />
