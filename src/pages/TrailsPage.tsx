@@ -280,8 +280,8 @@ const TrailsPage = () => {
               </div>
 
               {/* Module cards */}
-              <div className="space-y-4 ml-7 border-l pl-6" style={{
-                borderColor: unlocked ? `${level.accentColor}20` : "#DCCFC230",
+              <div className="space-y-4 ml-4 sm:ml-7 border-l-2 pl-4 sm:pl-6" style={{
+                borderColor: unlocked ? `${level.accentColor}30` : "#DCCFC230",
               }}>
                 {level.modules.map(modId => {
                   const mod = MODULES.find(m => m.id === modId);
@@ -298,9 +298,9 @@ const TrailsPage = () => {
                       className="w-full text-left group transition-all duration-500 relative"
                     >
                       {modCurrent && (
-                        <div className="absolute -left-[31px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#5B1F3D] border-2 border-[#FAF5EF] z-10 animate-pulse" />
+                        <div className="absolute -left-[25px] sm:-left-[31px] top-1/2 -translate-y-1/2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#5B1F3D] border-2 border-[#FAF5EF] z-10 animate-pulse" />
                       )}
-                      <div className="rounded-2xl p-5 flex items-center gap-5 transition-all duration-500 group-hover:translate-x-1" style={modCurrent ? {
+                      <div className="rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-5 transition-all duration-500 group-hover:translate-x-1" style={modCurrent ? {
                         background: "linear-gradient(145deg, #FFF, #FAF5EF)",
                         border: `2px solid ${modId === nextGlobalModuleId ? level.accentColor : '#DCCFC2'}`,
                         boxShadow: modId === nextGlobalModuleId ? `0 8px 30px ${level.accentColor}15` : 'none',
@@ -313,7 +313,7 @@ const TrailsPage = () => {
                         opacity: 0.95,
                       }}>
                         {/* Status icon */}
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:scale-110" style={modComplete ? {
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0 shadow-sm transition-all duration-500 group-hover:scale-110" style={modComplete ? {
                           background: "#FAF5EF",
                           border: `1px solid ${level.accentColor}30`,
                         } : modCurrent ? {
@@ -323,27 +323,27 @@ const TrailsPage = () => {
                           background: "rgba(220, 207, 194, 0.25)",
                           border: "1.5px solid rgba(220, 207, 194, 0.5)",
                         }}>
-                          {modComplete ? (
-                            <TarotIcon name="concluido" className="w-6 h-6" color={level.accentColor} />
+                           {modComplete ? (
+                            <TarotIcon name="concluido" className="w-5 h-5 sm:w-6 sm:h-6" color={level.accentColor} />
                           ) : modCurrent ? (
                             <div className="relative">
-                              <TarotIcon name="premium" className={`w-6 h-6 ${modId === nextGlobalModuleId ? 'text-[#C8A66A]' : 'text-[#5B1F3D50]'}`} />
-                              {modId === nextGlobalModuleId && <TarotIcon name="Sparkles" className="w-3 h-3 absolute -top-1 -right-1 text-[#C8A66A] animate-pulse" />}
+                              <TarotIcon name="premium" className={`w-5 h-5 sm:w-6 sm:h-6 ${modId === nextGlobalModuleId ? 'text-[#C8A66A]' : 'text-[#5B1F3D50]'}`} />
+                              {modId === nextGlobalModuleId && <TarotIcon name="Sparkles" className="w-2.5 h-2.5 sm:w-3 sm:h-3 absolute -top-1 -right-1 text-[#C8A66A] animate-pulse" />}
                             </div>
                           ) : (
-                            <TarotIcon name="bloqueado" className="w-5 h-5 text-[#5B1F3D20]" />
+                            <TarotIcon name="bloqueado" className="w-4 h-4 sm:w-5 sm:h-5 text-[#5B1F3D20]" />
                           )}
                         </div>
 
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1">
-                            <h3 className="font-heading text-[15px] font-black tracking-tight truncate" style={{
+                             <h3 className="font-heading text-[13px] sm:text-[15px] font-black tracking-tight truncate" style={{
                               color: modCurrent ? "#5B1F3D" : modComplete ? "#5B1F3D" : "#5B1F3D70",
                             }}>
                               {mod.name}
                             </h3>
                             {modId === nextGlobalModuleId && (
-                              <span className="text-[9px] font-heading font-black uppercase tracking-[0.25em] px-3 py-1 rounded-lg bg-[#C8A66A] text-white shadow-sm border border-[#5B1F3D10]">Próximo</span>
+                              <span className="text-[8px] sm:text-[9px] font-heading font-black uppercase tracking-[0.15em] sm:tracking-[0.25em] px-2 sm:px-3 py-1 rounded-lg bg-[#C8A66A] text-white shadow-sm border border-[#5B1F3D10] shrink-0">Próximo</span>
                             )}
                           </div>
                           <p className="font-body text-[13px] font-black italic truncate mt-1" style={{
