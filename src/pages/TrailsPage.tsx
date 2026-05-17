@@ -174,7 +174,7 @@ const TrailsPage = () => {
                 Progresso Geral
               </h2>
             </div>
-            <span className="font-heading text-[8px] min-[360px]:text-[10px] sm:text-[12px] font-black tracking-widest uppercase px-2 sm:px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40] truncate max-w-[180px] min-[360px]:max-w-none">
+            <span className="font-heading text-[8px] min-[360px]:text-[10px] sm:text-[12px] font-black tracking-widest uppercase px-2 sm:px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40] truncate max-w-[120px] min-[360px]:max-w-[180px]">
               {currentLevel ? `Em fase de ${currentLevel.title.split(' — ')[1] || currentLevel.title}` : (progress.completedModules.length === allModulesOrdered.length ? "Formação Completa ✦" : "Iniciando Jornada")}
             </span>
           </div>
