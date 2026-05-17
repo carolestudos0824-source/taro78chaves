@@ -174,7 +174,7 @@ const TrailsPage = () => {
                 Progresso Geral
               </h2>
             </div>
-            <span className="font-heading text-[8px] min-[360px]:text-[10px] sm:text-[12px] font-black tracking-widest uppercase px-2 sm:px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40] truncate max-w-full">
+            <span className="font-heading text-[8px] min-[360px]:text-[10px] sm:text-[12px] font-black tracking-widest uppercase px-2 sm:px-4 py-1.5 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-md border border-[#C8A66A40] truncate max-w-[180px] min-[360px]:max-w-none">
               {currentLevel ? `Em fase de ${currentLevel.title.split(' — ')[1] || currentLevel.title}` : "Formação Completa ✦"}
             </span>
           </div>
@@ -196,7 +196,7 @@ const TrailsPage = () => {
                         : `linear-gradient(90deg, #5B1F3D, #C8A66A)`,
                     }} />
                   </div>
-                  <div className="text-[9px] sm:text-[11px] font-heading font-black text-center uppercase tracking-tight mt-1 truncate w-full" style={{
+                  <div className="text-[7.5px] min-[360px]:text-[9px] sm:text-[11px] font-heading font-black text-center uppercase tracking-tighter sm:tracking-tight mt-1 truncate w-full" style={{
                     color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                   }}>
                     {level.title.split(" — ")[0]}
@@ -261,7 +261,7 @@ const TrailsPage = () => {
                         </span>
                       )}
                     </div>
-                    <h2 className="font-heading text-[15px] min-[360px]:text-lg sm:text-xl font-black tracking-tight" style={{
+                    <h2 className="font-heading text-[14px] min-[360px]:text-lg sm:text-xl font-black tracking-tight" style={{
                       color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                     }}>
                       {level.title}
