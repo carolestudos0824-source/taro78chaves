@@ -116,7 +116,7 @@
   body {
     @apply bg-background text-foreground font-body antialiased;
     line-height: 1.65;
-    background-color: hsl(var(--background));
+    background-color: #FAF5EF;
     background-image: linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 100%);
     background-size: 100% 100%;
     background-attachment: fixed;
