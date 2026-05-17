@@ -104,6 +104,3 @@ const MobileAuditPage = () => {
 };
 
 export default MobileAuditPage;
-};
-
-export default MobileAuditPage;
