@@ -139,7 +139,7 @@ const TrailsPage = () => {
 
         <div className="text-center relative">
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-[#C8A66A]/20">
-            <TarotIcon name="formacao" className="w-10 h-10 animate-pulse-slow" />
+            <TarotIcon name="formacao" className="w-10 h-10" />
           </div>
           <div className="text-[10px] sm:text-[12px] tracking-[0.3em] sm:tracking-[0.45em] uppercase font-heading font-black mb-2 text-[#5B1F3D]">
             Mapa Curricular
