@@ -196,7 +196,7 @@ const TrailsPage = () => {
                         : `linear-gradient(90deg, #5B1F3D, #C8A66A)`,
                     }} />
                   </div>
-                  <div className="text-[7.5px] min-[360px]:text-[8px] sm:text-[11px] font-heading font-black text-center uppercase tracking-tighter sm:tracking-tight mt-1 truncate w-full" style={{
+                  <div className="text-[7.5px] min-[360px]:text-[9px] sm:text-[11px] font-heading font-black text-center uppercase tracking-tighter sm:tracking-tight mt-1 truncate w-full" style={{
                     color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                   }}>
                     {level.title.split(" — ")[0]}
