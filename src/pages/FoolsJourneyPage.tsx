@@ -237,14 +237,13 @@ const FoolsJourneyPage = () => {
                       onClick={() => studied ? navigate(`/lesson/${arcano.arcanoNumero}`) : undefined}
                       disabled={!studied}
                       className="w-full text-left group transition-all duration-300 active:scale-[0.98]"
-                      style={{ opacity: studied ? 1 : 0.6 }}
+                      style={{ opacity: studied ? 1 : 0.9 }}
                     >
                       <div
-                        className="rounded-2xl overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md hover:border-[#C8A66A]/50"
+                        className="rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-xl hover:border-[#C8A66A]/60"
                         style={{
-                          background: studied ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.40)",
-                          border: studied ? `1.5px solid ${colors.border}` : "1.5px solid rgba(200,166,106,0.15)",
-                          backdropFilter: "blur(12px)",
+                          background: studied ? "#FAF5EF" : "rgba(250, 245, 239, 0.8)",
+                          border: studied ? `2px solid ${colors.main}` : "1.5px solid rgba(200,166,106,0.3)",
                         }}
                       >
                         <div className={`p-4 flex gap-4 ${!isEven ? 'flex-row-reverse' : ''}`}>
