@@ -28,7 +28,6 @@ export const ArcanaPresenceHero = ({
             alt="" 
             className="w-full h-full object-cover" 
             onError={(e) => {
-              console.log("Error loading backCardLeft:", backCardLeft);
               (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=200";
             }}
           />
