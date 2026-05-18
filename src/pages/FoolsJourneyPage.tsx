@@ -341,7 +341,10 @@ const FoolsJourneyPage = () => {
         {/* Action buttons - Final CTA */}
         <div className="flex flex-col items-center gap-4 pb-16 pt-8 relative z-10">
           <button
-            onClick={() => navigate("/lesson/0")}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/lesson/0");
+            }}
             className="group relative w-full max-w-xs px-10 py-5 rounded-full font-heading text-[12px] tracking-[0.3em] uppercase transition-all duration-500 hover:scale-105 active:scale-95 shadow-xl"
             style={{
               background: "linear-gradient(135deg, #5B1F3D 0%, #3D1429 100%)",
