@@ -37,7 +37,15 @@ export const ArcanaPresenceHero = ({
 
         {/* Main Card (Center) */}
         <div className="w-40 md:w-48 lg:w-56 aspect-[2/3.5] rounded-2xl overflow-hidden border-4 border-gold shadow-2xl z-20 relative transform hover:scale-105 transition-transform duration-700 bg-white">
-          <img src={mainCard} alt={mainCardAlt} className="w-full h-full object-cover" />
+          <img 
+            src={mainCard} 
+            alt={mainCardAlt} 
+            className="w-full h-full object-cover" 
+            onError={(e) => {
+              console.log("Error loading mainCard:", mainCard);
+              (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=300";
+            }}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-plum/30 to-transparent opacity-60" />
           
           {/* Subtle Shine Overlay */}
