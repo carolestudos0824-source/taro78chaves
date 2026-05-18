@@ -215,11 +215,12 @@ const FoolsJourneyPage = () => {
 
               {/* Phase description */}
               <div className="rounded-2xl p-6 mb-8 shadow-sm" style={{
-                background: "rgba(255,255,255,0.25)",
-                border: `1px solid ${colors.border}`,
-                backdropFilter: "blur(10px)",
+                background: "rgba(255,255,255,0.65)",
+                border: `1.5px solid ${colors.border}`,
+                backdropFilter: "blur(12px)",
+                boxShadow: "0 4px 15px rgba(91, 31, 61, 0.05)"
               }}>
-                <p className="font-body text-sm leading-[1.85]" style={{ color: "#4A1830", opacity: 0.8 }}>
+                <p className="font-body text-sm leading-[1.85] font-medium" style={{ color: "#3D1429" }}>
                   {phase.descricao}
                 </p>
               </div>
