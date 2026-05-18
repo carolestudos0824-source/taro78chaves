@@ -26,6 +26,8 @@ import imgImperatriz from "@/assets/arcano-3-imperatriz.jpg";
 import imgImperador from "@/assets/arcano-4-imperador.jpg";
 import imgHierofante from "@/assets/arcano-5-hierofante.jpg";
 import imgEnamorados from "@/assets/arcano-6-enamorados.jpg";
+import imgMundo from "@/assets/arcano-21-mundo.jpg";
+import { ArcanaPresenceHero } from "@/components/ArcanaPresenceHero";
 import brandIcon from "@/assets/brand-icon.png";
 import brandLogo from "@/assets/brand-logo.png";
 
