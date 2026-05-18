@@ -80,16 +80,15 @@ const Index = () => {
           </div>
           
           <h1 className="font-heading text-5xl md:text-7xl tracking-tight mb-6" style={{ color: "#5B1F3D" }}>
-            Jornada do Louco — 22 Arcanos Maiores
+            ARCANOS MAIORES
           </h1>
           
           <p className="font-accent text-2xl md:text-3xl italic leading-relaxed max-w-xl mx-auto mb-6" style={{ color: "#5B1F3D", fontWeight: 600 }}>
-            "Os 22 Arcanos Maiores como percurso iniciático da alma"
+            "A jornada pelos 22 grandes arquétipos"
           </p>
           
           <p className="text-[16px] font-body max-w-lg mx-auto leading-relaxed px-6" style={{ color: "#5B1F3DCC", fontWeight: 500 }}>
-            Do potencial puro do Louco à completude do Mundo — cada arcano é uma etapa de autoconhecimento, 
-            com lições, símbolos e rituais sagrados para sua travessia.
+            Do Louco ao Mundo, cada Arcano revela uma etapa da travessia interior.
           </p>
         </section>
 
