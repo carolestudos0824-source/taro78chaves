@@ -161,7 +161,7 @@ const LandingPage = () => {
                   className="w-full sm:w-auto min-h-[56px] md:min-h-[64px] px-8 md:px-10 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-[11px] md:text-base tracking-[0.25em] uppercase border-none shadow-[0_15px_40px_-10px_rgba(91,31,61,0.6)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-4 group/btn"
                 >
                   <Key className="w-5 h-5 group-hover/btn:rotate-12 transition-transform text-gold" />
-                  COMEÇAR PELO LOUCO — GRÁTIS
+                  COMEÇAR — GRÁTIS
                 </Button>
                 <div className="flex flex-col items-center lg:items-start gap-1">
                   <p className="text-sm md:text-base font-heading tracking-[0.1em] text-plum font-extrabold uppercase drop-shadow-sm">
