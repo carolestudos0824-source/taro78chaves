@@ -218,7 +218,7 @@ const FoolsJourneyPage = () => {
                 border: `2px solid ${colors.border}`,
                 boxShadow: "0 8px 30px rgba(91, 31, 61, 0.08)"
               }}>
-                <p className="font-body text-sm leading-[1.85] font-medium" style={{ color: "#3D1429" }}>
+                <p className="font-body text-sm leading-[1.85] font-semibold" style={{ color: "#3D1429" }}>
                   {phase.descricao}
                 </p>
               </div>
