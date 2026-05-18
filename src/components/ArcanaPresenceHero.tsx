@@ -23,7 +23,15 @@ export const ArcanaPresenceHero = ({
         {/* Back Card Left */}
         {backCardLeft && (
           <div className="w-24 md:w-28 lg:w-32 aspect-[2/3.5] rounded-xl overflow-hidden border-2 border-gold/40 shadow-xl rotate-[-15deg] transition-all hover:rotate-0 hover:z-30 hover:scale-110 duration-500 bg-white">
-            <img src={backCardLeft} alt="" className="w-full h-full object-cover" />
+          <img 
+            src={backCardLeft} 
+            alt="" 
+            className="w-full h-full object-cover" 
+            onError={(e) => {
+              console.log("Error loading backCardLeft:", backCardLeft);
+              (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=200";
+            }}
+          />
           </div>
         )}
 
