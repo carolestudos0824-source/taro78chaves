@@ -108,8 +108,8 @@ const FoolsJourneyPage = () => {
             </div>
             
             {/* Sparkle ornaments */}
-            <div className="absolute -top-4 -right-4 text-[#C8A66A] animate-bounce">✦</div>
-            <div className="absolute -bottom-2 -left-4 text-[#C8A66A] animate-pulse">✨</div>
+            <div className="absolute -top-6 -right-6 text-[#C8A66A] text-2xl animate-bounce">✦</div>
+            <div className="absolute -bottom-4 -left-6 text-[#C8A66A] text-2xl animate-pulse">✨</div>
           </div>
 
           <div className="flex flex-col items-center max-w-lg mx-auto">
