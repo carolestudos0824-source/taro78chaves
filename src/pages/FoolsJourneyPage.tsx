@@ -95,28 +95,28 @@ const FoolsJourneyPage = () => {
             
             {/* Guided mini-trio visual */}
             <div className="flex items-end justify-center -space-x-8 md:-space-x-12 relative z-10">
-              <div className="w-16 md:w-20 aspect-[2/3.5] rounded-lg overflow-hidden border border-white/40 shadow-lg rotate-[-12deg] opacity-40 grayscale-[0.3]">
-                <img src="/assets/cards/the-magician.jpg" alt="" className="w-full h-full object-cover" />
+              <div className="w-16 md:w-20 aspect-[2/3.5] rounded-lg overflow-hidden border-2 border-[#C8A66A]/30 shadow-xl rotate-[-12deg] opacity-70 sepia-[0.2]">
+                <img src={EDITORIAL_REGISTRY[1]?.cardImage || "/assets/cards/the-magician.jpg"} alt="" className="w-full h-full object-cover" />
               </div>
-              <div className="w-28 md:w-36 aspect-[2/3.5] rounded-xl overflow-hidden border-2 border-[#C8A66A] shadow-2xl z-10 relative transform hover:scale-105 transition-transform duration-500">
-                <img src="/assets/cards/the-fool.jpg" alt="O Louco" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+              <div className="w-28 md:w-36 aspect-[2/3.5] rounded-xl overflow-hidden border-4 border-[#C8A66A] shadow-2xl z-10 relative transform hover:scale-105 transition-transform duration-500">
+                <img src={EDITORIAL_REGISTRY[0]?.cardImage || "/assets/cards/the-fool.jpg"} alt="O Louco" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
               </div>
-              <div className="w-16 md:w-20 aspect-[2/3.5] rounded-lg overflow-hidden border border-white/40 shadow-lg rotate-[12deg] opacity-40 grayscale-[0.3]">
-                <img src="/assets/cards/the-world.jpg" alt="" className="w-full h-full object-cover" />
+              <div className="w-16 md:w-20 aspect-[2/3.5] rounded-lg overflow-hidden border-2 border-[#C8A66A]/30 shadow-xl rotate-[12deg] opacity-70 sepia-[0.2]">
+                <img src={EDITORIAL_REGISTRY[21]?.cardImage || "/assets/cards/the-world.jpg"} alt="" className="w-full h-full object-cover" />
               </div>
             </div>
             
             {/* Sparkle ornaments */}
-            <div className="absolute -top-4 -right-4 text-[#C8A66A] animate-bounce">✦</div>
-            <div className="absolute -bottom-2 -left-4 text-[#C8A66A] animate-pulse">✨</div>
+            <div className="absolute -top-6 -right-6 text-[#C8A66A] text-2xl animate-bounce">✦</div>
+            <div className="absolute -bottom-4 -left-6 text-[#C8A66A] text-2xl animate-pulse">✨</div>
           </div>
 
           <div className="flex flex-col items-center max-w-lg mx-auto">
             <h1 className="font-heading text-4xl md:text-5xl tracking-tight mb-4" style={{ color: "#3D1429" }}>
               {meta.introTitulo}
             </h1>
-            <p className="font-accent text-xl md:text-2xl italic leading-relaxed mb-4 px-4" style={{ color: "#5B1F3D", fontWeight: 600 }}>
+            <p className="font-accent text-xl md:text-2xl italic leading-relaxed mb-4 px-4" style={{ color: "#5B1F3D", fontWeight: 700 }}>
               "{meta.introEpigrafe}"
             </p>
             <div className="flex items-center gap-3 mb-2">
@@ -131,15 +131,14 @@ const FoolsJourneyPage = () => {
 
         {/* Introduction Editorial Card */}
         <section className="mb-14" style={{ animation: "fade-up 0.6s ease-out" }}>
-          <div className="relative rounded-[2rem] p-8 md:p-10 shadow-xl overflow-hidden" style={{
-            background: "linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 245, 239, 0.85) 100%)",
-            backdropFilter: "blur(12px)",
-            border: "1.5px solid rgba(200, 166, 106, 0.25)",
-            boxShadow: "0 20px 50px rgba(91, 31, 61, 0.04)"
+          <div className="relative rounded-[2rem] p-8 md:p-10 shadow-2xl overflow-hidden" style={{
+            background: "#FAF5EF",
+            border: "2px solid rgba(200, 166, 106, 0.4)",
+            boxShadow: "0 25px 60px rgba(91, 31, 61, 0.1)"
           }}>
-            {/* Corner ornaments - subtle SVG/CSS */}
-            <div className="absolute top-0 left-0 w-16 h-16 border-t border-l border-[#C8A66A]/20 rounded-tl-[2rem]" />
-            <div className="absolute bottom-0 right-0 w-16 h-16 border-b border-r border-[#C8A66A]/20 rounded-br-[2rem]" />
+            {/* Corner ornaments - stronger presence */}
+            <div className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-[#C8A66A]/30 rounded-tl-[2rem]" />
+            <div className="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-[#C8A66A]/30 rounded-br-[2rem]" />
             
             <div className="space-y-5 relative z-10">
               {meta.introCorpo.map((para, i) => (
@@ -158,13 +157,13 @@ const FoolsJourneyPage = () => {
             { label: "Travessia", title: "Provas e Espelhos", text: "Encontros com mestres e abismos da alma.", icon: "◈" },
             { label: "Integração", title: "Consciência Plena", text: "O Mundo e a união final de todo aprendizado.", icon: "XXI" }
           ].map((point, i) => (
-            <div key={i} className="rounded-2xl p-6 text-center bg-white/60 border border-[#C8A66A]/30 shadow-sm transition-all hover:shadow-md hover:bg-white/80 group">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4 border border-[#C8A66A]/40 bg-white group-hover:scale-110 transition-transform shadow-sm">
-                <span className="font-heading text-[12px] font-bold" style={{ color: "#8B6A30" }}>{point.icon}</span>
+            <div key={i} className="rounded-2xl p-6 text-center bg-[#FAF5EF] border-2 border-[#C8A66A]/40 shadow-md transition-all hover:shadow-lg hover:border-[#C8A66A]/60 group">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-[#C8A66A]/40 bg-white group-hover:scale-110 transition-transform shadow-sm">
+                <span className="font-heading text-[12px] font-bold" style={{ color: "#5B1F3D" }}>{point.icon}</span>
               </div>
               <span className="text-[10px] font-heading tracking-[0.2em] uppercase font-bold block mb-1" style={{ color: "#8B6A30" }}>{point.label}</span>
               <h4 className="font-heading text-sm font-bold mb-2" style={{ color: "#3D1429" }}>{point.title}</h4>
-              <p className="font-body text-[12px] leading-relaxed" style={{ color: "#5B1F3D" }}>{point.text}</p>
+              <p className="font-body text-[12px] leading-relaxed font-semibold" style={{ color: "#5B1F3D" }}>{point.text}</p>
             </div>
           ))}
         </section>
@@ -191,10 +190,10 @@ const FoolsJourneyPage = () => {
 
               <div className="text-center mb-8">
                 <div
-                  className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-4 shadow-sm"
+                  className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-4 shadow-md"
                   style={{
-                    background: "rgba(255,255,255,0.4)",
-                    border: `1.5px solid ${colors.border}`,
+                    background: "#FAF5EF",
+                    border: `2px solid ${colors.main}`,
                     backdropFilter: "blur(8px)",
                   }}
                 >
@@ -214,13 +213,12 @@ const FoolsJourneyPage = () => {
               </div>
 
               {/* Phase description */}
-              <div className="rounded-2xl p-6 mb-8 shadow-sm" style={{
-                background: "rgba(255,255,255,0.65)",
-                border: `1.5px solid ${colors.border}`,
-                backdropFilter: "blur(12px)",
-                boxShadow: "0 4px 15px rgba(91, 31, 61, 0.05)"
+              <div className="rounded-2xl p-6 mb-8 shadow-md" style={{
+                background: "#FAF5EF",
+                border: `2px solid ${colors.border}`,
+                boxShadow: "0 8px 30px rgba(91, 31, 61, 0.08)"
               }}>
-                <p className="font-body text-sm leading-[1.85] font-medium" style={{ color: "#3D1429" }}>
+                <p className="font-body text-sm leading-[1.85] font-semibold" style={{ color: "#3D1429" }}>
                   {phase.descricao}
                 </p>
               </div>
@@ -238,27 +236,26 @@ const FoolsJourneyPage = () => {
                       onClick={() => studied ? navigate(`/lesson/${arcano.arcanoNumero}`) : undefined}
                       disabled={!studied}
                       className="w-full text-left group transition-all duration-300 active:scale-[0.98]"
-                      style={{ opacity: studied ? 1 : 0.6 }}
+                      style={{ opacity: studied ? 1 : 0.9 }}
                     >
                       <div
-                        className="rounded-2xl overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md hover:border-[#C8A66A]/50"
+                        className="rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-xl hover:border-[#C8A66A]/60"
                         style={{
-                          background: studied ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.40)",
-                          border: studied ? `1.5px solid ${colors.border}` : "1.5px solid rgba(200,166,106,0.15)",
-                          backdropFilter: "blur(12px)",
+                          background: studied ? "#FAF5EF" : "rgba(250, 245, 239, 0.8)",
+                          border: studied ? `2px solid ${colors.main}` : "1.5px solid rgba(200,166,106,0.3)",
                         }}
                       >
                         <div className={`p-4 flex gap-4 ${!isEven ? 'flex-row-reverse' : ''}`}>
                           {/* Arcano Visual / Card Image */}
                           <div 
-                            className="w-20 h-32 rounded-lg shrink-0 overflow-hidden relative shadow-md border border-[#C8A66A]/20 group-hover:scale-105 transition-transform duration-500"
+                            className="w-20 h-32 rounded-lg shrink-0 overflow-hidden relative shadow-lg border-2 border-[#C8A66A]/30 group-hover:scale-105 transition-transform duration-500"
                             style={{ 
-                              background: "rgba(61,20,41,0.05)",
-                              filter: studied ? 'none' : 'sepia(0.4) brightness(0.9) contrast(1.1)'
+                              background: "#3D1429",
+                              filter: studied ? 'none' : 'sepia(0.25) brightness(0.85) contrast(1.1) saturate(0.8)'
                             }}
                           >
                             <img 
-                              src={`/assets/cards/${EDITORIAL_REGISTRY[arcano.arcanoNumero]?.slug || 'the-fool'}.jpg`}
+                              src={EDITORIAL_REGISTRY[arcano.arcanoNumero]?.cardImage || "/src/assets/arcano-placeholder.jpg"}
                               alt={arcano.nome}
                               className="w-full h-full object-cover"
                               onError={(e) => {
@@ -284,14 +281,14 @@ const FoolsJourneyPage = () => {
                             <div className={`flex items-center gap-2 mb-1 ${!isEven ? 'justify-end' : 'justify-start'}`}>
                               <span 
                                 className="font-heading text-[11px] tracking-widest font-bold"
-                                style={{ color: studied ? colors.main : "#8B6A3090" }}
+                                style={{ color: studied ? colors.main : "#C8A66A" }}
                               >
                                 {arcano.numeral}
                               </span>
-                              <div className="w-1.5 h-1.5 rounded-full bg-[#C8A66A]/60 shadow-sm" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#C8A66A] shadow-sm" />
                               <h3
                                 className="font-heading text-base tracking-wide font-bold"
-                                style={{ color: studied ? "#3D1429" : "#3D142980" }}
+                                style={{ color: studied ? "#3D1429" : "#3D1429CC" }}
                               >
                                 {arcano.nome}
                               </h3>
@@ -302,15 +299,15 @@ const FoolsJourneyPage = () => {
                               ))}
                             </div>
                             <p
-                              className="font-accent text-[13px] italic mb-2 font-semibold"
-                              style={{ color: studied ? "#5B1F3D" : "#5B1F3D70" }}
+                              className="font-accent text-[13px] italic mb-2 font-bold"
+                              style={{ color: studied ? "#5B1F3D" : "#5B1F3DCC" }}
                             >
                               {arcano.papel}
                             </p>
                             {studied && (
                               <p
-                                className="font-body text-[12px] leading-relaxed line-clamp-2 font-medium"
-                                style={{ color: "#3D1429", opacity: 0.85 }}
+                                className="font-body text-[12px] leading-relaxed line-clamp-2 font-semibold"
+                                style={{ color: "#3D1429" }}
                               >
                                 {arcano.textoNarrativo}
                               </p>
@@ -344,10 +341,10 @@ const FoolsJourneyPage = () => {
             }}>
               {meta.encerramentoTitulo}
             </h2>
-            <p className="font-body text-sm leading-[1.85] max-w-lg mx-auto mb-6" style={{ color: "#4A1830", opacity: 0.8 }}>
+            <p className="font-body text-sm leading-[1.85] max-w-lg mx-auto mb-6" style={{ color: "#3D1429" }}>
               {meta.encerramentoCorpo}
             </p>
-            <p className="font-accent text-lg italic font-medium" style={{ color: "#5B1F3D" }}>
+            <p className="font-accent text-xl italic font-bold" style={{ color: "#5B1F3D" }}>
               {meta.encerramentoConvite}
             </p>
           </div>
