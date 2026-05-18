@@ -207,7 +207,7 @@ const FoolsJourneyPage = () => {
                 <h2 className="font-heading text-xl tracking-wide mb-2" style={{ color: "#3D1429" }}>
                   {phase.titulo}
                 </h2>
-                <p className="font-accent text-sm italic" style={{ color: "#5B1F3D", opacity: 0.8 }}>
+                <p className="font-accent text-base italic" style={{ color: "#5B1F3D" }}>
                   {phase.subtitulo}
                 </p>
               </div>
