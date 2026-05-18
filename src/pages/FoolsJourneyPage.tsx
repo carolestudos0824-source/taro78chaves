@@ -265,35 +265,35 @@ const FoolsJourneyPage = () => {
                           </div>
 
                           {/* Content */}
-                          <div className={`flex-1 min-w-0 flex flex-col justify-center ${!isEven ? 'text-right' : 'text-left'} py-2`}>
-                            <div className={`flex items-center gap-2 mb-1.5 ${!isEven ? 'justify-end' : 'justify-start'}`}>
+                          <div className={`flex-1 min-w-0 flex flex-col justify-center ${!isEven ? 'text-right' : 'text-left'} py-1`}>
+                            <div className={`flex items-center gap-2 mb-1 ${!isEven ? 'justify-end' : 'justify-start'}`}>
                               <span 
-                                className="font-heading text-[12px] tracking-widest font-bold"
+                                className="font-heading text-[10px] md:text-[11px] tracking-[0.2em] font-bold"
                                 style={{ color: "#8B6A30" }}
                               >
                                 {arcano.numeral}
                               </span>
-                              <div className="w-1.5 h-1.5 rounded-full bg-[#C8A66A]" />
+                              <div className="w-1 h-1 rounded-full bg-[#C8A66A]/40" />
                               <h3
-                                className="font-heading text-lg tracking-wide font-bold"
+                                className="font-heading text-base md:text-lg tracking-wide font-bold leading-tight"
                                 style={{ color: "#3D1429" }}
                               >
                                 {arcano.nome}
                               </h3>
                               {studied && (isEven ? (
-                                <ChevronRight className="w-5 h-5 shrink-0 opacity-80 group-hover:translate-x-1 transition-transform" style={{ color: "#8B6A30" }} />
+                                <ChevronRight className="w-4 h-4 shrink-0 text-[#C8A66A]/60 group-hover:translate-x-1 transition-transform" />
                               ) : (
-                                <ChevronRight className="w-5 h-5 shrink-0 opacity-80 group-hover:-translate-x-1 transition-transform rotate-180" style={{ color: "#8B6A30" }} />
+                                <ChevronRight className="w-4 h-4 shrink-0 text-[#C8A66A]/60 group-hover:-translate-x-1 transition-transform rotate-180" />
                               ))}
                             </div>
                             <p
-                              className="font-accent text-sm md:text-base italic mb-3 font-bold"
+                              className="font-accent text-[13px] md:text-[15px] italic mb-2 font-bold leading-tight"
                               style={{ color: "#5B1F3D" }}
                             >
                               {arcano.papel}
                             </p>
                             <p
-                              className="font-body text-[13px] leading-relaxed line-clamp-3 font-semibold"
+                              className="font-body text-[12px] md:text-[13px] leading-relaxed line-clamp-2 md:line-clamp-3 font-semibold"
                               style={{ color: "#3D1429" }}
                             >
                               {arcano.textoNarrativo}
