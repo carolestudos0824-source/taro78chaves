@@ -123,7 +123,7 @@ const LandingPage = () => {
             
             <div className="text-center lg:text-left space-y-4 md:space-y-5 order-1 lg:order-1">
               {/* Symbolic Badge */}
-              <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in mb-4">
+              <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in mb-2">
                 <Sparkles className="w-4 h-4 text-gold-dark" />
                 <span className="text-[10px] md:text-[11px] font-heading tracking-[0.25em] uppercase font-bold text-plum">
                   A jornada viva dos 78 arcanos
