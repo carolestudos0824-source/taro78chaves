@@ -341,10 +341,10 @@ const FoolsJourneyPage = () => {
             }}>
               {meta.encerramentoTitulo}
             </h2>
-            <p className="font-body text-sm leading-[1.85] max-w-lg mx-auto mb-6" style={{ color: "#4A1830", opacity: 0.8 }}>
+            <p className="font-body text-sm leading-[1.85] max-w-lg mx-auto mb-6" style={{ color: "#3D1429" }}>
               {meta.encerramentoCorpo}
             </p>
-            <p className="font-accent text-lg italic font-medium" style={{ color: "#5B1F3D" }}>
+            <p className="font-accent text-xl italic font-bold" style={{ color: "#5B1F3D" }}>
               {meta.encerramentoConvite}
             </p>
           </div>
