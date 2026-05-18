@@ -193,61 +193,12 @@ const LandingPage = () => {
             </div>
 
             <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
-              <div className="relative group max-w-[280px] md:max-w-[320px] lg:max-w-[340px] w-full mb-12 lg:mb-0">
-                {/* Visual Portal Ornament */}
-                <div className="absolute -inset-4 border border-gold/20 rounded-[2.5rem] -z-10 animate-pulse-slow" />
-                <div className="absolute -inset-2 border-2 border-gold/10 rounded-[2.3rem] -z-10" />
-                
-                {/* Main Card Portal */}
-                <div className="bg-ivory/95 backdrop-blur-2xl p-3.5 md:p-4 rounded-[2rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)] border border-gold/20 relative overflow-hidden group-hover:shadow-[0_48px_80px_-20px_rgba(91,31,61,0.2)] transition-all duration-700">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-gold/5 blur-3xl rounded-full" />
-                  
-                  {/* Card Header */}
-                  <div className="flex items-center justify-between mb-3 md:mb-4">
-                    <div className="flex items-center gap-1.5 md:gap-2">
-                      <div className="w-6 h-6 md:w-7 md:h-7 rounded-lg bg-plum flex items-center justify-center">
-                        <Key className="w-3 h-3 md:w-3.5 md:h-3.5 text-gold" />
-                      </div>
-                      <span className="text-[8px] md:text-[9px] lg:text-[10px] font-heading tracking-[0.25em] uppercase text-plum font-bold">Primeiro Portal</span>
-                    </div>
-                    <span className="px-2 py-0.5 md:px-2.5 md:py-1 rounded-full bg-gold/15 text-plum text-[8px] md:text-[9px] lg:text-[10px] font-heading tracking-widest uppercase font-bold border border-gold/30">Grátis</span>
-                  </div>
-
-                  {/* The Arcano Card */}
-                  <div className="relative aspect-[2/3] max-h-[220px] md:max-h-[260px] lg:max-h-[280px] rounded-xl md:rounded-2xl overflow-hidden mb-3 md:mb-4 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] border-[4px] md:border-[5px] border-white group-hover:scale-[1.02] transition-transform duration-700">
-                    <img src={imgLouco} alt="O Louco Rider-Waite-Smith" className="w-full h-full object-cover" />
-                    {/* Portal Overlay Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-plum/20 to-transparent opacity-40" />
-                  </div>
-                  
-                  <div className="space-y-2 md:space-y-3 text-center">
-                    <div className="space-y-0.5">
-                      <h3 className="font-heading text-xl md:text-2xl lg:text-3xl text-plum leading-none">O Louco</h3>
-                      <p className="font-body text-[10px] md:text-xs lg:text-sm text-plum/70 italic">O início de toda jornada</p>
-                    </div>
-                    
-                    <div className="pt-2 md:pt-3 border-t border-gold/15 space-y-1.5 md:space-y-2">
-                      <div className="flex items-center justify-between text-[8px] md:text-[9px] lg:text-[10px] font-heading tracking-[0.2em] uppercase text-plum font-bold">
-                        <span>Progresso Inicial</span>
-                        <span className="text-plum font-bold">0%</span>
-                      </div>
-                      <div className="h-1 md:h-1.5 w-full bg-plum/5 rounded-full overflow-hidden p-0.5 border border-plum/5">
-                        <div className="h-full bg-gold rounded-full w-[8%] shadow-[0_0_8px_hsl(var(--brand-gold)/0.4)]" />
-                      </div>
-                      <p className="text-[8px] md:text-[9px] lg:text-[10px] font-heading tracking-widest text-plum font-extrabold uppercase">
-                        Lição gratuita · desbloqueia O Mago
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating Elements */}
-                <div className="absolute -top-2 -right-2 w-8 h-8 md:w-10 md:h-10 bg-ivory rounded-full shadow-[0_10px_25px_-5px_rgba(91,31,61,0.2)] border border-gold/40 flex items-center justify-center animate-bounce-slow z-20 overflow-hidden">
-                  <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-plum/5 flex items-center justify-center border border-gold/20">
-                    <Key className="w-3 h-3 md:w-4 md:h-4 text-gold-dark" />
-                  </div>
-                </div>
-              </div>
+              <ArcanaPresenceHero 
+                mainCard={imgLouco}
+                backCardLeft={imgMago}
+                backCardRight={imgMundo}
+                mainCardAlt="O Louco - Início da Jornada"
+              />
             </div>
           </div>
         </div>
