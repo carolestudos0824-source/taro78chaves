@@ -116,7 +116,7 @@ const FoolsJourneyPage = () => {
             <h1 className="font-heading text-4xl md:text-5xl tracking-tight mb-4" style={{ color: "#3D1429" }}>
               {meta.introTitulo}
             </h1>
-            <p className="font-accent text-xl md:text-2xl italic leading-relaxed mb-4 px-4" style={{ color: "#5B1F3D", fontWeight: 600 }}>
+            <p className="font-accent text-xl md:text-2xl italic leading-relaxed mb-4 px-4" style={{ color: "#5B1F3D", fontWeight: 700 }}>
               "{meta.introEpigrafe}"
             </p>
             <div className="flex items-center gap-3 mb-2">
