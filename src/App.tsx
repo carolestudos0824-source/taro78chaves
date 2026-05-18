@@ -16,6 +16,7 @@ import { initGA, trackPageView, useUTMTracker } from "@/lib/analytics";
 // Eager: critical path
 import LandingPage from "./pages/LandingPage.tsx";
 import AuthPage from "./pages/AuthPage.tsx";
+import ModulesPage from "./pages/ModulesPage.tsx";
 
 // Lazy: everything else
 const Index = lazy(() => import("./pages/Index.tsx"));
@@ -221,18 +222,8 @@ const AppRoutes = () => {
   );
 };
 
-const LazyModulesPage = lazy(() => import("./pages/ModulesPage"));
-
 const AppRouteProbe = () => {
-  return (
-    <Suspense fallback={
-      <div className="flex-1 flex flex-col items-center justify-center bg-[#FAF5EF] space-y-4 min-h-[60vh]">
-        <LoadingFallback />
-      </div>
-    }>
-      <LazyModulesPage />
-    </Suspense>
-  );
+  return <ModulesPage />;
 };
 
 const AppShell = () => {
