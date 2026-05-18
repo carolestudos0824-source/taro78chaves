@@ -241,8 +241,8 @@ const FoolsJourneyPage = () => {
                       <div
                         className="rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-xl hover:border-[#C8A66A]/80"
                         style={{
-                          background: "#FAF5EF",
-                          border: `1px solid #C8A66A`,
+                          background: "#FFFFFF",
+                          border: `1px solid rgba(200, 166, 106, 0.6)`,
                         }}
                       >
                         <div className={`p-4 flex gap-5 ${!isEven ? 'flex-row-reverse' : ''} items-center`}>
