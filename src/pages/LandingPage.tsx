@@ -74,10 +74,10 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-parchment text-midnight selection:bg-secondary selection:text-white">
+    <div className="min-h-screen bg-parchment text-midnight selection:bg-secondary selection:text-white relative w-full overflow-x-hidden">
 
       {/* ─── Top Brand Header ─── */}
-      <header className="sticky top-0 z-50 px-6 py-4 md:py-6 bg-parchment/95 backdrop-blur-md border-b border-gold/10">
+      <header className="sticky top-0 z-50 px-6 py-4 md:py-6 bg-parchment/95 backdrop-blur-md border-b border-gold/10 w-full">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <a href="/" className="flex items-center gap-2.5 group transition-transform hover:scale-[1.02]" aria-label="Tarô 78 Chaves">
             <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
@@ -109,7 +109,7 @@ const LandingPage = () => {
       </header>
 
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-20 pb-12 md:pt-32 md:pb-24 px-6 overflow-hidden flex items-center min-h-[85vh] lg:min-h-[auto]">
+      <section className="relative pt-2 pb-12 md:pt-32 md:pb-24 px-6 overflow-hidden flex flex-col items-center min-h-[90vh] md:min-h-fit mt-0">
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold/15 blur-[120px]" />
@@ -121,25 +121,25 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
             
-            <div className="text-center lg:text-left space-y-4 md:space-y-5 order-2 lg:order-1">
+            <div className="text-center lg:text-left space-y-4 md:space-y-5 order-1 lg:order-1">
               {/* Symbolic Badge */}
-              <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in mb-4">
+              <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in mb-2">
                 <Sparkles className="w-4 h-4 text-gold-dark" />
                 <span className="text-[10px] md:text-[11px] font-heading tracking-[0.25em] uppercase font-bold text-plum">
                   A jornada viva dos 78 arcanos
                 </span>
               </div>
 
-              <div className="space-y-4 md:space-y-6">
-                <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl leading-[1.05] tracking-tight text-plum normal-case">
+              <div className="space-y-3 md:space-y-6">
+                <h1 className="font-heading text-3xl md:text-5xl lg:text-7xl leading-[1.05] tracking-tight text-plum normal-case">
                   No app Tarô 78 Chaves, o tarô deixa de ser imagem e se torna <span className="italic">presença.</span>
                 </h1>
                 
-                <p className="font-accent text-xl md:text-2xl lg:text-3xl text-plum/90 font-bold italic leading-relaxed">
+                <p className="font-accent text-lg md:text-2xl lg:text-3xl text-plum/90 font-bold italic leading-relaxed">
                   Aprenda Tarô através de uma travessia real: lições vivas, quizzes e progresso guiado.
                 </p>
 
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6 pt-3 md:pt-4 font-heading text-[10px] md:text-xs tracking-[0.2em] uppercase text-plum font-extrabold drop-shadow-sm">
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6 pt-1 md:pt-4 font-heading text-[10px] md:text-xs tracking-[0.2em] uppercase text-plum font-extrabold drop-shadow-sm">
                   <div className="flex items-center gap-2 group">
                     <div className="w-6 h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
                       <Zap className="w-3 h-3 text-gold-dark" />
@@ -155,13 +155,13 @@ const LandingPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-start gap-2 pt-1 md:pt-2">
+              <div className="flex flex-col items-center lg:items-start gap-1 pt-0 md:pt-2">
                 <Button 
                   onClick={() => handleStart("hero")}
-                  className="w-full sm:w-auto min-h-[56px] md:min-h-[64px] px-8 md:px-10 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-sm md:text-base tracking-[0.25em] uppercase border-none shadow-[0_15px_40px_-10px_rgba(91,31,61,0.6)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-4 group/btn"
+                  className="w-full sm:w-auto min-h-[50px] md:min-h-[64px] px-8 md:px-10 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-[11px] md:text-base tracking-[0.25em] uppercase border-none shadow-[0_15px_40px_-10px_rgba(91,31,61,0.6)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-4 group/btn"
                 >
                   <Key className="w-5 h-5 group-hover/btn:rotate-12 transition-transform text-gold" />
-                  COMEÇAR PELO LOUCO — GRÁTIS
+                  COMEÇAR — GRÁTIS
                 </Button>
                 <div className="flex flex-col items-center lg:items-start gap-1">
                   <p className="text-sm md:text-base font-heading tracking-[0.1em] text-plum font-extrabold uppercase drop-shadow-sm">
@@ -192,7 +192,7 @@ const LandingPage = () => {
               </div>
             </div>
 
-            <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
+            <div className="relative flex justify-center lg:justify-end order-2 lg:order-2">
               <ArcanaPresenceHero 
                 mainCard={imgLouco}
                 backCardLeft={imgMago}
