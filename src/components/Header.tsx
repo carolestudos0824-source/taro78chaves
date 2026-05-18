@@ -74,7 +74,11 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
 
           <div className="flex items-center gap-2 shrink-0">
             {!state.hideStreak && (
-              <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white rounded-xl border border-[#C8A66A]/20 shadow-sm">
+              <div 
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-white rounded-xl border border-[#C8A66A]/20 shadow-sm"
+                title={`Sequência: ${streak} dias`}
+                aria-label={`Sequência de estudo: ${streak} dias`}
+              >
                 <span className="text-[#C8A66A] text-xs">🔥</span>
                 <span className="font-heading text-[13px] font-black text-[#5B1F3D]">{streak}</span>
               </div>
