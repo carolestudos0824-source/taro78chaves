@@ -123,19 +123,20 @@ const LandingPage = () => {
             
             <div className="text-center lg:text-left space-y-4 md:space-y-5 order-2 lg:order-1">
               {/* Symbolic Badge */}
-              <div className="inline-flex items-center gap-2.5 px-5 py-1.5 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in">
+              <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in mb-4">
                 <Sparkles className="w-4 h-4 text-gold-dark" />
-                <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase font-bold text-plum">
-                  A chave abre o primeiro portal · Rider-Waite-Smith
+                <span className="text-[10px] md:text-[11px] font-heading tracking-[0.25em] uppercase font-bold text-plum">
+                  A jornada viva dos 78 arcanos
                 </span>
               </div>
 
-              <div className="space-y-1 md:space-y-2">
-                <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-plum normal-case">
-                  Aprenda Tarô como uma jornada.
+              <div className="space-y-4 md:space-y-6">
+                <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl leading-[1.05] tracking-tight text-plum normal-case">
+                  O Tarô deixa de ser imagem e se torna <span className="italic">presença.</span>
                 </h1>
-                <p className="font-heading text-lg md:text-xl lg:text-2xl text-plum font-bold italic opacity-90">
-                  Arcano por arcano, com lições curtas, quizzes, Pontos de Jornada e progresso real.
+                
+                <p className="font-accent text-xl md:text-2xl lg:text-3xl text-plum/90 font-bold italic leading-relaxed">
+                  Aprenda Tarô através de uma travessia real: lições vivas, quizzes e progresso guiado.
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6 pt-3 md:pt-4 font-heading text-[10px] md:text-xs tracking-[0.2em] uppercase text-plum font-extrabold drop-shadow-sm">
