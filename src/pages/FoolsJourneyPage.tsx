@@ -37,16 +37,10 @@ const FoolsJourneyPage = () => {
       {/* Background — Marfim suave e atmosfera premium */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         <div className="absolute inset-0" style={{
-          background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
-          opacity: 0.98
+          backgroundColor: "#FAF5EF",
+          opacity: 1
         }} />
-        {/* Subtle radial halo for atmosphere */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(ellipse at 50% 0%, rgba(243, 230, 224, 0.45) 0%, transparent 65%)",
-          }}
-        />
+        {/* Clean Marfim Background */}
       </div>
 
       {/* Header */}
@@ -95,14 +89,14 @@ const FoolsJourneyPage = () => {
             
             {/* Guided mini-trio visual */}
             <div className="flex items-end justify-center -space-x-8 md:-space-x-12 relative z-10">
-              <div className="w-16 md:w-20 aspect-[2/3.5] rounded-lg overflow-hidden border-2 border-[#C8A66A]/30 shadow-xl rotate-[-12deg] opacity-70 sepia-[0.2]">
+              <div className="w-16 md:w-20 aspect-[2/3.5] rounded-lg overflow-hidden border-2 border-[#C8A66A]/50 shadow-xl rotate-[-12deg] transition-all hover:rotate-0 hover:z-20 hover:scale-110">
                 <img src={EDITORIAL_REGISTRY[1]?.cardImage || "/assets/cards/the-magician.jpg"} alt="" className="w-full h-full object-cover" />
               </div>
-              <div className="w-28 md:w-36 aspect-[2/3.5] rounded-xl overflow-hidden border-4 border-[#C8A66A] shadow-2xl z-10 relative transform hover:scale-105 transition-transform duration-500">
+              <div className="w-28 md:w-36 aspect-[2/3.5] rounded-xl overflow-hidden border-4 border-[#C8A66A] shadow-2xl z-10 relative transform hover:scale-110 transition-transform duration-500">
                 <img src={EDITORIAL_REGISTRY[0]?.cardImage || "/assets/cards/the-fool.jpg"} alt="O Louco" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
               </div>
-              <div className="w-16 md:w-20 aspect-[2/3.5] rounded-lg overflow-hidden border-2 border-[#C8A66A]/30 shadow-xl rotate-[12deg] opacity-70 sepia-[0.2]">
+              <div className="w-16 md:w-20 aspect-[2/3.5] rounded-lg overflow-hidden border-2 border-[#C8A66A]/50 shadow-xl rotate-[12deg] transition-all hover:rotate-0 hover:z-20 hover:scale-110">
                 <img src={EDITORIAL_REGISTRY[21]?.cardImage || "/assets/cards/the-world.jpg"} alt="" className="w-full h-full object-cover" />
               </div>
             </div>
@@ -157,13 +151,13 @@ const FoolsJourneyPage = () => {
             { label: "Travessia", title: "Provas e Espelhos", text: "Encontros com mestres e abismos da alma.", icon: "◈" },
             { label: "Integração", title: "Consciência Plena", text: "O Mundo e a união final de todo aprendizado.", icon: "XXI" }
           ].map((point, i) => (
-            <div key={i} className="rounded-2xl p-6 text-center bg-[#FAF5EF] border-2 border-[#C8A66A]/40 shadow-md transition-all hover:shadow-lg hover:border-[#C8A66A]/60 group">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-[#C8A66A]/40 bg-white group-hover:scale-110 transition-transform shadow-sm">
-                <span className="font-heading text-[12px] font-bold" style={{ color: "#5B1F3D" }}>{point.icon}</span>
+            <div key={i} className="rounded-2xl p-6 text-center bg-[#FAF5EF] border-2 border-[#C8A66A]/50 shadow-md transition-all hover:shadow-xl hover:border-[#C8A66A]/80 group">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-[#C8A66A]/60 bg-white group-hover:scale-110 transition-transform shadow-sm">
+                <span className="font-heading text-[13px] font-bold" style={{ color: "#3D1429" }}>{point.icon}</span>
               </div>
-              <span className="text-[10px] font-heading tracking-[0.2em] uppercase font-bold block mb-1" style={{ color: "#8B6A30" }}>{point.label}</span>
-              <h4 className="font-heading text-sm font-bold mb-2" style={{ color: "#3D1429" }}>{point.title}</h4>
-              <p className="font-body text-[12px] leading-relaxed font-semibold" style={{ color: "#5B1F3D" }}>{point.text}</p>
+              <span className="text-[11px] font-heading tracking-[0.25em] uppercase font-bold block mb-2" style={{ color: "#8B6A30" }}>{point.label}</span>
+              <h4 className="font-heading text-base font-bold mb-2" style={{ color: "#3D1429" }}>{point.title}</h4>
+              <p className="font-body text-[13px] leading-relaxed font-semibold" style={{ color: "#5B1F3D" }}>{point.text}</p>
             </div>
           ))}
         </section>
@@ -207,7 +201,7 @@ const FoolsJourneyPage = () => {
                 <h2 className="font-heading text-xl tracking-wide mb-2" style={{ color: "#3D1429" }}>
                   {phase.titulo}
                 </h2>
-                <p className="font-accent text-sm italic" style={{ color: "#5B1F3D", opacity: 0.8 }}>
+                <p className="font-accent text-base italic" style={{ color: "#5B1F3D" }}>
                   {phase.subtitulo}
                 </p>
               </div>
@@ -236,82 +230,76 @@ const FoolsJourneyPage = () => {
                       onClick={() => studied ? navigate(`/lesson/${arcano.arcanoNumero}`) : undefined}
                       disabled={!studied}
                       className="w-full text-left group transition-all duration-300 active:scale-[0.98]"
-                      style={{ opacity: studied ? 1 : 0.9 }}
+                      style={{ opacity: 1 }}
                     >
                       <div
-                        className="rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-xl hover:border-[#C8A66A]/60"
+                        className="rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-xl hover:border-[#C8A66A]/80"
                         style={{
-                          background: studied ? "#FAF5EF" : "rgba(250, 245, 239, 0.8)",
-                          border: studied ? `2px solid ${colors.main}` : "1.5px solid rgba(200,166,106,0.3)",
+                          background: "#FFFFFF",
+                          border: `1px solid rgba(200, 166, 106, 0.6)`,
                         }}
                       >
-                        <div className={`p-4 flex gap-4 ${!isEven ? 'flex-row-reverse' : ''}`}>
+                        <div className={`p-4 flex gap-5 ${!isEven ? 'flex-row-reverse' : ''} items-center`}>
                           {/* Arcano Visual / Card Image */}
                           <div 
-                            className="w-20 h-32 rounded-lg shrink-0 overflow-hidden relative shadow-lg border-2 border-[#C8A66A]/30 group-hover:scale-105 transition-transform duration-500"
+                            className="w-24 h-36 rounded-lg shrink-0 overflow-hidden relative shadow-lg border-2 border-[#C8A66A]/40 group-hover:scale-105 transition-transform duration-500"
                             style={{ 
                               background: "#3D1429",
-                              filter: studied ? 'none' : 'sepia(0.25) brightness(0.85) contrast(1.1) saturate(0.8)'
+                              filter: "none"
                             }}
                           >
                             <img 
-                              src={EDITORIAL_REGISTRY[arcano.arcanoNumero]?.cardImage || "/src/assets/arcano-placeholder.jpg"}
+                              src={(() => {
+                                // Ajuste de mapeamento para clareza visual:
+                                // Algumas tradições invertem 8 e 11. O Registry segue uma, a Jornada outra.
+                                // Corrigimos aqui para que a imagem combine com o nome do arcano.
+                                let imgNum = arcano.arcanoNumero;
+                                if (imgNum === 8) imgNum = 11;
+                                else if (imgNum === 11) imgNum = 8;
+                                return EDITORIAL_REGISTRY[imgNum]?.cardImage || "/src/assets/arcano-placeholder.jpg";
+                              })()}
                               alt={arcano.nome}
                               className="w-full h-full object-cover"
                               onError={(e) => {
                                 (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=200';
                               }}
                             />
-                            {!studied && (
-                              <div className="absolute inset-0 flex items-center justify-center bg-black/5 backdrop-blur-[0.5px]">
-                                <div className="w-8 h-8 rounded-full bg-white/40 border border-white/60 flex items-center justify-center shadow-inner">
-                                  <div className="w-2 h-2 rounded-full bg-[#C8A66A]/80 shadow-sm" />
-                                </div>
-                              </div>
-                            )}
-                            {isComplete(arcano.arcanoNumero) && (
-                              <div className="absolute top-1 right-1 w-6 h-6 rounded-full bg-white/95 shadow-md flex items-center justify-center border border-[#C8A66A]/40">
-                                <Sparkles className="w-3.5 h-3.5 text-[#C8A66A]" />
-                              </div>
-                            )}
                           </div>
 
                           {/* Content */}
-                          <div className={`flex-1 min-w-0 flex flex-col justify-center ${!isEven ? 'text-right' : 'text-left'}`}>
+                          <div className={`flex-1 min-w-0 flex flex-col justify-center ${!isEven ? 'text-right' : 'text-left'} py-1`}>
                             <div className={`flex items-center gap-2 mb-1 ${!isEven ? 'justify-end' : 'justify-start'}`}>
                               <span 
-                                className="font-heading text-[11px] tracking-widest font-bold"
-                                style={{ color: studied ? colors.main : "#C8A66A" }}
+                                className="font-heading text-[10px] md:text-[11px] tracking-[0.2em] font-bold"
+                                style={{ color: "#8B6A30" }}
                               >
                                 {arcano.numeral}
                               </span>
-                              <div className="w-1.5 h-1.5 rounded-full bg-[#C8A66A] shadow-sm" />
+                              <div className="w-1 h-1 rounded-full bg-[#C8A66A]/40" />
                               <h3
-                                className="font-heading text-base tracking-wide font-bold"
-                                style={{ color: studied ? "#3D1429" : "#3D1429CC" }}
+                                className="font-heading text-base md:text-lg tracking-wide font-bold leading-tight"
+                                style={{ color: "#3D1429" }}
                               >
                                 {arcano.nome}
                               </h3>
                               {studied && (isEven ? (
-                                <ChevronRight className="w-4 h-4 shrink-0 opacity-60 group-hover:translate-x-0.5 transition-transform" style={{ color: colors.main }} />
+                                <ChevronRight className="w-4 h-4 shrink-0 text-[#C8A66A]/60 group-hover:translate-x-1 transition-transform" />
                               ) : (
-                                <ChevronRight className="w-4 h-4 shrink-0 opacity-60 group-hover:-translate-x-0.5 transition-transform rotate-180" style={{ color: colors.main }} />
+                                <ChevronRight className="w-4 h-4 shrink-0 text-[#C8A66A]/60 group-hover:-translate-x-1 transition-transform rotate-180" />
                               ))}
                             </div>
                             <p
-                              className="font-accent text-[13px] italic mb-2 font-bold"
-                              style={{ color: studied ? "#5B1F3D" : "#5B1F3DCC" }}
+                              className="font-accent text-[13px] md:text-[15px] italic mb-2 font-bold leading-tight"
+                              style={{ color: "#5B1F3D" }}
                             >
                               {arcano.papel}
                             </p>
-                            {studied && (
-                              <p
-                                className="font-body text-[12px] leading-relaxed line-clamp-2 font-semibold"
-                                style={{ color: "#3D1429" }}
-                              >
-                                {arcano.textoNarrativo}
-                              </p>
-                            )}
+                            <p
+                              className="font-body text-[12px] md:text-[13px] leading-relaxed line-clamp-2 md:line-clamp-3 font-semibold"
+                              style={{ color: "#3D1429" }}
+                            >
+                              {arcano.textoNarrativo}
+                            </p>
                           </div>
                         </div>
                       </div>
