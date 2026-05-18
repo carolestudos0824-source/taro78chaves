@@ -130,7 +130,7 @@ const LandingPage = () => {
                 </span>
               </div>
 
-              <div className="space-y-4 md:space-y-6">
+              <div className="space-y-3 md:space-y-6">
                 <h1 className="font-heading text-3xl md:text-5xl lg:text-7xl leading-[1.05] tracking-tight text-plum normal-case">
                   No app Tarô 78 Chaves, o tarô deixa de ser imagem e se torna <span className="italic">presença.</span>
                 </h1>
