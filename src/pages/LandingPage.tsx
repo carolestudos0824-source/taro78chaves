@@ -132,7 +132,7 @@ const LandingPage = () => {
 
               <div className="space-y-4 md:space-y-6">
                 <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl leading-[1.05] tracking-tight text-plum normal-case">
-                  O Tarô deixa de ser imagem e se torna <span className="italic">presença.</span>
+                  No app Tarô 78 Chaves, o tarô deixa de ser imagem e se torna <span className="italic">presença.</span>
                 </h1>
                 
                 <p className="font-accent text-xl md:text-2xl lg:text-3xl text-plum/90 font-bold italic leading-relaxed">
