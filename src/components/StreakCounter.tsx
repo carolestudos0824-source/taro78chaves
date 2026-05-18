@@ -34,6 +34,7 @@ export function StreakCounter({ streak }: StreakCounterProps) {
         color: isActive ? "#5B1F3D" : "#5B1F3D80"
       }}>
         {streak}
+        <span className="hidden sm:inline ml-1 text-sm opacity-80">dias</span>
       </span>
     </div>
   );
