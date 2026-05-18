@@ -96,14 +96,14 @@ const FoolsJourneyPage = () => {
             {/* Guided mini-trio visual */}
             <div className="flex items-end justify-center -space-x-8 md:-space-x-12 relative z-10">
               <div className="w-16 md:w-20 aspect-[2/3.5] rounded-lg overflow-hidden border-2 border-[#C8A66A]/30 shadow-xl rotate-[-12deg] opacity-70 sepia-[0.2]">
-                <img src="/assets/cards/the-magician.jpg" alt="" className="w-full h-full object-cover" />
+                <img src={EDITORIAL_REGISTRY[1]?.cardImage || "/assets/cards/the-magician.jpg"} alt="" className="w-full h-full object-cover" />
               </div>
               <div className="w-28 md:w-36 aspect-[2/3.5] rounded-xl overflow-hidden border-4 border-[#C8A66A] shadow-2xl z-10 relative transform hover:scale-105 transition-transform duration-500">
-                <img src="/assets/cards/the-fool.jpg" alt="O Louco" className="w-full h-full object-cover" />
+                <img src={EDITORIAL_REGISTRY[0]?.cardImage || "/assets/cards/the-fool.jpg"} alt="O Louco" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
               </div>
               <div className="w-16 md:w-20 aspect-[2/3.5] rounded-lg overflow-hidden border-2 border-[#C8A66A]/30 shadow-xl rotate-[12deg] opacity-70 sepia-[0.2]">
-                <img src="/assets/cards/the-world.jpg" alt="" className="w-full h-full object-cover" />
+                <img src={EDITORIAL_REGISTRY[21]?.cardImage || "/assets/cards/the-world.jpg"} alt="" className="w-full h-full object-cover" />
               </div>
             </div>
             
