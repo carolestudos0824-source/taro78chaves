@@ -9,7 +9,7 @@ export default defineConfig({
   workers: 1,
   reporter: 'list',
   use: {
-    baseURL: 'http://localhost:8080',
+    baseURL: 'https://id-preview--5426f328-1102-49c8-b784-d33862b6379e.lovable.app',
     trace: 'on-first-retry',
   },
   projects: [
