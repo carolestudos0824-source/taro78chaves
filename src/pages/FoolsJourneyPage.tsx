@@ -255,7 +255,7 @@ const FoolsJourneyPage = () => {
                             }}
                           >
                             <img 
-                              src={`/assets/cards/${EDITORIAL_REGISTRY[arcano.arcanoNumero]?.slug || 'the-fool'}.jpg`}
+                              src={EDITORIAL_REGISTRY[arcano.arcanoNumero]?.cardImage || "/src/assets/arcano-placeholder.jpg"}
                               alt={arcano.nome}
                               className="w-full h-full object-cover"
                               onError={(e) => {
