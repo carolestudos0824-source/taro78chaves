@@ -163,7 +163,7 @@ const FoolsJourneyPage = () => {
               </div>
               <span className="text-[10px] font-heading tracking-[0.2em] uppercase font-bold block mb-1" style={{ color: "#8B6A30" }}>{point.label}</span>
               <h4 className="font-heading text-sm font-bold mb-2" style={{ color: "#3D1429" }}>{point.title}</h4>
-              <p className="font-body text-[12px] leading-relaxed" style={{ color: "#5B1F3D" }}>{point.text}</p>
+              <p className="font-body text-[12px] leading-relaxed font-semibold" style={{ color: "#5B1F3D" }}>{point.text}</p>
             </div>
           ))}
         </section>
