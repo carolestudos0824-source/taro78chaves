@@ -131,15 +131,14 @@ const FoolsJourneyPage = () => {
 
         {/* Introduction Editorial Card */}
         <section className="mb-14" style={{ animation: "fade-up 0.6s ease-out" }}>
-          <div className="relative rounded-[2rem] p-8 md:p-10 shadow-xl overflow-hidden" style={{
-            background: "linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 245, 239, 0.85) 100%)",
-            backdropFilter: "blur(12px)",
-            border: "1.5px solid rgba(200, 166, 106, 0.25)",
-            boxShadow: "0 20px 50px rgba(91, 31, 61, 0.04)"
+          <div className="relative rounded-[2rem] p-8 md:p-10 shadow-2xl overflow-hidden" style={{
+            background: "#FAF5EF",
+            border: "2px solid rgba(200, 166, 106, 0.4)",
+            boxShadow: "0 25px 60px rgba(91, 31, 61, 0.1)"
           }}>
-            {/* Corner ornaments - subtle SVG/CSS */}
-            <div className="absolute top-0 left-0 w-16 h-16 border-t border-l border-[#C8A66A]/20 rounded-tl-[2rem]" />
-            <div className="absolute bottom-0 right-0 w-16 h-16 border-b border-r border-[#C8A66A]/20 rounded-br-[2rem]" />
+            {/* Corner ornaments - stronger presence */}
+            <div className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-[#C8A66A]/30 rounded-tl-[2rem]" />
+            <div className="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-[#C8A66A]/30 rounded-br-[2rem]" />
             
             <div className="space-y-5 relative z-10">
               {meta.introCorpo.map((para, i) => (
