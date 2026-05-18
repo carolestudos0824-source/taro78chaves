@@ -249,10 +249,10 @@ const FoolsJourneyPage = () => {
                         <div className={`p-4 flex gap-4 ${!isEven ? 'flex-row-reverse' : ''}`}>
                           {/* Arcano Visual / Card Image */}
                           <div 
-                            className="w-20 h-32 rounded-lg shrink-0 overflow-hidden relative shadow-md border border-[#C8A66A]/20 group-hover:scale-105 transition-transform duration-500"
+                            className="w-20 h-32 rounded-lg shrink-0 overflow-hidden relative shadow-lg border-2 border-[#C8A66A]/30 group-hover:scale-105 transition-transform duration-500"
                             style={{ 
-                              background: "rgba(61,20,41,0.05)",
-                              filter: studied ? 'none' : 'sepia(0.4) brightness(0.9) contrast(1.1)'
+                              background: "#3D1429",
+                              filter: studied ? 'none' : 'sepia(0.25) brightness(0.85) contrast(1.1) saturate(0.8)'
                             }}
                           >
                             <img 
