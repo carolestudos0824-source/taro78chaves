@@ -241,20 +241,20 @@ const FoolsJourneyPage = () => {
                       style={{ opacity: studied ? 1 : 0.6 }}
                     >
                       <div
-                        className="rounded-2xl overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md"
+                        className="rounded-2xl overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md hover:border-[#C8A66A]/50"
                         style={{
-                          background: studied ? "rgba(255,255,255,0.45)" : "rgba(255,255,255,0.15)",
-                          border: studied ? `1px solid ${colors.border}` : "1px solid rgba(200,166,106,0.1)",
+                          background: studied ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.40)",
+                          border: studied ? `1.5px solid ${colors.border}` : "1.5px solid rgba(200,166,106,0.15)",
                           backdropFilter: "blur(12px)",
                         }}
                       >
                         <div className={`p-4 flex gap-4 ${!isEven ? 'flex-row-reverse' : ''}`}>
                           {/* Arcano Visual / Card Image */}
                           <div 
-                            className="w-20 h-32 rounded-lg shrink-0 overflow-hidden relative shadow-sm border border-black/5 group-hover:scale-105 transition-transform duration-500"
+                            className="w-20 h-32 rounded-lg shrink-0 overflow-hidden relative shadow-md border border-[#C8A66A]/20 group-hover:scale-105 transition-transform duration-500"
                             style={{ 
-                              background: "rgba(61,20,41,0.03)",
-                              filter: studied ? 'none' : 'grayscale(1) sepia(0.2) opacity(0.5)'
+                              background: "rgba(61,20,41,0.05)",
+                              filter: studied ? 'none' : 'sepia(0.4) brightness(0.9) contrast(1.1)'
                             }}
                           >
                             <img 
@@ -262,20 +262,19 @@ const FoolsJourneyPage = () => {
                               alt={arcano.nome}
                               className="w-full h-full object-cover"
                               onError={(e) => {
-                                // Fallback em caso de erro na imagem
                                 (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=200';
                               }}
                             />
                             {!studied && (
-                              <div className="absolute inset-0 flex items-center justify-center bg-black/10 backdrop-blur-[1px]">
-                                <div className="w-6 h-6 rounded-full bg-white/20 border border-white/40 flex items-center justify-center">
-                                  <div className="w-1.5 h-1.5 rounded-full bg-white/60" />
+                              <div className="absolute inset-0 flex items-center justify-center bg-black/5 backdrop-blur-[0.5px]">
+                                <div className="w-8 h-8 rounded-full bg-white/40 border border-white/60 flex items-center justify-center shadow-inner">
+                                  <div className="w-2 h-2 rounded-full bg-[#C8A66A]/80 shadow-sm" />
                                 </div>
                               </div>
                             )}
                             {isComplete(arcano.arcanoNumero) && (
-                              <div className="absolute top-1 right-1 w-5 h-5 rounded-full bg-white/90 shadow-sm flex items-center justify-center border border-[#C8A66A]/30">
-                                <Sparkles className="w-3 h-3 text-[#C8A66A]" />
+                              <div className="absolute top-1 right-1 w-6 h-6 rounded-full bg-white/95 shadow-md flex items-center justify-center border border-[#C8A66A]/40">
+                                <Sparkles className="w-3.5 h-3.5 text-[#C8A66A]" />
                               </div>
                             )}
                           </div>
@@ -284,34 +283,34 @@ const FoolsJourneyPage = () => {
                           <div className={`flex-1 min-w-0 flex flex-col justify-center ${!isEven ? 'text-right' : 'text-left'}`}>
                             <div className={`flex items-center gap-2 mb-1 ${!isEven ? 'justify-end' : 'justify-start'}`}>
                               <span 
-                                className="font-heading text-[10px] tracking-widest font-bold"
-                                style={{ color: studied ? colors.main : "#8B6A3060" }}
+                                className="font-heading text-[11px] tracking-widest font-bold"
+                                style={{ color: studied ? colors.main : "#8B6A3090" }}
                               >
                                 {arcano.numeral}
                               </span>
-                              <div className="w-1 h-1 rounded-full bg-[#C8A66A]/40" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#C8A66A]/60 shadow-sm" />
                               <h3
-                                className="font-heading text-sm tracking-wide font-semibold"
-                                style={{ color: studied ? "#3D1429" : "#3D142940" }}
+                                className="font-heading text-base tracking-wide font-bold"
+                                style={{ color: studied ? "#3D1429" : "#3D142980" }}
                               >
                                 {arcano.nome}
                               </h3>
                               {studied && (isEven ? (
-                                <ChevronRight className="w-3.5 h-3.5 shrink-0 opacity-40 group-hover:translate-x-0.5 transition-transform" style={{ color: colors.main }} />
+                                <ChevronRight className="w-4 h-4 shrink-0 opacity-60 group-hover:translate-x-0.5 transition-transform" style={{ color: colors.main }} />
                               ) : (
-                                <ChevronRight className="w-3.5 h-3.5 shrink-0 opacity-40 group-hover:-translate-x-0.5 transition-transform rotate-180" style={{ color: colors.main }} />
+                                <ChevronRight className="w-4 h-4 shrink-0 opacity-60 group-hover:-translate-x-0.5 transition-transform rotate-180" style={{ color: colors.main }} />
                               ))}
                             </div>
                             <p
-                              className="font-accent text-[12px] italic mb-2 font-medium"
-                              style={{ color: studied ? "#5B1F3D" : "#5B1F3D40" }}
+                              className="font-accent text-[13px] italic mb-2 font-semibold"
+                              style={{ color: studied ? "#5B1F3D" : "#5B1F3D70" }}
                             >
                               {arcano.papel}
                             </p>
                             {studied && (
                               <p
-                                className="font-body text-[11px] leading-relaxed line-clamp-2"
-                                style={{ color: "#4A1830", opacity: 0.7 }}
+                                className="font-body text-[12px] leading-relaxed line-clamp-2 font-medium"
+                                style={{ color: "#3D1429", opacity: 0.85 }}
                               >
                                 {arcano.textoNarrativo}
                               </p>
