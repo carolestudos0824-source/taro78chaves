@@ -300,15 +300,15 @@ const FoolsJourneyPage = () => {
                               ))}
                             </div>
                             <p
-                              className="font-accent text-[13px] italic mb-2 font-semibold"
-                              style={{ color: studied ? "#5B1F3D" : "#5B1F3D70" }}
+                              className="font-accent text-[13px] italic mb-2 font-bold"
+                              style={{ color: studied ? "#5B1F3D" : "#5B1F3DCC" }}
                             >
                               {arcano.papel}
                             </p>
                             {studied && (
                               <p
-                                className="font-body text-[12px] leading-relaxed line-clamp-2 font-medium"
-                                style={{ color: "#3D1429", opacity: 0.85 }}
+                                className="font-body text-[12px] leading-relaxed line-clamp-2 font-semibold"
+                                style={{ color: "#3D1429" }}
                               >
                                 {arcano.textoNarrativo}
                               </p>
