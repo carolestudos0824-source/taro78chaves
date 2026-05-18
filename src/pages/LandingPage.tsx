@@ -121,7 +121,7 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
             
-            <div className="text-center lg:text-left space-y-4 md:space-y-5 order-2 lg:order-1">
+            <div className="text-center lg:text-left space-y-4 md:space-y-5 order-1 lg:order-1">
               {/* Symbolic Badge */}
               <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in mb-4">
                 <Sparkles className="w-4 h-4 text-gold-dark" />
