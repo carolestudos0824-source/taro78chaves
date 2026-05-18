@@ -10,9 +10,9 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { path: "/app", label: "Módulos", icon: "jornada", microcopy: "Sua jornada" },
+  { path: "/app", label: "Início", icon: "jornada", microcopy: "Sua jornada" },
   { path: "/desafios", label: "Ritual", icon: "ritual", microcopy: "Seu ritual diário" },
-  { path: "/trilhas", label: "Formação", icon: "formacao", microcopy: "Mapa da trilha" },
+  { path: "/trilhas", label: "Mapa", icon: "formacao", microcopy: "Mapa da trilha" },
   { path: "/premium", label: "Premium", icon: "premium", microcopy: "Jornada completa" },
   { path: "/perfil", label: "Perfil", icon: "perfil", microcopy: "Suas chaves" },
 ];

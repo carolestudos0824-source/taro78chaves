@@ -108,7 +108,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
       {/* BLOCO 3 — Conta */}
       <SectionTitle>Conta</SectionTitle>
       <NavItem to="/perfil" icon="perfil" label="Meu Perfil" />
-      <NavItem to="/premium" icon="premium" label="Plano Premium" />
+      <NavItem to="/premium" icon="premium" label="Jornada Completa" />
       <NavItem to="/feedback" icon="feedback" label="Enviar Feedback" />
       <NavItem to="/suporte" icon="suporte" label="Suporte Técnico" />
 
