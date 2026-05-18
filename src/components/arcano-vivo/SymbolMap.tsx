@@ -64,7 +64,7 @@ export function SymbolMap({ cardImage, cardName, symbols, onComplete }: SymbolMa
                 className={`absolute w-6 h-6 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 transition-all duration-300 flex items-center justify-center shadow-lg
                   ${isActive 
                     ? "bg-white border-gold-500 scale-125 z-20" 
-                    : "bg-white/40 border-white/60 hover:bg-white/60 hover:scale-110 z-10"
+                    : "bg-white/80 border-white shadow-md hover:bg-white hover:scale-110 z-10"
                   }`}
                 style={{ 
                   left: `${symbol.position.x}%`, 
