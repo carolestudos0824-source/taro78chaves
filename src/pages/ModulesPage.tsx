@@ -318,12 +318,12 @@ const ModulesPage = () => {
                   }
                   {!isInitialState && <span className="text-white/70 not-italic block mt-1 uppercase tracking-widest text-[9px] md:text-[10px] font-bold">Portal: {currentArcano.subtitle}</span>}
                 </p>
-                <Link 
-                  to={isInitialState ? "/jornada-do-louco" : `/lesson/${currentArcanoId}`}
+                <button 
+                  onClick={() => navigate(isInitialState ? "/jornada-do-louco" : `/lesson/${currentArcanoId}`)}
                   className="block w-full py-4 md:py-5 bg-[#C8A66A] hover:bg-[#C8A66A]/90 text-[#5B1F3D] rounded-2xl font-heading text-[11px] md:text-[12px] font-black tracking-[0.2em] md:tracking-[0.3em] uppercase transition-all shadow-xl hover:scale-[1.02] active:scale-[0.95]"
                 >
                   {isInitialState ? "INICIAR JORNADA" : "CONTINUAR DE ONDE PAREI"}
-                </Link>
+                </button>
               </div>
             </div>
           </div>
