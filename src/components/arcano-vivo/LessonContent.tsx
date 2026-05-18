@@ -49,9 +49,9 @@ export function LessonContent(props: LessonContentProps) {
   };
 
   const appliedColors: Record<string, { bg: string; border: string; accent: string }> = {
-    amor: { bg: "rgba(91, 31, 61, 0.05)", border: "rgba(91, 31, 61, 0.2)", accent: "#5B1F3D" },
-    trabalho: { bg: "rgba(200, 166, 106, 0.05)", border: "rgba(200, 166, 106, 0.2)", accent: "#C8A66A" },
-    espiritualidade: { bg: "rgba(91, 31, 61, 0.03)", border: "rgba(91, 31, 61, 0.15)", accent: "#5B1F3D" },
+    amor: { bg: "rgba(91, 31, 61, 0.1)", border: "rgba(91, 31, 61, 0.3)", accent: "#5B1F3D" },
+    trabalho: { bg: "rgba(200, 166, 106, 0.12)", border: "rgba(200, 166, 106, 0.4)", accent: "#8B6A30" },
+    espiritualidade: { bg: "rgba(91, 31, 61, 0.08)", border: "rgba(91, 31, 61, 0.25)", accent: "#5B1F3D" },
   };
 
   const renderAccordionSection = (sectionId: string) => {
@@ -70,7 +70,7 @@ export function LessonContent(props: LessonContentProps) {
       const shadowText = parts[1]?.trim();
 
       return (
-        <div key={section.id} className="rounded-2xl overflow-hidden bg-white/95 border border-[#C8A66A]/40 shadow-sm mb-4 transition-all hover:shadow-md">
+        <div key={section.id} className="rounded-2xl overflow-hidden bg-white border-2 border-[#C8A66A]/30 shadow-md mb-6 transition-all hover:shadow-lg">
           <button
             onClick={() => setOpenSection(isOpen ? null : section.id)}
             className="w-full px-5 py-5 flex items-center gap-4 text-left"
@@ -113,12 +113,12 @@ export function LessonContent(props: LessonContentProps) {
 
     // Default accordion for core sections
     return (
-      <div key={section.id} className="rounded-2xl overflow-hidden bg-white/95 border border-[#C8A66A]/40 shadow-sm mb-4 transition-all hover:shadow-md">
+      <div key={section.id} className="rounded-2xl overflow-hidden bg-white border-2 border-[#C8A66A]/30 shadow-md mb-6 transition-all hover:shadow-lg">
         <button
           onClick={() => setOpenSection(isOpen ? null : section.id)}
           className="w-full px-5 py-5 flex items-center gap-4 text-left"
         >
-          <div className="w-10 h-10 rounded-full flex items-center justify-center bg-white border border-[#C8A66A]/40 shadow-sm">
+          <div className="w-10 h-10 rounded-full flex items-center justify-center bg-white border-2 border-[#C8A66A]/30 shadow-sm">
             <span className="text-lg">{section.icon || "✦"}</span>
           </div>
           <span className="font-heading text-md font-bold text-[#5B1F3D] flex-1">{section.title}</span>
