@@ -109,7 +109,7 @@ const LandingPage = () => {
       </header>
 
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-12 pb-12 md:pt-32 md:pb-24 px-6 overflow-hidden flex flex-col items-center min-h-fit mt-0">
+      <section className="relative pt-6 pb-12 md:pt-32 md:pb-24 px-6 overflow-hidden flex flex-col items-center min-h-fit mt-0">
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold/15 blur-[120px]" />
