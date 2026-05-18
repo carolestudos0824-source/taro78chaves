@@ -265,41 +265,39 @@ const FoolsJourneyPage = () => {
                           </div>
 
                           {/* Content */}
-                          <div className={`flex-1 min-w-0 flex flex-col justify-center ${!isEven ? 'text-right' : 'text-left'}`}>
-                            <div className={`flex items-center gap-2 mb-1 ${!isEven ? 'justify-end' : 'justify-start'}`}>
+                          <div className={`flex-1 min-w-0 flex flex-col justify-center ${!isEven ? 'text-right' : 'text-left'} py-2`}>
+                            <div className={`flex items-center gap-2 mb-1.5 ${!isEven ? 'justify-end' : 'justify-start'}`}>
                               <span 
-                                className="font-heading text-[11px] tracking-widest font-bold"
-                                style={{ color: studied ? colors.main : "#C8A66A" }}
+                                className="font-heading text-[12px] tracking-widest font-bold"
+                                style={{ color: "#8B6A30" }}
                               >
                                 {arcano.numeral}
                               </span>
-                              <div className="w-1.5 h-1.5 rounded-full bg-[#C8A66A] shadow-sm" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#C8A66A]" />
                               <h3
-                                className="font-heading text-base tracking-wide font-bold"
-                                style={{ color: studied ? "#3D1429" : "#3D1429CC" }}
+                                className="font-heading text-lg tracking-wide font-bold"
+                                style={{ color: "#3D1429" }}
                               >
                                 {arcano.nome}
                               </h3>
                               {studied && (isEven ? (
-                                <ChevronRight className="w-4 h-4 shrink-0 opacity-60 group-hover:translate-x-0.5 transition-transform" style={{ color: colors.main }} />
+                                <ChevronRight className="w-5 h-5 shrink-0 opacity-80 group-hover:translate-x-1 transition-transform" style={{ color: "#8B6A30" }} />
                               ) : (
-                                <ChevronRight className="w-4 h-4 shrink-0 opacity-60 group-hover:-translate-x-0.5 transition-transform rotate-180" style={{ color: colors.main }} />
+                                <ChevronRight className="w-5 h-5 shrink-0 opacity-80 group-hover:-translate-x-1 transition-transform rotate-180" style={{ color: "#8B6A30" }} />
                               ))}
                             </div>
                             <p
-                              className="font-accent text-[13px] italic mb-2 font-bold"
-                              style={{ color: studied ? "#5B1F3D" : "#5B1F3DCC" }}
+                              className="font-accent text-sm md:text-base italic mb-3 font-bold"
+                              style={{ color: "#5B1F3D" }}
                             >
                               {arcano.papel}
                             </p>
-                            {studied && (
-                              <p
-                                className="font-body text-[12px] leading-relaxed line-clamp-2 font-semibold"
-                                style={{ color: "#3D1429" }}
-                              >
-                                {arcano.textoNarrativo}
-                              </p>
-                            )}
+                            <p
+                              className="font-body text-[13px] leading-relaxed line-clamp-3 font-semibold"
+                              style={{ color: "#3D1429" }}
+                            >
+                              {arcano.textoNarrativo}
+                            </p>
                           </div>
                         </div>
                       </div>
