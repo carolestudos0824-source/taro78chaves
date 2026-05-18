@@ -151,7 +151,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
         <div className="p-6 border-b-2 border-[#C8A66A]/20 flex items-center justify-between bg-white/50 shrink-0">
           <div className="flex flex-col">
             <span className="text-[10px] font-heading font-black tracking-[0.4em] uppercase text-[#C8A66A]">
-              Menu Global
+              MENU DA JORNADA
             </span>
             <span className="text-lg font-heading font-black text-[#5B1F3D] tracking-tight">
               Tarô 78 Chaves
