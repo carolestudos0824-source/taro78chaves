@@ -236,22 +236,22 @@ const FoolsJourneyPage = () => {
                       onClick={() => studied ? navigate(`/lesson/${arcano.arcanoNumero}`) : undefined}
                       disabled={!studied}
                       className="w-full text-left group transition-all duration-300 active:scale-[0.98]"
-                      style={{ opacity: studied ? 1 : 0.9 }}
+                      style={{ opacity: 1 }}
                     >
                       <div
-                        className="rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-xl hover:border-[#C8A66A]/60"
+                        className="rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-xl hover:border-[#C8A66A]/80"
                         style={{
-                          background: studied ? "#FAF5EF" : "rgba(250, 245, 239, 0.8)",
-                          border: studied ? `2px solid ${colors.main}` : "1.5px solid rgba(200,166,106,0.3)",
+                          background: "#FAF5EF",
+                          border: `1px solid #C8A66A`,
                         }}
                       >
-                        <div className={`p-4 flex gap-4 ${!isEven ? 'flex-row-reverse' : ''}`}>
+                        <div className={`p-4 flex gap-5 ${!isEven ? 'flex-row-reverse' : ''} items-center`}>
                           {/* Arcano Visual / Card Image */}
                           <div 
-                            className="w-20 h-32 rounded-lg shrink-0 overflow-hidden relative shadow-lg border-2 border-[#C8A66A]/30 group-hover:scale-105 transition-transform duration-500"
+                            className="w-24 h-36 rounded-lg shrink-0 overflow-hidden relative shadow-lg border-2 border-[#C8A66A]/40 group-hover:scale-105 transition-transform duration-500"
                             style={{ 
                               background: "#3D1429",
-                              filter: studied ? 'none' : 'sepia(0.25) brightness(0.85) contrast(1.1) saturate(0.8)'
+                              filter: "none"
                             }}
                           >
                             <img 
@@ -262,18 +262,6 @@ const FoolsJourneyPage = () => {
                                 (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=200';
                               }}
                             />
-                            {!studied && (
-                              <div className="absolute inset-0 flex items-center justify-center bg-black/5 backdrop-blur-[0.5px]">
-                                <div className="w-8 h-8 rounded-full bg-white/40 border border-white/60 flex items-center justify-center shadow-inner">
-                                  <div className="w-2 h-2 rounded-full bg-[#C8A66A]/80 shadow-sm" />
-                                </div>
-                              </div>
-                            )}
-                            {isComplete(arcano.arcanoNumero) && (
-                              <div className="absolute top-1 right-1 w-6 h-6 rounded-full bg-white/95 shadow-md flex items-center justify-center border border-[#C8A66A]/40">
-                                <Sparkles className="w-3.5 h-3.5 text-[#C8A66A]" />
-                              </div>
-                            )}
                           </div>
 
                           {/* Content */}
