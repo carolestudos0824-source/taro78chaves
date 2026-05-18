@@ -37,8 +37,8 @@ const FoolsJourneyPage = () => {
       {/* Background — Marfim suave e atmosfera premium */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         <div className="absolute inset-0" style={{
-          background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
-          opacity: 0.98
+          backgroundColor: "#FAF5EF",
+          opacity: 1
         }} />
         {/* Subtle radial halo for atmosphere */}
         <div
