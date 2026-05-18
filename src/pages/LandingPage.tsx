@@ -139,7 +139,7 @@ const LandingPage = () => {
                   Aprenda Tarô através de uma travessia real: lições vivas, quizzes e progresso guiado.
                 </p>
 
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6 pt-3 md:pt-4 font-heading text-[10px] md:text-xs tracking-[0.2em] uppercase text-plum font-extrabold drop-shadow-sm">
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6 pt-1 md:pt-4 font-heading text-[10px] md:text-xs tracking-[0.2em] uppercase text-plum font-extrabold drop-shadow-sm">
                   <div className="flex items-center gap-2 group">
                     <div className="w-6 h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
                       <Zap className="w-3 h-3 text-gold-dark" />
