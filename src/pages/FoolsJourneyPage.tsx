@@ -249,7 +249,15 @@ const FoolsJourneyPage = () => {
                             }}
                           >
                             <img 
-                              src={EDITORIAL_REGISTRY[arcano.arcanoNumero]?.cardImage || "/src/assets/arcano-placeholder.jpg"}
+                              src={(() => {
+                                // Ajuste de mapeamento para clareza visual:
+                                // Algumas tradições invertem 8 e 11. O Registry segue uma, a Jornada outra.
+                                // Corrigimos aqui para que a imagem combine com o nome do arcano.
+                                let imgNum = arcano.arcanoNumero;
+                                if (imgNum === 8) imgNum = 11;
+                                else if (imgNum === 11) imgNum = 8;
+                                return EDITORIAL_REGISTRY[imgNum]?.cardImage || "/src/assets/arcano-placeholder.jpg";
+                              })()}
                               alt={arcano.nome}
                               className="w-full h-full object-cover"
                               onError={(e) => {
