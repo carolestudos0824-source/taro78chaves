@@ -160,6 +160,7 @@ const AppRoutes = () => {
         <Route path="/suporte" element={<SupportPage />} />
         <Route path="/excluir-conta" element={<DeleteAccountPage />} />
         <Route path="/apresentacao" element={<PresentationPage />} />
+        <Route path="/landing-test" element={<LandingPage />} />
 
         <Route element={<AppShell />}>
           <Route index element={<Navigate to="/app" replace />} />
