@@ -33,12 +33,12 @@ export function SymbolMap({ cardImage, cardName, symbols, onComplete }: SymbolMa
     <div className="space-y-6 pb-8 animate-fade-up">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Info className="w-4 h-4 text-plum/70" />
-          <span className="text-[10px] font-heading tracking-[0.25em] uppercase text-plum font-bold">
+          <Info className="w-4 h-4 text-[#5B1F3D]" />
+          <span className="text-[10px] font-heading tracking-[0.25em] uppercase text-[#5B1F3D] font-black">
             Mapa de Símbolos
           </span>
         </div>
-        <span className="text-[10px] font-heading tracking-wider" style={{ color: "hsl(230 10% 50%)" }}>
+        <span className="text-[10px] font-heading font-black tracking-wider text-[#5B1F3D]/80">
           {currentIndex + 1} / {symbols.length}
         </span>
       </div>
@@ -83,8 +83,8 @@ export function SymbolMap({ cardImage, cardName, symbols, onComplete }: SymbolMa
       <div className="min-h-[220px] relative">
         <div 
           key={selectedSymbol?.id}
-          className="bg-white/80 backdrop-blur-md rounded-2xl p-5 border shadow-sm animate-fade-up"
-          style={{ borderColor: "hsl(36 45% 58% / 0.15)" }}
+          className="bg-white rounded-2xl p-6 border-2 shadow-xl animate-fade-up"
+          style={{ borderColor: "rgba(200, 166, 106, 0.4)" }}
         >
           <div className="flex items-start justify-between mb-3">
             <h3 className="font-heading text-base tracking-wide" style={{ color: "hsl(230 25% 15%)" }}>
@@ -99,7 +99,7 @@ export function SymbolMap({ cardImage, cardName, symbols, onComplete }: SymbolMa
             {selectedSymbol?.description}
           </p>
 
-          <div className="rounded-xl p-4 space-y-2" style={{ background: "hsl(270 30% 35% / 0.04)", border: "1px solid hsl(270 30% 35% / 0.1)" }}>
+          <div className="rounded-xl p-4 space-y-2" style={{ background: "rgba(91, 31, 61, 0.05)", border: "1px solid rgba(91, 31, 61, 0.15)" }}>
             <div className="flex items-center gap-2 mb-1">
               <HelpCircle className="w-3.5 h-3.5" style={{ color: "hsl(270 30% 35%)" }} />
               <span className="text-[9px] font-heading tracking-wider uppercase" style={{ color: "hsl(270 30% 35%)" }}>
@@ -120,9 +120,9 @@ export function SymbolMap({ cardImage, cardName, symbols, onComplete }: SymbolMa
             onClick={handlePrev}
             className="w-10 h-10 rounded-full flex items-center justify-center transition-all border active:scale-95"
             style={{ 
-              background: "hsl(38 30% 95% / 0.5)",
-              borderColor: "hsl(36 25% 82% / 0.3)",
-              color: "hsl(230 10% 40%)"
+              background: "white",
+              borderColor: "rgba(200, 166, 106, 0.5)",
+              color: "#5B1F3D"
             }}
           >
             <ChevronLeft className="w-5 h-5" />
@@ -131,9 +131,9 @@ export function SymbolMap({ cardImage, cardName, symbols, onComplete }: SymbolMa
             onClick={handleNext}
             className="w-10 h-10 rounded-full flex items-center justify-center transition-all border active:scale-95"
             style={{ 
-              background: "hsl(38 30% 95% / 0.5)",
-              borderColor: "hsl(36 25% 82% / 0.3)",
-              color: "hsl(230 10% 40%)"
+              background: "white",
+              borderColor: "rgba(200, 166, 106, 0.5)",
+              color: "#5B1F3D"
             }}
           >
             <ChevronRight className="w-5 h-5" />

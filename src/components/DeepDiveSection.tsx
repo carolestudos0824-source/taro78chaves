@@ -34,7 +34,7 @@ export function DeepDiveSection({ text, symbolism, cabala, history }: DeepDiveSe
         return (
           <div key={section.id} className="rounded-2xl overflow-hidden transition-all duration-300"
             style={{
-              background: isOpen ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0.95)",
+              background: "rgba(255, 255, 255, 1)",
               border: `1px solid ${isOpen ? "rgba(200, 166, 106, 0.5)" : "rgba(200, 166, 106, 0.35)"}`,
               boxShadow: isOpen ? "0 8px 30px rgba(91, 31, 61, 0.08)" : "0 2px 10px rgba(91, 31, 61, 0.04)",
             }}
