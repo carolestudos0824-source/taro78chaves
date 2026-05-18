@@ -192,7 +192,7 @@ const LandingPage = () => {
               </div>
             </div>
 
-            <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
+            <div className="relative flex justify-center lg:justify-end order-2 lg:order-2">
               <ArcanaPresenceHero 
                 mainCard={imgLouco}
                 backCardLeft={imgMago}
