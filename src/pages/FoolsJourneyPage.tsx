@@ -282,14 +282,14 @@ const FoolsJourneyPage = () => {
                             <div className={`flex items-center gap-2 mb-1 ${!isEven ? 'justify-end' : 'justify-start'}`}>
                               <span 
                                 className="font-heading text-[11px] tracking-widest font-bold"
-                                style={{ color: studied ? colors.main : "#8B6A3090" }}
+                                style={{ color: studied ? colors.main : "#C8A66A" }}
                               >
                                 {arcano.numeral}
                               </span>
-                              <div className="w-1.5 h-1.5 rounded-full bg-[#C8A66A]/60 shadow-sm" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#C8A66A] shadow-sm" />
                               <h3
                                 className="font-heading text-base tracking-wide font-bold"
-                                style={{ color: studied ? "#3D1429" : "#3D142980" }}
+                                style={{ color: studied ? "#3D1429" : "#3D1429CC" }}
                               >
                                 {arcano.nome}
                               </h3>
