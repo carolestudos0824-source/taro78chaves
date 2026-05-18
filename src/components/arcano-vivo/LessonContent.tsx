@@ -70,7 +70,7 @@ export function LessonContent(props: LessonContentProps) {
       const shadowText = parts[1]?.trim();
 
       return (
-        <div key={section.id} className="rounded-2xl overflow-hidden bg-white/80 border border-[#C8A66A]/20 shadow-sm mb-4">
+        <div key={section.id} className="rounded-2xl overflow-hidden bg-white/95 border border-[#C8A66A]/40 shadow-sm mb-4 transition-all hover:shadow-md">
           <button
             onClick={() => setOpenSection(isOpen ? null : section.id)}
             className="w-full px-5 py-5 flex items-center gap-4 text-left"
@@ -113,12 +113,12 @@ export function LessonContent(props: LessonContentProps) {
 
     // Default accordion for core sections
     return (
-      <div key={section.id} className="rounded-2xl overflow-hidden bg-white/80 border border-[#C8A66A]/20 shadow-sm mb-4">
+      <div key={section.id} className="rounded-2xl overflow-hidden bg-white/95 border border-[#C8A66A]/40 shadow-sm mb-4 transition-all hover:shadow-md">
         <button
           onClick={() => setOpenSection(isOpen ? null : section.id)}
           className="w-full px-5 py-5 flex items-center gap-4 text-left"
         >
-          <div className="w-10 h-10 rounded-full flex items-center justify-center bg-white border border-[#C8A66A]/20 shadow-inner">
+          <div className="w-10 h-10 rounded-full flex items-center justify-center bg-white border border-[#C8A66A]/40 shadow-sm">
             <span className="text-lg">{section.icon || "✦"}</span>
           </div>
           <span className="font-heading text-md font-bold text-[#5B1F3D] flex-1">{section.title}</span>
@@ -153,7 +153,7 @@ export function LessonContent(props: LessonContentProps) {
       {/* 1, 2, 3: Essência, Luz, Sombra (Destaque Inicial) */}
       <div className="grid gap-4">
         {essence && (
-          <div className="rounded-2xl bg-white/90 border border-[#C8A66A]/30 p-6 shadow-sm">
+          <div className="rounded-2xl bg-white border border-[#C8A66A]/50 p-6 shadow-[0_8px_30px_rgb(91,31,61,0.06)] transition-all">
             <div className="flex items-center gap-3 mb-4">
               <span className="text-xl w-10 h-10 rounded-full flex items-center justify-center bg-[#C8A66A]/10 text-[#C8A66A] border border-[#C8A66A]/20">✦</span>
               <h3 className="font-heading text-xl font-black text-[#5B1F3D]">Essência</h3>
@@ -163,7 +163,7 @@ export function LessonContent(props: LessonContentProps) {
         )}
 
         {light && (
-          <div className="rounded-2xl bg-white/90 border border-[#C8A66A]/30 p-6 shadow-sm">
+          <div className="rounded-2xl bg-white border border-[#C8A66A]/50 p-6 shadow-[0_8px_30px_rgb(91,31,61,0.06)] transition-all">
             <div className="flex items-center gap-3 mb-4">
               <span className="text-xl w-10 h-10 rounded-full flex items-center justify-center bg-[#C8A66A]/10 text-[#C8A66A] border border-[#C8A66A]/20">☀</span>
               <h3 className="font-heading text-xl font-black text-[#5B1F3D]">Luz</h3>
@@ -173,7 +173,7 @@ export function LessonContent(props: LessonContentProps) {
         )}
 
         {shadow && (
-          <div className="rounded-2xl bg-white/90 border border-[#C8A66A]/30 p-6 shadow-sm">
+          <div className="rounded-2xl bg-white border border-[#C8A66A]/50 p-6 shadow-[0_8px_30px_rgb(91,31,61,0.06)] transition-all">
             <div className="flex items-center gap-3 mb-4">
               <span className="text-xl w-10 h-10 rounded-full flex items-center justify-center bg-[#C8A66A]/10 text-[#C8A66A] border border-[#C8A66A]/20">☾</span>
               <h3 className="font-heading text-xl font-black text-[#5B1F3D]">Sombra</h3>

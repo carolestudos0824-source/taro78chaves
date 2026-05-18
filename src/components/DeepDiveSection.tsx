@@ -34,16 +34,16 @@ export function DeepDiveSection({ text, symbolism, cabala, history }: DeepDiveSe
         return (
           <div key={section.id} className="rounded-2xl overflow-hidden transition-all duration-300"
             style={{
-              background: isOpen ? "rgba(255, 255, 255, 0.7)" : "rgba(255, 255, 255, 0.4)",
-              border: `1px solid ${isOpen ? "rgba(200, 166, 106, 0.3)" : "rgba(200, 166, 106, 0.15)"}`,
-              boxShadow: isOpen ? "0 4px 15px rgba(91, 31, 61, 0.04)" : "none",
+              background: isOpen ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0.95)",
+              border: `1px solid ${isOpen ? "rgba(200, 166, 106, 0.5)" : "rgba(200, 166, 106, 0.35)"}`,
+              boxShadow: isOpen ? "0 8px 30px rgba(91, 31, 61, 0.08)" : "0 2px 10px rgba(91, 31, 61, 0.04)",
             }}
           >
             <button
               onClick={() => setExpanded(isOpen ? null : section.id)}
               className="w-full p-5 flex items-center gap-4 hover:bg-white/40 transition-colors text-left"
             >
-              <div className="w-9 h-9 rounded-full flex items-center justify-center bg-[#C8A66A10] border border-[#C8A66A30]">
+              <div className="w-9 h-9 rounded-full flex items-center justify-center bg-[#C8A66A]/10 border border-[#C8A66A]/40">
                 <Icon className="w-4 h-4 text-[#C8A66A] shrink-0" />
               </div>
               <span className="font-heading text-sm font-bold tracking-wide flex-1 text-[#5B1F3D]">{section.title}</span>
