@@ -157,13 +157,13 @@ const FoolsJourneyPage = () => {
             { label: "Travessia", title: "Provas e Espelhos", text: "Encontros com mestres e abismos da alma.", icon: "◈" },
             { label: "Integração", title: "Consciência Plena", text: "O Mundo e a união final de todo aprendizado.", icon: "XXI" }
           ].map((point, i) => (
-            <div key={i} className="rounded-2xl p-6 text-center bg-[#FAF5EF] border-2 border-[#C8A66A]/40 shadow-md transition-all hover:shadow-lg hover:border-[#C8A66A]/60 group">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-[#C8A66A]/40 bg-white group-hover:scale-110 transition-transform shadow-sm">
-                <span className="font-heading text-[12px] font-bold" style={{ color: "#5B1F3D" }}>{point.icon}</span>
+            <div key={i} className="rounded-2xl p-6 text-center bg-[#FAF5EF] border-2 border-[#C8A66A]/50 shadow-md transition-all hover:shadow-xl hover:border-[#C8A66A]/80 group">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-[#C8A66A]/60 bg-white group-hover:scale-110 transition-transform shadow-sm">
+                <span className="font-heading text-[13px] font-bold" style={{ color: "#3D1429" }}>{point.icon}</span>
               </div>
-              <span className="text-[10px] font-heading tracking-[0.2em] uppercase font-bold block mb-1" style={{ color: "#8B6A30" }}>{point.label}</span>
-              <h4 className="font-heading text-sm font-bold mb-2" style={{ color: "#3D1429" }}>{point.title}</h4>
-              <p className="font-body text-[12px] leading-relaxed font-semibold" style={{ color: "#5B1F3D" }}>{point.text}</p>
+              <span className="text-[11px] font-heading tracking-[0.25em] uppercase font-bold block mb-2" style={{ color: "#8B6A30" }}>{point.label}</span>
+              <h4 className="font-heading text-base font-bold mb-2" style={{ color: "#3D1429" }}>{point.title}</h4>
+              <p className="font-body text-[13px] leading-relaxed font-semibold" style={{ color: "#5B1F3D" }}>{point.text}</p>
             </div>
           ))}
         </section>
