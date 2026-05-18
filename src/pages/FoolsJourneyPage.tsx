@@ -191,10 +191,10 @@ const FoolsJourneyPage = () => {
 
               <div className="text-center mb-8">
                 <div
-                  className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-4 shadow-sm"
+                  className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-4 shadow-md"
                   style={{
-                    background: "rgba(255,255,255,0.4)",
-                    border: `1.5px solid ${colors.border}`,
+                    background: "#FAF5EF",
+                    border: `2px solid ${colors.main}`,
                     backdropFilter: "blur(8px)",
                   }}
                 >
