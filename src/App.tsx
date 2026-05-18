@@ -162,63 +162,67 @@ const AppRoutes = () => {
         <Route path="/excluir-conta" element={<DeleteAccountPage />} />
         <Route path="/apresentacao" element={<PresentationPage />} />
 
-        <Route element={<AppShell />}>
-          <Route index element={<Navigate to="/app" replace />} />
-          <Route path="/app" element={<P><AppRouteProbe /></P>} />
-          <Route path="/trilhas" element={<P><TrailsPage /></P>} />
-          <Route path="/module/fundamentos" element={<P><FundamentosPage /></P>} />
-          <Route path="/fundamentos/:order" element={<P><FundamentosLessonPage /></P>} />
-          <Route path="/module/arcanos-maiores" element={<P><Index /></P>} />
-          <Route path="/lesson/:id" element={<P><LessonPage /></P>} />
-          <Route path="/jornada-do-louco" element={<P><FoolsJourneyPage /></P>} />
-          <Route path="/module/copas" element={<P><NaipePage /></P>} />
-          <Route path="/module/paus" element={<P><NaipePage /></P>} />
-          <Route path="/module/espadas" element={<P><NaipePage /></P>} />
-          <Route path="/module/ouros" element={<P><NaipePage /></P>} />
-          <Route path="/naipe/:naipe/intro" element={<P><NaipeIntroPage /></P>} />
-          <Route path="/module/cartas-corte" element={<P><CartasCortePage /></P>} />
-          <Route path="/cartas-corte" element={<Navigate to="/module/cartas-corte" replace />} />
-          <Route path="/numerologia" element={<P><NumerologiaPage /></P>} />
-          <Route path="/arcano-menor/:id" element={<P><ArcanoMenorLessonPage /></P>} />
-          <Route path="/module/combinacoes" element={<P><CombinacoesPage /></P>} />
-          <Route path="/combinacoes/:order" element={<P><CombinacoesLessonPage /></P>} />
-          <Route path="/module/tiragens" element={<P><TiragensPage /></P>} />
-          <Route path="/tiragens/:order" element={<P><TiragensLessonPage /></P>} />
-          <Route path="/module/amor" element={<P><AmorPage /></P>} />
-          <Route path="/amor/:order" element={<P><AmorLessonPage /></P>} />
-          <Route path="/module/pratica" element={<P><PraticaPage /></P>} />
-          <Route path="/pratica/:order" element={<P><PraticaLessonPage /></P>} />
-          <Route path="/module/leitura-simbolica" element={<P><LeituraSimbolicaPage /></P>} />
-          <Route path="/leitura-simbolica/:order" element={<P><LeituraSimbolicaLessonPage /></P>} />
-          <Route path="/module/arquitetura-menores" element={<P><ArquiteturaMenoresPage /></P>} />
-          <Route path="/arquitetura-menores/:order" element={<P><ArquiteturaMenoresLessonPage /></P>} />
-          <Route path="/module/espiritualidade" element={<P><EspiritualidadePage /></P>} />
-          <Route path="/espiritualidade/:order" element={<P><EspiritualidadeLessonPage /></P>} />
-          <Route path="/module/mesa-taro" element={<P><MesaTaroPage /></P>} />
-          <Route path="/mesa-taro/:order" element={<P><MesaTaroLessonPage /></P>} />
-          <Route path="/module/leitura-aplicada" element={<P><LeituraAplicadaPage /></P>} />
-          <Route path="/leitura-aplicada/:order" element={<P><LeituraAplicadaLessonPage /></P>} />
-          <Route path="/module/trabalhar-taro" element={<P><TrabalharTaroPage /></P>} />
-          <Route path="/trabalhar-taro/:order" element={<P><TrabalharTaroLessonPage /></P>} />
-          <Route path="/revisao" element={<P><ReviewPage /></P>} />
-          <Route path="/desafios" element={<P><DailyChallengesPage /></P>} />
-          <Route path="/certificados" element={<P><CertificatesPage /></P>} />
-          <Route path="/biblioteca" element={<P><SymbolLibraryPage /></P>} />
-          <Route path="/rotina" element={<P><StudyRoutinePage /></P>} />
-          <Route path="/premium" element={<P><PremiumPage /></P>} />
-          <Route path="/perfil" element={<P><ProfilePage /></P>} />
-          <Route path="/minha-jornada" element={<P><JourneyJournalPage /></P>} />
-          <Route path="/feedback" element={<P><FeedbackPage /></P>} />
-          <Route path="/admin" element={<P><AdminPage /></P>} />
-          {/* QA route removed */}
-          
-          
-          <Route path="/null" element={<Navigate to="/app" replace />} />
-          <Route path="/NaN" element={<Navigate to="/app" replace />} />
-        </Route>
+        <Route path="/app/*" element={<AppShellWithRoutes />} />
+        
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
+  );
+};
+
+const AppShellWithRoutes = () => {
+  return (
+    <Routes>
+      <Route element={<AppShell />}>
+        <Route index element={<P><AppRouteProbe /></P>} />
+        <Route path="trilhas" element={<P><TrailsPage /></P>} />
+        <Route path="module/fundamentos" element={<P><FundamentosPage /></P>} />
+        <Route path="fundamentos/:order" element={<P><FundamentosLessonPage /></P>} />
+        <Route path="module/arcanos-maiores" element={<P><Index /></P>} />
+        <Route path="lesson/:id" element={<P><LessonPage /></P>} />
+        <Route path="jornada-do-louco" element={<P><FoolsJourneyPage /></P>} />
+        <Route path="module/copas" element={<P><NaipePage /></P>} />
+        <Route path="module/paus" element={<P><NaipePage /></P>} />
+        <Route path="module/espadas" element={<P><NaipePage /></P>} />
+        <Route path="module/ouros" element={<P><NaipePage /></P>} />
+        <Route path="naipe/:naipe/intro" element={<P><NaipeIntroPage /></P>} />
+        <Route path="module/cartas-corte" element={<P><CartasCortePage /></P>} />
+        <Route path="cartas-corte" element={<Navigate to="/app/module/cartas-corte" replace />} />
+        <Route path="numerologia" element={<P><NumerologiaPage /></P>} />
+        <Route path="arcano-menor/:id" element={<P><ArcanoMenorLessonPage /></P>} />
+        <Route path="module/combinacoes" element={<P><CombinacoesPage /></P>} />
+        <Route path="combinacoes/:order" element={<P><CombinacoesLessonPage /></P>} />
+        <Route path="module/tiragens" element={<P><TiragensPage /></P>} />
+        <Route path="tiragens/:order" element={<P><TiragensLessonPage /></P>} />
+        <Route path="module/amor" element={<P><AmorPage /></P>} />
+        <Route path="amor/:order" element={<P><AmorLessonPage /></P>} />
+        <Route path="module/pratica" element={<P><PraticaPage /></P>} />
+        <Route path="pratica/:order" element={<P><PraticaLessonPage /></P>} />
+        <Route path="module/leitura-simbolica" element={<P><LeituraSimbolicaPage /></P>} />
+        <Route path="leitura-simbolica/:order" element={<P><LeituraSimbolicaLessonPage /></P>} />
+        <Route path="module/arquitetura-menores" element={<P><ArquiteturaMenoresPage /></P>} />
+        <Route path="arquitetura-menores/:order" element={<P><ArquiteturaMenoresLessonPage /></P>} />
+        <Route path="module/espiritualidade" element={<P><EspiritualidadePage /></P>} />
+        <Route path="espiritualidade/:order" element={<P><EspiritualidadeLessonPage /></P>} />
+        <Route path="module/mesa-taro" element={<P><MesaTaroPage /></P>} />
+        <Route path="mesa-taro/:order" element={<P><MesaTaroLessonPage /></P>} />
+        <Route path="module/leitura-aplicada" element={<P><LeituraAplicadaPage /></P>} />
+        <Route path="leitura-aplicada/:order" element={<P><LeituraAplicadaLessonPage /></P>} />
+        <Route path="module/trabalhar-taro" element={<P><TrabalharTaroPage /></P>} />
+        <Route path="trabalhar-taro/:order" element={<P><TrabalharTaroLessonPage /></P>} />
+        <Route path="revisao" element={<P><ReviewPage /></P>} />
+        <Route path="desafios" element={<P><DailyChallengesPage /></P>} />
+        <Route path="certificados" element={<P><CertificatesPage /></P>} />
+        <Route path="biblioteca" element={<P><SymbolLibraryPage /></P>} />
+        <Route path="rotina" element={<P><StudyRoutinePage /></P>} />
+        <Route path="premium" element={<P><PremiumPage /></P>} />
+        <Route path="perfil" element={<P><ProfilePage /></P>} />
+        <Route path="minha-jornada" element={<P><JourneyJournalPage /></P>} />
+        <Route path="feedback" element={<P><FeedbackPage /></P>} />
+        <Route path="admin" element={<P><AdminPage /></P>} />
+        <Route path="*" element={<Navigate to="/app" replace />} />
+      </Route>
+    </Routes>
   );
 };
 
