@@ -163,6 +163,7 @@ const AppRoutes = () => {
         <Route path="/apresentacao" element={<PresentationPage />} />
 
         <Route path="/app/*" element={<AppShellWithRoutes />} />
+        <Route path="/app" element={<Navigate to="/app/" replace />} />
         
         <Route path="*" element={<NotFound />} />
       </Routes>
