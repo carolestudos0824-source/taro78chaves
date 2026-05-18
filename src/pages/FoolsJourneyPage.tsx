@@ -143,7 +143,7 @@ const FoolsJourneyPage = () => {
             
             <div className="space-y-5 relative z-10">
               {meta.introCorpo.map((para, i) => (
-                <p key={i} className="font-body text-[15px] md:text-[16px] leading-[1.8] font-medium" style={{ color: "#5B1F3D", opacity: 0.9 }}>
+                <p key={i} className="font-body text-[15px] md:text-[16px] leading-[1.8] font-medium" style={{ color: "#3D1429" }}>
                   {para}
                 </p>
               ))}
