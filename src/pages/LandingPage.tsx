@@ -135,7 +135,7 @@ const LandingPage = () => {
                   No app Tarô 78 Chaves, o tarô deixa de ser imagem e se torna <span className="italic">presença.</span>
                 </h1>
                 
-                <p className="font-accent text-xl md:text-2xl lg:text-3xl text-plum/90 font-bold italic leading-relaxed">
+                <p className="font-accent text-lg md:text-2xl lg:text-3xl text-plum/90 font-bold italic leading-relaxed">
                   Aprenda Tarô através de uma travessia real: lições vivas, quizzes e progresso guiado.
                 </p>
 
