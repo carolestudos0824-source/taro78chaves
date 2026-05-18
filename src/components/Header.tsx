@@ -80,7 +80,10 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
                 aria-label={`Sequência de estudo: ${streak} dias`}
               >
                 <span className="text-[#C8A66A] text-xs">🔥</span>
-                <span className="font-heading text-[13px] font-black text-[#5B1F3D]">{streak}</span>
+                <span className="font-heading text-[13px] font-black text-[#5B1F3D]">
+                  {streak}
+                  <span className="hidden sm:inline ml-1">dias</span>
+                </span>
               </div>
             )}
             <button 
