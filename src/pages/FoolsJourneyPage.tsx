@@ -158,13 +158,13 @@ const FoolsJourneyPage = () => {
             { label: "Travessia", title: "Provas e Espelhos", text: "Encontros com mestres e abismos da alma.", icon: "◈" },
             { label: "Integração", title: "Consciência Plena", text: "O Mundo e a união final de todo aprendizado.", icon: "XXI" }
           ].map((point, i) => (
-            <div key={i} className="rounded-2xl p-6 text-center bg-white/40 border border-[#C8A66A]/20 shadow-sm transition-all hover:shadow-md hover:bg-white/60 group">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4 border border-[#C8A66A]/30 bg-[#FAF5EF] group-hover:scale-110 transition-transform">
-                <span className="font-heading text-[12px] font-bold" style={{ color: "#C8A66A" }}>{point.icon}</span>
+            <div key={i} className="rounded-2xl p-6 text-center bg-white/60 border border-[#C8A66A]/30 shadow-sm transition-all hover:shadow-md hover:bg-white/80 group">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4 border border-[#C8A66A]/40 bg-white group-hover:scale-110 transition-transform shadow-sm">
+                <span className="font-heading text-[12px] font-bold" style={{ color: "#8B6A30" }}>{point.icon}</span>
               </div>
-              <span className="text-[10px] font-heading tracking-[0.2em] uppercase font-bold block mb-1" style={{ color: "#C8A66A" }}>{point.label}</span>
-              <h4 className="font-heading text-sm font-bold mb-2" style={{ color: "#5B1F3D" }}>{point.title}</h4>
-              <p className="font-body text-[12px] leading-relaxed" style={{ color: "#5B1F3DBB" }}>{point.text}</p>
+              <span className="text-[10px] font-heading tracking-[0.2em] uppercase font-bold block mb-1" style={{ color: "#8B6A30" }}>{point.label}</span>
+              <h4 className="font-heading text-sm font-bold mb-2" style={{ color: "#3D1429" }}>{point.title}</h4>
+              <p className="font-body text-[12px] leading-relaxed" style={{ color: "#5B1F3D" }}>{point.text}</p>
             </div>
           ))}
         </section>
