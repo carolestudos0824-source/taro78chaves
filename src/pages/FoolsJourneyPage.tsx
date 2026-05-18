@@ -40,13 +40,7 @@ const FoolsJourneyPage = () => {
           backgroundColor: "#FAF5EF",
           opacity: 1
         }} />
-        {/* Subtle radial halo for atmosphere */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(ellipse at 50% 0%, rgba(243, 230, 224, 0.45) 0%, transparent 65%)",
-          }}
-        />
+        {/* Clean Marfim Background */}
       </div>
 
       {/* Header */}
