@@ -381,11 +381,11 @@ const LandingPage = () => {
                 <h3 className="t-section-title text-plum font-black uppercase tracking-widest">Acesso Anual</h3>
                 <div className="flex items-baseline gap-1">
                   <span className="text-6xl font-heading text-midnight">R$197</span>
-                  <span className="text-sm text-midnight/40">/pagamento único</span>
+                  <span className="text-sm text-midnight/40">/ano</span>
                 </div>
                 <div className="space-y-1">
                   <p className="text-sm font-bold text-[#5B1F3D] tracking-tight">
-                    12 meses de acesso • Sem renovação automática
+                    Pagamento único anual • 12 meses de acesso
                   </p>
                   <p className="text-[12px] font-bold text-[#5B1F3D]">Economia de 45% em relação ao mensal.</p>
                 </div>
