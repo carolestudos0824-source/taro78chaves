@@ -10,7 +10,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { useInstallPrompt } from "@/hooks/use-install-prompt";
 import { trackEvent, appendUTMsToUrl } from "@/lib/analytics";
 import {
   Dialog,
@@ -34,8 +33,6 @@ import brandLogo from "@/assets/brand-logo.png";
 const LandingPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { isInstallable, handleInstallClick } = useInstallPrompt();
-  const [showInstallModal, setShowInstallModal] = useState(false);
   
   const handleStart = (ctaType: string = "general", label: string = "Começar pelo Louco — Grátis") => {
     trackEvent(`landing_cta_${ctaType}_start_click`, {
@@ -46,21 +43,6 @@ const LandingPage = () => {
     });
     const dest = user ? "/app" : "/auth";
     navigate(appendUTMsToUrl(dest));
-  };
-
-  const onInstallClick = async () => {
-    trackEvent("landing_pwa_install_click", {
-      source: "landing",
-      page_path: window.location.pathname
-    });
-    if (isInstallable) {
-      const result = await handleInstallClick();
-      if (!result) {
-        setShowInstallModal(true);
-      }
-    } else {
-      setShowInstallModal(true);
-    }
   };
 
   const handleSubscribe = (plan: "monthly" | "annual") => {
@@ -417,137 +399,6 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* ─── Mobile Section ─── */}
-      <section className="py-16 md:py-20 px-6 bg-parchment border-y border-gold/10">
-        <div className="max-w-7xl mx-auto space-y-16">
-          <div className="text-center space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C8A66A]/10 text-[#C8A66A]">
-              <span className="text-[10px] font-heading tracking-widest uppercase font-bold">
-                📱 FEITO PARA ESTUDAR NO CELULAR
-              </span>
-            </div>
-            <h2 className="font-heading text-4xl text-midnight">Leve sua jornada para a tela inicial.</h2>
-            <p className="text-lg text-midnight/70 font-body leading-relaxed max-w-2xl mx-auto">
-              Crie um atalho do Tarô 78 Chaves no celular e continue seus estudos com um toque.<br/>
-              <span className="text-sm italic">Acesso rápido pelo navegador, em qualquer dispositivo.</span>
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* iPhone / Safari */}
-            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-[#5B1F3D]/5 rounded-xl flex items-center justify-center">
-                  <Smartphone className="w-5 h-5 text-[#5B1F3D]" />
-                </div>
-                <h3 className="font-heading text-xl text-midnight">iPhone</h3>
-              </div>
-              <ol className="space-y-3 text-sm text-midnight/70 font-body list-decimal list-inside">
-                <li>Abra o site no Safari</li>
-                <li>Toque no botão de compartilhar</li>
-                <li>Escolha "Adicionar à Tela de Início"</li>
-                <li>Confirme em "Adicionar"</li>
-              </ol>
-            </div>
-
-            {/* Android / Chrome */}
-            <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-[#C8A66A]/10 rounded-xl flex items-center justify-center">
-                  <Smartphone className="w-5 h-5 text-[#C8A66A]" />
-                </div>
-                <h3 className="font-heading text-xl text-midnight">Android</h3>
-              </div>
-              <ol className="space-y-3 text-sm text-midnight/70 font-body list-decimal list-inside">
-                <li>Abra o site no Chrome</li>
-                <li>Toque nos três pontinhos</li>
-                <li>Escolha "Adicionar à tela inicial"</li>
-                <li>Confirme o atalho</li>
-              </ol>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center gap-10">
-            <div className="flex flex-col items-center gap-4">
-              <Button 
-                onClick={onInstallClick}
-                className="btn-premium px-10 py-7 text-xs shadow-xl hover:scale-105 transition-transform"
-              >
-                ADICIONAR À TELA INICIAL →
-              </Button>
-              <p className="text-[10px] font-heading tracking-widest uppercase opacity-40">
-                Acesso rápido pelo navegador
-              </p>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-8 text-sm font-heading tracking-widest uppercase opacity-60">
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-gold" />
-                <span>Aulas curtas</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-gold" />
-                <span>Visual mobile</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-gold" />
-                <span>Progresso salvo</span>
-              </div>
-            </div>
-
-            <Button onClick={() => handleStart("pricing")} variant="link" className="text-[#5B1F3D] font-heading tracking-widest text-xs uppercase hover:no-underline hover:opacity-70 transition-all">
-              COMEÇAR PELO LOUCO — GRÁTIS →
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Install Instructions Modal ─── */}
-      <Dialog open={showInstallModal} onOpenChange={setShowInstallModal}>
-        <DialogContent className="max-w-sm rounded-[2rem] bg-parchment border-gold/20 p-8">
-          <DialogHeader className="space-y-4">
-            <DialogTitle className="font-heading text-2xl text-midnight text-center">Adicionar à tela inicial</DialogTitle>
-            <DialogDescription className="font-body text-center text-midnight/70">
-              Crie um atalho rápido no seu celular para acessar a jornada com um toque.
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="space-y-8 py-6">
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 border-b border-gold/10 pb-2">
-                <Smartphone className="w-4 h-4 text-[#5B1F3D]" />
-                <span className="font-heading text-sm uppercase tracking-widest font-bold">iPhone / Safari</span>
-              </div>
-              <ol className="space-y-3 text-sm text-midnight/80 font-body list-decimal list-inside px-1">
-                <li>Abra o site no <span className="font-bold">Safari</span></li>
-                <li>Toque no botão de compartilhar <Share className="w-3 h-3 inline mb-1" /></li>
-                <li>Escolha <span className="font-bold">"Adicionar à Tela de Início"</span></li>
-                <li>Confirme em <span className="font-bold">"Adicionar"</span></li>
-              </ol>
-            </div>
-
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 border-b border-gold/10 pb-2">
-                <Smartphone className="w-4 h-4 text-[#C8A66A]" />
-                <span className="font-heading text-sm uppercase tracking-widest font-bold">Android / Chrome</span>
-              </div>
-              <ol className="space-y-3 text-sm text-midnight/80 font-body list-decimal list-inside px-1">
-                <li>Abra o site no <span className="font-bold">Chrome</span></li>
-                <li>Toque nos três pontinhos <MoreVertical className="w-3 h-3 inline mb-1" /></li>
-                <li>Escolha <span className="font-bold">"Adicionar à tela inicial"</span></li>
-                <li>Confirme o atalho</li>
-              </ol>
-            </div>
-          </div>
-
-          <Button 
-            onClick={() => setShowInstallModal(false)}
-            className="w-full btn-premium py-6 rounded-full"
-          >
-            ENTENDI
-          </Button>
-        </DialogContent>
-      </Dialog>
 
       {/* ─── FAQ Section ─── */}
       <section className="py-16 md:py-20 px-6 bg-white/20">
