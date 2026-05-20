@@ -178,7 +178,7 @@ const AppRoutes = () => {
         <Route path="/apresentacao" element={<PresentationPage />} />
 
         {/* Rotas protegidas — mapa simples e explícito */}
-        <Route element={<ProtectedRoute />}>
+        <Route element={<ProtectedRoute><Outlet /></ProtectedRoute>}>
           <Route element={<AppShell />}>
             <Route path="/app" element={<ModulesPage />} />
             <Route path="/trilhas" element={<TrailsPage />} />
