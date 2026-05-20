@@ -41,7 +41,7 @@ const BottomNav = () => {
     >
       <div className="mx-auto flex items-center justify-between py-1.5 px-0 w-full max-w-full">
         {NAV_ITEMS.map(item => {
-          const isActive = location.pathname === item.path || location.pathname.startsWith(item.path + "/");
+          const isActive = location.pathname === item.path;
           return (
             <button
               key={item.path}
