@@ -79,10 +79,6 @@ const ModulesPage = () => {
   const { bypassLocks } = useAccess();
   const { setHeader, resetHeader } = useHeader();
   
-  const currentArcanoId = getCurrentArcanoId();
-  const currentArcano = ARCANOS_MAIORES_CATALOG.find(a => a.id === currentArcanoId) || ARCANOS_MAIORES_CATALOG[0];
-  const arcanoVisual = resolveMaiorVisual(currentArcanoId);
-  const cardImage = arcanoVisual.resolvedAssetUrl || imgLouco;
   const isInitialState = progress.completedLessons.length === 0;
   
   useEffect(() => {
