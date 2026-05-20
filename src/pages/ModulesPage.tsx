@@ -202,40 +202,47 @@ const ModulesPage = () => {
             </div>
           </div>
           
-          <div className="relative mt-12 mb-6">
-            {/* Marcador Visual: Arcano Guia */}
-            <div 
-              className="absolute -top-10 transition-all duration-1000 ease-out z-20 flex flex-col items-center"
-              style={{ 
-                left: `${globalProgressPct}%`,
-                transform: 'translateX(-50%)'
-              }}
-            >
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-[#C8A66A]/20 rounded-lg blur group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+          <div className="relative mt-8 mb-4">
+            {/* Linha informativa do Arcano Guia */}
+            <div className="flex items-center gap-3 mb-4 px-1">
+              <div className="relative shrink-0">
+                <div className="absolute -inset-1 bg-[#C8A66A]/20 rounded-lg blur-sm"></div>
                 <img 
                   src={arcanoGuia.image} 
                   alt={arcanoGuia.name}
-                  className="relative w-8 h-12 md:w-10 md:h-14 object-cover rounded-md border-2 border-[#C8A66A] shadow-lg bg-white"
+                  className="relative w-10 h-14 md:w-12 md:h-16 object-cover rounded-md border-2 border-[#C8A66A] shadow-md bg-white"
                 />
               </div>
-              <div className="mt-1 flex flex-col items-center">
-                <span className="text-[8px] font-black text-[#5B1F3D] uppercase tracking-tighter whitespace-nowrap bg-white/80 px-1 rounded">
-                  {arcanoGuia.name}
+              <div className="flex flex-col">
+                <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#C8A66A] uppercase leading-none mb-1">Agora Estudando</span>
+                <span className="text-sm md:text-base font-heading font-black text-[#5B1F3D] leading-tight">
+                  {arcanoGuia.name} <span className="text-[#5B1F3D]/40 ml-1">· Arcano {arcanoGuia.index} de 78</span>
                 </span>
               </div>
             </div>
 
-            <div className="h-4 rounded-full overflow-hidden p-[2.5px]" style={{ 
-              background: "#E8DED3", 
-              border: "1.5px solid rgba(209, 196, 181, 0.6)" 
-            }}>
-              <div 
-                className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out relative overflow-hidden"
-                style={{ width: `${Math.max(globalProgressPct, 2)}%` }}
-              >
-                <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+            {/* Barra de Progresso com Marcador Posicionável */}
+            <div className="relative px-2">
+              <div className="h-4 rounded-full overflow-hidden p-[2.5px] relative" style={{ 
+                background: "#E8DED3", 
+                border: "1.5px solid rgba(209, 196, 181, 0.6)" 
+              }}>
+                <div 
+                  className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out relative overflow-hidden"
+                  style={{ width: `${Math.max(globalProgressPct, 2)}%` }}
+                >
+                  <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+                </div>
               </div>
+
+              {/* Indicador de posição na barra (discreto) */}
+              <div 
+                className="absolute top-0 bottom-0 w-1 bg-white/40 z-10 transition-all duration-1000 ease-out"
+                style={{ 
+                  left: `calc(${globalProgressPct}% + 8px)`, 
+                  transform: 'translateX(-50%)' 
+                }}
+              />
             </div>
           </div>
           
