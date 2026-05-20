@@ -1,6 +1,7 @@
-import { ArrowLeft, ArrowRight, MapPin, Sparkles, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, MapPin, Sparkles, Check, Key } from "lucide-react";
 import { ReflectionSection } from "../ReflectionSection";
 import { useNavigate } from "react-router-dom";
+import { useProgress } from "@/hooks/use-progress";
 
 
 interface CompletionScreenProps {
@@ -26,21 +27,30 @@ export function CompletionScreen({
   onNextArcano, onPrevArcano, onBackToMap, isLastArcano, arcanoId,
 }: CompletionScreenProps & { arcanoId?: number }) {
   const navigate = useNavigate();
+  const { progress } = useProgress();
   const percentage = Math.round((quizScore / quizTotal) * 100);
   const isExcellent = percentage >= 80;
+
+  const totalArcanosCount = 78;
+  const completedMaiores = progress.completedLessons.filter(l => l.startsWith("arcano-")).length;
+  const completedMenores = progress.completedLessons.filter(l => 
+    l.startsWith("copas-") || l.startsWith("paus-") || l.startsWith("espadas-") || l.startsWith("ouros-")
+  ).length;
+  const totalCompletedArcanos = completedMaiores + completedMenores;
 
   return (
     <div className="text-center py-10 space-y-7" style={{ animation: "fade-up 0.6s ease-out" }}>
       {/* Achievement icon */}
       <div className="relative">
-        <div className="w-20 h-20 mx-auto rounded-full flex items-center justify-center"
+        <div className="w-24 h-24 mx-auto rounded-full flex flex-col items-center justify-center transition-all duration-700 hover:scale-110"
           style={{
-            background: "linear-gradient(135deg, hsl(36 45% 58% / 0.15), hsl(42 70% 80% / 0.1))",
-            border: "2px solid hsl(36 45% 58% / 0.3)",
-            boxShadow: "0 0 40px hsl(36 45% 58% / 0.12)",
+            background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+            border: "3px solid #C8A66A",
+            boxShadow: "0 20px 50px rgba(91, 31, 61, 0.3), 0 0 30px rgba(200, 166, 106, 0.2)",
           }}
         >
-          <Sparkles className="w-8 h-8" style={{ color: "hsl(36 45% 58%)" }} />
+          <Key className="w-10 h-10 text-[#C8A66A] animate-pulse" />
+          <span className="text-[8px] font-heading font-black text-[#C8A66A] uppercase tracking-[0.2em] mt-1">Chave</span>
         </div>
         {isExcellent && (
           <div
@@ -62,10 +72,15 @@ export function CompletionScreen({
           background: "linear-gradient(135deg, #5B1F3D, #C8A66A)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
-        }}>Lição Completa</h2>
+        }}>Chave Conquistada</h2>
         <p className="text-[15px] font-medium" style={{ color: "#5B1F3D" }}>
-          Você completou a jornada com <strong className="font-black text-[#C8A66A]">{arcanoName}</strong>.
+          Você dominou o portal de <strong className="font-black text-[#C8A66A]">{arcanoName}</strong>.
         </p>
+        <div className="mt-3 inline-flex items-center gap-2 px-4 py-1.5 rounded-xl bg-[#FAF5EF] border border-[#C8A66A]/30">
+          <span className="text-[11px] font-heading font-black text-[#5B1F3D] uppercase tracking-wider">
+            {totalCompletedArcanos} de 78 Chaves Dominadas
+          </span>
+        </div>
       </div>
 
       {/* Stats */}
@@ -77,7 +92,7 @@ export function CompletionScreen({
         <div className="w-px h-10" style={{ background: "rgba(200, 166, 106, 0.3)" }} />
         <div className="text-center">
           <span className="block font-heading text-2xl font-black" style={{ color: "#C8A66A" }}>+{xpEarned}</span>
-          <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase" style={{ color: "#5B1F3DCC" }}>XP</span>
+          <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase" style={{ color: "#5B1F3DCC" }}>XP do Nível</span>
         </div>
       </div>
 
