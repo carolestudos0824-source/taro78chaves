@@ -373,7 +373,7 @@ const ModulesPage = () => {
               
               {/* Imagem canônica do Arcano Atual */}
               <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none">
-                 <img src={cardImage} alt="" className="w-16 h-24 object-cover rounded-lg border border-[#C8A66A]/30 rotate-12 shadow-2xl" />
+                 <img src={arcanoGuia.image} alt="" className="w-16 h-24 object-cover rounded-lg border border-[#C8A66A]/30 rotate-12 shadow-2xl" />
               </div>
 
               <div className="relative z-10 space-y-4">
