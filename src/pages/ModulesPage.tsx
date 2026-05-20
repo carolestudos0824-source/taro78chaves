@@ -197,7 +197,7 @@ const ModulesPage = () => {
               </div>
               <div className="text-right">
                 <span className="text-3xl font-heading font-black text-[#5B1F3D]">{globalProgressPct}%</span>
-                <span className="text-[14px] font-black text-[#5B1F3D]/30 ml-1">Total</span>
+                <span className="text-[14px] font-black text-[#5B1F3D]/30 ml-1">Chaves</span>
               </div>
             </div>
             
