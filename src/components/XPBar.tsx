@@ -1,6 +1,6 @@
 import { KeyRound } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
-import { ARCANOS_MAIORES_CATALOG, resolveMenorVisualById } from "@/lib/content";
+import { ARCANOS_MAIORES_CATALOG } from "@/lib/content";
 
 interface XPBarProps {
   xp: number;
