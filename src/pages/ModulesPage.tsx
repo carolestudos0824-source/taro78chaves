@@ -392,7 +392,16 @@ const ModulesPage = () => {
                   {!isInitialState && <span className="text-white/70 not-italic block mt-1 uppercase tracking-widest text-[9px] md:text-[10px] font-bold">Arcano {arcanoGuia.index} de 78</span>}
                 </p>
                 <button 
-                  onClick={() => navigate(isInitialState ? "/jornada-do-louco" : `/lesson/${currentArcanoId}`)}
+                  onClick={() => {
+                    if (isInitialState) {
+                      navigate("/jornada-do-louco");
+                    } else if (arcanoGuia.index <= 22) {
+                      navigate(`/lesson/${arcanoGuia.index - 1}`);
+                    } else {
+                      // Se for menor, leva para o módulo correspondente ou trilha
+                      navigate("/trilhas");
+                    }
+                  }}
                   className="block w-full py-4 md:py-5 bg-[#C8A66A] hover:bg-[#C8A66A]/90 text-[#5B1F3D] rounded-2xl font-heading text-[11px] md:text-[12px] font-black tracking-[0.2em] md:tracking-[0.3em] uppercase transition-all shadow-xl hover:scale-[1.02] active:scale-[0.95]"
                 >
                   {isInitialState ? "INICIAR JORNADA" : "CONTINUAR DE ONDE PAREI"}
