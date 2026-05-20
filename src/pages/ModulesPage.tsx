@@ -130,7 +130,7 @@ const ModulesPage = () => {
   const globalProgressPct = Math.round((totalCompletedArcanos / totalArcanosCount) * 100);
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative">
       <main className="relative z-10 container max-w-3xl px-6 pt-6 pb-24 md:pt-16 md:pb-32 space-y-8 md:space-y-16">
         {/* ─── Global Training Progress — Dashboard style ─── */}
         <div className="relative rounded-[2.5rem] overflow-hidden p-6 md:p-10 transition-all duration-500" style={{

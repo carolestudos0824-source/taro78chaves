@@ -143,7 +143,7 @@ const AppShell = () => {
   const { progress } = useProgress();
   
   return (
-    <div className="min-h-screen bg-[#FDFBF7] flex flex-col overflow-x-hidden w-full max-w-full relative">
+    <div className="min-h-screen bg-[#FDFBF7] flex flex-col w-full max-w-full relative">
       <Header 
         streak={progress.streak} 
         xp={progress.xp} 
