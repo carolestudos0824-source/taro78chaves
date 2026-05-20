@@ -130,6 +130,52 @@ const ModulesPage = () => {
   const totalCompletedArcanos = completedMaiores + completedMenores;
   const globalProgressPct = Math.round((totalCompletedArcanos / totalArcanosCount) * 100);
 
+  // ─── Arcano Atual para o Marcador do Painel Diário ───
+  // A jornada segue: Maiores (0-21) -> Copas (1-10, Pajem-Rei) -> Paus -> Espadas -> Ouros
+  const getGlobalArcanoAtual = () => {
+    // 1. Verificar Maiores
+    for (let i = 0; i <= 21; i++) {
+      if (!progress.completedLessons.includes(`arcano-${i}`)) {
+        return { 
+          name: ARCANOS_MAIORES_CATALOG[i].name, 
+          image: resolveMaiorVisual(i).resolvedAssetUrl || imgLouco,
+          index: i + 1
+        };
+      }
+    }
+    
+    // 2. Verificar Menores
+    const naipes = ["copas", "paus", "espadas", "ouros"] as const;
+    const posicoes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "pajem", "cavaleiro", "rainha", "rei"] as const;
+    
+    let currentIndex = 23; // 22 Maiores + 1
+    for (const naipe of naipes) {
+      for (const posicao of posicoes) {
+        const id = `${naipe}-${posicao}`;
+        if (!progress.completedLessons.includes(id)) {
+          const visual = resolveMenorVisualById(id);
+          const name = id.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+          return { 
+            name: name, 
+            image: visual.resolvedAssetUrl || imgLouco,
+            index: currentIndex
+          };
+        }
+        currentIndex++;
+      }
+    }
+    
+    // Se completou tudo, mostra o último (Rei de Ouros)
+    const lastId = "ouros-rei";
+    return { 
+      name: "Rei de Ouros", 
+      image: resolveMenorVisualById(lastId).resolvedAssetUrl || imgLouco,
+      index: 78 
+    };
+  };
+
+  const arcanoGuia = getGlobalArcanoAtual();
+
   return (
     <div className="relative min-h-screen bg-[#FDFBF7]">
       <main className="relative z-10 container max-w-3xl px-6 pt-6 pb-24 md:pt-16 md:pb-32 space-y-8 md:space-y-16">
@@ -160,15 +206,40 @@ const ModulesPage = () => {
             </div>
           </div>
           
-          <div className="h-4 rounded-full overflow-hidden p-[2.5px]" style={{ 
-            background: "#E8DED3", 
-            border: "1.5px solid rgba(209, 196, 181, 0.6)" 
-          }}>
+          <div className="relative mt-12 mb-6">
+            {/* Marcador Visual: Arcano Guia */}
             <div 
-              className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out relative overflow-hidden"
-              style={{ width: `${Math.max(globalProgressPct, 2)}%` }}
+              className="absolute -top-10 transition-all duration-1000 ease-out z-20 flex flex-col items-center"
+              style={{ 
+                left: `${globalProgressPct}%`,
+                transform: 'translateX(-50%)'
+              }}
             >
-              <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-[#C8A66A]/20 rounded-lg blur group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <img 
+                  src={arcanoGuia.image} 
+                  alt={arcanoGuia.name}
+                  className="relative w-8 h-12 md:w-10 md:h-14 object-cover rounded-md border-2 border-[#C8A66A] shadow-lg bg-white"
+                />
+              </div>
+              <div className="mt-1 flex flex-col items-center">
+                <span className="text-[8px] font-black text-[#5B1F3D] uppercase tracking-tighter whitespace-nowrap bg-white/80 px-1 rounded">
+                  {arcanoGuia.name}
+                </span>
+              </div>
+            </div>
+
+            <div className="h-4 rounded-full overflow-hidden p-[2.5px]" style={{ 
+              background: "#E8DED3", 
+              border: "1.5px solid rgba(209, 196, 181, 0.6)" 
+            }}>
+              <div 
+                className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out relative overflow-hidden"
+                style={{ width: `${Math.max(globalProgressPct, 2)}%` }}
+              >
+                <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+              </div>
             </div>
           </div>
           
