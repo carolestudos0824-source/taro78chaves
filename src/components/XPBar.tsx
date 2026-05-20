@@ -9,7 +9,11 @@ export function XPBar({ xp, level }: XPBarProps) {
   const xpInLevel = xp % 100;
 
   return (
-    <div className="flex items-center gap-4">
+    <div 
+      className="flex items-center gap-4"
+      title={`XP do nível: ${xpInLevel} de 100`}
+      aria-label={`XP do nível: ${xpInLevel} de 100`}
+    >
       <div className="flex items-center gap-3 shrink-0">
         <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transition-transform hover:scale-105" style={{
           border: "2px solid #C8A66A4D",
