@@ -1,6 +1,7 @@
-import { ArrowLeft, ArrowRight, MapPin, Sparkles, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, MapPin, Sparkles, Check, Key } from "lucide-react";
 import { ReflectionSection } from "../ReflectionSection";
 import { useNavigate } from "react-router-dom";
+import { useProgress } from "@/hooks/use-progress";
 
 
 interface CompletionScreenProps {
