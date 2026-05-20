@@ -92,7 +92,7 @@ export function CompletionScreen({
         <div className="w-px h-10" style={{ background: "rgba(200, 166, 106, 0.3)" }} />
         <div className="text-center">
           <span className="block font-heading text-2xl font-black" style={{ color: "#C8A66A" }}>+{xpEarned}</span>
-          <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase" style={{ color: "#5B1F3DCC" }}>XP</span>
+          <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase" style={{ color: "#5B1F3DCC" }}>XP do Nível</span>
         </div>
       </div>
 
