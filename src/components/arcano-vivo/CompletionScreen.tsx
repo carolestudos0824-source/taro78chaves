@@ -27,8 +27,16 @@ export function CompletionScreen({
   onNextArcano, onPrevArcano, onBackToMap, isLastArcano, arcanoId,
 }: CompletionScreenProps & { arcanoId?: number }) {
   const navigate = useNavigate();
+  const { progress } = useProgress();
   const percentage = Math.round((quizScore / quizTotal) * 100);
   const isExcellent = percentage >= 80;
+
+  const totalArcanosCount = 78;
+  const completedMaiores = progress.completedLessons.filter(l => l.startsWith("arcano-")).length;
+  const completedMenores = progress.completedLessons.filter(l => 
+    l.startsWith("copas-") || l.startsWith("paus-") || l.startsWith("espadas-") || l.startsWith("ouros-")
+  ).length;
+  const totalCompletedArcanos = completedMaiores + completedMenores;
 
   return (
     <div className="text-center py-10 space-y-7" style={{ animation: "fade-up 0.6s ease-out" }}>
