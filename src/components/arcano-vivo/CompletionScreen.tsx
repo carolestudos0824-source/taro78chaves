@@ -72,10 +72,15 @@ export function CompletionScreen({
           background: "linear-gradient(135deg, #5B1F3D, #C8A66A)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
-        }}>Lição Completa</h2>
+        }}>Chave Conquistada</h2>
         <p className="text-[15px] font-medium" style={{ color: "#5B1F3D" }}>
-          Você completou a jornada com <strong className="font-black text-[#C8A66A]">{arcanoName}</strong>.
+          Você dominou o portal de <strong className="font-black text-[#C8A66A]">{arcanoName}</strong>.
         </p>
+        <div className="mt-3 inline-flex items-center gap-2 px-4 py-1.5 rounded-xl bg-[#FAF5EF] border border-[#C8A66A]/30">
+          <span className="text-[11px] font-heading font-black text-[#5B1F3D] uppercase tracking-wider">
+            {totalCompletedArcanos} de 78 Chaves Dominadas
+          </span>
+        </div>
       </div>
 
       {/* Stats */}
