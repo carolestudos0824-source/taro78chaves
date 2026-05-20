@@ -302,30 +302,37 @@ const ModulesPage = () => {
             </button>
 
             {/* Achievements/Icons Block */}
-            <div className="col-span-2 group relative overflow-hidden rounded-[2rem] p-6 border-2 border-[#C8A66A]/20 bg-[#FAF5EF]/50 shadow-inner flex items-center justify-around">
-              <div className="flex flex-col items-center gap-1 opacity-80 hover:opacity-100 transition-opacity">
-                <div className="w-10 h-10 rounded-full bg-white border border-[#C8A66A]/20 flex items-center justify-center">
-                  <Stars className={`w-5 h-5 ${completedMaiores >= 22 ? "text-[#C8A66A]" : "text-[#5B1F3D]/20"}`} />
-                </div>
-                <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]/60">Maiores</span>
+            <div className="col-span-2 group relative overflow-hidden rounded-[2rem] p-5 border-2 border-[#C8A66A]/20 bg-[#FAF5EF]/50 shadow-inner flex flex-col gap-3">
+              <div className="flex flex-col items-center gap-0.5">
+                <span className="text-[9px] font-heading font-black tracking-[0.2em] text-[#C8A66A] uppercase">Conquistas da Jornada</span>
+                <span className="text-[8px] font-heading font-bold text-[#5B1F3D]/40 uppercase tracking-widest">Avance para acender os símbolos</span>
               </div>
-              <div className="flex flex-col items-center gap-1 opacity-80 hover:opacity-100 transition-opacity">
-                <div className="w-10 h-10 rounded-full bg-white border border-[#C8A66A]/20 flex items-center justify-center">
-                  <Check className={`w-5 h-5 ${progress.level >= 5 ? "text-[#C8A66A]" : "text-[#5B1F3D]/20"}`} />
+
+              <div className="flex items-center justify-around w-full">
+                <div className="flex flex-col items-center gap-1.5 transition-all">
+                  <div className={`w-10 h-10 rounded-full bg-white border flex items-center justify-center transition-all ${completedMaiores >= 22 ? "border-[#C8A66A] shadow-md scale-110" : "border-[#C8A66A]/20"}`}>
+                    <Stars className={`w-5 h-5 ${completedMaiores >= 22 ? "text-[#C8A66A]" : "text-[#5B1F3D]/40"}`} />
+                  </div>
+                  <span className={`text-[8px] font-heading font-black uppercase tracking-widest ${completedMaiores >= 22 ? "text-[#5B1F3D]" : "text-[#5B1F3D]/40"}`}>Maiores</span>
                 </div>
-                <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]/60">Nível 5</span>
-              </div>
-              <div className="flex flex-col items-center gap-1 opacity-80 hover:opacity-100 transition-opacity">
-                <div className="w-10 h-10 rounded-full bg-white border border-[#C8A66A]/20 flex items-center justify-center">
-                  <Flame className={`w-5 h-5 ${progress.streak >= 7 ? "text-[#C8A66A]" : "text-[#5B1F3D]/20"}`} />
+                <div className="flex flex-col items-center gap-1.5 transition-all">
+                  <div className={`w-10 h-10 rounded-full bg-white border flex items-center justify-center transition-all ${progress.level >= 5 ? "border-[#C8A66A] shadow-md scale-110" : "border-[#C8A66A]/20"}`}>
+                    <Check className={`w-5 h-5 ${progress.level >= 5 ? "text-[#C8A66A]" : "text-[#5B1F3D]/40"}`} />
+                  </div>
+                  <span className={`text-[8px] font-heading font-black uppercase tracking-widest ${progress.level >= 5 ? "text-[#5B1F3D]" : "text-[#5B1F3D]/40"}`}>Nível 5</span>
                 </div>
-                <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]/60">7 Dias</span>
-              </div>
-              <div className="flex flex-col items-center gap-1 opacity-80 hover:opacity-100 transition-opacity">
-                <div className="w-10 h-10 rounded-full bg-white border border-[#C8A66A]/20 flex items-center justify-center">
-                  <Gem className={`w-5 h-5 ${progress.xp >= 1000 ? "text-[#C8A66A]" : "text-[#5B1F3D]/20"}`} />
+                <div className="flex flex-col items-center gap-1.5 transition-all">
+                  <div className={`w-10 h-10 rounded-full bg-white border flex items-center justify-center transition-all ${progress.streak >= 7 ? "border-[#C8A66A] shadow-md scale-110" : "border-[#C8A66A]/20"}`}>
+                    <Flame className={`w-5 h-5 ${progress.streak >= 7 ? "text-[#C8A66A]" : "text-[#5B1F3D]/40"}`} />
+                  </div>
+                  <span className={`text-[8px] font-heading font-black uppercase tracking-widest ${progress.streak >= 7 ? "text-[#5B1F3D]" : "text-[#5B1F3D]/40"}`}>7 Dias</span>
                 </div>
-                <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#5B1F3D]/60">Elite</span>
+                <div className="flex flex-col items-center gap-1.5 transition-all">
+                  <div className={`w-10 h-10 rounded-full bg-white border flex items-center justify-center transition-all ${progress.xp >= 1000 ? "border-[#C8A66A] shadow-md scale-110" : "border-[#C8A66A]/20"}`}>
+                    <Gem className={`w-5 h-5 ${progress.xp >= 1000 ? "text-[#C8A66A]" : "text-[#5B1F3D]/40"}`} />
+                  </div>
+                  <span className={`text-[8px] font-heading font-black uppercase tracking-widest ${progress.xp >= 1000 ? "text-[#5B1F3D]" : "text-[#5B1F3D]/40"}`}>Elite</span>
+                </div>
               </div>
             </div>
           </div>
