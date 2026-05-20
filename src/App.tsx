@@ -104,8 +104,11 @@ const LoadingFallback = () => (
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading } = useAuth();
+  
+  // AppRoutes already handles authLoading, so this is mainly for internal route protection
   if (loading) return <LoadingFallback />;
   if (!user) return <Navigate to="/" replace />;
+  
   return (
     <>
       <SessionInitializer />
@@ -174,9 +177,10 @@ const AppRoutes = () => {
         <Route path="/excluir-conta" element={<DeleteAccountPage />} />
         <Route path="/apresentacao" element={<PresentationPage />} />
 
-        {/* Official /app route with direct nested structure */}
-        <Route path="/app" element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
-          <Route index element={<ModulesPage />} />
+        {/* Official /app route using wildcard prefix for maximum robustness */}
+        <Route path="/app/*" element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
+          {/* Use path="" to catch exactly /app and /app/ */}
+          <Route path="" element={<ModulesPage />} />
           <Route path="trilhas" element={<TrailsPage />} />
           <Route path="module/fundamentos" element={<FundamentosPage />} />
           <Route path="fundamentos/:order" element={<FundamentosLessonPage />} />
@@ -222,6 +226,7 @@ const AppRoutes = () => {
           <Route path="minha-jornada" element={<JourneyJournalPage />} />
           <Route path="feedback" element={<FeedbackPage />} />
           <Route path="admin" element={<AdminPage />} />
+          {/* Catch-all within /app redirects back to /app main screen */}
           <Route path="*" element={<Navigate to="/app" replace />} />
         </Route>
         
