@@ -412,37 +412,61 @@ const LandingPage = () => {
             <AccordionItem value="item-1" className="border-gold/30">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Por onde eu começo?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
-                Você começa pelo Louco gratuitamente. Se for bem na lição, desbloqueia O Mago e entende como a jornada funciona antes de assinar.
+                Você começa pela Chave 1: O Louco. O app guia sua jornada passo a passo, com lições curtas, quizzes e progresso salvo.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2" className="border-gold/30">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">O que está incluso no plano?</AccordionTrigger>
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">O que são as 78 Chaves?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
-                O acesso completo libera a jornada pelos 78 arcanos, com lições progressivas, quizzes, Pontos de Jornada, progresso salvo e estudo carta por carta.
+                As 78 Chaves representam os 78 arcanos do tarô. Cada arcano estudado e concluído se torna uma chave conquistada na sua jornada.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3" className="border-gold/30">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Preciso saber tarô antes?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
-                Não. O app foi feito para começar do zero, com uma carta por vez e explicações claras.
+                Não. O Tarô 78 Chaves foi criado para conduzir iniciantes desde a base, com uma jornada progressiva e organizada.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4" className="border-gold/30">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Vou aprender Arcanos Menores também?</AccordionTrigger>
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">O app usa qual baralho?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
-                Sim. A jornada inclui Arcanos Maiores, Menores numerados e Cartas da Corte.
+                O estudo é baseado no Rider-Waite-Smith, referência clássica para o aprendizado simbólico do tarô.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-5" className="border-gold/30">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Preciso de um baralho físico?</AccordionTrigger>
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">O que está incluso?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
-                Não para começar. O app mostra as cartas Rider-Waite-Smith dentro das lições. Ter um baralho pode complementar seu estudo.
+                Lições guiadas, quizzes, progresso por Chaves, trilhas de estudo, Arcanos Maiores, Arcanos Menores, práticas e conteúdos progressivos.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-6" className="border-gold/30">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Como funciona o cancelamento?</AccordionTrigger>
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Tarô é profissão regulamentada?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
-                Se você assinou o Plano Mensal, pode gerenciar ou cancelar a qualquer momento pelo seu perfil. O Acesso Anual é um pagamento único sem renovação automática.
+                No Brasil, a leitura de oráculos pode ser reconhecida como ocupação, mas não exige diploma obrigatório nem conselho profissional. A diferença está no método, na ética e na qualidade do atendimento.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-7" className="border-gold/30">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Tem certificado?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
+                Neste momento, o foco do app é formação progressiva e domínio dos 78 arcanos. Caso haja certificado no futuro, ele será informado oficialmente dentro do app.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-8" className="border-gold/30">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Como funciona o acesso?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
+                Você cria sua conta com e-mail e senha. Seu progresso fica salvo para continuar sua jornada de onde parou.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-9" className="border-gold/30">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Posso cancelar?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
+                Se houver assinatura ativa, o cancelamento deve ser feito pela plataforma onde a compra foi realizada, conforme as regras do plano contratado.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-10" className="border-gold/30">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Tenho suporte?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
+                Sim. Para dúvidas de acesso, pagamento ou conta, entre em contato pelo e-mail suporte@taro78chaves.com.br.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
