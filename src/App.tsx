@@ -143,13 +143,13 @@ const AppShell = () => {
   const { progress } = useProgress();
   
   return (
-    <div className="min-h-screen bg-[#FDFBF7] flex flex-col w-full max-w-full relative">
+    <div className="min-h-screen bg-[#FDFBF7] flex flex-col w-full max-w-full relative overflow-y-auto overflow-x-hidden">
       <Header 
         streak={progress.streak} 
         xp={progress.xp} 
         level={progress.level} 
       />
-      <main className="flex-1 pb-28">
+      <main className="flex-1 w-full max-w-full overflow-y-auto">
         <Outlet />
       </main>
       <BottomNav />
