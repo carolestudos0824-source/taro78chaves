@@ -181,6 +181,7 @@ const AppRoutes = () => {
         <Route element={<ProtectedRoute><Outlet /></ProtectedRoute>}>
           <Route element={<AppShell />}>
             <Route path="/app" element={<ModulesPage />} />
+            <Route path="/app/" element={<Navigate to="/app" replace />} />
             <Route path="/trilhas" element={<TrailsPage />} />
             <Route path="/desafios" element={<DailyChallengesPage />} />
             <Route path="/premium" element={<PremiumPage />} />
