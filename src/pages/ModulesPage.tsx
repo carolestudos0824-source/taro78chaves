@@ -389,7 +389,7 @@ const ModulesPage = () => {
                     ? "Inicie seu despertar pelo Arcano 0." 
                     : `${totalCompletedArcanos} de 78 chaves concluídas.`
                   }
-                  {!isInitialState && <span className="text-white/70 not-italic block mt-1 uppercase tracking-widest text-[9px] md:text-[10px] font-bold">Portal: {currentArcano.subtitle}</span>}
+                  {!isInitialState && <span className="text-white/70 not-italic block mt-1 uppercase tracking-widest text-[9px] md:text-[10px] font-bold">Arcano {arcanoGuia.index} de 78</span>}
                 </p>
                 <button 
                   onClick={() => navigate(isInitialState ? "/jornada-do-louco" : `/lesson/${currentArcanoId}`)}
