@@ -33,7 +33,7 @@ export function XPBar({ xp, level }: XPBarProps) {
       </div>
       <div className="flex-1 relative space-y-1.5">
         <div className="flex justify-between items-end px-1">
-          <span className="text-[11px] font-heading font-black tracking-widest text-[#5B1F3D]/80 uppercase">Progresso da Jornada</span>
+          <span className="text-[11px] font-heading font-black tracking-widest text-[#5B1F3D]/80 uppercase">XP do Nível</span>
           <span className="text-[11px] font-heading font-black text-[#5B1F3D]">{xpInLevel}%</span>
         </div>
         <div className="h-3 rounded-full overflow-hidden p-[1.5px]" style={{
