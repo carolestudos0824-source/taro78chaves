@@ -174,89 +174,137 @@ const ModulesPage = () => {
 
   return (
     <div className="relative min-h-screen bg-[#FDFBF7]">
-      <main className="relative z-10 container max-w-3xl px-6 pt-6 pb-24 md:pt-16 md:pb-32 space-y-8 md:space-y-16">
+      <main className="relative z-10 container max-w-3xl px-6 pt-6 pb-24 md:pt-16 md:pb-32 space-y-6 md:space-y-12">
         <div id="meu-painel-diario-anchor" className="sr-only">Meu Painel Diário</div>
-        {/* ─── Global Training Progress — Dashboard style ─── */}
-        <div className="relative rounded-[2.5rem] overflow-hidden p-6 md:p-10 transition-all duration-500" style={{
-          background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
-          backdropFilter: "blur(24px)",
-          border: "2.5px solid #C8A66A",
-          boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08), 0 0 40px rgba(200, 166, 106, 0.1)"
-        }}>
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A30]" style={{
-                background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
-                boxShadow: "0 10px 25px rgba(91, 31, 61, 0.25)"
-              }}>
-                <TarotIcon name="SquareStack" className="w-7 h-7 text-[#C8A66A]" />
+        
+        {/* ─── NÚCLEO CENTRAL DE JORNADA ─── */}
+        <div className="space-y-4">
+          {/* 1. Meu Painel Diário — Dashboard style */}
+          <div className="relative rounded-[2.5rem] overflow-hidden p-6 md:p-10 transition-all duration-500" style={{
+            background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
+            backdropFilter: "blur(24px)",
+            border: "2.5px solid #C8A66A",
+            boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08), 0 0 40px rgba(200, 166, 106, 0.1)"
+          }}>
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A30]" style={{
+                  background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+                  boxShadow: "0 10px 25px rgba(91, 31, 61, 0.25)"
+                }}>
+                  <TarotIcon name="SquareStack" className="w-7 h-7 text-[#C8A66A]" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Tarô 78 Chaves</span>
+                  <span className="text-lg font-heading font-black text-[#5B1F3D]">Meu Painel Diário</span>
+                </div>
               </div>
-              <div className="flex flex-col">
-                <span className="text-[10px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Tarô 78 Chaves</span>
-                <span className="text-lg font-heading font-black text-[#5B1F3D]">Meu Painel Diário</span>
-              </div>
-            </div>
-            <div className="text-right">
-              <span className="text-3xl font-heading font-black text-[#5B1F3D]">{globalProgressPct}%</span>
-              <span className="text-[14px] font-black text-[#5B1F3D]/30 ml-1">Total</span>
-            </div>
-          </div>
-          
-          <div className="relative mt-8 mb-4">
-            {/* Linha informativa do Arcano Guia */}
-            <div className="flex items-center gap-3 mb-4 px-1">
-              <div className="relative shrink-0">
-                <div className="absolute -inset-1 bg-[#C8A66A]/20 rounded-lg blur-sm"></div>
-                <img 
-                  src={arcanoGuia.image} 
-                  alt={arcanoGuia.name}
-                  className="relative w-10 h-14 md:w-12 md:h-16 object-cover rounded-md border-2 border-[#C8A66A] shadow-md bg-white"
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#C8A66A] uppercase leading-none mb-1">Agora Estudando</span>
-                <span className="text-sm md:text-base font-heading font-black text-[#5B1F3D] leading-tight">
-                  {arcanoGuia.name} <span className="text-[#5B1F3D]/40 ml-1">· Arcano {arcanoGuia.index} de 78</span>
-                </span>
+              <div className="text-right">
+                <span className="text-3xl font-heading font-black text-[#5B1F3D]">{globalProgressPct}%</span>
+                <span className="text-[14px] font-black text-[#5B1F3D]/30 ml-1">Total</span>
               </div>
             </div>
-
-            {/* Barra de Progresso com Marcador Posicionável */}
-            <div className="relative px-2">
-              <div className="h-4 rounded-full overflow-hidden p-[2.5px] relative" style={{ 
-                background: "#E8DED3", 
-                border: "1.5px solid rgba(209, 196, 181, 0.6)" 
-              }}>
-                <div 
-                  className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out relative overflow-hidden"
-                  style={{ width: `${Math.max(globalProgressPct, 2)}%` }}
-                >
-                  <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+            
+            <div className="relative mt-8 mb-4">
+              {/* Linha informativa do Arcano Guia */}
+              <div className="flex items-center gap-3 mb-4 px-1">
+                <div className="relative shrink-0">
+                  <div className="absolute -inset-1 bg-[#C8A66A]/20 rounded-lg blur-sm"></div>
+                  <img 
+                    src={arcanoGuia.image} 
+                    alt={arcanoGuia.name}
+                    className="relative w-10 h-14 md:w-12 md:h-16 object-cover rounded-md border-2 border-[#C8A66A] shadow-md bg-white"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#C8A66A] uppercase leading-none mb-1">Agora Estudando</span>
+                  <span className="text-sm md:text-base font-heading font-black text-[#5B1F3D] leading-tight">
+                    {arcanoGuia.name} <span className="text-[#5B1F3D]/40 ml-1">· Arcano {arcanoGuia.index} de 78</span>
+                  </span>
                 </div>
               </div>
 
-              {/* Indicador de posição na barra (discreto) */}
-              <div 
-                className="absolute top-0 bottom-0 w-1 bg-white/40 z-10 transition-all duration-1000 ease-out"
-                style={{ 
-                  left: `calc(${globalProgressPct}% + 8px)`, 
-                  transform: 'translateX(-50%)' 
-                }}
-              />
+              {/* Barra de Progresso com Marcador Posicionável */}
+              <div className="relative px-2">
+                <div className="h-4 rounded-full overflow-hidden p-[2.5px] relative" style={{ 
+                  background: "#E8DED3", 
+                  border: "1.5px solid rgba(209, 196, 181, 0.6)" 
+                }}>
+                  <div 
+                    className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out relative overflow-hidden"
+                    style={{ width: `${Math.max(globalProgressPct, 2)}%` }}
+                  >
+                    <div className="absolute inset-0 w-1/3 h-full bg-white/20 skew-x-[-20deg] animate-pulse" style={{ left: '10%' }} />
+                  </div>
+                </div>
+
+                {/* Indicador de posição na barra (discreto) */}
+                <div 
+                  className="absolute top-0 bottom-0 w-1 bg-white/40 z-10 transition-all duration-1000 ease-out"
+                  style={{ 
+                    left: `calc(${globalProgressPct}% + 8px)`, 
+                    transform: 'translateX(-50%)' 
+                  }}
+                />
+              </div>
+            </div>
+            
+            <div className="mt-6 flex flex-col gap-4">
+              <p className="text-[14px] font-body font-black text-[#5B1F3D]/70 italic text-center leading-relaxed">
+                Você já domina {totalCompletedArcanos} das 78 chaves do tarô ({globalProgressPct}%).
+              </p>
+              
+              <button
+                onClick={() => navigate("/trilhas")}
+                className="w-full py-4 rounded-2xl bg-[#5B1F3D] text-[#FAF5EF] font-heading text-[11px] tracking-[0.3em] uppercase font-black shadow-lg hover:bg-[#3D1429] transition-all flex items-center justify-center gap-2 border-2 border-[#C8A66A]/30"
+              >
+                Ver Mapa Curricular <ChevronRight className="w-4 h-4 text-[#C8A66A]" />
+              </button>
             </div>
           </div>
-          
-          <div className="mt-6 flex flex-col gap-4">
-            <p className="text-[14px] font-body font-black text-[#5B1F3D]/70 italic text-center leading-relaxed">
-              Você já domina {totalCompletedArcanos} das 78 chaves do tarô ({globalProgressPct}%).
-            </p>
-            
-            <button
-              onClick={() => navigate("/trilhas")}
-              className="w-full py-4 rounded-2xl bg-[#5B1F3D] text-[#FAF5EF] font-heading text-[11px] tracking-[0.3em] uppercase font-black shadow-lg hover:bg-[#3D1429] transition-all flex items-center justify-center gap-2 border-2 border-[#C8A66A]/30"
-            >
-              Ver Mapa Curricular <ChevronRight className="w-4 h-4 text-[#C8A66A]" />
-            </button>
+
+          {/* 2. Estudo Imediato — CTA de Ação */}
+          <div className="animate-fade-in">
+            <div className="bg-[#5B1F3D] border-2 border-[#C8A66A] rounded-[2.5rem] p-6 md:p-10 text-center space-y-4 relative overflow-hidden group shadow-2xl ring-8 ring-[#C8A66A]/5">
+              <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#C8A66A]/20 rounded-full blur-3xl" />
+              
+              {/* Imagem canônica do Arcano Atual */}
+              <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none">
+                 <img src={arcanoGuia.image} alt="" className="w-16 h-24 object-cover rounded-lg border border-[#C8A66A]/30 rotate-12 shadow-2xl" />
+              </div>
+
+              <div className="relative z-10 space-y-4">
+                <p className="text-[10px] md:text-[11px] font-heading tracking-[0.3em] md:tracking-[0.4em] uppercase font-black text-white/80">
+                  {isInitialState ? "✦ Meu Painel Diário ✦" : "✦ Meu Painel Diário ✦"}
+                </p>
+                <h3 className="font-heading text-xl md:text-3xl text-white font-black tracking-tight leading-tight">
+                  {isInitialState ? "Seu primeiro Arcano" : "Agora estudando"}: <br/>
+                  <span className="text-[#C8A66A]">{arcanoGuia.name}</span>
+                </h3>
+                <p className="text-[15px] font-body font-bold text-white/90 italic leading-relaxed">
+                  {isInitialState 
+                    ? "Inicie seu despertar pelo Arcano 0." 
+                    : `${totalCompletedArcanos} de 78 chaves concluídas.`
+                  }
+                  {!isInitialState && <span className="text-white/70 not-italic block mt-1 uppercase tracking-widest text-[9px] md:text-[10px] font-bold">Arcano {arcanoGuia.index} de 78</span>}
+                </p>
+                <button 
+                  onClick={() => {
+                    if (isInitialState) {
+                      navigate("/jornada-do-louco");
+                    } else if (arcanoGuia.index <= 22) {
+                      navigate(`/lesson/${arcanoGuia.index - 1}`);
+                    } else {
+                      // Se for menor, leva para o módulo correspondente ou trilha
+                      navigate("/trilhas");
+                    }
+                  }}
+                  className="block w-full py-4 md:py-5 bg-[#C8A66A] hover:bg-[#C8A66A]/90 text-[#5B1F3D] rounded-2xl font-heading text-[11px] md:text-[12px] font-black tracking-[0.2em] md:tracking-[0.3em] uppercase transition-all shadow-xl hover:scale-[1.02] active:scale-[0.95]"
+                >
+                  {isInitialState ? "INICIAR JORNADA" : "CONTINUAR DE ONDE PAREI"}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
