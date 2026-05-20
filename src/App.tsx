@@ -168,65 +168,6 @@ const AppRoutes = () => {
   );
 };
 
-const AppShellWithRoutes = () => {
-  return (
-    <Routes>
-      <Route element={<AppShell />}>
-        <Route index element={<AppRouteProbe />} />
-        <Route path="trilhas" element={<TrailsPage />} />
-        <Route path="module/fundamentos" element={<FundamentosPage />} />
-        <Route path="fundamentos/:order" element={<FundamentosLessonPage />} />
-        <Route path="module/arcanos-maiores" element={<Index />} />
-        <Route path="lesson/:id" element={<LessonPage />} />
-        <Route path="jornada-do-louco" element={<FoolsJourneyPage />} />
-        <Route path="module/copas" element={<NaipePage />} />
-        <Route path="module/paus" element={<NaipePage />} />
-        <Route path="module/espadas" element={<NaipePage />} />
-        <Route path="module/ouros" element={<NaipePage />} />
-        <Route path="naipe/:naipe/intro" element={<NaipeIntroPage />} />
-        <Route path="module/cartas-corte" element={<CartasCortePage />} />
-        <Route path="cartas-corte" element={<Navigate to="/app/module/cartas-corte" replace />} />
-        <Route path="numerologia" element={<NumerologiaPage />} />
-        <Route path="arcano-menor/:id" element={<ArcanoMenorLessonPage />} />
-        <Route path="module/combinacoes" element={<CombinacoesPage />} />
-        <Route path="combinacoes/:order" element={<CombinacoesLessonPage />} />
-        <Route path="module/tiragens" element={<TiragensPage />} />
-        <Route path="tiragens/:order" element={<TiragensLessonPage />} />
-        <Route path="module/amor" element={<AmorPage />} />
-        <Route path="amor/:order" element={<AmorLessonPage />} />
-        <Route path="module/pratica" element={<PraticaPage />} />
-        <Route path="pratica/:order" element={<PraticaLessonPage />} />
-        <Route path="module/leitura-simbolica" element={<LeituraSimbolicaPage />} />
-        <Route path="leitura-simbolica/:order" element={<LeituraSimbolicaLessonPage />} />
-        <Route path="module/arquitetura-menores" element={<ArquiteturaMenoresPage />} />
-        <Route path="arquitetura-menores/:order" element={<ArquiteturaMenoresLessonPage />} />
-        <Route path="module/espiritualidade" element={<EspiritualidadePage />} />
-        <Route path="espiritualidade/:order" element={<EspiritualidadeLessonPage />} />
-        <Route path="module/mesa-taro" element={<MesaTaroPage />} />
-        <Route path="mesa-taro/:order" element={<MesaTaroLessonPage />} />
-        <Route path="module/leitura-aplicada" element={<LeituraAplicadaPage />} />
-        <Route path="leitura-aplicada/:order" element={<LeituraAplicadaLessonPage />} />
-        <Route path="module/trabalhar-taro" element={<TrabalharTaroPage />} />
-        <Route path="trabalhar-taro/:order" element={<TrabalharTaroLessonPage />} />
-        <Route path="revisao" element={<ReviewPage />} />
-        <Route path="desafios" element={<DailyChallengesPage />} />
-        <Route path="certificados" element={<CertificatesPage />} />
-        <Route path="biblioteca" element={<SymbolLibraryPage />} />
-        <Route path="rotina" element={<StudyRoutinePage />} />
-        <Route path="premium" element={<PremiumPage />} />
-        <Route path="perfil" element={<ProfilePage />} />
-        <Route path="minha-jornada" element={<JourneyJournalPage />} />
-        <Route path="feedback" element={<FeedbackPage />} />
-        <Route path="admin" element={<AdminPage />} />
-        <Route path="*" element={<Navigate to="/app" replace />} />
-      </Route>
-    </Routes>
-  );
-};
-
-const AppRouteProbe = () => {
-  return <ModulesPage />;
-};
 
 const AppShell = () => {
   const { progress } = useProgress();
