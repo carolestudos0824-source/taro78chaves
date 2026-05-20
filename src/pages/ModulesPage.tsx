@@ -381,8 +381,8 @@ const ModulesPage = () => {
                   {isInitialState ? "✦ Meu Painel Diário ✦" : "✦ Meu Painel Diário ✦"}
                 </p>
                 <h3 className="font-heading text-xl md:text-3xl text-white font-black tracking-tight leading-tight">
-                  {isInitialState ? "Seu primeiro Arcano" : "Seu próximo Arcano"}: <br/>
-                  <span className="text-[#C8A66A]">{currentArcano.name}</span>
+                  {isInitialState ? "Seu primeiro Arcano" : "Agora estudando"}: <br/>
+                  <span className="text-[#C8A66A]">{arcanoGuia.name}</span>
                 </h3>
                 <p className="text-[15px] font-body font-bold text-white/90 italic leading-relaxed">
                   {isInitialState 
