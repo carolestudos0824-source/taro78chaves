@@ -29,9 +29,10 @@ import {
   isModuleUnlocked, 
   type LearningModule, 
   type ModuleCategory,
-  ARCANOS_MAIORES_CATALOG
+  ARCANOS_MAIORES_CATALOG,
+  getArcanoSummaryFromCatalog
 } from "@/lib/content";
-import { resolveMaiorVisual } from "@/lib/content/visual-registry";
+import { resolveMaiorVisual, resolveMenorVisualById } from "@/lib/content/visual-registry";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { useHeader } from "@/contexts/header-context";
