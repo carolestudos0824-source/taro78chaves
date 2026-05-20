@@ -385,7 +385,6 @@ const ModulesPage = () => {
             </div>
           </div>
 
-          {/* ─── Study Trails Selector ─── */}
           <div className="space-y-4 md:space-y-6">
             <div className="flex items-center gap-4">
               <span className="h-px flex-1 bg-[#C8A66A]/30" />
@@ -424,30 +423,6 @@ const ModulesPage = () => {
           </div>
 
           <SmartReviewCard />
-          
-          <div className="space-y-4 md:space-y-6 animate-fade-in">
-            <div className="bg-[#5B1F3D] border-2 border-[#C8A66A] rounded-[2.5rem] p-6 md:p-10 text-center space-y-4 relative overflow-hidden group shadow-2xl ring-8 ring-[#C8A66A]/5">
-              <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#C8A66A]/20 rounded-full blur-3xl" />
-              
-              {/* Imagem canônica do Arcano Atual */}
-              <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none">
-                 <img src={arcanoGuia.image} alt="" className="w-16 h-24 object-cover rounded-lg border border-[#C8A66A]/30 rotate-12 shadow-2xl" />
-              </div>
-
-              <div className="relative z-10 space-y-4">
-                <p className="text-[10px] md:text-[11px] font-heading tracking-[0.3em] md:tracking-[0.4em] uppercase font-black text-white/80">
-                  {isInitialState ? "✦ Meu Painel Diário ✦" : "✦ Meu Painel Diário ✦"}
-                </p>
-                <h3 className="font-heading text-xl md:text-3xl text-white font-black tracking-tight leading-tight">
-                  {isInitialState ? "Seu primeiro Arcano" : "Agora estudando"}: <br/>
-                  <span className="text-[#C8A66A]">{arcanoGuia.name}</span>
-                </h3>
-                <p className="text-[15px] font-body font-bold text-white/90 italic leading-relaxed">
-                  {isInitialState 
-                    ? "Inicie seu despertar pelo Arcano 0." 
-                    : `${totalCompletedArcanos} de 78 chaves concluídas.`
-                  }
-                  {!isInitialState && <span className="text-white/70 not-italic block mt-1 uppercase tracking-widest text-[9px] md:text-[10px] font-bold">Arcano {arcanoGuia.index} de 78</span>}
                 </p>
                 <button 
                   onClick={() => {
