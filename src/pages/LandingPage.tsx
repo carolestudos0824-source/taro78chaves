@@ -304,7 +304,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       <section className="py-24 px-6 bg-[#FAF5EF]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="font-heading text-3xl md:text-4xl text-midnight italic">O que você desbloqueia na Jornada Completa</h2>
+            <h2 className="font-heading text-3xl md:text-4xl text-midnight italic">O que está incluído na Escola Digital Tarô 78 Chaves</h2>
             <p className="text-muted-foreground max-w-lg mx-auto font-body text-balance">Estude os 78 arcanos com uma trilha progressiva, fiel ao Rider-Waite-Smith e pensada para criar prática, continuidade e domínio simbólico.</p>
           </div>
 
@@ -393,53 +393,67 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               <div className="space-y-4">
                 <h3 className="font-heading text-xl md:text-2xl text-plum font-black uppercase tracking-widest">Acesso Anual à Escola Digital Tarô 78 Chaves</h3>
                 
-                <div className="space-y-1">
-                  <p className="text-xl text-midnight/40 line-through decoration-gold/50 font-heading">De R$497</p>
+                <div className="space-y-2">
+                  <p className="text-xl md:text-2xl text-midnight/40 line-through decoration-gold/60 font-heading">De R$497</p>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-sm text-plum font-heading uppercase tracking-widest font-bold">Por</span>
-                    <span className="text-6xl md:text-7xl font-heading text-midnight">R$297</span>
-                    <span className="text-sm text-midnight/40 font-heading">/ano</span>
+                    <span className="text-sm text-plum font-heading uppercase tracking-widest font-extrabold">Por</span>
+                    <span className="text-7xl md:text-8xl font-heading text-midnight leading-none">R$297</span>
+                    <span className="text-sm md:text-base text-midnight/40 font-heading font-bold uppercase tracking-widest">/ano</span>
                   </div>
-                  <p className="text-sm font-bold text-plum tracking-tight">
-                    Pagamento único anual • 12 meses de acesso
-                  </p>
-                  <p className="text-sm md:text-base font-bold text-gold-dark italic">
-                    Ou até 12x no cartão pela Hotmart
-                  </p>
+                  <div className="pt-2">
+                    <p className="text-base md:text-lg font-bold text-plum tracking-tight flex items-center gap-2">
+                      <Check className="w-5 h-5 text-gold-dark" />
+                      Pagamento único anual • 12 meses de acesso
+                    </p>
+                    <p className="text-sm md:text-base font-bold text-gold-dark italic mt-1 ml-7">
+                      Ou até 12x no cartão pela Hotmart
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              <p className="text-sm md:text-base text-midnight/80 font-body leading-relaxed">
-                Acesse a jornada completa pelos 78 arcanos, com aulas organizadas, quizzes, progresso salvo e área de membros para estudar no seu ritmo.
-              </p>
+              <div className="space-y-6 pt-4 border-t border-gold/10">
+                <p className="text-sm md:text-base text-midnight/80 font-body leading-relaxed">
+                  Acesse a jornada completa pelos 78 arcanos, com aulas organizadas, quizzes, progresso salvo e área de membros para estudar no seu ritmo.
+                </p>
 
-              <div className="space-y-3 pt-2">
-                {[
-                  "Jornada completa pelos 78 arcanos",
-                  "Aulas organizadas por módulos",
-                  "Quizzes e exercícios",
-                  "Progresso salvo",
-                  "Área de membros individual",
-                  "Acesso online por 12 meses",
-                  "Estudo no seu ritmo pelo celular, tablet ou computador"
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-gold-dark mt-0.5 shrink-0" />
-                    <span className="text-sm md:text-base text-midnight/70 font-body">{item}</span>
-                  </div>
-                ))}
+                <div className="space-y-3">
+                  {[
+                    "Jornada completa pelos 78 arcanos",
+                    "Aulas organizadas por módulos",
+                    "Quizzes e exercícios",
+                    "Progresso salvo",
+                    "Área de membros individual",
+                    "Acesso online por 12 meses",
+                    "Estudo no seu ritmo pelo celular, tablet ou computador"
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-gold-dark mt-0.5 shrink-0" />
+                      <span className="text-sm md:text-base text-midnight/70 font-bold">{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <Button 
-                onClick={() => handleSubscribe("annual")} 
-                className="btn-premium w-full py-8 text-base md:text-lg shadow-xl hover:scale-[1.02] transition-transform font-heading tracking-widest"
-              >
-                GARANTIR MEU ACESSO
-              </Button>
-              
-              <p className="text-[10px] text-center text-midnight/40 font-body uppercase tracking-[0.2em]">
-                Pagamento seguro via Hotmart
-              </p>
+              <div className="pt-6 space-y-4">
+                <Button 
+                  onClick={() => handleSubscribe("annual")} 
+                  className="w-full h-16 md:h-20 bg-plum hover:bg-plum/90 text-ivory rounded-full text-lg md:text-xl shadow-[0_15px_35px_-10px_rgba(91,31,61,0.5)] hover:scale-[1.02] transition-all font-heading tracking-widest font-black uppercase flex items-center justify-center gap-3"
+                >
+                  <Sparkles className="w-6 h-6 text-gold animate-pulse" />
+                  GARANTIR MEU ACESSO
+                </Button>
+                
+                <p className="text-[10px] md:text-xs text-center text-midnight/40 font-body uppercase tracking-[0.2em] font-bold">
+                  Pagamento 100% seguro via Hotmart
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-gold/10 text-center">
+                <p className="text-[11px] md:text-xs text-plum font-bold font-body leading-relaxed max-w-[280px] mx-auto italic">
+                  “Após a compra pela Hotmart, crie sua conta com o mesmo e-mail utilizado no pagamento. Seu acesso será liberado automaticamente.”
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -447,71 +461,87 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
 
       {/* ─── FAQ Section ─── */}
-      <section className="py-16 md:py-20 px-6 bg-white/20">
-        <div className="max-w-3xl mx-auto space-y-12">
+      <section className="py-24 md:py-32 px-6 bg-white/20">
+        <div className="max-w-4xl mx-auto space-y-16">
           <div className="text-center space-y-4">
-             <HelpCircle className="w-10 h-10 text-gold mx-auto mb-4" />
-             <h2 className="font-heading text-3xl text-midnight">Dúvidas Frequentes</h2>
+             <HelpCircle className="w-12 h-12 text-gold mx-auto mb-4" />
+             <h2 className="font-heading text-4xl md:text-5xl text-midnight">Dúvidas Frequentes</h2>
           </div>
           
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1" className="border-gold/30">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Por onde eu começo?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            <AccordionItem value="item-access" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Como meu acesso é liberado?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
+                Após a compra pela Hotmart, crie sua conta na plataforma usando o mesmo e-mail utilizado no pagamento. Assim que o sistema identificar a compra aprovada, seu acesso será liberado automaticamente.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-1" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Por onde eu começo?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
                 Você começa pela Chave 1: O Louco. A Escola Digital guia sua jornada passo a passo, com lições curtas, quizzes e progresso salvo para quem possui o programa completo.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-2" className="border-gold/30">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">O que são as 78 Chaves?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
+            
+            <AccordionItem value="item-2" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">O que são as 78 Chaves?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
                 As 78 Chaves representam os 78 arcanos do tarô. Cada arcano estudado e concluído se torna uma chave conquistada na sua jornada.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-3" className="border-gold/30">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Preciso saber tarô antes?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
+
+            <AccordionItem value="item-3" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Preciso saber tarô antes?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
                 Não. O Tarô 78 Chaves foi criado para conduzir iniciantes desde a base, com uma jornada progressiva e organizada.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-4" className="border-gold/30">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">A Escola Digital usa qual baralho?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
+
+            <AccordionItem value="item-4" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">A Escola Digital usa qual baralho?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
                 O estudo é baseado no Rider-Waite-Smith, referência clássica para o aprendizado simbólico do tarô.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-5" className="border-gold/30">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">O que está incluso?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
+
+            <AccordionItem value="item-5" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">O que está incluso?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
                 Lições guiadas, quizzes, progresso por Chaves, trilhas de estudo, Arcanos Maiores, Arcanos Menores, práticas e conteúdos progressivos.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-6" className="border-gold/30">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Tarô é profissão regulamentada?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
+
+            <AccordionItem value="item-6" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Tarô é profissão regulamentada?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
                 No Brasil, a leitura de oráculos pode ser reconhecida como ocupação, mas não exige diploma obrigatório nem conselho profissional. A diferença está no método, na ética e na qualidade do atendimento.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-7" className="border-gold/30">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Tem certificado?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
+
+            <AccordionItem value="item-7" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Tem certificado?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
                 Neste momento, o foco da plataforma é formação progressiva e domínio dos 78 arcanos. Caso haja certificado no futuro, ele será informado oficialmente dentro da sua área de membros.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-8" className="border-gold/30">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Como funciona o acesso?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
+
+            <AccordionItem value="item-8" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Como funciona o acesso?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
                 Você cria sua conta com e-mail e senha. Seu progresso fica salvo para continuar sua jornada de onde parou.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-9" className="border-gold/30">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Posso cancelar?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
+
+            <AccordionItem value="item-9" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Posso cancelar?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
                 Se houver assinatura ativa, o cancelamento deve ser feito pela plataforma onde a compra foi realizada, conforme as regras do plano contratado.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-10" className="border-gold/30">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Tenho suporte?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
+
+            <AccordionItem value="item-10" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Tenho suporte?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
                 Sim. Para dúvidas de acesso, pagamento ou conta, entre em contato pelo e-mail {businessInfo.supportEmail}.
               </AccordionContent>
             </AccordionItem>
