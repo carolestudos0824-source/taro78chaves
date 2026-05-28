@@ -61,12 +61,13 @@ const AdminHotmart = () => {
   useEffect(() => { load(); }, []);
 
   const stats = {
-    approved: entitlements.filter(e => e.access_status === "active").length,
+    approved: entitlements.filter(e => e.status === "approved" || e.status === "complete").length,
     activeAccess: entitlements.filter(e => e.access_status === "active").length,
     pending: entitlements.filter(e => !e.user_id && e.access_status === "active").length,
-    refunded: events.filter(e => (e.status === "refunded" || e.event_type === "PURCHASE_REFUNDED")).length,
+    refunded: entitlements.filter(e => e.status === "refunded" || e.status === "chargeback").length,
     errors: events.filter(e => e.processing_status === "error" || e.event_type === "error").length,
   };
+
 
   const filteredEntitlements = entitlements.filter(e => {
     const matchesSearch = e.buyer_email.toLowerCase().includes(search.toLowerCase()) || 
@@ -97,12 +98,14 @@ const AdminHotmart = () => {
         subtitle="Gestão operacional de acessos via Hotmart. Vendas e pagamentos reais devem ser conferidos no painel da Hotmart." 
       />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <KPICard icon={<ShoppingBag />} label="Compras Aprovadas" value={stats.approved} description="Total de transações ativas" />
-        <KPICard icon={<Users />} label="Acessos Ativos" value={stats.activeAccess} accent="text-primary" description="Alunas com acesso liberado" />
-        <KPICard icon={<Clock />} label="Aguardando Cadastro" value={stats.pending} accent="text-amber-600" description="Pagou mas não criou conta" />
-        <KPICard icon={<AlertTriangle />} label="Alertas/Erros" value={stats.errors} accent="text-red-600" description="Eventos com falha técnica" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <KPICard icon={<ShoppingBag />} label="Compras Aprovadas" value={stats.approved} description="Transações confirmadas" />
+        <KPICard icon={<Users />} label="Acessos Ativos Hotmart" value={stats.activeAccess} accent="text-emerald-600" description="Acesso liberado no app" />
+        <KPICard icon={<Clock />} label="Aguardando Cadastro" value={stats.pending} accent="text-amber-600" description="Pendente criação de conta" />
+        <KPICard icon={<AlertTriangle />} label="Reembolsos/Chargebacks" value={stats.refunded} accent="text-red-600" description="Vendas canceladas" />
+        <KPICard icon={<RefreshCw />} label="Eventos com Erro" value={stats.errors} accent="text-red-600" description="Falhas de processamento" />
       </div>
+
 
       <div className="bg-white/60 p-6 rounded-[2.5rem] border-2 border-[#C8A66A]/20 backdrop-blur-md shadow-sm space-y-4">
         <div className="flex flex-wrap gap-4">
