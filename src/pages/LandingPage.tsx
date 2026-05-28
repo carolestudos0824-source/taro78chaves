@@ -424,6 +424,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                     "Quizzes e exercícios",
                     "Progresso salvo",
                     "Área de membros individual",
+                    "Certificado digital de conclusão",
                     "Acesso online por 12 meses",
                     "Estudo no seu ritmo pelo celular, tablet ou computador"
                   ].map((item, idx) => (
