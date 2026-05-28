@@ -61,6 +61,13 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       source: "landing",
       page_path: window.location.pathname
     });
+
+    if (checkoutUrl) {
+      trackEvent("click_checkout", { plan, source: "landing" });
+      window.location.href = appendUTMsToUrl(checkoutUrl);
+      return;
+    }
+
     if (user) navigate(appendUTMsToUrl("/premium"));
     else navigate(appendUTMsToUrl(`/auth?redirect=/premium&plan=${plan}`));
   };
@@ -104,7 +111,8 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
           <button
             onClick={() => {
               trackEvent("landing_login_click", { source: "landing" });
-              handleStart("header", "Entrar");
+              if (user) navigate("/app");
+              else navigate("/auth?mode=login");
             }}
             className="inline-flex items-center font-heading text-xs tracking-[0.2em] uppercase text-plum hover:text-gold-dark transition-all hover:translate-x-1 font-bold"
           >
@@ -248,7 +256,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
           <div className="relative">
             <div className="flex overflow-x-auto gap-4 md:gap-6 pb-8 px-6 md:px-8 scrollbar-elegant snap-x items-end min-h-[340px] justify-start md:justify-center">
               {[
-                { id: 0, img: imgLouco, name: "O Louco", badge: "Grátis" },
+                { id: 0, img: imgLouco, name: "O Louco", badge: "Início" },
                 { id: 1, img: imgMago, name: "O Mago", badge: "Desbloqueável" },
                 { id: 2, img: imgSacerdotisa, name: "A Sacerdotisa", badge: "Premium" },
                 { id: 3, img: imgImperatriz, name: "A Imperatriz", badge: "Premium" },
@@ -260,7 +268,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                   <div className="relative">
                     <div className="w-32 h-52 md:w-40 md:h-60 rounded-2xl overflow-hidden shadow-xl border-4 border-white transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-2xl group-hover:border-gold/20">
                       <img src={card.img} alt={card.name} className="w-full h-full object-cover" />
-                      <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[8px] font-heading tracking-widest uppercase shadow-lg z-20 ${ card.badge === "Grátis" ? "bg-success text-white" : "bg-gold text-white" }`}>
+                      <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[8px] font-heading tracking-widest uppercase shadow-lg z-20 ${ card.badge === "Início" ? "bg-plum text-white" : "bg-gold text-white" }`}>
                         {card.badge}
                       </div>
                     </div>
@@ -280,7 +288,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
           <div className="mt-8 text-center space-y-8">
             <p className="text-sm font-body text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Comece pelo Louco grátis. Vá bem na lição e <span className="text-plum font-bold">desbloqueie O Mago</span>. Depois, continue sua jornada completa pelos 78 arcanos.
+              Inicie sua jornada com o Louco e <span className="text-plum font-bold">desbloqueie O Mago</span>. Depois, continue sua travessia completa pelos 78 arcanos.
             </p>
             <Button 
               onClick={() => handleStart("journey")} 
@@ -353,14 +361,14 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
           <div className="text-center space-y-8">
             <p className="text-lg font-body text-midnight/80 italic">
-              Depois de experimentar o método, continue sua jornada pelos 78 arcanos.
+              Garanta seu acesso e percorra os 78 arcanos agora.
             </p>
             <Button 
               onClick={() => handleStart("unlock")} 
               variant="outline"
               className="px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-widest text-[11px] uppercase transition-all"
             >
-              COMEÇAR PELO LOUCO — GRÁTIS →
+              {checkoutUrl ? "GARANTIR MEU ACESSO →" : "ACESSAR O PROGRAMA →"}
             </Button>
           </div>
         </div>
@@ -391,7 +399,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 onClick={() => handleSubscribe("monthly")} 
                 className="w-full py-7 rounded-full border border-gold/40 text-[#FAF5EF] bg-transparent hover:bg-gold/10 hover:border-gold font-heading tracking-[0.2em] text-[11px] uppercase transition-all shadow-lg"
               >
-                ASSINAR MENSAL
+                {checkoutUrl ? "QUERO ESTE PLANO" : "ASSINAR MENSAL"}
               </Button>
             </div>
 
@@ -415,7 +423,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               </div>
               <p className="text-sm text-midnight/80 flex-1 font-body leading-relaxed">Acesso total à jornada completa pelos 78 arcanos por um ano inteiro, com estudo guiado, quizzes e progresso salvo.</p>
               <Button onClick={() => handleSubscribe("annual")} className="btn-premium w-full py-8 text-sm shadow-xl hover:scale-[1.02] transition-transform">
-                COMEÇAR A JORNADA COMPLETA →
+                {checkoutUrl ? "GARANTIR ACESSO ANUAL →" : "COMEÇAR A JORNADA COMPLETA →"}
               </Button>
             </div>
           </div>
@@ -435,7 +443,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             <AccordionItem value="item-1" className="border-gold/30">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Por onde eu começo?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
-                Você começa pela Chave 1: O Louco. O app guia sua jornada passo a passo, com lições curtas, quizzes e progresso salvo.
+                Você começa pela Chave 1: O Louco. O app guia sua jornada passo a passo, com lições curtas, quizzes e progresso salvo para quem possui o programa completo.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2" className="border-gold/30">
