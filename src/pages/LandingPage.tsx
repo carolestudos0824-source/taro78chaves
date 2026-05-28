@@ -144,7 +144,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
               <div className="space-y-3 md:space-y-6">
                 <h1 className="font-heading text-2xl md:text-5xl lg:text-7xl leading-[1.1] md:leading-[1.05] tracking-tight text-plum normal-case">
-                  No app Tarô 78 Chaves, o tarô deixa de ser imagem e se torna <span className="italic">presença.</span>
+                  No Tarô 78 Chaves, o Tarô deixa de ser imagem e se torna <span className="italic">presença.</span>
                 </h1>
                 
                 <p className="font-accent text-base md:text-2xl lg:text-3xl text-plum/90 font-bold italic leading-relaxed">
@@ -458,7 +458,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             <AccordionItem value="item-1" className="border-gold/30">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Por onde eu começo?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
-                Você começa pela Chave 1: O Louco. O app guia sua jornada passo a passo, com lições curtas, quizzes e progresso salvo para quem possui o programa completo.
+                Você começa pela Chave 1: O Louco. A Escola Digital guia sua jornada passo a passo, com lições curtas, quizzes e progresso salvo para quem possui o programa completo.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2" className="border-gold/30">
@@ -474,7 +474,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4" className="border-gold/30">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">O app usa qual baralho?</AccordionTrigger>
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">A Escola Digital usa qual baralho?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
                 O estudo é baseado no Rider-Waite-Smith, referência clássica para o aprendizado simbólico do tarô.
               </AccordionContent>
@@ -494,7 +494,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             <AccordionItem value="item-7" className="border-gold/30">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Tem certificado?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
-                Neste momento, o foco do app é formação progressiva e domínio dos 78 arcanos. Caso haja certificado no futuro, ele será informado oficialmente dentro do app.
+                Neste momento, o foco da plataforma é formação progressiva e domínio dos 78 arcanos. Caso haja certificado no futuro, ele será informado oficialmente dentro da sua área de membros.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-8" className="border-gold/30">
@@ -546,7 +546,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             </div>
           </div>
           <p className="font-heading text-xl md:text-2xl text-ivory italic max-w-md drop-shadow-sm opacity-90">
-            "No app Tarô 78 Chaves, o tarô deixa de ser imagem e se torna presença."
+            "No Tarô 78 Chaves, o Tarô deixa de ser imagem e se torna presença."
           </p>
         </div>
 

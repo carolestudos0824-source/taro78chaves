@@ -4,10 +4,9 @@ import { businessInfo } from "@/config/business";
 const PrivacyPage = () => (
   <LegalLayout title="Política de Privacidade">
     <p>
-      Esta Política de Privacidade descreve como o aplicativo <strong>{businessInfo.productName}</strong>{" "}
-      (“o App”, “nós”) coleta, usa, armazena e protege informações pessoais dos usuários,
-      em conformidade com a Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018) e
-      com as políticas da Google Play Store.
+      Esta Política de Privacidade descreve como a plataforma <strong>{businessInfo.productName}</strong>{" "}
+      (“a plataforma”, “nós”) coleta, usa, armazena e protege informações pessoais dos usuários,
+      em conformidade com a Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018).
     </p>
 
     <h2>1. Quem somos</h2>
@@ -22,7 +21,7 @@ const PrivacyPage = () => (
       <li><strong>Cadastro:</strong> nome de exibição e e-mail.</li>
       <li><strong>Autenticação:</strong> credenciais geridas pelo nosso provedor de backend.</li>
       <li><strong>Progresso de estudo:</strong> lições concluídas, XP, conquistas, respostas de quizzes.</li>
-      <li><strong>Uso do app:</strong> eventos anônimos de navegação e interação.</li>
+      <li><strong>Uso da plataforma:</strong> eventos anônimos de navegação e interação.</li>
       <li><strong>Analytics:</strong> métricas agregadas via Google Analytics 4 (GA4).</li>
       <li><strong>Acesso premium:</strong> status, plano e validade.</li>
     </ul>
@@ -79,13 +78,13 @@ const PrivacyPage = () => (
 
     <h2>9. Crianças</h2>
     <p>
-      O App não é direcionado a menores de 13 anos. Se identificarmos uma conta dessa
+      A plataforma não é direcionado a menores de 13 anos. Se identificarmos uma conta dessa
       faixa etária, ela será excluída.
     </p>
 
     <h2>10. Alterações</h2>
     <p>
-      Esta política pode ser atualizada. Mudanças relevantes serão comunicadas no app
+      Esta política pode ser atualizada. Mudanças relevantes serão comunicadas na plataforma
       ou por e-mail.
     </p>
 
