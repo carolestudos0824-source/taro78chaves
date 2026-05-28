@@ -66,6 +66,8 @@ export function buildEarnedCertificate(
   cert: CertificateContent,
   earnedAt: string,
   studentName: string,
+  validationCode?: string,
+  workloadHours?: number,
 ): EarnedCertificateView {
   return {
     id: cert.id,
@@ -77,5 +79,7 @@ export function buildEarnedCertificate(
     accentColor: cert.accentColor ?? DEFAULT_ACCENT,
     earnedAt,
     studentName,
+    validationCode,
+    workloadHours,
   };
 }
