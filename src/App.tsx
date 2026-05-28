@@ -30,6 +30,7 @@ const FundamentosLessonPage = lazy(() => import("./pages/FundamentosLessonPage.t
 const FeedbackPage = lazy(() => import("./pages/FeedbackPage.tsx"));
 const BetaInvitePage = lazy(() => import("./pages/BetaInvitePage.tsx"));
 
+const AcessoComprado = lazy(() => import("./pages/AcessoComprado.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 const JourneyJournalPage = lazy(() => import("./pages/JourneyJournalPage.tsx"));
 
@@ -164,6 +165,8 @@ const AppRoutes = () => {
       <Routes>
         {/* Rotas Públicas */}
         <Route path="/" element={<LandingPage />} />
+        <Route path="/venda" element={<LandingPage isSalesPage={true} />} />
+        <Route path="/acesso-comprado" element={<AcessoComprado />} />
         <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/privacidade" element={<PrivacyPage />} />

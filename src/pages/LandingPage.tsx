@@ -30,17 +30,27 @@ import { ArcanaPresenceHero } from "@/components/ArcanaPresenceHero";
 import brandIcon from "@/assets/brand-icon.png";
 import brandLogo from "@/assets/brand-logo.png";
 
-const LandingPage = () => {
+import { checkoutUrl } from "@/config/checkout";
+import { Helmet } from "react-helmet";
+
+const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
   const navigate = useNavigate();
   const { user } = useAuth();
   
-  const handleStart = (ctaType: string = "general", label: string = "Começar pelo Louco — Grátis") => {
+  const handleStart = (ctaType: string = "general", label: string = "Acessar o programa") => {
     trackEvent(`landing_cta_${ctaType}_start_click`, {
       cta_text: label,
-      source: "landing",
+      source: isSalesPage ? "sales_page" : "landing",
       page_path: window.location.pathname,
       page_location: window.location.href
     });
+
+    if (checkoutUrl) {
+      trackEvent("click_checkout", { source: isSalesPage ? "sales_page" : "landing" });
+      window.location.href = appendUTMsToUrl(checkoutUrl);
+      return;
+    }
+
     const dest = user ? "/app" : "/auth";
     navigate(appendUTMsToUrl(dest));
   };
@@ -57,6 +67,19 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-parchment text-midnight selection:bg-secondary selection:text-white relative w-full overflow-x-hidden">
+      {isSalesPage && (
+        <Helmet>
+          <title>Tarô 78 Chaves | Escola Digital de Tarô</title>
+          <meta name="description" content="Aprenda Tarô com profundidade, simbologia e prática em uma escola digital guiada pelos 78 arcanos. Estude no seu ritmo e desenvolva sua leitura com consciência." />
+          <link rel="canonical" href="https://www.taro78chaves.com.br/venda" />
+        </Helmet>
+      )}
+      {!isSalesPage && (
+        <Helmet>
+          <title>Tarô 78 Chaves — Curso de Tarô pelos 78 Arcanos</title>
+          <meta name="description" content="Aprenda Tarô com base no Rider-Waite-Smith: lições guiadas, quizzes e progresso pelas 78 Chaves, do Louco ao Mundo." />
+        </Helmet>
+      )}
 
       {/* ─── Top Brand Header ─── */}
       <header className="sticky top-0 z-50 px-6 py-4 md:py-6 bg-parchment/95 backdrop-blur-md border-b border-gold/10 w-full">
@@ -143,14 +166,14 @@ const LandingPage = () => {
                   className="w-full sm:w-auto min-h-[56px] md:min-h-[64px] px-8 md:px-10 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-[11px] md:text-base tracking-[0.2em] md:tracking-[0.25em] uppercase border-none shadow-[0_15px_40px_-10px_rgba(91,31,61,0.6)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-4 group/btn"
                 >
                   <Key className="w-5 h-5 group-hover/btn:rotate-12 transition-transform text-gold" />
-                  COMEÇAR — GRÁTIS
+                  {checkoutUrl ? "QUERO ACESSAR O TARÔ 78 CHAVES" : "ACESSAR O PROGRAMA"}
                 </Button>
                 <div className="flex flex-col items-center lg:items-start gap-0.5 mt-2 md:mt-1">
                   <p className="text-[11px] md:text-base font-heading tracking-[0.1em] text-plum/80 font-bold uppercase">
-                    ✦ Sem cartão de crédito para começar.
+                    ✦ Garanta seu acesso completo agora.
                   </p>
                   <p className="text-[10px] md:text-xs font-body text-plum/50 italic">
-                    Leva menos de 1 minuto.
+                    Acesso imediato após aprovação.
                   </p>
                 </div>
                 <button 
@@ -264,7 +287,7 @@ const LandingPage = () => {
               variant="outline"
               className="px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-widest text-[11px] uppercase transition-all shadow-sm"
             >
-              COMEÇAR PELO LOUCO — GRÁTIS →
+              {checkoutUrl ? "ENTRAR PARA O TARO 78 CHAVES →" : "ACESSAR O PROGRAMA →"}
             </Button>
           </div>
         </div>
