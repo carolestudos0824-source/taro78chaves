@@ -90,6 +90,7 @@ const AdminUsers = () => {
     const until = u.premium_until ? new Date(u.premium_until) : null;
     if (until && until <= now) return { label: "Expirado", variant: "destructive" as const, key: "expired" as const };
     if (u.premium_source === "gift" || u.premium_source === "admin") return { label: "Presenteado", variant: "secondary" as const, key: "gift" as const };
+    if (u.premium_source === "hotmart") return { label: "Hotmart", variant: "primary" as const, key: "premium" as const };
     return { label: "Assinante", variant: "primary" as const, key: "premium" as const };
   };
 
@@ -342,6 +343,12 @@ const UserDetailDialog = ({ userId, onClose, onChanged }: { userId: string | nul
 
   const run = async (action: string, body: Record<string, unknown> = {}, successMsg = "Atualizado") => {
     if (!userId) return;
+
+    if (data?.profile?.premium_source === 'hotmart') {
+      const confirmed = window.confirm("Esta aluna possui acesso vinculado à Hotmart. Alterações manuais podem sobrescrever a validade do acesso. Confirme apenas se for suporte técnico.");
+      if (!confirmed) return;
+    }
+
     setBusy(action);
     const { data: res, error } = await supabase.functions.invoke("admin-manage", {
       body: { action, target_user_id: userId, ...body },
