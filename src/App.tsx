@@ -12,6 +12,7 @@ import { Header } from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import SessionInitializer from "@/components/SessionInitializer";
 import { initGA, trackPageView, useUTMTracker } from "@/lib/analytics";
+import { useProgress } from "@/hooks/use-progress";
 
 // Eager: critical path
 import LandingPage from "./pages/LandingPage.tsx";
@@ -147,9 +148,14 @@ const AnalyticsTracker = () => {
 };
 
 const AppShell = () => {
+  const { progress } = useProgress();
   return (
     <div className="flex flex-col min-h-screen bg-[#FDFBF7]">
-      <Header streak={0} xp={0} level={1} />
+      <Header 
+        streak={progress.streak} 
+        xp={progress.xp} 
+        level={progress.level} 
+      />
       <main className="flex-1 pb-24">
         <Suspense fallback={<MinimalLoader />}>
           <Outlet />
