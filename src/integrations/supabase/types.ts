@@ -92,6 +92,51 @@ export type Database = {
         }
         Relationships: []
       }
+      certificates: {
+        Row: {
+          certificate_url: string | null
+          completion_percentage: number | null
+          course_name: string | null
+          created_at: string
+          id: string
+          issued_at: string | null
+          status: string | null
+          student_name: string
+          updated_at: string
+          user_id: string
+          validation_code: string
+          workload_hours: number | null
+        }
+        Insert: {
+          certificate_url?: string | null
+          completion_percentage?: number | null
+          course_name?: string | null
+          created_at?: string
+          id?: string
+          issued_at?: string | null
+          status?: string | null
+          student_name: string
+          updated_at?: string
+          user_id: string
+          validation_code: string
+          workload_hours?: number | null
+        }
+        Update: {
+          certificate_url?: string | null
+          completion_percentage?: number | null
+          course_name?: string | null
+          created_at?: string
+          id?: string
+          issued_at?: string | null
+          status?: string | null
+          student_name?: string
+          updated_at?: string
+          user_id?: string
+          validation_code?: string
+          workload_hours?: number | null
+        }
+        Relationships: []
+      }
       cms_arcanos: {
         Row: {
           amor: string | null

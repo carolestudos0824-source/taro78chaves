@@ -16,15 +16,22 @@ import type { CertificateContent } from "@/lib/content/certificates-types";
 
 const COMPOSITE_REQUIREMENTS: Record<string, string[]> = {
   "curso-completo": [
+    "fundamentos",
+    "leitura-simbolica",
     "arcanos-maiores",
-    "naipe-copas",
-    "naipe-paus",
-    "naipe-espadas",
-    "naipe-ouros",
+    "arquitetura-menores",
+    "copas",
+    "paus",
+    "espadas",
+    "ouros",
+    "cartas-corte",
     "combinacoes",
     "tiragens",
-    "amor",
+    "espiritualidade",
+    "mesa-taro",
+    "leitura-aplicada",
     "pratica",
+    "trabalhar-taro"
   ],
 };
 
@@ -49,6 +56,8 @@ export interface EarnedCertificateView {
   accentColor: string;
   earnedAt: string;
   studentName: string;
+  validationCode?: string;
+  workloadHours?: number;
 }
 
 const DEFAULT_ACCENT = "hsl(36 45% 58%)";
@@ -57,6 +66,8 @@ export function buildEarnedCertificate(
   cert: CertificateContent,
   earnedAt: string,
   studentName: string,
+  validationCode?: string,
+  workloadHours?: number,
 ): EarnedCertificateView {
   return {
     id: cert.id,
@@ -68,5 +79,7 @@ export function buildEarnedCertificate(
     accentColor: cert.accentColor ?? DEFAULT_ACCENT,
     earnedAt,
     studentName,
+    validationCode,
+    workloadHours,
   };
 }

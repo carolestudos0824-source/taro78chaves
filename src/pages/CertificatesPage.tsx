@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Download, X, Lock } from "lucide-react";
+import { ArrowLeft, Download, X, Lock, CheckCircle, Sparkles } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { useCertificatesContent } from "@/hooks/use-content";
 import {
@@ -9,26 +9,90 @@ import {
   type EarnedCertificateView,
 } from "@/lib/certificates/emission";
 import CertificateCard, { FullCertificate } from "@/components/CertificateCard";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
 const CertificatesPage = () => {
   const navigate = useNavigate();
   const { progress } = useProgress();
-  const { data: certsData } = useCertificatesContent();
+  const { data: certsData, isLoading: contentLoading } = useCertificatesContent();
   const [viewing, setViewing] = useState<EarnedCertificateView | null>(null);
+  const [dbCertificates, setDbCertificates] = useState<Record<string, any>>({});
+  const [issuing, setIssuing] = useState<string | null>(null);
 
   const studentName = progress.studentName || "Estudante";
   const allCerts = certsData?.items ?? [];
 
-  const earned: EarnedCertificateView[] = allCerts
-    .filter((c) => isCertificateEarned(c, progress.completedModules))
-    .map((c) =>
-      buildEarnedCertificate(
-        c,
-        progress.certificatesEarned?.[c.id] || new Date().toISOString(),
-        studentName,
-      ),
-    );
+  // Fetch issued certificates from database
+  useEffect(() => {
+    const fetchIssued = async () => {
+      const { data, error } = await supabase
+        .from("certificates")
+        .select("*")
+        .eq("status", "issued");
+      
+      if (data) {
+        const map = data.reduce((acc: any, cert: any) => {
+          acc[cert.course_name] = cert;
+          return acc;
+        }, {});
+        setDbCertificates(map);
+      }
+    };
+    fetchIssued();
+  }, []);
 
+  const handleIssue = async (cert: any) => {
+    setIssuing(cert.id);
+    try {
+      const { data: userData } = await supabase.auth.getUser();
+      if (!userData.user) throw new Error("Usuário não autenticado");
+
+      // Check if already exists
+      const { data: existing } = await supabase
+        .from("certificates")
+        .select("*")
+        .eq("user_id", userData.user.id)
+        .eq("course_name", cert.title)
+        .maybeSingle();
+
+      if (existing) {
+        setDbCertificates(prev => ({ ...prev, [cert.title]: existing }));
+        setViewing(buildEarnedCertificate(cert, existing.issued_at, existing.student_name, existing.validation_code, existing.workload_hours));
+        return;
+      }
+
+      const validationCode = `T78-${Math.random().toString(36).substring(2, 6).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
+      
+      const { data: newCert, error } = await supabase
+        .from("certificates")
+        .insert({
+          user_id: userData.user.id,
+          student_name: studentName,
+          course_name: cert.title,
+          workload_hours: 40,
+          validation_code: validationCode,
+          completion_percentage: 100,
+          status: 'issued'
+        })
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      setDbCertificates(prev => ({ ...prev, [cert.title]: newCert }));
+      setViewing(buildEarnedCertificate(cert, newCert.issued_at, newCert.student_name, newCert.validation_code, newCert.workload_hours));
+      toast.success("Certificado emitido com sucesso!");
+    } catch (err) {
+      console.error("Erro ao emitir certificado:", err);
+      toast.error("Erro ao emitir certificado. Tente novamente.");
+    } finally {
+      setIssuing(null);
+    }
+  };
+
+  const earned = allCerts.filter((c) => isCertificateEarned(c, progress.completedModules));
   const locked = allCerts.filter((c) => !isCertificateEarned(c, progress.completedModules));
 
   return (
@@ -71,10 +135,12 @@ const CertificatesPage = () => {
                         .date { font-size: 10px; color: rgba(40,35,50,0.35); }
                         .top-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: rgba(180,155,100,0.60); margin-bottom: 8px; }
                         .top-type { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: rgba(100,60,70,0.50); margin-bottom: 24px; }
+                        .footer { font-size: 8px; color: rgba(40,35,50,0.3); max-width: 400px; margin-top: 40px; line-height: 1.4; }
+                        .validation { font-size: 9px; color: #8a7a50; margin-top: 20px; font-weight: bold; }
                         @media print { body { background: white; } .cert { box-shadow: none; } }
                       </style></head><body>
                       <div class="cert">
-                        <div class="top-label">Arcano Vivo</div>
+                        <div class="top-label">Escola Digital</div>
                         <div class="top-type">Certificado de Conclusão</div>
                         <div class="line"></div>
                         <div class="icon">${viewing.icon}</div>
@@ -85,7 +151,17 @@ const CertificatesPage = () => {
                         <div class="heading name">${viewing.studentName}</div>
                         <div class="desc">${viewing.description}</div>
                         <div class="date">${new Date(viewing.earnedAt).toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" })}</div>
-                        <div class="line" style="margin-top:24px"></div>
+                        
+                        ${viewing.validationCode ? `
+                          <div class="validation">
+                            CÓDIGO DE VALIDAÇÃO: ${viewing.validationCode}<br/>
+                            Verifique em: ${window.location.origin}/validar-certificado
+                          </div>
+                        ` : ''}
+
+                        <div class="footer">
+                          Certificado digital de conclusão emitido pela Lua de Kaya. Este certificado refere-se à conclusão de curso livre/formação livre e não equivale a diploma técnico, superior ou reconhecimento oficial do MEC.
+                        </div>
                         <div style="color:rgba(180,155,100,0.35);font-size:14px;margin-top:12px">⟡</div>
                       </div>
                       <script>setTimeout(()=>window.print(),500)<\/script>
@@ -124,7 +200,7 @@ const CertificatesPage = () => {
 
           <div className="text-center">
             <div className="text-[10px] tracking-[0.4em] uppercase font-body mb-2" style={{ color: "hsl(36 45% 58% / 0.60)" }}>
-              Arcano Vivo
+              Escola Digital
             </div>
             <h1
               className="font-heading text-2xl tracking-wide"
@@ -137,7 +213,7 @@ const CertificatesPage = () => {
               Certificados
             </h1>
             <p className="font-accent text-sm italic mt-1" style={{ color: "hsl(230 20% 15% / 0.50)" }}>
-              Suas conquistas na formação em Tarô
+              Suas conquistas na Escola Digital Tarô 78 Chaves
             </p>
           </div>
         </div>
@@ -153,15 +229,62 @@ const CertificatesPage = () => {
             <h2 className="font-heading text-sm tracking-wide text-center mb-4" style={{ color: "hsl(340 42% 22%)" }}>
               Conquistados ({earned.length})
             </h2>
-            <div className="space-y-3">
-              {earned.map(cert => (
-                <CertificateCard
-                  key={cert.id}
-                  certificate={cert}
-                  compact
-                  onView={() => setViewing(cert)}
-                />
-              ))}
+            <div className="space-y-4">
+              {earned.map(cert => {
+                const isIssued = !!dbCertificates[cert.title];
+                return (
+                  <div key={cert.id} className="space-y-2">
+                    <CertificateCard
+                      certificate={isIssued 
+                        ? buildEarnedCertificate(cert, dbCertificates[cert.title].issued_at, dbCertificates[cert.title].student_name, dbCertificates[cert.title].validation_code, dbCertificates[cert.title].workload_hours)
+                        : buildEarnedCertificate(cert, new Date().toISOString(), studentName)
+                      }
+                      compact
+                      onView={() => {
+                        if (isIssued) {
+                          const issued = dbCertificates[cert.title];
+                          setViewing(buildEarnedCertificate(cert, issued.issued_at, issued.student_name, issued.validation_code, issued.workload_hours));
+                        }
+                      }}
+                    />
+                    {!isIssued && (
+                      <Button
+                        onClick={() => handleIssue(cert)}
+                        disabled={issuing === cert.id}
+                        className="w-full bg-plum hover:bg-plum/90 text-ivory rounded-xl py-6 flex items-center gap-2"
+                      >
+                        {issuing === cert.id ? "Emitindo..." : (
+                          <>
+                            <Sparkles className="w-4 h-4 text-gold" />
+                            Emitir Certificado
+                          </>
+                        )}
+                      </Button>
+                    )}
+                    {isIssued && (
+                      <div className="flex gap-2">
+                        <Button
+                          variant="outline"
+                          onClick={() => {
+                            const issued = dbCertificates[cert.title];
+                            setViewing(buildEarnedCertificate(cert, issued.issued_at, issued.student_name, issued.validation_code, issued.workload_hours));
+                          }}
+                          className="flex-1 border-gold/30 text-plum hover:bg-gold/5"
+                        >
+                          Visualizar
+                        </Button>
+                        <Button
+                          variant="outline"
+                          onClick={() => navigate(`/validar-certificado?codigo=${dbCertificates[cert.title].validation_code}`)}
+                          className="flex-1 border-gold/30 text-plum hover:bg-gold/5"
+                        >
+                          Validar Autenticidade
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
@@ -192,13 +315,16 @@ const CertificatesPage = () => {
                     }}>
                       <Lock className="w-5 h-5" style={{ color: "hsl(230 15% 30% / 0.30)" }} />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <div className="font-heading text-sm tracking-wide" style={{ color: "hsl(230 15% 30% / 0.40)" }}>
                         {cert.title}
                       </div>
                       <div className="font-accent text-xs italic" style={{ color: "hsl(230 15% 30% / 0.30)" }}>
                         {cert.subtitle}
                       </div>
+                      <p className="text-[10px] mt-2 font-body text-plum/60 font-bold uppercase tracking-widest">
+                        Seu certificado será liberado ao concluir a jornada obrigatória.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -208,7 +334,7 @@ const CertificatesPage = () => {
         )}
 
         {/* Empty state */}
-        {earned.length === 0 && (
+        {!contentLoading && earned.length === 0 && locked.length === 0 && (
           <div className="text-center py-12">
             <div className="text-4xl mb-4">📜</div>
             <h3 className="font-heading text-base tracking-wide mb-2" style={{ color: "hsl(340 42% 22%)" }}>
