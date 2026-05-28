@@ -2,17 +2,17 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { 
   ShoppingBag, Users, Clock, AlertTriangle, 
-  ExternalLink, Search, Filter, RefreshCw
+  Search, RefreshCw
 } from "lucide-react";
 import { 
   AdminSectionHeading, KPICard, AdminBadge, AdminTable, 
   AdminTableHeader, AdminTableHead, AdminTableRow, AdminTableCell 
 } from "./AdminComponents";
-import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-/** @ts-ignore - Temporary fix for colSpan type issue if TS isn't picking up the change yet */
+/** @ts-ignore - Temporary fix for colSpan type issue */
 const AdminTableCellFixed = AdminTableCell as any;
 
 interface HotmartEvent {
@@ -20,9 +20,10 @@ interface HotmartEvent {
   transaction_id: string;
   buyer_email: string;
   buyer_name: string;
-  status: string;
+  status?: string;
+  processing_status?: string;
   event_type: string;
-  created_at: string;
+  created_at?: string;
 }
 
 interface HotmartEntitlement {
@@ -36,7 +37,7 @@ interface HotmartEntitlement {
 }
 
 const AdminHotmart = () => {
-  const [events, setEvents] = useState<HotmartEvent[]>([]);
+  const [events, setEvents] = useState<any[]>([]);
   const [entitlements, setEntitlements] = useState<HotmartEntitlement[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -145,26 +146,26 @@ const AdminHotmart = () => {
             ) : (
               filteredEntitlements.map(e => (
                 <AdminTableRow key={e.id}>
-                  <AdminTableCell>
+                  <AdminTableCellFixed>
                     <p className="text-[#5B1F3D] font-black leading-tight">{e.buyer_email}</p>
-                  </AdminTableCell>
-                  <AdminTableCell className="text-center font-mono text-xs">{e.transaction_id}</AdminTableCell>
-                  <AdminTableCell className="text-center">
+                  </AdminTableCellFixed>
+                  <AdminTableCellFixed className="text-center font-mono text-xs">{e.transaction_id}</AdminTableCellFixed>
+                  <AdminTableCellFixed className="text-center">
                     {getStatusBadge(e.access_status, e.user_id)}
-                  </AdminTableCell>
-                  <AdminTableCell className="text-center">
+                  </AdminTableCellFixed>
+                  <AdminTableCellFixed className="text-center">
                     {e.user_id ? (
                       <span className="text-xs font-body font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">Vinculado</span>
                     ) : (
                       <span className="text-xs font-body font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded">Pendente</span>
                     )}
-                  </AdminTableCell>
-                  <AdminTableCell className="text-center text-sm font-body font-bold">
+                  </AdminTableCellFixed>
+                  <AdminTableCellFixed className="text-center text-sm font-body font-bold">
                     {e.premium_until ? new Date(e.premium_until).toLocaleDateString("pt-BR") : "Vitalício"}
-                  </AdminTableCell>
-                  <AdminTableCell className="text-right text-xs text-muted-foreground">
+                  </AdminTableCellFixed>
+                  <AdminTableCellFixed className="text-right text-xs text-muted-foreground">
                     {e.updated_at ? new Date(e.updated_at).toLocaleString("pt-BR") : "—"}
-                  </AdminTableCell>
+                  </AdminTableCellFixed>
                 </AdminTableRow>
               ))
             )}

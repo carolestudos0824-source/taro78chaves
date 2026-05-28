@@ -13,17 +13,8 @@ import { Button } from "@/components/ui/button";
 /** @ts-ignore */
 const AdminTableCellFixed = AdminTableCell as any;
 
-interface Certificate {
-  id: string;
-  user_id: string;
-  course_name: string;
-  validation_code: string;
-  issued_at: string;
-  profiles?: any;
-}
-
 const AdminCertificates = () => {
-  const [certificates, setCertificates] = useState<Certificate[]>([]);
+  const [certificates, setCertificates] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
@@ -86,22 +77,22 @@ const AdminCertificates = () => {
           ) : (
             filtered.map(c => (
               <AdminTableRow key={c.id}>
-                <AdminTableCell>
+                <AdminTableCellFixed>
                   <p className="text-[#5B1F3D] font-black leading-tight">{c.profiles?.display_name || "Aluna"}</p>
-                </AdminTableCell>
-                <AdminTableCell className="text-center font-body font-bold text-sm text-[#5B1F3D]/80">
+                </AdminTableCellFixed>
+                <AdminTableCellFixed className="text-center font-body font-bold text-sm text-[#5B1F3D]/80">
                   {c.course_name}
-                </AdminTableCell>
-                <AdminTableCell className="text-center font-mono text-xs font-bold text-[#8B6A30]">
+                </AdminTableCellFixed>
+                <AdminTableCellFixed className="text-center font-mono text-xs font-bold text-[#8B6A30]">
                   {c.validation_code}
-                </AdminTableCell>
-                <AdminTableCell className="text-center text-sm font-body font-bold">
+                </AdminTableCellFixed>
+                <AdminTableCellFixed className="text-center text-sm font-body font-bold">
                   {new Date(c.issued_at).toLocaleDateString("pt-BR")}
-                </AdminTableCell>
-                <AdminTableCell className="text-center">
+                </AdminTableCellFixed>
+                <AdminTableCellFixed className="text-center">
                   <AdminBadge variant="success" icon={ShieldCheck}>Válido</AdminBadge>
-                </AdminTableCell>
-                <AdminTableCell className="text-right">
+                </AdminTableCellFixed>
+                <AdminTableCellFixed className="text-right">
                   <Button 
                     variant="ghost" 
                     size="sm" 
@@ -113,7 +104,7 @@ const AdminCertificates = () => {
                       Validar
                     </a>
                   </Button>
-                </AdminTableCell>
+                </AdminTableCellFixed>
               </AdminTableRow>
             ))
           )}
