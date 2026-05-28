@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
+import { HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes, Navigate, useLocation, Outlet } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -30,6 +31,7 @@ const FundamentosLessonPage = lazy(() => import("./pages/FundamentosLessonPage.t
 const FeedbackPage = lazy(() => import("./pages/FeedbackPage.tsx"));
 const BetaInvitePage = lazy(() => import("./pages/BetaInvitePage.tsx"));
 
+const AcessoComprado = lazy(() => import("./pages/AcessoComprado.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 const JourneyJournalPage = lazy(() => import("./pages/JourneyJournalPage.tsx"));
 
@@ -164,6 +166,8 @@ const AppRoutes = () => {
       <Routes>
         {/* Rotas Públicas */}
         <Route path="/" element={<LandingPage />} />
+        <Route path="/venda" element={<LandingPage isSalesPage={true} />} />
+        <Route path="/acesso-comprado" element={<AcessoComprado />} />
         <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/privacidade" element={<PrivacyPage />} />
@@ -234,19 +238,21 @@ const AppRoutes = () => {
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <HeaderProvider>
-        <FontSizeProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <BrowserRouter>
-              <AuthProvider>
-                <AppRoutes />
-              </AuthProvider>
-            </BrowserRouter>
-          </TooltipProvider>
-        </FontSizeProvider>
-      </HeaderProvider>
+      <HelmetProvider>
+        <HeaderProvider>
+          <FontSizeProvider>
+            <TooltipProvider>
+              <Toaster />
+              <Sonner />
+              <BrowserRouter>
+                <AuthProvider>
+                  <AppRoutes />
+                </AuthProvider>
+              </BrowserRouter>
+            </TooltipProvider>
+          </FontSizeProvider>
+        </HeaderProvider>
+      </HelmetProvider>
     </QueryClientProvider>
   );
 };

@@ -983,6 +983,117 @@ export type Database = {
           },
         ]
       }
+      hotmart_entitlements: {
+        Row: {
+          access_status: string | null
+          buyer_email: string
+          buyer_email_normalized: string
+          buyer_name: string | null
+          created_at: string | null
+          id: string
+          offer_code: string | null
+          premium_until: string | null
+          product_id: string | null
+          product_name: string | null
+          source: string | null
+          status: string | null
+          transaction_id: string | null
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          access_status?: string | null
+          buyer_email: string
+          buyer_email_normalized: string
+          buyer_name?: string | null
+          created_at?: string | null
+          id?: string
+          offer_code?: string | null
+          premium_until?: string | null
+          product_id?: string | null
+          product_name?: string | null
+          source?: string | null
+          status?: string | null
+          transaction_id?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          access_status?: string | null
+          buyer_email?: string
+          buyer_email_normalized?: string
+          buyer_name?: string | null
+          created_at?: string | null
+          id?: string
+          offer_code?: string | null
+          premium_until?: string | null
+          product_id?: string | null
+          product_name?: string | null
+          source?: string | null
+          status?: string | null
+          transaction_id?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      hotmart_events: {
+        Row: {
+          buyer_email: string | null
+          buyer_name: string | null
+          error_message: string | null
+          event_id: string | null
+          event_type: string | null
+          id: string
+          offer_code: string | null
+          processed: boolean | null
+          processed_at: string | null
+          processing_status: string | null
+          product_id: string | null
+          product_name: string | null
+          purchase_status: string | null
+          raw_payload: Json | null
+          received_at: string | null
+          transaction_id: string | null
+        }
+        Insert: {
+          buyer_email?: string | null
+          buyer_name?: string | null
+          error_message?: string | null
+          event_id?: string | null
+          event_type?: string | null
+          id?: string
+          offer_code?: string | null
+          processed?: boolean | null
+          processed_at?: string | null
+          processing_status?: string | null
+          product_id?: string | null
+          product_name?: string | null
+          purchase_status?: string | null
+          raw_payload?: Json | null
+          received_at?: string | null
+          transaction_id?: string | null
+        }
+        Update: {
+          buyer_email?: string | null
+          buyer_name?: string | null
+          error_message?: string | null
+          event_id?: string | null
+          event_type?: string | null
+          id?: string
+          offer_code?: string | null
+          processed?: boolean | null
+          processed_at?: string | null
+          processing_status?: string | null
+          product_id?: string | null
+          product_name?: string | null
+          purchase_status?: string | null
+          raw_payload?: Json | null
+          received_at?: string | null
+          transaction_id?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
