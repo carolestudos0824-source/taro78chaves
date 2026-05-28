@@ -68,7 +68,7 @@ const AdminOverview = () => {
     const expired = profiles.filter(p => p.premium_until && new Date(p.premium_until) <= now && !p.is_premium);
     const recentExpired = expired.filter(p => new Date(p.premium_until!) >= monthAgo);
 
-    const mrr = premium.length * (ANNUAL_PRICE / 12);
+    const mrr = (premium.length - gifted.length) * (ANNUAL_PRICE / 12);
     const conversionRate = profiles.length > 0 ? Math.round((premium.length / profiles.length) * 100) : 0;
 
     // Engagement
