@@ -105,12 +105,7 @@ const LessonPage = () => {
   // 1. Estado de Carregamento (Loading Ritualístico)
   if (!mounted || isLiteralRoute) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-          <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-[#C8A66A] blur-[120px]" />
-          <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-[#C8A66A] blur-[120px]" />
-        </div>
-
+      <div className="flex-1 flex items-center justify-center py-20 bg-transparent relative overflow-hidden">
         <div className="text-center space-y-6 relative z-10 animate-fade-in">
           <div className="relative">
             <div className="w-12 h-12 rounded-full border-2 border-[#C8A66A]/20 border-t-[#C8A66A] animate-spin mx-auto" />

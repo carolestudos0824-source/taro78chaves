@@ -12,6 +12,7 @@ import { Header } from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import SessionInitializer from "@/components/SessionInitializer";
 import { initGA, trackPageView, useUTMTracker } from "@/lib/analytics";
+import { useProgress } from "@/hooks/use-progress";
 
 // Eager: critical path
 import LandingPage from "./pages/LandingPage.tsx";
@@ -104,6 +105,12 @@ const LoadingFallback = () => (
   </div>
 );
 
+const MinimalLoader = () => (
+  <div className="flex-1 flex items-center justify-center py-20 bg-transparent">
+    <div className="w-8 h-8 rounded-full border-2 border-gold/20 border-t-gold animate-spin mx-auto" />
+  </div>
+);
+
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading } = useAuth();
   
@@ -141,11 +148,16 @@ const AnalyticsTracker = () => {
 };
 
 const AppShell = () => {
+  const { progress } = useProgress();
   return (
     <div className="flex flex-col min-h-screen bg-[#FDFBF7]">
-      <Header streak={0} xp={0} level={1} />
+      <Header 
+        streak={progress.streak} 
+        xp={progress.xp} 
+        level={progress.level} 
+      />
       <main className="flex-1 pb-24">
-        <Suspense fallback={<LoadingFallback />}>
+        <Suspense fallback={<MinimalLoader />}>
           <Outlet />
         </Suspense>
       </main>
@@ -156,21 +168,21 @@ const AppShell = () => {
 
 const AppRoutes = () => {
   return (
-    <>
+    <Suspense fallback={<LoadingFallback />}>
       <AnalyticsTracker />
       <Routes>
         {/* Rotas Públicas */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/venda" element={<LandingPage isSalesPage={true} />} />
-        <Route path="/acesso-comprado" element={<Suspense fallback={<LoadingFallback />}><AcessoComprado /></Suspense>} />
+        <Route path="/acesso-comprado" element={<AcessoComprado />} />
         <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
-        <Route path="/reset-password" element={<Suspense fallback={<LoadingFallback />}><ResetPasswordPage /></Suspense>} />
-        <Route path="/privacidade" element={<Suspense fallback={<LoadingFallback />}><PrivacyPage /></Suspense>} />
-        <Route path="/termos" element={<Suspense fallback={<LoadingFallback />}><TermsPage /></Suspense>} />
-        <Route path="/suporte" element={<Suspense fallback={<LoadingFallback />}><SupportPage /></Suspense>} />
-        <Route path="/excluir-conta" element={<Suspense fallback={<LoadingFallback />}><DeleteAccountPage /></Suspense>} />
-        <Route path="/apresentacao" element={<Suspense fallback={<LoadingFallback />}><PresentationPage /></Suspense>} />
-        <Route path="/validar-certificado" element={<Suspense fallback={<LoadingFallback />}><ValidateCertificatePage /></Suspense>} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
+        <Route path="/privacidade" element={<PrivacyPage />} />
+        <Route path="/termos" element={<TermsPage />} />
+        <Route path="/suporte" element={<SupportPage />} />
+        <Route path="/excluir-conta" element={<DeleteAccountPage />} />
+        <Route path="/apresentacao" element={<PresentationPage />} />
+        <Route path="/validar-certificado" element={<ValidateCertificatePage />} />
 
         {/* Rotas Protegidas dentro do AppShell */}
         <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
@@ -224,9 +236,9 @@ const AppRoutes = () => {
           <Route path="/admin" element={<AdminPage />} />
         </Route>
         
-        <Route path="*" element={<Suspense fallback={<LoadingFallback />}><NotFound /></Suspense>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+    </Suspense>
   );
 };
 
