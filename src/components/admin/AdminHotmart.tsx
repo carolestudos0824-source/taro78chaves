@@ -95,7 +95,7 @@ const AdminHotmart = () => {
     <div className="space-y-12">
       <AdminSectionHeading 
         title="Operação Hotmart" 
-        subtitle="Gestão operacional de acessos via Hotmart. Vendas e pagamentos reais devem ser conferidos no painel da Hotmart." 
+        subtitle="As vendas e pagamentos são gerenciados pela Hotmart. Este painel mostra apenas o status de acesso dentro da plataforma." 
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
