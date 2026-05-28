@@ -146,7 +146,9 @@ const AppShell = () => {
     <div className="flex flex-col min-h-screen bg-[#FDFBF7]">
       <Header streak={0} xp={0} level={1} />
       <main className="flex-1 pb-24">
-        <Outlet />
+        <Suspense fallback={<LoadingFallback />}>
+          <Outlet />
+        </Suspense>
       </main>
       <BottomNav />
     </div>
