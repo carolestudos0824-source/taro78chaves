@@ -46,8 +46,9 @@ const AdminHotmart = () => {
   const load = async () => {
     setLoading(true);
     const [evts, ents] = await Promise.all([
-      supabase.from("hotmart_events").select("*").order("created_at", { ascending: false }).limit(100),
-      supabase.from("hotmart_entitlements").select("*").order("updated_at", { ascending: false })
+      supabase.from("hotmart_events").select("*").order("created_at", { ascending: false }).limit(200),
+      supabase.from("hotmart_entitlements").select("*, hotmart_events(status)").order("updated_at", { ascending: false })
+
     ]);
     setEvents(evts.data || []);
     setEntitlements(ents.data || []);
@@ -133,10 +134,12 @@ const AdminHotmart = () => {
           <AdminTableHeader>
             <AdminTableHead>Compradora</AdminTableHead>
             <AdminTableHead className="text-center">Transação</AdminTableHead>
-            <AdminTableHead className="text-center">Status</AdminTableHead>
-            <AdminTableHead className="text-center">Vínculo User</AdminTableHead>
-            <AdminTableHead className="text-center">Premium Até</AdminTableHead>
-            <AdminTableHead className="text-right">Atualizado</AdminTableHead>
+            <AdminTableHead className="text-center">Status Venda</AdminTableHead>
+            <AdminTableHead className="text-center">Status Acesso</AdminTableHead>
+            <AdminTableHead className="text-center">Usuário</AdminTableHead>
+            <AdminTableHead className="text-center">Expira em</AdminTableHead>
+            <AdminTableHead className="text-right">Criado/Atualizado</AdminTableHead>
+
           </AdminTableHeader>
           <tbody>
             {filteredEntitlements.length === 0 ? (
@@ -147,25 +150,36 @@ const AdminHotmart = () => {
               filteredEntitlements.map(e => (
                 <AdminTableRow key={e.id}>
                   <AdminTableCellFixed>
-                    <p className="text-[#5B1F3D] font-black leading-tight">{e.buyer_email}</p>
+                    <p className="text-[#5B1F3D] font-black leading-tight">{e.buyer_name || "—"}</p>
+                    <p className="text-[10px] font-body font-bold text-[#5B1F3D]/60">{e.buyer_email}</p>
                   </AdminTableCellFixed>
                   <AdminTableCellFixed className="text-center font-mono text-xs">{e.transaction_id}</AdminTableCellFixed>
+                  <AdminTableCellFixed className="text-center">
+                    <AdminBadge variant={
+                      (e as any).hotmart_events?.status === 'approved' ? 'success' : 
+                      (e as any).hotmart_events?.status === 'refunded' || (e as any).hotmart_events?.status === 'chargeback' ? 'destructive' : 'outline'
+                    }>
+                      {(e as any).hotmart_events?.status || '—'}
+                    </AdminBadge>
+                  </AdminTableCellFixed>
                   <AdminTableCellFixed className="text-center">
                     {getStatusBadge(e.access_status, e.user_id)}
                   </AdminTableCellFixed>
                   <AdminTableCellFixed className="text-center">
                     {e.user_id ? (
-                      <span className="text-xs font-body font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">Vinculado</span>
+                      <span className="text-[10px] font-mono text-emerald-600 bg-emerald-50 px-2 py-1 rounded">VINCULADO</span>
                     ) : (
-                      <span className="text-xs font-body font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded">Pendente</span>
+                      <span className="text-[10px] font-mono text-amber-600 bg-amber-50 px-2 py-1 rounded">PENDENTE</span>
                     )}
                   </AdminTableCellFixed>
-                  <AdminTableCellFixed className="text-center text-sm font-body font-bold">
-                    {e.premium_until ? new Date(e.premium_until).toLocaleDateString("pt-BR") : "Vitalício"}
+                  <AdminTableCellFixed className="text-center text-xs font-body font-bold">
+                    {e.premium_until ? new Date(e.premium_until).toLocaleDateString("pt-BR") : "—"}
                   </AdminTableCellFixed>
-                  <AdminTableCellFixed className="text-right text-xs text-muted-foreground">
-                    {e.updated_at ? new Date(e.updated_at).toLocaleString("pt-BR") : "—"}
+                  <AdminTableCellFixed className="text-right">
+                    <p className="text-[10px] text-muted-foreground">C: {new Date((e as any).created_at || e.updated_at).toLocaleDateString("pt-BR")}</p>
+                    <p className="text-[10px] text-muted-foreground">U: {new Date(e.updated_at).toLocaleDateString("pt-BR")}</p>
                   </AdminTableCellFixed>
+
                 </AdminTableRow>
               ))
             )}
