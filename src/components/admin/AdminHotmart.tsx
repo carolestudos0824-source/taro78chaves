@@ -30,8 +30,11 @@ interface HotmartEntitlement {
   id: string;
   user_id: string | null;
   buyer_email: string;
+  buyer_name: string | null;
   transaction_id: string;
+  status: string | null;
   access_status: string;
+
   premium_until: string | null;
   updated_at: string;
 }
@@ -156,11 +159,12 @@ const AdminHotmart = () => {
                   <AdminTableCellFixed className="text-center font-mono text-xs">{e.transaction_id}</AdminTableCellFixed>
                   <AdminTableCellFixed className="text-center">
                     <AdminBadge variant={
-                      (e as any).hotmart_events?.status === 'approved' ? 'success' : 
-                      (e as any).hotmart_events?.status === 'refunded' || (e as any).hotmart_events?.status === 'chargeback' ? 'destructive' : 'outline'
+                      e.status === 'approved' ? 'success' : 
+                      e.status === 'refunded' || e.status === 'chargeback' ? 'destructive' : 'outline'
                     }>
-                      {(e as any).hotmart_events?.status || '—'}
+                      {e.status || '—'}
                     </AdminBadge>
+
                   </AdminTableCellFixed>
                   <AdminTableCellFixed className="text-center">
                     {getStatusBadge(e.access_status, e.user_id)}
