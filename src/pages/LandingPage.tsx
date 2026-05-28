@@ -379,51 +379,67 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
         
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-16">
           <div className="space-y-4">
-            <h2 className="font-heading text-4xl md:text-5xl text-[#FAF5EF]">Desbloqueie a Jornada Completa</h2>
-            <p className="text-[#D8CFC2] font-body text-lg">Escolha o plano ideal para continuar estudando no seu ritmo.</p>
+            <h2 className="font-heading text-4xl md:text-5xl text-[#FAF5EF]">Garanta seu acesso anual à Escola Digital Tarô 78 Chaves</h2>
+            <p className="text-[#D8CFC2] font-body text-lg max-w-2xl mx-auto">Percorra a jornada completa pelos 78 arcanos e desenvolva sua leitura com profundidade e consciência.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-            {/* Monthly */}
-            <div className="p-10 rounded-[2.5rem] border border-white/10 bg-white/5 flex flex-col text-left space-y-8 backdrop-blur-sm transition-all hover:bg-white/10">
-              <div className="space-y-2">
-                <h3 className="t-section-title text-[#5B1F3D] font-bold uppercase tracking-widest">Plano Mensal</h3>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-5xl font-heading text-[#FAF5EF]">R$29,90</span>
-                  <span className="text-sm text-[#D8CFC2]">/mês</span>
-                </div>
+          <div className="max-w-2xl mx-auto">
+            {/* Annual - Unique Plan */}
+            <div className="p-10 md:p-14 rounded-[3rem] bg-white text-midnight shadow-2xl border-4 border-gold relative flex flex-col text-left space-y-8 animate-fade-in">
+              <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-gold px-6 py-2 rounded-full text-[10px] md:text-xs font-heading font-black tracking-widest text-white shadow-xl whitespace-nowrap">
+                ✦ OFERTA DE LANÇAMENTO
               </div>
-              <p className="text-sm text-[#D8CFC2] flex-1 font-body leading-relaxed">Ideal para quem quer testar no seu próprio tempo, com liberdade para cancelar a qualquer momento.</p>
-              <Button 
-                onClick={() => handleSubscribe("monthly")} 
-                className="w-full py-7 rounded-full border border-gold/40 text-[#FAF5EF] bg-transparent hover:bg-gold/10 hover:border-gold font-heading tracking-[0.2em] text-[11px] uppercase transition-all shadow-lg"
-              >
-                {checkoutUrl ? "QUERO ESTE PLANO" : "ASSINAR MENSAL"}
-              </Button>
-            </div>
-
-            {/* Annual */}
-            <div className="p-10 rounded-[3rem] bg-white text-midnight shadow-2xl scale-105 border-4 border-gold relative flex flex-col text-left space-y-8">
-              <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-gold px-6 py-2 rounded-full text-[10px] font-heading font-black tracking-widest text-white shadow-xl">
-                ✦ MELHOR VALOR
-              </div>
-              <div className="space-y-2">
-                <h3 className="t-section-title text-plum font-black uppercase tracking-widest">Acesso Anual</h3>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-6xl font-heading text-midnight">R$197</span>
-                  <span className="text-sm text-midnight/40">/ano</span>
-                </div>
+              
+              <div className="space-y-4">
+                <h3 className="font-heading text-xl md:text-2xl text-plum font-black uppercase tracking-widest">Acesso Anual à Escola Digital Tarô 78 Chaves</h3>
+                
                 <div className="space-y-1">
-                  <p className="text-sm font-bold text-[#5B1F3D] tracking-tight">
+                  <p className="text-xl text-midnight/40 line-through decoration-gold/50 font-heading">De R$497</p>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-sm text-plum font-heading uppercase tracking-widest font-bold">Por</span>
+                    <span className="text-6xl md:text-7xl font-heading text-midnight">R$297</span>
+                    <span className="text-sm text-midnight/40 font-heading">/ano</span>
+                  </div>
+                  <p className="text-sm font-bold text-plum tracking-tight">
                     Pagamento único anual • 12 meses de acesso
                   </p>
-                  <p className="text-[12px] font-bold text-[#5B1F3D]">Economia de 45% em relação ao mensal.</p>
+                  <p className="text-sm md:text-base font-bold text-gold-dark italic">
+                    Ou até 12x no cartão pela Hotmart
+                  </p>
                 </div>
               </div>
-              <p className="text-sm text-midnight/80 flex-1 font-body leading-relaxed">Acesso total à jornada completa pelos 78 arcanos por um ano inteiro, com estudo guiado, quizzes e progresso salvo.</p>
-              <Button onClick={() => handleSubscribe("annual")} className="btn-premium w-full py-8 text-sm shadow-xl hover:scale-[1.02] transition-transform">
-                {checkoutUrl ? "GARANTIR ACESSO ANUAL →" : "COMEÇAR A JORNADA COMPLETA →"}
+
+              <p className="text-sm md:text-base text-midnight/80 font-body leading-relaxed">
+                Acesse a jornada completa pelos 78 arcanos, com aulas organizadas, quizzes, progresso salvo e área de membros para estudar no seu ritmo.
+              </p>
+
+              <div className="space-y-3 pt-2">
+                {[
+                  "Jornada completa pelos 78 arcanos",
+                  "Aulas organizadas por módulos",
+                  "Quizzes e exercícios",
+                  "Progresso salvo",
+                  "Área de membros individual",
+                  "Acesso online por 12 meses",
+                  "Estudo no seu ritmo pelo celular, tablet ou computador"
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-gold-dark mt-0.5 shrink-0" />
+                    <span className="text-sm md:text-base text-midnight/70 font-body">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Button 
+                onClick={() => handleSubscribe("annual")} 
+                className="btn-premium w-full py-8 text-base md:text-lg shadow-xl hover:scale-[1.02] transition-transform font-heading tracking-widest"
+              >
+                GARANTIR MEU ACESSO
               </Button>
+              
+              <p className="text-[10px] text-center text-midnight/40 font-body uppercase tracking-[0.2em]">
+                Pagamento seguro via Hotmart
+              </p>
             </div>
           </div>
         </div>

@@ -107,17 +107,8 @@ const AuthPage = () => {
               {mode === "signup" ? "Criar conta" : mode === "login" ? "Entrar" : "Recuperar senha"}
             </h1>
             <p className="text-[14px] font-body text-[#5B1F3D99] max-w-[280px] mx-auto leading-relaxed font-bold">
-              {mode === "signup" ? "Crie sua conta para salvar seu progresso e começar sua jornada pelo Louco." : mode === "login" ? "Boas-vindas de volta à sua jornada." : "Enviaremos um link de acesso."}
+              {mode === "signup" ? "Crie sua conta para acessar a plataforma e salvar seu progresso." : mode === "login" ? "Boas-vindas de volta à sua jornada." : "Enviaremos um link de acesso."}
             </p>
-            {mode === "signup" && (
-              <div className="flex items-center justify-center gap-2 pt-2">
-                <span className="text-[#C8A66A]">✦</span>
-                <p className="text-[12px] font-black text-[#8B6A30] italic">
-                  Comece pelo Louco gratuitamente
-                </p>
-                <span className="text-[#C8A66A]">✦</span>
-              </div>
-            )}
           </div>
         </div>
 
@@ -156,11 +147,11 @@ const AuthPage = () => {
 
           <div className="space-y-3">
             <Button type="submit" disabled={loading} className="btn-premium w-full py-7 mt-4">
-              {loading ? "Aguarde..." : mode === "signup" ? "Criar conta e começar grátis" : mode === "login" ? "Entrar e continuar jornada" : "Enviar link"}
+              {loading ? "Aguarde..." : mode === "signup" ? "Criar conta e acessar plataforma" : mode === "login" ? "Entrar e continuar jornada" : "Enviar link"}
             </Button>
             {mode === "signup" && (
               <p className="text-[10px] text-center text-muted-foreground/60 font-body italic">
-                Vá bem na primeira lição e desbloqueie O Mago.
+                Inicie sua jornada pelos 78 arcanos.
               </p>
             )}
           </div>
