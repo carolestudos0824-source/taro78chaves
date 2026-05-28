@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { checkoutUrl } from "@/config/checkout";
 import { ArrowLeft, ChevronRight } from "lucide-react";
 import { TarotIcon } from "@/components/TarotIcon";
 import { Button } from "@/components/ui/button";
@@ -24,7 +25,13 @@ const PremiumPage = () => {
   const [loading, setLoading] = useState(false);
   const webCheckoutAllowed = isWebCheckoutAllowed();
 
-  const handleSubscribe = async (plan: "monthly" | "yearly") => {
+  const handleSubscribe = async () => {
+    if (checkoutUrl) {
+      trackEvent("checkout_annual_started");
+      window.location.href = checkoutUrl;
+      return;
+    }
+
     const { data: { user } } = await supabase.auth.getUser();
     
     if (!user) {
@@ -34,59 +41,12 @@ const PremiumPage = () => {
     }
 
     if (isPremium) {
-      setLoading(true);
-      try {
-        const { data, error } = await supabase.functions.invoke("stripe-customer-portal");
-        if (error) throw error;
-        if (data?.url) {
-          window.location.href = data.url;
-        } else {
-          toast.info("Você já possui todas as chaves ativas.");
-          navigate("/perfil");
-        }
-      } catch (e: any) {
-        console.error("Erro ao abrir portal:", e);
-        toast.error(`Não foi possível abrir o portal.`);
-        navigate("/perfil");
-      } finally {
-        setLoading(false);
-      }
+      toast.info("Você já possui todas as chaves ativas.");
+      navigate("/perfil");
       return;
     }
 
-    if (!webCheckoutAllowed) {
-      toast.info(STRIPE_BLOCKED_ANDROID_MSG);
-      return;
-    }
-
-    setLoading(true);
-    trackEvent(`checkout_${plan}_started`);
-    try {
-      const { data, error } = await supabase.functions.invoke("stripe-create-checkout", {
-        body: { plan },
-      });
-      
-      if (error) {
-        const msg = error.message || "";
-        if (msg.includes("401")) {
-          toast.info("Sua sessão expirou. Entre novamente.");
-          navigate("/auth");
-          return;
-        }
-        throw error;
-      }
-
-      if (data?.url) {
-        window.location.href = data.url;
-      } else {
-        throw new Error("Portal indisponível no momento.");
-      }
-    } catch (e: any) {
-      console.error("Erro no checkout:", e);
-      toast.error(`Não foi possível abrir o portal. Tente novamente em instantes.`);
-    } finally {
-      setLoading(false);
-    }
+    toast.error("Serviço de pagamento indisponível no momento. Tente novamente mais tarde.");
   };
 
   return (
@@ -153,33 +113,15 @@ const PremiumPage = () => {
           </div>
 
           <div className="space-y-4">
-            <button 
-              onClick={() => handleSubscribe("monthly")} 
-              disabled={loading} 
-              className="w-full text-left bg-white border-2 border-[#DCCFC2] p-5 min-[400px]:p-6 rounded-3xl flex items-center justify-between group active:scale-[0.98] transition-all shadow-sm hover:border-[#C8A66A] gap-3"
-            >
-              <div className="space-y-1">
-                <p className="text-[11px] font-heading tracking-[0.2em] uppercase font-black text-[#5B1F3D]">Plano Mensal</p>
-                <div className="flex items-baseline gap-1">
-                  <span className="font-heading text-2xl text-[#5B1F3D] font-black">R$ 29,90</span>
-                  <span className="text-xs font-bold text-[#5B1F3D]/40">/mês</span>
-                </div>
-                <p className="text-[10px] font-body font-bold text-[#5B1F3D]/60">Liberdade para cancelar quando quiser.</p>
-              </div>
-              <div className="w-10 h-10 rounded-full border-2 border-[#DCCFC2] flex items-center justify-center group-hover:bg-[#FAF5EF] group-hover:border-[#C8A66A] transition-colors">
-                <ChevronRight className="w-5 h-5 text-[#C8A66A]" />
-              </div>
-            </button>
-
             <div className="w-full text-left bg-white border-4 border-[#C8A66A] p-6 min-[400px]:p-8 rounded-[2.5rem] flex flex-col space-y-6 shadow-2xl relative overflow-hidden active:scale-[0.98] transition-all ring-8 ring-[#C8A66A]/5">
               <div className="absolute top-0 right-0 bg-[#C8A66A] px-6 py-2.5 rounded-bl-3xl text-[10px] font-heading font-black tracking-widest text-[#FAF5EF] uppercase shadow-md">
-                Melhor Valor
+                Oferta de Lançamento
               </div>
               
               <div className="space-y-2">
                 <p className="text-[11px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D] font-black">Acesso Anual</p>
                 <div className="flex items-baseline gap-1">
-                  <span className="font-heading text-4xl min-[400px]:text-5xl text-[#5B1F3D] font-black tracking-tighter">R$ 197</span>
+                  <span className="font-heading text-4xl min-[400px]:text-5xl text-[#5B1F3D] font-black tracking-tighter">R$ 297</span>
                   <span className="text-xs font-heading font-black text-[#5B1F3D]/40">/único</span>
                 </div>
                 <p className="text-sm font-black text-[#5B1F3D] italic leading-relaxed">
@@ -188,11 +130,11 @@ const PremiumPage = () => {
               </div>
 
               <Button 
-                onClick={() => handleSubscribe("yearly")} 
+                onClick={() => handleSubscribe()} 
                 disabled={loading} 
                 className="w-full py-7 min-[400px]:py-8 text-[11px] min-[400px]:text-sm bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.15em] min-[400px]:tracking-[0.2em] shadow-xl border-2 border-[#C8A66A] h-auto whitespace-normal leading-tight"
               >
-                COMEÇAR JORNADA COMPLETA
+                GARANTIR MEU ACESSO
               </Button>
             </div>
           </div>
@@ -212,7 +154,7 @@ const PremiumPage = () => {
             {[
               { q: "Por onde eu começo?", a: "Você começa pelo Louco, o primeiro portal da jornada. Depois, segue carta por carta com método, prática e progresso." },
               { q: "O que está incluso?", a: "Acesso à jornada completa pelos 78 arcanos, quizzes, práticas rituais, módulos premium e progresso salvo." },
-              { q: "Preciso saber Tarô antes?", a: "Não. O app foi criado para guiar você desde a base, uma carta por vez, abrindo as chaves do seu olhar." }
+              { q: "Preciso saber Tarô antes?", a: "Não. A Escola Digital foi criada para guiar você desde a base, uma carta por vez, abrindo as chaves do seu olhar." }
             ].map((item, i) => (
               <div key={i} className="bg-white/50 border border-[#DCCFC2]/60 p-5 rounded-2xl">
                 <h4 className="font-heading text-sm font-black text-[#5B1F3D] mb-1.5">{item.q}</h4>

@@ -135,7 +135,7 @@ function findNextLessonSuggestion(completedLessonIds: string[], currentModuleId?
 
   // Fallback para novos usuários
   return {
-    label: "Começar pelo Louco — Grátis",
+    label: "Começar pelo Louco",
     subtitle: "Inicie sua jornada no tarô",
     path: "/lesson/0",
   };
