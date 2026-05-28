@@ -46,7 +46,7 @@ const AdminPage = () => {
   const ActiveComponent = allowed ? sectionComponents[activeSection] : null;
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center text-muted-foreground text-sm">Carregando…</div>;
+    return <div className="flex-1 flex items-center justify-center min-h-[60vh] text-muted-foreground text-sm">Carregando permissões…</div>;
   }
 
   if (!isAdmin) {
