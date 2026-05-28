@@ -208,8 +208,8 @@ const AdminSubscriptions = () => {
   return (
     <div className="space-y-12">
       <AdminSectionHeading 
-        title="Receita & Assinaturas" 
-        subtitle="Painel comercial completo — análise de receita estimada, real e ciclo de vida do cliente." 
+        title="Vendas Legadas Stripe" 
+        subtitle="Esta aba mostra dados do fluxo Stripe legado. As vendas atuais do Tarô 78 Chaves são processadas pela Hotmart." 
       />
 
       {/* ═══════════ RECEITA ESTIMADA ═══════════ */}

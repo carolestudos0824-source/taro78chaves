@@ -15,11 +15,15 @@ import AdminSettings from "@/components/admin/AdminSettings";
 import AdminAuditLog from "@/components/admin/AdminAuditLog";
 import AdminRoles from "@/components/admin/AdminRoles";
 import AdminPlayStore from "@/components/admin/AdminPlayStore";
+import AdminHotmart from "@/components/admin/AdminHotmart";
+import AdminCertificates from "@/components/admin/AdminCertificates";
 import { useRole, canAccessSection } from "@/hooks/use-role";
 
 const sectionComponents: Record<AdminSection, React.ComponentType> = {
   overview: AdminOverview,
   users: AdminUsers,
+  hotmart: AdminHotmart,
+  certificates: AdminCertificates,
   subscriptions: AdminSubscriptions,
   gifts: AdminGiftCodes,
   modules: AdminModules,

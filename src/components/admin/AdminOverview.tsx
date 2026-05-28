@@ -8,7 +8,8 @@ import {
 import { KPICard } from "./AdminComponents";
 
 const MONTHLY_PRICE = 29.9;
-const ANNUAL_PRICE = 197;
+const ANNUAL_PRICE = 297; // Updated to new official price R$297
+const LEGACY_ANNUAL_PRICE = 197;
 
 type StripeMetrics = {
   activeSubscriptions: number;
@@ -61,8 +62,8 @@ const AdminOverview = () => {
 
     const premium = profiles.filter(p => p.is_premium && (!p.premium_until || new Date(p.premium_until) > now));
     const gifted = premium.filter(p => p.premium_source === "gift" || p.premium_source === "admin");
-    const monthly = premium.filter(p => p.premium_source === "store_monthly" || (!p.premium_source && p.is_premium && p.premium_source !== "gift" && p.premium_source !== "admin" && p.premium_source !== "store_annual"));
-    const annual = premium.filter(p => p.premium_source === "store_annual");
+    const monthly = premium.filter(p => p.premium_source === "store_monthly" || (!p.premium_source && p.is_premium && p.premium_source !== "gift" && p.premium_source !== "admin" && p.premium_source !== "store_annual" && p.premium_source !== "hotmart"));
+    const annual = premium.filter(p => p.premium_source === "store_annual" || p.premium_source === "hotmart");
     const recentSignups = profiles.filter(p => new Date(p.created_at) >= weekAgo);
     const expired = profiles.filter(p => p.premium_until && new Date(p.premium_until) <= now && !p.is_premium);
     const recentExpired = expired.filter(p => new Date(p.premium_until!) >= monthAgo);
@@ -110,7 +111,7 @@ const AdminOverview = () => {
         </div>
         
         <p className="text-sm font-body font-bold text-[#5B1F3D]/80 leading-relaxed bg-white/60 p-5 rounded-[2rem] border border-[#C8A66A]/20 shadow-sm">
-          Projeção baseada em assinantes ativos × preço de tabela. <strong className="text-[#5B1F3D] font-black">Não reflete faturamento real</strong> — não considera reembolsos, cancelamentos no meio do ciclo, descontos ou impostos.
+          Estimativa interna baseada em acessos premium ativos (R$297/anual). <strong className="text-[#5B1F3D] font-black">O faturamento real deve ser conferido na Hotmart.</strong>
         </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -124,7 +125,7 @@ const AdminOverview = () => {
       {/* Revenue — Real (Stripe) */}
       <section className="space-y-6">
         <div className="flex items-center gap-4">
-          <h3 className="font-heading text-xs tracking-[0.3em] uppercase text-[#5B1F3D] font-black">Receita real (Stripe)</h3>
+          <h3 className="font-heading text-xs tracking-[0.3em] uppercase text-[#5B1F3D] font-black">Receita Stripe Legada</h3>
           <div className="h-[2px] flex-1 bg-[#C8A66A]/30" />
           <span className={`text-[10px] uppercase tracking-[0.2em] px-4 py-1.5 rounded-full font-black border-2 ${
             stripeLoading ? "bg-white/50 text-[#5B1F3D]/40 border-[#C8A66A]/10" : 
@@ -166,7 +167,7 @@ const AdminOverview = () => {
           </div>
         )}
         <p className="text-xs font-body font-bold text-[#5B1F3D]/60 bg-white/60 p-5 rounded-[2rem] border border-[#C8A66A]/20 shadow-sm leading-relaxed">
-          Dados consultados diretamente da API do Stripe. Receita considera as últimas 100 cobranças bem-sucedidas, líquido de reembolsos.
+          Dados históricos/legados do fluxo Stripe. As vendas atuais do Tarô 78 Chaves são processadas pela Hotmart.
         </p>
       </section>
 

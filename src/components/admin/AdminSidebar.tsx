@@ -1,12 +1,15 @@
 import {
   LayoutDashboard, Users, Crown, Gift, BookOpen, Sparkles, HelpCircle,
   BarChart3, HeadphonesIcon, Settings, ScrollText, Shield, Smartphone,
+  ShoppingBag, FileText
 } from "lucide-react";
 import { canAccessSection, type AppRole } from "@/hooks/use-role";
 
 export type AdminSection =
   | "overview"
   | "users"
+  | "hotmart"
+  | "certificates"
   | "subscriptions"
   | "gifts"
   | "modules"
@@ -28,7 +31,9 @@ interface AdminSidebarProps {
 const sections: { id: AdminSection; label: string; icon: React.ReactNode; group: string }[] = [
   { id: "overview", label: "Visão Geral", icon: <LayoutDashboard className="w-5 h-5" />, group: "Principal" },
   { id: "users", label: "Usuários", icon: <Users className="w-5 h-5" />, group: "Principal" },
-  { id: "subscriptions", label: "Assinaturas & Vendas", icon: <Crown className="w-5 h-5" />, group: "Comercial" },
+  { id: "hotmart", label: "Operação Hotmart", icon: <ShoppingBag className="w-5 h-5" />, group: "Comercial" },
+  { id: "certificates", label: "Certificados", icon: <FileText className="w-5 h-5" />, group: "Curso" },
+  { id: "subscriptions", label: "Vendas Legadas Stripe", icon: <Crown className="w-5 h-5" />, group: "Comercial" },
   { id: "gifts", label: "Presentes & Chaves", icon: <Gift className="w-5 h-5" />, group: "Comercial" },
   { id: "modules", label: "Módulos", icon: <BookOpen className="w-5 h-5" />, group: "Curso" },
   { id: "arcanos", label: "Arcanos", icon: <Sparkles className="w-5 h-5" />, group: "Curso" },
