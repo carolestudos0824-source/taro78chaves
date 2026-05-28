@@ -30,8 +30,11 @@ interface HotmartEntitlement {
   id: string;
   user_id: string | null;
   buyer_email: string;
+  buyer_name: string | null;
   transaction_id: string;
+  status: string | null;
   access_status: string;
+
   premium_until: string | null;
   updated_at: string;
 }
@@ -46,8 +49,9 @@ const AdminHotmart = () => {
   const load = async () => {
     setLoading(true);
     const [evts, ents] = await Promise.all([
-      supabase.from("hotmart_events").select("*").order("created_at", { ascending: false }).limit(100),
-      supabase.from("hotmart_entitlements").select("*").order("updated_at", { ascending: false })
+      supabase.from("hotmart_events").select("*").order("created_at", { ascending: false }).limit(200),
+      supabase.from("hotmart_entitlements").select("*, hotmart_events(status)").order("updated_at", { ascending: false })
+
     ]);
     setEvents(evts.data || []);
     setEntitlements(ents.data || []);
@@ -57,12 +61,13 @@ const AdminHotmart = () => {
   useEffect(() => { load(); }, []);
 
   const stats = {
-    approved: entitlements.filter(e => e.access_status === "active").length,
+    approved: entitlements.filter(e => e.status === "approved" || e.status === "complete").length,
     activeAccess: entitlements.filter(e => e.access_status === "active").length,
     pending: entitlements.filter(e => !e.user_id && e.access_status === "active").length,
-    refunded: events.filter(e => (e.status === "refunded" || e.event_type === "PURCHASE_REFUNDED")).length,
+    refunded: entitlements.filter(e => e.status === "refunded" || e.status === "chargeback").length,
     errors: events.filter(e => e.processing_status === "error" || e.event_type === "error").length,
   };
+
 
   const filteredEntitlements = entitlements.filter(e => {
     const matchesSearch = e.buyer_email.toLowerCase().includes(search.toLowerCase()) || 
@@ -90,15 +95,17 @@ const AdminHotmart = () => {
     <div className="space-y-12">
       <AdminSectionHeading 
         title="Operação Hotmart" 
-        subtitle="Gestão operacional de acessos via Hotmart. Vendas e pagamentos reais devem ser conferidos no painel da Hotmart." 
+        subtitle="As vendas e pagamentos são gerenciados pela Hotmart. Este painel mostra apenas o status de acesso dentro da plataforma." 
       />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <KPICard icon={<ShoppingBag />} label="Compras Aprovadas" value={stats.approved} description="Total de transações ativas" />
-        <KPICard icon={<Users />} label="Acessos Ativos" value={stats.activeAccess} accent="text-primary" description="Alunas com acesso liberado" />
-        <KPICard icon={<Clock />} label="Aguardando Cadastro" value={stats.pending} accent="text-amber-600" description="Pagou mas não criou conta" />
-        <KPICard icon={<AlertTriangle />} label="Alertas/Erros" value={stats.errors} accent="text-red-600" description="Eventos com falha técnica" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <KPICard icon={<ShoppingBag />} label="Compras Aprovadas" value={stats.approved} description="Transações confirmadas" />
+        <KPICard icon={<Users />} label="Acessos Ativos Hotmart" value={stats.activeAccess} accent="text-emerald-600" description="Acesso liberado no app" />
+        <KPICard icon={<Clock />} label="Aguardando Cadastro" value={stats.pending} accent="text-amber-600" description="Pendente criação de conta" />
+        <KPICard icon={<AlertTriangle />} label="Reembolsos/Chargebacks" value={stats.refunded} accent="text-red-600" description="Vendas canceladas" />
+        <KPICard icon={<RefreshCw />} label="Eventos com Erro" value={stats.errors} accent="text-red-600" description="Falhas de processamento" />
       </div>
+
 
       <div className="bg-white/60 p-6 rounded-[2.5rem] border-2 border-[#C8A66A]/20 backdrop-blur-md shadow-sm space-y-4">
         <div className="flex flex-wrap gap-4">
@@ -133,10 +140,12 @@ const AdminHotmart = () => {
           <AdminTableHeader>
             <AdminTableHead>Compradora</AdminTableHead>
             <AdminTableHead className="text-center">Transação</AdminTableHead>
-            <AdminTableHead className="text-center">Status</AdminTableHead>
-            <AdminTableHead className="text-center">Vínculo User</AdminTableHead>
-            <AdminTableHead className="text-center">Premium Até</AdminTableHead>
-            <AdminTableHead className="text-right">Atualizado</AdminTableHead>
+            <AdminTableHead className="text-center">Status Venda</AdminTableHead>
+            <AdminTableHead className="text-center">Status Acesso</AdminTableHead>
+            <AdminTableHead className="text-center">Usuário</AdminTableHead>
+            <AdminTableHead className="text-center">Expira em</AdminTableHead>
+            <AdminTableHead className="text-right">Criado/Atualizado</AdminTableHead>
+
           </AdminTableHeader>
           <tbody>
             {filteredEntitlements.length === 0 ? (
@@ -147,25 +156,37 @@ const AdminHotmart = () => {
               filteredEntitlements.map(e => (
                 <AdminTableRow key={e.id}>
                   <AdminTableCellFixed>
-                    <p className="text-[#5B1F3D] font-black leading-tight">{e.buyer_email}</p>
+                    <p className="text-[#5B1F3D] font-black leading-tight">{e.buyer_name || "—"}</p>
+                    <p className="text-[10px] font-body font-bold text-[#5B1F3D]/60">{e.buyer_email}</p>
                   </AdminTableCellFixed>
                   <AdminTableCellFixed className="text-center font-mono text-xs">{e.transaction_id}</AdminTableCellFixed>
+                  <AdminTableCellFixed className="text-center">
+                    <AdminBadge variant={
+                      e.status === 'approved' ? 'success' : 
+                      e.status === 'refunded' || e.status === 'chargeback' ? 'destructive' : 'outline'
+                    }>
+                      {e.status || '—'}
+                    </AdminBadge>
+
+                  </AdminTableCellFixed>
                   <AdminTableCellFixed className="text-center">
                     {getStatusBadge(e.access_status, e.user_id)}
                   </AdminTableCellFixed>
                   <AdminTableCellFixed className="text-center">
                     {e.user_id ? (
-                      <span className="text-xs font-body font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">Vinculado</span>
+                      <span className="text-[10px] font-mono text-emerald-600 bg-emerald-50 px-2 py-1 rounded">VINCULADO</span>
                     ) : (
-                      <span className="text-xs font-body font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded">Pendente</span>
+                      <span className="text-[10px] font-mono text-amber-600 bg-amber-50 px-2 py-1 rounded">PENDENTE</span>
                     )}
                   </AdminTableCellFixed>
-                  <AdminTableCellFixed className="text-center text-sm font-body font-bold">
-                    {e.premium_until ? new Date(e.premium_until).toLocaleDateString("pt-BR") : "Vitalício"}
+                  <AdminTableCellFixed className="text-center text-xs font-body font-bold">
+                    {e.premium_until ? new Date(e.premium_until).toLocaleDateString("pt-BR") : "—"}
                   </AdminTableCellFixed>
-                  <AdminTableCellFixed className="text-right text-xs text-muted-foreground">
-                    {e.updated_at ? new Date(e.updated_at).toLocaleString("pt-BR") : "—"}
+                  <AdminTableCellFixed className="text-right">
+                    <p className="text-[10px] text-muted-foreground">C: {new Date((e as any).created_at || e.updated_at).toLocaleDateString("pt-BR")}</p>
+                    <p className="text-[10px] text-muted-foreground">U: {new Date(e.updated_at).toLocaleDateString("pt-BR")}</p>
                   </AdminTableCellFixed>
+
                 </AdminTableRow>
               ))
             )}

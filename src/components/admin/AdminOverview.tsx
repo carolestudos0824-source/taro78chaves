@@ -7,9 +7,8 @@ import {
 } from "lucide-react";
 import { KPICard } from "./AdminComponents";
 
-const MONTHLY_PRICE = 29.9;
-const ANNUAL_PRICE = 297; // Updated to new official price R$297
-const LEGACY_ANNUAL_PRICE = 197;
+const ANNUAL_PRICE = 297; 
+
 
 type StripeMetrics = {
   activeSubscriptions: number;
@@ -64,11 +63,12 @@ const AdminOverview = () => {
     const gifted = premium.filter(p => p.premium_source === "gift" || p.premium_source === "admin");
     const monthly = premium.filter(p => p.premium_source === "store_monthly" || (!p.premium_source && p.is_premium && p.premium_source !== "gift" && p.premium_source !== "admin" && p.premium_source !== "store_annual" && p.premium_source !== "hotmart"));
     const annual = premium.filter(p => p.premium_source === "store_annual" || p.premium_source === "hotmart");
+
     const recentSignups = profiles.filter(p => new Date(p.created_at) >= weekAgo);
     const expired = profiles.filter(p => p.premium_until && new Date(p.premium_until) <= now && !p.is_premium);
     const recentExpired = expired.filter(p => new Date(p.premium_until!) >= monthAgo);
 
-    const mrr = (monthly.length * MONTHLY_PRICE) + (annual.length * (ANNUAL_PRICE / 12));
+    const mrr = (premium.length - gifted.length) * (ANNUAL_PRICE / 12);
     const conversionRate = profiles.length > 0 ? Math.round((premium.length / profiles.length) * 100) : 0;
 
     // Engagement
@@ -111,7 +111,7 @@ const AdminOverview = () => {
         </div>
         
         <p className="text-sm font-body font-bold text-[#5B1F3D]/80 leading-relaxed bg-white/60 p-5 rounded-[2rem] border border-[#C8A66A]/20 shadow-sm">
-          Estimativa interna baseada em acessos premium ativos (R$297/anual). <strong className="text-[#5B1F3D] font-black">O faturamento real deve ser conferido na Hotmart.</strong>
+          Estimativa interna baseada em acessos premium ativos. <strong className="text-[#5B1F3D] font-black">O faturamento real deve ser conferido na Hotmart.</strong>
         </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
