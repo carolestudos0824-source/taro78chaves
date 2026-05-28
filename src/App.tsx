@@ -8,7 +8,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider, useAuth } from "@/hooks/use-auth";
 import { FontSizeProvider } from "@/contexts/font-size-context";
 import { HeaderProvider } from "@/contexts/header-context";
-import { useProgress } from "@/hooks/use-progress";
 import { Header } from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import SessionInitializer from "@/components/SessionInitializer";
@@ -107,7 +106,6 @@ const LoadingFallback = () => (
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading } = useAuth();
   
-  // AppRoutes already handles authLoading, so this is mainly for internal route protection
   if (loading) return <LoadingFallback />;
   if (!user) return <Navigate to="/" replace />;
   
@@ -156,27 +154,21 @@ const AppShell = () => {
 };
 
 const AppRoutes = () => {
-  const { loading: authLoading } = useAuth();
-
-  if (authLoading) {
-    return <LoadingFallback />;
-  }
-
   return (
-    <Suspense fallback={<LoadingFallback />}>
+    <>
       <AnalyticsTracker />
       <Routes>
         {/* Rotas Públicas */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/venda" element={<LandingPage isSalesPage={true} />} />
-        <Route path="/acesso-comprado" element={<AcessoComprado />} />
+        <Route path="/acesso-comprado" element={<Suspense fallback={<LoadingFallback />}><AcessoComprado /></Suspense>} />
         <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
-        <Route path="/reset-password" element={<ResetPasswordPage />} />
-        <Route path="/privacidade" element={<PrivacyPage />} />
-        <Route path="/termos" element={<TermsPage />} />
-        <Route path="/suporte" element={<SupportPage />} />
-        <Route path="/excluir-conta" element={<DeleteAccountPage />} />
-        <Route path="/apresentacao" element={<PresentationPage />} />
+        <Route path="/reset-password" element={<Suspense fallback={<LoadingFallback />}><ResetPasswordPage /></Suspense>} />
+        <Route path="/privacidade" element={<Suspense fallback={<LoadingFallback />}><PrivacyPage /></Suspense>} />
+        <Route path="/termos" element={<Suspense fallback={<LoadingFallback />}><TermsPage /></Suspense>} />
+        <Route path="/suporte" element={<Suspense fallback={<LoadingFallback />}><SupportPage /></Suspense>} />
+        <Route path="/excluir-conta" element={<Suspense fallback={<LoadingFallback />}><DeleteAccountPage /></Suspense>} />
+        <Route path="/apresentacao" element={<Suspense fallback={<LoadingFallback />}><PresentationPage /></Suspense>} />
 
         {/* Rotas Protegidas dentro do AppShell */}
         <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
@@ -189,7 +181,6 @@ const AppRoutes = () => {
           <Route path="/lesson/:id" element={<LessonPage />} />
           <Route path="/module/:moduleSlug" element={<Index />} />
           
-          {/* Módulos e lições específicas */}
           <Route path="/module/fundamentos" element={<FundamentosPage />} />
           <Route path="/fundamentos/:order" element={<FundamentosLessonPage />} />
           <Route path="/module/copas" element={<NaipePage />} />
@@ -231,9 +222,9 @@ const AppRoutes = () => {
           <Route path="/admin" element={<AdminPage />} />
         </Route>
         
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Suspense fallback={<LoadingFallback />}><NotFound /></Suspense>} />
       </Routes>
-    </Suspense>
+    </>
   );
 };
 
