@@ -117,8 +117,12 @@ function progressToDbCore(p: UserProgress) {
 export function useProgress() {
   const { user, loading: authLoading } = useAuth();
   const { isStaff } = useRole();
-  const [progress, setProgress] = useState<UserProgress>({ ...DEFAULT_PROGRESS, ...getLocalExtras() });
-  const [loading, setLoading] = useState(true);
+  const initialExtras = getLocalExtras();
+  const [progress, setProgress] = useState<UserProgress>({ ...DEFAULT_PROGRESS, ...initialExtras });
+  // If we have any cached progress, don't block the UI with a global loader.
+  // We check for xp > 0 or any completed lessons as a sign of cached data.
+  const hasCachedData = progress.xp > 0 || progress.completedLessons.length > 0;
+  const [loading, setLoading] = useState(!hasCachedData);
 
   useEffect(() => {
     console.log("useProgress hook execution - user:", user?.id);
