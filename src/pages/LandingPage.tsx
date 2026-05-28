@@ -31,7 +31,7 @@ import brandIcon from "@/assets/brand-icon.png";
 import brandLogo from "@/assets/brand-logo.png";
 
 import { checkoutUrl } from "@/config/checkout";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
   const navigate = useNavigate();
