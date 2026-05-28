@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Download, X, Lock } from "lucide-react";
+import { ArrowLeft, Download, X, Lock, CheckCircle, Sparkles } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { useCertificatesContent } from "@/hooks/use-content";
 import {
@@ -9,26 +9,91 @@ import {
   type EarnedCertificateView,
 } from "@/lib/certificates/emission";
 import CertificateCard, { FullCertificate } from "@/components/CertificateCard";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const CertificatesPage = () => {
   const navigate = useNavigate();
-  const { progress } = useProgress();
-  const { data: certsData } = useCertificatesContent();
+  const { progress, completedModules } = useProgress();
+  const { data: certsData, loading: contentLoading } = useCertificatesContent();
   const [viewing, setViewing] = useState<EarnedCertificateView | null>(null);
+  const [dbCertificates, setDbCertificates] = useState<Record<string, any>>({});
+  const [issuing, setIssuing] = useState<string | null>(null);
 
   const studentName = progress.studentName || "Estudante";
   const allCerts = certsData?.items ?? [];
 
-  const earned: EarnedCertificateView[] = allCerts
-    .filter((c) => isCertificateEarned(c, progress.completedModules))
-    .map((c) =>
-      buildEarnedCertificate(
-        c,
-        progress.certificatesEarned?.[c.id] || new Date().toISOString(),
-        studentName,
-      ),
-    );
+  // Fetch issued certificates from database
+  useEffect(() => {
+    const fetchIssued = async () => {
+      const { data, error } = await supabase
+        .from("certificates")
+        .select("*")
+        .eq("status", "issued");
+      
+      if (data) {
+        const map = data.reduce((acc: any, cert: any) => {
+          // We need a way to link cms_certificate to issued certificate.
+          // Using course_name or completion_check would be better, but for now let's assume one main certificate or link by slug
+          acc[cert.course_name] = cert;
+          return acc;
+        }, {});
+        setDbCertificates(map);
+      }
+    };
+    fetchIssued();
+  }, []);
 
+  const handleIssue = async (cert: any) => {
+    setIssuing(cert.id);
+    try {
+      const { data: userData } = await supabase.auth.getUser();
+      if (!userData.user) throw new Error("Usuário não autenticado");
+
+      // Check if already exists
+      const { data: existing } = await supabase
+        .from("certificates")
+        .select("*")
+        .eq("user_id", userData.user.id)
+        .eq("course_name", cert.title)
+        .maybeSingle();
+
+      if (existing) {
+        setDbCertificates(prev => ({ ...prev, [cert.title]: existing }));
+        setViewing(buildEarnedCertificate(cert, existing.issued_at, existing.student_name, existing.validation_code, existing.workload_hours));
+        return;
+      }
+
+      const validationCode = `T78-${Math.random().toString(36).substring(2, 6).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
+      
+      const { data: newCert, error } = await supabase
+        .from("certificates")
+        .insert({
+          user_id: userData.user.id,
+          student_name: studentName,
+          course_name: cert.title,
+          workload_hours: 40,
+          validation_code: validationCode,
+          completion_percentage: 100,
+          status: 'issued'
+        })
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      setDbCertificates(prev => ({ ...prev, [cert.title]: newCert }));
+      setViewing(buildEarnedCertificate(cert, newCert.issued_at, newCert.student_name, newCert.validation_code, newCert.workload_hours));
+      toast.success("Certificado emitido com sucesso!");
+    } catch (err) {
+      console.error("Erro ao emitir certificado:", err);
+      toast.error("Erro ao emitir certificado. Tente novamente.");
+    } finally {
+      setIssuing(null);
+    }
+  };
+
+  const earned = allCerts.filter((c) => isCertificateEarned(c, progress.completedModules));
   const locked = allCerts.filter((c) => !isCertificateEarned(c, progress.completedModules));
 
   return (
