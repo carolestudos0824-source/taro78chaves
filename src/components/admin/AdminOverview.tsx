@@ -111,7 +111,7 @@ const AdminOverview = () => {
         </div>
         
         <p className="text-sm font-body font-bold text-[#5B1F3D]/80 leading-relaxed bg-white/60 p-5 rounded-[2rem] border border-[#C8A66A]/20 shadow-sm">
-          Estimativa interna baseada em acessos premium ativos (R$297/anual). <strong className="text-[#5B1F3D] font-black">O faturamento real deve ser conferido na Hotmart.</strong>
+          Estimativa interna baseada em acessos premium ativos. <strong className="text-[#5B1F3D] font-black">O faturamento real deve ser conferido na Hotmart.</strong>
         </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

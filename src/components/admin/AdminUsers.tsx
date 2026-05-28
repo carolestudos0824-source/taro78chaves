@@ -89,9 +89,11 @@ const AdminUsers = () => {
     if (!u.is_premium) return { label: "Gratuito", variant: "default" as const, key: "free" as const };
     const until = u.premium_until ? new Date(u.premium_until) : null;
     if (until && until <= now) return { label: "Expirado", variant: "destructive" as const, key: "expired" as const };
-    if (u.premium_source === "gift" || u.premium_source === "admin") return { label: "Presenteado", variant: "secondary" as const, key: "gift" as const };
+    if (u.premium_source === "gift" || u.premium_source === "admin") return { label: "Cortesia", variant: "secondary" as const, key: "gift" as const };
     if (u.premium_source === "hotmart") return { label: "Hotmart", variant: "primary" as const, key: "premium" as const };
+    if (u.premium_source === "store_monthly" || u.premium_source === "store_annual") return { label: "Legado Stripe", variant: "outline" as const, key: "premium" as const };
     return { label: "Assinante", variant: "primary" as const, key: "premium" as const };
+
   };
 
   const enriched = useMemo(() => {
