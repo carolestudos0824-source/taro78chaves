@@ -1,6 +1,7 @@
 import { Key, UserPlus, LogIn, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { businessInfo } from "@/config/business";
 
 const AcessoComprado = () => {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ const AcessoComprado = () => {
           </p>
           <p className="text-xs text-midnight/70 font-body mb-4">
             Se precisar de ajuda com seu acesso, entre em contato pelo e-mail:<br />
-            <a href="mailto:luadekaya@gmail.com" className="font-bold text-plum hover:underline">luadekaya@gmail.com</a>
+            <a href={`mailto:${businessInfo.supportEmail}`} className="font-bold text-plum hover:underline">{businessInfo.supportEmail}</a>
           </p>
           <div className="flex flex-col items-center gap-3">
             <a
