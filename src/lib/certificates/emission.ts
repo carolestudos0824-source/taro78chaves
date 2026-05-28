@@ -56,6 +56,8 @@ export interface EarnedCertificateView {
   accentColor: string;
   earnedAt: string;
   studentName: string;
+  validationCode?: string;
+  workloadHours?: number;
 }
 
 const DEFAULT_ACCENT = "hsl(36 45% 58%)";
