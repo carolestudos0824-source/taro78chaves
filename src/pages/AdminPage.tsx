@@ -96,7 +96,7 @@ const AdminPage = () => {
             </div>
           )}
           <footer className="mt-20 pt-8 border-t border-[#C8A66A]/10 flex flex-col items-center gap-2">
-            <p className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#C8A66A] font-black">Build Beta 1.0.1 — Admin UI Fix</p>
+            <p className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#C8A66A] font-black">Build Beta 1.0.2 — Hotmart Ops Ready</p>
             <p className="text-[9px] text-[#5B1F3D]/30 font-body font-bold uppercase tracking-widest">Registrada para Teste Smoke Curto</p>
           </footer>
         </main>

@@ -63,7 +63,7 @@ const AdminHotmart = () => {
   const stats = {
     approved: entitlements.filter(e => e.status === "approved" || e.status === "complete").length,
     activeAccess: entitlements.filter(e => e.access_status === "active").length,
-    pending: entitlements.filter(e => !e.user_id && e.access_status === "active").length,
+    pending: entitlements.filter(e => e.access_status === "pending_user" || (!e.user_id && e.access_status === "active")).length,
     refunded: entitlements.filter(e => e.status === "refunded" || e.status === "chargeback").length,
     errors: events.filter(e => e.processing_status === "error" || e.event_type === "error").length,
   };
@@ -80,8 +80,10 @@ const AdminHotmart = () => {
 
   const getStatusBadge = (status: string, userId?: string | null) => {
     if (status === "active") {
-      if (!userId) return <AdminBadge variant="warning">Aguardando cadastro</AdminBadge>;
       return <AdminBadge variant="success">Ativo</AdminBadge>;
+    }
+    if (status === "pending_user") {
+      return <AdminBadge variant="warning">Aguardando cadastro</AdminBadge>;
     }
     if (status === "refunded") return <AdminBadge variant="destructive">Reembolsado</AdminBadge>;
     if (status === "chargeback") return <AdminBadge variant="destructive">Chargeback</AdminBadge>;
