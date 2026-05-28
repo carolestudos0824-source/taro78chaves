@@ -35,7 +35,7 @@ export const PLAN_PRICES: Record<PlanCode, PlanDefinition> = {
   annual: {
     code: "annual",
     label: "Anual",
-    priceBRL: 197,
+    priceBRL: 297, // Updated to R$297
     intervalMonths: 12,
     stripePriceId: null,
   },

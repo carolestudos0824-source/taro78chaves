@@ -115,8 +115,8 @@ export const AdminTableRow = ({ children, className }: { children: React.ReactNo
   </tr>
 );
 
-export const AdminTableCell = ({ children, className }: { children: React.ReactNode; className?: string }) => (
-  <td className={cn("p-4 align-middle", className)}>
+export const AdminTableCell = ({ children, className, colSpan }: { children: React.ReactNode; className?: string; colSpan?: number }) => (
+  <td className={cn("p-4 align-middle", className)} colSpan={colSpan}>
     {children}
   </td>
 );
