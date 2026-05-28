@@ -287,14 +287,14 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
           <div className="mt-8 text-center space-y-8">
             <p className="text-sm font-body text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Inicie sua jornada com o Louco e <span className="text-plum font-bold">desbloqueie O Mago</span>. Depois, continue sua travessia completa pelos 78 arcanos.
+              Ao acessar o programa, você inicia pelo Louco e percorre uma jornada guiada pelos 78 arcanos, com aulas, quizzes e progresso salvo.
             </p>
             <Button 
               onClick={() => handleStart("journey")} 
               variant="outline"
               className="px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-widest text-[11px] uppercase transition-all shadow-sm"
             >
-              {checkoutUrl ? "ENTRAR PARA O TARO 78 CHAVES →" : "ACESSAR O PROGRAMA →"}
+              ACESSAR O PROGRAMA →
             </Button>
           </div>
         </div>
