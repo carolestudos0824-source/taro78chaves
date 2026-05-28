@@ -34,6 +34,7 @@ const CertificatesPage = () => {
       
       if (data) {
         const map = data.reduce((acc: any, cert: any) => {
+          // Link by course_name (for legacy/display) or user-friendly identifier
           acc[cert.course_name] = cert;
           return acc;
         }, {});
@@ -231,18 +232,18 @@ const CertificatesPage = () => {
             </h2>
             <div className="space-y-4">
               {earned.map(cert => {
-                const isIssued = !!dbCertificates[cert.title];
+                const isIssued = !!dbCertificates[cert.title] || !!dbCertificates[cert.slug];
+                const issued = dbCertificates[cert.title] || dbCertificates[cert.slug];
                 return (
                   <div key={cert.id} className="space-y-2">
                     <CertificateCard
                       certificate={isIssued 
-                        ? buildEarnedCertificate(cert, dbCertificates[cert.title].issued_at, dbCertificates[cert.title].student_name, dbCertificates[cert.title].validation_code, dbCertificates[cert.title].workload_hours)
+                        ? buildEarnedCertificate(cert, issued.issued_at, issued.student_name, issued.validation_code, issued.workload_hours)
                         : buildEarnedCertificate(cert, new Date().toISOString(), studentName)
                       }
                       compact
                       onView={() => {
                         if (isIssued) {
-                          const issued = dbCertificates[cert.title];
                           setViewing(buildEarnedCertificate(cert, issued.issued_at, issued.student_name, issued.validation_code, issued.workload_hours));
                         }
                       }}
@@ -266,7 +267,6 @@ const CertificatesPage = () => {
                         <Button
                           variant="outline"
                           onClick={() => {
-                            const issued = dbCertificates[cert.title];
                             setViewing(buildEarnedCertificate(cert, issued.issued_at, issued.student_name, issued.validation_code, issued.workload_hours));
                           }}
                           className="flex-1 border-gold/30 text-plum hover:bg-gold/5"
@@ -275,7 +275,7 @@ const CertificatesPage = () => {
                         </Button>
                         <Button
                           variant="outline"
-                          onClick={() => navigate(`/validar-certificado?codigo=${dbCertificates[cert.title].validation_code}`)}
+                          onClick={() => navigate(`/validar-certificado?codigo=${issued.validation_code}`)}
                           className="flex-1 border-gold/30 text-plum hover:bg-gold/5"
                         >
                           Validar Autenticidade
