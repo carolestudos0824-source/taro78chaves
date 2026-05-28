@@ -253,7 +253,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
           </div>
 
           <div className="relative">
-            <div className="flex overflow-x-auto gap-4 md:gap-6 pb-8 px-6 md:px-8 scrollbar-elegant snap-x items-end min-h-[340px] justify-start md:justify-center">
+            <div className="flex overflow-x-auto gap-4 md:gap-6 pb-8 px-6 md:px-8 scrollbar-elegant snap-x snap-mandatory items-end min-h-[340px] justify-start">
               {[
                 { id: 0, img: imgLouco, name: "O Louco", badge: "Início" },
                 { id: 1, img: imgMago, name: "O Mago", badge: "Desbloqueável" },
@@ -263,7 +263,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 { id: 5, img: imgHierofante, name: "O Hierofante", badge: "Premium" },
                 { id: 6, img: imgEnamorados, name: "Os Enamorados", badge: "Premium" },
               ].map((card, i) => (
-                <div key={i} className="flex-shrink-0 flex flex-col items-center gap-3 snap-center group">
+                <div key={i} className="flex-shrink-0 flex flex-col items-center gap-3 snap-start group">
                   <div className="relative">
                     <div className="w-32 h-52 md:w-40 md:h-60 rounded-2xl overflow-hidden shadow-xl border-4 border-white transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-2xl group-hover:border-gold/20">
                       <img src={card.img} alt={card.name} className="w-full h-full object-cover" />
