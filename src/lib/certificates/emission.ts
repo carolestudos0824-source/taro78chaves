@@ -16,15 +16,22 @@ import type { CertificateContent } from "@/lib/content/certificates-types";
 
 const COMPOSITE_REQUIREMENTS: Record<string, string[]> = {
   "curso-completo": [
+    "fundamentos",
+    "leitura-simbolica",
     "arcanos-maiores",
-    "naipe-copas",
-    "naipe-paus",
-    "naipe-espadas",
-    "naipe-ouros",
+    "arquitetura-menores",
+    "copas",
+    "paus",
+    "espadas",
+    "ouros",
+    "cartas-corte",
     "combinacoes",
     "tiragens",
-    "amor",
+    "espiritualidade",
+    "mesa-taro",
+    "leitura-aplicada",
     "pratica",
+    "trabalhar-taro"
   ],
 };
 
