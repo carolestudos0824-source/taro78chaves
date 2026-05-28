@@ -1,17 +1,16 @@
 import LegalLayout from "@/components/LegalLayout";
-
-const SUPPORT_EMAIL = "suporte@taro78chaves.com.br";
+import { businessInfo } from "@/config/business";
 
 const TermsPage = () => (
   <LegalLayout title="Termos de Serviço">
     <p>
-      Bem-vindo ao <strong>Tarô 78 Chaves</strong>. Ao criar uma conta ou usar o App,
-      você concorda com estes Termos de Serviço.
+      Bem-vindo ao <strong>{businessInfo.productName}</strong>. Ao criar uma conta ou usar a plataforma,
+      você concorda com estes Termos de Serviço. Empresa responsável: <strong>{businessInfo.companyName}</strong>, CNPJ <strong>{businessInfo.cnpj}</strong>.
     </p>
 
     <h2>1. Natureza do conteúdo</h2>
     <p>
-      O Tarô 78 Chaves é uma plataforma <strong>educacional e simbólica</strong>. O
+      O {businessInfo.productName} é uma plataforma <strong>educacional e simbólica</strong>. O
       conteúdo é oferecido para fins de estudo, autoconhecimento e desenvolvimento
       cultural. Não constitui aconselhamento médico, psicológico, jurídico, financeiro
       ou previsão de fatos futuros, e não substitui profissionais habilitados.
@@ -24,34 +23,27 @@ const TermsPage = () => (
       <li>É proibido criar contas em nome de terceiros sem autorização.</li>
     </ul>
 
-    <h2>3. Assinatura e Planos</h2>
+    <h2>3. Acesso e Pagamento</h2>
     <p>
-      O App oferece dois modelos de acesso premium:
+      A plataforma oferece acesso completo ao programa através de compra única ou planos disponibilizados via Hotmart.
     </p>
-    <ul>
-      <li><strong>Plano Mensal:</strong> assinatura recorrente com renovação automática a cada 30 dias. O cancelamento pode ser feito a qualquer momento pelo portal do assinante.</li>
-      <li><strong>Plano Anual:</strong> pagamento único para 12 meses de acesso, sem renovação automática. Ao final do período, o acesso premium expira e uma nova compra manual é necessária para renovação.</li>
-    </ul>
 
     <h2>4. Cancelamento e Reembolso</h2>
     <p>
-      Para o plano mensal, o cancelamento encerra a renovação futura; o acesso premium permanece até o fim do período já pago. Para o plano anual de pagamento único, não há renovação a ser cancelada, e o acesso é garantido pelo período contratado.
-    </p>
-    <p>
-      Reembolsos seguem a legislação consumerista vigente (direito de arrependimento de 7 dias para compras online) e as regras da plataforma de pagamento utilizada.
+      Reembolsos seguem a legislação consumerista vigente (direito de arrependimento de 7 dias para compras online) e as regras da Hotmart.
     </p>
 
     <h2>5. Propriedade intelectual</h2>
     <p>
       Todo o conteúdo (textos, lições, ilustrações, marca, layout, código) é protegido
-      por direitos autorais e pertence ao Tarô 78 Chaves ou a seus licenciantes. É
+      por direitos autorais e pertence à <strong>{businessInfo.companyName}</strong> ou a seus licenciantes. É
       proibido copiar, redistribuir, revender, traduzir ou criar obras derivadas sem
       autorização expressa.
     </p>
 
     <h2>6. Conduta do usuário</h2>
     <ul>
-      <li>Não usar o App para fins ilícitos.</li>
+      <li>Não usar a plataforma para fins ilícitos.</li>
       <li>Não tentar contornar mecanismos de segurança ou de cobrança.</li>
       <li>Não automatizar acessos (scrapers, bots) sem permissão.</li>
     </ul>
@@ -59,7 +51,7 @@ const TermsPage = () => (
 
     <h2>7. Limitação de responsabilidade</h2>
     <p>
-      O App é fornecido “como está”. Não garantimos disponibilidade ininterrupta nem
+      A plataforma é fornecida “como está”. Não garantimos disponibilidade ininterrupta nem
       adequação a propósitos específicos. Na máxima extensão permitida por lei, não
       somos responsáveis por danos indiretos, lucros cessantes ou decisões tomadas com
       base no conteúdo simbólico.
@@ -67,13 +59,13 @@ const TermsPage = () => (
 
     <h2>8. Suporte</h2>
     <p>
-      Suporte por e-mail em <strong>{SUPPORT_EMAIL}</strong>. Veja também{" "}
-      <a href="https://taro78chaves.lovable.app/suporte">https://taro78chaves.lovable.app/suporte</a>.
+      Suporte por e-mail em <strong>{businessInfo.supportEmail}</strong>. Veja também{" "}
+      <a href="/suporte">Página de Suporte</a>.
     </p>
 
     <h2>9. Alterações</h2>
     <p>
-      Podemos atualizar estes Termos. Mudanças relevantes serão comunicadas no app ou
+      Podemos atualizar estes Termos. Mudanças relevantes serão comunicadas na plataforma ou
       por e-mail. O uso continuado após a atualização implica concordância.
     </p>
 

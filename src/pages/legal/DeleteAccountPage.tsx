@@ -1,18 +1,17 @@
 import LegalLayout from "@/components/LegalLayout";
-
-const SUPPORT_EMAIL = "suporte@taro78chaves.com.br";
+import { businessInfo } from "@/config/business";
 
 const DeleteAccountPage = () => (
   <LegalLayout title="Excluir conta">
     <p>
-      Você pode solicitar a exclusão completa da sua conta no <strong>Tarô 78 Chaves</strong>{" "}
+      Você pode solicitar a exclusão completa da sua conta no <strong>{businessInfo.productName}</strong>{" "}
       a qualquer momento.
     </p>
 
     <h2>Como solicitar</h2>
     <ol>
       <li>
-        Envie um e-mail para <strong><a href={`mailto:${SUPPORT_EMAIL}?subject=Excluir%20conta`}>{SUPPORT_EMAIL}</a></strong>{" "}
+        Envie um e-mail para <strong><a href={`mailto:${businessInfo.supportEmail}?subject=Excluir%20conta`}>{businessInfo.supportEmail}</a></strong>{" "}
         a partir do endereço cadastrado, com o assunto <em>“Excluir conta”</em>.
       </li>
       <li>Confirmaremos a solicitação em até 3 dias úteis.</li>
@@ -38,14 +37,9 @@ const DeleteAccountPage = () => (
       Esses registros ficam segregados e não são usados para finalidades comerciais.
     </p>
 
-    <h2>Assinatura ativa</h2>
-    <p>
-      Se você tiver uma assinatura <strong>mensal</strong> ativa, cancele a recorrência no portal do assinante antes de solicitar a exclusão para evitar cobranças futuras. O acesso premium (mensal ou anual) se encerra junto com a conta.
-    </p>
-
     <h2>Dúvidas</h2>
     <p>
-      Em caso de dúvida, escreva para <strong>{SUPPORT_EMAIL}</strong>.
+      Em caso de dúvida, escreva para <strong>{businessInfo.supportEmail}</strong>.
     </p>
   </LegalLayout>
 );
