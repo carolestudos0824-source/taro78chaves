@@ -41,18 +41,24 @@ const AcessoComprado = () => {
         </div>
 
         <div className="pt-6 border-t border-gold/10">
-          <p className="text-[10px] md:text-xs text-midnight/50 font-body mb-4 uppercase tracking-widest">
+          <p className="text-[10px] md:text-xs text-midnight/50 font-body mb-2 uppercase tracking-widest">
             Precisa de ajuda?
           </p>
-          <a
-            href="https://wa.me/5511970221438?text=Comprei%20o%20Tar%C3%B4%2078%20Chaves%20e%20preciso%20de%20ajuda%20com%20meu%20acesso"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-plum hover:text-gold-dark font-heading text-xs tracking-widest uppercase underline underline-offset-4 transition-all"
-          >
-            <MessageCircle className="w-4 h-4" />
-            Falar com suporte
-          </a>
+          <p className="text-xs text-midnight/70 font-body mb-4">
+            Se precisar de ajuda com seu acesso, entre em contato pelo e-mail:<br />
+            <a href="mailto:luadekaya@gmail.com" className="font-bold text-plum hover:underline">luadekaya@gmail.com</a>
+          </p>
+          <div className="flex flex-col items-center gap-3">
+            <a
+              href="https://wa.me/5511970221438?text=Comprei%20o%20Tar%C3%B4%2078%20Chaves%20e%20preciso%20de%20ajuda%20com%20meu%20acesso"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-plum hover:text-gold-dark font-heading text-xs tracking-widest uppercase underline underline-offset-4 transition-all"
+            >
+              <MessageCircle className="w-4 h-4" />
+              Suporte via WhatsApp
+            </a>
+          </div>
         </div>
       </div>
     </div>
