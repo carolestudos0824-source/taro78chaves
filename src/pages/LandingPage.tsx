@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
-  Check, Star, Target, 
-  BookOpen, Layers, Zap,
-  Menu, X, Eye, Key, Sparkles,
-  Award, Smartphone, Share, MoreVertical, HelpCircle,
-  ChevronRight
+  Key, UserPlus, LogIn, MessageCircle, Sparkles, Zap, Layers, Menu, X, Eye, 
+  Award, Smartphone, Share, MoreVertical, HelpCircle, ChevronRight, 
+  BookOpen, Star, Target, Check
 } from "lucide-react";
+import { businessInfo } from "@/config/business";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -497,7 +496,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             <AccordionItem value="item-10" className="border-gold/30">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-bold text-plum">Tenho suporte?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 bg-white/30 p-4 rounded-xl">
-                Sim. Para dúvidas de acesso, pagamento ou conta, entre em contato pelo e-mail suporte@taro78chaves.com.br.
+                Sim. Para dúvidas de acesso, pagamento ou conta, entre em contato pelo e-mail {businessInfo.supportEmail}.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -536,16 +535,17 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
         </div>
 
         <nav className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-[13px] md:text-[14px] font-heading tracking-[0.25em] uppercase relative z-10 px-4">
-          <a href="https://taro78chaves.lovable.app/privacidade" onClick={() => trackEvent("landing_legal_link_click", { link_name: "privacidade", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Privacidade</a>
-          <a href="https://taro78chaves.lovable.app/termos" onClick={() => trackEvent("landing_legal_link_click", { link_name: "termos", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Termos</a>
-          <a href="https://taro78chaves.lovable.app/suporte" onClick={() => trackEvent("landing_legal_link_click", { link_name: "suporte", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Suporte</a>
-          <a href="https://taro78chaves.lovable.app/excluir-conta" onClick={() => trackEvent("landing_legal_link_click", { link_name: "excluir_conta", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Excluir conta</a>
+          <a href="/privacidade" onClick={() => trackEvent("landing_legal_link_click", { link_name: "privacidade", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Privacidade</a>
+          <a href="/termos" onClick={() => trackEvent("landing_legal_link_click", { link_name: "termos", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Termos</a>
+          <a href="/suporte" onClick={() => trackEvent("landing_legal_link_click", { link_name: "suporte", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Suporte</a>
+          <a href="/excluir-conta" onClick={() => trackEvent("landing_legal_link_click", { link_name: "excluir_conta", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Excluir conta</a>
         </nav>
 
-        <div className="pt-8 border-t border-gold/10 max-w-xs mx-auto relative z-10">
-          <p className="text-[11px] text-ivory/50 font-body tracking-wider font-medium">
-            © {new Date().getFullYear()} Tarô 78 Chaves.<br />
-            Todos os direitos reservados.
+        <div className="pt-8 border-t border-gold/10 max-w-sm mx-auto relative z-10">
+          <p className="text-[11px] text-ivory/70 font-body tracking-wider font-medium space-y-1">
+            <span>© {new Date().getFullYear()} {businessInfo.companyName} — {businessInfo.productName}</span><br />
+            <span>CNPJ: {businessInfo.cnpj}</span><br />
+            <span>Todos os direitos reservados.</span>
           </p>
         </div>
       </footer>

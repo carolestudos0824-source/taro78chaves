@@ -1,11 +1,10 @@
 import LegalLayout from "@/components/LegalLayout";
-
-const SUPPORT_EMAIL = "suporte@taro78chaves.com.br";
+import { businessInfo } from "@/config/business";
 
 const PrivacyPage = () => (
   <LegalLayout title="Política de Privacidade">
     <p>
-      Esta Política de Privacidade descreve como o aplicativo <strong>Tarô 78 Chaves</strong>{" "}
+      Esta Política de Privacidade descreve como o aplicativo <strong>{businessInfo.productName}</strong>{" "}
       (“o App”, “nós”) coleta, usa, armazena e protege informações pessoais dos usuários,
       em conformidade com a Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018) e
       com as políticas da Google Play Store.
@@ -13,9 +12,9 @@ const PrivacyPage = () => (
 
     <h2>1. Quem somos</h2>
     <p>
-      O Tarô 78 Chaves é uma plataforma educacional dedicada ao estudo simbólico e
-      arquetípico do Tarô, com base no Método Arcano Vivo. Para dúvidas sobre privacidade,
-      entre em contato pelo e-mail <strong>{SUPPORT_EMAIL}</strong>.
+      O {businessInfo.productName} é uma plataforma educacional dedicada ao estudo simbólico e
+      arquetípico do Tarô, com base no Método Arcano Vivo. Empresa responsável: <strong>{businessInfo.companyName}</strong>, CNPJ <strong>{businessInfo.cnpj}</strong>. Para dúvidas sobre privacidade,
+      entre em contato pelo e-mail <strong>{businessInfo.supportEmail}</strong>.
     </p>
 
     <h2>2. Dados que coletamos</h2>
@@ -25,7 +24,7 @@ const PrivacyPage = () => (
       <li><strong>Progresso de estudo:</strong> lições concluídas, XP, conquistas, respostas de quizzes.</li>
       <li><strong>Uso do app:</strong> eventos anônimos de navegação e interação.</li>
       <li><strong>Analytics:</strong> métricas agregadas via Google Analytics 4 (GA4).</li>
-      <li><strong>Assinatura premium:</strong> status, plano e validade — quando aplicável.</li>
+      <li><strong>Acesso premium:</strong> status, plano e validade.</li>
     </ul>
     <p>Não coletamos dados sensíveis (saúde, religião, biometria, etc.).</p>
 
@@ -33,7 +32,7 @@ const PrivacyPage = () => (
     <ul>
       <li>Permitir login e manter a conta do usuário.</li>
       <li>Salvar e sincronizar o progresso entre dispositivos.</li>
-      <li>Habilitar recursos premium para assinantes.</li>
+      <li>Habilitar recursos premium para compradores.</li>
       <li>Melhorar a experiência educacional com base em métricas agregadas.</li>
       <li>Enviar comunicações operacionais (recuperação de senha, mudanças relevantes).</li>
     </ul>
@@ -41,7 +40,7 @@ const PrivacyPage = () => (
     <h2>4. Provedores e compartilhamento</h2>
     <ul>
       <li><strong>Backend e autenticação:</strong> provedor de banco de dados na nuvem (com criptografia em trânsito e em repouso).</li>
-      <li><strong>Pagamentos (web):</strong> Stripe — processa transações de assinatura no ambiente web. Não armazenamos dados de cartão.</li>
+      <li><strong>Pagamentos:</strong> Hotmart — processa transações de compra. Não armazenamos dados de cartão.</li>
       <li><strong>Analytics:</strong> Google Analytics 4 — métricas de uso agregadas e pseudonimizadas.</li>
     </ul>
     <p>
@@ -63,12 +62,12 @@ const PrivacyPage = () => (
       <li>Anonimização, bloqueio ou eliminação de dados desnecessários.</li>
       <li>Revogação do consentimento.</li>
     </ul>
-    <p>Para exercer esses direitos, escreva para <strong>{SUPPORT_EMAIL}</strong>.</p>
+    <p>Para exercer esses direitos, escreva para <strong>{businessInfo.supportEmail}</strong>.</p>
 
     <h2>7. Exclusão de conta</h2>
     <p>
       Você pode solicitar a exclusão da sua conta a qualquer momento pela página{" "}
-      <a href="https://taro78chaves.lovable.app/excluir-conta">https://taro78chaves.lovable.app/excluir-conta</a> ou por e-mail. Veja detalhes do processo lá.
+      <a href="/excluir-conta">/excluir-conta</a> ou por e-mail.
     </p>
 
     <h2>8. Segurança</h2>
@@ -92,7 +91,7 @@ const PrivacyPage = () => (
 
     <h2>11. Contato</h2>
     <p>
-      Dúvidas, reclamações ou solicitações: <strong>{SUPPORT_EMAIL}</strong>.
+      Dúvidas, reclamações ou solicitações: <strong>{businessInfo.supportEmail}</strong>.
     </p>
   </LegalLayout>
 );
