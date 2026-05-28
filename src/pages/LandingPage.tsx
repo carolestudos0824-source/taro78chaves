@@ -148,7 +148,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 </h1>
                 
                 <p className="font-accent text-base md:text-2xl lg:text-3xl text-plum/90 font-bold italic leading-relaxed">
-                  Aprenda Tarô através de uma travessia real: lições vivas, quizzes e progresso guiado.
+                  Uma escola digital para aprender Tarô com profundidade, simbologia e prática, em uma jornada guiada pelos 78 arcanos com aulas, quizzes, progresso salvo e certificado digital de conclusão.
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-6 pt-1 md:pt-4 font-heading text-[9px] md:text-xs tracking-[0.15em] md:tracking-[0.2em] uppercase text-plum font-extrabold drop-shadow-sm">
@@ -173,7 +173,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                   className="w-full sm:w-auto min-h-[56px] md:min-h-[64px] px-8 md:px-10 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-[11px] md:text-base tracking-[0.2em] md:tracking-[0.25em] uppercase border-none shadow-[0_15px_40px_-10px_rgba(91,31,61,0.6)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-4 group/btn"
                 >
                   <Key className="w-5 h-5 group-hover/btn:rotate-12 transition-transform text-gold" />
-                  {checkoutUrl ? "QUERO ACESSAR O TARÔ 78 CHAVES" : "ACESSAR O PROGRAMA"}
+                  {checkoutUrl ? "GARANTIR MEU ACESSO" : "ACESSAR O PROGRAMA"}
                 </Button>
                 <div className="flex flex-col items-center lg:items-start gap-0.5 mt-2 md:mt-1">
                   <p className="text-[11px] md:text-base font-heading tracking-[0.1em] text-plum/80 font-bold uppercase">
@@ -424,9 +424,9 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                     "Quizzes e exercícios",
                     "Progresso salvo",
                     "Área de membros individual",
-                    "Certificado digital de conclusão",
                     "Acesso online por 12 meses",
-                    "Estudo no seu ritmo pelo celular, tablet ou computador"
+                    "Certificado digital de conclusão",
+                    "Estudo pelo celular, tablet ou computador"
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-gold-dark mt-0.5 shrink-0" />
@@ -445,9 +445,14 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                   GARANTIR MEU ACESSO
                 </Button>
                 
-                <p className="text-[10px] md:text-xs text-center text-midnight/40 font-body uppercase tracking-[0.2em] font-bold">
-                  Pagamento 100% seguro via Hotmart
-                </p>
+                <div className="space-y-2 text-center">
+                  <p className="text-[10px] md:text-xs text-midnight/40 font-body uppercase tracking-[0.2em] font-bold">
+                    Pagamento processado pela Hotmart. Acesso liberado automaticamente após a confirmação da compra.
+                  </p>
+                  <p className="text-[10px] md:text-xs text-midnight/40 font-body uppercase tracking-[0.2em] font-bold">
+                    Certificado digital emitido pela Lua de Kaya com código de validação.
+                  </p>
+                </div>
               </div>
 
               <div className="pt-4 border-t border-gold/10 text-center">
@@ -473,7 +478,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             <AccordionItem value="item-access" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Como meu acesso é liberado?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
-                Após a compra pela Hotmart, crie sua conta na plataforma usando o mesmo e-mail utilizado no pagamento. Assim que o sistema identificar a compra aprovada, seu acesso será liberado automaticamente.
+                Após a compra pela Hotmart, crie sua conta usando o mesmo e-mail utilizado no pagamento. Assim que o sistema identificar a compra aprovada, seu acesso será liberado automaticamente.
               </AccordionContent>
             </AccordionItem>
 
