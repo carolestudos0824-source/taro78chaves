@@ -1,4 +1,10 @@
-import { Key, UserPlus, LogIn, MessageCircle, Sparkles, Zap, Layers, Menu, X, Eye, Award, Smartphone, Share, MoreVertical, HelpCircle, ChevronRight, BookOpen, Star, Target } from "lucide-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { 
+  Key, UserPlus, LogIn, MessageCircle, Sparkles, Zap, Layers, Menu, X, Eye, 
+  Award, Smartphone, Share, MoreVertical, HelpCircle, ChevronRight, 
+  BookOpen, Star, Target, Check
+} from "lucide-react";
 import { businessInfo } from "@/config/business";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
