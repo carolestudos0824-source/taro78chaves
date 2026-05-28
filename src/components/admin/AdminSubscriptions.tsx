@@ -209,15 +209,15 @@ const AdminSubscriptions = () => {
     <div className="space-y-12">
       <AdminSectionHeading 
         title="Vendas Legadas Stripe" 
-        subtitle="Esta aba mostra dados do fluxo Stripe legado. As vendas atuais do Tarô 78 Chaves são processadas pela Hotmart." 
+        subtitle="Esta aba é apenas histórica e não representa as vendas atuais do Tarô 78 Chaves." 
       />
 
       <div className="p-6 rounded-[2rem] border-2 border-[#C8A66A]/30 bg-white/80 shadow-sm flex items-start gap-4">
         <AlertCircle className="w-6 h-6 text-[#8B6A30] shrink-0 mt-1" />
         <div className="space-y-1">
-          <p className="text-base font-heading font-black text-[#5B1F3D]">Aviso de Fluxo Legado</p>
+          <p className="text-base font-heading font-black text-[#5B1F3D]">Fluxo legado Stripe</p>
           <p className="text-sm font-body font-bold text-[#5B1F3D]/60 leading-relaxed">
-            Esta aba mostra dados do fluxo Stripe legado. As vendas atuais do Tarô 78 Chaves são processadas pela Hotmart.
+            Esta aba é apenas histórica e não representa as vendas atuais do Tarô 78 Chaves. As vendas reais, reembolsos, saldo, saque e parcelamento devem ser acompanhados na Hotmart.
           </p>
         </div>
       </div>
@@ -227,23 +227,23 @@ const AdminSubscriptions = () => {
       <section className="space-y-6">
         <div className="flex items-center gap-4">
           <h3 className="font-heading text-xs tracking-[0.3em] uppercase text-[#5B1F3D] font-black">
-            Receita estimada
+            Receita (estimativa legada)
           </h3>
           <div className="h-[2px] flex-1 bg-[#C8A66A]/30" />
           <span className="text-[10px] font-heading font-black tracking-[0.2em] uppercase px-4 py-1.5 rounded-full bg-[#C8A66A]/20 text-[#8B6A30] border-2 border-[#C8A66A]/40 shadow-sm">
-            CÁLCULO INTERNO
+            DADOS HISTÓRICOS
           </span>
         </div>
         
         <p className="text-sm font-body font-bold text-[#5B1F3D]/80 leading-relaxed bg-white/60 p-5 rounded-[2.5rem] border border-[#C8A66A]/20 shadow-sm">
-          Projeção baseada em assinantes ativos × preço de catálogo. <strong className="text-[#5B1F3D] font-black">Não representa faturamento confirmado.</strong>
+          Projeção baseada em assinantes ativos × preço de catálogo. <strong className="text-[#5B1F3D] font-black">Não representa faturamento Hotmart.</strong>
         </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <KPICard icon={<DollarSign className="w-6 h-6" />} label="MRR estimado" value={`R$ ${stats.mrrEstimated.toFixed(2)}`} accent="text-[#8B6A30]" description="Baseado no plano mensal" />
-          <KPICard icon={<Repeat className="w-6 h-6" />} label="ARR estimada" value={`R$ ${stats.arrEstimated.toFixed(0)}`} accent="text-[#8B6A30]" description="Projeção para 12 meses" />
-          <KPICard icon={<Crown className="w-6 h-6" />} label="Assinaturas pagantes" value={stats.totalPaying} accent="text-[#5B1F3D]" description="Exclui presentes e admin" />
-          <KPICard icon={<TrendingUp className="w-6 h-6" />} label="Conversão Premium" value={`${stats.conversionRate}%`} accent="text-[#5B1F3D]" description="Fatia de usuários pagantes" />
+          <KPICard icon={<DollarSign className="w-6 h-6" />} label="MRR estimado (legado)" value={`R$ ${stats.mrrEstimated.toFixed(2)}`} accent="text-[#8B6A30]" description="Baseado em dados históricos" />
+          <KPICard icon={<Repeat className="w-6 h-6" />} label="ARR estimada (legada)" value={`R$ ${stats.arrEstimated.toFixed(0)}`} accent="text-[#8B6A30]" description="Projeção histórica" />
+          <KPICard icon={<Crown className="w-6 h-6" />} label="Assinaturas pagantes" value={stats.totalPaying} accent="text-[#5B1F3D]" description="Assinaturas do modelo antigo" />
+          <KPICard icon={<TrendingUp className="w-6 h-6" />} label="Conversão Premium" value={`${stats.conversionRate}%`} accent="text-[#5B1F3D]" description="Taxa de conversão legada" />
         </div>
       </section>
 
@@ -251,22 +251,22 @@ const AdminSubscriptions = () => {
       <section className="space-y-6">
         <div className="flex items-center gap-4">
           <h3 className="font-heading text-[11px] tracking-[0.3em] uppercase text-[#5B1F3D]/40 font-black">
-            Receita real
+            Faturamento Real (Histórico)
           </h3>
           <div className="h-px flex-1 bg-[#C8A66A]/20" />
           <span className={`text-[9px] font-heading font-black tracking-[0.2em] uppercase px-3 py-1 rounded-full inline-flex items-center gap-2 border ${
-            realRevenueEnabled ? "bg-[#5B1F3D] text-white border-[#C8A66A] shadow-sm animate-pulse" : "bg-white/50 text-[#5B1F3D]/40 border-[#C8A66A]/10"
+            realRevenueEnabled ? "bg-[#5B1F3D] text-white border-[#C8A66A] shadow-sm" : "bg-white/50 text-[#5B1F3D]/40 border-[#C8A66A]/10"
           }`}>
             <Plug className="w-3 h-3" />
-            {realRevenueEnabled ? "Stripe conectado" : "Aguardando Stripe"}
+            {realRevenueEnabled ? "Histórico Stripe" : "Legado Stripe"}
           </span>
         </div>
         {!realRevenueEnabled ? (
           <div className="rounded-[2.5rem] border-2 border-dashed border-[#C8A66A]/30 bg-white/40 p-8 text-center shadow-inner">
             <Plug className="w-10 h-10 text-[#C8A66A]/20 mx-auto mb-4" />
-            <p className="text-base font-heading font-black text-[#5B1F3D] mb-2">Faturamento confirmado não disponível</p>
+            <p className="text-base font-heading font-black text-[#5B1F3D] mb-2">Relatório de faturamento legado</p>
             <p className="text-sm font-body font-bold italic text-[#5B1F3D]/50 max-w-md mx-auto leading-relaxed">
-              A estrutura está pronta para receber os webhooks do Stripe. MRR real, churn e ciclo de vida de cobranças aparecerão aqui automaticamente após a ativação.
+              Esta área contém apenas dados do modelo comercial anterior. A gestão financeira atual (vendas, reembolsos, saldo) é realizada exclusivamente via Hotmart.
             </p>
           </div>
         ) : (
@@ -282,7 +282,7 @@ const AdminSubscriptions = () => {
       {/* ═══════════ Crescimento e churn ═══════════ */}
       <section className="space-y-6">
         <div className="flex items-center gap-4">
-          <h3 className="font-heading text-[11px] tracking-[0.3em] uppercase text-[#5B1F3D]/40 font-black">Crescimento (últimos 30 dias)</h3>
+          <h3 className="font-heading text-[11px] tracking-[0.3em] uppercase text-[#5B1F3D]/40 font-black">Crescimento (histórico últimos 30 dias)</h3>
           <div className="h-px flex-1 bg-[#C8A66A]/20" />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
