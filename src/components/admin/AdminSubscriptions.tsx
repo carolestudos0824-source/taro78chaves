@@ -212,6 +212,17 @@ const AdminSubscriptions = () => {
         subtitle="Esta aba mostra dados do fluxo Stripe legado. As vendas atuais do Tarô 78 Chaves são processadas pela Hotmart." 
       />
 
+      <div className="p-6 rounded-[2rem] border-2 border-[#C8A66A]/30 bg-white/80 shadow-sm flex items-start gap-4">
+        <AlertCircle className="w-6 h-6 text-[#8B6A30] shrink-0 mt-1" />
+        <div className="space-y-1">
+          <p className="text-base font-heading font-black text-[#5B1F3D]">Aviso de Fluxo Legado</p>
+          <p className="text-sm font-body font-bold text-[#5B1F3D]/60 leading-relaxed">
+            Esta aba mostra dados do fluxo Stripe legado. As vendas atuais do Tarô 78 Chaves são processadas pela Hotmart.
+          </p>
+        </div>
+      </div>
+
+
       {/* ═══════════ RECEITA ESTIMADA ═══════════ */}
       <section className="space-y-6">
         <div className="flex items-center gap-4">
