@@ -7,9 +7,8 @@ import {
 } from "lucide-react";
 import { KPICard } from "./AdminComponents";
 
-const MONTHLY_PRICE = 29.9;
-const ANNUAL_PRICE = 297; // Updated to new official price R$297
-const LEGACY_ANNUAL_PRICE = 197;
+const ANNUAL_PRICE = 297; 
+
 
 type StripeMetrics = {
   activeSubscriptions: number;
@@ -64,6 +63,7 @@ const AdminOverview = () => {
     const gifted = premium.filter(p => p.premium_source === "gift" || p.premium_source === "admin");
     const monthly = premium.filter(p => p.premium_source === "store_monthly" || (!p.premium_source && p.is_premium && p.premium_source !== "gift" && p.premium_source !== "admin" && p.premium_source !== "store_annual" && p.premium_source !== "hotmart"));
     const annual = premium.filter(p => p.premium_source === "store_annual" || p.premium_source === "hotmart");
+
     const recentSignups = profiles.filter(p => new Date(p.created_at) >= weekAgo);
     const expired = profiles.filter(p => p.premium_until && new Date(p.premium_until) <= now && !p.is_premium);
     const recentExpired = expired.filter(p => new Date(p.premium_until!) >= monthAgo);
