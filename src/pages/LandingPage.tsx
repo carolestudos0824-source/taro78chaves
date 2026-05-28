@@ -522,7 +522,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             <AccordionItem value="item-7" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Tem certificado?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
-                Neste momento, o foco da plataforma é formação progressiva e domínio dos 78 arcanos. Caso haja certificado no futuro, ele será informado oficialmente dentro da sua área de membros.
+                Sim. Ao concluir a jornada obrigatória da Escola Digital Tarô 78 Chaves, você poderá emitir seu certificado digital de conclusão dentro da plataforma. O certificado é emitido pela Lua de Kaya e se refere à conclusão de curso livre/formação livre.
               </AccordionContent>
             </AccordionItem>
 
