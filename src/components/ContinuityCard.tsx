@@ -3,6 +3,17 @@ import { ArrowRight, RefreshCw, Sparkles } from "lucide-react";
 import { MODULES_CATALOG as MODULES, ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, type LearningModule } from "@/lib/content";
 import { findNextLessonSuggestion } from "@/lib/content/suggestions";
 
+interface ContinuityCardProps {
+  lastLessonId: string | null;
+  lastLessonName: string | null;
+  completedLessons: number;
+  completedQuizzes: number;
+  hasUnfinishedReview: boolean;
+  /** Full completed lessons array for smart suggestions */
+  completedLessonIds?: string[];
+  currentModuleId?: string;
+}
+
 const ContinuityCard = ({ lastLessonId, lastLessonName, completedLessons, completedQuizzes, hasUnfinishedReview, completedLessonIds, currentModuleId }: ContinuityCardProps) => {
   const navigate = useNavigate();
 
