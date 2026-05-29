@@ -115,9 +115,12 @@ const MinimalLoader = () => (
 );
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { user, loading } = useAuth();
+  const { user, loading: authLoading } = useAuth();
+  const { loading: roleLoading } = useRole();
+  const { loading: premiumLoading } = usePremium();
   
-  if (loading) return <LoadingFallback />;
+  // Only wait for critical auth and role info
+  if (authLoading || roleLoading || premiumLoading) return <LoadingFallback />;
   if (!user) return <Navigate to="/" replace />;
   
   return (

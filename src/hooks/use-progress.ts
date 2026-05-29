@@ -166,6 +166,8 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   }, [user]);
 
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastSavedCoreRef = useRef<string>("");
+  const lastSavedNameRef = useRef<string>("");
 
   // ─── Fetch from Supabase when user is available ───
   useEffect(() => {
