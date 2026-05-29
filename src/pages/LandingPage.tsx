@@ -451,7 +451,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                     Pagamento processado pela Hotmart. Acesso liberado automaticamente após a confirmação da compra.
                   </p>
                   <p className="text-[10px] md:text-xs text-midnight/40 font-body uppercase tracking-[0.2em] font-bold">
-                    Certificado digital emitido pela Lua de Kaya com código de validação.
+                    Certificado digital emitido pelo Tarô 78 Chaves com código de validação.
                   </p>
                 </div>
               </div>
@@ -528,7 +528,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             <AccordionItem value="item-7" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Tem certificado?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
-                Sim. Ao concluir a jornada obrigatória da Escola Digital Tarô 78 Chaves, você poderá emitir seu certificado digital de conclusão dentro da plataforma. O certificado é emitido pela Lua de Kaya e se refere à conclusão de curso livre/formação livre.
+                Sim. Ao concluir a jornada obrigatória da Escola Digital Tarô 78 Chaves, você poderá emitir seu certificado digital de conclusão dentro da plataforma. O certificado é emitido pelo Tarô 78 Chaves e se refere à conclusão de curso livre/formação livre.
               </AccordionContent>
             </AccordionItem>
 

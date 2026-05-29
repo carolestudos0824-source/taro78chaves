@@ -161,7 +161,7 @@ const CertificatesPage = () => {
                         ` : ''}
 
                         <div class="footer">
-                          Certificado digital de conclusão emitido pela Lua de Kaya. Este certificado refere-se à conclusão de curso livre/formação livre e não equivale a diploma técnico, superior ou reconhecimento oficial do MEC.
+                          Certificado digital de conclusão emitido pelo Tarô 78 Chaves. Este certificado refere-se à conclusão de curso livre/formação livre e não equivale a diploma técnico, superior ou reconhecimento oficial do MEC.
                         </div>
                         <div style="color:rgba(180,155,100,0.35);font-size:14px;margin-top:12px">⟡</div>
                       </div>

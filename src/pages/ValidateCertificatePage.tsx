@@ -131,7 +131,7 @@ const ValidateCertificatePage = () => {
               </div>
               <div className="pt-4 border-t border-gold/10">
                 <p className="text-[10px] font-heading tracking-[0.2em] uppercase text-plum/50">Emitido por</p>
-                <p className="font-body text-[11px] text-midnight/60 font-bold">Lua de Kaya • CNPJ 44.472.530/0001-08</p>
+                <p className="font-body text-[11px] text-midnight/60 font-bold">Tarô 78 Chaves • CNPJ 44.472.530/0001-08</p>
               </div>
             </div>
           </div>
