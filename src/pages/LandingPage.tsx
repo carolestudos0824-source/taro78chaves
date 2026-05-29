@@ -144,12 +144,24 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               </div>
 
               <div className="space-y-3 md:space-y-6">
-                <h1 className="font-heading text-2xl md:text-5xl lg:text-7xl leading-[1.1] md:leading-[1.05] tracking-tight text-plum normal-case">
-                  No Tarô 78 Chaves, o Tarô deixa de ser imagem e se torna <span className="italic">presença.</span>
+                <h1 className="font-heading text-2xl md:text-5xl lg:text-7xl leading-[1.1] md:leading-[1.05] tracking-tight text-plum normal-case font-bold">
+                  A escola digital dos 78 arcanos
                 </h1>
                 
-                <p className="font-accent text-base md:text-2xl lg:text-3xl text-plum/90 font-bold italic leading-relaxed">
-                  Uma escola digital para aprender Tarô com profundidade, simbologia e prática, em uma jornada guiada pelos 78 arcanos com aulas, quizzes, progresso salvo e certificado digital de conclusão.
+                <div className="space-y-4">
+                  <p className="font-heading text-lg md:text-2xl text-plum font-bold">
+                    Você quer aprender Tarô, mas ainda trava na hora de interpretar as cartas?
+                  </p>
+                  <p className="font-body text-base md:text-xl text-plum/90 leading-relaxed">
+                    No Tarô 78 Chaves, você percorre cada arcano com método, prática e progressão real.
+                  </p>
+                  <p className="font-body text-base md:text-xl text-plum/90 leading-relaxed">
+                    Uma escola digital guiada pelos 78 arcanos do Rider-Waite-Smith, com lições, quizzes, progresso salvo e uma jornada do Louco ao Mundo.
+                  </p>
+                </div>
+
+                <p className="font-accent text-sm md:text-lg text-gold-dark font-bold italic border-l-2 border-gold/30 pl-4 py-1">
+                  “No Tarô 78 Chaves, o tarô deixa de ser imagem e se torna presença.”
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-6 pt-1 md:pt-4 font-heading text-[9px] md:text-xs tracking-[0.15em] md:tracking-[0.2em] uppercase text-plum font-extrabold drop-shadow-sm">
