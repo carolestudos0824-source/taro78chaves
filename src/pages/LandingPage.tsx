@@ -421,13 +421,13 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
           <div className="max-w-2xl mx-auto">
             {/* Annual - Unique Plan */}
-            <div className="p-10 md:p-14 rounded-[3rem] bg-white text-midnight shadow-2xl border-4 border-gold relative flex flex-col text-left space-y-8 animate-fade-in">
-              <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-gold px-8 py-3 rounded-full text-xs md:text-sm font-heading font-black tracking-[0.2em] text-white shadow-[0_10px_30px_-5px_rgba(200,166,106,0.5)] whitespace-nowrap border-2 border-white/20 animate-pulse">
+            <div className="p-6 md:p-14 rounded-[2rem] md:rounded-[3rem] bg-white text-midnight shadow-2xl border-2 md:border-4 border-gold relative flex flex-col text-left space-y-6 md:space-y-8 animate-fade-in w-full mx-auto">
+              <div className="absolute -top-4 md:-top-6 left-1/2 -translate-x-1/2 bg-gold px-4 md:px-8 py-2 md:py-3 rounded-full text-[10px] md:text-sm font-heading font-black tracking-[0.1em] md:tracking-[0.2em] text-white shadow-[0_10px_30px_-5px_rgba(200,166,106,0.5)] whitespace-nowrap border border-white/20 animate-pulse">
                 ✦ OFERTA DE LANÇAMENTO POR TEMPO LIMITADO
               </div>
               
-              <div className="space-y-6">
-                <h3 className="font-heading text-2xl md:text-3xl text-plum font-black uppercase tracking-widest leading-tight">
+              <div className="space-y-4 md:space-y-6">
+                <h3 className="font-heading text-xl md:text-3xl text-plum font-black uppercase tracking-tight md:tracking-widest leading-tight">
                   Acesso Anual à Escola Digital Tarô 78 Chaves
                 </h3>
                 
