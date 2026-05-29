@@ -460,19 +460,21 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                   Acesse a jornada completa pelos 78 arcanos, com aulas organizadas, quizzes, progresso salvo e área de membros para estudar no seu ritmo.
                 </p>
 
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {[
                     "Aprenda a interpretar as cartas com mais segurança, sem depender apenas de listas de palavras-chave",
                     "Avance arcano por arcano com progressão real e quizzes que fixam o conteúdo",
                     "Estude no seu ritmo, pelo celular, tablet ou computador",
-                    "Salve a Escola Digital na tela inicial do celular, como um aplicativo",
+                    "Acesse online e salve a Escola Digital na tela inicial do celular, como um aplicativo",
                     "Acesse a jornada completa pelos 78 arcanos: Maiores, Menores e Corte",
                     "Tenha uma área de estudos individual com progresso salvo",
                     "Receba certificado digital de conclusão ao finalizar a jornada"
                   ].map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-gold-dark mt-0.5 shrink-0" />
-                      <span className="text-sm md:text-base text-midnight/70 font-bold">{item}</span>
+                    <div key={idx} className="flex items-start gap-4">
+                      <div className="w-5 h-5 rounded-full bg-gold/20 flex items-center justify-center shrink-0 mt-1">
+                        <Check className="w-3.5 h-3.5 text-gold-dark" />
+                      </div>
+                      <span className="text-base md:text-lg text-midnight/80 font-bold leading-snug">{item}</span>
                     </div>
                   ))}
                 </div>
