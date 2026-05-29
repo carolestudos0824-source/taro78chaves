@@ -72,7 +72,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
   };
 
   return (
-    <div className="min-h-screen bg-parchment text-midnight selection:bg-secondary selection:text-white relative w-full overflow-x-hidden">
+    <div className="min-h-screen bg-parchment text-midnight selection:bg-secondary selection:text-white relative w-full overflow-x-hidden max-w-[100vw]">
       {isSalesPage && (
         <Helmet>
           <title>Tarô 78 Chaves | Escola Digital de Tarô</title>
