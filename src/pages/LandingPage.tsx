@@ -133,7 +133,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center">
             
             <div className="text-center lg:text-left space-y-3 md:space-y-4 order-1 lg:order-1">
               {/* Symbolic Badge */}
@@ -237,7 +237,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
           <div className="absolute -top-6 -left-6 md:-top-10 md:-left-10 opacity-10 pointer-events-none">
             <Key className="w-20 h-20 md:w-32 md:h-32 text-gold-dark rotate-[-15deg]" />
           </div>
-          <div className="bg-white/60 backdrop-blur-sm border border-gold/10 p-8 md:p-12 rounded-[3rem] text-center space-y-6 shadow-sm relative z-10">
+          <div className="bg-white/60 backdrop-blur-sm border border-gold/10 p-6 md:p-10 rounded-[3rem] text-center space-y-6 shadow-sm relative z-10">
             <h2 className="font-heading text-3xl md:text-4xl text-midnight leading-tight">
               Você já tentou aprender tarô e ficou <span className="italic text-[#5B1F3D]">mais confusa?</span>
             </h2>
