@@ -19,7 +19,7 @@ export const ArcanaPresenceHero = ({
       <div className="absolute inset-0 bg-gold opacity-20 blur-3xl rounded-full scale-125 animate-pulse" />
       
       {/* Cards Layered - Trio Visual inspired by /jornada-do-louco */}
-      <div className="flex items-end justify-center -space-x-12 md:-space-x-16 relative z-10 py-4 md:py-8">
+      <div className="flex items-end justify-center -space-x-12 md:-space-x-16 relative z-10 py-2 md:py-4">
         {/* Back Card Left */}
         {backCardLeft && (
           <div className="w-24 md:w-28 lg:w-32 aspect-[2/3.5] rounded-xl overflow-hidden border-2 border-gold/40 shadow-xl rotate-[-15deg] transition-all hover:rotate-0 hover:z-30 hover:scale-110 duration-500 bg-white">
