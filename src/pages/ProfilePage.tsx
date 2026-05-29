@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
-import { ArrowLeft, ChevronRight, LogOut, Type, MessageSquare, Link as LucideLink } from "lucide-react";
+import { ArrowLeft, ChevronRight, LogOut, Type, MessageSquare, Link as LucideLink, Play, HelpCircle } from "lucide-react";
 import { TarotIcon } from "@/components/TarotIcon";
 import { useIsAdmin } from "@/hooks/use-admin";
 import { useProgress } from "@/hooks/use-progress";
@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { trackEvent } from "@/lib/analytics";
+import { findNextLessonSuggestion } from "@/lib/content/suggestions";
 
 import { isWebCheckoutAllowed } from "@/lib/platform";
 
@@ -31,6 +32,9 @@ const ProfilePage = () => {
 
   const isStripeRecurring = isPremium && !!stripeCustomerId && ["store_monthly", "store_annual"].includes(premiumSource || "");
   const isOneTimeAnnual = premiumSource === "store_annual_one_time";
+  const isHotmart = premiumSource === "hotmart";
+  
+  const nextSuggestion = findNextLessonSuggestion(progress.completedLessons);
 
   useEffect(() => {
     if (searchParams.get("checkout") === "success") {
@@ -105,6 +109,24 @@ const ProfilePage = () => {
       </header>
 
       <main className="max-w-lg mx-auto px-6 -mt-12 relative z-20 space-y-8">
+        <button 
+          onClick={() => navigate(nextSuggestion?.path || "/app")} 
+          className="w-full flex items-center justify-between p-6 rounded-[2rem] bg-[#5B1F3D] border-2 border-[#C8A66A] text-white shadow-xl transform transition-all active:scale-[0.98] group"
+        >
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/10 border border-white/20">
+              <Play className="w-6 h-6 text-[#C8A66A] fill-[#C8A66A]" />
+            </div>
+            <div className="text-left">
+              <p className="font-heading text-lg font-black tracking-tight leading-none mb-1">Continuar minha jornada</p>
+              <p className="text-[11px] font-body font-bold italic text-white/70 leading-none">
+                {nextSuggestion?.label || "Retomar seus estudos"}
+              </p>
+            </div>
+          </div>
+          <ChevronRight className="w-6 h-6 text-[#C8A66A] group-hover:translate-x-1 transition-transform" />
+        </button>
+
         <div className="grid grid-cols-3 gap-4">
           {[
             { label: "Ritual", val: progress.streak, icon: "ritual", color: "#5B1F3D" },
@@ -132,14 +154,24 @@ const ProfilePage = () => {
               </div>
               <h3 className="font-heading text-xl font-black text-[#5B1F3D]">
                 {isAdmin ? "Acesso Total" : (
+                  isHotmart ? "Acesso Premium" :
                   isOneTimeAnnual ? "Jornada Anual" : 
                   (isPremium ? (premiumSource === "store_monthly" ? "Assinatura Mensal" : "Jornada Completa") : "Plano do Louco")
                 )}
               </h3>
-              {isPremium && untilFormatted && (
-                <p className="text-[10px] font-body font-bold italic text-[#5B1F3D]/80 uppercase tracking-widest">
-                  {isStripeRecurring ? `Renovação: ${untilFormatted}` : `Ativo até: ${untilFormatted}`}
-                </p>
+              {isPremium && (
+                <div className="space-y-1">
+                  {untilFormatted && (
+                    <p className="text-[10px] font-body font-bold italic text-[#5B1F3D]/80 uppercase tracking-widest">
+                      {isStripeRecurring ? `Renovação: ${untilFormatted}` : `Acesso ativo até: ${untilFormatted}`}
+                    </p>
+                  )}
+                  {isHotmart && (
+                    <p className="text-[9px] font-heading font-black text-[#C8A66A] uppercase tracking-wider">
+                      Acesso anual liberado pela Hotmart
+                    </p>
+                  )}
+                </div>
               )}
             </div>
 
@@ -193,6 +225,24 @@ const ProfilePage = () => {
                 {size.label}
               </button>
             ))}
+          </div>
+        </div>
+
+        <div className="bg-[#5B1F3D]/5 border-2 border-[#5B1F3D]/10 p-6 rounded-2xl flex items-start gap-4 shadow-sm">
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-white border border-[#5B1F3D]/10 shrink-0">
+            <HelpCircle className="w-5 h-5 text-[#5B1F3D]" />
+          </div>
+          <div className="flex-1 space-y-3">
+            <div>
+              <h4 className="font-heading text-base font-black text-[#5B1F3D]">Precisa de ajuda?</h4>
+              <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/70">Envie uma dúvida, problema de acesso ou sugestão para o suporte.</p>
+            </div>
+            <button 
+              onClick={() => navigate("/suporte")} 
+              className="text-[10px] font-heading font-black tracking-widest uppercase text-[#5B1F3D] flex items-center gap-2 hover:translate-x-1 transition-transform"
+            >
+              Falar com suporte <ChevronRight className="w-3 h-3" />
+            </button>
           </div>
         </div>
 
