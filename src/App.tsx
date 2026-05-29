@@ -7,8 +7,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider, useAuth } from "@/hooks/use-auth";
 import { ProgressProvider } from "@/hooks/use-progress";
-import { PremiumProvider } from "@/hooks/use-premium";
-import { RoleProvider } from "@/hooks/use-role";
+import { PremiumProvider, usePremium } from "@/hooks/use-premium";
+import { RoleProvider, useRole } from "@/hooks/use-role";
 import { FontSizeProvider } from "@/contexts/font-size-context";
 import { HeaderProvider } from "@/contexts/header-context";
 import { Header } from "@/components/Header";
@@ -115,9 +115,12 @@ const MinimalLoader = () => (
 );
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { user, loading } = useAuth();
+  const { user, loading: authLoading } = useAuth();
+  const { loading: roleLoading } = useRole();
+  const { loading: premiumLoading } = usePremium();
   
-  if (loading) return <LoadingFallback />;
+  // Only wait for critical auth and role info
+  if (authLoading || roleLoading || premiumLoading) return <LoadingFallback />;
   if (!user) return <Navigate to="/" replace />;
   
   return (

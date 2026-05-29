@@ -73,28 +73,38 @@ export const PremiumProvider = ({ children }: { children: React.ReactNode }) => 
       return;
     }
 
+    // Ensure we show loading when user changes
+    setState(prev => ({ ...prev, loading: true }));
+
     const fetchPremium = async () => {
-      const { data } = await supabase
-        .from("profiles")
-        .select("is_premium, premium_until, premium_source, stripe_customer_id")
-        .eq("user_id", user.id)
-        .single();
+      try {
+        const { data, error } = await supabase
+          .from("profiles")
+          .select("is_premium, premium_until, premium_source, stripe_customer_id")
+          .eq("user_id", user.id)
+          .maybeSingle();
 
-      if (data) {
-        const now = new Date();
-        const until = data.premium_until ? new Date(data.premium_until) : null;
-        const { isActive, status } = resolveStatus(data.is_premium, until, data.premium_source, now);
+        if (error) throw error;
 
-        setState({
-          isPremium: isActive,
-          premiumUntil: data.premium_until,
-          premiumSource: data.premium_source,
-          stripeCustomerId: data.stripe_customer_id,
-          subscriptionStatus: status,
-          loading: false,
-        });
-      } else {
-        setState({ isPremium: false, premiumUntil: null, premiumSource: null, stripeCustomerId: null, subscriptionStatus: "free", loading: false });
+        if (data) {
+          const now = new Date();
+          const until = data.premium_until ? new Date(data.premium_until) : null;
+          const { isActive, status } = resolveStatus(data.is_premium, until, data.premium_source, now);
+
+          setState({
+            isPremium: isActive,
+            premiumUntil: data.premium_until,
+            premiumSource: data.premium_source,
+            stripeCustomerId: data.stripe_customer_id,
+            subscriptionStatus: status,
+            loading: false,
+          });
+        } else {
+          setState({ isPremium: false, premiumUntil: null, premiumSource: null, stripeCustomerId: null, subscriptionStatus: "free", loading: false });
+        }
+      } catch (err) {
+        console.error("Error fetching premium status:", err);
+        setState(prev => ({ ...prev, loading: false }));
       }
     };
 

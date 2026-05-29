@@ -62,6 +62,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const signOut = useCallback(async () => {
+    // Clear any cached progress data before signing out
+    localStorage.removeItem("tarot-journey-extras");
     await supabase.auth.signOut();
   }, []);
 
