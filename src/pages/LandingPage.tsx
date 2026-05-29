@@ -183,10 +183,10 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               <div className="flex flex-col items-center lg:items-start gap-1 pt-2 md:pt-2">
                 <Button 
                   onClick={() => handleStart("hero")}
-                  className="w-full sm:w-auto min-h-[64px] md:min-h-[80px] px-6 md:px-14 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-sm md:text-xl tracking-[0.2em] md:tracking-[0.25em] uppercase border-none shadow-[0_20px_50px_-15px_rgba(91,31,61,0.7)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-4 group/btn"
+                  className="w-full sm:w-auto min-h-[64px] md:min-h-[80px] px-4 md:px-14 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-xs md:text-xl tracking-[0.1em] md:tracking-[0.25em] uppercase border-none shadow-[0_20px_50px_-15px_rgba(91,31,61,0.7)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3 md:gap-4 group/btn whitespace-normal text-center leading-tight"
                 >
-                  <Key className="w-6 h-6 group-hover/btn:rotate-12 transition-transform text-gold" />
-                  {checkoutUrl ? "GARANTIR MEU ACESSO" : "QUERO COMEÇAR MINHA JORNADA"}
+                  <Key className="w-5 h-5 md:w-6 md:h-6 group-hover/btn:rotate-12 transition-transform text-gold shrink-0" />
+                  <span>{checkoutUrl ? "GARANTIR MEU ACESSO" : "QUERO COMEÇAR MINHA JORNADA"}</span>
                 </Button>
                 <div className="flex flex-col items-center lg:items-start gap-0.5 mt-2 md:mt-1">
                   <p className="text-[11px] md:text-base font-heading tracking-[0.1em] text-plum/80 font-bold uppercase">
@@ -305,7 +305,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             <Button 
               onClick={() => handleStart("journey")} 
               variant="outline"
-              className="px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-widest text-[11px] uppercase transition-all shadow-sm"
+              className="w-full sm:w-auto px-6 md:px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-normal md:tracking-widest text-[11px] uppercase transition-all shadow-sm whitespace-normal text-center h-auto min-h-[56px]"
             >
               {checkoutUrl ? "GARANTIR MEU ACESSO →" : "QUERO COMEÇAR MINHA JORNADA →"}
             </Button>
@@ -378,7 +378,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             <Button 
               onClick={() => handleStart("unlock")} 
               variant="outline"
-              className="px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-widest text-[11px] uppercase transition-all"
+              className="w-full sm:w-auto px-6 md:px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-normal md:tracking-widest text-[11px] uppercase transition-all whitespace-normal text-center h-auto min-h-[56px]"
             >
               {checkoutUrl ? "GARANTIR MEU ACESSO →" : "QUERO COMEÇAR MINHA JORNADA →"}
             </Button>
@@ -496,10 +496,10 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
                 <Button 
                   onClick={() => handleSubscribe("annual")} 
-                  className="w-full h-16 md:h-20 bg-plum hover:bg-plum/90 text-ivory rounded-full text-sm md:text-xl shadow-[0_15px_35px_-10px_rgba(91,31,61,0.5)] hover:scale-[1.02] transition-all font-heading tracking-tight md:tracking-widest font-black uppercase flex items-center justify-center gap-2 md:gap-3 px-4"
+                  className="w-full h-auto min-h-[64px] md:h-20 py-4 bg-plum hover:bg-plum/90 text-ivory rounded-full text-sm md:text-xl shadow-[0_15px_35px_-10px_rgba(91,31,61,0.5)] hover:scale-[1.02] transition-all font-heading tracking-tight md:tracking-widest font-black uppercase flex items-center justify-center gap-2 md:gap-3 px-4 whitespace-normal text-center"
                 >
                   <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-gold animate-pulse shrink-0" />
-                  GARANTIR MEU ACESSO
+                  <span>GARANTIR MEU ACESSO</span>
                 </Button>
                 
                 <div className="space-y-2 text-center">
