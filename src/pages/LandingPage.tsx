@@ -183,9 +183,9 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               <div className="flex flex-col items-center lg:items-start gap-1 pt-2 md:pt-2">
                 <Button 
                   onClick={() => handleStart("hero")}
-                  className="w-full sm:w-auto min-h-[56px] md:min-h-[64px] px-8 md:px-10 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-[11px] md:text-base tracking-[0.2em] md:tracking-[0.25em] uppercase border-none shadow-[0_15px_40px_-10px_rgba(91,31,61,0.6)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-4 group/btn"
+                  className="w-full sm:w-auto min-h-[64px] md:min-h-[80px] px-10 md:px-14 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-sm md:text-xl tracking-[0.2em] md:tracking-[0.25em] uppercase border-none shadow-[0_20px_50px_-15px_rgba(91,31,61,0.7)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-4 group/btn"
                 >
-                  <Key className="w-5 h-5 group-hover/btn:rotate-12 transition-transform text-gold" />
+                  <Key className="w-6 h-6 group-hover/btn:rotate-12 transition-transform text-gold" />
                   {checkoutUrl ? "GARANTIR MEU ACESSO" : "QUERO COMEÇAR MINHA JORNADA"}
                 </Button>
                 <div className="flex flex-col items-center lg:items-start gap-0.5 mt-2 md:mt-1">
