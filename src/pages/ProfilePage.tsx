@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
-import { ArrowLeft, ChevronRight, LogOut, Type, MessageSquare, Link as LucideLink } from "lucide-react";
+import { ArrowLeft, ChevronRight, LogOut, Type, MessageSquare, Link as LucideLink, Play, HelpCircle } from "lucide-react";
 import { TarotIcon } from "@/components/TarotIcon";
 import { useIsAdmin } from "@/hooks/use-admin";
 import { useProgress } from "@/hooks/use-progress";
@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { trackEvent } from "@/lib/analytics";
+import { findNextLessonSuggestion } from "@/lib/content/suggestions";
 
 import { isWebCheckoutAllowed } from "@/lib/platform";
 
