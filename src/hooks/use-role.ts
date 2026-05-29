@@ -29,16 +29,24 @@ export const RoleProvider = ({ children }: { children: React.ReactNode }) => {
 
     (async () => {
       setLoading(true);
-      const { data } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", user.id);
+      try {
+        const { data, error } = await supabase
+          .from("user_roles")
+          .select("role")
+          .eq("user_id", user.id);
 
-      const roles = (data ?? []).map((r) => r.role as AppRole);
-      if (roles.includes("admin")) setRole("admin");
-      else if (roles.includes("moderator")) setRole("moderator");
-      else setRole("user");
-      setLoading(false);
+        if (error) throw error;
+
+        const roles = (data ?? []).map((r) => r.role as AppRole);
+        if (roles.includes("admin")) setRole("admin");
+        else if (roles.includes("moderator")) setRole("moderator");
+        else setRole("user");
+      } catch (err) {
+        console.error("Error fetching role:", err);
+        setRole("user");
+      } finally {
+        setLoading(false);
+      }
     })();
   }, [authLoading, user]);
 

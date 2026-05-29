@@ -147,12 +147,25 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   const hasCachedData = progress.xp > 0 || progress.completedLessons.length > 0;
   const [loading, setLoading] = useState(!hasCachedData);
 
+  const prevUserIdRef = useRef<string | undefined>(user?.id);
+
   useEffect(() => {
-    console.log("useProgress hook execution - user:", user?.id);
+    // If user changed (login or logout or switch), reset state immediately to prevent leakage
+    if (user?.id !== prevUserIdRef.current) {
+      console.log("User changed detected in useProgress, resetting state. Old:", prevUserIdRef.current, "New:", user?.id);
+      
+      // Clear localStorage if logging out
+      if (!user) {
+        localStorage.removeItem(LOCAL_EXTRAS_KEY);
+      }
+      
+      setProgress({ ...DEFAULT_PROGRESS });
+      setLoading(!!user); // Only show loading if we are about to fetch for a new user
+      prevUserIdRef.current = user?.id;
+    }
   }, [user]);
+
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const lastSavedCoreRef = useRef<string>("");
-  const lastSavedNameRef = useRef<string>("");
 
   // ─── Fetch from Supabase when user is available ───
   useEffect(() => {

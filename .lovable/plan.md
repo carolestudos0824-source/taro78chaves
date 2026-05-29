@@ -1,35 +1,28 @@
-### Global Legibility Audit: "Ouro é detalhe. Ameixa é leitura."
+I will perform a regression validation and apply necessary fixes to ensure no state leakage and a stable UI.
 
-Ensure all functional, pedagogical, and interface text uses **Ameixa Profundo (`#5B1F3D`)** instead of light gold or beige colors, while preserving **Ouro Antigo (`#C8A66A`)** for decorative elements (icons, borders, symbols).
+### 1. Code Audit & Robustness Fixes
+- **use-progress.ts**: 
+    - Ensure `progress` state is reset to `DEFAULT_PROGRESS` immediately when `user` changes (from one user to another or to null).
+    - Clear `localStorage` on logout to prevent state leakage between sessions on the same device.
+- **use-premium.ts**: Ensure state resets to default when `user` changes.
+- **use-role.ts**: Ensure state resets to "user" when `user` changes.
 
-#### Changes:
+### 2. Validation Steps
+- **Navegação (Flicker)**: Verify `/`, `/venda`, `/app`, `/admin` etc. in the browser. Confirm `AppShell` stays stable.
+- **Auth & Roles**: 
+    - Test redirection of `/admin` for non-admin users.
+    - Test logout clearing session.
+- **Troca de Contas**:
+    - Verify that logging out as admin and logging in as user doesn't grant admin access.
+    - Verify XP/Progresso is user-specific.
+- **Funcionalidades**:
+    - Test saving lesson completion.
+    - Test XP update.
+    - Test certificate emission logic (mocking or checking code).
 
-1. **`src/pages/LandingPage.tsx`**
-   - Replace gold text in pricing section titles ("Plano Mensal") with Ameixa.
-   - Audit any remaining slogan or informational text in gold.
+### 3. Final Report
+- Fill the SIM/NÃO checklist requested by the user.
 
-2. **`src/pages/FoolsJourneyPage.tsx`**
-   - Change label "✦ Visão Geral ✦" to Ameixa.
-   - Change "meta.introSubtitulo" and "meta.subtitulo" to Ameixa.
-   - Change "arcano.papel" (subtitle for each card) to Ameixa.
-   - Change closing invitation text to Ameixa.
-
-3. **`src/pages/NaipePage.tsx`**
-   - Change "Conteúdo em breve" text to Ameixa.
-   - Change "Trilha de Estudo" divider label to Ameixa.
-   - Change "Voltar aos módulos" link text to Ameixa.
-
-4. **`src/pages/FeedbackPage.tsx`**
-   - Change functional labels ("Sobre o que quer falar?", "Sua mensagem", "Trocar", "Enviar outra mensagem") to Ameixa.
-
-5. **`src/pages/FundamentosPage.tsx`**
-   - Change "Base da Jornada" label to Ameixa.
-
-6. **Verification**
-   - Run `npx tsc --noEmit`
-   - Run `npm run build`
-
-#### Technical details:
-- Standard color for Ameixa: `#5B1F3D`
-- Standard color for Ouro (icons/details): `#C8A66A`
-- Accessibility: Ensure contrast ratio exceeds 4.5:1 for small text and 3:1 for large text.
+TECHNICAL DETAILS:
+- I will add a `useEffect` in each provider to watch for `user?.id` changes and reset the local state.
+- I will modify `useAuth` to clear `localStorage` or clear it in `useProgress` when detecting a logout.
