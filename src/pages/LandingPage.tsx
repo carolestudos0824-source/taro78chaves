@@ -90,7 +90,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       )}
 
       {/* ─── Top Brand Header ─── */}
-      <header className="sticky top-0 z-50 px-6 py-4 md:py-6 bg-parchment/95 backdrop-blur-md border-b border-gold/10 w-full">
+      <header className="sticky top-0 z-50 px-6 py-4 md:py-4 bg-parchment/95 backdrop-blur-md border-b border-gold/10 w-full">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <a href="/" className="flex items-center gap-2.5 group transition-transform hover:scale-[1.02]" aria-label="Tarô 78 Chaves">
             <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
@@ -123,7 +123,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       </header>
 
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-4 pb-12 md:pt-20 md:pb-16 px-6 overflow-hidden flex flex-col items-center min-h-fit mt-0">
+      <section className="relative pt-2 pb-2 md:pt-4 md:pb-2 px-6 overflow-hidden flex flex-col items-center min-h-fit mt-0">
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold/15 blur-[120px]" />
@@ -133,39 +133,39 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center">
             
-            <div className="text-center lg:text-left space-y-4 md:space-y-5 order-1 lg:order-1">
+            <div className="text-center lg:text-left space-y-3 md:space-y-4 order-1 lg:order-1">
               {/* Symbolic Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 md:px-5 md:py-2 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in mb-1 md:mb-2">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 md:px-5 md:py-1.5 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in mb-1 md:mb-1">
                 <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-gold-dark" />
                 <span className="text-[9px] md:text-[11px] font-heading tracking-[0.2em] md:tracking-[0.25em] uppercase font-bold text-plum">
                   A jornada viva dos 78 arcanos
                 </span>
               </div>
 
-              <div className="space-y-4 md:space-y-6">
-                <h1 className="font-heading text-4xl md:text-6xl lg:text-8xl leading-[1.05] md:leading-[1] tracking-tight text-plum normal-case font-black">
+              <div className="space-y-3 md:space-y-4">
+                <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl leading-[1.05] md:leading-[1] tracking-tight text-plum normal-case font-black">
                   A escola digital dos 78 arcanos
                 </h1>
                 
-                <div className="space-y-3 md:space-y-4">
-                  <p className="font-heading text-xl md:text-3xl text-plum font-extrabold leading-tight">
+                <div className="space-y-2 md:space-y-3">
+                  <p className="font-heading text-xl md:text-2xl text-plum font-extrabold leading-tight">
                     Você quer aprender Tarô, mas ainda trava na hora de interpretar as cartas?
                   </p>
-                  <p className="font-body text-lg md:text-2xl text-plum/90 leading-relaxed font-medium">
+                  <p className="font-body text-lg md:text-xl text-plum/90 leading-relaxed font-medium">
                     No Tarô 78 Chaves, você percorre cada arcano com método, prática e progressão real.
                   </p>
-                  <p className="font-body text-base md:text-xl text-plum/80 leading-relaxed">
+                  <p className="font-body text-base md:text-lg text-plum/80 leading-relaxed">
                     Uma escola digital guiada pelos 78 arcanos do Rider-Waite-Smith, com lições, quizzes, progresso salvo e uma jornada do Louco ao Mundo.
                   </p>
                 </div>
 
-                <p className="font-accent text-sm md:text-lg text-gold-dark font-bold italic border-l-4 border-gold/40 pl-5 py-2 bg-gold/5 rounded-r-xl">
+                <p className="font-accent text-sm md:text-base text-gold-dark font-bold italic border-l-4 border-gold/40 pl-5 py-1.5 bg-gold/5 rounded-r-xl">
                   “No Tarô 78 Chaves, o tarô deixa de ser imagem e se torna presença.”
                 </p>
 
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-6 pt-1 md:pt-4 font-heading text-[9px] md:text-xs tracking-[0.15em] md:tracking-[0.2em] uppercase text-plum font-extrabold drop-shadow-sm">
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-6 pt-0 md:pt-1 font-heading text-[9px] md:text-xs tracking-[0.15em] md:tracking-[0.2em] uppercase text-plum font-extrabold drop-shadow-sm">
                   <div className="flex items-center gap-1.5 group">
                     <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
                       <Zap className="w-2.5 h-2.5 md:w-3 md:h-3 text-gold-dark" />
@@ -181,15 +181,15 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-start gap-1 pt-1 md:pt-1">
+              <div className="flex flex-col items-center lg:items-start gap-1 pt-0">
                 <Button 
                   onClick={() => handleStart("hero")}
-                  className="w-full sm:w-auto min-h-[64px] md:min-h-[80px] px-4 md:px-14 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-xs md:text-xl tracking-[0.1em] md:tracking-[0.25em] uppercase border-none shadow-[0_20px_50px_-15px_rgba(91,31,61,0.7)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3 md:gap-4 group/btn whitespace-normal text-center leading-tight"
+                  className="w-full sm:w-auto min-h-[64px] md:min-h-[72px] px-4 md:px-14 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-xs md:text-lg tracking-[0.1em] md:tracking-[0.25em] uppercase border-none shadow-[0_20px_50px_-15px_rgba(91,31,61,0.7)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3 md:gap-4 group/btn whitespace-normal text-center leading-tight"
                 >
                   <Key className="w-5 h-5 md:w-6 md:h-6 group-hover/btn:rotate-12 transition-transform text-gold shrink-0" />
                   <span>{checkoutUrl ? "GARANTIR MEU ACESSO" : "QUERO COMEÇAR MINHA JORNADA"}</span>
                 </Button>
-                <div className="flex flex-col items-center lg:items-start gap-0.5 mt-2 md:mt-1">
+                <div className="flex flex-col items-center lg:items-start gap-0.5 mt-1 md:mt-1">
                   <p className="text-[11px] md:text-base font-heading tracking-[0.1em] text-plum/80 font-bold uppercase">
                     ✦ Garanta seu acesso completo agora.
                   </p>
@@ -231,13 +231,13 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       </section>
 
       {/* ─── Pain Section ─── */}
-      <section className="py-12 md:py-16 px-6 bg-[#FAF5EF]">
+      <section className="pt-2 pb-8 md:pt-4 md:pb-10 px-6 bg-[#FAF5EF]">
 
-        <div className="max-w-4xl mx-auto relative">
+        <div className="max-w-3xl mx-auto relative">
           <div className="absolute -top-6 -left-6 md:-top-10 md:-left-10 opacity-10 pointer-events-none">
             <Key className="w-20 h-20 md:w-32 md:h-32 text-gold-dark rotate-[-15deg]" />
           </div>
-          <div className="bg-white/60 backdrop-blur-sm border border-gold/10 p-10 md:p-14 rounded-[3rem] text-center space-y-6 shadow-sm relative z-10">
+          <div className="bg-white/60 backdrop-blur-sm border border-gold/10 p-6 md:p-10 rounded-[3rem] text-center space-y-6 shadow-sm relative z-10">
             <h2 className="font-heading text-3xl md:text-4xl text-midnight leading-tight">
               Você já tentou aprender tarô e ficou <span className="italic text-[#5B1F3D]">mais confusa?</span>
             </h2>
