@@ -14,7 +14,7 @@ export const ArcanaPresenceHero = ({
   mainCardAlt = "Carta de Tarô"
 }: ArcanaPresenceHeroProps) => {
   return (
-    <div className="relative group max-w-[280px] md:max-w-[320px] lg:max-w-[360px] w-full mb-6 md:mb-12 lg:mb-0 animate-fade-in">
+    <div className="relative group max-w-[260px] md:max-w-[300px] lg:max-w-[320px] w-full mb-4 md:mb-8 lg:mb-0 animate-fade-in">
       {/* Background Glow */}
       <div className="absolute inset-0 bg-gold opacity-20 blur-3xl rounded-full scale-125 animate-pulse" />
       
