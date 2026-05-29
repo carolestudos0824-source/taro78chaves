@@ -32,6 +32,9 @@ const ProfilePage = () => {
 
   const isStripeRecurring = isPremium && !!stripeCustomerId && ["store_monthly", "store_annual"].includes(premiumSource || "");
   const isOneTimeAnnual = premiumSource === "store_annual_one_time";
+  const isHotmart = premiumSource === "hotmart";
+  
+  const nextSuggestion = findNextLessonSuggestion(progress.completedLessons);
 
   useEffect(() => {
     if (searchParams.get("checkout") === "success") {
