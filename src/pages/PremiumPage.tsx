@@ -108,7 +108,7 @@ const PremiumPage = () => {
         {webCheckoutAllowed ? (
         <div className="space-y-6">
           <div className="text-center space-y-2">
-            <h2 className="font-heading text-xl font-black text-[#5B1F3D]">Planos de Acesso</h2>
+            <h2 className="font-heading text-xl font-black text-[#5B1F3D]">Escola Digital</h2>
             <p className="text-xs font-accent italic text-[#5B1F3D]/60 font-bold">Cada prática abre mais uma porta.</p>
           </div>
 
@@ -141,7 +141,7 @@ const PremiumPage = () => {
         </div>
         ) : (
         <div className="bg-white border-2 border-[#DCCFC2] p-6 rounded-3xl text-center space-y-2">
-          <h2 className="font-heading text-base font-black text-[#5B1F3D]">Acesso Premium</h2>
+          <h2 className="font-heading text-base font-black text-[#5B1F3D]">Escola Digital</h2>
           <p className="text-xs font-body font-bold text-[#5B1F3D]/70 leading-relaxed">
             {STRIPE_BLOCKED_ANDROID_MSG}
           </p>
