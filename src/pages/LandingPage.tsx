@@ -436,8 +436,8 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                     <span className="text-sm md:text-base text-midnight/40 font-heading uppercase tracking-widest font-bold">De R$497</span>
                     <div className="flex items-baseline gap-3">
                       <span className="text-sm md:text-xl text-plum font-heading uppercase tracking-widest font-black">Por apenas</span>
-                      <span className="text-7xl md:text-9xl font-heading text-midnight leading-none tracking-tighter">R$297</span>
-                      <span className="text-lg md:text-2xl text-midnight/40 font-heading font-bold uppercase tracking-widest">/ano</span>
+                      <span className="text-5xl sm:text-7xl md:text-9xl font-heading text-midnight leading-none tracking-tighter">R$297</span>
+                      <span className="text-sm md:text-2xl text-midnight/40 font-heading font-bold uppercase tracking-widest">/ano</span>
                     </div>
                   </div>
                   
