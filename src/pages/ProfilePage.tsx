@@ -228,6 +228,24 @@ const ProfilePage = () => {
           </div>
         </div>
 
+        <div className="bg-[#5B1F3D]/5 border-2 border-[#5B1F3D]/10 p-6 rounded-2xl flex items-start gap-4 shadow-sm">
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-white border border-[#5B1F3D]/10 shrink-0">
+            <HelpCircle className="w-5 h-5 text-[#5B1F3D]" />
+          </div>
+          <div className="flex-1 space-y-3">
+            <div>
+              <h4 className="font-heading text-base font-black text-[#5B1F3D]">Precisa de ajuda?</h4>
+              <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/70">Envie uma dúvida, problema de acesso ou sugestão para o suporte.</p>
+            </div>
+            <button 
+              onClick={() => navigate("/suporte")} 
+              className="text-[10px] font-heading font-black tracking-widest uppercase text-[#5B1F3D] flex items-center gap-2 hover:translate-x-1 transition-transform"
+            >
+              Falar com suporte <ChevronRight className="w-3 h-3" />
+            </button>
+          </div>
+        </div>
+
         <div className="space-y-3">
           <button onClick={() => navigate("/minha-jornada")} className="w-full flex items-center justify-between p-6 rounded-2xl bg-white border-2 border-[#DCCFC2]/40 group active:scale-[0.98] transition-all shadow-md">
             <div className="flex items-center gap-4">
