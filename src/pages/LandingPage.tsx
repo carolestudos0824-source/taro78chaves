@@ -523,6 +523,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
         </div>
       </section>
 
+      <PWAInstructions />
 
       {/* ─── FAQ Section ─── */}
       <section className="py-24 md:py-32 px-6 bg-white/20">
