@@ -90,7 +90,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       )}
 
       {/* ─── Top Brand Header ─── */}
-      <header className="sticky top-0 z-50 px-6 py-4 md:py-6 bg-parchment/95 backdrop-blur-md border-b border-gold/10 w-full">
+      <header className="sticky top-0 z-50 px-6 py-4 md:py-4 bg-parchment/95 backdrop-blur-md border-b border-gold/10 w-full">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <a href="/" className="flex items-center gap-2.5 group transition-transform hover:scale-[1.02]" aria-label="Tarô 78 Chaves">
             <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
@@ -123,7 +123,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       </header>
 
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-2 pb-6 md:pt-8 md:pb-8 px-6 overflow-hidden flex flex-col items-center min-h-fit mt-0">
+      <section className="relative pt-2 pb-4 md:pt-4 md:pb-4 px-6 overflow-hidden flex flex-col items-center min-h-fit mt-0">
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold/15 blur-[120px]" />
@@ -231,7 +231,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       </section>
 
       {/* ─── Pain Section ─── */}
-      <section className="py-8 md:py-10 px-6 bg-[#FAF5EF]">
+      <section className="py-6 md:py-8 px-6 bg-[#FAF5EF]">
 
         <div className="max-w-3xl mx-auto relative">
           <div className="absolute -top-6 -left-6 md:-top-10 md:-left-10 opacity-10 pointer-events-none">
