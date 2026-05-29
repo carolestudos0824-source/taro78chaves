@@ -596,8 +596,8 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
         <div className="pt-8 border-t border-gold/10 max-w-sm mx-auto relative z-10">
           <p className="text-[11px] text-ivory/70 font-body tracking-wider font-medium space-y-1">
-            <span>© {new Date().getFullYear()} {businessInfo.companyName} — {businessInfo.productName}</span><br />
-            <span>CNPJ: {businessInfo.cnpj}</span><br />
+            <span>© 2026 Tarô 78 Chaves</span><br />
+            <span>CNPJ 44.472.530/0001-08</span><br />
             <span>Todos os direitos reservados.</span>
           </p>
         </div>

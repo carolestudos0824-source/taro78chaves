@@ -28,12 +28,19 @@ const LegalLayout = ({ title, updatedAt = "Abril de 2026", children }: Props) =>
         </article>
 
         <nav className="mt-12 pt-6 border-t border-border/40 flex flex-wrap gap-x-5 gap-y-2 text-xs">
-          <a href="https://taro78chaves.lovable.app/privacidade" className="text-[#5B1F3D]/70 hover:text-[#5B1F3D] underline-offset-2 hover:underline">Privacidade</a>
-          <a href="https://taro78chaves.lovable.app/termos" className="text-[#5B1F3D]/70 hover:text-[#5B1F3D] underline-offset-2 hover:underline">Termos</a>
-          <a href="https://taro78chaves.lovable.app/suporte" className="text-[#5B1F3D]/70 hover:text-[#5B1F3D] underline-offset-2 hover:underline">Suporte</a>
-          <a href="https://taro78chaves.lovable.app/excluir-conta" className="text-[#5B1F3D]/70 hover:text-[#5B1F3D] underline-offset-2 hover:underline">Excluir conta</a>
+          <a href="/privacidade" className="text-[#5B1F3D]/70 hover:text-[#5B1F3D] underline-offset-2 hover:underline">Privacidade</a>
+          <a href="/termos" className="text-[#5B1F3D]/70 hover:text-[#5B1F3D] underline-offset-2 hover:underline">Termos</a>
+          <a href="/suporte" className="text-[#5B1F3D]/70 hover:text-[#5B1F3D] underline-offset-2 hover:underline">Suporte</a>
+          <a href="/excluir-conta" className="text-[#5B1F3D]/70 hover:text-[#5B1F3D] underline-offset-2 hover:underline">Excluir conta</a>
           <Link to="/" className="text-[#5B1F3D]/70 hover:text-[#5B1F3D] underline-offset-2 hover:underline ml-auto">Início</Link>
         </nav>
+        <div className="mt-8 pt-8 border-t border-border/20 text-center">
+          <p className="text-[10px] text-[#5B1F3D]/60 font-body tracking-wider space-y-1">
+            <span>© 2026 Tarô 78 Chaves</span><br />
+            <span>CNPJ 44.472.530/0001-08</span><br />
+            <span>Todos os direitos reservados.</span>
+          </p>
+        </div>
       </main>
     </div>
   );
