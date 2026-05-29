@@ -82,8 +82,9 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       )}
       {!isSalesPage && (
         <Helmet>
-          <title>Tarô 78 Chaves — Curso de Tarô pelos 78 Arcanos</title>
-          <meta name="description" content="Aprenda Tarô com base no Rider-Waite-Smith: lições guiadas, quizzes e progresso pelas 78 Chaves, do Louco ao Mundo." />
+          <title>Tarô 78 Chaves | A jornada viva pelos 78 arcanos</title>
+          <meta name="description" content="Aprenda Tarô com uma jornada guiada pelos 78 arcanos, baseada no Rider-Waite-Smith, com lições, progresso salvo e experiências dos Arcanos Vivos." />
+          <link rel="canonical" href="https://taro78chaves.lovable.app" />
         </Helmet>
       )}
 

@@ -2,12 +2,20 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /auth
+Disallow: /feedback
+Disallow: /perfil
+Disallow: /lesson/*
+Disallow: /arcano-menor/*
 
 User-agent: Googlebot
 Allow: /
+Disallow: /admin
+Disallow: /auth
 
 User-agent: Twitterbot
 Allow: /
 
 User-agent: facebookexternalhit
 Allow: /
+
+Sitemap: https://taro78chaves.lovable.app/sitemap.xml

@@ -2,6 +2,7 @@ import { Key, UserPlus, LogIn, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { businessInfo } from "@/config/business";
+import { trackEvent } from "@/lib/analytics";
 
 const AcessoComprado = () => {
   const navigate = useNavigate();
@@ -54,6 +55,7 @@ const AcessoComprado = () => {
               href="https://wa.me/5511970221438?text=Comprei%20o%20Tar%C3%B4%2078%20Chaves%20e%20preciso%20de%20ajuda%20com%20meu%20acesso"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("click_whatsapp", { location: "acesso_comprado" })}
               className="inline-flex items-center gap-2 text-plum hover:text-gold-dark font-heading text-xs tracking-widest uppercase underline underline-offset-4 transition-all"
             >
               <MessageCircle className="w-4 h-4" />
