@@ -103,6 +103,8 @@
   html {
     font-size: 17px;
     transition: font-size 0.2s ease-in-out;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   html.font-large {
@@ -120,6 +122,8 @@
     background-image: linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 100%);
     background-size: 100% 100%;
     background-attachment: fixed;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   h1, h2, h3, h4, h5, h6 {
