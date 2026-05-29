@@ -6,6 +6,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider, useAuth } from "@/hooks/use-auth";
+import { ProgressProvider } from "@/hooks/use-progress";
+import { PremiumProvider } from "@/hooks/use-premium";
+import { RoleProvider } from "@/hooks/use-role";
 import { FontSizeProvider } from "@/contexts/font-size-context";
 import { HeaderProvider } from "@/contexts/header-context";
 import { Header } from "@/components/Header";
@@ -253,7 +256,13 @@ const App = () => {
               <Sonner />
               <BrowserRouter>
                 <AuthProvider>
-                  <AppRoutes />
+                  <RoleProvider>
+                    <PremiumProvider>
+                      <ProgressProvider>
+                        <AppRoutes />
+                      </ProgressProvider>
+                    </PremiumProvider>
+                  </RoleProvider>
                 </AuthProvider>
               </BrowserRouter>
             </TooltipProvider>

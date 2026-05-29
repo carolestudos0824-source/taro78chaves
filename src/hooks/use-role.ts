@@ -1,10 +1,20 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext, useContext } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 
 export type AppRole = "admin" | "moderator" | "user";
 
-export const useRole = () => {
+interface RoleState {
+  role: AppRole;
+  loading: boolean;
+  isAdmin: boolean;
+  isModerator: boolean;
+  isStaff: boolean;
+}
+
+const RoleContext = createContext<RoleState | undefined>(undefined);
+
+export const RoleProvider = ({ children }: { children: React.ReactNode }) => {
   const { user, loading: authLoading } = useAuth();
   const [role, setRole] = useState<AppRole>("user");
   const [loading, setLoading] = useState(true);
@@ -32,13 +42,24 @@ export const useRole = () => {
     })();
   }, [authLoading, user]);
 
-  return {
+  const value = {
     role,
     loading,
     isAdmin: role === "admin",
     isModerator: role === "moderator",
     isStaff: role === "admin" || role === "moderator",
   };
+
+  return React.createElement(RoleContext.Provider, { value }, children);
+};
+
+export const useRole = () => {
+  const context = useContext(RoleContext);
+  if (context === undefined) {
+    // Return a default value to avoid breaking during transition or in places where provider is missing
+    return { role: "user" as AppRole, loading: false, isAdmin: false, isModerator: false, isStaff: false };
+  }
+  return context;
 };
 
 /** Sections each role can access. Admin = everything. */

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext, useContext } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 
@@ -54,7 +54,9 @@ function resolveStatus(
   return { isActive: false, status: "free" };
 }
 
-export const usePremium = (): PremiumState => {
+const PremiumContext = createContext<PremiumState | undefined>(undefined);
+
+export const PremiumProvider = ({ children }: { children: React.ReactNode }) => {
   const { user } = useAuth();
   const [state, setState] = useState<PremiumState>({
     isPremium: false,
@@ -99,5 +101,13 @@ export const usePremium = (): PremiumState => {
     fetchPremium();
   }, [user]);
 
-  return state;
+  return React.createElement(PremiumContext.Provider, { value: state }, children);
+};
+
+export const usePremium = () => {
+  const context = useContext(PremiumContext);
+  if (context === undefined) {
+    throw new Error("usePremium must be used within a PremiumProvider");
+  }
+  return context;
 };

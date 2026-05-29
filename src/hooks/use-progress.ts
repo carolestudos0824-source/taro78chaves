@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback, useRef, createContext, useContext } from "react";
 import { DEFAULT_PROGRESS, type Badge, type UserProgress } from "@/lib/content";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
@@ -114,9 +114,32 @@ function progressToDbCore(p: UserProgress) {
   };
 }
 
-export function useProgress() {
+interface ProgressContextType {
+  progress: UserProgress;
+  loading: boolean;
+  addXP: (amount: number) => void;
+  completeLesson: (lessonId: string) => void;
+  completeModule: (moduleId: string) => void;
+  completeQuiz: (quizId: string, score?: number, total?: number) => void;
+  completeExercise: (exerciseId: string) => void;
+  earnBadge: (badgeId: string) => void;
+  updateStreak: () => void;
+  isArcanoCompleted: (arcanoId: number) => boolean;
+  isArcanoUnlocked: (arcanoId: number) => boolean;
+  getCurrentArcanoId: () => number;
+  completedCount: number;
+  journeyProgress: number;
+  completeOnboarding: () => void;
+  setStudentName: (name: string) => void;
+  resetProgress: () => Promise<void>;
+}
+
+const ProgressContext = createContext<ProgressContextType | undefined>(undefined);
+
+export function ProgressProvider({ children }: { children: React.ReactNode }) {
   const { user, loading: authLoading } = useAuth();
-  const { isStaff } = useRole();
+  const roleState = useRole();
+  const isStaff = roleState?.isStaff ?? false;
   const initialExtras = getLocalExtras();
   const [progress, setProgress] = useState<UserProgress>({ ...DEFAULT_PROGRESS, ...initialExtras });
   // If we have any cached progress, don't block the UI with a global loader.
@@ -410,7 +433,7 @@ export function useProgress() {
     }
   }, [user]);
 
-  return {
+  const value = {
     progress,
     loading,
     addXP,
@@ -429,4 +452,14 @@ export function useProgress() {
     setStudentName,
     resetProgress,
   };
+
+  return React.createElement(ProgressContext.Provider, { value }, children);
+}
+
+export function useProgress() {
+  const context = useContext(ProgressContext);
+  if (context === undefined) {
+    throw new Error("useProgress must be used within a ProgressProvider");
+  }
+  return context;
 }
