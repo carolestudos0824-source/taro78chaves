@@ -143,24 +143,24 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 </span>
               </div>
 
-              <div className="space-y-3 md:space-y-6">
-                <h1 className="font-heading text-2xl md:text-5xl lg:text-7xl leading-[1.1] md:leading-[1.05] tracking-tight text-plum normal-case font-bold">
+              <div className="space-y-4 md:space-y-8">
+                <h1 className="font-heading text-4xl md:text-6xl lg:text-8xl leading-[1.05] md:leading-[1] tracking-tight text-plum normal-case font-black">
                   A escola digital dos 78 arcanos
                 </h1>
                 
-                <div className="space-y-4">
-                  <p className="font-heading text-lg md:text-2xl text-plum font-bold">
+                <div className="space-y-4 md:space-y-6">
+                  <p className="font-heading text-xl md:text-3xl text-plum font-extrabold leading-tight">
                     Você quer aprender Tarô, mas ainda trava na hora de interpretar as cartas?
                   </p>
-                  <p className="font-body text-base md:text-xl text-plum/90 leading-relaxed">
+                  <p className="font-body text-lg md:text-2xl text-plum/90 leading-relaxed font-medium">
                     No Tarô 78 Chaves, você percorre cada arcano com método, prática e progressão real.
                   </p>
-                  <p className="font-body text-base md:text-xl text-plum/90 leading-relaxed">
+                  <p className="font-body text-base md:text-xl text-plum/80 leading-relaxed">
                     Uma escola digital guiada pelos 78 arcanos do Rider-Waite-Smith, com lições, quizzes, progresso salvo e uma jornada do Louco ao Mundo.
                   </p>
                 </div>
 
-                <p className="font-accent text-sm md:text-lg text-gold-dark font-bold italic border-l-2 border-gold/30 pl-4 py-1">
+                <p className="font-accent text-sm md:text-lg text-gold-dark font-bold italic border-l-4 border-gold/40 pl-5 py-2 bg-gold/5 rounded-r-xl">
                   “No Tarô 78 Chaves, o tarô deixa de ser imagem e se torna presença.”
                 </p>
 
@@ -183,9 +183,9 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               <div className="flex flex-col items-center lg:items-start gap-1 pt-2 md:pt-2">
                 <Button 
                   onClick={() => handleStart("hero")}
-                  className="w-full sm:w-auto min-h-[56px] md:min-h-[64px] px-8 md:px-10 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-[11px] md:text-base tracking-[0.2em] md:tracking-[0.25em] uppercase border-none shadow-[0_15px_40px_-10px_rgba(91,31,61,0.6)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-4 group/btn"
+                  className="w-full sm:w-auto min-h-[64px] md:min-h-[80px] px-10 md:px-14 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-sm md:text-xl tracking-[0.2em] md:tracking-[0.25em] uppercase border-none shadow-[0_20px_50px_-15px_rgba(91,31,61,0.7)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-4 group/btn"
                 >
-                  <Key className="w-5 h-5 group-hover/btn:rotate-12 transition-transform text-gold" />
+                  <Key className="w-6 h-6 group-hover/btn:rotate-12 transition-transform text-gold" />
                   {checkoutUrl ? "GARANTIR MEU ACESSO" : "QUERO COMEÇAR MINHA JORNADA"}
                 </Button>
                 <div className="flex flex-col items-center lg:items-start gap-0.5 mt-2 md:mt-1">
@@ -422,26 +422,33 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
           <div className="max-w-2xl mx-auto">
             {/* Annual - Unique Plan */}
             <div className="p-10 md:p-14 rounded-[3rem] bg-white text-midnight shadow-2xl border-4 border-gold relative flex flex-col text-left space-y-8 animate-fade-in">
-              <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-gold px-6 py-2 rounded-full text-[10px] md:text-xs font-heading font-black tracking-widest text-white shadow-xl whitespace-nowrap">
-                ✦ OFERTA DE LANÇAMENTO
+              <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-gold px-8 py-3 rounded-full text-xs md:text-sm font-heading font-black tracking-[0.2em] text-white shadow-[0_10px_30px_-5px_rgba(200,166,106,0.5)] whitespace-nowrap border-2 border-white/20 animate-pulse">
+                ✦ OFERTA DE LANÇAMENTO POR TEMPO LIMITADO
               </div>
               
-              <div className="space-y-4">
-                <h3 className="font-heading text-xl md:text-2xl text-plum font-black uppercase tracking-widest">Acesso Anual à Escola Digital Tarô 78 Chaves</h3>
+              <div className="space-y-6">
+                <h3 className="font-heading text-2xl md:text-3xl text-plum font-black uppercase tracking-widest leading-tight">
+                  Acesso Anual à Escola Digital Tarô 78 Chaves
+                </h3>
                 
-                <div className="space-y-2">
-                  <p className="text-xl md:text-2xl text-midnight/40 line-through decoration-gold/60 font-heading">De R$497</p>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-sm text-plum font-heading uppercase tracking-widest font-extrabold">Por</span>
-                    <span className="text-7xl md:text-8xl font-heading text-midnight leading-none">R$297</span>
-                    <span className="text-sm md:text-base text-midnight/40 font-heading font-bold uppercase tracking-widest">/ano</span>
+                <div className="space-y-4">
+                  <div className="flex flex-col">
+                    <span className="text-sm md:text-base text-midnight/40 font-heading uppercase tracking-widest font-bold">De R$497</span>
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-sm md:text-xl text-plum font-heading uppercase tracking-widest font-black">Por apenas</span>
+                      <span className="text-7xl md:text-9xl font-heading text-midnight leading-none tracking-tighter">R$297</span>
+                      <span className="text-lg md:text-2xl text-midnight/40 font-heading font-bold uppercase tracking-widest">/ano</span>
+                    </div>
                   </div>
-                  <div className="pt-2">
-                    <p className="text-base md:text-lg font-bold text-plum tracking-tight flex items-center gap-2">
-                      <Check className="w-5 h-5 text-gold-dark" />
+                  
+                  <div className="pt-2 space-y-3">
+                    <p className="text-lg md:text-xl font-bold text-plum tracking-tight flex items-center gap-3">
+                      <div className="w-6 h-6 rounded-full bg-plum/10 flex items-center justify-center shrink-0">
+                        <Check className="w-4 h-4 text-gold-dark" />
+                      </div>
                       Pagamento único anual • 12 meses de acesso
                     </p>
-                    <p className="text-sm md:text-base font-bold text-gold-dark italic mt-1 ml-7">
+                    <p className="text-base md:text-lg font-bold text-gold-dark italic ml-9 bg-gold/5 px-4 py-1 rounded-lg inline-block">
                       Ou até 12x no cartão pela Hotmart
                     </p>
                   </div>
@@ -453,34 +460,38 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                   Acesse a jornada completa pelos 78 arcanos, com aulas organizadas, quizzes, progresso salvo e área de membros para estudar no seu ritmo.
                 </p>
 
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {[
                     "Aprenda a interpretar as cartas com mais segurança, sem depender apenas de listas de palavras-chave",
                     "Avance arcano por arcano com progressão real e quizzes que fixam o conteúdo",
                     "Estude no seu ritmo, pelo celular, tablet ou computador",
-                    "Salve a Escola Digital na tela inicial do celular, como um aplicativo",
+                    "Acesse online e salve a Escola Digital na tela inicial do celular, como um aplicativo",
                     "Acesse a jornada completa pelos 78 arcanos: Maiores, Menores e Corte",
                     "Tenha uma área de estudos individual com progresso salvo",
                     "Receba certificado digital de conclusão ao finalizar a jornada"
                   ].map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-gold-dark mt-0.5 shrink-0" />
-                      <span className="text-sm md:text-base text-midnight/70 font-bold">{item}</span>
+                    <div key={idx} className="flex items-start gap-4">
+                      <div className="w-5 h-5 rounded-full bg-gold/20 flex items-center justify-center shrink-0 mt-1">
+                        <Check className="w-3.5 h-3.5 text-gold-dark" />
+                      </div>
+                      <span className="text-base md:text-lg text-midnight/80 font-bold leading-snug">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-6 space-y-6">
-                <div className="bg-gold/5 border border-gold/20 p-6 rounded-2xl space-y-3">
-                  <div className="flex items-center gap-2 text-plum">
-                    <Award className="w-6 h-6" />
-                    <span className="font-heading text-lg font-bold uppercase tracking-widest">Garantia de 7 dias</span>
+              <div className="pt-8 space-y-8">
+                <div className="bg-plum/[0.03] border-2 border-gold/20 p-8 rounded-[2rem] space-y-4 shadow-inner">
+                  <div className="flex items-center gap-3 text-plum">
+                    <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center">
+                      <Award className="w-6 h-6 text-gold-dark" />
+                    </div>
+                    <span className="font-heading text-xl font-black uppercase tracking-widest">Garantia de 7 dias pela Hotmart</span>
                   </div>
-                  <p className="text-sm font-body text-midnight/80 leading-relaxed">
+                  <p className="text-base font-body text-midnight/80 leading-relaxed font-medium">
                     Você pode acessar a Escola Digital Tarô 78 Chaves com tranquilidade. Se dentro de 7 dias corridos após a compra você entender que o curso não é para você, poderá solicitar o reembolso conforme as regras da Hotmart.
                   </p>
-                  <p className="text-xs font-bold text-plum/60 uppercase tracking-widest">Sem risco para começar.</p>
+                  <p className="text-sm font-black text-plum uppercase tracking-[0.2em] border-t border-gold/10 pt-4">✦ Sem risco para começar.</p>
                 </div>
 
                 <Button 
