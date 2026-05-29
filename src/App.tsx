@@ -14,7 +14,8 @@ import { HeaderProvider } from "@/contexts/header-context";
 import { Header } from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import SessionInitializer from "@/components/SessionInitializer";
-import { initGA, trackPageView, useUTMTracker } from "@/lib/analytics";
+import ConsentBanner from "@/components/ConsentBanner";
+import { trackPageView, useUTMTracker } from "@/lib/analytics";
 import { useProgress } from "@/hooks/use-progress";
 
 // Eager: critical path
@@ -143,7 +144,7 @@ const AnalyticsTracker = () => {
   useUTMTracker();
 
   useEffect(() => {
-    initGA();
+    // initGA is now handled by ConsentBanner
   }, []);
 
   useEffect(() => {
@@ -176,6 +177,7 @@ const AppRoutes = () => {
   return (
     <Suspense fallback={<LoadingFallback />}>
       <AnalyticsTracker />
+      <ConsentBanner />
       <Routes>
         {/* Rotas Públicas */}
         <Route path="/" element={<LandingPage />} />
