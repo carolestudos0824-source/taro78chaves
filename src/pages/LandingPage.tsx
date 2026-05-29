@@ -28,6 +28,7 @@ import imgMundo from "@/assets/arcano-21-mundo.jpg";
 import { ArcanaPresenceHero } from "@/components/ArcanaPresenceHero";
 import brandIcon from "@/assets/brand-icon.png";
 import brandLogo from "@/assets/brand-logo.png";
+import { PWAInstructions } from "@/components/landing/PWAInstructions";
 
 import { checkoutUrl } from "@/config/checkout";
 import { Helmet } from "react-helmet-async";
@@ -522,6 +523,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
         </div>
       </section>
 
+      <PWAInstructions />
 
       {/* ─── FAQ Section ─── */}
       <section className="py-24 md:py-32 px-6 bg-white/20">
