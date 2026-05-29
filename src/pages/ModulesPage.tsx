@@ -176,7 +176,7 @@ const ModulesPage = () => {
         {/* ─── NÚCLEO CENTRAL DE JORNADA ─── */}
         <div className="space-y-4">
           {/* 1. Meu Painel Diário */}
-          <div className="relative rounded-[2.5rem] overflow-hidden p-6 md:p-10 transition-all duration-500" style={{
+          <div className="relative rounded-[2.5rem] overflow-hidden p-6 md:p-10 transition-all duration-500 w-full" style={{
             background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
             backdropFilter: "blur(24px)",
             border: "2.5px solid #C8A66A",
@@ -196,7 +196,7 @@ const ModulesPage = () => {
                 </div>
               </div>
               <div className="text-right">
-                <span className="text-3xl font-heading font-black text-[#5B1F3D]">{globalProgressPct}%</span>
+                <span className="text-2xl md:text-3xl font-heading font-black text-[#5B1F3D]">{globalProgressPct}%</span>
                 <span className="text-[14px] font-black text-[#5B1F3D]/30 ml-1">Chaves</span>
               </div>
             </div>
@@ -214,7 +214,7 @@ const ModulesPage = () => {
                 <div className="flex flex-col">
                   <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#C8A66A] uppercase leading-none mb-1">Agora Estudando</span>
                   <span className="text-sm md:text-base font-heading font-black text-[#5B1F3D] leading-tight">
-                    {arcanoGuia.name} <span className="text-[#5B1F3D]/40 ml-1">· Arcano {arcanoGuia.index} de 78</span>
+                    {arcanoGuia.name} <span className="text-[#5B1F3D]/40 ml-1 block md:inline text-[9px] md:text-sm">· Arcano {arcanoGuia.index} de 78</span>
                   </span>
                 </div>
               </div>
@@ -295,10 +295,10 @@ const ModulesPage = () => {
         <ProgressCelebration xp={progress.xp} level={progress.level} streak={progress.streak} completedLessons={progress.completedLessons.length} />
         
         <div className="space-y-8 md:space-y-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             <button
               onClick={() => navigate("/desafios")}
-              className="group relative overflow-hidden rounded-[2rem] p-6 text-center border-2 border-[#C8A66A]/30 bg-white transition-all hover:scale-[1.03] active:scale-95 shadow-lg"
+              className="group relative overflow-hidden rounded-[2rem] p-4 md:p-6 text-center border-2 border-[#C8A66A]/30 bg-white transition-all hover:scale-[1.03] active:scale-95 shadow-lg"
             >
               <div className="absolute top-0 right-0 p-3 opacity-10">
                 <Sparkles className="w-8 h-8 text-[#5B1F3D]" />
@@ -316,7 +316,7 @@ const ModulesPage = () => {
 
             <button
               onClick={() => navigate("/trilhas")}
-              className="group relative overflow-hidden rounded-[2rem] p-6 text-center border-2 border-[#C8A66A]/30 bg-white transition-all hover:scale-[1.03] active:scale-95 shadow-lg"
+              className="group relative overflow-hidden rounded-[2rem] p-4 md:p-6 text-center border-2 border-[#C8A66A]/30 bg-white transition-all hover:scale-[1.03] active:scale-95 shadow-lg"
             >
               <div className="absolute top-0 right-0 p-3 opacity-10">
                 <MapPin className="w-8 h-8 text-[#5B1F3D]" />

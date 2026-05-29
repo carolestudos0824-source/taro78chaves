@@ -333,7 +333,7 @@ const ArcanoMenorLessonPage = () => {
           <button
             onClick={goNext}
             disabled={phase === "quiz" && !allQuizSubmitted}
-            className="w-full py-5 rounded-2xl font-heading text-xs tracking-[0.2em] uppercase font-black flex items-center justify-center gap-3 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed border-2 border-[#C8A66A] shadow-[0_15px_40px_-10px_rgba(91,31,61,0.4)] active:scale-95 hover:scale-105"
+            className="w-full py-5 px-4 rounded-2xl font-heading text-xs tracking-[0.15em] md:tracking-[0.2em] uppercase font-black flex items-center justify-center gap-2 md:gap-3 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed border-2 border-[#C8A66A] shadow-[0_15px_40px_-10px_rgba(91,31,61,0.4)] active:scale-95 hover:scale-105"
             style={{
               background: "#5B1F3D",
               color: "#FAF5EF",

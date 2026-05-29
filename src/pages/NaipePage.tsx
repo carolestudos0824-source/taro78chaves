@@ -237,7 +237,7 @@ const NaipePage = () => {
           </div>
 
           {/* Progress — Unified with /app dashboard style */}
-          <div className="bg-white/60 backdrop-blur-md p-8 rounded-[2rem] border-2 border-[#C8A66A]/30 shadow-xl">
+          <div className="bg-white/60 backdrop-blur-md p-6 md:p-8 rounded-[2rem] border-2 border-[#C8A66A]/30 shadow-xl">
             <div className="flex items-center justify-between mb-5 px-1">
               <span className="text-[13px] font-heading tracking-[0.35em] uppercase font-black" style={{ color: "#5B1F3D" }}>
                 {completedCount}/14 lições concluídas
@@ -268,7 +268,7 @@ const NaipePage = () => {
         ))}
 
         {/* Study tools — Card style from /app */}
-        <div className="grid grid-cols-3 gap-5 mb-16" style={{ animation: "fade-up 0.5s ease-out" }}>
+        <div className="grid grid-cols-3 gap-3 md:gap-5 mb-16" style={{ animation: "fade-up 0.5s ease-out" }}>
           {[
             { icon: "jornada", label: "Introdução", desc: "Simbologia", onClick: () => navigate(`/naipe/${naipe}/intro`) },
             { icon: "progresso", label: "Números", desc: "Ás ao Dez", onClick: () => navigate("/numerologia") },
@@ -277,14 +277,14 @@ const NaipePage = () => {
             <button
               key={tool.label}
               onClick={tool.onClick}
-              className="rounded-[2rem] p-6 text-center transition-all duration-500 hover:scale-[1.05] group bg-white border-2 border-[#C8A66A]/30 backdrop-blur-md shadow-lg hover:shadow-2xl hover:border-[#C8A66A]"
+              className="rounded-[2rem] p-3 md:p-6 text-center transition-all duration-500 hover:scale-[1.05] group bg-white border-2 border-[#C8A66A]/30 backdrop-blur-md shadow-lg hover:shadow-2xl hover:border-[#C8A66A]"
             >
               <div className="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 group-hover:bg-[#5B1F3D] group-hover:shadow-[0_10px_25px_rgba(91,31,61,0.3)] bg-[#FAF5EF] border-2 border-[#C8A66A]/20 shadow-inner">
                 <div className="group-hover:text-white transition-colors duration-500" style={{ color: "#5B1F3D" }}>
                   <TarotIcon name={tool.icon} className="w-6 h-6" />
                 </div>
               </div>
-              <p className="font-heading text-[13px] tracking-[0.25em] uppercase mb-1 font-black" style={{ color: "#5B1F3D" }}>
+              <p className="font-heading text-[10px] md:text-[13px] tracking-[0.1em] md:tracking-[0.25em] uppercase mb-1 font-black" style={{ color: "#5B1F3D" }}>
                 {tool.label}
               </p>
               <p className="text-[11px] font-accent italic font-black" style={{ color: "#8B6A30" }}>
