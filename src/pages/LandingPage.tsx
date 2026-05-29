@@ -597,6 +597,20 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 Sim. Para dúvidas de acesso, pagamento ou conta, entre em contato pelo e-mail {businessInfo.supportEmail}.
               </AccordionContent>
             </AccordionItem>
+            <AccordionItem value="item-11" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Preciso baixar pela Play Store ou App Store?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
+                Não. Nesta fase, o Tarô 78 Chaves funciona como uma escola digital online. Você acessa pelo navegador e pode salvar o acesso na tela inicial do celular, como um aplicativo.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-12" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Como salvo na tela inicial do celular?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
+                <p className="mb-2"><strong>No Android:</strong> abra pelo Chrome, toque nos três pontinhos e escolha “Adicionar à tela inicial” ou “Instalar app”.</p>
+                <p><strong>No iPhone:</strong> abra pelo Safari, toque no botão de compartilhar e escolha “Adicionar à Tela de Início”.</p>
+              </AccordionContent>
+            </AccordionItem>
           </Accordion>
         </div>
       </section>
