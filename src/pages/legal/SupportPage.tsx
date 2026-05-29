@@ -21,7 +21,7 @@ const SupportPage = () => (
 
     <h2>Dúvidas sobre Compra e Acesso</h2>
     <p>
-      Para dúvidas sobre acesso, compra, login, conteúdo ou suporte técnico, entre em contato pelo e-mail <strong>{businessInfo.supportEmail}</strong>.
+      Para dúvidas sobre acesso, compra, login, conteúdo ou suporte técnico, entre em contato pelo e-mail <strong>{businessInfo.supportEmail}</strong> ou envie uma <strong><a href="/feedback" className="text-[#5B1F3D] underline">Mensagem ao Oráculo</a></strong> diretamente pelo app.
     </p>
 
     <h2>Login e acesso</h2>
