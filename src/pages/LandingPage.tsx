@@ -307,7 +307,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               variant="outline"
               className="px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-widest text-[11px] uppercase transition-all shadow-sm"
             >
-              ACESSAR O PROGRAMA →
+              {checkoutUrl ? "GARANTIR MEU ACESSO →" : "QUERO COMEÇAR MINHA JORNADA →"}
             </Button>
           </div>
         </div>
