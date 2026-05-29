@@ -144,12 +144,24 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               </div>
 
               <div className="space-y-3 md:space-y-6">
-                <h1 className="font-heading text-2xl md:text-5xl lg:text-7xl leading-[1.1] md:leading-[1.05] tracking-tight text-plum normal-case">
-                  No Tarô 78 Chaves, o Tarô deixa de ser imagem e se torna <span className="italic">presença.</span>
+                <h1 className="font-heading text-2xl md:text-5xl lg:text-7xl leading-[1.1] md:leading-[1.05] tracking-tight text-plum normal-case font-bold">
+                  A escola digital dos 78 arcanos
                 </h1>
                 
-                <p className="font-accent text-base md:text-2xl lg:text-3xl text-plum/90 font-bold italic leading-relaxed">
-                  Uma escola digital para aprender Tarô com profundidade, simbologia e prática, em uma jornada guiada pelos 78 arcanos com aulas, quizzes, progresso salvo e certificado digital de conclusão.
+                <div className="space-y-4">
+                  <p className="font-heading text-lg md:text-2xl text-plum font-bold">
+                    Você quer aprender Tarô, mas ainda trava na hora de interpretar as cartas?
+                  </p>
+                  <p className="font-body text-base md:text-xl text-plum/90 leading-relaxed">
+                    No Tarô 78 Chaves, você percorre cada arcano com método, prática e progressão real.
+                  </p>
+                  <p className="font-body text-base md:text-xl text-plum/90 leading-relaxed">
+                    Uma escola digital guiada pelos 78 arcanos do Rider-Waite-Smith, com lições, quizzes, progresso salvo e uma jornada do Louco ao Mundo.
+                  </p>
+                </div>
+
+                <p className="font-accent text-sm md:text-lg text-gold-dark font-bold italic border-l-2 border-gold/30 pl-4 py-1">
+                  “No Tarô 78 Chaves, o tarô deixa de ser imagem e se torna presença.”
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-6 pt-1 md:pt-4 font-heading text-[9px] md:text-xs tracking-[0.15em] md:tracking-[0.2em] uppercase text-plum font-extrabold drop-shadow-sm">
@@ -174,7 +186,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                   className="w-full sm:w-auto min-h-[56px] md:min-h-[64px] px-8 md:px-10 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-[11px] md:text-base tracking-[0.2em] md:tracking-[0.25em] uppercase border-none shadow-[0_15px_40px_-10px_rgba(91,31,61,0.6)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-4 group/btn"
                 >
                   <Key className="w-5 h-5 group-hover/btn:rotate-12 transition-transform text-gold" />
-                  {checkoutUrl ? "GARANTIR MEU ACESSO" : "ACESSAR O PROGRAMA"}
+                  {checkoutUrl ? "GARANTIR MEU ACESSO" : "QUERO COMEÇAR MINHA JORNADA"}
                 </Button>
                 <div className="flex flex-col items-center lg:items-start gap-0.5 mt-2 md:mt-1">
                   <p className="text-[11px] md:text-base font-heading tracking-[0.1em] text-plum/80 font-bold uppercase">
@@ -295,7 +307,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               variant="outline"
               className="px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-widest text-[11px] uppercase transition-all shadow-sm"
             >
-              ACESSAR O PROGRAMA →
+              {checkoutUrl ? "GARANTIR MEU ACESSO →" : "QUERO COMEÇAR MINHA JORNADA →"}
             </Button>
           </div>
         </div>
@@ -368,8 +380,31 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               variant="outline"
               className="px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-widest text-[11px] uppercase transition-all"
             >
-              {checkoutUrl ? "GARANTIR MEU ACESSO →" : "ACESSAR O PROGRAMA →"}
+              {checkoutUrl ? "GARANTIR MEU ACESSO →" : "QUERO COMEÇAR MINHA JORNADA →"}
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Institutional Block ─── */}
+      <section className="py-20 px-6 bg-white relative overflow-hidden">
+        <div className="max-w-4xl mx-auto space-y-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h2 className="font-heading text-3xl md:text-4xl text-plum">Quem está por trás do Tarô 78 Chaves</h2>
+              <p className="text-lg font-body text-midnight/80 leading-relaxed">
+                O Tarô 78 Chaves é uma escola digital da Lua de Kaya, criada para ensinar Tarô com profundidade, simbologia e aplicação prática.
+              </p>
+              <p className="text-lg font-body text-midnight/80 leading-relaxed">
+                A jornada foi estruturada para conduzir a aluna arcano por arcano, com lições guiadas, quizzes, progresso salvo e uma metodologia pensada para transformar estudo em prática real.
+              </p>
+            </div>
+            <div className="relative">
+              <div className="aspect-square rounded-3xl bg-plum/5 border-2 border-gold/20 flex items-center justify-center p-8">
+                <img src={brandLogo} alt="Lua de Kaya - Tarô 78 Chaves" className="w-full h-full object-contain opacity-80" />
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-gold/10 rounded-full blur-2xl" />
+            </div>
           </div>
         </div>
       </section>
@@ -420,14 +455,13 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
                 <div className="space-y-3">
                   {[
-                    "Jornada completa pelos 78 arcanos",
-                    "Aulas organizadas por módulos",
-                    "Quizzes e exercícios",
-                    "Progresso salvo",
-                    "Área de membros individual",
-                    "Acesso online por 12 meses",
-                    "Certificado digital de conclusão",
-                    "Estudo pelo celular, tablet ou computador"
+                    "Aprenda a interpretar as cartas com mais segurança, sem depender apenas de listas de palavras-chave",
+                    "Avance arcano por arcano com progressão real e quizzes que fixam o conteúdo",
+                    "Estude no seu ritmo, pelo celular, tablet ou computador",
+                    "Salve a Escola Digital na tela inicial do celular, como um aplicativo",
+                    "Acesse a jornada completa pelos 78 arcanos: Maiores, Menores e Corte",
+                    "Tenha uma área de estudos individual com progresso salvo",
+                    "Receba certificado digital de conclusão ao finalizar a jornada"
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-gold-dark mt-0.5 shrink-0" />
@@ -437,7 +471,18 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 </div>
               </div>
 
-              <div className="pt-6 space-y-4">
+              <div className="pt-6 space-y-6">
+                <div className="bg-gold/5 border border-gold/20 p-6 rounded-2xl space-y-3">
+                  <div className="flex items-center gap-2 text-plum">
+                    <Award className="w-6 h-6" />
+                    <span className="font-heading text-lg font-bold uppercase tracking-widest">Garantia de 7 dias</span>
+                  </div>
+                  <p className="text-sm font-body text-midnight/80 leading-relaxed">
+                    Você pode acessar a Escola Digital Tarô 78 Chaves com tranquilidade. Se dentro de 7 dias corridos após a compra você entender que o curso não é para você, poderá solicitar o reembolso conforme as regras da Hotmart.
+                  </p>
+                  <p className="text-xs font-bold text-plum/60 uppercase tracking-widest">Sem risco para começar.</p>
+                </div>
+
                 <Button 
                   onClick={() => handleSubscribe("annual")} 
                   className="w-full h-16 md:h-20 bg-plum hover:bg-plum/90 text-ivory rounded-full text-lg md:text-xl shadow-[0_15px_35px_-10px_rgba(91,31,61,0.5)] hover:scale-[1.02] transition-all font-heading tracking-widest font-black uppercase flex items-center justify-center gap-3"
@@ -552,6 +597,20 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 Sim. Para dúvidas de acesso, pagamento ou conta, entre em contato pelo e-mail {businessInfo.supportEmail}.
               </AccordionContent>
             </AccordionItem>
+            <AccordionItem value="item-11" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Preciso baixar pela Play Store ou App Store?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
+                Não. Nesta fase, o Tarô 78 Chaves funciona como uma escola digital online. Você acessa pelo navegador e pode salvar o acesso na tela inicial do celular, como um aplicativo.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-12" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Como salvo na tela inicial do celular?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
+                <p className="mb-2"><strong>No Android:</strong> abra pelo Chrome, toque nos três pontinhos e escolha “Adicionar à tela inicial” ou “Instalar app”.</p>
+                <p><strong>No iPhone:</strong> abra pelo Safari, toque no botão de compartilhar e escolha “Adicionar à Tela de Início”.</p>
+              </AccordionContent>
+            </AccordionItem>
           </Accordion>
         </div>
       </section>
@@ -596,9 +655,10 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
         <div className="pt-8 border-t border-gold/10 max-w-sm mx-auto relative z-10">
           <p className="text-[11px] text-ivory/70 font-body tracking-wider font-medium space-y-1">
-            <span>© 2026 Tarô 78 Chaves</span><br />
-            <span>CNPJ 44.472.530/0001-08</span><br />
-            <span>Todos os direitos reservados.</span>
+            <span className="block">© 2026 Tarô 78 Chaves</span>
+            <span className="block">Uma escola digital da Lua de Kaya</span>
+            <span className="block font-bold">CNPJ 44.472.530/0001-08</span>
+            <span className="block">Todos os direitos reservados.</span>
           </p>
         </div>
       </footer>

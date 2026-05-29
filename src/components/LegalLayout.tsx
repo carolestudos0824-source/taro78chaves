@@ -36,9 +36,10 @@ const LegalLayout = ({ title, updatedAt = "Abril de 2026", children }: Props) =>
         </nav>
         <div className="mt-8 pt-8 border-t border-border/20 text-center">
           <p className="text-[10px] text-[#5B1F3D]/60 font-body tracking-wider space-y-1">
-            <span>© 2026 Tarô 78 Chaves</span><br />
-            <span>CNPJ 44.472.530/0001-08</span><br />
-            <span>Todos os direitos reservados.</span>
+            <span className="block">© 2026 Tarô 78 Chaves</span>
+            <span className="block">Uma escola digital da Lua de Kaya</span>
+            <span className="block font-bold">CNPJ 44.472.530/0001-08</span>
+            <span className="block">Todos os direitos reservados.</span>
           </p>
         </div>
       </main>
