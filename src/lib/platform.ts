@@ -45,6 +45,6 @@ export const isAndroidApp = (): boolean => {
 /** Whether external (Stripe) checkout for digital content is allowed in this build. */
 export const isWebCheckoutAllowed = (): boolean => !isAndroidApp();
 
-export const STRIPE_BLOCKED_ANDROID_MSG = "Assinaturas via Google Play Store em breve. Para assinar agora, acesse o app pelo navegador em taro78chaves.lovable.app.";
+export const STRIPE_BLOCKED_ANDROID_MSG = "Acesso completo à Escola Digital via Google Play Store em breve. Para garantir seu acesso agora, acesse pelo navegador em www.taro78chaves.com.br.";
 
 export const platformLabel = (): "android" | "web" => (isAndroidApp() ? "android" : "web");
