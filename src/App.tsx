@@ -84,6 +84,7 @@ const TermsPage = lazy(() => import("./pages/legal/TermsPage.tsx"));
 const SupportPage = lazy(() => import("./pages/legal/SupportPage.tsx"));
 const DeleteAccountPage = lazy(() => import("./pages/legal/DeleteAccountPage.tsx"));
 const ValidateCertificatePage = lazy(() => import("./pages/ValidateCertificatePage.tsx"));
+const CertificateVisualModel = lazy(() => import("./pages/CertificateVisualModel.tsx"));
 
 const queryClient = new QueryClient();
 
@@ -191,6 +192,7 @@ const AppRoutes = () => {
         <Route path="/excluir-conta" element={<DeleteAccountPage />} />
         <Route path="/apresentacao" element={<PresentationPage />} />
         <Route path="/validar-certificado" element={<ValidateCertificatePage />} />
+        <Route path="/visual-certificado" element={<CertificateVisualModel />} />
 
         {/* Rotas Protegidas dentro do AppShell */}
         <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
