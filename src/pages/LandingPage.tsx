@@ -143,24 +143,24 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 </span>
               </div>
 
-              <div className="space-y-3 md:space-y-6">
-                <h1 className="font-heading text-2xl md:text-5xl lg:text-7xl leading-[1.1] md:leading-[1.05] tracking-tight text-plum normal-case font-bold">
+              <div className="space-y-4 md:space-y-8">
+                <h1 className="font-heading text-4xl md:text-6xl lg:text-8xl leading-[1.05] md:leading-[1] tracking-tight text-plum normal-case font-black">
                   A escola digital dos 78 arcanos
                 </h1>
                 
-                <div className="space-y-4">
-                  <p className="font-heading text-lg md:text-2xl text-plum font-bold">
+                <div className="space-y-4 md:space-y-6">
+                  <p className="font-heading text-xl md:text-3xl text-plum font-extrabold leading-tight">
                     Você quer aprender Tarô, mas ainda trava na hora de interpretar as cartas?
                   </p>
-                  <p className="font-body text-base md:text-xl text-plum/90 leading-relaxed">
+                  <p className="font-body text-lg md:text-2xl text-plum/90 leading-relaxed font-medium">
                     No Tarô 78 Chaves, você percorre cada arcano com método, prática e progressão real.
                   </p>
-                  <p className="font-body text-base md:text-xl text-plum/90 leading-relaxed">
+                  <p className="font-body text-base md:text-xl text-plum/80 leading-relaxed">
                     Uma escola digital guiada pelos 78 arcanos do Rider-Waite-Smith, com lições, quizzes, progresso salvo e uma jornada do Louco ao Mundo.
                   </p>
                 </div>
 
-                <p className="font-accent text-sm md:text-lg text-gold-dark font-bold italic border-l-2 border-gold/30 pl-4 py-1">
+                <p className="font-accent text-sm md:text-lg text-gold-dark font-bold italic border-l-4 border-gold/40 pl-5 py-2 bg-gold/5 rounded-r-xl">
                   “No Tarô 78 Chaves, o tarô deixa de ser imagem e se torna presença.”
                 </p>
 
