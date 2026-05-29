@@ -103,6 +103,8 @@
   html {
     font-size: 17px;
     transition: font-size 0.2s ease-in-out;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   html.font-large {
