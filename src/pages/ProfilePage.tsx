@@ -154,14 +154,24 @@ const ProfilePage = () => {
               </div>
               <h3 className="font-heading text-xl font-black text-[#5B1F3D]">
                 {isAdmin ? "Acesso Total" : (
+                  isHotmart ? "Acesso Premium" :
                   isOneTimeAnnual ? "Jornada Anual" : 
                   (isPremium ? (premiumSource === "store_monthly" ? "Assinatura Mensal" : "Jornada Completa") : "Plano do Louco")
                 )}
               </h3>
-              {isPremium && untilFormatted && (
-                <p className="text-[10px] font-body font-bold italic text-[#5B1F3D]/80 uppercase tracking-widest">
-                  {isStripeRecurring ? `Renovação: ${untilFormatted}` : `Ativo até: ${untilFormatted}`}
-                </p>
+              {isPremium && (
+                <div className="space-y-1">
+                  {untilFormatted && (
+                    <p className="text-[10px] font-body font-bold italic text-[#5B1F3D]/80 uppercase tracking-widest">
+                      {isStripeRecurring ? `Renovação: ${untilFormatted}` : `Acesso ativo até: ${untilFormatted}`}
+                    </p>
+                  )}
+                  {isHotmart && (
+                    <p className="text-[9px] font-heading font-black text-[#C8A66A] uppercase tracking-wider">
+                      Acesso anual liberado pela Hotmart
+                    </p>
+                  )}
+                </div>
               )}
             </div>
 
