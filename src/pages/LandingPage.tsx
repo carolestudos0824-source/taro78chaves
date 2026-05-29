@@ -72,7 +72,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
   };
 
   return (
-    <div className="min-h-screen bg-parchment text-midnight selection:bg-secondary selection:text-white relative w-full overflow-x-hidden">
+    <div className="min-h-screen bg-parchment text-midnight selection:bg-secondary selection:text-white relative w-full overflow-x-hidden max-w-[100vw]">
       {isSalesPage && (
         <Helmet>
           <title>Tarô 78 Chaves | Escola Digital de Tarô</title>
@@ -410,7 +410,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       </section>
 
       {/* ─── Pricing Section ─── */}
-      <section className="py-32 px-6 bg-[#5B1F3D] text-parchment relative overflow-hidden">
+      <section className="py-20 md:py-32 px-4 md:px-6 bg-[#5B1F3D] text-parchment relative overflow-hidden w-full">
         <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-white/5 blur-[150px] rounded-full" />
         
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-16">
@@ -421,13 +421,13 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
           <div className="max-w-2xl mx-auto">
             {/* Annual - Unique Plan */}
-            <div className="p-10 md:p-14 rounded-[3rem] bg-white text-midnight shadow-2xl border-4 border-gold relative flex flex-col text-left space-y-8 animate-fade-in">
-              <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-gold px-8 py-3 rounded-full text-xs md:text-sm font-heading font-black tracking-[0.2em] text-white shadow-[0_10px_30px_-5px_rgba(200,166,106,0.5)] whitespace-nowrap border-2 border-white/20 animate-pulse">
+            <div className="p-6 md:p-14 rounded-[2rem] md:rounded-[3rem] bg-white text-midnight shadow-2xl border-2 md:border-4 border-gold relative flex flex-col text-left space-y-6 md:space-y-8 animate-fade-in w-full mx-auto">
+              <div className="absolute -top-4 md:-top-6 left-1/2 -translate-x-1/2 bg-gold px-4 md:px-8 py-2 md:py-3 rounded-full text-[10px] md:text-sm font-heading font-black tracking-[0.1em] md:tracking-[0.2em] text-white shadow-[0_10px_30px_-5px_rgba(200,166,106,0.5)] whitespace-nowrap border border-white/20 animate-pulse">
                 ✦ OFERTA DE LANÇAMENTO POR TEMPO LIMITADO
               </div>
               
-              <div className="space-y-6">
-                <h3 className="font-heading text-2xl md:text-3xl text-plum font-black uppercase tracking-widest leading-tight">
+              <div className="space-y-4 md:space-y-6">
+                <h3 className="font-heading text-xl md:text-3xl text-plum font-black uppercase tracking-tight md:tracking-widest leading-tight">
                   Acesso Anual à Escola Digital Tarô 78 Chaves
                 </h3>
                 
@@ -436,8 +436,8 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                     <span className="text-sm md:text-base text-midnight/40 font-heading uppercase tracking-widest font-bold">De R$497</span>
                     <div className="flex items-baseline gap-3">
                       <span className="text-sm md:text-xl text-plum font-heading uppercase tracking-widest font-black">Por apenas</span>
-                      <span className="text-7xl md:text-9xl font-heading text-midnight leading-none tracking-tighter">R$297</span>
-                      <span className="text-lg md:text-2xl text-midnight/40 font-heading font-bold uppercase tracking-widest">/ano</span>
+                      <span className="text-5xl sm:text-7xl md:text-9xl font-heading text-midnight leading-none tracking-tighter">R$297</span>
+                      <span className="text-sm md:text-2xl text-midnight/40 font-heading font-bold uppercase tracking-widest">/ano</span>
                     </div>
                   </div>
                   
@@ -481,12 +481,12 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               </div>
 
               <div className="pt-8 space-y-8">
-                <div className="bg-plum/[0.03] border-2 border-gold/20 p-8 rounded-[2rem] space-y-4 shadow-inner">
-                  <div className="flex items-center gap-3 text-plum">
-                    <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center">
-                      <Award className="w-6 h-6 text-gold-dark" />
+                <div className="bg-plum/[0.03] border-2 border-gold/20 p-5 md:p-8 rounded-2xl md:rounded-[2rem] space-y-3 md:space-y-4 shadow-inner">
+                  <div className="flex items-center gap-2 md:gap-3 text-plum">
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
+                      <Award className="w-5 h-5 md:w-6 md:h-6 text-gold-dark" />
                     </div>
-                    <span className="font-heading text-xl font-black uppercase tracking-widest">Garantia de 7 dias pela Hotmart</span>
+                    <span className="font-heading text-base md:text-xl font-black uppercase tracking-tight md:tracking-widest">Garantia de 7 dias pela Hotmart</span>
                   </div>
                   <p className="text-base font-body text-midnight/80 leading-relaxed font-medium">
                     Você pode acessar a Escola Digital Tarô 78 Chaves com tranquilidade. Se dentro de 7 dias corridos após a compra você entender que o curso não é para você, poderá solicitar o reembolso conforme as regras da Hotmart.
@@ -496,9 +496,9 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
                 <Button 
                   onClick={() => handleSubscribe("annual")} 
-                  className="w-full h-16 md:h-20 bg-plum hover:bg-plum/90 text-ivory rounded-full text-lg md:text-xl shadow-[0_15px_35px_-10px_rgba(91,31,61,0.5)] hover:scale-[1.02] transition-all font-heading tracking-widest font-black uppercase flex items-center justify-center gap-3"
+                  className="w-full h-16 md:h-20 bg-plum hover:bg-plum/90 text-ivory rounded-full text-sm md:text-xl shadow-[0_15px_35px_-10px_rgba(91,31,61,0.5)] hover:scale-[1.02] transition-all font-heading tracking-tight md:tracking-widest font-black uppercase flex items-center justify-center gap-2 md:gap-3 px-4"
                 >
-                  <Sparkles className="w-6 h-6 text-gold animate-pulse" />
+                  <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-gold animate-pulse shrink-0" />
                   GARANTIR MEU ACESSO
                 </Button>
                 
