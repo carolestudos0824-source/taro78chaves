@@ -496,10 +496,10 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
                 <Button 
                   onClick={() => handleSubscribe("annual")} 
-                  className="w-full h-16 md:h-20 bg-plum hover:bg-plum/90 text-ivory rounded-full text-lg md:text-xl shadow-[0_15px_35px_-10px_rgba(91,31,61,0.5)] hover:scale-[1.02] transition-all font-heading tracking-widest font-black uppercase flex items-center justify-center gap-3"
+                  className="w-full h-16 md:h-20 bg-plum hover:bg-plum/90 text-ivory rounded-full text-base md:text-xl shadow-[0_15px_35px_-10px_rgba(91,31,61,0.5)] hover:scale-[1.02] transition-all font-heading tracking-[0.1em] md:tracking-widest font-black uppercase flex items-center justify-center gap-2 md:gap-3 box-border px-4"
                 >
-                  <Sparkles className="w-6 h-6 text-gold animate-pulse" />
-                  GARANTIR MEU ACESSO
+                  <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-gold animate-pulse shrink-0" />
+                  <span className="truncate">GARANTIR MEU ACESSO</span>
                 </Button>
                 
                 <div className="space-y-2 text-center">
