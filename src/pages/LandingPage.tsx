@@ -123,7 +123,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       </header>
 
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-4 pb-12 md:pt-32 md:pb-24 px-6 overflow-hidden flex flex-col items-center min-h-fit mt-0">
+      <section className="relative pt-4 pb-12 md:pt-20 md:pb-16 px-6 overflow-hidden flex flex-col items-center min-h-fit mt-0">
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold/15 blur-[120px]" />
@@ -144,12 +144,12 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 </span>
               </div>
 
-              <div className="space-y-4 md:space-y-8">
+              <div className="space-y-4 md:space-y-6">
                 <h1 className="font-heading text-4xl md:text-6xl lg:text-8xl leading-[1.05] md:leading-[1] tracking-tight text-plum normal-case font-black">
                   A escola digital dos 78 arcanos
                 </h1>
                 
-                <div className="space-y-4 md:space-y-6">
+                <div className="space-y-3 md:space-y-4">
                   <p className="font-heading text-xl md:text-3xl text-plum font-extrabold leading-tight">
                     Você quer aprender Tarô, mas ainda trava na hora de interpretar as cartas?
                   </p>
@@ -181,7 +181,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-start gap-1 pt-2 md:pt-2">
+              <div className="flex flex-col items-center lg:items-start gap-1 pt-1 md:pt-1">
                 <Button 
                   onClick={() => handleStart("hero")}
                   className="w-full sm:w-auto min-h-[64px] md:min-h-[80px] px-4 md:px-14 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-xs md:text-xl tracking-[0.1em] md:tracking-[0.25em] uppercase border-none shadow-[0_20px_50px_-15px_rgba(91,31,61,0.7)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3 md:gap-4 group/btn whitespace-normal text-center leading-tight"
@@ -231,7 +231,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       </section>
 
       {/* ─── Pain Section ─── */}
-      <section className="py-16 md:py-20 px-6 bg-[#FAF5EF]">
+      <section className="py-12 md:py-16 px-6 bg-[#FAF5EF]">
 
         <div className="max-w-4xl mx-auto relative">
           <div className="absolute -top-6 -left-6 md:-top-10 md:-left-10 opacity-10 pointer-events-none">
