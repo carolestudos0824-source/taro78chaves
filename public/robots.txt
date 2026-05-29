@@ -18,4 +18,4 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-Sitemap: https://taro78chaves.lovable.app/sitemap.xml
+Sitemap: https://www.taro78chaves.com.br/sitemap.xml
