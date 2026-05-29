@@ -480,16 +480,18 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 </div>
               </div>
 
-              <div className="pt-6 space-y-6">
-                <div className="bg-gold/5 border border-gold/20 p-6 rounded-2xl space-y-3">
-                  <div className="flex items-center gap-2 text-plum">
-                    <Award className="w-6 h-6" />
-                    <span className="font-heading text-lg font-bold uppercase tracking-widest">Garantia de 7 dias</span>
+              <div className="pt-8 space-y-8">
+                <div className="bg-plum/[0.03] border-2 border-gold/20 p-8 rounded-[2rem] space-y-4 shadow-inner">
+                  <div className="flex items-center gap-3 text-plum">
+                    <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center">
+                      <Award className="w-6 h-6 text-gold-dark" />
+                    </div>
+                    <span className="font-heading text-xl font-black uppercase tracking-widest">Garantia de 7 dias pela Hotmart</span>
                   </div>
-                  <p className="text-sm font-body text-midnight/80 leading-relaxed">
+                  <p className="text-base font-body text-midnight/80 leading-relaxed font-medium">
                     Você pode acessar a Escola Digital Tarô 78 Chaves com tranquilidade. Se dentro de 7 dias corridos após a compra você entender que o curso não é para você, poderá solicitar o reembolso conforme as regras da Hotmart.
                   </p>
-                  <p className="text-xs font-bold text-plum/60 uppercase tracking-widest">Sem risco para começar.</p>
+                  <p className="text-sm font-black text-plum uppercase tracking-[0.2em] border-t border-gold/10 pt-4">✦ Sem risco para começar.</p>
                 </div>
 
                 <Button 
