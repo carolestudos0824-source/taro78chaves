@@ -422,26 +422,33 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
           <div className="max-w-2xl mx-auto">
             {/* Annual - Unique Plan */}
             <div className="p-10 md:p-14 rounded-[3rem] bg-white text-midnight shadow-2xl border-4 border-gold relative flex flex-col text-left space-y-8 animate-fade-in">
-              <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-gold px-6 py-2 rounded-full text-[10px] md:text-xs font-heading font-black tracking-widest text-white shadow-xl whitespace-nowrap">
-                ✦ OFERTA DE LANÇAMENTO
+              <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-gold px-8 py-3 rounded-full text-xs md:text-sm font-heading font-black tracking-[0.2em] text-white shadow-[0_10px_30px_-5px_rgba(200,166,106,0.5)] whitespace-nowrap border-2 border-white/20 animate-pulse">
+                ✦ OFERTA DE LANÇAMENTO POR TEMPO LIMITADO
               </div>
               
-              <div className="space-y-4">
-                <h3 className="font-heading text-xl md:text-2xl text-plum font-black uppercase tracking-widest">Acesso Anual à Escola Digital Tarô 78 Chaves</h3>
+              <div className="space-y-6">
+                <h3 className="font-heading text-2xl md:text-3xl text-plum font-black uppercase tracking-widest leading-tight">
+                  Acesso Anual à Escola Digital Tarô 78 Chaves
+                </h3>
                 
-                <div className="space-y-2">
-                  <p className="text-xl md:text-2xl text-midnight/40 line-through decoration-gold/60 font-heading">De R$497</p>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-sm text-plum font-heading uppercase tracking-widest font-extrabold">Por</span>
-                    <span className="text-7xl md:text-8xl font-heading text-midnight leading-none">R$297</span>
-                    <span className="text-sm md:text-base text-midnight/40 font-heading font-bold uppercase tracking-widest">/ano</span>
+                <div className="space-y-4">
+                  <div className="flex flex-col">
+                    <span className="text-sm md:text-base text-midnight/40 font-heading uppercase tracking-widest font-bold">De R$497</span>
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-sm md:text-xl text-plum font-heading uppercase tracking-widest font-black">Por apenas</span>
+                      <span className="text-7xl md:text-9xl font-heading text-midnight leading-none tracking-tighter">R$297</span>
+                      <span className="text-lg md:text-2xl text-midnight/40 font-heading font-bold uppercase tracking-widest">/ano</span>
+                    </div>
                   </div>
-                  <div className="pt-2">
-                    <p className="text-base md:text-lg font-bold text-plum tracking-tight flex items-center gap-2">
-                      <Check className="w-5 h-5 text-gold-dark" />
+                  
+                  <div className="pt-2 space-y-3">
+                    <p className="text-lg md:text-xl font-bold text-plum tracking-tight flex items-center gap-3">
+                      <div className="w-6 h-6 rounded-full bg-plum/10 flex items-center justify-center shrink-0">
+                        <Check className="w-4 h-4 text-gold-dark" />
+                      </div>
                       Pagamento único anual • 12 meses de acesso
                     </p>
-                    <p className="text-sm md:text-base font-bold text-gold-dark italic mt-1 ml-7">
+                    <p className="text-base md:text-lg font-bold text-gold-dark italic ml-9 bg-gold/5 px-4 py-1 rounded-lg inline-block">
                       Ou até 12x no cartão pela Hotmart
                     </p>
                   </div>
