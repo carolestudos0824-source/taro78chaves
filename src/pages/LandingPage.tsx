@@ -123,7 +123,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       </header>
 
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-2 pb-4 md:pt-4 md:pb-4 px-6 overflow-hidden flex flex-col items-center min-h-fit mt-0">
+      <section className="relative pt-2 pb-2 md:pt-4 md:pb-2 px-6 overflow-hidden flex flex-col items-center min-h-fit mt-0">
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold/15 blur-[120px]" />
@@ -231,7 +231,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       </section>
 
       {/* ─── Pain Section ─── */}
-      <section className="py-6 md:py-8 px-6 bg-[#FAF5EF]">
+      <section className="pt-2 pb-8 md:pt-4 md:pb-10 px-6 bg-[#FAF5EF]">
 
         <div className="max-w-3xl mx-auto relative">
           <div className="absolute -top-6 -left-6 md:-top-10 md:-left-10 opacity-10 pointer-events-none">
