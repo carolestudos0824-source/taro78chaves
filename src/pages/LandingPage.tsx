@@ -386,6 +386,29 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
         </div>
       </section>
 
+      {/* ─── Institutional Block ─── */}
+      <section className="py-20 px-6 bg-white relative overflow-hidden">
+        <div className="max-w-4xl mx-auto space-y-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h2 className="font-heading text-3xl md:text-4xl text-plum">Quem está por trás do Tarô 78 Chaves</h2>
+              <p className="text-lg font-body text-midnight/80 leading-relaxed">
+                O Tarô 78 Chaves é uma escola digital da Lua de Kaya, criada para ensinar Tarô com profundidade, simbologia e aplicação prática.
+              </p>
+              <p className="text-lg font-body text-midnight/80 leading-relaxed">
+                A jornada foi estruturada para conduzir a aluna arcano por arcano, com lições guiadas, quizzes, progresso salvo e uma metodologia pensada para transformar estudo em prática real.
+              </p>
+            </div>
+            <div className="relative">
+              <div className="aspect-square rounded-3xl bg-plum/5 border-2 border-gold/20 flex items-center justify-center p-8">
+                <img src={brandLogo} alt="Lua de Kaya - Tarô 78 Chaves" className="w-full h-full object-contain opacity-80" />
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-gold/10 rounded-full blur-2xl" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── Pricing Section ─── */}
       <section className="py-32 px-6 bg-[#5B1F3D] text-parchment relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-white/5 blur-[150px] rounded-full" />
