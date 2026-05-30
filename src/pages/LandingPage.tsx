@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { 
   Key, UserPlus, LogIn, MessageCircle, Sparkles, Zap, Layers, Menu, X, Eye, 
   Award, Smartphone, Share, MoreVertical, HelpCircle, ChevronRight, 

@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { toast } from "sonner";
+import { trackEvent } from "@/lib/analytics";
 import { Mail, HelpCircle, AlertCircle, CheckCircle2 } from "lucide-react";
 
 const REQUEST_TYPES = [
