@@ -17,7 +17,7 @@ const PremiumCertificate: React.FC<PremiumCertificateProps> = ({
   return (
     <div
       className={cn(
-        "relative w-full aspect-[1.414/1] bg-[#FDFBF7] shadow-2xl flex flex-col items-center justify-between p-10 sm:p-16 overflow-hidden border-[12px] border-ivory",
+        "relative w-full aspect-[1.414/1] bg-[#FDFBF7] shadow-2xl flex flex-col items-center justify-between p-10 sm:p-14 overflow-hidden border-[12px] border-ivory",
         className
       )}
       style={{
@@ -40,9 +40,18 @@ const PremiumCertificate: React.FC<PremiumCertificateProps> = ({
       </div>
 
       {/* Cabeçalho */}
-      <div className="relative z-10 text-center space-y-4">
+      <div className="relative z-10 text-center space-y-3">
+        {/* Logo Tarô 78 Chaves - Refinada e compacta */}
+        <div className="flex flex-col items-center mb-1">
+          <img 
+            src="https://qtbkvshbmqlszncxlcuc.supabase.co/storage/v1/object/public/dsl-uploads/FKxI2UX5GWafusX2CZ1rulDlY5n1/3bcbd5aa-d679-42a1-ba4f-ead1fd91995e.png" 
+            alt="Logo Tarô 78 Chaves" 
+            className="h-28 sm:h-32 w-auto object-contain opacity-90"
+          />
+        </div>
+
         <div className="space-y-1">
-          <p className="font-heading text-gold-dark/60 tracking-[0.5em] text-[10px] uppercase">
+          <p className="font-heading text-gold-dark/60 tracking-[0.5em] text-[9px] uppercase">
             Escola Digital
           </p>
           <h1 className="font-heading text-3xl sm:text-4xl text-plum tracking-[0.1em] font-black uppercase">
@@ -52,9 +61,8 @@ const PremiumCertificate: React.FC<PremiumCertificateProps> = ({
         
         <div className="flex items-center justify-center gap-4">
           <div className="h-px w-12 bg-gold/30" />
-          <div className="text-plum/80 space-y-1">
-            <h2 className="font-heading text-lg sm:text-xl tracking-wide">Tarô 78 Chaves</h2>
-            <p className="font-accent italic text-sm text-plum/60">A jornada viva pelos 78 arcanos</p>
+          <div className="text-plum/80 space-y-0.5">
+            <h2 className="font-heading text-lg sm:text-xl tracking-wide uppercase">Tarô 78 Chaves</h2>
           </div>
           <div className="h-px w-12 bg-gold/30" />
         </div>
