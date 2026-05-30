@@ -116,7 +116,7 @@ const PremiumPage = () => {
             <div className="space-y-1">
               <p className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]">Modo Auditoria Ativo</p>
               <p className="text-[11px] font-body font-bold leading-relaxed italic text-[#5B1F3D]/70">
-                Você está visualizando esta página como Admin/Staff. O fluxo de compra está em modo de visualização.
+                Você está visualizando esta página como Admin/Staff. Alunas sem acesso ativo veem a oferta abaixo.
               </p>
             </div>
           </div>
