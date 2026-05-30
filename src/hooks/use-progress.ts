@@ -503,12 +503,16 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     if (user) {
       await supabase
         .from("user_progress")
-        .update(progressToDbCore(DEFAULT_PROGRESS))
-        .eq("user_id", user.id);
+        .upsert({
+          user_id: user.id,
+          ...progressToDbCore(DEFAULT_PROGRESS)
+        }, { onConflict: 'user_id' });
       await supabase
         .from("profiles")
-        .update({ student_name: "" } as never)
-        .eq("user_id", user.id);
+        .upsert({ 
+          user_id: user.id,
+          student_name: "" 
+        } as never, { onConflict: 'user_id' });
     }
   }, [user]);
 
