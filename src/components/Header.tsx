@@ -30,7 +30,7 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
 
   return (
     <header 
-      className="sticky top-0 z-50 w-full bg-[#FDFBF7] border-b-2 border-[#C8A66A]/20 shadow-sm"
+      className="sticky top-0 z-50 w-full bg-[#FAF5EF] border-b-2 border-[#C8A66A]/20 shadow-sm"
       style={{ 
         height: 'auto',
         minHeight: '72px',

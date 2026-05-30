@@ -95,7 +95,7 @@ const ModulesPage = () => {
   if (progressLoading) {
     return (
       <div className="flex-1 flex items-center justify-center py-20 bg-transparent">
-        <div className="text-center space-y-4 animate-fade-in">
+        <div className="text-center space-y-4 animate-in fade-in duration-700">
           <div className="w-12 h-12 border-4 border-[#C8A66A]/20 border-t-[#5B1F3D] animate-spin rounded-full mx-auto" />
           <p className="text-[12px] text-[#5B1F3D] font-heading tracking-widest uppercase font-bold">Sincronizando Jornada</p>
         </div>
@@ -172,7 +172,7 @@ const ModulesPage = () => {
   const arcanoGuia = getGlobalArcanoAtual();
 
   return (
-    <div className="relative min-h-screen bg-[#FDFBF7]">
+    <div className="relative min-h-screen bg-[#FAF5EF]">
       <main className="relative z-10 container max-w-3xl px-6 pt-6 pb-24 md:pt-16 md:pb-32 space-y-6 md:space-y-12">
         <div id="meu-painel-diario-anchor" className="sr-only">Meu Painel Diário</div>
         

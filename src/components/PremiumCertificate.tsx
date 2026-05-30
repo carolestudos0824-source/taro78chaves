@@ -17,7 +17,7 @@ const PremiumCertificate: React.FC<PremiumCertificateProps> = ({
   return (
     <div
       className={cn(
-        "relative w-full aspect-[1.414/1] bg-[#FDFBF7] shadow-2xl flex flex-col items-center justify-between p-10 sm:p-14 overflow-hidden border-[12px] border-ivory",
+        "relative w-full aspect-[1.414/1] bg-[#FAF5EF] shadow-2xl flex flex-col items-center justify-between p-10 sm:p-14 overflow-hidden border-[12px] border-ivory",
         className
       )}
       style={{

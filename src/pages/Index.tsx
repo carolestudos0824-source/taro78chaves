@@ -30,8 +30,8 @@ const Index = () => {
 
   if (progressLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7]">
-        <div className="text-center space-y-4">
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
+        <div className="text-center space-y-4 animate-in fade-in duration-700">
           <div className="w-10 h-10 border-2 border-gold/20 border-t-gold animate-spin rounded-full mx-auto" />
           <p className="text-[10px] text-plum/60 font-heading tracking-widest uppercase">Lendo Arcanos</p>
         </div>

@@ -125,7 +125,7 @@ const LessonPage = () => {
   // 2. Estado de Arcano Inexistente
   if (!arcano || !isValidId) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7]">
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
         <div className="text-center space-y-8 max-w-xs px-6 animate-fade-in">
           <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-2 border-4 border-[#C8A66A] shadow-xl ring-8 ring-[#C8A66A]/10">
             <span className="text-3xl">🃏</span>

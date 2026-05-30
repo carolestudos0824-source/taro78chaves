@@ -36,7 +36,7 @@ const TiragensLessonPage = () => {
 
   if (isLiteralRoute || !isValidOrder) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7]">
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
         <div className="text-center space-y-4 animate-pulse">
           <div className="w-12 h-12 border-4 border-[#C8A66A]/20 border-t-[#5B1F3D] animate-spin rounded-full mx-auto" />
           <p className="text-[12px] text-[#5B1F3D] font-heading tracking-widest uppercase font-bold">Redirecionando...</p>

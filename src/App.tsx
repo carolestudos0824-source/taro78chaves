@@ -91,13 +91,13 @@ const ValidateCertificatePage = lazy(() => import("./pages/ValidateCertificatePa
 const queryClient = new QueryClient();
 
 const LoadingFallback = () => (
-  <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7] relative overflow-hidden">
+  <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF] relative overflow-hidden">
     <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
       <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-gold blur-[120px]" />
       <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold blur-[120px]" />
     </div>
 
-    <div className="text-center space-y-6 relative z-10 animate-fade-in">
+    <div className="text-center space-y-6 relative z-10 animate-in fade-in duration-500">
       <div className="relative">
         <div className="w-12 h-12 rounded-full border-2 border-gold/20 border-t-gold animate-spin mx-auto" />
         <div className="absolute inset-0 flex items-center justify-center">
@@ -160,14 +160,14 @@ const AnalyticsTracker = () => {
 const AppShell = () => {
   const { progress } = useProgress();
   return (
-    <div className="flex flex-col min-h-screen bg-[#FDFBF7]">
+    <div className="flex flex-col min-h-screen bg-[#FAF5EF]">
       <Header 
         streak={progress.streak} 
         xp={progress.xp} 
         level={progress.level} 
       />
       <main className="flex-1 pb-24">
-        <Suspense fallback={<MinimalLoader />}>
+        <Suspense fallback={<div className="flex-1" />}>
           <Outlet />
         </Suspense>
       </main>
@@ -178,7 +178,7 @@ const AppShell = () => {
 
 const AppRoutes = () => {
   return (
-    <Suspense fallback={<LoadingFallback />}>
+    <Suspense fallback={<div className="min-h-screen bg-[#FAF5EF]" />}>
       <AnalyticsTracker />
       <ConsentBanner />
       <Routes>
