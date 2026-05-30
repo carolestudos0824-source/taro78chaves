@@ -251,21 +251,37 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
           const studentName = (profileRow as Record<string, unknown> | null)?.student_name as string
             ?? getLocalExtras().studentName
             ?? "";
-          const next = dbToProgress(progressRow as unknown as DbProgress, studentName, quizScores);
-          setProgress(next);
-          saveLocalExtras({
-            badges: next.badges,
-            currentModule: next.currentModule,
-            studentName: next.studentName,
-            certificatesEarned: next.certificatesEarned,
-            completedLessons: next.completedLessons,
-            completedQuizzes: next.completedQuizzes,
-            completedExercises: next.completedExercises,
-            completedModules: next.completedModules,
-            xp: next.xp,
-            level: next.level,
-            streak: next.streak,
-            lastActive: next.lastActive,
+          const dbData = dbToProgress(progressRow as unknown as DbProgress, studentName, quizScores);
+          
+          setProgress(prev => {
+            const next = {
+              ...dbData,
+              // Merge local completions with DB data to avoid overwriting session progress
+              completedLessons: [...new Set([...dbData.completedLessons, ...prev.completedLessons])],
+              completedQuizzes: [...new Set([...dbData.completedQuizzes, ...prev.completedQuizzes])],
+              completedExercises: [...new Set([...dbData.completedExercises, ...prev.completedExercises])],
+              completedModules: [...new Set([...dbData.completedModules, ...prev.completedModules])],
+              xp: Math.max(dbData.xp, prev.xp),
+              level: Math.max(dbData.level, prev.level),
+              streak: Math.max(dbData.streak, prev.streak),
+            };
+
+            saveLocalExtras({
+              badges: next.badges,
+              currentModule: next.currentModule,
+              studentName: next.studentName,
+              certificatesEarned: next.certificatesEarned,
+              completedLessons: next.completedLessons,
+              completedQuizzes: next.completedQuizzes,
+              completedExercises: next.completedExercises,
+              completedModules: next.completedModules,
+              xp: next.xp,
+              level: next.level,
+              streak: next.streak,
+              lastActive: next.lastActive,
+            });
+
+            return next;
           });
         } else {
           setProgress(prev => ({ ...prev, quizScores }));
