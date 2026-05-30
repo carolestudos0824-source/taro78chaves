@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { 
   Key, UserPlus, LogIn, MessageCircle, Sparkles, Zap, Layers, Menu, X, Eye, 
   Award, Smartphone, Share, MoreVertical, HelpCircle, ChevronRight, 
@@ -607,7 +607,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             <AccordionItem value="item-10" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Tenho suporte?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
-                Sim. Para dúvidas de acesso, pagamento, conta ou suporte pedagógico, acesse nossa <a href="/suporte" className="underline font-bold text-[#5B1F3D]">Central de Suporte</a> ou entre em contato pelo e-mail {businessInfo.supportEmail}.
+                Sim. Para dúvidas de acesso, pagamento, conta ou suporte pedagógico, acesse nossa <Link to="/suporte" className="underline font-bold text-[#5B1F3D]">Central de Suporte</Link> ou entre em contato pelo e-mail {businessInfo.supportEmail}.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-11" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
@@ -660,10 +660,10 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
         </div>
 
         <nav className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-[13px] md:text-[14px] font-heading tracking-[0.25em] uppercase relative z-10 px-4">
-          <a href="/privacidade" onClick={() => trackEvent("landing_legal_link_click", { link_name: "privacidade", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Privacidade</a>
-          <a href="/termos" onClick={() => trackEvent("landing_legal_link_click", { link_name: "termos", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Termos</a>
-          <a href="/suporte" onClick={() => trackEvent("landing_legal_link_click", { link_name: "suporte", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Suporte</a>
-          <a href="/excluir-conta" onClick={() => trackEvent("landing_legal_link_click", { link_name: "excluir_conta", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Excluir conta</a>
+          <Link to="/privacidade" onClick={() => trackEvent("landing_legal_link_click", { link_name: "privacidade", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Privacidade</Link>
+          <Link to="/termos" onClick={() => trackEvent("landing_legal_link_click", { link_name: "termos", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Termos</Link>
+          <Link to="/suporte" onClick={() => trackEvent("landing_legal_link_click", { link_name: "suporte", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Suporte</Link>
+          <Link to="/excluir-conta" onClick={() => trackEvent("landing_legal_link_click", { link_name: "excluir_conta", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Excluir conta</Link>
         </nav>
 
         <div className="pt-8 border-t border-gold/10 max-w-sm mx-auto relative z-10">

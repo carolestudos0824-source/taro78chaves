@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import LegalLayout from "@/components/LegalLayout";
 import { businessInfo } from "@/config/business";
 
@@ -59,8 +60,8 @@ const TermsPage = () => (
 
     <h2>8. Suporte</h2>
     <p>
-      Suporte por e-mail em <strong>{businessInfo.supportEmail}</strong>. Veja também{" "}
-      <a href="/suporte">Página de Suporte</a>.
+      Suporte por e-mail em <strong>{businessInfo.supportEmail}</strong>. Se precisar de ajuda técnica, pedagógica ou sobre seu acesso, use nossa{" "}
+      <Link to="/suporte" className="underline font-bold">Central de Suporte</Link>.
     </p>
 
     <h2>9. Alterações</h2>
