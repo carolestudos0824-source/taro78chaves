@@ -44,6 +44,7 @@ interface LocalExtras {
   level: number;
   streak: number;
   lastActive: string;
+  onboardingCompleted: boolean;
 }
 
 function getLocalExtras(): LocalExtras {
@@ -64,6 +65,7 @@ function getLocalExtras(): LocalExtras {
         level: parsed.level ?? DEFAULT_PROGRESS.level,
         streak: parsed.streak ?? DEFAULT_PROGRESS.streak,
         lastActive: parsed.lastActive ?? DEFAULT_PROGRESS.lastActive,
+        onboardingCompleted: parsed.onboardingCompleted ?? DEFAULT_PROGRESS.onboardingCompleted,
       };
     }
   } catch { /* ignore */ }
@@ -80,6 +82,7 @@ function getLocalExtras(): LocalExtras {
     level: DEFAULT_PROGRESS.level,
     streak: DEFAULT_PROGRESS.streak,
     lastActive: DEFAULT_PROGRESS.lastActive,
+    onboardingCompleted: DEFAULT_PROGRESS.onboardingCompleted,
   };
 }
 
