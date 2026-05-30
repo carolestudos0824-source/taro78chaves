@@ -87,10 +87,8 @@ const AmorLessonPage = () => {
   const currentIdx = phaseSteps.indexOf(phase);
 
   const handleStartQuiz = () => {
-    if (!isStaff) {
-      completeLesson(lesson.id);
-      addXP(15);
-    }
+    completeLesson(lesson.id);
+    addXP(15);
     setPhase("quiz");
   };
 
