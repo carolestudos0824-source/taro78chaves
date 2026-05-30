@@ -424,6 +424,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     setProgress((prev) => {
       const newXP = prev.xp + amount;
       const newLevel = Math.floor(newXP / 100) + 1;
+      console.log(`[progress] adding ${amount} XP. Total: ${newXP}, Level: ${newLevel}`);
       return { ...prev, xp: newXP, level: newLevel };
     });
   }, []);
@@ -441,6 +442,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   const completeLesson = useCallback((lessonId: string) => {
     setProgress((prev) => {
       if (prev.completedLessons.includes(lessonId)) return prev;
+      console.log(`[progress] completing lesson: ${lessonId}`);
       return {
         ...prev,
         completedLessons: [...prev.completedLessons, lessonId],
@@ -458,6 +460,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
       
       if (prev.completedQuizzes.includes(quizId) && prev.quizScores[quizId] === nextScores[quizId]) return prev;
       
+      console.log(`[progress] completing quiz: ${quizId}, score: ${score}/${total}`);
       return { 
         ...prev, 
         completedQuizzes: prev.completedQuizzes.includes(quizId) ? prev.completedQuizzes : [...prev.completedQuizzes, quizId],
