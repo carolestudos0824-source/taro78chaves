@@ -25,7 +25,7 @@ const ProfilePage = () => {
   const [searchParams] = useSearchParams();
   const { isAdmin } = useIsAdmin();
   const { isStaff } = useRole();
-  const { progress, completedCount } = useProgress();
+  const { progress, completedCount, journeyProgress } = useProgress();
   const { fontSize, setFontSize } = useFontSize();
   const { isPremium, premiumUntil, premiumSource, stripeCustomerId } = usePremium();
   const { signOut } = useAuth();
@@ -107,10 +107,10 @@ const ProfilePage = () => {
           <div className="w-full space-y-3 px-4">
             <div className="flex justify-between text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">
               <span>{isStaff ? "Sincronização desativada (Auditoria)" : "Progresso na Travessia"}</span>
-              <span>{progress.xp % 100}%</span>
+              <span>{journeyProgress}%</span>
             </div>
             <div className="h-2.5 w-full bg-[#DCCFC2]/40 rounded-full overflow-hidden border border-[#DCCFC2]/20">
-              <div className="h-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] rounded-full shadow-[0_0_8px_rgba(200,166,106,0.5)]" style={{ width: `${progress.xp % 100}%` }} />
+              <div className="h-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] rounded-full shadow-[0_0_8px_rgba(200,166,106,0.5)]" style={{ width: `${journeyProgress}%` }} />
             </div>
           </div>
         </div>

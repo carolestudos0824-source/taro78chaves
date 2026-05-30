@@ -36,6 +36,14 @@ interface LocalExtras {
   currentModule: string;
   studentName: string;
   certificatesEarned: Record<string, string>;
+  completedLessons: string[];
+  completedQuizzes: string[];
+  completedExercises: string[];
+  completedModules: string[];
+  xp: number;
+  level: number;
+  streak: number;
+  lastActive: string;
 }
 
 function getLocalExtras(): LocalExtras {
@@ -48,6 +56,14 @@ function getLocalExtras(): LocalExtras {
         currentModule: parsed.currentModule ?? DEFAULT_PROGRESS.currentModule,
         studentName: parsed.studentName ?? DEFAULT_PROGRESS.studentName,
         certificatesEarned: parsed.certificatesEarned ?? DEFAULT_PROGRESS.certificatesEarned,
+        completedLessons: parsed.completedLessons ?? DEFAULT_PROGRESS.completedLessons,
+        completedQuizzes: parsed.completedQuizzes ?? DEFAULT_PROGRESS.completedQuizzes,
+        completedExercises: parsed.completedExercises ?? DEFAULT_PROGRESS.completedExercises,
+        completedModules: parsed.completedModules ?? DEFAULT_PROGRESS.completedModules,
+        xp: parsed.xp ?? DEFAULT_PROGRESS.xp,
+        level: parsed.level ?? DEFAULT_PROGRESS.level,
+        streak: parsed.streak ?? DEFAULT_PROGRESS.streak,
+        lastActive: parsed.lastActive ?? DEFAULT_PROGRESS.lastActive,
       };
     }
   } catch { /* ignore */ }
@@ -56,6 +72,14 @@ function getLocalExtras(): LocalExtras {
     currentModule: DEFAULT_PROGRESS.currentModule,
     studentName: DEFAULT_PROGRESS.studentName,
     certificatesEarned: DEFAULT_PROGRESS.certificatesEarned,
+    completedLessons: DEFAULT_PROGRESS.completedLessons,
+    completedQuizzes: DEFAULT_PROGRESS.completedQuizzes,
+    completedExercises: DEFAULT_PROGRESS.completedExercises,
+    completedModules: DEFAULT_PROGRESS.completedModules,
+    xp: DEFAULT_PROGRESS.xp,
+    level: DEFAULT_PROGRESS.level,
+    streak: DEFAULT_PROGRESS.streak,
+    lastActive: DEFAULT_PROGRESS.lastActive,
   };
 }
 
@@ -227,13 +251,37 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
           const studentName = (profileRow as Record<string, unknown> | null)?.student_name as string
             ?? getLocalExtras().studentName
             ?? "";
-          const next = dbToProgress(progressRow as unknown as DbProgress, studentName, quizScores);
-          setProgress(next);
-          saveLocalExtras({
-            badges: next.badges,
-            currentModule: next.currentModule,
-            studentName: next.studentName,
-            certificatesEarned: next.certificatesEarned,
+          const dbData = dbToProgress(progressRow as unknown as DbProgress, studentName, quizScores);
+          
+          setProgress(prev => {
+            const next = {
+              ...dbData,
+              // Merge local completions with DB data to avoid overwriting session progress
+              completedLessons: [...new Set([...dbData.completedLessons, ...prev.completedLessons])],
+              completedQuizzes: [...new Set([...dbData.completedQuizzes, ...prev.completedQuizzes])],
+              completedExercises: [...new Set([...dbData.completedExercises, ...prev.completedExercises])],
+              completedModules: [...new Set([...dbData.completedModules, ...prev.completedModules])],
+              xp: Math.max(dbData.xp, prev.xp),
+              level: Math.max(dbData.level, prev.level),
+              streak: Math.max(dbData.streak, prev.streak),
+            };
+
+            saveLocalExtras({
+              badges: next.badges,
+              currentModule: next.currentModule,
+              studentName: next.studentName,
+              certificatesEarned: next.certificatesEarned,
+              completedLessons: next.completedLessons,
+              completedQuizzes: next.completedQuizzes,
+              completedExercises: next.completedExercises,
+              completedModules: next.completedModules,
+              xp: next.xp,
+              level: next.level,
+              streak: next.streak,
+              lastActive: next.lastActive,
+            });
+
+            return next;
           });
         } else {
           setProgress(prev => ({ ...prev, quizScores }));
@@ -268,6 +316,14 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
       currentModule: progress.currentModule,
       studentName: progress.studentName,
       certificatesEarned: progress.certificatesEarned,
+      completedLessons: progress.completedLessons,
+      completedQuizzes: progress.completedQuizzes,
+      completedExercises: progress.completedExercises,
+      completedModules: progress.completedModules,
+      xp: progress.xp,
+      level: progress.level,
+      streak: progress.streak,
+      lastActive: progress.lastActive,
     });
 
     if (!coreChanged && !nameChanged) return;
@@ -278,16 +334,19 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         lastSavedCoreRef.current = coreSnapshot;
         await supabase
           .from("user_progress")
-          .update(corePayload)
-          .eq("user_id", user.id);
+          .upsert({
+            user_id: user.id,
+            ...corePayload
+          }, { onConflict: 'user_id' });
       }
       if (nameChanged) {
         lastSavedNameRef.current = nameSnapshot;
         await supabase
           .from("profiles")
-          // student_name was just added; cast to keep TS happy until types regen
-          .update({ student_name: nameSnapshot } as never)
-          .eq("user_id", user.id);
+          .upsert({ 
+            user_id: user.id,
+            student_name: nameSnapshot 
+          } as never, { onConflict: 'user_id' });
       }
     }, 300);
 
@@ -422,8 +481,13 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     return 21;
   }, [isArcanoUnlocked, isArcanoCompleted]);
 
-  const completedCount = progress.completedLessons.filter(l => l.startsWith("arcano-")).length;
-  const journeyProgress = Math.round((completedCount / 22) * 100);
+  const completedMaiores = progress.completedLessons.filter(l => l.startsWith("arcano-")).length;
+  const completedMenores = progress.completedLessons.filter(l => 
+    l.startsWith("copas-") || l.startsWith("paus-") || l.startsWith("espadas-") || l.startsWith("ouros-")
+  ).length;
+  const totalCompletedArcanos = completedMaiores + completedMenores;
+  const completedCount = totalCompletedArcanos;
+  const journeyProgress = Math.round((totalCompletedArcanos / 78) * 100);
 
   const completeOnboarding = useCallback(() => {
     setProgress((prev) => ({ ...prev, onboardingCompleted: true }));
@@ -439,12 +503,16 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     if (user) {
       await supabase
         .from("user_progress")
-        .update(progressToDbCore(DEFAULT_PROGRESS))
-        .eq("user_id", user.id);
+        .upsert({
+          user_id: user.id,
+          ...progressToDbCore(DEFAULT_PROGRESS)
+        }, { onConflict: 'user_id' });
       await supabase
         .from("profiles")
-        .update({ student_name: "" } as never)
-        .eq("user_id", user.id);
+        .upsert({ 
+          user_id: user.id,
+          student_name: "" 
+        } as never, { onConflict: 'user_id' });
     }
   }, [user]);
 
