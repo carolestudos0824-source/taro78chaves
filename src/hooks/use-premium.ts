@@ -3,7 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 
 export type SubscriptionStatus =
-  | "free"
+  | "no_active_access"
   | "monthly_active"
   | "annual_active"
   | "gift_active"
