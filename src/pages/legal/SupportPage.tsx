@@ -28,11 +28,17 @@ const SupportPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
-    email: user?.email || "",
+    email: "",
     type: "",
     subject: "",
     message: "",
   });
+
+  useEffect(() => {
+    if (user?.email) {
+      setFormData(prev => ({ ...prev, email: user.email }));
+    }
+  }, [user]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
