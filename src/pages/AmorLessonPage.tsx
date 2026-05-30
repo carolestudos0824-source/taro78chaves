@@ -108,11 +108,9 @@ const AmorLessonPage = () => {
       setSelectedAnswer(null);
       setShowExplanation(false);
     } else {
-      if (!isStaff) {
-        completeQuiz(`quiz-${lesson.id}`);
-        addXP(10);
-        if (!nextLesson) completeModule("amor");
-      }
+      completeQuiz(`quiz-${lesson.id}`);
+      addXP(10);
+      if (!nextLesson) completeModule("amor");
       setPhase("complete");
     }
   };
