@@ -3,6 +3,7 @@ import { DEFAULT_PROGRESS, type Badge, type UserProgress } from "@/lib/content";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { useRole } from "@/hooks/use-role";
+import { toast } from "sonner";
 
 const LOCAL_EXTRAS_KEY = "tarot-journey-extras";
 
@@ -44,6 +45,7 @@ interface LocalExtras {
   level: number;
   streak: number;
   lastActive: string;
+  onboardingCompleted: boolean;
 }
 
 function getLocalExtras(): LocalExtras {
@@ -64,6 +66,7 @@ function getLocalExtras(): LocalExtras {
         level: parsed.level ?? DEFAULT_PROGRESS.level,
         streak: parsed.streak ?? DEFAULT_PROGRESS.streak,
         lastActive: parsed.lastActive ?? DEFAULT_PROGRESS.lastActive,
+        onboardingCompleted: parsed.onboardingCompleted ?? DEFAULT_PROGRESS.onboardingCompleted,
       };
     }
   } catch { /* ignore */ }
@@ -80,6 +83,7 @@ function getLocalExtras(): LocalExtras {
     level: DEFAULT_PROGRESS.level,
     streak: DEFAULT_PROGRESS.streak,
     lastActive: DEFAULT_PROGRESS.lastActive,
+    onboardingCompleted: DEFAULT_PROGRESS.onboardingCompleted,
   };
 }
 
@@ -294,6 +298,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
               level: next.level,
               streak: next.streak,
               lastActive: next.lastActive,
+              onboardingCompleted: next.onboardingCompleted,
             });
 
             return next;
@@ -339,6 +344,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
       level: progress.level,
       streak: progress.streak,
       lastActive: progress.lastActive,
+      onboardingCompleted: progress.onboardingCompleted,
     });
 
     if (!coreChanged && !nameChanged) return;
@@ -355,17 +361,27 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
             ...corePayload
           }, { onConflict: 'user_id' });
         
-        if (error) console.error("Error syncing user_progress:", error);
-        else console.log("user_progress synced successfully");
+        if (error) {
+          console.error("Error syncing user_progress:", error);
+          lastSavedCoreRef.current = "";
+          toast.error("Erro ao salvar progresso. Verifique sua conexão.");
+        } else {
+          console.log("user_progress synced successfully");
+        }
       }
       if (nameChanged) {
         lastSavedNameRef.current = nameSnapshot;
-        await supabase
+        const { error } = await supabase
           .from("profiles")
           .upsert({ 
             user_id: user.id,
             student_name: nameSnapshot 
           } as never, { onConflict: 'user_id' });
+
+        if (error) {
+          console.error("Error syncing student_name:", error);
+          lastSavedNameRef.current = "";
+        }
       }
     }, 300);
 
@@ -409,6 +425,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     setProgress((prev) => {
       const newXP = prev.xp + amount;
       const newLevel = Math.floor(newXP / 100) + 1;
+      console.log(`[progress] adding ${amount} XP. Total: ${newXP}, Level: ${newLevel}`);
       return { ...prev, xp: newXP, level: newLevel };
     });
   }, []);
@@ -426,6 +443,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   const completeLesson = useCallback((lessonId: string) => {
     setProgress((prev) => {
       if (prev.completedLessons.includes(lessonId)) return prev;
+      console.log(`[progress] completing lesson: ${lessonId}`);
       return {
         ...prev,
         completedLessons: [...prev.completedLessons, lessonId],
@@ -443,6 +461,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
       
       if (prev.completedQuizzes.includes(quizId) && prev.quizScores[quizId] === nextScores[quizId]) return prev;
       
+      console.log(`[progress] completing quiz: ${quizId}, score: ${score}/${total}`);
       return { 
         ...prev, 
         completedQuizzes: prev.completedQuizzes.includes(quizId) ? prev.completedQuizzes : [...prev.completedQuizzes, quizId],
@@ -487,10 +506,17 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const isArcanoCompleted = useCallback((arcanoId: number): boolean => {
-    return (
-      progress.completedLessons.includes(`arcano-${arcanoId}`) &&
-      progress.completedQuizzes.includes(`quiz-arcano-${arcanoId}`)
-    );
+    const hasLesson = progress.completedLessons.includes(`arcano-${arcanoId}`);
+    const hasQuiz = progress.completedQuizzes.includes(`quiz-arcano-${arcanoId}`);
+    
+    // Regra pedagógica: Arcano concluído = Lição + Quiz finalizados
+    const isCompleted = hasLesson && hasQuiz;
+    
+    if (arcanoId === 0) {
+      console.log(`[progress] diagnostic O LOUCO:`, { hasLesson, hasQuiz, isCompleted });
+    }
+    
+    return isCompleted;
   }, [progress.completedLessons, progress.completedQuizzes]);
 
   const isArcanoUnlocked = useCallback((arcanoId: number): boolean => {
@@ -505,11 +531,9 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     return 21;
   }, [isArcanoUnlocked, isArcanoCompleted]);
 
-  const completedMaiores = progress.completedLessons.filter(l => l.startsWith("arcano-")).length;
-  const completedMenores = progress.completedLessons.filter(l => 
-    l.startsWith("copas-") || l.startsWith("paus-") || l.startsWith("espadas-") || l.startsWith("ouros-")
-  ).length;
-  const totalCompletedArcanos = completedMaiores + completedMenores;
+  const totalCompletedArcanos = Array.from({ length: 22 }, (_, i) => i).filter(id => {
+    return progress.completedLessons.includes(`arcano-${id}`) && progress.completedQuizzes.includes(`quiz-arcano-${id}`);
+  }).length;
   const completedCount = totalCompletedArcanos;
   const journeyProgress = Math.round((totalCompletedArcanos / 78) * 100);
 
