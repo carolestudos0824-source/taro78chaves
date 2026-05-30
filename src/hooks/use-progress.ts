@@ -258,6 +258,14 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
             currentModule: next.currentModule,
             studentName: next.studentName,
             certificatesEarned: next.certificatesEarned,
+            completedLessons: next.completedLessons,
+            completedQuizzes: next.completedQuizzes,
+            completedExercises: next.completedExercises,
+            completedModules: next.completedModules,
+            xp: next.xp,
+            level: next.level,
+            streak: next.streak,
+            lastActive: next.lastActive,
           });
         } else {
           setProgress(prev => ({ ...prev, quizScores }));
