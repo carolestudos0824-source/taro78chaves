@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Crown, Sparkles, LockKeyhole, ArrowRight, KeyRound, SquareStack, Compass, WandSparkles, CircleCheck, Eye, Stars } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { usePremium } from "@/hooks/use-premium";
-import { useIsAdmin } from "@/hooks/use-admin";
+import { useRole } from "@/hooks/use-role";
 
 interface PremiumGateProps {
   featureName?: string;
@@ -30,11 +30,11 @@ const PremiumGate = ({
 }: PremiumGateProps) => {
   const navigate = useNavigate();
   const { isPremium, loading } = usePremium();
-  const { isAdmin } = useIsAdmin();
+  const { isStaff } = useRole();
 
   if (loading) return null;
-  if ((isPremium || isAdmin) && children) return <>{children}</>;
-  if (isPremium || isAdmin) return null;
+  if ((isPremium || isStaff) && children) return <>{children}</>;
+  if (isPremium || isStaff) return null;
 
   if (variant === "banner") {
     return (
