@@ -54,39 +54,48 @@ export type Database = {
         Row: {
           admin_notes: string | null
           created_at: string
+          email: string | null
           id: string
           message: string
+          name: string | null
           page: string | null
           rating: number | null
           resolved_at: string | null
           resolved_by: string | null
           status: Database["public"]["Enums"]["feedback_status"]
+          subject: string | null
           type: string
           user_id: string
         }
         Insert: {
           admin_notes?: string | null
           created_at?: string
+          email?: string | null
           id?: string
           message: string
+          name?: string | null
           page?: string | null
           rating?: number | null
           resolved_at?: string | null
           resolved_by?: string | null
           status?: Database["public"]["Enums"]["feedback_status"]
+          subject?: string | null
           type: string
           user_id: string
         }
         Update: {
           admin_notes?: string | null
           created_at?: string
+          email?: string | null
           id?: string
           message?: string
+          name?: string | null
           page?: string | null
           rating?: number | null
           resolved_at?: string | null
           resolved_by?: string | null
           status?: Database["public"]["Enums"]["feedback_status"]
+          subject?: string | null
           type?: string
           user_id?: string
         }
@@ -1261,6 +1270,45 @@ export type Database = {
           provider_event_id?: string | null
           provider_subscription_id?: string | null
           raw_payload?: Json
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      support_tickets: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          status: string
+          subject: string
+          type: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          status?: string
+          subject: string
+          type: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          status?: string
+          subject?: string
+          type?: string
+          updated_at?: string
           user_id?: string | null
         }
         Relationships: []

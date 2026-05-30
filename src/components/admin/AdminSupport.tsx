@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Search, MessageSquare, Filter, Calendar, User as UserIcon, CheckCircle2, Clock, Inbox, X, ExternalLink } from "lucide-react";
+import { Search, MessageSquare, Filter, Calendar, User as UserIcon, CheckCircle2, Clock, Inbox, X, ExternalLink, Mail } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -155,8 +155,8 @@ const AdminSupport = () => {
         </div>
       ) : (
         <div className="space-y-2">
-          {filtered.map((t) => {
-            const meta = STATUS_META[t.status];
+          {filtered.map((t: any) => {
+            const meta = STATUS_META[t.status as Status] || STATUS_META.aberto;
             return (
               <button
                 key={t.id}
@@ -169,13 +169,15 @@ const AdminSupport = () => {
                       {meta.icon} {meta.label}
                     </span>
                     <span className="text-[10px] font-heading font-black tracking-widest uppercase px-3 py-1.5 rounded-full bg-[#5B1F3D] text-white border-2 border-[#C8A66A]/30 shadow-sm">{t.type}</span>
+                    {t.subject && <span className="text-[10px] font-heading font-black tracking-widest uppercase px-3 py-1.5 rounded-full bg-[#FAF5EF] text-[#5B1F3D] border-2 border-[#C8A66A]/30 shadow-sm">{t.subject}</span>}
                     {t.rating != null && <span className="text-xs font-body font-black text-[#8B6A30]">★ {t.rating}</span>}
                   </div>
                   <span className="text-[10px] text-muted-foreground shrink-0">{new Date(t.created_at).toLocaleDateString("pt-BR")}</span>
                 </div>
                 <p className="text-base font-body font-bold text-[#5B1F3D] line-clamp-2 leading-relaxed">{t.message}</p>
                 <div className="flex items-center gap-3 mt-1.5 text-[10px] text-muted-foreground">
-                  <span className="flex items-center gap-1.5 font-bold"><UserIcon className="w-4 h-4 text-[#C8A66A]" />{profiles[t.user_id] || t.user_id.slice(0, 8)}</span>
+                  <span className="flex items-center gap-1.5 font-bold"><UserIcon className="w-4 h-4 text-[#C8A66A]" />{t.name || profiles[t.user_id] || t.email || t.user_id?.slice(0, 8)}</span>
+                  {t.email && <span className="flex items-center gap-1.5 font-bold"><Mail className="w-4 h-4 text-[#C8A66A]" />{t.email}</span>}
                   {t.page && <span className="flex items-center gap-1.5 font-bold"><ExternalLink className="w-4 h-4 text-[#C8A66A]" />{t.page}</span>}
                   {t.admin_notes && <span className="text-[#8B6A30] font-black uppercase tracking-widest">• POSSUI NOTA INTERNA</span>}
                 </div>
