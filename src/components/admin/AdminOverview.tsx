@@ -180,7 +180,7 @@ const AdminOverview = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <KPICard icon={<Users className="w-6 h-6" />} label="Total de Usuários" value={stats.totalUsers} description="Base total cadastrada" />
           <KPICard icon={<Crown className="w-6 h-6" />} label="Assinantes Ativos" value={stats.premiumUsers} accent="text-[#5B1F3D]" description="Acesso premium vigente" />
-          <KPICard icon={<Users className="w-6 h-6" />} label="Usuários Gratuitos" value={stats.freeUsers} description="Acesso limitado" />
+          <KPICard icon={<Users className="w-6 h-6" />} label="Contas sem acesso ativo" value={stats.freeUsers} description="Acesso limitado" />
           <KPICard icon={<Gift className="w-6 h-6" />} label="Presenteados" value={stats.giftedUsers} accent="text-[#8B6A30]" description="Códigos ou admin grant" />
         </div>
       </section>

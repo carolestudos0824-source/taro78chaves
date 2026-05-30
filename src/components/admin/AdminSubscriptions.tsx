@@ -63,7 +63,7 @@ const STATUS_LABELS: Record<SubStatus, string> = {
   expired: "Expirado",
   cancelled_with_access: "Cancelado (com acesso)",
   cancelled_expired: "Cancelado",
-  free: "Gratuito",
+  free: "Sem acesso",
 };
 
 const STATUS_COLORS: Record<SubStatus, string> = {
@@ -304,7 +304,7 @@ const AdminSubscriptions = () => {
           <MiniStat label="Canc. c/ acesso" value={stats.cancelledAccess} variant="warning" />
           <MiniStat label="Expirado" value={stats.expired} variant="destructive" />
           <MiniStat label="Cancelado" value={stats.cancelledExpired} variant="destructive" />
-          <MiniStat label="Gratuito" value={stats.free} variant="default" />
+          <MiniStat label="Sem acesso" value={stats.free} variant="default" />
         </div>
       </section>
 
@@ -331,7 +331,7 @@ const AdminSubscriptions = () => {
               <SelectItem value="annual">Anual</SelectItem>
               <SelectItem value="gift">Presente</SelectItem>
               <SelectItem value="admin">Admin</SelectItem>
-              <SelectItem value="free">Gratuito</SelectItem>
+              <SelectItem value="free">Sem acesso</SelectItem>
             </SelectContent>
           </Select>
           <Select value={statusFilter} onValueChange={(v) => setStatusFilter(v as StatusFilter)}>
