@@ -2,23 +2,21 @@
  * Serviço formal de acesso e progressão.
  *
  * Centraliza:
- *   - Quais arcanos estão disponíveis inicialmente para todos (`INITIAL_ACCESS_ARCANO_IDS`)
- *   - Regras de desbloqueio de módulos (`isModuleUnlocked`)
+ *   - Quais arcanos estão disponíveis inicialmente para todos (FREE_ARCANO_IDS)
+ *   - Regras de desbloqueio de módulos (isModuleUnlocked)
  *   - Helpers correlatos
  *
- * Esta é a ÚNICA fonte autorizada para essas decisões. Telas e componentes
- * não devem mais ler `INITIAL_ACCESS_ARCANO_IDS` ou `isModuleUnlocked` de
- * `@/data/tarot-data`.
+ * Esta é a ÚNICA fonte autorizada para essas decisões.
  */
 
 import { MODULES_CATALOG, getModuleFromCatalog } from "./catalog";
 
 /**
  * IDs de arcanos disponíveis inicialmente para demonstração da metodologia.
- *
- * Fonte formal: hoje é uma constante governada aqui.
+ * Mantemos o nome FREE_ARCANO_IDS internamente por compatibilidade, 
+ * mas a lógica comercial é de "acesso inicial".
  */
-export const INITIAL_ACCESS_ARCANO_IDS: readonly number[] = [0];
+export const FREE_ARCANO_IDS: readonly number[] = [0];
 
 export function isArcanoFree(arcanoId: number, quizScores: Record<string, number> = {}): boolean {
   if (arcanoId === 0) return true;
@@ -33,7 +31,7 @@ export function isArcanoFree(arcanoId: number, quizScores: Record<string, number
  * Decide se um módulo está desbloqueado dado o conjunto de módulos já
  * concluídos pelo usuário. Regra atual: módulo sem pré-requisito é livre;
  * módulo com pré-requisito exige que o pré-requisito esteja em
- * `completedModules`.
+ * completedModules.
  */
 export function isModuleUnlocked(
   moduleId: string,
