@@ -283,15 +283,20 @@ const ModulesPage = () => {
               </div>
               <div className="relative z-10 space-y-4">
                 <p className="text-[10px] md:text-[11px] font-heading tracking-[0.3em] md:tracking-[0.4em] uppercase font-black text-white/80">
-                  {isInitialState ? "✦ Meu Painel Diário ✦" : "✦ Meu Painel Diário ✦"}
+                  ✦ Sua Próxima Chave ✦
                 </p>
-                <h3 className="font-heading text-xl md:text-3xl text-white font-black tracking-tight leading-tight">
-                  {isInitialState ? "Seu primeiro Arcano" : "Agora estudando"}: <br/>
-                  <span className="text-[#C8A66A]">{arcanoGuia.name}</span>
-                </h3>
+                <div className="space-y-1">
+                  <p className="text-[11px] font-heading font-black tracking-[0.2em] text-[#C8A66A] uppercase">
+                    Arcano {arcanoGuia.index - 1} de 78
+                  </p>
+                  <h3 className="font-heading text-2xl md:text-4xl text-white font-black tracking-tight leading-tight">
+                    {arcanoGuia.name}
+                  </h3>
+                </div>
                 <p className="text-[15px] font-body font-bold text-white/90 italic leading-relaxed">
-                  {isInitialState ? "Inicie seu despertar pelo Arcano 0." : `${totalCompletedArcanos} de 78 chaves concluídas.`}
-                  {!isInitialState && <span className="text-white/70 not-italic block mt-1 uppercase tracking-widest text-[9px] md:text-[10px] font-bold">Arcano {arcanoGuia.index} de 78</span>}
+                  {isInitialState 
+                    ? "Inicie sua jornada pelo primeiro portal." 
+                    : "Siga para o próximo portal de conhecimento."}
                 </p>
                 <button 
                   onClick={() => {
@@ -305,7 +310,7 @@ const ModulesPage = () => {
                   }}
                   className="block w-full py-4 md:py-5 bg-[#C8A66A] hover:bg-[#C8A66A]/90 text-[#5B1F3D] rounded-2xl font-heading text-[11px] md:text-[12px] font-black tracking-[0.2em] md:tracking-[0.3em] uppercase transition-all shadow-xl hover:scale-[1.02] active:scale-[0.95]"
                 >
-                  {isInitialState ? "INICIAR JORNADA" : "CONTINUAR DE ONDE PAREI"}
+                  INICIAR {arcanoGuia.name.toUpperCase()}
                 </button>
               </div>
             </div>
