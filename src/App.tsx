@@ -246,7 +246,7 @@ const AppRoutes = () => {
           <Route path="/biblioteca" element={<SymbolLibraryPage />} />
           <Route path="/rotina" element={<StudyRoutinePage />} />
           <Route path="/minha-jornada" element={<JourneyJournalPage />} />
-          <Route path="/feedback" element={<FeedbackPage />} />
+          <Route path="/feedback" element={<Navigate to="/suporte" replace />} />
           <Route path="/admin" element={<AdminPage />} />
         </Route>
         
