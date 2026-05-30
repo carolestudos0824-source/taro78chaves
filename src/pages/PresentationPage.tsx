@@ -523,33 +523,13 @@ const SlideJourney = () => {
 const SlidePlans = () => (
   <div>
     <SlideTitle
-      kicker="Planos"
-      title="Gratuito e Premium"
-      subtitle="Comece sem custo. Aprofunde quando quiser."
+      kicker="Acesso"
+      title="Sua Jornada Completa"
+      subtitle="A Escola Digital abre as 78 chaves do seu domínio."
     />
-    <div className="grid md:grid-cols-2 gap-4 max-w-xl mx-auto">
-      {/* Free */}
-      <div className="rounded-xl p-6 space-y-4" style={{
-        background: "#FAF5EF",
-        border: "2px solid #DCCFC2",
-        boxShadow: "0 4px 20px rgba(91, 31, 61, 0.04)"
-      }}>
-        <div className="text-center pb-3" style={{ borderBottom: "1.5px solid rgba(220, 207, 194, 0.6)" }}>
-          <p className="text-[10px] font-heading tracking-[0.3em] uppercase font-black" style={{ color: "#5B1F3D", opacity: 0.7 }}>Acesso Básico</p>
-          <p className="font-heading text-xl md:text-2xl mt-1 font-black" style={{ color: "#5B1F3D" }}>Gratuito</p>
-        </div>
-        <div className="space-y-3">
-          {["Onboarding iniciático", "Fundamentos do Tarô", "O Louco completo", "Desafios diários", "Quizzes e XP"].map((f, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <Check className="w-3.5 h-3.5 shrink-0" style={{ color: "#5B1F3D" }} />
-              <span className="text-[12px] font-body font-bold leading-tight" style={{ color: "#5B1F3D" }}>{f}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Premium */}
-      <div className="rounded-xl p-6 space-y-4 relative" style={{
+    <div className="max-w-md mx-auto">
+      {/* Premium focus */}
+      <div className="rounded-xl p-8 space-y-6 relative" style={{
         background: "linear-gradient(170deg, #FAF5EF, rgba(200, 166, 106, 0.05))",
         border: "2px solid #C8A66A",
         boxShadow: "0 10px 40px rgba(91, 31, 61, 0.08)",
@@ -558,24 +538,27 @@ const SlidePlans = () => (
           <span className="text-[9px] font-heading tracking-[0.25em] uppercase px-4 py-1 rounded-full shadow-md font-black" style={{
             background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
             color: "#FAF5EF",
-          }}>✦ Premium</span>
+          }}>✦ Acesso Anual</span>
         </div>
         <div className="text-center pb-3" style={{ borderBottom: "1.5px solid rgba(200, 166, 106, 0.25)" }}>
-          <p className="text-[10px] font-heading tracking-[0.3em] uppercase font-black" style={{ color: "#8B6A30" }}>Jornada Completa</p>
-          <div className="flex items-center justify-center gap-3 mt-2">
-             <div className="text-center">
-               <p className="text-[9px] uppercase font-black text-[#C8A66A] tracking-tighter">Mensal</p>
-               <p className="font-heading text-xl" style={{ color: "#5B1F3D" }}>R$ 29,90</p>
+          <p className="text-[10px] font-heading tracking-[0.3em] uppercase font-black" style={{ color: "#8B6A30" }}>Matrícula Escola Digital</p>
+          <div className="flex flex-col items-center justify-center gap-1 mt-2">
+             <div className="flex items-baseline gap-2">
+               <span className="font-heading text-4xl" style={{ color: "#5B1F3D" }}>R$ 297</span>
+               <span className="text-xs font-heading font-black opacity-40">/único</span>
              </div>
-             <div className="w-px h-8 bg-[#C8A66A40]" />
-             <div className="text-center">
-               <p className="text-[11px] uppercase font-black text-[#5B1F3D] tracking-tighter bg-[#C8A66A30] px-1.5 rounded-sm">Anual</p>
-               <p className="font-heading text-xl" style={{ color: "#5B1F3D" }}>R$ 197</p>
-             </div>
+             <p className="text-[10px] font-body font-black italic opacity-60">12 meses de acesso • Sem renovação</p>
           </div>
         </div>
         <div className="space-y-3">
-          {["78 arcanos guiados", "Todos os módulos liberados", "Certificados de conclusão", "Tiragens e Combinações", "Mesa de Tarô e Ética"].map((f, i) => (
+          {[
+            "Todos os 78 arcanos guiados", 
+            "Metodologia progressiva (Duolingo-style)", 
+            "Certificado de Conclusão", 
+            "Módulos Premium de Combinações", 
+            "Suporte Pedagógico Real",
+            "Acesso Mobile e Desktop"
+          ].map((f, i) => (
             <div key={i} className="flex items-center gap-3">
               <Sparkles className="w-3.5 h-3.5 shrink-0" style={{ color: "#C8A66A" }} />
               <span className="text-[12px] font-body font-black leading-tight" style={{ color: "#5B1F3D" }}>{f}</span>
