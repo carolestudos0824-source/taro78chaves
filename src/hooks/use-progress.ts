@@ -339,6 +339,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
       level: progress.level,
       streak: progress.streak,
       lastActive: progress.lastActive,
+      onboardingCompleted: progress.onboardingCompleted,
     });
 
     if (!coreChanged && !nameChanged) return;
@@ -355,17 +356,27 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
             ...corePayload
           }, { onConflict: 'user_id' });
         
-        if (error) console.error("Error syncing user_progress:", error);
-        else console.log("user_progress synced successfully");
+        if (error) {
+          console.error("Error syncing user_progress:", error);
+          // If update fails, reset lastSavedRef to try again on next change
+          lastSavedCoreRef.current = "";
+        } else {
+          console.log("user_progress synced successfully");
+        }
       }
       if (nameChanged) {
         lastSavedNameRef.current = nameSnapshot;
-        await supabase
+        const { error } = await supabase
           .from("profiles")
           .upsert({ 
             user_id: user.id,
             student_name: nameSnapshot 
           } as never, { onConflict: 'user_id' });
+
+        if (error) {
+          console.error("Error syncing student_name:", error);
+          lastSavedNameRef.current = "";
+        }
       }
     }, 300);
 
