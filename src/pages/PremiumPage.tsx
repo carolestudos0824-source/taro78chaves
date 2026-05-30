@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { checkoutUrl } from "@/config/checkout";
-import { ArrowLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ChevronRight, CheckCircle2, ShieldCheck, Sparkles } from "lucide-react";
 import { TarotIcon } from "@/components/TarotIcon";
 import { Button } from "@/components/ui/button";
 import { usePremium } from "@/hooks/use-premium";
+import { useRole } from "@/hooks/use-role";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { trackEvent } from "@/lib/analytics";
 import { isWebCheckoutAllowed, STRIPE_BLOCKED_ANDROID_MSG } from "@/lib/platform";
+import { cn } from "@/lib/utils";
 
 const PREMIUM_BENEFITS = [
   { icon: "jornada", title: "78 arcanos guiados", desc: "Abra todas as portas do deck completo." },
