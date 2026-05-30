@@ -36,6 +36,7 @@ import {
 import { resolveMaiorVisual, resolveMenorVisualById } from "@/lib/content/visual-registry";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
+import { useRole } from "@/hooks/use-role";
 import { useHeader } from "@/contexts/header-context";
 import { useEffect, useState } from "react";
 import ContinuityCard from "@/components/ContinuityCard";
