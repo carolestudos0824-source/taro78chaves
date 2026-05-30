@@ -43,8 +43,8 @@ const CertificateVisualModel = () => {
           <div className="min-w-[800px]">
             <PremiumCertificate 
               studentName="MARIA CLARA DE SOUZA"
-              issueDate={new Date().toLocaleDateString("pt-BR")}
-              validationCode="T78-A4B7-9K2P"
+              issueDate="29/05/2026"
+              validationCode="T78-A4F7-9K2P"
             />
           </div>
         </div>
