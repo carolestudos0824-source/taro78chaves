@@ -142,11 +142,9 @@ const FundamentosLessonPage = () => {
       setSelectedAnswer(null);
       setShowExplanation(false);
     } else {
-      if (!isStaff) {
-        completeQuiz(`quiz-${lesson.id}`);
-        addXP(10);
-        if (!nextLesson) completeModule("fundamentos");
-      }
+      completeQuiz(`quiz-${lesson.id}`);
+      addXP(10);
+      if (!nextLesson) completeModule("fundamentos");
       setPhase("complete");
     }
   };
