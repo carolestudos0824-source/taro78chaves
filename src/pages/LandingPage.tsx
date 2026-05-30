@@ -607,7 +607,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             <AccordionItem value="item-10" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Tenho suporte?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
-                Sim. Para dúvidas de acesso, pagamento ou conta, entre em contato pelo e-mail {businessInfo.supportEmail}.
+                Sim. Para dúvidas de acesso, pagamento, conta ou suporte pedagógico, acesse nossa <a href="/suporte" className="underline font-bold text-[#5B1F3D]">Central de Suporte</a> ou entre em contato pelo e-mail {businessInfo.supportEmail}.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-11" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
