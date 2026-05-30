@@ -19,7 +19,12 @@ const NAV_ITEMS: NavItem[] = [
 
 const BottomNav = () => {
   const navigate = useNavigate();
+  const { isPremium } = usePremium();
   const location = useLocation();
+
+  const navItems = isPremium 
+    ? NAV_ITEMS.filter(item => item.path !== "/premium")
+    : NAV_ITEMS;
 
   useEffect(() => {
     const marker = document.getElementById("boot-marker");
