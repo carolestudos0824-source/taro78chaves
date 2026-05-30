@@ -79,44 +79,44 @@ const PremiumCertificate: React.FC<PremiumCertificateProps> = ({
       </div>
 
       {/* Rodapé / Emissor */}
-      <div className="relative z-10 w-full grid grid-cols-1 sm:grid-cols-3 gap-8 pt-10 border-t border-gold/20 items-end">
+      <div className="relative z-10 w-full grid grid-cols-3 gap-4 pt-8 border-t border-gold/30 items-end mt-4">
         {/* Lado Esquerdo: Validação */}
-        <div className="text-left space-y-4 order-2 sm:order-1">
-          <div className="space-y-1">
-            <p className="font-heading text-[10px] tracking-widest text-gold-dark/70 uppercase">Data de emissão</p>
-            <p className="font-body text-sm text-plum font-bold">{issueDate}</p>
+        <div className="text-left space-y-4">
+          <div className="space-y-0.5">
+            <p className="font-heading text-[9px] tracking-[0.2em] text-gold-dark font-bold uppercase">Data de emissão</p>
+            <p className="font-body text-[13px] text-plum font-bold">{issueDate}</p>
           </div>
-          <div className="space-y-1">
-            <p className="font-heading text-[10px] tracking-widest text-gold-dark/70 uppercase">Código de validação</p>
-            <p className="font-body text-[11px] text-plum font-bold tracking-wider">{validationCode}</p>
+          <div className="space-y-0.5">
+            <p className="font-heading text-[9px] tracking-[0.2em] text-gold-dark font-bold uppercase">Código de validação</p>
+            <p className="font-body text-[12px] text-plum font-bold tracking-widest">{validationCode}</p>
           </div>
         </div>
 
         {/* Centro: Link de Validação */}
-        <div className="text-center space-y-2 order-3 sm:order-2 flex flex-col items-center">
-          <div className="w-12 h-12 rounded-full border border-gold/40 flex items-center justify-center mb-2">
-            <div className="w-10 h-10 rounded-full border border-gold/20 flex items-center justify-center text-[10px] text-gold-dark font-heading">
-              LK
+        <div className="text-center flex flex-col items-center justify-center pb-1">
+          <div className="w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center mb-3">
+            <div className="w-8 h-8 rounded-full border border-gold/20 flex items-center justify-center text-[9px] text-gold-dark font-heading">
+              T78
             </div>
           </div>
-          <div className="space-y-1">
-            <p className="font-heading text-[9px] tracking-widest text-gold-dark/70 uppercase">Validar em</p>
-            <p className="font-body text-[11px] text-plum font-medium underline underline-offset-4 decoration-gold/30">
+          <div className="space-y-0.5">
+            <p className="font-heading text-[9px] tracking-[0.2em] text-gold-dark font-bold uppercase">Validar em</p>
+            <p className="font-body text-[12px] text-plum font-bold border-b border-plum/20">
               /validar-certificado
             </p>
           </div>
         </div>
 
         {/* Lado Direito: Emissor */}
-        <div className="text-right space-y-3 order-1 sm:order-3">
-          <div className="space-y-1">
-            <p className="font-accent italic text-plum/60 text-xs">Emitido por</p>
-            <p className="font-heading text-xl text-plum tracking-wide font-black uppercase leading-tight">Lua de Kaya</p>
-            <p className="font-body text-[11px] text-plum/80 font-bold mt-1">CNPJ 44.472.530/0001-08</p>
+        <div className="text-right space-y-1">
+          <p className="font-accent italic text-plum/60 text-xs">Emitido por</p>
+          <div className="space-y-0">
+            <p className="font-heading text-xl text-plum tracking-widest font-black uppercase leading-tight">Lua de Kaya</p>
+            <p className="font-body text-[12px] text-plum font-bold mt-1">CNPJ 44.472.530/0001-08</p>
           </div>
         </div>
       </div>
-      
+
       {/* Brilho sutil */}
       <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute -bottom-1/2 -left-1/2 w-full h-full bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
