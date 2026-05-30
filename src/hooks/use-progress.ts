@@ -254,16 +254,31 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
           const dbData = dbToProgress(progressRow as unknown as DbProgress, studentName, quizScores);
           
           setProgress(prev => {
+            // Check if DB data is actually newer than what we might have from local session
+            const dbLastActive = dbData.lastActive ? new Date(dbData.lastActive).getTime() : 0;
+            const localLastActive = prev.lastActive ? new Date(prev.lastActive).getTime() : 0;
+            
+            // If DB is older, prioritize local session data for lists
+            const isDbOlder = dbLastActive < localLastActive;
+
             const next = {
               ...dbData,
-              // Merge local completions with DB data to avoid overwriting session progress
-              completedLessons: [...new Set([...dbData.completedLessons, ...prev.completedLessons])],
-              completedQuizzes: [...new Set([...dbData.completedQuizzes, ...prev.completedQuizzes])],
-              completedExercises: [...new Set([...dbData.completedExercises, ...prev.completedExercises])],
-              completedModules: [...new Set([...dbData.completedModules, ...prev.completedModules])],
+              completedLessons: isDbOlder 
+                ? [...new Set([...prev.completedLessons, ...dbData.completedLessons])]
+                : [...new Set([...dbData.completedLessons, ...prev.completedLessons])],
+              completedQuizzes: isDbOlder
+                ? [...new Set([...prev.completedQuizzes, ...dbData.completedQuizzes])]
+                : [...new Set([...dbData.completedQuizzes, ...prev.completedQuizzes])],
+              completedExercises: isDbOlder
+                ? [...new Set([...prev.completedExercises, ...dbData.completedExercises])]
+                : [...new Set([...dbData.completedExercises, ...prev.completedExercises])],
+              completedModules: isDbOlder
+                ? [...new Set([...prev.completedModules, ...dbData.completedModules])]
+                : [...new Set([...dbData.completedModules, ...prev.completedModules])],
               xp: Math.max(dbData.xp, prev.xp),
               level: Math.max(dbData.level, prev.level),
               streak: Math.max(dbData.streak, prev.streak),
+              lastActive: isDbOlder ? prev.lastActive : dbData.lastActive,
             };
 
             saveLocalExtras({
@@ -330,14 +345,18 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
 
     if (saveTimer.current) clearTimeout(saveTimer.current);
     saveTimer.current = setTimeout(async () => {
+      console.log("Syncing progress to Supabase...", { coreChanged, nameChanged });
       if (coreChanged) {
         lastSavedCoreRef.current = coreSnapshot;
-        await supabase
+        const { error } = await supabase
           .from("user_progress")
           .upsert({
             user_id: user.id,
             ...corePayload
           }, { onConflict: 'user_id' });
+        
+        if (error) console.error("Error syncing user_progress:", error);
+        else console.log("user_progress synced successfully");
       }
       if (nameChanged) {
         lastSavedNameRef.current = nameSnapshot;
@@ -450,9 +469,14 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
 
   const updateStreak = useCallback(() => {
     setProgress((prev) => {
-      const lastActive = new Date(prev.lastActive);
+      const lastActiveDate = prev.lastActive ? new Date(prev.lastActive) : null;
       const now = new Date();
-      const diffDays = Math.floor((now.getTime() - lastActive.getTime()) / (1000 * 60 * 60 * 24));
+      
+      if (!lastActiveDate) {
+        return { ...prev, streak: 1, lastActive: now.toISOString() };
+      }
+
+      const diffDays = Math.floor((now.getTime() - lastActiveDate.getTime()) / (1000 * 60 * 60 * 24));
       if (diffDays === 1) {
         return { ...prev, streak: prev.streak + 1, lastActive: now.toISOString() };
       } else if (diffDays > 1) {
