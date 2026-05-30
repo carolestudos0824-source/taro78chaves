@@ -110,7 +110,7 @@ const ProfilePage = () => {
               <span>{journeyProgress}%</span>
             </div>
             <div className="h-2.5 w-full bg-[#DCCFC2]/40 rounded-full overflow-hidden border border-[#DCCFC2]/20">
-              <div className="h-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] rounded-full shadow-[0_0_8px_rgba(200,166,106,0.5)]" style={{ width: `${progress.xp % 100}%` }} />
+              <div className="h-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] rounded-full shadow-[0_0_8px_rgba(200,166,106,0.5)]" style={{ width: `${journeyProgress}%` }} />
             </div>
           </div>
         </div>
