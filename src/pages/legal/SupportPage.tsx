@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LegalLayout from "@/components/LegalLayout";
 import { businessInfo } from "@/config/business";
 import { Button } from "@/components/ui/button";
@@ -11,14 +11,15 @@ import { toast } from "sonner";
 import { Mail, HelpCircle, AlertCircle, CheckCircle2 } from "lucide-react";
 
 const REQUEST_TYPES = [
+  { value: "duvida", label: "Dúvida pedagógica / Tarô" },
   { value: "acesso", label: "Acesso / Login" },
   { value: "hotmart", label: "Compra Hotmart" },
   { value: "liberacao", label: "Pagamento aprovado, mas sem acesso" },
-  { value: "licao", label: "Problema em lição" },
-  { value: "progresso", label: "Problema com progresso" },
+  { value: "licao", label: "Problema em lição ou quiz" },
+  { value: "progresso", label: "Problema com progresso ou XP" },
   { value: "certificado", label: "Certificado" },
   { value: "exclusao", label: "Exclusão de conta" },
-  { value: "outro", label: "Outro" },
+  { value: "outro", label: "Outro assunto" },
 ];
 
 const SupportPage = () => {
