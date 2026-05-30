@@ -3,22 +3,44 @@ import App from "./App.tsx";
 import "./index.css";
 
 // Global error handler for dynamic import failures (chunk errors)
-window.addEventListener('error', (e) => {
-  if (e.message?.includes('Failed to fetch dynamically imported module') || 
-      e.message?.includes('Importing a module script failed')) {
-    console.warn("Chunk load error detected, reloading page...");
-    window.location.reload();
-  }
-});
+const handleChunkError = (error: any) => {
+  const errorMessage = error?.message || error?.reason?.message || "";
+  const isChunkError = 
+    errorMessage.includes('Failed to fetch dynamically imported module') || 
+    errorMessage.includes('Importing a module script failed') ||
+    errorMessage.includes('Loading chunk failed') ||
+    errorMessage.includes('ChunkLoadError');
 
-// For promise-based dynamic imports
-window.addEventListener('unhandledrejection', (e) => {
-  if (e.reason?.message?.includes('Failed to fetch dynamically imported module') ||
-      e.reason?.message?.includes('Importing a module script failed')) {
-    console.warn("Chunk load promise rejection detected, reloading page...");
+  if (isChunkError) {
+    console.error("Chunk load error detected:", errorMessage);
+    
+    // Use sessionStorage to prevent infinite reload loops
+    const lastReload = sessionStorage.getItem('last-chunk-reload');
+    const now = Date.now();
+    
+    // If we reloaded less than 10 seconds ago, it's a persistent error
+    if (lastReload && (now - parseInt(lastReload)) < 10000) {
+      console.error("Persistent chunk error after reload. Showing user message.");
+      const message = document.createElement('div');
+      message.style.cssText = 'fixed inset-0 z-[9999] flex items-center justify-center bg-[#FAF5EF] p-6 text-center';
+      message.innerHTML = `
+        <div style="max-width: 400px; font-family: sans-serif;">
+          <h2 style="color: #5B1F3D; font-size: 20px; margin-bottom: 12px;">Atualizamos a plataforma</h2>
+          <p style="color: #5B1F3DCC; font-size: 14px; margin-bottom: 20px;">Recarregue a página manualmente para continuar sua jornada.</p>
+          <button onclick="window.location.reload()" style="background: #5B1F3D; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer;">Recarregar agora</button>
+        </div>
+      `;
+      document.body.appendChild(message);
+      return;
+    }
+
+    sessionStorage.setItem('last-chunk-reload', now.toString());
     window.location.reload();
   }
-});
+};
+
+window.addEventListener('error', (e) => handleChunkError(e));
+window.addEventListener('unhandledrejection', (e) => handleChunkError(e));
 
 const rootElement = document.getElementById("root");
 
