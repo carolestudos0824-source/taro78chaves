@@ -11,6 +11,12 @@ import { toast } from "sonner";
 import { trackEvent } from "@/lib/analytics";
 import { Mail, HelpCircle, AlertCircle, CheckCircle2 } from "lucide-react";
 
+/**
+ * Identificador Único de Versão: 2026-05-30-V2
+ * Esta é a ÚNICA Central de Suporte. Se você vê outra página, limpe o cache do seu navegador.
+ */
+const SUPPORT_VERSION_ID = "2026-05-30-V2";
+
 const REQUEST_TYPES = [
   { value: "duvida", label: "Dúvida pedagógica / Tarô" },
   { value: "acesso", label: "Acesso / Login" },
@@ -80,7 +86,10 @@ const SupportPage = () => {
             Estamos aqui para guiar sua travessia. Se você encontrou algum obstáculo técnico ou tem dúvidas sobre sua jornada no <strong>{businessInfo.productName}</strong>, use o formulário oficial abaixo.
           </p>
 
-          <div className="bg-[#FAF5EF] border-2 border-[#C8A66A]/20 p-6 rounded-[2rem] shadow-sm flex flex-col md:flex-row gap-6 items-start md:items-center">
+          <div className="bg-[#FAF5EF] border-2 border-[#C8A66A]/20 p-6 rounded-[2rem] shadow-sm flex flex-col md:flex-row gap-6 items-start md:items-center relative">
+            <div className="absolute top-2 right-4 text-[8px] font-heading font-black text-[#C8A66A] opacity-30 tracking-widest uppercase">
+              Build {SUPPORT_VERSION_ID}
+            </div>
             <div className="w-12 h-12 rounded-2xl bg-[#5B1F3D] flex items-center justify-center shrink-0 shadow-md">
               <Mail className="w-6 h-6 text-[#C8A66A]" />
             </div>
