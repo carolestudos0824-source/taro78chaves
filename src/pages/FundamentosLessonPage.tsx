@@ -132,7 +132,7 @@ const FundamentosLessonPage = () => {
     setShowExplanation(true);
     if (idx === quizQuestions[quizIndex].correctIndex) {
       setScore((s) => s + 1);
-      if (!isStaff) addXP(5);
+      addXP(5);
     }
   };
 
