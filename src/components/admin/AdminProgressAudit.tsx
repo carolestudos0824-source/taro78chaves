@@ -19,7 +19,8 @@ import {
   Mail,
   Zap,
   CheckCircle2,
-  Info
+  Info,
+  ChevronRight
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
