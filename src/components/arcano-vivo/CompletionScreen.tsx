@@ -75,6 +75,14 @@ export function CompletionScreen({
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
         }}>Chave Conquistada</h2>
+        
+        {isStaff && (
+          <div className="mb-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#5B1F3D]/10 border border-[#C8A66A]/30 text-[#5B1F3D] animate-pulse">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#C8A66A]" />
+            <span className="text-[10px] font-heading font-black tracking-widest uppercase">Modo Auditoria</span>
+          </div>
+        )}
+
         <p className="text-[15px] font-medium" style={{ color: "#5B1F3D" }}>
           Você dominou o portal de <strong className="font-black text-[#C8A66A]">{arcanoName}</strong>.
         </p>
