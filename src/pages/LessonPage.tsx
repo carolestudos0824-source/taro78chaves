@@ -148,13 +148,11 @@ const LessonPage = () => {
   }
 
   const handleStartLesson = () => {
-    if (!isStaff) {
-      addXP(10);
-      setXpEarned(10);
-      setShowXpReward(true);
-      setTimeout(() => setShowXpReward(false), 2000);
-      earnBadge("first-step");
-    }
+    addXP(10);
+    setXpEarned(10);
+    setShowXpReward(true);
+    setTimeout(() => setShowXpReward(false), 2000);
+    earnBadge("first-step");
     setPhase("lesson");
     window.scrollTo(0, 0);
   };
