@@ -158,16 +158,14 @@ const LessonPage = () => {
   };
 
   const handleQuizComplete = (score: number, total: number) => {
-    if (!isStaff) {
-      const quizXp = score * 10;
-      addXP(quizXp);
-      setXpEarned(e => e + quizXp);
-      completeQuiz(`quiz-arcano-${arcano.id}`, score, total);
-      completeLesson(`arcano-${arcano.id}`);
-      if (arcano.id === 0) {
-        earnBadge("fool-complete");
-        setShowUnlockMoment(true);
-      }
+    const quizXp = score * 10;
+    addXP(quizXp);
+    setXpEarned(e => e + quizXp);
+    completeQuiz(`quiz-arcano-${arcano.id}`, score, total);
+    completeLesson(`arcano-${arcano.id}`);
+    if (arcano.id === 0) {
+      earnBadge("fool-complete");
+      setShowUnlockMoment(true);
     }
     setLastQuizScore(score);
     setLastQuizTotal(total);
