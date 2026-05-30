@@ -56,7 +56,7 @@ const AdminHotmart = () => {
     setLoading(true);
     const [evts, ents] = await Promise.all([
       supabase.from("hotmart_events").select("*").order("created_at", { ascending: false }).limit(200),
-      supabase.from("hotmart_entitlements").select("*, hotmart_events(status)").order("updated_at", { ascending: false })
+      supabase.from("hotmart_entitlements").select("*").order("updated_at", { ascending: false })
 
     ]);
     setEvents(evts.data || []);
@@ -269,7 +269,7 @@ const AdminHotmart = () => {
                     {e.premium_until ? new Date(e.premium_until).toLocaleDateString("pt-BR") : "—"}
                   </AdminTableCellFixed>
                   <AdminTableCellFixed className="text-right">
-                    <p className="text-[10px] text-muted-foreground">C: {new Date((e as any).created_at || e.updated_at).toLocaleDateString("pt-BR")}</p>
+                    <p className="text-[10px] text-muted-foreground">C: {new Date((e as any).created_at).toLocaleDateString("pt-BR")}</p>
                     <p className="text-[10px] text-muted-foreground">U: {new Date(e.updated_at).toLocaleDateString("pt-BR")}</p>
                   </AdminTableCellFixed>
 
