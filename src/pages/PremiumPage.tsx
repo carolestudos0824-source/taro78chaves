@@ -23,7 +23,8 @@ const PREMIUM_BENEFITS = [
 
 const PremiumPage = () => {
   const navigate = useNavigate();
-  const { isPremium, stripeCustomerId } = usePremium();
+  const { isPremium, subscriptionStatus, premiumUntil } = usePremium();
+  const { isStaff } = useRole();
   const [loading, setLoading] = useState(false);
   const webCheckoutAllowed = isWebCheckoutAllowed();
 
