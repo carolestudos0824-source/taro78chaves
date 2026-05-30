@@ -56,6 +56,14 @@ function getLocalExtras(): LocalExtras {
         currentModule: parsed.currentModule ?? DEFAULT_PROGRESS.currentModule,
         studentName: parsed.studentName ?? DEFAULT_PROGRESS.studentName,
         certificatesEarned: parsed.certificatesEarned ?? DEFAULT_PROGRESS.certificatesEarned,
+        completedLessons: parsed.completedLessons ?? DEFAULT_PROGRESS.completedLessons,
+        completedQuizzes: parsed.completedQuizzes ?? DEFAULT_PROGRESS.completedQuizzes,
+        completedExercises: parsed.completedExercises ?? DEFAULT_PROGRESS.completedExercises,
+        completedModules: parsed.completedModules ?? DEFAULT_PROGRESS.completedModules,
+        xp: parsed.xp ?? DEFAULT_PROGRESS.xp,
+        level: parsed.level ?? DEFAULT_PROGRESS.level,
+        streak: parsed.streak ?? DEFAULT_PROGRESS.streak,
+        lastActive: parsed.lastActive ?? DEFAULT_PROGRESS.lastActive,
       };
     }
   } catch { /* ignore */ }
@@ -64,6 +72,14 @@ function getLocalExtras(): LocalExtras {
     currentModule: DEFAULT_PROGRESS.currentModule,
     studentName: DEFAULT_PROGRESS.studentName,
     certificatesEarned: DEFAULT_PROGRESS.certificatesEarned,
+    completedLessons: DEFAULT_PROGRESS.completedLessons,
+    completedQuizzes: DEFAULT_PROGRESS.completedQuizzes,
+    completedExercises: DEFAULT_PROGRESS.completedExercises,
+    completedModules: DEFAULT_PROGRESS.completedModules,
+    xp: DEFAULT_PROGRESS.xp,
+    level: DEFAULT_PROGRESS.level,
+    streak: DEFAULT_PROGRESS.streak,
+    lastActive: DEFAULT_PROGRESS.lastActive,
   };
 }
 
