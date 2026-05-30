@@ -29,6 +29,7 @@ export function CompletionScreen({
 }: CompletionScreenProps & { arcanoId?: number }) {
   const navigate = useNavigate();
   const { progress } = useProgress();
+  const { isStaff } = useRole();
   const percentage = Math.round((quizScore / quizTotal) * 100);
   const isExcellent = percentage >= 80;
 
