@@ -1,3 +1,8 @@
+---
+name: Criador de Arcanos Vivos
+description: Gera briefings, prompts de vídeo, roteiros e checklists para a criação de vídeos animados (Arcanos Vivos) do curso Tarô 78 Chaves.
+---
+
 # Criador de Arcanos Vivos
 
 Habilidade especializada na criação de briefings criativos para vídeos animados da experiência "Arcanos Vivos" do curso Tarô 78 Chaves.
