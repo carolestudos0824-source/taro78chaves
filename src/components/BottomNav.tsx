@@ -1,4 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
+import { usePremium } from "@/hooks/use-premium";
 import { useEffect } from "react";
 import { TarotIcon, TarotIconType } from "./TarotIcon";
 
