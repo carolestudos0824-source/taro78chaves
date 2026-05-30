@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import LegalLayout from "@/components/LegalLayout";
 import { businessInfo } from "@/config/business";
 
@@ -66,7 +67,7 @@ const PrivacyPage = () => (
     <h2>7. Exclusão de conta</h2>
     <p>
       Você pode solicitar a exclusão da sua conta a qualquer momento pela página{" "}
-      <a href="/excluir-conta">/excluir-conta</a> ou por e-mail.
+      <Link to="/excluir-conta" className="underline font-bold">/excluir-conta</Link> ou por e-mail.
     </p>
 
     <h2>8. Segurança</h2>
