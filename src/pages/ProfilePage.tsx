@@ -110,8 +110,8 @@ const ProfilePage = () => {
               <span>{journeyProgress}%</span>
             </div>
             {isStaff && (
-              <p className="text-[9px] font-body font-bold italic text-[#5B1F3D]/60 leading-tight">
-                Seu progresso é apenas local e não será salvo no Supabase.
+              <p className="text-[10px] font-body font-bold italic text-[#5B1F3D]/80 leading-relaxed bg-amber-50/50 p-3 rounded-xl border border-amber-200/40">
+                Modo Auditoria ativo. Seu progresso nesta conta é apenas local e não será salvo permanentemente. Para testar progresso real, use uma conta de aluna/premium.
               </p>
             )}
             <div className="h-2.5 w-full bg-[#DCCFC2]/40 rounded-full overflow-hidden border border-[#DCCFC2]/20">
