@@ -42,6 +42,7 @@ const OfficialSupport = () => {
   });
 
   useEffect(() => {
+    document.title = `Central de Suporte — Build ${SUPPORT_VERSION_ID}`;
     if (user?.email) {
       setFormData(prev => ({ ...prev, email: user.email }));
     }
