@@ -503,7 +503,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
 
   const isArcanoCompleted = useCallback((arcanoId: number): boolean => {
     return (
-      progress.completedLessons.includes(`arcano-${arcanoId}`) ||
+      progress.completedLessons.includes(`arcano-${arcanoId}`) &&
       progress.completedQuizzes.includes(`quiz-arcano-${arcanoId}`)
     );
   }, [progress.completedLessons, progress.completedQuizzes]);
