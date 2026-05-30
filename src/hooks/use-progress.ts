@@ -297,6 +297,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
               level: next.level,
               streak: next.streak,
               lastActive: next.lastActive,
+              onboardingCompleted: next.onboardingCompleted,
             });
 
             return next;
