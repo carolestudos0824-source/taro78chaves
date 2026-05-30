@@ -34,7 +34,7 @@ const ProfilePage = lazy(() => import("./pages/ProfilePage.tsx"));
 const FoolsJourneyPage = lazy(() => import("./pages/FoolsJourneyPage.tsx"));
 const FundamentosPage = lazy(() => import("./pages/FundamentosPage.tsx"));
 const FundamentosLessonPage = lazy(() => import("./pages/FundamentosLessonPage.tsx"));
-const FeedbackPage = lazy(() => import("./pages/FeedbackPage.tsx"));
+
 const BetaInvitePage = lazy(() => import("./pages/BetaInvitePage.tsx"));
 
 const AcessoComprado = lazy(() => import("./pages/AcessoComprado.tsx"));
