@@ -1,7 +1,7 @@
 import {
   LayoutDashboard, Users, Crown, Gift, BookOpen, Sparkles, HelpCircle,
   BarChart3, HeadphonesIcon, Settings, ScrollText, Shield, Smartphone,
-  ShoppingBag, FileText
+  ShoppingBag, FileText, Search
 } from "lucide-react";
 import { canAccessSection, type AppRole } from "@/hooks/use-role";
 
