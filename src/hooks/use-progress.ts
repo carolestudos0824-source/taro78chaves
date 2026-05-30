@@ -300,6 +300,14 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
       currentModule: progress.currentModule,
       studentName: progress.studentName,
       certificatesEarned: progress.certificatesEarned,
+      completedLessons: progress.completedLessons,
+      completedQuizzes: progress.completedQuizzes,
+      completedExercises: progress.completedExercises,
+      completedModules: progress.completedModules,
+      xp: progress.xp,
+      level: progress.level,
+      streak: progress.streak,
+      lastActive: progress.lastActive,
     });
 
     if (!coreChanged && !nameChanged) return;
