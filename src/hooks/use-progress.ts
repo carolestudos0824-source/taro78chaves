@@ -3,6 +3,7 @@ import { DEFAULT_PROGRESS, type Badge, type UserProgress } from "@/lib/content";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { useRole } from "@/hooks/use-role";
+import { toast } from "sonner";
 
 const LOCAL_EXTRAS_KEY = "tarot-journey-extras";
 
@@ -362,8 +363,8 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         
         if (error) {
           console.error("Error syncing user_progress:", error);
-          // If update fails, reset lastSavedRef to try again on next change
           lastSavedCoreRef.current = "";
+          toast.error("Erro ao salvar progresso. Verifique sua conexão.");
         } else {
           console.log("user_progress synced successfully");
         }
