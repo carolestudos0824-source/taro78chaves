@@ -11,6 +11,7 @@ import AdminArcanos from "@/components/admin/AdminArcanos";
 import AdminQuizzes from "@/components/admin/AdminQuizzes";
 import AdminProgress from "@/components/admin/AdminProgress";
 import AdminSupport from "@/components/admin/AdminSupport";
+import AdminProgressAudit from "@/components/admin/AdminProgressAudit";
 import AdminSettings from "@/components/admin/AdminSettings";
 import AdminAuditLog from "@/components/admin/AdminAuditLog";
 import AdminRoles from "@/components/admin/AdminRoles";
@@ -30,6 +31,7 @@ const sectionComponents: Record<AdminSection, React.ComponentType> = {
   arcanos: AdminArcanos,
   quizzes: AdminQuizzes,
   progress: AdminProgress,
+  progress_audit: AdminProgressAudit,
   roles: AdminRoles,
   audit: AdminAuditLog,
   support: AdminSupport,

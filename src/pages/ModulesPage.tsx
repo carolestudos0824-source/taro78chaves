@@ -188,8 +188,7 @@ const ModulesPage = () => {
                 <div className="space-y-1">
                   <p className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">Modo Auditoria Ativo</p>
                   <p className="text-[11px] md:text-xs font-body font-bold leading-relaxed italic">
-                    Seu progresso nesta conta é apenas local e não será salvo permanentemente. 
-                    Para testar progresso real, use uma conta de aluna/premium.
+                    Modo Auditoria ativo. Seu progresso nesta conta é apenas local e não será salvo permanentemente. Para testar progresso real, use uma conta de aluna/premium.
                   </p>
                 </div>
               </div>

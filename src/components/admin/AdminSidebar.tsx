@@ -1,7 +1,7 @@
 import {
   LayoutDashboard, Users, Crown, Gift, BookOpen, Sparkles, HelpCircle,
   BarChart3, HeadphonesIcon, Settings, ScrollText, Shield, Smartphone,
-  ShoppingBag, FileText
+  ShoppingBag, FileText, Search
 } from "lucide-react";
 import { canAccessSection, type AppRole } from "@/hooks/use-role";
 
@@ -16,6 +16,7 @@ export type AdminSection =
   | "arcanos"
   | "quizzes"
   | "progress"
+  | "progress_audit"
   | "roles"
   | "audit"
   | "support"
@@ -38,7 +39,8 @@ const sections: { id: AdminSection; label: string; icon: React.ReactNode; group:
   { id: "modules", label: "Módulos", icon: <BookOpen className="w-5 h-5" />, group: "Curso" },
   { id: "arcanos", label: "Arcanos", icon: <Sparkles className="w-5 h-5" />, group: "Curso" },
   { id: "quizzes", label: "Quizzes", icon: <HelpCircle className="w-5 h-5" />, group: "Curso" },
-  { id: "progress", label: "Progresso & Uso", icon: <BarChart3 className="w-5 h-5" />, group: "Curso" },
+  { id: "progress", label: "Engajamento Geral", icon: <BarChart3 className="w-5 h-5" />, group: "Curso" },
+  { id: "progress_audit", label: "Auditoria de Progresso", icon: <Search className="w-5 h-5" />, group: "Curso" },
   { id: "roles", label: "Funções", icon: <Shield className="w-5 h-5" />, group: "Operação" },
   { id: "audit", label: "Auditoria", icon: <ScrollText className="w-5 h-5" />, group: "Operação" },
   { id: "support", label: "Suporte", icon: <HeadphonesIcon className="w-5 h-5" />, group: "Operação" },
