@@ -531,11 +531,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     return 21;
   }, [isArcanoUnlocked, isArcanoCompleted]);
 
-  const completedMaiores = progress.completedLessons.filter(l => l.startsWith("arcano-")).length;
-  const completedMenores = progress.completedLessons.filter(l => 
-    l.startsWith("copas-") || l.startsWith("paus-") || l.startsWith("espadas-") || l.startsWith("ouros-")
-  ).length;
-  const totalCompletedArcanos = completedMaiores + completedMenores;
+  const totalCompletedArcanos = Array.from({ length: 22 }, (_, i) => i).filter(id => isArcanoCompleted(id)).length;
   const completedCount = totalCompletedArcanos;
   const journeyProgress = Math.round((totalCompletedArcanos / 78) * 100);
 
