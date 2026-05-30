@@ -191,6 +191,7 @@ const AppRoutes = () => {
         <Route path="/privacidade" element={<PrivacyPage />} />
         <Route path="/termos" element={<TermsPage />} />
         <Route path="/suporte" element={<SupportPage />} />
+        <Route path="/feedback" element={<Navigate to="/suporte" replace />} />
         <Route path="/excluir-conta" element={<DeleteAccountPage />} />
         <Route path="/apresentacao" element={<PresentationPage />} />
         <Route path="/validar-certificado" element={<ValidateCertificatePage />} />
@@ -245,7 +246,7 @@ const AppRoutes = () => {
           <Route path="/biblioteca" element={<SymbolLibraryPage />} />
           <Route path="/rotina" element={<StudyRoutinePage />} />
           <Route path="/minha-jornada" element={<JourneyJournalPage />} />
-          <Route path="/feedback" element={<FeedbackPage />} />
+          <Route path="/feedback" element={<Navigate to="/suporte" replace />} />
           <Route path="/admin" element={<AdminPage />} />
         </Route>
         

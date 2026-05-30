@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LegalLayout from "@/components/LegalLayout";
 import { businessInfo } from "@/config/business";
 import { Button } from "@/components/ui/button";
@@ -11,14 +11,15 @@ import { toast } from "sonner";
 import { Mail, HelpCircle, AlertCircle, CheckCircle2 } from "lucide-react";
 
 const REQUEST_TYPES = [
+  { value: "duvida", label: "Dúvida pedagógica / Tarô" },
   { value: "acesso", label: "Acesso / Login" },
   { value: "hotmart", label: "Compra Hotmart" },
   { value: "liberacao", label: "Pagamento aprovado, mas sem acesso" },
-  { value: "licao", label: "Problema em lição" },
-  { value: "progresso", label: "Problema com progresso" },
+  { value: "licao", label: "Problema em lição ou quiz" },
+  { value: "progresso", label: "Problema com progresso ou XP" },
   { value: "certificado", label: "Certificado" },
   { value: "exclusao", label: "Exclusão de conta" },
-  { value: "outro", label: "Outro" },
+  { value: "outro", label: "Outro assunto" },
 ];
 
 const SupportPage = () => {
@@ -27,11 +28,17 @@ const SupportPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
-    email: user?.email || "",
+    email: "",
     type: "",
     subject: "",
     message: "",
   });
+
+  useEffect(() => {
+    if (user?.email) {
+      setFormData(prev => ({ ...prev, email: user.email }));
+    }
+  }, [user]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -95,7 +102,7 @@ const SupportPage = () => {
                 <CheckCircle2 className="w-10 h-10 text-emerald-500" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-heading text-2xl font-black text-[#5B1F3D]">Solicitação Enviada</h3>
+                <h3 className="font-heading text-2xl font-black text-[#5B1F3D]">Mensagem Entregue ao Oráculo</h3>
                 <p className="text-[#5B1F3D]/70 font-body font-bold italic">
                   Sua mensagem foi entregue ao Oráculo. <br />
                   Responderemos em até <strong>3 dias úteis</strong> no e-mail informado.
