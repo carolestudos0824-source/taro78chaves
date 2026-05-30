@@ -30,11 +30,11 @@ const PremiumGate = ({
 }: PremiumGateProps) => {
   const navigate = useNavigate();
   const { isPremium, loading } = usePremium();
-  const { isAdmin } = useIsAdmin();
+  const { isStaff } = useRole();
 
   if (loading) return null;
-  if ((isPremium || isAdmin) && children) return <>{children}</>;
-  if (isPremium || isAdmin) return null;
+  if ((isPremium || isStaff) && children) return <>{children}</>;
+  if (isPremium || isStaff) return null;
 
   if (variant === "banner") {
     return (
