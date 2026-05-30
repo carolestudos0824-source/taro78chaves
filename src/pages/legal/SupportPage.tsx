@@ -11,6 +11,12 @@ import { toast } from "sonner";
 import { trackEvent } from "@/lib/analytics";
 import { Mail, HelpCircle, AlertCircle, CheckCircle2 } from "lucide-react";
 
+/**
+ * Identificador Único de Versão: 2026-05-30-V2
+ * Esta é a ÚNICA Central de Suporte. Se você vê outra página, limpe o cache do seu navegador.
+ */
+const SUPPORT_VERSION_ID = "2026-05-30-V2";
+
 const REQUEST_TYPES = [
   { value: "duvida", label: "Dúvida pedagógica / Tarô" },
   { value: "acesso", label: "Acesso / Login" },
