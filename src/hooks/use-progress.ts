@@ -465,9 +465,14 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
 
   const updateStreak = useCallback(() => {
     setProgress((prev) => {
-      const lastActive = new Date(prev.lastActive);
+      const lastActiveDate = prev.lastActive ? new Date(prev.lastActive) : null;
       const now = new Date();
-      const diffDays = Math.floor((now.getTime() - lastActive.getTime()) / (1000 * 60 * 60 * 24));
+      
+      if (!lastActiveDate) {
+        return { ...prev, streak: 1, lastActive: now.toISOString() };
+      }
+
+      const diffDays = Math.floor((now.getTime() - lastActiveDate.getTime()) / (1000 * 60 * 60 * 24));
       if (diffDays === 1) {
         return { ...prev, streak: prev.streak + 1, lastActive: now.toISOString() };
       } else if (diffDays > 1) {
