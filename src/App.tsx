@@ -178,7 +178,7 @@ const AppShell = () => {
 
 const AppRoutes = () => {
   return (
-    <Suspense fallback={<LoadingFallback />}>
+    <Suspense fallback={<div className="min-h-screen bg-[#FAF5EF]" />}>
       <AnalyticsTracker />
       <ConsentBanner />
       <Routes>

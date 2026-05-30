@@ -172,7 +172,7 @@ const ModulesPage = () => {
   const arcanoGuia = getGlobalArcanoAtual();
 
   return (
-    <div className="relative min-h-screen bg-[#FDFBF7]">
+    <div className="relative min-h-screen bg-[#FAF5EF]">
       <main className="relative z-10 container max-w-3xl px-6 pt-6 pb-24 md:pt-16 md:pb-32 space-y-6 md:space-y-12">
         <div id="meu-painel-diario-anchor" className="sr-only">Meu Painel Diário</div>
         
