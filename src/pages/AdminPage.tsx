@@ -31,6 +31,7 @@ const sectionComponents: Record<AdminSection, React.ComponentType> = {
   arcanos: AdminArcanos,
   quizzes: AdminQuizzes,
   progress: AdminProgress,
+  progress_audit: AdminProgressAudit,
   roles: AdminRoles,
   audit: AdminAuditLog,
   support: AdminSupport,
