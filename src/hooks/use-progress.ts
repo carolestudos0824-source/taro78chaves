@@ -486,6 +486,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     l.startsWith("copas-") || l.startsWith("paus-") || l.startsWith("espadas-") || l.startsWith("ouros-")
   ).length;
   const totalCompletedArcanos = completedMaiores + completedMenores;
+  const completedCount = totalCompletedArcanos;
   const journeyProgress = Math.round((totalCompletedArcanos / 78) * 100);
 
   const completeOnboarding = useCallback(() => {
