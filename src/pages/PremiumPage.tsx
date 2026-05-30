@@ -108,47 +108,92 @@ const PremiumPage = () => {
           </div>
         </div>
 
-        {webCheckoutAllowed ? (
-        <div className="space-y-6">
-          <div className="text-center space-y-2">
-            <h2 className="font-heading text-xl font-black text-[#5B1F3D]">Escola Digital</h2>
-            <p className="text-xs font-accent italic text-[#5B1F3D]/60 font-bold">Cada prática abre mais uma porta.</p>
+        {isStaff && (
+          <div className="bg-[#5B1F3D]/5 border-2 border-[#5B1F3D]/20 p-6 rounded-[2rem] flex items-center gap-4 mb-8">
+            <div className="w-12 h-12 rounded-xl bg-white border border-[#C8A66A]/20 flex items-center justify-center shrink-0 shadow-sm">
+              <ShieldCheck className="w-6 h-6 text-[#C8A66A]" />
+            </div>
+            <div className="space-y-1">
+              <p className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]">Modo Auditoria Ativo</p>
+              <p className="text-[11px] font-body font-bold leading-relaxed italic text-[#5B1F3D]/70">
+                Você está visualizando esta página como Admin/Staff. O fluxo de compra está em modo de visualização.
+              </p>
+            </div>
           </div>
+        )}
 
-          <div className="space-y-4">
-            <div className="w-full text-left bg-white border-4 border-[#C8A66A] p-6 min-[400px]:p-8 rounded-[2.5rem] flex flex-col space-y-6 shadow-2xl relative overflow-hidden active:scale-[0.98] transition-all ring-8 ring-[#C8A66A]/5">
-              <div className="absolute top-0 right-0 bg-[#C8A66A] px-6 py-2.5 rounded-bl-3xl text-[10px] font-heading font-black tracking-widest text-[#FAF5EF] uppercase shadow-md">
-                Oferta de Lançamento
+        {isPremium && !isStaff ? (
+          <div className="space-y-8 animate-fade-in">
+            <div className="bg-white border-4 border-emerald-500/30 p-8 rounded-[2.5rem] flex flex-col items-center text-center space-y-6 shadow-2xl relative overflow-hidden ring-8 ring-emerald-500/5">
+              <div className="absolute top-0 right-0 bg-emerald-500 px-6 py-2.5 rounded-bl-3xl text-[10px] font-heading font-black tracking-widest text-white uppercase shadow-md">
+                Acesso Ativo
               </div>
               
+              <div className="w-20 h-20 rounded-full bg-emerald-50 flex items-center justify-center border-4 border-emerald-100 shadow-inner">
+                <CheckCircle2 className="w-10 h-10 text-emerald-500" />
+              </div>
+
               <div className="space-y-2">
-                <p className="text-[11px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D] font-black">Acesso Anual</p>
-                <div className="flex items-baseline gap-1">
-                  <span className="font-heading text-4xl min-[400px]:text-5xl text-[#5B1F3D] font-black tracking-tighter">R$ 297</span>
-                  <span className="text-xs font-heading font-black text-[#5B1F3D]/40">/único</span>
-                </div>
-                <p className="text-sm font-black text-[#5B1F3D] italic leading-relaxed">
-                  12 meses de acesso • Sem renovação automática
+                <h2 className="font-heading text-2xl font-black text-[#5B1F3D]">Jornada completa liberada</h2>
+                <p className="text-sm font-body font-bold text-[#5B1F3D]/60 italic">
+                  Seu acesso anual está ativo. Todos os portais estão prontos para sua travessia pedagógica.
                 </p>
+                {premiumUntil && (
+                  <p className="text-[10px] font-heading font-black tracking-widest uppercase text-[#C8A66A] pt-2">
+                    Válido até {new Date(premiumUntil).toLocaleDateString('pt-BR')}
+                  </p>
+                )}
               </div>
 
               <Button 
-                onClick={() => handleSubscribe()} 
-                disabled={loading} 
-                className="w-full py-7 min-[400px]:py-8 text-[11px] min-[400px]:text-sm bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.15em] min-[400px]:tracking-[0.2em] shadow-xl border-2 border-[#C8A66A] h-auto whitespace-normal leading-tight"
+                onClick={() => navigate("/app")} 
+                className="w-full py-7 text-sm bg-[#5B1F3D] hover:bg-[#3D1429] text-white rounded-2xl font-heading font-black tracking-[0.2em] shadow-xl border-2 border-[#C8A66A] h-auto"
               >
-                GARANTIR MEU ACESSO
+                CONTINUAR MINHA JORNADA
               </Button>
             </div>
           </div>
-        </div>
+        ) : webCheckoutAllowed ? (
+          <div className="space-y-6">
+            <div className="text-center space-y-2">
+              <h2 className="font-heading text-xl font-black text-[#5B1F3D]">Escola Digital</h2>
+              <p className="text-xs font-accent italic text-[#5B1F3D]/60 font-bold">Cada prática abre mais uma porta.</p>
+            </div>
+
+            <div className="space-y-4">
+              <div className="w-full text-left bg-white border-4 border-[#C8A66A] p-6 min-[400px]:p-8 rounded-[2.5rem] flex flex-col space-y-6 shadow-2xl relative overflow-hidden active:scale-[0.98] transition-all ring-8 ring-[#C8A66A]/5">
+                <div className="absolute top-0 right-0 bg-[#C8A66A] px-6 py-2.5 rounded-bl-3xl text-[10px] font-heading font-black tracking-widest text-[#FAF5EF] uppercase shadow-md">
+                  Oferta de Lançamento
+                </div>
+                
+                <div className="space-y-2">
+                  <p className="text-[11px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D] font-black">Acesso Anual</p>
+                  <div className="flex items-baseline gap-1">
+                    <span className="font-heading text-4xl min-[400px]:text-5xl text-[#5B1F3D] font-black tracking-tighter">R$ 297</span>
+                    <span className="text-xs font-heading font-black text-[#5B1F3D]/40">/único</span>
+                  </div>
+                  <p className="text-sm font-black text-[#5B1F3D] italic leading-relaxed">
+                    12 meses de acesso • Sem renovação automática
+                  </p>
+                </div>
+
+                <Button 
+                  onClick={() => handleSubscribe()} 
+                  disabled={loading} 
+                  className="w-full py-7 min-[400px]:py-8 text-[11px] min-[400px]:text-sm bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.15em] min-[400px]:tracking-[0.2em] shadow-xl border-2 border-[#C8A66A] h-auto whitespace-normal leading-tight"
+                >
+                  GARANTIR MEU ACESSO
+                </Button>
+              </div>
+            </div>
+          </div>
         ) : (
-        <div className="bg-white border-2 border-[#DCCFC2] p-6 rounded-3xl text-center space-y-2">
-          <h2 className="font-heading text-base font-black text-[#5B1F3D]">Escola Digital</h2>
-          <p className="text-xs font-body font-bold text-[#5B1F3D]/70 leading-relaxed">
-            {STRIPE_BLOCKED_ANDROID_MSG}
-          </p>
-        </div>
+          <div className="bg-white border-2 border-[#DCCFC2] p-6 rounded-3xl text-center space-y-2">
+            <h2 className="font-heading text-base font-black text-[#5B1F3D]">Escola Digital</h2>
+            <p className="text-xs font-body font-bold text-[#5B1F3D]/70 leading-relaxed">
+              {STRIPE_BLOCKED_ANDROID_MSG}
+            </p>
+          </div>
         )}
 
         <div className="space-y-6 py-8">
