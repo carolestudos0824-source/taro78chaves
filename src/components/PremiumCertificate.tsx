@@ -10,14 +10,14 @@ interface PremiumCertificateProps {
 
 const PremiumCertificate: React.FC<PremiumCertificateProps> = ({
   studentName = "MARIA CLARA DE SOUZA",
-  issueDate = new Date().toLocaleDateString("pt-BR"),
-  validationCode = "T78-XXXX-XXXX",
+  issueDate = "29/05/2026",
+  validationCode = "T78-A4F7-9K2P",
   className,
 }) => {
   return (
     <div
       className={cn(
-        "relative w-full max-w-4xl aspect-[1.414/1] bg-[#FDFBF7] shadow-2xl flex flex-col items-center justify-between p-12 sm:p-20 overflow-hidden border-[16px] border-ivory",
+        "relative w-full aspect-[1.414/1] bg-[#FDFBF7] shadow-2xl flex flex-col items-center justify-between p-10 sm:p-16 overflow-hidden border-[12px] border-ivory",
         className
       )}
       style={{
