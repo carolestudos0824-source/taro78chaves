@@ -96,11 +96,17 @@ const ProfilePage = () => {
             <p className="font-accent italic font-bold text-[#5B1F3D]/80 text-sm">
               Nível {progress.level} • {progress.xp} XP conquistados
             </p>
+            {isStaff && (
+              <div className="mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#5B1F3D]/10 border border-[#C8A66A]/30 text-[#5B1F3D] animate-pulse">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#C8A66A]" />
+                <span className="text-[10px] font-heading font-black tracking-widest uppercase">Modo Auditoria</span>
+              </div>
+            )}
           </div>
 
           <div className="w-full space-y-3 px-4">
             <div className="flex justify-between text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">
-              <span>Progresso na Travessia</span>
+              <span>{isStaff ? "Sincronização desativada (Auditoria)" : "Progresso na Travessia"}</span>
               <span>{progress.xp % 100}%</span>
             </div>
             <div className="h-2.5 w-full bg-[#DCCFC2]/40 rounded-full overflow-hidden border border-[#DCCFC2]/20">
