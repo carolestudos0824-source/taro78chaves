@@ -24,6 +24,7 @@ const ProfilePage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { isAdmin } = useIsAdmin();
+  const { isStaff } = useRole();
   const { progress, completedCount } = useProgress();
   const { fontSize, setFontSize } = useFontSize();
   const { isPremium, premiumUntil, premiumSource, stripeCustomerId } = usePremium();
