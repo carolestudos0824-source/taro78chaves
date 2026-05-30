@@ -36,6 +36,14 @@ interface LocalExtras {
   currentModule: string;
   studentName: string;
   certificatesEarned: Record<string, string>;
+  completedLessons: string[];
+  completedQuizzes: string[];
+  completedExercises: string[];
+  completedModules: string[];
+  xp: number;
+  level: number;
+  streak: number;
+  lastActive: string;
 }
 
 function getLocalExtras(): LocalExtras {
