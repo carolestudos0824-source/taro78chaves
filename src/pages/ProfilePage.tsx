@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
-import { ArrowLeft, ChevronRight, LogOut, Type, MessageSquare, Link as LucideLink, Play, HelpCircle } from "lucide-react";
+import { ArrowLeft, ChevronRight, LogOut, Type, MessageSquare, Link as LucideLink, Play, HelpCircle, ShieldCheck } from "lucide-react";
 import { TarotIcon } from "@/components/TarotIcon";
 import { useIsAdmin } from "@/hooks/use-admin";
 import { useProgress } from "@/hooks/use-progress";
 import { usePremium } from "@/hooks/use-premium";
 import { useAuth } from "@/hooks/use-auth";
+import { useRole } from "@/hooks/use-role";
 import { useFontSize } from "@/contexts/font-size-context";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
