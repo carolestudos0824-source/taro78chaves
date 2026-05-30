@@ -167,7 +167,7 @@ const DailyChallengesPage = () => {
       <div className="relative z-10 max-w-lg mx-auto px-6 pb-32 space-y-10 mt-12">
         {/* Progress summary — Reforçado para ser Premium (Estilo /app) */}
         <div className="relative rounded-[3rem] overflow-hidden p-8 md:p-10 transition-all duration-500" style={{
-          background: "linear-gradient(135deg, #FFFFFF 0%, #FDFBF7 100%)",
+          background: "linear-gradient(135deg, #FFFFFF 0%, #FAF5EF 100%)",
           backdropFilter: "blur(24px)",
           border: "2.5px solid #C8A66A",
           boxShadow: "0 35px 80px rgba(91, 31, 61, 0.1), 0 0 35px rgba(200, 166, 106, 0.12)"

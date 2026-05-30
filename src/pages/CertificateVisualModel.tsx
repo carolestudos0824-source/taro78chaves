@@ -8,7 +8,7 @@ const CertificateVisualModel = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] p-4 sm:p-8 flex flex-col items-center">
+    <div className="min-h-screen bg-[#FAF5EF] p-4 sm:p-8 flex flex-col items-center">
       <div className="max-w-4xl w-full mb-8 flex items-center justify-between">
         <button
           onClick={() => navigate(-1)}
@@ -64,7 +64,7 @@ const CertificateVisualModel = () => {
               </li>
               <li className="flex items-start gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-gold/50 mt-1.5 shrink-0" />
-                <span>Fundo: Ivory (#FDFBF7) com gradientes sutis</span>
+                <span>Fundo: Ivory (#FAF5EF) com gradientes sutis</span>
               </li>
             </ul>
           </div>

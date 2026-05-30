@@ -15,7 +15,7 @@ export function QuickReviewCard({ review, isStudied }: QuickReviewCardProps) {
       className="rounded-[2rem] overflow-hidden transition-all duration-500"
       style={{
         background: isStudied
-          ? "linear-gradient(135deg, #FFFFFF 0%, #FDFBF7 100%)"
+          ? "linear-gradient(135deg, #FFFFFF 0%, #FAF5EF 100%)"
           : "rgba(243, 230, 224, 0.75)",
         border: isStudied
           ? "2.5px solid #C8A66A"
