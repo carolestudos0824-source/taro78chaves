@@ -254,16 +254,31 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
           const dbData = dbToProgress(progressRow as unknown as DbProgress, studentName, quizScores);
           
           setProgress(prev => {
+            // Check if DB data is actually newer than what we might have from local session
+            const dbLastActive = dbData.lastActive ? new Date(dbData.lastActive).getTime() : 0;
+            const localLastActive = prev.lastActive ? new Date(prev.lastActive).getTime() : 0;
+            
+            // If DB is older, prioritize local session data for lists
+            const isDbOlder = dbLastActive < localLastActive;
+
             const next = {
               ...dbData,
-              // Merge local completions with DB data to avoid overwriting session progress
-              completedLessons: [...new Set([...dbData.completedLessons, ...prev.completedLessons])],
-              completedQuizzes: [...new Set([...dbData.completedQuizzes, ...prev.completedQuizzes])],
-              completedExercises: [...new Set([...dbData.completedExercises, ...prev.completedExercises])],
-              completedModules: [...new Set([...dbData.completedModules, ...prev.completedModules])],
+              completedLessons: isDbOlder 
+                ? [...new Set([...prev.completedLessons, ...dbData.completedLessons])]
+                : [...new Set([...dbData.completedLessons, ...prev.completedLessons])],
+              completedQuizzes: isDbOlder
+                ? [...new Set([...prev.completedQuizzes, ...dbData.completedQuizzes])]
+                : [...new Set([...dbData.completedQuizzes, ...prev.completedQuizzes])],
+              completedExercises: isDbOlder
+                ? [...new Set([...prev.completedExercises, ...dbData.completedExercises])]
+                : [...new Set([...dbData.completedExercises, ...prev.completedExercises])],
+              completedModules: isDbOlder
+                ? [...new Set([...prev.completedModules, ...dbData.completedModules])]
+                : [...new Set([...dbData.completedModules, ...prev.completedModules])],
               xp: Math.max(dbData.xp, prev.xp),
               level: Math.max(dbData.level, prev.level),
               streak: Math.max(dbData.streak, prev.streak),
+              lastActive: isDbOlder ? prev.lastActive : dbData.lastActive,
             };
 
             saveLocalExtras({
