@@ -83,7 +83,7 @@ const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage.tsx"));
 // Legal / compliance pages
 const PrivacyPage = lazy(() => import("./pages/legal/PrivacyPage.tsx"));
 const TermsPage = lazy(() => import("./pages/legal/TermsPage.tsx"));
-const SupportPage = lazy(() => import("./pages/legal/SupportPage.tsx"));
+const SupportPage = lazy(() => import("./pages/legal/OfficialSupport.tsx"));
 const DeleteAccountPage = lazy(() => import("./pages/legal/DeleteAccountPage.tsx"));
 const ValidateCertificatePage = lazy(() => import("./pages/ValidateCertificatePage.tsx"));
 

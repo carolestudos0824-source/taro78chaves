@@ -29,7 +29,7 @@ const REQUEST_TYPES = [
   { value: "outro", label: "Outro assunto" },
 ];
 
-const SupportPage = () => {
+const OfficialSupport = () => {
   const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -226,4 +226,4 @@ const SupportPage = () => {
   );
 };
 
-export default SupportPage;
+export default OfficialSupport;
