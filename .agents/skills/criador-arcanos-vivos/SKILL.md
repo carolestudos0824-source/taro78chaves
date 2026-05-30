@@ -1,5 +1,5 @@
 ---
-name: Criador de Arcanos Vivos
+name: criador-arcanos-vivos
 description: Gera briefings, prompts de vídeo, roteiros e checklists para a criação de vídeos animados (Arcanos Vivos) do curso Tarô 78 Chaves.
 ---
 
