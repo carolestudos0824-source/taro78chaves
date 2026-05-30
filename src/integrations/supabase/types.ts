@@ -54,39 +54,48 @@ export type Database = {
         Row: {
           admin_notes: string | null
           created_at: string
+          email: string | null
           id: string
           message: string
+          name: string | null
           page: string | null
           rating: number | null
           resolved_at: string | null
           resolved_by: string | null
           status: Database["public"]["Enums"]["feedback_status"]
+          subject: string | null
           type: string
           user_id: string
         }
         Insert: {
           admin_notes?: string | null
           created_at?: string
+          email?: string | null
           id?: string
           message: string
+          name?: string | null
           page?: string | null
           rating?: number | null
           resolved_at?: string | null
           resolved_by?: string | null
           status?: Database["public"]["Enums"]["feedback_status"]
+          subject?: string | null
           type: string
           user_id: string
         }
         Update: {
           admin_notes?: string | null
           created_at?: string
+          email?: string | null
           id?: string
           message?: string
+          name?: string | null
           page?: string | null
           rating?: number | null
           resolved_at?: string | null
           resolved_by?: string | null
           status?: Database["public"]["Enums"]["feedback_status"]
+          subject?: string | null
           type?: string
           user_id?: string
         }
