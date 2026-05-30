@@ -1,7 +1,8 @@
-import { ArrowLeft, ArrowRight, MapPin, Sparkles, Check, Key } from "lucide-react";
+import { ArrowLeft, ArrowRight, MapPin, Sparkles, Check, Key, ShieldCheck } from "lucide-react";
 import { ReflectionSection } from "../ReflectionSection";
 import { useNavigate } from "react-router-dom";
 import { useProgress } from "@/hooks/use-progress";
+import { useRole } from "@/hooks/use-role";
 
 
 interface CompletionScreenProps {
@@ -28,6 +29,7 @@ export function CompletionScreen({
 }: CompletionScreenProps & { arcanoId?: number }) {
   const navigate = useNavigate();
   const { progress } = useProgress();
+  const { isStaff } = useRole();
   const percentage = Math.round((quizScore / quizTotal) * 100);
   const isExcellent = percentage >= 80;
 
@@ -73,6 +75,14 @@ export function CompletionScreen({
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
         }}>Chave Conquistada</h2>
+        
+        {isStaff && (
+          <div className="mb-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#5B1F3D]/10 border border-[#C8A66A]/30 text-[#5B1F3D] animate-pulse">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#C8A66A]" />
+            <span className="text-[10px] font-heading font-black tracking-widest uppercase">Modo Auditoria</span>
+          </div>
+        )}
+
         <p className="text-[15px] font-medium" style={{ color: "#5B1F3D" }}>
           Você dominou o portal de <strong className="font-black text-[#C8A66A]">{arcanoName}</strong>.
         </p>
@@ -98,9 +108,9 @@ export function CompletionScreen({
 
       {/* Progress saved */}
       <div className="flex flex-col items-center gap-2">
-        <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full text-[11px] font-heading font-black tracking-[0.2em] uppercase bg-[#2D5A3D]/10 border border-[#2D5A3D]/20 text-[#2D5A3D]">
+        <div className={`inline-flex items-center gap-2 px-6 py-2 rounded-full text-[11px] font-heading font-black tracking-[0.2em] uppercase ${isStaff ? 'bg-[#5B1F3D]/10 border border-[#5B1F3D]/20 text-[#5B1F3D]' : 'bg-[#2D5A3D]/10 border border-[#2D5A3D]/20 text-[#2D5A3D]'}`}>
           <Check className="w-3.5 h-3.5" />
-          Sabedoria Integrada
+          {isStaff ? 'Teste de Fluxo Finalizado' : 'Sabedoria Integrada'}
         </div>
       </div>
 

@@ -121,10 +121,8 @@ const FundamentosLessonPage = () => {
   const currentIdx = phaseSteps.indexOf(phase);
 
   const handleStartQuiz = () => {
-    if (!isStaff) {
-      completeLesson(lesson.id);
-      addXP(15);
-    }
+    completeLesson(lesson.id);
+    addXP(15);
     setPhase("quiz");
   };
 
@@ -134,7 +132,7 @@ const FundamentosLessonPage = () => {
     setShowExplanation(true);
     if (idx === quizQuestions[quizIndex].correctIndex) {
       setScore((s) => s + 1);
-      if (!isStaff) addXP(5);
+      addXP(5);
     }
   };
 
@@ -144,11 +142,9 @@ const FundamentosLessonPage = () => {
       setSelectedAnswer(null);
       setShowExplanation(false);
     } else {
-      if (!isStaff) {
-        completeQuiz(`quiz-${lesson.id}`);
-        addXP(10);
-        if (!nextLesson) completeModule("fundamentos");
-      }
+      completeQuiz(`quiz-${lesson.id}`);
+      addXP(10);
+      if (!nextLesson) completeModule("fundamentos");
       setPhase("complete");
     }
   };

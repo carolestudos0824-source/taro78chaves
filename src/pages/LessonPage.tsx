@@ -148,28 +148,24 @@ const LessonPage = () => {
   }
 
   const handleStartLesson = () => {
-    if (!isStaff) {
-      addXP(10);
-      setXpEarned(10);
-      setShowXpReward(true);
-      setTimeout(() => setShowXpReward(false), 2000);
-      earnBadge("first-step");
-    }
+    addXP(10);
+    setXpEarned(10);
+    setShowXpReward(true);
+    setTimeout(() => setShowXpReward(false), 2000);
+    earnBadge("first-step");
     setPhase("lesson");
     window.scrollTo(0, 0);
   };
 
   const handleQuizComplete = (score: number, total: number) => {
-    if (!isStaff) {
-      const quizXp = score * 10;
-      addXP(quizXp);
-      setXpEarned(e => e + quizXp);
-      completeQuiz(`quiz-arcano-${arcano.id}`, score, total);
-      completeLesson(`arcano-${arcano.id}`);
-      if (arcano.id === 0) {
-        earnBadge("fool-complete");
-        setShowUnlockMoment(true);
-      }
+    const quizXp = score * 10;
+    addXP(quizXp);
+    setXpEarned(e => e + quizXp);
+    completeQuiz(`quiz-arcano-${arcano.id}`, score, total);
+    completeLesson(`arcano-${arcano.id}`);
+    if (arcano.id === 0) {
+      earnBadge("fool-complete");
+      setShowUnlockMoment(true);
     }
     setLastQuizScore(score);
     setLastQuizTotal(total);
