@@ -606,7 +606,7 @@ const SlideCTA = ({ onStart }: { onStart: () => void }) => (
       <ArrowRight className="w-4 h-4" />
     </button>
     <p className="text-[10px] font-body font-black" style={{ color: "#5B1F3D", opacity: 0.9 }}>
-      Comece gratuitamente · No seu ritmo · Sem renovação automática no anual
+      Acesso imediato à Escola Digital · Sem renovação automática
     </p>
   </div>
 );
