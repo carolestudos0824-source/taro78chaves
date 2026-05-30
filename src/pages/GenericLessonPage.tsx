@@ -138,14 +138,12 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
       setSelected(null);
       setShowExp(false);
     } else {
-      if (!isStaff) {
-        completeQuiz(lesson.id);
-        completeLesson(lesson.id);
-        addXP(25 + score * 10);
-        // Auto-complete module if this was the last lesson
-        if (!nextLesson && moduleId) {
-          completeModule(moduleId);
-        }
+      completeQuiz(lesson.id);
+      completeLesson(lesson.id);
+      addXP(25 + score * 10);
+      // Auto-complete module if this was the last lesson
+      if (!nextLesson && moduleId) {
+        completeModule(moduleId);
       }
       goTo("complete");
     }
