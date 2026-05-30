@@ -83,7 +83,7 @@ const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage.tsx"));
 // Legal / compliance pages
 const PrivacyPage = lazy(() => import("./pages/legal/PrivacyPage.tsx"));
 const TermsPage = lazy(() => import("./pages/legal/TermsPage.tsx"));
-const SupportPage = lazy(() => import("./pages/legal/SupportPage.tsx"));
+import SupportPage from "./pages/legal/OfficialSupport.tsx";
 const DeleteAccountPage = lazy(() => import("./pages/legal/DeleteAccountPage.tsx"));
 const ValidateCertificatePage = lazy(() => import("./pages/ValidateCertificatePage.tsx"));
 
@@ -246,7 +246,6 @@ const AppRoutes = () => {
           <Route path="/biblioteca" element={<SymbolLibraryPage />} />
           <Route path="/rotina" element={<StudyRoutinePage />} />
           <Route path="/minha-jornada" element={<JourneyJournalPage />} />
-          <Route path="/feedback" element={<Navigate to="/suporte" replace />} />
           <Route path="/admin" element={<AdminPage />} />
         </Route>
         

@@ -29,7 +29,7 @@ const REQUEST_TYPES = [
   { value: "outro", label: "Outro assunto" },
 ];
 
-const SupportPage = () => {
+const OfficialSupport = () => {
   const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -42,6 +42,7 @@ const SupportPage = () => {
   });
 
   useEffect(() => {
+    document.title = `Central de Suporte — Build ${SUPPORT_VERSION_ID}`;
     if (user?.email) {
       setFormData(prev => ({ ...prev, email: user.email }));
     }
@@ -79,7 +80,7 @@ const SupportPage = () => {
   };
 
   return (
-    <LegalLayout title="Central de Suporte — versão oficial">
+    <LegalLayout title="Central de Suporte — Versão Oficial" updatedAt="30 de Maio de 2026">
       <div className="space-y-12">
         <section>
           <p className="text-plum font-body leading-relaxed mb-6 italic">
@@ -226,4 +227,4 @@ const SupportPage = () => {
   );
 };
 
-export default SupportPage;
+export default OfficialSupport;
