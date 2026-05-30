@@ -1,4 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
+import { usePremium } from "@/hooks/use-premium";
 import { useEffect } from "react";
 import { TarotIcon, TarotIconType } from "./TarotIcon";
 
@@ -19,7 +20,12 @@ const NAV_ITEMS: NavItem[] = [
 
 const BottomNav = () => {
   const navigate = useNavigate();
+  const { isPremium } = usePremium();
   const location = useLocation();
+
+  const navItems = isPremium 
+    ? NAV_ITEMS.filter(item => item.path !== "/premium")
+    : NAV_ITEMS;
 
   useEffect(() => {
     const marker = document.getElementById("boot-marker");
@@ -40,7 +46,7 @@ const BottomNav = () => {
       }}
     >
       <div className="mx-auto flex items-center justify-between py-1.5 px-0 w-full max-w-full">
-        {NAV_ITEMS.map(item => {
+        {navItems.map(item => {
           const isActive = location.pathname === item.path;
           return (
             <button

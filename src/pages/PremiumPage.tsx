@@ -134,13 +134,13 @@ const PremiumPage = () => {
               </div>
 
               <div className="space-y-2">
-                <h2 className="font-heading text-2xl font-black text-[#5B1F3D]">Jornada completa liberada</h2>
+                <h2 className="font-heading text-2xl font-black text-[#5B1F3D]">Sua jornada completa está liberada</h2>
                 <p className="text-sm font-body font-bold text-[#5B1F3D]/60 italic">
-                  Seu acesso anual está ativo. Todos os portais estão prontos para sua travessia pedagógica.
+                  Todos os portais da Escola Digital estão abertos para sua travessia.
                 </p>
                 {premiumUntil && (
                   <p className="text-[10px] font-heading font-black tracking-widest uppercase text-[#C8A66A] pt-2">
-                    Válido até {new Date(premiumUntil).toLocaleDateString('pt-BR')}
+                    Acesso válido até {new Date(premiumUntil).toLocaleDateString('pt-BR')}
                   </p>
                 )}
               </div>
