@@ -73,11 +73,11 @@ const SupportPage = () => {
   };
 
   return (
-    <LegalLayout title="Central de Suporte">
+    <LegalLayout title="Central de Suporte — Versão Oficial">
       <div className="space-y-12">
         <section>
-          <p className="text-plum font-body leading-relaxed mb-6">
-            Estamos aqui para guiar sua travessia. Se você encontrou algum obstáculo técnico ou tem dúvidas sobre sua jornada no <strong>{businessInfo.productName}</strong>, use o formulário abaixo.
+          <p className="text-plum font-body leading-relaxed mb-6 italic">
+            Estamos aqui para guiar sua travessia. Se você encontrou algum obstáculo técnico ou tem dúvidas sobre sua jornada no <strong>{businessInfo.productName}</strong>, use o formulário oficial abaixo.
           </p>
 
           <div className="bg-[#FAF5EF] border-2 border-[#C8A66A]/20 p-6 rounded-[2rem] shadow-sm flex flex-col md:flex-row gap-6 items-start md:items-center">
