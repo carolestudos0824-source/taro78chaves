@@ -80,7 +80,7 @@ const OfficialSupport = () => {
   };
 
   return (
-    <LegalLayout title="Central de Suporte — versão oficial">
+    <LegalLayout title="Central de Suporte — Versão Oficial" updatedAt="30 de Maio de 2026">
       <div className="space-y-12">
         <section>
           <p className="text-plum font-body leading-relaxed mb-6 italic">
