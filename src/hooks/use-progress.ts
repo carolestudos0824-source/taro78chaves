@@ -506,10 +506,17 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const isArcanoCompleted = useCallback((arcanoId: number): boolean => {
-    return (
-      (progress.completedLessons.includes(`arcano-${arcanoId}`) ||
-       progress.completedQuizzes.includes(`quiz-arcano-${arcanoId}`))
-    );
+    const hasLesson = progress.completedLessons.includes(`arcano-${arcanoId}`);
+    const hasQuiz = progress.completedQuizzes.includes(`quiz-arcano-${arcanoId}`);
+    
+    // Regra pedagógica: Arcano concluído = Lição + Quiz finalizados
+    const isCompleted = hasLesson && hasQuiz;
+    
+    if (arcanoId === 0) {
+      console.log(`[progress] diagnostic O LOUCO:`, { hasLesson, hasQuiz, isCompleted });
+    }
+    
+    return isCompleted;
   }, [progress.completedLessons, progress.completedQuizzes]);
 
   const isArcanoUnlocked = useCallback((arcanoId: number): boolean => {
