@@ -345,14 +345,18 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
 
     if (saveTimer.current) clearTimeout(saveTimer.current);
     saveTimer.current = setTimeout(async () => {
+      console.log("Syncing progress to Supabase...", { coreChanged, nameChanged });
       if (coreChanged) {
         lastSavedCoreRef.current = coreSnapshot;
-        await supabase
+        const { error } = await supabase
           .from("user_progress")
           .upsert({
             user_id: user.id,
             ...corePayload
           }, { onConflict: 'user_id' });
+        
+        if (error) console.error("Error syncing user_progress:", error);
+        else console.log("user_progress synced successfully");
       }
       if (nameChanged) {
         lastSavedNameRef.current = nameSnapshot;
