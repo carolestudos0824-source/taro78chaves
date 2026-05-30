@@ -318,16 +318,19 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         lastSavedCoreRef.current = coreSnapshot;
         await supabase
           .from("user_progress")
-          .update(corePayload)
-          .eq("user_id", user.id);
+          .upsert({
+            user_id: user.id,
+            ...corePayload
+          }, { onConflict: 'user_id' });
       }
       if (nameChanged) {
         lastSavedNameRef.current = nameSnapshot;
         await supabase
           .from("profiles")
-          // student_name was just added; cast to keep TS happy until types regen
-          .update({ student_name: nameSnapshot } as never)
-          .eq("user_id", user.id);
+          .upsert({ 
+            user_id: user.id,
+            student_name: nameSnapshot 
+          } as never, { onConflict: 'user_id' });
       }
     }, 300);
 
