@@ -109,8 +109,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
       <SectionTitle>Conta</SectionTitle>
       <NavItem to="/perfil" icon="perfil" label="Meu Perfil" />
       <NavItem to="/premium" icon="premium" label="Jornada Completa" />
-      <NavItem to="/feedback" icon="feedback" label="Enviar Feedback" />
-      <NavItem to="/suporte" icon="suporte" label="Suporte Técnico" />
+      <NavItem to="/suporte" icon="suporte" label="Central de Suporte" />
 
       {/* BLOCO 4 — Legal */}
       <SectionTitle>Legal</SectionTitle>
