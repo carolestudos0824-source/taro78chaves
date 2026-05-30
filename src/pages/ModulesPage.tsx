@@ -21,7 +21,8 @@ import {
   Briefcase,
   SquareStack,
   Stars,
-  MapPin
+  MapPin,
+  ShieldCheck
 } from "lucide-react";
 import { TarotIcon } from "@/components/TarotIcon";
 import { 
