@@ -70,11 +70,11 @@ const PremiumCertificate: React.FC<PremiumCertificateProps> = ({
         </div>
 
         <p className="font-body text-sm sm:text-base text-plum/70 leading-relaxed text-balance">
-          concluiu a jornada formativa da Escola Digital Tarô 78 Chaves, dedicada ao estudo guiado dos 78 arcanos, com progressão pedagógica, lições estruturadas, quizzes e validação dentro da plataforma.
+          concluiu a jornada formativa da Escola Digital Tarô 78 Chaves, com estudo guiado dos 78 arcanos, progressão pedagógica, lições estruturadas, quizzes e validação dentro da plataforma.
         </p>
 
         <p className="font-body text-xs sm:text-sm text-plum/60 max-w-lg mx-auto italic">
-          Este certificado reconhece a conclusão da experiência de aprendizagem proposta pela Escola Digital Tarô 78 Chaves.
+          Este certificado reconhece a conclusão da jornada de aprendizagem proposta pela Escola Digital Tarô 78 Chaves.
         </p>
       </div>
 
@@ -85,13 +85,13 @@ const PremiumCertificate: React.FC<PremiumCertificateProps> = ({
           <p className="font-body text-sm text-plum/80 font-bold">{issueDate}</p>
           <p className="font-heading text-[10px] tracking-widest text-gold-dark/60 uppercase mt-4">Código de validação</p>
           <p className="font-body text-[11px] text-plum/80 font-bold tracking-wider">{validationCode}</p>
-          <p className="font-body text-[9px] text-plum/40 mt-1">Validar em: /validar-certificado</p>
+          <p className="font-body text-[9px] text-plum/40 mt-1">Validar em: www.taro78chaves.com.br/validar-certificado</p>
         </div>
 
         <div className="text-center space-y-2 order-1 sm:order-2">
           <div className="font-accent italic text-plum/60 text-sm">Emitido por</div>
           <div className="space-y-0">
-            <p className="font-heading text-xl text-plum tracking-wide font-black">Lua de Kaya</p>
+            <p className="font-heading text-xl text-plum tracking-wide font-black uppercase">Lua de Kaya</p>
             <p className="font-body text-[10px] text-plum/50">CNPJ 44.472.530/0001-08</p>
           </div>
         </div>
