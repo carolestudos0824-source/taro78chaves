@@ -73,7 +73,7 @@ const SupportPage = () => {
   };
 
   return (
-    <LegalLayout title="Central de Suporte — Versão Oficial">
+    <LegalLayout title="Central de Suporte — versão oficial">
       <div className="space-y-12">
         <section>
           <p className="text-plum font-body leading-relaxed mb-6 italic">
