@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { 
   ShoppingBag, Users, Clock, AlertTriangle, 
-  Search, RefreshCw
+  Search, RefreshCw, PlusCircle
 } from "lucide-react";
 import { 
   AdminSectionHeading, KPICard, AdminBadge, AdminTable, 
@@ -11,6 +11,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { toast } from "sonner";
 
 /** @ts-ignore - Temporary fix for colSpan type issue */
 const AdminTableCellFixed = AdminTableCell as any;
@@ -45,6 +47,10 @@ const AdminHotmart = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
+  const [manualEmail, setManualEmail] = useState("");
+  const [manualTransaction, setManualTransaction] = useState("");
+  const [isManualDialogOpen, setIsManualDialogOpen] = useState(false);
+  const [releasing, setReleasing] = useState(false);
 
   const load = async () => {
     setLoading(true);
@@ -59,6 +65,38 @@ const AdminHotmart = () => {
   };
 
   useEffect(() => { load(); }, []);
+
+  const handleManualRelease = async () => {
+    if (!manualEmail || !manualTransaction) {
+      toast.error("Preencha todos os campos");
+      return;
+    }
+
+    setReleasing(true);
+    try {
+      const { data, error } = await supabase.rpc("manually_release_hotmart_access", {
+        p_email: manualEmail,
+        p_transaction_id: manualTransaction
+      });
+
+      if (error) throw error;
+
+      if ((data as any).success) {
+        toast.success((data as any).message);
+        setIsManualDialogOpen(false);
+        setManualEmail("");
+        setManualTransaction("");
+        load();
+      } else {
+        toast.error((data as any).message);
+      }
+    } catch (err: any) {
+      console.error(err);
+      toast.error("Falha ao liberar acesso manual");
+    } finally {
+      setReleasing(false);
+    }
+  };
 
   const stats = {
     approved: entitlements.filter(e => e.status === "approved" || e.status === "complete").length,
@@ -133,6 +171,52 @@ const AdminHotmart = () => {
           <Button onClick={load} variant="outline" className="h-14 px-6 border-2 border-[#C8A66A]/30 rounded-2xl">
             <RefreshCw className="w-5 h-5" />
           </Button>
+
+          <Dialog open={isManualDialogOpen} onOpenChange={setIsManualDialogOpen}>
+            <DialogTrigger asChild>
+              <Button className="h-14 px-6 bg-[#5B1F3D] hover:bg-[#4A1931] text-white rounded-2xl flex gap-2 font-heading font-black tracking-widest uppercase">
+                <PlusCircle className="w-5 h-5" />
+                Liberar Manual
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="rounded-[2.5rem] border-2 border-[#C8A66A]/30 bg-[#FAF5EF]">
+              <DialogHeader>
+                <DialogTitle className="font-heading text-2xl text-[#5B1F3D] font-black uppercase tracking-tight">Liberar Acesso Manual</DialogTitle>
+                <DialogDescription className="font-body font-bold text-[#5B1F3D]/70">
+                  Use esta ferramenta apenas se o webhook da Hotmart falhar ou para casos excepcionais.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-4 py-4">
+                <div className="space-y-2">
+                  <label className="text-xs font-heading font-black tracking-widest uppercase text-[#5B1F3D]/60 ml-2">E-mail da Compradora</label>
+                  <Input 
+                    value={manualEmail}
+                    onChange={e => setManualEmail(e.target.value)}
+                    placeholder="email@exemplo.com"
+                    className="h-14 bg-white border-[#C8A66A]/30 rounded-2xl"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-heading font-black tracking-widest uppercase text-[#5B1F3D]/60 ml-2">ID da Transação Hotmart</label>
+                  <Input 
+                    value={manualTransaction}
+                    onChange={e => setManualTransaction(e.target.value)}
+                    placeholder="HP..."
+                    className="h-14 bg-white border-[#C8A66A]/30 rounded-2xl"
+                  />
+                </div>
+              </div>
+              <DialogFooter>
+                <Button 
+                  onClick={handleManualRelease} 
+                  disabled={releasing}
+                  className="w-full h-14 bg-[#5B1F3D] hover:bg-[#4A1931] text-white rounded-2xl font-heading font-black tracking-widest uppercase"
+                >
+                  {releasing ? "Processando..." : "Confirmar Liberação"}
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
 
