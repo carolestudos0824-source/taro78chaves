@@ -436,7 +436,7 @@ const UserDetailDialog = ({ userId, onClose, onChanged }: { userId: string | nul
                     PREMIUM · {data.profile.premium_source || "—"}
                   </span>
                 ) : (
-                  <span className="text-[10px] font-heading tracking-wide px-2 py-0.5 rounded-full bg-muted text-muted-foreground">GRATUITO</span>
+                  <span className="text-[10px] font-heading tracking-wide px-2 py-0.5 rounded-full bg-muted text-muted-foreground uppercase">Sem acesso ativo</span>
                 )}
                 {data.profile?.premium_until && (
                   <span className="text-[10px] text-muted-foreground">até {new Date(data.profile.premium_until).toLocaleDateString("pt-BR")}</span>

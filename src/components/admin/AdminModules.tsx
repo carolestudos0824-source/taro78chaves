@@ -435,7 +435,7 @@ const AdminModules = () => {
                               : "bg-primary/10/10 text-primary dark:text-primary"
                           }`}
                         >
-                          {mod.tier === "premium" ? "Premium" : "Gratuito"}
+                          {mod.tier === "premium" ? "Premium" : "Acesso Inicial"}
                         </span>
                       </div>
                       <p className="text-[11px] text-muted-foreground truncate mt-0.5">
@@ -635,7 +635,7 @@ const AdminModules = () => {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="free">Gratuito</SelectItem>
+                      <SelectItem value="free">Acesso Inicial</SelectItem>
                       <SelectItem value="premium">Premium</SelectItem>
                     </SelectContent>
                   </Select>
