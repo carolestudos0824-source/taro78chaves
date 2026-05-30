@@ -79,28 +79,40 @@ const PremiumCertificate: React.FC<PremiumCertificateProps> = ({
       </div>
 
       {/* Rodapé / Emissor */}
-      <div className="relative z-10 w-full flex flex-col sm:flex-row items-end justify-between gap-8 pt-8 border-t border-gold/10">
-        <div className="text-left space-y-1 order-2 sm:order-1">
-          <p className="font-heading text-[10px] tracking-widest text-gold-dark/60 uppercase">Data de emissão</p>
-          <p className="font-body text-sm text-plum/80 font-bold">{issueDate}</p>
-          <p className="font-heading text-[10px] tracking-widest text-gold-dark/60 uppercase mt-4">Código de validação</p>
-          <p className="font-body text-[11px] text-plum/80 font-bold tracking-wider">{validationCode}</p>
-          <p className="font-body text-[9px] text-plum/40 mt-1">Validar em: www.taro78chaves.com.br/validar-certificado</p>
-        </div>
-
-        <div className="text-center space-y-2 order-1 sm:order-2">
-          <div className="font-accent italic text-plum/60 text-sm">Emitido por</div>
-          <div className="space-y-0">
-            <p className="font-heading text-xl text-plum tracking-wide font-black uppercase">Lua de Kaya</p>
-            <p className="font-body text-[10px] text-plum/50">CNPJ 44.472.530/0001-08</p>
+      <div className="relative z-10 w-full grid grid-cols-1 sm:grid-cols-3 gap-8 pt-10 border-t border-gold/20 items-end">
+        {/* Lado Esquerdo: Validação */}
+        <div className="text-left space-y-4 order-2 sm:order-1">
+          <div className="space-y-1">
+            <p className="font-heading text-[10px] tracking-widest text-gold-dark/70 uppercase">Data de emissão</p>
+            <p className="font-body text-sm text-plum font-bold">{issueDate}</p>
+          </div>
+          <div className="space-y-1">
+            <p className="font-heading text-[10px] tracking-widest text-gold-dark/70 uppercase">Código de validação</p>
+            <p className="font-body text-[11px] text-plum font-bold tracking-wider">{validationCode}</p>
           </div>
         </div>
 
-        <div className="hidden sm:block absolute left-1/2 -translate-x-1/2 bottom-0 opacity-20">
-          <div className="w-16 h-16 rounded-full border border-gold/50 flex items-center justify-center">
-            <div className="w-12 h-12 rounded-full border border-gold/30 flex items-center justify-center text-xs text-gold/50 font-heading">
+        {/* Centro: Link de Validação */}
+        <div className="text-center space-y-2 order-3 sm:order-2 flex flex-col items-center">
+          <div className="w-12 h-12 rounded-full border border-gold/40 flex items-center justify-center mb-2">
+            <div className="w-10 h-10 rounded-full border border-gold/20 flex items-center justify-center text-[10px] text-gold-dark font-heading">
               LK
             </div>
+          </div>
+          <div className="space-y-1">
+            <p className="font-heading text-[9px] tracking-widest text-gold-dark/70 uppercase">Validar em</p>
+            <p className="font-body text-[11px] text-plum font-medium underline underline-offset-4 decoration-gold/30">
+              /validar-certificado
+            </p>
+          </div>
+        </div>
+
+        {/* Lado Direito: Emissor */}
+        <div className="text-right space-y-3 order-1 sm:order-3">
+          <div className="space-y-1">
+            <p className="font-accent italic text-plum/60 text-xs">Emitido por</p>
+            <p className="font-heading text-xl text-plum tracking-wide font-black uppercase leading-tight">Lua de Kaya</p>
+            <p className="font-body text-[11px] text-plum/80 font-bold mt-1">CNPJ 44.472.530/0001-08</p>
           </div>
         </div>
       </div>
