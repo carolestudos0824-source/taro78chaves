@@ -96,7 +96,7 @@ const SupportPage = () => {
                 <CheckCircle2 className="w-10 h-10 text-emerald-500" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-heading text-2xl font-black text-[#5B1F3D]">Solicitação Enviada</h3>
+                <h3 className="font-heading text-2xl font-black text-[#5B1F3D]">Mensagem Entregue ao Oráculo</h3>
                 <p className="text-[#5B1F3D]/70 font-body font-bold italic">
                   Sua mensagem foi entregue ao Oráculo. <br />
                   Responderemos em até <strong>3 dias úteis</strong> no e-mail informado.
