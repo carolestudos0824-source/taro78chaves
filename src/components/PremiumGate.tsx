@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Crown, Sparkles, LockKeyhole, ArrowRight, KeyRound, SquareStack, Compass, WandSparkles, CircleCheck, Eye, Stars } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { usePremium } from "@/hooks/use-premium";
-import { useIsAdmin } from "@/hooks/use-admin";
+import { useRole } from "@/hooks/use-role";
 
 interface PremiumGateProps {
   featureName?: string;
