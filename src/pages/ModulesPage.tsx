@@ -76,7 +76,8 @@ const ModulesPage = () => {
   const navigate = useNavigate();
   
   const { progress, loading: progressLoading, getCurrentArcanoId } = useProgress();
-  const { bypassLocks } = useAccess();
+  const { bypassLocks, isAdmin } = useAccess();
+  const { isStaff } = useRole();
   const { setHeader, resetHeader } = useHeader();
   
   const isInitialState = progress.completedLessons.length === 0;
@@ -175,6 +176,24 @@ const ModulesPage = () => {
         
         {/* ─── NÚCLEO CENTRAL DE JORNADA ─── */}
         <div className="space-y-4">
+          {/* 0. Audit Mode Banner */}
+          {isStaff && (
+            <div className="relative rounded-2xl overflow-hidden p-4 md:p-6 bg-[#5B1F3D]/5 border-2 border-[#5B1F3D]/10 text-[#5B1F3D] animate-fade-in">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-white border border-[#5B1F3D]/10 shrink-0">
+                  <ShieldCheck className="w-5 h-5 text-[#C8A66A]" />
+                </div>
+                <div className="space-y-1">
+                  <p className="text-[10px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">Modo Auditoria Ativo</p>
+                  <p className="text-[11px] md:text-xs font-body font-bold leading-relaxed italic">
+                    Seu progresso nesta conta é apenas local e não será salvo permanentemente. 
+                    Para testar progresso real, use uma conta de aluna/premium.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* 1. Meu Painel Diário */}
           <div className="relative rounded-[2.5rem] overflow-hidden p-6 md:p-10 transition-all duration-500 w-full" style={{
             background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",

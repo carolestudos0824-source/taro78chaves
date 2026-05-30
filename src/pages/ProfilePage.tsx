@@ -109,6 +109,11 @@ const ProfilePage = () => {
               <span>{isStaff ? "Sincronização desativada (Auditoria)" : "Progresso na Travessia"}</span>
               <span>{journeyProgress}%</span>
             </div>
+            {isStaff && (
+              <p className="text-[9px] font-body font-bold italic text-[#5B1F3D]/60 leading-tight">
+                Seu progresso é apenas local e não será salvo no Supabase.
+              </p>
+            )}
             <div className="h-2.5 w-full bg-[#DCCFC2]/40 rounded-full overflow-hidden border border-[#DCCFC2]/20">
               <div className="h-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] rounded-full shadow-[0_0_8px_rgba(200,166,106,0.5)]" style={{ width: `${journeyProgress}%` }} />
             </div>

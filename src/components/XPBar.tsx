@@ -1,5 +1,6 @@
 import { KeyRound } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
+import { useRole } from "@/hooks/use-role";
 import { ARCANOS_MAIORES_CATALOG } from "@/lib/content";
 
 interface XPBarProps {
@@ -9,6 +10,7 @@ interface XPBarProps {
 
 export function XPBar({ xp, level }: XPBarProps) {
   const { progress } = useProgress();
+  const { isStaff } = useRole();
   
   const completedMaiores = progress.completedLessons.filter(l => l.startsWith("arcano-")).length;
   const completedMenores = progress.completedLessons.filter(l => 
@@ -83,9 +85,13 @@ export function XPBar({ xp, level }: XPBarProps) {
       </div>
       <div className="flex-1 relative space-y-1.5">
         <div className="flex justify-between items-end px-1">
-          <span className="text-[11px] font-heading font-black tracking-widest text-[#5B1F3D]/80 uppercase">
-            {currentKeyInfo.name}
-          </span>
+            <span className="text-[11px] font-heading font-black tracking-widest text-[#5B1F3D]/80 uppercase">
+              {isStaff ? (
+                <span className="flex items-center gap-1">
+                  {currentKeyInfo.name} <span className="text-[8px] px-1 bg-[#C8A66A]/20 rounded text-[#8B6A30]">Local</span>
+                </span>
+              ) : currentKeyInfo.name}
+            </span>
           <span className="text-[11px] font-heading font-black text-[#5B1F3D]">{globalProgressPct}%</span>
         </div>
         <div className="h-3 rounded-full overflow-hidden p-[1.5px]" style={{
