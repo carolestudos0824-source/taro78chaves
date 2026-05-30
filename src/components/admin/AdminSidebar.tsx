@@ -16,6 +16,7 @@ export type AdminSection =
   | "arcanos"
   | "quizzes"
   | "progress"
+  | "progress_audit"
   | "roles"
   | "audit"
   | "support"
