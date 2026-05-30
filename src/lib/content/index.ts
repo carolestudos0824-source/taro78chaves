@@ -103,7 +103,7 @@ export {
 
 export {
   FREE_ARCANO_IDS,
-  isArcanoFree,
+  hasInitialAccess,
   isModuleUnlocked,
   getNextUnlockedModuleId,
 } from "./access";
