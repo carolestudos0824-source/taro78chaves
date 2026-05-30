@@ -86,7 +86,8 @@ const AdminUsers = () => {
 
   const getStatus = (u: ProfileRow) => {
     if (adminIds.has(u.user_id)) return { label: "Admin", variant: "warning" as const, key: "admin" as const };
-    if (!u.is_premium) return { label: "Gratuito", variant: "default" as const, key: "free" as const };
+    if (!u.is_premium) return { label: "Sem acesso", variant: "default" as const, key: "free" as const };
+
     const until = u.premium_until ? new Date(u.premium_until) : null;
     if (until && until <= now) return { label: "Expirado", variant: "destructive" as const, key: "expired" as const };
     if (u.premium_source === "gift" || u.premium_source === "admin") return { label: "Cortesia", variant: "secondary" as const, key: "gift" as const };
@@ -172,7 +173,7 @@ const AdminUsers = () => {
           <SelectTrigger className="w-44 h-14 text-xs font-heading font-black tracking-widest uppercase border-2 border-[#C8A66A]/30 bg-white rounded-2xl shadow-sm"><SelectValue /></SelectTrigger>
           <SelectContent className="font-heading text-[11px] font-black tracking-widest uppercase">
             <SelectItem value="all">Todos os Status</SelectItem>
-            <SelectItem value="free">Gratuitos</SelectItem>
+            <SelectItem value="free">Sem acesso</SelectItem>
             <SelectItem value="premium">Assinantes</SelectItem>
             <SelectItem value="gift">Presenteados</SelectItem>
             <SelectItem value="expired">Expirados</SelectItem>
@@ -435,7 +436,7 @@ const UserDetailDialog = ({ userId, onClose, onChanged }: { userId: string | nul
                     PREMIUM · {data.profile.premium_source || "—"}
                   </span>
                 ) : (
-                  <span className="text-[10px] font-heading tracking-wide px-2 py-0.5 rounded-full bg-muted text-muted-foreground">GRATUITO</span>
+                  <span className="text-[10px] font-heading tracking-wide px-2 py-0.5 rounded-full bg-muted text-muted-foreground uppercase">Sem acesso ativo</span>
                 )}
                 {data.profile?.premium_until && (
                   <span className="text-[10px] text-muted-foreground">até {new Date(data.profile.premium_until).toLocaleDateString("pt-BR")}</span>

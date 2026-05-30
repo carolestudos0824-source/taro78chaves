@@ -3,7 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 
 export type SubscriptionStatus =
-  | "free"
+  | "no_active_access"
   | "monthly_active"
   | "annual_active"
   | "gift_active"
@@ -26,8 +26,8 @@ function resolveStatus(
   source: string | null,
   now: Date
 ): { isActive: boolean; status: SubscriptionStatus } {
-  // Not premium, no date → free
-  if (!isPremiumFlag && !until) return { isActive: false, status: "free" };
+  // Not premium, no date → no_active_access
+  if (!isPremiumFlag && !until) return { isActive: false, status: "no_active_access" };
 
   // Not premium but has future date → cancelled with remaining access
   if (!isPremiumFlag && until && until > now)
@@ -51,7 +51,7 @@ function resolveStatus(
     return { isActive: true, status: "monthly_active" };
   }
 
-  return { isActive: false, status: "free" };
+  return { isActive: false, status: "no_active_access" };
 }
 
 const PremiumContext = createContext<PremiumState | undefined>(undefined);
@@ -63,13 +63,13 @@ export const PremiumProvider = ({ children }: { children: React.ReactNode }) => 
     premiumUntil: null,
     premiumSource: null,
     stripeCustomerId: null,
-    subscriptionStatus: "free",
+    subscriptionStatus: "no_active_access",
     loading: true,
   });
 
   useEffect(() => {
     if (!user) {
-      setState({ isPremium: false, premiumUntil: null, premiumSource: null, stripeCustomerId: null, subscriptionStatus: "free", loading: false });
+      setState({ isPremium: false, premiumUntil: null, premiumSource: null, stripeCustomerId: null, subscriptionStatus: "no_active_access", loading: false });
       return;
     }
 
@@ -88,8 +88,8 @@ export const PremiumProvider = ({ children }: { children: React.ReactNode }) => 
 
         if (data) {
           const now = new Date();
-          const until = data.premium_until ? new Date(data.premium_until) : null;
-          const { isActive, status } = resolveStatus(data.is_premium, until, data.premium_source, now);
+          const until = data.premium_until ? data.premium_until : null;
+          const { isActive, status } = resolveStatus(data.is_premium, until ? new Date(until) : null, data.premium_source, now);
 
           setState({
             isPremium: isActive,
@@ -100,7 +100,7 @@ export const PremiumProvider = ({ children }: { children: React.ReactNode }) => 
             loading: false,
           });
         } else {
-          setState({ isPremium: false, premiumUntil: null, premiumSource: null, stripeCustomerId: null, subscriptionStatus: "free", loading: false });
+          setState({ isPremium: false, premiumUntil: null, premiumSource: null, stripeCustomerId: null, subscriptionStatus: "no_active_access", loading: false });
         }
       } catch (err) {
         console.error("Error fetching premium status:", err);

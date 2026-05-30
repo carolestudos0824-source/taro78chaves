@@ -130,7 +130,7 @@ const AdminProgressAudit = () => {
     if (data.roles.includes("admin")) return { label: "Admin", variant: "warning" as const, type: "staff" };
     if (data.roles.includes("moderator")) return { label: "Auditor/Moderador", variant: "secondary" as const, type: "staff" };
     if (isPremium) return { label: "Premium", variant: "success" as const, type: "user" };
-    return { label: "Usuária Comum", variant: "default" as const, type: "user" };
+    return { label: "Sem acesso ativo", variant: "default" as const, type: "user" };
   };
 
   const arcanoNames: Record<number, string> = {
@@ -332,7 +332,7 @@ const AdminProgressAudit = () => {
                 <div className="flex justify-between items-center py-3 border-b border-[#FAF5EF]">
                   <span className="text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]/60">Plano</span>
                   <AdminBadge variant={selectedUser.profile.is_premium ? "success" : "default"}>
-                    {selectedUser.profile.is_premium ? "Premium" : "Gratuito"}
+                    {selectedUser.profile.is_premium ? "Premium" : "Sem acesso ativo"}
                   </AdminBadge>
                 </div>
                 <div className="flex justify-between items-center py-3 border-b border-[#FAF5EF]">

@@ -1,7 +1,7 @@
 import { usePremium } from "@/hooks/use-premium";
 import { useRole } from "@/hooks/use-role";
 import { useProgress } from "@/hooks/use-progress";
-import { isArcanoFree } from "@/lib/content/access";
+import { hasInitialAccess } from "@/lib/content/access";
 
 /**
  * Hook unificado de acesso pedagógico ao conteúdo.
@@ -22,7 +22,7 @@ export function useAccess() {
 
   const canAccessArcano = (arcanoId: number) => {
     if (hasFullAccess) return true;
-    return isArcanoFree(arcanoId, progress.quizScores);
+    return hasInitialAccess(arcanoId, progress.quizScores);
   };
 
   return {
