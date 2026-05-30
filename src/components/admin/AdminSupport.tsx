@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Search, MessageSquare, Filter, Calendar, User as UserIcon, CheckCircle2, Clock, Inbox, X, ExternalLink } from "lucide-react";
+import { Search, MessageSquare, Filter, Calendar, User as UserIcon, CheckCircle2, Clock, Inbox, X, ExternalLink, Mail } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
