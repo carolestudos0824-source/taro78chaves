@@ -46,7 +46,7 @@ const PremiumCertificate: React.FC<PremiumCertificateProps> = ({
           <img 
             src="https://qtbkvshbmqlszncxlcuc.supabase.co/storage/v1/object/public/dsl-uploads/FKxI2UX5GWafusX2CZ1rulDlY5n1/3bcbd5aa-d679-42a1-ba4f-ead1fd91995e.png" 
             alt="Logo Tarô 78 Chaves" 
-            className="h-28 sm:h-32 w-auto object-contain opacity-90"
+            className="h-24 sm:h-28 w-auto object-contain mix-blend-multiply opacity-80"
           />
         </div>
 
