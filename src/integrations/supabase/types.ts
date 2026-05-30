@@ -1435,6 +1435,10 @@ export type Database = {
         }
         Returns: boolean
       }
+      manually_release_hotmart_access: {
+        Args: { p_email: string; p_transaction_id: string }
+        Returns: Json
+      }
       redeem_gift_code: {
         Args: { _code: string; _user_id: string }
         Returns: Json

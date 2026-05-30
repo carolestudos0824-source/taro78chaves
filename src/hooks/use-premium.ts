@@ -45,7 +45,7 @@ function resolveStatus(
   if (isPremiumFlag) {
     if (source === "gift" || source === "admin")
       return { isActive: true, status: "gift_active" };
-    if (source === "store_annual" || source === "store_annual_one_time")
+    if (source === "store_annual" || source === "store_annual_one_time" || source === "hotmart")
       return { isActive: true, status: "annual_active" };
     // default to monthly for store_monthly or unknown
     return { isActive: true, status: "monthly_active" };
