@@ -376,7 +376,7 @@ const AdminQuizzes = () => {
                         <HelpCircle className="w-3 h-3" /> {q.validQuestionsCount}/{q.questionsCount} válidas
                       </span>
                       <span className="inline-flex items-center gap-1">
-                        <Trophy className="w-3 h-3" /> {q.xp_reward} XP
+                        <Trophy className="w-3 h-3" /> {q.xp_reward} Pontos
                       </span>
                       <span className="inline-flex items-center gap-1">
                         <Target className="w-3 h-3" /> {q.accuracyRate}% acerto
