@@ -58,7 +58,7 @@ const AdminSidebar = ({ active, onChange, role }: AdminSidebarProps) => {
         <div className="px-4 pb-6 border-b border-[#C8A66A]/20">
           <p className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#C8A66A] font-black mb-1">Operando como</p>
           <p className={`text-base font-heading font-black tracking-tight ${role === "admin" ? "text-[#5B1F3D]" : "text-[#8B6A30]"}`}>
-            {role === "admin" ? "Administrador" : role === "moderator" ? "Moderador" : "Usuário"}
+            {role === "admin" ? "Administrador" : role === "auditor" ? "Auditor" : role === "moderator" ? "Moderador" : "Usuário"}
           </p>
         </div>
         

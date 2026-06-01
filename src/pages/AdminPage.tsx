@@ -81,7 +81,7 @@ const AdminPage = () => {
               ? "bg-[#5B1F3D] text-white border-[#C8A66A]" 
               : "bg-white text-[#5B1F3D] border-[#C8A66A]/40"
           }`}>
-            {role === "admin" ? "Admin" : "Moderador"}
+            {role === "admin" ? "Admin" : role === "auditor" ? "Auditor" : "Moderador"}
           </span>
         </div>
       </header>
