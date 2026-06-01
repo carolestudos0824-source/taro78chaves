@@ -124,7 +124,7 @@ const ProfilePage = () => {
       <main className="max-w-lg mx-auto px-6 -mt-12 relative z-20 space-y-8">
         <button 
           onClick={() => navigate(nextSuggestion?.path || "/app")} 
-          className="w-full flex items-center justify-between p-6 rounded-[2rem] bg-[#5B1F3D] border-2 border-[#C8A66A] text-white shadow-xl transform transition-all active:scale-[0.98] group"
+          className="w-full h-auto min-h-[5rem] flex items-center justify-between p-5 min-[400px]:p-6 rounded-[2rem] bg-[#5B1F3D] border-2 border-[#C8A66A] text-white shadow-xl transform transition-all active:scale-[0.98] group"
         >
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/10 border border-white/20">

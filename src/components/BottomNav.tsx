@@ -40,7 +40,7 @@ const BottomNav = () => {
 
   return (
     <nav
-      className="fixed bottom-0 inset-x-0 z-40 border-t bg-white/98 backdrop-blur-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe w-full overflow-hidden touch-none"
+      className="fixed bottom-0 inset-x-0 z-[100] border-t bg-white/98 backdrop-blur-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe w-full overflow-hidden touch-none"
       style={{
         borderColor: "#C8A66A33",
       }}

@@ -180,7 +180,7 @@ const PremiumPage = () => {
                 <Button 
                   onClick={() => handleSubscribe()} 
                   disabled={loading} 
-                  className="w-full py-7 min-[400px]:py-8 text-[11px] min-[400px]:text-sm bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.15em] min-[400px]:tracking-[0.2em] shadow-xl border-2 border-[#C8A66A] h-auto whitespace-normal leading-tight"
+                  className="w-full h-auto min-h-[4rem] py-5 px-4 text-[11px] min-[400px]:text-sm bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.1em] min-[400px]:tracking-[0.15em] shadow-xl border-2 border-[#C8A66A] whitespace-normal leading-tight text-center"
                 >
                   GARANTIR MEU ACESSO
                 </Button>
