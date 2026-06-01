@@ -66,7 +66,7 @@ const Index = () => {
       <main className="relative z-10 container max-w-3xl px-6 pb-12">
 
         {/* ═══════════════ HERO SECTION ═══════════════ */}
-        <section className="pt-20 pb-12 text-center relative animate-fade-in">
+        <section className="pt-20 pb-12 text-center relative">
           <div className="flex items-center justify-center gap-4 mb-8 opacity-90">
             <span className="h-px w-12 bg-gradient-to-r from-transparent to-[#C8A66A]/60" />
             <span className="text-[14px] tracking-[0.5em] uppercase font-bold" style={{ color: "#C8A66A" }}>✶ ◈ ✶</span>
