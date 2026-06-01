@@ -129,15 +129,26 @@ const TrailsPage = () => {
         background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
       }} />
 
-      <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-6 pb-8 box-border">
-        <div className="flex justify-end items-start mb-6">
-          <div className="flex -space-x-3 opacity-40">
-            <img src={imgLouco} alt="" className="w-8 h-12 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
-            <img src={imgMago} alt="" className="w-8 h-12 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 rotate-12 shadow-lg" />
+      <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-16 sm:pt-24 pb-8 box-border flex flex-col items-center">
+        {/* Cartas Decorativas do Topo */}
+        <div className="absolute top-0 right-0 w-full overflow-visible h-32 sm:h-48 pointer-events-none z-0">
+          <div className="flex justify-end items-start pt-6 sm:pt-10 pr-6 sm:pr-14">
+            <div className="flex -space-x-12 sm:-space-x-16">
+              <img 
+                src={imgLouco} 
+                alt="" 
+                className="w-18 h-28 sm:w-32 sm:h-48 object-cover rounded-xl border-2 border-[#C8A66A]/40 -rotate-[12deg] shadow-[0_10px_30px_rgba(0,0,0,0.15)] opacity-80" 
+              />
+              <img 
+                src={imgMago} 
+                alt="" 
+                className="w-18 h-28 sm:w-32 sm:h-48 object-cover rounded-xl border-2 border-[#C8A66A]/40 rotate-[8deg] shadow-[0_10px_30px_rgba(0,0,0,0.15)] opacity-95 relative z-10" 
+              />
+            </div>
           </div>
         </div>
 
-        <div className="text-center relative">
+        <div className="text-center relative z-10 w-full mt-2 sm:mt-6">
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-[#C8A66A]/20">
             <TarotIcon name="formacao" className="w-10 h-10" />
           </div>
