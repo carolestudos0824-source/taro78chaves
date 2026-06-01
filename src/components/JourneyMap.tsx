@@ -48,11 +48,7 @@ export function JourneyMap({ progress }: JourneyMapProps) {
           return (
             <div
               key={arcano.id}
-              className={`relative flex items-center py-3 animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both ${side === "left" ? "flex-row" : "flex-row-reverse"}`}
-              style={{
-                // Removed dynamic delay to prevent flicker during navigation
-                // animationDelay: `${index * 50}ms`,
-              }}
+              className={`relative flex items-center py-3 ${side === "left" ? "flex-row" : "flex-row-reverse"}`}
             >
               {/* Card */}
               <div className={`flex-1 ${side === "left" ? "pr-10 md:pr-14" : "pl-10 md:pl-14"}`}>
