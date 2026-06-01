@@ -203,7 +203,7 @@ const ModulesPage = () => {
             boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08), 0 0 40px rgba(200, 166, 106, 0.1)"
           }}>
             <div className="flex flex-row items-center justify-between gap-2 min-[400px]:gap-4 mb-6">
-              <div className="flex items-center gap-2 min-[400px]:gap-4 min-w-0">
+              <div className="flex items-center gap-2 min-[400px]:gap-4 min-w-0 flex-1">
                 <div className="w-10 h-10 min-[400px]:w-14 min-[400px]:h-14 rounded-xl min-[400px]:rounded-2xl flex items-center justify-center border-2 border-[#C8A66A30] shrink-0" style={{
                   background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
                   boxShadow: "0 10px 25px rgba(91, 31, 61, 0.25)"
