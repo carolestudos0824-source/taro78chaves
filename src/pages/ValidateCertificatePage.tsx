@@ -21,19 +21,15 @@ const ValidateCertificatePage = () => {
 
     try {
       const { data, error: fetchError } = await supabase
-        .from("certificates")
-        .select("student_name, course_name, workload_hours, issued_at, status")
-        .eq("validation_code", validationCode.trim().toUpperCase())
-        .maybeSingle();
+        .rpc("validate_certificate", { _code: validationCode });
 
       if (fetchError) throw fetchError;
 
-      if (!data) {
+      const row = Array.isArray(data) ? data[0] : data;
+      if (!row) {
         setError("Certificado não encontrado.");
-      } else if (data.status !== "issued") {
-        setError("Certificado revogado.");
       } else {
-        setCertificate(data);
+        setCertificate(row);
       }
     } catch (err) {
       console.error("Erro ao validar certificado:", err);

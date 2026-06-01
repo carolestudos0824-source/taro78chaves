@@ -1491,6 +1491,16 @@ export type Database = {
         Args: { _code: string; _user_id: string }
         Returns: Json
       }
+      validate_certificate: {
+        Args: { _code: string }
+        Returns: {
+          course_name: string
+          issued_at: string
+          status: string
+          student_name: string
+          workload_hours: number
+        }[]
+      }
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
