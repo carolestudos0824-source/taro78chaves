@@ -147,7 +147,7 @@ const AdminUsers = () => {
     <div className="space-y-10">
       <AdminSectionHeading 
         title="Usuários" 
-        subtitle="Gestão completa de pessoas, acesso e progresso na jornada Tarô 78 Chaves." 
+        subtitle="Gestão completa de pessoas, acesso e progresso na Travessia." 
       />
 
       {/* Stat cards */}
