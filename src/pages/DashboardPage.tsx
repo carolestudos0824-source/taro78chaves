@@ -179,7 +179,7 @@ const DashboardPage = () => {
             </div>
             <div className="flex justify-between text-[10px] font-heading font-black text-[#5B1F3D]/40 uppercase tracking-widest px-1">
               <span>{totalCompletedArcanos} Chaves</span>
-              <span>78 Chaves Total</span>
+              <span>78 Chaves da Jornada</span>
             </div>
           </div>
 
@@ -216,8 +216,8 @@ const DashboardPage = () => {
                 <p className="text-[9px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Quizzes</p>
               </div>
               <div className="space-y-1">
-                <p className="text-xl font-heading font-black text-[#5B1F3D]">{progress.xp}</p>
-                <p className="text-[9px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">XP Total</p>
+                <p className="text-xl font-heading font-black text-[#5B1F3D]">{totalCompletedArcanos}</p>
+                <p className="text-[9px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Chaves conquistadas</p>
               </div>
             </div>
           </div>
@@ -263,7 +263,7 @@ const DashboardPage = () => {
               <div className="flex-1 space-y-1">
                 <p className="text-sm font-heading font-black text-[#5B1F3D]">Nível {progress.level}</p>
                 <p className="text-[9px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">
-                  Faltam {100 - (progress.xp % 100)} XP para nível {progress.level + 1}
+                  Faltam {100 - (progress.xp % 100)} pontos para o nível {progress.level + 1}
                 </p>
               </div>
               <div className="flex -space-x-2">
