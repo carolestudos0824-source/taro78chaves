@@ -306,7 +306,7 @@ const FoolsJourneyPage = () => {
         })}
 
         {/* Closing */}
-        <section className="mb-12 mt-8" style={{ animation: "fade-up 0.6s ease-out" }}>
+        <section className="mb-12 mt-8">
           <div className="flex justify-center mb-8">
             <div className="flex items-center gap-3">
               <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#C8A66A]/40" />
