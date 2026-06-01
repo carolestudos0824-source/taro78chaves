@@ -131,8 +131,8 @@ const TrailsPage = () => {
 
       {/* Cartas Decorativas do Topo — Área de Segurança Absoluta (Fora do container de texto) */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-0 pointer-events-none z-0">
-        <div className="absolute top-4 sm:top-12 right-4 sm:right-12">
-          <div className="flex -space-x-12 sm:-space-x-20 scale-[0.45] sm:scale-[0.95] origin-top-right transition-all duration-700">
+        <div className="absolute top-2 sm:top-12 right-2 sm:right-12">
+          <div className="flex -space-x-12 sm:-space-x-20 scale-[0.35] sm:scale-[0.95] origin-top-right transition-all duration-700">
             <img 
               src={imgLouco} 
               alt="" 
