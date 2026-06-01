@@ -274,7 +274,7 @@ const DailyChallengesPage = () => {
                           ? "bg-[#DCCFC2]/20 border-[#DCCFC2] text-[#C8A66A]/50" 
                           : "bg-[#C8A66A]/10 border-[#C8A66A]/30 text-[#C8A66A] group-hover:bg-[#C8A66A] group-hover:text-white transition-all shadow-md"
                       }`}>
-                        +{ch.xp} XP
+                        +{ch.xp} Pontos
                       </div>
                       {!ch.completed && (
                         <div className="w-11 h-11 rounded-full border-2 border-[#C8A66A20] flex items-center justify-center group-hover:bg-[#C8A66A10] group-hover:border-[#C8A66A] transition-all shadow-sm">
