@@ -129,20 +129,32 @@ const TrailsPage = () => {
         background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
       }} />
 
-      {/* Cartas Decorativas do Topo — Área de Segurança Absoluta (Fora do container de texto) */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-0 pointer-events-none z-0">
-        <div className="absolute top-2 sm:top-12 right-2 sm:right-12">
-          <div className="flex -space-x-12 sm:-space-x-20 scale-[0.35] sm:scale-[0.95] origin-top-right transition-all duration-700">
-            <img 
-              src={imgLouco} 
-              alt="" 
-              className="w-16 h-24 sm:w-28 sm:h-44 object-cover rounded-xl border-2 border-[#C8A66A]/40 -rotate-[15deg] shadow-[0_15px_35px_rgba(0,0,0,0.2)] opacity-30 sm:opacity-50" 
-            />
-            <img 
-              src={imgMago} 
-              alt="" 
-              className="w-16 h-24 sm:w-28 sm:h-44 object-cover rounded-xl border-2 border-[#C8A66A]/40 rotate-[10deg] shadow-[0_15px_35px_rgba(0,0,0,0.2)] opacity-40 sm:opacity-60 relative z-10" 
-            />
+      {/* Cartas Decorativas do Topo — Elemento Premium Estruturado */}
+      <div className="absolute top-0 right-0 w-full max-w-[1600px] left-1/2 -translate-x-1/2 h-[400px] pointer-events-none overflow-hidden select-none z-0">
+        {/* Brilho de fundo (Glow) para as cartas */}
+        <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[60%] bg-[radial-gradient(circle,rgba(200,166,106,0.15)_0%,transparent_70%)] blur-3xl opacity-60 sm:opacity-100 transition-opacity duration-1000" />
+        
+        <div className="absolute top-6 sm:top-16 right-4 sm:right-[5%] md:right-[8%] lg:right-[12%] flex items-center justify-center">
+          <div className="relative flex items-center justify-center transition-all duration-1000 ease-out">
+            {/* O Louco (Fundo) */}
+            <div className="relative transform -rotate-[12deg] -translate-x-8 sm:-translate-x-12 translate-y-2 sm:translate-y-4 scale-[0.45] sm:scale-100 transition-all duration-700 hover:rotate-[-8deg] hover:-translate-y-2">
+              <div className="absolute inset-0 bg-[#C8A66A]/20 blur-xl rounded-xl opacity-0 sm:opacity-40" />
+              <img 
+                src={imgLouco} 
+                alt="" 
+                className="w-24 h-36 sm:w-32 sm:h-48 md:w-40 md:h-60 object-cover rounded-xl border-[1.5px] border-[#C8A66A]/40 shadow-[0_15px_35px_rgba(0,0,0,0.3),0_0_20px_rgba(200,166,106,0.1)] ring-1 ring-white/10" 
+              />
+            </div>
+            
+            {/* O Mago (Frente) */}
+            <div className="relative transform rotate-[8deg] scale-[0.5] sm:scale-[1.1] transition-all duration-700 hover:rotate-[12deg] hover:-translate-y-2 z-10">
+              <div className="absolute inset-0 bg-[#C8A66A]/30 blur-2xl rounded-xl opacity-0 sm:opacity-50" />
+              <img 
+                src={imgMago} 
+                alt="" 
+                className="w-24 h-36 sm:w-32 sm:h-48 md:w-40 md:h-60 object-cover rounded-xl border-[2px] border-[#C8A66A]/60 shadow-[0_25px_50px_rgba(0,0,0,0.4),0_0_30px_rgba(200,166,106,0.2)] ring-1 ring-white/20" 
+              />
+            </div>
           </div>
         </div>
       </div>
