@@ -202,22 +202,22 @@ const ModulesPage = () => {
             border: "2.5px solid #C8A66A",
             boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08), 0 0 40px rgba(200, 166, 106, 0.1)"
           }}>
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A30]" style={{
+            <div className="flex flex-col min-[380px]:flex-row items-start min-[380px]:items-center justify-between gap-4 mb-6">
+              <div className="flex items-center gap-3 min-[400px]:gap-4">
+                <div className="w-12 h-12 min-[400px]:w-14 min-[400px]:h-14 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A30] shrink-0" style={{
                   background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
                   boxShadow: "0 10px 25px rgba(91, 31, 61, 0.25)"
                 }}>
-                  <TarotIcon name="SquareStack" className="w-7 h-7 text-[#C8A66A]" />
+                  <TarotIcon name="SquareStack" className="w-6 h-6 min-[400px]:w-7 min-[400px]:h-7 text-[#C8A66A]" />
                 </div>
-                <div className="flex flex-col">
-                  <span className="text-[10px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Tarô 78 Chaves</span>
-                  <h1 className="text-base min-[380px]:text-lg min-[400px]:text-xl font-heading font-black text-[#5B1F3D] leading-tight">Meu Painel Diário</h1>
+                <div className="flex flex-col min-w-0">
+                  <span className="text-[9px] min-[400px]:text-[10px] font-heading font-black tracking-[0.25em] min-[400px]:tracking-[0.3em] text-[#C8A66A] uppercase truncate">Tarô 78 Chaves</span>
+                  <h1 className="text-base min-[400px]:text-lg font-heading font-black text-[#5B1F3D] leading-tight truncate">Meu Painel Diário</h1>
                 </div>
               </div>
-              <div className="text-right">
-                <span className="text-2xl md:text-3xl font-heading font-black text-[#5B1F3D]">{globalProgressPct}%</span>
-                <span className="text-[14px] font-black text-[#5B1F3D]/30 ml-1">Chaves</span>
+              <div className="text-right shrink-0">
+                <span className="text-xl min-[400px]:text-2xl md:text-3xl font-heading font-black text-[#5B1F3D]">{globalProgressPct}%</span>
+                <span className="text-[12px] min-[400px]:text-[14px] font-black text-[#5B1F3D]/30 ml-1">Chaves</span>
               </div>
             </div>
             
