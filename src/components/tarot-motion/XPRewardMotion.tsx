@@ -4,12 +4,12 @@ import { xpGain } from "./motion-presets";
 import { getArcanoTheme } from "./arcano-motion-themes";
 
 interface XPRewardMotionProps {
-  xp: number;
+  pontos: number;
   arcanoId?: number;
 }
 
 export const XPRewardMotion: React.FC<XPRewardMotionProps> = ({
-  xp,
+  pontos,
   arcanoId = 0
 }) => {
   const theme = getArcanoTheme(arcanoId);
@@ -22,7 +22,7 @@ export const XPRewardMotion: React.FC<XPRewardMotionProps> = ({
         animate="animate"
         className="absolute z-50 flex items-center gap-1 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-lg border border-[#C8A66A]/30"
       >
-        <span className="text-[#C8A66A] font-heading font-black text-sm">+{xp}</span>
+        <span className="text-[#C8A66A] font-heading font-black text-sm">+{pontos}</span>
         <span className="text-[#5B1F3D] font-heading font-bold text-[10px] tracking-widest uppercase">PONTOS</span>
       </motion.div>
       

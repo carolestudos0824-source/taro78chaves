@@ -7,7 +7,7 @@ import { useRole } from "@/hooks/use-role";
 
 interface CompletionScreenProps {
   arcanoName: string;
-  xpEarned: number;
+  pontosEarned: number;
   quizScore: number;
   quizTotal: number;
   nextArcano?: { id: number; name: string; numeral: string; subtitle?: string } | null;
@@ -23,7 +23,7 @@ interface CompletionScreenProps {
  * Phase 5: Completion with progress saved confirmation + editorial continuity
  */
 export function CompletionScreen({
-  arcanoName, xpEarned, quizScore, quizTotal,
+  arcanoName, pontosEarned, quizScore, quizTotal,
   nextArcano, prevArcano, isPrevCompleted,
   onNextArcano, onPrevArcano, onBackToMap, isLastArcano, arcanoId,
 }: CompletionScreenProps & { arcanoId?: number }) {

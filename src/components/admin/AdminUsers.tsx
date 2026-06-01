@@ -55,7 +55,7 @@ const AdminUsers = () => {
     setLoading(true);
     const [{ data: prof }, { data: prog }, { data: roles }] = await Promise.all([
       supabase.from("profiles").select("user_id, display_name, is_premium, premium_until, premium_source, created_at, updated_at").order("created_at", { ascending: false }),
-      supabase.from("user_progress").select("user_id, completed_lessons, completed_modules, completed_quizzes, last_active, streak, xp, level"),
+      supabase.from("user_progress").select("user_id, completed_lessons, completed_modules, completed_quizzes, last_active, streak, xp, level"), // Internamente o campo é xp
       supabase.from("user_roles").select("user_id, role").eq("role", "admin"),
     ]);
     setProfiles(prof || []);

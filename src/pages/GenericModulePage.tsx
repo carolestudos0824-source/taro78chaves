@@ -167,9 +167,9 @@ const GenericModulePage = ({
           )}
         </div>
 
-        {/* XP Bar */}
+        {/* Pontos Bar */}
         <div className="animate-fade-in px-2" style={{ animationDelay: "250ms", animationFillMode: "both" }}>
-          <XPBar xp={progress.xp} level={progress.level} />
+          <PontosBar pontos={progress.xp} level={progress.level} />
         </div>
 
         {/* Progress */}

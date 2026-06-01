@@ -142,7 +142,7 @@ const AppShell = () => {
     <div className="flex flex-col min-h-screen bg-[#FAF5EF]">
       <Header 
         streak={progress.streak} 
-        xp={progress.xp} 
+        pontos={progress.xp} 
         level={progress.level} 
       />
       <main className="flex-1 pb-24 relative">
