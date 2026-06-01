@@ -261,7 +261,7 @@ const AdminQuizzes = () => {
       <div className="rounded-xl border border-border/50 bg-card/30 p-3 space-y-2">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground">Fila editorial</h3>
-          <span className="text-[10px] text-muted-foreground">régua: ≥5 perguntas válidas + vínculo + XP &gt; 0</span>
+          <span className="text-[10px] text-muted-foreground">régua: ≥5 perguntas válidas + vínculo + Pontos &gt; 0</span>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
           {(["validado", "quase", "incompleto", "critico"] as QuizQueue[]).map((q) => {
