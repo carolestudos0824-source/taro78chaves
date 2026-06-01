@@ -108,6 +108,13 @@ const LoadingFallback = () => (
   </div>
 );
 
+const ShellFallback = () => (
+  <div className="w-full flex-1 flex flex-col items-center justify-center bg-[#FAF5EF] p-12 min-h-[400px] animate-in fade-in duration-300">
+    <div className="w-8 h-8 rounded-full border-2 border-[#C8A66A]/20 border-t-[#C8A66A] animate-spin" />
+    <p className="mt-4 text-[10px] text-[#5B1F3D]/60 font-heading tracking-widest uppercase animate-pulse">Carregando Chave...</p>
+  </div>
+);
+
 const MinimalLoader = () => null;
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
