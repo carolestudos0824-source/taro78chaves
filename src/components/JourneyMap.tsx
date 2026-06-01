@@ -1,17 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { Lock, Check, Sparkles, Crown } from "lucide-react";
 import { TarotIcon } from "./TarotIcon";
-import { ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, FREE_ARCANO_IDS, getArcanoFull } from "@/lib/content";
+import { ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull } from "@/lib/content";
 import type { UserProgress } from "@/lib/content";
 import { useAccess } from "@/hooks/use-access";
 import { TarotAnimatedCard } from "./tarot-motion/TarotAnimatedCard";
-import { motion, AnimatePresence } from "framer-motion";
 
 interface JourneyMapProps {
   progress: UserProgress;
 }
-
-// Symbols removed to favor pedagogical numbering inside nodes
 
 export function JourneyMap({ progress }: JourneyMapProps) {
   const navigate = useNavigate();
@@ -47,15 +44,14 @@ export function JourneyMap({ progress }: JourneyMapProps) {
           );
           const isCurrent = isUnlocked && !isCompleted;
           const side = index % 2 === 0 ? "left" : "right";
-          // Symbol logic removed
 
           return (
             <div
               key={arcano.id}
-              className={`relative flex items-center py-3 ${side === "left" ? "flex-row" : "flex-row-reverse"}`}
+              className={`relative flex items-center py-3 animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both ${side === "left" ? "flex-row" : "flex-row-reverse"}`}
               style={{
-                animation: "fade-up 0.6s ease-out both",
-                animationDelay: `${index * 70}ms`,
+                // Removed dynamic delay to prevent flicker during navigation
+                // animationDelay: `${index * 50}ms`,
               }}
             >
               {/* Card */}
@@ -98,7 +94,7 @@ export function JourneyMap({ progress }: JourneyMapProps) {
               <div className="absolute left-1/2 -translate-x-1/2 z-10">
                 {isCurrent && (
                   <div
-                    className="absolute inset-0 -m-3 rounded-full"
+                    className="absolute inset-0 -m-3 rounded-full animate-pulse"
                     style={{
                       border: "1px solid rgba(91, 31, 61, 0.15)",
                     }}
