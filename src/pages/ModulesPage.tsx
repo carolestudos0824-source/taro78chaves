@@ -212,7 +212,7 @@ const ModulesPage = () => {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Tarô 78 Chaves</span>
-                  <span className="text-base min-[400px]:text-lg font-heading font-black text-[#5B1F3D]">Meu Painel Diário</span>
+                  <span className="text-sm min-[380px]:text-base min-[400px]:text-lg font-heading font-black text-[#5B1F3D]">Meu Painel Diário</span>
                 </div>
               </div>
               <div className="text-right">
