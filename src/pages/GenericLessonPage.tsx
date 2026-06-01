@@ -519,7 +519,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
           const isLastLesson = !nextLesson;
 
           return (
-            <div className="text-center py-10 space-y-6" style={{ animation: "fade-up 0.6s ease-out" }}>
+            <div className="text-center py-10 space-y-6">
               {/* Achievement icon */}
               <div className="relative">
                 <div
