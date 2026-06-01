@@ -446,7 +446,7 @@ const UserDetailDialog = ({ userId, onClose, onChanged }: { userId: string | nul
 
             {/* Progress stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-              <ProgressStat icon={<Award className="w-3.5 h-3.5" />} label="XP" value={data.progress?.xp ?? 0} />
+              <ProgressStat icon={<Award className="w-3.5 h-3.5" />} label="Pontos" value={data.progress?.xp ?? 0} />
               <ProgressStat icon={<Flame className="w-3.5 h-3.5" />} label="Streak" value={data.progress?.streak ?? 0} />
               <ProgressStat icon={<BookOpen className="w-3.5 h-3.5" />} label="Lições" value={data.progress?.completed_lessons?.length ?? 0} />
               <ProgressStat icon={<CheckCircle2 className="w-3.5 h-3.5" />} label="Quizzes" value={data.progress?.completed_quizzes?.length ?? 0} />
