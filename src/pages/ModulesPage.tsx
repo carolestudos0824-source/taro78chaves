@@ -92,15 +92,10 @@ const ModulesPage = () => {
     return () => resetHeader();
   }, []);
 
-  if (progressLoading) {
-    return (
-      <div className="flex-1 flex items-center justify-center py-20 bg-transparent">
-        <div className="text-center space-y-4 animate-in fade-in duration-700">
-          <div className="w-12 h-12 border-4 border-[#C8A66A]/20 border-t-[#5B1F3D] animate-spin rounded-full mx-auto" />
-          <p className="text-[12px] text-[#5B1F3D] font-heading tracking-widest uppercase font-bold">Sincronizando Jornada</p>
-        </div>
-      </div>
-    );
+  // Note: progressLoading is handled at a higher level via ProtectedRoute for authenticated users
+  // to avoid flickering during navigation. We only check it here as a safety measure.
+  if (progressLoading && !progress.xp) {
+    return null;
   }
 
 
