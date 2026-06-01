@@ -23,15 +23,16 @@ import LandingPage from "./pages/LandingPage.tsx";
 import AuthPage from "./pages/AuthPage.tsx";
 import ModulesPage from "./pages/ModulesPage.tsx";
 import CertificateVisualModel from "./pages/CertificateVisualModel.tsx";
-
+import Index from "./pages/Index.tsx";
+import LessonPage from "./pages/LessonPage.tsx";
+import PremiumPage from "./pages/PremiumPage.tsx";
+import ProfilePage from "./pages/ProfilePage.tsx";
+import FoolsJourneyPage from "./pages/FoolsJourneyPage.tsx";
+import TrailsPage from "./pages/TrailsPage.tsx";
+import DailyChallengesPage from "./pages/DailyChallengesPage.tsx";
 
 // Lazy: everything else
-const Index = lazy(() => import("./pages/Index.tsx"));
-const LessonPage = lazy(() => import("./pages/LessonPage.tsx"));
 const AdminPage = lazy(() => import("./pages/AdminPage.tsx"));
-const PremiumPage = lazy(() => import("./pages/PremiumPage.tsx"));
-const ProfilePage = lazy(() => import("./pages/ProfilePage.tsx"));
-const FoolsJourneyPage = lazy(() => import("./pages/FoolsJourneyPage.tsx"));
 const FundamentosPage = lazy(() => import("./pages/FundamentosPage.tsx"));
 const FundamentosLessonPage = lazy(() => import("./pages/FundamentosLessonPage.tsx"));
 
@@ -69,9 +70,7 @@ const TrabalharTaroPage = lazy(() => import("./pages/TrabalharTaroPage.tsx"));
 const TrabalharTaroLessonPage = lazy(() => import("./pages/TrabalharTaroLessonPage.tsx"));
 
 // Utility pages
-const TrailsPage = lazy(() => import("./pages/TrailsPage.tsx"));
 const ReviewPage = lazy(() => import("./pages/ReviewPage.tsx"));
-const DailyChallengesPage = lazy(() => import("./pages/DailyChallengesPage.tsx"));
 const CertificatesPage = lazy(() => import("./pages/CertificatesPage.tsx"));
 const SymbolLibraryPage = lazy(() => import("./pages/SymbolLibraryPage.tsx"));
 const StudyRoutinePage = lazy(() => import("./pages/StudyRoutinePage.tsx"));
@@ -106,6 +105,13 @@ const LoadingFallback = () => (
         <p className="text-[11px] text-plum/60 font-body italic">Preparando sua jornada...</p>
       </div>
     </div>
+  </div>
+);
+
+const ShellFallback = () => (
+  <div className="w-full flex-1 flex flex-col items-center justify-center bg-[#FAF5EF] p-12 min-h-[400px] animate-in fade-in duration-300">
+    <div className="w-8 h-8 rounded-full border-2 border-[#C8A66A]/20 border-t-[#C8A66A] animate-spin" />
+    <p className="mt-4 text-[10px] text-[#5B1F3D]/60 font-heading tracking-widest uppercase animate-pulse">Carregando Chave...</p>
   </div>
 );
 
@@ -164,8 +170,8 @@ const AppShell = () => {
         xp={progress.xp} 
         level={progress.level} 
       />
-      <main className="flex-1 pb-24 relative">
-        <Suspense fallback={null}>
+      <main className="flex-1 pb-24 relative min-h-[60vh]">
+        <Suspense fallback={<ShellFallback />}>
           <Outlet />
         </Suspense>
       </main>

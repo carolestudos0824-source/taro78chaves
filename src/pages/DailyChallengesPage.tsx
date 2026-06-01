@@ -291,7 +291,7 @@ const DailyChallengesPage = () => {
 
         {/* Streak encouragement */}
         {allDone && (
-          <div className="text-center py-10 animate-fade-in">
+          <div className="text-center py-10">
             <div className="w-16 h-16 rounded-3xl flex items-center justify-center border-2 border-[#C8A66A] shadow-xl mx-auto mb-6 transform rotate-3" style={{
               background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
             }}>
@@ -457,7 +457,7 @@ const RevisaoRapidaContent = ({ data, onComplete }: { data: CartaDoDia | null; o
           Revelar essência
         </button>
       ) : (
-        <div className="text-left space-y-6 animate-fade-in">
+        <div className="text-left space-y-6">
           <p className="font-body text-[14px] leading-relaxed font-bold text-[#5B1F3D]/80">
             {data.essence}
           </p>
@@ -492,7 +492,7 @@ const PerguntasContent = ({ data, onComplete }: { data: PerguntasDoDia; onComple
 
   if (finished) {
     return (
-      <div className="text-center space-y-6 animate-fade-in py-6">
+      <div className="text-center space-y-6 py-6">
         <div className="w-16 h-16 rounded-2xl bg-[#5B1F3D]/5 flex items-center justify-center mx-auto border-2 border-[#C8A66A]/20">
           <TarotIcon name="Sparkles" className="w-8 h-8 text-[#C8A66A]" />
         </div>
@@ -563,7 +563,7 @@ const PerguntasContent = ({ data, onComplete }: { data: PerguntasDoDia; onComple
         ))}
       </div>
       {selected !== null && (
-        <div className="p-4 rounded-xl bg-[#5B1F3D]/5 border border-[#5B1F3D]/10 animate-fade-in">
+        <div className="p-4 rounded-xl bg-[#5B1F3D]/5 border border-[#5B1F3D]/10">
           <p className="font-body text-[12px] font-bold italic text-[#5B1F3D]/70 leading-relaxed">
             {q.explanation}
           </p>
@@ -638,7 +638,7 @@ const CombinacaoContent = ({ data, onComplete }: { data: CombinacaoDoDia | null;
           Revelar Alquimia
         </button>
       ) : (
-        <div className="rounded-[2rem] p-6 bg-white border-2 border-[#C8A66A]/10 shadow-sm animate-fade-in">
+        <div className="rounded-[2rem] p-6 bg-white border-2 border-[#C8A66A]/10 shadow-sm">
           <p className="font-body text-[14px] leading-relaxed font-bold text-[#5B1F3D]/80">
             {data.insight}
           </p>
@@ -694,7 +694,7 @@ const InterpretacaoContent = ({ data, onComplete }: { data: MiniInterpretacao | 
           Ver leitura modelo
         </button>
       ) : (
-        <div className="rounded-[2rem] p-6 bg-white border-2 border-[#C8A66A]/10 shadow-sm animate-fade-in">
+        <div className="rounded-[2rem] p-6 bg-white border-2 border-[#C8A66A]/10 shadow-sm">
           <p className="font-body text-[14px] leading-relaxed font-bold text-[#5B1F3D]/80">
             {data.sampleReading}
           </p>

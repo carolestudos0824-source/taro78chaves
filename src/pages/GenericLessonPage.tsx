@@ -168,7 +168,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
   // ── Render helpers ──
 
   const PhaseNav = () => (
-    <div className="flex items-center gap-1 animate-fade-in" style={{ animationDelay: "100ms", animationFillMode: "both" }}>
+    <div className="flex items-center gap-1">
       {PHASE_ORDER.slice(0, -1).map((p, i) => {
         const isActive = i === currentPhaseIdx;
         const isPast = i < currentPhaseIdx;
@@ -201,7 +201,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
     const a = accentOverride || accent;
     return (
       <div
-        className="rounded-[2rem] overflow-hidden animate-fade-in mb-6 transition-all duration-500 hover:shadow-2xl"
+        className="rounded-[2rem] overflow-hidden mb-6 transition-all duration-500 hover:shadow-2xl"
         style={{
           background: "rgba(255, 255, 255, 0.95)",
           border: `2px solid #C8A66A40`,
@@ -227,7 +227,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
   };
 
   const ContinueButton = ({ onClick, label = "Continuar →" }: { onClick: () => void; label?: string }) => (
-    <div className="flex justify-center pt-2 animate-fade-in" style={{ animationDelay: "400ms", animationFillMode: "both" }}>
+    <div className="flex justify-center pt-2">
       <button
         onClick={onClick}
         className="px-8 py-3 rounded-full font-heading text-sm tracking-wider transition-all hover:scale-105 active:scale-95"
@@ -315,7 +315,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
           <>
             {/* Intro card — Premium style */}
             <div
-              className="rounded-[2rem] p-8 mb-8 animate-fade-in relative overflow-hidden transition-all duration-500"
+              className="rounded-[2rem] p-8 mb-8 relative overflow-hidden transition-all duration-500"
               style={{
                 background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
                 backdropFilter: "blur(24px)",
@@ -457,7 +457,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
         {/* ── Quiz ── */}
         {phase === "quiz" && lesson.quiz[quizIdx] && (
           <div className="space-y-4">
-            <div className="flex justify-between items-center text-[10px] font-heading tracking-wider animate-fade-in" style={{ color: "hsl(230 20% 15% / 0.5)" }}>
+            <div className="flex justify-between items-center text-[10px] font-heading tracking-wider" style={{ color: "hsl(230 20% 15% / 0.5)" }}>
               <span>Pergunta {quizIdx + 1}/{lesson.quiz.length}</span>
               <span>{score} acerto{score !== 1 ? "s" : ""}</span>
             </div>
@@ -492,7 +492,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
                 })}
               </div>
               {showExp && (
-                <div className="mt-3 p-3.5 rounded-lg text-xs leading-relaxed animate-fade-in" style={{
+                <div className="mt-3 p-3.5 rounded-lg text-xs leading-relaxed" style={{
                   background: `hsl(${accent} / 0.05)`,
                   border: `1px solid hsl(${accent} / 0.12)`,
                   color: "hsl(230 20% 25%)",
@@ -519,7 +519,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
           const isLastLesson = !nextLesson;
 
           return (
-            <div className="text-center py-10 space-y-6" style={{ animation: "fade-up 0.6s ease-out" }}>
+            <div className="text-center py-10 space-y-6">
               {/* Achievement icon */}
               <div className="relative">
                 <div

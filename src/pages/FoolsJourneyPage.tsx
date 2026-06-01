@@ -76,7 +76,7 @@ const FoolsJourneyPage = () => {
       {/* Content */}
       <main className="relative z-10 container max-w-3xl py-8 px-6">
         {/* Hero Visual Guide - O Louco */}
-        <section className="relative z-10 mb-12 text-center flex flex-col items-center animate-fade-in">
+        <section className="relative z-10 mb-12 text-center flex flex-col items-center">
           <div className="relative mb-8 group">
             {/* Soft halo behind the card */}
             <div className="absolute inset-0 bg-[#C8A66A] opacity-20 blur-3xl rounded-full scale-150 animate-pulse" />
@@ -118,7 +118,7 @@ const FoolsJourneyPage = () => {
         </section>
 
         {/* Introduction Editorial Card */}
-        <section className="mb-14" style={{ animation: "fade-up 0.6s ease-out" }}>
+        <section className="mb-14">
           <div className="relative rounded-[2rem] p-8 md:p-10 shadow-2xl overflow-hidden" style={{
             background: "#FAF5EF",
             border: "2px solid rgba(200, 166, 106, 0.4)",
@@ -139,7 +139,7 @@ const FoolsJourneyPage = () => {
         </section>
 
         {/* Synthesis Block - 3 Key Points */}
-        <section className="mb-16 grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in" style={{ animationDelay: "200ms" }}>
+        <section className="mb-16 grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             { label: "Início", title: "O Salto da Jornada", text: "O Louco e o potencial puro de quem ousa começar.", icon: "0" },
             { label: "Travessia", title: "Provas e Espelhos", text: "Encontros com mestres e abismos da alma.", icon: "◈" },
@@ -165,7 +165,7 @@ const FoolsJourneyPage = () => {
             <section
               key={phase.id}
               className="mb-14"
-              style={{ animation: `fade-up 0.5s ease-out both`, animationDelay: `${phaseIndex * 100}ms` }}
+              style={{ opacity: 1 }}
             >
               {/* Phase header */}
               <div className="flex items-center justify-center mb-6">
@@ -306,7 +306,7 @@ const FoolsJourneyPage = () => {
         })}
 
         {/* Closing */}
-        <section className="mb-12 mt-8" style={{ animation: "fade-up 0.6s ease-out" }}>
+        <section className="mb-12 mt-8">
           <div className="flex justify-center mb-8">
             <div className="flex items-center gap-3">
               <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#C8A66A]/40" />

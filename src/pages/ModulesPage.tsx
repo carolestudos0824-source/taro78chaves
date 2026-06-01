@@ -174,7 +174,7 @@ const ModulesPage = () => {
         <div className="space-y-4">
           {/* 0. Audit Mode Banner */}
           {isStaff && (
-            <div className="relative rounded-2xl overflow-hidden p-4 md:p-6 bg-[#5B1F3D]/5 border-2 border-[#5B1F3D]/10 text-[#5B1F3D] animate-fade-in">
+            <div className="relative rounded-2xl overflow-hidden p-4 md:p-6 bg-[#5B1F3D]/5 border-2 border-[#5B1F3D]/10 text-[#5B1F3D]">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-white border border-[#5B1F3D]/10 shrink-0">
                   <ShieldCheck className="w-5 h-5 text-[#C8A66A]" />
@@ -271,7 +271,7 @@ const ModulesPage = () => {
           </div>
 
           {/* 2. Estudo Imediato */}
-          <div className="animate-fade-in">
+          <div>
             <div className="bg-[#5B1F3D] border-2 border-[#C8A66A] rounded-[2.5rem] p-6 md:p-10 text-center space-y-4 relative overflow-hidden group shadow-2xl ring-8 ring-[#C8A66A]/5">
               <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#C8A66A]/20 rounded-full blur-3xl" />
               <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none">
