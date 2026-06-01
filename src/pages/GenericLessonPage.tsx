@@ -168,7 +168,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
   // ── Render helpers ──
 
   const PhaseNav = () => (
-    <div className="flex items-center gap-1 animate-fade-in" style={{ animationDelay: "100ms", animationFillMode: "both" }}>
+    <div className="flex items-center gap-1">
       {PHASE_ORDER.slice(0, -1).map((p, i) => {
         const isActive = i === currentPhaseIdx;
         const isPast = i < currentPhaseIdx;
