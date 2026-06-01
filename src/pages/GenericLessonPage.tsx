@@ -201,7 +201,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
     const a = accentOverride || accent;
     return (
       <div
-        className="rounded-[2rem] overflow-hidden animate-fade-in mb-6 transition-all duration-500 hover:shadow-2xl"
+        className="rounded-[2rem] overflow-hidden mb-6 transition-all duration-500 hover:shadow-2xl"
         style={{
           background: "rgba(255, 255, 255, 0.95)",
           border: `2px solid #C8A66A40`,
