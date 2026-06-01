@@ -216,8 +216,8 @@ const DashboardPage = () => {
                 <p className="text-[9px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Quizzes</p>
               </div>
               <div className="space-y-1">
-                <p className="text-xl font-heading font-black text-[#5B1F3D]">{progress.xp}</p>
-                <p className="text-[9px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">XP Total</p>
+                <p className="text-xl font-heading font-black text-[#5B1F3D]">{totalCompletedArcanos}</p>
+                <p className="text-[9px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Chaves conquistadas</p>
               </div>
             </div>
           </div>
