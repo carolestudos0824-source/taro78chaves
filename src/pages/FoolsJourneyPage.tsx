@@ -20,14 +20,8 @@ const FoolsJourneyPage = () => {
   const isStudied = (arcanoId: number) => isArcanoUnlocked(arcanoId);
   const isComplete = (arcanoId: number) => isArcanoCompleted(arcanoId);
 
-  if (isLoading || !journey) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="font-accent italic text-sm" style={{ color: "hsl(36 42% 45% / 0.60)" }}>
-          Preparando a travessia…
-        </div>
-      </div>
-    );
+  if (!journey) {
+    return null;
   }
 
   const { meta, fases, arcanos } = journey;

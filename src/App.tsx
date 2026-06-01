@@ -109,11 +109,7 @@ const LoadingFallback = () => (
   </div>
 );
 
-const MinimalLoader = () => (
-  <div className="flex-1 flex items-center justify-center py-20 bg-transparent">
-    <div className="w-8 h-8 rounded-full border-2 border-gold/20 border-t-gold animate-spin mx-auto" />
-  </div>
-);
+const MinimalLoader = () => null;
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading: authLoading } = useAuth();
@@ -126,9 +122,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   // If we have no user and auth is not loading anymore, redirect
   if (!authLoading && !user) return <Navigate to="/" replace />;
   
-  // If we have a user but are still loading role/premium, we can still show the shell
-  // but maybe we want to wait for them once.
-  // To avoid flickering during navigation, we check if they are ALREADY loaded at least once.
+  // If we have a user but are still loading role/premium, we wait once.
   if ((roleLoading || premiumLoading) && !user) return <LoadingFallback />;
   
   return (
@@ -170,7 +164,7 @@ const AppShell = () => {
         xp={progress.xp} 
         level={progress.level} 
       />
-      <main className="flex-1 pb-24">
+      <main className="flex-1 pb-24 relative">
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>
@@ -182,7 +176,7 @@ const AppShell = () => {
 
 const AppRoutes = () => {
   return (
-    <Suspense fallback={null}>
+    <>
       <AnalyticsTracker />
       <ConsentBanner />
       <Routes>
@@ -255,7 +249,7 @@ const AppRoutes = () => {
         
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </Suspense>
+    </>
   );
 };
 

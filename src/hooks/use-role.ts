@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext, useContext } from "react";
+import React, { useEffect, useState, createContext, useContext, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 
@@ -50,13 +50,13 @@ export const RoleProvider = ({ children }: { children: React.ReactNode }) => {
     })();
   }, [authLoading, user]);
 
-  const value = {
+  const value = useMemo(() => ({
     role,
     loading,
     isAdmin: role === "admin",
     isModerator: role === "moderator",
     isStaff: role === "admin" || role === "moderator",
-  };
+  }), [role, loading]);
 
   return React.createElement(RoleContext.Provider, { value }, children);
 };
