@@ -222,7 +222,7 @@ const ModulesPage = () => {
             </div>
             
             <div className="relative mt-8 mb-4">
-              <div className="flex items-center gap-3 mb-4 px-1">
+              <div className="flex flex-row items-center gap-3 mb-4 px-1">
                 <div className="relative shrink-0">
                   <div className="absolute -inset-1 bg-[#C8A66A]/20 rounded-lg blur-sm"></div>
                   <img 
