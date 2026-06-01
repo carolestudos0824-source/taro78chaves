@@ -129,26 +129,26 @@ const TrailsPage = () => {
         background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
       }} />
 
-      <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-16 sm:pt-24 pb-8 box-border flex flex-col items-center">
-        {/* Cartas Decorativas do Topo — Área de Segurança Absoluta */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] pointer-events-none z-0">
-          <div className="absolute top-4 sm:top-10 right-4 sm:right-10">
-            <div className="flex -space-x-12 sm:-space-x-20 scale-[0.45] sm:scale-[0.9] origin-top-right transition-all duration-700">
-              <img 
-                src={imgLouco} 
-                alt="" 
-                className="w-16 h-24 sm:w-28 sm:h-44 object-cover rounded-xl border-2 border-[#C8A66A]/40 -rotate-[15deg] shadow-[0_15px_35px_rgba(0,0,0,0.2)] opacity-30 sm:opacity-50" 
-              />
-              <img 
-                src={imgMago} 
-                alt="" 
-                className="w-16 h-24 sm:w-28 sm:h-44 object-cover rounded-xl border-2 border-[#C8A66A]/40 rotate-[10deg] shadow-[0_15px_35px_rgba(0,0,0,0.2)] opacity-40 sm:opacity-60 relative z-10" 
-              />
-            </div>
+      {/* Cartas Decorativas do Topo — Área de Segurança Absoluta (Fora do container de texto) */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-0 pointer-events-none z-0">
+        <div className="absolute top-4 sm:top-12 right-4 sm:right-12">
+          <div className="flex -space-x-12 sm:-space-x-20 scale-[0.45] sm:scale-[0.95] origin-top-right transition-all duration-700">
+            <img 
+              src={imgLouco} 
+              alt="" 
+              className="w-16 h-24 sm:w-28 sm:h-44 object-cover rounded-xl border-2 border-[#C8A66A]/40 -rotate-[15deg] shadow-[0_15px_35px_rgba(0,0,0,0.2)] opacity-30 sm:opacity-50" 
+            />
+            <img 
+              src={imgMago} 
+              alt="" 
+              className="w-16 h-24 sm:w-28 sm:h-44 object-cover rounded-xl border-2 border-[#C8A66A]/40 rotate-[10deg] shadow-[0_15px_35px_rgba(0,0,0,0.2)] opacity-40 sm:opacity-60 relative z-10" 
+            />
           </div>
         </div>
+      </div>
 
-        <div className="text-center relative z-10 w-full mt-10 sm:mt-8">
+      <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-16 sm:pt-24 pb-8 box-border flex flex-col items-center">
+        <div className="text-center relative z-10 w-full mt-10 sm:mt-12">
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-[#C8A66A]/20">
             <TarotIcon name="formacao" className="w-10 h-10" />
           </div>
