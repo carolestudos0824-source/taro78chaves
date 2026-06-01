@@ -188,7 +188,7 @@ const AdminUsers = () => {
           <SelectContent className="font-heading text-[11px] font-black tracking-widest uppercase">
             <SelectItem value="created_at">Cadastro Recente</SelectItem>
             <SelectItem value="last_active">Última Atividade</SelectItem>
-            <SelectItem value="xp">Maior XP</SelectItem>
+            <SelectItem value="xp">Pontuação</SelectItem>
             <SelectItem value="lessons">Mais Lições</SelectItem>
           </SelectContent>
         </Select>
@@ -208,7 +208,7 @@ const AdminUsers = () => {
             <AdminTableHead className="text-center">Cadastro</AdminTableHead>
             <AdminTableHead className="text-center">Atividade</AdminTableHead>
             <AdminTableHead className="text-center">Lições</AdminTableHead>
-            <AdminTableHead className="text-center">XP</AdminTableHead>
+            <AdminTableHead className="text-center">Pontos</AdminTableHead>
             <AdminTableHead className="text-center">Streak</AdminTableHead>
             <AdminTableHead className="text-right">Ações</AdminTableHead>
           </AdminTableHeader>
