@@ -3,7 +3,7 @@ import { ArrowLeft, Check, Lock, ChevronRight } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { useResolvedModule } from "@/hooks/use-resolved-module";
-import { XPBar } from "@/components/XPBar";
+import { PontosBar } from "@/components/PontosBar";
 import { StreakCounter } from "@/components/StreakCounter";
 
 interface GenericLesson {
@@ -167,9 +167,9 @@ const GenericModulePage = ({
           )}
         </div>
 
-        {/* XP Bar */}
+        {/* Pontos Bar */}
         <div className="animate-fade-in px-2" style={{ animationDelay: "250ms", animationFillMode: "both" }}>
-          <XPBar xp={progress.xp} level={progress.level} />
+          <PontosBar pontos={progress.xp} level={progress.level} />
         </div>
 
         {/* Progress */}

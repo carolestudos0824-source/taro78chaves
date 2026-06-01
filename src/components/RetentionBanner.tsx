@@ -5,7 +5,7 @@ import { Flame, Sparkles, BookOpen, Sun, ArrowRight } from "lucide-react";
 interface RetentionBannerProps {
   streak: number;
   completedLessons: number;
-  xp: number;
+  pontos: number;
   level: number;
   lastActive: string;
 }
@@ -118,7 +118,7 @@ const ICONS = {
 
 const BANNER_DISMISSED_KEY = "retention-banner-dismissed";
 
-const RetentionBanner = ({ streak, completedLessons, xp, level, lastActive }: RetentionBannerProps) => {
+const RetentionBanner = ({ streak, completedLessons, pontos, level, lastActive }: RetentionBannerProps) => {
   const navigate = useNavigate();
   const [dismissed, setDismissed] = useState(false);
 

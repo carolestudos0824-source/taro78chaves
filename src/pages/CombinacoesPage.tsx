@@ -4,7 +4,7 @@ import { COMBINACOES_LESSONS } from "@/content/lessons/combinacoes";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { useResolvedModule } from "@/hooks/use-resolved-module";
-import { XPBar } from "@/components/XPBar";
+import { PontosBar } from "@/components/PontosBar";
 
 const CombinacoesPage = () => {
   const navigate = useNavigate();

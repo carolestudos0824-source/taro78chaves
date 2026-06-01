@@ -27,7 +27,7 @@ interface ProgressRow {
   completed_quizzes: string[];
   last_active: string;
   streak: number;
-  xp: number;
+  xp: number; // Mantido internamente como xp, mas exibido como Pontos
   level: number;
 }
 
@@ -38,7 +38,7 @@ interface AuthLite {
 }
 
 type StatusFilter = "all" | "premium" | "free" | "gift" | "expired" | "admin";
-type SortField = "created_at" | "last_active" | "xp" | "lessons";
+type SortField = "created_at" | "last_active" | "pontos" | "lessons";
 
 const AdminUsers = () => {
   const [profiles, setProfiles] = useState<ProfileRow[]>([]);
@@ -55,7 +55,7 @@ const AdminUsers = () => {
     setLoading(true);
     const [{ data: prof }, { data: prog }, { data: roles }] = await Promise.all([
       supabase.from("profiles").select("user_id, display_name, is_premium, premium_until, premium_source, created_at, updated_at").order("created_at", { ascending: false }),
-      supabase.from("user_progress").select("user_id, completed_lessons, completed_modules, completed_quizzes, last_active, streak, xp, level"),
+      supabase.from("user_progress").select("user_id, completed_lessons, completed_modules, completed_quizzes, last_active, streak, xp, level"), // Internamente o campo é xp
       supabase.from("user_roles").select("user_id, role").eq("role", "admin"),
     ]);
     setProfiles(prof || []);
@@ -123,7 +123,7 @@ const AdminUsers = () => {
       switch (sortBy) {
         case "last_active":
           return new Date(b.progress?.last_active || 0).getTime() - new Date(a.progress?.last_active || 0).getTime();
-        case "xp":
+        case "pontos":
           return (b.progress?.xp || 0) - (a.progress?.xp || 0);
         case "lessons":
           return (b.progress?.completed_lessons?.length || 0) - (a.progress?.completed_lessons?.length || 0);
@@ -188,7 +188,7 @@ const AdminUsers = () => {
           <SelectContent className="font-heading text-[11px] font-black tracking-widest uppercase">
             <SelectItem value="created_at">Cadastro Recente</SelectItem>
             <SelectItem value="last_active">Última Atividade</SelectItem>
-            <SelectItem value="xp">Pontuação</SelectItem>
+            <SelectItem value="pontos">Pontuação</SelectItem>
             <SelectItem value="lessons">Mais Lições</SelectItem>
           </SelectContent>
         </Select>

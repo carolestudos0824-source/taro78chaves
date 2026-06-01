@@ -5,7 +5,7 @@ interface HeaderState {
   subtitle?: string;
   backRoute?: string;
   rightElement?: ReactNode;
-  hideXP?: boolean;
+  hidePontos?: boolean;
   hideStreak?: boolean;
   hideHeader?: boolean;
 }
@@ -19,7 +19,7 @@ interface HeaderContextType {
 const defaultState: HeaderState = {
   title: "Tarô 78 Chaves",
   subtitle: "Formação 78 Arcanos",
-  hideXP: false,
+  hidePontos: false,
   hideStreak: false,
   hideHeader: false,
 };

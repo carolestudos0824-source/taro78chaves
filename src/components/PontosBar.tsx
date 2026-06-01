@@ -4,11 +4,11 @@ import { useRole } from "@/hooks/use-role";
 import { ARCANOS_MAIORES_CATALOG } from "@/lib/content";
 
 interface PontosBarProps {
-  xp: number;
+  pontos: number;
   level: number;
 }
 
-export function PontosBar({ xp, level }: PontosBarProps) {
+export function PontosBar({ pontos, level }: PontosBarProps) {
   const { progress } = useProgress();
   const { isStaff } = useRole();
   
@@ -88,7 +88,7 @@ export function PontosBar({ xp, level }: PontosBarProps) {
             <span className="text-[11px] font-heading font-black tracking-widest text-[#5B1F3D]/80 uppercase">
               {isStaff ? (
                 <span className="flex items-center gap-1">
-                  {currentKeyInfo.name} <span className="text-[8px] px-1.5 py-0.5 bg-[#C8A66A]/20 rounded text-[#8B6A30] font-black" title="Progresso local da sessão. Não será salvo permanentemente.">Modo Auditoria</span>
+                   {currentKeyInfo.name} <span className="text-[8px] px-1.5 py-0.5 bg-[#C8A66A]/20 rounded text-[#8B6A30] font-black" title="Progresso local da sessão. Não será salvo permanentemente.">Modo Auditoria</span>
                 </span>
               ) : currentKeyInfo.name}
             </span>
