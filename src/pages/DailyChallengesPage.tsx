@@ -563,7 +563,7 @@ const PerguntasContent = ({ data, onComplete }: { data: PerguntasDoDia; onComple
         ))}
       </div>
       {selected !== null && (
-        <div className="p-4 rounded-xl bg-[#5B1F3D]/5 border border-[#5B1F3D]/10 animate-fade-in">
+        <div className="p-4 rounded-xl bg-[#5B1F3D]/5 border border-[#5B1F3D]/10">
           <p className="font-body text-[12px] font-bold italic text-[#5B1F3D]/70 leading-relaxed">
             {q.explanation}
           </p>
