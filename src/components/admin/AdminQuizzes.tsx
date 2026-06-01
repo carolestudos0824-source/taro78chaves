@@ -710,7 +710,7 @@ const QuizEditor = ({
               </SelectContent>
             </Select>
           </Field>
-          <Field label="XP por acerto">
+          <Field label="Pontos por acerto">
             <Input
               type="number"
               value={draft.xp_reward}
