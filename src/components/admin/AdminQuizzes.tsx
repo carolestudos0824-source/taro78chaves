@@ -243,7 +243,7 @@ const AdminQuizzes = () => {
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <AdminSectionHeading 
           title="Quizzes & Desafios" 
-          subtitle="Editor pedagógico — criação e monitoramento de questões, recompensas de XP e desempenho real." 
+          subtitle="Editor pedagógico — criação e monitoramento de questões e desempenho real." 
         />
         <Button size="sm" className="gap-2 mt-4" onClick={() => setCreateOpen(true)}>
           <Plus className="w-4 h-4" /> Novo Quiz
