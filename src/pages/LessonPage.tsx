@@ -138,7 +138,7 @@ const LessonPage = () => {
           </div>
           <button 
             onClick={() => navigate("/module/arcanos-maiores")} 
-            className="w-full py-5 px-6 rounded-2xl font-heading text-[11px] tracking-[0.2em] uppercase transition-all shadow-xl hover:scale-105 active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A] font-black"
+            className="w-full h-auto py-5 px-4 rounded-2xl font-heading text-[11px] tracking-[0.1em] uppercase transition-all shadow-xl hover:scale-105 active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A] font-black leading-tight text-center"
           >
             Voltar à Jornada
           </button>
@@ -200,7 +200,7 @@ const LessonPage = () => {
             <PremiumGate 
               featureName={arcano.name}
               message={isPerformanceLocked 
-                ? "Desbloqueie O Mago acertando 80% ou mais no quiz do Louco."
+                ? "Para desbloquear O Mago, você precisa de uma nota mínima de 80% no Quiz do Louco. O Tarô é método e fundamento."
                 : "Conteúdo exclusivo para assinantes da Jornada Completa."
               }
             />
@@ -208,7 +208,7 @@ const LessonPage = () => {
           {isPerformanceLocked && (
             <button 
               onClick={() => navigate("/lesson/0")} 
-              className="w-full bg-[#5B1F3D] text-white py-6 rounded-2xl font-heading font-black text-xs tracking-[0.2em] uppercase border-2 border-[#C8A66A] shadow-xl transition-all hover:scale-105 active:scale-95"
+              className="w-full h-auto bg-[#5B1F3D] text-white py-5 px-4 rounded-2xl font-heading font-black text-xs tracking-[0.1em] uppercase border-2 border-[#C8A66A] shadow-xl transition-all hover:scale-105 active:scale-95 leading-tight text-center"
             >
               Refazer Quiz do Louco
             </button>
@@ -274,7 +274,7 @@ const LessonPage = () => {
             <DeepDiveSection {...arcano.layers.deepDive} />
             <button 
               onClick={() => setPhase("exercise")} 
-              className="w-full bg-[#5B1F3D] text-white py-6 rounded-2xl font-heading font-black text-xs tracking-[0.2em] uppercase border-2 border-[#C8A66A] shadow-xl transition-all hover:scale-105 active:scale-95"
+              className="w-full h-auto bg-[#5B1F3D] text-white py-5 px-4 rounded-2xl font-heading font-black text-xs tracking-[0.1em] uppercase border-2 border-[#C8A66A] shadow-xl transition-all hover:scale-105 active:scale-95 leading-tight text-center"
             >
               Continuar para Exercício
             </button>
@@ -290,7 +290,7 @@ const LessonPage = () => {
             />
             <button 
               onClick={() => setPhase("quiz")} 
-              className="w-full bg-[#5B1F3D] text-white py-6 rounded-2xl font-heading font-black text-xs tracking-[0.2em] uppercase border-2 border-[#C8A66A] shadow-xl transition-all hover:scale-105 active:scale-95"
+              className="w-full h-auto bg-[#5B1F3D] text-white py-5 px-4 rounded-2xl font-heading font-black text-xs tracking-[0.1em] uppercase border-2 border-[#C8A66A] shadow-xl transition-all hover:scale-105 active:scale-95 leading-tight text-center"
             >
               Iniciar Quiz Final
             </button>
