@@ -193,7 +193,7 @@ const DailyChallengesPage = () => {
             }}>
               <TarotIcon name="estrela" className="w-5 h-5" color="#C8A66A" />
               <span className="text-[14px] md:text-[16px] font-heading font-black text-[#5B1F3D]">
-                {totalXPEarned} XP
+                {totalXPEarned} Pontos
               </span>
             </div>
           </div>
