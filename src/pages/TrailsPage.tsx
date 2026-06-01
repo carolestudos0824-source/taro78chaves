@@ -130,10 +130,20 @@ const TrailsPage = () => {
       }} />
 
       <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-6 pb-8 box-border">
-        <div className="flex justify-end items-start mb-6">
-          <div className="flex -space-x-3 opacity-40">
-            <img src={imgLouco} alt="" className="w-8 h-12 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 -rotate-12 shadow-lg" />
-            <img src={imgMago} alt="" className="w-8 h-12 sm:w-12 sm:h-18 object-cover rounded-md border border-[#C8A66A]/30 rotate-12 shadow-lg" />
+        <div className="absolute top-0 right-0 w-full overflow-hidden h-32 sm:h-40 pointer-events-none z-0">
+          <div className="flex justify-end items-start pt-6 pr-6 -mr-4">
+            <div className="flex -space-x-8 sm:-space-x-12">
+              <img 
+                src={imgLouco} 
+                alt="" 
+                className="w-16 h-24 sm:w-24 sm:h-36 object-cover rounded-xl border-2 border-[#C8A66A]/40 -rotate-[15deg] shadow-[0_10px_30px_rgba(0,0,0,0.2)] opacity-80" 
+              />
+              <img 
+                src={imgMago} 
+                alt="" 
+                className="w-16 h-24 sm:w-24 sm:h-36 object-cover rounded-xl border-2 border-[#C8A66A]/40 rotate-[10deg] shadow-[0_10px_30px_rgba(0,0,0,0.2)] opacity-90 relative z-10" 
+              />
+            </div>
           </div>
         </div>
 
