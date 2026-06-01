@@ -69,8 +69,8 @@ const LessonPage = () => {
   const phases = getPhases();
   
   const [exerciseCompleted, setExerciseCompleted] = useState(false);
-  const [xpEarned, setXpEarned] = useState(0);
-  const [showXpReward, setShowXpReward] = useState(false);
+  const [pontosEarned, setPontosEarned] = useState(0);
+  const [showPontosReward, setShowPontosReward] = useState(false);
   const [showUnlockMoment, setShowUnlockMoment] = useState(false);
   const [lastQuizScore, setLastQuizScore] = useState(0);
   const [lastQuizTotal, setLastQuizTotal] = useState(0);
@@ -96,7 +96,7 @@ const LessonPage = () => {
         subtitle: `Arcano ${arcano.numeral} • Lição ${arcanoId + 1}`,
         backRoute: "/module/arcanos-maiores",
         rightElement: <PhaseIndicator phases={phases} currentIndex={phases.indexOf(phase)} />,
-        hideXP: true
+        hidePontos: true
       });
     }
     return () => resetHeader();
@@ -135,18 +135,18 @@ const LessonPage = () => {
 
   const handleStartLesson = () => {
     addXP(10);
-    setXpEarned(10);
-    setShowXpReward(true);
-    setTimeout(() => setShowXpReward(false), 2000);
+    setPontosEarned(10);
+    setShowPontosReward(true);
+    setTimeout(() => setShowPontosReward(false), 2000);
     earnBadge("first-step");
     setPhase("lesson");
     window.scrollTo(0, 0);
   };
 
   const handleQuizComplete = (score: number, total: number) => {
-    const quizXp = score * 10;
-    addXP(quizXp);
-    setXpEarned(e => e + quizXp);
+    const quizPontos = score * 10;
+    addXP(quizPontos);
+    setPontosEarned(e => e + quizPontos);
     completeQuiz(`quiz-arcano-${arcano.id}`, score, total);
     completeLesson(`arcano-${arcano.id}`);
     if (arcano.id === 0) {
@@ -294,7 +294,7 @@ const LessonPage = () => {
           <CompletionScreen
             arcanoName={arcano.name}
             arcanoId={arcanoId}
-            xpEarned={xpEarned}
+            pontosEarned={pontosEarned}
             quizScore={lastQuizScore}
             quizTotal={lastQuizTotal}
             nextArcano={nextArcano ? { id: nextArcano.id, name: nextArcano.name, numeral: nextArcano.numeral, subtitle: nextArcano.subtitle } : undefined}
@@ -312,9 +312,9 @@ const LessonPage = () => {
         )}
       </main>
 
-      {showXpReward && (
+      {showPontosReward && (
         <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[100]">
-          <XPRewardMotion xp={10} arcanoId={arcanoId} />
+          <XPRewardMotion pontos={10} arcanoId={arcanoId} />
         </div>
       )}
 
