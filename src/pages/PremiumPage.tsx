@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 const PREMIUM_BENEFITS = [
   { icon: "jornada", title: "78 arcanos guiados", desc: "Abra todas as portas do deck completo." },
   { icon: "formacao", title: "Jornada progressiva", desc: "A trilha mística para o domínio real." },
-  { icon: "quiz", title: "Quizzes e XP", desc: "Teste seu olhar e conquiste energia." },
+  { icon: "quiz", title: "Quizzes", desc: "Teste seu olhar e integre a sabedoria." },
   { icon: "mago", title: "Práticas guiadas", desc: "Rituais de leitura para o cotidiano." },
   { icon: "concluido", title: "Progresso salvo", desc: "Suas chaves sempre com você." },
   { icon: "Stars", title: "Arcanos Vivos", desc: "A essência profunda de cada símbolo." },
