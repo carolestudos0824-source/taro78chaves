@@ -163,8 +163,8 @@ const AppShell = () => {
         xp={progress.xp} 
         level={progress.level} 
       />
-      <main className="flex-1 pb-24 relative">
-        <Suspense fallback={null}>
+      <main className="flex-1 pb-24 relative min-h-[60vh]">
+        <Suspense fallback={<LoadingFallback />}>
           <Outlet />
         </Suspense>
       </main>
