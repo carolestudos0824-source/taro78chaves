@@ -179,7 +179,7 @@ const DashboardPage = () => {
             </div>
             <div className="flex justify-between text-[10px] font-heading font-black text-[#5B1F3D]/40 uppercase tracking-widest px-1">
               <span>{totalCompletedArcanos} Chaves</span>
-              <span>78 Chaves Total</span>
+              <span>78 Chaves da Jornada</span>
             </div>
           </div>
 
