@@ -123,7 +123,7 @@ const PremiumPage = () => {
         )}
 
         {isPremium && !isStaff ? (
-          <div className="space-y-8 animate-fade-in">
+          <div className="space-y-8">
             <div className="bg-white border-4 border-emerald-500/30 p-8 rounded-[2.5rem] flex flex-col items-center text-center space-y-6 shadow-2xl relative overflow-hidden ring-8 ring-emerald-500/5">
               <div className="absolute top-0 right-0 bg-emerald-500 px-6 py-2.5 rounded-bl-3xl text-[10px] font-heading font-black tracking-widest text-white uppercase shadow-md">
                 Acesso Ativo
