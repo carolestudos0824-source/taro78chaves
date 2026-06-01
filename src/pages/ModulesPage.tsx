@@ -196,10 +196,10 @@ const ModulesPage = () => {
           )}
 
           {/* 1. Meu Painel Diário */}
-          <div className="relative rounded-[2.5rem] overflow-hidden p-6 md:p-10 transition-all duration-500 w-full" style={{
+          <div className="relative rounded-[2rem] min-[400px]:rounded-[2.5rem] overflow-hidden p-5 min-[400px]:p-6 md:p-10 transition-all duration-500 w-full" style={{
             background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
             backdropFilter: "blur(24px)",
-            border: "2.5px solid #C8A66A",
+            border: "2px min-[400px]:border-[2.5px] solid #C8A66A",
             boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08), 0 0 40px rgba(200, 166, 106, 0.1)"
           }}>
             <div className="flex flex-row items-center justify-between gap-4 mb-6">
