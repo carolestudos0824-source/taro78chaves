@@ -457,7 +457,7 @@ const RevisaoRapidaContent = ({ data, onComplete }: { data: CartaDoDia | null; o
           Revelar essência
         </button>
       ) : (
-        <div className="text-left space-y-6 animate-fade-in">
+        <div className="text-left space-y-6">
           <p className="font-body text-[14px] leading-relaxed font-bold text-[#5B1F3D]/80">
             {data.essence}
           </p>
