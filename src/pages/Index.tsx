@@ -28,11 +28,10 @@ const Index = () => {
     }
   }, [progressLoading, updateStreak]);
 
-  // Note: progressLoading is handled at a higher level via ProtectedRoute for authenticated users
-  // to avoid flickering during navigation. We only check it here as a safety measure.
-  if (progressLoading && !progress.xp) {
-    return null;
-  }
+  // Note: progressLoading is handled via ProtectedRoute and Suspense
+  // if (progressLoading && !progress.xp) {
+  //   return null;
+  // }
 
   const currentArcanoId = getCurrentArcanoId();
   const currentArcano = ARCANOS_MAIORES.find(a => a.id === currentArcanoId);
