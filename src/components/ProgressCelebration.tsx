@@ -50,12 +50,12 @@ const ICONS = {
   award: Award,
 };
 
-const ProgressCelebration = ({ xp, level, streak, completedLessons }: ProgressCelebrationProps) => {
+const ProgressCelebration = ({ pontos, level, streak, completedLessons }: ProgressCelebrationProps) => {
   const [celebration, setCelebration] = useState<Celebration | null>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const c = detectCelebration(xp, level, streak, completedLessons);
+    const c = detectCelebration(pontos, level, streak, completedLessons);
     if (!c) return;
 
     const lastShown = localStorage.getItem(CELEBRATION_KEY);
@@ -67,7 +67,7 @@ const ProgressCelebration = ({ xp, level, streak, completedLessons }: ProgressCe
 
     const timer = setTimeout(() => setVisible(false), 4500);
     return () => clearTimeout(timer);
-  }, [xp, level, streak, completedLessons]);
+  }, [pontos, level, streak, completedLessons]);
 
   if (!celebration || !visible) return null;
 
