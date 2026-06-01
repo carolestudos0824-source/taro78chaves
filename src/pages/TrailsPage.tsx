@@ -132,27 +132,27 @@ const TrailsPage = () => {
       {/* Cartas Decorativas do Topo — Elemento Premium Estruturado */}
       <div className="absolute top-0 right-0 w-full max-w-[1600px] left-1/2 -translate-x-1/2 h-[400px] pointer-events-none overflow-hidden select-none z-0">
         {/* Brilho de fundo (Glow) para as cartas */}
-        <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[60%] bg-[radial-gradient(circle,rgba(200,166,106,0.15)_0%,transparent_70%)] blur-3xl opacity-60 sm:opacity-100 transition-opacity duration-1000" />
+        <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[60%] bg-[radial-gradient(circle,rgba(200,166,106,0.2)_0%,transparent_70%)] blur-3xl opacity-40 sm:opacity-100 transition-opacity duration-1000" />
         
-        <div className="absolute top-6 sm:top-16 right-4 sm:right-[5%] md:right-[8%] lg:right-[12%] flex items-center justify-center">
+        <div className="absolute top-4 sm:top-16 right-2 min-[400px]:right-4 sm:right-[5%] md:right-[8%] lg:right-[10%] flex items-center justify-center">
           <div className="relative flex items-center justify-center transition-all duration-1000 ease-out">
             {/* O Louco (Fundo) */}
-            <div className="relative transform -rotate-[12deg] -translate-x-8 sm:-translate-x-12 translate-y-2 sm:translate-y-4 scale-[0.45] sm:scale-100 transition-all duration-700 hover:rotate-[-8deg] hover:-translate-y-2">
+            <div className="relative transform -rotate-[15deg] -translate-x-6 sm:-translate-x-12 translate-y-1 sm:translate-y-4 scale-[0.35] min-[400px]:scale-[0.4] sm:scale-100 transition-all duration-700">
               <div className="absolute inset-0 bg-[#C8A66A]/20 blur-xl rounded-xl opacity-0 sm:opacity-40" />
               <img 
                 src={imgLouco} 
                 alt="" 
-                className="w-24 h-36 sm:w-32 sm:h-48 md:w-40 md:h-60 object-cover rounded-xl border-[1.5px] border-[#C8A66A]/40 shadow-[0_15px_35px_rgba(0,0,0,0.3),0_0_20px_rgba(200,166,106,0.1)] ring-1 ring-white/10" 
+                className="w-24 h-36 sm:w-32 sm:h-48 md:w-40 md:h-60 object-cover rounded-xl border-[1.5px] border-[#C8A66A]/30 shadow-[0_15px_35px_rgba(0,0,0,0.3)] ring-1 ring-white/10 opacity-40 sm:opacity-100" 
               />
             </div>
             
             {/* O Mago (Frente) */}
-            <div className="relative transform rotate-[8deg] scale-[0.5] sm:scale-[1.1] transition-all duration-700 hover:rotate-[12deg] hover:-translate-y-2 z-10">
+            <div className="relative transform rotate-[10deg] scale-[0.4] min-[400px]:scale-[0.45] sm:scale-[1.1] transition-all duration-700 z-10">
               <div className="absolute inset-0 bg-[#C8A66A]/30 blur-2xl rounded-xl opacity-0 sm:opacity-50" />
               <img 
                 src={imgMago} 
                 alt="" 
-                className="w-24 h-36 sm:w-32 sm:h-48 md:w-40 md:h-60 object-cover rounded-xl border-[2px] border-[#C8A66A]/60 shadow-[0_25px_50px_rgba(0,0,0,0.4),0_0_30px_rgba(200,166,106,0.2)] ring-1 ring-white/20" 
+                className="w-24 h-36 sm:w-32 sm:h-48 md:w-40 md:h-60 object-cover rounded-xl border-[2px] border-[#C8A66A]/50 shadow-[0_25px_50px_rgba(0,0,0,0.4)] ring-1 ring-white/20 opacity-60 sm:opacity-100" 
               />
             </div>
           </div>
@@ -160,7 +160,7 @@ const TrailsPage = () => {
       </div>
 
       <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-16 sm:pt-24 pb-8 box-border flex flex-col items-center">
-        <div className="text-center relative z-10 w-full mt-10 sm:mt-12">
+        <div className="text-center relative z-10 w-full mt-8 sm:mt-12">
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-[#C8A66A]/20">
             <TarotIcon name="formacao" className="w-10 h-10" />
           </div>
