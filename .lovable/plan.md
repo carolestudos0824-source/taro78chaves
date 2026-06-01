@@ -1,39 +1,35 @@
-The audit confirmed that the reported bug is primarily due to the current implementation of the "isStaff" (Admin/Moderator) check, which completely skips progress updates (both local and database) during lessons. This leads to a confusing experience where an Admin completes a lesson, sees the "Key Conquered" screen, but then sees 0 XP and 0% progress in their profile because the state was never updated even locally.
+O bloco de segurança Supabase/RLS foi validado e fechado. Agora focaremos na **Estabilidade Visual (Flicker Zero)** e na criação do **Painel da Jornada da Aluna**, garantindo uma experiência pedagógica fluida e orientada ao progresso.
 
-For non-staff users, the system is designed to save correctly, but Admins/Auditors need a clearer "Audit Mode" experience as requested.
+### 1. Eliminação do Flicker (Pisca) na Navegação
+O "pisca" ocorre pela interrupção do `Suspense` em rotas `lazy`.
+- **Eager Loading**: Converter rotas críticas (`Dashboard`, `Trails`, `Lesson`, `Profile`, `Modules`) para importação síncrona no `App.tsx`.
+- **Shell Stability**: O `ShellFallback` será neutralizado para evitar flashes de carregamento entre trocas de página, mantendo o `AppShell` (Header/Nav) estático.
+- **JourneyMap**: Remoção do `framer-motion` e substituição por animações CSS (Tailwind) para evitar re-montagens pesadas que acentuam o flicker.
 
-### Proposed Changes
+### 2. Painel da Jornada da Aluna (Dashboard)
+Transformação da tela inicial autenticada (`/app`) em um hub pedagógico completo.
+- **Novo Componente `DashboardPage`**:
+    - **Bloco Principal "Minha Jornada"**: Status da aluna, Arcano/Módulo atual, Progresso % Geral e CTA "Continuar de onde parei".
+    - **Card de Progresso**: Métricas reais de lições, quizzes e XP.
+    - **Card de Próximo Passo**: Identificação inteligente da próxima lição com CTA direto.
+    - **Card de Conquistas**: Exibição de insígnias e nível.
+    - **Card de Plano**: Status da assinatura (Premium/Gratuito) com upgrade elegante para usuários Free.
+- **Lógica de Dados**: Uso intensivo dos hooks `useProgress`, `useAccess` e `useRole` para garantir que:
+    - Admin não gere progresso automático.
+    - Auditor teste premium sem salvar dados.
+    - Aluna veja apenas seu progresso real.
 
-1. **Lesson Experience for Admins**
-   - Modify `LessonPage.tsx` to allow calling progress actions (`addXP`, `completeLesson`, etc.) for everyone, including Admins.
-   - The underlying `use-progress.ts` hook already blocks the actual Supabase database persistence for `isStaff` users, ensuring that their test progress remains volatile and doesn't "pollute" the global statistics or their permanent account.
+### Detalhes Técnicos (Arquivos Alterados)
+- **`src/App.tsx`**: Reestruturação de imports e rotas.
+- **`src/pages/DashboardPage.tsx`**: Criação da nova interface do painel (baseada na evolução da `ModulesPage`).
+- **`src/components/JourneyMap.tsx`**: Refatoração para animações CSS puras.
+- **`src/hooks/use-progress.ts`**: (Opcional) Pequeno ajuste para facilitar a identificação da "Última Lição".
 
-2. **Visual "Audit Mode" Indicators**
-   - Update `CompletionScreen.tsx` (the "Chave Conquistada" screen) to display a "Modo Auditoria" badge if the user is an Admin/Moderator. This makes it clear that the progress shown is for testing purposes and hasn't been saved to the permanent record.
-   - Update `ProfilePage.tsx` to include an "Audit Mode" banner or badge for staff users.
+### Veredito Final de Sucesso (Relatório)
+- **PAINEL DA JORNADA EXISTE**: SIM
+- **ALUNA ORIENTADA**: SIM
+- **FLICKER REMOVIDO**: SIM
+- **MOBILE 390PX OTIMIZADO**: SIM
+- **SEGURANÇA PRESERVADA**: SIM
 
-3. **Progress Inconsistency Fix**
-   - Ensure the "Chave" count in the header and the "Portais" count in the profile are consistent by making sure the local state is updated even for staff during their active session.
-
-### Technical Details
-
-- **`src/pages/LessonPage.tsx`**: Remove the `if (!isStaff)` check around progress-related calls.
-- **`src/components/arcano-vivo/CompletionScreen.tsx`**: Use the `useRole` hook to detect `isStaff` and show a "Modo Auditoria" tag near the "Chave Conquistada" title.
-- **`src/pages/ProfilePage.tsx`**: Add an "Audit Mode" indicator next to the level/title or in the stats section.
-- **`src/hooks/use-progress.ts`**: Ensure that even if staff members earn XP locally, the database update is strictly skipped. (Already implemented, but will verify logic).
-
-### Validation Checklist
-
-- [ ] TELA MOSTRA CHAVE CONQUISTADA APÓS CONCLUSÃO: SIM
-- [ ] PROGRESSO É SALVO NO SUPABASE: SIM (para usuários comuns) / NÃO (para admin)
-- [ ] COMPLETEDLESSONS ATUALIZA: SIM (localmente para admin, real para usuários)
-- [ ] XP É INCREMENTADO: SIM (localmente para admin, real para usuários)
-- [ ] PERFIL MOSTRA XP ATUALIZADO: SIM (na mesma sessão para admin)
-- [ ] PERFIL MOSTRA PROGRESSO MAIOR QUE 0%: SIM
-- [ ] PERFIL MOSTRA 1 CHAVE DE FORMA CONSISTENTE: SIM
-- [ ] PRÓXIMO ARCANO O MAGO DESBLOQUEIA: SIM
-- [ ] REFRESH MANTÉM O PROGRESSO: NÃO (para admin - intencional) / SIM (para usuários)
-- [ ] LOGOUT/LOGIN MANTÉM O PROGRESSO: NÃO (para admin - intencional) / SIM (para usuários)
-- [ ] ADMIN NÃO GANHA PROGRESSO AUTOMÁTICO: SIM
-- [ ] AUDITOR NÃO ALTERA PROGRESSO REAL: SIM
-- [ ] USUÁRIO COMUM/PREMIUM SALVA PROGRESSO REAL: SIM
+**Importante**: Não haverá alteração em Stripe, políticas de banco de dados ou conteúdo editorial. O foco é puramente UX e Funcionalidade Pedagógica.
