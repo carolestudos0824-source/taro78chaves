@@ -212,7 +212,7 @@ const ModulesPage = () => {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Tarô 78 Chaves</span>
-                  <span className="text-lg font-heading font-black text-[#5B1F3D]">Meu Painel Diário</span>
+                  <span className="text-base min-[400px]:text-lg font-heading font-black text-[#5B1F3D]">Meu Painel Diário</span>
                 </div>
               </div>
               <div className="text-right">
@@ -233,8 +233,8 @@ const ModulesPage = () => {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#C8A66A] uppercase leading-none mb-1">Agora Estudando</span>
-                  <span className="text-sm md:text-base font-heading font-black text-[#5B1F3D] leading-tight">
-                    {arcanoGuia.name} <span className="text-[#5B1F3D]/40 ml-1 block md:inline text-[9px] md:text-sm">· Arcano {arcanoGuia.index} de 78</span>
+                  <span className="text-xs min-[400px]:text-sm md:text-base font-heading font-black text-[#5B1F3D] leading-tight">
+                    {arcanoGuia.name} <span className="text-[#5B1F3D]/40 ml-1 block min-[400px]:inline text-[9px] md:text-sm">· Arcano {arcanoGuia.index} de 78</span>
                   </span>
                 </div>
               </div>
@@ -308,7 +308,7 @@ const ModulesPage = () => {
                       navigate("/trilhas");
                     }
                   }}
-                  className="block w-full py-4 md:py-5 bg-[#C8A66A] hover:bg-[#C8A66A]/90 text-[#5B1F3D] rounded-2xl font-heading text-[11px] md:text-[12px] font-black tracking-[0.2em] md:tracking-[0.3em] uppercase transition-all shadow-xl hover:scale-[1.02] active:scale-[0.95]"
+                  className="block w-full py-4 md:py-5 bg-[#C8A66A] hover:bg-[#C8A66A]/90 text-[#5B1F3D] rounded-2xl font-heading text-[11px] md:text-[12px] font-black tracking-[0.15em] md:tracking-[0.3em] uppercase transition-all shadow-xl hover:scale-[1.02] active:scale-[0.95] h-auto whitespace-normal leading-tight"
                 >
                   INICIAR {arcanoGuia.name.toUpperCase()}
                 </button>
