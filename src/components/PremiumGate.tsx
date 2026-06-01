@@ -113,14 +113,14 @@ const PremiumGate = ({
         ))}
       </div>
 
-      <div className="pt-2">
+      <div className="pt-2 flex flex-col items-center w-full">
         <Button
           onClick={() => navigate("/premium")}
-          className="w-full h-auto py-5 px-4 bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.1em] shadow-xl border-2 border-[#C8A66A] leading-tight text-center"
+          className="w-full h-auto py-5 px-4 bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.1em] shadow-xl border-2 border-[#C8A66A] leading-tight text-center whitespace-normal break-words"
         >
           CONTINUAR JORNADA
         </Button>
-        <p className="text-[10px] font-heading tracking-widest uppercase text-[#5B1F3D]/60 mt-5 font-black">
+        <p className="text-[10px] font-heading tracking-widest uppercase text-[#5B1F3D]/60 mt-5 font-black text-center w-full">
           Receba todas as chaves da sua travessia
         </p>
       </div>
