@@ -94,7 +94,7 @@ const ProfilePage = () => {
               {LEVEL_TITLES[progress.level] || "Iluminado"}
             </h1>
             <p className="font-accent italic font-bold text-[#5B1F3D]/80 text-sm">
-              Nível {progress.level} • {progress.xp} XP conquistados
+              Nível {progress.level} • {journeyProgress}% da travessia concluída
             </p>
             {isStaff && (
               <div className="mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#5B1F3D]/10 border border-[#C8A66A]/30 text-[#5B1F3D] animate-pulse">
