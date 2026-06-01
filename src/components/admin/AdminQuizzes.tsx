@@ -61,7 +61,7 @@ const QUEUE_TONE: Record<QuizQueue, string> = {
 function classifyQuiz(q: QuizRow, validCount: number, missingExplanations = 0): { queue: QuizQueue; blockers: string[] } {
   const blockers: string[] = [];
   if (!q.linked_to) blockers.push("sem vínculo");
-  if (q.xp_reward <= 0) blockers.push("XP inválido");
+  if (q.xp_reward <= 0) blockers.push("Pontos inválidos");
   if (validCount === 0) blockers.push("sem perguntas válidas");
   else if (validCount < 3) blockers.push(`apenas ${validCount} pergunta(s) válida(s)`);
   if (validCount >= 3 && missingExplanations > 0) blockers.push(`${missingExplanations} sem explicação`);
