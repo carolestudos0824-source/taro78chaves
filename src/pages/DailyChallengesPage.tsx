@@ -291,7 +291,7 @@ const DailyChallengesPage = () => {
 
         {/* Streak encouragement */}
         {allDone && (
-          <div className="text-center py-10 animate-fade-in">
+          <div className="text-center py-10">
             <div className="w-16 h-16 rounded-3xl flex items-center justify-center border-2 border-[#C8A66A] shadow-xl mx-auto mb-6 transform rotate-3" style={{
               background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
             }}>
