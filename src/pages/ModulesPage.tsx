@@ -212,7 +212,7 @@ const ModulesPage = () => {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Tarô 78 Chaves</span>
-                  <span className="text-sm min-[380px]:text-base min-[400px]:text-lg font-heading font-black text-[#5B1F3D]">Meu Painel Diário</span>
+                  <h1 className="text-base min-[380px]:text-lg min-[400px]:text-xl font-heading font-black text-[#5B1F3D] leading-tight">Meu Painel Diário</h1>
                 </div>
               </div>
               <div className="text-right">
@@ -262,7 +262,7 @@ const ModulesPage = () => {
             </div>
             
             <div className="mt-6 flex flex-col gap-4">
-              <p className="text-[14px] font-body font-black text-[#5B1F3D]/70 italic text-center leading-relaxed">
+              <p className="text-xs min-[400px]:text-sm font-body font-black text-[#5B1F3D]/70 italic text-center leading-relaxed px-2">
                 Você já domina {totalCompletedArcanos} das 78 chaves do tarô ({globalProgressPct}%).
               </p>
               <button
