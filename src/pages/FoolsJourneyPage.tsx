@@ -118,7 +118,7 @@ const FoolsJourneyPage = () => {
         </section>
 
         {/* Introduction Editorial Card */}
-        <section className="mb-14" style={{ animation: "fade-up 0.6s ease-out" }}>
+        <section className="mb-14">
           <div className="relative rounded-[2rem] p-8 md:p-10 shadow-2xl overflow-hidden" style={{
             background: "#FAF5EF",
             border: "2px solid rgba(200, 166, 106, 0.4)",
