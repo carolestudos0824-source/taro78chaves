@@ -200,7 +200,7 @@ const LessonPage = () => {
             <PremiumGate 
               featureName={arcano.name}
               message={isPerformanceLocked 
-                ? "Desbloqueie O Mago acertando 80% ou mais no quiz do Louco."
+                ? "Para desbloquear O Mago, você precisa de uma nota mínima de 80% no Quiz do Louco. O Tarô é método e fundamento."
                 : "Conteúdo exclusivo para assinantes da Jornada Completa."
               }
             />
