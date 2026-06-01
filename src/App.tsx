@@ -18,11 +18,10 @@ import ConsentBanner from "@/components/ConsentBanner";
 import { trackPageView, useUTMTracker } from "@/lib/analytics";
 import { useProgress } from "@/hooks/use-progress";
 
-// Eager: critical path
+// Eager: critical path (Zero Flicker)
 import LandingPage from "./pages/LandingPage.tsx";
 import AuthPage from "./pages/AuthPage.tsx";
-import ModulesPage from "./pages/ModulesPage.tsx";
-import CertificateVisualModel from "./pages/CertificateVisualModel.tsx";
+import DashboardPage from "./pages/DashboardPage.tsx"; // Will be created
 import Index from "./pages/Index.tsx";
 import LessonPage from "./pages/LessonPage.tsx";
 import PremiumPage from "./pages/PremiumPage.tsx";
@@ -31,18 +30,16 @@ import FoolsJourneyPage from "./pages/FoolsJourneyPage.tsx";
 import TrailsPage from "./pages/TrailsPage.tsx";
 import DailyChallengesPage from "./pages/DailyChallengesPage.tsx";
 
-// Lazy: everything else
+// Lazy: non-critical or secondary paths
 const AdminPage = lazy(() => import("./pages/AdminPage.tsx"));
 const FundamentosPage = lazy(() => import("./pages/FundamentosPage.tsx"));
 const FundamentosLessonPage = lazy(() => import("./pages/FundamentosLessonPage.tsx"));
-
 const BetaInvitePage = lazy(() => import("./pages/BetaInvitePage.tsx"));
-
 const AcessoComprado = lazy(() => import("./pages/AcessoComprado.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 const JourneyJournalPage = lazy(() => import("./pages/JourneyJournalPage.tsx"));
 
-// Module pages
+// Module pages (Secondary)
 const NaipePage = lazy(() => import("./pages/NaipePage.tsx"));
 const NaipeIntroPage = lazy(() => import("./pages/NaipeIntroPage.tsx"));
 const ArcanoMenorLessonPage = lazy(() => import("./pages/ArcanoMenorLessonPage.tsx"));
@@ -54,8 +51,6 @@ const AmorPage = lazy(() => import("./pages/AmorPage.tsx"));
 const AmorLessonPage = lazy(() => import("./pages/AmorLessonPage.tsx"));
 const PraticaPage = lazy(() => import("./pages/PraticaPage.tsx"));
 const PraticaLessonPage = lazy(() => import("./pages/PraticaLessonPage.tsx"));
-
-// New generic modules
 const LeituraSimbolicaPage = lazy(() => import("./pages/LeituraSimbolicaPage.tsx"));
 const LeituraSimbolicaLessonPage = lazy(() => import("./pages/LeituraSimbolicaLessonPage.tsx"));
 const ArquiteturaMenoresPage = lazy(() => import("./pages/ArquiteturaMenoresPage.tsx"));
@@ -78,57 +73,51 @@ const CartasCortePage = lazy(() => import("./pages/CartasCortePage.tsx"));
 const NumerologiaPage = lazy(() => import("./pages/NumerologiaPage.tsx"));
 const PresentationPage = lazy(() => import("./pages/PresentationPage.tsx"));
 const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage.tsx"));
-
-// Legal / compliance pages
 const PrivacyPage = lazy(() => import("./pages/legal/PrivacyPage.tsx"));
 const TermsPage = lazy(() => import("./pages/legal/TermsPage.tsx"));
 import SupportPage from "./pages/legal/OfficialSupport.tsx";
 const DeleteAccountPage = lazy(() => import("./pages/legal/DeleteAccountPage.tsx"));
 const ValidateCertificatePage = lazy(() => import("./pages/ValidateCertificatePage.tsx"));
+const CertificateVisualModel = lazy(() => import("./pages/CertificateVisualModel.tsx"));
 
-
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const LoadingFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF] relative overflow-hidden">
     <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-      <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-gold blur-[120px]" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold blur-[120px]" />
+      <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-[#C8A66A] blur-[120px]" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-[#C8A66A] blur-[120px]" />
     </div>
-
-    <div className="text-center space-y-6 relative z-10 animate-in fade-in duration-300">
-      <div className="relative">
-        <div className="w-12 h-12 rounded-full border-2 border-gold/20 border-t-gold animate-spin mx-auto" />
-      </div>
+    <div className="text-center space-y-6 relative z-10">
+      <div className="w-12 h-12 rounded-full border-2 border-[#C8A66A]/20 border-t-[#C8A66A] animate-spin mx-auto" />
       <div className="space-y-2">
-        <p className="text-[10px] text-plum/80 font-heading tracking-[0.3em] uppercase">Tarô 78 Chaves</p>
-        <p className="text-[11px] text-plum/60 font-body italic">Preparando sua jornada...</p>
+        <p className="text-[10px] text-[#5B1F3D]/80 font-heading tracking-[0.3em] uppercase">Tarô 78 Chaves</p>
+        <p className="text-[11px] text-[#5B1F3D]/60 font-body italic">Iniciando sua travessia...</p>
       </div>
     </div>
   </div>
 );
 
 const ShellFallback = () => (
-  <div className="w-full flex-1 flex flex-col items-center justify-center bg-[#FAF5EF] p-12 min-h-[400px] animate-in fade-in duration-300">
-    <div className="w-8 h-8 rounded-full border-2 border-[#C8A66A]/20 border-t-[#C8A66A] animate-spin" />
-    <p className="mt-4 text-[10px] text-[#5B1F3D]/60 font-heading tracking-widest uppercase animate-pulse">Carregando Chave...</p>
+  <div className="w-full flex-1 flex flex-col items-center justify-center bg-transparent min-h-[40vh]">
+    {/* Neutral fallback to prevent visual jumps in the main shell */}
   </div>
 );
-
-const MinimalLoader = () => null;
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading: authLoading } = useAuth();
   const { loading: roleLoading } = useRole();
   const { loading: premiumLoading } = usePremium();
   
-  // Only show full loader on initial boot when we don't even know if we have a user
   if (authLoading && !user) return <LoadingFallback />;
-  
-  // If we have no user and auth is not loading anymore, redirect
   if (!authLoading && !user) return <Navigate to="/" replace />;
-  
-  // If we have a user but are still loading role/premium, we wait once.
   if ((roleLoading || premiumLoading) && !user) return <LoadingFallback />;
   
   return (
@@ -149,15 +138,9 @@ const PublicOnlyRoute = ({ children }: { children: React.ReactNode }) => {
 const AnalyticsTracker = () => {
   const location = useLocation();
   useUTMTracker();
-
-  useEffect(() => {
-    // initGA is now handled by ConsentBanner
-  }, []);
-
   useEffect(() => {
     trackPageView(location.pathname + location.search);
   }, [location]);
-
   return null;
 };
 
@@ -170,7 +153,7 @@ const AppShell = () => {
         xp={progress.xp} 
         level={progress.level} 
       />
-      <main className="flex-1 pb-24 relative min-h-[60vh]">
+      <main className="flex-1 pb-24 relative">
         <Suspense fallback={<ShellFallback />}>
           <Outlet />
         </Suspense>
@@ -186,25 +169,23 @@ const AppRoutes = () => {
       <AnalyticsTracker />
       <ConsentBanner />
       <Routes>
-        {/* Rotas Públicas */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/venda" element={<LandingPage isSalesPage={true} />} />
-        <Route path="/acesso-comprado" element={<AcessoComprado />} />
+        <Route path="/acesso-comprado" element={<Suspense fallback={<LoadingFallback />}><AcessoComprado /></Suspense>} />
         <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
-        <Route path="/reset-password" element={<ResetPasswordPage />} />
-        <Route path="/privacidade" element={<PrivacyPage />} />
-        <Route path="/termos" element={<TermsPage />} />
+        <Route path="/reset-password" element={<Suspense fallback={<LoadingFallback />}><ResetPasswordPage /></Suspense>} />
+        <Route path="/privacidade" element={<Suspense fallback={<LoadingFallback />}><PrivacyPage /></Suspense>} />
+        <Route path="/termos" element={<Suspense fallback={<LoadingFallback />}><TermsPage /></Suspense>} />
         <Route path="/suporte" element={<SupportPage />} />
         <Route path="/feedback" element={<Navigate to="/suporte" replace />} />
-        <Route path="/excluir-conta" element={<DeleteAccountPage />} />
-        <Route path="/apresentacao" element={<PresentationPage />} />
-        <Route path="/validar-certificado" element={<ValidateCertificatePage />} />
-        <Route path="/visual-certificado" element={<CertificateVisualModel />} />
+        <Route path="/excluir-conta" element={<Suspense fallback={<LoadingFallback />}><DeleteAccountPage /></Suspense>} />
+        <Route path="/apresentacao" element={<Suspense fallback={<LoadingFallback />}><PresentationPage /></Suspense>} />
+        <Route path="/validar-certificado" element={<Suspense fallback={<LoadingFallback />}><ValidateCertificatePage /></Suspense>} />
+        <Route path="/visual-certificado" element={<Suspense fallback={<LoadingFallback />}><CertificateVisualModel /></Suspense>} />
         <Route path="/certificado-visual" element={<Navigate to="/visual-certificado" replace />} />
 
-        {/* Rotas Protegidas dentro do AppShell */}
         <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
-          <Route path="/app" element={<ModulesPage />} />
+          <Route path="/app" element={<DashboardPage />} />
           <Route path="/trilhas" element={<TrailsPage />} />
           <Route path="/desafios" element={<DailyChallengesPage />} />
           <Route path="/premium" element={<PremiumPage />} />
@@ -213,47 +194,47 @@ const AppRoutes = () => {
           <Route path="/lesson/:id" element={<LessonPage />} />
           <Route path="/module/:moduleSlug" element={<Index />} />
           
-          <Route path="/module/fundamentos" element={<FundamentosPage />} />
-          <Route path="/fundamentos/:order" element={<FundamentosLessonPage />} />
-          <Route path="/module/copas" element={<NaipePage />} />
-          <Route path="/module/paus" element={<NaipePage />} />
-          <Route path="/module/espadas" element={<NaipePage />} />
-          <Route path="/module/ouros" element={<NaipePage />} />
-          <Route path="/naipe/:naipe/intro" element={<NaipeIntroPage />} />
-          <Route path="/module/cartas-corte" element={<CartasCortePage />} />
+          <Route path="/module/fundamentos" element={<Suspense fallback={<ShellFallback />}><FundamentosPage /></Suspense>} />
+          <Route path="/fundamentos/:order" element={<Suspense fallback={<ShellFallback />}><FundamentosLessonPage /></Suspense>} />
+          <Route path="/module/copas" element={<Suspense fallback={<ShellFallback />}><NaipePage /></Suspense>} />
+          <Route path="/module/paus" element={<Suspense fallback={<ShellFallback />}><NaipePage /></Suspense>} />
+          <Route path="/module/espadas" element={<Suspense fallback={<ShellFallback />}><NaipePage /></Suspense>} />
+          <Route path="/module/ouros" element={<Suspense fallback={<ShellFallback />}><NaipePage /></Suspense>} />
+          <Route path="/naipe/:naipe/intro" element={<Suspense fallback={<ShellFallback />}><NaipeIntroPage /></Suspense>} />
+          <Route path="/module/cartas-corte" element={<Suspense fallback={<ShellFallback />}><CartasCortePage /></Suspense>} />
           <Route path="/cartas-corte" element={<Navigate to="/module/cartas-corte" replace />} />
-          <Route path="/numerologia" element={<NumerologiaPage />} />
-          <Route path="/arcano-menor/:id" element={<ArcanoMenorLessonPage />} />
-          <Route path="/module/combinacoes" element={<CombinacoesPage />} />
-          <Route path="/combinacoes/:order" element={<CombinacoesLessonPage />} />
-          <Route path="/module/tiragens" element={<TiragensPage />} />
-          <Route path="/tiragens/:order" element={<TiragensLessonPage />} />
-          <Route path="/module/amor" element={<AmorPage />} />
-          <Route path="/amor/:order" element={<AmorLessonPage />} />
-          <Route path="/module/pratica" element={<PraticaPage />} />
-          <Route path="/pratica/:order" element={<PraticaLessonPage />} />
-          <Route path="/module/leitura-simbolica" element={<LeituraSimbolicaPage />} />
-          <Route path="/leitura-simbolica/:order" element={<LeituraSimbolicaLessonPage />} />
-          <Route path="/module/arquitetura-menores" element={<ArquiteturaMenoresPage />} />
-          <Route path="/arquitetura-menores/:order" element={<ArquiteturaMenoresLessonPage />} />
-          <Route path="/module/espiritualidade" element={<EspiritualidadePage />} />
-          <Route path="/espiritualidade/:order" element={<EspiritualidadeLessonPage />} />
-          <Route path="/module/mesa-taro" element={<MesaTaroPage />} />
-          <Route path="/mesa-taro/:order" element={<MesaTaroLessonPage />} />
-          <Route path="/module/leitura-aplicada" element={<LeituraAplicadaPage />} />
-          <Route path="/leitura-aplicada/:order" element={<LeituraAplicadaLessonPage />} />
-          <Route path="/module/trabalhar-taro" element={<TrabalharTaroPage />} />
-          <Route path="/trabalhar-taro/:order" element={<TrabalharTaroLessonPage />} />
+          <Route path="/numerologia" element={<Suspense fallback={<ShellFallback />}><NumerologiaPage /></Suspense>} />
+          <Route path="/arcano-menor/:id" element={<Suspense fallback={<ShellFallback />}><ArcanoMenorLessonPage /></Suspense>} />
+          <Route path="/module/combinacoes" element={<Suspense fallback={<ShellFallback />}><CombinacoesPage /></Suspense>} />
+          <Route path="/combinacoes/:order" element={<Suspense fallback={<ShellFallback />}><CombinacoesLessonPage /></Suspense>} />
+          <Route path="/module/tiragens" element={<Suspense fallback={<ShellFallback />}><TiragensPage /></Suspense>} />
+          <Route path="/tiragens/:order" element={<Suspense fallback={<ShellFallback />}><TiragensLessonPage /></Suspense>} />
+          <Route path="/module/amor" element={<Suspense fallback={<ShellFallback />}><AmorPage /></Suspense>} />
+          <Route path="/amor/:order" element={<Suspense fallback={<ShellFallback />}><AmorLessonPage /></Suspense>} />
+          <Route path="/module/pratica" element={<Suspense fallback={<ShellFallback />}><PraticaPage /></Suspense>} />
+          <Route path="/pratica/:order" element={<Suspense fallback={<ShellFallback />}><PraticaLessonPage /></Suspense>} />
+          <Route path="/module/leitura-simbolica" element={<Suspense fallback={<ShellFallback />}><LeituraSimbolicaPage /></Suspense>} />
+          <Route path="/leitura-simbolica/:order" element={<Suspense fallback={<ShellFallback />}><LeituraSimbolicaLessonPage /></Suspense>} />
+          <Route path="/module/arquitetura-menores" element={<Suspense fallback={<ShellFallback />}><ArquiteturaMenoresPage /></Suspense>} />
+          <Route path="/arquitetura-menores/:order" element={<Suspense fallback={<ShellFallback />}><ArquiteturaMenoresLessonPage /></Suspense>} />
+          <Route path="/module/espiritualidade" element={<Suspense fallback={<ShellFallback />}><EspiritualidadePage /></Suspense>} />
+          <Route path="/espiritualidade/:order" element={<Suspense fallback={<ShellFallback />}><EspiritualidadeLessonPage /></Suspense>} />
+          <Route path="/module/mesa-taro" element={<Suspense fallback={<ShellFallback />}><MesaTaroPage /></Suspense>} />
+          <Route path="/mesa-taro/:order" element={<Suspense fallback={<ShellFallback />}><MesaTaroLessonPage /></Suspense>} />
+          <Route path="/module/leitura-aplicada" element={<Suspense fallback={<ShellFallback />}><LeituraAplicadaPage /></Suspense>} />
+          <Route path="/leitura-aplicada/:order" element={<Suspense fallback={<ShellFallback />}><LeituraAplicadaLessonPage /></Suspense>} />
+          <Route path="/module/trabalhar-taro" element={<Suspense fallback={<ShellFallback />}><TrabalharTaroPage /></Suspense>} />
+          <Route path="/trabalhar-taro/:order" element={<Suspense fallback={<ShellFallback />}><TrabalharTaroLessonPage /></Suspense>} />
           
-          <Route path="/revisao" element={<ReviewPage />} />
-          <Route path="/certificados" element={<CertificatesPage />} />
-          <Route path="/biblioteca" element={<SymbolLibraryPage />} />
-          <Route path="/rotina" element={<StudyRoutinePage />} />
-          <Route path="/minha-jornada" element={<JourneyJournalPage />} />
-          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/revisao" element={<Suspense fallback={<ShellFallback />}><ReviewPage /></Suspense>} />
+          <Route path="/certificados" element={<Suspense fallback={<ShellFallback />}><CertificatesPage /></Suspense>} />
+          <Route path="/biblioteca" element={<Suspense fallback={<ShellFallback />}><SymbolLibraryPage /></Suspense>} />
+          <Route path="/rotina" element={<Suspense fallback={<ShellFallback />}><StudyRoutinePage /></Suspense>} />
+          <Route path="/minha-jornada" element={<Suspense fallback={<ShellFallback />}><JourneyJournalPage /></Suspense>} />
+          <Route path="/admin" element={<Suspense fallback={<ShellFallback />}><AdminPage /></Suspense>} />
         </Route>
         
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Suspense fallback={<LoadingFallback />}><NotFound /></Suspense>} />
       </Routes>
     </>
   );
