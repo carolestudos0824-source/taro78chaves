@@ -4,11 +4,11 @@ import { useRole } from "@/hooks/use-role";
 import { ARCANOS_MAIORES_CATALOG } from "@/lib/content";
 
 interface PontosBarProps {
-  xp: number;
+  pontos: number;
   level: number;
 }
 
-export function PontosBar({ xp, level }: PontosBarProps) {
+export function PontosBar({ pontos, level }: PontosBarProps) {
   const { progress } = useProgress();
   const { isStaff } = useRole();
   

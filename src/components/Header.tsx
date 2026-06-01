@@ -9,7 +9,7 @@ import { useHeader } from "@/contexts/header-context";
 
 interface HeaderProps {
   streak: number;
-  xp: number;
+  pontos: number;
   level: number;
 }
 
@@ -18,7 +18,7 @@ interface HeaderProps {
  * REMOVIDO: hysteresis, compact mode, transições de scroll e transformações.
  * MOTIVO: Corrigir tremor (jitter) visual na rota /lesson/0.
  */
-export const Header = ({ streak, xp, level }: HeaderProps) => {
+export const Header = ({ streak, pontos, level }: HeaderProps) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { state } = useHeader();
@@ -101,7 +101,7 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
         
         {!state.hidePontos && !isLessonMode && (
           <div className="mt-2">
-            <PontosBar xp={xp} level={level} />
+            <PontosBar pontos={pontos} level={level} />
           </div>
         )}
 

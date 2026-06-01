@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Sparkles, Star, Award } from "lucide-react";
 
 interface ProgressCelebrationProps {
-  xp: number;
+  pontos: number;
   level: number;
   streak: number;
   completedLessons: number;
@@ -17,7 +17,7 @@ interface Celebration {
 
 const CELEBRATION_KEY = "last-celebration-shown";
 
-function detectCelebration(xp: number, level: number, streak: number, lessons: number): Celebration | null {
+function detectCelebration(pontos: number, level: number, streak: number, lessons: number): Celebration | null {
   // Level up
   if (xp > 0 && xp % 100 < 15) {
     return {
