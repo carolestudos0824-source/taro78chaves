@@ -227,7 +227,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
   };
 
   const ContinueButton = ({ onClick, label = "Continuar →" }: { onClick: () => void; label?: string }) => (
-    <div className="flex justify-center pt-2 animate-fade-in" style={{ animationDelay: "400ms", animationFillMode: "both" }}>
+    <div className="flex justify-center pt-2">
       <button
         onClick={onClick}
         className="px-8 py-3 rounded-full font-heading text-sm tracking-wider transition-all hover:scale-105 active:scale-95"
