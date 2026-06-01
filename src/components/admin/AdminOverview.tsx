@@ -97,9 +97,9 @@ const AdminOverview = () => {
 
   return (
     <div className="space-y-12">
-      <div className="relative mb-8">
-        <h2 className="font-heading text-3xl md:text-4xl text-[#5B1F3D] font-black tracking-tight mb-2">Visão Geral</h2>
-        <p className="text-base font-body font-bold text-[#5B1F3D]/60">Resumo operacional da plataforma em tempo real.</p>
+      <div className="relative mb-6 md:mb-8">
+        <h2 className="font-heading text-2xl min-[400px]:text-3xl md:text-4xl text-[#5B1F3D] font-black tracking-tight mb-2">Visão Geral</h2>
+        <p className="text-sm min-[400px]:text-base font-body font-bold text-[#5B1F3D]/60">Resumo operacional da plataforma em tempo real.</p>
       </div>
 
       {/* Revenue — Estimated */}

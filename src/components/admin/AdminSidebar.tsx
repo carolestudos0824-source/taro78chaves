@@ -96,19 +96,19 @@ const AdminSidebar = ({ active, onChange, role }: AdminSidebarProps) => {
 export const AdminMobileNav = ({ active, onChange, role }: AdminSidebarProps) => {
   const visible = sections.filter((s) => canAccessSection(role, s.id));
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-xl border-t-2 border-[#C8A66A]/30 px-2 py-3 flex justify-around overflow-x-auto shadow-[0_-8px_30px_rgba(0,0,0,0.12)]">
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-[120] bg-white/95 backdrop-blur-xl border-t-2 border-[#C8A66A]/30 px-2 py-2 flex items-center gap-1 overflow-x-auto shadow-[0_-8px_30px_rgba(0,0,0,0.12)] scrollbar-hide">
       {visible.map(s => (
         <button
           key={s.id}
           onClick={() => onChange(s.id)}
-          className={`flex flex-col items-center gap-1.5 px-4 py-2 rounded-2xl text-[10px] transition-all shrink-0 font-heading font-black tracking-widest uppercase ${
-            active === s.id ? "text-white bg-[#5B1F3D] shadow-lg border border-[#C8A66A]/40" : "text-[#5B1F3D]/60 hover:text-[#5B1F3D]"
+          className={`flex flex-col items-center justify-center gap-1 px-3 py-1.5 rounded-xl text-[9px] transition-all shrink-0 font-heading font-black tracking-widest uppercase min-w-[70px] ${
+            active === s.id ? "text-[#5B1F3D] font-black" : "text-[#5B1F3D]/50"
           }`}
         >
-          <div className={`${active === s.id ? "scale-110" : "opacity-70 group-hover:opacity-100"}`}>
+          <div className={`p-2 rounded-lg transition-all ${active === s.id ? "bg-[#5B1F3D] text-white shadow-md scale-110" : "bg-[#5B1F3D]/5 opacity-70 group-hover:opacity-100"}`}>
             {s.icon}
           </div>
-          <span className="truncate max-w-[70px]">{s.label.split(" ")[0]}</span>
+          <span className="truncate w-full text-center">{s.label.split(" ")[0]}</span>
         </button>
       ))}
     </nav>

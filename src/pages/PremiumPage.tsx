@@ -78,7 +78,7 @@ const PremiumPage = () => {
               <TarotIcon name="premium" className="w-4 h-4 text-[#C8A66A]" />
               <span className="text-[11px] font-heading tracking-[0.3em] uppercase text-[#FAF5EF] font-black">Jornada Completa</span>
             </div>
-            <h1 className="font-heading text-3xl min-[400px]:text-4xl md:text-5xl text-[#5B1F3D] leading-[1.1] font-black tracking-tight drop-shadow-sm break-words">
+            <h1 className="font-heading text-2xl min-[400px]:text-3xl md:text-5xl text-[#5B1F3D] leading-[1.1] font-black tracking-tight drop-shadow-sm break-words">
               Aprenda Tarô como uma jornada sagrada.
             </h1>
             <p className="text-[#5B1F3D] font-body text-[15px] md:text-[16px] font-bold italic leading-relaxed opacity-90">
@@ -180,7 +180,7 @@ const PremiumPage = () => {
                 <Button 
                   onClick={() => handleSubscribe()} 
                   disabled={loading} 
-                  className="w-full py-7 min-[400px]:py-8 text-[11px] min-[400px]:text-sm bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.15em] min-[400px]:tracking-[0.2em] shadow-xl border-2 border-[#C8A66A] h-auto whitespace-normal leading-tight"
+                  className="w-full h-auto min-h-[4rem] py-5 px-4 text-[11px] min-[400px]:text-sm bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.1em] min-[400px]:tracking-[0.15em] shadow-xl border-2 border-[#C8A66A] whitespace-normal leading-tight text-center"
                 >
                   GARANTIR MEU ACESSO
                 </Button>

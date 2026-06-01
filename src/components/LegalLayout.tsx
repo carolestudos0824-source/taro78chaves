@@ -23,7 +23,7 @@ const LegalLayout = ({ title, updatedAt = "Abril de 2026", children }: Props) =>
 
       <main className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
         <p className="text-xs text-[#5B1F3D]/60 mb-6">Última atualização: {updatedAt}</p>
-        <article className="prose prose-sm sm:prose-base max-w-none prose-headings:font-heading prose-headings:tracking-wide prose-headings:text-[#5B1F3D] prose-h2:text-lg prose-h2:mt-8 prose-h2:mb-3 prose-p:leading-relaxed prose-p:text-[#5B1F3D] prose-li:text-[#5B1F3D] prose-strong:text-[#5B1F3D] font-body font-medium">
+        <article className="prose prose-sm sm:prose-base max-w-none prose-headings:font-heading prose-headings:tracking-wide prose-headings:text-[#5B1F3D] prose-h2:text-lg prose-h2:mt-8 prose-h2:mb-3 prose-p:leading-relaxed prose-p:text-[#5B1F3D] prose-li:text-[#5B1F3D] prose-strong:text-[#5B1F3D] font-body font-medium break-words overflow-hidden">
           {children}
         </article>
 

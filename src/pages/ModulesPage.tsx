@@ -172,8 +172,8 @@ const ModulesPage = () => {
   const arcanoGuia = getGlobalArcanoAtual();
 
   return (
-    <div className="relative min-h-screen bg-[#FAF5EF]">
-      <main className="relative z-10 container max-w-3xl px-6 pt-6 pb-24 md:pt-16 md:pb-32 space-y-6 md:space-y-12">
+    <div className="relative min-h-screen bg-[#FAF5EF] overflow-x-hidden">
+      <main className="relative z-10 container max-w-3xl px-4 min-[400px]:px-6 pt-6 pb-24 md:pt-16 md:pb-32 space-y-6 md:space-y-12 overflow-x-hidden">
         <div id="meu-painel-diario-anchor" className="sr-only">Meu Painel Diário</div>
         
         {/* ─── NÚCLEO CENTRAL DE JORNADA ─── */}
@@ -196,33 +196,35 @@ const ModulesPage = () => {
           )}
 
           {/* 1. Meu Painel Diário */}
-          <div className="relative rounded-[2.5rem] overflow-hidden p-6 md:p-10 transition-all duration-500 w-full" style={{
+          <div className="relative rounded-[2rem] overflow-hidden p-5 min-[400px]:p-6 md:p-10 transition-all duration-500 w-full" style={{
             background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
             backdropFilter: "blur(24px)",
-            border: "2.5px solid #C8A66A",
+            border: "2px solid #C8A66A",
             boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08), 0 0 40px rgba(200, 166, 106, 0.1)"
           }}>
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A30]" style={{
+            <div className="flex flex-row items-center justify-between gap-2 min-[400px]:gap-4 mb-6">
+              <div className="flex items-center gap-2 min-[400px]:gap-4 min-w-0 flex-1">
+                <div className="w-10 h-10 min-[400px]:w-14 min-[400px]:h-14 rounded-xl min-[400px]:rounded-2xl flex items-center justify-center border-2 border-[#C8A66A30] shrink-0" style={{
                   background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
                   boxShadow: "0 10px 25px rgba(91, 31, 61, 0.25)"
                 }}>
-                  <TarotIcon name="SquareStack" className="w-7 h-7 text-[#C8A66A]" />
+                  <TarotIcon name="SquareStack" className="w-5 h-5 min-[400px]:w-7 min-[400px]:h-7 text-[#C8A66A]" />
                 </div>
-                <div className="flex flex-col">
-                  <span className="text-[10px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Tarô 78 Chaves</span>
-                  <span className="text-lg font-heading font-black text-[#5B1F3D]">Meu Painel Diário</span>
+                <div className="flex flex-col min-w-0">
+                  <span className="text-[8px] min-[400px]:text-[10px] font-heading font-black tracking-[0.2em] min-[400px]:tracking-[0.3em] text-[#C8A66A] uppercase truncate">Tarô 78 Chaves</span>
+                  <h1 className="text-sm min-[380px]:text-base min-[400px]:text-xl font-heading font-black text-[#5B1F3D] leading-tight truncate">Meu Painel Diário</h1>
                 </div>
               </div>
-              <div className="text-right">
-                <span className="text-2xl md:text-3xl font-heading font-black text-[#5B1F3D]">{globalProgressPct}%</span>
-                <span className="text-[14px] font-black text-[#5B1F3D]/30 ml-1">Chaves</span>
+              <div className="text-right shrink-0">
+                <div className="flex items-baseline justify-end">
+                  <span className="text-lg min-[400px]:text-2xl md:text-3xl font-heading font-black text-[#5B1F3D]">{globalProgressPct}%</span>
+                  <span className="text-[9px] min-[400px]:text-[14px] font-black text-[#5B1F3D]/30 ml-0.5 min-[400px]:ml-1">Chaves</span>
+                </div>
               </div>
             </div>
             
             <div className="relative mt-8 mb-4">
-              <div className="flex items-center gap-3 mb-4 px-1">
+              <div className="flex flex-row items-center gap-3 mb-4 px-1">
                 <div className="relative shrink-0">
                   <div className="absolute -inset-1 bg-[#C8A66A]/20 rounded-lg blur-sm"></div>
                   <img 
@@ -233,8 +235,8 @@ const ModulesPage = () => {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#C8A66A] uppercase leading-none mb-1">Agora Estudando</span>
-                  <span className="text-sm md:text-base font-heading font-black text-[#5B1F3D] leading-tight">
-                    {arcanoGuia.name} <span className="text-[#5B1F3D]/40 ml-1 block md:inline text-[9px] md:text-sm">· Arcano {arcanoGuia.index} de 78</span>
+                  <span className="text-xs min-[400px]:text-sm md:text-base font-heading font-black text-[#5B1F3D] leading-tight">
+                    {arcanoGuia.name} <span className="text-[#5B1F3D]/40 ml-1 block min-[400px]:inline text-[9px] md:text-sm">· Arcano {arcanoGuia.index} de 78</span>
                   </span>
                 </div>
               </div>
@@ -262,7 +264,7 @@ const ModulesPage = () => {
             </div>
             
             <div className="mt-6 flex flex-col gap-4">
-              <p className="text-[14px] font-body font-black text-[#5B1F3D]/70 italic text-center leading-relaxed">
+              <p className="text-xs min-[400px]:text-sm font-body font-black text-[#5B1F3D]/70 italic text-center leading-relaxed px-2">
                 Você já domina {totalCompletedArcanos} das 78 chaves do tarô ({globalProgressPct}%).
               </p>
               <button
@@ -308,7 +310,7 @@ const ModulesPage = () => {
                       navigate("/trilhas");
                     }
                   }}
-                  className="block w-full py-4 md:py-5 bg-[#C8A66A] hover:bg-[#C8A66A]/90 text-[#5B1F3D] rounded-2xl font-heading text-[11px] md:text-[12px] font-black tracking-[0.2em] md:tracking-[0.3em] uppercase transition-all shadow-xl hover:scale-[1.02] active:scale-[0.95]"
+                  className="block w-full py-4 md:py-5 bg-[#C8A66A] hover:bg-[#C8A66A]/90 text-[#5B1F3D] rounded-2xl font-heading text-[11px] md:text-[12px] font-black tracking-[0.15em] md:tracking-[0.3em] uppercase transition-all shadow-xl hover:scale-[1.02] active:scale-[0.95] h-auto whitespace-normal leading-tight"
                 >
                   INICIAR {arcanoGuia.name.toUpperCase()}
                 </button>

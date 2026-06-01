@@ -96,7 +96,7 @@ const OfficialSupport = () => {
             </div>
             <div className="space-y-1">
               <p className="text-xs font-heading font-black tracking-widest text-[#C8A66A] uppercase">E-mail de Suporte</p>
-              <p className="text-base font-heading font-black text-[#5B1F3D]">
+              <p className="text-xs min-[400px]:text-base font-heading font-black text-[#5B1F3D] break-all">
                 <a href={`mailto:${businessInfo.supportEmail}`} className="hover:underline" onClick={() => trackEvent("support_email_click")}>{businessInfo.supportEmail}</a>
               </p>
               <p className="text-[10px] font-body font-bold italic text-[#5B1F3D]/60">Respondemos em até 3 dias úteis.</p>

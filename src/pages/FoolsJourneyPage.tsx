@@ -339,7 +339,7 @@ const FoolsJourneyPage = () => {
         </section>
 
         {/* Action buttons - Final CTA */}
-        <div className="flex flex-col items-center gap-4 pb-16 pt-8 relative z-10">
+        <div className="flex flex-col items-center gap-4 pb-16 pt-8 relative z-10 w-full">
           <button
             onClick={(e) => {
               e.preventDefault();

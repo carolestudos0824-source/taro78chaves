@@ -210,7 +210,7 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
           
           <button
             onClick={() => onComplete(score, questions.length)}
-            className="w-full max-w-xs py-5 rounded-2xl font-heading text-[12px] font-black tracking-[0.3em] uppercase transition-all hover:scale-105 bg-[#5B1F3D] text-white shadow-2xl border-2 border-[#C8A66A]"
+            className="w-full max-w-xs py-5 px-4 rounded-2xl font-heading text-[12px] font-black tracking-[0.3em] uppercase transition-all hover:scale-105 bg-[#5B1F3D] text-white shadow-2xl border-2 border-[#C8A66A] h-auto whitespace-normal leading-tight text-center"
           >
             Continuar Travessia
           </button>
@@ -357,7 +357,7 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
               <div className="flex justify-end">
                 <button
                   onClick={handleNext}
-                  className="px-10 py-4 rounded-full font-heading text-[12px] font-black tracking-[0.3em] uppercase transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-3 bg-[#5B1F3D] text-white shadow-2xl border-2 border-[#C8A66A]"
+                  className="w-full sm:w-auto px-10 py-5 sm:py-4 rounded-full font-heading text-[12px] font-black tracking-[0.3em] uppercase transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-3 bg-[#5B1F3D] text-white shadow-2xl border-2 border-[#C8A66A] h-auto"
                 >
                   {currentIndex < questions.length - 1 ? "Próxima" : "Ver Resultados"}
                   <ArrowRight className="w-5 h-5" />

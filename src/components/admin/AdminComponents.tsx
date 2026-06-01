@@ -40,18 +40,18 @@ export const KPICard = ({
     <div className="w-14 h-14 rounded-2xl bg-[#FAF5EF] border-2 border-[#C8A66A]/20 flex items-center justify-center text-[#5B1F3D] mb-5 shadow-inner group-hover:scale-110 transition-transform">
       {icon}
     </div>
-    <div className="space-y-1">
-      <p className={cn("text-4xl font-heading font-black tracking-tighter", accent)}>{value}</p>
-      <p className="text-[11px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D]/60 font-black leading-tight">{label}</p>
-      {description && <p className="text-[11px] text-[#5B1F3D]/50 font-medium pt-2 border-t border-[#C8A66A]/10 mt-2">{description}</p>}
+    <div className="space-y-1 min-w-0">
+      <p className={cn("text-2xl min-[400px]:text-3xl md:text-4xl font-heading font-black tracking-tighter truncate", accent)}>{value}</p>
+      <p className="text-[9px] min-[400px]:text-[11px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D]/60 font-black leading-tight truncate">{label}</p>
+      {description && <p className="text-[9px] min-[400px]:text-[11px] text-[#5B1F3D]/50 font-medium pt-2 border-t border-[#C8A66A]/10 mt-2 line-clamp-2">{description}</p>}
     </div>
   </div>
 );
 
 export const AdminSectionHeading = ({ title, subtitle }: { title: string; subtitle?: string }) => (
-  <div className="mb-10 pt-4">
-    <h2 className="font-heading text-2xl md:text-3xl text-[#5B1F3D] font-black tracking-tight uppercase tracking-wider">{title}</h2>
-    {subtitle && <p className="text-sm font-body font-bold text-[#5B1F3D]/50 mt-2 max-w-2xl leading-relaxed">{subtitle}</p>}
+  <div className="mb-8 md:mb-10 pt-4">
+    <h2 className="font-heading text-xl min-[400px]:text-2xl md:text-3xl text-[#5B1F3D] font-black tracking-tight uppercase tracking-wider break-words">{title}</h2>
+    {subtitle && <p className="text-xs min-[400px]:text-sm font-body font-bold text-[#5B1F3D]/50 mt-2 max-w-2xl leading-relaxed">{subtitle}</p>}
   </div>
 );
 
