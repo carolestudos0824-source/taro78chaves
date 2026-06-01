@@ -91,22 +91,19 @@ const ValidateCertificatePage = lazy(() => import("./pages/ValidateCertificatePa
 const queryClient = new QueryClient();
 
 const LoadingFallback = () => (
-  <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF] relative overflow-hidden">
-    <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-      <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-gold blur-[120px]" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold blur-[120px]" />
+  <div className=\"min-h-screen flex items-center justify-center bg-[#FAF5EF] relative overflow-hidden\">
+    <div className=\"absolute inset-0 opacity-[0.03] pointer-events-none\">
+      <div className=\"absolute top-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-gold blur-[120px]\" />
+      <div className=\"absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold blur-[120px]\" />
     </div>
 
-    <div className="text-center space-y-6 relative z-10 animate-in fade-in duration-500">
-      <div className="relative">
-        <div className="w-12 h-12 rounded-full border-2 border-gold/20 border-t-gold animate-spin mx-auto" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-1.5 h-1.5 rounded-full bg-gold/40 animate-pulse" />
-        </div>
+    <div className=\"text-center space-y-6 relative z-10 animate-in fade-in duration-300\">
+      <div className=\"relative\">
+        <div className=\"w-12 h-12 rounded-full border-2 border-gold/20 border-t-gold animate-spin mx-auto\" />
       </div>
-      <div className="space-y-2">
-        <p className="text-[10px] text-plum/80 font-heading tracking-[0.3em] uppercase">Tarô 78 Chaves</p>
-        <p className="text-[11px] text-plum/60 font-body italic">Preparando sua jornada...</p>
+      <div className=\"space-y-2\">
+        <p className=\"text-[10px] text-plum/80 font-heading tracking-[0.3em] uppercase\">Tarô 78 Chaves</p>
+        <p className=\"text-[11px] text-plum/60 font-body italic\">Preparando sua jornada...</p>
       </div>
     </div>
   </div>
@@ -123,9 +120,16 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { loading: roleLoading } = useRole();
   const { loading: premiumLoading } = usePremium();
   
-  // Only wait for critical auth and role info
-  if (authLoading || roleLoading || premiumLoading) return <LoadingFallback />;
-  if (!user) return <Navigate to="/" replace />;
+  // Only show full loader on initial boot when we don't even know if we have a user
+  if (authLoading && !user) return <LoadingFallback />;
+  
+  // If we have no user and auth is not loading anymore, redirect
+  if (!authLoading && !user) return <Navigate to=\"/\" replace />;
+  
+  // If we have a user but are still loading role/premium, we can still show the shell
+  // but maybe we want to wait for them once.
+  // To avoid flickering during navigation, we check if they are ALREADY loaded at least once.
+  if ((roleLoading || premiumLoading) && !user) return <LoadingFallback />;
   
   return (
     <>
@@ -167,7 +171,7 @@ const AppShell = () => {
         level={progress.level} 
       />
       <main className="flex-1 pb-24">
-        <Suspense fallback={<div className="flex-1" />}>
+        <Suspense fallback={null}>
           <Outlet />
         </Suspense>
       </main>
@@ -178,7 +182,7 @@ const AppShell = () => {
 
 const AppRoutes = () => {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#FAF5EF]" />}>
+    <Suspense fallback={null}>
       <AnalyticsTracker />
       <ConsentBanner />
       <Routes>
