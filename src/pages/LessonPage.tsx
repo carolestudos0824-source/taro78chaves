@@ -102,24 +102,10 @@ const LessonPage = () => {
     return () => resetHeader();
   }, [arcano, phase, arcanoId, phases, setHeader, resetHeader]);
 
-  // 1. Estado de Carregamento (Loading Ritualístico)
-  if (!mounted || isLiteralRoute) {
-    return (
-      <div className="flex-1 flex items-center justify-center py-20 bg-transparent relative overflow-hidden">
-        <div className="text-center space-y-6 relative z-10 animate-fade-in">
-          <div className="relative">
-            <div className="w-12 h-12 rounded-full border-2 border-[#C8A66A]/20 border-t-[#C8A66A] animate-spin mx-auto" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#C8A66A]/40 animate-pulse" />
-            </div>
-          </div>
-          <div className="space-y-2">
-            <p className="text-[10px] text-[#5B1F3D]/80 font-heading tracking-[0.3em] uppercase">Tarô 78 Chaves</p>
-            <p className="text-[11px] text-[#5B1F3D]/60 font-body italic">Preparando o portal...</p>
-          </div>
-        </div>
-      </div>
-    );
+  // Note: Local loader removed to avoid flicker. 
+  // We rely on stable background and Suspense.
+  if (isLiteralRoute) {
+    return null;
   }
 
   // 2. Estado de Arcano Inexistente
