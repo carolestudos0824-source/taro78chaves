@@ -19,7 +19,7 @@ const CELEBRATION_KEY = "last-celebration-shown";
 
 function detectCelebration(pontos: number, level: number, streak: number, lessons: number): Celebration | null {
   // Level up
-  if (xp > 0 && xp % 100 < 15) {
+  if (pontos > 0 && pontos % 100 < 15) {
     return {
       id: `level-${level}`,
       title: `Nível ${level}`,
@@ -28,14 +28,14 @@ function detectCelebration(pontos: number, level: number, streak: number, lesson
     };
   }
 
-  // XP milestones
-  const xpMilestones = [100, 250, 500, 1000, 2000];
-  for (const m of xpMilestones) {
-    if (xp >= m && xp < m + 15) {
+  // Pontos milestones
+  const pontosMilestones = [100, 250, 500, 1000, 2000];
+  for (const m of pontosMilestones) {
+    if (pontos >= m && pontos < m + 15) {
       return {
-        id: `xp-${m}`,
-        title: `${m} XP alcançados`,
-        subtitle: "Cada ponto de experiência reflete dedicação genuína.",
+        id: `pontos-${m}`,
+        title: `${m} Pontos alcançados`,
+        subtitle: "Cada ponto reflete dedicação genuína à sua jornada.",
         icon: "sparkle",
       };
     }

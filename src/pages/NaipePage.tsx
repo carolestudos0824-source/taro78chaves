@@ -9,7 +9,7 @@ import {
 } from "@/registry/naipes";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
-import { XPBar } from "@/components/XPBar";
+import { PontosBar } from "@/components/PontosBar";
 import { StreakCounter } from "@/components/StreakCounter";
 import { useResolvedArcanoMenorPilot } from "@/hooks/use-resolved-arcanos-menores-pilot";
 
@@ -256,7 +256,7 @@ const NaipePage = () => {
             </div>
           </div>
           <div className="mt-8">
-            <XPBar xp={progress.xp} level={progress.level} />
+            <PontosBar pontos={progress.xp} level={progress.level} />
           </div>
         </div>
       </header>
