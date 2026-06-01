@@ -59,10 +59,10 @@ export function ExerciseSection({ instruction, type, duration, onComplete, compl
       </div>
 
       {!completed ? (
-        <div className="flex justify-center">
+        <div className="flex justify-center w-full">
           <button
             onClick={onComplete}
-            className="w-full py-6 rounded-2xl font-heading text-xs tracking-[0.2em] uppercase transition-all shadow-xl hover:scale-105 active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A] font-black"
+            className="w-full h-auto py-5 px-4 rounded-2xl font-heading text-xs tracking-[0.15em] uppercase transition-all shadow-xl hover:scale-105 active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A] font-black whitespace-normal leading-tight text-center"
           >
             Exercício Concluído
           </button>
