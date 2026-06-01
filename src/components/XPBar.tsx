@@ -3,12 +3,12 @@ import { useProgress } from "@/hooks/use-progress";
 import { useRole } from "@/hooks/use-role";
 import { ARCANOS_MAIORES_CATALOG } from "@/lib/content";
 
-interface XPBarProps {
+interface PontosBarProps {
   xp: number;
   level: number;
 }
 
-export function XPBar({ xp, level }: XPBarProps) {
+export function PontosBar({ xp, level }: PontosBarProps) {
   const { progress } = useProgress();
   const { isStaff } = useRole();
   
@@ -63,8 +63,8 @@ export function XPBar({ xp, level }: XPBarProps) {
   return (
     <div 
       className="flex items-center gap-4"
-      title={`Progresso na Jornada: ${totalCompletedArcanos} de 78 Chaves`}
-      aria-label={`Progresso na Jornada: ${totalCompletedArcanos} de 78 Chaves`}
+      title={`Sua Travessia: ${totalCompletedArcanos} de 78 Chaves`}
+      aria-label={`Sua Travessia: ${totalCompletedArcanos} de 78 Chaves`}
     >
       <div className="flex items-center gap-3 shrink-0">
         <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transition-transform hover:scale-105" style={{

@@ -566,7 +566,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
                 <div className="w-px h-10" style={{ background: `hsl(${accent} / 0.2)` }} />
                 <div className="text-center">
                   <span className="block font-heading text-xl" style={{ color: `hsl(${accent})` }}>+{xpEarned}</span>
-                  <span className="text-[9px] font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(230 10% 50%)" }}>XP</span>
+                  <span className="text-[9px] font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(230 10% 50%)" }}>Pontos</span>
                 </div>
               </div>
 

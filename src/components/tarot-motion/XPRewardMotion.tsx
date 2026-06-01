@@ -23,7 +23,7 @@ export const XPRewardMotion: React.FC<XPRewardMotionProps> = ({
         className="absolute z-50 flex items-center gap-1 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-lg border border-[#C8A66A]/30"
       >
         <span className="text-[#C8A66A] font-heading font-black text-sm">+{xp}</span>
-        <span className="text-[#5B1F3D] font-heading font-bold text-[10px] tracking-widest uppercase">XP</span>
+        <span className="text-[#5B1F3D] font-heading font-bold text-[10px] tracking-widest uppercase">PONTOS</span>
       </motion.div>
       
       {/* Small floating sparkles around the reward */}

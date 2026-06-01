@@ -190,10 +190,10 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
 
         <div className="flex flex-col items-center gap-2">
           <div className="text-[11px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A]">
-            Energia de Troca
+            Aprendizado Integrado
           </div>
           <div className="text-2xl font-heading font-black text-[#5B1F3D]">
-            +{score * 10} XP
+            +{percentage}% de Domínio
           </div>
         </div>
 

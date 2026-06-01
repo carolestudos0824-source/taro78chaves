@@ -263,7 +263,7 @@ const DashboardPage = () => {
               <div className="flex-1 space-y-1">
                 <p className="text-sm font-heading font-black text-[#5B1F3D]">Nível {progress.level}</p>
                 <p className="text-[9px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">
-                  Faltam {100 - (progress.xp % 100)} pontos para o nível {progress.level + 1}
+                  Continue avançando para alcançar o nível {progress.level + 1}
                 </p>
               </div>
               <div className="flex -space-x-2">

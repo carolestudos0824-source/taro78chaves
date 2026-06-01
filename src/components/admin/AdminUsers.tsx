@@ -147,7 +147,7 @@ const AdminUsers = () => {
     <div className="space-y-10">
       <AdminSectionHeading 
         title="Usuários" 
-        subtitle="Gestão completa de pessoas, acesso e progresso na jornada Tarô 78 Chaves." 
+        subtitle="Gestão completa de pessoas, acesso e progresso na Travessia." 
       />
 
       {/* Stat cards */}
@@ -188,7 +188,7 @@ const AdminUsers = () => {
           <SelectContent className="font-heading text-[11px] font-black tracking-widest uppercase">
             <SelectItem value="created_at">Cadastro Recente</SelectItem>
             <SelectItem value="last_active">Última Atividade</SelectItem>
-            <SelectItem value="xp">Maior XP</SelectItem>
+            <SelectItem value="xp">Pontuação</SelectItem>
             <SelectItem value="lessons">Mais Lições</SelectItem>
           </SelectContent>
         </Select>
@@ -208,7 +208,7 @@ const AdminUsers = () => {
             <AdminTableHead className="text-center">Cadastro</AdminTableHead>
             <AdminTableHead className="text-center">Atividade</AdminTableHead>
             <AdminTableHead className="text-center">Lições</AdminTableHead>
-            <AdminTableHead className="text-center">XP</AdminTableHead>
+            <AdminTableHead className="text-center">Pontos</AdminTableHead>
             <AdminTableHead className="text-center">Streak</AdminTableHead>
             <AdminTableHead className="text-right">Ações</AdminTableHead>
           </AdminTableHeader>
@@ -446,7 +446,7 @@ const UserDetailDialog = ({ userId, onClose, onChanged }: { userId: string | nul
 
             {/* Progress stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-              <ProgressStat icon={<Award className="w-3.5 h-3.5" />} label="XP" value={data.progress?.xp ?? 0} />
+              <ProgressStat icon={<Award className="w-3.5 h-3.5" />} label="Pontos" value={data.progress?.xp ?? 0} />
               <ProgressStat icon={<Flame className="w-3.5 h-3.5" />} label="Streak" value={data.progress?.streak ?? 0} />
               <ProgressStat icon={<BookOpen className="w-3.5 h-3.5" />} label="Lições" value={data.progress?.completed_lessons?.length ?? 0} />
               <ProgressStat icon={<CheckCircle2 className="w-3.5 h-3.5" />} label="Quizzes" value={data.progress?.completed_quizzes?.length ?? 0} />

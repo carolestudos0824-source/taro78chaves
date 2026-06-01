@@ -61,7 +61,7 @@ const QUEUE_TONE: Record<QuizQueue, string> = {
 function classifyQuiz(q: QuizRow, validCount: number, missingExplanations = 0): { queue: QuizQueue; blockers: string[] } {
   const blockers: string[] = [];
   if (!q.linked_to) blockers.push("sem vínculo");
-  if (q.xp_reward <= 0) blockers.push("XP inválido");
+  if (q.xp_reward <= 0) blockers.push("Pontos inválidos");
   if (validCount === 0) blockers.push("sem perguntas válidas");
   else if (validCount < 3) blockers.push(`apenas ${validCount} pergunta(s) válida(s)`);
   if (validCount >= 3 && missingExplanations > 0) blockers.push(`${missingExplanations} sem explicação`);
@@ -243,7 +243,7 @@ const AdminQuizzes = () => {
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <AdminSectionHeading 
           title="Quizzes & Desafios" 
-          subtitle="Editor pedagógico — criação e monitoramento de questões, recompensas de XP e desempenho real." 
+          subtitle="Editor pedagógico — criação e monitoramento de questões e desempenho real." 
         />
         <Button size="sm" className="gap-2 mt-4" onClick={() => setCreateOpen(true)}>
           <Plus className="w-4 h-4" /> Novo Quiz
@@ -261,7 +261,7 @@ const AdminQuizzes = () => {
       <div className="rounded-xl border border-border/50 bg-card/30 p-3 space-y-2">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="text-xs font-heading tracking-[0.2em] uppercase text-muted-foreground">Fila editorial</h3>
-          <span className="text-[10px] text-muted-foreground">régua: ≥5 perguntas válidas + vínculo + XP &gt; 0</span>
+          <span className="text-[10px] text-muted-foreground">régua: ≥5 perguntas válidas + vínculo + Pontos &gt; 0</span>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
           {(["validado", "quase", "incompleto", "critico"] as QuizQueue[]).map((q) => {
@@ -376,7 +376,7 @@ const AdminQuizzes = () => {
                         <HelpCircle className="w-3 h-3" /> {q.validQuestionsCount}/{q.questionsCount} válidas
                       </span>
                       <span className="inline-flex items-center gap-1">
-                        <Trophy className="w-3 h-3" /> {q.xp_reward} XP
+                        <Trophy className="w-3 h-3" /> {q.xp_reward} Pontos
                       </span>
                       <span className="inline-flex items-center gap-1">
                         <Target className="w-3 h-3" /> {q.accuracyRate}% acerto
@@ -710,7 +710,7 @@ const QuizEditor = ({
               </SelectContent>
             </Select>
           </Field>
-          <Field label="XP por acerto">
+          <Field label="Pontos por acerto">
             <Input
               type="number"
               value={draft.xp_reward}
