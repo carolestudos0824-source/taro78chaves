@@ -41,3 +41,4 @@ Toda revisão de arcano DEVE seguir a régua de 5 perguntas (mem://features/arca
 - [Arcano Menor lesson model](mem://features/arcano-menor-lesson-model) — Mapeamento dos 18 campos em 5 camadas / multi-fase carrossel
 - [Menor approval rubric](mem://features/menor-approval-rubric) — 6 critérios oficiais de aprovação por carta antes de escalar
 - [**🗄 Arcanos CMS completude**](mem://features/arcanos-cms-completude) — Fonte de verdade canônica, 10 essenciais, trigger de status, backfill 78/78
+- [**🛡 Status de Fechamento (Segurança/UX/Painel)**](mem://features/status-fechamento) — Histórico de blocos fechados e validados para PWA
