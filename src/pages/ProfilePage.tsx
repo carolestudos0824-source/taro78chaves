@@ -105,9 +105,9 @@ const ProfilePage = () => {
           </div>
 
           <div className="w-full space-y-3 px-4">
-            <div className="flex justify-between text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">
-              <span>{isStaff ? "Sincronização desativada (Auditoria)" : "Progresso na Travessia"}</span>
-              <span>{journeyProgress}%</span>
+            <div className="flex justify-between items-end text-[9px] min-[400px]:text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D] gap-2">
+              <span className="truncate">{isStaff ? "Sincronização desativada (Auditoria)" : "Progresso na Travessia"}</span>
+              <span className="shrink-0">{journeyProgress}%</span>
             </div>
             {isStaff && (
               <p className="text-[10px] font-body font-bold italic text-[#5B1F3D]/80 leading-relaxed bg-amber-50/50 p-3 rounded-xl border border-amber-200/40">
