@@ -60,7 +60,7 @@ const PHASE_LABEL: Record<Phase, string> = {
   revisao: "Revisão",
 };
 
-const XP_REWARD = 50;
+const PONTOS_REWARD = 50;
 
 const ArcanoMenorLessonPage = () => {
   const { id } = useParams();
@@ -144,7 +144,7 @@ const ArcanoMenorLessonPage = () => {
       return;
     }
     completeLesson(card.id);
-    addXP(XP_REWARD);
+    addXP(PONTOS_REWARD);
     setCompleted(true);
   };
 
