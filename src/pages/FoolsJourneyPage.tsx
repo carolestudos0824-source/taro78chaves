@@ -76,7 +76,7 @@ const FoolsJourneyPage = () => {
       {/* Content */}
       <main className="relative z-10 container max-w-3xl py-8 px-6">
         {/* Hero Visual Guide - O Louco */}
-        <section className="relative z-10 mb-12 text-center flex flex-col items-center animate-fade-in">
+        <section className="relative z-10 mb-12 text-center flex flex-col items-center">
           <div className="relative mb-8 group">
             {/* Soft halo behind the card */}
             <div className="absolute inset-0 bg-[#C8A66A] opacity-20 blur-3xl rounded-full scale-150 animate-pulse" />
