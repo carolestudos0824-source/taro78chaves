@@ -457,7 +457,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
         {/* ── Quiz ── */}
         {phase === "quiz" && lesson.quiz[quizIdx] && (
           <div className="space-y-4">
-            <div className="flex justify-between items-center text-[10px] font-heading tracking-wider animate-fade-in" style={{ color: "hsl(230 20% 15% / 0.5)" }}>
+            <div className="flex justify-between items-center text-[10px] font-heading tracking-wider" style={{ color: "hsl(230 20% 15% / 0.5)" }}>
               <span>Pergunta {quizIdx + 1}/{lesson.quiz.length}</span>
               <span>{score} acerto{score !== 1 ? "s" : ""}</span>
             </div>
