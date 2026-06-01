@@ -492,7 +492,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
                 })}
               </div>
               {showExp && (
-                <div className="mt-3 p-3.5 rounded-lg text-xs leading-relaxed animate-fade-in" style={{
+                <div className="mt-3 p-3.5 rounded-lg text-xs leading-relaxed" style={{
                   background: `hsl(${accent} / 0.05)`,
                   border: `1px solid hsl(${accent} / 0.12)`,
                   color: "hsl(230 20% 25%)",
