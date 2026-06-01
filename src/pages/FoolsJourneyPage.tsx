@@ -139,7 +139,7 @@ const FoolsJourneyPage = () => {
         </section>
 
         {/* Synthesis Block - 3 Key Points */}
-        <section className="mb-16 grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in" style={{ animationDelay: "200ms" }}>
+        <section className="mb-16 grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             { label: "Início", title: "O Salto da Jornada", text: "O Louco e o potencial puro de quem ousa começar.", icon: "0" },
             { label: "Travessia", title: "Provas e Espelhos", text: "Encontros com mestres e abismos da alma.", icon: "◈" },
