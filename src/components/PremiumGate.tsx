@@ -116,9 +116,9 @@ const PremiumGate = ({
       <div className="pt-2">
         <Button
           onClick={() => navigate("/premium")}
-          className="w-full py-8 bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.2em] shadow-xl border-2 border-[#C8A66A]"
+          className="w-full h-auto py-5 px-4 bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.1em] shadow-xl border-2 border-[#C8A66A] leading-tight text-center"
         >
-          COMEÇAR JORNADA COMPLETA
+          CONTINUAR JORNADA
         </Button>
         <p className="text-[10px] font-heading tracking-widest uppercase text-[#5B1F3D]/60 mt-5 font-black">
           Receba todas as chaves da sua travessia
