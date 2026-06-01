@@ -126,6 +126,11 @@
     max-width: 100vw;
   }
 
+  #root {
+    background-color: #FAF5EF;
+    min-height: 100vh;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
     line-height: 1.2;
