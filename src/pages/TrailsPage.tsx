@@ -133,7 +133,7 @@ const TrailsPage = () => {
         {/* Cartas Decorativas do Topo — Reposicionadas para não invadir o título */}
         <div className="absolute top-0 right-0 w-full overflow-visible h-32 sm:h-48 pointer-events-none z-0">
           <div className="flex justify-end items-start pt-2 sm:pt-4 pr-1 sm:pr-6">
-            <div className="flex -space-x-14 sm:-space-x-20 scale-[0.65] sm:scale-100 origin-top-right">
+            <div className="flex -space-x-14 sm:-space-x-20 scale-[0.55] sm:scale-100 origin-top-right">
               <img 
                 src={imgLouco} 
                 alt="" 
@@ -148,7 +148,7 @@ const TrailsPage = () => {
           </div>
         </div>
 
-        <div className="text-center relative z-10 w-full mt-4 sm:mt-6">
+        <div className="text-center relative z-10 w-full mt-6 sm:mt-6">
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-[#C8A66A]/20">
             <TarotIcon name="formacao" className="w-10 h-10" />
           </div>
