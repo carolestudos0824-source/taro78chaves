@@ -92,7 +92,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       {/* ─── Top Brand Header ─── */}
       <header className="sticky top-0 z-50 px-6 py-4 md:py-4 bg-parchment/95 backdrop-blur-md border-b border-gold/10 w-full">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2.5 group transition-transform hover:scale-[1.02]" aria-label="Tarô 78 Chaves">
+          <Link to="/" className="flex items-center gap-2.5 group transition-transform hover:scale-[1.02]" aria-label="Tarô 78 Chaves">
             <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
               <img 
                 src={brandIcon} 
@@ -108,7 +108,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 A jornada viva
               </span>
             </div>
-          </a>
+          </Link>
           <button
             onClick={() => {
               trackEvent("landing_login_click", { source: "landing" });
