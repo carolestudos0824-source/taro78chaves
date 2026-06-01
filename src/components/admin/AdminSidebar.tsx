@@ -40,7 +40,7 @@ const sections: { id: AdminSection; label: string; icon: React.ReactNode; group:
   { id: "arcanos", label: "Arcanos", icon: <Sparkles className="w-5 h-5" />, group: "Curso" },
   { id: "quizzes", label: "Quizzes", icon: <HelpCircle className="w-5 h-5" />, group: "Curso" },
   { id: "progress", label: "Engajamento Geral", icon: <BarChart3 className="w-5 h-5" />, group: "Curso" },
-  { id: "progress_audit", label: "Auditoria de Progresso", icon: <Search className="w-5 h-5" />, group: "Curso" },
+  { id: "progress_audit", label: "Auditoria de Travessia", icon: <Search className="w-5 h-5" />, group: "Curso" },
   { id: "roles", label: "Funções", icon: <Shield className="w-5 h-5" />, group: "Operação" },
   { id: "audit", label: "Auditoria", icon: <ScrollText className="w-5 h-5" />, group: "Operação" },
   { id: "support", label: "Suporte", icon: <HeadphonesIcon className="w-5 h-5" />, group: "Operação" },
