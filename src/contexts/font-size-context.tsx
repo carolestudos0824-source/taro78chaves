@@ -67,8 +67,10 @@ export function FontSizeProvider({ children }: { children: ReactNode }) {
     }
   }, [fontSize, setFontSize]);
 
+  const value = useMemo(() => ({ fontSize, setFontSize, increaseFont, decreaseFont }), [fontSize, setFontSize, increaseFont, decreaseFont]);
+
   return (
-    <FontSizeContext.Provider value={{ fontSize, setFontSize, increaseFont, decreaseFont }}>
+    <FontSizeContext.Provider value={value}>
       {children}
     </FontSizeContext.Provider>
   );

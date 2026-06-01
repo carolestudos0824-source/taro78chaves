@@ -111,7 +111,8 @@ export const PremiumProvider = ({ children }: { children: React.ReactNode }) => 
     fetchPremium();
   }, [user]);
 
-  return React.createElement(PremiumContext.Provider, { value: state }, children);
+  const value = useMemo(() => state, [state]);
+  return React.createElement(PremiumContext.Provider, { value }, children);
 };
 
 export const usePremium = () => {
