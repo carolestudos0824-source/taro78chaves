@@ -492,7 +492,7 @@ const PerguntasContent = ({ data, onComplete }: { data: PerguntasDoDia; onComple
 
   if (finished) {
     return (
-      <div className="text-center space-y-6 animate-fade-in py-6">
+      <div className="text-center space-y-6 py-6">
         <div className="w-16 h-16 rounded-2xl bg-[#5B1F3D]/5 flex items-center justify-center mx-auto border-2 border-[#C8A66A]/20">
           <TarotIcon name="Sparkles" className="w-8 h-8 text-[#C8A66A]" />
         </div>
