@@ -129,10 +129,10 @@ const TrailsPage = () => {
         background: "radial-gradient(ellipse at 50% 0%, hsl(42 70% 80% / 0.15) 0%, transparent 60%)",
       }} />
 
-      <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-6 sm:pt-12 pb-8 box-border flex flex-col items-center">
+      <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-12 sm:pt-20 pb-8 box-border flex flex-col items-center">
         {/* Cartas Decorativas do Topo */}
         <div className="absolute top-0 right-0 w-full overflow-visible h-32 sm:h-48 pointer-events-none z-0">
-          <div className="flex justify-end items-start pt-2 sm:pt-6 pr-4 sm:pr-12">
+          <div className="flex justify-end items-start pt-4 sm:pt-8 pr-6 sm:pr-12">
             <div className="flex -space-x-12 sm:-space-x-16">
               <img 
                 src={imgLouco} 
@@ -148,7 +148,7 @@ const TrailsPage = () => {
           </div>
         </div>
 
-        <div className="text-center relative z-10 w-full mt-4 sm:mt-8">
+        <div className="text-center relative z-10 w-full mt-2 sm:mt-6">
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-[#C8A66A]/20">
             <TarotIcon name="formacao" className="w-10 h-10" />
           </div>
