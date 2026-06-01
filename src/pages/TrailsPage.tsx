@@ -130,24 +130,24 @@ const TrailsPage = () => {
       }} />
 
       <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-6 pb-8 box-border">
-        <div className="absolute top-0 right-0 w-full overflow-hidden h-32 sm:h-40 pointer-events-none z-0">
-          <div className="flex justify-end items-start pt-6 pr-6 -mr-4">
-            <div className="flex -space-x-8 sm:-space-x-12">
+        <div className="absolute top-0 right-0 w-full overflow-hidden h-32 sm:h-48 pointer-events-none z-0">
+          <div className="flex justify-end items-start pt-4 sm:pt-6 pr-4 sm:pr-8">
+            <div className="flex -space-x-10 sm:-space-x-14">
               <img 
                 src={imgLouco} 
                 alt="" 
-                className="w-16 h-24 sm:w-24 sm:h-36 object-cover rounded-xl border-2 border-[#C8A66A]/40 -rotate-[15deg] shadow-[0_10px_30px_rgba(0,0,0,0.2)] opacity-80" 
+                className="w-20 h-32 sm:w-28 sm:h-44 object-cover rounded-xl border-2 border-[#C8A66A]/40 -rotate-[12deg] shadow-[0_10px_30px_rgba(0,0,0,0.15)] opacity-90 transition-transform hover:scale-105 duration-700" 
               />
               <img 
                 src={imgMago} 
                 alt="" 
-                className="w-16 h-24 sm:w-24 sm:h-36 object-cover rounded-xl border-2 border-[#C8A66A]/40 rotate-[10deg] shadow-[0_10px_30px_rgba(0,0,0,0.2)] opacity-90 relative z-10" 
+                className="w-20 h-32 sm:w-28 sm:h-44 object-cover rounded-xl border-2 border-[#C8A66A]/40 rotate-[8deg] shadow-[0_10px_30px_rgba(0,0,0,0.15)] opacity-100 relative z-10 transition-transform hover:scale-105 duration-700" 
               />
             </div>
           </div>
         </div>
 
-        <div className="text-center relative">
+        <div className="text-center relative z-10 mt-8 sm:mt-12">
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-[#C8A66A]/20">
             <TarotIcon name="formacao" className="w-10 h-10" />
           </div>
