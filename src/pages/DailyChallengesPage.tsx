@@ -694,7 +694,7 @@ const InterpretacaoContent = ({ data, onComplete }: { data: MiniInterpretacao | 
           Ver leitura modelo
         </button>
       ) : (
-        <div className="rounded-[2rem] p-6 bg-white border-2 border-[#C8A66A]/10 shadow-sm animate-fade-in">
+        <div className="rounded-[2rem] p-6 bg-white border-2 border-[#C8A66A]/10 shadow-sm">
           <p className="font-body text-[14px] leading-relaxed font-bold text-[#5B1F3D]/80">
             {data.sampleReading}
           </p>
