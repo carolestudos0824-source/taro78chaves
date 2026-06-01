@@ -315,7 +315,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
           <>
             {/* Intro card — Premium style */}
             <div
-              className="rounded-[2rem] p-8 mb-8 animate-fade-in relative overflow-hidden transition-all duration-500"
+              className="rounded-[2rem] p-8 mb-8 relative overflow-hidden transition-all duration-500"
               style={{
                 background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
                 backdropFilter: "blur(24px)",
