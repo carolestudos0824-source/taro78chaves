@@ -132,27 +132,28 @@ const TrailsPage = () => {
       {/* Cartas Decorativas do Topo — Elemento Premium Refinado e Seguro */}
       <div className="absolute top-0 right-0 w-full h-[320px] pointer-events-none overflow-hidden select-none z-0">
         <div className="absolute top-0 right-0 w-full h-full max-w-[1400px] left-1/2 -translate-x-1/2">
-          {/* Brilho de fundo (Glow) mais discreto */}
-          <div className="absolute top-[-5%] right-[-5%] w-[30%] h-[50%] bg-[radial-gradient(circle,rgba(200,166,106,0.12)_0%,transparent_70%)] blur-3xl opacity-60 sm:opacity-100" />
+          {/* Brilho de fundo (Glow) discreto e elegante */}
+          <div className="absolute top-[-5%] right-[-5%] w-[30%] h-[50%] bg-[radial-gradient(circle,rgba(200,166,106,0.15)_0%,transparent_70%)] blur-3xl opacity-40 sm:opacity-80" />
           
-          <div className="absolute top-8 sm:top-12 right-4 sm:right-10 md:right-16 lg:right-24 flex items-center justify-center">
+          <div className="absolute top-6 sm:top-12 right-4 sm:right-10 md:right-16 lg:right-24 flex items-center justify-center">
             <div className="relative flex items-center justify-center transition-all duration-1000 ease-out">
-              {/* O Louco (Fundo) - Oculto no mobile para clareza total */}
-              <div className="hidden sm:block relative transform -rotate-[12deg] -translate-x-6 translate-y-2 scale-75 lg:scale-90 transition-all duration-700">
+              {/* O Louco (Fundo) — Agora mais presente e nítido */}
+              <div className="relative transform -rotate-[12deg] -translate-x-6 translate-y-2 scale-[0.30] sm:scale-75 lg:scale-90 transition-all duration-700">
+                <div className="absolute inset-0 bg-[#C8A66A]/5 blur-lg rounded-lg opacity-30" />
                 <img 
                   src={imgLouco} 
                   alt="" 
-                  className="w-24 h-36 md:w-28 md:h-44 object-cover rounded-lg border border-[#C8A66A]/20 shadow-lg opacity-40 lg:opacity-60" 
+                  className="w-24 h-36 md:w-28 md:h-44 object-cover rounded-lg border border-[#C8A66A]/30 shadow-lg opacity-60 sm:opacity-75 lg:opacity-85 brightness-[1.02] contrast-[1.05]" 
                 />
               </div>
               
-              {/* O Mago (Frente) - Menor e mais sutil */}
-              <div className="relative transform rotate-[6deg] scale-[0.35] sm:scale-75 lg:scale-90 transition-all duration-700 z-10">
-                <div className="absolute inset-0 bg-[#C8A66A]/10 blur-xl rounded-lg opacity-50" />
+              {/* O Mago (Frente) — Consistente e equilibrado */}
+              <div className="relative transform rotate-[6deg] -translate-x-2 sm:translate-x-0 scale-[0.35] sm:scale-75 lg:scale-90 transition-all duration-700 z-10">
+                <div className="absolute inset-0 bg-[#C8A66A]/15 blur-xl rounded-lg opacity-40" />
                 <img 
                   src={imgMago} 
                   alt="" 
-                  className="w-24 h-36 md:w-28 md:h-44 object-cover rounded-lg border border-[#C8A66A]/40 shadow-xl ring-1 ring-white/10 opacity-60 sm:opacity-90" 
+                  className="w-24 h-36 md:w-28 md:h-44 object-cover rounded-lg border border-[#C8A66A]/50 shadow-xl ring-1 ring-white/10 opacity-75 sm:opacity-90 lg:opacity-95 brightness-[1.02] contrast-[1.05]" 
                 />
               </div>
             </div>
