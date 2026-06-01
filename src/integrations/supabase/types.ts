@@ -1503,7 +1503,7 @@ export type Database = {
       }
     }
     Enums: {
-      app_role: "admin" | "moderator" | "user"
+      app_role: "admin" | "moderator" | "user" | "auditor"
       arcano_naipe: "copas" | "ouros" | "espadas" | "paus"
       arcano_type: "maior" | "menor"
       billing_provider: "stripe" | "paddle" | "revenuecat" | "manual"
@@ -1647,7 +1647,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["admin", "moderator", "user"],
+      app_role: ["admin", "moderator", "user", "auditor"],
       arcano_naipe: ["copas", "ouros", "espadas", "paus"],
       arcano_type: ["maior", "menor"],
       billing_provider: ["stripe", "paddle", "revenuecat", "manual"],
