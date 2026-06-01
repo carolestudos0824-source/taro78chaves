@@ -174,7 +174,7 @@ const ModulesPage = () => {
         <div className="space-y-4">
           {/* 0. Audit Mode Banner */}
           {isStaff && (
-            <div className="relative rounded-2xl overflow-hidden p-4 md:p-6 bg-[#5B1F3D]/5 border-2 border-[#5B1F3D]/10 text-[#5B1F3D] animate-fade-in">
+            <div className="relative rounded-2xl overflow-hidden p-4 md:p-6 bg-[#5B1F3D]/5 border-2 border-[#5B1F3D]/10 text-[#5B1F3D]">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-white border border-[#5B1F3D]/10 shrink-0">
                   <ShieldCheck className="w-5 h-5 text-[#C8A66A]" />
