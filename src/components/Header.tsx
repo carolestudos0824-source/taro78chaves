@@ -2,7 +2,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, ArrowLeft } from "lucide-react";
 import { TarotIcon } from "./TarotIcon";
 import { StreakCounter } from "@/components/StreakCounter";
-import { XPBar } from "@/components/XPBar";
+import { PontosBar } from "@/components/PontosBar";
 import { useState } from "react";
 import GlobalMenu from "@/components/GlobalMenu";
 import { useHeader } from "@/contexts/header-context";
@@ -99,9 +99,9 @@ export const Header = ({ streak, xp, level }: HeaderProps) => {
         
         {isMenuOpen && <GlobalMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />}
         
-        {!state.hideXP && !isLessonMode && (
+        {!state.hidePontos && !isLessonMode && (
           <div className="mt-2">
-            <XPBar xp={xp} level={level} />
+            <PontosBar xp={xp} level={level} />
           </div>
         )}
 
