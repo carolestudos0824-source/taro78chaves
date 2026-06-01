@@ -92,11 +92,10 @@ const ModulesPage = () => {
     return () => resetHeader();
   }, []);
 
-  // Note: progressLoading is handled at a higher level via ProtectedRoute for authenticated users
-  // to avoid flickering during navigation. We only check it here as a safety measure.
-  if (progressLoading && !progress.xp) {
-    return null;
-  }
+  // Note: progressLoading is handled via ProtectedRoute and Suspense
+  // if (progressLoading && !progress.xp) {
+  //   return null;
+  // }
 
 
   const grouped = MODULES.reduce<Record<ModuleCategory, LearningModule[]>>((acc, mod) => {

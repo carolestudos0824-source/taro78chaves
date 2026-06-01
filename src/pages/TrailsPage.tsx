@@ -84,11 +84,10 @@ const TrailsPage = () => {
     return () => resetHeader();
   }, []);
 
-  // Note: progressLoading is handled at a higher level via ProtectedRoute for authenticated users
-  // to avoid flickering during navigation. We only check it here as a safety measure.
-  if ((progressLoading || accessLoading) && !progress.xp) {
-    return null;
-  }
+  // Note: progressLoading is handled via ProtectedRoute and Suspense
+  // if ((progressLoading || accessLoading) && !progress.xp) {
+  //   return null;
+  // }
 
 
   const isLevelComplete = (level: TrailLevel): boolean => {

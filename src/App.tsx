@@ -109,11 +109,7 @@ const LoadingFallback = () => (
   </div>
 );
 
-const MinimalLoader = () => (
-  <div className="flex-1 flex items-center justify-center py-20 bg-transparent">
-    <div className="w-8 h-8 rounded-full border-2 border-gold/20 border-t-gold animate-spin mx-auto" />
-  </div>
-);
+const MinimalLoader = () => null;
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading: authLoading } = useAuth();
@@ -202,7 +198,7 @@ const AppShell = () => {
 
 const AppRoutes = () => {
   return (
-    <Suspense fallback={null}>
+    <>
       <AnalyticsTracker />
       <ConsentBanner />
       <Routes>
@@ -275,7 +271,7 @@ const AppRoutes = () => {
         
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </Suspense>
+    </>
   );
 };
 
