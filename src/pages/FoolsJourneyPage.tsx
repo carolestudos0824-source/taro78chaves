@@ -165,7 +165,7 @@ const FoolsJourneyPage = () => {
             <section
               key={phase.id}
               className="mb-14"
-              style={{ animation: `fade-up 0.5s ease-out both`, animationDelay: `${phaseIndex * 100}ms` }}
+              style={{ opacity: 1 }}
             >
               {/* Phase header */}
               <div className="flex items-center justify-center mb-6">
