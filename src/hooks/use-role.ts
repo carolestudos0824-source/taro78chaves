@@ -75,9 +75,11 @@ export const useRole = () => {
 
 /** Sections each role can access. Admin = everything. */
 export const MODERATOR_SECTIONS = [] as const;
+export const AUDITOR_SECTIONS = [] as const;
 
 export const canAccessSection = (role: AppRole, section: string): boolean => {
   if (role === "admin") return true;
+  if (role === "auditor") return (AUDITOR_SECTIONS as readonly string[]).includes(section);
   if (role === "moderator") return (MODERATOR_SECTIONS as readonly string[]).includes(section);
   return false;
 };
