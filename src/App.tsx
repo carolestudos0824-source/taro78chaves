@@ -119,17 +119,30 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading: authLoading } = useAuth();
   const { loading: roleLoading } = useRole();
   const { loading: premiumLoading } = usePremium();
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(`[ProtectedRoute] Mount at ${location.pathname}. AuthLoading: ${authLoading}, User: ${!!user}, RoleLoading: ${roleLoading}, PremiumLoading: ${premiumLoading}`);
+    return () => console.log(`[ProtectedRoute] Unmount at ${location.pathname}`);
+  }, []);
   
   // Only show full loader on initial boot when we don't even know if we have a user
-  if (authLoading && !user) return <LoadingFallback />;
+  if (authLoading && !user) {
+    console.log(`[ProtectedRoute] Showing LoadingFallback (authLoading && !user) at ${location.pathname}`);
+    return <LoadingFallback />;
+  }
   
   // If we have no user and auth is not loading anymore, redirect
-  if (!authLoading && !user) return <Navigate to="/" replace />;
+  if (!authLoading && !user) {
+    console.log(`[ProtectedRoute] Redirecting to / (no user) from ${location.pathname}`);
+    return <Navigate to="/" replace />;
+  }
   
   // If we have a user but are still loading role/premium, we can still show the shell
-  // but maybe we want to wait for them once.
-  // To avoid flickering during navigation, we check if they are ALREADY loaded at least once.
-  if ((roleLoading || premiumLoading) && !user) return <LoadingFallback />;
+  if ((roleLoading || premiumLoading) && !user) {
+    console.log(`[ProtectedRoute] Showing LoadingFallback (role/premium loading) at ${location.pathname}`);
+    return <LoadingFallback />;
+  }
   
   return (
     <>
@@ -163,6 +176,13 @@ const AnalyticsTracker = () => {
 
 const AppShell = () => {
   const { progress } = useProgress();
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(`[AppShell] Mount at ${location.pathname}`);
+    return () => console.log(`[AppShell] Unmount at ${location.pathname}`);
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen bg-[#FAF5EF]">
       <Header 
@@ -171,7 +191,7 @@ const AppShell = () => {
         level={progress.level} 
       />
       <main className="flex-1 pb-24">
-        <Suspense fallback={null}>
+        <Suspense fallback={<MinimalLoader />}>
           <Outlet />
         </Suspense>
       </main>
