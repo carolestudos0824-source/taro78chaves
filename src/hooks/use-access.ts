@@ -15,10 +15,10 @@ import { hasInitialAccess } from "@/lib/content/access";
  */
 export function useAccess() {
   const { isPremium, subscriptionStatus, loading: premiumLoading } = usePremium();
-  const { isAdmin, isModerator, loading: roleLoading } = useRole();
+  const { isAdmin, isAuditor, isModerator, loading: roleLoading } = useRole();
   const { progress, loading: progressLoading } = useProgress();
 
-  const hasFullAccess = isAdmin || isModerator || isPremium;
+  const hasFullAccess = isAdmin || isAuditor || isModerator || isPremium;
 
   const canAccessArcano = (arcanoId: number) => {
     if (hasFullAccess) return true;
