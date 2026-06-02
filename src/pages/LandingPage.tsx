@@ -32,6 +32,7 @@ import { PWAInstructions } from "@/components/landing/PWAInstructions";
 
 import { checkoutUrl } from "@/config/checkout";
 import { Helmet } from "react-helmet-async";
+import { isWebCheckoutAllowed } from "@/lib/platform";
 
 const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
   const navigate = useNavigate();
