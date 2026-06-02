@@ -645,7 +645,7 @@ const PhaseRevisao = ({
         >
           <Check className="w-6 h-6 mx-auto mb-1" style={{ color: "hsl(140 50% 30%)" }} />
           <p className="font-heading text-sm tracking-wider" style={{ color: "hsl(140 50% 22%)" }}>
-            Lição concluída · +{pontos} Pontos
+            Lição concluída
           </p>
         </div>
       )}
