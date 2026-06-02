@@ -45,6 +45,6 @@ export const isAndroidApp = (): boolean => {
 /** Whether external (Stripe) checkout for digital content is allowed in this build. */
 export const isWebCheckoutAllowed = (): boolean => !isAndroidApp();
 
-export const STRIPE_BLOCKED_ANDROID_MSG = "Acesso completo à Escola Digital via Google Play Store em breve. Alunas com acesso ativo podem fazer login para continuar a travessia normalmente.";
+export const STRIPE_BLOCKED_ANDROID_MSG = "Este conteúdo está disponível para contas com acesso ativo.";
 
 export const platformLabel = (): "android" | "web" => (isAndroidApp() ? "android" : "web");
