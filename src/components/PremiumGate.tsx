@@ -3,7 +3,7 @@ import { Crown, Sparkles, LockKeyhole, ArrowRight, KeyRound, SquareStack, Compas
 import { Button } from "@/components/ui/button";
 import { usePremium } from "@/hooks/use-premium";
 import { useRole } from "@/hooks/use-role";
-import { isWebCheckoutAllowed } from "@/lib/platform";
+import { isWebCheckoutAllowed, STRIPE_BLOCKED_ANDROID_MSG } from "@/lib/platform";
 
 interface PremiumGateProps {
   featureName?: string;
