@@ -47,5 +47,19 @@
 
 ---
 
+---
+
+### 3. Suporte Global e Canais de Atendimento
+**Status:** FECHADO
+**Data de Aprovação:** Junho de 2026
+
+**Regras Consolidadas:**
+- O e-mail oficial de suporte é **luadekaya@gmail.com**.
+- Todas as referências antigas a `suporte@taro78chaves.com.br` foram removidas.
+- A configuração centralizada em `src/config/business.ts` rege as páginas legais (/privacidade, /termos, /suporte, /excluir-conta).
+- Links `mailto:` e textos de ajuda foram validados.
+
+---
+
 ## Blocos em Aberto / Próximos Passos
 - (Aguardando definição do usuário)
