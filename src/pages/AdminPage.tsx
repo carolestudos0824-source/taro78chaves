@@ -16,14 +16,14 @@ import AdminSettings from "@/components/admin/AdminSettings";
 import AdminAuditLog from "@/components/admin/AdminAuditLog";
 import AdminRoles from "@/components/admin/AdminRoles";
 import AdminPlayStore from "@/components/admin/AdminPlayStore";
-import AdminHotmart from "@/components/admin/AdminHotmart";
+
 import AdminCertificates from "@/components/admin/AdminCertificates";
 import { useRole, canAccessSection } from "@/hooks/use-role";
 
 const sectionComponents: Record<AdminSection, React.ComponentType> = {
   overview: AdminOverview,
   users: AdminUsers,
-  hotmart: AdminHotmart,
+  
   certificates: AdminCertificates,
   subscriptions: AdminSubscriptions,
   gifts: AdminGiftCodes,
@@ -98,7 +98,7 @@ const AdminPage = () => {
             </div>
           )}
           <footer className="mt-20 pt-8 border-t border-[#C8A66A]/10 flex flex-col items-center gap-2">
-            <p className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#C8A66A] font-black">Build Web First — Hotmart Ops Ready</p>
+            <p className="text-[10px] font-heading tracking-[0.3em] uppercase text-[#C8A66A] font-black">Build Web First — Stripe Managed</p>
             <p className="text-[9px] text-[#5B1F3D]/30 font-body font-bold uppercase tracking-widest">Registrada para Teste Smoke Curto</p>
           </footer>
         </main>
