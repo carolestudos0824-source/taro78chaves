@@ -243,7 +243,7 @@ const ReviewPage = () => {
                   {!isDailyDone && (
                     <div className="flex items-center gap-1 shrink-0">
                       <Sparkles className="w-3.5 h-3.5" style={{ color: "hsl(36 42% 45%)" }} />
-                      <span className="text-[10px] font-heading tracking-wider" style={{ color: "hsl(36 42% 45%)" }}>+{dailyChallenge.xpReward} Pontos</span>
+                      <span className="text-[10px] font-heading tracking-wider" style={{ color: "hsl(36 42% 45%)" }}>Concluir Desafio</span>
                     </div>
                   )}
                 </div>
