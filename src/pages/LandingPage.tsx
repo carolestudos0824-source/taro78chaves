@@ -171,7 +171,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                     <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
                       <Zap className="w-2.5 h-2.5 md:w-3 md:h-3 text-gold-dark" />
                     </div>
-                    <span>Quizzes e Pontos</span>
+                    <span>Quizzes de Conhecimento</span>
                   </div>
                   <div className="flex items-center gap-1.5 group">
                     <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
@@ -268,7 +268,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
         <div className="max-w-7xl mx-auto px-0 md:px-6 relative z-10">
           <div className="text-center mb-16 px-6 space-y-4">
             <h2 className="font-heading text-3xl md:text-4xl text-midnight">Explore a Trilha do Conhecimento</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto font-body">Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, Pontos de Jornada e progresso real.</p>
+            <p className="text-muted-foreground max-w-2xl mx-auto font-body">Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes e progresso real.</p>
           </div>
 
           <div className="relative">

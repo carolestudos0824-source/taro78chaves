@@ -230,7 +230,7 @@ const SlideCover = () => (
       Tarô 78 Chaves
     </h1>
     <p className="font-accent text-xl md:text-3xl italic leading-relaxed max-w-xl mx-auto font-bold" style={{ color: "#5B1F3DCC" }}>
-      Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, Pontos e progresso real.
+      Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes e progresso real.
     </p>
     <div className="flex items-center justify-center gap-8 pt-4">
       {[
@@ -538,22 +538,22 @@ const SlidePlans = () => (
           <span className="text-[9px] font-heading tracking-[0.25em] uppercase px-4 py-1 rounded-full shadow-md font-black" style={{
             background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
             color: "#FAF5EF",
-          }}>✦ Acesso Anual</span>
+          }}>✦ Assinatura Mensal</span>
         </div>
         <div className="text-center pb-3" style={{ borderBottom: "1.5px solid rgba(200, 166, 106, 0.25)" }}>
-          <p className="text-[10px] font-heading tracking-[0.3em] uppercase font-black" style={{ color: "#8B6A30" }}>Matrícula Escola Digital</p>
+          <p className="text-[10px] font-heading tracking-[0.3em] uppercase font-black" style={{ color: "#8B6A30" }}>Acesso Escola Digital</p>
           <div className="flex flex-col items-center justify-center gap-1 mt-2">
              <div className="flex items-baseline gap-2">
-               <span className="font-heading text-4xl" style={{ color: "#5B1F3D" }}>R$ 297</span>
-               <span className="text-xs font-heading font-black opacity-40">/único</span>
+               <span className="font-heading text-4xl" style={{ color: "#5B1F3D" }}>R$ 27</span>
+               <span className="text-xs font-heading font-black opacity-40">/mês</span>
              </div>
-             <p className="text-[10px] font-body font-black italic opacity-60">12 meses de acesso • Sem renovação</p>
+             <p className="text-[10px] font-body font-black italic opacity-60">Estude no seu ritmo • Cancele quando quiser</p>
           </div>
         </div>
         <div className="space-y-3">
           {[
             "Todos os 78 arcanos guiados", 
-            "Metodologia progressiva (Duolingo-style)", 
+            "Metodologia progressiva", 
             "Certificado de Conclusão", 
             "Módulos Premium de Combinações", 
             "Suporte Pedagógico Real",
