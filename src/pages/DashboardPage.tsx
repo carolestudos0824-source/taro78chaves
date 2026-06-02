@@ -308,20 +308,27 @@ const DashboardPage = () => {
         </div>
 
         {/* Links Rápidos Pedagógicos */}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-3 gap-3">
           <button 
             onClick={() => navigate("/trilhas")}
-            className="flex items-center justify-center gap-3 p-4 bg-white border border-[#C8A66A]/20 rounded-2xl hover:bg-[#FAF5EF] transition-all group"
+            className="flex flex-col items-center justify-center gap-2 p-4 bg-white border border-[#C8A66A]/20 rounded-2xl hover:bg-[#FAF5EF] transition-all group"
           >
             <Layout className="w-4 h-4 text-[#C8A66A] group-hover:scale-110 transition-transform" />
-            <span className="text-[10px] font-heading font-black text-[#5B1F3D] uppercase tracking-widest">Mapa da Jornada</span>
+            <span className="text-[8px] min-[360px]:text-[10px] font-heading font-black text-[#5B1F3D] uppercase tracking-widest text-center">Mapa da Jornada</span>
           </button>
           <button 
             onClick={() => navigate("/biblioteca")}
-            className="flex items-center justify-center gap-3 p-4 bg-white border border-[#C8A66A]/20 rounded-2xl hover:bg-[#FAF5EF] transition-all group"
+            className="flex flex-col items-center justify-center gap-2 p-4 bg-white border border-[#C8A66A]/20 rounded-2xl hover:bg-[#FAF5EF] transition-all group"
           >
             <BookOpen className="w-4 h-4 text-[#C8A66A] group-hover:scale-110 transition-transform" />
-            <span className="text-[10px] font-heading font-black text-[#5B1F3D] uppercase tracking-widest">Biblioteca</span>
+            <span className="text-[8px] min-[360px]:text-[10px] font-heading font-black text-[#5B1F3D] uppercase tracking-widest text-center">Biblioteca</span>
+          </button>
+          <button 
+            onClick={() => navigate("/rotina")}
+            className="flex flex-col items-center justify-center gap-2 p-4 bg-white border border-[#C8A66A]/20 rounded-2xl hover:bg-[#FAF5EF] transition-all group"
+          >
+            <Clock className="w-4 h-4 text-[#C8A66A] group-hover:scale-110 transition-transform" />
+            <span className="text-[8px] min-[360px]:text-[10px] font-heading font-black text-[#5B1F3D] uppercase tracking-widest text-center">Como Estudar</span>
           </button>
         </div>
 
