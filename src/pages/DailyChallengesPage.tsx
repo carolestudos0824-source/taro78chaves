@@ -78,7 +78,7 @@ const DailyChallengesPage = () => {
   }, [addXP, updateStreak]);
 
   return (
-    <div className="min-h-screen relative overflow-hidden pb-bottom-nav bg-[#FAF5EF]">
+    <div className="min-h-screen relative overflow-hidden pb-[calc(96px+env(safe-area-inset-bottom))] bg-[#FAF5EF]">
       {/* Background — Reforçado para evitar aspecto lavado e garantir profundidade */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         <div
