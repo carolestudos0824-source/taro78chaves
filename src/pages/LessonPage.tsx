@@ -7,7 +7,6 @@ import { useRole } from "@/hooks/use-role";
 import { useAccess } from "@/hooks/use-access";
 import { ArcanoVivoStage } from "@/components/tarot-motion/ArcanoVivoStage";
 import { ArcanoUnlockMoment } from "@/components/tarot-motion/ArcanoUnlockMoment";
-import { XPRewardMotion } from "@/components/tarot-motion/XPRewardMotion";
 import { LessonContent } from "@/components/arcano-vivo/LessonContent";
 import { SymbolMap } from "@/components/arcano-vivo/SymbolMap";
 import { CompletionScreen } from "@/components/arcano-vivo/CompletionScreen";
@@ -15,7 +14,7 @@ import { DeepDiveSection } from "@/components/DeepDiveSection";
 import { ExerciseSection } from "@/components/ExerciseSection";
 import { QuizSection } from "@/components/QuizSection";
 import PremiumGate from "@/components/PremiumGate";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useHeader } from "@/contexts/header-context";
 import { PhaseIndicator } from "@/components/arcano-vivo/PhaseIndicator";
@@ -45,11 +44,34 @@ type LessonPhase =
   | "quiz" 
   | "complete";
 
+const PHASE_ORDER: LessonPhase[] = [
+  "intro",
+  "simbolos",
+  "luz-sombra",
+  "voz",
+  "aprofundamento",
+  "aplicacoes",
+  "reflexao",
+  "quiz",
+  "complete"
+];
+
+const PHASE_LABEL: Record<LessonPhase, string> = {
+  intro: "Apresentação",
+  simbolos: "Símbolos",
+  "luz-sombra": "Luz & Sombra",
+  voz: "Voz da Carta",
+  aprofundamento: "Aprofundamento",
+  aplicacoes: "Aplicações",
+  reflexao: "Reflexão",
+  quiz: "Quiz",
+  complete: "Conclusão",
+};
+
 const LessonPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   
-  // Fallback defensivo para rota literal /lesson/:id ou IDs inválidos
   const arcanoId = parseInt(id || "0", 10);
   const isValidId = !isNaN(arcanoId) && arcanoId >= 0 && arcanoId <= 21;
   const isLiteralRoute = id === ":id";
@@ -59,46 +81,24 @@ const LessonPage = () => {
   const { isStaff, loading: roleLoading } = useRole();
   const { canAccessArcano, hasFullAccess, loading: accessLoading } = useAccess();
   const { setHeader, resetHeader } = useHeader();
-  const [phase, setPhase] = useState<LessonPhase>("intro");
-  const [mounted, setMounted] = useState(false);
+  const [phaseIdx, setPhaseIdx] = useState(0);
+  const phase = PHASE_ORDER[phaseIdx];
   
   const arcano = getArcanoById(isValidId ? arcanoId : 0);
   const hasAccess = isValidId ? canAccessArcano(arcanoId) : false;
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-  
-  const getPhases = () => {
-    return [
-      "intro",
-      "simbolos",
-      "luz-sombra",
-      "voz",
-      "aprofundamento",
-      "aplicacoes",
-      "reflexao",
-      "quiz",
-      "complete"
-    ];
-  };
-  const phases = getPhases();
-  
   const [pontosEarned, setPontosEarned] = useState(0);
+  const [lastQuizScore, setLastQuizScore] = useState(0);
+  const [lastQuizTotal, setLastQuizTotal] = useState(0);
+  const [showUnlockMoment, setShowUnlockMoment] = useState(false);
 
-  // Fallback defensivo para rota literal /lesson/:id ou IDs inválidos
-
-  // Redirecionamento defensivo se a rota for literal
   useEffect(() => {
-    
     if (isLiteralRoute) {
       navigate("/module/arcanos-maiores", { replace: true });
     }
   }, [isLiteralRoute, navigate]);
 
-
   const nextArcano = isValidId && arcanoId < 21 ? ARCANOS_MAIORES[arcanoId + 1] : null;
-
 
   useEffect(() => {
     if (arcano) {
@@ -106,75 +106,44 @@ const LessonPage = () => {
         title: arcano.name,
         subtitle: `Arcano ${arcano.numeral} • Lição ${arcanoId + 1}`,
         backRoute: "/module/arcanos-maiores",
-        rightElement: <PhaseIndicator phases={phases} currentIndex={phases.indexOf(phase)} />,
+        rightElement: <PhaseIndicator phases={PHASE_ORDER} currentIndex={phaseIdx} />,
         hidePontos: true
       });
     }
     return () => resetHeader();
-  }, [arcano, phase, arcanoId, phases, setHeader, resetHeader]);
+  }, [arcano, phaseIdx, arcanoId, setHeader, resetHeader]);
 
-  // Note: Local loader removed to avoid flicker. 
-  // We rely on stable background and Suspense.
-  if (isLiteralRoute) {
+  if (isLiteralRoute || !arcano || !isValidId) {
+    if (!arcano || !isValidId) {
+      return (
+        <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
+          <div className="text-center space-y-8 max-w-xs px-6">
+            <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-2 border-4 border-[#C8A66A] shadow-xl ring-8 ring-[#C8A66A]/10">
+              <span className="text-3xl">🃏</span>
+            </div>
+            <div className="space-y-3">
+              <h2 className="font-heading text-2xl text-[#5B1F3D] font-black tracking-tight">Arcano não encontrado</h2>
+              <p className="font-accent text-sm text-[#5B1F3D]/70 italic leading-relaxed font-bold">
+                "Nem toda porta deve ser aberta antes do tempo."
+              </p>
+            </div>
+            <button 
+              onClick={() => navigate("/module/arcanos-maiores")} 
+              className="w-full h-auto py-5 px-4 rounded-2xl font-heading text-[11px] tracking-[0.1em] uppercase transition-all shadow-xl hover:scale-105 active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A] font-black leading-tight text-center"
+            >
+              Voltar à Jornada
+            </button>
+          </div>
+        </div>
+      );
+    }
     return null;
   }
-
-  // 2. Estado de Arcano Inexistente
-  if (!arcano || !isValidId) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
-        <div className="text-center space-y-8 max-w-xs px-6">
-          <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-2 border-4 border-[#C8A66A] shadow-xl ring-8 ring-[#C8A66A]/10">
-            <span className="text-3xl">🃏</span>
-          </div>
-          <div className="space-y-3">
-            <h2 className="font-heading text-2xl text-[#5B1F3D] font-black tracking-tight">Arcano não encontrado</h2>
-            <p className="font-accent text-sm text-[#5B1F3D]/70 italic leading-relaxed font-bold">
-              "Nem toda porta deve ser aberta antes do tempo."
-            </p>
-          </div>
-          <button 
-            onClick={() => navigate("/module/arcanos-maiores")} 
-            className="w-full h-auto py-5 px-4 rounded-2xl font-heading text-[11px] tracking-[0.1em] uppercase transition-all shadow-xl hover:scale-105 active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A] font-black leading-tight text-center"
-          >
-            Voltar à Jornada
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  const handleStartLesson = () => {
-    addXP(10);
-    setPontosEarned(10);
-    setShowPontosReward(true);
-    setTimeout(() => setShowPontosReward(false), 2000);
-    earnBadge("first-step");
-    setPhase("lesson");
-    window.scrollTo(0, 0);
-  };
-
-  const handleQuizComplete = (score: number, total: number) => {
-    const quizPontos = score * 10;
-    addXP(quizPontos);
-    setPontosEarned(e => e + quizPontos);
-    completeQuiz(`quiz-arcano-${arcano.id}`, score, total);
-    completeLesson(`arcano-${arcano.id}`);
-    if (arcano.id === 0) {
-      earnBadge("fool-complete");
-      setShowUnlockMoment(true);
-    }
-    setLastQuizScore(score);
-    setLastQuizTotal(total);
-    setPhase("complete");
-    window.scrollTo(0, 0);
-  };
 
   if (!hasAccess && !accessLoading) {
     const isPerformanceLocked = arcanoId === 1 && !hasFullAccess;
     return (
       <div className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center p-6">
-        {/* Background — Marfim Suave replicando /app */}
         <div className="fixed inset-0 z-0">
           <div
             className="absolute inset-0"
@@ -215,10 +184,32 @@ const LessonPage = () => {
     );
   }
 
+  const goNext = () => {
+    if (phaseIdx < PHASE_ORDER.length - 1) {
+      setPhaseIdx(phaseIdx + 1);
+      window.scrollTo(0, 0);
+    }
+  };
+
+  const handleQuizComplete = (score: number, total: number) => {
+    const quizPontos = score * 10;
+    addXP(quizPontos);
+    setPontosEarned(e => e + quizPontos);
+    completeQuiz(`quiz-arcano-${arcano.id}`, score, total);
+    completeLesson(`arcano-${arcano.id}`);
+    if (arcano.id === 0) {
+      earnBadge("fool-complete");
+      setShowUnlockMoment(true);
+    }
+    setLastQuizScore(score);
+    setLastQuizTotal(total);
+    setPhaseIdx(PHASE_ORDER.indexOf("complete"));
+    window.scrollTo(0, 0);
+  };
+
   return (
-    <div className="min-h-screen relative">
-      {/* Background — Marfim Suave replicando /app */}
-      <div className="fixed inset-0 z-0 bg-[#FAF5EF]">
+    <div className="min-h-screen relative bg-[#FAF5EF]">
+      <div className="fixed inset-0 z-0">
         <div
           className="absolute inset-0"
           style={{
@@ -228,102 +219,159 @@ const LessonPage = () => {
         />
       </div>
 
-      {/* Global Header is handled by AppShell and Context */}
+      <main className="relative z-10 container max-w-lg mx-auto px-4 py-8 pb-32">
+        <section className="space-y-8 animate-fade-in">
+          {phase === "intro" && (
+            <div className="space-y-8">
+              <ArcanoVivoStage
+                arcanoId={arcanoId}
+                cardName={arcano.name}
+                cardImage={arcano.cardImage}
+                arcanoSlug={arcano.id === 0 ? "o-louco" : arcano.id === 1 ? "o-mago" : arcano.id === 15 ? "o-diabo" : "generic"}
+                onContinue={goNext}
+              />
+              <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-6">
+                <div className="flex items-center gap-3">
+                  <Sparkles className="w-5 h-5 text-[#C8A66A]" />
+                  <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Essência</h2>
+                </div>
+                <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.layers.main.essence}</p>
+                {arcano.archetype && (
+                  <>
+                    <div className="flex items-center gap-3 pt-4">
+                      <Sparkles className="w-5 h-5 text-[#C8A66A]" />
+                      <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Arquétipo</h2>
+                    </div>
+                    <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.archetype}</p>
+                  </>
+                )}
+              </div>
+            </div>
+          )}
 
-      <main className="relative z-10 container max-w-lg mx-auto px-4 py-4 bg-transparent">
-        {phase === "intro" && (
-          <ArcanoVivoStage
-            arcanoId={arcanoId}
-            cardName={arcano.name}
-            cardImage={arcano.cardImage}
-            arcanoSlug={arcano.id === 0 ? "o-louco" : arcano.id === 1 ? "o-mago" : arcano.id === 15 ? "o-diabo" : "generic"}
-            onContinue={handleStartLesson}
-          />
-        )}
-
-        {phase === "lesson" && (
-          <LessonContent
-            sections={arcano.lessonSections}
-            essence={arcano.layers.main.essence}
-            light={arcano.layers.main.light}
-            shadow={arcano.layers.main.shadow}
-            quickReview={arcano.quickReview}
-            reflectionQuestions={arcano.reflectionQuestions}
-            initiationLesson={arcano.initiationLesson}
-            onComplete={() => setPhase(arcano.symbolsMap?.length ? "symbols" : "quiz")}
-            onGoDeepDive={() => setPhase("deepdive")}
-            onGoExercise={() => setPhase("exercise")}
-            onSkipToQuiz={() => setPhase("quiz")}
-          />
-        )}
-
-        {phase === "symbols" && (
-          <SymbolMap
-            cardImage={arcano.cardImage}
-            cardName={arcano.name}
-            symbols={arcano.symbolsMap!}
-            onComplete={() => setPhase("deepdive")}
-          />
-        )}
-
-        {phase === "deepdive" && (
-          <div className="space-y-8">
-            <DeepDiveSection {...arcano.layers.deepDive} />
-            <button 
-              onClick={() => setPhase("exercise")} 
-              className="w-full h-auto bg-[#5B1F3D] text-white py-5 px-4 rounded-2xl font-heading font-black text-xs tracking-[0.1em] uppercase border-2 border-[#C8A66A] shadow-xl transition-all hover:scale-105 active:scale-95 leading-tight text-center"
-            >
-              Continuar para Exercício
-            </button>
-          </div>
-        )}
-
-        {phase === "exercise" && (
-          <div className="space-y-8">
-            <ExerciseSection
-              {...arcano.layers.exercise}
-              onComplete={() => setExerciseCompleted(true)}
-              completed={exerciseCompleted}
+          {phase === "simbolos" && (
+            <SymbolMap
+              cardImage={arcano.cardImage}
+              cardName={arcano.name}
+              symbols={arcano.symbolsMap || []}
+              onComplete={goNext}
             />
-            <button 
-              onClick={() => setPhase("quiz")} 
-              className="w-full h-auto bg-[#5B1F3D] text-white py-5 px-4 rounded-2xl font-heading font-black text-xs tracking-[0.1em] uppercase border-2 border-[#C8A66A] shadow-xl transition-all hover:scale-105 active:scale-95 leading-tight text-center"
-            >
-              Iniciar Quiz Final
-            </button>
-          </div>
-        )}
+          )}
 
-        {phase === "quiz" && (
-          <QuizSection
-            questions={arcano.quiz}
-            onComplete={handleQuizComplete}
-          />
-        )}
+          {phase === "luz-sombra" && (
+            <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-10">
+              <div className="space-y-6">
+                <div className="flex items-center gap-3">
+                  <span className="text-xl">☀</span>
+                  <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#8B6A30]">Luz</h2>
+                </div>
+                <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.layers.main.light}</p>
+              </div>
+              <div className="space-y-6">
+                <div className="flex items-center gap-3">
+                  <span className="text-xl">☾</span>
+                  <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]/60">Sombra</h2>
+                </div>
+                <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.layers.main.shadow}</p>
+              </div>
+              <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">
+                Continuar para Voz da Carta
+              </Button>
+            </div>
+          )}
 
-        {phase === "complete" && (
-          <CompletionScreen
-            arcanoName={arcano.name}
-            arcanoId={arcanoId}
-            pontosEarned={pontosEarned}
-            quizScore={lastQuizScore}
-            quizTotal={lastQuizTotal}
-            nextArcano={nextArcano ? { id: nextArcano.id, name: nextArcano.name, numeral: nextArcano.numeral, subtitle: nextArcano.subtitle } : undefined}
-            isLastArcano={arcanoId === 21}
-            onNextArcano={() => {
-              if (nextArcano) {
-                navigate(`/lesson/${arcanoId + 1}`);
-                window.scrollTo(0, 0);
-                setPhase("intro");
-              }
-            }}
-            onBackToMap={() => navigate("/module/arcanos-maiores")}
-            onPrevArcano={() => {}}
-          />
-        )}
+          {phase === "voz" && (
+            <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
+              <div className="flex items-center gap-3">
+                <Sparkles className="w-5 h-5 text-[#C8A66A]" />
+                <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Voz da Carta</h2>
+              </div>
+              <blockquote className="font-accent italic text-2xl leading-[1.7] pl-6 border-l-4 border-[#C8A66A] text-[#5B1F3D] font-bold">
+                {arcano.voiceText || arcano.layers.main.essence}
+              </blockquote>
+              <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">
+                Continuar para Aprofundamento
+              </Button>
+            </div>
+          )}
+
+          {phase === "aprofundamento" && (
+            <div className="space-y-8">
+              <DeepDiveSection {...arcano.layers.deepDive} />
+              <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">
+                Continuar para Aplicações
+              </Button>
+            </div>
+          )}
+
+          {phase === "aplicacoes" && (
+            <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
+              <div className="flex items-center gap-3">
+                <Sparkles className="w-5 h-5 text-[#C8A66A]" />
+                <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Aplicações</h2>
+              </div>
+              <div className="space-y-6">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm uppercase font-black text-[#8B6A30]">Amor:</span>
+                </div>
+                <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
+                  {arcano.lessonSections.find(s => s.id === "amor")?.content}
+                </p>
+                <div className="flex items-center gap-2 pt-4">
+                  <span className="text-sm uppercase font-black text-[#8B6A30]">Trabalho:</span>
+                </div>
+                <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
+                  {arcano.lessonSections.find(s => s.id === "trabalho")?.content}
+                </p>
+              </div>
+              <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">
+                Continuar para Reflexão
+              </Button>
+            </div>
+          )}
+
+          {phase === "reflexao" && (
+            <div className="space-y-8">
+              <ExerciseSection
+                {...arcano.layers.exercise}
+                onComplete={() => {}}
+                completed={true}
+              />
+              <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">
+                Iniciar Quiz Final
+              </Button>
+            </div>
+          )}
+
+          {phase === "quiz" && (
+            <QuizSection
+              questions={arcano.quiz}
+              onComplete={handleQuizComplete}
+            />
+          )}
+
+          {phase === "complete" && (
+            <CompletionScreen
+              arcanoName={arcano.name}
+              arcanoId={arcanoId}
+              pontosEarned={pontosEarned}
+              quizScore={lastQuizScore}
+              quizTotal={lastQuizTotal}
+              nextArcano={nextArcano ? { id: nextArcano.id, name: nextArcano.name, numeral: nextArcano.numeral, subtitle: nextArcano.subtitle } : undefined}
+              isLastArcano={arcanoId === 21}
+              onNextArcano={() => {
+                if (nextArcano) {
+                  navigate(`/lesson/${arcanoId + 1}`);
+                  window.scrollTo(0, 0);
+                  setPhaseIdx(0);
+                }
+              }}
+              onBackToMap={() => navigate("/module/arcanos-maiores")}
+              onPrevArcano={() => {}}
+            />
+          )}
+        </section>
       </main>
-
-      {/* Reward motion removed for No XP policy */}
 
       {showUnlockMoment && nextArcano && (
         <ArcanoUnlockMoment
@@ -333,7 +381,6 @@ const LessonPage = () => {
           arcanoSlug={nextArcano.id === 1 ? "o-mago" : "generic"}
           onContinue={() => {
             setShowUnlockMoment(false);
-            setPhase("complete");
           }}
         />
       )}
