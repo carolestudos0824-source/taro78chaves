@@ -168,14 +168,22 @@ const ProfilePage = () => {
               <h3 className="font-heading text-xl font-black text-[#5B1F3D]">
                 {isAdmin ? "Acesso Total" : (
                   isOneTimeAnnual ? "Jornada Anual" : 
-                  (isPremium ? (premiumSource === "store_monthly" ? "Assinatura Mensal" : "Jornada Completa") : "Plano do Louco")
+                  (isPremium ? (
+                    premiumSource === "google_play" ? "Assinatura Google Play" :
+                    (premiumSource === "store_monthly" ? "Assinatura Mensal" : "Jornada Completa")
+                  ) : "Plano do Louco")
                 )}
               </h3>
               {isPremium && (
                 <div className="space-y-1">
                   {untilFormatted && (
                     <p className="text-[10px] font-body font-bold italic text-[#5B1F3D]/80 uppercase tracking-widest">
-                      {isStripeRecurring ? `Renovação: ${untilFormatted}` : `Acesso ativo até: ${untilFormatted}`}
+                      {isStripeRecurring ? `Renovação: ${untilFormatted}` : (premiumSource === "google_play" ? `Assinatura Google Play ativa` : `Acesso ativo até: ${untilFormatted}`)}
+                    </p>
+                  )}
+                  {premiumSource === "google_play" && (
+                    <p className="text-[9px] font-body font-bold italic text-[#5B1F3D]/50 uppercase tracking-widest">
+                      Gerencie sua assinatura na Play Store
                     </p>
                   )}
                 </div>

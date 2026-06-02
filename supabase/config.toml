@@ -15,3 +15,8 @@ verify_jwt = false
 [functions.stripe-admin-metrics]
 verify_jwt = false
 
+[functions.google-play-billing]
+verify_jwt = true
+
+[functions.google-play-notifications]
+verify_jwt = false

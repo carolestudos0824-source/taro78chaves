@@ -9,7 +9,8 @@ import { useRole } from "@/hooks/use-role";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { trackEvent } from "@/lib/analytics";
-import { isWebCheckoutAllowed, STRIPE_BLOCKED_ANDROID_MSG } from "@/lib/platform";
+import { isWebCheckoutAllowed, isGooglePlayBillingAllowed, STRIPE_BLOCKED_ANDROID_MSG } from "@/lib/platform";
+import { startGooglePlayPurchase, acknowledgeGooglePlayPurchase, GOOGLE_PLAY_PRODUCT_ID, GOOGLE_PLAY_BASE_PLAN_ID, isGooglePlayBillingSupported } from "@/lib/google-play";
 import { cn } from "@/lib/utils";
 
 const PREMIUM_BENEFITS = [
@@ -26,9 +27,22 @@ const PremiumPage = () => {
   const { isPremium, subscriptionStatus, premiumUntil } = usePremium();
   const { isStaff } = useRole();
   const [loading, setLoading] = useState(false);
+  const [billingSupported, setBillingSupported] = useState<boolean | null>(null);
+  
   const webCheckoutAllowed = isWebCheckoutAllowed();
+  const googlePlayAllowed = isGooglePlayBillingAllowed();
 
-  const handleSubscribe = async () => {
+  useEffect(() => {
+    const checkBilling = async () => {
+      const supported = await isGooglePlayBillingSupported();
+      setBillingSupported(supported);
+    };
+    if (googlePlayAllowed) {
+      checkBilling();
+    }
+  }, [googlePlayAllowed]);
+
+  const handleStripeSubscribe = async () => {
     if (checkoutUrl) {
       trackEvent("checkout_monthly_started");
       window.location.href = checkoutUrl;
@@ -50,6 +64,52 @@ const PremiumPage = () => {
     }
 
     toast.error("Serviço de pagamento indisponível no momento. Tente novamente mais tarde.");
+  };
+
+  const handleGooglePlaySubscribe = async () => {
+    setLoading(true);
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (!user) {
+        toast.info("Entre na sua conta para assinar pela Google Play.");
+        navigate("/auth?redirect=/premium");
+        return;
+      }
+
+      if (isPremium) {
+        toast.info("Você já possui todas as chaves ativas.");
+        navigate("/perfil");
+        return;
+      }
+
+      trackEvent("google_play_checkout_started");
+      const { purchaseToken, response } = await startGooglePlayPurchase(user.id);
+      
+      // Call our backend to validate and record
+      const { data, error } = await supabase.functions.invoke('google-play-billing', {
+        body: {
+          purchaseToken,
+          productId: GOOGLE_PLAY_PRODUCT_ID,
+          basePlanId: GOOGLE_PLAY_BASE_PLAN_ID
+        }
+      });
+
+      if (error) throw error;
+
+      await acknowledgeGooglePlayPurchase(purchaseToken, response);
+      trackEvent("google_play_checkout_success");
+      toast.success("Sua jornada completa foi liberada!");
+      navigate("/perfil");
+      
+    } catch (err: any) {
+      console.error(err);
+      if (err.name !== 'AbortError') {
+        toast.error("Ocorreu um erro ao processar sua assinatura na Google Play.");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -178,12 +238,52 @@ const PremiumPage = () => {
                 </div>
 
                 <Button 
-                  onClick={() => handleSubscribe()} 
+                  onClick={() => handleStripeSubscribe()} 
                   disabled={loading} 
                   className="w-full h-auto min-h-[4rem] py-5 px-4 text-[11px] min-[400px]:text-sm bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.1em] min-[400px]:tracking-[0.15em] shadow-xl border-2 border-[#C8A66A] whitespace-normal leading-tight text-center"
                 >
                   COMEÇAR MINHA JORNADA
                 </Button>
+              </div>
+            </div>
+          </div>
+        ) : googlePlayAllowed ? (
+          <div className="space-y-6">
+            <div className="text-center space-y-2">
+              <h2 className="font-heading text-xl font-black text-[#5B1F3D]">Escola Digital</h2>
+              <p className="text-xs font-accent italic text-[#5B1F3D]/60 font-bold">Assine pela Google Play Store.</p>
+            </div>
+
+            <div className="space-y-4">
+              <div className="w-full text-left bg-white border-4 border-[#C8A66A] p-6 min-[400px]:p-8 rounded-[2.5rem] flex flex-col space-y-6 shadow-2xl relative overflow-hidden ring-8 ring-[#C8A66A]/5">
+                <div className="absolute top-0 right-0 bg-[#C8A66A] px-6 py-2.5 rounded-bl-3xl text-[10px] font-heading font-black tracking-widest text-[#FAF5EF] uppercase shadow-md">
+                  Google Play
+                </div>
+                
+                <div className="space-y-2">
+                  <p className="text-[11px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D] font-black">Escola Digital Premium</p>
+                  <div className="flex items-baseline gap-1">
+                    <span className="font-heading text-4xl min-[400px]:text-5xl text-[#5B1F3D] font-black tracking-tighter">R$ 37</span>
+                    <span className="text-xs font-heading font-black text-[#5B1F3D]/40">/mês</span>
+                  </div>
+                  <p className="text-sm font-black text-[#5B1F3D] italic leading-relaxed">
+                    Acesso completo pela Google Play • Cancele quando quiser na sua conta Google
+                  </p>
+                </div>
+
+                <Button 
+                  onClick={() => handleGooglePlaySubscribe()} 
+                  disabled={loading || billingSupported === false} 
+                  className="w-full h-auto min-h-[4rem] py-5 px-4 text-[11px] min-[400px]:text-sm bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.1em] min-[400px]:tracking-[0.15em] shadow-xl border-2 border-[#C8A66A] whitespace-normal leading-tight text-center"
+                >
+                  {billingSupported === false ? "BILLING INDISPONÍVEL" : "ASSINAR PELA GOOGLE PLAY"}
+                </Button>
+                
+                {billingSupported === false && (
+                  <p className="text-[10px] text-center text-[#5B1F3D]/50 font-bold italic">
+                    Este dispositivo não suporta o Google Play Billing via Web.
+                  </p>
+                )}
               </div>
             </div>
           </div>
