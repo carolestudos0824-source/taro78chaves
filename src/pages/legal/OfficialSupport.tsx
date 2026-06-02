@@ -23,7 +23,7 @@ const REQUEST_TYPES = [
   { value: "hotmart", label: "Compra Hotmart" },
   { value: "liberacao", label: "Pagamento aprovado, mas sem acesso" },
   { value: "licao", label: "Problema em lição ou quiz" },
-  { value: "progresso", label: "Problema com progresso ou XP" },
+  { value: "progresso", label: "Problema com progresso ou Nível" },
   { value: "certificado", label: "Certificado" },
   { value: "exclusao", label: "Exclusão de conta" },
   { value: "outro", label: "Outro assunto" },

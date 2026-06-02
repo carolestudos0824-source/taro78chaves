@@ -26,12 +26,12 @@ const TermsPage = () => (
 
     <h2>3. Acesso e Pagamento</h2>
     <p>
-      A plataforma oferece acesso completo ao programa através de compra única ou planos disponibilizados via Hotmart.
+      A plataforma oferece acesso completo ao programa através de compra única ou planos disponibilizados via Stripe (Web/PWA) ou Hotmart.
     </p>
 
     <h2>4. Cancelamento e Reembolso</h2>
     <p>
-      Reembolsos seguem a legislação consumerista vigente (direito de arrependimento de 7 dias para compras online) e as regras da Hotmart.
+      Reembolsos seguem a legislação consumerista vigente (direito de arrependimento de 7 dias para compras online) e as regras do processador de pagamento utilizado (Stripe ou Hotmart).
     </p>
 
     <h2>5. Propriedade intelectual</h2>

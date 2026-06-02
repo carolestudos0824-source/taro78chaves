@@ -40,7 +40,7 @@ const PrivacyPage = () => (
     <h2>4. Provedores e compartilhamento</h2>
     <ul>
       <li><strong>Backend e autenticação:</strong> provedor de banco de dados na nuvem (com criptografia em trânsito e em repouso).</li>
-      <li><strong>Pagamentos:</strong> Hotmart — processa transações de compra. Não armazenamos dados de cartão.</li>
+      <li><strong>Pagamentos:</strong> Stripe ou Hotmart — processam transações de compra de acordo com a plataforma escolhida. Não armazenamos dados de cartão diretamente em nossos servidores.</li>
       <li><strong>Analytics:</strong> Google Analytics 4 — métricas de uso agregadas e pseudonimizadas.</li>
     </ul>
     <p>
