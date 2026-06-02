@@ -36,15 +36,15 @@ const DashboardPage = () => {
   const { isStaff, isAuditor, role } = useRole();
   const { setHeader, resetHeader } = useHeader();
 
-  const userName = user?.user_metadata?.display_name || progress.studentName || "Aluna";
+  const userName = user?.user_metadata?.display_name || progress.studentName || (isAdmin ? "Administrador" : isAuditor ? "Auditor" : "Aluna");
 
   useEffect(() => {
     setHeader({
       title: "Tarô 78 Chaves",
-      subtitle: `Bem-vinda, ${userName}`,
+      subtitle: isAdmin ? "Acesso Administrativo" : isAuditor ? "Modo Auditoria" : `Bem-vinda, ${userName}`,
     });
     return () => resetHeader();
-  }, [userName]);
+  }, [userName, isAdmin, isAuditor]);
 
   const totalArcanosCount = 78;
   const completedMaiores = progress.completedLessons.filter(l => l.startsWith("arcano-")).length;
