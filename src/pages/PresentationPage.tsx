@@ -230,7 +230,7 @@ const SlideCover = () => (
       Tarô 78 Chaves
     </h1>
     <p className="font-accent text-xl md:text-3xl italic leading-relaxed max-w-xl mx-auto font-bold" style={{ color: "#5B1F3DCC" }}>
-      Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, Pontos e progresso real.
+      Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes e progresso real.
     </p>
     <div className="flex items-center justify-center gap-8 pt-4">
       {[

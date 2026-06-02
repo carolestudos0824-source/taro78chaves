@@ -312,11 +312,7 @@ const LessonPage = () => {
         )}
       </main>
 
-      {showPontosReward && (
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[100]">
-          <XPRewardMotion pontos={10} arcanoId={arcanoId} />
-        </div>
-      )}
+      {/* Reward motion removed for No XP policy */}
 
       {showUnlockMoment && nextArcano && (
         <ArcanoUnlockMoment
