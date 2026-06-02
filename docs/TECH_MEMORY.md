@@ -47,7 +47,6 @@
 
 ---
 
----
 
 ### 3. Suporte Global e Canais de Atendimento
 **Status:** FECHADO
