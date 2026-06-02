@@ -3,7 +3,7 @@
  */
 
 export const GOOGLE_PLAY_PRODUCT_ID = "taro78chaves_premium";
-export const GOOGLE_PLAY_BASE_PLAN_ID = "monthly-37";
+export const GOOGLE_PLAY_BASE_PLAN_ID = "monthly-27";
 
 export async function isGooglePlayBillingSupported(): Promise<boolean> {
   if (typeof window === "undefined") return false;
@@ -68,7 +68,7 @@ export async function startGooglePlayPurchase(userId: string) {
     const paymentDetails = {
       total: {
         label: 'Total',
-        amount: { currency: 'BRL', value: '37.00' }
+        amount: { currency: 'BRL', value: '27.00' }
       }
     };
 

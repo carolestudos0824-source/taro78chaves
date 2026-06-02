@@ -194,7 +194,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                   {isWebCheckoutAllowed() && (
                     <>
                       <p className="text-[11px] md:text-base font-heading tracking-[0.1em] text-plum/80 font-bold uppercase">
-                        ✦ Assinatura mensal por apenas R$37/mês.
+                        ✦ Assinatura mensal por apenas R$27/mês.
                       </p>
                       <p className="text-[10px] md:text-xs font-body text-plum/50 italic">
                         Cancele quando quiser. Acesso imediato.
@@ -442,7 +442,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                   <div className="flex flex-col">
                     <div className="flex items-baseline gap-3">
                       <span className="text-sm md:xl text-plum font-heading uppercase tracking-widest font-black">Por apenas</span>
-                      <span className="text-5xl sm:text-7xl md:text-9xl font-heading text-midnight leading-none tracking-tighter">R$37</span>
+                      <span className="text-5xl sm:text-7xl md:text-9xl font-heading text-midnight leading-none tracking-tighter">R$27</span>
                       <span className="text-sm md:text-2xl text-midnight/40 font-heading font-bold uppercase tracking-widest">/mês</span>
                     </div>
                   </div>
