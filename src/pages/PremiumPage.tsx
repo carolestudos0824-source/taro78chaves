@@ -242,7 +242,7 @@ const PremiumPage = () => {
                     <span className="text-xs font-heading font-black text-[#5B1F3D]/40">/mês</span>
                   </div>
                   <p className="text-sm font-black text-[#5B1F3D] italic leading-relaxed">
-                    Acesso completo enquanto a assinatura estiver ativa • Cancele quando quiser
+                    Assinatura mensal de R$ 27/mês. Pague com cartão ou Pix.
                   </p>
                 </div>
 
