@@ -36,15 +36,15 @@ const DashboardPage = () => {
   const { isStaff, isAuditor, role } = useRole();
   const { setHeader, resetHeader } = useHeader();
 
-  const userName = user?.user_metadata?.display_name || progress.studentName || "Aluna";
+  const userName = user?.user_metadata?.display_name || progress.studentName || (isAdmin ? "Administrador" : isAuditor ? "Auditor" : "Aluna");
 
   useEffect(() => {
     setHeader({
       title: "Tarô 78 Chaves",
-      subtitle: `Bem-vinda, ${userName}`,
+      subtitle: isAdmin ? "Acesso Administrativo" : isAuditor ? "Modo Auditoria" : `Bem-vinda, ${userName}`,
     });
     return () => resetHeader();
-  }, [userName]);
+  }, [userName, isAdmin, isAuditor]);
 
   const totalArcanosCount = 78;
   const completedMaiores = progress.completedLessons.filter(l => l.startsWith("arcano-")).length;
@@ -111,35 +111,47 @@ const DashboardPage = () => {
     <div className="min-h-screen bg-[#FAF5EF]">
       <main className="container max-w-3xl px-4 pt-6 pb-24 space-y-6 animate-in fade-in duration-500">
         
-        {/* Auditor/Admin Banner */}
+        {/* Auditor/Admin Banner - Improved Visual & Utility */}
         {isStaff && (
-          <div className="rounded-2xl p-4 bg-[#5B1F3D]/5 border-2 border-[#5B1F3D]/10 flex items-start gap-4 mb-2">
-            <ShieldCheck className="w-5 h-5 text-[#C8A66A] shrink-0 mt-0.5" />
-            <div className="space-y-1">
-              <p className="text-[10px] font-heading font-black tracking-widest uppercase text-[#C8A66A]">
-                {isAdmin ? "Acesso Administrativo" : "Modo Auditoria"}
-              </p>
-              <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/70 leading-relaxed">
-                {isAdmin 
-                  ? "Você tem acesso total. Seu progresso administrativo não é salvo para não poluir os dados da plataforma." 
-                  : "Modo Auditoria ativo. Você pode testar todo o conteúdo premium, mas seu progresso não será persistido."}
-              </p>
+          <div className="rounded-2xl p-4 bg-[#5B1F3D] border-2 border-[#C8A66A] flex flex-col sm:flex-row items-center justify-between gap-4 mb-2 shadow-lg animate-in slide-in-from-top duration-500">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+                <ShieldCheck className="w-6 h-6 text-[#C8A66A]" />
+              </div>
+              <div className="space-y-0.5">
+                <p className="text-[11px] font-heading font-black tracking-widest uppercase text-[#C8A66A]">
+                  {isAdmin ? "Acesso Administrativo" : "Modo Auditoria"}
+                </p>
+                <p className="text-[12px] font-body font-bold italic text-white/90 leading-snug">
+                  {isAdmin 
+                    ? "Gestão total ativa. Seu progresso não afeta os dados de produção." 
+                    : "Modo Auditoria: visualização de conteúdo premium liberada para testes."}
+                </p>
+              </div>
             </div>
+            {isAdmin && (
+              <button 
+                onClick={() => navigate("/admin")}
+                className="w-full sm:w-auto px-4 py-2 bg-[#C8A66A] text-[#5B1F3D] rounded-xl font-heading text-[10px] font-black tracking-widest uppercase shadow-md hover:bg-white transition-all whitespace-nowrap"
+              >
+                Painel Admin
+              </button>
+            )}
           </div>
         )}
 
-        {/* 1. Bloco Principal: Minha Jornada */}
-        <section className="relative rounded-[2.5rem] overflow-hidden p-6 md:p-10 border-2 border-[#C8A66A] bg-white shadow-xl shadow-[#5B1F3D]/5">
+        {/* 1. Bloco Principal: Minha Jornada - Refined Hierarquia & Espaçamento */}
+        <section className="relative rounded-[2rem] md:rounded-[2.5rem] overflow-hidden p-5 md:p-8 border-2 border-[#C8A66A] bg-white shadow-xl shadow-[#5B1F3D]/5">
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#C8A66A]/5 rounded-full blur-3xl -mr-16 -mt-16" />
           
-          <div className="flex items-start justify-between mb-8">
+          <div className="flex items-start justify-between mb-6 md:mb-8">
             <div className="space-y-1">
-              <span className="text-[10px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Onde você está</span>
-              <h2 className="text-2xl font-heading font-black text-[#5B1F3D]">Minha Jornada</h2>
+              <span className="text-[11px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Onde você está</span>
+              <h2 className="text-xl md:text-2xl font-heading font-black text-[#5B1F3D]">Minha Jornada</h2>
             </div>
             <div className="text-right">
-              <span className="text-3xl font-heading font-black text-[#5B1F3D]">{globalProgressPct}%</span>
-              <p className="text-[10px] font-heading font-black text-[#C8A66A] uppercase tracking-widest mt-1">Concluído</p>
+              <span className="text-2xl md:text-3xl font-heading font-black text-[#5B1F3D]">{globalProgressPct}%</span>
+              <p className="text-[11px] font-heading font-black text-[#C8A66A] uppercase tracking-widest mt-1">Concluído</p>
             </div>
           </div>
 
@@ -155,7 +167,7 @@ const DashboardPage = () => {
                   />
                 </div>
                 <div className="space-y-1 min-w-0">
-                  <p className="text-[10px] font-heading font-black tracking-widest text-[#C8A66A] uppercase truncate">
+                  <p className="text-[11px] font-heading font-black tracking-widest text-[#C8A66A] uppercase truncate">
                     {currentStep.moduleName}
                   </p>
                   <h3 className="text-lg font-heading font-black text-[#5B1F3D] leading-tight truncate">
@@ -163,7 +175,7 @@ const DashboardPage = () => {
                   </h3>
                   <div className="flex items-center gap-2 opacity-60">
                     <Clock className="w-3 h-3 text-[#5B1F3D]" />
-                    <span className="text-[10px] font-body font-bold italic text-[#5B1F3D]">Última lição: {lastLessonName}</span>
+                    <span className="text-[11px] font-body font-bold italic text-[#5B1F3D]">Última lição: {lastLessonName}</span>
                   </div>
                 </div>
               </div>
@@ -177,7 +189,7 @@ const DashboardPage = () => {
                 style={{ width: `${Math.max(globalProgressPct, 5)}%` }}
               />
             </div>
-            <div className="flex justify-between text-[10px] font-heading font-black text-[#5B1F3D]/40 uppercase tracking-widest px-1">
+            <div className="flex justify-between text-[11px] font-heading font-black text-[#5B1F3D]/40 uppercase tracking-widest px-1">
               <span>{totalCompletedArcanos} Chaves</span>
               <span>78 Chaves da Jornada</span>
             </div>
@@ -205,19 +217,19 @@ const DashboardPage = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-1">
                 <p className="text-xl font-heading font-black text-[#5B1F3D]">{totalCompletedArcanos}</p>
-                <p className="text-[9px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Arcanos</p>
+                <p className="text-[10px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Arcanos</p>
               </div>
               <div className="space-y-1">
                 <p className="text-xl font-heading font-black text-[#5B1F3D]">{progress.completedLessons.length}</p>
-                <p className="text-[9px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Lições</p>
+                <p className="text-[10px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Lições</p>
               </div>
               <div className="space-y-1">
                 <p className="text-xl font-heading font-black text-[#5B1F3D]">{progress.completedQuizzes.length}</p>
-                <p className="text-[9px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Quizzes</p>
+                <p className="text-[10px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Quizzes</p>
               </div>
               <div className="space-y-1">
                 <p className="text-xl font-heading font-black text-[#5B1F3D]">{totalCompletedArcanos}</p>
-                <p className="text-[9px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Chaves conquistadas</p>
+                <p className="text-[10px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Chaves conquistadas</p>
               </div>
             </div>
           </div>
@@ -236,7 +248,7 @@ const DashboardPage = () => {
             {currentStep ? (
               <div className="space-y-4 relative z-10">
                 <div className="space-y-1">
-                  <p className="text-[9px] font-heading font-black text-white/50 uppercase tracking-widest">{currentStep.name}</p>
+                  <p className="text-[10px] font-heading font-black text-white/50 uppercase tracking-widest">{currentStep.name}</p>
                   <p className="text-lg font-heading font-black leading-tight">{currentStep.lessonName}</p>
                 </div>
                 <button 
@@ -262,7 +274,7 @@ const DashboardPage = () => {
             <div className="flex items-center gap-4">
               <div className="flex-1 space-y-1">
                 <p className="text-sm font-heading font-black text-[#5B1F3D]">Nível {progress.level}</p>
-                <p className="text-[9px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">
+                <p className="text-[10px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">
                   Continue avançando para alcançar o nível {progress.level + 1}
                 </p>
               </div>
@@ -284,23 +296,29 @@ const DashboardPage = () => {
                   <Crown className={`w-5 h-5 ${isPremium ? "text-[#C8A66A]" : "text-[#5B1F3D]/30"}`} />
                 </div>
                 <div className="space-y-0.5">
-                  <h3 className="font-heading text-[10px] font-black text-[#C8A66A] uppercase tracking-widest">Plano Atual</h3>
+                  <h3 className="font-heading text-[11px] font-black text-[#C8A66A] uppercase tracking-widest">
+                    {isStaff ? "Status de Acesso" : "Plano Atual"}
+                  </h3>
                   <p className="text-sm font-heading font-black text-[#5B1F3D]">
-                    {isPremium ? "Premium" : "Gratuito"}
+                    {isAdmin ? "Administrador" : isAuditor ? "Auditor" : isPremium ? "Premium" : "Gratuito"}
                   </p>
                 </div>
               </div>
               {!isPremium && !isStaff && (
-                <button 
-                  onClick={() => navigate("/premium")}
-                  className="text-[9px] font-heading font-black text-[#C8A66A] uppercase border-b border-[#C8A66A]/30 hover:text-[#5B1F3D] transition-colors"
-                >
-                  Fazer Upgrade
-                </button>
+                  <button 
+                    onClick={() => navigate("/premium")}
+                    className="text-[10px] font-heading font-black text-[#C8A66A] uppercase border-b border-[#C8A66A]/30 hover:text-[#5B1F3D] transition-colors"
+                  >
+                    Fazer Upgrade
+                  </button>
               )}
             </div>
-            <p className="text-[10px] font-body font-bold italic text-[#5B1F3D]/50 leading-relaxed">
-              {isPremium 
+            <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/50 leading-relaxed">
+              {isAdmin 
+                ? "Acesso administrativo pleno com visualização de todos os arcanos."
+                : isAuditor
+                ? "Permissão de auditoria ativa para validação de fluxos pedagógicos."
+                : isPremium 
                 ? "Acesso completo a todas as 78 chaves e módulos profissionais." 
                 : "Acesso inicial ao Louco e Fundamentos. Desbloqueie a jornada completa."}
             </p>
@@ -314,21 +332,21 @@ const DashboardPage = () => {
             className="flex flex-col items-center justify-center gap-2 p-4 bg-white border border-[#C8A66A]/20 rounded-2xl hover:bg-[#FAF5EF] transition-all group"
           >
             <Layout className="w-4 h-4 text-[#C8A66A] group-hover:scale-110 transition-transform" />
-            <span className="text-[8px] min-[360px]:text-[10px] font-heading font-black text-[#5B1F3D] uppercase tracking-widest text-center">Mapa da Jornada</span>
+            <span className="text-[9px] min-[360px]:text-[11px] font-heading font-black text-[#5B1F3D] uppercase tracking-widest text-center">Mapa da Jornada</span>
           </button>
           <button 
             onClick={() => navigate("/biblioteca")}
             className="flex flex-col items-center justify-center gap-2 p-4 bg-white border border-[#C8A66A]/20 rounded-2xl hover:bg-[#FAF5EF] transition-all group"
           >
             <BookOpen className="w-4 h-4 text-[#C8A66A] group-hover:scale-110 transition-transform" />
-            <span className="text-[8px] min-[360px]:text-[10px] font-heading font-black text-[#5B1F3D] uppercase tracking-widest text-center">Biblioteca</span>
+            <span className="text-[9px] min-[360px]:text-[11px] font-heading font-black text-[#5B1F3D] uppercase tracking-widest text-center">Biblioteca</span>
           </button>
           <button 
             onClick={() => navigate("/rotina")}
             className="flex flex-col items-center justify-center gap-2 p-4 bg-white border border-[#C8A66A]/20 rounded-2xl hover:bg-[#FAF5EF] transition-all group"
           >
             <Clock className="w-4 h-4 text-[#C8A66A] group-hover:scale-110 transition-transform" />
-            <span className="text-[8px] min-[360px]:text-[10px] font-heading font-black text-[#5B1F3D] uppercase tracking-widest text-center">Como Estudar</span>
+            <span className="text-[9px] min-[360px]:text-[11px] font-heading font-black text-[#5B1F3D] uppercase tracking-widest text-center">Como Estudar</span>
           </button>
         </div>
 
