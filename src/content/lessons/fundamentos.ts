@@ -600,7 +600,7 @@ A base simbólica principal é o tarô Rider-Waite-Smith. A partir dele, cada ca
 
 4. **Exercício prático** — Reflexão pessoal guiada conectando a carta à sua vida.
 
-5. **Quiz de fixação** — Validação do que foi aprendido, com XP como recompensa.
+5. **Quiz de fixação** — Validação do que foi aprendido, com conquista de Chaves como recompensa.
 
 A lógica pedagógica combina progressão gamificada com aprofundamento real. O estudo permanece leve e estimulante, sem perder densidade simbólica. Você pode avançar com fluidez, mas também pode mergulhar mais fundo quando desejar.
 

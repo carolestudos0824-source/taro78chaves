@@ -275,7 +275,7 @@ const StudyRoutinePage = () => {
             <StatCard label="Arcanos" value={`${completedCount}/22`} sub={`${journeyProgress}% concluído`} />
             <StatCard label="Módulos" value={`${progress.completedModules.length}`} sub="Especialidades" />
             <StatCard label="Sequência" value={`${progress.streak}`} sub="Dias seguidos" />
-            <StatCard label="Nível" value={`${progress.level}`} sub={`${progress.xp} XP acumulados`} />
+            <StatCard label="Nível" value={`${progress.level}`} sub={`${progress.xp} Pontos acumulados`} />
           </div>
         </div>
 

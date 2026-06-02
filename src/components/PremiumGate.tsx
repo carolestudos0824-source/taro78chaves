@@ -15,7 +15,7 @@ interface PremiumGateProps {
 const VALUE_HOOKS = [
   { icon: SquareStack, label: "78 arcanos guiados" },
   { icon: Compass, label: "Jornada progressiva" },
-  { icon: Sparkles, label: "Quizzes e XP" },
+  { icon: Sparkles, label: "Quizzes e Chaves" },
   { icon: WandSparkles, label: "Práticas guiadas" },
   { icon: CircleCheck, label: "Progresso salvo" },
   { icon: Stars, label: "Arcanos Vivos" },
