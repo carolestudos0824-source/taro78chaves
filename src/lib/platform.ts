@@ -1,14 +1,9 @@
 /**
  * Platform detection + payment policy gating.
  *
- * Used to prepare the app for Google Play Store distribution where, per Play
- * billing policy, digital content purchases inside the Android app must NOT
- * route to external payment processors like Stripe Checkout.
+ * App Android consumption-only, sem venda interna e sem indução a checkout externo.
  *
- * The web build keeps Stripe checkout enabled. A future Android wrapper
- * (TWA / Capacitor) should set `window.__IS_ANDROID_APP__ = true` (or
- * `localStorage["platform.isAndroidApp"] = "1"`) so we can hide Stripe CTAs
- * and route to Google Play Billing / RevenueCat instead.
+ * The web build keeps Stripe checkout enabled.
  */
 
 declare global {

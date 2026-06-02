@@ -1,0 +1,31 @@
+{
+  "twaName": "Tarô 78 Chaves",
+  "launcherName": "Tarô 78",
+  "webManifestUrl": "https://www.taro78chaves.com.br/manifest.json",
+  "fallbackType": "customtabs",
+  "host": "www.taro78chaves.com.br",
+  "packageId": "br.com.taro78chaves.app",
+  "startUrl": "/?android_app=1",
+  "iconUrl": "https://www.taro78chaves.com.br/icons/icon-512x512.png",
+  "maskableIconUrl": "https://www.taro78chaves.com.br/icons/icon-512x512.png",
+  "themeColor": "#5B1F3D",
+  "navigationColor": "#FAF5EF",
+  "navigationColorDark": "#5B1F3D",
+  "navigationDividerColor": "#FAF5EF",
+  "navigationDividerColorDark": "#5B1F3D",
+  "backgroundColor": "#FAF5EF",
+  "enableNotifications": true,
+  "enableSiteSettingsShortcut": true,
+  "appVersion": "1.0.0",
+  "appVersionCode": 1,
+  "signingKey": {
+    "path": "./android.keystore",
+    "alias": "android"
+  },
+  "arcSupport": false,
+  "isChromeOSOnly": false,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webcastKey": "",
+  "features": {}
+}
