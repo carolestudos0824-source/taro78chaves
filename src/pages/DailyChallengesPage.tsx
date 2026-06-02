@@ -343,7 +343,6 @@ const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) =>
     }}>
       <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-t-[3.5rem] sm:rounded-[3.5rem] border-t-4 sm:border-4 border-[#C8A66A] shadow-[0_0_100px_rgba(91,31,61,0.5)] animate-in fade-in slide-in-from-bottom-12 duration-700 scrollbar-hide" style={{
         background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 100%)",
-        
       }}>
         {/* Modal header — Estilo Premium Ritualístico */}
         <div className="sticky top-0 flex items-center justify-between px-10 py-10 border-b-2 border-[#C8A66A20] z-20" style={{
