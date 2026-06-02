@@ -6,8 +6,8 @@
 //
 // Required env:
 // - STRIPE_SECRET_KEY
-// - STRIPE_PRICE_MONTHLY (Stripe Price ID for the monthly plan)
-// - STRIPE_PRICE_YEARLY  (Stripe Price ID for the yearly/annual plan)
+// - STRIPE_MONTHLY_PRICE_ID (Stripe Price ID for the monthly plan)
+// - STRIPE_PRICE_YEARLY      (Stripe Price ID for the yearly/annual plan)
 
 import Stripe from "https://esm.sh/stripe@17.5.0?target=deno";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
@@ -30,7 +30,7 @@ Deno.serve(async (req) => {
 
   try {
     const STRIPE_SECRET = Deno.env.get("STRIPE_SECRET_KEY");
-    const PRICE_MONTHLY = Deno.env.get("STRIPE_PRICE_MONTHLY");
+    const PRICE_MONTHLY = Deno.env.get("STRIPE_MONTHLY_PRICE_ID");
     const PRICE_YEARLY = Deno.env.get("STRIPE_PRICE_YEARLY");
     const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
     const ANON = Deno.env.get("SUPABASE_ANON_KEY")!;
@@ -71,7 +71,7 @@ Deno.serve(async (req) => {
     const priceId = plan === "yearly" ? PRICE_YEARLY : PRICE_MONTHLY;
     if (!priceId) {
       console.error(`Missing price ID for ${plan}`);
-      const envName = plan === "yearly" ? "STRIPE_PRICE_YEARLY" : "STRIPE_PRICE_MONTHLY";
+      const envName = plan === "yearly" ? "STRIPE_PRICE_YEARLY" : "STRIPE_MONTHLY_PRICE_ID";
       return json({ error: `Stripe pendente: ${envName} não configurado.` }, 503);
     }
 
