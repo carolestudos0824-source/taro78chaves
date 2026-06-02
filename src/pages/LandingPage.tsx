@@ -537,7 +537,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             <AccordionItem value="item-access" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Como meu acesso é liberado?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
-                Após a compra pela Hotmart, crie sua conta usando o mesmo e-mail utilizado no pagamento. Assim que o sistema identificar a compra aprovada, seu acesso será liberado automaticamente.
+                O acesso é liberado imediatamente após a confirmação do pagamento. Você receberá os detalhes em seu e-mail cadastrado.
               </AccordionContent>
             </AccordionItem>
 
@@ -600,7 +600,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             <AccordionItem value="item-9" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Posso cancelar?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
-                Se houver assinatura ativa, o cancelamento deve ser feito pela plataforma onde a compra foi realizada, conforme as regras do plano contratado.
+                Se houver assinatura ativa, o gerenciamento e cancelamento podem ser feitos diretamente em seu perfil na plataforma.
               </AccordionContent>
             </AccordionItem>
 
