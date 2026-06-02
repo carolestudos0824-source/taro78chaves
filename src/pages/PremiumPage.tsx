@@ -238,7 +238,7 @@ const PremiumPage = () => {
                 <div className="space-y-2">
                   <p className="text-[11px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D] font-black">Escola Digital</p>
                   <div className="flex items-baseline gap-1">
-                    <span className="font-heading text-4xl min-[400px]:text-5xl text-[#5B1F3D] font-black tracking-tighter">R$ 37</span>
+                    <span className="font-heading text-4xl min-[400px]:text-5xl text-[#5B1F3D] font-black tracking-tighter">R$ 27</span>
                     <span className="text-xs font-heading font-black text-[#5B1F3D]/40">/mês</span>
                   </div>
                   <p className="text-sm font-black text-[#5B1F3D] italic leading-relaxed">
@@ -272,7 +272,7 @@ const PremiumPage = () => {
                 <div className="space-y-2">
                   <p className="text-[11px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D] font-black">Escola Digital Premium</p>
                   <div className="flex items-baseline gap-1">
-                    <span className="font-heading text-4xl min-[400px]:text-5xl text-[#5B1F3D] font-black tracking-tighter">R$ 37</span>
+                    <span className="font-heading text-4xl min-[400px]:text-5xl text-[#5B1F3D] font-black tracking-tighter">R$ 27</span>
                     <span className="text-xs font-heading font-black text-[#5B1F3D]/40">/mês</span>
                   </div>
                   <p className="text-sm font-black text-[#5B1F3D] italic leading-relaxed">
