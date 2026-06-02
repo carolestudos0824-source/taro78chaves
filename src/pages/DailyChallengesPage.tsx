@@ -337,7 +337,7 @@ interface ModalProps {
 
 const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) => {
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4" style={{
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 pb-bottom-nav sm:pb-4" style={{
       background: "rgba(91, 31, 61, 0.75)",
       backdropFilter: "blur(20px)",
     }}>
