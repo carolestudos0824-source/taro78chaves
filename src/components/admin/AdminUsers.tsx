@@ -489,7 +489,7 @@ const UserDetailDialog = ({ userId, onClose, onChanged }: { userId: string | nul
                       </Button>
                     )}
                     <Button size="sm" variant="ghost" className="text-destructive hover:text-destructive" onClick={() => {
-                      if (confirm("Tem certeza? Isso zera XP, streak, lições e módulos concluídos.")) run("reset_progress", {}, "Progresso resetado");
+                      if (confirm("Tem certeza? Isso zera pontos, streak, lições e módulos concluídos.")) run("reset_progress", {}, "Progresso resetado");
                     }} disabled={busy === "reset_progress"}>
                       <RotateCcw className="w-3.5 h-3.5" /> Resetar progresso
                     </Button>

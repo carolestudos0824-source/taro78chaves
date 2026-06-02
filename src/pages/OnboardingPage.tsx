@@ -67,7 +67,7 @@ const STEPS: OnboardingStep[] = [
     kicker: "A Jornada Completa",
     title: "Uma escola viva no seu bolso.",
     lines: [
-      "Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, XP e progresso real.",
+      "Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, Chaves e progresso real.",
       "Estude os 78 arcanos com uma trilha progressiva, fiel ao Rider-Waite-Smith.",
       "O Tarô deixa de ser imagem e se torna presença.",
     ],

@@ -21,7 +21,7 @@ const DeleteAccountPage = () => (
     <h2>O que é apagado</h2>
     <ul>
       <li>Perfil, nome de exibição, e-mail e credenciais.</li>
-      <li>Progresso de estudo, XP, conquistas e respostas de quizzes.</li>
+      <li>Progresso de estudo, Chaves, conquistas e respostas de quizzes.</li>
       <li>Eventos de uso vinculados à sua conta.</li>
     </ul>
 

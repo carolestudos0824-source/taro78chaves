@@ -429,7 +429,7 @@ const AdminProgressAudit = () => {
           <h5 className="font-heading font-black text-amber-800 uppercase text-xs tracking-[0.2em]">Diretriz de Auditoria Administrativa</h5>
           <p className="text-[11px] font-body font-bold text-amber-700 leading-relaxed italic">
             Contas com permissão 'admin' ou 'moderator' operam exclusivamente em Modo Auditoria para preservar a integridade dos dados estatísticos da plataforma. 
-            Isso significa que ações pedagógicas (lições/quizzes) executadas por estas contas não geram registros persistentes no Supabase e não poluem o XP geral da escola.
+            Isso significa que ações pedagógicas (lições/quizzes) executadas por estas contas não geram registros persistentes no Supabase e não poluem o progresso geral da escola.
           </p>
         </div>
       </div>

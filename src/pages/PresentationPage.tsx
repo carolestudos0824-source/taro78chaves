@@ -230,7 +230,7 @@ const SlideCover = () => (
       Tarô 78 Chaves
     </h1>
     <p className="font-accent text-xl md:text-3xl italic leading-relaxed max-w-xl mx-auto font-bold" style={{ color: "#5B1F3DCC" }}>
-      Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, XP e progresso real.
+      Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, Pontos e progresso real.
     </p>
     <div className="flex items-center justify-center gap-8 pt-4">
       {[
@@ -359,7 +359,7 @@ const SlideDifferentials = () => (
         { icon: Eye, title: "Arcanos Vivos", desc: "As cartas aparecem em quizzes, desafios e revisões — você convive com elas, não apenas lê sobre elas." },
         { icon: Brain, title: "Memória Inteligente", desc: "Revisão espaçada e flashcards que fazem o conhecimento habitar você — não apenas passar por você." },
         { icon: Star, title: "Três Olhares", desc: "Cada carta é lida pelo prisma arquetípico, psicológico e esotérico — três verdades em uma." },
-        { icon: Flame, title: "Ritual de Estudo", desc: "XP, streaks e conquistas transformam disciplina em prazer. Estudar vira um encontro diário consigo." },
+        { icon: Flame, title: "Ritual de Estudo", desc: "Chaves, streaks e conquistas transformam disciplina em prazer. Estudar vira um encontro diário consigo." },
       ].map((item, i) => {
         const Icon = item.icon;
         return (
@@ -400,7 +400,7 @@ const SlideInside = () => (
         "Desafios diários",
         "Rotina de estudo",
         "Biblioteca simbólica",
-        "XP e conquistas",
+        "Chaves e conquistas",
         "Certificados",
         "Trilhas por nível",
         "Feedback nos Quizzes",
