@@ -197,7 +197,7 @@ const ProfilePage = () => {
                   disabled={portalLoading} 
                   className="font-heading text-[10px] font-black tracking-widest uppercase px-4 py-2 rounded-xl border-2 border-[#DCCFC2] text-[#5B1F3D] hover:bg-[#FAF5EF]"
                 >
-                  Gerenciar
+                  Gerenciar assinatura
                 </button>
               )
             ) : (

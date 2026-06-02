@@ -21,7 +21,7 @@ const PrivacyPage = () => (
     <ul>
       <li><strong>Cadastro:</strong> nome de exibição e e-mail.</li>
       <li><strong>Autenticação:</strong> credenciais geridas pelo nosso provedor de backend.</li>
-      <li><strong>Progresso de estudo:</strong> lições concluídas, XP, conquistas, respostas de quizzes.</li>
+      <li><strong>Progresso de estudo:</strong> lições concluídas, Chaves conquistadas, respostas de quizzes.</li>
       <li><strong>Uso da plataforma:</strong> eventos anônimos de navegação e interação.</li>
       <li><strong>Analytics:</strong> métricas agregadas via Google Analytics 4 (GA4).</li>
       <li><strong>Acesso premium:</strong> status, plano e validade.</li>
