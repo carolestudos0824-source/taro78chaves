@@ -54,12 +54,7 @@ const DailyChallengesPage = () => {
     return freshChallenges;
   });
 
-  const [activeChallenge, setActiveChallenge] = useState<DailyChallengeItem | null>(() => {
-    if (window.location.search.includes("active_mock=true")) {
-      return { id: "mock-id", type: "carta-do-dia", title: "Carta do Dia", subtitle: "Teste de Visibilidade", icon: "ritual", xp: 10, completed: false };
-    }
-    return null;
-  });
+  const [activeChallenge, setActiveChallenge] = useState<DailyChallengeItem | null>(null);
 
   useEffect(() => {
     localStorage.setItem("daily-challenges", JSON.stringify({ date: today(), items: challenges }));
