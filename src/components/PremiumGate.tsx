@@ -49,10 +49,10 @@ const PremiumGate = ({
         </div>
         <div className="flex-1 text-left">
           <p className="text-[13px] font-heading tracking-widest font-black text-[#5B1F3D] uppercase">
-            {webCheckoutAllowed ? "Jornada Completa" : "Em breve no Android"}
+            {webCheckoutAllowed ? "Jornada Completa" : "Conteúdo Restrito"}
           </p>
           <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/60">
-            {webCheckoutAllowed ? "Acesse as 78 portas da sua travessia" : "Acesso total à Escola Digital"}
+            {webCheckoutAllowed ? "Acesse as 78 portas da sua travessia" : STRIPE_BLOCKED_ANDROID_MSG}
           </p>
         </div>
         <ArrowRight className="w-4 h-4 text-[#C8A66A] group-hover:translate-x-1 transition-transform" />
