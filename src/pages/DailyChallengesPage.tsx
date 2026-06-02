@@ -341,7 +341,7 @@ const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) =>
       background: "rgba(91, 31, 61, 0.75)",
       backdropFilter: "blur(20px)",
     }}>
-      <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-t-[3.5rem] sm:rounded-[3.5rem] border-t-4 sm:border-4 border-[#C8A66A] shadow-[0_0_100px_rgba(91,31,61,0.5)] animate-in fade-in slide-in-from-bottom-12 duration-700" style={{
+      <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-t-[3.5rem] sm:rounded-[3.5rem] border-t-4 sm:border-4 border-[#C8A66A] shadow-[0_0_100px_rgba(91,31,61,0.5)] animate-in fade-in slide-in-from-bottom-12 duration-700 scrollbar-hide" style={{
         background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 100%)",
         paddingBottom: "calc(96px + env(safe-area-inset-bottom))"
       }}>
