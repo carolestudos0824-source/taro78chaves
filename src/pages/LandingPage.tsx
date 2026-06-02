@@ -32,6 +32,7 @@ import { PWAInstructions } from "@/components/landing/PWAInstructions";
 
 import { checkoutUrl } from "@/config/checkout";
 import { Helmet } from "react-helmet-async";
+import { isWebCheckoutAllowed } from "@/lib/platform";
 
 const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
   const navigate = useNavigate();
@@ -190,12 +191,16 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                   <span>COMEÇAR MINHA JORNADA</span>
                 </Button>
                 <div className="flex flex-col items-center lg:items-start gap-0.5 mt-1 md:mt-1">
-                  <p className="text-[11px] md:text-base font-heading tracking-[0.1em] text-plum/80 font-bold uppercase">
-                    ✦ Assinatura mensal por apenas R$37/mês.
-                  </p>
-                  <p className="text-[10px] md:text-xs font-body text-plum/50 italic">
-                    Cancele quando quiser. Acesso imediato.
-                  </p>
+                  {isWebCheckoutAllowed() && (
+                    <>
+                      <p className="text-[11px] md:text-base font-heading tracking-[0.1em] text-plum/80 font-bold uppercase">
+                        ✦ Assinatura mensal por apenas R$37/mês.
+                      </p>
+                      <p className="text-[10px] md:text-xs font-body text-plum/50 italic">
+                        Cancele quando quiser. Acesso imediato.
+                      </p>
+                    </>
+                  )}
                 </div>
                 <button 
                   onClick={() => {
@@ -411,7 +416,8 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       </section>
 
       {/* ─── Pricing Section ─── */}
-      <section className="py-20 md:py-32 px-4 md:px-6 bg-[#5B1F3D] text-parchment relative overflow-hidden w-full">
+      {isWebCheckoutAllowed() && (
+        <section className="py-20 md:py-32 px-4 md:px-6 bg-[#5B1F3D] text-parchment relative overflow-hidden w-full">
         <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-white/5 blur-[150px] rounded-full" />
         
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-16">
@@ -527,6 +533,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
           </div>
         </div>
       </section>
+      )}
 
       <PWAInstructions />
 

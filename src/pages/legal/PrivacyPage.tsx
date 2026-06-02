@@ -40,7 +40,7 @@ const PrivacyPage = () => (
     <h2>4. Provedores e compartilhamento</h2>
     <ul>
       <li><strong>Backend e autenticação:</strong> provedor de banco de dados na nuvem (com criptografia em trânsito e em repouso).</li>
-      <li><strong>Pagamentos:</strong> Stripe — processa transações de compra de acordo com o plano escolhido. Não armazenamos dados de cartão diretamente em nossos servidores.</li>
+      <li><strong>Pagamentos:</strong> Processador de pagamentos seguro — processa transações de compra de acordo com o plano escolhido. Não armazenamos dados de cartão diretamente em nossos servidores.</li>
       <li><strong>Analytics:</strong> Google Analytics 4 — métricas de uso agregadas e pseudonimizadas.</li>
     </ul>
     <p>

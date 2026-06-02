@@ -26,12 +26,12 @@ const TermsPage = () => (
 
     <h2>3. Acesso e Pagamento</h2>
     <p>
-      A plataforma oferece acesso completo ao programa através de assinatura mensal recorrente disponibilizada via Stripe (Web/PWA). O acesso permanece ativo enquanto a assinatura estiver em dia.
+      A plataforma oferece acesso completo ao programa através de assinatura mensal recorrente disponibilizada via plataforma segura (Web/PWA). O acesso permanece ativo enquanto a assinatura estiver em dia.
     </p>
 
     <h2>4. Cancelamento e Reembolso</h2>
     <p>
-      O cancelamento da assinatura pode ser feito a qualquer momento pelo portal de gerenciamento no Perfil do usuário. Reembolsos seguem a legislação consumerista vigente (direito de arrependimento de 7 dias para a primeira transação) e as regras do processador de pagamento utilizado (Stripe).
+      O cancelamento da assinatura pode ser feito a qualquer momento pelo portal de gerenciamento no Perfil do usuário. Reembolsos seguem a legislação consumerista vigente (direito de arrependimento de 7 dias para a primeira transação) e as regras do processador de pagamento utilizado.
     </p>
 
     <h2>5. Propriedade intelectual</h2>

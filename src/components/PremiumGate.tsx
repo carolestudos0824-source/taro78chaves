@@ -3,7 +3,7 @@ import { Crown, Sparkles, LockKeyhole, ArrowRight, KeyRound, SquareStack, Compas
 import { Button } from "@/components/ui/button";
 import { usePremium } from "@/hooks/use-premium";
 import { useRole } from "@/hooks/use-role";
-import { isWebCheckoutAllowed } from "@/lib/platform";
+import { isWebCheckoutAllowed, STRIPE_BLOCKED_ANDROID_MSG } from "@/lib/platform";
 
 interface PremiumGateProps {
   featureName?: string;
@@ -49,10 +49,10 @@ const PremiumGate = ({
         </div>
         <div className="flex-1 text-left">
           <p className="text-[13px] font-heading tracking-widest font-black text-[#5B1F3D] uppercase">
-            {webCheckoutAllowed ? "Jornada Completa" : "Em breve no Android"}
+            {webCheckoutAllowed ? "Jornada Completa" : "Conteúdo Restrito"}
           </p>
           <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/60">
-            {webCheckoutAllowed ? "Acesse as 78 portas da sua travessia" : "Acesso total à Escola Digital"}
+            {webCheckoutAllowed ? "Acesse as 78 portas da sua travessia" : STRIPE_BLOCKED_ANDROID_MSG}
           </p>
         </div>
         <ArrowRight className="w-4 h-4 text-[#C8A66A] group-hover:translate-x-1 transition-transform" />
@@ -71,7 +71,7 @@ const PremiumGate = ({
             {featureName ? (
               <><span className="font-black text-[#5B1F3D] uppercase tracking-widest">Portal: {featureName}</span></>
             ) : (
-              webCheckoutAllowed ? "Acesso à Jornada Completa." : "Acesso total em breve."
+              webCheckoutAllowed ? "Acesso à Jornada Completa." : STRIPE_BLOCKED_ANDROID_MSG
             )}
           </p>
         </div>
@@ -79,7 +79,7 @@ const PremiumGate = ({
           onClick={() => navigate("/premium")}
           className="text-[10px] font-heading tracking-[0.2em] uppercase shrink-0 px-4 py-2 rounded-xl bg-[#5B1F3D] text-white border border-[#C8A66A] font-black shadow-md transition-all active:scale-95"
         >
-          {webCheckoutAllowed ? "Abrir" : "Saber mais"}
+          {webCheckoutAllowed ? "Abrir" : "Detalhes"}
         </button>
       </div>
     );
@@ -97,12 +97,12 @@ const PremiumGate = ({
 
       <div className="space-y-3">
         <h3 className="font-heading text-2xl font-black text-[#5B1F3D] tracking-tight">
-          {webCheckoutAllowed ? "Abra as 78 Portas do Tarô" : "Escola Digital no Android"}
+          {webCheckoutAllowed ? "Abra as 78 Portas do Tarô" : "Portal Restrito"}
         </h3>
         <p className="text-[14px] font-body text-[#5B1F3D]/80 font-bold italic leading-relaxed max-w-[320px] mx-auto">
           {message || (webCheckoutAllowed 
             ? "Você já começou pelo Louco. Agora receba todas as chaves e siga atravessando cada arcano com método, prática e ritual."
-            : "Acesso total à jornada completa pelos 78 arcanos em breve via Google Play Store.")}
+            : STRIPE_BLOCKED_ANDROID_MSG)}
         </p>
       </div>
 
@@ -122,10 +122,10 @@ const PremiumGate = ({
           onClick={() => navigate("/premium")}
           className="w-full h-auto py-5 px-4 bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.1em] shadow-xl border-2 border-[#C8A66A] leading-tight text-center whitespace-normal break-words"
         >
-          {webCheckoutAllowed ? "CONTINUAR JORNADA" : "SABER MAIS"}
+          {webCheckoutAllowed ? "CONTINUAR JORNADA" : "VER PORTAL"}
         </Button>
         <p className="text-[10px] font-heading tracking-widest uppercase text-[#5B1F3D]/60 mt-5 font-black text-center w-full">
-          {webCheckoutAllowed ? "Receba todas as chaves da sua travessia" : "A travessia completa em breve no seu Android"}
+          {webCheckoutAllowed ? "Receba todas as chaves da sua travessia" : "Conteúdo exclusivo para alunas com acesso ativo"}
         </p>
       </div>
     </div>
