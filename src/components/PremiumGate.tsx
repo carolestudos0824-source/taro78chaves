@@ -71,7 +71,7 @@ const PremiumGate = ({
             {featureName ? (
               <><span className="font-black text-[#5B1F3D] uppercase tracking-widest">Portal: {featureName}</span></>
             ) : (
-              webCheckoutAllowed ? "Acesso à Jornada Completa." : "Acesso total em breve."
+              webCheckoutAllowed ? "Acesso à Jornada Completa." : STRIPE_BLOCKED_ANDROID_MSG
             )}
           </p>
         </div>
@@ -79,7 +79,7 @@ const PremiumGate = ({
           onClick={() => navigate("/premium")}
           className="text-[10px] font-heading tracking-[0.2em] uppercase shrink-0 px-4 py-2 rounded-xl bg-[#5B1F3D] text-white border border-[#C8A66A] font-black shadow-md transition-all active:scale-95"
         >
-          {webCheckoutAllowed ? "Abrir" : "Saber mais"}
+          {webCheckoutAllowed ? "Abrir" : "Detalhes"}
         </button>
       </div>
     );
