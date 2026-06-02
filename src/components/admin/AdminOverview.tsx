@@ -61,8 +61,8 @@ const AdminOverview = () => {
 
     const premium = profiles.filter(p => p.is_premium && (!p.premium_until || new Date(p.premium_until) > now));
     const gifted = premium.filter(p => p.premium_source === "gift" || p.premium_source === "admin");
-    const monthly = premium.filter(p => p.premium_source === "store_monthly" || (!p.premium_source && p.is_premium && p.premium_source !== "gift" && p.premium_source !== "admin" && p.premium_source !== "store_annual" && p.premium_source !== "hotmart"));
-    const annual = premium.filter(p => p.premium_source === "store_annual" || p.premium_source === "hotmart");
+    const monthly = premium.filter(p => p.premium_source === "store_monthly" || (!p.premium_source && p.is_premium && p.premium_source !== "gift" && p.premium_source !== "admin" && p.premium_source !== "store_annual"));
+    const annual = premium.filter(p => p.premium_source === "store_annual");
 
     const recentSignups = profiles.filter(p => new Date(p.created_at) >= weekAgo);
     const expired = profiles.filter(p => p.premium_until && new Date(p.premium_until) <= now && !p.is_premium);
@@ -111,7 +111,7 @@ const AdminOverview = () => {
         </div>
         
         <p className="text-sm font-body font-bold text-[#5B1F3D]/80 leading-relaxed bg-white/60 p-5 rounded-[2rem] border border-[#C8A66A]/20 shadow-sm">
-          Estimativa interna baseada em acessos premium ativos. <strong className="text-[#5B1F3D] font-black">O faturamento real deve ser conferido na Hotmart.</strong>
+          Estimativa interna baseada em acessos premium ativos. <strong className="text-[#5B1F3D] font-black">O faturamento real deve ser conferido no Stripe.</strong>
         </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -167,7 +167,7 @@ const AdminOverview = () => {
           </div>
         )}
         <p className="text-xs font-body font-bold text-[#5B1F3D]/60 bg-white/60 p-5 rounded-[2rem] border border-[#C8A66A]/20 shadow-sm leading-relaxed">
-          Dados históricos/legados do fluxo Stripe. As vendas atuais do Tarô 78 Chaves são processadas pela Hotmart.
+          Dados históricos do fluxo Stripe. As vendas atuais do Tarô 78 Chaves são processadas via Stripe.
         </p>
       </section>
 
