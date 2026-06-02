@@ -1039,10 +1039,12 @@ export type Database = {
       }
       google_play_subscriptions: {
         Row: {
+          acknowledged_at: string | null
           base_plan_id: string
           created_at: string
           expires_at: string | null
           id: string
+          order_id: string | null
           product_id: string
           purchase_token: string
           raw_payload: Json | null
@@ -1051,10 +1053,12 @@ export type Database = {
           user_id: string
         }
         Insert: {
+          acknowledged_at?: string | null
           base_plan_id: string
           created_at?: string
           expires_at?: string | null
           id?: string
+          order_id?: string | null
           product_id: string
           purchase_token: string
           raw_payload?: Json | null
@@ -1063,10 +1067,12 @@ export type Database = {
           user_id: string
         }
         Update: {
+          acknowledged_at?: string | null
           base_plan_id?: string
           created_at?: string
           expires_at?: string | null
           id?: string
+          order_id?: string | null
           product_id?: string
           purchase_token?: string
           raw_payload?: Json | null

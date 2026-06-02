@@ -149,7 +149,16 @@ const PremiumPage = () => {
       </header>
 
       <main className="max-w-lg mx-auto px-4 min-[400px]:px-6 -mt-12 relative z-20 space-y-12 pb-32">
+        {loading && (
+          <div className="fixed inset-0 z-[100] bg-white/60 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center space-y-4">
+            <div className="w-12 h-12 rounded-full border-4 border-[#5B1F3D]/10 border-t-[#5B1F3D] animate-spin" />
+            <p className="font-heading text-sm font-black text-[#5B1F3D] tracking-widest uppercase animate-pulse">
+              Validando com Google Play...
+            </p>
+          </div>
+        )}
         <div className="space-y-4">
+
           <h2 className="text-center font-heading text-[11px] tracking-[0.4em] uppercase font-black text-[#C8A66A] mb-8">
             ✦ O QUE VOCÊ DESBLOQUEIA ✦
           </h2>
