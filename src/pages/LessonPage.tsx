@@ -21,20 +21,29 @@ import { useHeader } from "@/contexts/header-context";
 import { PhaseIndicator } from "@/components/arcano-vivo/PhaseIndicator";
 
 /** 
- * REGRA PEDAGÓGICA OFICIAL — ARCANOS MAIORES (Fase 6.0)
+ * REGRA PEDAGÓGICA OFICIAL — 9 FASES (Fase 6.6 — Alinhamento total)
  * 
- * Estrutura canônica de 6 fases estruturais (educacionais):
- * 1. intro (Arcano Vivo / Voice)
- * 2. lesson (Conteúdo / Essência)
- * 3. symbols (Mapa de Símbolos — se disponível)
- * 4. deepdive (Aprofundamento)
- * 5. exercise (Exercício / Reflexão)
- * 6. quiz (Quiz Final)
- * 
- * Seguido pela tela 'complete' (Conclusão).
- * Obs: Arcanos Menores seguem o padrão de 9 fases (ver ArcanoMenorLessonPage.tsx).
+ * Estrutura unificada para todos os 78 arcanos:
+ * 1. intro (Apresentação)
+ * 2. simbolos (Símbolos)
+ * 3. luz-sombra (Luz & Sombra)
+ * 4. voz (Voz da Carta)
+ * 5. aprofundamento (Aprofundamento)
+ * 6. aplicacoes (Aplicações)
+ * 7. reflexao (Reflexão)
+ * 8. quiz (Quiz)
+ * 9. complete (Conclusão / Revisão)
  */
-type LessonPhase = "intro" | "lesson" | "symbols" | "deepdive" | "exercise" | "quiz" | "complete";
+type LessonPhase = 
+  | "intro" 
+  | "simbolos" 
+  | "luz-sombra" 
+  | "voz" 
+  | "aprofundamento" 
+  | "aplicacoes" 
+  | "reflexao" 
+  | "quiz" 
+  | "complete";
 
 const LessonPage = () => {
   const { id } = useParams();
