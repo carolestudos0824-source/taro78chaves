@@ -538,7 +538,7 @@ const SlidePlans = () => (
           <span className="text-[9px] font-heading tracking-[0.25em] uppercase px-4 py-1 rounded-full shadow-md font-black" style={{
             background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
             color: "#FAF5EF",
-          }}>✦ Acesso Anual</span>
+          }}>✦ Assinatura Única</span>
         </div>
         <div className="text-center pb-3" style={{ borderBottom: "1.5px solid rgba(200, 166, 106, 0.25)" }}>
           <p className="text-[10px] font-heading tracking-[0.3em] uppercase font-black" style={{ color: "#8B6A30" }}>Matrícula Escola Digital</p>

@@ -314,7 +314,6 @@ const ArcanoMenorLessonPage = () => {
               card={card}
               accent={naipeInfo.color.primary}
               completed={completed}
-              pontos={PONTOS_REWARD}
             />
           )}
         </section>

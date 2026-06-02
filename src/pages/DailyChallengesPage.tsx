@@ -181,7 +181,7 @@ const DailyChallengesPage = () => {
               </div>
               <div className="flex flex-col">
                 <span className="text-[10px] md:text-[11px] font-heading font-black tracking-[0.35em] text-[#C8A66A] uppercase mb-1">
-                  {allDone ? "Ritual Cumprido" : "Seu Progresso"}
+                  {allDone ? "Ritual Cumprido" : "Seu Ritual"}
                 </span>
                 <span className="text-xl md:text-2xl font-heading font-black text-[#5B1F3D]">
                   {allDone ? "Portal Aberto!" : `${completedCount} de ${challenges.length} Portais`}
@@ -191,9 +191,9 @@ const DailyChallengesPage = () => {
             <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl border-2 border-[#C8A66A20] shadow-sm" style={{
               background: "linear-gradient(135deg, #FAF5EF, #FFFFFF)",
             }}>
-              <TarotIcon name="estrela" className="w-5 h-5" color="#C8A66A" />
+              <TarotIcon name="ritual" className="w-5 h-5" color="#C8A66A" />
               <span className="text-[14px] md:text-[16px] font-heading font-black text-[#5B1F3D]">
-                {totalXPEarned} Pontos
+                Ritual de Estudo
               </span>
             </div>
           </div>
@@ -271,10 +271,10 @@ const DailyChallengesPage = () => {
                     <div className="flex flex-col items-end gap-4 shrink-0">
                       <div className={`px-5 py-2 rounded-full text-[11px] md:text-[12px] font-heading font-black tracking-tighter border-2 shadow-sm ${
                         ch.completed 
-                          ? "bg-[#DCCFC2]/20 border-[#DCCFC2] text-[#C8A66A]/50" 
+                          ? "bg-emerald-50 border-emerald-200 text-emerald-600" 
                           : "bg-[#C8A66A]/10 border-[#C8A66A]/30 text-[#C8A66A] group-hover:bg-[#C8A66A] group-hover:text-white transition-all shadow-md"
                       }`}>
-                        +{ch.xp} Pontos
+                        {ch.completed ? "Concluído" : "Pendente"}
                       </div>
                       {!ch.completed && (
                         <div className="w-11 h-11 rounded-full border-2 border-[#C8A66A20] flex items-center justify-center group-hover:bg-[#C8A66A10] group-hover:border-[#C8A66A] transition-all shadow-sm">
