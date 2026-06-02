@@ -377,11 +377,11 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               Garanta seu acesso e percorra os 78 arcanos agora.
             </p>
             <Button 
-              onClick={() => handleStart("unlock")} 
+              onClick={() => handleStart("unlock", "COMEÇAR MINHA JORNADA")} 
               variant="outline"
               className="w-full sm:w-auto px-6 md:px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-normal md:tracking-widest text-[11px] uppercase transition-all whitespace-normal text-center h-auto min-h-[56px]"
             >
-              {checkoutUrl ? "GARANTIR MEU ACESSO →" : "QUERO COMEÇAR MINHA JORNADA →"}
+              COMEÇAR MINHA JORNADA →
             </Button>
           </div>
         </div>
@@ -416,29 +416,28 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
         
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-16">
           <div className="space-y-4">
-            <h2 className="font-heading text-4xl md:text-5xl text-[#FAF5EF]">Garanta seu acesso anual à Escola Digital Tarô 78 Chaves</h2>
+            <h2 className="font-heading text-4xl md:text-5xl text-[#FAF5EF]">Assine a Escola Digital Tarô 78 Chaves</h2>
             <p className="text-[#D8CFC2] font-body text-lg max-w-2xl mx-auto">Percorra a jornada completa pelos 78 arcanos e desenvolva sua leitura com profundidade e consciência.</p>
           </div>
 
           <div className="max-w-2xl mx-auto">
-            {/* Annual - Unique Plan */}
+            {/* Monthly Subscription Plan */}
             <div className="p-6 md:p-14 rounded-[2rem] md:rounded-[3rem] bg-white text-midnight shadow-2xl border-2 md:border-4 border-gold relative flex flex-col text-left space-y-6 md:space-y-8 animate-fade-in w-full mx-auto">
-              <div className="absolute -top-4 md:-top-6 left-1/2 -translate-x-1/2 bg-gold px-4 md:px-8 py-2 md:py-3 rounded-full text-[10px] md:text-sm font-heading font-black tracking-[0.1em] md:tracking-[0.2em] text-white shadow-[0_10px_30px_-5px_rgba(200,166,106,0.5)] whitespace-nowrap border border-white/20 animate-pulse">
-                ✦ OFERTA DE LANÇAMENTO POR TEMPO LIMITADO
+              <div className="absolute -top-4 md:-top-6 left-1/2 -translate-x-1/2 bg-gold px-4 md:px-8 py-2 md:py-3 rounded-full text-[10px] md:text-sm font-heading font-black tracking-[0.1em] md:tracking-[0.2em] text-white shadow-[0_10px_30px_-5px_rgba(200,166,106,0.5)] whitespace-nowrap border border-white/20">
+                ✦ OFERTA EXCLUSIVA
               </div>
               
               <div className="space-y-4 md:space-y-6">
                 <h3 className="font-heading text-xl md:text-3xl text-plum font-black uppercase tracking-tight md:tracking-widest leading-tight">
-                  Acesso Anual à Escola Digital Tarô 78 Chaves
+                  Assinatura Mensal • Escola Digital
                 </h3>
                 
                 <div className="space-y-4">
                   <div className="flex flex-col">
-                    <span className="text-sm md:text-base text-midnight/40 font-heading uppercase tracking-widest font-bold">De R$497</span>
                     <div className="flex items-baseline gap-3">
-                      <span className="text-sm md:text-xl text-plum font-heading uppercase tracking-widest font-black">Por apenas</span>
-                      <span className="text-5xl sm:text-7xl md:text-9xl font-heading text-midnight leading-none tracking-tighter">R$297</span>
-                      <span className="text-sm md:text-2xl text-midnight/40 font-heading font-bold uppercase tracking-widest">/ano</span>
+                      <span className="text-sm md:xl text-plum font-heading uppercase tracking-widest font-black">Por apenas</span>
+                      <span className="text-5xl sm:text-7xl md:text-9xl font-heading text-midnight leading-none tracking-tighter">R$37</span>
+                      <span className="text-sm md:text-2xl text-midnight/40 font-heading font-bold uppercase tracking-widest">/mês</span>
                     </div>
                   </div>
                   
@@ -447,7 +446,13 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                       <div className="w-6 h-6 rounded-full bg-plum/10 flex items-center justify-center shrink-0">
                         <Check className="w-4 h-4 text-gold-dark" />
                       </div>
-                      Pagamento único anual • 12 meses de acesso
+                      Acesso completo enquanto a assinatura estiver ativa
+                    </p>
+                    <p className="text-lg md:text-xl font-bold text-plum tracking-tight flex items-center gap-3">
+                      <div className="w-6 h-6 rounded-full bg-plum/10 flex items-center justify-center shrink-0">
+                        <Check className="w-4 h-4 text-gold-dark" />
+                      </div>
+                      Cancele quando quiser pelo seu perfil
                     </p>
                     <p className="text-base md:text-lg font-bold text-gold-dark italic ml-9 bg-gold/5 px-4 py-1 rounded-lg inline-block">
                       Pagamento seguro via Stripe
@@ -490,17 +495,17 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                     <span className="font-heading text-base md:text-xl font-black uppercase tracking-tight md:tracking-widest">Garantia de 7 dias</span>
                   </div>
                   <p className="text-base font-body text-midnight/80 leading-relaxed font-medium">
-                    Você pode acessar a Escola Digital Tarô 78 Chaves com tranquilidade. Se dentro de 7 dias corridos após a compra você entender que o curso não é para você, poderá solicitar o reembolso integral.
+                    Você pode acessar a Escola Digital Tarô 78 Chaves com tranquilidade. Se dentro de 7 dias corridos após a primeira cobrança você entender que o programa não é para você, poderá solicitar o reembolso integral.
                   </p>
                   <p className="text-sm font-black text-plum uppercase tracking-[0.2em] border-t border-gold/10 pt-4">✦ Sem risco para começar.</p>
                 </div>
 
                 <Button 
-                  onClick={() => handleSubscribe("annual")} 
+                  onClick={() => handleSubscribe("monthly")} 
                   className="w-full h-auto min-h-[64px] md:h-20 py-4 bg-plum hover:bg-plum/90 text-ivory rounded-full text-sm md:text-xl shadow-[0_15px_35px_-10px_rgba(91,31,61,0.5)] hover:scale-[1.02] transition-all font-heading tracking-tight md:tracking-widest font-black uppercase flex items-center justify-center gap-2 md:gap-3 px-4 whitespace-normal text-center"
                 >
                   <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-gold animate-pulse shrink-0" />
-                  <span>GARANTIR MEU ACESSO</span>
+                  <span>COMEÇAR MINHA JORNADA</span>
                 </Button>
                 
                 <div className="space-y-2 text-center">
@@ -537,7 +542,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             <AccordionItem value="item-access" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Como meu acesso é liberado?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
-                O acesso é liberado imediatamente após a confirmação do pagamento. Você receberá os detalhes em seu e-mail cadastrado.
+                O acesso é liberado imediatamente após a confirmação da assinatura. Você receberá os detalhes em seu e-mail cadastrado e poderá cancelar a qualquer momento.
               </AccordionContent>
             </AccordionItem>
 
