@@ -124,7 +124,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       </header>
 
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-2 pb-2 md:pt-4 md:pb-2 px-6 overflow-hidden flex flex-col items-center min-h-fit mt-0">
+      <section className="relative pt-2 pb-6 md:pt-4 md:pb-2 px-6 overflow-hidden flex flex-col items-center min-h-fit mt-0">
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold/15 blur-[120px]" />
@@ -147,7 +147,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
               <div className="space-y-3 md:space-y-4">
                 <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl leading-[1.05] md:leading-[1] tracking-tight text-plum normal-case font-black">
-                  A escola digital dos 78 arcanos
+                  Domine o Tarô <br className="hidden md:block" /> em uma Escola Digital
                 </h1>
                 
                 <div className="space-y-2 md:space-y-3">
@@ -155,15 +155,15 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                     Você quer aprender Tarô, mas ainda trava na hora de interpretar as cartas?
                   </p>
                   <p className="font-body text-lg md:text-xl text-plum/90 leading-relaxed font-medium">
-                    No Tarô 78 Chaves, você percorre cada arcano com método, prática e progressão real.
+                    No Tarô 78 Chaves, você percorre cada arcano com método, lições curtas e progressão real.
                   </p>
                   <p className="font-body text-base md:text-lg text-plum/80 leading-relaxed">
-                    Uma escola digital guiada pelos 78 arcanos do Rider-Waite-Smith, com lições, quizzes, progresso salvo e uma jornada do Louco ao Mundo.
+                    Uma plataforma guiada pelos 78 arcanos (Rider-Waite-Smith) com quizzes, progresso salvo, XP e uma jornada do Louco ao Mundo.
                   </p>
                 </div>
 
                 <p className="font-accent text-sm md:text-base text-gold-dark font-bold italic border-l-4 border-gold/40 pl-5 py-1.5 bg-gold/5 rounded-r-xl">
-                  “No Tarô 78 Chaves, o tarô deixa de ser imagem e se torna presença.”
+                  “No Tarô 78 Chaves, o aprendizado vira ritual e a imagem vira presença.”
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-6 pt-0 md:pt-1 font-heading text-[9px] md:text-xs tracking-[0.15em] md:tracking-[0.2em] uppercase text-plum font-extrabold drop-shadow-sm">
@@ -182,10 +182,10 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-start gap-1 pt-0">
+              <div className="flex flex-col items-center lg:items-start gap-1 pt-0 w-full">
                 <Button 
                   onClick={() => handleStart("hero", "COMEÇAR MINHA JORNADA")}
-                  className="w-full sm:w-auto min-h-[64px] md:min-h-[72px] px-4 md:px-14 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-xs md:text-lg tracking-[0.1em] md:tracking-[0.25em] uppercase border-none shadow-[0_20px_50px_-15px_rgba(91,31,61,0.7)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3 md:gap-4 group/btn whitespace-normal text-center leading-tight"
+                  className="w-full sm:w-auto min-h-[64px] md:min-h-[72px] px-4 md:px-14 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-lg md:text-lg tracking-[0.1em] md:tracking-[0.25em] uppercase border-none shadow-[0_20px_50px_-15px_rgba(91,31,61,0.7)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3 md:gap-4 group/btn whitespace-normal text-center leading-tight"
                 >
                   <Key className="w-5 h-5 md:w-6 md:h-6 group-hover/btn:rotate-12 transition-transform text-gold shrink-0" />
                   <span>COMEÇAR MINHA JORNADA</span>
@@ -248,12 +248,12 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             </h2>
             <div className="space-y-6 max-w-2xl mx-auto">
               <p className="text-lg font-body text-midnight/70 leading-relaxed">
-                Vídeos soltos, listas de palavras-chave e significados decorados até ajudam no começo. Mas na hora de fazer uma leitura real, tudo parece escapar.
+                Vídeos soltos, listas de palavras-chave e significados decorados até ajudam no começo. Mas na hora de fazer uma leitura real, os símbolos não conversam.
               </p>
               <div className="pt-4 border-t border-gold/10">
-                <p className="text-xl font-heading text-[#5B1F3D] tracking-wide">
-                  O problema não é falta de intuição.<br className="hidden md:block" />
-                  <span className="font-bold">É falta de método.</span>
+                <p className="text-xl font-heading text-[#5B1F3D] tracking-wide leading-snug">
+                  O problema não é sua intuição.<br className="hidden md:block" />
+                  <span className="font-bold">É a falta de uma plataforma estruturada.</span>
                 </p>
               </div>
             </div>
@@ -306,7 +306,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
           <div className="mt-8 text-center space-y-8">
             <p className="text-sm font-body text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Ao acessar o programa, você inicia pelo Louco e percorre uma jornada guiada pelos 78 arcanos, com aulas, quizzes e progresso salvo.
+              Inicie pelo Louco e percorra uma jornada interativa pelos 78 arcanos, com aulas objetivas, quizzes dinâmicos e seu progresso salvo em tempo real.
             </p>
             <Button 
               onClick={() => handleStart("journey", "COMEÇAR MINHA JORNADA")} 
