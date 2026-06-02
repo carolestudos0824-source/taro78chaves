@@ -1,11 +1,14 @@
 {
   "name": "Tarô 78 Chaves",
   "short_name": "Tarô 78 Chaves",
-  "description": "Estudo guiado de tarô carta por carta.",
-  "start_url": "/?android_app=1",
+  "description": "Escola Digital de Tarô: Estudo guiado carta por carta pelos 78 arcanos.",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#FAF5EF",
   "theme_color": "#5B1F3D",
+  "orientation": "portrait",
+  "lang": "pt-BR",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
@@ -24,6 +27,15 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/72a4c4eb-1899-4200-a35a-6f3e9c98b930",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Escola Digital de Tarô"
     }
   ]
 }
