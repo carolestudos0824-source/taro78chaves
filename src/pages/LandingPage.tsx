@@ -147,7 +147,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
               <div className="space-y-3 md:space-y-4">
                 <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl leading-[1.05] md:leading-[1] tracking-tight text-plum normal-case font-black">
-                  A escola digital dos 78 arcanos
+                  Domine o Tarô <br className="hidden md:block" /> em uma Escola Digital
                 </h1>
                 
                 <div className="space-y-2 md:space-y-3">
@@ -248,12 +248,12 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             </h2>
             <div className="space-y-6 max-w-2xl mx-auto">
               <p className="text-lg font-body text-midnight/70 leading-relaxed">
-                Vídeos soltos, listas de palavras-chave e significados decorados até ajudam no começo. Mas na hora de fazer uma leitura real, tudo parece escapar.
+                Vídeos soltos, listas de palavras-chave e significados decorados até ajudam no começo. Mas na hora de fazer uma leitura real, os símbolos não conversam.
               </p>
               <div className="pt-4 border-t border-gold/10">
-                <p className="text-xl font-heading text-[#5B1F3D] tracking-wide">
-                  O problema não é falta de intuição.<br className="hidden md:block" />
-                  <span className="font-bold">É falta de método.</span>
+                <p className="text-xl font-heading text-[#5B1F3D] tracking-wide leading-snug">
+                  O problema não é sua intuição.<br className="hidden md:block" />
+                  <span className="font-bold">É a falta de uma plataforma estruturada.</span>
                 </p>
               </div>
             </div>
@@ -306,7 +306,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
           <div className="mt-8 text-center space-y-8">
             <p className="text-sm font-body text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Ao acessar o programa, você inicia pelo Louco e percorre uma jornada guiada pelos 78 arcanos, com aulas, quizzes e progresso salvo.
+              Inicie pelo Louco e percorra uma jornada interativa pelos 78 arcanos, com aulas objetivas, quizzes dinâmicos e seu progresso salvo em tempo real.
             </p>
             <Button 
               onClick={() => handleStart("journey", "COMEÇAR MINHA JORNADA")} 
