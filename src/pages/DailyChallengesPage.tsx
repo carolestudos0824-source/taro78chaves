@@ -337,11 +337,11 @@ interface ModalProps {
 
 const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) => {
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4" style={{
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 pb-bottom-nav sm:pb-4" style={{
       background: "rgba(91, 31, 61, 0.75)",
       backdropFilter: "blur(20px)",
     }}>
-      <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-t-[3.5rem] sm:rounded-[3.5rem] border-t-4 sm:border-4 border-[#C8A66A] shadow-[0_0_100px_rgba(91,31,61,0.5)] animate-in fade-in slide-in-from-bottom-12 duration-700" style={{
+      <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-t-[3.5rem] sm:rounded-[3.5rem] border-t-4 sm:border-4 border-[#C8A66A] shadow-[0_0_100px_rgba(91,31,61,0.5)] animate-in fade-in slide-in-from-bottom-12 duration-700 scrollbar-hide" style={{
         background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 100%)",
       }}>
         {/* Modal header — Estilo Premium Ritualístico */}
