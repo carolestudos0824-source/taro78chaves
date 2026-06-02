@@ -191,12 +191,16 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                   <span>COMEÇAR MINHA JORNADA</span>
                 </Button>
                 <div className="flex flex-col items-center lg:items-start gap-0.5 mt-1 md:mt-1">
-                  <p className="text-[11px] md:text-base font-heading tracking-[0.1em] text-plum/80 font-bold uppercase">
-                    ✦ Assinatura mensal por apenas R$37/mês.
-                  </p>
-                  <p className="text-[10px] md:text-xs font-body text-plum/50 italic">
-                    Cancele quando quiser. Acesso imediato.
-                  </p>
+                  {isWebCheckoutAllowed() && (
+                    <>
+                      <p className="text-[11px] md:text-base font-heading tracking-[0.1em] text-plum/80 font-bold uppercase">
+                        ✦ Assinatura mensal por apenas R$37/mês.
+                      </p>
+                      <p className="text-[10px] md:text-xs font-body text-plum/50 italic">
+                        Cancele quando quiser. Acesso imediato.
+                      </p>
+                    </>
+                  )}
                 </div>
                 <button 
                   onClick={() => {
