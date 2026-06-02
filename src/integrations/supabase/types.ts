@@ -1037,6 +1037,45 @@ export type Database = {
           },
         ]
       }
+      google_play_subscriptions: {
+        Row: {
+          base_plan_id: string
+          created_at: string
+          expires_at: string | null
+          id: string
+          product_id: string
+          purchase_token: string
+          raw_payload: Json | null
+          subscription_status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          base_plan_id: string
+          created_at?: string
+          expires_at?: string | null
+          id?: string
+          product_id: string
+          purchase_token: string
+          raw_payload?: Json | null
+          subscription_status: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          base_plan_id?: string
+          created_at?: string
+          expires_at?: string | null
+          id?: string
+          product_id?: string
+          purchase_token?: string
+          raw_payload?: Json | null
+          subscription_status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       hotmart_entitlements: {
         Row: {
           access_status: string | null
