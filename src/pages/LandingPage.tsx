@@ -450,7 +450,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                       Pagamento único anual • 12 meses de acesso
                     </p>
                     <p className="text-base md:text-lg font-bold text-gold-dark italic ml-9 bg-gold/5 px-4 py-1 rounded-lg inline-block">
-                      Ou até 12x no cartão pela Hotmart
+                      Pagamento seguro via Stripe
                     </p>
                   </div>
                 </div>
@@ -487,10 +487,10 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
                       <Award className="w-5 h-5 md:w-6 md:h-6 text-gold-dark" />
                     </div>
-                    <span className="font-heading text-base md:text-xl font-black uppercase tracking-tight md:tracking-widest">Garantia de 7 dias pela Hotmart</span>
+                    <span className="font-heading text-base md:text-xl font-black uppercase tracking-tight md:tracking-widest">Garantia de 7 dias</span>
                   </div>
                   <p className="text-base font-body text-midnight/80 leading-relaxed font-medium">
-                    Você pode acessar a Escola Digital Tarô 78 Chaves com tranquilidade. Se dentro de 7 dias corridos após a compra você entender que o curso não é para você, poderá solicitar o reembolso conforme as regras da Hotmart.
+                    Você pode acessar a Escola Digital Tarô 78 Chaves com tranquilidade. Se dentro de 7 dias corridos após a compra você entender que o curso não é para você, poderá solicitar o reembolso integral.
                   </p>
                   <p className="text-sm font-black text-plum uppercase tracking-[0.2em] border-t border-gold/10 pt-4">✦ Sem risco para começar.</p>
                 </div>
@@ -505,7 +505,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 
                 <div className="space-y-2 text-center">
                   <p className="text-[10px] md:text-xs text-midnight/40 font-body uppercase tracking-[0.2em] font-bold">
-                    Pagamento processado pela Hotmart. Acesso liberado automaticamente após a confirmação da compra.
+                    Pagamento processado via Stripe. Acesso liberado automaticamente após a confirmação da compra.
                   </p>
                   <p className="text-[10px] md:text-xs text-midnight/40 font-body uppercase tracking-[0.2em] font-bold">
                     Certificado digital emitido pelo Tarô 78 Chaves com código de validação.
@@ -515,7 +515,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
               <div className="pt-4 border-t border-gold/10 text-center">
                 <p className="text-[11px] md:text-xs text-plum font-bold font-body leading-relaxed max-w-[280px] mx-auto italic">
-                  “Após a compra pela Hotmart, crie sua conta com o mesmo e-mail utilizado no pagamento. Seu acesso será liberado automaticamente.”
+                  “O acesso à jornada completa é liberado imediatamente após a confirmação do pagamento.”
                 </p>
               </div>
             </div>
