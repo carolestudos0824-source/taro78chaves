@@ -24,7 +24,7 @@ const PrivacyPage = () => (
       <li><strong>Progresso de estudo:</strong> lições concluídas, Chaves conquistadas, respostas de quizzes.</li>
       <li><strong>Uso da plataforma:</strong> eventos anônimos de navegação e interação.</li>
       <li><strong>Analytics:</strong> métricas agregadas via Google Analytics 4 (GA4).</li>
-      <li><strong>Acesso premium:</strong> status, plano e validade.</li>
+      <li><strong>Acesso premium:</strong> status, plano (assinatura mensal) e validade.</li>
     </ul>
     <p>Não coletamos dados sensíveis (saúde, religião, biometria, etc.).</p>
 

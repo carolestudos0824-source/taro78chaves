@@ -183,18 +183,18 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
               <div className="flex flex-col items-center lg:items-start gap-1 pt-0">
                 <Button 
-                  onClick={() => handleStart("hero")}
+                  onClick={() => handleStart("hero", "COMEÇAR MINHA JORNADA")}
                   className="w-full sm:w-auto min-h-[64px] md:min-h-[72px] px-4 md:px-14 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-xs md:text-lg tracking-[0.1em] md:tracking-[0.25em] uppercase border-none shadow-[0_20px_50px_-15px_rgba(91,31,61,0.7)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3 md:gap-4 group/btn whitespace-normal text-center leading-tight"
                 >
                   <Key className="w-5 h-5 md:w-6 md:h-6 group-hover/btn:rotate-12 transition-transform text-gold shrink-0" />
-                  <span>{checkoutUrl ? "GARANTIR MEU ACESSO" : "QUERO COMEÇAR MINHA JORNADA"}</span>
+                  <span>COMEÇAR MINHA JORNADA</span>
                 </Button>
                 <div className="flex flex-col items-center lg:items-start gap-0.5 mt-1 md:mt-1">
                   <p className="text-[11px] md:text-base font-heading tracking-[0.1em] text-plum/80 font-bold uppercase">
-                    ✦ Garanta seu acesso completo agora.
+                    ✦ Assinatura mensal por apenas R$37/mês.
                   </p>
                   <p className="text-[10px] md:text-xs font-body text-plum/50 italic">
-                    Acesso imediato após aprovação.
+                    Cancele quando quiser. Acesso imediato.
                   </p>
                 </div>
                 <button 
@@ -304,11 +304,11 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               Ao acessar o programa, você inicia pelo Louco e percorre uma jornada guiada pelos 78 arcanos, com aulas, quizzes e progresso salvo.
             </p>
             <Button 
-              onClick={() => handleStart("journey")} 
+              onClick={() => handleStart("journey", "COMEÇAR MINHA JORNADA")} 
               variant="outline"
               className="w-full sm:w-auto px-6 md:px-10 py-6 rounded-full border-gold/30 text-gold-dark hover:bg-gold/5 font-heading tracking-normal md:tracking-widest text-[11px] uppercase transition-all shadow-sm whitespace-normal text-center h-auto min-h-[56px]"
             >
-              {checkoutUrl ? "GARANTIR MEU ACESSO →" : "QUERO COMEÇAR MINHA JORNADA →"}
+              COMEÇAR MINHA JORNADA →
             </Button>
           </div>
         </div>
