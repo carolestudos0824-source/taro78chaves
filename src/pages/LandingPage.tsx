@@ -155,10 +155,10 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                     Você quer aprender Tarô, mas ainda trava na hora de interpretar as cartas?
                   </p>
                   <p className="font-body text-lg md:text-xl text-plum/90 leading-relaxed font-medium">
-                    No Tarô 78 Chaves, você percorre cada arcano com método, prática e progressão real.
+                    No Tarô 78 Chaves, você percorre cada arcano com método, lições curtas e progressão real.
                   </p>
                   <p className="font-body text-base md:text-lg text-plum/80 leading-relaxed">
-                    Uma escola digital guiada pelos 78 arcanos do Rider-Waite-Smith, com lições, quizzes, progresso salvo e uma jornada do Louco ao Mundo.
+                    Uma plataforma guiada pelos 78 arcanos (Rider-Waite-Smith) com quizzes, progresso salvo, XP e uma jornada do Louco ao Mundo.
                   </p>
                 </div>
 
@@ -182,10 +182,10 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-start gap-1 pt-0">
+              <div className="flex flex-col items-center lg:items-start gap-1 pt-0 w-full">
                 <Button 
                   onClick={() => handleStart("hero", "COMEÇAR MINHA JORNADA")}
-                  className="w-full sm:w-auto min-h-[64px] md:min-h-[72px] px-4 md:px-14 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-xs md:text-lg tracking-[0.1em] md:tracking-[0.25em] uppercase border-none shadow-[0_20px_50px_-15px_rgba(91,31,61,0.7)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3 md:gap-4 group/btn whitespace-normal text-center leading-tight"
+                  className="w-full sm:w-auto min-h-[64px] md:min-h-[72px] px-4 md:px-14 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-lg md:text-lg tracking-[0.1em] md:tracking-[0.25em] uppercase border-none shadow-[0_20px_50px_-15px_rgba(91,31,61,0.7)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3 md:gap-4 group/btn whitespace-normal text-center leading-tight"
                 >
                   <Key className="w-5 h-5 md:w-6 md:h-6 group-hover/btn:rotate-12 transition-transform text-gold shrink-0" />
                   <span>COMEÇAR MINHA JORNADA</span>
