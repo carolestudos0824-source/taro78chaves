@@ -531,8 +531,8 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <PWAInstructions />
 
