@@ -26,7 +26,7 @@ const TermsPage = () => (
 
     <h2>3. Acesso e Pagamento</h2>
     <p>
-      A plataforma oferece acesso completo ao programa através de assinatura mensal recorrente disponibilizada via Stripe (Web/PWA). O acesso permanece ativo enquanto a assinatura estiver em dia.
+      A plataforma oferece acesso completo ao programa através de assinatura mensal recorrente disponibilizada via plataforma segura (Web/PWA). O acesso permanece ativo enquanto a assinatura estiver em dia.
     </p>
 
     <h2>4. Cancelamento e Reembolso</h2>
