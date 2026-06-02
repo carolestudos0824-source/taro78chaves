@@ -70,19 +70,21 @@ const LessonPage = () => {
   }, []);
   
   const getPhases = () => {
-    const p: LessonPhase[] = ["intro", "lesson"];
-    if (arcano?.symbolsMap?.length) p.push("symbols");
-    p.push("deepdive", "exercise", "quiz", "complete");
-    return p;
+    return [
+      "intro",
+      "simbolos",
+      "luz-sombra",
+      "voz",
+      "aprofundamento",
+      "aplicacoes",
+      "reflexao",
+      "quiz",
+      "complete"
+    ];
   };
   const phases = getPhases();
   
-  const [exerciseCompleted, setExerciseCompleted] = useState(false);
   const [pontosEarned, setPontosEarned] = useState(0);
-  const [showPontosReward, setShowPontosReward] = useState(false);
-  const [showUnlockMoment, setShowUnlockMoment] = useState(false);
-  const [lastQuizScore, setLastQuizScore] = useState(0);
-  const [lastQuizTotal, setLastQuizTotal] = useState(0);
 
   // Fallback defensivo para rota literal /lesson/:id ou IDs inválidos
 
