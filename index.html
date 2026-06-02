@@ -6,30 +6,23 @@
     <title>Tarô 78 Chaves | Escola Digital de Tarô</title>
     <meta name="description" content="Aprenda Tarô com profundidade, simbologia e prática em uma escola digital guiada pelos 78 arcanos. Estude no seu ritmo e desenvolva sua leitura com consciência.">
     <meta name="author" content="Tarô 78 Chaves" />
-    <meta name="theme-color" content="#FAF5EF" />
+    <meta name="theme-color" content="#5B1F3D" />
     <link rel="canonical" href="https://www.taro78chaves.com.br/" />
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
+    <!-- PWA Service Worker Cleanup (commented out to allow new PWA)
     <script>
-      // Clean up legacy service worker to avoid HTTP 412 errors
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistrations().then(registrations => {
           for (const registration of registrations) {
-            registration.unregister();
+            // Only unregister if it's not the new one (if we had a way to identify it)
+            // For now, let's let the new Vite PWA plugin handle it.
           }
         });
-        
-        // Clear caches associated with the service worker
-        if ('caches' in window) {
-          caches.keys().then(names => {
-            for (const name of names) {
-              caches.delete(name);
-            }
-          });
-        }
       }
     </script>
+    -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
