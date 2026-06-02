@@ -53,7 +53,7 @@ const TRAIL_LEVELS: TrailLevel[] = [
     icon: "Stars",
     accentColor: "hsl(280 35% 45%)",
     accentBorder: "hsl(280 35% 45% / 0.30)",
-    modules: ["combinacoes", "tiragens", "espiritualidade", "mesa-taro"],
+    modules: ["combinacoes", "tiragens", "amor", "espiritualidade", "mesa-taro"],
     prerequisites: ["intermediario"],
   },
   {

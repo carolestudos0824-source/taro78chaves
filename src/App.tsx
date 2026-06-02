@@ -228,6 +228,7 @@ const AppRoutes = () => {
           <Route path="/admin" element={<LazyRoute><AdminPage /></LazyRoute>} />
         </Route>
         
+        <Route path="/feedback" element={<Navigate to="/suporte" replace />} />
         <Route path="*" element={<LazyRoute><NotFound /></LazyRoute>} />
       </Routes>
     </>
