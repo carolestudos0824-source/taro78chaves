@@ -9,7 +9,8 @@ import { useRole } from "@/hooks/use-role";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { trackEvent } from "@/lib/analytics";
-import { isWebCheckoutAllowed, STRIPE_BLOCKED_ANDROID_MSG } from "@/lib/platform";
+import { isWebCheckoutAllowed, isGooglePlayBillingAllowed, STRIPE_BLOCKED_ANDROID_MSG } from "@/lib/platform";
+import { startGooglePlayPurchase, acknowledgeGooglePlayPurchase, GOOGLE_PLAY_PRODUCT_ID, GOOGLE_PLAY_BASE_PLAN_ID, isGooglePlayBillingSupported } from "@/lib/google-play";
 import { cn } from "@/lib/utils";
 
 const PREMIUM_BENEFITS = [
@@ -26,9 +27,22 @@ const PremiumPage = () => {
   const { isPremium, subscriptionStatus, premiumUntil } = usePremium();
   const { isStaff } = useRole();
   const [loading, setLoading] = useState(false);
+  const [billingSupported, setBillingSupported] = useState<boolean | null>(null);
+  
   const webCheckoutAllowed = isWebCheckoutAllowed();
+  const googlePlayAllowed = isGooglePlayBillingAllowed();
 
-  const handleSubscribe = async () => {
+  useEffect(() => {
+    const checkBilling = async () => {
+      const supported = await isGooglePlayBillingSupported();
+      setBillingSupported(supported);
+    };
+    if (googlePlayAllowed) {
+      checkBilling();
+    }
+  }, [googlePlayAllowed]);
+
+  const handleStripeSubscribe = async () => {
     if (checkoutUrl) {
       trackEvent("checkout_monthly_started");
       window.location.href = checkoutUrl;
@@ -50,6 +64,52 @@ const PremiumPage = () => {
     }
 
     toast.error("Serviço de pagamento indisponível no momento. Tente novamente mais tarde.");
+  };
+
+  const handleGooglePlaySubscribe = async () => {
+    setLoading(true);
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (!user) {
+        toast.info("Entre na sua conta para assinar pela Google Play.");
+        navigate("/auth?redirect=/premium");
+        return;
+      }
+
+      if (isPremium) {
+        toast.info("Você já possui todas as chaves ativas.");
+        navigate("/perfil");
+        return;
+      }
+
+      trackEvent("google_play_checkout_started");
+      const { purchaseToken, response } = await startGooglePlayPurchase(user.id);
+      
+      // Call our backend to validate and record
+      const { data, error } = await supabase.functions.invoke('google-play-billing', {
+        body: {
+          purchaseToken,
+          productId: GOOGLE_PLAY_PRODUCT_ID,
+          basePlanId: GOOGLE_PLAY_BASE_PLAN_ID
+        }
+      });
+
+      if (error) throw error;
+
+      await acknowledgeGooglePlayPurchase(purchaseToken, response);
+      trackEvent("google_play_checkout_success");
+      toast.success("Sua jornada completa foi liberada!");
+      navigate("/perfil");
+      
+    } catch (err: any) {
+      console.error(err);
+      if (err.name !== 'AbortError') {
+        toast.error("Ocorreu um erro ao processar sua assinatura na Google Play.");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
