@@ -416,7 +416,8 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       </section>
 
       {/* ─── Pricing Section ─── */}
-      <section className="py-20 md:py-32 px-4 md:px-6 bg-[#5B1F3D] text-parchment relative overflow-hidden w-full">
+      {isWebCheckoutAllowed() && (
+        <section className="py-20 md:py-32 px-4 md:px-6 bg-[#5B1F3D] text-parchment relative overflow-hidden w-full">
         <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-white/5 blur-[150px] rounded-full" />
         
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-16">
