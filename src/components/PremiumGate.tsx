@@ -97,12 +97,12 @@ const PremiumGate = ({
 
       <div className="space-y-3">
         <h3 className="font-heading text-2xl font-black text-[#5B1F3D] tracking-tight">
-          {webCheckoutAllowed ? "Abra as 78 Portas do Tarô" : "Escola Digital no Android"}
+          {webCheckoutAllowed ? "Abra as 78 Portas do Tarô" : "Portal Restrito"}
         </h3>
         <p className="text-[14px] font-body text-[#5B1F3D]/80 font-bold italic leading-relaxed max-w-[320px] mx-auto">
           {message || (webCheckoutAllowed 
             ? "Você já começou pelo Louco. Agora receba todas as chaves e siga atravessando cada arcano com método, prática e ritual."
-            : "Acesso total à jornada completa pelos 78 arcanos em breve via Google Play Store.")}
+            : STRIPE_BLOCKED_ANDROID_MSG)}
         </p>
       </div>
 
