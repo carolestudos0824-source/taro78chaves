@@ -117,10 +117,14 @@ Deno.serve(async (req) => {
       sessionParams.subscription_data = {
         metadata: { user_id: userId, plan_code: plan, origin: "lovable_web" },
       };
+      // For Pix Automatic (subscriptions), we need to ensure the account supports it.
+      // We don't explicitly set payment_method_types here to allow Stripe to use 
+      // the dashboard-configured defaults (which should include Card + Pix).
     } else {
       sessionParams.payment_intent_data = {
         metadata: { user_id: userId, plan_code: plan, origin: "lovable_web" },
       };
+      // For one-time payments (Pix manual), we also rely on dashboard defaults.
     }
 
     const session = await stripe.checkout.sessions.create(sessionParams);
