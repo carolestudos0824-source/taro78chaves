@@ -39,7 +39,7 @@
 
 **Regras Consolidadas:**
 - **Stripe** é o canal principal de pagamento para a versão Web/PWA.
-- **Hotmart** não será implementado nesta fase.
+- **Hotmart**: Removida completamente do escopo atual. O app utiliza exclusivamente Stripe para Web/PWA.
 - **isWebCheckoutAllowed**: Flag preservada para controle de checkout externo conforme plataforma.
 - **Admin**: Acesso total, mas sem portal de pagamento Stripe.
 - **Auditor**: Papel especial para testes de conteúdo premium sem Stripe, sem acesso administrativo e sem gravação de progresso.
