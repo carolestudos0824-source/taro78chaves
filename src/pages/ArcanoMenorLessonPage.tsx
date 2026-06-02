@@ -600,12 +600,10 @@ const PhaseRevisao = ({
   card,
   accent,
   completed,
-  pontos,
 }: {
   card: ArcanoMenorEditorial;
   accent: string;
   completed: boolean;
-  pontos: number;
 }) => {
   const r = card.revisaoRapida;
   return (
