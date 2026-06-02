@@ -63,7 +63,24 @@ const PremiumPage = () => {
       return;
     }
 
-    toast.error("Serviço de pagamento indisponível no momento. Tente novamente mais tarde.");
+    setLoading(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("stripe-create-checkout", {
+        body: { plan: "monthly" }
+      });
+
+      if (error || !data?.url) {
+        throw new Error(error?.message || "Erro ao criar sessão de checkout");
+      }
+
+      trackEvent("stripe_checkout_started", { plan: "monthly" });
+      window.location.href = data.url;
+    } catch (err: any) {
+      console.error(err);
+      toast.error("Serviço de pagamento indisponível no momento. Tente novamente mais tarde.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleGooglePlaySubscribe = async () => {
