@@ -120,12 +120,12 @@ const DashboardPage = () => {
               </div>
               <div className="space-y-0.5">
                 <p className="text-[11px] font-heading font-black tracking-widest uppercase text-[#C8A66A]">
-                  {isAdmin ? "Acesso Administrativo" : "Modo Auditoria"}
+                  {isAdmin ? "Acesso Técnico Completo" : "Modo Auditoria"}
                 </p>
                 <p className="text-[12px] font-body font-bold italic text-white/90 leading-snug">
                   {isAdmin 
-                    ? "Gestão total ativa. Seu progresso não afeta os dados de produção." 
-                    : "Modo Auditoria: visualização de conteúdo premium liberada para testes."}
+                    ? "Ambiente administrativo. Visualização irrestrita de todos os arcanos e módulos." 
+                    : "Ambiente de auditoria. Acesso liberado para validação técnica do conteúdo premium."}
                 </p>
               </div>
             </div>
@@ -190,8 +190,8 @@ const DashboardPage = () => {
               />
             </div>
             <div className="flex justify-between text-[11px] font-heading font-black text-[#5B1F3D]/40 uppercase tracking-widest px-1">
-              <span>{totalCompletedArcanos} Chaves</span>
-              <span>78 Chaves da Jornada</span>
+              <span>{totalCompletedArcanos}/78 concluídas</span>
+              <span>{currentStep ? `Próxima: ${currentStep.name}` : "Jornada completa"}</span>
             </div>
           </div>
 
@@ -199,7 +199,8 @@ const DashboardPage = () => {
             onClick={() => currentStep && navigate(currentStep.route)}
             className="w-full mt-8 py-4 bg-[#5B1F3D] text-white rounded-2xl font-heading text-[11px] tracking-[0.3em] uppercase font-black flex items-center justify-center gap-2 border-2 border-[#C8A66A]/30 shadow-lg hover:bg-[#3D1429] transition-all"
           >
-            Continuar de onde parei <ChevronRight className="w-4 h-4 text-[#C8A66A]" />
+            {totalCompletedArcanos === 0 ? "Iniciar minha jornada" : "Continuar de onde parei"} 
+            <ChevronRight className="w-4 h-4 text-[#C8A66A]" />
           </button>
         </section>
 
@@ -297,10 +298,10 @@ const DashboardPage = () => {
                 </div>
                 <div className="space-y-0.5">
                   <h3 className="font-heading text-[11px] font-black text-[#C8A66A] uppercase tracking-widest">
-                    {isStaff ? "Status de Acesso" : "Plano Atual"}
+                    {isStaff ? "Perfil Técnico" : "Plano Atual"}
                   </h3>
                   <p className="text-sm font-heading font-black text-[#5B1F3D]">
-                    {isAdmin ? "Administrador" : isAuditor ? "Auditor" : isPremium ? "Premium" : "Gratuito"}
+                    {isAdmin ? "Modo Administrador" : isAuditor ? "Modo Auditoria" : isPremium ? "Plano Premium" : "Plano do Louco"}
                   </p>
                 </div>
               </div>
@@ -315,12 +316,12 @@ const DashboardPage = () => {
             </div>
             <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/50 leading-relaxed">
               {isAdmin 
-                ? "Acesso administrativo pleno com visualização de todos os arcanos."
+                ? "Acesso técnico total. Painéis e rotas administrativas liberados."
                 : isAuditor
-                ? "Permissão de auditoria ativa para validação de fluxos pedagógicos."
+                ? "Permissão de auditoria. Visualização de conteúdo restrito para testes."
                 : isPremium 
-                ? "Acesso completo a todas as 78 chaves e módulos profissionais." 
-                : "Acesso inicial ao Louco e Fundamentos. Desbloqueie a jornada completa."}
+                ? "Sua assinatura Premium está ativa. Aproveite a jornada completa." 
+                : "Acesso inicial gratuito. Faça o upgrade para desbloquear os 78 arcanos."}
             </p>
           </div>
         </div>
