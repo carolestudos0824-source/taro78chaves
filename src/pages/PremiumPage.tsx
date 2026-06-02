@@ -30,7 +30,7 @@ const PremiumPage = () => {
 
   const handleSubscribe = async () => {
     if (checkoutUrl) {
-      trackEvent("checkout_annual_started");
+      trackEvent("checkout_monthly_started");
       window.location.href = checkoutUrl;
       return;
     }
@@ -163,17 +163,17 @@ const PremiumPage = () => {
             <div className="space-y-4">
               <div className="w-full text-left bg-white border-4 border-[#C8A66A] p-6 min-[400px]:p-8 rounded-[2.5rem] flex flex-col space-y-6 shadow-2xl relative overflow-hidden active:scale-[0.98] transition-all ring-8 ring-[#C8A66A]/5">
                 <div className="absolute top-0 right-0 bg-[#C8A66A] px-6 py-2.5 rounded-bl-3xl text-[10px] font-heading font-black tracking-widest text-[#FAF5EF] uppercase shadow-md">
-                  Oferta de Lançamento
+                  Assinatura Mensal
                 </div>
                 
                 <div className="space-y-2">
-                  <p className="text-[11px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D] font-black">Acesso Anual</p>
+                  <p className="text-[11px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D] font-black">Escola Digital</p>
                   <div className="flex items-baseline gap-1">
-                    <span className="font-heading text-4xl min-[400px]:text-5xl text-[#5B1F3D] font-black tracking-tighter">R$ 297</span>
-                    <span className="text-xs font-heading font-black text-[#5B1F3D]/40">/único</span>
+                    <span className="font-heading text-4xl min-[400px]:text-5xl text-[#5B1F3D] font-black tracking-tighter">R$ 37</span>
+                    <span className="text-xs font-heading font-black text-[#5B1F3D]/40">/mês</span>
                   </div>
                   <p className="text-sm font-black text-[#5B1F3D] italic leading-relaxed">
-                    12 meses de acesso • Sem renovação automática
+                    Acesso completo enquanto a assinatura estiver ativa • Cancele quando quiser
                   </p>
                 </div>
 
@@ -182,7 +182,7 @@ const PremiumPage = () => {
                   disabled={loading} 
                   className="w-full h-auto min-h-[4rem] py-5 px-4 text-[11px] min-[400px]:text-sm bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.1em] min-[400px]:tracking-[0.15em] shadow-xl border-2 border-[#C8A66A] whitespace-normal leading-tight text-center"
                 >
-                  GARANTIR MEU ACESSO
+                  COMEÇAR MINHA JORNADA
                 </Button>
               </div>
             </div>
