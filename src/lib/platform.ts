@@ -40,6 +40,9 @@ export const isAndroidApp = (): boolean => {
 /** Whether external (Stripe) checkout for digital content is allowed in this build. */
 export const isWebCheckoutAllowed = (): boolean => !isAndroidApp();
 
-export const STRIPE_BLOCKED_ANDROID_MSG = "Este conteúdo está disponível para contas com acesso ativo.";
+/** Whether Google Play Billing is allowed (only on Android App/TWA). */
+export const isGooglePlayBillingAllowed = (): boolean => isAndroidApp();
+
+export const STRIPE_BLOCKED_ANDROID_MSG = "O checkout externo não está disponível neste app.";
 
 export const platformLabel = (): "android" | "web" => (isAndroidApp() ? "android" : "web");
