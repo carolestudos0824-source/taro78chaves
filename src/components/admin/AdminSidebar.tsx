@@ -8,7 +8,7 @@ import { canAccessSection, type AppRole } from "@/hooks/use-role";
 export type AdminSection =
   | "overview"
   | "users"
-  | "hotmart"
+  
   | "certificates"
   | "subscriptions"
   | "gifts"
@@ -32,7 +32,7 @@ interface AdminSidebarProps {
 const sections: { id: AdminSection; label: string; icon: React.ReactNode; group: string }[] = [
   { id: "overview", label: "Visão Geral", icon: <LayoutDashboard className="w-5 h-5" />, group: "Principal" },
   { id: "users", label: "Usuários", icon: <Users className="w-5 h-5" />, group: "Principal" },
-  { id: "hotmart", label: "Operação Hotmart", icon: <ShoppingBag className="w-5 h-5" />, group: "Comercial" },
+  
   { id: "certificates", label: "Certificados", icon: <FileText className="w-5 h-5" />, group: "Curso" },
   { id: "subscriptions", label: "Vendas Legadas Stripe", icon: <Crown className="w-5 h-5" />, group: "Comercial" },
   { id: "gifts", label: "Presentes & Chaves", icon: <Gift className="w-5 h-5" />, group: "Comercial" },

@@ -34,7 +34,7 @@ const ProfilePage = () => {
 
   const isStripeRecurring = isPremium && !!stripeCustomerId && ["store_monthly", "store_annual"].includes(premiumSource || "");
   const isOneTimeAnnual = premiumSource === "store_annual_one_time";
-  const isHotmart = premiumSource === "hotmart";
+  
   
   const nextSuggestion = findNextLessonSuggestion(progress.completedLessons);
 
@@ -167,7 +167,6 @@ const ProfilePage = () => {
               </div>
               <h3 className="font-heading text-xl font-black text-[#5B1F3D]">
                 {isAdmin ? "Acesso Total" : (
-                  isHotmart ? "Acesso Premium" :
                   isOneTimeAnnual ? "Jornada Anual" : 
                   (isPremium ? (premiumSource === "store_monthly" ? "Assinatura Mensal" : "Jornada Completa") : "Plano do Louco")
                 )}
@@ -177,11 +176,6 @@ const ProfilePage = () => {
                   {untilFormatted && (
                     <p className="text-[10px] font-body font-bold italic text-[#5B1F3D]/80 uppercase tracking-widest">
                       {isStripeRecurring ? `Renovação: ${untilFormatted}` : `Acesso ativo até: ${untilFormatted}`}
-                    </p>
-                  )}
-                  {isHotmart && (
-                    <p className="text-[9px] font-heading font-black text-[#C8A66A] uppercase tracking-wider">
-                      Acesso anual liberado pela Hotmart
                     </p>
                   )}
                 </div>

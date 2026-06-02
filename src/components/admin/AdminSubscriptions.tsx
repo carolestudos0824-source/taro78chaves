@@ -217,7 +217,7 @@ const AdminSubscriptions = () => {
         <div className="space-y-1">
           <p className="text-base font-heading font-black text-[#5B1F3D]">Fluxo legado Stripe</p>
           <p className="text-sm font-body font-bold text-[#5B1F3D]/60 leading-relaxed">
-            Esta aba é apenas histórica e não representa as vendas atuais do Tarô 78 Chaves. As vendas reais, reembolsos, saldo, saque e parcelamento devem ser acompanhados na Hotmart.
+            Esta aba é apenas histórica e não representa as vendas atuais do Tarô 78 Chaves. As vendas reais, reembolsos e saldo devem ser acompanhados no Stripe.
           </p>
         </div>
       </div>
@@ -236,7 +236,7 @@ const AdminSubscriptions = () => {
         </div>
         
         <p className="text-sm font-body font-bold text-[#5B1F3D]/80 leading-relaxed bg-white/60 p-5 rounded-[2.5rem] border border-[#C8A66A]/20 shadow-sm">
-          Projeção baseada em assinantes ativos × preço de catálogo. <strong className="text-[#5B1F3D] font-black">Não representa faturamento Hotmart.</strong>
+          Projeção baseada em assinantes ativos × preço de catálogo. <strong className="text-[#5B1F3D] font-black">Não representa faturamento real (Stripe).</strong>
         </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -266,7 +266,7 @@ const AdminSubscriptions = () => {
             <Plug className="w-10 h-10 text-[#C8A66A]/20 mx-auto mb-4" />
             <p className="text-base font-heading font-black text-[#5B1F3D] mb-2">Relatório de faturamento legado</p>
             <p className="text-sm font-body font-bold italic text-[#5B1F3D]/50 max-w-md mx-auto leading-relaxed">
-              Esta área contém apenas dados do modelo comercial anterior. A gestão financeira atual (vendas, reembolsos, saldo) é realizada exclusivamente via Hotmart.
+              Esta área contém apenas dados do modelo comercial anterior. A gestão financeira atual (vendas, reembolsos) é realizada exclusivamente via Stripe.
             </p>
           </div>
         ) : (

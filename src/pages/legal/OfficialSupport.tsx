@@ -20,7 +20,7 @@ const SUPPORT_VERSION_ID = "2026-05-30-V2";
 const REQUEST_TYPES = [
   { value: "duvida", label: "Dúvida pedagógica / Tarô" },
   { value: "acesso", label: "Acesso / Login" },
-  { value: "hotmart", label: "Compra Hotmart" },
+  
   { value: "liberacao", label: "Pagamento aprovado, mas sem acesso" },
   { value: "licao", label: "Problema em lição ou quiz" },
   { value: "progresso", label: "Problema com progresso ou Nível" },
@@ -207,7 +207,7 @@ const OfficialSupport = () => {
               <h3 className="font-heading font-black text-sm uppercase tracking-widest">Dúvidas Frequentes</h3>
             </div>
             <ul className="space-y-2 text-xs font-body font-bold text-[#5B1F3D]/70 italic leading-relaxed">
-              <li>• Acesso Hotmart é liberado automaticamente por e-mail.</li>
+              <li>• O acesso premium é liberado automaticamente por e-mail após a compra.</li>
               <li>• Use o mesmo e-mail da compra para fazer login.</li>
               <li>• Esqueceu a senha? Use o link na tela de entrada.</li>
             </ul>
