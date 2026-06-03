@@ -56,12 +56,12 @@ const ChapterHeader = ({
         </h2>
         <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-gold/20" />
       </div>
-      <p className="text-xs md:text-sm font-body italic text-plum/50 leading-relaxed px-4">
+      <p className="text-xs md:text-sm font-body italic text-plum/80 leading-relaxed px-4">
         {description}
       </p>
     </div>
     
-    <div className={`mt-4 flex items-center gap-2 px-5 py-1.5 rounded-full border border-gold/20 text-[9px] font-heading font-black uppercase tracking-[0.2em] transition-all duration-500 ${isExpanded ? "bg-plum text-white border-plum" : "text-gold group-hover:bg-gold/5"}`}>
+    <div className={`mt-4 flex items-center gap-2 px-5 py-1.5 rounded-full border border-gold/20 text-[9px] font-heading font-black uppercase tracking-[0.2em] transition-all duration-500 ${isExpanded ? "bg-plum text-white border-plum" : "text-plum/80 group-hover:bg-gold/5"}`}>
       {isExpanded ? "Recolher Capítulo" : "Abrir Capítulo"}
       <div className={`w-3.5 h-3.5 transition-transform duration-500 ${isExpanded ? "rotate-180" : ""}`}>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -272,7 +272,7 @@ const SymbolLibraryPage = () => {
                   </h1>
                 </div>
                 
-                <p className="text-base md:text-xl font-body italic text-plum/60 max-w-xl mx-auto leading-relaxed px-4">
+                <p className="text-base md:text-xl font-body italic text-plum/75 max-w-xl mx-auto leading-relaxed px-4">
                   Aprenda os sinais vivos escondidos nas cartas Rider-Waite-Smith.
                 </p>
                 <div className="w-24 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent mx-auto mt-2" />
@@ -329,7 +329,7 @@ const SymbolLibraryPage = () => {
                 className={`px-4 py-3 rounded-2xl text-[10px] font-heading font-black tracking-widest uppercase transition-all duration-300 border flex items-center justify-center gap-2 ${
                   expandedCategories.has(cat.slug)
                     ? "bg-plum text-white border-plum shadow-md" 
-                    : "bg-white text-plum/50 border-gold/15 hover:border-gold/30 hover:bg-gold/5"
+                    : "bg-white text-plum/70 border-gold/15 hover:border-gold/30 hover:bg-gold/5"
                 }`}
               >
                 <span>{cat.icone}</span>
@@ -391,7 +391,7 @@ const SymbolLibraryPage = () => {
                                 </h3>
                                 <div className="flex items-center gap-2">
                                   <div className="h-px w-6 bg-gold/40" />
-                                  <p className="text-[9px] md:text-[10px] font-heading font-black text-plum/40 leading-relaxed uppercase tracking-widest">
+                                  <p className="text-[9px] md:text-[10px] font-heading font-black text-plum/80 leading-relaxed uppercase tracking-widest">
                                     {sym.leituras[0]}
                                   </p>
                                 </div>
@@ -403,37 +403,37 @@ const SymbolLibraryPage = () => {
                               </div>
                             </div>
                             
-                            <p className={`text-sm md:text-base font-body leading-relaxed text-plum/70 mb-8 italic border-l-2 border-rose-100 pl-4 ${isExpandedSymbol ? "" : "line-clamp-2"}`}>
+                            <p className={`text-sm md:text-base font-body leading-relaxed text-plum/85 mb-8 italic border-l-2 border-rose-100 pl-4 ${isExpandedSymbol ? "" : "line-clamp-2"}`}>
                               {sym.explicacao}
                             </p>
 
-                            {relatedCards.length > 0 && (
-                              <div className="space-y-6 mt-2">
-                                <div className="flex items-center gap-3">
-                                  <div className="h-px w-5 bg-gold/30" />
-                                  <span className="text-[9px] md:text-[10px] font-heading font-black tracking-[0.3em] text-gold uppercase">Estudo nas cartas</span>
-                                </div>
-                                <div className="grid grid-cols-3 xs:grid-cols-4 md:flex md:flex-wrap gap-3 md:gap-5">
-                                  {relatedCards.slice(0, 4).map((card, idx) => (
-                                    <div key={card?.id || idx} className="flex flex-col items-center gap-2 group/mini animate-in fade-in zoom-in duration-500" style={{ animationDelay: `${idx * 100}ms` }}>
-                                      <div 
-                                        className="relative w-full md:w-24 aspect-[2/3.2] rounded-xl border border-gold/10 shadow-md overflow-hidden bg-white group-hover/mini:scale-105 group-hover/mini:border-gold/40 transition-all duration-500"
-                                      >
-                                        <img 
-                                          src={card?.cardImage} 
-                                          alt={card?.name} 
-                                          className="w-full h-full object-cover" 
-                                        />
-                                        <div className="absolute inset-0 bg-plum/5 opacity-0 group-hover/mini:opacity-100 transition-opacity" />
-                                      </div>
-                                      <span className="text-[8px] md:text-[9px] font-heading font-bold uppercase tracking-widest text-plum/50 group-hover/mini:text-gold transition-colors text-center leading-tight px-0.5">
-                                        {card?.name}
-                                      </span>
-                                    </div>
-                                  ))}
+                             {relatedCards.length > 0 && (
+                               <div className="space-y-6 mt-8">
+                                 <div className="flex items-center gap-3">
+                                   <div className="h-px w-5 bg-gold/30" />
+                                   <span className="text-[9px] md:text-[10px] font-heading font-black tracking-[0.3em] text-gold uppercase">Estudo nas cartas</span>
+                                 </div>
+                                 <div className="grid grid-cols-3 xs:grid-cols-4 md:flex md:flex-wrap gap-4 md:gap-6">
+                                   {relatedCards.slice(0, 4).map((card, idx) => (
+                                     <div key={card?.id || idx} className="flex flex-col items-center gap-2 group/mini animate-in fade-in zoom-in duration-500" style={{ animationDelay: `${idx * 100}ms` }}>
+                                       <div 
+                                         className="relative w-full md:w-24 aspect-[2/3.2] rounded-xl border border-gold/5 shadow-md overflow-hidden bg-white group-hover/mini:scale-105 group-hover/mini:border-gold/30 transition-all duration-500"
+                                       >
+                                         <img 
+                                           src={card?.cardImage} 
+                                           alt={card?.name} 
+                                           className="w-full h-full object-cover" 
+                                         />
+                                         <div className="absolute inset-0 bg-plum/5 opacity-0 group-hover/mini:opacity-100 transition-opacity" />
+                                       </div>
+                                       <span className="text-[8px] md:text-[9px] font-heading font-bold uppercase tracking-widest text-plum/80 group-hover/mini:text-gold transition-colors text-center leading-tight px-0.5">
+                                         {card?.name}
+                                       </span>
+                                     </div>
+                                   ))}
                                   {relatedCards.length > 4 && (
                                     <div className="w-full xs:w-auto flex items-center justify-center px-3 py-1.5 rounded-lg bg-gold/5 border border-gold/10 text-[8px] font-heading font-black uppercase tracking-widest text-gold italic self-start mt-2">
-                                      +{relatedCards.length - 4}
+                                      +{relatedCards.length - 4} mais
                                     </div>
                                   )}
                                 </div>
@@ -442,7 +442,7 @@ const SymbolLibraryPage = () => {
                             
                             {!isExpandedSymbol && (
                               <div className="mt-8 flex items-center justify-center py-3 border-t border-gold/5 group-hover:border-gold/10 transition-colors">
-                                <div className="flex items-center gap-2 text-gold">
+                                <div className="flex items-center gap-2 text-plum/80 group-hover:text-gold transition-colors">
                                   <span className="text-[9px] md:text-[10px] font-heading font-black tracking-[0.4em] uppercase">Estudar Símbolo</span>
                                   <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                                 </div>
@@ -517,7 +517,7 @@ const SymbolLibraryPage = () => {
                                       </div>
                                     </div>
                                     <div className="text-center px-1">
-                                      <span className="block text-[10px] md:text-xs font-heading font-bold text-plum group-hover/card:text-gold transition-colors leading-tight">
+                                      <span className="block text-[10px] md:text-xs font-heading font-black text-plum group-hover/card:text-gold transition-colors leading-tight">
                                         {card?.name}
                                       </span>
                                     </div>
@@ -556,7 +556,7 @@ const SymbolLibraryPage = () => {
             </p>
             <button 
               onClick={() => setSearch("")}
-              className="px-10 py-4 rounded-full border-2 border-gold/30 text-[11px] font-heading font-black uppercase tracking-[0.3em] text-gold hover:bg-gold/5 transition-all active:scale-95"
+              className="px-10 py-4 rounded-full border-2 border-gold/30 text-[11px] font-heading font-black uppercase tracking-[0.3em] text-plum/90 hover:bg-gold/5 transition-all active:scale-95"
             >
               Limpar busca
             </button>
