@@ -228,6 +228,8 @@ const AppRoutes = () => {
           
           <Route path="/revisao" element={<LazyRoute><ReviewPage /></LazyRoute>} />
           <Route path="/certificados" element={<LazyRoute><CertificatesPage /></LazyRoute>} />
+          <Route path="/biblioteca" element={<LazyRoute><SymbolLibraryPage /></LazyRoute>} />
+
           <Route path="/rotina" element={<LazyRoute><StudyRoutinePage /></LazyRoute>} />
           <Route path="/minha-jornada" element={<LazyRoute><JourneyJournalPage /></LazyRoute>} />
           <Route path="/admin" element={<LazyRoute><AdminPage /></LazyRoute>} />
