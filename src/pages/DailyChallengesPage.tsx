@@ -20,7 +20,13 @@ import {
   type MiniInterpretacao,
 } from "@/lib/daily/builders";
 
-const today = () => new Date().toISOString().slice(0, 10);
+const today = () => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
 
 const DailyChallengesPage = () => {
   const navigate = useNavigate();
