@@ -58,6 +58,21 @@ const SymbolLibraryPage = () => {
   const { data: symbolsContent, isLoading } = useSymbolsContent();
   const categorias = symbolsContent?.categorias ?? [];
 
+  const categoryDescriptions: Record<string, string> = {
+    "luas": "Mistério, ciclos e percepção intuitiva.",
+    "sois": "Vitalidade, consciência e clareza espiritual.",
+    "aguas": "Fluxo emocional, purificação e passagem.",
+    "flores": "Crescimento, beleza e florescimento da alma.",
+    "montanhas": "Desafios, elevação e estabilidade.",
+    "animais": "Instintos, forças internas e mensageiros simbólicos.",
+    "cores": "Vibrações energéticas e estados de espírito.",
+    "vestes": "Identidade, proteção e manifestação social.",
+    "objetos": "Ferramentas simbólicas de ação, escolha e poder.",
+    "elementos-astrologicos": "Influências cósmicas e ciclos universais.",
+    "numeros": "Estruturas arquetípicas da jornada.",
+    "gestos-e-posturas": "Linguagem corporal e atitudes perante a vida."
+  };
+
   const term = search.toLowerCase();
 
   const filteredCategories = useMemo(() => {
