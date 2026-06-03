@@ -46,14 +46,15 @@ const AuditVisualPage = () => {
 
       <main className="container max-w-lg mx-auto px-4 py-8">
         {phase === "intro" && (
-           <ArcanoVivoStage
-             arcanoId={0}
-             cardName={arcano.name}
-             cardImage={arcano.cardImage}
-             arcanoSlug="o-louco"
-             onContinue={goNext}
-           />
+           <div className="space-y-8">
+             <img src={arcano.cardImage} alt={arcano.name} className="w-32 aspect-[2/3] mx-auto rounded-lg shadow-xl" />
+             <div className="text-center">
+               <h2 className="text-3xl font-heading font-black text-[#5B1F3D]">{arcano.name}</h2>
+               <p className="text-sm italic text-[#C8A66A] font-black">"{arcano.layers.main.essence.substring(0, 50)}..."</p>
+             </div>
+           </div>
         )}
+
 
         {phase === "luz-sombra" && (
           <div className="space-y-6">
