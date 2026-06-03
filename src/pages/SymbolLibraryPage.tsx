@@ -84,15 +84,14 @@ const SymbolLibraryPage = () => {
   const [selectedSymbol, setSelectedSymbol] = useState<SymbolItemContent | null>(null);
   const [search, setSearch] = useState("");
 
+  const { data: symbolsContent, isLoading, isError, error } = useSymbolsContent();
+  const { progress } = useProgress();
+
   useEffect(() => {
     // Hide standard global header
     setHeader({ hideHeader: true });
     return () => resetHeader();
   }, [setHeader, resetHeader]);
-
-  const { data: symbolsContent, isLoading, isError, error } = useSymbolsContent();
-  
-  const { progress } = useProgress();
   
   // Debug log to trace data loading
   useEffect(() => {
