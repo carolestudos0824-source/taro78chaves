@@ -452,40 +452,48 @@ const SymbolLibraryPage = () => {
                         </div>
 
                         {/* Expanded Content */}
-                        <div className={`overflow-hidden transition-all duration-1000 ease-in-out ${
-                          isExpanded ? "max-h-[2000px] opacity-100 border-t border-gold/10" : "max-h-0 opacity-0"
+                        <div className={`overflow-hidden transition-all duration-700 ease-in-out ${
+                          isExpandedSymbol ? "max-h-[3000px] opacity-100 border-t border-gold/10" : "max-h-0 opacity-0"
                         }`}>
-                          <div className="p-10 md:p-14 bg-rose-50/20 backdrop-blur-sm space-y-12">
+                          <div className="p-6 md:p-10 bg-rose-50/15 backdrop-blur-sm space-y-10">
                             {/* Readings Section */}
-                            <div className="space-y-6">
-                              <div className="flex items-center gap-4">
-                                <Star className="w-5 h-5 text-gold fill-gold/20" />
-                                <h4 className="text-[12px] md:text-[13px] font-heading font-black tracking-[0.4em] text-plum uppercase">
+                            <div className="space-y-4">
+                              <div className="flex items-center gap-3">
+                                <Star className="w-4 h-4 text-gold fill-gold/20" />
+                                <h4 className="text-[11px] md:text-[12px] font-heading font-black tracking-[0.3em] text-plum uppercase">
                                   Chaves de Interpretação
                                 </h4>
                               </div>
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 {sym.leituras.map((r, i) => (
                                   <div 
                                     key={i} 
-                                    className="px-8 py-5 rounded-2xl text-base md:text-lg font-body bg-white border border-gold/10 text-plum shadow-sm flex items-center gap-5 hover:border-gold/30 hover:shadow-md transition-all duration-500"
+                                    className="px-6 py-4 rounded-xl text-sm md:text-base font-body bg-white border border-gold/10 text-plum shadow-sm flex items-center gap-4 hover:border-gold/30 hover:shadow-md transition-all duration-500"
                                   >
-                                    <div className="w-2 h-2 rounded-full bg-gold" />
-                                    <span className="flex-1 italic">{r}</span>
+                                    <div className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
+                                    <span className="flex-1 italic leading-relaxed">{r}</span>
                                   </div>
                                 ))}
+                                {sym.nome === "Lua Minguante" && (
+                                  <div className="px-6 py-4 rounded-xl text-sm md:text-base font-body bg-gold/5 border border-gold/20 text-plum shadow-sm flex items-start gap-4 animate-in fade-in slide-in-from-left-4 duration-700">
+                                    <Info className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                                    <span className="flex-1 italic leading-relaxed">
+                                      A relação com **O Eremita** simboliza o recolhimento consciente, o silêncio necessário para ouvir a voz interior e a interiorização que precede um novo ciclo.
+                                    </span>
+                                  </div>
+                                )}
                               </div>
                             </div>
 
                             {/* Detailed Cards Section */}
-                            <div className="space-y-8">
-                              <div className="flex items-center gap-4">
-                                <BookOpen className="w-5 h-5 text-gold" />
-                                <h4 className="text-[12px] md:text-[13px] font-heading font-black tracking-[0.4em] text-plum uppercase">
+                            <div className="space-y-6">
+                              <div className="flex items-center gap-3">
+                                <BookOpen className="w-4 h-4 text-gold" />
+                                <h4 className="text-[11px] md:text-[12px] font-heading font-black tracking-[0.3em] text-plum uppercase">
                                   Aplicações no Rider-Waite
                                 </h4>
                               </div>
-                              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                              <div className="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
                                 {relatedCards.map((card) => (
                                   <button
                                     key={card?.id}
@@ -496,20 +504,20 @@ const SymbolLibraryPage = () => {
                                         : `/arcano-menor/${card?.id}`;
                                       navigate(route);
                                     }}
-                                    className="flex flex-col gap-4 p-4 rounded-3xl bg-white border border-gold/10 hover:border-gold/40 transition-all group/card shadow-md hover:shadow-xl hover:-translate-y-2 duration-500"
+                                    className="flex flex-col gap-3 p-3 rounded-2xl bg-white border border-gold/10 hover:border-gold/30 transition-all group/card shadow-sm hover:shadow-lg hover:-translate-y-1 duration-500"
                                   >
-                                    <div className="aspect-[2/3.2] rounded-2xl overflow-hidden relative shadow-lg">
+                                    <div className="aspect-[2/3.2] rounded-xl overflow-hidden relative shadow-md">
                                       <img 
                                         src={card?.cardImage} 
                                         alt={card?.name} 
                                         className="w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-110" 
                                       />
                                       <div className="absolute inset-0 bg-plum/40 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center">
-                                        <ExternalLink className="w-8 h-8 text-white scale-50 group-hover/card:scale-100 transition-transform duration-500" />
+                                        <ExternalLink className="w-6 h-6 text-white scale-50 group-hover/card:scale-100 transition-transform duration-500" />
                                       </div>
                                     </div>
-                                    <div className="text-center">
-                                      <span className="block text-xs md:text-sm font-heading font-bold text-plum group-hover/card:text-gold transition-colors">
+                                    <div className="text-center px-1">
+                                      <span className="block text-[10px] md:text-xs font-heading font-bold text-plum group-hover/card:text-gold transition-colors leading-tight">
                                         {card?.name}
                                       </span>
                                     </div>
@@ -520,7 +528,7 @@ const SymbolLibraryPage = () => {
 
                             <button
                               onClick={() => setSelectedSymbol(null)}
-                              className="w-full py-6 rounded-2xl bg-plum text-white text-[12px] font-heading font-black uppercase tracking-[0.4em] hover:bg-[#3d1328] transition-all duration-500 shadow-xl border border-gold/20"
+                              className="w-full py-5 rounded-xl bg-plum text-white text-[11px] font-heading font-black uppercase tracking-[0.3em] hover:bg-[#3d1328] transition-all duration-500 shadow-lg border border-gold/10"
                             >
                               Recolher Estudo
                             </button>
