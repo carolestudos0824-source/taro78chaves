@@ -123,29 +123,30 @@ const DashboardPage = () => {
   }, [progress.completedLessons]);
 
   return (
-    <div className="min-h-screen bg-ivory/50">
-      <main className="container max-w-4xl px-4 pt-6 pb-24 space-y-12 animate-in fade-in duration-1000">
-        
+    <div className="min-h-screen bg-[#FAF5EF]">
+      <main className="container max-w-4xl px-4 pt-12 pb-24 space-y-12 animate-in fade-in duration-1000 relative">
+        {/* Subtle decorative elements */}
+        <div className="absolute top-0 left-1/4 w-64 h-64 bg-rose-200/20 blur-[100px] pointer-events-none" />
+        <div className="absolute top-20 right-1/4 w-48 h-48 bg-gold/10 blur-[80px] pointer-events-none" />
+
         {/* Institutional Welcome Section */}
         <section className="text-center space-y-6 py-8 relative">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg aspect-square bg-gold/5 blur-[100px] rounded-full pointer-events-none" />
-          
-          <div className="relative z-10 space-y-3">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <div className="h-px w-8 bg-gold/30" />
-              <span className="text-[10px] font-heading font-black tracking-[0.5em] text-gold uppercase">Sabedoria Ancestral</span>
-              <div className="h-px w-8 bg-gold/30" />
+          <div className="relative z-10 space-y-4">
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <div className="h-px w-10 bg-gold/30" />
+              <span className="text-[10px] font-heading font-black tracking-[0.6em] text-gold uppercase">Sabedoria Ancestral</span>
+              <div className="h-px w-10 bg-gold/30" />
             </div>
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-plum tracking-tight flex flex-col items-center">
-              <span className="text-xl md:text-2xl font-light italic text-plum/60 mb-1">Escola Digital de Tarô</span>
-              <span className="relative">
+              <span className="text-xl md:text-2xl font-light italic text-plum/50 mb-1">Escola Digital de Tarô</span>
+              <span className="relative inline-block">
                 Jornada dos 78 Arcanos
-                <div className="absolute -right-8 -top-2">
-                  <Sparkles className="w-5 h-5 text-gold animate-pulse" />
+                <div className="absolute -right-10 -top-4 opacity-40">
+                  <Star className="w-6 h-6 text-gold fill-gold/20" />
                 </div>
               </span>
             </h1>
-            <p className="text-sm font-body italic text-plum/40 max-w-sm mx-auto">
+            <p className="text-sm font-body italic text-plum/40 max-w-sm mx-auto leading-relaxed">
               Seu portal de estudo guiado através dos 78 arquétipos do Rider-Waite-Smith.
             </p>
           </div>
@@ -209,39 +210,37 @@ const DashboardPage = () => {
         {/* 1. Main Block: Journey Ritual - Premium Duolingo Style */}
         <section className="relative mx-2 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden border border-gold/20 bg-white shadow-2xl shadow-plum/5 group">
           {/* Decorative background elements */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-gold/5 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-rose-100/10 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-plum/5 rounded-full blur-[80px] -ml-32 -mb-32 pointer-events-none" />
-          <div className="absolute inset-0 opacity-[0.03] bg-mystic-bg-procedural pointer-events-none" />
+          <div className="absolute inset-0 opacity-[0.02] bg-mystic-bg-procedural pointer-events-none" />
           
           <div className="relative z-10 flex flex-col md:flex-row min-h-[380px]">
             {/* Card Left: The Focal Point Arch */}
-            <div className="w-full md:w-[280px] p-8 md:p-12 bg-plum/95 flex items-center justify-center relative overflow-hidden shrink-0">
+            <div className="w-full md:w-[280px] p-8 md:p-12 bg-[#45162D] flex items-center justify-center relative overflow-hidden shrink-0">
                <div className="absolute inset-0 opacity-10 bg-mystic-bg-procedural scale-150 rotate-6" />
-               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-plum to-transparent z-10" />
+               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#45162D] to-transparent z-10" />
                
                {currentStep && (
                  <ArchPortal className="relative z-20">
-                   <div className="w-44 aspect-[2/3.5] rounded-2xl overflow-hidden border-2 border-gold/40 shadow-[0_25px_60px_rgba(0,0,0,0.5)] transition-all duration-700 group-hover:scale-[1.03] group-hover:rotate-1">
+                    <div className="absolute -inset-4 bg-gold/10 blur-xl rounded-full opacity-50" />
+                    <div className="w-44 aspect-[2/3.5] rounded-2xl overflow-hidden border-2 border-gold/40 shadow-[0_25px_60px_rgba(0,0,0,0.6)] transition-all duration-700 group-hover:scale-[1.03] group-hover:rotate-1 relative">
                       <img 
                         src={currentStep.image} 
                         alt={currentStep.name}
                         className="w-full h-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-                      <div className="absolute top-2 right-2">
-                        <Star className="w-4 h-4 text-gold/60" />
-                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                    </div>
                  </ArchPortal>
                )}
             </div>
 
             {/* Card Right: Ritual Context & Journey Progress */}
-            <div className="flex-1 p-8 md:p-12 flex flex-col justify-center space-y-8">
-              <div className="space-y-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-px bg-gold/40" />
-                  <span className="text-[10px] font-heading font-black tracking-[0.3em] text-gold uppercase">Caminho do Iniciado</span>
+            <div className="flex-1 p-8 md:p-14 flex flex-col justify-center space-y-8">
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                   <div className="w-8 h-px bg-gold/40" />
+                   <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Caminho do Iniciado</span>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-heading font-bold text-plum tracking-tight leading-tight">Sua Jornada</h2>
               </div>
