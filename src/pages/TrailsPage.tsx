@@ -312,7 +312,7 @@ const TrailsPage = () => {
                               )}
                             </div>
                             <h4 className={`font-heading text-sm sm:text-lg font-black tracking-tight leading-tight truncate ${modUnlocked ? 'text-[#5B1F3D]' : 'text-[#5B1F3D50]'}`}>
-                              {mod.title}
+                              {mod.name}
                             </h4>
                           </div>
 
