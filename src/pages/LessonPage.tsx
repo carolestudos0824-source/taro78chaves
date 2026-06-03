@@ -245,6 +245,7 @@ const LessonPage = () => {
                   <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Essência</h2>
                 </div>
                 <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.layers.main.essence}</p>
+                
                 {arcano.archetype && (
                   <>
                     <div className="flex items-center gap-3 pt-4">
@@ -254,7 +255,18 @@ const LessonPage = () => {
                     <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.archetype}</p>
                   </>
                 )}
+
+                {arcano.initiationLesson && (
+                  <>
+                    <div className="flex items-center gap-3 pt-4">
+                      <Sparkles className="w-5 h-5 text-[#C8A66A]" />
+                      <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Lição Iniciática</h2>
+                    </div>
+                    <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.initiationLesson}</p>
+                  </>
+                )}
               </div>
+
             </div>
           )}
 
