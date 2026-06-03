@@ -296,150 +296,146 @@ const SymbolLibraryPage = () => {
 
         {/* Categories and symbols */}
         <div className="space-y-16">
-          {filteredCategories.map(cat => (
-            <section key={cat.slug} className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <div className="flex flex-col md:flex-row md:items-center gap-6 mb-12 group/cat relative">
-                <div className="absolute -inset-10 bg-gold/5 blur-[80px] rounded-full opacity-0 group-hover/cat:opacity-100 transition-opacity pointer-events-none" />
-                <div className="w-24 h-24 md:w-28 md:h-28 rounded-[2.5rem] bg-white flex items-center justify-center text-5xl shadow-xl border border-gold/15 relative z-10 group-hover/cat:scale-105 group-hover/cat:rotate-3 transition-all duration-700">
-                  {cat.icone}
-                </div>
-                <div className="flex-1 relative z-10">
-                  <div className="flex items-center gap-4 mb-2">
-                    <h2 className="font-heading text-4xl md:text-5xl font-bold text-plum tracking-tight">
-                      {cat.nome}
-                    </h2>
-                    <div className="h-0.5 flex-1 bg-gradient-to-r from-gold/30 via-gold/10 to-transparent hidden md:block" />
-                  </div>
-                  <p className="text-lg md:text-xl font-body italic text-plum/60 leading-relaxed max-w-2xl">
-                    {cat.descricao}
-                  </p>
-                </div>
-              </div>
+          {filteredCategories.map(cat => {
+            const currentVisible = visibleCount[cat.slug] || 6;
+            const hasMore = cat.simbolos.length > currentVisible && !search;
+            const displaySimbolos = search ? cat.simbolos : cat.simbolos.slice(0, currentVisible);
 
-              <div className="grid grid-cols-1 gap-8">
-                {cat.simbolos.map(sym => {
-                  const relatedCards = getCardsForSymbol(sym.nome);
-                  const isExpanded = selectedSymbol?.id === sym.id;
-                  
-                  return (
-                    <div
-                      key={sym.id}
-                      className={`group relative rounded-[3rem] transition-all duration-700 border overflow-hidden shadow-sm hover:shadow-2xl ${
-                        isExpanded
-                          ? "bg-white border-gold/40 shadow-2xl shadow-plum/10 ring-1 ring-gold/20"
-                          : "bg-white/90 border-gold/10 hover:border-gold/30 hover:bg-white hover:-translate-y-2"
-                      }`}
-                    >
-                      {/* Interactive Header area */}
-                      <div className="flex flex-col md:flex-row">
-                        <button
-                          onClick={() => setSelectedSymbol(isExpanded ? null : sym)}
-                          className="flex-1 text-left p-10 md:p-14 focus:outline-none"
-                        >
-                          <div className="flex justify-between items-start mb-8">
-                            <div className="space-y-4 flex-1 pr-4">
-                              <h3 className="font-heading text-3xl md:text-5xl font-bold text-plum group-hover:text-plum/80 transition-colors tracking-tight">
-                                {sym.nome}
-                              </h3>
-                              <p className="text-lg md:text-2xl font-body italic text-plum/50 leading-relaxed -mt-1">
-                                {sym.leituras[0]}
-                              </p>
-                              <div className="h-1 w-20 bg-gold/40 rounded-full group-hover:w-40 transition-all duration-1000" />
-                            </div>
-                            <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 shadow-sm border border-gold/20 ${
-                              isExpanded ? "bg-plum text-marfim rotate-180 shadow-plum/20" : "bg-gold/10 text-gold"
-                            }`}>
-                              <Info className="w-6 h-6" />
-                            </div>
-                          </div>
-                          
-                          <p className={`text-xl md:text-2xl font-body leading-relaxed text-plum/80 mb-12 ${isExpanded ? "" : "line-clamp-2"}`}>
-                            {sym.explicacao}
-                          </p>
+            return (
+              <section key={cat.slug} className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
+                <ChapterHeader 
+                  title={cat.nome} 
+                  description={categoryDescriptions[cat.slug] || cat.descricao} 
+                  icon={cat.icone} 
+                />
 
-                          {relatedCards.length > 0 && (
-                            <div className="space-y-6">
-                              <div className="flex items-center gap-4 mb-6">
-                                <div className="h-px w-10 bg-gold/40" />
-                                <span className="text-[12px] md:text-[13px] font-heading font-black tracking-[0.6em] text-gold uppercase">Cartas relacionadas:</span>
-                              </div>
-                              <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap gap-6 md:gap-8">
-                                {relatedCards.slice(0, isExpanded ? 99 : 3).map((card, idx) => (
-                                  <div key={card?.id || idx} className="flex flex-col items-center gap-4 group/mini">
-                                    <div 
-                                      className={`relative rounded-2xl md:rounded-[1.5rem] border-2 border-white shadow-2xl overflow-hidden bg-white ring-1 ring-gold/20 transition-all duration-700 group-hover/mini:scale-110 group-hover/mini:rotate-1 ${
-                                        isExpanded ? "w-full md:w-44 aspect-[2/3.2]" : "w-full md:w-36 aspect-[2/3.2]"
-                                      }`}
-                                    >
-                                      <img 
-                                        src={card?.cardImage} 
-                                        alt={card?.name} 
-                                        className="w-full h-full object-cover" 
-                                      />
-                                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none opacity-0 group-hover/mini:opacity-100 transition-opacity" />
-                                    </div>
-                                    <span className={`text-[12px] md:text-[13px] font-heading font-bold uppercase tracking-widest text-plum/50 group-hover/mini:text-gold transition-colors text-center max-w-[140px] leading-tight`}>
-                                      {card?.name}
-                                    </span>
-                                  </div>
-                                ))}
-                                {!isExpanded && relatedCards.length > 3 && (
-                                  <div className="w-full md:w-36 aspect-[2/3.2] rounded-2xl md:rounded-[1.5rem] bg-gold/5 border-2 border-white flex flex-col items-center justify-center text-gold shadow-xl hover:bg-gold/10 transition-all duration-500 hover:-translate-y-1">
-                                    <span className="text-3xl font-heading font-black">+{relatedCards.length - 3}</span>
-                                    <span className="text-[10px] font-heading font-black uppercase tracking-[0.2em]">Chaves</span>
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          )}
-                          
-                          {!isExpanded && (
-                            <div className="mt-14 flex items-center gap-4 text-gold group-hover:translate-x-4 transition-transform duration-1000">
-                              <span className="text-[12px] md:text-[13px] font-heading font-black tracking-[0.6em] uppercase">Estudar símbolo</span>
-                              <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center border border-gold/20 shadow-sm group-hover:bg-gold/20 transition-colors">
-                                <ExternalLink className="w-4 h-4" />
-                              </div>
-                            </div>
-                          )}
-                        </button>
-                      </div>
+                <div className="grid grid-cols-1 gap-10 md:gap-14">
+                  {displaySimbolos.map(sym => {
+                    const relatedCards = getCardsForSymbol(sym.nome);
+                    const isExpanded = selectedSymbol?.id === sym.id;
+                    
+                    return (
+                      <div
+                        key={sym.id}
+                        className={`group relative rounded-[3rem] transition-all duration-700 border overflow-hidden shadow-sm ${
+                          isExpanded
+                            ? "bg-white border-gold/40 shadow-2xl shadow-plum/10 ring-1 ring-gold/20"
+                            : "bg-white/90 border-gold/10 hover:border-gold/30 hover:bg-white hover:-translate-y-2 hover:shadow-xl"
+                        }`}
+                      >
+                        {/* Premium Card Ornament */}
+                        <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
+                          <Star className="w-20 h-20 text-gold" />
+                        </div>
 
-                      {/* Expanded Content */}
-                      <div className={`overflow-hidden transition-all duration-700 ease-in-out ${
-                        isExpanded ? "max-h-[1500px] opacity-100 border-t border-gold/10" : "max-h-0 opacity-0"
-                      }`}>
-                        <div className="p-10 md:p-14 bg-[#FDFCFB]/50 backdrop-blur-sm space-y-14">
-                          {/* Readings Section */}
-                          <div className="space-y-6">
-                            <div className="flex items-center gap-4">
-                              <Star className="w-6 h-6 text-gold fill-gold/20" />
-                              <h4 className="text-[14px] md:text-[15px] font-heading font-black tracking-[0.5em] text-plum uppercase">
-                                Chaves de Interpretação
-                              </h4>
-                            </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                              {sym.leituras.map((r, i) => (
-                                <div 
-                                  key={i} 
-                                  className="px-10 py-6 rounded-[2.5rem] text-lg font-body bg-white border border-gold/15 text-plum shadow-sm flex items-center gap-6 hover:border-gold/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
-                                >
-                                  <div className="w-2.5 h-2.5 rounded-full bg-gold shadow-[0_0_12px_rgba(212,175,55,0.8)]" />
-                                  <span className="flex-1">{r}</span>
+                        {/* Interactive Header area */}
+                        <div className="flex flex-col">
+                          <button
+                            onClick={() => setSelectedSymbol(isExpanded ? null : sym)}
+                            className="flex-1 text-left p-10 md:p-14 focus:outline-none"
+                          >
+                            <div className="flex justify-between items-start mb-10">
+                              <div className="space-y-3 flex-1 pr-4">
+                                <h3 className="font-heading text-2xl md:text-4xl font-bold text-plum group-hover:text-gold transition-colors tracking-tight">
+                                  {sym.nome}
+                                </h3>
+                                <div className="flex items-center gap-3">
+                                  <div className="h-px w-8 bg-gold/40" />
+                                  <p className="text-base md:text-xl font-body italic text-plum/40 leading-relaxed uppercase tracking-widest font-black text-[10px] md:text-xs">
+                                    {sym.leituras[0]}
+                                  </p>
                                 </div>
-                              ))}
+                              </div>
+                              <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-700 shadow-sm border border-gold/20 ${
+                                isExpanded ? "bg-plum text-white rotate-180" : "bg-white text-gold hover:bg-gold hover:text-white"
+                              }`}>
+                                {isExpanded ? <X className="w-6 h-6" /> : <BookOpen className="w-6 h-6" />}
+                              </div>
                             </div>
-                          </div>
+                            
+                            <p className={`text-lg md:text-xl font-body leading-relaxed text-plum/70 mb-10 italic border-l-2 border-rose-100 pl-6 ${isExpanded ? "" : "line-clamp-2"}`}>
+                              {sym.explicacao}
+                            </p>
 
-                          {/* Cards Section */}
-                          {relatedCards.length > 0 && (
-                            <div className="space-y-8">
+                            {relatedCards.length > 0 && (
+                              <div className="space-y-8 mt-4">
+                                <div className="flex items-center gap-4">
+                                  <div className="h-px w-6 bg-gold/30" />
+                                  <span className="text-[10px] md:text-[11px] font-heading font-black tracking-[0.4em] text-gold uppercase">Estudo nas Cartas</span>
+                                </div>
+                                <div className="grid grid-cols-2 xs:grid-cols-3 md:flex md:flex-wrap gap-4 md:gap-6">
+                                  {relatedCards.slice(0, 4).map((card, idx) => (
+                                    <div key={card?.id || idx} className="flex flex-col items-center gap-3 group/mini animate-in fade-in zoom-in duration-500" style={{ animationDelay: `${idx * 100}ms` }}>
+                                      <div 
+                                        className="relative w-full md:w-32 aspect-[2/3.2] rounded-2xl border border-gold/10 shadow-lg overflow-hidden bg-white group-hover/mini:scale-105 group-hover/mini:border-gold/40 transition-all duration-500"
+                                      >
+                                        <img 
+                                          src={card?.cardImage} 
+                                          alt={card?.name} 
+                                          className="w-full h-full object-cover" 
+                                        />
+                                        <div className="absolute inset-0 bg-plum/10 opacity-0 group-hover/mini:opacity-100 transition-opacity" />
+                                      </div>
+                                      <span className="text-[10px] md:text-[11px] font-heading font-bold uppercase tracking-widest text-plum/50 group-hover/mini:text-gold transition-colors text-center leading-tight px-1">
+                                        {card?.name}
+                                      </span>
+                                    </div>
+                                  ))}
+                                  {relatedCards.length > 4 && (
+                                    <div className="w-full xs:w-auto flex items-center justify-center px-4 py-2 rounded-xl bg-gold/5 border border-gold/10 text-[10px] font-heading font-black uppercase tracking-widest text-gold italic">
+                                      +{relatedCards.length - 4} mais
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            )}
+                            
+                            {!isExpanded && (
+                              <div className="mt-12 flex items-center justify-center py-4 border-t border-gold/5 group-hover:border-gold/20 transition-colors">
+                                <div className="flex items-center gap-3 text-gold">
+                                  <span className="text-[10px] md:text-[11px] font-heading font-black tracking-[0.6em] uppercase">Estudar Símbolo</span>
+                                  <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                </div>
+                              </div>
+                            )}
+                          </button>
+                        </div>
+
+                        {/* Expanded Content */}
+                        <div className={`overflow-hidden transition-all duration-1000 ease-in-out ${
+                          isExpanded ? "max-h-[2000px] opacity-100 border-t border-gold/10" : "max-h-0 opacity-0"
+                        }`}>
+                          <div className="p-10 md:p-14 bg-rose-50/20 backdrop-blur-sm space-y-12">
+                            {/* Readings Section */}
+                            <div className="space-y-6">
                               <div className="flex items-center gap-4">
-                                <BookOpen className="w-6 h-6 text-gold" />
-                                <h4 className="text-[14px] md:text-[15px] font-heading font-black tracking-[0.5em] text-plum uppercase">
-                                  Estudo Aplicado nas 78 Chaves
+                                <Star className="w-5 h-5 text-gold fill-gold/20" />
+                                <h4 className="text-[12px] md:text-[13px] font-heading font-black tracking-[0.4em] text-plum uppercase">
+                                  Chaves de Interpretação
                                 </h4>
                               </div>
-                              <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-10">
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {sym.leituras.map((r, i) => (
+                                  <div 
+                                    key={i} 
+                                    className="px-8 py-5 rounded-2xl text-base md:text-lg font-body bg-white border border-gold/10 text-plum shadow-sm flex items-center gap-5 hover:border-gold/30 hover:shadow-md transition-all duration-500"
+                                  >
+                                    <div className="w-2 h-2 rounded-full bg-gold" />
+                                    <span className="flex-1 italic">{r}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+
+                            {/* Detailed Cards Section */}
+                            <div className="space-y-8">
+                              <div className="flex items-center gap-4">
+                                <BookOpen className="w-5 h-5 text-gold" />
+                                <h4 className="text-[12px] md:text-[13px] font-heading font-black tracking-[0.4em] text-plum uppercase">
+                                  Aplicações no Rider-Waite
+                                </h4>
+                              </div>
+                              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
                                 {relatedCards.map((card) => (
                                   <button
                                     key={card?.id}
@@ -450,53 +446,55 @@ const SymbolLibraryPage = () => {
                                         : `/arcano-menor/${card?.id}`;
                                       navigate(route);
                                     }}
-                                    className="flex flex-col gap-6 p-6 rounded-[2.5rem] bg-white border border-gold/15 hover:border-gold/50 transition-all group/card shadow-xl hover:shadow-2xl hover:-translate-y-3 active:translate-y-0 duration-700"
+                                    className="flex flex-col gap-4 p-4 rounded-3xl bg-white border border-gold/10 hover:border-gold/40 transition-all group/card shadow-md hover:shadow-xl hover:-translate-y-2 duration-500"
                                   >
-                                    <div className="aspect-[2/3.2] rounded-[1.5rem] overflow-hidden relative shadow-2xl">
+                                    <div className="aspect-[2/3.2] rounded-2xl overflow-hidden relative shadow-lg">
                                       <img 
                                         src={card?.cardImage} 
                                         alt={card?.name} 
                                         className="w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-110" 
                                       />
-                                      <div className="absolute inset-0 bg-plum/0 group-hover/card:bg-plum/30 transition-all duration-700 flex items-center justify-center">
-                                        <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-all duration-700 scale-50 group-hover/card:scale-100">
-                                          <ExternalLink className="w-8 h-8 text-white" />
-                                        </div>
+                                      <div className="absolute inset-0 bg-plum/40 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center">
+                                        <ExternalLink className="w-8 h-8 text-white scale-50 group-hover/card:scale-100 transition-transform duration-500" />
                                       </div>
                                     </div>
-                                    <div className="text-center space-y-2">
-                                      <span className="block text-lg md:text-xl font-heading font-bold text-plum group-hover/card:text-gold transition-colors duration-500">
+                                    <div className="text-center">
+                                      <span className="block text-xs md:text-sm font-heading font-bold text-plum group-hover/card:text-gold transition-colors">
                                         {card?.name}
                                       </span>
-                                      <div className="flex justify-center">
-                                        <span className="inline-block px-4 py-1 rounded-full bg-gold/5 text-[10px] font-heading font-black tracking-widest text-gold uppercase border border-gold/10 group-hover/card:bg-gold/20 transition-all duration-500">
-                                          Ver lição completa
-                                        </span>
-                                      </div>
                                     </div>
                                   </button>
                                 ))}
                               </div>
                             </div>
-                          )}
 
-                          {/* Quick Study CTA */}
-                          <div className="pt-6">
                             <button
                               onClick={() => setSelectedSymbol(null)}
-                              className="w-full py-8 rounded-[2rem] bg-plum text-marfim text-[14px] font-heading font-black uppercase tracking-[0.5em] hover:bg-[#3d1328] transition-all duration-700 shadow-2xl shadow-plum/20 active:scale-[0.98] border border-gold/30 relative overflow-hidden group/btn"
+                              className="w-full py-6 rounded-2xl bg-plum text-white text-[12px] font-heading font-black uppercase tracking-[0.4em] hover:bg-[#3d1328] transition-all duration-500 shadow-xl border border-gold/20"
                             >
-                              Concluir Estudo do Símbolo
+                              Recolher Estudo
                             </button>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-          ))}
+                    );
+                  })}
+                </div>
+
+                {hasMore && (
+                  <div className="mt-12 flex justify-center">
+                    <button
+                      onClick={() => setVisibleCount(prev => ({ ...prev, [cat.slug]: currentVisible + 6 }))}
+                      className="px-10 py-5 rounded-full border border-gold/30 text-[11px] font-heading font-black uppercase tracking-[0.3em] text-gold hover:bg-gold/5 transition-all flex items-center gap-3 group"
+                    >
+                      Ver mais símbolos de {cat.nome}
+                      <ArrowLeft className="w-4 h-4 rotate-[-90deg] group-hover:translate-y-1 transition-transform" />
+                    </button>
+                  </div>
+                )}
+              </section>
+            );
+          })}
         </div>
 
         {filteredCategories.length === 0 && (
