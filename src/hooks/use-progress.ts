@@ -201,18 +201,19 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (authLoading) return;
     const marker = document.getElementById("boot-marker");
+    const isAuditMode = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('audit') === 'true';
+
     if (!user) {
       setProgress({ 
         ...DEFAULT_PROGRESS, 
         ...getLocalExtras(),
-        quizScores: isAuditMode ? { "quiz-arcano-0": 1, "quiz-arcano-1": 1 } : getLocalExtras().quizScores
+        quizScores: isAuditMode ? { "quiz-arcano-0": 1, "quiz-arcano-1": 1 } : {}
       });
       setLoading(false);
       if (marker) marker.innerText += " | PROGRESS: PUBLIC";
       return;
     }
 
-    const isAuditMode = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('audit') === 'true';
 
 
     let cancelled = false;
