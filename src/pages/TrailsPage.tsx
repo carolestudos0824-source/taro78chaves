@@ -323,9 +323,9 @@ const TrailsPage = () => {
 
                 {/* Landmark Card Decor - Atmosphere & Context */}
                 {landmark && (
-                  <div className={`absolute -right-16 sm:-right-32 top-10 sm:top-24 w-24 sm:w-56 transition-all duration-1000 pointer-events-none z-0 ${
+                  <div className={`absolute -right-20 sm:-right-40 top-20 sm:top-32 w-24 sm:w-56 transition-all duration-1000 pointer-events-none z-0 ${
                     unlocked 
-                      ? 'opacity-25 group-hover:opacity-40 grayscale-0' 
+                      ? 'opacity-20 group-hover:opacity-35 grayscale-0' 
                       : 'opacity-10 grayscale-[0.8]'
                   }`}>
                     <div className="relative transform rotate-[15deg] transition-transform duration-1000 group-hover:rotate-[12deg] group-hover:scale-105">
