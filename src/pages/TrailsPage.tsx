@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Lock, Check, Sparkles, ChevronRight, Compass } from "lucide-react";
+import { Lock, Check, Sparkles, ChevronRight, Compass, Key, Play } from "lucide-react";
 import { TarotIcon } from "@/components/TarotIcon";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
@@ -133,11 +133,11 @@ const TrailsPage = () => {
       </div>
 
       <div className="relative w-full max-w-2xl px-4 sm:px-6 pt-12 sm:pt-20 pb-4 box-border flex flex-col items-center">
-        <div className="text-center relative z-10 w-full mb-8">
+        <div className="text-center relative z-10 w-full mb-10">
           <div className="text-[10px] sm:text-[12px] tracking-[0.4em] uppercase font-heading font-black mb-2 text-[#C8A66A]">
             Trilha de Formação
           </div>
-          <h1 className="font-heading text-3xl sm:text-5xl tracking-tight font-black text-[#5B1F3D]">
+          <h1 className="font-heading text-4xl sm:text-5xl tracking-tight font-black text-[#5B1F3D]">
             Mapa da Jornada
           </h1>
           <p className="font-body text-sm sm:text-base font-bold italic mt-2 text-[#5B1F3D]/60">
@@ -146,20 +146,21 @@ const TrailsPage = () => {
         </div>
 
         {/* Overall progress Card */}
-        <div className="rounded-3xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(91,31,61,0.08)] border-2 w-full box-border relative overflow-hidden bg-white/80 backdrop-blur-sm border-[#C8A66A33] mb-12 group transition-all duration-500 hover:shadow-[0_25px_60px_rgba(91,31,61,0.12)]">
+        <div className="rounded-3xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(91,31,61,0.08)] border-2 w-full box-border relative overflow-hidden bg-white/80 backdrop-blur-sm border-[#C8A66A33] mb-16 group transition-all duration-500 hover:shadow-[0_25px_60px_rgba(91,31,61,0.12)]">
           <div className="absolute top-0 right-0 w-32 h-32 bg-[radial-gradient(circle,rgba(200,166,106,0.1)_0%,transparent_70%)] -mr-16 -mt-16" />
           
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
               <Sparkles className="w-4 h-4 text-[#C8A66A]" />
               <h2 className="font-heading text-xs sm:text-sm font-black tracking-[0.2em] uppercase text-[#5B1F3D]">
-                Progresso Geral
+                Sua Travessia
               </h2>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col items-end">
               <span className="font-heading text-[10px] sm:text-xs font-black tracking-widest uppercase px-4 py-2 rounded-full bg-[#5B1F3D] text-[#FAF5EF] shadow-lg border border-[#C8A66A40]">
                 {currentLevel ? currentLevel.title.split(' — ')[1] : (progress.completedModules.length === allModulesOrdered.length ? "Formada ✦" : "Início")}
               </span>
+              <span className="text-[8px] font-heading font-black text-[#C8A66A] mt-2 uppercase tracking-widest">Portal Atual</span>
             </div>
           </div>
 
@@ -168,20 +169,20 @@ const TrailsPage = () => {
               const prog = getLevelProgress(level);
               const complete = isLevelComplete(level);
               const unlocked = isLevelUnlocked(level);
+              const isCurrent = currentLevel?.id === level.id;
+              
               return (
                 <div key={level.id} className="space-y-3">
-                  <div className="h-2 sm:h-2.5 w-full rounded-full bg-[#DCCFC240] p-[1px] relative">
+                  <div className={`h-2.5 sm:h-3 w-full rounded-full p-[1px] relative ${unlocked ? 'bg-[#DCCFC240]' : 'bg-[#DCCFC220]'}`}>
                     <div className="h-full rounded-full transition-all duration-1000 ease-out" style={{
                       width: `${Math.max(prog, complete ? 100 : 0)}%`,
                       background: complete 
                         ? "linear-gradient(90deg, #C8A66A, #DCCFC2)" 
-                        : "linear-gradient(90deg, #5B1F3D, #C8A66A)",
-                      boxShadow: unlocked ? "0 0 10px rgba(200, 166, 106, 0.2)" : "none"
+                        : isCurrent ? "linear-gradient(90deg, #5B1F3D, #8B3D5A)" : "linear-gradient(90deg, #DCCFC2, #C8A66A40)",
+                      boxShadow: isCurrent ? "0 0 10px rgba(91, 31, 61, 0.2)" : "none"
                     }} />
                   </div>
-                  <div className="text-[9px] sm:text-[10px] font-heading font-black text-center uppercase tracking-wider truncate w-full" style={{
-                    color: unlocked ? "#5B1F3D" : "#5B1F3D40",
-                  }}>
+                  <div className={`text-[9px] sm:text-[10px] font-heading font-black text-center uppercase tracking-wider truncate w-full ${isCurrent ? 'text-[#5B1F3D]' : unlocked ? 'text-[#5B1F3D]/60' : 'text-[#5B1F3D]/20'}`}>
                     {level.title.split(" — ")[0]}
                   </div>
                 </div>
@@ -191,11 +192,11 @@ const TrailsPage = () => {
         </div>
 
         {/* The Journey Path */}
-        <div className="relative w-full space-y-16 pb-24">
-          {/* Vertical path line */}
-          <div className="absolute left-[23px] min-[360px]:left-[27px] sm:left-[35px] top-0 bottom-0 w-[2px] z-0">
+        <div className="relative w-full space-y-24 pb-32">
+          {/* Vertical path line - More evident */}
+          <div className="absolute left-[23px] min-[360px]:left-[27px] sm:left-[35px] top-0 bottom-0 w-[3px] z-0">
             <div className="w-full h-full" style={{
-              background: "repeating-linear-gradient(to bottom, #C8A66A40 0px, #C8A66A40 8px, transparent 8px, transparent 16px)"
+              background: "repeating-linear-gradient(to bottom, #C8A66A60 0px, #C8A66A60 12px, transparent 12px, transparent 24px)"
             }} />
           </div>
 
@@ -207,26 +208,29 @@ const TrailsPage = () => {
 
             return (
               <div key={level.id} className="relative z-10">
-                {/* Portal Landmark Card - Editorial Visual Placement */}
+                {/* Portal Landmark Card - editorial connector */}
                 {level.landmarkCardId !== undefined && (
-                  <div className={`absolute top-0 ${levelIdx % 2 === 0 ? '-right-4 sm:-right-8' : '-right-2 sm:-right-4'} pointer-events-none opacity-20 sm:opacity-30 group-hover:opacity-40 transition-opacity duration-700 hidden sm:block`}>
-                    <div className="relative transform rotate-[8deg] scale-[0.6] sm:scale-[0.8]">
-                       <div className="absolute inset-0 bg-[#C8A66A]/10 blur-xl rounded-lg" />
+                  <div className={`absolute top-0 right-0 pointer-events-none transition-all duration-1000 ${unlocked ? 'opacity-30 translate-y-0' : 'opacity-10 translate-y-4'} group-hover:opacity-40 hidden sm:block`}>
+                    <div className="relative transform rotate-[8deg] scale-[0.7] md:scale-[0.8] origin-top-right">
+                       <div className="absolute inset-0 bg-[#C8A66A]/15 blur-2xl rounded-lg" />
                        <img 
                          src={getLandmarkImage(level.landmarkCardId)} 
                          alt="" 
-                         className="w-32 h-48 object-cover rounded-xl border-2 border-[#C8A66A]/30 shadow-2xl" 
+                         className={`w-36 h-54 object-cover rounded-2xl border-2 shadow-2xl transition-all duration-700 ${unlocked ? 'border-[#C8A66A]/40' : 'border-[#DCCFC2]/30 grayscale'}`} 
                        />
+                       <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-lg border border-[#C8A66A]/20 text-center">
+                          <p className="font-heading text-[8px] font-black uppercase tracking-widest text-[#5B1F3D]">Marco do Portal {level.level}</p>
+                       </div>
                     </div>
                   </div>
                 )}
 
                 {/* Level Header (Portal) */}
-                <div className="flex items-center gap-4 sm:gap-6 mb-10">
-                  <div className={`relative w-12 h-12 min-[360px]:w-14 min-[360px]:h-14 sm:w-18 sm:h-18 rounded-full flex items-center justify-center transition-all duration-700 shadow-xl overflow-hidden ${unlocked ? 'bg-white' : 'bg-[#DCCFC230]'}`}
+                <div className="flex items-center gap-5 sm:gap-8 mb-12 group/header">
+                  <div className={`relative w-14 h-14 min-[360px]:w-16 min-[360px]:h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center transition-all duration-700 shadow-2xl overflow-hidden ${unlocked ? 'bg-white' : 'bg-[#DCCFC220]'}`}
                     style={{
-                      border: `2px solid ${unlocked ? '#C8A66A' : '#DCCFC260'}`,
-                      transform: isCurrent ? 'scale(1.05)' : 'scale(1)',
+                      border: `3px solid ${unlocked ? (isCurrent ? '#5B1F3D' : '#C8A66A') : '#DCCFC260'}`,
+                      transform: isCurrent ? 'scale(1.1)' : 'scale(1)',
                     }}
                   >
                     {isCurrent && (
@@ -234,38 +238,42 @@ const TrailsPage = () => {
                     )}
                     {unlocked ? (
                       <div className="flex flex-col items-center justify-center">
-                        <TarotIcon name={level.icon} className="w-6 h-6 sm:w-8 sm:h-8 text-[#5B1F3D]" />
+                        <TarotIcon name={level.icon} className={`w-7 h-7 sm:w-9 sm:h-9 ${isCurrent ? 'text-[#5B1F3D]' : 'text-[#C8A66A]'}`} />
                       </div>
                     ) : (
-                      <Lock className="w-5 h-5 sm:w-6 sm:h-6 text-[#5B1F3D20]" />
+                      <Lock className="w-6 h-6 sm:w-8 sm:h-8 text-[#5B1F3D20]" />
                     )}
                   </div>
 
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className={`text-[10px] sm:text-xs tracking-[0.3em] uppercase font-heading font-black ${unlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D40]'}`}>
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className={`text-[10px] sm:text-xs tracking-[0.4em] uppercase font-heading font-black ${unlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D30]'}`}>
                         PORTAL {level.level}
                       </span>
-                      {complete && <div className="w-1.5 h-1.5 rounded-full bg-[#C8A66A]" />}
+                      {complete && <Check className="w-3 h-3 text-[#C8A66A]" strokeWidth={4} />}
+                      {!unlocked && <span className="text-[8px] font-heading font-black text-[#5B1F3D20] tracking-widest uppercase">Bloqueado</span>}
                     </div>
-                    <h3 className={`font-heading text-lg sm:text-2xl font-black leading-tight ${unlocked ? 'text-[#5B1F3D]' : 'text-[#5B1F3D50]'}`}>
+                    <h3 className={`font-heading text-xl sm:text-3xl font-black tracking-tight leading-tight ${unlocked ? 'text-[#5B1F3D]' : 'text-[#5B1F3D30]'}`}>
                       {level.title.split(' — ')[1] || level.title}
                     </h3>
-                    <p className={`font-body text-xs sm:text-sm italic font-bold mt-1 ${unlocked ? 'text-[#5B1F3D]/70' : 'text-[#5B1F3D30]'}`}>
-                      {level.subtitle}
+                    <p className={`font-body text-xs sm:text-base italic font-bold mt-1.5 ${unlocked ? 'text-[#5B1F3D]/70' : 'text-[#5B1F3D15]'}`}>
+                      {unlocked ? level.subtitle : "Desbloqueie ao concluir o portal anterior."}
                     </p>
                   </div>
 
                   {isCurrent && (
-                    <div className="hidden min-[480px]:flex flex-col items-end">
-                      <span className="font-heading text-2xl font-black text-[#5B1F3D]">{prog}%</span>
-                      <span className="text-[8px] font-heading font-black uppercase tracking-widest text-[#C8A66A]">Progresso</span>
+                    <div className="hidden min-[520px]:flex flex-col items-end shrink-0">
+                      <div className="flex items-baseline gap-1">
+                        <span className="font-heading text-3xl font-black text-[#5B1F3D]">{prog}%</span>
+                        <span className="text-[10px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Chaves</span>
+                      </div>
+                      <span className="text-[8px] font-heading font-black uppercase tracking-[0.2em] text-[#C8A66A] opacity-60">Etapa Atual</span>
                     </div>
                   )}
                 </div>
 
                 {/* Module List with Path line connection */}
-                <div className="ml-[23px] min-[360px]:ml-[27px] sm:ml-[35px] border-l-2 border-transparent space-y-4">
+                <div className={`ml-[23px] min-[360px]:ml-[27px] sm:ml-[35px] border-l-2 border-transparent space-y-6 ${!unlocked ? 'opacity-40 grayscale' : ''}`}>
                   {level.modules.map(modId => {
                     const mod = MODULES.find(m => m.id === modId);
                     if (!mod) return null;
@@ -279,44 +287,55 @@ const TrailsPage = () => {
                         key={mod.id}
                         onClick={() => modUnlocked && navigate(mod.route)}
                         disabled={!modUnlocked}
-                        className="group relative flex items-center w-full text-left transition-all duration-300 active:scale-[0.98] outline-none"
+                        className={`group relative flex items-center w-full text-left transition-all duration-500 outline-none ${modUnlocked ? 'hover:translate-x-1' : 'cursor-not-allowed'}`}
                       >
-                        {/* Dot on path */}
-                        <div className={`absolute -left-[10px] min-[360px]:-left-[10px] sm:-left-[10px] w-5 h-5 rounded-full border-4 border-[#FAF5EF] z-20 transition-all duration-500 ${
-                          modComplete ? 'bg-[#C8A66A]' : modCurrent ? 'bg-[#5B1F3D] scale-125' : 'bg-[#DCCFC2]'
+                        {/* Point on path */}
+                        <div className={`absolute -left-[11px] min-[360px]:-left-[11px] sm:-left-[11px] w-5.5 h-5.5 rounded-full border-4 border-[#FAF5EF] z-20 transition-all duration-700 ${
+                          modComplete ? 'bg-[#C8A66A] scale-90' : modCurrent ? 'bg-[#5B1F3D] scale-125 shadow-[0_0_15px_rgba(91,31,61,0.3)]' : 'bg-[#DCCFC2]'
                         }`}>
-                          {modCurrent && <div className="absolute inset-0 rounded-full bg-[#5B1F3D] animate-ping opacity-40" />}
+                          {modCurrent && <div className="absolute inset-0 rounded-full bg-[#5B1F3D] animate-ping opacity-30" />}
                         </div>
 
                         {/* Module Card */}
-                        <div className={`ml-8 w-full p-4 sm:p-5 rounded-2xl border-2 transition-all duration-500 flex items-center gap-4 sm:gap-6 ${
-                          modCurrent ? 'bg-white border-[#C8A66A] shadow-[0_15px_40px_rgba(91,31,61,0.06)] translate-x-1' : 
-                          modComplete ? 'bg-white/40 border-[#DCCFC260] opacity-80' : 
-                          'bg-[#DCCFC215] border-[#DCCFC230] opacity-60'
+                        <div className={`ml-10 w-full p-5 sm:p-7 rounded-[2rem] border-2 transition-all duration-700 flex items-center gap-5 sm:gap-8 overflow-hidden relative ${
+                          modCurrent ? 'bg-white border-[#5B1F3D] shadow-[0_25px_50px_rgba(91,31,61,0.08)] ring-4 ring-[#5B1F3D]/5' : 
+                          modComplete ? 'bg-white/60 border-[#C8A66A30]' : 
+                          'bg-[#DCCFC210] border-[#DCCFC230]'
                         }`}>
-                          <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0 shadow-sm ${
-                            modComplete ? 'bg-[#FAF5EF] text-[#C8A66A]' : 
+                          {/* Card Content */}
+                          <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center shrink-0 shadow-lg transition-all duration-500 group-hover:rotate-3 ${
+                            modComplete ? 'bg-[#FAF5EF] text-[#C8A66A] border border-[#C8A66A20]' : 
                             modCurrent ? 'bg-[#5B1F3D] text-[#FAF5EF]' : 
                             'bg-[#DCCFC240] text-[#5B1F3D20]'
                           }`}>
-                             {modComplete ? <Check className="w-5 h-5" strokeWidth={3} /> : modCurrent ? <Compass className="w-6 h-6 animate-pulse" /> : <Lock className="w-4 h-4" />}
+                             {modComplete ? <Check className="w-6 h-6" strokeWidth={4} /> : modCurrent ? <Key className="w-7 h-7 animate-pulse" /> : <Lock className="w-5 h-5" />}
                           </div>
 
                           <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 mb-1">
-                              <span className={`text-[8px] sm:text-[9px] font-heading font-black tracking-[0.2em] uppercase ${modUnlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D40]'}`}>
+                            <div className="flex items-center gap-2 mb-1.5">
+                              <span className={`text-[9px] sm:text-xs font-heading font-black tracking-[0.25em] uppercase ${modUnlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D20]'}`}>
                                 Módulo
                               </span>
                               {isNext && (
-                                <span className="bg-[#5B1F3D] text-white text-[7px] sm:text-[8px] px-2 py-0.5 rounded-full font-heading font-black tracking-widest uppercase">Próxima Chave</span>
+                                <span className="bg-[#5B1F3D] text-[#FAF5EF] text-[8px] sm:text-[9px] px-3 py-1 rounded-full font-heading font-black tracking-widest uppercase flex items-center gap-1 shadow-sm">
+                                  <Sparkles className="w-2 h-2" /> Próxima Chave
+                                </span>
                               )}
                             </div>
-                            <h4 className={`font-heading text-sm sm:text-lg font-black tracking-tight leading-tight truncate ${modUnlocked ? 'text-[#5B1F3D]' : 'text-[#5B1F3D50]'}`}>
+                            <h4 className={`font-heading text-lg sm:text-2xl font-black tracking-tight leading-tight truncate ${modUnlocked ? 'text-[#5B1F3D]' : 'text-[#5B1F3D20]'}`}>
                               {mod.name}
                             </h4>
                           </div>
 
-                          {modUnlocked && <ChevronRight className={`w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1 ${modCurrent ? 'text-[#C8A66A]' : 'text-[#DCCFC2]'}`} />}
+                          <div className="shrink-0 flex items-center justify-center">
+                            {modCurrent ? (
+                              <div className="bg-[#5B1F3D] text-white p-2 rounded-full shadow-lg group-hover:scale-110 transition-transform">
+                                <Play className="w-5 h-5 fill-current ml-0.5" />
+                              </div>
+                            ) : modUnlocked ? (
+                              <ChevronRight className="w-6 h-6 text-[#C8A66A] group-hover:translate-x-1 transition-transform" />
+                            ) : null}
+                          </div>
                         </div>
                       </button>
                     );
@@ -332,4 +351,5 @@ const TrailsPage = () => {
 };
 
 export default TrailsPage;
+
 
