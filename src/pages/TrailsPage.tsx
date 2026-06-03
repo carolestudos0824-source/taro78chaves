@@ -290,7 +290,12 @@ const TrailsPage = () => {
                             }`}>
                               Módulo
                             </span>
-...
+                            {isNext && (
+                              <span className="bg-[#5B1F3D] text-[#FAF5EF] text-[9px] font-black px-3.5 py-1.5 rounded-full uppercase tracking-widest flex items-center gap-1.5 shadow-md border border-[#C8A66A33]">
+                                <Sparkles className="w-2.5 h-2.5" /> Próxima Chave
+                              </span>
+                            )}
+                          </div>
                           <h4 className={`font-heading text-xl sm:text-3xl font-black tracking-tight leading-tight transition-all duration-500 ${
                             unlocked ? 'text-[#5B1F3D]' : 'text-[#5B1F3D]/85'
                           }`}>
