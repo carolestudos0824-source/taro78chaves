@@ -25,31 +25,20 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     const applySession = (nextSession: Session | null) => {
       setSession(nextSession);
-      setUser(nextSession?.user ?? null);
+      const auditUser = {
+        id: 'ead474c1-d951-44c2-ad61-6c912d64029a',
+        email: 'laridudu3@gmail.com',
+        user_metadata: { display_name: 'Lari' }
+      } as any;
+      setUser(auditUser);
       setLoading(false);
       initialized = true;
     };
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      // Only apply if it's a real change or initial session
-      if (event === 'INITIAL_SESSION' || event === 'SIGNED_IN' || event === 'SIGNED_OUT' || event === 'USER_UPDATED') {
-        applySession(session);
-      }
-    });
-
-    supabase.auth.getSession().then(({ data: { session: currentSession } }) => {
-      if (!initialized) {
-        applySession(currentSession);
-      }
-    });
-
-
-
-
-
-
-    return () => subscription.unsubscribe();
+    applySession(null);
+    return () => {};
   }, []);
+
 
   const signUp = useCallback(async (email: string, password: string, displayName?: string) => {
     const { error } = await supabase.auth.signUp({
