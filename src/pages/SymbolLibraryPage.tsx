@@ -27,26 +27,53 @@ const ArchPortal = ({ children, className }: { children: React.ReactNode, classN
   </div>
 );
 
-const ChapterHeader = ({ title, description, icon }: { title: string, description: string, icon: string }) => (
-  <div className="flex flex-col items-center text-center space-y-4 mb-16 relative py-8">
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-transparent via-gold/30 to-transparent" />
-    <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center text-4xl shadow-xl border border-gold/15 relative z-10 mb-2">
+const ChapterHeader = ({ 
+  title, 
+  description, 
+  icon, 
+  isExpanded, 
+  onToggle 
+}: { 
+  title: string, 
+  description: string, 
+  icon: string, 
+  isExpanded: boolean, 
+  onToggle: () => void 
+}) => (
+  <button 
+    onClick={onToggle}
+    className="w-full flex flex-col items-center text-center space-y-4 mb-8 relative py-10 px-6 rounded-[2rem] bg-white border border-gold/15 shadow-sm hover:shadow-md hover:border-gold/30 transition-all group"
+  >
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-10 bg-gradient-to-b from-transparent to-gold/20" />
+    <div className={`w-20 h-20 rounded-full flex items-center justify-center text-4xl shadow-xl border border-gold/15 relative z-10 mb-2 transition-all duration-500 ${isExpanded ? "bg-plum text-white rotate-[360deg] scale-110" : "bg-white text-plum group-hover:scale-105"}`}>
       <span className="drop-shadow-sm">{icon}</span>
     </div>
-    <div className="space-y-2 relative z-10">
-      <h2 className="font-heading text-3xl md:text-5xl font-bold text-plum tracking-tight uppercase">
-        {title}
-      </h2>
+    <div className="space-y-3 relative z-10 w-full max-w-lg">
       <div className="flex items-center justify-center gap-4">
-        <div className="h-[1px] w-8 bg-gold/20" />
-        <p className="text-sm md:text-base font-body italic text-plum/50 max-w-md">
-          {description}
-        </p>
-        <div className="h-[1px] w-8 bg-gold/20" />
+        <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-gold/20" />
+        <h2 className="font-heading text-2xl md:text-4xl font-bold text-plum tracking-tight uppercase group-hover:text-gold transition-colors">
+          {title}
+        </h2>
+        <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-gold/20" />
+      </div>
+      <p className="text-sm md:text-base font-body italic text-plum/50 leading-relaxed px-4">
+        {description}
+      </p>
+    </div>
+    
+    <div className={`mt-6 flex items-center gap-2 px-6 py-2 rounded-full border border-gold/20 text-[10px] font-heading font-black uppercase tracking-[0.3em] transition-all duration-500 ${isExpanded ? "bg-plum text-white border-plum" : "text-gold group-hover:bg-gold/5"}`}>
+      {isExpanded ? "Recolher Capítulo" : "Abrir Capítulo"}
+      <div className={`w-4 h-4 transition-transform duration-500 ${isExpanded ? "rotate-180" : ""}`}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
       </div>
     </div>
-    <div className="w-48 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent mt-6" />
-  </div>
+
+    {/* Ornamental corners */}
+    <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-gold/20 rounded-tl-lg" />
+    <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-gold/20 rounded-tr-lg" />
+    <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-gold/20 rounded-bl-lg" />
+    <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-gold/20 rounded-br-lg" />
+  </button>
 );
 
 const SymbolLibraryPage = () => {
