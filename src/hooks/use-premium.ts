@@ -65,20 +65,40 @@ export const PremiumProvider = ({ children }: { children: React.ReactNode }) => 
     setState(prev => ({ ...prev, loading: true }));
 
     const fetchPremium = async () => {
-      const now = new Date();
-      const until = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000).toISOString();
-      setState({
-        isPremium: true,
-        premiumUntil: until,
-        premiumSource: "store_monthly",
-        stripeCustomerId: "cus_AUDIT_TEST",
-        subscriptionStatus: "monthly_active",
-        loading: false,
-      });
+      try {
+        const { data, error } = await supabase
+          .from("profiles")
+          .select("is_premium, premium_until, premium_source, stripe_customer_id")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
+        if (error) throw error;
+
+        if (data) {
+          const now = new Date();
+          const until = data.premium_until ? data.premium_until : null;
+          const { isActive, status } = resolveStatus(data.is_premium, until ? new Date(until) : null, data.premium_source, now);
+
+          setState({
+            isPremium: isActive,
+            premiumUntil: data.premium_until,
+            premiumSource: data.premium_source,
+            stripeCustomerId: data.stripe_customer_id,
+            subscriptionStatus: status,
+            loading: false,
+          });
+        } else {
+          setState({ isPremium: false, premiumUntil: null, premiumSource: null, stripeCustomerId: null, subscriptionStatus: "no_active_access", loading: false });
+        }
+      } catch (err) {
+        console.error("Error fetching premium status:", err);
+        setState(prev => ({ ...prev, loading: false }));
+      }
     };
 
     fetchPremium();
   }, [user]);
+
 
 
 
