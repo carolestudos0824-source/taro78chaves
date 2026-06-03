@@ -17,7 +17,6 @@ import {
   Zap,
   ArrowRight
 } from "lucide-react";
-
 import { TarotIcon } from "@/components/TarotIcon";
 import { 
   MODULES_CATALOG as MODULES, 
@@ -59,12 +58,11 @@ const DashboardPage = () => {
   const totalCompletedArcanos = completedMaiores + completedMenores;
   const globalProgressPct = Math.round((totalCompletedArcanos / totalArcanosCount) * 100);
 
-  // ─── Arcano e Lição Atuais ───
   const currentStep = useMemo(() => {
-    // Check Majors
     for (let i = 0; i <= 21; i++) {
       if (!progress.completedLessons.includes(`arcano-${i}`)) {
         const summary = ARCANOS_MAIORES_CATALOG[i];
+        if (!summary) continue;
         return {
           type: "arcano" as const,
           id: i,
@@ -79,11 +77,8 @@ const DashboardPage = () => {
         };
       }
     }
-    
-    // Check Minors
     const naipes = ["copas", "paus", "espadas", "ouros"] as const;
     const posicoes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "pajem", "cavaleiro", "rainha", "rei"] as const;
-    
     for (const naipe of naipes) {
       for (const posicao of posicoes) {
         const id = `${naipe}-${posicao}`;
@@ -105,7 +100,6 @@ const DashboardPage = () => {
         }
       }
     }
-    
     return null;
   }, [progress.completedLessons]);
 
@@ -141,29 +135,29 @@ const DashboardPage = () => {
           ))}
         </div>
 
-        
-        {/* Auditor/Admin Banner - Improved Visual & Utility */}
+        {/* Auditor/Admin Banner */}
         {isStaff && (
-          <div className="rounded-2xl p-4 bg-[#5B1F3D] border-2 border-[#C8A66A] flex flex-col sm:flex-row items-center justify-between gap-4 mb-2 shadow-lg animate-in slide-in-from-top duration-500">
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
-                <ShieldCheck className="w-6 h-6 text-[#C8A66A]" />
+          <div className="rounded-2xl p-5 bg-plum border-2 border-gold/40 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg animate-in slide-in-from-top duration-500 overflow-hidden relative">
+            <div className="absolute inset-0 opacity-10 bg-mystic-bg-procedural scale-150 rotate-12" />
+            <div className="flex items-start gap-4 relative z-10">
+              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center shrink-0 border border-gold/20">
+                <ShieldCheck className="w-6 h-6 text-gold" />
               </div>
               <div className="space-y-0.5">
-                <p className="text-[11px] font-heading font-black tracking-widest uppercase text-[#C8A66A]">
+                <p className="text-[11px] font-heading font-black tracking-widest uppercase text-gold">
                   {isAdmin ? "Acesso Técnico Completo" : "Modo Auditoria"}
                 </p>
                 <p className="text-[12px] font-body font-bold italic text-white/90 leading-snug">
                   {isAdmin 
-                    ? "Ambiente administrativo. Visualização irrestrita de todos os arcanos e módulos." 
-                    : "Ambiente de auditoria. Acesso liberado para validação técnica do conteúdo premium."}
+                    ? "Ambiente administrativo. Visualização irrestrita de conteúdo." 
+                    : "Ambiente de auditoria. Acesso liberado para validação técnica."}
                 </p>
               </div>
             </div>
             {isAdmin && (
               <button 
                 onClick={() => navigate("/admin")}
-                className="w-full sm:w-auto px-4 py-2 bg-[#C8A66A] text-[#5B1F3D] rounded-xl font-heading text-[10px] font-black tracking-widest uppercase shadow-md hover:bg-white transition-all whitespace-nowrap"
+                className="w-full sm:w-auto px-6 py-2.5 bg-gold text-plum rounded-xl font-heading text-[10px] font-black tracking-widest uppercase shadow-md hover:bg-white transition-all whitespace-nowrap relative z-10"
               >
                 Painel Admin
               </button>
@@ -240,7 +234,6 @@ const DashboardPage = () => {
             </div>
           </div>
         </section>
-
 
         {/* 2. Grid de Acesso às Trilhas - The School Map */}
         <section className="space-y-6">
@@ -328,9 +321,8 @@ const DashboardPage = () => {
           </div>
         </section>
 
-
         {/* School Fast Links - Elegant Action Icons */}
-        <section className="space-y-4">
+        <section className="space-y-4 pb-12">
           <h3 className="font-heading text-[11px] font-black tracking-[0.4em] text-gold uppercase opacity-80 px-2">Acesso Rápido</h3>
           <div className="grid grid-cols-3 gap-4">
             {[
@@ -349,7 +341,6 @@ const DashboardPage = () => {
             ))}
           </div>
         </section>
-
       </main>
     </div>
   );
