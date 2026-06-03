@@ -391,7 +391,7 @@ const SymbolLibraryPage = () => {
                                 </h3>
                                 <div className="flex items-center gap-2">
                                   <div className="h-px w-6 bg-gold/40" />
-                                  <p className="text-[9px] md:text-[10px] font-heading font-black text-plum/40 leading-relaxed uppercase tracking-widest">
+                                  <p className="text-[9px] md:text-[10px] font-heading font-black text-plum/60 leading-relaxed uppercase tracking-widest">
                                     {sym.leituras[0]}
                                   </p>
                                 </div>
