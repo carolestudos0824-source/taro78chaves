@@ -286,18 +286,13 @@ const TrailsPage = () => {
                         <div className="flex-1 ml-6 sm:ml-8 min-w-0">
                           <div className="flex items-center gap-3 mb-2">
                             <span className={`text-[10px] sm:text-[11px] font-heading font-black tracking-[0.3em] uppercase transition-colors duration-500 ${
-                              unlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D]/50'
+                              unlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D]/75'
                             }`}>
                               Módulo
                             </span>
-                            {isNext && (
-                              <span className="bg-[#5B1F3D] text-[#FAF5EF] text-[9px] font-black px-3.5 py-1.5 rounded-full uppercase tracking-widest flex items-center gap-1.5 shadow-md border border-[#C8A66A33]">
-                                <Sparkles className="w-2.5 h-2.5" /> Próxima Chave
-                              </span>
-                            )}
-                          </div>
+...
                           <h4 className={`font-heading text-xl sm:text-3xl font-black tracking-tight leading-tight transition-all duration-500 ${
-                            unlocked ? 'text-[#5B1F3D]' : 'text-[#5B1F3D]/60'
+                            unlocked ? 'text-[#5B1F3D]' : 'text-[#5B1F3D]/85'
                           }`}>
                             {mod.name}
                           </h4>
