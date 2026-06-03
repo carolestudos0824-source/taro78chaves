@@ -253,18 +253,19 @@ const SymbolLibraryPage = () => {
       "Sol Nascente": ["maior-0", "maior-19"],
       
       // ÁGUAS
-      "Rio ou Corrente": ["maior-17", "maior-14", "maior-18"],
+      "Rio ou Corrente": ["maior-17", "maior-14", "maior-18", "maior-3"],
       "Mar ou Oceano": ["maior-18", "copas-2", "espadas-6"],
       "Chuva": ["maior-16", "copas-5"],
       
       // FLORES
-      "Rosa Branca": ["maior-0"],
+      "Rosa Branca": ["maior-0", "maior-13"],
       "Rosa Vermelha": ["maior-1", "maior-3"],
-      "Lírio": ["maior-14", "maior-2"],
+      "Lírio": ["maior-14", "maior-2", "maior-1"],
+      "Girassóis": ["maior-19"],
       
       // MONTANHAS
       "Montanha Nevada": ["maior-0", "maior-9"],
-      "Colina ou Morro": ["maior-0", "maior-21"],
+      "Colina ou Morro": ["maior-0", "maior-21", "maior-7"],
       
       // ANIMAIS
       "Cachorro": ["maior-0", "maior-18"],
@@ -273,34 +274,38 @@ const SymbolLibraryPage = () => {
       "Cavalo": ["maior-19", "paus-knight", "copas-knight", "espadas-knight", "ouros-knight", "maior-13"],
       
       // CORES
-      "Dourado / Ouro": ["maior-19", "ouros-1", "ouros-10"],
-      "Vermelho": ["maior-1", "maior-4", "maior-8"],
+      "Dourado / Ouro": ["maior-19", "ouros-1", "ouros-10", "maior-10"],
+      "Vermelho": ["maior-1", "maior-4", "maior-8", "maior-11"],
       "Azul": ["maior-2", "maior-17", "copas-queen"],
       "Branco": ["maior-0", "maior-2", "maior-14"],
       
       // VESTES
-      "Manto Azul": ["maior-2", "maior-17"],
-      "Armadura": ["maior-7", "espadas-knight"],
-      "Nudez": ["maior-21", "maior-17", "maior-15"],
+      "Manto Azul": ["maior-2", "maior-17", "maior-9"],
+      "Armadura": ["maior-7", "espadas-knight", "maior-4"],
+      "Nudez": ["maior-21", "maior-17", "maior-15", "maior-19", "maior-6"],
+      "Véu": ["maior-2", "maior-11"],
       
       // OBJETOS
-      "Varinha / Bastão": ["maior-1", "paus-1"],
-      "Cálice / Taça": ["copas-1", "copas-2", "copas-queen"],
-      "Espada": ["espadas-1", "espadas-2", "maior-11"],
+      "Varinha / Bastão": ["maior-1", "paus-1", "maior-21"],
+      "Cálice / Taça": ["copas-1", "copas-2", "copas-queen", "maior-14", "maior-17"],
+      "Espada": ["espadas-1", "espadas-2", "maior-11", "maior-1"],
       "Chave": ["maior-2", "maior-5"],
-      "Pentáculo / Ouro": ["ouros-1", "ouros-10"],
-      "Coroa": ["maior-3", "maior-4", "ouros-4"],
+      "Pentáculo / Ouro": ["ouros-1", "ouros-10", "maior-1"],
+      "Coroa": ["maior-3", "maior-4", "ouros-4", "maior-5", "maior-7", "maior-11", "maior-16"],
       "Livro / Pergaminho": ["maior-2", "maior-5"],
       "Balança": ["maior-11"],
+      "Colunas": ["maior-2", "maior-5", "maior-11"],
+      "Trombeta": ["maior-20"],
       
       // ELEMENTOS ASTROLÓGICOS
-      "Estrela de Seis Pontas": ["maior-17"],
+      "Estrela de Seis Pontas": ["maior-17", "maior-9"],
       "Estrela de Oito Pontas": ["maior-17"],
       "Roda Zodiacal": ["maior-10", "maior-21"],
       "Lemniscata (∞)": ["maior-1", "maior-8"],
-      "Lua": ["maior-18", "maior-2"],
-      "Sol": ["maior-19"],
+      "Lua": ["maior-18", "maior-2", "maior-7"],
+      "Sol": ["maior-19", "maior-0", "maior-6"],
       "Círculo / Mandala": ["maior-21", "maior-10"],
+      "Torres": ["maior-16", "maior-18"],
       
       // NÚMEROS
       "Zero (0)": ["maior-0"],
@@ -316,16 +321,20 @@ const SymbolLibraryPage = () => {
       "Dez (X)": ["maior-10", "copas-10", "ouros-10"],
       
       // GESTOS E POSTURAS
-      "Mão Erguida ao Céu": ["maior-1"],
+      "Mão Erguida ao Céu": ["maior-1", "maior-5"],
       "Mão Apontando para Baixo": ["maior-1"],
-      "Olhos Fechados": ["espadas-2", "espadas-4"],
-      "Postura Sentada / Trono": ["maior-2", "maior-3", "maior-4", "maior-11"],
+      "Olhos Fechados": ["espadas-2", "espadas-4", "maior-2", "maior-9"],
+      "Postura Sentada / Trono": ["maior-2", "maior-3", "maior-4", "maior-11", "maior-5"],
       "Figura em Pé no Precipício": ["maior-0"],
       "Figura Caminhando": ["maior-0", "maior-9", "copas-8"],
-      "Braços Abertos": ["maior-21", "maior-12"],
+      "Braços Abertos": ["maior-21", "maior-12", "maior-20"],
       "Mãos Unidas / Bênção": ["maior-5", "copas-2"],
-      "Cabeça Baixa / Luto": ["copas-5"],
-      "Contemplação / Espera": ["ouros-7", "copas-4"]
+      "Cabeça Baixa / Luto": ["copas-5", "maior-9"],
+      "Contemplação / Espera": ["ouros-7", "copas-4"],
+      
+      // ENTIDADES
+      "Anjo": ["maior-20", "maior-6", "maior-14"],
+      "Criança": ["maior-19"]
     };
 
 
