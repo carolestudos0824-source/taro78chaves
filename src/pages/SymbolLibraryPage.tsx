@@ -556,7 +556,7 @@ const SymbolLibraryPage = () => {
             </p>
             <button 
               onClick={() => setSearch("")}
-              className="px-10 py-4 rounded-full border-2 border-gold/30 text-[11px] font-heading font-black uppercase tracking-[0.3em] text-gold hover:bg-gold/5 transition-all active:scale-95"
+              className="px-10 py-4 rounded-full border-2 border-gold/30 text-[11px] font-heading font-black uppercase tracking-[0.3em] text-plum/90 hover:bg-gold/5 transition-all active:scale-95"
             >
               Limpar busca
             </button>
