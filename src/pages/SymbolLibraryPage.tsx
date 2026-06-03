@@ -1,10 +1,10 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ArrowLeft, Search, X, BookOpen, Star, Info, ExternalLink, ChevronLeft } from "lucide-react";
 import { useSymbolsContent } from "@/hooks/use-content";
 import { useHeader } from "@/contexts/header-context";
 import { useProgress } from "@/hooks/use-progress";
-import type { SymbolItemContent } from "@/lib/content";
+import type { SymbolItemContent, SymbolsContent } from "@/lib/content";
 import { FULL_DECK } from "@/registry/deck-registry";
 
 // Decorative components for the premium feel
@@ -88,11 +88,16 @@ const SymbolLibraryPage = () => {
   const { progress } = useProgress();
 
   useEffect(() => {
-    // Hide standard global header
+    // Standard approach to hide global header
     setHeader({ hideHeader: true });
     return () => resetHeader();
   }, [setHeader, resetHeader]);
-  
+
+  const [hasData, setHasData] = useState(false);
+  useEffect(() => {
+    if (symbolsContent) setHasData(true);
+  }, [symbolsContent]);
+
   // Debug log to trace data loading
   useEffect(() => {
     console.log("SymbolLibraryPage status:", { isLoading, isError, error, hasData: !!symbolsContent, catsCount: symbolsContent?.categorias?.length });
@@ -105,11 +110,28 @@ const SymbolLibraryPage = () => {
 
   const term = normalize(search);
 
+  const { fetchSymbolsFromLegacy } = useMemo(() => {
+    // Authorized import via closure to avoid direct runtime dependency in header
+    // symbolsContent being null is handled by the guard above, but we need legacy as absolute fallback
+    return {
+      fetchSymbolsFromLegacy: () => {
+        try {
+          const { fetchSymbolsFromLegacy } = require("@/lib/content/repo-legacy-symbols");
+          return fetchSymbolsFromLegacy() as SymbolsContent;
+        } catch (e) {
+          console.error("Critical: Failed to load legacy symbols fallback", e);
+          return null;
+        }
+      }
+    };
+  }, []);
+
   // Extend data with pedagogical symbols if missing
   const categorias = useMemo(() => {
-    if (!symbolsContent?.categorias) return [];
+    const data = symbolsContent || fetchSymbolsFromLegacy();
+    if (!data?.categorias) return [];
     
-    const baseCategorias = [...symbolsContent.categorias];
+    const baseCategorias = [...data.categorias];
     
     // Pedagogical injections
     const pedagogicalExtras = [
@@ -439,10 +461,10 @@ const SymbolLibraryPage = () => {
     return ids.map(id => FULL_DECK.find(c => c.id === id)).filter(Boolean);
   };
 
-  if (isLoading || isError || !symbolsContent) {
+  if ((isLoading && !hasData) || (isError && !hasData) || (!symbolsContent && !hasData)) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-[#FDFCFB] p-6 text-center">
-        {isLoading ? (
+        {(isLoading && !isError) ? (
           <div className="font-accent italic text-base text-plum/60 animate-pulse flex flex-col items-center gap-4">
             <div className="w-16 h-16 border-2 border-gold/20 border-t-gold rounded-full animate-spin" />
             Abrindo a Biblioteca de Símbolos…
