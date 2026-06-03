@@ -231,16 +231,16 @@ const TrailsPage = () => {
                         </div>
                       )}
                       {!unlocked && (
-                         <span className="text-[8px] font-heading font-black text-[#5B1F3D]/40 tracking-widest uppercase bg-[#DCCFC2]/20 px-2 py-0.5 rounded">Futuro</span>
+                         <span className="text-[8px] font-heading font-black text-[#5B1F3D]/60 tracking-widest uppercase bg-[#DCCFC2]/40 px-2 py-0.5 rounded">Futuro</span>
                       )}
                     </div>
                     <h3 className={`font-heading text-2xl sm:text-5xl font-black tracking-tight leading-tight transition-all duration-500 ${
-                      unlocked ? 'text-[#5B1F3D]' : 'text-[#5B1F3D]/60'
+                      unlocked ? 'text-[#5B1F3D]' : 'text-[#5B1F3D]/85'
                     }`}>
                       {level.title.split(' — ')[1] || level.title}
                     </h3>
                     <p className={`font-body text-xs sm:text-lg italic font-bold mt-3 leading-relaxed transition-all duration-500 ${
-                      unlocked ? 'text-[#5B1F3D]/80' : 'text-[#5B1F3D]/40'
+                      unlocked ? 'text-[#5B1F3D]/80' : 'text-[#5B1F3D]/65'
                     }`}>
                       {unlocked ? level.subtitle : "Sua próxima etapa de sabedoria."}
                     </p>
