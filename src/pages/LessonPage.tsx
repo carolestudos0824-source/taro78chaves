@@ -391,11 +391,20 @@ const LessonPage = () => {
 
 
           {phase === "quiz" && (
-            <QuizSection
-              questions={arcano.quiz}
-              onComplete={handleQuizComplete}
-            />
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                subtitle="Integração de Saberes"
+              />
+              <QuizSection
+                questions={arcano.quiz}
+                onComplete={handleQuizComplete}
+              />
+            </div>
           )}
+
 
           {phase === "complete" && (
             <CompletionScreen
