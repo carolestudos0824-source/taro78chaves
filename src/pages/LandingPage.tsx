@@ -603,9 +603,9 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             </AccordionItem>
 
             <AccordionItem value="item-8" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Como funciona o acesso?</AccordionTrigger>
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">O app salva meu progresso?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
-                Você cria sua conta com e-mail e senha. Seu progresso fica salvo para continuar sua jornada de onde parou.
+                Sim. Seu progresso fica salvo para você continuar a jornada dos 78 arcanos no seu ritmo.
               </AccordionContent>
             </AccordionItem>
 
