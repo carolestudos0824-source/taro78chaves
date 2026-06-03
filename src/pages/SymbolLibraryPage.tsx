@@ -180,7 +180,7 @@ const SymbolLibraryPage = () => {
       "Balança": ["maior-11"],
       
       // ELEMENTOS ASTROLÓGICOS
-      "Estrela de seis pontas": ["maior-17", "maior-7"],
+      "Estrela de seis pontas": ["maior-17"],
       "Estrela de oito pontas": ["maior-17"],
       "Roda Zodiacal": ["maior-10", "maior-21"],
       "Lemniscata": ["maior-1", "maior-8"],
