@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Search, X, BookOpen, Star, Info, ExternalLink } from "lucide-react";
 import { useSymbolsContent } from "@/hooks/use-content";
+import { useHeader } from "@/contexts/header-context";
 import type { SymbolItemContent } from "@/lib/content";
 import { FULL_DECK } from "@/registry/deck-registry";
 import BottomNav from "@/components/BottomNav";
@@ -78,9 +79,17 @@ const ChapterHeader = ({
 
 const SymbolLibraryPage = () => {
   const navigate = useNavigate();
+  const { setHeader, resetHeader } = useHeader();
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const [selectedSymbol, setSelectedSymbol] = useState<SymbolItemContent | null>(null);
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    setHeader({
+      hideHeader: true
+    });
+    return () => resetHeader();
+  }, [setHeader, resetHeader]);
 
   const { data: symbolsContent, isLoading } = useSymbolsContent();
   
