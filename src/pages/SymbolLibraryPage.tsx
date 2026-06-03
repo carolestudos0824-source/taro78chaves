@@ -186,34 +186,31 @@ const SymbolLibraryPage = () => {
 
       {/* Header */}
       <header className="relative z-20 border-b border-gold/10 bg-[#FDFCFB]/95 backdrop-blur-3xl sticky top-0 shadow-sm">
-        <div className="container max-w-4xl py-12 px-6 md:py-16">
-          <div className="flex flex-col items-center text-center space-y-8 mb-12 relative">
+        <div className="container max-w-4xl py-10 px-6 md:py-14">
+          <div className="flex flex-col items-center text-center space-y-6 mb-10 relative">
             <ArchPortal className="w-full">
-              <div className="space-y-6 pt-6">
+              <div className="space-y-4 pt-4">
                 <div className="flex items-center justify-center gap-4">
                   <div className="h-[1px] w-12 md:w-20 bg-gradient-to-r from-transparent to-gold/40" />
-                  <span className="text-[11px] md:text-[12px] font-heading font-black tracking-[0.8em] text-gold uppercase drop-shadow-sm">Compêndio Sagrado</span>
+                  <span className="text-[10px] md:text-[11px] font-heading font-black tracking-[0.8em] text-gold uppercase drop-shadow-sm">Escola de Tarô</span>
                   <div className="h-[1px] w-12 md:w-20 bg-gradient-to-l from-transparent to-gold/40" />
                 </div>
                 
                 <div className="relative inline-block">
-                  <h1 className="text-5xl md:text-7xl font-heading font-bold text-plum tracking-tight flex flex-col items-center">
-                    <span className="text-2xl md:text-3xl font-light italic text-plum/40 mb-2">A Linguagem Visual do Tarô</span>
+                  <h1 className="text-4xl md:text-6xl font-heading font-bold text-plum tracking-tight flex flex-col items-center">
                     <span className="relative">
                       Biblioteca de Símbolos
-                      <div className="absolute -right-12 -top-6 animate-pulse">
-                        <Star className="w-8 h-8 text-gold fill-gold/20" />
-                      </div>
-                      <div className="absolute -left-12 bottom-0 opacity-20 rotate-12">
-                        <Star className="w-6 h-6 text-gold" />
+                      <div className="absolute -right-10 -top-4 animate-stars">
+                        <Star className="w-6 h-6 text-gold fill-gold/20" />
                       </div>
                     </span>
                   </h1>
                 </div>
                 
-                <p className="text-lg md:text-2xl font-body italic text-plum/60 max-w-2xl mx-auto leading-relaxed px-4">
-                  Descubra os mistérios ocultos nas 78 Chaves e aprenda a ler os sinais ancestrais do Tarô.
+                <p className="text-base md:text-xl font-body italic text-plum/60 max-w-xl mx-auto leading-relaxed px-4">
+                  Aprenda os sinais vivos escondidos nas cartas Rider-Waite-Smith.
                 </p>
+                <div className="w-24 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent mx-auto mt-2" />
               </div>
             </ArchPortal>
 
