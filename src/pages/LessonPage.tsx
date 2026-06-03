@@ -409,7 +409,9 @@ const LessonPage = () => {
           {phase === "complete" && (
             <CompletionScreen
               arcanoName={arcano.name}
+              cardImage={arcano.cardImage}
               arcanoId={arcanoId}
+
               pontosEarned={pontosEarned}
               quizScore={lastQuizScore}
               quizTotal={lastQuizTotal}
