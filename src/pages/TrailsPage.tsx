@@ -200,9 +200,9 @@ const TrailsPage = () => {
             const landmark = level.landmarkCardId !== undefined ? getLandmark(level.landmarkCardId) : null;
 
             return (
-              <div key={level.id} className={`relative z-10 group transition-all duration-700 ${!unlocked ? 'opacity-100' : 'opacity-100'}`}>
+              <div key={level.id} className="relative group transition-all duration-700">
                 {/* Portal Header - Ritualistic focus */}
-                <div className="flex items-center gap-7 sm:gap-12 mb-16 relative">
+                <div className="flex items-center gap-7 sm:gap-12 mb-16 relative z-10">
                   <div className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center border-[3px] transition-all duration-700 shadow-[0_15px_40px_rgba(0,0,0,0.05)] ${
                     unlocked 
                       ? (isCurrent ? 'bg-white border-[#5B1F3D] scale-110 shadow-[0_20px_50px_rgba(91,31,61,0.15)] ring-8 ring-[#5B1F3D]/5' : 'bg-white border-[#C8A66A]') 
@@ -248,7 +248,7 @@ const TrailsPage = () => {
                 </div>
 
                 {/* Modules Grid - Enhanced Contrast & Premium Cards */}
-                <div className="ml-[31px] sm:ml-[39px] pl-10 sm:pl-20 space-y-8 relative">
+                <div className="ml-[31px] sm:ml-[39px] pl-10 sm:pl-20 space-y-8 relative z-10">
                   {level.modules.map(modId => {
                     const mod = MODULES.find(m => m.id === modId);
                     if (!mod) return null;
