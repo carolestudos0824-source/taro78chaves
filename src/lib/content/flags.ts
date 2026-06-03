@@ -44,7 +44,7 @@ export const CONTENT_FLAGS: Record<ContentDomain, ContentSourceMode> = {
   journey: "auto",
   // Fase 6.1 — Biblioteca de Símbolos (12 categorias + 41 símbolos) lê do DB
   // primeiro; em vazio/erro cai no legado de `src/data/symbol-library.ts`.
-  symbols: "fallback",
+  symbols: "auto",
   // Fase 6.4 — Certificados (10 itens editoriais) lêem do DB; em vazio/erro
   // caem no legado de `src/data/certificates.ts`.
   certificates: "auto",
