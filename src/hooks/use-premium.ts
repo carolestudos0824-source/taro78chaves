@@ -26,31 +26,20 @@ function resolveStatus(
   source: string | null,
   now: Date
 ): { isActive: boolean; status: SubscriptionStatus } {
-  // Not premium, no date → no_active_access
   if (!isPremiumFlag && !until) return { isActive: false, status: "no_active_access" };
-
-  // Not premium but has future date → cancelled with remaining access
   if (!isPremiumFlag && until && until > now)
     return { isActive: true, status: "cancelled_with_access" };
-
-  // Not premium, date in past → cancelled and expired
   if (!isPremiumFlag && until && until <= now)
     return { isActive: false, status: "cancelled_expired" };
-
-  // Premium flag but expired
   if (isPremiumFlag && until && until <= now)
     return { isActive: false, status: "expired" };
-
-  // Active premium — determine source
   if (isPremiumFlag) {
     if (source === "gift" || source === "admin")
       return { isActive: true, status: "gift_active" };
     if (source === "store_annual" || source === "store_annual_one_time")
       return { isActive: true, status: "annual_active" };
-    // default to monthly for store_monthly or unknown
     return { isActive: true, status: "monthly_active" };
   }
-
   return { isActive: false, status: "no_active_access" };
 }
 
@@ -73,23 +62,39 @@ export const PremiumProvider = ({ children }: { children: React.ReactNode }) => 
       return;
     }
 
-    // Ensure we show loading when user changes
     setState(prev => ({ ...prev, loading: true }));
 
     const fetchPremium = async () => {
-      // Mocked premium for audit
-      const now = new Date();
-      const until = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000).toISOString();
-      setState({
-        isPremium: true,
-        premiumUntil: until,
-        premiumSource: "store_monthly",
-        stripeCustomerId: "cus_AUDIT_TEST",
-        subscriptionStatus: "monthly_active",
-        loading: false,
-      });
-    };
+      try {
+        const { data, error } = await supabase
+          .from("profiles")
+          .select("is_premium, premium_until, premium_source, stripe_customer_id")
+          .eq("user_id", user.id)
+          .maybeSingle();
 
+        if (error) throw error;
+
+        if (data) {
+          const now = new Date();
+          const until = data.premium_until ? data.premium_until : null;
+          const { isActive, status } = resolveStatus(data.is_premium, until ? new Date(until) : null, data.premium_source, now);
+
+          setState({
+            isPremium: isActive,
+            premiumUntil: data.premium_until,
+            premiumSource: data.premium_source,
+            stripeCustomerId: data.stripe_customer_id,
+            subscriptionStatus: status,
+            loading: false,
+          });
+        } else {
+          setState({ isPremium: false, premiumUntil: null, premiumSource: null, stripeCustomerId: null, subscriptionStatus: "no_active_access", loading: false });
+        }
+      } catch (err) {
+        console.error("Error fetching premium status:", err);
+        setState(prev => ({ ...prev, loading: false }));
+      }
+    };
 
     fetchPremium();
   }, [user]);
