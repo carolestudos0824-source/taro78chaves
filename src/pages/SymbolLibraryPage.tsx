@@ -445,7 +445,12 @@ const SymbolLibraryPage = () => {
 
   return (
     <div className="min-h-screen bg-[#FDFCFB] relative overflow-hidden pb-48 md:pb-60">
-      {/* Custom Header with Back Button */}
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-rose-100/10 blur-[120px] pointer-events-none" />
+      <div className="absolute top-40 right-1/4 w-80 h-80 bg-gold/5 blur-[100px] pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.02] bg-mystic-bg-procedural pointer-events-none" />
+
+      {/* CUSTOM SUB-HEADER (Zero Flickering strategy) */}
       <div className="sticky top-0 z-50 bg-[#FDFCFB]/95 backdrop-blur-md border-b border-gold/10 px-4 py-3 flex items-center gap-3">
         <Link 
           to="/app" 
@@ -458,11 +463,6 @@ const SymbolLibraryPage = () => {
           <h1 className="text-sm font-heading font-bold text-plum truncate leading-none">Biblioteca de Símbolos</h1>
         </div>
       </div>
-
-      {/* Decorative background elements */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-rose-100/10 blur-[120px] pointer-events-none" />
-      <div className="absolute top-40 right-1/4 w-80 h-80 bg-gold/5 blur-[100px] pointer-events-none" />
-      <div className="absolute inset-0 opacity-[0.02] bg-mystic-bg-procedural pointer-events-none" />
 
       {/* Hero Section */}
       <header className="relative z-20 bg-transparent">
