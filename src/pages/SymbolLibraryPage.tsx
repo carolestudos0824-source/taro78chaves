@@ -84,8 +84,10 @@ const SymbolLibraryPage = () => {
 
   const { data: symbolsContent, isLoading } = useSymbolsContent();
   
-  const normalize = (text: string) => 
-    text ? text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : "";
+  const normalize = (text: string) => {
+    if (!text || typeof text !== "string") return "";
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  };
 
   const term = normalize(search);
 
@@ -221,12 +223,16 @@ const SymbolLibraryPage = () => {
     if (!search) return categorias;
     
     return categorias.map((cat) => {
-      const simbolos = cat.simbolos.filter((s) => {
+      const simbolos = (cat.simbolos || []).filter((s) => {
+        if (!s) return false;
         // Match symbol name or explanation
-        if (normalize(s.nome).includes(term) || normalize(s.explicacao).includes(term)) return true;
+        const nameMatch = s.nome && normalize(s.nome).includes(term);
+        const explanationMatch = s.explicacao && normalize(s.explicacao).includes(term);
+        
+        if (nameMatch || explanationMatch) return true;
         
         // Match readings
-        if (s.leituras.some(l => normalize(l).includes(term))) return true;
+        if (s.leituras && Array.isArray(s.leituras) && s.leituras.some(l => l && normalize(l).includes(term))) return true;
         
         // Match category name
         if (normalize(cat.nome).includes(term)) return true;
@@ -276,8 +282,8 @@ const SymbolLibraryPage = () => {
           "Nudez": ["sol", "estrela", "julgamento", "vulnerabilidade", "autenticidade", "liberdade"]
         };
 
-        const currentAliases = aliases[s.nome] || [];
-        if (currentAliases.some(a => normalize(a).includes(term) || term.includes(normalize(a)))) return true;
+        const currentAliases = s.nome ? (aliases[s.nome] || []) : [];
+        if (currentAliases.some(a => a && (normalize(a).includes(term) || term.includes(normalize(a))))) return true;
 
         return false;
       });
@@ -544,7 +550,7 @@ const SymbolLibraryPage = () => {
         <div className="space-y-12">
           {filteredCategories.map(cat => {
             const isExpanded = expandedCategories.has(cat.slug) || !!search;
-            const displaySimbolos = cat.simbolos;
+            const displaySimbolos = cat.simbolos || [];
 
             return (
               <section 
@@ -593,7 +599,7 @@ const SymbolLibraryPage = () => {
                                 <div className="flex items-center gap-2">
                                   <div className="h-px w-6 bg-gold/40" />
                                   <p className="text-[9px] md:text-[10px] font-heading font-black text-plum/80 leading-relaxed uppercase tracking-widest">
-                                    {sym.leituras[0]}
+                                    {(sym.leituras && sym.leituras.length > 0) ? sym.leituras[0] : ""}
                                   </p>
                                 </div>
                               </div>
@@ -666,7 +672,7 @@ const SymbolLibraryPage = () => {
                                 </h4>
                               </div>
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                {sym.leituras.map((r, i) => (
+                                {sym.leituras && sym.leituras.map((r, i) => (
                                   <div 
                                     key={i} 
                                     className="px-6 py-4 rounded-xl text-sm md:text-base font-body bg-white border border-gold/10 text-plum shadow-sm flex items-center gap-4 hover:border-gold/30 hover:shadow-md transition-all duration-500"
