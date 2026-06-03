@@ -27,34 +27,60 @@ const ArchPortal = ({ children, className }: { children: React.ReactNode, classN
   </div>
 );
 
-const ChapterHeader = ({ title, description, icon }: { title: string, description: string, icon: string }) => (
-  <div className="flex flex-col items-center text-center space-y-4 mb-16 relative py-8">
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-transparent via-gold/30 to-transparent" />
-    <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center text-4xl shadow-xl border border-gold/15 relative z-10 mb-2">
+const ChapterHeader = ({ 
+  title, 
+  description, 
+  icon, 
+  isExpanded, 
+  onToggle 
+}: { 
+  title: string, 
+  description: string, 
+  icon: string, 
+  isExpanded: boolean, 
+  onToggle: () => void 
+}) => (
+  <button 
+    onClick={onToggle}
+    className="w-full flex flex-col items-center text-center space-y-4 mb-8 relative py-10 px-6 rounded-[2rem] bg-white border border-gold/15 shadow-sm hover:shadow-md hover:border-gold/30 transition-all group"
+  >
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-10 bg-gradient-to-b from-transparent to-gold/20" />
+    <div className={`w-20 h-20 rounded-full flex items-center justify-center text-4xl shadow-xl border border-gold/15 relative z-10 mb-2 transition-all duration-500 ${isExpanded ? "bg-plum text-white rotate-[360deg] scale-110" : "bg-white text-plum group-hover:scale-105"}`}>
       <span className="drop-shadow-sm">{icon}</span>
     </div>
-    <div className="space-y-2 relative z-10">
-      <h2 className="font-heading text-3xl md:text-5xl font-bold text-plum tracking-tight uppercase">
-        {title}
-      </h2>
+    <div className="space-y-3 relative z-10 w-full max-w-lg">
       <div className="flex items-center justify-center gap-4">
-        <div className="h-[1px] w-8 bg-gold/20" />
-        <p className="text-sm md:text-base font-body italic text-plum/50 max-w-md">
-          {description}
-        </p>
-        <div className="h-[1px] w-8 bg-gold/20" />
+        <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-gold/20" />
+        <h2 className="font-heading text-2xl md:text-4xl font-bold text-plum tracking-tight uppercase group-hover:text-gold transition-colors">
+          {title}
+        </h2>
+        <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-gold/20" />
+      </div>
+      <p className="text-sm md:text-base font-body italic text-plum/50 leading-relaxed px-4">
+        {description}
+      </p>
+    </div>
+    
+    <div className={`mt-6 flex items-center gap-2 px-6 py-2 rounded-full border border-gold/20 text-[10px] font-heading font-black uppercase tracking-[0.3em] transition-all duration-500 ${isExpanded ? "bg-plum text-white border-plum" : "text-gold group-hover:bg-gold/5"}`}>
+      {isExpanded ? "Recolher Capítulo" : "Abrir Capítulo"}
+      <div className={`w-4 h-4 transition-transform duration-500 ${isExpanded ? "rotate-180" : ""}`}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
       </div>
     </div>
-    <div className="w-48 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent mt-6" />
-  </div>
+
+    {/* Ornamental corners */}
+    <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-gold/20 rounded-tl-lg" />
+    <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-gold/20 rounded-tr-lg" />
+    <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-gold/20 rounded-bl-lg" />
+    <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-gold/20 rounded-br-lg" />
+  </button>
 );
 
 const SymbolLibraryPage = () => {
   const navigate = useNavigate();
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const [selectedSymbol, setSelectedSymbol] = useState<SymbolItemContent | null>(null);
   const [search, setSearch] = useState("");
-  const [visibleCount, setVisibleCount] = useState<Record<string, number>>({});
 
   const { data: symbolsContent, isLoading } = useSymbolsContent();
   const categorias = symbolsContent?.categorias ?? [];
@@ -77,20 +103,29 @@ const SymbolLibraryPage = () => {
   const term = search.toLowerCase();
 
   const filteredCategories = useMemo(() => {
-    const cats = search
-      ? categorias.map((cat) => ({
-          ...cat,
-          simbolos: cat.simbolos.filter(
-            (s) =>
-              s.nome.toLowerCase().includes(term) ||
-              s.explicacao.toLowerCase().includes(term),
-          ),
-        })).filter((cat) => cat.simbolos.length > 0)
-      : activeCategory
-      ? categorias.filter((c) => c.slug === activeCategory)
-      : categorias;
-    return cats;
-  }, [categorias, search, term, activeCategory]);
+    if (!search) return categorias;
+    
+    return categorias.map((cat) => ({
+      ...cat,
+      simbolos: cat.simbolos.filter(
+        (s) =>
+          s.nome.toLowerCase().includes(term) ||
+          s.explicacao.toLowerCase().includes(term),
+      ),
+    })).filter((cat) => cat.simbolos.length > 0);
+  }, [categorias, search, term]);
+
+  const toggleCategory = (slug: string) => {
+    setExpandedCategories(prev => {
+      const next = new Set(prev);
+      if (next.has(slug)) {
+        next.delete(slug);
+      } else {
+        next.add(slug);
+      }
+      return next;
+    });
+  };
 
   const getCardsForSymbol = (symbolName: string) => {
     const mapping: Record<string, string[]> = {
@@ -260,7 +295,7 @@ const SymbolLibraryPage = () => {
                 type="text"
                 placeholder="Ex: Lua, Água, Sol, A Sacerdotisa..."
                 value={search}
-                onChange={e => { setSearch(e.target.value); setActiveCategory(null); }}
+                onChange={e => { setSearch(e.target.value); }}
                 className="w-full pl-20 pr-20 py-8 rounded-[2.5rem] text-xl font-body bg-white/80 border border-gold/20 outline-none focus:border-gold/50 focus:bg-white focus:ring-12 focus:ring-gold/5 transition-all shadow-xl placeholder:text-plum/20 backdrop-blur-sm"
               />
               {search && (
@@ -277,63 +312,64 @@ const SymbolLibraryPage = () => {
       </header>
 
       <main className="relative z-10 container max-w-3xl px-6 py-8">
-        {/* Category chips */}
+        {/* Chapters Navigation - Only show if not searching */}
         {!search && (
-          <div className="flex overflow-x-auto pb-6 -mx-6 px-6 no-scrollbar gap-2 mb-4">
-            <button
-              onClick={() => setActiveCategory(null)}
-              className={`flex-shrink-0 px-8 py-3 rounded-full text-[11px] font-heading font-black tracking-[0.2em] uppercase transition-all duration-300 border ${
-                !activeCategory 
-                  ? "bg-plum text-white border-plum shadow-lg shadow-plum/20" 
-                  : "bg-white text-plum/50 border-gold/15 hover:border-gold/30 hover:bg-[#FDFCFB]"
-              }`}
-            >
-              Todos
-            </button>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
             {categorias.map(cat => (
               <button
                 key={cat.slug}
-                onClick={() => setActiveCategory(activeCategory === cat.slug ? null : cat.slug)}
-                className={`flex-shrink-0 px-8 py-3 rounded-full text-[11px] font-heading font-black tracking-[0.2em] uppercase transition-all duration-300 border flex items-center gap-2.5 ${
-                  activeCategory === cat.slug 
-                    ? "bg-plum text-white border-plum shadow-lg shadow-plum/20" 
-                    : "bg-white text-plum/50 border-gold/15 hover:border-gold/30 hover:bg-[#FDFCFB]"
+                onClick={() => {
+                  toggleCategory(cat.slug);
+                  // Scroll to the category if we are expanding it
+                  if (!expandedCategories.has(cat.slug)) {
+                    document.getElementById(`chapter-${cat.slug}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+                className={`px-4 py-3 rounded-2xl text-[10px] font-heading font-black tracking-widest uppercase transition-all duration-300 border flex items-center justify-center gap-2 ${
+                  expandedCategories.has(cat.slug)
+                    ? "bg-plum text-white border-plum shadow-md" 
+                    : "bg-white text-plum/50 border-gold/15 hover:border-gold/30 hover:bg-gold/5"
                 }`}
               >
-                <span className="text-sm opacity-80">{cat.icone}</span>
-                {cat.nome}
+                <span>{cat.icone}</span>
+                <span className="truncate">{cat.nome}</span>
               </button>
             ))}
           </div>
         )}
 
         {/* Categories and symbols */}
-        <div className="space-y-16">
+        <div className="space-y-12">
           {filteredCategories.map(cat => {
-            const currentVisible = visibleCount[cat.slug] || 6;
-            const hasMore = cat.simbolos.length > currentVisible && !search;
-            const displaySimbolos = search ? cat.simbolos : cat.simbolos.slice(0, currentVisible);
+            const isExpanded = expandedCategories.has(cat.slug) || !!search;
+            const displaySimbolos = cat.simbolos;
 
             return (
-              <section key={cat.slug} className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
+              <section 
+                key={cat.slug} 
+                id={`chapter-${cat.slug}`}
+                className="animate-in fade-in slide-in-from-bottom-8 duration-700 scroll-mt-32"
+              >
                 <ChapterHeader 
                   title={cat.nome} 
                   description={categoryDescriptions[cat.slug] || cat.descricao} 
-                  icon={cat.icone} 
+                  icon={cat.icone}
+                  isExpanded={isExpanded}
+                  onToggle={() => toggleCategory(cat.slug)}
                 />
 
-                <div className="grid grid-cols-1 gap-10 md:gap-14">
+                <div className={`grid grid-cols-1 gap-8 md:gap-12 transition-all duration-700 overflow-hidden ${isExpanded ? "max-h-[10000px] opacity-100 mt-8" : "max-h-0 opacity-0"}`}>
                   {displaySimbolos.map(sym => {
                     const relatedCards = getCardsForSymbol(sym.nome);
-                    const isExpanded = selectedSymbol?.id === sym.id;
+                    const isExpandedSymbol = selectedSymbol?.id === sym.id;
                     
                     return (
                       <div
                         key={sym.id}
-                        className={`group relative rounded-[3rem] transition-all duration-700 border overflow-hidden shadow-sm ${
-                          isExpanded
-                            ? "bg-white border-gold/40 shadow-2xl shadow-plum/10 ring-1 ring-gold/20"
-                            : "bg-white/90 border-gold/10 hover:border-gold/30 hover:bg-white hover:-translate-y-2 hover:shadow-xl"
+                        className={`group relative rounded-[2.5rem] transition-all duration-500 border overflow-hidden shadow-sm ${
+                          isExpandedSymbol
+                            ? "bg-white border-gold/40 shadow-xl ring-1 ring-gold/10"
+                            : "bg-white/80 border-gold/10 hover:border-gold/20 hover:bg-white hover:shadow-md"
                         }`}
                       >
                         {/* Premium Card Ornament */}
@@ -494,17 +530,7 @@ const SymbolLibraryPage = () => {
                   })}
                 </div>
 
-                {hasMore && (
-                  <div className="mt-12 flex justify-center">
-                    <button
-                      onClick={() => setVisibleCount(prev => ({ ...prev, [cat.slug]: currentVisible + 6 }))}
-                      className="px-10 py-5 rounded-full border border-gold/30 text-[11px] font-heading font-black uppercase tracking-[0.3em] text-gold hover:bg-gold/5 transition-all flex items-center gap-3 group"
-                    >
-                      Ver mais símbolos de {cat.nome}
-                      <ArrowLeft className="w-4 h-4 rotate-[-90deg] group-hover:translate-y-1 transition-transform" />
-                    </button>
-                  </div>
-                )}
+                </div>
               </section>
             );
           })}
