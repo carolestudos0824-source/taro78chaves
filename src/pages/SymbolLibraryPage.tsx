@@ -487,23 +487,6 @@ const SymbolLibraryPage = () => {
                     </span>
                   </h1>
                 </div>
-              <div className="space-y-4 pt-4">
-                <div className="flex items-center justify-center gap-4">
-                  <div className="h-[1px] w-12 md:w-20 bg-gradient-to-r from-transparent to-gold/40" />
-                  <span className="text-[10px] md:text-[11px] font-heading font-black tracking-[0.8em] text-gold uppercase drop-shadow-sm">Escola de Tarô</span>
-                  <div className="h-[1px] w-12 md:w-20 bg-gradient-to-l from-transparent to-gold/40" />
-                </div>
-                
-                <div className="relative inline-block">
-                  <h1 className="text-4xl md:text-6xl font-heading font-bold text-plum tracking-tight flex flex-col items-center">
-                    <span className="relative">
-                      Biblioteca de Símbolos
-                      <div className="absolute -right-10 -top-4 animate-stars">
-                        <Star className="w-6 h-6 text-gold fill-gold/20" />
-                      </div>
-                    </span>
-                  </h1>
-                </div>
                 
                 <p className="text-base md:text-xl font-body italic text-plum/75 max-w-xl mx-auto leading-relaxed px-4">
                   Aprenda os sinais vivos escondidos nas cartas Rider-Waite-Smith.
