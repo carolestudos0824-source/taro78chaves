@@ -388,6 +388,7 @@ const LessonPage = () => {
                     {arcano.lessonSections.find(s => s.id === "espiritualidade")?.content}
                   </p>
 
+
                 </div>
 
 
