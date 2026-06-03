@@ -196,23 +196,23 @@ const SymbolLibraryPage = () => {
           </div>
 
           {/* Search */}
-          <div className="relative group max-w-xl mx-auto">
-            <div className="absolute inset-0 bg-gold/5 blur-xl group-focus-within:bg-gold/15 transition-all rounded-[2rem]" />
+          <div className="relative group max-w-2xl mx-auto">
+            <div className="absolute inset-0 bg-gold/10 blur-2xl group-focus-within:bg-gold/20 transition-all rounded-[2.5rem]" />
             <div className="relative flex items-center">
-              <Search className="absolute left-6 w-5 h-5 text-plum/30 group-focus-within:text-gold transition-colors" />
+              <Search className="absolute left-8 w-6 h-6 text-plum/30 group-focus-within:text-gold transition-colors" />
               <input
                 type="text"
-                placeholder="Buscar símbolo, carta ou tema..."
+                placeholder="Ex: Lua, Água, Sol, A Sacerdotisa..."
                 value={search}
                 onChange={e => { setSearch(e.target.value); setActiveCategory(null); }}
-                className="w-full pl-14 pr-14 py-6 rounded-[2rem] text-base font-body bg-white border border-gold/15 outline-none focus:border-gold/40 focus:ring-8 focus:ring-gold/5 transition-all shadow-md placeholder:text-plum/30"
+                className="w-full pl-18 pr-18 py-8 rounded-[2.5rem] text-xl font-body bg-white/80 border border-gold/20 outline-none focus:border-gold/50 focus:bg-white focus:ring-12 focus:ring-gold/5 transition-all shadow-xl placeholder:text-plum/20 backdrop-blur-sm"
               />
               {search && (
                 <button 
                   onClick={() => setSearch("")} 
-                  className="absolute right-6 p-1.5 rounded-full hover:bg-plum/5 text-plum/30 hover:text-plum transition-all"
+                  className="absolute right-8 p-2 rounded-full hover:bg-plum/5 text-plum/30 hover:text-plum transition-all"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-6 h-6" />
                 </button>
               )}
             </div>
