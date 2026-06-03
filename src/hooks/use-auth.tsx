@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           access_token: 'fake', 
           refresh_token: 'fake', 
           expires_in: 3600, 
-          token_type: 'bearer' 
+          token_type: 'bearer' as const
         };
         setSession(mockSession);
         setUser(mockUser as any);
@@ -60,6 +60,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         applySession(currentSession);
       }
     });
+
 
 
 
