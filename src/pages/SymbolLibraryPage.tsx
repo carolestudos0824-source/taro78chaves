@@ -577,7 +577,8 @@ const SymbolLibraryPage = () => {
 
                 <div className={`grid grid-cols-1 gap-8 md:gap-12 transition-all duration-700 overflow-hidden ${isExpanded ? "max-h-[10000px] opacity-100 mt-8" : "max-h-0 opacity-0"}`}>
                   {displaySimbolos.map(sym => {
-                    const relatedCards = getCardsForSymbol(sym.nome);
+                    if (!sym) return null;
+                    const relatedCards = getCardsForSymbol(sym.nome || "");
                     const isExpandedSymbol = selectedSymbol?.id === sym.id;
                     
                     return (
@@ -603,7 +604,7 @@ const SymbolLibraryPage = () => {
                             <div className="flex justify-between items-start mb-6">
                               <div className="space-y-2 flex-1 pr-4">
                                 <h3 className="font-heading text-xl md:text-3xl font-bold text-plum group-hover:text-gold transition-colors tracking-tight">
-                                  {sym.nome}
+                                  {sym.nome || ""}
                                 </h3>
                                 <div className="flex items-center gap-2">
                                   <div className="h-px w-6 bg-gold/40" />
@@ -620,7 +621,7 @@ const SymbolLibraryPage = () => {
                             </div>
                             
                             <p className={`text-sm md:text-base font-body leading-relaxed text-plum/85 mb-8 italic border-l-2 border-rose-100 pl-4 ${isExpandedSymbol ? "" : "line-clamp-2"}`}>
-                              {sym.explicacao}
+                              {sym.explicacao || ""}
                             </p>
 
                              {relatedCards.length > 0 && (
