@@ -123,29 +123,30 @@ const DashboardPage = () => {
   }, [progress.completedLessons]);
 
   return (
-    <div className="min-h-screen bg-ivory/50">
-      <main className="container max-w-4xl px-4 pt-6 pb-24 space-y-12 animate-in fade-in duration-1000">
-        
+    <div className="min-h-screen bg-[#FAF5EF]">
+      <main className="container max-w-4xl px-4 pt-12 pb-24 space-y-12 animate-in fade-in duration-1000 relative">
+        {/* Subtle decorative elements */}
+        <div className="absolute top-0 left-1/4 w-64 h-64 bg-rose-200/20 blur-[100px] pointer-events-none" />
+        <div className="absolute top-20 right-1/4 w-48 h-48 bg-gold/10 blur-[80px] pointer-events-none" />
+
         {/* Institutional Welcome Section */}
         <section className="text-center space-y-6 py-8 relative">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg aspect-square bg-gold/5 blur-[100px] rounded-full pointer-events-none" />
-          
-          <div className="relative z-10 space-y-3">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <div className="h-px w-8 bg-gold/30" />
-              <span className="text-[10px] font-heading font-black tracking-[0.5em] text-gold uppercase">Sabedoria Ancestral</span>
-              <div className="h-px w-8 bg-gold/30" />
+          <div className="relative z-10 space-y-4">
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <div className="h-px w-10 bg-gold/30" />
+              <span className="text-[10px] font-heading font-black tracking-[0.6em] text-gold uppercase">Sabedoria Ancestral</span>
+              <div className="h-px w-10 bg-gold/30" />
             </div>
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-plum tracking-tight flex flex-col items-center">
-              <span className="text-xl md:text-2xl font-light italic text-plum/60 mb-1">Escola Digital de Tarô</span>
-              <span className="relative">
+              <span className="text-xl md:text-2xl font-light italic text-plum/50 mb-1">Escola Digital de Tarô</span>
+              <span className="relative inline-block">
                 Jornada dos 78 Arcanos
-                <div className="absolute -right-8 -top-2">
-                  <Sparkles className="w-5 h-5 text-gold animate-pulse" />
+                <div className="absolute -right-10 -top-4 opacity-40">
+                  <Star className="w-6 h-6 text-gold fill-gold/20" />
                 </div>
               </span>
             </h1>
-            <p className="text-sm font-body italic text-plum/40 max-w-sm mx-auto">
+            <p className="text-sm font-body italic text-plum/40 max-w-sm mx-auto leading-relaxed">
               Seu portal de estudo guiado através dos 78 arquétipos do Rider-Waite-Smith.
             </p>
           </div>
@@ -155,11 +156,11 @@ const DashboardPage = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-2">
           {[
             { label: "Domínio", value: `${globalProgressPct}%`, icon: Target, color: "text-gold" },
-            { label: "Etapas feitas", value: totalCompletedArcanos, icon: KeyRound, color: "text-plum" },
-            { label: "Lições concluídas", value: progress.completedLessons.length, icon: BookOpen, color: "text-gold" },
+            { label: "Etapas", value: totalCompletedArcanos, icon: KeyRound, color: "text-plum" },
+            { label: "Lições", value: progress.completedLessons.length, icon: BookOpen, color: "text-gold" },
             { label: "Ritual diário", value: `${progress.streak} dias`, icon: Flame, color: "text-orange-500" }
           ].map((stat, i) => (
-            <div key={i} className="bg-white/40 backdrop-blur-md rounded-2xl p-4 border border-gold/15 shadow-sm flex flex-col items-center justify-center space-y-1 group hover:border-gold/30 transition-all">
+            <div key={i} className="bg-white/80 backdrop-blur-md rounded-2xl p-4 border border-gold/15 shadow-sm flex flex-col items-center justify-center space-y-1 group hover:border-gold/30 transition-all">
               <div className="w-8 h-8 rounded-full bg-gold/5 flex items-center justify-center mb-1 group-hover:scale-110 transition-transform">
                 <stat.icon className={`w-4 h-4 ${stat.color}`} />
               </div>
@@ -209,39 +210,37 @@ const DashboardPage = () => {
         {/* 1. Main Block: Journey Ritual - Premium Duolingo Style */}
         <section className="relative mx-2 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden border border-gold/20 bg-white shadow-2xl shadow-plum/5 group">
           {/* Decorative background elements */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-gold/5 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-rose-100/10 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-plum/5 rounded-full blur-[80px] -ml-32 -mb-32 pointer-events-none" />
-          <div className="absolute inset-0 opacity-[0.03] bg-mystic-bg-procedural pointer-events-none" />
+          <div className="absolute inset-0 opacity-[0.02] bg-mystic-bg-procedural pointer-events-none" />
           
           <div className="relative z-10 flex flex-col md:flex-row min-h-[380px]">
             {/* Card Left: The Focal Point Arch */}
-            <div className="w-full md:w-[280px] p-8 md:p-12 bg-plum/95 flex items-center justify-center relative overflow-hidden shrink-0">
+            <div className="w-full md:w-[280px] p-8 md:p-12 bg-[#45162D] flex items-center justify-center relative overflow-hidden shrink-0">
                <div className="absolute inset-0 opacity-10 bg-mystic-bg-procedural scale-150 rotate-6" />
-               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-plum to-transparent z-10" />
+               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#45162D] to-transparent z-10" />
                
                {currentStep && (
                  <ArchPortal className="relative z-20">
-                   <div className="w-44 aspect-[2/3.5] rounded-2xl overflow-hidden border-2 border-gold/40 shadow-[0_25px_60px_rgba(0,0,0,0.5)] transition-all duration-700 group-hover:scale-[1.03] group-hover:rotate-1">
+                    <div className="absolute -inset-4 bg-gold/10 blur-xl rounded-full opacity-50" />
+                    <div className="w-44 aspect-[2/3.5] rounded-2xl overflow-hidden border-2 border-gold/40 shadow-[0_25px_60px_rgba(0,0,0,0.6)] transition-all duration-700 group-hover:scale-[1.03] group-hover:rotate-1 relative">
                       <img 
                         src={currentStep.image} 
                         alt={currentStep.name}
                         className="w-full h-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-                      <div className="absolute top-2 right-2">
-                        <Star className="w-4 h-4 text-gold/60" />
-                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                    </div>
                  </ArchPortal>
                )}
             </div>
 
             {/* Card Right: Ritual Context & Journey Progress */}
-            <div className="flex-1 p-8 md:p-12 flex flex-col justify-center space-y-8">
-              <div className="space-y-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-px bg-gold/40" />
-                  <span className="text-[10px] font-heading font-black tracking-[0.3em] text-gold uppercase">Caminho do Iniciado</span>
+            <div className="flex-1 p-8 md:p-14 flex flex-col justify-center space-y-8">
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                   <div className="w-8 h-px bg-gold/40" />
+                   <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Caminho do Iniciado</span>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-heading font-bold text-plum tracking-tight leading-tight">Sua Jornada</h2>
               </div>
@@ -304,22 +303,25 @@ const DashboardPage = () => {
             {/* Trail Card: Arcanos Maiores */}
             <div 
               onClick={() => navigate("/module/arcanos-maiores")}
-              className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/30 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden"
+              className="bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/40 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none group-hover:scale-110 transition-transform">
-                <KeyRound className="w-20 h-20" />
+              <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none group-hover:scale-110 group-hover:opacity-[0.05] transition-all">
+                <KeyRound className="w-24 h-24 text-plum" />
               </div>
-              <div className="w-16 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shrink-0 group-hover:scale-105 transition-all duration-500 shadow-md">
+              <div className="w-20 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shrink-0 group-hover:scale-[1.03] transition-all duration-500 shadow-xl">
                  <img src={imgMago} alt="Arcanos Maiores" className="w-full h-full object-cover" />
               </div>
-              <div className="space-y-2 flex-1 relative z-10">
+              <div className="space-y-3 flex-1 relative z-10 pt-1">
                 <h4 className="font-heading text-xl font-bold text-plum tracking-tight">Arcanos Maiores</h4>
                 <p className="text-[12px] font-body italic text-plum/50 leading-relaxed">A jornada espiritual através dos 22 arquétipos mestres.</p>
-                <div className="pt-2 flex items-center gap-3">
-                   <div className="flex-1 h-1.5 bg-gold/5 rounded-full overflow-hidden border border-gold/5">
+                <div className="pt-2 space-y-2">
+                   <div className="flex justify-between items-center px-0.5">
+                      <span className="text-[9px] font-heading font-black text-gold uppercase tracking-widest">{completedMaiores} de 22</span>
+                      <span className="text-[9px] font-heading font-black text-plum/20 uppercase tracking-widest">{Math.round((completedMaiores/22)*100)}%</span>
+                   </div>
+                   <div className="h-1.5 bg-[#FAF5EF] rounded-full overflow-hidden border border-gold/5">
                       <div className="h-full bg-gold rounded-full" style={{ width: `${(completedMaiores/22)*100}%` }} />
                    </div>
-                   <span className="text-[10px] font-heading font-black text-gold uppercase tracking-widest whitespace-nowrap">{completedMaiores} de 22</span>
                 </div>
               </div>
             </div>
@@ -327,45 +329,46 @@ const DashboardPage = () => {
             {/* Trail Card: Arcanos Menores */}
             <div 
               onClick={() => navigate("/trilhas")}
-              className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/30 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden"
+              className="bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/40 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none group-hover:scale-110 transition-transform">
-                <Layout className="w-20 h-20" />
+              <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none group-hover:scale-110 group-hover:opacity-[0.05] transition-all">
+                <Layout className="w-24 h-24 text-plum" />
               </div>
-              <div className="w-16 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shrink-0 group-hover:scale-105 transition-all duration-500 shadow-md">
+              <div className="w-20 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shrink-0 group-hover:scale-[1.03] transition-all duration-500 shadow-xl">
                  <img src={imgAsCopas} alt="Arcanos Menores" className="w-full h-full object-cover" />
               </div>
-              <div className="space-y-2 flex-1 relative z-10">
+              <div className="space-y-3 flex-1 relative z-10 pt-1">
                 <h4 className="font-heading text-xl font-bold text-plum tracking-tight">Arcanos Menores</h4>
                 <p className="text-[12px] font-body italic text-plum/50 leading-relaxed">A aplicação prática dos 4 naipes e 56 situações cotidianas.</p>
-                <div className="pt-2 flex items-center gap-3">
-                   <div className="flex-1 h-1.5 bg-plum/5 rounded-full overflow-hidden border border-plum/5">
+                <div className="pt-2 space-y-2">
+                   <div className="flex justify-between items-center px-0.5">
+                      <span className="text-[9px] font-heading font-black text-plum/40 uppercase tracking-widest">{completedMenores} de 56</span>
+                      <span className="text-[9px] font-heading font-black text-plum/20 uppercase tracking-widest">{Math.round((completedMenores/56)*100)}%</span>
+                   </div>
+                   <div className="h-1.5 bg-[#FAF5EF] rounded-full overflow-hidden border border-gold/5">
                       <div className="h-full bg-plum/40 rounded-full" style={{ width: `${(completedMenores/56)*100}%` }} />
                    </div>
-                   <span className="text-[10px] font-heading font-black text-plum/30 uppercase tracking-widest whitespace-nowrap">{completedMenores} de 56</span>
                 </div>
               </div>
             </div>
 
             {/* Premium Access Promotion Card */}
-            <div className="bg-plum/95 rounded-[2.5rem] p-6 md:p-10 border border-gold/30 shadow-2xl text-white space-y-4 md:space-y-6 overflow-hidden relative group md:col-span-2">
+            <div className="bg-plum/95 rounded-[2.5rem] p-8 border border-gold/30 shadow-2xl text-white space-y-6 overflow-hidden relative group md:col-span-2">
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform pointer-events-none">
                 <Crown className="w-32 h-32 md:w-48 md:h-48" />
               </div>
-              <div className="absolute inset-0 opacity-5 bg-mystic-bg-procedural pointer-events-none" />
+              <div className="absolute inset-0 opacity-[0.03] bg-mystic-bg-procedural pointer-events-none" />
               
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 md:gap-8 relative z-10">
-                <div className="space-y-4">
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+                <div className="space-y-2">
                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shadow-lg">
-                        <Sparkles className="w-6 h-6 text-gold" />
+                      <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shadow-lg">
+                        <Sparkles className="w-5 h-5 text-gold" />
                       </div>
-                      <div className="space-y-0.5">
-                        <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Formação Completa</span>
-                        <h3 className="text-2xl md:text-3xl font-heading font-bold tracking-tight">Sabedoria Ancestral</h3>
-                      </div>
+                      <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Formação Completa</span>
                    </div>
-                   <p className="text-sm md:text-base font-body italic text-white/70 max-w-lg leading-relaxed">
+                   <h3 className="text-2xl md:text-3xl font-heading font-bold tracking-tight">Sabedoria Ancestral</h3>
+                   <p className="text-sm font-body italic text-white/70 max-w-sm leading-relaxed">
                      Desbloqueie todos os 78 portais, acesse meditações guiadas, quizzes de domínio e conquiste seu Certificado de Formação.
                    </p>
                 </div>
@@ -373,10 +376,9 @@ const DashboardPage = () => {
                 {!isPremium && !isStaff ? (
                   <button 
                     onClick={() => navigate("/premium")}
-                    className="w-full lg:w-auto px-8 py-4 bg-gold text-plum rounded-xl font-heading text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl hover:bg-white transition-all active:scale-95 group/btn"
+                    className="w-full lg:w-auto px-8 py-5 bg-gold text-plum rounded-2xl font-heading text-[10px] font-black tracking-[0.3em] uppercase shadow-2xl hover:bg-white hover:scale-[1.02] transition-all active:scale-95 group/btn"
                   >
                     Fazer Inscrição 
-                    <ChevronRight className="w-4 h-4 inline ml-2 group-hover/btn:translate-x-1 transition-transform" />
                   </button>
                 ) : (
                    <div className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-gold font-heading text-[10px] font-black tracking-[0.4em] uppercase flex items-center gap-2">
@@ -403,12 +405,12 @@ const DashboardPage = () => {
               <button 
                 key={i}
                 onClick={() => navigate(link.route)}
-                className="bg-white/60 backdrop-blur-sm border border-gold/10 rounded-2xl p-5 flex flex-col items-center gap-2 hover:bg-white hover:border-gold/30 hover:shadow-lg transition-all active:scale-95 group"
+                className="bg-white/90 backdrop-blur-sm border border-gold/15 rounded-[1.5rem] p-5 flex flex-col items-center gap-3 hover:bg-white hover:border-gold/40 hover:shadow-xl transition-all active:scale-95 group"
               >
-                <div className="w-10 h-10 rounded-xl bg-gold/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-2xl bg-gold/5 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <link.icon className="w-5 h-5 text-plum" />
                 </div>
-                <span className="text-[10px] font-heading font-black tracking-widest text-plum/60 uppercase">{link.label}</span>
+                <span className="text-[10px] font-heading font-black tracking-[0.2em] text-plum/60 uppercase">{link.label}</span>
               </button>
             ))}
           </div>
