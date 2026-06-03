@@ -95,51 +95,107 @@ const SymbolLibraryPage = () => {
     
     const baseCategorias = [...symbolsContent.categorias];
     
-    // Check if we need to add "Anjo" and other Julgamento symbols
-    const hasAnjo = baseCategorias.some(c => c.simbolos.some(s => normalize(s.nome).includes("anjo")));
-    
-    if (!hasAnjo) {
-      // Find or create a category for figures
-      let figCat = baseCategorias.find(c => c.slug === "figuras-e-entidades");
-      if (!figCat) {
-        figCat = {
-          id: "extra-cat-figuras",
-          slug: "figuras-e-entidades",
-          nome: "Figuras e Entidades",
-          icone: "👼",
-          descricao: "Seres arquetípicos, mensageiros e guias espirituais.",
-          ordem: 15,
+    // Pedagogical injections
+    const pedagogicalExtras = [
+      {
+        slug: "figuras-e-entidades",
+        nome: "Figuras e Entidades",
+        icone: "👼",
+        descricao: "Seres arquetípicos, mensageiros e guias espirituais.",
+        simbolos: [
+          {
+            id: "extra-sym-anjo",
+            slug: "anjo",
+            nome: "Anjo",
+            explicacao: "Mensageiro divino e o chamado da consciência superior. O anjo simboliza a intervenção espiritual, o despertar de uma nova percepção e o anúncio de uma grande transformação.",
+            leituras: ["Despertar espiritual", "Chamado da alma", "Proteção superior"],
+            cartas: ["O Julgamento", "Os Enamorados", "A Temperança"]
+          },
+          {
+            id: "extra-sym-trombeta",
+            slug: "trombeta",
+            nome: "Trombeta",
+            explicacao: "O som da verdade que desperta os que dormem. Simboliza a voz interior e o chamado para o renascimento.",
+            leituras: ["Revelação", "Despertar consciente", "Voz divina"],
+            cartas: ["O Julgamento"]
+          },
+          {
+            id: "extra-sym-crianca",
+            slug: "crianca",
+            nome: "Criança",
+            explicacao: "Inocência, alegria pura e o novo começo sem amarras. A criança sobre o cavalo branco simboliza a consciência solar em sua forma mais radiante.",
+            leituras: ["Espontaneidade", "Pureza de coração", "Novo ciclo solar"],
+            cartas: ["O Sol", "Seis de Copas"]
+          }
+        ]
+      },
+      {
+        slug: "arquitetura-e-cenas",
+        nome: "Arquitetura e Cenas",
+        icone: "🏛️",
+        descricao: "Elementos do cenário que compõem a narrativa das cartas.",
+        simbolos: [
+          {
+            id: "extra-sym-colunas",
+            slug: "colunas",
+            nome: "Colunas",
+            explicacao: "Os pilares da dualidade (Boaz e Jachin). Representam as forças opostas que sustentam o portal do conhecimento e a estabilidade das instituições.",
+            leituras: ["Dualidade equilibrada", "Estabilidade", "Portal iniciático"],
+            cartas: ["A Sacerdotisa", "O Hierofante", "A Justiça"]
+          },
+          {
+            id: "extra-sym-veu",
+            slug: "veu",
+            nome: "Véu",
+            explicacao: "A separação entre o mundo visível e o invisível. O véu protege os mistérios daqueles que ainda não estão prontos para vê-los.",
+            leituras: ["Segredo guardado", "Mistério", "Intuição"],
+            cartas: ["A Sacerdotisa", "A Justiça"]
+          },
+          {
+            id: "extra-sym-torres",
+            slug: "torres",
+            nome: "Torres",
+            explicacao: "As estruturas construídas pelo homem ou os limites do território. Podem ser portais de proteção ou prisões da mente que precisam ser derrubadas.",
+            leituras: ["Limites", "Dualidade", "Estrutura mental"],
+            cartas: ["A Lua", "A Torre", "A Morte"]
+          }
+        ]
+      }
+    ];
+
+    pedagogicalExtras.forEach(extra => {
+      let existing = baseCategorias.find(c => c.slug === extra.slug);
+      if (existing) {
+        // Create a new object to avoid modifying the original
+        const updatedCat = { ...existing, simbolos: [...existing.simbolos] };
+        extra.simbolos.forEach(s => {
+          if (!updatedCat.simbolos.some(exS => normalize(exS.nome) === normalize(s.nome))) {
+            updatedCat.simbolos.push({
+              ...s,
+              categoriaSlug: extra.slug,
+              ordem: updatedCat.simbolos.length + 1,
+              status: "publicado"
+            } as SymbolItemContent);
+          }
+        });
+        const index = baseCategorias.indexOf(existing);
+        baseCategorias[index] = updatedCat;
+      } else {
+        baseCategorias.push({
+          id: `extra-cat-${extra.slug}`,
+          ...extra,
+          ordem: baseCategorias.length + 1,
           status: "publicado",
           tier: "free",
-          simbolos: []
-        };
-        baseCategorias.push(figCat);
+          simbolos: extra.simbolos.map((s, i) => ({
+            ...s,
+            categoriaSlug: extra.slug,
+            ordem: i + 1,
+            status: "publicado"
+          } as SymbolItemContent))
+        });
       }
-      
-      figCat.simbolos.push({
-        id: "extra-sym-anjo",
-        slug: "anjo",
-        categoriaSlug: "figuras-e-entidades",
-        nome: "Anjo",
-        explicacao: "Mensageiro divino e o chamado da consciência superior. O anjo simboliza a intervenção espiritual, o despertar de uma nova percepção e o anúncio de uma grande transformação.",
-        leituras: ["Despertar espiritual", "Um chamado que não pode ser ignorado", "Proteção e guia superior"],
-        cartas: ["O Julgamento", "Os Enamorados", "A Temperança"],
-        ordem: 1,
-        status: "publicado"
-      });
-
-      figCat.simbolos.push({
-        id: "extra-sym-trombeta",
-        slug: "trombeta",
-        categoriaSlug: "figuras-e-entidades",
-        nome: "Trombeta",
-        explicacao: "O som da verdade que desperta os que dormem. Simboliza a voz interior, a comunicação clara vinda do alto e o momento de prestar contas ou renascer.",
-        leituras: ["Revelação importante", "Chamada para a ação", "Voz da consciência"],
-        cartas: ["O Julgamento"],
-        ordem: 2,
-        status: "publicado"
-      });
-    }
+    });
 
     return baseCategorias;
   }, [symbolsContent]);
