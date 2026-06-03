@@ -459,10 +459,12 @@ const SymbolLibraryPage = () => {
             </p>
             <button 
               onClick={() => window.location.reload()}
-          className="px-8 py-4 bg-plum text-white rounded-full font-heading font-black text-xs uppercase tracking-widest shadow-xl active:scale-95 transition-all"
-        >
-          Recarregar Página
-        </button>
+              className="px-8 py-4 bg-plum text-white rounded-full font-heading font-black text-xs uppercase tracking-widest shadow-xl active:scale-95 transition-all"
+            >
+              Recarregar Página
+            </button>
+          </>
+        )}
       </div>
     );
   }
