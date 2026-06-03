@@ -345,7 +345,7 @@ const SymbolLibraryPage = () => {
                           
                           {!isExpanded && (
                             <div className="mt-10 flex items-center gap-3 text-gold group-hover:translate-x-3 transition-transform duration-700">
-                              <span className="text-[11px] font-heading font-black tracking-[0.5em] uppercase">Mergulhar no Mistério</span>
+                              <span className="text-[11px] font-heading font-black tracking-[0.5em] uppercase">Estudar símbolo</span>
                               <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center border border-gold/20">
                                 <ExternalLink className="w-3.5 h-3.5" />
                               </div>
