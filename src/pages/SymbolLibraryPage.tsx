@@ -433,7 +433,7 @@ const SymbolLibraryPage = () => {
                                    ))}
                                   {relatedCards.length > 4 && (
                                     <div className="w-full xs:w-auto flex items-center justify-center px-3 py-1.5 rounded-lg bg-gold/5 border border-gold/10 text-[8px] font-heading font-black uppercase tracking-widest text-gold italic self-start mt-2">
-                                      +{relatedCards.length - 4}
+                                      +{relatedCards.length - 4} mais
                                     </div>
                                   )}
                                 </div>
