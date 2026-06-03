@@ -36,7 +36,7 @@ import imgMago from "@/assets/arcano-1-mago.jpg";
 import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
 import imgImperatriz from "@/assets/arcano-3-imperatriz.jpg";
 import imgImperador from "@/assets/arcano-4-imperador.jpg";
-import imgDezOuros from "@/assets/menor-ouros-10.jpg";
+import imgAsCopas from "@/assets/menor-copas-1.jpg";
 
 // Decorative components for the premium feel
 const ArchPortal = ({ children, className }: { children: React.ReactNode, className?: string }) => (
@@ -156,8 +156,8 @@ const DashboardPage = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-2">
           {[
             { label: "Domínio", value: `${globalProgressPct}%`, icon: Target, color: "text-gold" },
-            { label: totalCompletedArcanos === 1 ? "Etapa feita" : "Etapas feitas", value: totalCompletedArcanos, icon: KeyRound, color: "text-plum" },
-            { label: progress.completedLessons.length === 1 ? "Lição concluída" : "Lições concluídas", value: progress.completedLessons.length, icon: BookOpen, color: "text-gold" },
+            { label: totalCompletedArcanos === 1 ? "etapa feita" : "etapas feitas", value: totalCompletedArcanos, icon: KeyRound, color: "text-plum" },
+            { label: progress.completedLessons.length === 1 ? "lição concluída" : "lições concluídas", value: progress.completedLessons.length, icon: BookOpen, color: "text-gold" },
             { label: "Ritual diário", value: `${progress.streak} dias`, icon: Flame, color: "text-orange-500" }
           ].map((stat, i) => (
             <div key={i} className="bg-white/80 backdrop-blur-md rounded-2xl p-4 border border-gold/15 shadow-sm flex flex-col items-center justify-center space-y-1 group hover:border-gold/30 transition-all">
@@ -335,7 +335,7 @@ const DashboardPage = () => {
                 <Layout className="w-24 h-24 text-plum" />
               </div>
               <div className="w-20 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shrink-0 group-hover:scale-[1.03] transition-all duration-500 shadow-xl">
-                 <img src={imgDezOuros} alt="Arcanos Menores" className="w-full h-full object-cover" />
+                 <img src={imgAsCopas} alt="Arcanos Menores" className="w-full h-full object-cover scale-110" />
               </div>
               <div className="space-y-3 flex-1 relative z-10 pt-1">
                 <h4 className="font-heading text-xl font-bold text-plum tracking-tight">Arcanos Menores</h4>
@@ -365,7 +365,7 @@ const DashboardPage = () => {
                       <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shadow-lg">
                         <Sparkles className="w-5 h-5 text-gold" />
                       </div>
-                      <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Formação Completa</span>
+                      <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold brightness-125 uppercase">Formação Completa</span>
                    </div>
                    <h3 className="text-2xl md:text-3xl font-heading font-bold tracking-tight">Sabedoria Ancestral</h3>
                    <p className="text-sm font-body italic text-white/70 max-w-sm leading-relaxed">
