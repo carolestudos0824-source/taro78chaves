@@ -7,6 +7,7 @@ import { useRole } from "@/hooks/use-role";
 
 interface CompletionScreenProps {
   arcanoName: string;
+  cardImage?: string;
   pontosEarned: number;
   quizScore: number;
   quizTotal: number;
@@ -18,6 +19,7 @@ interface CompletionScreenProps {
   onBackToMap: () => void;
   isLastArcano: boolean;
 }
+
 
 /**
  * Phase 5: Completion with progress saved confirmation + editorial continuity
