@@ -42,37 +42,37 @@ const ChapterHeader = ({
 }) => (
   <button 
     onClick={onToggle}
-    className="w-full flex flex-col items-center text-center space-y-4 mb-8 relative py-10 px-6 rounded-[2rem] bg-white border border-gold/15 shadow-sm hover:shadow-md hover:border-gold/30 transition-all group"
+    className="w-full flex flex-col items-center text-center space-y-3 mb-6 relative py-8 px-5 rounded-[1.5rem] bg-white border border-gold/15 shadow-sm hover:shadow-md hover:border-gold/30 transition-all group"
   >
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-10 bg-gradient-to-b from-transparent to-gold/20" />
-    <div className={`w-20 h-20 rounded-full flex items-center justify-center text-4xl shadow-xl border border-gold/15 relative z-10 mb-2 transition-all duration-500 ${isExpanded ? "bg-plum text-white rotate-[360deg] scale-110" : "bg-white text-plum group-hover:scale-105"}`}>
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-8 bg-gradient-to-b from-transparent to-gold/20" />
+    <div className={`w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-lg border border-gold/15 relative z-10 mb-1 transition-all duration-500 ${isExpanded ? "bg-plum text-white rotate-[360deg] scale-110" : "bg-white text-plum group-hover:scale-105"}`}>
       <span className="drop-shadow-sm">{icon}</span>
     </div>
-    <div className="space-y-3 relative z-10 w-full max-w-lg">
-      <div className="flex items-center justify-center gap-4">
+    <div className="space-y-2 relative z-10 w-full max-w-lg">
+      <div className="flex items-center justify-center gap-3">
         <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-gold/20" />
-        <h2 className="font-heading text-2xl md:text-4xl font-bold text-plum tracking-tight uppercase group-hover:text-gold transition-colors">
+        <h2 className="font-heading text-xl md:text-3xl font-bold text-plum tracking-tight uppercase group-hover:text-gold transition-colors">
           {title}
         </h2>
         <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-gold/20" />
       </div>
-      <p className="text-sm md:text-base font-body italic text-plum/50 leading-relaxed px-4">
+      <p className="text-xs md:text-sm font-body italic text-plum/50 leading-relaxed px-4">
         {description}
       </p>
     </div>
     
-    <div className={`mt-6 flex items-center gap-2 px-6 py-2 rounded-full border border-gold/20 text-[10px] font-heading font-black uppercase tracking-[0.3em] transition-all duration-500 ${isExpanded ? "bg-plum text-white border-plum" : "text-gold group-hover:bg-gold/5"}`}>
+    <div className={`mt-4 flex items-center gap-2 px-5 py-1.5 rounded-full border border-gold/20 text-[9px] font-heading font-black uppercase tracking-[0.2em] transition-all duration-500 ${isExpanded ? "bg-plum text-white border-plum" : "text-gold group-hover:bg-gold/5"}`}>
       {isExpanded ? "Recolher Capítulo" : "Abrir Capítulo"}
-      <div className={`w-4 h-4 transition-transform duration-500 ${isExpanded ? "rotate-180" : ""}`}>
+      <div className={`w-3.5 h-3.5 transition-transform duration-500 ${isExpanded ? "rotate-180" : ""}`}>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
       </div>
     </div>
 
     {/* Ornamental corners */}
-    <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-gold/20 rounded-tl-lg" />
-    <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-gold/20 rounded-tr-lg" />
-    <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-gold/20 rounded-bl-lg" />
-    <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-gold/20 rounded-br-lg" />
+    <div className="absolute top-3 left-3 w-5 h-5 border-t border-l border-gold/15 rounded-tl-lg" />
+    <div className="absolute top-3 right-3 w-5 h-5 border-t border-r border-gold/15 rounded-tr-lg" />
+    <div className="absolute bottom-3 left-3 w-5 h-5 border-b border-l border-gold/15 rounded-bl-lg" />
+    <div className="absolute bottom-3 right-3 w-5 h-5 border-b border-r border-gold/15 rounded-br-lg" />
   </button>
 );
 
@@ -243,7 +243,7 @@ const SymbolLibraryPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#FDFCFB] relative overflow-hidden pb-32">
+    <div className="min-h-screen bg-[#FDFCFB] relative overflow-hidden pb-48 md:pb-60">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-rose-100/10 blur-[120px] pointer-events-none" />
       <div className="absolute top-40 right-1/4 w-80 h-80 bg-gold/5 blur-[100px] pointer-events-none" />
@@ -367,84 +367,84 @@ const SymbolLibraryPage = () => {
                     return (
                       <div
                         key={sym.id}
-                        className={`group relative rounded-[2.5rem] transition-all duration-500 border overflow-hidden shadow-sm ${
+                        className={`group relative rounded-[2rem] transition-all duration-500 border overflow-hidden shadow-sm ${
                           isExpandedSymbol
-                            ? "bg-white border-gold/40 shadow-xl ring-1 ring-gold/10"
+                            ? "bg-white border-gold/40 shadow-xl ring-1 ring-gold/5"
                             : "bg-white/80 border-gold/10 hover:border-gold/20 hover:bg-white hover:shadow-md"
                         }`}
                       >
                         {/* Premium Card Ornament */}
-                        <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
-                          <Star className="w-20 h-20 text-gold" />
+                        <div className="absolute top-0 right-0 p-6 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity pointer-events-none">
+                          <Star className="w-16 h-16 text-gold" />
                         </div>
 
                         {/* Interactive Header area */}
                         <div className="flex flex-col">
                           <button
-                            onClick={() => setSelectedSymbol(isExpanded ? null : sym)}
-                            className="flex-1 text-left p-10 md:p-14 focus:outline-none"
+                            onClick={() => setSelectedSymbol(isExpandedSymbol ? null : sym)}
+                            className="flex-1 text-left p-6 md:p-10 focus:outline-none"
                           >
-                            <div className="flex justify-between items-start mb-10">
-                              <div className="space-y-3 flex-1 pr-4">
-                                <h3 className="font-heading text-2xl md:text-4xl font-bold text-plum group-hover:text-gold transition-colors tracking-tight">
+                            <div className="flex justify-between items-start mb-6">
+                              <div className="space-y-2 flex-1 pr-4">
+                                <h3 className="font-heading text-xl md:text-3xl font-bold text-plum group-hover:text-gold transition-colors tracking-tight">
                                   {sym.nome}
                                 </h3>
-                                <div className="flex items-center gap-3">
-                                  <div className="h-px w-8 bg-gold/40" />
-                                  <p className="text-base md:text-xl font-body italic text-plum/40 leading-relaxed uppercase tracking-widest font-black text-[10px] md:text-xs">
+                                <div className="flex items-center gap-2">
+                                  <div className="h-px w-6 bg-gold/40" />
+                                  <p className="text-[9px] md:text-[10px] font-heading font-black text-plum/40 leading-relaxed uppercase tracking-widest">
                                     {sym.leituras[0]}
                                   </p>
                                 </div>
                               </div>
-                              <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-700 shadow-sm border border-gold/20 ${
-                                isExpanded ? "bg-plum text-white rotate-180" : "bg-white text-gold hover:bg-gold hover:text-white"
+                              <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-700 shadow-sm border border-gold/20 ${
+                                isExpandedSymbol ? "bg-plum text-white rotate-180" : "bg-white text-gold hover:bg-gold hover:text-white"
                               }`}>
-                                {isExpanded ? <X className="w-6 h-6" /> : <BookOpen className="w-6 h-6" />}
+                                {isExpandedSymbol ? <X className="w-5 h-5" /> : <BookOpen className="w-5 h-5" />}
                               </div>
                             </div>
                             
-                            <p className={`text-lg md:text-xl font-body leading-relaxed text-plum/70 mb-10 italic border-l-2 border-rose-100 pl-6 ${isExpanded ? "" : "line-clamp-2"}`}>
+                            <p className={`text-sm md:text-base font-body leading-relaxed text-plum/70 mb-8 italic border-l-2 border-rose-100 pl-4 ${isExpandedSymbol ? "" : "line-clamp-2"}`}>
                               {sym.explicacao}
                             </p>
 
                             {relatedCards.length > 0 && (
-                              <div className="space-y-8 mt-4">
-                                <div className="flex items-center gap-4">
-                                  <div className="h-px w-6 bg-gold/30" />
-                                  <span className="text-[10px] md:text-[11px] font-heading font-black tracking-[0.4em] text-gold uppercase">Estudo nas Cartas</span>
+                              <div className="space-y-6 mt-2">
+                                <div className="flex items-center gap-3">
+                                  <div className="h-px w-5 bg-gold/30" />
+                                  <span className="text-[9px] md:text-[10px] font-heading font-black tracking-[0.3em] text-gold uppercase">Estudo nas cartas</span>
                                 </div>
-                                <div className="grid grid-cols-2 xs:grid-cols-3 md:flex md:flex-wrap gap-4 md:gap-6">
+                                <div className="grid grid-cols-3 xs:grid-cols-4 md:flex md:flex-wrap gap-3 md:gap-5">
                                   {relatedCards.slice(0, 4).map((card, idx) => (
-                                    <div key={card?.id || idx} className="flex flex-col items-center gap-3 group/mini animate-in fade-in zoom-in duration-500" style={{ animationDelay: `${idx * 100}ms` }}>
+                                    <div key={card?.id || idx} className="flex flex-col items-center gap-2 group/mini animate-in fade-in zoom-in duration-500" style={{ animationDelay: `${idx * 100}ms` }}>
                                       <div 
-                                        className="relative w-full md:w-32 aspect-[2/3.2] rounded-2xl border border-gold/10 shadow-lg overflow-hidden bg-white group-hover/mini:scale-105 group-hover/mini:border-gold/40 transition-all duration-500"
+                                        className="relative w-full md:w-24 aspect-[2/3.2] rounded-xl border border-gold/10 shadow-md overflow-hidden bg-white group-hover/mini:scale-105 group-hover/mini:border-gold/40 transition-all duration-500"
                                       >
                                         <img 
                                           src={card?.cardImage} 
                                           alt={card?.name} 
                                           className="w-full h-full object-cover" 
                                         />
-                                        <div className="absolute inset-0 bg-plum/10 opacity-0 group-hover/mini:opacity-100 transition-opacity" />
+                                        <div className="absolute inset-0 bg-plum/5 opacity-0 group-hover/mini:opacity-100 transition-opacity" />
                                       </div>
-                                      <span className="text-[10px] md:text-[11px] font-heading font-bold uppercase tracking-widest text-plum/50 group-hover/mini:text-gold transition-colors text-center leading-tight px-1">
+                                      <span className="text-[8px] md:text-[9px] font-heading font-bold uppercase tracking-widest text-plum/50 group-hover/mini:text-gold transition-colors text-center leading-tight px-0.5">
                                         {card?.name}
                                       </span>
                                     </div>
                                   ))}
                                   {relatedCards.length > 4 && (
-                                    <div className="w-full xs:w-auto flex items-center justify-center px-4 py-2 rounded-xl bg-gold/5 border border-gold/10 text-[10px] font-heading font-black uppercase tracking-widest text-gold italic">
-                                      +{relatedCards.length - 4} mais
+                                    <div className="w-full xs:w-auto flex items-center justify-center px-3 py-1.5 rounded-lg bg-gold/5 border border-gold/10 text-[8px] font-heading font-black uppercase tracking-widest text-gold italic self-start mt-2">
+                                      +{relatedCards.length - 4}
                                     </div>
                                   )}
                                 </div>
                               </div>
                             )}
                             
-                            {!isExpanded && (
-                              <div className="mt-12 flex items-center justify-center py-4 border-t border-gold/5 group-hover:border-gold/20 transition-colors">
-                                <div className="flex items-center gap-3 text-gold">
-                                  <span className="text-[10px] md:text-[11px] font-heading font-black tracking-[0.6em] uppercase">Estudar Símbolo</span>
-                                  <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                            {!isExpandedSymbol && (
+                              <div className="mt-8 flex items-center justify-center py-3 border-t border-gold/5 group-hover:border-gold/10 transition-colors">
+                                <div className="flex items-center gap-2 text-gold">
+                                  <span className="text-[9px] md:text-[10px] font-heading font-black tracking-[0.4em] uppercase">Estudar Símbolo</span>
+                                  <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                                 </div>
                               </div>
                             )}
@@ -452,40 +452,48 @@ const SymbolLibraryPage = () => {
                         </div>
 
                         {/* Expanded Content */}
-                        <div className={`overflow-hidden transition-all duration-1000 ease-in-out ${
-                          isExpanded ? "max-h-[2000px] opacity-100 border-t border-gold/10" : "max-h-0 opacity-0"
+                        <div className={`overflow-hidden transition-all duration-700 ease-in-out ${
+                          isExpandedSymbol ? "max-h-[3000px] opacity-100 border-t border-gold/10" : "max-h-0 opacity-0"
                         }`}>
-                          <div className="p-10 md:p-14 bg-rose-50/20 backdrop-blur-sm space-y-12">
+                          <div className="p-6 md:p-10 bg-rose-50/15 backdrop-blur-sm space-y-10">
                             {/* Readings Section */}
-                            <div className="space-y-6">
-                              <div className="flex items-center gap-4">
-                                <Star className="w-5 h-5 text-gold fill-gold/20" />
-                                <h4 className="text-[12px] md:text-[13px] font-heading font-black tracking-[0.4em] text-plum uppercase">
+                            <div className="space-y-4">
+                              <div className="flex items-center gap-3">
+                                <Star className="w-4 h-4 text-gold fill-gold/20" />
+                                <h4 className="text-[11px] md:text-[12px] font-heading font-black tracking-[0.3em] text-plum uppercase">
                                   Chaves de Interpretação
                                 </h4>
                               </div>
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 {sym.leituras.map((r, i) => (
                                   <div 
                                     key={i} 
-                                    className="px-8 py-5 rounded-2xl text-base md:text-lg font-body bg-white border border-gold/10 text-plum shadow-sm flex items-center gap-5 hover:border-gold/30 hover:shadow-md transition-all duration-500"
+                                    className="px-6 py-4 rounded-xl text-sm md:text-base font-body bg-white border border-gold/10 text-plum shadow-sm flex items-center gap-4 hover:border-gold/30 hover:shadow-md transition-all duration-500"
                                   >
-                                    <div className="w-2 h-2 rounded-full bg-gold" />
-                                    <span className="flex-1 italic">{r}</span>
+                                    <div className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
+                                    <span className="flex-1 italic leading-relaxed">{r}</span>
                                   </div>
                                 ))}
+                                {sym.nome === "Lua Minguante" && (
+                                  <div className="px-6 py-4 rounded-xl text-sm md:text-base font-body bg-gold/5 border border-gold/20 text-plum shadow-sm flex items-start gap-4 animate-in fade-in slide-in-from-left-4 duration-700">
+                                    <Info className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                                    <span className="flex-1 italic leading-relaxed">
+                                      A relação com **O Eremita** simboliza o recolhimento consciente, o silêncio necessário para ouvir a voz interior e a interiorização que precede um novo ciclo.
+                                    </span>
+                                  </div>
+                                )}
                               </div>
                             </div>
 
                             {/* Detailed Cards Section */}
-                            <div className="space-y-8">
-                              <div className="flex items-center gap-4">
-                                <BookOpen className="w-5 h-5 text-gold" />
-                                <h4 className="text-[12px] md:text-[13px] font-heading font-black tracking-[0.4em] text-plum uppercase">
+                            <div className="space-y-6">
+                              <div className="flex items-center gap-3">
+                                <BookOpen className="w-4 h-4 text-gold" />
+                                <h4 className="text-[11px] md:text-[12px] font-heading font-black tracking-[0.3em] text-plum uppercase">
                                   Aplicações no Rider-Waite
                                 </h4>
                               </div>
-                              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                              <div className="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
                                 {relatedCards.map((card) => (
                                   <button
                                     key={card?.id}
@@ -496,20 +504,20 @@ const SymbolLibraryPage = () => {
                                         : `/arcano-menor/${card?.id}`;
                                       navigate(route);
                                     }}
-                                    className="flex flex-col gap-4 p-4 rounded-3xl bg-white border border-gold/10 hover:border-gold/40 transition-all group/card shadow-md hover:shadow-xl hover:-translate-y-2 duration-500"
+                                    className="flex flex-col gap-3 p-3 rounded-2xl bg-white border border-gold/10 hover:border-gold/30 transition-all group/card shadow-sm hover:shadow-lg hover:-translate-y-1 duration-500"
                                   >
-                                    <div className="aspect-[2/3.2] rounded-2xl overflow-hidden relative shadow-lg">
+                                    <div className="aspect-[2/3.2] rounded-xl overflow-hidden relative shadow-md">
                                       <img 
                                         src={card?.cardImage} 
                                         alt={card?.name} 
                                         className="w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-110" 
                                       />
                                       <div className="absolute inset-0 bg-plum/40 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center">
-                                        <ExternalLink className="w-8 h-8 text-white scale-50 group-hover/card:scale-100 transition-transform duration-500" />
+                                        <ExternalLink className="w-6 h-6 text-white scale-50 group-hover/card:scale-100 transition-transform duration-500" />
                                       </div>
                                     </div>
-                                    <div className="text-center">
-                                      <span className="block text-xs md:text-sm font-heading font-bold text-plum group-hover/card:text-gold transition-colors">
+                                    <div className="text-center px-1">
+                                      <span className="block text-[10px] md:text-xs font-heading font-bold text-plum group-hover/card:text-gold transition-colors leading-tight">
                                         {card?.name}
                                       </span>
                                     </div>
@@ -520,7 +528,7 @@ const SymbolLibraryPage = () => {
 
                             <button
                               onClick={() => setSelectedSymbol(null)}
-                              className="w-full py-6 rounded-2xl bg-plum text-white text-[12px] font-heading font-black uppercase tracking-[0.4em] hover:bg-[#3d1328] transition-all duration-500 shadow-xl border border-gold/20"
+                              className="w-full py-5 rounded-xl bg-plum text-white text-[11px] font-heading font-black uppercase tracking-[0.3em] hover:bg-[#3d1328] transition-all duration-500 shadow-lg border border-gold/10"
                             >
                               Recolher Estudo
                             </button>
@@ -565,7 +573,7 @@ const SymbolLibraryPage = () => {
         </div>
       </main>
 
-      <BottomNav />
+      {/* Removed duplicate BottomNav here as it's provided by AppShell */}
     </div>
   );
 };
