@@ -442,7 +442,7 @@ const SymbolLibraryPage = () => {
                             
                             {!isExpandedSymbol && (
                               <div className="mt-8 flex items-center justify-center py-3 border-t border-gold/5 group-hover:border-gold/10 transition-colors">
-                                <div className="flex items-center gap-2 text-gold">
+                                <div className="flex items-center gap-2 text-plum/80 group-hover:text-gold transition-colors">
                                   <span className="text-[9px] md:text-[10px] font-heading font-black tracking-[0.4em] uppercase">Estudar Símbolo</span>
                                   <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                                 </div>
