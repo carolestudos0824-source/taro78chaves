@@ -312,42 +312,37 @@ const SymbolLibraryPage = () => {
       </header>
 
       <main className="relative z-10 container max-w-3xl px-6 py-8">
-        {/* Category chips */}
+        {/* Chapters Navigation - Only show if not searching */}
         {!search && (
-          <div className="flex overflow-x-auto pb-6 -mx-6 px-6 no-scrollbar gap-2 mb-4">
-            <button
-              onClick={() => setActiveCategory(null)}
-              className={`flex-shrink-0 px-8 py-3 rounded-full text-[11px] font-heading font-black tracking-[0.2em] uppercase transition-all duration-300 border ${
-                !activeCategory 
-                  ? "bg-plum text-white border-plum shadow-lg shadow-plum/20" 
-                  : "bg-white text-plum/50 border-gold/15 hover:border-gold/30 hover:bg-[#FDFCFB]"
-              }`}
-            >
-              Todos
-            </button>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
             {categorias.map(cat => (
               <button
                 key={cat.slug}
-                onClick={() => setActiveCategory(activeCategory === cat.slug ? null : cat.slug)}
-                className={`flex-shrink-0 px-8 py-3 rounded-full text-[11px] font-heading font-black tracking-[0.2em] uppercase transition-all duration-300 border flex items-center gap-2.5 ${
-                  activeCategory === cat.slug 
-                    ? "bg-plum text-white border-plum shadow-lg shadow-plum/20" 
-                    : "bg-white text-plum/50 border-gold/15 hover:border-gold/30 hover:bg-[#FDFCFB]"
+                onClick={() => {
+                  toggleCategory(cat.slug);
+                  // Scroll to the category if we are expanding it
+                  if (!expandedCategories.has(cat.slug)) {
+                    document.getElementById(`chapter-${cat.slug}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+                className={`px-4 py-3 rounded-2xl text-[10px] font-heading font-black tracking-widest uppercase transition-all duration-300 border flex items-center justify-center gap-2 ${
+                  expandedCategories.has(cat.slug)
+                    ? "bg-plum text-white border-plum shadow-md" 
+                    : "bg-white text-plum/50 border-gold/15 hover:border-gold/30 hover:bg-gold/5"
                 }`}
               >
-                <span className="text-sm opacity-80">{cat.icone}</span>
-                {cat.nome}
+                <span>{cat.icone}</span>
+                <span className="truncate">{cat.nome}</span>
               </button>
             ))}
           </div>
         )}
 
         {/* Categories and symbols */}
-        <div className="space-y-16">
+        <div className="space-y-12">
           {filteredCategories.map(cat => {
-            const currentVisible = visibleCount[cat.slug] || 6;
-            const hasMore = cat.simbolos.length > currentVisible && !search;
-            const displaySimbolos = search ? cat.simbolos : cat.simbolos.slice(0, currentVisible);
+            const isExpanded = expandedCategories.has(cat.slug) || !!search;
+            const displaySimbolos = cat.simbolos;
 
             return (
               <section key={cat.slug} className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
