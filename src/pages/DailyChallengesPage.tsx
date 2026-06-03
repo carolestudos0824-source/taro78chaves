@@ -33,6 +33,7 @@ const today = () => {
 
 const DailyChallengesPage = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { progress, addXP, updateStreak } = useProgress();
   const { data: arcanos } = useArcanosList({ tipo: "maior" });
   const { data: symbols } = useSymbolsContent();
