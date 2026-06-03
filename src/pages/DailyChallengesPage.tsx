@@ -66,9 +66,39 @@ const DailyChallengesPage = () => {
 
   const [activeChallenge, setActiveChallenge] = useState<DailyChallengeItem | null>(null);
 
+  // Sync with localStorage
   useEffect(() => {
     localStorage.setItem("daily-challenges", JSON.stringify({ date: today(), items: challenges }));
   }, [challenges]);
+
+  // Sync with Supabase on mount
+  useEffect(() => {
+    if (!user) return;
+
+    const fetchCompletions = async () => {
+      console.log(`[Ritual] Fetching today's completions for user: ${user.id}`);
+      const { data, error } = await supabase
+        .from("daily_challenge_completions")
+        .select("challenge_id")
+        .eq("user_id", user.id)
+        .eq("challenge_date", today());
+
+      if (error) {
+        console.error("[Ritual] Error fetching completions:", error);
+        return;
+      }
+
+      if (data && data.length > 0) {
+        const completedIds = data.map(c => c.challenge_id);
+        console.log("[Ritual] Found completions in Supabase:", completedIds);
+        setChallenges(prev => prev.map(ch => 
+          completedIds.includes(ch.id) ? { ...ch, completed: true } : ch
+        ));
+      }
+    };
+
+    fetchCompletions();
+  }, [user]);
 
   const completedCount = challenges.filter(c => c.completed).length;
   const totalXPEarned = challenges.filter(c => c.completed).reduce((sum, c) => sum + c.xp, 0);
