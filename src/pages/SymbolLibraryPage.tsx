@@ -462,6 +462,15 @@ const SymbolLibraryPage = () => {
           </div>
         )}
 
+        {/* Search Results Context Message */}
+        {search && filteredCategories.length > 0 && (
+          <div className="mb-10 px-4 py-6 rounded-3xl bg-gold/5 border border-gold/15 animate-in fade-in slide-in-from-top-4 duration-700">
+            <p className="text-sm font-body italic text-plum/70 text-center">
+              Exibindo símbolos relacionados a <span className="font-bold text-plum">"{search}"</span>.
+            </p>
+          </div>
+        )}
+
         {/* Categories and symbols */}
         <div className="space-y-12">
           {filteredCategories.map(cat => {
