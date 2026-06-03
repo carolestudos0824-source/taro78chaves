@@ -329,7 +329,7 @@ const SymbolLibraryPage = () => {
                 className={`px-4 py-3 rounded-2xl text-[10px] font-heading font-black tracking-widest uppercase transition-all duration-300 border flex items-center justify-center gap-2 ${
                   expandedCategories.has(cat.slug)
                     ? "bg-plum text-white border-plum shadow-md" 
-                    : "bg-white text-plum/50 border-gold/15 hover:border-gold/30 hover:bg-gold/5"
+                    : "bg-white text-plum/70 border-gold/15 hover:border-gold/30 hover:bg-gold/5"
                 }`}
               >
                 <span>{cat.icone}</span>
