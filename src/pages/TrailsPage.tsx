@@ -272,7 +272,7 @@ const TrailsPage = () => {
                         <div className={`absolute -left-[54px] sm:-left-[74px] w-5 h-5 rounded-full border-[3px] border-[#FAF5EF] z-20 transition-all duration-500 shadow-sm ${
                           modComplete ? 'bg-[#C8A66A] scale-100 shadow-[0_0_10px_rgba(200,166,106,0.5)]' : 
                           isNext ? 'bg-[#5B1F3D] scale-[1.6] shadow-[0_0_15px_rgba(91,31,61,0.5)]' : 
-                          unlocked ? 'bg-[#DCCFC2] scale-100' : 'bg-[#DCCFC2]/40 scale-90'
+                          unlocked ? 'bg-[#DCCFC2] scale-100' : 'bg-[#DCCFC2]/80 scale-90'
                         }`} />
 
                         <div className={`w-14 h-14 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center shrink-0 shadow-[0_10px_25px_rgba(0,0,0,0.05)] transition-all duration-700 group-hover/mod:rotate-6 group-hover/mod:scale-105 ${
