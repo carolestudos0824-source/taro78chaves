@@ -221,7 +221,7 @@ const TrailsPage = () => {
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
                       <span className={`text-[10px] sm:text-[12px] font-heading font-black tracking-[0.5em] uppercase transition-colors duration-500 ${
-                        unlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D]/50'
+                        unlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D]/75'
                       }`}>
                         {level.title.split(' — ')[0]}
                       </span>
