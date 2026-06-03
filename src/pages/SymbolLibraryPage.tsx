@@ -443,6 +443,7 @@ const SymbolLibraryPage = () => {
     );
   }
 
+  console.log("SymbolLibraryPage rendering main content");
   return (
     <div className="min-h-screen bg-[#FDFCFB] relative overflow-hidden pb-48 md:pb-60">
       {/* Decorative background elements */}
