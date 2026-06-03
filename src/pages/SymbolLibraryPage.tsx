@@ -151,7 +151,7 @@ const SymbolLibraryPage = () => {
 
             <button 
               onClick={() => navigate("/app")} 
-              className="absolute left-0 top-0 p-2.5 rounded-full bg-white border border-gold/20 hover:bg-gold/5 transition-all text-plum/60 hover:text-plum shadow-sm"
+              className="absolute left-0 top-0 p-3 rounded-full bg-white border border-gold/15 hover:border-gold/30 hover:bg-gold/5 transition-all text-plum/50 hover:text-plum shadow-sm"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
@@ -159,7 +159,7 @@ const SymbolLibraryPage = () => {
 
           {/* Search */}
           <div className="relative group max-w-xl mx-auto">
-            <div className="absolute inset-0 bg-gold/10 blur-xl group-focus-within:bg-gold/20 transition-all rounded-[2rem]" />
+            <div className="absolute inset-0 bg-gold/5 blur-xl group-focus-within:bg-gold/15 transition-all rounded-[2rem]" />
             <div className="relative flex items-center">
               <Search className="absolute left-6 w-5 h-5 text-plum/30 group-focus-within:text-gold transition-colors" />
               <input
@@ -167,7 +167,7 @@ const SymbolLibraryPage = () => {
                 placeholder="Buscar símbolo, carta ou tema..."
                 value={search}
                 onChange={e => { setSearch(e.target.value); setActiveCategory(null); }}
-                className="w-full pl-14 pr-14 py-5 rounded-[2rem] text-base font-body bg-white border border-gold/20 outline-none focus:border-gold/50 focus:ring-8 focus:ring-gold/5 transition-all shadow-md placeholder:text-plum/30"
+                className="w-full pl-14 pr-14 py-6 rounded-[2rem] text-base font-body bg-white border border-gold/15 outline-none focus:border-gold/40 focus:ring-8 focus:ring-gold/5 transition-all shadow-md placeholder:text-plum/30"
               />
               {search && (
                 <button 
