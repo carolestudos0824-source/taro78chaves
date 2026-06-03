@@ -56,7 +56,7 @@ const ChapterHeader = ({
         </h2>
         <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-gold/20" />
       </div>
-      <p className="text-xs md:text-sm font-body italic text-plum/70 leading-relaxed px-4">
+      <p className="text-xs md:text-sm font-body italic text-plum/80 leading-relaxed px-4">
         {description}
       </p>
     </div>
