@@ -180,6 +180,8 @@ const AppRoutes = () => {
         <Route path="/apresentacao" element={<LazyRoute><PresentationPage /></LazyRoute>} />
         <Route path="/validar-certificado" element={<LazyRoute><ValidateCertificatePage /></LazyRoute>} />
         <Route path="/visual-certificado" element={<LazyRoute><CertificateVisualModel /></LazyRoute>} />
+
+
         
 
 
@@ -227,6 +229,7 @@ const AppRoutes = () => {
           <Route path="/revisao" element={<LazyRoute><ReviewPage /></LazyRoute>} />
           <Route path="/certificados" element={<LazyRoute><CertificatesPage /></LazyRoute>} />
           <Route path="/biblioteca" element={<LazyRoute><SymbolLibraryPage /></LazyRoute>} />
+
           <Route path="/rotina" element={<LazyRoute><StudyRoutinePage /></LazyRoute>} />
           <Route path="/minha-jornada" element={<LazyRoute><JourneyJournalPage /></LazyRoute>} />
           <Route path="/admin" element={<LazyRoute><AdminPage /></LazyRoute>} />

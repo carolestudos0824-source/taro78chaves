@@ -180,39 +180,40 @@ const SymbolLibraryPage = () => {
       "Balança": ["maior-11"],
       
       // ELEMENTOS ASTROLÓGICOS
-      "Estrela de seis pontas": ["maior-17"],
-      "Estrela de oito pontas": ["maior-17"],
+      "Estrela de Seis Pontas": ["maior-17"],
+      "Estrela de Oito Pontas": ["maior-17"],
       "Roda Zodiacal": ["maior-10", "maior-21"],
-      "Lemniscata": ["maior-1", "maior-8"],
+      "Lemniscata (∞)": ["maior-1", "maior-8"],
       "Lua": ["maior-18", "maior-2"],
       "Sol": ["maior-19"],
       "Círculo / Mandala": ["maior-21", "maior-10"],
       
       // NÚMEROS
       "Zero (0)": ["maior-0"],
-      "Um (1)": ["maior-1", "paus-1", "copas-1", "espadas-1", "ouros-1"],
-      "Dois (2)": ["maior-2", "copas-2", "espadas-2"],
-      "Três (3)": ["maior-3", "copas-3", "espadas-3"],
-      "Quatro (4)": ["maior-4", "ouros-4", "paus-4"],
-      "Cinco (5)": ["maior-5", "copas-5", "ouros-5"],
-      "Seis (6)": ["maior-6", "copas-6", "espadas-6"],
-      "Sete (7)": ["maior-7", "copas-7", "paus-7"],
-      "Oito (8)": ["maior-8", "espadas-8", "ouros-8"],
-      "Nove (9)": ["maior-9", "copas-9", "espadas-9"],
-      "Dez (10)": ["maior-10", "copas-10", "ouros-10"],
+      "Um (I)": ["maior-1", "paus-1", "copas-1", "espadas-1", "ouros-1"],
+      "Dois (II)": ["maior-2", "copas-2", "espadas-2"],
+      "Três (III)": ["maior-3", "copas-3", "espadas-3"],
+      "Quatro (IV)": ["maior-4", "ouros-4", "paus-4"],
+      "Cinco (V)": ["maior-5", "copas-5", "ouros-5"],
+      "Seis (VI)": ["maior-6", "copas-6", "espadas-6"],
+      "Sete (VII)": ["maior-7", "copas-7", "paus-7"],
+      "Oito (VIII)": ["maior-8", "espadas-8", "ouros-8"],
+      "Nove (IX)": ["maior-9", "copas-9", "espadas-9"],
+      "Dez (X)": ["maior-10", "copas-10", "ouros-10"],
       
       // GESTOS E POSTURAS
-      "Mão erguida ao céu": ["maior-1"],
-      "Mão apontando para baixo": ["maior-1"],
-      "Olhos fechados": ["espadas-2", "espadas-4"],
-      "Postura sentada / trono": ["maior-2", "maior-3", "maior-4", "maior-11"],
-      "Figura em pé no precipício": ["maior-0"],
-      "Figura caminhando": ["maior-0", "maior-9", "copas-8"],
-      "Braços abertos": ["maior-21", "maior-12"],
-      "Mãos unidas / bênção": ["maior-5", "copas-2"],
-      "Cabeça baixa / luto": ["copas-5"],
-      "Contemplação / espera": ["ouros-7", "copas-4"]
+      "Mão Erguida ao Céu": ["maior-1"],
+      "Mão Apontando para Baixo": ["maior-1"],
+      "Olhos Fechados": ["espadas-2", "espadas-4"],
+      "Postura Sentada / Trono": ["maior-2", "maior-3", "maior-4", "maior-11"],
+      "Figura em Pé no Precipício": ["maior-0"],
+      "Figura Caminhando": ["maior-0", "maior-9", "copas-8"],
+      "Braços Abertos": ["maior-21", "maior-12"],
+      "Mãos Unidas / Bênção": ["maior-5", "copas-2"],
+      "Cabeça Baixa / Luto": ["copas-5"],
+      "Contemplação / Espera": ["ouros-7", "copas-4"]
     };
+
 
     const ids = mapping[symbolName] || [];
     if (ids.length === 0) {
