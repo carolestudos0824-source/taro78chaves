@@ -166,69 +166,76 @@ const DashboardPage = () => {
           </div>
         )}
 
-        {/* 1. Bloco Principal: Minha Jornada - Refined Hierarquia & Espaçamento */}
-        <section className="relative rounded-[2rem] md:rounded-[2.5rem] overflow-hidden p-5 md:p-8 border-2 border-[#C8A66A] bg-white shadow-xl shadow-[#5B1F3D]/5">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#C8A66A]/5 rounded-full blur-3xl -mr-16 -mt-16" />
+        {/* 1. Bloco Principal: Minha Jornada - Elegant RWS Focus */}
+        <section className="relative rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-2 border-gold/30 bg-white shadow-2xl shadow-plum/5 group">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-[80px] -mr-32 -mt-32 transition-colors group-hover:bg-gold/10" />
           
-          <div className="flex items-start justify-between mb-6 md:mb-8">
-            <div className="space-y-1">
-              <span className="text-[11px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Onde você está</span>
-              <h2 className="text-xl md:text-2xl font-heading font-black text-[#5B1F3D]">Minha Jornada</h2>
+          <div className="relative z-10 flex flex-col md:flex-row min-h-[320px]">
+            {/* Card Left: The Current Major Arcana Visual */}
+            <div className="w-full md:w-[240px] p-8 bg-plum flex items-center justify-center relative overflow-hidden shrink-0">
+               <div className="absolute inset-0 opacity-10 bg-mystic-bg-procedural scale-150 rotate-12" />
+               <div className="absolute inset-0 bg-gradient-to-t from-plum via-transparent to-transparent opacity-60 z-10" />
+               
+               {currentStep && (
+                 <div className="relative z-20 w-40 aspect-[2/3.5] rounded-xl overflow-hidden border-2 border-gold/40 shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-transform duration-500 group-hover:scale-105">
+                    <img 
+                      src={currentStep.image} 
+                      alt={currentStep.name}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+                 </div>
+               )}
             </div>
-            <div className="text-right">
-              <span className="text-2xl md:text-3xl font-heading font-black text-[#5B1F3D]">{globalProgressPct}%</span>
-              <p className="text-[11px] font-heading font-black text-[#C8A66A] uppercase tracking-widest mt-1">Concluído</p>
-            </div>
-          </div>
 
-          <div className="flex flex-col md:flex-row md:items-center gap-6 mb-8">
-            {currentStep && (
-              <div className="flex items-center gap-4 flex-1">
-                <div className="relative shrink-0">
-                  <div className="absolute -inset-1 bg-[#C8A66A]/20 rounded-xl blur-sm" />
-                  <img 
-                    src={currentStep.image} 
-                    alt={currentStep.name}
-                    className="relative w-14 h-20 object-cover rounded-lg border-2 border-[#C8A66A] bg-white shadow-md"
-                  />
-                </div>
-                <div className="space-y-1 min-w-0">
-                  <p className="text-[11px] font-heading font-black tracking-widest text-[#C8A66A] uppercase truncate">
-                    {currentStep.moduleName}
-                  </p>
-                  <h3 className="text-lg font-heading font-black text-[#5B1F3D] leading-tight truncate">
-                    {currentStep.name}
-                  </h3>
-                  <div className="flex items-center gap-2 opacity-60">
-                    <Clock className="w-3 h-3 text-[#5B1F3D]" />
-                    <span className="text-[11px] font-body font-bold italic text-[#5B1F3D]">Última lição: {lastLessonName}</span>
+            {/* Card Right: Context & Journey Progress */}
+            <div className="flex-1 p-8 md:p-10 flex flex-col justify-center space-y-6">
+              <div className="space-y-1">
+                <span className="text-[11px] font-heading font-black tracking-[0.4em] text-gold uppercase opacity-80">Continuidade</span>
+                <h2 className="text-3xl font-heading font-black text-plum tracking-tight leading-none">Minha Jornada</h2>
+              </div>
+
+              {currentStep && (
+                <div className="space-y-4">
+                  <div className="space-y-1">
+                    <p className="text-[12px] font-heading font-black tracking-widest text-gold/80 uppercase">
+                      {currentStep.moduleName}
+                    </p>
+                    <h3 className="text-xl font-heading font-black text-plum leading-tight">
+                      Arcano {currentStep.numeral} — {currentStep.name}
+                    </h3>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="relative h-2.5 rounded-full bg-gold/10 border border-gold/5 overflow-hidden">
+                      <div 
+                        className="h-full rounded-full bg-gradient-to-r from-plum to-gold transition-all duration-[1500ms] ease-in-out"
+                        style={{ width: `${Math.max(globalProgressPct, 5)}%` }}
+                      />
+                    </div>
+                    <div className="flex justify-between items-center px-1">
+                      <span className="text-[10px] font-heading font-black text-plum/40 uppercase tracking-widest">
+                        {totalCompletedArcanos} de 78 Arcanos
+                      </span>
+                      <span className="text-[10px] font-heading font-black text-gold uppercase tracking-widest">
+                        {globalProgressPct}% Dominado
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
 
-          <div className="space-y-4">
-            <div className="relative h-4 rounded-full bg-[#E8DED3] border border-[#DCCFC2] p-[2.5px] overflow-hidden">
-              <div 
-                className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out"
-                style={{ width: `${Math.max(globalProgressPct, 5)}%` }}
-              />
-            </div>
-            <div className="flex justify-between text-[11px] font-heading font-black text-[#5B1F3D]/40 uppercase tracking-widest px-1">
-              <span>{totalCompletedArcanos}/78 concluídas</span>
-              <span>{currentStep ? `Próxima: ${currentStep.name}` : "Jornada completa"}</span>
+              <button
+                onClick={() => currentStep && navigate(currentStep.route)}
+                className="w-full py-5 bg-plum text-white rounded-2xl font-heading text-[11px] tracking-[0.3em] uppercase font-black flex items-center justify-center gap-3 border-2 border-gold/40 shadow-xl hover:bg-[#4A1932] transition-all hover:translate-y-[-2px] active:translate-y-0"
+              >
+                {totalCompletedArcanos === 0 ? "Abrir o Primeiro Portal" : "Atravessar Próximo Portal"} 
+                <ChevronRight className="w-5 h-5 text-gold animate-pulse" />
+              </button>
             </div>
           </div>
-
-          <button
-            onClick={() => currentStep && navigate(currentStep.route)}
-            className="w-full mt-8 py-4 bg-[#5B1F3D] text-white rounded-2xl font-heading text-[11px] tracking-[0.3em] uppercase font-black flex items-center justify-center gap-2 border-2 border-[#C8A66A]/30 shadow-lg hover:bg-[#3D1429] transition-all"
-          >
-            {totalCompletedArcanos === 0 ? "Iniciar minha jornada" : "Continuar de onde parei"} 
-            <ChevronRight className="w-4 h-4 text-[#C8A66A]" />
-          </button>
         </section>
+
 
         {/* 2. Grid de Cards Menores */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
