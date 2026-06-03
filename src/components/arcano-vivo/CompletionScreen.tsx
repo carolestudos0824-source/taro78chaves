@@ -1,5 +1,7 @@
 import { ArrowLeft, ArrowRight, MapPin, Sparkles, Check, Key, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
 import { ReflectionSection } from "../ReflectionSection";
+
 import { useNavigate } from "react-router-dom";
 import { useProgress } from "@/hooks/use-progress";
 import { useRole } from "@/hooks/use-role";
