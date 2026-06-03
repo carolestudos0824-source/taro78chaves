@@ -529,8 +529,6 @@ const SymbolLibraryPage = () => {
                     );
                   })}
                 </div>
-
-                </div>
               </section>
             );
           })}
