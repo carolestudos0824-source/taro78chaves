@@ -200,9 +200,9 @@ const TrailsPage = () => {
             const landmark = level.landmarkCardId !== undefined ? getLandmark(level.landmarkCardId) : null;
 
             return (
-              <div key={level.id} className={`relative z-10 group transition-all duration-700 ${!unlocked ? 'opacity-100' : 'opacity-100'}`}>
+              <div key={level.id} className="relative group transition-all duration-700">
                 {/* Portal Header - Ritualistic focus */}
-                <div className="flex items-center gap-7 sm:gap-12 mb-16 relative">
+                <div className="flex items-center gap-7 sm:gap-12 mb-16 relative z-10">
                   <div className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center border-[3px] transition-all duration-700 shadow-[0_15px_40px_rgba(0,0,0,0.05)] ${
                     unlocked 
                       ? (isCurrent ? 'bg-white border-[#5B1F3D] scale-110 shadow-[0_20px_50px_rgba(91,31,61,0.15)] ring-8 ring-[#5B1F3D]/5' : 'bg-white border-[#C8A66A]') 
@@ -248,7 +248,7 @@ const TrailsPage = () => {
                 </div>
 
                 {/* Modules Grid - Enhanced Contrast & Premium Cards */}
-                <div className="ml-[31px] sm:ml-[39px] pl-10 sm:pl-20 space-y-8 relative">
+                <div className="ml-[31px] sm:ml-[39px] pl-10 sm:pl-20 space-y-8 relative z-10">
                   {level.modules.map(modId => {
                     const mod = MODULES.find(m => m.id === modId);
                     if (!mod) return null;
@@ -321,17 +321,24 @@ const TrailsPage = () => {
                   })}
                 </div>
 
-                {/* Landmark Card Decor - Integrated & High Contrast */}
+                {/* Landmark Card Decor - Atmosphere & Context */}
                 {landmark && (
-                  <div className={`absolute -right-8 sm:-right-16 top-16 w-32 sm:w-48 transition-all duration-1000 hidden lg:block group-hover:scale-110 group-hover:-translate-x-2 ${
-                    unlocked ? 'opacity-50 group-hover:opacity-100 grayscale-0' : 'opacity-35 grayscale-[0.5] shadow-xl'
+                  <div className={`absolute -right-20 sm:-right-40 top-20 sm:top-32 w-24 sm:w-56 transition-all duration-1000 pointer-events-none z-0 ${
+                    unlocked 
+                      ? 'opacity-20 group-hover:opacity-35 grayscale-0' 
+                      : 'opacity-10 grayscale-[0.8]'
                   }`}>
-                    <div className="relative transform rotate-[12deg] transition-transform duration-700">
-                      <div className="absolute -inset-1 bg-gradient-to-tr from-[#C8A66A]/20 to-transparent blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <img src={landmark.img} alt={landmark.name} className="w-full rounded-2xl border-[3px] border-white shadow-[0_30px_60px_rgba(0,0,0,0.15)]" />
-                      <div className="absolute inset-x-0 bottom-6 px-4">
-                        <div className="bg-white/95 backdrop-blur-md py-2.5 rounded-xl border border-[#C8A66A]/30 shadow-2xl transform transition-all duration-500 group-hover:scale-105">
-                          <p className="font-heading text-[10px] font-black text-[#5B1F3D] text-center uppercase tracking-[0.25em]">
+                    <div className="relative transform rotate-[15deg] transition-transform duration-1000 group-hover:rotate-[12deg] group-hover:scale-105">
+                      <div className="absolute -inset-4 bg-[#C8A66A]/10 blur-2xl rounded-full opacity-60" />
+                      <img 
+                        src={landmark.img} 
+                        alt={landmark.name} 
+                        className="w-full rounded-2xl border-[4px] border-white/80 shadow-[0_20px_50px_rgba(0,0,0,0.1)] backdrop-blur-[2px]" 
+                      />
+                      {/* Name Label - Hidden on mobile to keep it clean */}
+                      <div className="hidden sm:block absolute inset-x-0 -bottom-4 px-6">
+                        <div className="bg-white/90 backdrop-blur-md py-2 rounded-lg border border-[#C8A66A]/20 shadow-xl">
+                          <p className="font-heading text-[9px] font-black text-[#5B1F3D] text-center uppercase tracking-[0.2em]">
                             {landmark.name}
                           </p>
                         </div>
