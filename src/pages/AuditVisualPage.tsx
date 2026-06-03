@@ -108,9 +108,10 @@ const AuditVisualPage = () => {
               <div className="space-y-6">
                 <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Aplicações</h2>
                 <div className="space-y-4">
-                  <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black"><strong>Amor:</strong> {arcano.love.light}</p>
-                  <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black"><strong>Trabalho:</strong> {arcano.work.light}</p>
+                  <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black"><strong>Amor:</strong> {arcano.lessonSections.find(s => s.id === 'amor')?.content}</p>
+                  <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black"><strong>Trabalho:</strong> {arcano.lessonSections.find(s => s.id === 'trabalho')?.content}</p>
                 </div>
+
               </div>
               <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">Continuar</Button>
             </div>
