@@ -324,7 +324,7 @@ const TrailsPage = () => {
                 {/* Landmark Card Decor - Integrated & High Contrast */}
                 {landmark && (
                   <div className={`absolute -right-8 sm:-right-16 top-16 w-32 sm:w-48 transition-all duration-1000 hidden lg:block group-hover:scale-110 group-hover:-translate-x-2 ${
-                    unlocked ? 'opacity-40 group-hover:opacity-100 grayscale-0' : 'opacity-15 grayscale'
+                    unlocked ? 'opacity-50 group-hover:opacity-100 grayscale-0' : 'opacity-35 grayscale-[0.5] shadow-xl'
                   }`}>
                     <div className="relative transform rotate-[12deg] transition-transform duration-700">
                       <div className="absolute -inset-1 bg-gradient-to-tr from-[#C8A66A]/20 to-transparent blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
