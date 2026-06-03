@@ -84,16 +84,18 @@ const SymbolLibraryPage = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    // Standard approach to hide global header
+    // Hide standard global header
     setHeader({ hideHeader: true });
-    return () => resetHeader();
+    return () => {
+      resetHeader();
+    };
   }, [setHeader, resetHeader]);
 
   const { data: symbolsContent, isLoading } = useSymbolsContent();
   
-  // Debug log
+  // Debug log to trace data loading
   useEffect(() => {
-    console.log("SymbolLibraryPage content status:", { isLoading, hasData: !!symbolsContent });
+    console.log("SymbolLibraryPage status:", { isLoading, hasData: !!symbolsContent, catsCount: symbolsContent?.categorias?.length });
   }, [isLoading, symbolsContent]);
   
   const normalize = (text: string) => {
