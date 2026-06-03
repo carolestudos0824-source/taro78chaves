@@ -285,6 +285,14 @@ const SymbolLibraryPage = () => {
     }).filter((cat) => cat.simbolos.length > 0);
   }, [categorias, search, term]);
 
+  const foundCard = useMemo(() => {
+    if (!term) return null;
+    return FULL_DECK.find(c => {
+      const cardName = normalize(c.name);
+      return cardName.includes(term) || term.includes(cardName) || (c.category === "maior" && term === String(c.number));
+    });
+  }, [term]);
+
   const toggleCategory = (slug: string) => {
     setExpandedCategories(prev => {
       const next = new Set(prev);
