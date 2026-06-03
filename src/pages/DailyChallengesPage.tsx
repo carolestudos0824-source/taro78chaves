@@ -222,40 +222,58 @@ const DailyChallengesPage = () => {
 
         {/* Challenge list */}
         <div className="space-y-6">
-          <div className="flex items-center gap-4">
-            <span className="h-px flex-1 bg-[#C8A66A]/20" />
-            <h2 className="font-heading text-[11px] tracking-[0.4em] uppercase font-black text-[#C8A66A]">
-              Portais de Sabedoria
-            </h2>
-            <span className="h-px flex-1 bg-[#C8A66A]/20" />
+          <div className="flex flex-col items-center gap-4 mb-4">
+            <div className="flex items-center gap-4 w-full">
+              <span className="h-px flex-1 bg-[#C8A66A]/20" />
+              <h2 className="font-heading text-[11px] tracking-[0.4em] uppercase font-black text-[#C8A66A]">
+                Portais de Sabedoria
+              </h2>
+              <span className="h-px flex-1 bg-[#C8A66A]/20" />
+            </div>
+            <p className="font-body text-[13px] md:text-[14px] font-black text-[#5B1F3D]/60 text-center uppercase tracking-[0.1em] px-4">
+               {allDone 
+                 ? "Ritual de hoje completo. Volte amanhã para uma nova conexão."
+                 : "Comece pela Carta do Dia. Ao concluir cada portal, o próximo se abre."
+               }
+            </p>
           </div>
 
           <div className="grid gap-6">
-            {challenges.map((ch) => {
+            {challenges.map((ch, index) => {
               const iconName = ch.icon;
+              const isCompleted = ch.completed;
+              const isPreviousCompleted = index === 0 || challenges[index - 1].completed;
+              const isAvailable = !isCompleted && isPreviousCompleted;
+              const isBlocked = !isCompleted && !isPreviousCompleted;
 
               return (
                 <button
                   key={ch.id}
-                  onClick={() => !ch.completed && setActiveChallenge(ch)}
-                  disabled={ch.completed}
-                  className="w-full text-left group transition-all duration-500"
+                  onClick={() => isAvailable && setActiveChallenge(ch)}
+                  disabled={isCompleted || isBlocked}
+                  className={`w-full text-left group transition-all duration-500 ${isBlocked ? "cursor-not-allowed" : ""}`}
                 >
                   <div 
                     className={`rounded-[3rem] p-7 md:p-9 flex items-center gap-6 transition-all duration-500 border-2 shadow-xl ${
-                      ch.completed 
+                      isCompleted 
                         ? "bg-[#F3E6E0]/40 border-[#DCCFC2] opacity-60" 
-                        : "bg-white border-[#C8A66A]/20 hover:border-[#C8A66A]/60 hover:shadow-2xl hover:-translate-y-2 ring-1 ring-[#C8A66A]/5"
+                        : isAvailable
+                          ? "bg-white border-[#C8A66A]/40 hover:border-[#C8A66A]/80 hover:shadow-2xl hover:-translate-y-2 ring-1 ring-[#C8A66A]/5"
+                          : "bg-[#F5F5F5] border-[#E5E5E5] opacity-50 grayscale"
                     }`}
                   >
                     {/* Icon Container — Premium Circle (Estilo /app) */}
                     <div className={`w-18 h-18 md:w-24 md:h-24 rounded-[2rem] flex items-center justify-center shrink-0 border-2 transition-all duration-700 shadow-lg ${
-                      ch.completed 
+                      isCompleted 
                         ? "bg-[#DCCFC233] border-[#DCCFC2] text-[#C8A66A]/50" 
-                        : "bg-[#FAF5EF] border-[#C8A66A20] text-[#5B1F3D] group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D] group-hover:text-[#FAF5EF] group-hover:shadow-[0_15px_40px_rgba(91,31,61,0.3)] group-hover:-rotate-3"
+                        : isAvailable
+                          ? "bg-[#FAF5EF] border-[#C8A66A20] text-[#5B1F3D] group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D] group-hover:text-[#FAF5EF] group-hover:shadow-[0_15px_40px_rgba(91,31,61,0.3)] group-hover:-rotate-3"
+                          : "bg-[#E5E5E5] border-[#D5D5D5] text-[#A5A5A5]"
                     }`}>
-                      {ch.completed ? (
+                      {isCompleted ? (
                         <TarotIcon name="concluido" className="w-9 h-9 md:w-11 md:h-11" strokeWidth={4} />
+                      ) : isBlocked ? (
+                        <TarotIcon name="bloqueado" className="w-8 h-8 md:w-10 md:h-10" />
                       ) : (
                         <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
                       )}
@@ -263,26 +281,28 @@ const DailyChallengesPage = () => {
 
                     <div className="flex-1 min-w-0">
                       <h3 className={`font-heading text-lg md:text-2xl font-black tracking-tight mb-2 transition-colors ${
-                        ch.completed ? "text-[#5B1F3D]/40 line-through" : "text-[#5B1F3D]"
+                        isCompleted ? "text-[#5B1F3D]/40 line-through" : isBlocked ? "text-[#5B1F3D]/40" : "text-[#5B1F3D]"
                       }`}>
                         {ch.title}
                       </h3>
                       <p className={`font-body text-[14px] md:text-[16px] font-black leading-snug transition-colors ${
-                        ch.completed ? "text-[#5B1F3D]/30" : "text-[#5B1F3D]/80 group-hover:text-[#5B1F3D]/90"
+                        isCompleted ? "text-[#5B1F3D]/30" : isBlocked ? "text-[#5B1F3D]/30" : "text-[#5B1F3D]/80 group-hover:text-[#5B1F3D]/90"
                       }`}>
-                        {ch.subtitle}
+                        {isBlocked ? "Complete o portal anterior para liberar" : ch.subtitle}
                       </p>
                     </div>
 
                     <div className="flex flex-col items-end gap-4 shrink-0">
                       <div className={`px-5 py-2 rounded-full text-[11px] md:text-[12px] font-heading font-black tracking-tighter border-2 shadow-sm ${
-                        ch.completed 
+                        isCompleted 
                           ? "bg-emerald-50 border-emerald-200 text-emerald-600" 
-                          : "bg-[#C8A66A]/10 border-[#C8A66A]/30 text-[#C8A66A] group-hover:bg-[#C8A66A] group-hover:text-white transition-all shadow-md"
+                          : isAvailable
+                            ? "bg-[#C8A66A]/10 border-[#C8A66A]/30 text-[#C8A66A] group-hover:bg-[#C8A66A] group-hover:text-white transition-all shadow-md"
+                            : "bg-gray-100 border-gray-200 text-gray-400"
                       }`}>
-                        {ch.completed ? "Concluído" : "Pendente"}
+                        {isCompleted ? "Concluído" : isAvailable ? "Disponível" : "Bloqueado"}
                       </div>
-                      {!ch.completed && (
+                      {isAvailable && (
                         <div className="w-11 h-11 rounded-full border-2 border-[#C8A66A20] flex items-center justify-center group-hover:bg-[#C8A66A10] group-hover:border-[#C8A66A] transition-all shadow-sm">
                           <ChevronRight className="w-7 h-7 text-[#C8A66A] group-hover:translate-x-2 transition-transform duration-300" />
                         </div>
