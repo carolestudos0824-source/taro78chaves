@@ -321,19 +321,19 @@ const TrailsPage = () => {
                   })}
                 </div>
 
-                {/* Landmark Card Decor - Atmosphere & Context */}
+                {/* Landmark Card Decor - Repositioned as lateral markers with safe margin */}
                 {landmark && (
-                  <div className={`absolute -right-20 sm:-right-40 top-20 sm:top-32 w-24 sm:w-56 transition-all duration-1000 pointer-events-none z-0 ${
+                  <div className={`absolute -right-24 sm:-right-48 top-16 sm:top-24 w-28 sm:w-64 transition-all duration-1000 pointer-events-none z-0 ${
                     unlocked 
-                      ? 'opacity-20 group-hover:opacity-35 grayscale-0' 
-                      : 'opacity-10 grayscale-[0.8]'
+                      ? 'opacity-[0.18] group-hover:opacity-[0.25] grayscale-0' 
+                      : 'opacity-[0.12] grayscale-[0.8]'
                   }`}>
-                    <div className="relative transform rotate-[15deg] transition-transform duration-1000 group-hover:rotate-[12deg] group-hover:scale-105">
-                      <div className="absolute -inset-4 bg-[#C8A66A]/10 blur-2xl rounded-full opacity-60" />
+                    <div className="relative transform rotate-[18deg] transition-transform duration-1000 group-hover:rotate-[15deg] group-hover:scale-105">
+                      <div className="absolute -inset-4 bg-[#C8A66A]/5 blur-2xl rounded-full opacity-40" />
                       <img 
                         src={landmark.img} 
                         alt={landmark.name} 
-                        className="w-full rounded-2xl border-[4px] border-white/80 shadow-[0_20px_50px_rgba(0,0,0,0.1)] backdrop-blur-[2px]" 
+                        className="w-full rounded-2xl border-[3px] border-white/60 shadow-[0_15px_40px_rgba(0,0,0,0.1)] backdrop-blur-[1px]" 
                       />
                       {/* Name Label - Hidden on mobile to keep it clean */}
                       <div className="hidden sm:block absolute inset-x-0 -bottom-4 px-6">
