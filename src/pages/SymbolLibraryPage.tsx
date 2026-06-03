@@ -751,8 +751,8 @@ const SymbolLibraryPage = () => {
             <h3 className="font-heading text-2xl font-bold text-plum mb-3">
               Mistério não encontrado
             </h3>
-            <p className="font-body text-base text-plum/50 italic max-w-sm mx-auto mb-10 leading-relaxed">
-              Nenhum símbolo ou carta corresponde à busca "{search}". Experimente outro termo ou tema ancestral.
+            <p className="font-body text-base text-plum/70 italic max-w-sm mx-auto mb-10 leading-relaxed">
+              Não encontramos símbolos correspondentes a "{search}". Experimente buscar por uma carta (ex: "A Sacerdotisa"), um tema (ex: "intuição") ou um elemento visual.
             </p>
             <button 
               onClick={() => setSearch("")}
