@@ -345,10 +345,6 @@ const DashboardPage = () => {
           </div>
         </section>
 
-            <span className="text-[9px] min-[360px]:text-[11px] font-heading font-black text-[#5B1F3D] uppercase tracking-widest text-center">Como Estudar</span>
-          </button>
-        </div>
-
       </main>
     </div>
   );
