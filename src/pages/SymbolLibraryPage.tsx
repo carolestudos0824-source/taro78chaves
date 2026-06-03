@@ -150,10 +150,10 @@ const SymbolLibraryPage = () => {
           <div className="flex overflow-x-auto pb-6 -mx-6 px-6 no-scrollbar gap-2 mb-4">
             <button
               onClick={() => setActiveCategory(null)}
-              className={`flex-shrink-0 px-5 py-2 rounded-full text-[11px] font-heading font-bold tracking-wider uppercase transition-all duration-300 border ${
+              className={`flex-shrink-0 px-6 py-2.5 rounded-full text-[11px] font-heading font-black tracking-[0.2em] uppercase transition-all duration-300 border ${
                 !activeCategory 
                   ? "bg-plum text-marfim border-plum shadow-lg shadow-plum/20" 
-                  : "bg-white text-plum/60 border-gold/20 hover:border-gold/40"
+                  : "bg-white text-plum/60 border-gold/20 hover:border-gold/40 hover:bg-ivory"
               }`}
             >
               Todos
@@ -162,10 +162,10 @@ const SymbolLibraryPage = () => {
               <button
                 key={cat.slug}
                 onClick={() => setActiveCategory(activeCategory === cat.slug ? null : cat.slug)}
-                className={`flex-shrink-0 px-5 py-2 rounded-full text-[11px] font-heading font-bold tracking-wider uppercase transition-all duration-300 border flex items-center gap-2 ${
+                className={`flex-shrink-0 px-6 py-2.5 rounded-full text-[11px] font-heading font-black tracking-[0.2em] uppercase transition-all duration-300 border flex items-center gap-2.5 ${
                   activeCategory === cat.slug 
                     ? "bg-plum text-marfim border-plum shadow-lg shadow-plum/20" 
-                    : "bg-white text-plum/60 border-gold/20 hover:border-gold/40"
+                    : "bg-white text-plum/60 border-gold/20 hover:border-gold/40 hover:bg-ivory"
                 }`}
               >
                 <span className="text-sm opacity-80">{cat.icone}</span>
