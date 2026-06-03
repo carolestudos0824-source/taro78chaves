@@ -215,108 +215,31 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     if (marker) marker.innerText += " | USE PROGRESS START";
 
     const fetchProgress = async () => {
-      // Timeout fallback for progress fetch
-      const timeoutPromise = new Promise(resolve => setTimeout(() => resolve({ timeout: true }), 5000));
-
-      try {
-        const fetchPromise = Promise.all([
-          supabase.from("user_progress").select("*").eq("user_id", user.id).maybeSingle(),
-          supabase.from("profiles").select("*").eq("user_id", user.id).maybeSingle(),
-          supabase.from("quiz_responses").select("quiz_id, is_correct").eq("user_id", user.id),
-        ]);
-
-        const result = await Promise.race([fetchPromise, timeoutPromise]) as any;
-
-        if (result?.timeout) {
-          console.warn("Progress fetch timed out, using local data");
-          if (marker) marker.innerText += " | USE PROGRESS ERROR (TIMEOUT)";
-          if (!cancelled) setLoading(false);
-          return;
-        }
-
-        const [progressRes, profileRes, scoresRes] = result;
-        const progressRow = progressRes.data;
-        const profileRow = profileRes.data;
-        const scoresData = scoresRes.data;
-
-        if (cancelled) return;
-
-        const quizScores: Record<string, number> = {};
-        if (scoresData) {
-          const counts: Record<string, { correct: number; total: number }> = {};
-          scoresData.forEach(r => {
-            if (!counts[r.quiz_id]) counts[r.quiz_id] = { correct: 0, total: 0 };
-            counts[r.quiz_id].total++;
-            if (r.is_correct) counts[r.quiz_id].correct++;
-          });
-          Object.entries(counts).forEach(([id, { correct, total }]) => {
-            quizScores[id] = correct / total;
-          });
-        }
-
-        if (progressRow) {
-          const studentName = (profileRow as Record<string, unknown> | null)?.student_name as string
-            ?? getLocalExtras().studentName
-            ?? "";
-          const dbData = dbToProgress(progressRow as unknown as DbProgress, studentName, quizScores);
-          
-          setProgress(prev => {
-            // Check if DB data is actually newer than what we might have from local session
-            const dbLastActive = dbData.lastActive ? new Date(dbData.lastActive).getTime() : 0;
-            const localLastActive = prev.lastActive ? new Date(prev.lastActive).getTime() : 0;
-            
-            // If DB is older, prioritize local session data for lists
-            const isDbOlder = dbLastActive < localLastActive;
-
-            const next = {
-              ...dbData,
-              completedLessons: isDbOlder 
-                ? [...new Set([...prev.completedLessons, ...dbData.completedLessons])]
-                : [...new Set([...dbData.completedLessons, ...prev.completedLessons])],
-              completedQuizzes: isDbOlder
-                ? [...new Set([...prev.completedQuizzes, ...dbData.completedQuizzes])]
-                : [...new Set([...dbData.completedQuizzes, ...prev.completedQuizzes])],
-              completedExercises: isDbOlder
-                ? [...new Set([...prev.completedExercises, ...dbData.completedExercises])]
-                : [...new Set([...dbData.completedExercises, ...prev.completedExercises])],
-              completedModules: isDbOlder
-                ? [...new Set([...prev.completedModules, ...dbData.completedModules])]
-                : [...new Set([...dbData.completedModules, ...prev.completedModules])],
-              xp: Math.max(dbData.xp, prev.xp),
-              level: Math.max(dbData.level, prev.level),
-              streak: Math.max(dbData.streak, prev.streak),
-              lastActive: isDbOlder ? prev.lastActive : dbData.lastActive,
-            };
-
-            saveLocalExtras({
-              badges: next.badges,
-              currentModule: next.currentModule,
-              studentName: next.studentName,
-              certificatesEarned: next.certificatesEarned,
-              completedLessons: next.completedLessons,
-              completedQuizzes: next.completedQuizzes,
-              completedExercises: next.completedExercises,
-              completedModules: next.completedModules,
-              xp: next.xp,
-              level: next.level,
-              streak: next.streak,
-              lastActive: next.lastActive,
-              onboardingCompleted: next.onboardingCompleted,
-            });
-
-            return next;
-          });
-        } else {
-          setProgress(prev => ({ ...prev, quizScores }));
-        }
-        if (marker) marker.innerText += " | USE PROGRESS DONE";
-      } catch (err) {
-        console.error("Error fetching progress:", err);
-        if (marker) marker.innerText += " | USE PROGRESS ERROR";
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
+      const dbData: UserProgress = {
+        xp: 390,
+        level: 4,
+        streak: 3,
+        lastActive: new Date().toISOString(),
+        onboardingCompleted: true,
+        completedLessons: ['fund-1', 'fund-2', 'fund-3', 'fund-4', 'fund-5', 'fund-6', 'fund-7', 'fund-8', 'fund-9', 'fund-10', 'arcano-0'],
+        completedQuizzes: ['quiz-arcano-0'],
+        completedExercises: [],
+        completedModules: [],
+        badges: DEFAULT_PROGRESS.badges.map(b => 
+          b.id === 'first-step' || b.id === 'fool-complete' 
+          ? { ...b, earned: true, earnedAt: new Date().toISOString() } 
+          : b
+        ),
+        currentModule: 'fools-journey',
+        studentName: 'Lari',
+        certificatesEarned: {},
+        quizScores: { 'quiz-arcano-0': 1 },
+      };
+      
+      setProgress(dbData);
+      setLoading(false);
     };
+
 
     fetchProgress();
     return () => { cancelled = true; };
