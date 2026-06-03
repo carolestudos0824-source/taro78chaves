@@ -190,7 +190,7 @@ const DailyChallengesPage = () => {
                   {allDone ? "Ritual Cumprido" : "Seu Ritual"}
                 </span>
                 <span className="text-xl md:text-2xl font-heading font-black text-[#5B1F3D]">
-                  {allDone ? "Portal Aberto!" : `${completedCount} de ${challenges.length} Portais`}
+                  {allDone ? "Ritual Completo" : `${completedCount} de ${challenges.length} Portais`}
                 </span>
               </div>
             </div>
@@ -199,7 +199,7 @@ const DailyChallengesPage = () => {
             }}>
               <TarotIcon name="ritual" className="w-5 h-5" color="#C8A66A" />
               <span className="text-[14px] md:text-[16px] font-heading font-black text-[#5B1F3D]">
-                Ritual de Estudo
+                Ritual Diário
               </span>
             </div>
           </div>
@@ -215,8 +215,8 @@ const DailyChallengesPage = () => {
           
           <p className="mt-8 text-[13px] md:text-[14px] font-body font-black text-[#5B1F3D]/80 italic text-center leading-relaxed max-w-[300px] mx-auto">
             {allDone 
-              ? "Você concluiu todos os portais do dia. Sua jornada está fortalecida." 
-              : "Cada desafio concluído revela uma nova camada de sabedoria."}
+              ? "Ritual de hoje completo. Volte amanhã para uma nova conexão." 
+              : "Complete os 6 portais para selar sua prática de hoje."}
           </p>
         </div>
 
