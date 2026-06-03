@@ -78,10 +78,9 @@ const ChapterHeader = ({
 
 const SymbolLibraryPage = () => {
   const navigate = useNavigate();
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const [selectedSymbol, setSelectedSymbol] = useState<SymbolItemContent | null>(null);
   const [search, setSearch] = useState("");
-  const [visibleCount, setVisibleCount] = useState<Record<string, number>>({});
 
   const { data: symbolsContent, isLoading } = useSymbolsContent();
   const categorias = symbolsContent?.categorias ?? [];
