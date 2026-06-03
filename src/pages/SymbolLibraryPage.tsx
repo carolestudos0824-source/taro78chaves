@@ -443,7 +443,6 @@ const SymbolLibraryPage = () => {
                               onClick={() => setSelectedSymbol(null)}
                               className="w-full py-8 rounded-[2rem] bg-plum text-marfim text-[14px] font-heading font-black uppercase tracking-[0.5em] hover:bg-[#3d1328] transition-all duration-700 shadow-2xl shadow-plum/20 active:scale-[0.98] border border-gold/30 relative overflow-hidden group/btn"
                             >
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover/btn:animate-shine" />
                               Concluir Estudo do Símbolo
                             </button>
                           </div>
