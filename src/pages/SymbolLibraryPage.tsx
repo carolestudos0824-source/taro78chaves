@@ -528,9 +528,13 @@ const SymbolLibraryPage = () => {
 
         {/* Search Results Context Message */}
         {search && filteredCategories.length > 0 && (
-          <div className="mb-10 px-4 py-6 rounded-3xl bg-gold/5 border border-gold/15 animate-in fade-in slide-in-from-top-4 duration-700">
-            <p className="text-sm font-body italic text-plum/70 text-center">
-              Exibindo símbolos relacionados a <span className="font-bold text-plum">"{search}"</span>.
+          <div className="mb-10 px-6 py-8 rounded-[2rem] bg-gold/5 border border-gold/15 animate-in fade-in slide-in-from-top-4 duration-700">
+            <p className="text-base font-body italic text-plum/80 text-center leading-relaxed">
+              {foundCard ? (
+                <>Encontramos símbolos relacionados a <span className="font-bold text-plum">{foundCard.name}</span>.</>
+              ) : (
+                <>Exibindo símbolos relacionados a <span className="font-bold text-plum">"{search}"</span>.</>
+              )}
             </p>
           </div>
         )}
