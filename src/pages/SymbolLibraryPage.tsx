@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { ArrowLeft, Search, X, BookOpen, Star, Info, ExternalLink, ChevronLeft } from "lucide-react";
 import { useSymbolsContent } from "@/hooks/use-content";
 import { useHeader } from "@/contexts/header-context";
+import { useProgress } from "@/hooks/use-progress";
 import type { SymbolItemContent } from "@/lib/content";
 import { FULL_DECK } from "@/registry/deck-registry";
 
@@ -86,12 +87,12 @@ const SymbolLibraryPage = () => {
   useEffect(() => {
     // Hide standard global header
     setHeader({ hideHeader: true });
-    return () => {
-      resetHeader();
-    };
+    return () => resetHeader();
   }, [setHeader, resetHeader]);
 
   const { data: symbolsContent, isLoading } = useSymbolsContent();
+  
+  const { progress } = useProgress();
   
   // Debug log to trace data loading
   useEffect(() => {
@@ -457,19 +458,38 @@ const SymbolLibraryPage = () => {
       <div className="absolute top-40 right-1/4 w-80 h-80 bg-gold/5 blur-[100px] pointer-events-none" />
       <div className="absolute inset-0 opacity-[0.02] bg-mystic-bg-procedural pointer-events-none" />
 
-      {/* CUSTOM SUB-HEADER (Zero Flickering strategy) */}
-      <div className="sticky top-0 z-50 bg-[#FDFCFB]/95 backdrop-blur-md border-b border-gold/10 px-4 py-3 flex items-center gap-3">
-        <Link 
-          to="/app" 
-          className="p-2 rounded-xl bg-white border border-gold/20 text-plum/60 hover:text-plum hover:border-gold/40 transition-all shadow-sm"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </Link>
-        <div className="flex flex-col min-w-0">
-          <span className="text-[10px] font-heading font-black text-gold uppercase tracking-[0.2em] leading-none mb-1">Escola de Tarô</span>
-          <h1 className="text-sm font-heading font-bold text-plum truncate leading-none">Biblioteca de Símbolos</h1>
+      {/* Zero Flickering Global Header Replacer */}
+      <header className="sticky top-0 z-50 w-full bg-[#FAF5EF] border-b-2 border-[#C8A66A]/20 shadow-sm px-4 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <Link 
+            to="/app" 
+            className="flex items-center justify-center p-1 bg-[#FAF5EF] rounded-xl border border-[#C8A66A]/20 text-[#5B1F3D] active:scale-95 w-9 h-9"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </Link>
+          <div className="flex flex-col min-w-0">
+            <h1 className="font-heading text-[#5B1F3D] font-black tracking-tight leading-tight text-[12px] sm:text-base truncate">
+              Biblioteca de Símbolos
+            </h1>
+            <span className="font-heading text-[8px] tracking-[0.2em] uppercase text-[#5B1F3D]/60 font-black leading-none truncate">
+              Escola de Tarô
+            </span>
+          </div>
         </div>
-      </div>
+
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white rounded-xl border border-[#C8A66A]/20 shadow-sm">
+            <span className="text-[#C8A66A] text-xs">🔥</span>
+            <span className="font-heading text-[13px] font-black text-[#5B1F3D]">{progress.streak}</span>
+          </div>
+          <Link 
+            to="/perfil" 
+            className="rounded-xl flex items-center justify-center bg-white border border-[#C8A66A]/30 shadow-sm active:scale-95 w-9 h-9"
+          >
+            <Star className="w-5 h-5 text-[#C8A66A]" />
+          </Link>
+        </div>
+      </header>
 
       {/* Hero Section */}
       <header className="relative z-20 bg-transparent">
