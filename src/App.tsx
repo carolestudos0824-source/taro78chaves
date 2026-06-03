@@ -29,7 +29,7 @@ import ProfilePage from "./pages/ProfilePage.tsx";
 import FoolsJourneyPage from "./pages/FoolsJourneyPage.tsx";
 import TrailsPage from "./pages/TrailsPage.tsx";
 import DailyChallengesPage from "./pages/DailyChallengesPage.tsx";
-import AuditVisualPage from "./pages/AuditVisualPage.tsx";
+
 
 
 // Eager Module & Lesson Pages (Crucial for Journey Continuity)
