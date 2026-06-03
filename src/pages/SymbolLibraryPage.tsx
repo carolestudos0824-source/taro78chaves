@@ -90,9 +90,14 @@ const SymbolLibraryPage = () => {
       <div className="absolute top-20 right-1/4 w-48 h-48 bg-gold/10 blur-[80px] pointer-events-none" />
 
       {/* Header */}
-      <header className="relative z-20 border-b border-gold/20 bg-[#FAF5EF]/80 backdrop-blur-xl sticky top-0">
-        <div className="container max-w-3xl py-6 px-6">
-          <div className="flex items-center gap-4 mb-6">
+      <header className="relative z-20 border-b border-gold/20 bg-[#FAF5EF]/95 backdrop-blur-xl sticky top-0 shadow-sm">
+        <div className="absolute inset-x-0 -bottom-8 flex justify-center pointer-events-none opacity-20">
+          <svg width="200" height="100" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 100C10 50.2944 50.2944 10 100 10C149.706 10 190 50.2944 190 100" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
+          </svg>
+        </div>
+        <div className="container max-w-3xl py-8 px-6">
+          <div className="flex items-center gap-4 mb-8">
             <button 
               onClick={() => navigate("/app")} 
               className="p-2 rounded-full hover:bg-gold/10 transition-colors text-plum/60 hover:text-plum"
@@ -102,21 +107,21 @@ const SymbolLibraryPage = () => {
             <div className="space-y-1">
               <div className="flex items-center gap-2">
                 <div className="h-px w-6 bg-gold/40" />
-                <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Sabedoria Oculta</span>
+                <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Biblioteca Ancestral</span>
                 <div className="h-px w-6 bg-gold/40" />
               </div>
               <h1 className="font-heading text-3xl font-bold text-plum tracking-tight">
                 Biblioteca de Símbolos
               </h1>
               <p className="text-sm font-body italic text-plum/50">
-                Aprenda a reconhecer os sinais ocultos nas cartas Rider-Waite-Smith.
+                Aprenda a reconhecer os sinais vivos nas cartas Rider-Waite-Smith.
               </p>
             </div>
           </div>
 
           {/* Search */}
           <div className="relative group">
-            <div className="absolute inset-0 bg-gold/5 blur-xl group-focus-within:bg-gold/10 transition-all rounded-2xl" />
+            <div className="absolute inset-0 bg-gold/10 blur-xl group-focus-within:bg-gold/20 transition-all rounded-2xl" />
             <div className="relative flex items-center">
               <Search className="absolute left-4 w-4 h-4 text-plum/30 group-focus-within:text-gold transition-colors" />
               <input
@@ -124,7 +129,7 @@ const SymbolLibraryPage = () => {
                 placeholder="Buscar símbolo, carta ou tema..."
                 value={search}
                 onChange={e => { setSearch(e.target.value); setActiveCategory(null); }}
-                className="w-full pl-11 pr-12 py-3.5 rounded-2xl text-sm font-body bg-white border border-gold/20 outline-none focus:border-gold/50 focus:ring-4 focus:ring-gold/5 transition-all shadow-sm"
+                className="w-full pl-11 pr-12 py-4 rounded-2xl text-sm font-body bg-white border border-gold/20 outline-none focus:border-gold/50 focus:ring-4 focus:ring-gold/5 transition-all shadow-sm placeholder:text-plum/30"
               />
               {search && (
                 <button 
