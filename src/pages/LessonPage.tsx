@@ -376,6 +376,7 @@ const LessonPage = () => {
                   </p>
                 </div>
 
+
                 <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
                   Continuar para Reflexão
                 </Button>
