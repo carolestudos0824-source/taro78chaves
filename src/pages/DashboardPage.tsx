@@ -36,7 +36,7 @@ import imgMago from "@/assets/arcano-1-mago.jpg";
 import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
 import imgImperatriz from "@/assets/arcano-3-imperatriz.jpg";
 import imgImperador from "@/assets/arcano-4-imperador.jpg";
-import imgAsCopas from "@/assets/menor-copas-1.jpg";
+import imgDezOuros from "@/assets/menor-ouros-10.jpg";
 
 // Decorative components for the premium feel
 const ArchPortal = ({ children, className }: { children: React.ReactNode, className?: string }) => (
@@ -156,7 +156,7 @@ const DashboardPage = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-2">
           {[
             { label: "Domínio", value: `${globalProgressPct}%`, icon: Target, color: "text-gold" },
-            { label: totalCompletedArcanos === 1 ? "etapa feita" : "etapas feitas", value: totalCompletedArcanos, icon: KeyRound, color: "text-plum" },
+            { label: totalCompletedArcanos === 1 ? "etapa concluída" : "etapas concluídas", value: totalCompletedArcanos, icon: KeyRound, color: "text-plum" },
             { label: progress.completedLessons.length === 1 ? "lição concluída" : "lições concluídas", value: progress.completedLessons.length, icon: BookOpen, color: "text-gold" },
             { label: "Ritual diário", value: `${progress.streak} dias`, icon: Flame, color: "text-orange-500" }
           ].map((stat, i) => (
@@ -334,8 +334,9 @@ const DashboardPage = () => {
               <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none group-hover:scale-110 group-hover:opacity-[0.05] transition-all">
                 <Layout className="w-24 h-24 text-plum" />
               </div>
-              <div className="w-20 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shrink-0 group-hover:scale-[1.03] transition-all duration-500 shadow-xl">
-                 <img src={imgAsCopas} alt="Arcanos Menores" className="w-full h-full object-cover scale-110" />
+              <div className="w-24 aspect-[2/3.5] rounded-xl overflow-hidden border-2 border-gold/30 shrink-0 group-hover:scale-[1.05] transition-all duration-500 shadow-2xl relative">
+                 <img src={imgDezOuros} alt="Arcanos Menores" className="w-full h-full object-cover scale-110" />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
               </div>
               <div className="space-y-3 flex-1 relative z-10 pt-1">
                 <h4 className="font-heading text-xl font-bold text-plum tracking-tight">Arcanos Menores</h4>
@@ -365,10 +366,10 @@ const DashboardPage = () => {
                       <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shadow-lg">
                         <Sparkles className="w-5 h-5 text-gold" />
                       </div>
-                      <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold brightness-125 uppercase">Formação Completa</span>
+                      <span className="text-[11px] font-heading font-black tracking-[0.5em] text-[#FFD700] drop-shadow-sm uppercase">Formação Completa</span>
                    </div>
-                   <h3 className="text-2xl md:text-3xl font-heading font-bold tracking-tight">Sabedoria Ancestral</h3>
-                   <p className="text-sm font-body italic text-white/90 max-w-sm leading-relaxed">
+                   <h3 className="text-2xl md:text-3xl font-heading font-bold tracking-tight text-ivory">Sabedoria Ancestral</h3>
+                   <p className="text-sm font-body italic text-ivory/90 max-w-sm leading-relaxed">
                      Desbloqueie todos os 78 portais, acesse meditações guiadas, quizzes de domínio e conquiste seu Certificado de Formação.
                    </p>
                 </div>
