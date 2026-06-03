@@ -369,17 +369,26 @@ const LessonPage = () => {
 
 
           {phase === "reflexao" && (
-            <div className="space-y-8">
-              <ExerciseSection
-                {...arcano.layers.exercise}
-                onComplete={() => {}}
-                completed={true}
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                subtitle="Exercício de Conexão"
               />
-              <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">
-                Iniciar Quiz Final
-              </Button>
+              <div className="space-y-8">
+                <ExerciseSection
+                  {...arcano.layers.exercise}
+                  onComplete={() => {}}
+                  completed={true}
+                />
+                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
+                  Iniciar Quiz Final
+                </Button>
+              </div>
             </div>
           )}
+
 
           {phase === "quiz" && (
             <QuizSection
