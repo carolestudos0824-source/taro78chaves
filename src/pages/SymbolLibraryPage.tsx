@@ -517,7 +517,7 @@ const SymbolLibraryPage = () => {
                                       </div>
                                     </div>
                                     <div className="text-center px-1">
-                                      <span className="block text-[10px] md:text-xs font-heading font-bold text-plum group-hover/card:text-gold transition-colors leading-tight">
+                                      <span className="block text-[10px] md:text-xs font-heading font-black text-plum group-hover/card:text-gold transition-colors leading-tight">
                                         {card?.name}
                                       </span>
                                     </div>
