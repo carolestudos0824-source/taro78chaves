@@ -237,127 +237,92 @@ const DashboardPage = () => {
         </section>
 
 
-        {/* 2. Grid de Cards Menores */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          
-          {/* Card: Progresso */}
-          <div className="bg-white rounded-[2rem] p-6 border-2 border-[#C8A66A]/10 shadow-sm space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#FAF5EF] border border-[#C8A66A]/20 flex items-center justify-center">
-                <Target className="w-5 h-5 text-[#C8A66A]" />
-              </div>
-              <h3 className="font-heading text-sm font-black text-[#5B1F3D] uppercase tracking-widest">Progresso</h3>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-1">
-                <p className="text-xl font-heading font-black text-[#5B1F3D]">{totalCompletedArcanos}</p>
-                <p className="text-[10px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Arcanos</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-xl font-heading font-black text-[#5B1F3D]">{progress.completedLessons.length}</p>
-                <p className="text-[10px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Lições</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-xl font-heading font-black text-[#5B1F3D]">{progress.completedQuizzes.length}</p>
-                <p className="text-[10px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Quizzes</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-xl font-heading font-black text-[#5B1F3D]">{totalCompletedArcanos}</p>
-                <p className="text-[10px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">Chaves conquistadas</p>
-              </div>
-            </div>
+        {/* 2. Grid de Acesso às Trilhas - The School Map */}
+        <section className="space-y-6">
+          <div className="flex items-center justify-between px-2">
+            <h3 className="font-heading text-[11px] font-black tracking-[0.4em] text-gold uppercase opacity-80">Mapa da Escola</h3>
+            <button onClick={() => navigate("/trilhas")} className="text-[10px] font-heading font-black tracking-widest text-plum/60 hover:text-plum transition-colors flex items-center gap-2">
+              Ver Trilhas <ChevronRight className="w-3 h-3" />
+            </button>
           </div>
 
-          {/* Card: Próximo Passo */}
-          <div className="bg-[#5B1F3D] rounded-[2rem] p-6 border-2 border-[#C8A66A] shadow-lg text-white space-y-4 overflow-hidden relative group">
-            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
-              <Sparkles className="w-12 h-12" />
-            </div>
-            <div className="flex items-center gap-3 relative z-10">
-              <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center">
-                <Play className="w-4 h-4 text-[#C8A66A]" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Trail Card: Arcanos Maiores */}
+            <div 
+              onClick={() => navigate("/module/arcanos-maiores")}
+              className="bg-white rounded-[2rem] p-6 border-2 border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/30 transition-all cursor-pointer group flex gap-6"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-plum/5 flex items-center justify-center shrink-0 group-hover:bg-plum transition-colors">
+                 <KeyRound className="w-8 h-8 text-gold group-hover:text-white transition-colors" />
               </div>
-              <h3 className="font-heading text-sm font-black text-[#C8A66A] uppercase tracking-widest">Próximo Passo</h3>
-            </div>
-            {currentStep ? (
-              <div className="space-y-4 relative z-10">
-                <div className="space-y-1">
-                  <p className="text-[10px] font-heading font-black text-white/50 uppercase tracking-widest">{currentStep.name}</p>
-                  <p className="text-lg font-heading font-black leading-tight">{currentStep.lessonName}</p>
+              <div className="space-y-1">
+                <h4 className="font-heading text-lg font-black text-plum tracking-tight">Arcanos Maiores</h4>
+                <p className="text-[11px] font-body font-bold italic text-plum/60 leading-tight">O caminho iniciático dos 22 arquétipos fundamentais.</p>
+                <div className="pt-2 flex items-center gap-1.5">
+                   <span className="text-[10px] font-heading font-black text-gold uppercase tracking-widest">{completedMaiores}/22</span>
+                   <div className="w-20 h-1 bg-gold/10 rounded-full overflow-hidden">
+                      <div className="h-full bg-gold rounded-full" style={{ width: `${(completedMaiores/22)*100}%` }} />
+                   </div>
                 </div>
-                <button 
-                  onClick={() => navigate(currentStep.route)}
-                  className="w-full py-3 bg-[#C8A66A] text-[#5B1F3D] rounded-xl font-heading text-[10px] font-black tracking-widest uppercase shadow-md hover:bg-white transition-all"
-                >
-                  Começar agora
-                </button>
               </div>
-            ) : (
-              <p className="text-sm font-body font-bold italic opacity-60">Jornada concluída!</p>
-            )}
-          </div>
+            </div>
 
-          {/* Card: Conquistas */}
-          <div className="bg-white rounded-[2rem] p-6 border-2 border-[#C8A66A]/10 shadow-sm space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#FAF5EF] border border-[#C8A66A]/20 flex items-center justify-center">
-                <Trophy className="w-5 h-5 text-[#C8A66A]" />
+            {/* Trail Card: Arcanos Menores */}
+            <div 
+              onClick={() => navigate("/trilhas")}
+              className="bg-white rounded-[2rem] p-6 border-2 border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/30 transition-all cursor-pointer group flex gap-6"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-gold/5 flex items-center justify-center shrink-0 group-hover:bg-gold transition-colors">
+                 <Layout className="w-8 h-8 text-plum group-hover:text-white transition-colors" />
               </div>
-              <h3 className="font-heading text-sm font-black text-[#5B1F3D] uppercase tracking-widest">Conquistas</h3>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="flex-1 space-y-1">
-                <p className="text-sm font-heading font-black text-[#5B1F3D]">Nível {progress.level}</p>
-                <p className="text-[10px] font-heading font-black text-[#C8A66A] uppercase tracking-widest">
-                  Continue avançando para alcançar o nível {progress.level + 1}
-                </p>
-              </div>
-              <div className="flex -space-x-2">
-                {[1, 2, 3].map(i => (
-                  <div key={i} className={`w-8 h-8 rounded-full border-2 border-white flex items-center justify-center ${progress.badges[i-1]?.earned ? "bg-[#5B1F3D]" : "bg-[#FAF5EF] opacity-30"}`}>
-                    <Sparkles className={`w-3 h-3 ${progress.badges[i-1]?.earned ? "text-[#C8A66A]" : "text-[#5B1F3D]/30"}`} />
-                  </div>
-                ))}
+              <div className="space-y-1">
+                <h4 className="font-heading text-lg font-black text-plum tracking-tight">Arcanos Menores</h4>
+                <p className="text-[11px] font-body font-bold italic text-plum/60 leading-tight">A estrutura técnica e cotidiana dos 56 naipes.</p>
+                <div className="pt-2 flex items-center gap-1.5">
+                   <span className="text-[10px] font-heading font-black text-plum/40 uppercase tracking-widest">{completedMenores}/56</span>
+                   <div className="w-20 h-1 bg-plum/5 rounded-full overflow-hidden">
+                      <div className="h-full bg-plum/40 rounded-full" style={{ width: `${(completedMenores/56)*100}%` }} />
+                   </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Card: Plano */}
-          <div className="bg-[#FAF5EF] rounded-[2rem] p-6 border-2 border-[#C8A66A]/20 shadow-sm space-y-4 flex flex-col justify-between">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-white border border-[#C8A66A]/10 flex items-center justify-center">
-                  <Crown className={`w-5 h-5 ${isPremium ? "text-[#C8A66A]" : "text-[#5B1F3D]/30"}`} />
-                </div>
-                <div className="space-y-0.5">
-                  <h3 className="font-heading text-[11px] font-black text-[#C8A66A] uppercase tracking-widest">
-                    {isStaff ? "Perfil Técnico" : "Plano Atual"}
-                  </h3>
-                  <p className="text-sm font-heading font-black text-[#5B1F3D]">
-                    {isAdmin ? "Modo Administrador" : isAuditor ? "Modo Auditoria" : isPremium ? "Plano Premium" : "Plano do Louco"}
-                  </p>
-                </div>
+            {/* Utility Card: Próximo Passo Premium */}
+            <div className="bg-plum rounded-[2rem] p-8 border-2 border-gold/30 shadow-lg text-white space-y-4 overflow-hidden relative group md:col-span-2">
+              <div className="absolute top-0 right-0 p-8 opacity-[0.05] group-hover:scale-110 transition-transform">
+                <Crown className="w-32 h-32" />
               </div>
-              {!isPremium && !isStaff && (
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+                <div className="space-y-2">
+                   <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center">
+                        <Sparkles className="w-5 h-5 text-gold" />
+                      </div>
+                      <span className="text-[11px] font-heading font-black tracking-[0.3em] text-gold uppercase">Sabedoria Oculta</span>
+                   </div>
+                   <h3 className="text-2xl font-heading font-black tracking-tight">Acesso Integral à Escola</h3>
+                   <p className="text-sm font-body font-bold italic opacity-70 max-w-md">
+                     Domine os 78 arcanos com práticas diárias, quizzes de domínio e certificados de formação.
+                   </p>
+                </div>
+                {!isPremium && !isStaff && (
                   <button 
                     onClick={() => navigate("/premium")}
-                    className="text-[10px] font-heading font-black text-[#C8A66A] uppercase border-b border-[#C8A66A]/30 hover:text-[#5B1F3D] transition-colors"
+                    className="w-full md:w-auto px-10 py-5 bg-gold text-plum rounded-2xl font-heading text-[11px] font-black tracking-widest uppercase shadow-2xl hover:bg-white transition-all active:scale-95"
                   >
                     Fazer Upgrade
                   </button>
-              )}
+                )}
+                {(isPremium || isStaff) && (
+                   <div className="px-6 py-3 rounded-xl bg-white/10 border border-white/20 text-gold font-heading text-[10px] font-black tracking-widest uppercase">
+                      Assinatura Ativa ✦
+                   </div>
+                )}
+              </div>
             </div>
-            <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/50 leading-relaxed">
-              {isAdmin 
-                ? "Acesso técnico total. Painéis e rotas administrativas liberados."
-                : isAuditor
-                ? "Permissão de auditoria. Visualização de conteúdo restrito para testes."
-                : isPremium 
-                ? "Sua assinatura Premium está ativa. Aproveite a jornada completa." 
-                : "Acesso inicial gratuito. Faça o upgrade para desbloquear os 78 arcanos."}
-            </p>
           </div>
-        </div>
+        </section>
+
 
         {/* Links Rápidos Pedagógicos */}
         <div className="grid grid-cols-3 gap-3">
