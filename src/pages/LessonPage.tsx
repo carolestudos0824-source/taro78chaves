@@ -292,19 +292,28 @@ const LessonPage = () => {
 
 
           {phase === "voz" && (
-            <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
-              <div className="flex items-center gap-3">
-                <Sparkles className="w-5 h-5 text-[#C8A66A]" />
-                <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Voz da Carta</h2>
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                variant="aura"
+              />
+              <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8 relative overflow-hidden">
+                <div className="flex items-center gap-3 relative z-10">
+                  <Sparkles className="w-5 h-5 text-[#C8A66A]" />
+                  <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Voz da Carta</h2>
+                </div>
+                <blockquote className="font-accent italic text-2xl leading-[1.7] pl-6 border-l-4 border-[#C8A66A] text-[#5B1F3D] font-bold relative z-10">
+                  {arcano.voiceText || arcano.layers.main.essence}
+                </blockquote>
+                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform relative z-10">
+                  Continuar para Aprofundamento
+                </Button>
               </div>
-              <blockquote className="font-accent italic text-2xl leading-[1.7] pl-6 border-l-4 border-[#C8A66A] text-[#5B1F3D] font-bold">
-                {arcano.voiceText || arcano.layers.main.essence}
-              </blockquote>
-              <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">
-                Continuar para Aprofundamento
-              </Button>
             </div>
           )}
+
 
           {phase === "aprofundamento" && (
             <div className="space-y-8">
