@@ -84,12 +84,17 @@ const SymbolLibraryPage = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    // Hide standard global header to prevent flickering
+    // Standard approach to hide global header
     setHeader({ hideHeader: true });
     return () => resetHeader();
   }, [setHeader, resetHeader]);
 
   const { data: symbolsContent, isLoading } = useSymbolsContent();
+  
+  // Debug log
+  useEffect(() => {
+    console.log("SymbolLibraryPage content status:", { isLoading, hasData: !!symbolsContent });
+  }, [isLoading, symbolsContent]);
   
   const normalize = (text: string) => {
     if (!text || typeof text !== "string") return "";
@@ -432,7 +437,7 @@ const SymbolLibraryPage = () => {
     return ids.map(id => FULL_DECK.find(c => c.id === id)).filter(Boolean);
   };
 
-  if (isLoading) {
+  if (isLoading || !symbolsContent) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FDFCFB]">
         <div className="font-accent italic text-base text-plum/60 animate-pulse flex flex-col items-center gap-4">
@@ -443,7 +448,6 @@ const SymbolLibraryPage = () => {
     );
   }
 
-  console.log("SymbolLibraryPage rendering main content");
   return (
     <div className="min-h-screen bg-[#FDFCFB] relative overflow-hidden pb-48 md:pb-60">
       {/* Decorative background elements */}
