@@ -360,13 +360,22 @@ const LessonPage = () => {
                   <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
                     {arcano.lessonSections.find(s => s.id === "amor")?.content}
                   </p>
+                  
                   <div className="flex items-center gap-2 pt-4">
                     <span className="text-sm uppercase font-black text-[#8B6A30]">Trabalho:</span>
                   </div>
                   <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
                     {arcano.lessonSections.find(s => s.id === "trabalho")?.content}
                   </p>
+
+                  <div className="flex items-center gap-2 pt-4">
+                    <span className="text-sm uppercase font-black text-[#8B6A30]">Espiritualidade:</span>
+                  </div>
+                  <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
+                    {arcano.lessonSections.find(s => s.id === "espiritualidade")?.content}
+                  </p>
                 </div>
+
                 <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
                   Continuar para Reflexão
                 </Button>
