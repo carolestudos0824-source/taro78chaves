@@ -18,8 +18,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
-
-
   useEffect(() => {
     let initialized = false;
 
@@ -31,7 +29,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     };
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      // Only apply if it's a real change or initial session
       if (event === 'INITIAL_SESSION' || event === 'SIGNED_IN' || event === 'SIGNED_OUT' || event === 'USER_UPDATED') {
         applySession(session);
       }
@@ -43,7 +40,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       }
     });
 
-
+    return () => subscription.unsubscribe();
+  }, []);
 
   const signUp = useCallback(async (email: string, password: string, displayName?: string) => {
     const { error } = await supabase.auth.signUp({
@@ -63,7 +61,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const signOut = useCallback(async () => {
-    // Clear any cached progress data before signing out
     localStorage.removeItem("tarot-journey-extras");
     await supabase.auth.signOut();
   }, []);
