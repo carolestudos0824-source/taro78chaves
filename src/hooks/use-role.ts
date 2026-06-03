@@ -33,6 +33,7 @@ export const RoleProvider = ({ children }: { children: React.ReactNode }) => {
       setLoading(false);
     })();
 
+
   }, [authLoading, user]);
 
   const value = useMemo(() => ({
