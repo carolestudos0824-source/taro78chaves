@@ -348,8 +348,8 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               <div className="w-12 h-12 bg-[#5B1F3D]/5 rounded-2xl flex items-center justify-center">
                 <Target className="w-6 h-6 text-[#5B1F3D]" />
               </div>
-              <h3 className="font-heading text-xl text-midnight">Prática e Progressão</h3>
-              <p className="text-sm text-midnight/70 font-body">Você avança com quizzes, exercícios reais e trilhas salvas na sua jornada — da primeira carta à primeira leitura.</p>
+              <h3 className="font-heading text-xl text-midnight">Progresso salvo e jornada guiada</h3>
+              <p className="text-sm text-midnight/70 font-body">Acompanhe sua evolução, conclua lições e avance pela jornada dos 78 arcanos no seu ritmo.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
