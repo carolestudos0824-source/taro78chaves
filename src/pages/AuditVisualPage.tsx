@@ -85,8 +85,9 @@ const AuditVisualPage = () => {
                 <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Voz da Carta</h2>
               </div>
               <blockquote className="font-accent italic text-2xl leading-[1.7] pl-6 border-l-4 border-[#C8A66A] text-[#5B1F3D] font-bold relative z-10">
-                {arcano.voice.fullText}
+                {arcano.voiceText}
               </blockquote>
+
               <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">Continuar</Button>
             </div>
           </div>
