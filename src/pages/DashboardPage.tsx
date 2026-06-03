@@ -155,10 +155,11 @@ const DashboardPage = () => {
         {/* Horizontal School Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-2">
           {[
-            { label: "Domínio", value: `${globalProgressPct}%`, icon: Target, color: "text-gold" },
-            { label: totalCompletedArcanos === 1 ? "etapa concluída" : "etapas concluídas", value: totalCompletedArcanos, icon: KeyRound, color: "text-plum" },
-            { label: progress.completedLessons.length === 1 ? "lição concluída" : "lições concluídas", value: progress.completedLessons.length, icon: BookOpen, color: "text-gold" },
-            { label: "Ritual diário", value: `${progress.streak} dias`, icon: Flame, color: "text-orange-500" }
+            { label: "Domínio", value: `${globalProgressPct}%`, icon: Target, color: "text-[#9B7C2C]" },
+            { label: totalCompletedArcanos === 1 ? "etapa feita" : "etapas feitas", value: totalCompletedArcanos, icon: KeyRound, color: "text-[#45162D]" },
+            { label: progress.completedLessons.length === 1 ? "lição feita" : "lições feitas", value: progress.completedLessons.length, icon: BookOpen, color: "text-[#9B7C2C]" },
+            { label: progress.streak === 1 ? "dia" : "dias", value: `${progress.streak}`, icon: Flame, color: "text-[#D97706]" }
+
           ].map((stat, i) => (
             <div key={i} className="bg-white/80 backdrop-blur-md rounded-2xl p-4 border border-gold/15 shadow-sm flex flex-col items-center justify-center space-y-1 group hover:border-gold/30 transition-all">
               <div className="w-8 h-8 rounded-full bg-gold/5 flex items-center justify-center mb-1 group-hover:scale-110 transition-transform">
@@ -334,10 +335,11 @@ const DashboardPage = () => {
               <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none group-hover:scale-110 group-hover:opacity-[0.05] transition-all">
                 <Layout className="w-24 h-24 text-plum" />
               </div>
-              <div className="w-24 aspect-[2/3.5] rounded-xl overflow-hidden border-2 border-gold/30 shrink-0 group-hover:scale-[1.05] transition-all duration-500 shadow-2xl relative">
-                 <img src={imgDezOuros} alt="Arcanos Menores" className="w-full h-full object-cover scale-110" />
-                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+              <div className="w-20 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/30 shrink-0 group-hover:scale-[1.03] transition-all duration-500 shadow-xl relative bg-ivory">
+                 <img src={imgDezOuros} alt="Arcanos Menores" className="w-full h-full object-cover" />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
               </div>
+
               <div className="space-y-3 flex-1 relative z-10 pt-1">
                 <h4 className="font-heading text-xl font-bold text-plum tracking-tight">Arcanos Menores</h4>
                 <p className="text-[12px] font-body italic text-plum/50 leading-relaxed">A aplicação prática dos 4 naipes e 56 situações cotidianas.</p>
@@ -363,15 +365,16 @@ const DashboardPage = () => {
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
                 <div className="space-y-2">
                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shadow-lg">
-                        <Sparkles className="w-5 h-5 text-gold" />
+                       <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center shadow-lg">
+                        <Sparkles className="w-6 h-6 text-gold" />
                       </div>
                       <span className="text-[11px] font-heading font-black tracking-[0.5em] text-[#FFD700] drop-shadow-sm uppercase">Formação Completa</span>
                    </div>
-                   <h3 className="text-2xl md:text-3xl font-heading font-bold tracking-tight text-ivory">Sabedoria Ancestral</h3>
-                   <p className="text-sm font-body italic text-ivory/90 max-w-sm leading-relaxed">
+                   <h3 className="text-2xl md:text-3xl font-heading font-bold tracking-tight text-white">Sabedoria Ancestral</h3>
+                   <p className="text-sm font-body italic text-white max-w-sm leading-relaxed">
                      Desbloqueie todos os 78 portais, acesse meditações guiadas, quizzes de domínio e conquiste seu Certificado de Formação.
                    </p>
+
                 </div>
                 
                 {!isPremium && !isStaff ? (
@@ -408,9 +411,10 @@ const DashboardPage = () => {
                 onClick={() => navigate(link.route)}
                 className="bg-white/90 backdrop-blur-sm border border-gold/15 rounded-[1.5rem] p-5 flex flex-col items-center gap-3 hover:bg-white hover:border-gold/40 hover:shadow-xl transition-all active:scale-95 group"
               >
-                <div className="w-12 h-12 rounded-2xl bg-gold/5 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <link.icon className="w-5 h-5 text-plum" />
+                <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform border border-gold/10">
+                  <link.icon className="w-6 h-6 text-plum" />
                 </div>
+
                 <span className="text-[10px] font-heading font-black tracking-[0.2em] text-plum/60 uppercase">{link.label}</span>
               </button>
             ))}
