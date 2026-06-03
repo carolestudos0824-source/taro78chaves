@@ -11,8 +11,13 @@ import {
   KeyRound,
   Layout,
   Crown,
-  BookOpen
+  BookOpen,
+  MapPin,
+  Calendar,
+  Zap,
+  ArrowRight
 } from "lucide-react";
+
 import { TarotIcon } from "@/components/TarotIcon";
 import { 
   MODULES_CATALOG as MODULES, 
