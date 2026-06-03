@@ -188,7 +188,7 @@ const SymbolLibraryPage = () => {
           if (card.category === "maior" && (term === String(card.number) || term === `arcano ${card.number}`)) return true;
           
           // Suit match (e.g. "copas", "espadas")
-          if (card.category === "menor" && (cardId.includes(term) || normalize(card.suit || "").includes(term))) return true;
+          if (card.category === "menor" && (cardId.includes(term) || (card.naipe && normalize(card.naipe).includes(term)))) return true;
           
           return false;
         })) return true;
