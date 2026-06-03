@@ -265,7 +265,7 @@ const TrailsPage = () => {
                             ? 'bg-white border-[#5B1F3D] shadow-[0_25px_60px_rgba(91,31,61,0.1)] hover:translate-x-2' : 
                           unlocked 
                             ? 'bg-white/70 border-[#C8A66A26] hover:border-[#C8A66A80] hover:translate-x-2 hover:bg-white shadow-[0_10px_30px_rgba(0,0,0,0.02)]' : 
-                          'bg-white/20 border-[#DCCFC24D] cursor-not-allowed opacity-90'
+                          'bg-white/40 border-[#DCCFC299] cursor-not-allowed'
                         }`}
                       >
                         {/* More Evident Node Connector */}
