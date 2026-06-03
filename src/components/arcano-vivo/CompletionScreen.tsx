@@ -25,10 +25,11 @@ interface CompletionScreenProps {
  * Phase 5: Completion with progress saved confirmation + editorial continuity
  */
 export function CompletionScreen({
-  arcanoName, pontosEarned, quizScore, quizTotal,
+  arcanoName, cardImage, pontosEarned, quizScore, quizTotal,
   nextArcano, prevArcano, isPrevCompleted,
   onNextArcano, onPrevArcano, onBackToMap, isLastArcano, arcanoId,
 }: CompletionScreenProps & { arcanoId?: number }) {
+
   const navigate = useNavigate();
   const { progress } = useProgress();
   const { isStaff } = useRole();
