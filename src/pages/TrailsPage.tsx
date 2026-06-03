@@ -278,9 +278,9 @@ const TrailsPage = () => {
                         <div className={`w-14 h-14 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center shrink-0 shadow-[0_10px_25px_rgba(0,0,0,0.05)] transition-all duration-700 group-hover/mod:rotate-6 group-hover/mod:scale-105 ${
                           modComplete ? 'bg-[#FAF5EF] text-[#C8A66A] border-2 border-[#C8A66A1A]' : 
                           unlocked && isNext ? 'bg-[#5B1F3D] text-[#FAF5EF]' : 
-                          'bg-[#DCCFC2]/30 text-[#5B1F3D]/40 border border-[#DCCFC2]/50'
+                          'bg-[#DCCFC2]/50 text-[#5B1F3D]/60 border border-[#DCCFC2]'
                         }`}>
-                           {modComplete ? <Check className="w-7 h-7 stroke-[4px]" /> : unlocked && isNext ? <Key className="w-8 h-8 animate-pulse" /> : <Lock className="w-6 h-6" />}
+                           {modComplete ? <Check className="w-7 h-7 stroke-[4px]" /> : unlocked && isNext ? <Key className="w-8 h-8 animate-pulse" /> : <Lock className="w-6 h-6 text-[#5B1F3D]/45" />}
                         </div>
 
                         <div className="flex-1 ml-6 sm:ml-8 min-w-0">
