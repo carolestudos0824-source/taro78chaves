@@ -87,26 +87,17 @@ const SymbolLibraryPage = () => {
   useEffect(() => {
     // Hide standard global header
     setHeader({ hideHeader: true });
-    
-    // Safety check: sometimes Suspense or double mounting conflicts with setHeader
-    const timer = setTimeout(() => {
-      setHeader({ hideHeader: true });
-    }, 100);
-
-    return () => {
-      clearTimeout(timer);
-      resetHeader();
-    };
+    return () => resetHeader();
   }, [setHeader, resetHeader]);
 
-  const { data: symbolsContent, isLoading } = useSymbolsContent();
+  const { data: symbolsContent, isLoading, isError, error } = useSymbolsContent();
   
   const { progress } = useProgress();
   
   // Debug log to trace data loading
   useEffect(() => {
-    console.log("SymbolLibraryPage status:", { isLoading, hasData: !!symbolsContent, catsCount: symbolsContent?.categorias?.length });
-  }, [isLoading, symbolsContent]);
+    console.log("SymbolLibraryPage status:", { isLoading, isError, error, hasData: !!symbolsContent, catsCount: symbolsContent?.categorias?.length });
+  }, [isLoading, isError, error, symbolsContent]);
   
   const normalize = (text: string) => {
     if (!text || typeof text !== "string") return "";
@@ -449,13 +440,33 @@ const SymbolLibraryPage = () => {
     return ids.map(id => FULL_DECK.find(c => c.id === id)).filter(Boolean);
   };
 
-  if (isLoading || !symbolsContent) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FDFCFB]">
         <div className="font-accent italic text-base text-plum/60 animate-pulse flex flex-col items-center gap-4">
           <div className="w-16 h-16 border-2 border-gold/20 border-t-gold rounded-full animate-spin" />
           Abrindo a Biblioteca de Símbolos…
         </div>
+      </div>
+    );
+  }
+
+  if (isError || !symbolsContent) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#FDFCFB] p-6 text-center">
+        <div className="w-20 h-20 bg-rose-50 rounded-full flex items-center justify-center mb-6 border border-rose-100">
+          <X className="w-10 h-10 text-rose-300" />
+        </div>
+        <h2 className="font-heading text-2xl text-plum font-bold mb-2">Erro ao carregar biblioteca</h2>
+        <p className="font-body text-plum/60 italic mb-8 max-w-xs">
+          Ocorreu um problema ao sintonizar os símbolos. Por favor, tente novamente.
+        </p>
+        <button 
+          onClick={() => window.location.reload()}
+          className="px-8 py-4 bg-plum text-white rounded-full font-heading font-black text-xs uppercase tracking-widest shadow-xl active:scale-95 transition-all"
+        >
+          Recarregar Página
+        </button>
       </div>
     );
   }
