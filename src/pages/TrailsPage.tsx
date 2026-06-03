@@ -206,12 +206,12 @@ const TrailsPage = () => {
                   <div className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center border-[3px] transition-all duration-700 shadow-[0_15px_40px_rgba(0,0,0,0.05)] ${
                     unlocked 
                       ? (isCurrent ? 'bg-white border-[#5B1F3D] scale-110 shadow-[0_20px_50px_rgba(91,31,61,0.15)] ring-8 ring-[#5B1F3D]/5' : 'bg-white border-[#C8A66A]') 
-                      : 'bg-[#FAF5EF] border-[#DCCFC2]/60'
+                      : 'bg-[#FAF5EF] border-[#DCCFC2]'
                   }`}>
                     {unlocked ? (
                       <TarotIcon name={level.icon} className={`w-8 h-8 sm:w-10 sm:h-10 transition-colors duration-500 ${isCurrent ? 'text-[#5B1F3D]' : 'text-[#C8A66A]'}`} />
                     ) : (
-                      <Lock className="w-6 h-6 sm:w-8 sm:h-8 text-[#5B1F3D]/20" />
+                      <Lock className="w-6 h-6 sm:w-8 sm:h-8 text-[#5B1F3D]/45" />
                     )}
                     {isCurrent && (
                       <div className="absolute -inset-4 rounded-full border border-[#5B1F3D]/20 animate-pulse" />
