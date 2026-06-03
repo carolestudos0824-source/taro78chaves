@@ -32,10 +32,6 @@ import { useEffect, useMemo } from "react";
 import { useHeader } from "@/contexts/header-context";
 import { resolveMaiorVisual, resolveMenorVisualById } from "@/lib/content/visual-registry";
 import imgLouco from "@/assets/arcano-0-louco.jpg";
-import imgMago from "@/assets/arcano-1-mago.jpg";
-import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
-import imgImperatriz from "@/assets/arcano-3-imperatriz.jpg";
-import imgImperador from "@/assets/arcano-4-imperador.jpg";
 
 // Decorative components for the premium feel
 const ArchPortal = ({ children, className }: { children: React.ReactNode, className?: string }) => (
@@ -132,20 +128,20 @@ const DashboardPage = () => {
           <div className="relative z-10 space-y-3">
             <div className="flex items-center justify-center gap-2 mb-2">
               <div className="h-px w-8 bg-gold/30" />
-              <span className="text-[10px] font-heading font-black tracking-[0.5em] text-gold uppercase">Sabedoria Ancestral</span>
+              <span className="text-[10px] font-heading font-black tracking-[0.5em] text-gold uppercase">Iniciação Sagrada</span>
               <div className="h-px w-8 bg-gold/30" />
             </div>
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-plum tracking-tight flex flex-col items-center">
-              <span className="text-xl md:text-2xl font-light italic text-plum/60 mb-1">Escola Digital de Tarô</span>
+              <span className="text-xl md:text-2xl font-light italic text-plum/60 mb-1">Escola Digital</span>
               <span className="relative">
-                Jornada dos 78 Arcanos
+                Tarô 78 Chaves
                 <div className="absolute -right-8 -top-2">
                   <Sparkles className="w-5 h-5 text-gold animate-pulse" />
                 </div>
               </span>
             </h1>
-            <p className="text-sm font-body italic text-plum/40 max-w-sm mx-auto">
-              Seu portal de estudo guiado através dos 78 arquétipos do Rider-Waite-Smith.
+            <p className="text-sm font-body italic text-plum/40 max-w-xs mx-auto">
+              Seu portal de sabedoria através dos arquétipos fundamentais.
             </p>
           </div>
         </section>
@@ -168,38 +164,29 @@ const DashboardPage = () => {
           ))}
         </div>
 
-        {/* Explore the 78 Arcanos - Cards Strip */}
-        <section className="space-y-4 px-2">
-          <div className="flex items-center gap-3 px-2">
-            <div className="w-2 h-2 rounded-full bg-gold" />
-            <h3 className="font-heading text-[10px] font-black tracking-[0.3em] text-plum/50 uppercase">Explore os 78 Arcanos</h3>
-          </div>
-          <div className="flex justify-between items-center gap-2 overflow-x-auto pb-4 scrollbar-hide">
-            {[imgLouco, imgMago, imgSacerdotisa, imgImperatriz, imgImperador].map((img, i) => (
-              <div key={i} className="min-w-[70px] aspect-[2/3.5] rounded-lg overflow-hidden border border-gold/20 shadow-sm opacity-80 hover:opacity-100 hover:scale-105 transition-all">
-                <img src={img} alt={`Arcano ${i}`} className="w-full h-full object-cover" />
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* Auditor/Admin Banner - Simplified and Integrated */}
         {isStaff && (
-          <div className="mx-2 rounded-2xl p-4 bg-plum/5 border border-plum/10 flex flex-col sm:flex-row items-center justify-between gap-4 overflow-hidden relative grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
+          <div className="mx-2 rounded-2xl p-4 bg-plum/95 border border-gold/40 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl overflow-hidden relative">
+            <div className="absolute inset-0 opacity-5 bg-mystic-bg-procedural scale-150" />
             <div className="flex items-center gap-3 relative z-10">
-              <ShieldCheck className="w-4 h-4 text-plum/40" />
+              <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0 border border-gold/20">
+                <ShieldCheck className="w-5 h-5 text-gold" />
+              </div>
               <div className="space-y-0.5">
-                <p className="text-[9px] font-heading font-black tracking-widest uppercase text-plum/40">
-                  {isAdmin ? "Painel Administrativo" : "Modo Auditoria"}
+                <p className="text-[10px] font-heading font-black tracking-widest uppercase text-gold">
+                  {isAdmin ? "Acesso Administrativo" : "Modo Auditoria"}
+                </p>
+                <p className="text-[11px] font-body italic text-white/80">
+                  Visualização técnica completa habilitada.
                 </p>
               </div>
             </div>
             {isAdmin && (
               <button 
                 onClick={() => navigate("/admin")}
-                className="w-full sm:w-auto px-4 py-1.5 bg-plum/10 text-plum rounded-lg font-heading text-[9px] font-black tracking-widest uppercase hover:bg-plum hover:text-white transition-all relative z-10"
+                className="w-full sm:w-auto px-5 py-2 bg-gold text-plum rounded-lg font-heading text-[10px] font-black tracking-widest uppercase shadow-md hover:bg-white transition-all relative z-10"
               >
-                Acessar
+                Painel
               </button>
             )}
           </div>
@@ -308,8 +295,8 @@ const DashboardPage = () => {
               <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none group-hover:scale-110 transition-transform">
                 <KeyRound className="w-20 h-20" />
               </div>
-              <div className="w-16 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shrink-0 group-hover:scale-105 transition-all duration-500 shadow-md">
-                 <img src={imgMago} alt="Arcanos Maiores" className="w-full h-full object-cover" />
+              <div className="w-16 h-16 rounded-2xl bg-plum/5 flex items-center justify-center shrink-0 group-hover:bg-plum transition-all duration-500 shadow-inner">
+                 <KeyRound className="w-7 h-7 text-gold group-hover:text-white transition-colors" />
               </div>
               <div className="space-y-2 flex-1 relative z-10">
                 <h4 className="font-heading text-xl font-bold text-plum tracking-tight">Arcanos Maiores</h4>
@@ -331,8 +318,8 @@ const DashboardPage = () => {
               <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none group-hover:scale-110 transition-transform">
                 <Layout className="w-20 h-20" />
               </div>
-              <div className="w-16 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shrink-0 group-hover:scale-105 transition-all duration-500 shadow-md">
-                 <img src={imgSacerdotisa} alt="Arcanos Menores" className="w-full h-full object-cover" />
+              <div className="w-16 h-16 rounded-2xl bg-gold/5 flex items-center justify-center shrink-0 group-hover:bg-gold transition-all duration-500 shadow-inner">
+                 <Layout className="w-7 h-7 text-plum group-hover:text-white transition-colors" />
               </div>
               <div className="space-y-2 flex-1 relative z-10">
                 <h4 className="font-heading text-xl font-bold text-plum tracking-tight">Arcanos Menores</h4>
