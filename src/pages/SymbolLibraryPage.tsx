@@ -110,28 +110,48 @@ const SymbolLibraryPage = () => {
 
   const term = normalize(search);
 
-  const { fetchSymbolsFromLegacy } = useMemo(() => {
-    // Authorized import via closure to avoid direct runtime dependency in header
-    // symbolsContent being null is handled by the guard above, but we need legacy as absolute fallback
-    return {
-      fetchSymbolsFromLegacy: () => {
-        try {
-          const { fetchSymbolsFromLegacy } = require("@/lib/content/repo-legacy-symbols");
-          return fetchSymbolsFromLegacy() as SymbolsContent;
-        } catch (e) {
-          console.error("Critical: Failed to load legacy symbols fallback", e);
-          return null;
-        }
-      }
-    };
-  }, []);
-
   // Extend data with pedagogical symbols if missing
   const categorias = useMemo(() => {
-    const data = symbolsContent || fetchSymbolsFromLegacy();
-    if (!data?.categorias) return [];
+    // If symbolsContent fails (Supabase issues), we try to get it from local data directly
+    // This is the absolute fail-safe for the library page
+    let currentData = symbolsContent;
     
-    const baseCategorias = [...data.categorias];
+    if (!currentData) {
+      console.warn("SymbolLibraryPage: symbolsContent is null, falling back to legacy seed directly.");
+      try {
+        const { SYMBOL_CATEGORIES } = require("@/data/symbol-library");
+        currentData = {
+          categorias: SYMBOL_CATEGORIES.map((c: any, ci: number) => ({
+            id: `seed-cat-${c.id}`,
+            slug: c.id,
+            nome: c.name,
+            icone: c.icon,
+            descricao: c.description,
+            ordem: ci,
+            status: "publicado",
+            tier: "free",
+            simbolos: c.symbols.map((s: any, si: number) => ({
+              id: `seed-sym-${s.id}`,
+              slug: s.id,
+              categoriaSlug: c.id,
+              nome: s.name,
+              explicacao: s.explanation,
+              leituras: s.readings,
+              cartas: s.cards,
+              ordem: si,
+              status: "publicado",
+            })),
+          })),
+          metadata: { source: "legacy" }
+        };
+      } catch (e) {
+        console.error("Critical: Failed to load legacy seed symbols", e);
+      }
+    }
+
+    if (!currentData?.categorias) return [];
+    
+    const baseCategorias = [...currentData.categorias];
     
     // Pedagogical injections
     const pedagogicalExtras = [
