@@ -176,7 +176,7 @@ const TrailsPage = () => {
                     />
                   </div>
                   <p className={`text-[9px] sm:text-[10px] font-heading font-black uppercase text-center tracking-[0.2em] transition-colors duration-500 ${
-                    isCurrent ? 'text-[#5B1F3D] scale-110' : unlocked ? 'text-[#5B1F3D]/60' : 'text-[#5B1F3D]/25'
+                    isCurrent ? 'text-[#5B1F3D] scale-110' : unlocked ? 'text-[#5B1F3D]/70' : 'text-[#5B1F3D]/45'
                   }`}>
                     {level.title.split(' — ')[0]}
                   </p>
@@ -200,18 +200,18 @@ const TrailsPage = () => {
             const landmark = level.landmarkCardId !== undefined ? getLandmark(level.landmarkCardId) : null;
 
             return (
-              <div key={level.id} className={`relative z-10 group transition-all duration-700 ${!unlocked ? 'opacity-85' : 'opacity-100'}`}>
+              <div key={level.id} className={`relative z-10 group transition-all duration-700 ${!unlocked ? 'opacity-100' : 'opacity-100'}`}>
                 {/* Portal Header - Ritualistic focus */}
                 <div className="flex items-center gap-7 sm:gap-12 mb-16 relative">
                   <div className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center border-[3px] transition-all duration-700 shadow-[0_15px_40px_rgba(0,0,0,0.05)] ${
                     unlocked 
                       ? (isCurrent ? 'bg-white border-[#5B1F3D] scale-110 shadow-[0_20px_50px_rgba(91,31,61,0.15)] ring-8 ring-[#5B1F3D]/5' : 'bg-white border-[#C8A66A]') 
-                      : 'bg-[#FAF5EF] border-[#DCCFC2]/60'
+                      : 'bg-[#FAF5EF] border-[#DCCFC2]'
                   }`}>
                     {unlocked ? (
                       <TarotIcon name={level.icon} className={`w-8 h-8 sm:w-10 sm:h-10 transition-colors duration-500 ${isCurrent ? 'text-[#5B1F3D]' : 'text-[#C8A66A]'}`} />
                     ) : (
-                      <Lock className="w-6 h-6 sm:w-8 sm:h-8 text-[#5B1F3D]/20" />
+                      <Lock className="w-6 h-6 sm:w-8 sm:h-8 text-[#5B1F3D]/55" />
                     )}
                     {isCurrent && (
                       <div className="absolute -inset-4 rounded-full border border-[#5B1F3D]/20 animate-pulse" />
@@ -221,7 +221,7 @@ const TrailsPage = () => {
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
                       <span className={`text-[10px] sm:text-[12px] font-heading font-black tracking-[0.5em] uppercase transition-colors duration-500 ${
-                        unlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D]/50'
+                        unlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D]/75'
                       }`}>
                         {level.title.split(' — ')[0]}
                       </span>
@@ -231,16 +231,16 @@ const TrailsPage = () => {
                         </div>
                       )}
                       {!unlocked && (
-                         <span className="text-[8px] font-heading font-black text-[#5B1F3D]/40 tracking-widest uppercase bg-[#DCCFC2]/20 px-2 py-0.5 rounded">Futuro</span>
+                         <span className="text-[8px] font-heading font-black text-[#5B1F3D]/60 tracking-widest uppercase bg-[#DCCFC2]/40 px-2 py-0.5 rounded">Futuro</span>
                       )}
                     </div>
                     <h3 className={`font-heading text-2xl sm:text-5xl font-black tracking-tight leading-tight transition-all duration-500 ${
-                      unlocked ? 'text-[#5B1F3D]' : 'text-[#5B1F3D]/60'
+                      unlocked ? 'text-[#5B1F3D]' : 'text-[#5B1F3D]/85'
                     }`}>
                       {level.title.split(' — ')[1] || level.title}
                     </h3>
                     <p className={`font-body text-xs sm:text-lg italic font-bold mt-3 leading-relaxed transition-all duration-500 ${
-                      unlocked ? 'text-[#5B1F3D]/80' : 'text-[#5B1F3D]/40'
+                      unlocked ? 'text-[#5B1F3D]/80' : 'text-[#5B1F3D]/65'
                     }`}>
                       {unlocked ? level.subtitle : "Sua próxima etapa de sabedoria."}
                     </p>
@@ -265,28 +265,28 @@ const TrailsPage = () => {
                             ? 'bg-white border-[#5B1F3D] shadow-[0_25px_60px_rgba(91,31,61,0.1)] hover:translate-x-2' : 
                           unlocked 
                             ? 'bg-white/70 border-[#C8A66A26] hover:border-[#C8A66A80] hover:translate-x-2 hover:bg-white shadow-[0_10px_30px_rgba(0,0,0,0.02)]' : 
-                          'bg-white/20 border-[#DCCFC24D] cursor-not-allowed opacity-90'
+                          'bg-white/40 border-[#DCCFC299] cursor-not-allowed'
                         }`}
                       >
                         {/* More Evident Node Connector */}
                         <div className={`absolute -left-[54px] sm:-left-[74px] w-5 h-5 rounded-full border-[3px] border-[#FAF5EF] z-20 transition-all duration-500 shadow-sm ${
                           modComplete ? 'bg-[#C8A66A] scale-100 shadow-[0_0_10px_rgba(200,166,106,0.5)]' : 
                           isNext ? 'bg-[#5B1F3D] scale-[1.6] shadow-[0_0_15px_rgba(91,31,61,0.5)]' : 
-                          unlocked ? 'bg-[#DCCFC2] scale-100' : 'bg-[#DCCFC2]/40 scale-90'
+                          unlocked ? 'bg-[#DCCFC2] scale-100' : 'bg-[#DCCFC2]/80 scale-90'
                         }`} />
 
                         <div className={`w-14 h-14 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center shrink-0 shadow-[0_10px_25px_rgba(0,0,0,0.05)] transition-all duration-700 group-hover/mod:rotate-6 group-hover/mod:scale-105 ${
                           modComplete ? 'bg-[#FAF5EF] text-[#C8A66A] border-2 border-[#C8A66A1A]' : 
                           unlocked && isNext ? 'bg-[#5B1F3D] text-[#FAF5EF]' : 
-                          'bg-[#DCCFC2]/30 text-[#5B1F3D]/40 border border-[#DCCFC2]/50'
+                          'bg-[#DCCFC2]/50 text-[#5B1F3D]/60 border border-[#DCCFC2]'
                         }`}>
-                           {modComplete ? <Check className="w-7 h-7 stroke-[4px]" /> : unlocked && isNext ? <Key className="w-8 h-8 animate-pulse" /> : <Lock className="w-6 h-6" />}
+                           {modComplete ? <Check className="w-7 h-7 stroke-[4px]" /> : unlocked && isNext ? <Key className="w-8 h-8 animate-pulse" /> : <Lock className="w-6 h-6 text-[#5B1F3D]/60" />}
                         </div>
 
                         <div className="flex-1 ml-6 sm:ml-8 min-w-0">
                           <div className="flex items-center gap-3 mb-2">
                             <span className={`text-[10px] sm:text-[11px] font-heading font-black tracking-[0.3em] uppercase transition-colors duration-500 ${
-                              unlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D]/50'
+                              unlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D]/75'
                             }`}>
                               Módulo
                             </span>
@@ -297,7 +297,7 @@ const TrailsPage = () => {
                             )}
                           </div>
                           <h4 className={`font-heading text-xl sm:text-3xl font-black tracking-tight leading-tight transition-all duration-500 ${
-                            unlocked ? 'text-[#5B1F3D]' : 'text-[#5B1F3D]/60'
+                            unlocked ? 'text-[#5B1F3D]' : 'text-[#5B1F3D]/85'
                           }`}>
                             {mod.name}
                           </h4>
@@ -324,7 +324,7 @@ const TrailsPage = () => {
                 {/* Landmark Card Decor - Integrated & High Contrast */}
                 {landmark && (
                   <div className={`absolute -right-8 sm:-right-16 top-16 w-32 sm:w-48 transition-all duration-1000 hidden lg:block group-hover:scale-110 group-hover:-translate-x-2 ${
-                    unlocked ? 'opacity-40 group-hover:opacity-100 grayscale-0' : 'opacity-15 grayscale'
+                    unlocked ? 'opacity-50 group-hover:opacity-100 grayscale-0' : 'opacity-35 grayscale-[0.5] shadow-xl'
                   }`}>
                     <div className="relative transform rotate-[12deg] transition-transform duration-700">
                       <div className="absolute -inset-1 bg-gradient-to-tr from-[#C8A66A]/20 to-transparent blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
