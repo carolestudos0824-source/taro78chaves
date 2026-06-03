@@ -207,7 +207,7 @@ const SymbolLibraryPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#FDFCFB] relative overflow-hidden pb-24">
+    <div className="min-h-screen bg-[#FDFCFB] relative overflow-hidden pb-32">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-rose-100/10 blur-[120px] pointer-events-none" />
       <div className="absolute top-40 right-1/4 w-80 h-80 bg-gold/5 blur-[100px] pointer-events-none" />
