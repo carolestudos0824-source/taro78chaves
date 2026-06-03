@@ -320,12 +320,12 @@ const SymbolLibraryPage = () => {
                                 <div className="h-px w-10 bg-gold/40" />
                                 <span className="text-[12px] md:text-[13px] font-heading font-black tracking-[0.6em] text-gold uppercase">Cartas relacionadas:</span>
                               </div>
-                              <div className="flex flex-wrap gap-6 md:gap-8">
+                              <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap gap-6 md:gap-8">
                                 {relatedCards.slice(0, isExpanded ? 99 : 3).map((card, idx) => (
                                   <div key={card?.id || idx} className="flex flex-col items-center gap-4 group/mini">
                                     <div 
                                       className={`relative rounded-2xl md:rounded-[1.5rem] border-2 border-white shadow-2xl overflow-hidden bg-white ring-1 ring-gold/20 transition-all duration-700 group-hover/mini:scale-110 group-hover/mini:rotate-1 ${
-                                        isExpanded ? "w-32 md:w-44 aspect-[2/3.2]" : "w-28 md:w-36 aspect-[2/3.2]"
+                                        isExpanded ? "w-full md:w-44 aspect-[2/3.2]" : "w-full md:w-36 aspect-[2/3.2]"
                                       }`}
                                     >
                                       <img 
@@ -335,13 +335,13 @@ const SymbolLibraryPage = () => {
                                       />
                                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none opacity-0 group-hover/mini:opacity-100 transition-opacity" />
                                     </div>
-                                    <span className={`text-[12px] md:text-[13px] font-heading font-bold uppercase tracking-widest text-plum/50 group-hover/mini:text-gold transition-colors text-center max-w-[110px] md:max-w-[140px] leading-tight`}>
+                                    <span className={`text-[12px] md:text-[13px] font-heading font-bold uppercase tracking-widest text-plum/50 group-hover/mini:text-gold transition-colors text-center max-w-[140px] leading-tight`}>
                                       {card?.name}
                                     </span>
                                   </div>
                                 ))}
                                 {!isExpanded && relatedCards.length > 3 && (
-                                  <div className="w-28 md:w-36 aspect-[2/3.2] rounded-2xl md:rounded-[1.5rem] bg-gold/5 border-2 border-white flex flex-col items-center justify-center text-gold shadow-xl hover:bg-gold/10 transition-all duration-500 hover:-translate-y-1">
+                                  <div className="w-full md:w-36 aspect-[2/3.2] rounded-2xl md:rounded-[1.5rem] bg-gold/5 border-2 border-white flex flex-col items-center justify-center text-gold shadow-xl hover:bg-gold/10 transition-all duration-500 hover:-translate-y-1">
                                     <span className="text-3xl font-heading font-black">+{relatedCards.length - 3}</span>
                                     <span className="text-[10px] font-heading font-black uppercase tracking-[0.2em]">Chaves</span>
                                   </div>
