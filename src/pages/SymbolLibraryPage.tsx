@@ -61,7 +61,7 @@ const ChapterHeader = ({
       </p>
     </div>
     
-    <div className={`mt-4 flex items-center gap-2 px-5 py-1.5 rounded-full border border-gold/20 text-[9px] font-heading font-black uppercase tracking-[0.2em] transition-all duration-500 ${isExpanded ? "bg-plum text-white border-plum" : "text-gold group-hover:bg-gold/5"}`}>
+    <div className={`mt-4 flex items-center gap-2 px-5 py-1.5 rounded-full border border-gold/20 text-[9px] font-heading font-black uppercase tracking-[0.2em] transition-all duration-500 ${isExpanded ? "bg-plum text-white border-plum" : "text-plum/80 group-hover:bg-gold/5"}`}>
       {isExpanded ? "Recolher Capítulo" : "Abrir Capítulo"}
       <div className={`w-3.5 h-3.5 transition-transform duration-500 ${isExpanded ? "rotate-180" : ""}`}>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
