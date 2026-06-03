@@ -205,71 +205,74 @@ const SymbolLibraryPage = () => {
                       className={`group relative rounded-2xl transition-all duration-500 border overflow-hidden ${
                         isExpanded
                           ? "bg-white border-gold/40 shadow-xl shadow-gold/5 ring-1 ring-gold/10"
-                          : "bg-white/60 border-gold/10 hover:border-gold/30 hover:bg-white shadow-sm"
+                          : "bg-white/80 border-gold/15 hover:border-gold/30 hover:bg-white shadow-sm"
                       }`}
                     >
                       {/* Interactive Header area */}
                       <button
                         onClick={() => setSelectedSymbol(isExpanded ? null : sym)}
-                        className="w-full text-left p-5 focus:outline-none"
+                        className="w-full text-left p-6 focus:outline-none"
                       >
-                        <div className="flex justify-between items-start mb-2">
-                          <h3 className="font-heading text-base font-bold text-plum group-hover:text-gold transition-colors">
+                        <div className="flex justify-between items-start mb-3">
+                          <h3 className="font-heading text-lg font-bold text-plum group-hover:text-gold transition-colors">
                             {sym.nome}
                           </h3>
-                          <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 ${
+                          <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
                             isExpanded ? "bg-plum text-marfim rotate-180" : "bg-gold/10 text-gold"
                           }`}>
-                            <Info className="w-3.5 h-3.5" />
+                            <Info className="w-4 h-4" />
                           </div>
                         </div>
                         
-                        <p className={`text-sm font-body leading-relaxed text-plum/70 ${isExpanded ? "" : "line-clamp-2"}`}>
+                        <p className={`text-base font-body leading-relaxed text-plum/70 ${isExpanded ? "" : "line-clamp-2"}`}>
                           {sym.explicacao}
                         </p>
 
                         {!isExpanded && relatedCards.length > 0 && (
-                          <div className="mt-3 flex items-center gap-2">
-                            <span className="text-[9px] font-heading font-black tracking-widest text-gold uppercase">Presente em:</span>
-                            <div className="flex -space-x-2">
-                              {relatedCards.slice(0, 3).map((card, idx) => (
-                                <div 
-                                  key={card?.id || idx} 
-                                  className="w-6 h-6 rounded-md border border-white shadow-sm overflow-hidden bg-marfim ring-1 ring-gold/5"
-                                >
-                                  <img 
-                                    src={card?.cardImage} 
-                                    alt={card?.name} 
-                                    className="w-full h-full object-cover" 
-                                  />
-                                </div>
-                              ))}
-                              {relatedCards.length > 3 && (
-                                <div className="w-6 h-6 rounded-md bg-gold/10 border border-white flex items-center justify-center text-[8px] font-bold text-gold">
-                                  +{relatedCards.length - 3}
-                                </div>
-                              )}
+                          <div className="mt-4 flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              <span className="text-[10px] font-heading font-black tracking-widest text-gold uppercase">Presente em:</span>
+                              <div className="flex -space-x-3">
+                                {relatedCards.slice(0, 3).map((card, idx) => (
+                                  <div 
+                                    key={card?.id || idx} 
+                                    className="w-8 h-8 rounded-lg border-2 border-white shadow-sm overflow-hidden bg-marfim ring-1 ring-gold/5"
+                                  >
+                                    <img 
+                                      src={card?.cardImage} 
+                                      alt={card?.name} 
+                                      className="w-full h-full object-cover" 
+                                    />
+                                  </div>
+                                ))}
+                                {relatedCards.length > 3 && (
+                                  <div className="w-8 h-8 rounded-lg bg-gold/10 border-2 border-white flex items-center justify-center text-[10px] font-bold text-gold">
+                                    +{relatedCards.length - 3}
+                                  </div>
+                                )}
+                              </div>
                             </div>
+                            <span className="text-[10px] font-heading font-black tracking-[0.1em] text-gold uppercase border-b border-gold/30 pb-0.5">Estudar símbolo</span>
                           </div>
                         )}
                       </button>
 
                       {/* Expanded Content */}
                       <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                        isExpanded ? "max-h-[800px] opacity-100 border-t border-gold/10" : "max-h-0 opacity-0"
+                        isExpanded ? "max-h-[1200px] opacity-100 border-t border-gold/10" : "max-h-0 opacity-0"
                       }`}>
-                        <div className="p-5 bg-gold/[0.02] space-y-6">
+                        <div className="p-6 bg-gold/[0.03] space-y-8">
                           {/* Readings Section */}
-                          <div className="space-y-3">
-                            <h4 className="flex items-center gap-2 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-gold">
-                              <Star className="w-3 h-3 fill-gold/20" />
+                          <div className="space-y-4">
+                            <h4 className="flex items-center gap-2 text-[11px] font-heading font-black tracking-[0.3em] uppercase text-gold">
+                              <Star className="w-4 h-4 fill-gold/20" />
                               Chaves de Leitura
                             </h4>
-                            <div className="flex flex-wrap gap-2">
+                            <div className="flex flex-wrap gap-2.5">
                               {sym.leituras.map((r, i) => (
                                 <span 
                                   key={i} 
-                                  className="px-3 py-1.5 rounded-lg text-xs font-body bg-marfim border border-gold/10 text-plum/80 shadow-sm"
+                                  className="px-4 py-2 rounded-xl text-sm font-body bg-white border border-gold/15 text-plum/80 shadow-sm"
                                 >
                                   {r}
                                 </span>
@@ -279,12 +282,12 @@ const SymbolLibraryPage = () => {
 
                           {/* Cards Section */}
                           {relatedCards.length > 0 && (
-                            <div className="space-y-4">
-                              <h4 className="flex items-center gap-2 text-[10px] font-heading font-black tracking-[0.2em] uppercase text-gold">
-                                <BookOpen className="w-3 h-3 text-gold" />
+                            <div className="space-y-5">
+                              <h4 className="flex items-center gap-2 text-[11px] font-heading font-black tracking-[0.3em] uppercase text-gold">
+                                <BookOpen className="w-4 h-4 text-gold" />
                                 Estudar nas Cartas
                               </h4>
-                              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                                 {relatedCards.map((card) => (
                                   <button
                                     key={card?.id}
@@ -295,19 +298,19 @@ const SymbolLibraryPage = () => {
                                         : `/arcano-menor/${card?.id}`;
                                       navigate(route);
                                     }}
-                                    className="flex flex-col gap-2 p-2 rounded-xl bg-white border border-gold/10 hover:border-gold/40 transition-all group/card shadow-sm hover:shadow-md"
+                                    className="flex flex-col gap-3 p-3 rounded-2xl bg-white border border-gold/15 hover:border-gold/40 transition-all group/card shadow-sm hover:shadow-xl hover:-translate-y-1"
                                   >
-                                    <div className="aspect-[2/3] rounded-lg overflow-hidden relative">
+                                    <div className="aspect-[2/3.2] rounded-xl overflow-hidden relative shadow-md">
                                       <img 
                                         src={card?.cardImage} 
                                         alt={card?.name} 
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110" 
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110" 
                                       />
-                                      <div className="absolute inset-0 bg-plum/0 group-hover/card:bg-plum/10 transition-colors flex items-center justify-center">
-                                        <ExternalLink className="w-5 h-5 text-marfim opacity-0 group-hover/card:opacity-100 transition-opacity" />
+                                      <div className="absolute inset-0 bg-plum/0 group-hover/card:bg-plum/20 transition-colors flex items-center justify-center">
+                                        <ExternalLink className="w-6 h-6 text-marfim opacity-0 group-hover/card:opacity-100 transition-opacity" />
                                       </div>
                                     </div>
-                                    <span className="text-[10px] font-heading font-bold text-plum/80 text-center truncate px-1">
+                                    <span className="text-[11px] font-heading font-bold text-plum/80 text-center truncate px-1">
                                       {card?.name}
                                     </span>
                                   </button>
@@ -320,7 +323,7 @@ const SymbolLibraryPage = () => {
                           <div className="pt-2">
                             <button
                               onClick={() => setSelectedSymbol(null)}
-                              className="w-full py-2.5 rounded-xl border border-gold/20 text-[10px] font-heading font-bold uppercase tracking-widest text-gold hover:bg-gold/5 transition-colors"
+                              className="w-full py-3.5 rounded-2xl border border-gold/30 text-[11px] font-heading font-black uppercase tracking-[0.2em] text-gold hover:bg-gold/5 transition-all active:scale-95"
                             >
                               Fechar detalhamento
                             </button>
