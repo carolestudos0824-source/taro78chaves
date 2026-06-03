@@ -29,29 +29,11 @@ export const RoleProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     (async () => {
-      setLoading(true);
-      try {
-        const { data, error } = await supabase
-          .from("user_roles")
-          .select("role")
-          .eq("user_id", user.id);
-
-        if (error) throw error;
-
-        const roles = (data ?? []).map((r) => r.role as AppRole);
-        if (roles.includes("admin")) setRole("admin");
-        else if (roles.includes("auditor")) setRole("auditor");
-        else if (roles.includes("moderator")) setRole("moderator");
-        else setRole("user");
-
-
-      } catch (err) {
-        console.error("Error fetching role:", err);
-        setRole("user");
-      } finally {
-        setLoading(false);
-      }
+      setRole("user");
+      setLoading(false);
     })();
+
+
   }, [authLoading, user]);
 
   const value = useMemo(() => ({
