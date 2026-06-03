@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 
 
 import { 
-  getArcanoFull as getArcanoById, 
-  ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES 
-} from "@/lib/content";
+  O_LOUCO, 
+  editorialToLegacy 
+} from "@/content/arcanos-maiores";
+
 import { ArcanoVivoStage } from "@/components/tarot-motion/ArcanoVivoStage";
 import { LessonPhaseHeader } from "@/components/arcano-vivo/LessonPhaseHeader";
 import { DeepDiveSection } from "@/components/DeepDiveSection";
