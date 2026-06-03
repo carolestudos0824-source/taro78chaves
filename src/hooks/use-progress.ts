@@ -215,29 +215,48 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     if (marker) marker.innerText += " | USE PROGRESS START";
 
     const fetchProgress = async () => {
-      const dbData: UserProgress = {
-        xp: 390,
-        level: 4,
-        streak: 3,
-        lastActive: new Date().toISOString(),
-        onboardingCompleted: true,
-        completedLessons: ['fund-1', 'fund-2', 'fund-3', 'fund-4', 'fund-5', 'fund-6', 'fund-7', 'fund-8', 'fund-9', 'fund-10', 'arcano-0'],
-        completedQuizzes: ['quiz-arcano-0'],
-        completedExercises: [],
-        completedModules: [],
-        badges: DEFAULT_PROGRESS.badges.map(b => 
-          b.id === 'first-step' || b.id === 'fool-complete' 
-          ? { ...b, earned: true, earnedAt: new Date().toISOString() } 
-          : b
-        ),
-        currentModule: 'fools-journey',
-        studentName: 'Lari',
-        certificatesEarned: {},
-        quizScores: { 'quiz-arcano-0': 1 },
-      };
-      
-      setProgress(dbData);
-      setLoading(false);
+      try {
+        console.log(`[useProgress] fetching progress for user: ${user.id}`);
+        
+        const { data: progressRow, error: progressError } = await supabase
+          .from("user_progress")
+          .select("*")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
+        if (progressError) {
+          console.error("[useProgress] error fetching user_progress:", progressError);
+          throw progressError;
+        }
+
+        const { data: profileRow, error: profileError } = await supabase
+          .from("profiles")
+          .select("student_name")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
+        if (profileError) {
+          console.error("[useProgress] error fetching profile:", profileError);
+          throw profileError;
+        }
+
+        if (progressRow) {
+          console.log("[useProgress] progress found in DB, hydrating state.");
+          const dbData = dbToProgress(progressRow as any, profileRow?.student_name ?? "");
+          if (!cancelled) {
+            setProgress(dbData);
+            lastSavedCoreRef.current = JSON.stringify(progressToDbCore(dbData));
+            lastSavedNameRef.current = profileRow?.student_name ?? "";
+          }
+        } else {
+          console.log("[useProgress] no progress found in DB, using defaults.");
+          if (!cancelled) setProgress({ ...DEFAULT_PROGRESS, ...getLocalExtras() });
+        }
+      } catch (err) {
+        console.error("[useProgress] fetch error:", err);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
     };
 
 
