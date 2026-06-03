@@ -83,7 +83,66 @@ const SymbolLibraryPage = () => {
   const [search, setSearch] = useState("");
 
   const { data: symbolsContent, isLoading } = useSymbolsContent();
-  const categorias = symbolsContent?.categorias ?? [];
+  
+  const normalize = (text: string) => 
+    text ? text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : "";
+
+  const term = normalize(search);
+
+  // Extend data with pedagogical symbols if missing
+  const categorias = useMemo(() => {
+    if (!symbolsContent?.categorias) return [];
+    
+    const baseCategorias = [...symbolsContent.categorias];
+    
+    // Check if we need to add "Anjo" and other Julgamento symbols
+    const hasAnjo = baseCategorias.some(c => c.simbolos.some(s => normalize(s.nome).includes("anjo")));
+    
+    if (!hasAnjo) {
+      // Find or create a category for figures
+      let figCat = baseCategorias.find(c => c.slug === "figuras-e-entidades");
+      if (!figCat) {
+        figCat = {
+          id: "extra-cat-figuras",
+          slug: "figuras-e-entidades",
+          nome: "Figuras e Entidades",
+          icone: "👼",
+          descricao: "Seres arquetípicos, mensageiros e guias espirituais.",
+          ordem: 15,
+          status: "publicado",
+          tier: "free",
+          simbolos: []
+        };
+        baseCategorias.push(figCat);
+      }
+      
+      figCat.simbolos.push({
+        id: "extra-sym-anjo",
+        slug: "anjo",
+        categoriaSlug: "figuras-e-entidades",
+        nome: "Anjo",
+        explicacao: "Mensageiro divino e o chamado da consciência superior. O anjo simboliza a intervenção espiritual, o despertar de uma nova percepção e o anúncio de uma grande transformação.",
+        leituras: ["Despertar espiritual", "Um chamado que não pode ser ignorado", "Proteção e guia superior"],
+        cartas: ["O Julgamento", "Os Enamorados", "A Temperança"],
+        ordem: 1,
+        status: "publicado"
+      });
+
+      figCat.simbolos.push({
+        id: "extra-sym-trombeta",
+        slug: "trombeta",
+        categoriaSlug: "figuras-e-entidades",
+        nome: "Trombeta",
+        explicacao: "O som da verdade que desperta os que dormem. Simboliza a voz interior, a comunicação clara vinda do alto e o momento de prestar contas ou renascer.",
+        leituras: ["Revelação importante", "Chamada para a ação", "Voz da consciência"],
+        cartas: ["O Julgamento"],
+        ordem: 2,
+        status: "publicado"
+      });
+    }
+
+    return baseCategorias;
+  }, [symbolsContent]);
 
   const categoryDescriptions: Record<string, string> = {
     "luas": "Mistério, ciclos e percepção intuitiva.",
@@ -97,22 +156,77 @@ const SymbolLibraryPage = () => {
     "objetos": "Ferramentas simbólicas de ação, escolha e poder.",
     "elementos-astrologicos": "Influências cósmicas e ciclos universais.",
     "numeros": "Estruturas arquetípicas da jornada.",
-    "gestos-e-posturas": "Linguagem corporal e atitudes perante a vida."
+    "gestos-e-posturas": "Linguagem corporal e atitudes perante a vida.",
+    "figuras-e-entidades": "Seres arquetípicos, mensageiros e guias espirituais."
   };
-
-  const term = search.toLowerCase();
 
   const filteredCategories = useMemo(() => {
     if (!search) return categorias;
     
-    return categorias.map((cat) => ({
-      ...cat,
-      simbolos: cat.simbolos.filter(
-        (s) =>
-          s.nome.toLowerCase().includes(term) ||
-          s.explicacao.toLowerCase().includes(term),
-      ),
-    })).filter((cat) => cat.simbolos.length > 0);
+    return categorias.map((cat) => {
+      const simbolos = cat.simbolos.filter((s) => {
+        // Match symbol name or explanation
+        if (normalize(s.nome).includes(term) || normalize(s.explicacao).includes(term)) return true;
+        
+        // Match readings
+        if (s.leituras.some(l => normalize(l).includes(term))) return true;
+        
+        // Match category name
+        if (normalize(cat.nome).includes(term)) return true;
+
+        // Match related cards
+        const symbolCards = getCardsForSymbol(s.nome);
+        if (symbolCards.some(card => {
+          if (!card) return false;
+          const cardName = normalize(card.name);
+          const cardId = normalize(card.id);
+          
+          // "julgamento" matches "O Julgamento"
+          if (cardName.includes(term) || term.includes(cardName)) return true;
+          
+          // Arcano number match (e.g. "XX", "20")
+          if (card.category === "maior" && (term === String(card.number) || term === `arcano ${card.number}`)) return true;
+          
+          // Suit match (e.g. "copas", "espadas")
+          if (card.category === "menor" && (cardId.includes(term) || normalize(card.suit || "").includes(term))) return true;
+          
+          return false;
+        })) return true;
+
+        // Semantic aliases for pedagogical search
+        const aliases: Record<string, string[]> = {
+          "Lua Crescente": ["sacerdotisa", "intuicao", "misterio", "gestacao"],
+          "Lua Cheia": ["lua", "revelacao", "plenitude", "inconsciente"],
+          "Lua Minguante": ["morte", "eremita", "soltar", "desapego", "recolhimento", "interiorizacao"],
+          "Zero (0)": ["louco", "precipicio", "jornada", "comeco", "potencial"],
+          "Cachorro": ["louco", "lua", "fidelidade", "instinto", "guia"],
+          "Chave": ["sacerdotisa", "hierofante", "solucao", "misterio", "segredo", "conhecimento"],
+          "Cálice / Taça": ["copas", "emocoes", "amor", "sentimento", "receptividade", "feminino"],
+          "Espada": ["espadas", "ar", "decisao", "mente", "clareza", "verdade", "cortar"],
+          "Sol Radiante": ["sol", "clareza", "alegria", "sucesso", "verdade", "vitalidade", "crianca", "girassol"],
+          "Anjo": ["julgamento", "trombeta", "chamado", "despertar", "renascimento", "ressurreicao", "consciencia"],
+          "Trombeta": ["julgamento", "anjo", "chamado", "voz", "despertar"],
+          "Rosa Branca": ["louco", "morte", "pureza", "inocencia"],
+          "Rosa Vermelha": ["mago", "imperatriz", "paixao", "desejo"],
+          "Lírio": ["mago", "temperanca", "sacerdotisa", "pureza", "espiritualidade"],
+          "Montanha Nevada": ["eremita", "louco", "desafio", "elevacao", "solidao"],
+          "Estrela de Seis Pontas": ["estrela", "temperanca", "enamorados", "equilibrio", "espirito", "materia"],
+          "Rio ou Corrente": ["estrela", "temperanca", "imperatriz", "fluxo", "tempo", "emocoes"],
+          "Olhos Fechados": ["sacerdotisa", "eremita", "espadas", "introspeccao", "meditacao", "visao interna"],
+          "Lemniscata (∞)": ["mago", "forca", "infinito", "eternidade", "dominio"],
+          "Roda Zodiacal": ["roda da fortuna", "mundo", "ciclos", "tempo", "zodiaco"],
+          "Armadura": ["carro", "imperador", "protecao", "defesa"],
+          "Nudez": ["sol", "estrela", "julgamento", "vulnerabilidade", "autenticidade", "liberdade"]
+        };
+
+        const currentAliases = aliases[s.nome] || [];
+        if (currentAliases.some(a => normalize(a).includes(term) || term.includes(normalize(a)))) return true;
+
+        return false;
+      });
+
+      return { ...cat, simbolos };
+    }).filter((cat) => cat.simbolos.length > 0);
   }, [categorias, search, term]);
 
   const toggleCategory = (slug: string) => {
