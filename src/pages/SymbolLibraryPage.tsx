@@ -251,13 +251,16 @@ const SymbolLibraryPage = () => {
                       <div className="flex flex-col md:flex-row">
                         <button
                           onClick={() => setSelectedSymbol(isExpanded ? null : sym)}
-                          className="flex-1 text-left p-8 focus:outline-none"
+                          className="flex-1 text-left p-8 md:p-12 focus:outline-none"
                         >
                           <div className="flex justify-between items-start mb-6">
-                            <div className="space-y-3">
+                            <div className="space-y-4">
                               <h3 className="font-heading text-2xl md:text-4xl font-bold text-plum group-hover:text-plum/80 transition-colors tracking-tight">
                                 {sym.nome}
                               </h3>
+                              <p className="text-base md:text-xl font-body italic text-plum/50 leading-relaxed -mt-2">
+                                {sym.leituras[0]}
+                              </p>
                               <div className="h-0.5 w-16 bg-gold/30 rounded-full group-hover:w-32 transition-all duration-700" />
                             </div>
                             <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ${
@@ -267,7 +270,7 @@ const SymbolLibraryPage = () => {
                             </div>
                           </div>
                           
-                          <p className={`text-base md:text-lg font-body leading-relaxed text-plum/80 mb-8 ${isExpanded ? "" : "line-clamp-2"}`}>
+                          <p className={`text-lg md:text-xl font-body leading-relaxed text-plum/80 mb-10 ${isExpanded ? "" : "line-clamp-2"}`}>
                             {sym.explicacao}
                           </p>
 
