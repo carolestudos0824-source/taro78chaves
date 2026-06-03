@@ -573,7 +573,7 @@ const SymbolLibraryPage = () => {
         </div>
       </main>
 
-      <BottomNav />
+      {/* Removed duplicate BottomNav here as it's provided by AppShell */}
     </div>
   );
 };
