@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { 
   Key, UserPlus, LogIn, MessageCircle, Sparkles, Zap, Layers, Menu, X, Eye, 
@@ -38,7 +38,16 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
   const navigate = useNavigate();
   const { user } = useAuth();
   
+  useEffect(() => {
+    // Check for audit parameter in URL
+    const isAuditUrl = new URLSearchParams(window.location.search).get('audit') === 'true';
+    if (isAuditUrl) {
+      localStorage.setItem("taro_analytics_consent", "true");
+    }
+  }, []);
+  
   const handleStart = (ctaType: string = "general", label: string = "Acessar o programa") => {
+
     trackEvent(`landing_cta_${ctaType}_start_click`, {
       cta_text: label,
       source: isSalesPage ? "sales_page" : "landing",

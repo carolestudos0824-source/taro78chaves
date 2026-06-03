@@ -29,6 +29,8 @@ import ProfilePage from "./pages/ProfilePage.tsx";
 import FoolsJourneyPage from "./pages/FoolsJourneyPage.tsx";
 import TrailsPage from "./pages/TrailsPage.tsx";
 import DailyChallengesPage from "./pages/DailyChallengesPage.tsx";
+import AuditVisualPage from "./pages/AuditVisualPage.tsx";
+
 
 // Eager Module & Lesson Pages (Crucial for Journey Continuity)
 import NaipePage from "./pages/NaipePage.tsx";
@@ -178,6 +180,8 @@ const AppRoutes = () => {
         <Route path="/apresentacao" element={<LazyRoute><PresentationPage /></LazyRoute>} />
         <Route path="/validar-certificado" element={<LazyRoute><ValidateCertificatePage /></LazyRoute>} />
         <Route path="/visual-certificado" element={<LazyRoute><CertificateVisualModel /></LazyRoute>} />
+        <Route path="/audit-visual" element={<AuditVisualPage />} />
+
 
         <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
           <Route path="/app" element={<DashboardPage />} />

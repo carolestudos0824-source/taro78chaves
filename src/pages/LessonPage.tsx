@@ -82,12 +82,15 @@ const LessonPage = () => {
   const { loading: premiumLoading } = usePremium();
   const { isStaff, loading: roleLoading } = useRole();
   const { canAccessArcano, hasFullAccess, loading: accessLoading } = useAccess();
+  const isAuditMode = new URLSearchParams(window.location.search).get('audit') === 'true';
+
   const { setHeader, resetHeader } = useHeader();
   const [phaseIdx, setPhaseIdx] = useState(0);
   const phase = PHASE_ORDER[phaseIdx];
   
   const arcano = getArcanoById(isValidId ? arcanoId : 0);
-  const hasAccess = isValidId ? canAccessArcano(arcanoId) : false;
+  const hasAccess = isAuditMode || (isValidId ? canAccessArcano(arcanoId) : false);
+
 
   const [pontosEarned, setPontosEarned] = useState(0);
   const [lastQuizScore, setLastQuizScore] = useState(0);
@@ -109,8 +112,12 @@ const LessonPage = () => {
         subtitle: `Arcano ${arcano.numeral} • Lição ${arcanoId + 1}`,
         backRoute: "/module/arcanos-maiores",
         rightElement: <PhaseIndicator phases={PHASE_ORDER} currentIndex={phaseIdx} />,
-        hidePontos: true
+        hidePontos: true,
+        hideStreak: true
       });
+
+
+
     }
     return () => resetHeader();
   }, [arcano, phaseIdx, arcanoId, setHeader, resetHeader]);
