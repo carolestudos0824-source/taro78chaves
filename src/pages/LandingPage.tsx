@@ -475,7 +475,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 <div className="space-y-4">
                   {[
                     "Aprenda a interpretar as cartas com mais segurança, sem depender apenas de listas de palavras-chave",
-                    "Avance arcano por arcano com progressão real e quizzes que fixam o conteúdo",
+                    "Quizzes, exercícios e progresso salvo",
                     "Estude no seu ritmo, pelo celular, tablet ou computador",
                     "Acesse online e salve a Escola Digital na tela inicial do celular, como um aplicativo",
                     "Acesse a jornada completa pelos 78 arcanos: Maiores, Menores e Corte",
