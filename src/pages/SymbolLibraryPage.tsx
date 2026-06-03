@@ -85,10 +85,14 @@ const SymbolLibraryPage = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
+    console.log("SymbolLibraryPage mounted, hiding global header");
     setHeader({
       hideHeader: true
     });
-    return () => resetHeader();
+    return () => {
+      console.log("SymbolLibraryPage unmounted, resetting global header");
+      resetHeader();
+    };
   }, [setHeader, resetHeader]);
 
   const { data: symbolsContent, isLoading } = useSymbolsContent();
