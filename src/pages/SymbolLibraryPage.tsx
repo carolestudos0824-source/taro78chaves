@@ -87,7 +87,16 @@ const SymbolLibraryPage = () => {
   useEffect(() => {
     // Hide standard global header
     setHeader({ hideHeader: true });
-    return () => resetHeader();
+    
+    // Safety check: sometimes Suspense or double mounting conflicts with setHeader
+    const timer = setTimeout(() => {
+      setHeader({ hideHeader: true });
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      resetHeader();
+    };
   }, [setHeader, resetHeader]);
 
   const { data: symbolsContent, isLoading } = useSymbolsContent();
@@ -492,7 +501,7 @@ const SymbolLibraryPage = () => {
       </header>
 
       {/* Hero Section */}
-      <header className="relative z-20 bg-transparent">
+      <header className="relative z-20 bg-transparent pt-10">
         <div className="container max-w-4xl py-10 px-6 md:py-14">
           <div className="flex flex-col items-center text-center space-y-6 mb-10 relative">
             <ArchPortal className="w-full">
