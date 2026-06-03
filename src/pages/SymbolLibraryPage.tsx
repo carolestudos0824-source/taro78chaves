@@ -530,17 +530,7 @@ const SymbolLibraryPage = () => {
                   })}
                 </div>
 
-                {hasMore && (
-                  <div className="mt-12 flex justify-center">
-                    <button
-                      onClick={() => setVisibleCount(prev => ({ ...prev, [cat.slug]: currentVisible + 6 }))}
-                      className="px-10 py-5 rounded-full border border-gold/30 text-[11px] font-heading font-black uppercase tracking-[0.3em] text-gold hover:bg-gold/5 transition-all flex items-center gap-3 group"
-                    >
-                      Ver mais símbolos de {cat.nome}
-                      <ArrowLeft className="w-4 h-4 rotate-[-90deg] group-hover:translate-y-1 transition-transform" />
-                    </button>
-                  </div>
-                )}
+                </div>
               </section>
             );
           })}
