@@ -42,13 +42,25 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         const mockUser = {
           id: '00000000-0000-0000-0000-000000000123',
           email: 'auditor@teste.com',
-          user_metadata: { display_name: 'Auditor Teste' }
+          user_metadata: { display_name: 'Auditor Teste' },
+          role: 'authenticated'
         };
-        applySession({ user: mockUser as any, access_token: 'fake', refresh_token: 'fake', expires_in: 3600, token_type: 'bearer' });
+        const mockSession = { 
+          user: mockUser as any, 
+          access_token: 'fake', 
+          refresh_token: 'fake', 
+          expires_in: 3600, 
+          token_type: 'bearer' 
+        };
+        setSession(mockSession);
+        setUser(mockUser as any);
+        setLoading(false);
+        initialized = true;
       } else if (!initialized) {
         applySession(currentSession);
       }
     });
+
 
 
 
