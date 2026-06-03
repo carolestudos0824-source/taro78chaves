@@ -244,6 +244,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
 
 
 
+
     fetchProgress();
     return () => { cancelled = true; };
   }, [user]);
