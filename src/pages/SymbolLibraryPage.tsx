@@ -250,17 +250,19 @@ const SymbolLibraryPage = () => {
         <div className="space-y-16">
           {filteredCategories.map(cat => (
             <section key={cat.slug} className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <div className="flex flex-col md:flex-row md:items-center gap-5 mb-8 group/cat relative">
-                <div className="absolute -inset-4 bg-gold/5 blur-2xl rounded-full opacity-0 group-hover/cat:opacity-100 transition-opacity" />
-                <div className="w-20 h-20 rounded-[1.5rem] bg-white flex items-center justify-center text-4xl shadow-sm border border-gold/15 relative z-10 group-hover/cat:scale-105 transition-transform duration-500">
+              <div className="flex flex-col md:flex-row md:items-center gap-6 mb-12 group/cat relative">
+                <div className="absolute -inset-10 bg-gold/5 blur-[80px] rounded-full opacity-0 group-hover/cat:opacity-100 transition-opacity pointer-events-none" />
+                <div className="w-24 h-24 md:w-28 md:h-28 rounded-[2.5rem] bg-white flex items-center justify-center text-5xl shadow-xl border border-gold/15 relative z-10 group-hover/cat:scale-105 group-hover/cat:rotate-3 transition-all duration-700">
                   {cat.icone}
                 </div>
                 <div className="flex-1 relative z-10">
-                  <h2 className="font-heading text-3xl md:text-4xl font-bold text-plum tracking-tight flex items-center gap-4">
-                    {cat.nome}
-                    <div className="h-px flex-1 bg-gradient-to-r from-gold/30 to-transparent hidden md:block" />
-                  </h2>
-                  <p className="text-base font-body italic text-plum/50 mt-1 leading-relaxed max-w-xl">
+                  <div className="flex items-center gap-4 mb-2">
+                    <h2 className="font-heading text-4xl md:text-5xl font-bold text-plum tracking-tight">
+                      {cat.nome}
+                    </h2>
+                    <div className="h-0.5 flex-1 bg-gradient-to-r from-gold/30 via-gold/10 to-transparent hidden md:block" />
+                  </div>
+                  <p className="text-lg md:text-xl font-body italic text-plum/60 leading-relaxed max-w-2xl">
                     {cat.descricao}
                   </p>
                 </div>
