@@ -368,7 +368,7 @@ const DashboardPage = () => {
                       <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold brightness-125 uppercase">Formação Completa</span>
                    </div>
                    <h3 className="text-2xl md:text-3xl font-heading font-bold tracking-tight">Sabedoria Ancestral</h3>
-                   <p className="text-sm font-body italic text-white/70 max-w-sm leading-relaxed">
+                   <p className="text-sm font-body italic text-white/90 max-w-sm leading-relaxed">
                      Desbloqueie todos os 78 portais, acesse meditações guiadas, quizzes de domínio e conquiste seu Certificado de Formação.
                    </p>
                 </div>
