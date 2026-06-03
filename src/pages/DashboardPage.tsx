@@ -246,7 +246,7 @@ const DashboardPage = () => {
                   <div className="space-y-3">
                     <div className="relative h-2 rounded-full bg-ivory border border-gold/10 overflow-hidden shadow-inner">
                       <div 
-                        className="h-full rounded-full bg-gradient-to-r from-plum via-plum/80 to-gold transition-all duration-[2000ms] ease-out"
+                        className="h-full rounded-full bg-gradient-to-r from-plum via-plum/80 to-gold transition-all duration-1000 ease-out"
                         style={{ width: `${Math.max(globalProgressPct, 5)}%` }}
                       />
                       <div className="absolute inset-0 bg-shimmer animate-shimmer opacity-20" style={{ backgroundSize: '200% 100%' }} />
