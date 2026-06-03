@@ -103,20 +103,29 @@ const SymbolLibraryPage = () => {
   const term = search.toLowerCase();
 
   const filteredCategories = useMemo(() => {
-    const cats = search
-      ? categorias.map((cat) => ({
-          ...cat,
-          simbolos: cat.simbolos.filter(
-            (s) =>
-              s.nome.toLowerCase().includes(term) ||
-              s.explicacao.toLowerCase().includes(term),
-          ),
-        })).filter((cat) => cat.simbolos.length > 0)
-      : activeCategory
-      ? categorias.filter((c) => c.slug === activeCategory)
-      : categorias;
-    return cats;
-  }, [categorias, search, term, activeCategory]);
+    if (!search) return categorias;
+    
+    return categorias.map((cat) => ({
+      ...cat,
+      simbolos: cat.simbolos.filter(
+        (s) =>
+          s.nome.toLowerCase().includes(term) ||
+          s.explicacao.toLowerCase().includes(term),
+      ),
+    })).filter((cat) => cat.simbolos.length > 0);
+  }, [categorias, search, term]);
+
+  const toggleCategory = (slug: string) => {
+    setExpandedCategories(prev => {
+      const next = new Set(prev);
+      if (next.has(slug)) {
+        next.delete(slug);
+      } else {
+        next.add(slug);
+      }
+      return next;
+    });
+  };
 
   const getCardsForSymbol = (symbolName: string) => {
     const mapping: Record<string, string[]> = {
