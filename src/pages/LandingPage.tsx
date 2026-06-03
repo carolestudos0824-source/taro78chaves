@@ -158,7 +158,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                     No Tarô 78 Chaves, você percorre cada arcano com método, lições curtas e progressão real.
                   </p>
                   <p className="font-body text-base md:text-lg text-plum/80 leading-relaxed">
-                    Uma plataforma guiada pelos 78 arcanos (Rider-Waite-Smith) com quizzes, progresso salvo, XP e uma jornada do Louco ao Mundo.
+                    Aprenda Tarô do zero, carta por carta, em uma jornada guiada com lições curtas, exercícios, quizzes, progresso salvo e prática diária.
                   </p>
                 </div>
 
@@ -348,8 +348,8 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               <div className="w-12 h-12 bg-[#5B1F3D]/5 rounded-2xl flex items-center justify-center">
                 <Target className="w-6 h-6 text-[#5B1F3D]" />
               </div>
-              <h3 className="font-heading text-xl text-midnight">Prática e Progressão</h3>
-              <p className="text-sm text-midnight/70 font-body">Você avança com quizzes, exercícios reais e trilhas salvas na sua jornada — da primeira carta à primeira leitura.</p>
+              <h3 className="font-heading text-xl text-midnight">Progresso salvo e jornada guiada</h3>
+              <p className="text-sm text-midnight/70 font-body">Acompanhe sua evolução, conclua lições e avance pela jornada dos 78 arcanos no seu ritmo.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white border border-gold/10 shadow-sm space-y-4 transition-all hover:shadow-md">
@@ -475,7 +475,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 <div className="space-y-4">
                   {[
                     "Aprenda a interpretar as cartas com mais segurança, sem depender apenas de listas de palavras-chave",
-                    "Avance arcano por arcano com progressão real e quizzes que fixam o conteúdo",
+                    "Quizzes, exercícios e progresso salvo",
                     "Estude no seu ritmo, pelo celular, tablet ou computador",
                     "Acesse online e salve a Escola Digital na tela inicial do celular, como um aplicativo",
                     "Acesse a jornada completa pelos 78 arcanos: Maiores, Menores e Corte",
@@ -603,9 +603,9 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
             </AccordionItem>
 
             <AccordionItem value="item-8" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
-              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Como funciona o acesso?</AccordionTrigger>
+              <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">O app salva meu progresso?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
-                Você cria sua conta com e-mail e senha. Seu progresso fica salvo para continuar sua jornada de onde parou.
+                Sim. Seu progresso fica salvo para você continuar a jornada dos 78 arcanos no seu ritmo.
               </AccordionContent>
             </AccordionItem>
 
