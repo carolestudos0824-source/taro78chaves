@@ -1,4 +1,6 @@
+import "@/index.css";
 import React, { useEffect, useState } from "react";
+
 import { 
   getArcanoFull as getArcanoById, 
   ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES 
