@@ -324,27 +324,27 @@ const DashboardPage = () => {
         </section>
 
 
-        {/* Links Rápidos Pedagógicos */}
-        <div className="grid grid-cols-3 gap-3">
-          <button 
-            onClick={() => navigate("/trilhas")}
-            className="flex flex-col items-center justify-center gap-2 p-4 bg-white border border-[#C8A66A]/20 rounded-2xl hover:bg-[#FAF5EF] transition-all group"
-          >
-            <Layout className="w-4 h-4 text-[#C8A66A] group-hover:scale-110 transition-transform" />
-            <span className="text-[9px] min-[360px]:text-[11px] font-heading font-black text-[#5B1F3D] uppercase tracking-widest text-center">Mapa da Jornada</span>
-          </button>
-          <button 
-            onClick={() => navigate("/biblioteca")}
-            className="flex flex-col items-center justify-center gap-2 p-4 bg-white border border-[#C8A66A]/20 rounded-2xl hover:bg-[#FAF5EF] transition-all group"
-          >
-            <BookOpen className="w-4 h-4 text-[#C8A66A] group-hover:scale-110 transition-transform" />
-            <span className="text-[9px] min-[360px]:text-[11px] font-heading font-black text-[#5B1F3D] uppercase tracking-widest text-center">Biblioteca</span>
-          </button>
-          <button 
-            onClick={() => navigate("/rotina")}
-            className="flex flex-col items-center justify-center gap-2 p-4 bg-white border border-[#C8A66A]/20 rounded-2xl hover:bg-[#FAF5EF] transition-all group"
-          >
-            <Clock className="w-4 h-4 text-[#C8A66A] group-hover:scale-110 transition-transform" />
+        {/* School Fast Links - Elegant Action Icons */}
+        <section className="space-y-4">
+          <h3 className="font-heading text-[11px] font-black tracking-[0.4em] text-gold uppercase opacity-80 px-2">Acesso Rápido</h3>
+          <div className="grid grid-cols-3 gap-4">
+            {[
+              { label: "Biblioteca", icon: BookOpen, route: "/biblioteca" },
+              { label: "Rotina", icon: Clock, route: "/rotina" },
+              { label: "Certificados", icon: Trophy, route: "/certificados" }
+            ].map((link, i) => (
+              <button 
+                key={i}
+                onClick={() => navigate(link.route)}
+                className="flex flex-col items-center justify-center gap-3 p-6 bg-white border border-gold/15 rounded-3xl hover:bg-gold/5 transition-all group shadow-sm active:scale-95"
+              >
+                <link.icon className="w-5 h-5 text-gold group-hover:scale-110 transition-transform" />
+                <span className="text-[10px] font-heading font-black text-plum uppercase tracking-widest text-center">{link.label}</span>
+              </button>
+            ))}
+          </div>
+        </section>
+
             <span className="text-[9px] min-[360px]:text-[11px] font-heading font-black text-[#5B1F3D] uppercase tracking-widest text-center">Como Estudar</span>
           </button>
         </div>
