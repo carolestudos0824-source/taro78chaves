@@ -303,22 +303,25 @@ const DashboardPage = () => {
             {/* Trail Card: Arcanos Maiores */}
             <div 
               onClick={() => navigate("/module/arcanos-maiores")}
-              className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/30 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden"
+              className="bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/40 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none group-hover:scale-110 transition-transform">
-                <KeyRound className="w-20 h-20" />
+              <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none group-hover:scale-110 group-hover:opacity-[0.05] transition-all">
+                <KeyRound className="w-24 h-24 text-plum" />
               </div>
-              <div className="w-16 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shrink-0 group-hover:scale-105 transition-all duration-500 shadow-md">
+              <div className="w-20 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shrink-0 group-hover:scale-[1.03] transition-all duration-500 shadow-xl">
                  <img src={imgMago} alt="Arcanos Maiores" className="w-full h-full object-cover" />
               </div>
-              <div className="space-y-2 flex-1 relative z-10">
+              <div className="space-y-3 flex-1 relative z-10 pt-1">
                 <h4 className="font-heading text-xl font-bold text-plum tracking-tight">Arcanos Maiores</h4>
                 <p className="text-[12px] font-body italic text-plum/50 leading-relaxed">A jornada espiritual através dos 22 arquétipos mestres.</p>
-                <div className="pt-2 flex items-center gap-3">
-                   <div className="flex-1 h-1.5 bg-gold/5 rounded-full overflow-hidden border border-gold/5">
+                <div className="pt-2 space-y-2">
+                   <div className="flex justify-between items-center px-0.5">
+                      <span className="text-[9px] font-heading font-black text-gold uppercase tracking-widest">{completedMaiores} de 22</span>
+                      <span className="text-[9px] font-heading font-black text-plum/20 uppercase tracking-widest">{Math.round((completedMaiores/22)*100)}%</span>
+                   </div>
+                   <div className="h-1.5 bg-[#FAF5EF] rounded-full overflow-hidden border border-gold/5">
                       <div className="h-full bg-gold rounded-full" style={{ width: `${(completedMaiores/22)*100}%` }} />
                    </div>
-                   <span className="text-[10px] font-heading font-black text-gold uppercase tracking-widest whitespace-nowrap">{completedMaiores} de 22</span>
                 </div>
               </div>
             </div>
@@ -326,22 +329,25 @@ const DashboardPage = () => {
             {/* Trail Card: Arcanos Menores */}
             <div 
               onClick={() => navigate("/trilhas")}
-              className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/30 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden"
+              className="bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/40 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none group-hover:scale-110 transition-transform">
-                <Layout className="w-20 h-20" />
+              <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none group-hover:scale-110 group-hover:opacity-[0.05] transition-all">
+                <Layout className="w-24 h-24 text-plum" />
               </div>
-              <div className="w-16 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shrink-0 group-hover:scale-105 transition-all duration-500 shadow-md">
+              <div className="w-20 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shrink-0 group-hover:scale-[1.03] transition-all duration-500 shadow-xl">
                  <img src={imgAsCopas} alt="Arcanos Menores" className="w-full h-full object-cover" />
               </div>
-              <div className="space-y-2 flex-1 relative z-10">
+              <div className="space-y-3 flex-1 relative z-10 pt-1">
                 <h4 className="font-heading text-xl font-bold text-plum tracking-tight">Arcanos Menores</h4>
                 <p className="text-[12px] font-body italic text-plum/50 leading-relaxed">A aplicação prática dos 4 naipes e 56 situações cotidianas.</p>
-                <div className="pt-2 flex items-center gap-3">
-                   <div className="flex-1 h-1.5 bg-plum/5 rounded-full overflow-hidden border border-plum/5">
+                <div className="pt-2 space-y-2">
+                   <div className="flex justify-between items-center px-0.5">
+                      <span className="text-[9px] font-heading font-black text-plum/40 uppercase tracking-widest">{completedMenores} de 56</span>
+                      <span className="text-[9px] font-heading font-black text-plum/20 uppercase tracking-widest">{Math.round((completedMenores/56)*100)}%</span>
+                   </div>
+                   <div className="h-1.5 bg-[#FAF5EF] rounded-full overflow-hidden border border-gold/5">
                       <div className="h-full bg-plum/40 rounded-full" style={{ width: `${(completedMenores/56)*100}%` }} />
                    </div>
-                   <span className="text-[10px] font-heading font-black text-plum/30 uppercase tracking-widest whitespace-nowrap">{completedMenores} de 56</span>
                 </div>
               </div>
             </div>
