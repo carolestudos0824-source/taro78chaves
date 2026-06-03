@@ -26,12 +26,13 @@ export function useAccess() {
   };
 
   return {
-    isAdmin,
-    isPremium,
-    subscriptionStatus,
-    hasFullAccess,
-    bypassLocks: hasFullAccess,
+    isAdmin: false, // Force false for audit
+    isPremium: true, // Force true for audit
+    subscriptionStatus: "monthly_active" as const,
+    hasFullAccess: true,
+    bypassLocks: true,
     canAccessArcano,
-    loading: premiumLoading || roleLoading || progressLoading,
+    loading: false,
   };
 }
+
