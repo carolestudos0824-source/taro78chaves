@@ -154,9 +154,9 @@ const DashboardPage = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-2">
           {[
             { label: "Domínio", value: `${globalProgressPct}%`, icon: Target, color: "text-gold" },
-            { label: "Etapas feitas", value: totalCompletedArcanos, icon: KeyRound, color: "text-plum" },
-            { label: "Lições concluídas", value: progress.completedLessons.length, icon: BookOpen, color: "text-gold" },
-            { label: "Ritual diário", value: `${progress.streak}d`, icon: Flame, color: "text-orange-500" }
+            { label: "Chaves", value: totalCompletedArcanos, icon: KeyRound, color: "text-plum" },
+            { label: "Lições", value: progress.completedLessons.length, icon: BookOpen, color: "text-gold" },
+            { label: "Frequência", value: `${progress.streak}d`, icon: Flame, color: "text-orange-500" }
           ].map((stat, i) => (
             <div key={i} className="bg-white/40 backdrop-blur-md rounded-2xl p-4 border border-gold/15 shadow-sm flex flex-col items-center justify-center space-y-1 group hover:border-gold/30 transition-all">
               <div className="w-8 h-8 rounded-full bg-gold/5 flex items-center justify-center mb-1 group-hover:scale-110 transition-transform">
@@ -347,13 +347,13 @@ const DashboardPage = () => {
             </div>
 
             {/* Premium Access Promotion Card */}
-            <div className="bg-plum/95 rounded-[2.5rem] p-6 md:p-10 border border-gold/30 shadow-2xl text-white space-y-4 md:space-y-6 overflow-hidden relative group md:col-span-2">
+            <div className="bg-plum/95 rounded-[2.5rem] p-10 border border-gold/30 shadow-2xl text-white space-y-6 overflow-hidden relative group md:col-span-2">
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform pointer-events-none">
-                <Crown className="w-32 h-32 md:w-48 md:h-48" />
+                <Crown className="w-48 h-48" />
               </div>
               <div className="absolute inset-0 opacity-5 bg-mystic-bg-procedural pointer-events-none" />
               
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 md:gap-8 relative z-10">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
                 <div className="space-y-4">
                    <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shadow-lg">
@@ -372,7 +372,7 @@ const DashboardPage = () => {
                 {!isPremium && !isStaff ? (
                   <button 
                     onClick={() => navigate("/premium")}
-                    className="w-full lg:w-auto px-8 py-4 bg-gold text-plum rounded-xl font-heading text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl hover:bg-white transition-all active:scale-95 group/btn"
+                    className="w-full md:w-auto px-10 py-5 bg-gold text-plum rounded-[1.25rem] font-heading text-[11px] font-black tracking-[0.3em] uppercase shadow-2xl hover:bg-white transition-all active:scale-95 group/btn"
                   >
                     Fazer Inscrição 
                     <ChevronRight className="w-4 h-4 inline ml-2 group-hover/btn:translate-x-1 transition-transform" />
