@@ -1,11 +1,10 @@
 import { useState, useMemo, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Search, X, BookOpen, Star, Info, ExternalLink } from "lucide-react";
+import { useNavigate, Link } from "react-router-dom";
+import { ArrowLeft, Search, X, BookOpen, Star, Info, ExternalLink, ChevronLeft } from "lucide-react";
 import { useSymbolsContent } from "@/hooks/use-content";
 import { useHeader } from "@/contexts/header-context";
 import type { SymbolItemContent } from "@/lib/content";
 import { FULL_DECK } from "@/registry/deck-registry";
-import BottomNav from "@/components/BottomNav";
 
 // Decorative components for the premium feel
 const ArchPortal = ({ children, className }: { children: React.ReactNode, className?: string }) => (
@@ -85,14 +84,10 @@ const SymbolLibraryPage = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    console.log("SymbolLibraryPage mounted, hiding global header");
     setHeader({
       hideHeader: true
     });
-    return () => {
-      console.log("SymbolLibraryPage unmounted, resetting global header");
-      resetHeader();
-    };
+    return () => resetHeader();
   }, [setHeader, resetHeader]);
 
   const { data: symbolsContent, isLoading } = useSymbolsContent();
@@ -451,13 +446,27 @@ const SymbolLibraryPage = () => {
 
   return (
     <div className="min-h-screen bg-[#FDFCFB] relative overflow-hidden pb-48 md:pb-60">
+      {/* Custom Header with Back Button */}
+      <div className="sticky top-0 z-50 bg-[#FDFCFB]/95 backdrop-blur-md border-b border-gold/10 px-4 py-3 flex items-center gap-3">
+        <Link 
+          to="/app" 
+          className="p-2 rounded-xl bg-white border border-gold/20 text-plum/60 hover:text-plum hover:border-gold/40 transition-all shadow-sm"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </Link>
+        <div className="flex flex-col min-w-0">
+          <span className="text-[10px] font-heading font-black text-gold uppercase tracking-[0.2em] leading-none mb-1">Escola de Tarô</span>
+          <h1 className="text-sm font-heading font-bold text-plum truncate leading-none">Biblioteca de Símbolos</h1>
+        </div>
+      </div>
+
       {/* Decorative background elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-rose-100/10 blur-[120px] pointer-events-none" />
       <div className="absolute top-40 right-1/4 w-80 h-80 bg-gold/5 blur-[100px] pointer-events-none" />
       <div className="absolute inset-0 opacity-[0.02] bg-mystic-bg-procedural pointer-events-none" />
 
-      {/* Header */}
-      <header className="relative z-20 border-b border-gold/10 bg-[#FDFCFB]/95 backdrop-blur-3xl sticky top-0 shadow-sm">
+      {/* Hero Section */}
+      <header className="relative z-20 bg-transparent">
         <div className="container max-w-4xl py-10 px-6 md:py-14">
           <div className="flex flex-col items-center text-center space-y-6 mb-10 relative">
             <ArchPortal className="w-full">
@@ -486,12 +495,9 @@ const SymbolLibraryPage = () => {
               </div>
             </ArchPortal>
 
-            <button 
-              onClick={() => navigate("/app")} 
-              className="absolute left-0 top-0 p-4 rounded-full bg-white border border-gold/20 hover:border-gold/50 hover:bg-gold/5 transition-all text-plum/60 hover:text-plum shadow-xl group/back"
-            >
-              <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
-            </button>
+            <div className="absolute left-0 top-0 opacity-0 pointer-events-none">
+              {/* Back button hidden here since it moved to the sticky sub-header */}
+            </div>
           </div>
 
           {/* Search */}
