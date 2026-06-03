@@ -360,7 +360,7 @@ const SymbolLibraryPage = () => {
                                         : `/arcano-menor/${card?.id}`;
                                       navigate(route);
                                     }}
-                                    className="flex flex-col gap-4 p-4 rounded-[1.5rem] bg-white border border-gold/20 hover:border-gold/50 transition-all group/card shadow-lg hover:shadow-2xl hover:-translate-y-2 active:translate-y-0"
+                                    className="flex flex-col gap-4 p-5 rounded-[2rem] bg-white border border-gold/15 hover:border-gold/40 transition-all group/card shadow-lg hover:shadow-2xl hover:-translate-y-2 active:translate-y-0"
                                   >
                                     <div className="aspect-[2/3.2] rounded-[1rem] overflow-hidden relative shadow-xl">
                                       <img 
@@ -375,10 +375,10 @@ const SymbolLibraryPage = () => {
                                       </div>
                                     </div>
                                     <div className="text-center space-y-1">
-                                      <span className="block text-[12px] font-heading font-bold text-plum group-hover/card:text-gold transition-colors">
+                                      <span className="block text-[13px] font-heading font-bold text-plum group-hover/card:text-gold transition-colors">
                                         {card?.name}
                                       </span>
-                                      <span className="block text-[9px] font-heading font-black tracking-widest text-plum/30 uppercase">Ver Arcano</span>
+                                      <span className="block text-[10px] font-heading font-black tracking-widest text-plum/30 uppercase">Ver Lição Completa</span>
                                     </div>
                                   </button>
                                 ))}
@@ -390,9 +390,9 @@ const SymbolLibraryPage = () => {
                           <div className="pt-4">
                             <button
                               onClick={() => setSelectedSymbol(null)}
-                              className="w-full py-5 rounded-[1.25rem] bg-plum text-marfim text-[12px] font-heading font-black uppercase tracking-[0.3em] hover:bg-[#45162D] transition-all shadow-xl active:scale-[0.98]"
+                              className="w-full py-6 rounded-[1.5rem] bg-plum text-white text-[12px] font-heading font-black uppercase tracking-[0.4em] hover:bg-[#45162D] transition-all shadow-xl active:scale-[0.98] border border-gold/20"
                             >
-                              Fechar detalhamento
+                              Concluir Estudo do Símbolo
                             </button>
                           </div>
                         </div>
