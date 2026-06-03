@@ -1,10 +1,11 @@
-import { useState, useMemo, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Search, X, BookOpen, Star, Info, ExternalLink } from "lucide-react";
+import { useState, useMemo, useEffect, useCallback } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { ArrowLeft, Search, X, BookOpen, Star, Info, ExternalLink, ChevronLeft } from "lucide-react";
 import { useSymbolsContent } from "@/hooks/use-content";
-import type { SymbolItemContent } from "@/lib/content";
+import { useHeader } from "@/contexts/header-context";
+import { useProgress } from "@/hooks/use-progress";
+import type { SymbolItemContent, SymbolsContent } from "@/lib/content";
 import { FULL_DECK } from "@/registry/deck-registry";
-import BottomNav from "@/components/BottomNav";
 
 // Decorative components for the premium feel
 const ArchPortal = ({ children, className }: { children: React.ReactNode, className?: string }) => (
@@ -78,22 +79,79 @@ const ChapterHeader = ({
 
 const SymbolLibraryPage = () => {
   const navigate = useNavigate();
+  const { setHeader, resetHeader } = useHeader();
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const [selectedSymbol, setSelectedSymbol] = useState<SymbolItemContent | null>(null);
   const [search, setSearch] = useState("");
 
-  const { data: symbolsContent, isLoading } = useSymbolsContent();
+  const { data: symbolsContent, isLoading, isError, error } = useSymbolsContent();
+  const { progress } = useProgress();
+
+  useEffect(() => {
+    // Standard approach to hide global header
+    setHeader({ hideHeader: true });
+    return () => resetHeader();
+  }, [setHeader, resetHeader]);
+
+  const [hasData, setHasData] = useState(false);
+  useEffect(() => {
+    if (symbolsContent) setHasData(true);
+  }, [symbolsContent]);
+
+  // Debug log to trace data loading
+  useEffect(() => {
+    console.log("SymbolLibraryPage status:", { isLoading, isError, error, hasData: !!symbolsContent, catsCount: symbolsContent?.categorias?.length });
+  }, [isLoading, isError, error, symbolsContent]);
   
-  const normalize = (text: string) => 
-    text ? text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : "";
+  const normalize = (text: string) => {
+    if (!text || typeof text !== "string") return "";
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  };
 
   const term = normalize(search);
 
   // Extend data with pedagogical symbols if missing
   const categorias = useMemo(() => {
-    if (!symbolsContent?.categorias) return [];
+    // If symbolsContent fails (Supabase issues), we try to get it from local data directly
+    // This is the absolute fail-safe for the library page
+    let currentData = symbolsContent;
     
-    const baseCategorias = [...symbolsContent.categorias];
+    if (!currentData) {
+      console.warn("SymbolLibraryPage: symbolsContent is null, falling back to legacy seed directly.");
+      try {
+        const { SYMBOL_CATEGORIES } = require("@/data/symbol-library");
+        currentData = {
+          categorias: SYMBOL_CATEGORIES.map((c: any, ci: number) => ({
+            id: `seed-cat-${c.id}`,
+            slug: c.id,
+            nome: c.name,
+            icone: c.icon,
+            descricao: c.description,
+            ordem: ci,
+            status: "publicado",
+            tier: "free",
+            simbolos: c.symbols.map((s: any, si: number) => ({
+              id: `seed-sym-${s.id}`,
+              slug: s.id,
+              categoriaSlug: c.id,
+              nome: s.name,
+              explicacao: s.explanation,
+              leituras: s.readings,
+              cartas: s.cards,
+              ordem: si,
+              status: "publicado",
+            })),
+          })),
+          metadata: { source: "legacy" }
+        };
+      } catch (e) {
+        console.error("Critical: Failed to load legacy seed symbols", e);
+      }
+    }
+
+    if (!currentData?.categorias) return [];
+    
+    const baseCategorias = [...currentData.categorias];
     
     // Pedagogical injections
     const pedagogicalExtras = [
@@ -221,12 +279,16 @@ const SymbolLibraryPage = () => {
     if (!search) return categorias;
     
     return categorias.map((cat) => {
-      const simbolos = cat.simbolos.filter((s) => {
+      const simbolos = (cat.simbolos || []).filter((s) => {
+        if (!s) return false;
         // Match symbol name or explanation
-        if (normalize(s.nome).includes(term) || normalize(s.explicacao).includes(term)) return true;
+        const nameMatch = s.nome && normalize(s.nome).includes(term);
+        const explanationMatch = s.explicacao && normalize(s.explicacao).includes(term);
+        
+        if (nameMatch || explanationMatch) return true;
         
         // Match readings
-        if (s.leituras.some(l => normalize(l).includes(term))) return true;
+        if (s.leituras && Array.isArray(s.leituras) && s.leituras.some(l => l && normalize(l).includes(term))) return true;
         
         // Match category name
         if (normalize(cat.nome).includes(term)) return true;
@@ -276,8 +338,8 @@ const SymbolLibraryPage = () => {
           "Nudez": ["sol", "estrela", "julgamento", "vulnerabilidade", "autenticidade", "liberdade"]
         };
 
-        const currentAliases = aliases[s.nome] || [];
-        if (currentAliases.some(a => normalize(a).includes(term) || term.includes(normalize(a)))) return true;
+        const currentAliases = s.nome ? (aliases[s.nome] || []) : [];
+        if (currentAliases.some(a => a && (normalize(a).includes(term) || term.includes(normalize(a))))) return true;
 
         return false;
       });
@@ -419,13 +481,31 @@ const SymbolLibraryPage = () => {
     return ids.map(id => FULL_DECK.find(c => c.id === id)).filter(Boolean);
   };
 
-  if (isLoading) {
+  if ((isLoading && !hasData) || (isError && !hasData) || (!symbolsContent && !hasData)) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FDFCFB]">
-        <div className="font-accent italic text-base text-plum/60 animate-pulse flex flex-col items-center gap-4">
-          <div className="w-16 h-16 border-2 border-gold/20 border-t-gold rounded-full animate-spin" />
-          Abrindo a Biblioteca de Símbolos…
-        </div>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#FDFCFB] p-6 text-center">
+        {(isLoading && !isError) ? (
+          <div className="font-accent italic text-base text-plum/60 animate-pulse flex flex-col items-center gap-4">
+            <div className="w-16 h-16 border-2 border-gold/20 border-t-gold rounded-full animate-spin" />
+            Abrindo a Biblioteca de Símbolos…
+          </div>
+        ) : (
+          <>
+            <div className="w-20 h-20 bg-rose-50 rounded-full flex items-center justify-center mb-6 border border-rose-100">
+              <X className="w-10 h-10 text-rose-300" />
+            </div>
+            <h2 className="font-heading text-2xl text-plum font-bold mb-2">Erro ao carregar biblioteca</h2>
+            <p className="font-body text-plum/60 italic mb-8 max-w-xs">
+              Ocorreu um problema ao sintonizar os símbolos. Por favor, tente novamente.
+            </p>
+            <button 
+              onClick={() => window.location.reload()}
+              className="px-8 py-4 bg-plum text-white rounded-full font-heading font-black text-xs uppercase tracking-widest shadow-xl active:scale-95 transition-all"
+            >
+              Recarregar Página
+            </button>
+          </>
+        )}
       </div>
     );
   }
@@ -437,8 +517,41 @@ const SymbolLibraryPage = () => {
       <div className="absolute top-40 right-1/4 w-80 h-80 bg-gold/5 blur-[100px] pointer-events-none" />
       <div className="absolute inset-0 opacity-[0.02] bg-mystic-bg-procedural pointer-events-none" />
 
-      {/* Header */}
-      <header className="relative z-20 border-b border-gold/10 bg-[#FDFCFB]/95 backdrop-blur-3xl sticky top-0 shadow-sm">
+      {/* Zero Flickering Global Header Replacer */}
+      <header className="sticky top-0 z-50 w-full bg-[#FAF5EF] border-b-2 border-[#C8A66A]/20 shadow-sm px-4 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <Link 
+            to="/app" 
+            className="flex items-center justify-center p-1 bg-[#FAF5EF] rounded-xl border border-[#C8A66A]/20 text-[#5B1F3D] active:scale-95 w-9 h-9"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </Link>
+          <div className="flex flex-col min-w-0">
+            <h1 className="font-heading text-[#5B1F3D] font-black tracking-tight leading-tight text-[12px] sm:text-base truncate">
+              Biblioteca de Símbolos
+            </h1>
+            <span className="font-heading text-[8px] tracking-[0.2em] uppercase text-[#5B1F3D]/60 font-black leading-none truncate">
+              Escola de Tarô
+            </span>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white rounded-xl border border-[#C8A66A]/20 shadow-sm">
+            <span className="text-[#C8A66A] text-xs">🔥</span>
+            <span className="font-heading text-[13px] font-black text-[#5B1F3D]">{progress.streak}</span>
+          </div>
+          <Link 
+            to="/perfil" 
+            className="rounded-xl flex items-center justify-center bg-white border border-[#C8A66A]/30 shadow-sm active:scale-95 w-9 h-9"
+          >
+            <Star className="w-5 h-5 text-[#C8A66A]" />
+          </Link>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <header className="relative z-20 bg-transparent pt-10">
         <div className="container max-w-4xl py-10 px-6 md:py-14">
           <div className="flex flex-col items-center text-center space-y-6 mb-10 relative">
             <ArchPortal className="w-full">
@@ -467,12 +580,9 @@ const SymbolLibraryPage = () => {
               </div>
             </ArchPortal>
 
-            <button 
-              onClick={() => navigate("/app")} 
-              className="absolute left-0 top-0 p-4 rounded-full bg-white border border-gold/20 hover:border-gold/50 hover:bg-gold/5 transition-all text-plum/60 hover:text-plum shadow-xl group/back"
-            >
-              <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
-            </button>
+            <div className="absolute left-0 top-0 opacity-0 pointer-events-none">
+              {/* Back button hidden here since it moved to the sticky sub-header */}
+            </div>
           </div>
 
           {/* Search */}
@@ -544,7 +654,7 @@ const SymbolLibraryPage = () => {
         <div className="space-y-12">
           {filteredCategories.map(cat => {
             const isExpanded = expandedCategories.has(cat.slug) || !!search;
-            const displaySimbolos = cat.simbolos;
+            const displaySimbolos = cat.simbolos || [];
 
             return (
               <section 
@@ -562,7 +672,8 @@ const SymbolLibraryPage = () => {
 
                 <div className={`grid grid-cols-1 gap-8 md:gap-12 transition-all duration-700 overflow-hidden ${isExpanded ? "max-h-[10000px] opacity-100 mt-8" : "max-h-0 opacity-0"}`}>
                   {displaySimbolos.map(sym => {
-                    const relatedCards = getCardsForSymbol(sym.nome);
+                    if (!sym) return null;
+                    const relatedCards = getCardsForSymbol(sym.nome || "");
                     const isExpandedSymbol = selectedSymbol?.id === sym.id;
                     
                     return (
@@ -588,12 +699,12 @@ const SymbolLibraryPage = () => {
                             <div className="flex justify-between items-start mb-6">
                               <div className="space-y-2 flex-1 pr-4">
                                 <h3 className="font-heading text-xl md:text-3xl font-bold text-plum group-hover:text-gold transition-colors tracking-tight">
-                                  {sym.nome}
+                                  {sym.nome || ""}
                                 </h3>
                                 <div className="flex items-center gap-2">
                                   <div className="h-px w-6 bg-gold/40" />
                                   <p className="text-[9px] md:text-[10px] font-heading font-black text-plum/80 leading-relaxed uppercase tracking-widest">
-                                    {sym.leituras[0]}
+                                    {(sym.leituras && sym.leituras.length > 0) ? sym.leituras[0] : ""}
                                   </p>
                                 </div>
                               </div>
@@ -605,7 +716,7 @@ const SymbolLibraryPage = () => {
                             </div>
                             
                             <p className={`text-sm md:text-base font-body leading-relaxed text-plum/85 mb-8 italic border-l-2 border-rose-100 pl-4 ${isExpandedSymbol ? "" : "line-clamp-2"}`}>
-                              {sym.explicacao}
+                              {sym.explicacao || ""}
                             </p>
 
                              {relatedCards.length > 0 && (
@@ -666,7 +777,7 @@ const SymbolLibraryPage = () => {
                                 </h4>
                               </div>
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                {sym.leituras.map((r, i) => (
+                                {sym.leituras && sym.leituras.map((r, i) => (
                                   <div 
                                     key={i} 
                                     className="px-6 py-4 rounded-xl text-sm md:text-base font-body bg-white border border-gold/10 text-plum shadow-sm flex items-center gap-4 hover:border-gold/30 hover:shadow-md transition-all duration-500"

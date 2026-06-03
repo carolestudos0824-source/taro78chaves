@@ -86,6 +86,8 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
         badge="Agora" 
       />
 
+      <NavItem to="/biblioteca" icon="Sparkles" label="Biblioteca de Símbolos" />
+
       {/* BLOCO 2 — Formação */}
       <SectionTitle>Formação</SectionTitle>
       <NavItem to="/module/fundamentos" icon="jornada" label="Fundamentos do Tarô" />
