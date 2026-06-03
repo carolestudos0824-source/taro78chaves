@@ -176,7 +176,7 @@ const TrailsPage = () => {
                     />
                   </div>
                   <p className={`text-[9px] sm:text-[10px] font-heading font-black uppercase text-center tracking-[0.2em] transition-colors duration-500 ${
-                    isCurrent ? 'text-[#5B1F3D] scale-110' : unlocked ? 'text-[#5B1F3D]/60' : 'text-[#5B1F3D]/25'
+                    isCurrent ? 'text-[#5B1F3D] scale-110' : unlocked ? 'text-[#5B1F3D]/70' : 'text-[#5B1F3D]/45'
                   }`}>
                     {level.title.split(' — ')[0]}
                   </p>
