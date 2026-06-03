@@ -322,18 +322,18 @@ const SymbolLibraryPage = () => {
                       <div className={`overflow-hidden transition-all duration-700 ease-in-out ${
                         isExpanded ? "max-h-[1500px] opacity-100 border-t border-gold/10" : "max-h-0 opacity-0"
                       }`}>
-                        <div className="p-8 bg-gold/[0.04] space-y-10">
+                        <div className="p-8 md:p-12 bg-[#FDFCFB] space-y-12">
                           {/* Readings Section */}
                           <div className="space-y-5">
-                            <h4 className="flex items-center gap-3 text-[12px] font-heading font-black tracking-[0.4em] uppercase text-gold">
-                              <Star className="w-5 h-5 fill-gold/20" />
-                              Chaves de Leitura
+                            <h4 className="flex items-center gap-4 text-[13px] font-heading font-black tracking-[0.5em] text-plum uppercase">
+                              <Star className="w-5 h-5 text-gold fill-gold/10" />
+                              Chaves de Interpretação
                             </h4>
                             <div className="flex flex-wrap gap-3">
                               {sym.leituras.map((r, i) => (
                                 <div 
                                   key={i} 
-                                  className="px-6 py-4 rounded-2xl text-base font-body bg-white border border-gold/20 text-plum shadow-sm flex items-center gap-4 hover:border-gold/50 transition-colors"
+                                  className="px-8 py-5 rounded-[2rem] text-base font-body bg-white border border-gold/10 text-plum shadow-sm flex items-center gap-4 hover:border-gold/30 hover:shadow-md transition-all"
                                 >
                                   <div className="w-2 h-2 rounded-full bg-gold shadow-[0_0_8px_rgba(212,175,55,0.6)]" />
                                   {r}
@@ -345,9 +345,9 @@ const SymbolLibraryPage = () => {
                           {/* Cards Section */}
                           {relatedCards.length > 0 && (
                             <div className="space-y-6">
-                              <h4 className="flex items-center gap-3 text-[12px] font-heading font-black tracking-[0.4em] uppercase text-gold">
+                              <h4 className="flex items-center gap-4 text-[13px] font-heading font-black tracking-[0.5em] text-plum uppercase">
                                 <BookOpen className="w-5 h-5 text-gold" />
-                                Estudar nas Cartas
+                                Estudo Aplicado nas 78 Chaves
                               </h4>
                               <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                                 {relatedCards.map((card) => (
