@@ -200,7 +200,7 @@ const TrailsPage = () => {
             const landmark = level.landmarkCardId !== undefined ? getLandmark(level.landmarkCardId) : null;
 
             return (
-              <div key={level.id} className={`relative z-10 group transition-all duration-700 ${!unlocked ? 'opacity-85' : 'opacity-100'}`}>
+              <div key={level.id} className={`relative z-10 group transition-all duration-700 ${!unlocked ? 'opacity-100' : 'opacity-100'}`}>
                 {/* Portal Header - Ritualistic focus */}
                 <div className="flex items-center gap-7 sm:gap-12 mb-16 relative">
                   <div className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center border-[3px] transition-all duration-700 shadow-[0_15px_40px_rgba(0,0,0,0.05)] ${
