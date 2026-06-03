@@ -269,6 +269,7 @@ const LessonPage = () => {
 
 
 
+
             </div>
           )}
 
@@ -388,6 +389,7 @@ const LessonPage = () => {
                   <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
                     {arcano.lessonSections.find(s => s.id === "espiritualidade")?.content}
                   </p>
+
 
 
                 </div>
