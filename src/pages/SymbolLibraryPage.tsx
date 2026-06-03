@@ -106,9 +106,9 @@ const SymbolLibraryPage = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
+      <div className="min-h-screen flex items-center justify-center bg-[#FDFCFB]">
         <div className="font-accent italic text-sm text-plum/60 animate-pulse">
-          Abrindo a biblioteca ancestral…
+          Abrindo o compêndio sagrado…
         </div>
       </div>
     );
