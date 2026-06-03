@@ -6,6 +6,20 @@ import type { SymbolItemContent } from "@/lib/content";
 import { FULL_DECK } from "@/registry/deck-registry";
 import BottomNav from "@/components/BottomNav";
 
+
+// Decorative components for the premium feel
+const ArchPortal = ({ children, className }: { children: React.ReactNode, className?: string }) => (
+  <div className={`relative ${className}`}>
+    <div className="absolute inset-x-0 -top-8 flex justify-center pointer-events-none opacity-20 transition-opacity">
+      <svg width="200" height="100" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 100C10 50.2944 50.2944 10 100 10C149.706 10 190 50.2944 190 100" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
+        <circle cx="100" cy="10" r="3" fill="currentColor" />
+      </svg>
+    </div>
+    {children}
+  </div>
+);
+
 const SymbolLibraryPage = () => {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -35,19 +49,15 @@ const SymbolLibraryPage = () => {
 
   const getCardsForSymbol = (symbolName: string) => {
     const mapping: Record<string, string[]> = {
-      "Lua Crescente": ["maior-2", "maior-18"],
+      "Lua Crescente": ["maior-2"],
       "Lua Cheia": ["maior-18"],
-      "Sol Radiante": ["maior-19", "maior-0"],
+      "Sol Radiante": ["maior-19"],
       "Água/Rio": ["maior-17", "maior-14", "maior-18"],
-      "Rio ou Corrente": ["maior-14", "maior-17", "maior-18"],
       "Cachorro": ["maior-0", "maior-18"],
       "Leão": ["maior-8"],
-      "Rosa Branca": ["maior-0", "maior-13"],
-      "Rosa Vermelha": ["maior-1", "maior-3"],
-      "Lírio": ["maior-1", "maior-14"],
-      "Montanha": ["maior-9", "maior-0"],
-      "Montanha Nevada": ["maior-9", "maior-0"],
-      "Coroa": ["maior-4", "maior-3"],
+      "Rosa Branca": ["maior-0"],
+      "Montanha": ["maior-0", "maior-9"],
+      "Coroa": ["maior-3", "maior-4"],
       "Varinha / Bastão": ["maior-1", "paus-1"],
       "Cálice / Taça": ["copas-1"],
       "Espada": ["espadas-1"],
