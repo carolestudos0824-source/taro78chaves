@@ -38,15 +38,8 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
   const navigate = useNavigate();
   const { user } = useAuth();
   
-  useEffect(() => {
-    // Check for audit parameter in URL
-    const isAuditUrl = new URLSearchParams(window.location.search).get('audit') === 'true';
-    if (isAuditUrl) {
-      localStorage.setItem("taro_analytics_consent", "true");
-    }
-  }, []);
-  
   const handleStart = (ctaType: string = "general", label: string = "Acessar o programa") => {
+
 
     trackEvent(`landing_cta_${ctaType}_start_click`, {
       cta_text: label,
