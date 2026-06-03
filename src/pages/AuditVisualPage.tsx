@@ -23,7 +23,7 @@ const PHASE_ORDER = [
 
 const AuditVisualPage = () => {
   const [phaseIdx, setPhaseIdx] = useState(0);
-  const arcano = getArcanoById(0); // O Louco
+  const arcano = editorialToLegacy(O_LOUCO, true);
   const phase = PHASE_ORDER[phaseIdx];
 
   const goNext = () => setPhaseIdx(prev => Math.min(prev + 1, PHASE_ORDER.length - 1));
