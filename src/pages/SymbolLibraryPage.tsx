@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Search, X, BookOpen, Star, Info, ExternalLink } from "lucide-react";
 import { useSymbolsContent } from "@/hooks/use-content";
@@ -83,7 +83,122 @@ const SymbolLibraryPage = () => {
   const [search, setSearch] = useState("");
 
   const { data: symbolsContent, isLoading } = useSymbolsContent();
-  const categorias = symbolsContent?.categorias ?? [];
+  
+  const normalize = (text: string) => 
+    text ? text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : "";
+
+  const term = normalize(search);
+
+  // Extend data with pedagogical symbols if missing
+  const categorias = useMemo(() => {
+    if (!symbolsContent?.categorias) return [];
+    
+    const baseCategorias = [...symbolsContent.categorias];
+    
+    // Pedagogical injections
+    const pedagogicalExtras = [
+      {
+        slug: "figuras-e-entidades",
+        nome: "Figuras e Entidades",
+        icone: "👼",
+        descricao: "Seres arquetípicos, mensageiros e guias espirituais.",
+        simbolos: [
+          {
+            id: "extra-sym-anjo",
+            slug: "anjo",
+            nome: "Anjo",
+            explicacao: "Mensageiro divino e o chamado da consciência superior. O anjo simboliza a intervenção espiritual, o despertar de uma nova percepção e o anúncio de uma grande transformação.",
+            leituras: ["Despertar espiritual", "Chamado da alma", "Proteção superior"],
+            cartas: ["O Julgamento", "Os Enamorados", "A Temperança"]
+          },
+          {
+            id: "extra-sym-trombeta",
+            slug: "trombeta",
+            nome: "Trombeta",
+            explicacao: "O som da verdade que desperta os que dormem. Simboliza a voz interior e o chamado para o renascimento.",
+            leituras: ["Revelação", "Despertar consciente", "Voz divina"],
+            cartas: ["O Julgamento"]
+          },
+          {
+            id: "extra-sym-crianca",
+            slug: "crianca",
+            nome: "Criança",
+            explicacao: "Inocência, alegria pura e o novo começo sem amarras. A criança sobre o cavalo branco simboliza a consciência solar em sua forma mais radiante.",
+            leituras: ["Espontaneidade", "Pureza de coração", "Novo ciclo solar"],
+            cartas: ["O Sol", "Seis de Copas"]
+          }
+        ]
+      },
+      {
+        slug: "arquitetura-e-cenas",
+        nome: "Arquitetura e Cenas",
+        icone: "🏛️",
+        descricao: "Elementos do cenário que compõem a narrativa das cartas.",
+        simbolos: [
+          {
+            id: "extra-sym-colunas",
+            slug: "colunas",
+            nome: "Colunas",
+            explicacao: "Os pilares da dualidade (Boaz e Jachin). Representam as forças opostas que sustentam o portal do conhecimento e a estabilidade das instituições.",
+            leituras: ["Dualidade equilibrada", "Estabilidade", "Portal iniciático"],
+            cartas: ["A Sacerdotisa", "O Hierofante", "A Justiça"]
+          },
+          {
+            id: "extra-sym-veu",
+            slug: "veu",
+            nome: "Véu",
+            explicacao: "A separação entre o mundo visível e o invisível. O véu protege os mistérios daqueles que ainda não estão prontos para vê-los.",
+            leituras: ["Segredo guardado", "Mistério", "Intuição"],
+            cartas: ["A Sacerdotisa", "A Justiça"]
+          },
+          {
+            id: "extra-sym-torres",
+            slug: "torres",
+            nome: "Torres",
+            explicacao: "As estruturas construídas pelo homem ou os limites do território. Podem ser portais de proteção ou prisões da mente que precisam ser derrubadas.",
+            leituras: ["Limites", "Dualidade", "Estrutura mental"],
+            cartas: ["A Lua", "A Torre", "A Morte"]
+          }
+        ]
+      }
+    ];
+
+    pedagogicalExtras.forEach(extra => {
+      let existing = baseCategorias.find(c => c.slug === extra.slug);
+      if (existing) {
+        // Create a new object to avoid modifying the original
+        const updatedCat = { ...existing, simbolos: [...existing.simbolos] };
+        extra.simbolos.forEach(s => {
+          if (!updatedCat.simbolos.some(exS => normalize(exS.nome) === normalize(s.nome))) {
+            updatedCat.simbolos.push({
+              ...s,
+              categoriaSlug: extra.slug,
+              ordem: updatedCat.simbolos.length + 1,
+              status: "publicado"
+            } as SymbolItemContent);
+          }
+        });
+        const index = baseCategorias.indexOf(existing);
+        baseCategorias[index] = updatedCat;
+      } else {
+        baseCategorias.push({
+          id: `extra-cat-${extra.slug}`,
+          ...extra,
+          ordem: baseCategorias.length + 1,
+          status: "publicado",
+          tier: "free",
+          simbolos: extra.simbolos.map((s, i) => ({
+            ...s,
+            categoriaSlug: extra.slug,
+            ordem: i + 1,
+            status: "publicado"
+          } as SymbolItemContent))
+        });
+      }
+    });
+
+    return baseCategorias;
+  }, [symbolsContent]);
 
   const categoryDescriptions: Record<string, string> = {
     "luas": "Mistério, ciclos e percepção intuitiva.",
@@ -97,23 +212,87 @@ const SymbolLibraryPage = () => {
     "objetos": "Ferramentas simbólicas de ação, escolha e poder.",
     "elementos-astrologicos": "Influências cósmicas e ciclos universais.",
     "numeros": "Estruturas arquetípicas da jornada.",
-    "gestos-e-posturas": "Linguagem corporal e atitudes perante a vida."
+    "gestos-e-posturas": "Linguagem corporal e atitudes perante a vida.",
+    "figuras-e-entidades": "Seres arquetípicos, mensageiros e guias espirituais.",
+    "arquitetura-e-cenas": "Cenários e estruturas que compõem a narrativa visual."
   };
-
-  const term = search.toLowerCase();
 
   const filteredCategories = useMemo(() => {
     if (!search) return categorias;
     
-    return categorias.map((cat) => ({
-      ...cat,
-      simbolos: cat.simbolos.filter(
-        (s) =>
-          s.nome.toLowerCase().includes(term) ||
-          s.explicacao.toLowerCase().includes(term),
-      ),
-    })).filter((cat) => cat.simbolos.length > 0);
+    return categorias.map((cat) => {
+      const simbolos = cat.simbolos.filter((s) => {
+        // Match symbol name or explanation
+        if (normalize(s.nome).includes(term) || normalize(s.explicacao).includes(term)) return true;
+        
+        // Match readings
+        if (s.leituras.some(l => normalize(l).includes(term))) return true;
+        
+        // Match category name
+        if (normalize(cat.nome).includes(term)) return true;
+
+        // Match related cards
+        const symbolCards = getCardsForSymbol(s.nome);
+        if (symbolCards.some(card => {
+          if (!card) return false;
+          const cardName = normalize(card.name);
+          const cardId = normalize(card.id);
+          
+          // "julgamento" matches "O Julgamento"
+          if (cardName.includes(term) || term.includes(cardName)) return true;
+          
+          // Arcano number match (e.g. "XX", "20")
+          if (card.category === "maior" && (term === String(card.number) || term === `arcano ${card.number}`)) return true;
+          
+          // Suit match (e.g. "copas", "espadas")
+          if (card.category === "menor" && (cardId.includes(term) || (card.naipe && normalize(card.naipe).includes(term)))) return true;
+          
+          return false;
+        })) return true;
+
+        // Semantic aliases for pedagogical search
+        const aliases: Record<string, string[]> = {
+          "Lua Crescente": ["sacerdotisa", "intuicao", "misterio", "gestacao"],
+          "Lua Cheia": ["lua", "revelacao", "plenitude", "inconsciente"],
+          "Lua Minguante": ["morte", "eremita", "soltar", "desapego", "recolhimento", "interiorizacao"],
+          "Zero (0)": ["louco", "precipicio", "jornada", "comeco", "potencial"],
+          "Cachorro": ["louco", "lua", "fidelidade", "instinto", "guia"],
+          "Chave": ["sacerdotisa", "hierofante", "solucao", "misterio", "segredo", "conhecimento"],
+          "Cálice / Taça": ["copas", "emocoes", "amor", "sentimento", "receptividade", "feminino"],
+          "Espada": ["espadas", "ar", "decisao", "mente", "clareza", "verdade", "cortar"],
+          "Sol Radiante": ["sol", "clareza", "alegria", "sucesso", "verdade", "vitalidade", "crianca", "girassol"],
+          "Anjo": ["julgamento", "trombeta", "chamado", "despertar", "renascimento", "ressurreicao", "consciencia"],
+          "Trombeta": ["julgamento", "anjo", "chamado", "voz", "despertar"],
+          "Rosa Branca": ["louco", "morte", "pureza", "inocencia"],
+          "Rosa Vermelha": ["mago", "imperatriz", "paixao", "desejo"],
+          "Lírio": ["mago", "temperanca", "sacerdotisa", "pureza", "espiritualidade"],
+          "Montanha Nevada": ["eremita", "louco", "desafio", "elevacao", "solidao"],
+          "Estrela de Seis Pontas": ["estrela", "temperanca", "enamorados", "equilibrio", "espirito", "materia"],
+          "Rio ou Corrente": ["estrela", "temperanca", "imperatriz", "fluxo", "tempo", "emocoes"],
+          "Olhos Fechados": ["sacerdotisa", "eremita", "espadas", "introspeccao", "meditacao", "visao interna"],
+          "Lemniscata (∞)": ["mago", "forca", "infinito", "eternidade", "dominio"],
+          "Roda Zodiacal": ["roda da fortuna", "mundo", "ciclos", "tempo", "zodiaco"],
+          "Armadura": ["carro", "imperador", "protecao", "defesa"],
+          "Nudez": ["sol", "estrela", "julgamento", "vulnerabilidade", "autenticidade", "liberdade"]
+        };
+
+        const currentAliases = aliases[s.nome] || [];
+        if (currentAliases.some(a => normalize(a).includes(term) || term.includes(normalize(a)))) return true;
+
+        return false;
+      });
+
+      return { ...cat, simbolos };
+    }).filter((cat) => cat.simbolos.length > 0);
   }, [categorias, search, term]);
+
+  const foundCard = useMemo(() => {
+    if (!term) return null;
+    return FULL_DECK.find(c => {
+      const cardName = normalize(c.name);
+      return cardName.includes(term) || term.includes(cardName) || (c.category === "maior" && term === String(c.number));
+    });
+  }, [term]);
 
   const toggleCategory = (slug: string) => {
     setExpandedCategories(prev => {
@@ -129,7 +308,7 @@ const SymbolLibraryPage = () => {
 
   const getCardsForSymbol = (symbolName: string) => {
     const mapping: Record<string, string[]> = {
-      // LUA / LUAS
+      // LUAS
       "Lua Crescente": ["maior-2"],
       "Lua Cheia": ["maior-18"],
       "Lua Minguante": ["maior-18", "maior-9"],
@@ -139,18 +318,18 @@ const SymbolLibraryPage = () => {
       "Sol Nascente": ["maior-0", "maior-19"],
       
       // ÁGUAS
-      "Rio ou Corrente": ["maior-17", "maior-14", "maior-18"],
+      "Rio ou Corrente": ["maior-17", "maior-14", "maior-18", "maior-3"],
       "Mar ou Oceano": ["maior-18", "copas-2", "espadas-6"],
       "Chuva": ["maior-16", "copas-5"],
       
       // FLORES
-      "Rosa Branca": ["maior-0"],
+      "Rosa Branca": ["maior-0", "maior-13"],
       "Rosa Vermelha": ["maior-1", "maior-3"],
-      "Lírio": ["maior-14", "maior-2"],
+      "Lírio": ["maior-14", "maior-2", "maior-1"],
       
       // MONTANHAS
       "Montanha Nevada": ["maior-0", "maior-9"],
-      "Colina ou Morro": ["maior-0", "maior-21"],
+      "Colina ou Morro": ["maior-0", "maior-21", "maior-7"],
       
       // ANIMAIS
       "Cachorro": ["maior-0", "maior-18"],
@@ -159,33 +338,33 @@ const SymbolLibraryPage = () => {
       "Cavalo": ["maior-19", "paus-knight", "copas-knight", "espadas-knight", "ouros-knight", "maior-13"],
       
       // CORES
-      "Dourado / Ouro": ["maior-19", "ouros-1", "ouros-10"],
-      "Vermelho": ["maior-1", "maior-4", "maior-8"],
+      "Dourado / Ouro": ["maior-19", "ouros-1", "ouros-10", "maior-10"],
+      "Vermelho": ["maior-1", "maior-4", "maior-8", "maior-11"],
       "Azul": ["maior-2", "maior-17", "copas-queen"],
       "Branco": ["maior-0", "maior-2", "maior-14"],
       
       // VESTES
-      "Manto Azul": ["maior-2", "maior-17"],
-      "Armadura": ["maior-7", "espadas-knight"],
-      "Nudez": ["maior-21", "maior-17", "maior-15"],
+      "Manto Azul": ["maior-2", "maior-17", "maior-9"],
+      "Armadura": ["maior-7", "espadas-knight", "maior-4"],
+      "Nudez": ["maior-21", "maior-17", "maior-15", "maior-19", "maior-6"],
       
       // OBJETOS
-      "Varinha / Bastão": ["maior-1", "paus-1"],
-      "Cálice / Taça": ["copas-1", "copas-2", "copas-queen"],
-      "Espada": ["espadas-1", "espadas-2", "maior-11"],
+      "Varinha / Bastão": ["maior-1", "paus-1", "maior-21"],
+      "Cálice / Taça": ["copas-1", "copas-2", "copas-queen", "maior-14", "maior-17"],
+      "Espada": ["espadas-1", "espadas-2", "maior-11", "maior-1"],
       "Chave": ["maior-2", "maior-5"],
-      "Pentáculo / Ouro": ["ouros-1", "ouros-10"],
-      "Coroa": ["maior-3", "maior-4", "ouros-4"],
+      "Pentáculo / Ouro": ["ouros-1", "ouros-10", "maior-1"],
+      "Coroa": ["maior-3", "maior-4", "ouros-4", "maior-5", "maior-7", "maior-11", "maior-16"],
       "Livro / Pergaminho": ["maior-2", "maior-5"],
       "Balança": ["maior-11"],
       
       // ELEMENTOS ASTROLÓGICOS
-      "Estrela de Seis Pontas": ["maior-17"],
+      "Estrela de Seis Pontas": ["maior-17", "maior-9"],
       "Estrela de Oito Pontas": ["maior-17"],
       "Roda Zodiacal": ["maior-10", "maior-21"],
       "Lemniscata (∞)": ["maior-1", "maior-8"],
-      "Lua": ["maior-18", "maior-2"],
-      "Sol": ["maior-19"],
+      "Lua": ["maior-18", "maior-2", "maior-7"],
+      "Sol": ["maior-19", "maior-0", "maior-6"],
       "Círculo / Mandala": ["maior-21", "maior-10"],
       
       // NÚMEROS
@@ -202,16 +381,25 @@ const SymbolLibraryPage = () => {
       "Dez (X)": ["maior-10", "copas-10", "ouros-10"],
       
       // GESTOS E POSTURAS
-      "Mão Erguida ao Céu": ["maior-1"],
+      "Mão Erguida ao Céu": ["maior-1", "maior-5"],
       "Mão Apontando para Baixo": ["maior-1"],
-      "Olhos Fechados": ["espadas-2", "espadas-4"],
-      "Postura Sentada / Trono": ["maior-2", "maior-3", "maior-4", "maior-11"],
+      "Olhos Fechados": ["espadas-2", "espadas-4", "maior-2", "maior-9"],
+      "Postura Sentada / Trono": ["maior-2", "maior-3", "maior-4", "maior-11", "maior-5"],
       "Figura em Pé no Precipício": ["maior-0"],
       "Figura Caminhando": ["maior-0", "maior-9", "copas-8"],
-      "Braços Abertos": ["maior-21", "maior-12"],
+      "Braços Abertos": ["maior-21", "maior-12", "maior-20"],
       "Mãos Unidas / Bênção": ["maior-5", "copas-2"],
-      "Cabeça Baixa / Luto": ["copas-5"],
-      "Contemplação / Espera": ["ouros-7", "copas-4"]
+      "Cabeça Baixa / Luto": ["copas-5", "maior-9"],
+      "Contemplação / Espera": ["ouros-7", "copas-4"],
+
+      // INJEÇÕES PEDAGÓGICAS (EXTRA SYMBOLS)
+      "Anjo": ["maior-20", "maior-6", "maior-14"],
+      "Trombeta": ["maior-20"],
+      "Criança": ["maior-19", "copas-6"],
+      "Colunas": ["maior-2", "maior-5", "maior-11"],
+      "Véu": ["maior-2", "maior-11"],
+      "Torres": ["maior-16", "maior-18"],
+      "Girassóis": ["maior-19"]
     };
 
 
@@ -294,7 +482,7 @@ const SymbolLibraryPage = () => {
               <Search className="absolute left-8 w-6 h-6 text-plum/30 group-focus-within:text-gold transition-colors" />
               <input
                 type="text"
-                placeholder="Ex: Lua, Água, Sol, A Sacerdotisa..."
+                placeholder="Busque símbolo, carta ou tema..."
                 value={search}
                 onChange={e => { setSearch(e.target.value); }}
                 className="w-full pl-20 pr-20 py-8 rounded-[2.5rem] text-xl font-body bg-white/80 border border-gold/20 outline-none focus:border-gold/50 focus:bg-white focus:ring-12 focus:ring-gold/5 transition-all shadow-xl placeholder:text-plum/20 backdrop-blur-sm"
@@ -336,6 +524,19 @@ const SymbolLibraryPage = () => {
                 <span className="truncate">{cat.nome}</span>
               </button>
             ))}
+          </div>
+        )}
+
+        {/* Search Results Context Message */}
+        {search && filteredCategories.length > 0 && (
+          <div className="mb-10 px-6 py-8 rounded-[2rem] bg-gold/5 border border-gold/15 animate-in fade-in slide-in-from-top-4 duration-700">
+            <p className="text-base font-body italic text-plum/80 text-center leading-relaxed">
+              {foundCard ? (
+                <>Encontramos símbolos relacionados a <span className="font-bold text-plum">{foundCard.name}</span>.</>
+              ) : (
+                <>Exibindo símbolos relacionados a <span className="font-bold text-plum">"{search}"</span>.</>
+              )}
+            </p>
           </div>
         )}
 
@@ -551,8 +752,8 @@ const SymbolLibraryPage = () => {
             <h3 className="font-heading text-2xl font-bold text-plum mb-3">
               Mistério não encontrado
             </h3>
-            <p className="font-body text-base text-plum/50 italic max-w-sm mx-auto mb-10 leading-relaxed">
-              Nenhum símbolo ou carta corresponde à busca "{search}". Experimente outro termo ou tema ancestral.
+            <p className="font-body text-base text-plum/70 italic max-w-sm mx-auto mb-10 leading-relaxed">
+              Não encontramos símbolos correspondentes a "{search}". Experimente buscar por uma carta (ex: "A Sacerdotisa"), um tema (ex: "intuição") ou um elemento visual.
             </p>
             <button 
               onClick={() => setSearch("")}
