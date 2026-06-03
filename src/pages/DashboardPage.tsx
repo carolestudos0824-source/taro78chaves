@@ -109,7 +109,33 @@ const DashboardPage = () => {
 
   return (
     <div className="min-h-screen bg-[#FAF5EF]">
-      <main className="container max-w-3xl px-4 pt-6 pb-24 space-y-6 animate-in fade-in duration-500">
+      <main className="container max-w-4xl px-4 pt-6 pb-24 space-y-10 animate-in fade-in duration-700">
+        {/* Welcome Section - Premium School Identity */}
+        <section className="text-center space-y-4 py-6 relative overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl aspect-square bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
+          <div className="relative z-10 space-y-2">
+            <span className="text-[11px] font-heading font-black tracking-[0.4em] text-gold uppercase opacity-80">Escola Digital</span>
+            <h1 className="text-4xl md:text-5xl font-heading font-black text-plum tracking-tighter">Portal dos Arcanos</h1>
+            <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-gold/40 to-transparent mx-auto mt-4" />
+          </div>
+        </section>
+
+        {/* Global Progress Snapshot - Horizontal School Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-2">
+          {[
+            { label: "Domínio", value: `${globalProgressPct}%`, icon: Target, color: "text-gold" },
+            { label: "Chaves", value: totalCompletedArcanos, icon: KeyRound, color: "text-plum" },
+            { label: "Lições", value: progress.completedLessons.length, icon: BookOpen, color: "text-gold" },
+            { label: "Sequência", value: `${progress.streak}d`, icon: Flame, color: "text-orange-500" }
+          ].map((stat, i) => (
+            <div key={i} className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-gold/10 shadow-sm flex flex-col items-center justify-center space-y-1">
+              <stat.icon className={`w-4 h-4 ${stat.color} mb-1`} />
+              <span className="text-xl font-heading font-black text-plum leading-none">{stat.value}</span>
+              <span className="text-[9px] font-heading font-black tracking-widest text-plum/40 uppercase">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+
         
         {/* Auditor/Admin Banner - Improved Visual & Utility */}
         {isStaff && (
