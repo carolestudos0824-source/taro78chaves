@@ -334,30 +334,39 @@ const LessonPage = () => {
 
 
           {phase === "aplicacoes" && (
-            <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
-              <div className="flex items-center gap-3">
-                <Sparkles className="w-5 h-5 text-[#C8A66A]" />
-                <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Aplicações</h2>
-              </div>
-              <div className="space-y-6">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm uppercase font-black text-[#8B6A30]">Amor:</span>
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                subtitle="O Arcano no Dia a Dia"
+              />
+              <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
+                <div className="flex items-center gap-3">
+                  <Sparkles className="w-5 h-5 text-[#C8A66A]" />
+                  <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Aplicações</h2>
                 </div>
-                <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
-                  {arcano.lessonSections.find(s => s.id === "amor")?.content}
-                </p>
-                <div className="flex items-center gap-2 pt-4">
-                  <span className="text-sm uppercase font-black text-[#8B6A30]">Trabalho:</span>
+                <div className="space-y-6">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm uppercase font-black text-[#8B6A30]">Amor:</span>
+                  </div>
+                  <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
+                    {arcano.lessonSections.find(s => s.id === "amor")?.content}
+                  </p>
+                  <div className="flex items-center gap-2 pt-4">
+                    <span className="text-sm uppercase font-black text-[#8B6A30]">Trabalho:</span>
+                  </div>
+                  <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
+                    {arcano.lessonSections.find(s => s.id === "trabalho")?.content}
+                  </p>
                 </div>
-                <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
-                  {arcano.lessonSections.find(s => s.id === "trabalho")?.content}
-                </p>
+                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
+                  Continuar para Reflexão
+                </Button>
               </div>
-              <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">
-                Continuar para Reflexão
-              </Button>
             </div>
           )}
+
 
           {phase === "reflexao" && (
             <div className="space-y-8">
