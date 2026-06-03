@@ -308,8 +308,8 @@ const DashboardPage = () => {
               <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none group-hover:scale-110 transition-transform">
                 <KeyRound className="w-20 h-20" />
               </div>
-              <div className="w-16 h-16 rounded-2xl bg-plum/5 flex items-center justify-center shrink-0 group-hover:bg-plum transition-all duration-500 shadow-inner">
-                 <KeyRound className="w-7 h-7 text-gold group-hover:text-white transition-colors" />
+              <div className="w-16 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shrink-0 group-hover:scale-105 transition-all duration-500 shadow-md">
+                 <img src={imgMago} alt="Arcanos Maiores" className="w-full h-full object-cover" />
               </div>
               <div className="space-y-2 flex-1 relative z-10">
                 <h4 className="font-heading text-xl font-bold text-plum tracking-tight">Arcanos Maiores</h4>
@@ -331,8 +331,8 @@ const DashboardPage = () => {
               <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none group-hover:scale-110 transition-transform">
                 <Layout className="w-20 h-20" />
               </div>
-              <div className="w-16 h-16 rounded-2xl bg-gold/5 flex items-center justify-center shrink-0 group-hover:bg-gold transition-all duration-500 shadow-inner">
-                 <Layout className="w-7 h-7 text-plum group-hover:text-white transition-colors" />
+              <div className="w-16 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shrink-0 group-hover:scale-105 transition-all duration-500 shadow-md">
+                 <img src={imgSacerdotisa} alt="Arcanos Menores" className="w-full h-full object-cover" />
               </div>
               <div className="space-y-2 flex-1 relative z-10">
                 <h4 className="font-heading text-xl font-bold text-plum tracking-tight">Arcanos Menores</h4>
