@@ -155,38 +155,43 @@ const SymbolLibraryPage = () => {
       <div className="absolute inset-0 opacity-[0.02] bg-mystic-bg-procedural pointer-events-none" />
 
       {/* Header */}
-      <header className="relative z-20 border-b border-gold/10 bg-[#FDFCFB]/95 backdrop-blur-xl sticky top-0 shadow-sm">
-        <div className="container max-w-3xl py-10 px-6">
-          <div className="flex flex-col items-center text-center space-y-6 mb-8 relative">
+      <header className="relative z-20 border-b border-gold/10 bg-[#FDFCFB]/95 backdrop-blur-3xl sticky top-0 shadow-sm">
+        <div className="container max-w-4xl py-12 px-6 md:py-16">
+          <div className="flex flex-col items-center text-center space-y-8 mb-12 relative">
             <ArchPortal className="w-full">
-              <div className="space-y-4 pt-4">
-                <div className="flex items-center justify-center gap-3">
-                  <div className="h-px w-10 bg-gold/30" />
-                  <span className="text-[10px] font-heading font-black tracking-[0.6em] text-gold uppercase">Sabedoria Ancestral</span>
-                  <div className="h-px w-10 bg-gold/30" />
+              <div className="space-y-6 pt-6">
+                <div className="flex items-center justify-center gap-4">
+                  <div className="h-[1px] w-12 md:w-20 bg-gradient-to-r from-transparent to-gold/40" />
+                  <span className="text-[11px] md:text-[12px] font-heading font-black tracking-[0.8em] text-gold uppercase drop-shadow-sm">Compêndio Sagrado</span>
+                  <div className="h-[1px] w-12 md:w-20 bg-gradient-to-l from-transparent to-gold/40" />
                 </div>
                 
-                <h1 className="text-4xl md:text-5xl font-heading font-bold text-plum tracking-tight flex flex-col items-center">
-                  <span className="text-xl md:text-2xl font-light italic text-plum/50 mb-1">Escola Digital de Tarô</span>
-                  <span className="relative inline-block">
-                    Biblioteca de Símbolos
-                    <div className="absolute -right-8 -top-4 opacity-40">
-                      <Star className="w-5 h-5 text-gold fill-gold/20" />
-                    </div>
-                  </span>
-                </h1>
+                <div className="relative inline-block">
+                  <h1 className="text-5xl md:text-7xl font-heading font-bold text-plum tracking-tight flex flex-col items-center">
+                    <span className="text-2xl md:text-3xl font-light italic text-plum/40 mb-2">A Linguagem Visual do Tarô</span>
+                    <span className="relative">
+                      Biblioteca de Símbolos
+                      <div className="absolute -right-12 -top-6 animate-pulse">
+                        <Star className="w-8 h-8 text-gold fill-gold/20" />
+                      </div>
+                      <div className="absolute -left-12 bottom-0 opacity-20 rotate-12">
+                        <Star className="w-6 h-6 text-gold" />
+                      </div>
+                    </span>
+                  </h1>
+                </div>
                 
-                <p className="text-sm md:text-base font-body italic text-plum/60 max-w-md mx-auto leading-relaxed">
-                  Aprenda a reconhecer os sinais vivos nas cartas Rider-Waite-Smith.
+                <p className="text-lg md:text-2xl font-body italic text-plum/60 max-w-2xl mx-auto leading-relaxed px-4">
+                  Descubra os mistérios ocultos nas 78 Chaves e aprenda a ler os sinais ancestrais do Tarô.
                 </p>
               </div>
             </ArchPortal>
 
             <button 
               onClick={() => navigate("/app")} 
-              className="absolute left-0 top-0 p-3 rounded-full bg-white border border-gold/15 hover:border-gold/30 hover:bg-gold/5 transition-all text-plum/50 hover:text-plum shadow-sm"
+              className="absolute left-0 top-0 p-4 rounded-full bg-white border border-gold/20 hover:border-gold/50 hover:bg-gold/5 transition-all text-plum/60 hover:text-plum shadow-xl group/back"
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
             </button>
           </div>
 
