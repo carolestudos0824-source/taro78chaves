@@ -19,22 +19,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let initialized = false;
-
-    const applySession = (nextSession: Session | null) => {
-      setSession(nextSession);
-      const auditUser = {
-        id: 'ead474c1-d951-44c2-ad61-6c912d64029a',
-        email: 'laridudu3@gmail.com',
-        user_metadata: { display_name: 'Lari' }
-      } as any;
-      setUser(auditUser);
+    // 1. Check current session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setUser(session?.user ?? null);
       setLoading(false);
-      initialized = true;
-    };
+    });
 
-    applySession(null);
-    return () => {};
+    // 2. Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
 

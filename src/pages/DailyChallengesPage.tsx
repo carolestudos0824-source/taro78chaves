@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ChevronRight, Gift, X, Scroll } from "lucide-react";
 import { TarotIcon } from "@/components/TarotIcon";
 import { useProgress } from "@/hooks/use-progress";
+import { useAuth } from "@/hooks/use-auth";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 import { useArcanosList, useSymbolsContent } from "@/hooks/use-content";
 import {
   buildDailyChallenges,
@@ -30,6 +33,7 @@ const today = () => {
 
 const DailyChallengesPage = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { progress, addXP, updateStreak } = useProgress();
   const { data: arcanos } = useArcanosList({ tipo: "maior" });
   const { data: symbols } = useSymbolsContent();
@@ -62,26 +66,86 @@ const DailyChallengesPage = () => {
 
   const [activeChallenge, setActiveChallenge] = useState<DailyChallengeItem | null>(null);
 
+  // Sync with localStorage
   useEffect(() => {
     localStorage.setItem("daily-challenges", JSON.stringify({ date: today(), items: challenges }));
   }, [challenges]);
+
+  // Sync with Supabase on mount
+  useEffect(() => {
+    if (!user) return;
+
+    const fetchCompletions = async () => {
+      console.log(`[Ritual] Fetching today's completions for user: ${user.id}`);
+      const { data, error } = await supabase
+        .from("daily_challenge_completions")
+        .select("challenge_id")
+        .eq("user_id", user.id)
+        .eq("challenge_date", today());
+
+      if (error) {
+        console.error("[Ritual] Error fetching completions:", error);
+        return;
+      }
+
+      if (data && data.length > 0) {
+        const completedIds = data.map(c => c.challenge_id);
+        console.log("[Ritual] Found completions in Supabase:", completedIds);
+        setChallenges(prev => prev.map(ch => 
+          completedIds.includes(ch.id) ? { ...ch, completed: true } : ch
+        ));
+      }
+    };
+
+    fetchCompletions();
+  }, [user]);
 
   const completedCount = challenges.filter(c => c.completed).length;
   const totalXPEarned = challenges.filter(c => c.completed).reduce((sum, c) => sum + c.xp, 0);
   const allDone = completedCount === challenges.length;
 
-  const completeChallenge = useCallback((id: string) => {
-    setChallenges(prev => {
-      const updated = prev.map(c => c.id === id ? { ...c, completed: true } : c);
-      const challenge = prev.find(c => c.id === id);
-      if (challenge && !challenge.completed) {
-        addXP(challenge.xp);
-        updateStreak();
-      }
-      return updated;
-    });
+  const completeChallenge = useCallback(async (id: string) => {
+    const challenge = challenges.find(c => c.id === id);
+    if (!challenge || challenge.completed) return;
+
+    console.log(`[Ritual] Completing challenge: ${id} for user: ${user?.id}`);
+    
+    // 1. Mark as completed locally
+    setChallenges(prev => prev.map(c => c.id === id ? { ...c, completed: true } : c));
     setActiveChallenge(null);
-  }, [addXP, updateStreak]);
+
+    // 2. Update global progress (XP and Streak)
+    addXP(challenge.xp);
+    updateStreak();
+
+    // 3. Save to Supabase (if user is authenticated)
+    if (user) {
+      const payload = {
+        user_id: user.id,
+        challenge_id: id,
+        challenge_date: today(),
+        xp_earned: challenge.xp
+      };
+      
+      console.log("[Ritual] Saving completion to Supabase:", {
+        ...payload,
+        status: "completed",
+        completed_at: new Date().toISOString(),
+        response: null
+      });
+
+      const { error } = await supabase
+        .from("daily_challenge_completions")
+        .insert(payload);
+
+      if (error) {
+        console.error("[Ritual] Error saving completion:", error);
+        // We don't block the UI here as it's already updated locally and global XP sync has its own toast if it fails
+      } else {
+        console.log("[Ritual] Completion saved successfully");
+      }
+    }
+  }, [challenges, user, addXP, updateStreak]);
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav bg-[#FAF5EF]">

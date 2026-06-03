@@ -215,29 +215,48 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     if (marker) marker.innerText += " | USE PROGRESS START";
 
     const fetchProgress = async () => {
-      const dbData: UserProgress = {
-        xp: 390,
-        level: 4,
-        streak: 3,
-        lastActive: new Date().toISOString(),
-        onboardingCompleted: true,
-        completedLessons: ['fund-1', 'fund-2', 'fund-3', 'fund-4', 'fund-5', 'fund-6', 'fund-7', 'fund-8', 'fund-9', 'fund-10', 'arcano-0'],
-        completedQuizzes: ['quiz-arcano-0'],
-        completedExercises: [],
-        completedModules: [],
-        badges: DEFAULT_PROGRESS.badges.map(b => 
-          b.id === 'first-step' || b.id === 'fool-complete' 
-          ? { ...b, earned: true, earnedAt: new Date().toISOString() } 
-          : b
-        ),
-        currentModule: 'fools-journey',
-        studentName: 'Lari',
-        certificatesEarned: {},
-        quizScores: { 'quiz-arcano-0': 1 },
-      };
-      
-      setProgress(dbData);
-      setLoading(false);
+      try {
+        console.log(`[useProgress] fetching progress for user: ${user.id}`);
+        
+        const { data: progressRow, error: progressError } = await supabase
+          .from("user_progress")
+          .select("*")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
+        if (progressError) {
+          console.error("[useProgress] error fetching user_progress:", progressError);
+          throw progressError;
+        }
+
+        const { data: profileRow, error: profileError } = await supabase
+          .from("profiles")
+          .select("student_name")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
+        if (profileError) {
+          console.error("[useProgress] error fetching profile:", profileError);
+          throw profileError;
+        }
+
+        if (progressRow) {
+          console.log("[useProgress] progress found in DB, hydrating state.");
+          const dbData = dbToProgress(progressRow as any, profileRow?.student_name ?? "");
+          if (!cancelled) {
+            setProgress(dbData);
+            lastSavedCoreRef.current = JSON.stringify(progressToDbCore(dbData));
+            lastSavedNameRef.current = profileRow?.student_name ?? "";
+          }
+        } else {
+          console.log("[useProgress] no progress found in DB, using defaults.");
+          if (!cancelled) setProgress({ ...DEFAULT_PROGRESS, ...getLocalExtras() });
+        }
+      } catch (err) {
+        console.error("[useProgress] fetch error:", err);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
     };
 
 
@@ -281,9 +300,10 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
 
     if (saveTimer.current) clearTimeout(saveTimer.current);
     saveTimer.current = setTimeout(async () => {
-      console.log("Syncing progress to Supabase...", { coreChanged, nameChanged });
       if (coreChanged) {
+        console.log(`[useProgress] syncing user_progress for ${user.id}...`, corePayload);
         lastSavedCoreRef.current = coreSnapshot;
+        
         const { error } = await supabase
           .from("user_progress")
           .upsert({
@@ -292,14 +312,16 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
           }, { onConflict: 'user_id' });
         
         if (error) {
-          console.error("Error syncing user_progress:", error);
+          console.error("[useProgress] Error syncing user_progress:", error);
           lastSavedCoreRef.current = "";
           toast.error("Erro ao salvar progresso. Verifique sua conexão.");
         } else {
-          console.log("user_progress synced successfully");
+          console.log("[useProgress] user_progress synced successfully");
         }
       }
+      
       if (nameChanged) {
+        console.log(`[useProgress] syncing student_name for ${user.id}: "${nameSnapshot}"`);
         lastSavedNameRef.current = nameSnapshot;
         const { error } = await supabase
           .from("profiles")
@@ -309,8 +331,10 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
           } as never, { onConflict: 'user_id' });
 
         if (error) {
-          console.error("Error syncing student_name:", error);
+          console.error("[useProgress] Error syncing student_name:", error);
           lastSavedNameRef.current = "";
+        } else {
+          console.log("[useProgress] student_name synced successfully");
         }
       }
     }, 300);
@@ -318,7 +342,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     return () => {
       if (saveTimer.current) clearTimeout(saveTimer.current);
     };
-  }, [progress, user, loading]);
+  }, [progress, user, loading, isStaff]);
 
   // ─── Migrate old localStorage data on first load ───
   useEffect(() => {
