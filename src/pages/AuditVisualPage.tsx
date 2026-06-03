@@ -32,7 +32,8 @@ const AuditVisualPage = () => {
   if (!arcano) return <div>Carregando...</div>;
 
   return (
-    <div className="min-h-screen bg-white pb-32 border-4 border-red-500">
+    <div className="min-h-screen bg-slate-900 text-white pb-32 border-4 border-red-500">
+
 
       <header className="sticky top-0 z-50 bg-[#FAF5EF] border-b-2 border-[#C8A66A]/20 p-4 flex flex-col items-center gap-2">
         <div className="flex justify-between w-full max-w-lg items-center">
