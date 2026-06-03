@@ -405,12 +405,12 @@ const DashboardPage = () => {
               <button 
                 key={i}
                 onClick={() => navigate(link.route)}
-                className="bg-white/60 backdrop-blur-sm border border-gold/10 rounded-2xl p-5 flex flex-col items-center gap-2 hover:bg-white hover:border-gold/30 hover:shadow-lg transition-all active:scale-95 group"
+                className="bg-white/90 backdrop-blur-sm border border-gold/15 rounded-[1.5rem] p-5 flex flex-col items-center gap-3 hover:bg-white hover:border-gold/40 hover:shadow-xl transition-all active:scale-95 group"
               >
-                <div className="w-10 h-10 rounded-xl bg-gold/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-2xl bg-gold/5 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <link.icon className="w-5 h-5 text-plum" />
                 </div>
-                <span className="text-[10px] font-heading font-black tracking-widest text-plum/60 uppercase">{link.label}</span>
+                <span className="text-[10px] font-heading font-black tracking-[0.2em] text-plum/60 uppercase">{link.label}</span>
               </button>
             ))}
           </div>
