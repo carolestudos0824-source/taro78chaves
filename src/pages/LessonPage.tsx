@@ -112,8 +112,10 @@ const LessonPage = () => {
         subtitle: `Arcano ${arcano.numeral} • Lição ${arcanoId + 1}`,
         backRoute: "/module/arcanos-maiores",
         rightElement: <PhaseIndicator phases={PHASE_ORDER} currentIndex={phaseIdx} />,
+        hideXP: true,
         hidePontos: true
       });
+
     }
     return () => resetHeader();
   }, [arcano, phaseIdx, arcanoId, setHeader, resetHeader]);
