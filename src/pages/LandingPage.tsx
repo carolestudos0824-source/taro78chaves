@@ -158,7 +158,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                     No Tarô 78 Chaves, você percorre cada arcano com método, lições curtas e progressão real.
                   </p>
                   <p className="font-body text-base md:text-lg text-plum/80 leading-relaxed">
-                    Uma plataforma guiada pelos 78 arcanos (Rider-Waite-Smith) com quizzes, progresso salvo, XP e uma jornada do Louco ao Mundo.
+                    Aprenda Tarô do zero, carta por carta, em uma jornada guiada com lições curtas, exercícios, quizzes, progresso salvo e prática diária.
                   </p>
                 </div>
 
