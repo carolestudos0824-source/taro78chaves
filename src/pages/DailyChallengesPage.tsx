@@ -127,7 +127,12 @@ const DailyChallengesPage = () => {
         xp_earned: challenge.xp
       };
       
-      console.log("[Ritual] Saving completion to Supabase:", payload);
+      console.log("[Ritual] Saving completion to Supabase:", {
+        ...payload,
+        status: "completed",
+        completed_at: new Date().toISOString(),
+        response: null
+      });
 
       const { error } = await supabase
         .from("daily_challenge_completions")
