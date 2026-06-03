@@ -35,10 +35,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       }
     });
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(({ data: { session: currentSession } }) => {
       // DEV OVERRIDE for visual audit only
       const isAudit = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('audit') === 'true';
-      if (isAudit && !session) {
+      if (isAudit) {
         const mockUser = {
           id: '00000000-0000-0000-0000-000000000123',
           email: 'auditor@teste.com',
@@ -46,9 +46,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         };
         applySession({ user: mockUser as any, access_token: 'fake', refresh_token: 'fake', expires_in: 3600, token_type: 'bearer' });
       } else if (!initialized) {
-        applySession(session);
+        applySession(currentSession);
       }
     });
+
 
 
     return () => subscription.unsubscribe();
