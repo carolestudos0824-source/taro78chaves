@@ -48,56 +48,89 @@ const SymbolLibraryPage = () => {
 
   const getCardsForSymbol = (symbolName: string) => {
     const mapping: Record<string, string[]> = {
-      // Luas
-      "Lua Crescente": ["maior-2", "maior-18"],
-      "Lua Cheia": ["maior-18", "maior-17"],
-      "Lua Minguante": ["maior-13", "maior-9"],
-      // Sóis
-      "Sol Radiante": ["maior-19", "maior-0"],
-      "Sol Nascente": ["maior-20", "maior-17"],
-      // Águas
-      "Rio ou Corrente": ["maior-14", "maior-17"],
-      "Mar ou Oceano": ["maior-18", "copas-2"],
-      "Chuva": ["maior-14", "copas-5"],
-      // Flores
+      // LUA / LUAS
+      "Lua Crescente": ["maior-2"],
+      "Lua Cheia": ["maior-18"],
+      "Lua Minguante": ["maior-18", "maior-9"],
+      
+      // SÓIS
+      "Sol Radiante": ["maior-19"],
+      "Sol Nascente": ["maior-0", "maior-19"],
+      
+      // ÁGUAS
+      "Rio ou Corrente": ["maior-17", "maior-14", "maior-18"],
+      "Mar ou Oceano": ["maior-18", "copas-2", "espadas-6"],
+      "Chuva": ["maior-16", "copas-5"],
+      
+      // FLORES
+      "Rosa Branca": ["maior-0"],
       "Rosa Vermelha": ["maior-1", "maior-3"],
-      "Rosa Branca": ["maior-0", "maior-13"],
-      "Lírio": ["maior-1", "maior-14"],
-      // Montanhas
-      "Montanha Nevada": ["maior-9", "maior-0"],
-      "Colina ou Morro": ["maior-7", "espadas-6"],
-      // Animais
+      "Lírio": ["maior-14", "maior-2"],
+      
+      // MONTANHAS
+      "Montanha Nevada": ["maior-0", "maior-9"],
+      "Colina ou Morro": ["maior-0", "maior-21"],
+      
+      // ANIMAIS
       "Cachorro": ["maior-0", "maior-18"],
-      "Leão": ["maior-8"],
-      "Águia": ["maior-21", "maior-10"],
-      // Cores
-      "Dourado / Ouro": ["maior-19", "maior-4", "maior-10"],
-      "Vermelho": ["maior-4", "maior-8", "maior-16"],
-      "Azul": ["maior-2", "maior-9"],
-      "Branco": ["maior-0", "maior-14"],
-      // Vestes
-      "Manto Azul": ["maior-2", "maior-9"],
-      "Armadura": ["maior-7", "maior-4"],
-      "Nudez": ["maior-19", "maior-17", "maior-20"],
-      // Objetos
+      "Leão": ["maior-8", "maior-21"],
+      "Águia": ["maior-21", "espadas-king"],
+      "Cavalo": ["maior-19", "paus-knight", "copas-knight", "espadas-knight", "ouros-knight", "maior-13"],
+      
+      // CORES
+      "Dourado / Ouro": ["maior-19", "ouros-1", "ouros-10"],
+      "Vermelho": ["maior-1", "maior-4", "maior-8"],
+      "Azul": ["maior-2", "maior-17", "copas-queen"],
+      "Branco": ["maior-0", "maior-2", "maior-14"],
+      
+      // VESTES
+      "Manto Azul": ["maior-2", "maior-17"],
+      "Armadura": ["maior-7", "espadas-knight"],
+      "Nudez": ["maior-21", "maior-17", "maior-15"],
+      
+      // OBJETOS
       "Varinha / Bastão": ["maior-1", "paus-1"],
-      "Cálice / Taça": ["maior-14", "maior-17", "copas-1"],
-      "Espada": ["maior-11", "maior-1", "espadas-1"],
-      "Chave": ["maior-5", "maior-2"],
-      // Astrologia
-      "Lemniscata (∞)": ["maior-1", "maior-8"],
-      "Estrela de Seis Pontas": ["maior-6", "maior-14"],
+      "Cálice / Taça": ["copas-1", "copas-2", "copas-queen"],
+      "Espada": ["espadas-1", "espadas-2", "maior-11"],
+      "Chave": ["maior-2", "maior-5"],
+      "Pentáculo / Ouro": ["ouros-1", "ouros-10"],
+      "Coroa": ["maior-3", "maior-4", "ouros-4"],
+      "Livro / Pergaminho": ["maior-2", "maior-5"],
+      "Balança": ["maior-11"],
+      
+      // ELEMENTOS ASTROLÓGICOS
+      "Estrela de seis pontas": ["maior-17", "maior-7"],
+      "Estrela de oito pontas": ["maior-17"],
       "Roda Zodiacal": ["maior-10", "maior-21"],
-      // Números
+      "Lemniscata": ["maior-1", "maior-8"],
+      "Lua": ["maior-18", "maior-2"],
+      "Sol": ["maior-19"],
+      "Círculo / Mandala": ["maior-21", "maior-10"],
+      
+      // NÚMEROS
       "Zero (0)": ["maior-0"],
-      "Um (I)": ["maior-1"],
-      "Dois (II)": ["maior-2", "maior-6"],
-      "Três (III)": ["maior-3"],
-      // Gestos
-      "Mão Erguida ao Céu": ["maior-1", "maior-5"],
-      "Mão Apontando para Baixo": ["maior-1"],
-      "Olhos Fechados": ["maior-2", "maior-9", "espadas-2"],
-      "Postura Sentada / Trono": ["maior-2", "maior-3", "maior-4", "maior-11"]
+      "Um (1)": ["maior-1", "paus-1", "copas-1", "espadas-1", "ouros-1"],
+      "Dois (2)": ["maior-2", "copas-2", "espadas-2"],
+      "Três (3)": ["maior-3", "copas-3", "espadas-3"],
+      "Quatro (4)": ["maior-4", "ouros-4", "paus-4"],
+      "Cinco (5)": ["maior-5", "copas-5", "ouros-5"],
+      "Seis (6)": ["maior-6", "copas-6", "espadas-6"],
+      "Sete (7)": ["maior-7", "copas-7", "paus-7"],
+      "Oito (8)": ["maior-8", "espadas-8", "ouros-8"],
+      "Nove (9)": ["maior-9", "copas-9", "espadas-9"],
+      "Dez (10)": ["maior-10", "copas-10", "ouros-10"],
+      
+      // GESTOS E POSTURAS
+      "Mão erguida ao céu": ["maior-1"],
+      "Mão apontando para baixo": ["maior-1"],
+      "Olhos fechados": ["espadas-2", "espadas-4"],
+      "Postura sentada / trono": ["maior-2", "maior-3", "maior-4", "maior-11"],
+      "Figura em pé no precipício": ["maior-0"],
+      "Figura caminhando": ["maior-0", "maior-9", "copas-8"],
+      "Braços abertos": ["maior-21", "maior-12"],
+      "Mãos unidas / bênção": ["maior-5", "copas-2"],
+      "Cabeça baixa / luto": ["copas-5"],
+      "Contemplação / espera": ["ouros-7", "copas-4"]
     };
 
     const ids = mapping[symbolName] || [];
