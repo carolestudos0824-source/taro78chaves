@@ -89,7 +89,8 @@ const LessonPage = () => {
   const phase = PHASE_ORDER[phaseIdx];
   
   const arcano = getArcanoById(isValidId ? arcanoId : 0);
-  const hasAccess = isValidId ? canAccessArcano(arcanoId) : false;
+  const hasAccess = isAuditMode || (isValidId ? canAccessArcano(arcanoId) : false);
+
 
   const [pontosEarned, setPontosEarned] = useState(0);
   const [lastQuizScore, setLastQuizScore] = useState(0);
