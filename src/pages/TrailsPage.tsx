@@ -211,7 +211,7 @@ const TrailsPage = () => {
                     {unlocked ? (
                       <TarotIcon name={level.icon} className={`w-8 h-8 sm:w-10 sm:h-10 transition-colors duration-500 ${isCurrent ? 'text-[#5B1F3D]' : 'text-[#C8A66A]'}`} />
                     ) : (
-                      <Lock className="w-6 h-6 sm:w-8 sm:h-8 text-[#5B1F3D]/45" />
+                      <Lock className="w-6 h-6 sm:w-8 sm:h-8 text-[#5B1F3D]/55" />
                     )}
                     {isCurrent && (
                       <div className="absolute -inset-4 rounded-full border border-[#5B1F3D]/20 animate-pulse" />
