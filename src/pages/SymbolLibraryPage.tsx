@@ -308,7 +308,7 @@ const SymbolLibraryPage = () => {
 
   const getCardsForSymbol = (symbolName: string) => {
     const mapping: Record<string, string[]> = {
-      // LUA / LUAS
+      // LUAS
       "Lua Crescente": ["maior-2"],
       "Lua Cheia": ["maior-18"],
       "Lua Minguante": ["maior-18", "maior-9"],
@@ -326,7 +326,6 @@ const SymbolLibraryPage = () => {
       "Rosa Branca": ["maior-0", "maior-13"],
       "Rosa Vermelha": ["maior-1", "maior-3"],
       "Lírio": ["maior-14", "maior-2", "maior-1"],
-      "Girassóis": ["maior-19"],
       
       // MONTANHAS
       "Montanha Nevada": ["maior-0", "maior-9"],
@@ -348,7 +347,6 @@ const SymbolLibraryPage = () => {
       "Manto Azul": ["maior-2", "maior-17", "maior-9"],
       "Armadura": ["maior-7", "espadas-knight", "maior-4"],
       "Nudez": ["maior-21", "maior-17", "maior-15", "maior-19", "maior-6"],
-      "Véu": ["maior-2", "maior-11"],
       
       // OBJETOS
       "Varinha / Bastão": ["maior-1", "paus-1", "maior-21"],
@@ -359,8 +357,6 @@ const SymbolLibraryPage = () => {
       "Coroa": ["maior-3", "maior-4", "ouros-4", "maior-5", "maior-7", "maior-11", "maior-16"],
       "Livro / Pergaminho": ["maior-2", "maior-5"],
       "Balança": ["maior-11"],
-      "Colunas": ["maior-2", "maior-5", "maior-11"],
-      "Trombeta": ["maior-20"],
       
       // ELEMENTOS ASTROLÓGICOS
       "Estrela de Seis Pontas": ["maior-17", "maior-9"],
@@ -370,7 +366,6 @@ const SymbolLibraryPage = () => {
       "Lua": ["maior-18", "maior-2", "maior-7"],
       "Sol": ["maior-19", "maior-0", "maior-6"],
       "Círculo / Mandala": ["maior-21", "maior-10"],
-      "Torres": ["maior-16", "maior-18"],
       
       // NÚMEROS
       "Zero (0)": ["maior-0"],
@@ -396,10 +391,15 @@ const SymbolLibraryPage = () => {
       "Mãos Unidas / Bênção": ["maior-5", "copas-2"],
       "Cabeça Baixa / Luto": ["copas-5", "maior-9"],
       "Contemplação / Espera": ["ouros-7", "copas-4"],
-      
-      // ENTIDADES
+
+      // INJEÇÕES PEDAGÓGICAS (EXTRA SYMBOLS)
       "Anjo": ["maior-20", "maior-6", "maior-14"],
-      "Criança": ["maior-19"]
+      "Trombeta": ["maior-20"],
+      "Criança": ["maior-19", "copas-6"],
+      "Colunas": ["maior-2", "maior-5", "maior-11"],
+      "Véu": ["maior-2", "maior-11"],
+      "Torres": ["maior-16", "maior-18"],
+      "Girassóis": ["maior-19"]
     };
 
 
