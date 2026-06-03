@@ -345,25 +345,31 @@ const SymbolLibraryPage = () => {
             const displaySimbolos = cat.simbolos;
 
             return (
-              <section key={cat.slug} className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
+              <section 
+                key={cat.slug} 
+                id={`chapter-${cat.slug}`}
+                className="animate-in fade-in slide-in-from-bottom-8 duration-700 scroll-mt-32"
+              >
                 <ChapterHeader 
                   title={cat.nome} 
                   description={categoryDescriptions[cat.slug] || cat.descricao} 
-                  icon={cat.icone} 
+                  icon={cat.icone}
+                  isExpanded={isExpanded}
+                  onToggle={() => toggleCategory(cat.slug)}
                 />
 
-                <div className="grid grid-cols-1 gap-10 md:gap-14">
+                <div className={`grid grid-cols-1 gap-8 md:gap-12 transition-all duration-700 overflow-hidden ${isExpanded ? "max-h-[10000px] opacity-100 mt-8" : "max-h-0 opacity-0"}`}>
                   {displaySimbolos.map(sym => {
                     const relatedCards = getCardsForSymbol(sym.nome);
-                    const isExpanded = selectedSymbol?.id === sym.id;
+                    const isExpandedSymbol = selectedSymbol?.id === sym.id;
                     
                     return (
                       <div
                         key={sym.id}
-                        className={`group relative rounded-[3rem] transition-all duration-700 border overflow-hidden shadow-sm ${
-                          isExpanded
-                            ? "bg-white border-gold/40 shadow-2xl shadow-plum/10 ring-1 ring-gold/20"
-                            : "bg-white/90 border-gold/10 hover:border-gold/30 hover:bg-white hover:-translate-y-2 hover:shadow-xl"
+                        className={`group relative rounded-[2.5rem] transition-all duration-500 border overflow-hidden shadow-sm ${
+                          isExpandedSymbol
+                            ? "bg-white border-gold/40 shadow-xl ring-1 ring-gold/10"
+                            : "bg-white/80 border-gold/10 hover:border-gold/20 hover:bg-white hover:shadow-md"
                         }`}
                       >
                         {/* Premium Card Ornament */}
