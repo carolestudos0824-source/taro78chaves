@@ -261,26 +261,35 @@ const LessonPage = () => {
           )}
 
           {phase === "luz-sombra" && (
-            <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-10">
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <span className="text-xl">☀</span>
-                  <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#8B6A30]">Luz</h2>
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                subtitle="Dualidade e Equilíbrio"
+              />
+              <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-10">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <span className="text-xl">☀</span>
+                    <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#8B6A30]">Luz</h2>
+                  </div>
+                  <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.layers.main.light}</p>
                 </div>
-                <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.layers.main.light}</p>
-              </div>
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <span className="text-xl">☾</span>
-                  <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]/60">Sombra</h2>
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <span className="text-xl">☾</span>
+                    <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]/60">Sombra</h2>
+                  </div>
+                  <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.layers.main.shadow}</p>
                 </div>
-                <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.layers.main.shadow}</p>
+                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
+                  Continuar para Voz da Carta
+                </Button>
               </div>
-              <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">
-                Continuar para Voz da Carta
-              </Button>
             </div>
           )}
+
 
           {phase === "voz" && (
             <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
