@@ -179,18 +179,18 @@ const SymbolLibraryPage = () => {
         <div className="space-y-12">
           {filteredCategories.map(cat => (
             <section key={cat.slug} className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center text-lg shadow-inner">
+              <div className="flex items-center gap-4 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-xl shadow-inner border border-gold/10">
                   {cat.icone}
                 </div>
                 <div className="flex-1">
-                  <h2 className="font-heading text-lg font-bold text-plum tracking-tight">
+                  <h2 className="font-heading text-xl font-bold text-plum tracking-tight">
                     {cat.nome}
                   </h2>
-                  <div className="h-0.5 w-12 bg-gold/30 rounded-full" />
+                  <div className="h-0.5 w-16 bg-gold/40 rounded-full" />
                 </div>
               </div>
-              <p className="text-xs font-body italic text-plum/50 mb-6 pl-11">
+              <p className="text-sm font-body italic text-plum/50 mb-8 pl-14 leading-relaxed">
                 {cat.descricao}
               </p>
 
