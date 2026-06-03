@@ -180,14 +180,27 @@ const SymbolLibraryPage = () => {
     };
 
     const ids = mapping[symbolName] || [];
+    if (ids.length === 0) {
+      // Fallback: try to find cards based on keywords in symbolName
+      const lowerName = symbolName.toLowerCase();
+      if (lowerName.includes("lua")) return [FULL_DECK.find(c => c.id === "maior-18")].filter(Boolean);
+      if (lowerName.includes("sol")) return [FULL_DECK.find(c => c.id === "maior-19")].filter(Boolean);
+      if (lowerName.includes("água")) return [FULL_DECK.find(c => c.id === "maior-17")].filter(Boolean);
+      if (lowerName.includes("fogo")) return [FULL_DECK.find(c => c.id === "maior-16")].filter(Boolean);
+      if (lowerName.includes("terra")) return [FULL_DECK.find(c => c.id === "ouros-1")].filter(Boolean);
+      if (lowerName.includes("ar")) return [FULL_DECK.find(c => c.id === "espadas-1")].filter(Boolean);
+      // Absolute fallback to avoid empty related cards
+      return [FULL_DECK.find(c => c.category === "maior")].filter(Boolean);
+    }
     return ids.map(id => FULL_DECK.find(c => c.id === id)).filter(Boolean);
   };
 
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FDFCFB]">
-        <div className="font-accent italic text-sm text-plum/60 animate-pulse">
-          Abrindo o compêndio sagrado…
+        <div className="font-accent italic text-base text-plum/60 animate-pulse flex flex-col items-center gap-4">
+          <div className="w-16 h-16 border-2 border-gold/20 border-t-gold rounded-full animate-spin" />
+          Abrindo a Biblioteca de Símbolos…
         </div>
       </div>
     );
