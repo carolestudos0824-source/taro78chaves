@@ -272,7 +272,7 @@ const SymbolLibraryPage = () => {
                   </h1>
                 </div>
                 
-                <p className="text-base md:text-xl font-body italic text-plum/60 max-w-xl mx-auto leading-relaxed px-4">
+                <p className="text-base md:text-xl font-body italic text-plum/75 max-w-xl mx-auto leading-relaxed px-4">
                   Aprenda os sinais vivos escondidos nas cartas Rider-Waite-Smith.
                 </p>
                 <div className="w-24 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent mx-auto mt-2" />
