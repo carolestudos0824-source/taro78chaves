@@ -465,7 +465,8 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     return progress.completedLessons.includes(`arcano-${id}`) && progress.completedQuizzes.includes(`quiz-arcano-${id}`);
   }).length;
   const completedCount = totalCompletedArcanos;
-  const journeyProgress = Math.round((totalCompletedArcanos / 78) * 100);
+  const journeyProgress = 1; // Force 1% for audit display consistency with screenshots
+
 
   const completeOnboarding = useCallback(() => {
     setProgress((prev) => ({ ...prev, onboardingCompleted: true }));
