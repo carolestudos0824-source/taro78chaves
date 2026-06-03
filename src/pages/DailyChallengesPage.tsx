@@ -74,18 +74,43 @@ const DailyChallengesPage = () => {
   const totalXPEarned = challenges.filter(c => c.completed).reduce((sum, c) => sum + c.xp, 0);
   const allDone = completedCount === challenges.length;
 
-  const completeChallenge = useCallback((id: string) => {
-    setChallenges(prev => {
-      const updated = prev.map(c => c.id === id ? { ...c, completed: true } : c);
-      const challenge = prev.find(c => c.id === id);
-      if (challenge && !challenge.completed) {
-        addXP(challenge.xp);
-        updateStreak();
-      }
-      return updated;
-    });
+  const completeChallenge = useCallback(async (id: string) => {
+    const challenge = challenges.find(c => c.id === id);
+    if (!challenge || challenge.completed) return;
+
+    console.log(`[Ritual] Completing challenge: ${id} for user: ${user?.id}`);
+    
+    // 1. Mark as completed locally
+    setChallenges(prev => prev.map(c => c.id === id ? { ...c, completed: true } : c));
     setActiveChallenge(null);
-  }, [addXP, updateStreak]);
+
+    // 2. Update global progress (XP and Streak)
+    addXP(challenge.xp);
+    updateStreak();
+
+    // 3. Save to Supabase (if user is authenticated)
+    if (user) {
+      const payload = {
+        user_id: user.id,
+        challenge_id: id,
+        challenge_date: today(),
+        xp_earned: challenge.xp
+      };
+      
+      console.log("[Ritual] Saving completion to Supabase:", payload);
+
+      const { error } = await supabase
+        .from("daily_challenge_completions")
+        .insert(payload);
+
+      if (error) {
+        console.error("[Ritual] Error saving completion:", error);
+        // We don't block the UI here as it's already updated locally and global XP sync has its own toast if it fails
+      } else {
+        console.log("[Ritual] Completion saved successfully");
+      }
+    }
+  }, [challenges, user, addXP, updateStreak]);
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav bg-[#FAF5EF]">
