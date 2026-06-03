@@ -316,13 +316,22 @@ const LessonPage = () => {
 
 
           {phase === "aprofundamento" && (
-            <div className="space-y-8">
-              <DeepDiveSection {...arcano.layers.deepDive} />
-              <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">
-                Continuar para Aplicações
-              </Button>
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                subtitle="Sabedoria Oculta"
+              />
+              <div className="space-y-8">
+                <DeepDiveSection {...arcano.layers.deepDive} />
+                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
+                  Continuar para Aplicações
+                </Button>
+              </div>
             </div>
           )}
+
 
           {phase === "aplicacoes" && (
             <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
