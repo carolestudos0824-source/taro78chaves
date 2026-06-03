@@ -155,59 +155,64 @@ const SymbolLibraryPage = () => {
       <div className="absolute inset-0 opacity-[0.02] bg-mystic-bg-procedural pointer-events-none" />
 
       {/* Header */}
-      <header className="relative z-20 border-b border-gold/10 bg-[#FDFCFB]/95 backdrop-blur-xl sticky top-0 shadow-sm">
-        <div className="container max-w-3xl py-10 px-6">
-          <div className="flex flex-col items-center text-center space-y-6 mb-8 relative">
+      <header className="relative z-20 border-b border-gold/10 bg-[#FDFCFB]/95 backdrop-blur-3xl sticky top-0 shadow-sm">
+        <div className="container max-w-4xl py-12 px-6 md:py-16">
+          <div className="flex flex-col items-center text-center space-y-8 mb-12 relative">
             <ArchPortal className="w-full">
-              <div className="space-y-4 pt-4">
-                <div className="flex items-center justify-center gap-3">
-                  <div className="h-px w-10 bg-gold/30" />
-                  <span className="text-[10px] font-heading font-black tracking-[0.6em] text-gold uppercase">Sabedoria Ancestral</span>
-                  <div className="h-px w-10 bg-gold/30" />
+              <div className="space-y-6 pt-6">
+                <div className="flex items-center justify-center gap-4">
+                  <div className="h-[1px] w-12 md:w-20 bg-gradient-to-r from-transparent to-gold/40" />
+                  <span className="text-[11px] md:text-[12px] font-heading font-black tracking-[0.8em] text-gold uppercase drop-shadow-sm">Compêndio Sagrado</span>
+                  <div className="h-[1px] w-12 md:w-20 bg-gradient-to-l from-transparent to-gold/40" />
                 </div>
                 
-                <h1 className="text-4xl md:text-5xl font-heading font-bold text-plum tracking-tight flex flex-col items-center">
-                  <span className="text-xl md:text-2xl font-light italic text-plum/50 mb-1">Escola Digital de Tarô</span>
-                  <span className="relative inline-block">
-                    Biblioteca de Símbolos
-                    <div className="absolute -right-8 -top-4 opacity-40">
-                      <Star className="w-5 h-5 text-gold fill-gold/20" />
-                    </div>
-                  </span>
-                </h1>
+                <div className="relative inline-block">
+                  <h1 className="text-5xl md:text-7xl font-heading font-bold text-plum tracking-tight flex flex-col items-center">
+                    <span className="text-2xl md:text-3xl font-light italic text-plum/40 mb-2">A Linguagem Visual do Tarô</span>
+                    <span className="relative">
+                      Biblioteca de Símbolos
+                      <div className="absolute -right-12 -top-6 animate-pulse">
+                        <Star className="w-8 h-8 text-gold fill-gold/20" />
+                      </div>
+                      <div className="absolute -left-12 bottom-0 opacity-20 rotate-12">
+                        <Star className="w-6 h-6 text-gold" />
+                      </div>
+                    </span>
+                  </h1>
+                </div>
                 
-                <p className="text-sm md:text-base font-body italic text-plum/60 max-w-md mx-auto leading-relaxed">
-                  Aprenda a reconhecer os sinais vivos nas cartas Rider-Waite-Smith.
+                <p className="text-lg md:text-2xl font-body italic text-plum/60 max-w-2xl mx-auto leading-relaxed px-4">
+                  Descubra os mistérios ocultos nas 78 Chaves e aprenda a ler os sinais ancestrais do Tarô.
                 </p>
               </div>
             </ArchPortal>
 
             <button 
               onClick={() => navigate("/app")} 
-              className="absolute left-0 top-0 p-3 rounded-full bg-white border border-gold/15 hover:border-gold/30 hover:bg-gold/5 transition-all text-plum/50 hover:text-plum shadow-sm"
+              className="absolute left-0 top-0 p-4 rounded-full bg-white border border-gold/20 hover:border-gold/50 hover:bg-gold/5 transition-all text-plum/60 hover:text-plum shadow-xl group/back"
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
             </button>
           </div>
 
           {/* Search */}
-          <div className="relative group max-w-xl mx-auto">
-            <div className="absolute inset-0 bg-gold/5 blur-xl group-focus-within:bg-gold/15 transition-all rounded-[2rem]" />
+          <div className="relative group max-w-2xl mx-auto">
+            <div className="absolute inset-0 bg-gold/10 blur-2xl group-focus-within:bg-gold/20 transition-all rounded-[2.5rem]" />
             <div className="relative flex items-center">
-              <Search className="absolute left-6 w-5 h-5 text-plum/30 group-focus-within:text-gold transition-colors" />
+              <Search className="absolute left-8 w-6 h-6 text-plum/30 group-focus-within:text-gold transition-colors" />
               <input
                 type="text"
-                placeholder="Buscar símbolo, carta ou tema..."
+                placeholder="Ex: Lua, Água, Sol, A Sacerdotisa..."
                 value={search}
                 onChange={e => { setSearch(e.target.value); setActiveCategory(null); }}
-                className="w-full pl-14 pr-14 py-6 rounded-[2rem] text-base font-body bg-white border border-gold/15 outline-none focus:border-gold/40 focus:ring-8 focus:ring-gold/5 transition-all shadow-md placeholder:text-plum/30"
+                className="w-full pl-20 pr-20 py-8 rounded-[2.5rem] text-xl font-body bg-white/80 border border-gold/20 outline-none focus:border-gold/50 focus:bg-white focus:ring-12 focus:ring-gold/5 transition-all shadow-xl placeholder:text-plum/20 backdrop-blur-sm"
               />
               {search && (
                 <button 
                   onClick={() => setSearch("")} 
-                  className="absolute right-6 p-1.5 rounded-full hover:bg-plum/5 text-plum/30 hover:text-plum transition-all"
+                  className="absolute right-8 p-2 rounded-full hover:bg-plum/5 text-plum/30 hover:text-plum transition-all"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-6 h-6" />
                 </button>
               )}
             </div>
@@ -250,17 +255,19 @@ const SymbolLibraryPage = () => {
         <div className="space-y-16">
           {filteredCategories.map(cat => (
             <section key={cat.slug} className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <div className="flex flex-col md:flex-row md:items-center gap-5 mb-8 group/cat relative">
-                <div className="absolute -inset-4 bg-gold/5 blur-2xl rounded-full opacity-0 group-hover/cat:opacity-100 transition-opacity" />
-                <div className="w-20 h-20 rounded-[1.5rem] bg-white flex items-center justify-center text-4xl shadow-sm border border-gold/15 relative z-10 group-hover/cat:scale-105 transition-transform duration-500">
+              <div className="flex flex-col md:flex-row md:items-center gap-6 mb-12 group/cat relative">
+                <div className="absolute -inset-10 bg-gold/5 blur-[80px] rounded-full opacity-0 group-hover/cat:opacity-100 transition-opacity pointer-events-none" />
+                <div className="w-24 h-24 md:w-28 md:h-28 rounded-[2.5rem] bg-white flex items-center justify-center text-5xl shadow-xl border border-gold/15 relative z-10 group-hover/cat:scale-105 group-hover/cat:rotate-3 transition-all duration-700">
                   {cat.icone}
                 </div>
                 <div className="flex-1 relative z-10">
-                  <h2 className="font-heading text-3xl md:text-4xl font-bold text-plum tracking-tight flex items-center gap-4">
-                    {cat.nome}
-                    <div className="h-px flex-1 bg-gradient-to-r from-gold/30 to-transparent hidden md:block" />
-                  </h2>
-                  <p className="text-base font-body italic text-plum/50 mt-1 leading-relaxed max-w-xl">
+                  <div className="flex items-center gap-4 mb-2">
+                    <h2 className="font-heading text-4xl md:text-5xl font-bold text-plum tracking-tight">
+                      {cat.nome}
+                    </h2>
+                    <div className="h-0.5 flex-1 bg-gradient-to-r from-gold/30 via-gold/10 to-transparent hidden md:block" />
+                  </div>
+                  <p className="text-lg md:text-xl font-body italic text-plum/60 leading-relaxed max-w-2xl">
                     {cat.descricao}
                   </p>
                 </div>
@@ -274,51 +281,51 @@ const SymbolLibraryPage = () => {
                   return (
                     <div
                       key={sym.id}
-                      className={`group relative rounded-[2.5rem] md:rounded-[3rem] transition-all duration-500 border overflow-hidden shadow-sm hover:shadow-2xl ${
+                      className={`group relative rounded-[3rem] transition-all duration-700 border overflow-hidden shadow-sm hover:shadow-2xl ${
                         isExpanded
-                          ? "bg-white border-gold/30 shadow-2xl shadow-plum/5 ring-1 ring-gold/10"
-                          : "bg-white/80 border-gold/10 hover:border-gold/25 hover:bg-white hover:-translate-y-1"
+                          ? "bg-white border-gold/40 shadow-2xl shadow-plum/10 ring-1 ring-gold/20"
+                          : "bg-white/90 border-gold/10 hover:border-gold/30 hover:bg-white hover:-translate-y-2"
                       }`}
                     >
                       {/* Interactive Header area */}
                       <div className="flex flex-col md:flex-row">
                         <button
                           onClick={() => setSelectedSymbol(isExpanded ? null : sym)}
-                          className="flex-1 text-left p-8 md:p-12 focus:outline-none"
+                          className="flex-1 text-left p-10 md:p-14 focus:outline-none"
                         >
-                          <div className="flex justify-between items-start mb-6">
-                            <div className="space-y-4">
-                              <h3 className="font-heading text-2xl md:text-4xl font-bold text-plum group-hover:text-plum/80 transition-colors tracking-tight">
+                          <div className="flex justify-between items-start mb-8">
+                            <div className="space-y-4 flex-1 pr-4">
+                              <h3 className="font-heading text-3xl md:text-5xl font-bold text-plum group-hover:text-plum/80 transition-colors tracking-tight">
                                 {sym.nome}
                               </h3>
-                              <p className="text-base md:text-xl font-body italic text-plum/50 leading-relaxed -mt-2">
+                              <p className="text-lg md:text-2xl font-body italic text-plum/50 leading-relaxed -mt-1">
                                 {sym.leituras[0]}
                               </p>
-                              <div className="h-0.5 w-16 bg-gold/30 rounded-full group-hover:w-32 transition-all duration-700" />
+                              <div className="h-1 w-20 bg-gold/40 rounded-full group-hover:w-40 transition-all duration-1000" />
                             </div>
-                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ${
-                              isExpanded ? "bg-plum text-marfim rotate-180 shadow-lg" : "bg-gold/10 text-gold"
+                            <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 shadow-sm border border-gold/20 ${
+                              isExpanded ? "bg-plum text-marfim rotate-180 shadow-plum/20" : "bg-gold/10 text-gold"
                             }`}>
-                              <Info className="w-5 h-5" />
+                              <Info className="w-6 h-6" />
                             </div>
                           </div>
                           
-                          <p className={`text-lg md:text-xl font-body leading-relaxed text-plum/80 mb-10 ${isExpanded ? "" : "line-clamp-2"}`}>
+                          <p className={`text-xl md:text-2xl font-body leading-relaxed text-plum/80 mb-12 ${isExpanded ? "" : "line-clamp-2"}`}>
                             {sym.explicacao}
                           </p>
 
                           {relatedCards.length > 0 && (
-                            <div className="space-y-4">
-                              <div className="flex items-center gap-3 mb-4">
-                                <div className="h-px w-8 bg-gold/30" />
-                                <span className="text-[10px] font-heading font-black tracking-[0.5em] text-gold uppercase">Cartas relacionadas:</span>
+                            <div className="space-y-6">
+                              <div className="flex items-center gap-4 mb-6">
+                                <div className="h-px w-10 bg-gold/40" />
+                                <span className="text-[12px] md:text-[13px] font-heading font-black tracking-[0.6em] text-gold uppercase">Cartas relacionadas:</span>
                               </div>
-                              <div className="flex flex-wrap gap-5">
+                              <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap gap-6 md:gap-8">
                                 {relatedCards.slice(0, isExpanded ? 99 : 3).map((card, idx) => (
-                                  <div key={card?.id || idx} className="flex flex-col items-center gap-3 group/mini">
+                                  <div key={card?.id || idx} className="flex flex-col items-center gap-4 group/mini">
                                     <div 
-                                      className={`relative rounded-2xl border-2 border-white shadow-xl overflow-hidden bg-white ring-1 ring-gold/10 transition-all duration-500 group-hover/mini:scale-110 group-hover/mini:rotate-1 ${
-                                        isExpanded ? "w-28 md:w-36 aspect-[2/3.2]" : "w-24 md:w-28 aspect-[2/3.2]"
+                                      className={`relative rounded-2xl md:rounded-[1.5rem] border-2 border-white shadow-2xl overflow-hidden bg-white ring-1 ring-gold/20 transition-all duration-700 group-hover/mini:scale-110 group-hover/mini:rotate-1 ${
+                                        isExpanded ? "w-full md:w-44 aspect-[2/3.2]" : "w-full md:w-36 aspect-[2/3.2]"
                                       }`}
                                     >
                                       <img 
@@ -326,17 +333,17 @@ const SymbolLibraryPage = () => {
                                         alt={card?.name} 
                                         className="w-full h-full object-cover" 
                                       />
-                                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none opacity-0 group-hover/mini:opacity-100 transition-opacity" />
                                     </div>
-                                    <span className={`text-[11px] font-heading font-black uppercase tracking-widest text-plum/40 group-hover/mini:text-gold transition-colors text-center max-w-[90px] md:max-w-[110px] leading-tight ${isExpanded ? "block" : "block"}`}>
+                                    <span className={`text-[12px] md:text-[13px] font-heading font-bold uppercase tracking-widest text-plum/50 group-hover/mini:text-gold transition-colors text-center max-w-[140px] leading-tight`}>
                                       {card?.name}
                                     </span>
                                   </div>
                                 ))}
                                 {!isExpanded && relatedCards.length > 3 && (
-                                  <div className="w-24 md:w-28 aspect-[2/3.2] rounded-2xl bg-gold/5 border-2 border-white flex flex-col items-center justify-center text-[13px] font-black text-gold shadow-md hover:bg-gold/10 transition-colors">
-                                    <span className="text-2xl">+{relatedCards.length - 3}</span>
-                                    <span className="text-[9px] uppercase tracking-widest">Cartas</span>
+                                  <div className="w-full md:w-36 aspect-[2/3.2] rounded-2xl md:rounded-[1.5rem] bg-gold/5 border-2 border-white flex flex-col items-center justify-center text-gold shadow-xl hover:bg-gold/10 transition-all duration-500 hover:-translate-y-1">
+                                    <span className="text-3xl font-heading font-black">+{relatedCards.length - 3}</span>
+                                    <span className="text-[10px] font-heading font-black uppercase tracking-[0.2em]">Chaves</span>
                                   </div>
                                 )}
                               </div>
@@ -344,10 +351,10 @@ const SymbolLibraryPage = () => {
                           )}
                           
                           {!isExpanded && (
-                            <div className="mt-10 flex items-center gap-3 text-gold group-hover:translate-x-3 transition-transform duration-700">
-                              <span className="text-[11px] font-heading font-black tracking-[0.5em] uppercase">Estudar símbolo</span>
-                              <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center border border-gold/20">
-                                <ExternalLink className="w-3.5 h-3.5" />
+                            <div className="mt-14 flex items-center gap-4 text-gold group-hover:translate-x-4 transition-transform duration-1000">
+                              <span className="text-[12px] md:text-[13px] font-heading font-black tracking-[0.6em] uppercase">Estudar símbolo</span>
+                              <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center border border-gold/20 shadow-sm group-hover:bg-gold/20 transition-colors">
+                                <ExternalLink className="w-4 h-4" />
                               </div>
                             </div>
                           )}
@@ -358,21 +365,23 @@ const SymbolLibraryPage = () => {
                       <div className={`overflow-hidden transition-all duration-700 ease-in-out ${
                         isExpanded ? "max-h-[1500px] opacity-100 border-t border-gold/10" : "max-h-0 opacity-0"
                       }`}>
-                        <div className="p-8 md:p-12 bg-[#FDFCFB] space-y-12">
+                        <div className="p-10 md:p-14 bg-[#FDFCFB]/50 backdrop-blur-sm space-y-14">
                           {/* Readings Section */}
-                          <div className="space-y-5">
-                            <h4 className="flex items-center gap-4 text-[13px] font-heading font-black tracking-[0.5em] text-plum uppercase">
-                              <Star className="w-5 h-5 text-gold fill-gold/10" />
-                              Chaves de Interpretação
-                            </h4>
-                            <div className="flex flex-wrap gap-3">
+                          <div className="space-y-6">
+                            <div className="flex items-center gap-4">
+                              <Star className="w-6 h-6 text-gold fill-gold/20" />
+                              <h4 className="text-[14px] md:text-[15px] font-heading font-black tracking-[0.5em] text-plum uppercase">
+                                Chaves de Interpretação
+                              </h4>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                               {sym.leituras.map((r, i) => (
                                 <div 
                                   key={i} 
-                                  className="px-8 py-5 rounded-[2rem] text-base font-body bg-white border border-gold/10 text-plum shadow-sm flex items-center gap-4 hover:border-gold/30 hover:shadow-md transition-all"
+                                  className="px-10 py-6 rounded-[2.5rem] text-lg font-body bg-white border border-gold/15 text-plum shadow-sm flex items-center gap-6 hover:border-gold/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
                                 >
-                                  <div className="w-2 h-2 rounded-full bg-gold shadow-[0_0_8px_rgba(212,175,55,0.6)]" />
-                                  {r}
+                                  <div className="w-2.5 h-2.5 rounded-full bg-gold shadow-[0_0_12px_rgba(212,175,55,0.8)]" />
+                                  <span className="flex-1">{r}</span>
                                 </div>
                               ))}
                             </div>
@@ -380,12 +389,14 @@ const SymbolLibraryPage = () => {
 
                           {/* Cards Section */}
                           {relatedCards.length > 0 && (
-                            <div className="space-y-6">
-                              <h4 className="flex items-center gap-4 text-[13px] font-heading font-black tracking-[0.5em] text-plum uppercase">
-                                <BookOpen className="w-5 h-5 text-gold" />
-                                Estudo Aplicado nas 78 Chaves
-                              </h4>
-                              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                            <div className="space-y-8">
+                              <div className="flex items-center gap-4">
+                                <BookOpen className="w-6 h-6 text-gold" />
+                                <h4 className="text-[14px] md:text-[15px] font-heading font-black tracking-[0.5em] text-plum uppercase">
+                                  Estudo Aplicado nas 78 Chaves
+                                </h4>
+                              </div>
+                              <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-10">
                                 {relatedCards.map((card) => (
                                   <button
                                     key={card?.id}
@@ -396,25 +407,29 @@ const SymbolLibraryPage = () => {
                                         : `/arcano-menor/${card?.id}`;
                                       navigate(route);
                                     }}
-                                    className="flex flex-col gap-4 p-5 rounded-[2rem] bg-white border border-gold/15 hover:border-gold/40 transition-all group/card shadow-lg hover:shadow-2xl hover:-translate-y-2 active:translate-y-0"
+                                    className="flex flex-col gap-6 p-6 rounded-[2.5rem] bg-white border border-gold/15 hover:border-gold/50 transition-all group/card shadow-xl hover:shadow-2xl hover:-translate-y-3 active:translate-y-0 duration-700"
                                   >
-                                    <div className="aspect-[2/3.2] rounded-[1rem] overflow-hidden relative shadow-xl">
+                                    <div className="aspect-[2/3.2] rounded-[1.5rem] overflow-hidden relative shadow-2xl">
                                       <img 
                                         src={card?.cardImage} 
                                         alt={card?.name} 
                                         className="w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-110" 
                                       />
-                                      <div className="absolute inset-0 bg-plum/0 group-hover/card:bg-plum/20 transition-colors flex items-center justify-center">
-                                        <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-all scale-75 group-hover/card:scale-100">
-                                          <ExternalLink className="w-6 h-6 text-marfim" />
+                                      <div className="absolute inset-0 bg-plum/0 group-hover/card:bg-plum/30 transition-all duration-700 flex items-center justify-center">
+                                        <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-all duration-700 scale-50 group-hover/card:scale-100">
+                                          <ExternalLink className="w-8 h-8 text-white" />
                                         </div>
                                       </div>
                                     </div>
-                                    <div className="text-center space-y-1">
-                                      <span className="block text-[13px] font-heading font-bold text-plum group-hover/card:text-gold transition-colors">
+                                    <div className="text-center space-y-2">
+                                      <span className="block text-lg md:text-xl font-heading font-bold text-plum group-hover/card:text-gold transition-colors duration-500">
                                         {card?.name}
                                       </span>
-                                      <span className="block text-[10px] font-heading font-black tracking-widest text-plum/30 uppercase">Ver nas cartas</span>
+                                      <div className="flex justify-center">
+                                        <span className="inline-block px-4 py-1 rounded-full bg-gold/5 text-[10px] font-heading font-black tracking-widest text-gold uppercase border border-gold/10 group-hover/card:bg-gold/20 transition-all duration-500">
+                                          Ver lição completa
+                                        </span>
+                                      </div>
                                     </div>
                                   </button>
                                 ))}
@@ -423,10 +438,10 @@ const SymbolLibraryPage = () => {
                           )}
 
                           {/* Quick Study CTA */}
-                          <div className="pt-4">
+                          <div className="pt-6">
                             <button
                               onClick={() => setSelectedSymbol(null)}
-                              className="w-full py-6 rounded-[1.5rem] bg-plum text-white text-[12px] font-heading font-black uppercase tracking-[0.4em] hover:bg-[#45162D] transition-all shadow-xl active:scale-[0.98] border border-gold/20"
+                              className="w-full py-8 rounded-[2rem] bg-plum text-marfim text-[14px] font-heading font-black uppercase tracking-[0.5em] hover:bg-[#3d1328] transition-all duration-700 shadow-2xl shadow-plum/20 active:scale-[0.98] border border-gold/30 relative overflow-hidden group/btn"
                             >
                               Concluir Estudo do Símbolo
                             </button>
