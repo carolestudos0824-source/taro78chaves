@@ -407,30 +407,30 @@ const SymbolLibraryPage = () => {
                               {sym.explicacao}
                             </p>
 
-                            {relatedCards.length > 0 && (
-                              <div className="space-y-6 mt-2">
-                                <div className="flex items-center gap-3">
-                                  <div className="h-px w-5 bg-gold/30" />
-                                  <span className="text-[9px] md:text-[10px] font-heading font-black tracking-[0.3em] text-gold uppercase">Estudo nas cartas</span>
-                                </div>
-                                <div className="grid grid-cols-3 xs:grid-cols-4 md:flex md:flex-wrap gap-3 md:gap-5">
-                                  {relatedCards.slice(0, 4).map((card, idx) => (
-                                    <div key={card?.id || idx} className="flex flex-col items-center gap-2 group/mini animate-in fade-in zoom-in duration-500" style={{ animationDelay: `${idx * 100}ms` }}>
-                                      <div 
-                                        className="relative w-full md:w-24 aspect-[2/3.2] rounded-xl border border-gold/10 shadow-md overflow-hidden bg-white group-hover/mini:scale-105 group-hover/mini:border-gold/40 transition-all duration-500"
-                                      >
-                                        <img 
-                                          src={card?.cardImage} 
-                                          alt={card?.name} 
-                                          className="w-full h-full object-cover" 
-                                        />
-                                        <div className="absolute inset-0 bg-plum/5 opacity-0 group-hover/mini:opacity-100 transition-opacity" />
-                                      </div>
-                                      <span className="text-[8px] md:text-[9px] font-heading font-bold uppercase tracking-widest text-plum/50 group-hover/mini:text-gold transition-colors text-center leading-tight px-0.5">
-                                        {card?.name}
-                                      </span>
-                                    </div>
-                                  ))}
+                             {relatedCards.length > 0 && (
+                               <div className="space-y-6 mt-8">
+                                 <div className="flex items-center gap-3">
+                                   <div className="h-px w-5 bg-gold/30" />
+                                   <span className="text-[9px] md:text-[10px] font-heading font-black tracking-[0.3em] text-gold uppercase">Estudo nas cartas</span>
+                                 </div>
+                                 <div className="grid grid-cols-3 xs:grid-cols-4 md:flex md:flex-wrap gap-4 md:gap-6">
+                                   {relatedCards.slice(0, 4).map((card, idx) => (
+                                     <div key={card?.id || idx} className="flex flex-col items-center gap-2 group/mini animate-in fade-in zoom-in duration-500" style={{ animationDelay: `${idx * 100}ms` }}>
+                                       <div 
+                                         className="relative w-full md:w-24 aspect-[2/3.2] rounded-xl border border-gold/5 shadow-md overflow-hidden bg-white group-hover/mini:scale-105 group-hover/mini:border-gold/30 transition-all duration-500"
+                                       >
+                                         <img 
+                                           src={card?.cardImage} 
+                                           alt={card?.name} 
+                                           className="w-full h-full object-cover" 
+                                         />
+                                         <div className="absolute inset-0 bg-plum/5 opacity-0 group-hover/mini:opacity-100 transition-opacity" />
+                                       </div>
+                                       <span className="text-[8px] md:text-[9px] font-heading font-bold uppercase tracking-widest text-plum/80 group-hover/mini:text-gold transition-colors text-center leading-tight px-0.5">
+                                         {card?.name}
+                                       </span>
+                                     </div>
+                                   ))}
                                   {relatedCards.length > 4 && (
                                     <div className="w-full xs:w-auto flex items-center justify-center px-3 py-1.5 rounded-lg bg-gold/5 border border-gold/10 text-[8px] font-heading font-black uppercase tracking-widest text-gold italic self-start mt-2">
                                       +{relatedCards.length - 4}
