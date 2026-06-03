@@ -39,15 +39,11 @@ export const RoleProvider = ({ children }: { children: React.ReactNode }) => {
         if (error) throw error;
 
         const roles = (data ?? []).map((r) => r.role as AppRole);
-        
-        // Manual override for audit parameter (development/testing only)
-        const isAuditUrl = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('audit') === 'true';
-        
-        if (isAuditUrl) setRole("auditor");
-        else if (roles.includes("admin")) setRole("admin");
+        if (roles.includes("admin")) setRole("admin");
         else if (roles.includes("auditor")) setRole("auditor");
         else if (roles.includes("moderator")) setRole("moderator");
         else setRole("user");
+
 
       } catch (err) {
         console.error("Error fetching role:", err);

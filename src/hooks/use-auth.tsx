@@ -18,6 +18,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
+
+
   useEffect(() => {
     let initialized = false;
 
@@ -36,30 +38,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     });
 
     supabase.auth.getSession().then(({ data: { session: currentSession } }) => {
-      // DEV OVERRIDE for visual audit only
-      const isAudit = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('audit') === 'true';
-      if (isAudit) {
-        const mockUser = {
-          id: '00000000-0000-0000-0000-000000000123',
-          email: 'auditor@teste.com',
-          user_metadata: { display_name: 'Auditor Teste' },
-          role: 'authenticated'
-        };
-        const mockSession = { 
-          user: mockUser as any, 
-          access_token: 'fake', 
-          refresh_token: 'fake', 
-          expires_in: 3600, 
-          token_type: 'bearer' as const
-        };
-        setSession(mockSession);
-        setUser(mockUser as any);
-        setLoading(false);
-        initialized = true;
-      } else if (!initialized) {
+      if (!initialized) {
         applySession(currentSession);
       }
     });
+
 
 
 
