@@ -414,7 +414,7 @@ const SymbolLibraryPage = () => {
                                       <span className="block text-[13px] font-heading font-bold text-plum group-hover/card:text-gold transition-colors">
                                         {card?.name}
                                       </span>
-                                      <span className="block text-[10px] font-heading font-black tracking-widest text-plum/30 uppercase">Ver Lição Completa</span>
+                                      <span className="block text-[10px] font-heading font-black tracking-widest text-plum/30 uppercase">Ver nas cartas</span>
                                     </div>
                                   </button>
                                 ))}
