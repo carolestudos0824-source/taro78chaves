@@ -1,5 +1,7 @@
 import { ArrowLeft, ArrowRight, MapPin, Sparkles, Check, Key, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
 import { ReflectionSection } from "../ReflectionSection";
+
 import { useNavigate } from "react-router-dom";
 import { useProgress } from "@/hooks/use-progress";
 import { useRole } from "@/hooks/use-role";
@@ -7,6 +9,7 @@ import { useRole } from "@/hooks/use-role";
 
 interface CompletionScreenProps {
   arcanoName: string;
+  cardImage?: string;
   pontosEarned: number;
   quizScore: number;
   quizTotal: number;
@@ -19,14 +22,16 @@ interface CompletionScreenProps {
   isLastArcano: boolean;
 }
 
+
 /**
  * Phase 5: Completion with progress saved confirmation + editorial continuity
  */
 export function CompletionScreen({
-  arcanoName, pontosEarned, quizScore, quizTotal,
+  arcanoName, cardImage, pontosEarned, quizScore, quizTotal,
   nextArcano, prevArcano, isPrevCompleted,
   onNextArcano, onPrevArcano, onBackToMap, isLastArcano, arcanoId,
 }: CompletionScreenProps & { arcanoId?: number }) {
+
   const navigate = useNavigate();
   const { progress } = useProgress();
   const { isStaff } = useRole();
@@ -69,7 +74,19 @@ export function CompletionScreen({
         )}
       </div>
 
+      {cardImage && (
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2 }}
+          className="relative z-10 w-24 aspect-[2/3] mx-auto rounded-lg overflow-hidden border-2 border-[#C8A66A]/30 shadow-xl -mt-4 mb-2"
+        >
+          <img src={cardImage} alt={arcanoName} className="w-full h-full object-cover" />
+        </motion.div>
+      )}
+
       <div>
+
         <h2 className="font-heading text-3xl font-black mb-2" style={{
           background: "linear-gradient(135deg, #5B1F3D, #C8A66A)",
           WebkitBackgroundClip: "text",

@@ -18,6 +18,8 @@ import { ArrowLeft, ArrowRight, Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useHeader } from "@/contexts/header-context";
 import { PhaseIndicator } from "@/components/arcano-vivo/PhaseIndicator";
+import { LessonPhaseHeader } from "@/components/arcano-vivo/LessonPhaseHeader";
+
 
 /** 
  * REGRA PEDAGÓGICA OFICIAL — 9 FASES (Fase 6.6 — Alinhamento total)
@@ -259,101 +261,157 @@ const LessonPage = () => {
           )}
 
           {phase === "luz-sombra" && (
-            <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-10">
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <span className="text-xl">☀</span>
-                  <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#8B6A30]">Luz</h2>
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                subtitle="Dualidade e Equilíbrio"
+              />
+              <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-10">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <span className="text-xl">☀</span>
+                    <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#8B6A30]">Luz</h2>
+                  </div>
+                  <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.layers.main.light}</p>
                 </div>
-                <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.layers.main.light}</p>
-              </div>
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <span className="text-xl">☾</span>
-                  <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]/60">Sombra</h2>
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <span className="text-xl">☾</span>
+                    <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]/60">Sombra</h2>
+                  </div>
+                  <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.layers.main.shadow}</p>
                 </div>
-                <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.layers.main.shadow}</p>
+                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
+                  Continuar para Voz da Carta
+                </Button>
               </div>
-              <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">
-                Continuar para Voz da Carta
-              </Button>
             </div>
           )}
+
 
           {phase === "voz" && (
-            <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
-              <div className="flex items-center gap-3">
-                <Sparkles className="w-5 h-5 text-[#C8A66A]" />
-                <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Voz da Carta</h2>
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                variant="aura"
+              />
+              <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8 relative overflow-hidden">
+                <div className="flex items-center gap-3 relative z-10">
+                  <Sparkles className="w-5 h-5 text-[#C8A66A]" />
+                  <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Voz da Carta</h2>
+                </div>
+                <blockquote className="font-accent italic text-2xl leading-[1.7] pl-6 border-l-4 border-[#C8A66A] text-[#5B1F3D] font-bold relative z-10">
+                  {arcano.voiceText || arcano.layers.main.essence}
+                </blockquote>
+                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform relative z-10">
+                  Continuar para Aprofundamento
+                </Button>
               </div>
-              <blockquote className="font-accent italic text-2xl leading-[1.7] pl-6 border-l-4 border-[#C8A66A] text-[#5B1F3D] font-bold">
-                {arcano.voiceText || arcano.layers.main.essence}
-              </blockquote>
-              <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">
-                Continuar para Aprofundamento
-              </Button>
             </div>
           )}
+
 
           {phase === "aprofundamento" && (
-            <div className="space-y-8">
-              <DeepDiveSection {...arcano.layers.deepDive} />
-              <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">
-                Continuar para Aplicações
-              </Button>
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                subtitle="Sabedoria Oculta"
+              />
+              <div className="space-y-8">
+                <DeepDiveSection {...arcano.layers.deepDive} />
+                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
+                  Continuar para Aplicações
+                </Button>
+              </div>
             </div>
           )}
+
 
           {phase === "aplicacoes" && (
-            <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
-              <div className="flex items-center gap-3">
-                <Sparkles className="w-5 h-5 text-[#C8A66A]" />
-                <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Aplicações</h2>
-              </div>
-              <div className="space-y-6">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm uppercase font-black text-[#8B6A30]">Amor:</span>
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                subtitle="O Arcano no Dia a Dia"
+              />
+              <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
+                <div className="flex items-center gap-3">
+                  <Sparkles className="w-5 h-5 text-[#C8A66A]" />
+                  <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Aplicações</h2>
                 </div>
-                <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
-                  {arcano.lessonSections.find(s => s.id === "amor")?.content}
-                </p>
-                <div className="flex items-center gap-2 pt-4">
-                  <span className="text-sm uppercase font-black text-[#8B6A30]">Trabalho:</span>
+                <div className="space-y-6">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm uppercase font-black text-[#8B6A30]">Amor:</span>
+                  </div>
+                  <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
+                    {arcano.lessonSections.find(s => s.id === "amor")?.content}
+                  </p>
+                  <div className="flex items-center gap-2 pt-4">
+                    <span className="text-sm uppercase font-black text-[#8B6A30]">Trabalho:</span>
+                  </div>
+                  <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
+                    {arcano.lessonSections.find(s => s.id === "trabalho")?.content}
+                  </p>
                 </div>
-                <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
-                  {arcano.lessonSections.find(s => s.id === "trabalho")?.content}
-                </p>
+                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
+                  Continuar para Reflexão
+                </Button>
               </div>
-              <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">
-                Continuar para Reflexão
-              </Button>
             </div>
           )}
+
 
           {phase === "reflexao" && (
-            <div className="space-y-8">
-              <ExerciseSection
-                {...arcano.layers.exercise}
-                onComplete={() => {}}
-                completed={true}
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                subtitle="Exercício de Conexão"
               />
-              <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl">
-                Iniciar Quiz Final
-              </Button>
+              <div className="space-y-8">
+                <ExerciseSection
+                  {...arcano.layers.exercise}
+                  onComplete={() => {}}
+                  completed={true}
+                />
+                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
+                  Iniciar Quiz Final
+                </Button>
+              </div>
             </div>
           )}
 
+
           {phase === "quiz" && (
-            <QuizSection
-              questions={arcano.quiz}
-              onComplete={handleQuizComplete}
-            />
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                subtitle="Integração de Saberes"
+              />
+              <QuizSection
+                questions={arcano.quiz}
+                onComplete={handleQuizComplete}
+              />
+            </div>
           )}
+
 
           {phase === "complete" && (
             <CompletionScreen
               arcanoName={arcano.name}
+              cardImage={arcano.cardImage}
               arcanoId={arcanoId}
+
               pontosEarned={pontosEarned}
               quizScore={lastQuizScore}
               quizTotal={lastQuizTotal}
