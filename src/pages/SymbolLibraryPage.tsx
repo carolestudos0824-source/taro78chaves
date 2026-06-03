@@ -346,10 +346,10 @@ const SymbolLibraryPage = () => {
                           )}
                           
                           {!isExpanded && (
-                            <div className="mt-10 flex items-center gap-3 text-gold group-hover:translate-x-3 transition-transform duration-700">
-                              <span className="text-[11px] font-heading font-black tracking-[0.5em] uppercase">Estudar símbolo</span>
-                              <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center border border-gold/20">
-                                <ExternalLink className="w-3.5 h-3.5" />
+                            <div className="mt-14 flex items-center gap-4 text-gold group-hover:translate-x-4 transition-transform duration-1000">
+                              <span className="text-[12px] md:text-[13px] font-heading font-black tracking-[0.6em] uppercase">Estudar símbolo</span>
+                              <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center border border-gold/20 shadow-sm group-hover:bg-gold/20 transition-colors">
+                                <ExternalLink className="w-4 h-4" />
                               </div>
                             </div>
                           )}
