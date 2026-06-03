@@ -96,57 +96,64 @@ const SymbolLibraryPage = () => {
   return (
     <div className="min-h-screen bg-[#FAF5EF] relative overflow-hidden pb-24">
       {/* Decorative background elements */}
-      <div className="absolute top-0 left-1/4 w-64 h-64 bg-rose-200/20 blur-[100px] pointer-events-none" />
-      <div className="absolute top-20 right-1/4 w-48 h-48 bg-gold/10 blur-[80px] pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-rose-200/20 blur-[120px] pointer-events-none" />
+      <div className="absolute top-40 right-1/4 w-80 h-80 bg-gold/15 blur-[100px] pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.03] bg-mystic-bg-procedural pointer-events-none" />
 
       {/* Header */}
       <header className="relative z-20 border-b border-gold/20 bg-[#FAF5EF]/95 backdrop-blur-xl sticky top-0 shadow-sm">
-        <div className="absolute inset-x-0 -bottom-8 flex justify-center pointer-events-none opacity-20">
-          <svg width="200" height="100" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 100C10 50.2944 50.2944 10 100 10C149.706 10 190 50.2944 190 100" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
-          </svg>
-        </div>
-        <div className="container max-w-3xl py-8 px-6">
-          <div className="flex items-center gap-4 mb-8">
+        <div className="container max-w-3xl py-10 px-6">
+          <div className="flex flex-col items-center text-center space-y-6 mb-8">
+            <ArchPortal className="w-full">
+              <div className="space-y-4 pt-4">
+                <div className="flex items-center justify-center gap-3">
+                  <div className="h-px w-10 bg-gold/30" />
+                  <span className="text-[10px] font-heading font-black tracking-[0.6em] text-gold uppercase">Sabedoria Ancestral</span>
+                  <div className="h-px w-10 bg-gold/30" />
+                </div>
+                
+                <h1 className="text-4xl md:text-5xl font-heading font-bold text-plum tracking-tight flex flex-col items-center">
+                  <span className="text-xl md:text-2xl font-light italic text-plum/50 mb-1">Portal dos Sinais</span>
+                  <span className="relative inline-block">
+                    Biblioteca de Símbolos
+                    <div className="absolute -right-8 -top-4 opacity-40">
+                      <Star className="w-5 h-5 text-gold fill-gold/20" />
+                    </div>
+                  </span>
+                </h1>
+                
+                <p className="text-sm md:text-base font-body italic text-plum/60 max-w-md mx-auto leading-relaxed">
+                  Aprenda a reconhecer os sinais vivos nas cartas Rider-Waite-Smith.
+                </p>
+              </div>
+            </ArchPortal>
+
             <button 
               onClick={() => navigate("/app")} 
-              className="p-2 rounded-full hover:bg-gold/10 transition-colors text-plum/60 hover:text-plum"
+              className="absolute left-6 top-10 p-2.5 rounded-full bg-white border border-gold/20 hover:bg-gold/5 transition-all text-plum/60 hover:text-plum shadow-sm"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <div className="h-px w-6 bg-gold/40" />
-                <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Biblioteca Ancestral</span>
-                <div className="h-px w-6 bg-gold/40" />
-              </div>
-              <h1 className="font-heading text-3xl font-bold text-plum tracking-tight">
-                Biblioteca de Símbolos
-              </h1>
-              <p className="text-sm font-body italic text-plum/50">
-                Aprenda a reconhecer os sinais vivos nas cartas Rider-Waite-Smith.
-              </p>
-            </div>
           </div>
 
           {/* Search */}
-          <div className="relative group">
-            <div className="absolute inset-0 bg-gold/10 blur-xl group-focus-within:bg-gold/20 transition-all rounded-2xl" />
+          <div className="relative group max-w-xl mx-auto">
+            <div className="absolute inset-0 bg-gold/10 blur-xl group-focus-within:bg-gold/20 transition-all rounded-3xl" />
             <div className="relative flex items-center">
-              <Search className="absolute left-4 w-4 h-4 text-plum/30 group-focus-within:text-gold transition-colors" />
+              <Search className="absolute left-5 w-5 h-5 text-plum/30 group-focus-within:text-gold transition-colors" />
               <input
                 type="text"
                 placeholder="Buscar símbolo, carta ou tema..."
                 value={search}
                 onChange={e => { setSearch(e.target.value); setActiveCategory(null); }}
-                className="w-full pl-11 pr-12 py-4 rounded-2xl text-sm font-body bg-white border border-gold/20 outline-none focus:border-gold/50 focus:ring-4 focus:ring-gold/5 transition-all shadow-sm placeholder:text-plum/30"
+                className="w-full pl-14 pr-14 py-4.5 rounded-[1.5rem] text-base font-body bg-white border border-gold/20 outline-none focus:border-gold/50 focus:ring-8 focus:ring-gold/5 transition-all shadow-md placeholder:text-plum/30"
               />
               {search && (
                 <button 
                   onClick={() => setSearch("")} 
-                  className="absolute right-4 p-1 rounded-full hover:bg-plum/5 text-plum/30 hover:text-plum transition-all"
+                  className="absolute right-5 p-1.5 rounded-full hover:bg-plum/5 text-plum/30 hover:text-plum transition-all"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="w-5 h-5" />
                 </button>
               )}
             </div>
