@@ -72,7 +72,19 @@ export function CompletionScreen({
         )}
       </div>
 
+      {cardImage && (
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2 }}
+          className="relative z-10 w-24 aspect-[2/3] mx-auto rounded-lg overflow-hidden border-2 border-[#C8A66A]/30 shadow-xl -mt-4 mb-2"
+        >
+          <img src={cardImage} alt={arcanoName} className="w-full h-full object-cover" />
+        </motion.div>
+      )}
+
       <div>
+
         <h2 className="font-heading text-3xl font-black mb-2" style={{
           background: "linear-gradient(135deg, #5B1F3D, #C8A66A)",
           WebkitBackgroundClip: "text",
