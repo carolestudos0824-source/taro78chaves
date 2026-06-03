@@ -213,7 +213,8 @@ const SymbolLibraryPage = () => {
     "elementos-astrologicos": "Influências cósmicas e ciclos universais.",
     "numeros": "Estruturas arquetípicas da jornada.",
     "gestos-e-posturas": "Linguagem corporal e atitudes perante a vida.",
-    "figuras-e-entidades": "Seres arquetípicos, mensageiros e guias espirituais."
+    "figuras-e-entidades": "Seres arquetípicos, mensageiros e guias espirituais.",
+    "arquitetura-e-cenas": "Cenários e estruturas que compõem a narrativa visual."
   };
 
   const filteredCategories = useMemo(() => {
