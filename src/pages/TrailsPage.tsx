@@ -280,7 +280,7 @@ const TrailsPage = () => {
                           unlocked && isNext ? 'bg-[#5B1F3D] text-[#FAF5EF]' : 
                           'bg-[#DCCFC2]/50 text-[#5B1F3D]/60 border border-[#DCCFC2]'
                         }`}>
-                           {modComplete ? <Check className="w-7 h-7 stroke-[4px]" /> : unlocked && isNext ? <Key className="w-8 h-8 animate-pulse" /> : <Lock className="w-6 h-6 text-[#5B1F3D]/45" />}
+                           {modComplete ? <Check className="w-7 h-7 stroke-[4px]" /> : unlocked && isNext ? <Key className="w-8 h-8 animate-pulse" /> : <Lock className="w-6 h-6 text-[#5B1F3D]/60" />}
                         </div>
 
                         <div className="flex-1 ml-6 sm:ml-8 min-w-0">
