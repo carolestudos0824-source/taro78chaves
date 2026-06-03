@@ -9,13 +9,43 @@ import BottomNav from "@/components/BottomNav";
 // Decorative components for the premium feel
 const ArchPortal = ({ children, className }: { children: React.ReactNode, className?: string }) => (
   <div className={`relative ${className}`}>
-    <div className="absolute inset-x-0 -top-8 flex justify-center pointer-events-none opacity-20 transition-opacity">
-      <svg width="200" height="100" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 100C10 50.2944 50.2944 10 100 10C149.706 10 190 50.2944 190 100" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
-        <circle cx="100" cy="10" r="3" fill="currentColor" />
+    <div className="absolute inset-x-0 -top-12 flex justify-center pointer-events-none opacity-30 transition-opacity">
+      <svg width="240" height="120" viewBox="0 0 240 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 120C10 60.2944 59.2944 10 120 10C180.706 10 230 60.2944 230 120" stroke="url(#goldGradient)" strokeWidth="1.5" strokeDasharray="4 6" />
+        <defs>
+          <linearGradient id="goldGradient" x1="0" y1="0" x2="240" y2="0" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#D4AF37" stopOpacity="0" />
+            <stop offset="0.5" stopColor="#D4AF37" />
+            <stop offset="1" stopColor="#D4AF37" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <circle cx="120" cy="10" r="4" fill="#D4AF37" className="animate-pulse" />
+        <path d="M120 0V20M110 10H130" stroke="#D4AF37" strokeWidth="0.5" />
       </svg>
     </div>
     {children}
+  </div>
+);
+
+const ChapterHeader = ({ title, description, icon }: { title: string, description: string, icon: string }) => (
+  <div className="flex flex-col items-center text-center space-y-4 mb-16 relative py-8">
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-transparent via-gold/30 to-transparent" />
+    <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center text-4xl shadow-xl border border-gold/15 relative z-10 mb-2">
+      <span className="drop-shadow-sm">{icon}</span>
+    </div>
+    <div className="space-y-2 relative z-10">
+      <h2 className="font-heading text-3xl md:text-5xl font-bold text-plum tracking-tight uppercase">
+        {title}
+      </h2>
+      <div className="flex items-center justify-center gap-4">
+        <div className="h-[1px] w-8 bg-gold/20" />
+        <p className="text-sm md:text-base font-body italic text-plum/50 max-w-md">
+          {description}
+        </p>
+        <div className="h-[1px] w-8 bg-gold/20" />
+      </div>
+    </div>
+    <div className="w-48 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent mt-6" />
   </div>
 );
 
