@@ -300,9 +300,10 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
 
     if (saveTimer.current) clearTimeout(saveTimer.current);
     saveTimer.current = setTimeout(async () => {
-      console.log("Syncing progress to Supabase...", { coreChanged, nameChanged });
       if (coreChanged) {
+        console.log(`[useProgress] syncing user_progress for ${user.id}...`, corePayload);
         lastSavedCoreRef.current = coreSnapshot;
+        
         const { error } = await supabase
           .from("user_progress")
           .upsert({
@@ -311,14 +312,16 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
           }, { onConflict: 'user_id' });
         
         if (error) {
-          console.error("Error syncing user_progress:", error);
+          console.error("[useProgress] Error syncing user_progress:", error);
           lastSavedCoreRef.current = "";
           toast.error("Erro ao salvar progresso. Verifique sua conexão.");
         } else {
-          console.log("user_progress synced successfully");
+          console.log("[useProgress] user_progress synced successfully");
         }
       }
+      
       if (nameChanged) {
+        console.log(`[useProgress] syncing student_name for ${user.id}: "${nameSnapshot}"`);
         lastSavedNameRef.current = nameSnapshot;
         const { error } = await supabase
           .from("profiles")
@@ -328,8 +331,10 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
           } as never, { onConflict: 'user_id' });
 
         if (error) {
-          console.error("Error syncing student_name:", error);
+          console.error("[useProgress] Error syncing student_name:", error);
           lastSavedNameRef.current = "";
+        } else {
+          console.log("[useProgress] student_name synced successfully");
         }
       }
     }, 300);
@@ -337,7 +342,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     return () => {
       if (saveTimer.current) clearTimeout(saveTimer.current);
     };
-  }, [progress, user, loading]);
+  }, [progress, user, loading, isStaff]);
 
   // ─── Migrate old localStorage data on first load ───
   useEffect(() => {
