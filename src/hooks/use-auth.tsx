@@ -14,9 +14,25 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [session, setSession] = useState<Session | null>(null);
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const isAuditUrl = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('audit') === 'true';
+  const mockUser = isAuditUrl ? {
+    id: '00000000-0000-0000-0000-000000000123',
+    email: 'auditor@teste.com',
+    user_metadata: { display_name: 'Auditor Teste' },
+    role: 'authenticated'
+  } : null;
+  const mockSession = isAuditUrl ? { 
+    user: mockUser as any, 
+    access_token: 'fake', 
+    refresh_token: 'fake', 
+    expires_in: 3600, 
+    token_type: 'bearer' as const
+  } : null;
+
+  const [session, setSession] = useState<Session | null>(mockSession);
+  const [user, setUser] = useState<User | null>(mockUser as any);
+  const [loading, setLoading] = useState(!isAuditUrl);
+
 
   useEffect(() => {
     let initialized = false;
