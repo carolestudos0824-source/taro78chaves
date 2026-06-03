@@ -84,9 +84,8 @@ const SymbolLibraryPage = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    setHeader({
-      hideHeader: true
-    });
+    // Hide standard global header to prevent flickering
+    setHeader({ hideHeader: true });
     return () => resetHeader();
   }, [setHeader, resetHeader]);
 
