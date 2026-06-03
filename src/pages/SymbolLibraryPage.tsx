@@ -198,20 +198,21 @@ const SymbolLibraryPage = () => {
         <div className="space-y-16">
           {filteredCategories.map(cat => (
             <section key={cat.slug} className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-[1rem] bg-gold/10 flex items-center justify-center text-2xl shadow-inner border border-gold/20">
+              <div className="flex items-center gap-5 mb-6 group/cat relative">
+                <div className="absolute -inset-2 bg-gold/5 blur-xl rounded-full opacity-0 group-hover/cat:opacity-100 transition-opacity" />
+                <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-3xl shadow-sm border border-gold/20 relative z-10 group-hover/cat:scale-105 transition-transform duration-500">
                   {cat.icone}
                 </div>
-                <div className="flex-1">
-                  <h2 className="font-heading text-2xl font-bold text-plum tracking-tight">
+                <div className="flex-1 relative z-10">
+                  <h2 className="font-heading text-3xl font-bold text-plum tracking-tight flex items-center gap-3">
                     {cat.nome}
+                    <div className="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent" />
                   </h2>
-                  <div className="h-0.5 w-20 bg-gold/40 rounded-full" />
+                  <p className="text-sm font-body italic text-plum/60 mt-1 leading-relaxed">
+                    {cat.descricao}
+                  </p>
                 </div>
               </div>
-              <p className="text-base font-body italic text-plum/50 mb-10 pl-16 leading-relaxed">
-                {cat.descricao}
-              </p>
 
               <div className="grid grid-cols-1 gap-8">
                 {cat.simbolos.map(sym => {
@@ -221,10 +222,10 @@ const SymbolLibraryPage = () => {
                   return (
                     <div
                       key={sym.id}
-                      className={`group relative rounded-[2rem] transition-all duration-500 border overflow-hidden ${
+                      className={`group relative rounded-[2.5rem] transition-all duration-500 border overflow-hidden shadow-sm hover:shadow-2xl ${
                         isExpanded
                           ? "bg-white border-gold/40 shadow-2xl shadow-plum/5 ring-1 ring-gold/10"
-                          : "bg-white/90 border-gold/15 hover:border-gold/30 hover:bg-white shadow-sm hover:shadow-xl hover:-translate-y-1"
+                          : "bg-white/90 border-gold/15 hover:border-gold/30 hover:bg-white hover:-translate-y-1"
                       }`}
                     >
                       {/* Interactive Header area */}
@@ -234,11 +235,11 @@ const SymbolLibraryPage = () => {
                           className="flex-1 text-left p-8 focus:outline-none"
                         >
                           <div className="flex justify-between items-start mb-4">
-                            <div className="space-y-1">
-                              <h3 className="font-heading text-2xl font-bold text-plum group-hover:text-gold transition-colors">
+                            <div className="space-y-2">
+                              <h3 className="font-heading text-2xl md:text-3xl font-bold text-plum group-hover:text-gold transition-colors tracking-tight">
                                 {sym.nome}
                               </h3>
-                              <div className="h-0.5 w-12 bg-gold/30 rounded-full group-hover:w-20 transition-all duration-500" />
+                              <div className="h-0.5 w-12 bg-gold/40 rounded-full group-hover:w-24 transition-all duration-700" />
                             </div>
                             <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ${
                               isExpanded ? "bg-plum text-marfim rotate-180 shadow-lg" : "bg-gold/10 text-gold"
@@ -247,34 +248,38 @@ const SymbolLibraryPage = () => {
                             </div>
                           </div>
                           
-                          <p className={`text-lg font-body leading-relaxed text-plum/70 mb-6 ${isExpanded ? "" : "line-clamp-2"}`}>
+                          <p className={`text-base md:text-lg font-body leading-relaxed text-plum/80 mb-8 ${isExpanded ? "" : "line-clamp-2"}`}>
                             {sym.explicacao}
                           </p>
 
                           {relatedCards.length > 0 && (
                             <div className="space-y-4">
-                              <div className="flex items-center gap-3">
+                              <div className="flex items-center gap-3 mb-4">
                                 <div className="h-px w-6 bg-gold/40" />
-                                <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Presente em:</span>
+                                <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Símbolo presente em:</span>
                               </div>
-                              <div className="flex flex-wrap gap-4">
+                              <div className="flex flex-wrap gap-5">
                                 {relatedCards.slice(0, isExpanded ? 99 : 3).map((card, idx) => (
-                                  <div 
-                                    key={card?.id || idx} 
-                                    className={`relative rounded-xl border-2 border-white shadow-lg overflow-hidden bg-marfim ring-1 ring-gold/10 transition-all duration-500 ${
-                                      isExpanded ? "w-24 md:w-28 aspect-[2/3.2]" : "w-16 md:w-20 aspect-[2/3.2]"
-                                    }`}
-                                  >
-                                    <img 
-                                      src={card?.cardImage} 
-                                      alt={card?.name} 
-                                      className="w-full h-full object-cover" 
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                                  <div key={card?.id || idx} className="flex flex-col items-center gap-3 group/mini">
+                                    <div 
+                                      className={`relative rounded-xl border-2 border-white shadow-lg overflow-hidden bg-marfim ring-1 ring-gold/10 transition-all duration-500 group-hover/mini:scale-110 group-hover/mini:rotate-1 ${
+                                        isExpanded ? "w-24 md:w-32 aspect-[2/3.2]" : "w-20 md:w-24 aspect-[2/3.2]"
+                                      }`}
+                                    >
+                                      <img 
+                                        src={card?.cardImage} 
+                                        alt={card?.name} 
+                                        className="w-full h-full object-cover" 
+                                      />
+                                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                                    </div>
+                                    <span className={`text-[10px] font-heading font-black uppercase tracking-wider text-plum/50 group-hover/mini:text-gold transition-colors text-center max-w-[80px] md:max-w-[100px] leading-tight ${isExpanded ? "block" : "hidden md:block"}`}>
+                                      {card?.name}
+                                    </span>
                                   </div>
                                 ))}
                                 {!isExpanded && relatedCards.length > 3 && (
-                                  <div className="w-16 md:w-20 aspect-[2/3.2] rounded-xl bg-gold/10 border-2 border-white flex flex-col items-center justify-center text-[12px] font-black text-gold shadow-lg">
+                                  <div className="w-20 md:w-24 aspect-[2/3.2] rounded-xl bg-gold/5 border-2 border-white flex flex-col items-center justify-center text-[12px] font-black text-gold shadow-md hover:bg-gold/10 transition-colors">
                                     <span className="text-xl">+{relatedCards.length - 3}</span>
                                     <span className="text-[8px] uppercase tracking-widest">Cartas</span>
                                   </div>
@@ -284,9 +289,11 @@ const SymbolLibraryPage = () => {
                           )}
                           
                           {!isExpanded && (
-                            <div className="mt-8 flex items-center gap-2 text-gold group-hover:translate-x-2 transition-transform duration-500">
-                              <span className="text-[11px] font-heading font-black tracking-[0.3em] uppercase">Estudar símbolo</span>
-                              <ExternalLink className="w-3.5 h-3.5" />
+                            <div className="mt-10 flex items-center gap-3 text-gold group-hover:translate-x-3 transition-transform duration-700">
+                              <span className="text-[11px] font-heading font-black tracking-[0.4em] uppercase">Estudar símbolo agora</span>
+                              <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center border border-gold/20">
+                                <ExternalLink className="w-3.5 h-3.5" />
+                              </div>
                             </div>
                           )}
                         </button>
@@ -307,9 +314,9 @@ const SymbolLibraryPage = () => {
                               {sym.leituras.map((r, i) => (
                                 <div 
                                   key={i} 
-                                  className="px-6 py-3 rounded-[1.25rem] text-base font-body bg-white border border-gold/20 text-plum/80 shadow-md flex items-center gap-3"
+                                  className="px-6 py-4 rounded-2xl text-base font-body bg-white border border-gold/20 text-plum shadow-sm flex items-center gap-4 hover:border-gold/50 transition-colors"
                                 >
-                                  <div className="w-1.5 h-1.5 rounded-full bg-gold" />
+                                  <div className="w-2 h-2 rounded-full bg-gold shadow-[0_0_8px_rgba(212,175,55,0.6)]" />
                                   {r}
                                 </div>
                               ))}
