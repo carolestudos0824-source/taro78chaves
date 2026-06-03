@@ -403,7 +403,7 @@ const SymbolLibraryPage = () => {
                               </div>
                             </div>
                             
-                            <p className={`text-sm md:text-base font-body leading-relaxed text-plum/70 mb-8 italic border-l-2 border-rose-100 pl-4 ${isExpandedSymbol ? "" : "line-clamp-2"}`}>
+                            <p className={`text-sm md:text-base font-body leading-relaxed text-plum/85 mb-8 italic border-l-2 border-rose-100 pl-4 ${isExpandedSymbol ? "" : "line-clamp-2"}`}>
                               {sym.explicacao}
                             </p>
 
