@@ -276,51 +276,51 @@ const SymbolLibraryPage = () => {
                   return (
                     <div
                       key={sym.id}
-                      className={`group relative rounded-[2.5rem] md:rounded-[3rem] transition-all duration-500 border overflow-hidden shadow-sm hover:shadow-2xl ${
+                      className={`group relative rounded-[3rem] transition-all duration-700 border overflow-hidden shadow-sm hover:shadow-2xl ${
                         isExpanded
-                          ? "bg-white border-gold/30 shadow-2xl shadow-plum/5 ring-1 ring-gold/10"
-                          : "bg-white/80 border-gold/10 hover:border-gold/25 hover:bg-white hover:-translate-y-1"
+                          ? "bg-white border-gold/40 shadow-2xl shadow-plum/10 ring-1 ring-gold/20"
+                          : "bg-white/90 border-gold/10 hover:border-gold/30 hover:bg-white hover:-translate-y-2"
                       }`}
                     >
                       {/* Interactive Header area */}
                       <div className="flex flex-col md:flex-row">
                         <button
                           onClick={() => setSelectedSymbol(isExpanded ? null : sym)}
-                          className="flex-1 text-left p-8 md:p-12 focus:outline-none"
+                          className="flex-1 text-left p-10 md:p-14 focus:outline-none"
                         >
-                          <div className="flex justify-between items-start mb-6">
-                            <div className="space-y-4">
-                              <h3 className="font-heading text-2xl md:text-4xl font-bold text-plum group-hover:text-plum/80 transition-colors tracking-tight">
+                          <div className="flex justify-between items-start mb-8">
+                            <div className="space-y-4 flex-1 pr-4">
+                              <h3 className="font-heading text-3xl md:text-5xl font-bold text-plum group-hover:text-plum/80 transition-colors tracking-tight">
                                 {sym.nome}
                               </h3>
-                              <p className="text-base md:text-xl font-body italic text-plum/50 leading-relaxed -mt-2">
+                              <p className="text-lg md:text-2xl font-body italic text-plum/50 leading-relaxed -mt-1">
                                 {sym.leituras[0]}
                               </p>
-                              <div className="h-0.5 w-16 bg-gold/30 rounded-full group-hover:w-32 transition-all duration-700" />
+                              <div className="h-1 w-20 bg-gold/40 rounded-full group-hover:w-40 transition-all duration-1000" />
                             </div>
-                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ${
-                              isExpanded ? "bg-plum text-marfim rotate-180 shadow-lg" : "bg-gold/10 text-gold"
+                            <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 shadow-sm border border-gold/20 ${
+                              isExpanded ? "bg-plum text-marfim rotate-180 shadow-plum/20" : "bg-gold/10 text-gold"
                             }`}>
-                              <Info className="w-5 h-5" />
+                              <Info className="w-6 h-6" />
                             </div>
                           </div>
                           
-                          <p className={`text-lg md:text-xl font-body leading-relaxed text-plum/80 mb-10 ${isExpanded ? "" : "line-clamp-2"}`}>
+                          <p className={`text-xl md:text-2xl font-body leading-relaxed text-plum/80 mb-12 ${isExpanded ? "" : "line-clamp-2"}`}>
                             {sym.explicacao}
                           </p>
 
                           {relatedCards.length > 0 && (
-                            <div className="space-y-4">
-                              <div className="flex items-center gap-3 mb-4">
-                                <div className="h-px w-8 bg-gold/30" />
-                                <span className="text-[10px] font-heading font-black tracking-[0.5em] text-gold uppercase">Cartas relacionadas:</span>
+                            <div className="space-y-6">
+                              <div className="flex items-center gap-4 mb-6">
+                                <div className="h-px w-10 bg-gold/40" />
+                                <span className="text-[12px] md:text-[13px] font-heading font-black tracking-[0.6em] text-gold uppercase">Cartas relacionadas:</span>
                               </div>
-                              <div className="flex flex-wrap gap-5">
+                              <div className="flex flex-wrap gap-6 md:gap-8">
                                 {relatedCards.slice(0, isExpanded ? 99 : 3).map((card, idx) => (
-                                  <div key={card?.id || idx} className="flex flex-col items-center gap-3 group/mini">
+                                  <div key={card?.id || idx} className="flex flex-col items-center gap-4 group/mini">
                                     <div 
-                                      className={`relative rounded-2xl border-2 border-white shadow-xl overflow-hidden bg-white ring-1 ring-gold/10 transition-all duration-500 group-hover/mini:scale-110 group-hover/mini:rotate-1 ${
-                                        isExpanded ? "w-28 md:w-36 aspect-[2/3.2]" : "w-24 md:w-28 aspect-[2/3.2]"
+                                      className={`relative rounded-2xl md:rounded-[1.5rem] border-2 border-white shadow-2xl overflow-hidden bg-white ring-1 ring-gold/20 transition-all duration-700 group-hover/mini:scale-110 group-hover/mini:rotate-1 ${
+                                        isExpanded ? "w-32 md:w-44 aspect-[2/3.2]" : "w-28 md:w-36 aspect-[2/3.2]"
                                       }`}
                                     >
                                       <img 
@@ -328,17 +328,17 @@ const SymbolLibraryPage = () => {
                                         alt={card?.name} 
                                         className="w-full h-full object-cover" 
                                       />
-                                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none opacity-0 group-hover/mini:opacity-100 transition-opacity" />
                                     </div>
-                                    <span className={`text-[11px] font-heading font-black uppercase tracking-widest text-plum/40 group-hover/mini:text-gold transition-colors text-center max-w-[90px] md:max-w-[110px] leading-tight ${isExpanded ? "block" : "block"}`}>
+                                    <span className={`text-[12px] md:text-[13px] font-heading font-bold uppercase tracking-widest text-plum/50 group-hover/mini:text-gold transition-colors text-center max-w-[110px] md:max-w-[140px] leading-tight`}>
                                       {card?.name}
                                     </span>
                                   </div>
                                 ))}
                                 {!isExpanded && relatedCards.length > 3 && (
-                                  <div className="w-24 md:w-28 aspect-[2/3.2] rounded-2xl bg-gold/5 border-2 border-white flex flex-col items-center justify-center text-[13px] font-black text-gold shadow-md hover:bg-gold/10 transition-colors">
-                                    <span className="text-2xl">+{relatedCards.length - 3}</span>
-                                    <span className="text-[9px] uppercase tracking-widest">Cartas</span>
+                                  <div className="w-28 md:w-36 aspect-[2/3.2] rounded-2xl md:rounded-[1.5rem] bg-gold/5 border-2 border-white flex flex-col items-center justify-center text-gold shadow-xl hover:bg-gold/10 transition-all duration-500 hover:-translate-y-1">
+                                    <span className="text-3xl font-heading font-black">+{relatedCards.length - 3}</span>
+                                    <span className="text-[10px] font-heading font-black uppercase tracking-[0.2em]">Chaves</span>
                                   </div>
                                 )}
                               </div>
