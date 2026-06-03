@@ -481,7 +481,7 @@ const SymbolLibraryPage = () => {
               <Search className="absolute left-8 w-6 h-6 text-plum/30 group-focus-within:text-gold transition-colors" />
               <input
                 type="text"
-                placeholder="Ex: Lua, Água, Sol, A Sacerdotisa..."
+                placeholder="Busque símbolo, carta ou tema..."
                 value={search}
                 onChange={e => { setSearch(e.target.value); }}
                 className="w-full pl-20 pr-20 py-8 rounded-[2.5rem] text-xl font-body bg-white/80 border border-gold/20 outline-none focus:border-gold/50 focus:bg-white focus:ring-12 focus:ring-gold/5 transition-all shadow-xl placeholder:text-plum/20 backdrop-blur-sm"
