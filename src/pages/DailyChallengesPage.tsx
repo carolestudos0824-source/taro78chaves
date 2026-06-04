@@ -31,6 +31,8 @@ const today = () => {
 };
 
 const DailyChallengesPage = () => {
+  console.log("[Ritual] Page mounted/rendered");
+
   const navigate = useNavigate();
   const { user } = useAuth();
   const { progress, addXP, updateStreak } = useProgress();
