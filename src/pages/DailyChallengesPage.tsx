@@ -265,7 +265,10 @@ const DailyChallengesPage = () => {
               return (
                 <button
                   key={ch.id}
-                  onClick={() => (isAvailable || isCompleted) && setActiveChallenge(ch)}
+                  onClick={() => {
+                    console.log("[Ritual] Portal clicked:", ch.id, { isAvailable, isCompleted });
+                    if (isAvailable || isCompleted) setActiveChallenge(ch);
+                  }}
                   disabled={isBlocked}
                   className={`w-full text-left group transition-all duration-500 ${isBlocked ? "cursor-not-allowed" : ""}`}
                 >
