@@ -453,7 +453,13 @@ const RevisaoRapidaContent = ({ data, onComplete }: { data: CartaDoDia | null; o
               <span key={k} className="text-[10px] font-body font-black tracking-widest uppercase px-3 py-1.5 rounded-full bg-[#C8A66A]/10 text-[#C8A66A] border border-[#C8A66A]/10">{k}</span>
             ))}
           </div>
-          <CompleteButton onComplete={onComplete} label="Revisei ⚡" />
+          <CompleteButton 
+            onComplete={() => {
+              console.log("[Ritual] RevisaoRapidaContent onComplete called");
+              onComplete();
+            }} 
+            label="Revisei ⚡" 
+          />
         </div>
       )}
     </div>
