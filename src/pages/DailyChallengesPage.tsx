@@ -130,7 +130,6 @@ const DailyChallengesPage = () => {
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #FAF5EF 0%, #FDF8F3 45%, #F2E7D9 100%)" }} />
         <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 50% -10%, rgba(91, 31, 61, 0.12) 0%, transparent 70%)" }} />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(200, 166, 106, 0.08) 0%, transparent 50%, rgba(91, 31, 61, 0.05) 100%)" }} />
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
       </div>
 
@@ -490,11 +489,16 @@ const InterpretacaoContent = ({ data, onComplete }: { data: MiniInterpretacao | 
       <div className="text-center space-y-3">
         <div className="font-heading text-2xl font-black text-[#5B1F3D]">{data.card.name}</div>
       </div>
-      <p className="font-body text-[14px] leading-relaxed font-bold text-[#5B1F3D]/80">{data.interpretation}</p>
+      <p className="font-body text-[14px] leading-relaxed font-bold text-[#5B1F3D]/80">Para este contexto na posição de {data.position}, reflita sobre as seguintes questões:</p>
+      <ul className="space-y-2">
+        {data.guidedQuestions.map((q, i) => (
+          <li key={i} className="text-[13px] font-bold text-[#5B1F3D]/70 bg-white p-3 rounded-xl border border-[#C8A66A10]">✦ {q}</li>
+        ))}
+      </ul>
       {!showSample ? (
-        <button onClick={() => setShowSample(true)} className="w-full py-4 rounded-2xl font-heading text-[12px] font-black tracking-[0.2em] uppercase bg-[#5B1F3D]/5 border-2 border-[#5B1F3D]/10 text-[#5B1F3D]">Ver Exemplo</button>
+        <button onClick={() => setShowSample(true)} className="w-full py-4 rounded-2xl font-heading text-[12px] font-black tracking-[0.2em] uppercase bg-[#5B1F3D]/5 border-2 border-[#5B1F3D]/10 text-[#5B1F3D]">Ver Exemplo de Leitura</button>
       ) : (
-        <p className="font-body text-[14px] leading-relaxed font-bold text-[#5B1F3D]/80 italic bg-white p-4 rounded-xl">{data.sampleResponse}</p>
+        <p className="font-body text-[14px] leading-relaxed font-bold text-[#5B1F3D]/80 italic bg-white p-4 rounded-xl">{data.sampleReading}</p>
       )}
       <CompleteButton onComplete={onComplete} label="Interpretei 🃏" />
     </div>
