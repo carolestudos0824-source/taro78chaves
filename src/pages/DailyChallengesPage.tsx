@@ -336,9 +336,25 @@ interface ModalProps {
 }
 
 const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) => {
+  // Diagnóstico de cliques
+  const handleOverlayClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      console.log("[Ritual] Modal overlay clicked -> closing");
+      onClose();
+    }
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 pb-bottom-nav sm:pb-4" style={{ background: "rgba(91, 31, 61, 0.75)", backdropFilter: "blur(20px)" }}>
-      <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-t-[3.5rem] sm:rounded-[3.5rem] border-t-4 sm:border-4 border-[#C8A66A] shadow-[0_0_100px_rgba(91, 31, 61, 0.5)] animate-in fade-in slide-in-from-bottom-12 duration-700 scrollbar-hide" style={{ background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 100%)" }}>
+    <div 
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 pb-bottom-nav sm:pb-4" 
+      style={{ background: "rgba(91, 31, 61, 0.75)", backdropFilter: "blur(20px)" }}
+      onClick={handleOverlayClick}
+    >
+      <div 
+        className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-t-[3.5rem] sm:rounded-[3.5rem] border-t-4 sm:border-4 border-[#C8A66A] shadow-[0_0_100px_rgba(91, 31, 61, 0.5)] animate-in fade-in slide-in-from-bottom-12 duration-700 scrollbar-hide relative z-10" 
+        style={{ background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 100%)" }}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="sticky top-0 flex items-center justify-between px-10 py-10 border-b-2 border-[#C8A66A20] z-20" style={{ background: "rgba(250, 245, 239, 0.98)", backdropFilter: "blur(24px)" }}>
           <div className="flex items-center gap-5">
             <div className="w-16 h-16 rounded-[1.5rem] flex items-center justify-center border-2 border-[#C8A66A40] shadow-2xl rotate-3" style={{ background: "linear-gradient(135deg, #5B1F3D, #3D1429)" }}>
@@ -349,7 +365,13 @@ const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) =>
               <h2 className="font-heading text-2xl font-black text-[#5B1F3D] leading-tight tracking-tight">{challenge.title}</h2>
             </div>
           </div>
-          <button onClick={onClose} className="w-12 h-12 rounded-full bg-white border-2 border-[#C8A66A30] flex items-center justify-center hover:bg-[#FAF5EF] hover:border-[#C8A66A] transition-all shadow-md active:scale-90">
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
+            }} 
+            className="w-12 h-12 rounded-full bg-white border-2 border-[#C8A66A30] flex items-center justify-center hover:bg-[#FAF5EF] hover:border-[#C8A66A] transition-all shadow-md active:scale-90"
+          >
             <X className="w-6 h-6 text-[#5B1F3D]" />
           </button>
         </div>
