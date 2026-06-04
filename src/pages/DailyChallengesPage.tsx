@@ -410,7 +410,7 @@ const CompleteButton = ({ onComplete, label = "Integrar Sabedoria" }: { onComple
 const CartaDoDiaContent = ({ data, onComplete }: { data: CartaDoDia | null; onComplete: () => void }) => {
   if (!data) return <div className="text-center py-8"><p className="font-body text-[13px] font-bold text-[#5B1F3D]/50">Conteúdo carregando...</p><CompleteButton onComplete={onComplete} /></div>;
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 relative">
       <div className="text-center space-y-2">
         <div className="font-heading text-4xl font-black text-[#C8A66A] tracking-widest opacity-40">{data.numeral}</div>
         <h3 className="font-heading text-2xl font-black text-[#5B1F3D]">{data.name}</h3>
@@ -425,7 +425,13 @@ const CartaDoDiaContent = ({ data, onComplete }: { data: CartaDoDia | null; onCo
       <div className="rounded-[2rem] p-6 bg-white border-2 border-[#C8A66A]/10 shadow-sm relative overflow-hidden group">
         <p className="font-body text-[13px] font-bold italic text-[#5B1F3D] leading-relaxed relative z-10">✦ {data.reflection}</p>
       </div>
-      <CompleteButton onComplete={onComplete} label="Contemplei ✦" />
+      <CompleteButton 
+        onComplete={() => {
+          console.log("[Ritual] CartaDoDiaContent onComplete called");
+          onComplete();
+        }} 
+        label="Contemplei ✦" 
+      />
     </div>
   );
 };
