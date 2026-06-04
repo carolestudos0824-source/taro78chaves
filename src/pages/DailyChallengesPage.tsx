@@ -98,12 +98,18 @@ const DailyChallengesPage = () => {
   const allDone = completedCount === challenges.length;
 
   const completeChallenge = useCallback(async (id: string) => {
+    console.log("[Ritual] Attempting to complete challenge:", id);
     const challenge = challenges.find(c => c.id === id);
-    if (!challenge || challenge.completed) return;
+    if (!challenge || challenge.completed) {
+      console.log("[Ritual] Challenge already completed or not found:", id);
+      return;
+    }
     
+    // Atualiza estado local imediatamente para feedback visual
     setChallenges(prev => prev.map(c => c.id === id ? { ...c, completed: true } : c));
     setActiveChallenge(null);
 
+    // Soma XP e atualiza streak
     addXP(challenge.xp);
     updateStreak();
 
@@ -115,12 +121,18 @@ const DailyChallengesPage = () => {
         xp_earned: challenge.xp
       };
       
+      console.log("[Ritual] Saving to Supabase:", payload);
+      
       const { error } = await supabase
         .from("daily_challenge_completions")
         .insert(payload);
 
       if (error) {
-        console.error("[Ritual] Error saving completion:", error);
+        console.error("[Ritual] Supabase error:", error);
+        toast.error("Erro ao salvar progresso. Verifique sua conexão.");
+      } else {
+        console.log("[Ritual] Successfully saved to Supabase");
+        toast.success("Portal selado com sucesso!");
       }
     }
   }, [challenges, user, addXP, updateStreak]);
