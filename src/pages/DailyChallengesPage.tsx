@@ -22,7 +22,7 @@ import {
   type MiniInterpretacao,
 } from "@/lib/daily/builders";
 
-const today = () => {
+const todayStr = () => {
   const now = new Date();
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -32,7 +32,6 @@ const today = () => {
 
 const DailyChallengesPage = () => {
   console.log("[Ritual] Page mounted/rendered");
-
   const navigate = useNavigate();
   const { user } = useAuth();
   const { progress, addXP, updateStreak } = useProgress();
@@ -53,7 +52,8 @@ const DailyChallengesPage = () => {
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        if (parsed.date === today()) {
+        if (parsed.date === todayStr()) {
+          console.log("[Ritual] Loading saved challenges from localStorage:", parsed.items.filter((i: any) => i.completed).length, "completed");
           return parsed.items.map((item: any) => {
             const fresh = freshChallenges.find(f => f.type === item.type);
             return fresh ? { ...item, icon: fresh.icon } : item;
@@ -61,13 +61,14 @@ const DailyChallengesPage = () => {
         }
       } catch {}
     }
+    console.log("[Ritual] No valid saved state, using fresh challenges");
     return freshChallenges;
   });
 
   const [activeChallenge, setActiveChallenge] = useState<DailyChallengeItem | null>(null);
 
   useEffect(() => {
-    localStorage.setItem("daily-challenges", JSON.stringify({ date: today(), items: challenges }));
+    localStorage.setItem("daily-challenges", JSON.stringify({ date: todayStr(), items: challenges }));
   }, [challenges]);
 
   useEffect(() => {
@@ -78,7 +79,7 @@ const DailyChallengesPage = () => {
         .from("daily_challenge_completions")
         .select("challenge_id")
         .eq("user_id", user.id)
-        .eq("challenge_date", today());
+        .eq("challenge_date", todayStr());
 
       if (error) {
         console.error("[Ritual] Error fetching completions:", error);
@@ -87,9 +88,12 @@ const DailyChallengesPage = () => {
 
       if (data && data.length > 0) {
         const completedIds = data.map(c => c.challenge_id);
+        console.log("[Ritual] Found completions in Supabase:", completedIds);
         setChallenges(prev => prev.map(ch => 
           completedIds.includes(ch.id) ? { ...ch, completed: true } : ch
         ));
+      } else {
+        console.log("[Ritual] No completions found in Supabase for today");
       }
     };
 
@@ -100,18 +104,16 @@ const DailyChallengesPage = () => {
   const allDone = completedCount === challenges.length;
 
   const completeChallenge = useCallback(async (id: string) => {
-    console.log("[Ritual] Attempting to complete challenge:", id);
+    console.log("[Ritual] completeChallenge called with ID:", id);
     const challenge = challenges.find(c => c.id === id);
     if (!challenge || challenge.completed) {
       console.log("[Ritual] Challenge already completed or not found:", id);
       return;
     }
     
-    // Atualiza estado local imediatamente para feedback visual
     setChallenges(prev => prev.map(c => c.id === id ? { ...c, completed: true } : c));
     setActiveChallenge(null);
 
-    // Soma XP e atualiza streak
     addXP(challenge.xp);
     updateStreak();
 
@@ -119,7 +121,7 @@ const DailyChallengesPage = () => {
       const payload = {
         user_id: user.id,
         challenge_id: id,
-        challenge_date: today(),
+        challenge_date: todayStr(),
         xp_earned: challenge.xp
       };
       
@@ -130,10 +132,10 @@ const DailyChallengesPage = () => {
         .insert(payload);
 
       if (error) {
-        console.error("[Ritual] Supabase error:", error);
+        console.error("[Ritual] Supabase INSERT error:", error);
         toast.error("Erro ao salvar progresso. Verifique sua conexão.");
       } else {
-        console.log("[Ritual] Successfully saved to Supabase");
+        console.log("[Ritual] Supabase INSERT success");
         toast.success("Portal selado com sucesso!");
       }
     }
@@ -347,26 +349,16 @@ interface ModalProps {
 }
 
 const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) => {
-  // Diagnóstico de cliques
-  const handleOverlayClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      console.log("[Ritual] Modal overlay clicked -> closing");
-      onClose();
-    }
-  };
-
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 pb-bottom-nav sm:pb-4" 
+      className="fixed inset-0 z-[1000] flex items-end sm:items-center justify-center p-0 sm:p-4 pb-bottom-nav sm:pb-4" 
       style={{ background: "rgba(91, 31, 61, 0.75)", backdropFilter: "blur(20px)" }}
-      onClick={handleOverlayClick}
     >
       <div 
-        className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-t-[3.5rem] sm:rounded-[3.5rem] border-t-4 sm:border-4 border-[#C8A66A] shadow-[0_0_100px_rgba(91, 31, 61, 0.5)] animate-in fade-in slide-in-from-bottom-12 duration-700 scrollbar-hide relative z-10" 
+        className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-t-[3.5rem] sm:rounded-[3.5rem] border-t-4 sm:border-4 border-[#C8A66A] shadow-[0_0_100px_rgba(91, 31, 61, 0.5)] animate-in fade-in slide-in-from-bottom-12 duration-700 scrollbar-hide relative z-[1001]" 
         style={{ background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 100%)" }}
-        onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 flex items-center justify-between px-10 py-10 border-b-2 border-[#C8A66A20] z-20" style={{ background: "rgba(250, 245, 239, 0.98)", backdropFilter: "blur(24px)" }}>
+        <div className="sticky top-0 flex items-center justify-between px-10 py-10 border-b-2 border-[#C8A66A20] z-[1002]" style={{ background: "rgba(250, 245, 239, 0.98)", backdropFilter: "blur(24px)" }}>
           <div className="flex items-center gap-5">
             <div className="w-16 h-16 rounded-[1.5rem] flex items-center justify-center border-2 border-[#C8A66A40] shadow-2xl rotate-3" style={{ background: "linear-gradient(135deg, #5B1F3D, #3D1429)" }}>
                <TarotIcon name="Sparkles" className="w-8 h-8 text-[#C8A66A] animate-pulse" />
@@ -386,7 +378,7 @@ const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) =>
             <X className="w-6 h-6 text-[#5B1F3D]" />
           </button>
         </div>
-        <div className="p-6">
+        <div className="p-6 relative z-10">
           {challenge.type === "carta-do-dia" && <CartaDoDiaContent data={data.carta} onComplete={onComplete} />}
           {challenge.type === "revisao-rapida" && <RevisaoRapidaContent data={data.carta} onComplete={onComplete} />}
           {challenge.type === "perguntas-do-dia" && <PerguntasContent data={data.perguntas} onComplete={onComplete} />}
@@ -400,17 +392,13 @@ const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) =>
 };
 
 const CompleteButton = ({ onComplete, label = "Integrar Sabedoria" }: { onComplete: () => void; label?: string }) => {
-  const handleClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    console.log(`[Ritual] Clicked CompleteButton: ${label}`);
-    onComplete();
-  };
-
   return (
     <button 
-      onClick={handleClick} 
-      className="w-full mt-10 py-5 rounded-[2rem] font-heading text-[12px] font-black tracking-[0.3em] uppercase shadow-2xl transition-all duration-500 hover:scale-[1.02] active:scale-95 border-2 border-[#C8A66A40] relative z-10" 
+      onClick={(e) => {
+        console.log(`[Ritual] CompleteButton clicked: ${label}`);
+        onComplete();
+      }} 
+      className="w-full mt-10 py-5 rounded-[2rem] font-heading text-[12px] font-black tracking-[0.3em] uppercase shadow-2xl transition-all duration-500 hover:scale-[1.02] active:scale-95 border-2 border-[#C8A66A40] relative z-50 pointer-events-auto" 
       style={{ background: "linear-gradient(135deg, #5B1F3D, #3D1429)", color: "#C8A66A", boxShadow: "0 15px 35px rgba(91, 31, 61, 0.3)" }}
     >
       {label}
