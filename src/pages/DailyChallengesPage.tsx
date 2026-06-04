@@ -366,11 +366,24 @@ const ChallengeModal = ({ challenge, data, onComplete, onClose }: ModalProps) =>
   );
 };
 
-const CompleteButton = ({ onComplete, label = "Integrar Sabedoria" }: { onComplete: () => void; label?: string }) => (
-  <button onClick={onComplete} className="w-full mt-10 py-5 rounded-[2rem] font-heading text-[12px] font-black tracking-[0.3em] uppercase shadow-2xl transition-all duration-500 hover:scale-[1.02] active:scale-95 border-2 border-[#C8A66A40]" style={{ background: "linear-gradient(135deg, #5B1F3D, #3D1429)", color: "#C8A66A", boxShadow: "0 15px 35px rgba(91, 31, 61, 0.3)" }}>
-    {label}
-  </button>
-);
+const CompleteButton = ({ onComplete, label = "Integrar Sabedoria" }: { onComplete: () => void; label?: string }) => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log(`[Ritual] Clicked CompleteButton: ${label}`);
+    onComplete();
+  };
+
+  return (
+    <button 
+      onClick={handleClick} 
+      className="w-full mt-10 py-5 rounded-[2rem] font-heading text-[12px] font-black tracking-[0.3em] uppercase shadow-2xl transition-all duration-500 hover:scale-[1.02] active:scale-95 border-2 border-[#C8A66A40] relative z-10" 
+      style={{ background: "linear-gradient(135deg, #5B1F3D, #3D1429)", color: "#C8A66A", boxShadow: "0 15px 35px rgba(91, 31, 61, 0.3)" }}
+    >
+      {label}
+    </button>
+  );
+};
 
 const CartaDoDiaContent = ({ data, onComplete }: { data: CartaDoDia | null; onComplete: () => void }) => {
   if (!data) return <div className="text-center py-8"><p className="font-body text-[13px] font-bold text-[#5B1F3D]/50">Conteúdo carregando...</p><CompleteButton onComplete={onComplete} /></div>;
