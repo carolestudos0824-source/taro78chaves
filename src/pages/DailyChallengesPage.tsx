@@ -155,8 +155,14 @@ const DailyChallengesPage = () => {
             combinacao: combinacaoDoDia,
             interpretacao: miniInterpretacao,
           }}
-          onComplete={() => completeChallenge(activeChallenge.id)}
-          onClose={() => setActiveChallenge(null)}
+          onComplete={() => {
+            console.log("[Ritual] Modal onComplete triggered for:", activeChallenge.id);
+            completeChallenge(activeChallenge.id);
+          }}
+          onClose={() => {
+            console.log("[Ritual] Modal onClose triggered");
+            setActiveChallenge(null);
+          }}
         />
       )}
 
