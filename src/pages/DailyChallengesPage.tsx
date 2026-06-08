@@ -334,7 +334,7 @@ const DailyChallengesPage = () => {
 
                       {(isAvailable || isCompleted) && (
                         <div className="w-10 h-10 rounded-full border-2 border-[#C8A66A20] flex items-center justify-center group-hover:bg-[#C8A66A10] group-hover:border-[#C8A66A] transition-all shadow-sm">
-                          <ChevronRight className="w-7 h-7 text-[#C8A66A] group-hover:translate-x-2 transition-transform duration-300" />
+                          <ChevronRight className="w-6 h-6 text-[#C8A66A] group-hover:translate-x-1.5 transition-transform duration-300" />
                         </div>
                       )}
                     </div>
