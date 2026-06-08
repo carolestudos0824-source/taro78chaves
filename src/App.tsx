@@ -189,7 +189,7 @@ const AppRoutes = () => {
         <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
           <Route path="/app" element={<DashboardPage />} />
           <Route path="/trilhas" element={<TrailsPage />} />
-          <Route path="/desafios" element={<DailyChallengesPage />} />
+          <Route path="/desafios" element={<SecurityGate><DailyChallengesPage /></SecurityGate>} />
           <Route path="/premium" element={<PremiumPage />} />
           <Route path="/perfil" element={<ProfilePage />} />
           <Route path="/jornada-do-louco" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
