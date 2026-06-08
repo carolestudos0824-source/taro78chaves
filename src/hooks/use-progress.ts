@@ -505,10 +505,8 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     if (user) {
       await supabase
         .from("user_progress")
-        .upsert({
-          user_id: user.id,
-          ...progressToDbCore(DEFAULT_PROGRESS)
-        }, { onConflict: 'user_id' });
+        .update(progressToDbCore(DEFAULT_PROGRESS))
+        .eq("user_id", user.id);
       await supabase
         .from("profiles")
         .update({ 
