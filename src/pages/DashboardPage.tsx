@@ -302,11 +302,23 @@ const DashboardPage = () => {
               )}
 
               <button
-                onClick={() => currentStep && navigate(currentStep.route)}
-                className="w-full py-5 bg-plum text-white rounded-[1.25rem] font-heading text-[11px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border border-gold/30 shadow-2xl hover:bg-[#45162D] transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn"
+                onClick={() => {
+                  if (!ritualProgress.completed) {
+                    navigate("/desafios");
+                  } else if (currentStep) {
+                    navigate(currentStep.route);
+                  }
+                }}
+                className={`w-full py-5 rounded-[1.25rem] font-heading text-[11px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn ${
+                  !ritualProgress.completed 
+                    ? "bg-gold text-plum border-plum/20 hover:bg-gold/90" 
+                    : "bg-plum text-white border-gold/30 hover:bg-[#45162D]"
+                }`}
               >
-                {totalCompletedArcanos === 0 ? "Abrir o Primeiro Portal" : "Atravessar o Portal"} 
-                <ArrowRight className="w-5 h-5 text-gold group-hover/btn:translate-x-2 transition-transform" />
+                {!ritualProgress.completed 
+                  ? "Fazer Ritual de hoje" 
+                  : totalCompletedArcanos === 0 ? "Abrir o Primeiro Portal" : "Atravessar o Portal"} 
+                <ArrowRight className={`w-5 h-5 group-hover/btn:translate-x-2 transition-transform ${!ritualProgress.completed ? 'text-plum' : 'text-gold'}`} />
               </button>
             </div>
           </div>
