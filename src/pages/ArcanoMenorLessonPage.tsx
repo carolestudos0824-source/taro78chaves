@@ -82,8 +82,8 @@ const ArcanoMenorLessonPage = () => {
   const [quizSubmitted, setQuizSubmitted] = useState<Record<number, boolean>>({});
   const [completed, setCompleted] = useState(false);
 
-  const isAuditMode = new URLSearchParams(window.location.search).get('audit') === 'true';
-  const hasAccess = isAuditMode || isStaff || (card ? canAccessArcano(99) : false); // 99 as proxy for premium-only content
+  const hasAccess = isStaff || (card ? canAccessArcano(99) : false); // 99 as proxy for premium-only content
+
 
   if (roleLoading || progressLoading || accessLoading) {
     return (
