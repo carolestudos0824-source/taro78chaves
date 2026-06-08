@@ -322,9 +322,9 @@ const TrailsPage = () => {
                   })}
                 </div>
 
-                {/* Landmark Card Decor - Moved further right to ensure zero overlap with modules/text */}
+                {/* Landmark Card Decor - Hidden on small mobile screens, further right on larger ones */}
                 {landmark && (
-                  <div className={`absolute -right-28 sm:-right-64 top-12 sm:top-20 w-24 sm:w-60 transition-all duration-1000 pointer-events-none z-0 ${
+                  <div className={`absolute -right-28 sm:-right-64 top-12 sm:top-20 w-24 sm:w-60 transition-all duration-1000 pointer-events-none z-0 hidden min-[450px]:block ${
                     unlocked 
                       ? 'opacity-[0.15] group-hover:opacity-[0.22] grayscale-0' 
                       : 'opacity-[0.10] grayscale-[0.8]'
@@ -336,7 +336,9 @@ const TrailsPage = () => {
                         alt={landmark.name} 
                         className="w-full rounded-2xl border-[2px] border-white/40 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur-[1px]" 
                       />
-                      {/* Name Label - Hidden on mobile to keep it clean */}
+                    </div>
+                  </div>
+                )}
                       <div className="hidden sm:block absolute inset-x-0 -bottom-6 px-4">
                         <div className="bg-white/90 backdrop-blur-md py-2 rounded-lg border border-[#C8A66A]/20 shadow-xl">
                           <p className="font-heading text-[9px] font-black text-[#5B1F3D] text-center uppercase tracking-[0.2em]">
