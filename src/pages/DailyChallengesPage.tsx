@@ -322,6 +322,7 @@ const DailyChallengesPage = () => {
           </aside>
         </div>
       </div>
+      </div>
     </div>
   );
 };
