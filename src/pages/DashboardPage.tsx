@@ -150,6 +150,24 @@ const DashboardPage = () => {
             <p className="text-sm font-body italic text-plum/40 max-w-sm mx-auto leading-relaxed">
               Seu portal de estudo guiado através dos 78 arquétipos do Rider-Waite-Smith.
             </p>
+
+            {/* Canonical 3-card spread visual */}
+            <div className="flex justify-center items-end -space-x-8 pt-4 pb-2 perspective-1000 relative z-10">
+              {/* O Louco */}
+              <div className="w-16 aspect-[2/3.5] rounded-md overflow-hidden border border-gold/30 shadow-lg -rotate-12 transition-transform hover:scale-110 hover:z-20 bg-ivory origin-bottom">
+                <img src={imgLouco} alt="O Louco" className="w-full h-full object-cover" />
+              </div>
+              
+              {/* O Mago (Central, slightly larger) */}
+              <div className="w-20 aspect-[2/3.5] rounded-lg overflow-hidden border-2 border-gold/40 shadow-2xl z-10 transition-transform hover:scale-105 bg-ivory">
+                <img src={imgMago} alt="O Mago" className="w-full h-full object-cover" />
+              </div>
+              
+              {/* A Sacerdotisa */}
+              <div className="w-16 aspect-[2/3.5] rounded-md overflow-hidden border border-gold/30 shadow-lg rotate-12 transition-transform hover:scale-110 hover:z-20 bg-ivory origin-bottom">
+                <img src={imgSacerdotisa} alt="A Sacerdotisa" className="w-full h-full object-cover" />
+              </div>
+            </div>
           </div>
         </section>
 
