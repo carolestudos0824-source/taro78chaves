@@ -324,15 +324,15 @@ const DailyChallengesPage = () => {
                     </div>
 
 
-                    <div className="flex flex-col items-end gap-3 shrink-0">
-                      <div className={`px-5 py-2.5 rounded-full text-[11px] md:text-[12px] font-heading font-black tracking-widest border-2 shadow-sm ${
+                    <div className="flex flex-col items-end gap-4 shrink-0">
+                      <div className={`px-5 py-2 rounded-full text-[11px] md:text-[12px] font-heading font-black tracking-widest border-2 shadow-sm ${
                         isCompleted ? "bg-emerald-50 border-emerald-200 text-emerald-600" : 
                         isAvailable ? "bg-[#C8A66A] border-[#C8A66A] text-white animate-pulse" : "bg-gray-100 border-gray-200 text-gray-400"
                       }`}>
                         {isCompleted ? "Concluído" : isAvailable ? "PRATICAR" : "Bloqueado"}
                       </div>
                       {(isAvailable || isCompleted) && (
-                        <div className="w-10 h-10 rounded-full border-2 border-[#C8A66A20] flex items-center justify-center group-hover:bg-[#C8A66A10] group-hover:border-[#C8A66A] transition-all shadow-sm">
+                        <div className="w-11 h-11 rounded-full border-2 border-[#C8A66A20] flex items-center justify-center group-hover:bg-[#C8A66A10] group-hover:border-[#C8A66A] transition-all shadow-sm">
                           <ChevronRight className="w-7 h-7 text-[#C8A66A] group-hover:translate-x-1.5 transition-transform duration-300" />
                         </div>
                       )}
