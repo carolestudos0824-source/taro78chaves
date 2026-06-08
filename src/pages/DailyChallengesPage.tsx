@@ -333,8 +333,11 @@ const DailyChallengesPage = () => {
                                   <CheckCircle2 className="w-8 h-8 md:w-10 md:h-10 text-gold" />
                                 ) : isBlocked ? (
                                   <div className="relative w-full h-full flex items-center justify-center bg-gray-200">
-                                    <div className="absolute inset-2 border border-dashed border-gray-400 rounded-xl opacity-30" />
-                                    <TarotIcon name="bloqueado" className="w-8 h-8 md:w-10 md:h-10 opacity-40" />
+                                    <div className="absolute inset-0 opacity-10">
+                                      <img src={resolveMaiorVisual(0).resolvedAssetUrl || ""} className="w-full h-full object-cover grayscale" alt="Blocked" />
+                                    </div>
+                                    <div className="absolute inset-2 border border-dashed border-gray-400 rounded-xl opacity-30 z-10" />
+                                    <TarotIcon name="bloqueado" className="w-8 h-8 md:w-10 md:h-10 opacity-40 z-10" />
                                   </div>
                                 ) : (
                                   <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
