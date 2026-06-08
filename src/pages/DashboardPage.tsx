@@ -56,6 +56,7 @@ const DashboardPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { progress, loading: progressLoading } = useProgress();
+  const { todayProgress: ritualProgress, streak: ritualStreak } = useRitual();
   const { isPremium, subscriptionStatus, isAdmin } = useAccess();
   const { isStaff, isAuditor, role } = useRole();
   const { setHeader, resetHeader } = useHeader();
