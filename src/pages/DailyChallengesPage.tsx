@@ -276,51 +276,51 @@ const DailyChallengesPage = () => {
                   disabled={isBlocked}
                   className={`w-full text-left group transition-all duration-500 ${isBlocked ? "cursor-not-allowed" : ""}`}
                 >
-                  <div className={`rounded-[2.5rem] p-6 md:p-9 flex items-center gap-4 md:gap-6 transition-all duration-500 border-2 shadow-xl ${
+                  <div className={`rounded-[2.5rem] p-6 md:p-9 flex flex-col sm:flex-row items-center sm:items-center gap-5 md:gap-6 transition-all duration-500 border-2 shadow-xl ${
                       isCompleted ? "bg-[#FDF8F3] border-[#C8A66A40] opacity-90" : 
                       isAvailable ? "bg-white border-[#C8A66A] hover:shadow-2xl hover:-translate-y-2 ring-4 ring-[#C8A66A20]" : 
                       "bg-[#F5F5F5]/60 border-[#E5E5E5]"
-
                     }`}>
-                    <div className={`w-16 h-16 md:w-24 md:h-24 rounded-[1.5rem] flex items-center justify-center shrink-0 border-2 transition-all duration-700 shadow-lg ${
-                      isCompleted ? "bg-[#FAF5EF] border-[#C8A66A40] text-[#C8A66A]" : 
-                      isAvailable ? "bg-[#FAF5EF] border-[#C8A66A] text-[#5B1F3D] group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D] group-hover:text-[#FAF5EF] group-hover:shadow-[0_15px_40px_rgba(91,31,61,0.3)] group-hover:-rotate-3" : 
-                      "bg-[#F0F0F0] border-[#D5D5D5] text-[#A5A5A5]"
-
-                    }`}>
-                      {isCompleted ? (
-                        <div className="relative">
-                          <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 opacity-40" />
-                          <div className="absolute inset-0 flex items-center justify-center">
-                             <TarotIcon name="concluido" className="w-10 h-10 md:w-12 md:h-12 text-[#C8A66A]" strokeWidth={4} />
+                    <div className="flex items-center gap-4 md:gap-6 w-full sm:w-auto">
+                      <div className={`w-16 h-16 md:w-24 md:h-24 rounded-[1.5rem] flex items-center justify-center shrink-0 border-2 transition-all duration-700 shadow-lg ${
+                        isCompleted ? "bg-[#FAF5EF] border-[#C8A66A40] text-[#C8A66A]" : 
+                        isAvailable ? "bg-[#FAF5EF] border-[#C8A66A] text-[#5B1F3D] group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D] group-hover:text-[#FAF5EF] group-hover:shadow-[0_15px_40px_rgba(91,31,61,0.3)] group-hover:-rotate-3" : 
+                        "bg-[#F0F0F0] border-[#D5D5D5] text-[#A5A5A5]"
+                      }`}>
+                        {isCompleted ? (
+                          <div className="relative">
+                            <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 opacity-40" />
+                            <div className="absolute inset-0 flex items-center justify-center">
+                               <TarotIcon name="concluido" className="w-10 h-10 md:w-12 md:h-12 text-[#C8A66A]" strokeWidth={4} />
+                            </div>
                           </div>
-                        </div>
-                      ) : isBlocked ? (
-                        <TarotIcon name="bloqueado" className="w-8 h-8 md:w-10 md:h-10" />
-                      ) : (
-                        <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
-                      )}
+                        ) : isBlocked ? (
+                          <TarotIcon name="bloqueado" className="w-8 h-8 md:w-10 md:h-10" />
+                        ) : (
+                          <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
+                        )}
+                      </div>
+
+                      <div className="flex-1 min-w-0">
+                        <h3 className={`font-heading text-base md:text-2xl font-black tracking-tight mb-1 transition-colors ${isCompleted ? "text-[#5B1F3D]/60" : isBlocked ? "text-[#5B1F3D]/80" : "text-[#5B1F3D]"}`}>
+                          {ch.title}
+                        </h3>
+                        <p className={`font-body text-[12px] md:text-[16px] font-black leading-snug transition-colors ${isCompleted ? "text-[#5B1F3D]/40 italic" : isBlocked ? "text-[#5B1F3D]/60" : "text-[#5B1F3D]/80 group-hover:text-[#5B1F3D]/90"}`}>
+                          {isBlocked ? "Libera após o portal anterior." : isCompleted ? "Portal concluído. Toque para rever." : ch.subtitle}
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="flex-1 min-w-0">
-                      <h3 className={`font-heading text-base md:text-2xl font-black tracking-tight mb-1 transition-colors ${isCompleted ? "text-[#5B1F3D]/60" : isBlocked ? "text-[#5B1F3D]/80" : "text-[#5B1F3D]"}`}>
-                        {ch.title}
-                      </h3>
-                      <p className={`font-body text-[12px] md:text-[16px] font-black leading-snug transition-colors ${isCompleted ? "text-[#5B1F3D]/40 italic" : isBlocked ? "text-[#5B1F3D]/60" : "text-[#5B1F3D]/80 group-hover:text-[#5B1F3D]/90"}`}>
-                        {isBlocked ? "Libera após o portal anterior." : isCompleted ? "Portal concluído. Toque para rever." : ch.subtitle}
-                      </p>
-                    </div>
-
-                    <div className="flex flex-col items-end gap-2 shrink-0">
-                      <div className={`px-3 py-1.5 rounded-full text-[9px] md:text-[12px] font-heading font-black tracking-tighter border-2 shadow-sm ${
+                    <div className="flex items-center justify-between sm:flex-col sm:items-end gap-3 w-full sm:w-auto pt-4 sm:pt-0 border-t sm:border-t-0 border-[#C8A66A20]">
+                      <div className={`px-5 py-2.5 rounded-full text-[11px] md:text-[12px] font-heading font-black tracking-widest border-2 shadow-sm ${
                         isCompleted ? "bg-emerald-50 border-emerald-200 text-emerald-600" : 
                         isAvailable ? "bg-[#C8A66A] border-[#C8A66A] text-white animate-pulse" : "bg-gray-100 border-gray-200 text-gray-400"
                       }`}>
-                        {isCompleted ? "Concluído" : isAvailable ? "PRATICAR AGORA" : "Bloqueado"}
+                        {isCompleted ? "Concluído" : isAvailable ? "PRATICAR" : "Bloqueado"}
                       </div>
                       {(isAvailable || isCompleted) && (
-                        <div className="w-9 h-9 rounded-full border-2 border-[#C8A66A20] flex items-center justify-center group-hover:bg-[#C8A66A10] group-hover:border-[#C8A66A] transition-all shadow-sm">
-                          <ChevronRight className="w-6 h-6 text-[#C8A66A] group-hover:translate-x-1.5 transition-transform duration-300" />
+                        <div className="w-10 h-10 rounded-full border-2 border-[#C8A66A20] flex items-center justify-center group-hover:bg-[#C8A66A10] group-hover:border-[#C8A66A] transition-all shadow-sm">
+                          <ChevronRight className="w-7 h-7 text-[#C8A66A] group-hover:translate-x-1.5 transition-transform duration-300" />
                         </div>
                       )}
                     </div>
