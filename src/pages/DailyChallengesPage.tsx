@@ -232,7 +232,7 @@ const DailyChallengesPage = () => {
         </div>
       </header>
 
-      <div className="relative z-10 max-w-lg mx-auto px-6 pb-[calc(160px+env(safe-area-inset-bottom))] space-y-10 mt-12 overflow-x-hidden">
+      <div className="relative z-10 max-w-lg mx-auto px-6 pb-[calc(140px+env(safe-area-inset-bottom))] space-y-10 pt-4 md:mt-12 overflow-x-hidden">
 
 
 
