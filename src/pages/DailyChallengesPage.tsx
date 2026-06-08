@@ -183,7 +183,7 @@ const DailyChallengesPage = () => {
         />
       )}
 
-      <header className="relative z-20 hidden md:block" style={{
+      <header className="relative z-20" style={{
         borderBottom: "2.5px solid #C8A66A40",
         background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.98), rgba(253, 248, 243, 0.96))",
         backdropFilter: "blur(24px)",
