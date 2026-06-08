@@ -155,7 +155,7 @@ const DailyChallengesPage = () => {
   }, [challenges, user, addXP, updateStreak]);
 
   return (
-    <div className="min-h-screen relative overflow-x-hidden pb-bottom-nav bg-[#FAF5EF]">
+    <div className="min-h-screen relative overflow-x-hidden pb-bottom-nav bg-[#FAF5EF]" id="ritual-page-root">
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #FAF5EF 0%, #FDF8F3 45%, #F2E7D9 100%)" }} />
         <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 50% -10%, rgba(91, 31, 61, 0.12) 0%, transparent 70%)" }} />
