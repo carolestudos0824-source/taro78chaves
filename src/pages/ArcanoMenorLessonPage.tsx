@@ -10,6 +10,8 @@ import { useProgress } from "@/hooks/use-progress";
 import { useRole } from "@/hooks/use-role";
 import { useAuth } from "@/hooks/use-auth";
 import { persistQuizResponse } from "@/lib/quiz-persistence";
+import { useAccess } from "@/hooks/use-access";
+import PremiumGate from "@/components/PremiumGate";
 
 /**
  * Lição-piloto dos Arcanos Menores — multi-fase carrossel.
