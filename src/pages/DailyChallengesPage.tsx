@@ -340,9 +340,11 @@ const DailyChallengesPage = () => {
               );
             })}
           </div>
+          <FooterInfo />
         </div>
       </div>
     </div>
+
   );
 };
 
