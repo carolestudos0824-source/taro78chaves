@@ -291,41 +291,34 @@ const DailyChallengesPage = () => {
                       "bg-[#F5F5F5]/60 border-[#E5E5E5]"
                     }`}>
                     <div className="flex items-center gap-4 md:gap-6 w-full sm:w-auto">
-
-
-
-                    <div className={`w-18 h-18 md:w-24 md:h-24 rounded-[2rem] flex items-center justify-center shrink-0 border-2 transition-all duration-700 shadow-lg ${
-                      isCompleted ? "bg-[#FAF5EF] border-[#C8A66A40] text-[#C8A66A]" : 
-                      isAvailable ? "bg-[#FAF5EF] border-[#C8A66A] text-[#5B1F3D] group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D] group-hover:text-[#FAF5EF] group-hover:shadow-[0_15px_40px_rgba(91,31,61,0.3)] group-hover:-rotate-3" : 
-                      "bg-[#E5E5E5] border-[#D5D5D5] text-[#A5A5A5]"
-                    }`}>
-
-
-                      {isCompleted ? (
-                        <div className="relative">
-                          <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 opacity-40" />
-                          <div className="absolute inset-0 flex items-center justify-center">
-                             <TarotIcon name="concluido" className="w-10 h-10 md:w-12 md:h-12 text-[#C8A66A]" strokeWidth={4} />
+                      <div className={`w-18 h-18 md:w-24 md:h-24 rounded-[2rem] flex items-center justify-center shrink-0 border-2 transition-all duration-700 shadow-lg ${
+                        isCompleted ? "bg-[#FAF5EF] border-[#C8A66A40] text-[#C8A66A]" : 
+                        isAvailable ? "bg-[#FAF5EF] border-[#C8A66A] text-[#5B1F3D] group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D] group-hover:text-[#FAF5EF] group-hover:shadow-[0_15px_40px_rgba(91,31,61,0.3)] group-hover:-rotate-3" : 
+                        "bg-[#E5E5E5] border-[#D5D5D5] text-[#A5A5A5]"
+                      }`}>
+                        {isCompleted ? (
+                          <div className="relative">
+                            <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 opacity-40" />
+                            <div className="absolute inset-0 flex items-center justify-center">
+                               <TarotIcon name="concluido" className="w-10 h-10 md:w-12 md:h-12 text-[#C8A66A]" strokeWidth={4} />
+                            </div>
                           </div>
-                        </div>
-                      ) : isBlocked ? (
-                        <TarotIcon name="bloqueado" className="w-8 h-8 md:w-10 md:h-10" />
-                      ) : (
-                        <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
-                      )}
+                        ) : isBlocked ? (
+                          <TarotIcon name="bloqueado" className="w-8 h-8 md:w-10 md:h-10" />
+                        ) : (
+                          <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
+                        )}
+                      </div>
+
+                      <div className="flex-1 min-w-0">
+                        <h3 className={`font-heading text-lg md:text-2xl font-black tracking-tight mb-2 transition-colors ${isCompleted ? "text-[#5B1F3D]/60" : isBlocked ? "text-[#5B1F3D]/40" : "text-[#5B1F3D]"}`}>
+                          {ch.title}
+                        </h3>
+                        <p className={`font-body text-[14px] md:text-[16px] font-black leading-snug transition-colors ${isCompleted ? "text-[#5B1F3D]/40 italic" : isBlocked ? "text-[#5B1F3D]/30" : "text-[#5B1F3D]/80 group-hover:text-[#5B1F3D]/90"}`}>
+                          {isBlocked ? "Libera após o portal anterior." : isCompleted ? "Portal concluído. Toque para rever." : ch.subtitle}
+                        </p>
+                      </div>
                     </div>
-
-                    <div className="flex-1 min-w-0">
-                      <h3 className={`font-heading text-lg md:text-2xl font-black tracking-tight mb-2 transition-colors ${isCompleted ? "text-[#5B1F3D]/60" : isBlocked ? "text-[#5B1F3D]/40" : "text-[#5B1F3D]"}`}>
-                        {ch.title}
-                      </h3>
-                      <p className={`font-body text-[14px] md:text-[16px] font-black leading-snug transition-colors ${isCompleted ? "text-[#5B1F3D]/40 italic" : isBlocked ? "text-[#5B1F3D]/30" : "text-[#5B1F3D]/80 group-hover:text-[#5B1F3D]/90"}`}>
-                        {isBlocked ? "Libera após o portal anterior." : isCompleted ? "Portal concluído. Toque para rever." : ch.subtitle}
-                      </p>
-                    </div>
-                  </div>
-
-
 
                     <div className="flex items-center justify-between sm:flex-col sm:items-end gap-3 w-full sm:w-auto pt-4 sm:pt-0 border-t sm:border-t-0 border-[#C8A66A20]">
                       <div className={`px-5 py-2.5 rounded-full text-[11px] md:text-[12px] font-heading font-black tracking-widest border-2 shadow-sm ${
