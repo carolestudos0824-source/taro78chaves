@@ -221,7 +221,7 @@ const DailyChallengesPage = () => {
             </h1>
             <div className="flex flex-col gap-1 items-center">
               <p className="font-body text-[13px] md:text-[14px] font-black uppercase tracking-[0.3em] text-[#C8A66A]">
-                Um encontro breve com o Tarô para orientar sua jornada
+                Faça sua prática de hoje.
               </p>
               <div className="h-[2px] w-20 md:w-24 bg-gradient-to-r from-transparent via-[#C8A66A] to-transparent my-6" />
               <p className="font-body text-[14px] font-medium text-[#5B1F3D]/70 italic max-w-sm mx-auto">

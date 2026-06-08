@@ -67,7 +67,7 @@ const DashboardPage = () => {
       subtitle: isAdmin ? "Acesso Administrativo" : isAuditor ? "Modo Auditoria" : `Bem-vinda, ${userName}`,
     });
     return () => resetHeader();
-  }, [userName, isAdmin, isAuditor]);
+  }, [userName, isAdmin, isAuditor, setHeader, resetHeader]);
 
   const totalArcanosCount = 78;
   const completedMaiores = progress.completedLessons.filter(l => l.startsWith("arcano-")).length;
@@ -155,13 +155,11 @@ const DashboardPage = () => {
 
         {/* Horizontal School Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-2 relative z-20">
-
           {[
             { label: "Domínio", value: `${globalProgressPct}%`, icon: Target, color: "text-[#9B7C2C]" },
             { label: totalCompletedArcanos === 1 ? "etapa feita" : "etapas feitas", value: totalCompletedArcanos, icon: KeyRound, color: "text-[#45162D]" },
             { label: progress.completedLessons.length === 1 ? "lição feita" : "lições feitas", value: progress.completedLessons.length, icon: BookOpen, color: "text-[#9B7C2C]" },
             { label: progress.streak === 1 ? "dia" : "dias", value: `${progress.streak}`, icon: Flame, color: "text-[#D97706]" }
-
           ].map((stat, i) => (
             <div key={i} className="bg-white/80 backdrop-blur-md rounded-2xl p-4 border border-gold/15 shadow-sm flex flex-col items-center justify-center space-y-1 group hover:border-gold/30 transition-all">
               <div className="w-8 h-8 rounded-full bg-gold/5 flex items-center justify-center mb-1 group-hover:scale-110 transition-transform">
@@ -217,16 +215,13 @@ const DashboardPage = () => {
           </div>
         )}
 
-
         {/* 1. Main Block: Journey Ritual - Premium Duolingo Style */}
         <section className="relative mx-2 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden border border-gold/20 bg-white shadow-2xl shadow-plum/5 group">
-          {/* Decorative background elements */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-rose-100/10 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-plum/5 rounded-full blur-[80px] -ml-32 -mb-32 pointer-events-none" />
           <div className="absolute inset-0 opacity-[0.02] bg-mystic-bg-procedural pointer-events-none" />
           
           <div className="relative z-10 flex flex-col md:flex-row min-h-[380px]">
-            {/* Card Left: The Focal Point Arch */}
             <div className="w-full md:w-[280px] p-8 md:p-12 bg-[#45162D] flex items-center justify-center relative overflow-hidden shrink-0">
                <div className="absolute inset-0 opacity-10 bg-mystic-bg-procedural scale-150 rotate-6" />
                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#45162D] to-transparent z-10" />
@@ -246,7 +241,6 @@ const DashboardPage = () => {
                )}
             </div>
 
-            {/* Card Right: Ritual Context & Journey Progress */}
             <div className="flex-1 p-8 md:p-14 flex flex-col justify-center space-y-8">
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
@@ -310,8 +304,7 @@ const DashboardPage = () => {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Trail Card: Arcanos Maiores */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-12 border-b border-gold/10">
             <div 
               onClick={() => navigate("/module/arcanos-maiores")}
               className="bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/40 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden"
@@ -337,7 +330,6 @@ const DashboardPage = () => {
               </div>
             </div>
 
-            {/* Trail Card: Arcanos Menores */}
             <div 
               onClick={() => navigate("/trilhas")}
               className="bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/40 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden"
@@ -349,7 +341,6 @@ const DashboardPage = () => {
                  <img src={imgDezOuros} alt="Arcanos Menores" className="w-full h-full object-cover" />
                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
               </div>
-
               <div className="space-y-3 flex-1 relative z-10 pt-1">
                 <h4 className="font-heading text-xl font-bold text-plum tracking-tight">Arcanos Menores</h4>
                 <p className="text-[12px] font-body italic text-plum/50 leading-relaxed">A aplicação prática dos 4 naipes e 56 situações cotidianas.</p>
@@ -364,6 +355,8 @@ const DashboardPage = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
 
         {/* Quick Access Utility Bar */}
         <section className="space-y-6 px-2 relative z-10">
@@ -374,7 +367,7 @@ const DashboardPage = () => {
           <div className="grid grid-cols-3 gap-4">
             {[
               { label: "Biblioteca", icon: BookOpen, route: "/biblioteca" },
-              { label: "Rotina", icon: Clock, route: "/rotina" },
+              { label: "Rotina", icon: Clock, route: "/rotina", subtitle: "Organize seu hábito diário de estudo e ritual." },
               { label: "Méritos", icon: Trophy, route: "/certificados" }
             ].map((link, i) => (
               <button 
@@ -383,10 +376,14 @@ const DashboardPage = () => {
                 className="bg-white/95 backdrop-blur-md border border-gold/20 rounded-[2rem] p-6 flex flex-col items-center gap-4 hover:bg-white hover:border-gold/50 hover:shadow-2xl transition-all active:scale-95 group shadow-sm min-h-[140px] justify-center"
               >
                 <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform border border-gold/10 shadow-inner">
-                  <link.icon className="w-7 h-7 text-plum" />
+                  <link.icon className={`w-7 h-7 text-plum`} />
                 </div>
-
-                <span className="text-[11px] font-heading font-black tracking-[0.2em] text-plum uppercase">{link.label}</span>
+                <div className="text-center">
+                  <span className="text-[11px] font-heading font-black tracking-[0.2em] text-plum uppercase block">{link.label}</span>
+                  {link.subtitle && (
+                    <span className="text-[8px] font-body font-black text-plum/40 uppercase mt-1 block leading-tight">{link.subtitle}</span>
+                  )}
+                </div>
               </button>
             ))}
           </div>
@@ -399,7 +396,6 @@ const DashboardPage = () => {
                 <Crown className="w-32 h-32 md:w-48 md:h-48" />
               </div>
               <div className="absolute inset-0 opacity-[0.03] bg-mystic-bg-procedural pointer-events-none" />
-              
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
                 <div className="space-y-2">
                     <div className="flex items-center gap-3">
@@ -412,9 +408,7 @@ const DashboardPage = () => {
                     <p className="text-sm font-body italic text-white max-w-sm leading-relaxed">
                       Desbloqueie todos os 78 portais, acesse meditações guiadas, quizzes de domínio e conquiste seu Certificado de Formação.
                     </p>
-
                 </div>
-                
                 {!isPremium && !isStaff ? (
                   <button 
                     onClick={() => navigate("/premium")}

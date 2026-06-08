@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Flame, BookOpen, RefreshCw, Sun, Target, TrendingUp, Check } from "lucide-react";
+import { ArrowLeft, ChevronRight, Flame, BookOpen, RefreshCw, Sun, Target, TrendingUp, Check, Clock } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { MODULES_CATALOG as MODULES, ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull as getArcanoById, isModuleUnlocked } from "@/lib/content";
 
@@ -106,20 +106,20 @@ const StudyRoutinePage = () => {
               <ArrowLeft className="w-5 h-5" />
             </button>
             <span className="text-[11px] tracking-[0.45em] uppercase font-heading font-black" style={{ color: "#5B1F3D" }}>
-              <span style={{ color: "#C8A66A" }}>✦</span> Seu Ritual Sagrado <span style={{ color: "#C8A66A" }}>✦</span>
+              <span style={{ color: "#C8A66A" }}>✦</span> Organização do Hábito <span style={{ color: "#C8A66A" }}>✦</span>
             </span>
           </div>
 
           <div className="text-center pt-2 pb-2">
             <div className="text-[11px] tracking-[0.4em] uppercase font-heading font-black mb-4" style={{ color: "#C8A66A" }}>
-              {new Date().toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" })}
+              Constância e Foco
             </div>
             <h1 className="font-heading text-5xl font-black tracking-tight mb-4" style={{ color: "#5B1F3D" }}>
-              Seu Ritual
+              Sua Rotina
             </h1>
             <div className="flex flex-col gap-1 items-center">
               <p className="font-body text-[14px] font-bold uppercase tracking-[0.2em]" style={{ color: "#5B1F3D99" }}>
-                O caminho de hoje na jornada
+                Organize seu hábito diário de estudo e ritual
               </p>
               <div className="h-0.5 w-16 bg-gradient-to-r from-transparent via-[#C8A66A] to-transparent my-4 opacity-40" />
             </div>
@@ -128,6 +128,27 @@ const StudyRoutinePage = () => {
       </header>
 
       <div className="relative z-10 max-w-lg mx-auto px-6 pb-32 space-y-10 mt-12">
+
+        {/* ═══════════════ NOTIFICATION CONFIG ═══════════════ */}
+        <div className="relative rounded-[2.5rem] overflow-hidden p-8 transition-all duration-500" style={{
+          background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
+          backdropFilter: "blur(24px)",
+          border: "2.5px solid #C8A66A",
+          boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08)"
+        }}>
+           <div className="flex flex-col items-center text-center space-y-4">
+             <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-gold/10 border border-gold/20">
+               <Clock className="w-7 h-7 text-plum" />
+             </div>
+             <div>
+               <h3 className="text-lg font-heading font-black text-plum">Lembrete Diário</h3>
+               <p className="text-[12px] font-body text-plum/60 mt-1">Como você quer ser lembrada de voltar todos os dias?</p>
+             </div>
+             <button className="w-full py-4 bg-plum text-white rounded-2xl font-heading text-[10px] font-black tracking-[0.3em] uppercase shadow-lg">
+               Ativar lembrete diário
+             </button>
+           </div>
+        </div>
 
         {/* ═══════════════ WEEKLY OVERVIEW ═══════════════ */}
         <div className="relative rounded-[2.5rem] overflow-hidden p-8 transition-all duration-500" style={{
