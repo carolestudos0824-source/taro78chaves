@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ArrowLeft, ChevronRight, Gift, X, Scroll } from "lucide-react";
+import { useHeader } from "@/contexts/header-context";
+
 
 
 import { TarotIcon } from "@/components/TarotIcon";
