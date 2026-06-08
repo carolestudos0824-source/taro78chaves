@@ -235,52 +235,65 @@ const DailyChallengesPage = () => {
 
 
 
-
-        <div className="relative rounded-[3rem] overflow-hidden p-8 md:p-10 transition-all duration-500" style={{
-          background: "linear-gradient(135deg, #FFFFFF 0%, #FAF5EF 100%)",
-          backdropFilter: "blur(24px)",
-          border: "2.5px solid #C8A66A",
-          boxShadow: "0 35px 80px rgba(91, 31, 61, 0.1), 0 0 35px rgba(200, 166, 106, 0.12)"
-        }}>
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-5">
-              <div className="w-16 h-16 rounded-[1.6rem] flex items-center justify-center border-2 border-[#C8A66A40] shadow-xl transform -rotate-3" style={{ background: "linear-gradient(135deg, #5B1F3D, #3D1429)" }}>
-                <TarotIcon name="ritual" className={`w-8 h-8 text-[#C8A66A] ${allDone ? "animate-pulse" : ""}`} />
+        {/* Missão do Dia & Sequência Ritual */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 space-y-10">
+            <div className="relative rounded-[3rem] overflow-hidden p-8 md:p-10 transition-all duration-500 bg-white border-2 border-gold shadow-2xl">
+              <div className="flex flex-col sm:flex-row items-center justify-between mb-8 gap-6">
+                <div className="flex items-center gap-5">
+                  <div className={`w-16 h-16 rounded-[1.6rem] flex items-center justify-center border-2 shadow-xl transform ${ritualProgress.completed ? 'bg-plum text-gold' : 'bg-gold/10 border-gold/20 text-plum'}`}>
+                    {ritualProgress.completed ? <CheckCircle2 className="w-8 h-8" /> : <Flame className="w-8 h-8" />}
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[11px] font-heading font-black tracking-[0.35em] text-gold uppercase mb-1">
+                      Missão do Dia
+                    </span>
+                    <span className="text-2xl font-heading font-black text-plum">
+                      {ritualProgress.completed ? "Ritual Cumprido" : "Sequência Ritual"}
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-gold/5 border border-gold/20">
+                  <Flame className={`w-5 h-5 ${ritualStreak.current_streak > 0 ? 'text-plum fill-plum' : 'text-plum/20'}`} />
+                  <span className="text-lg font-heading font-black text-plum">
+                    {ritualStreak.current_streak > 0 ? `${ritualStreak.current_streak} dias` : "Comece hoje"}
+                  </span>
+                </div>
               </div>
-              <div className="flex flex-col">
-                <span className="text-[10px] md:text-[11px] font-heading font-black tracking-[0.35em] text-[#C8A66A] uppercase mb-1">
-                  {allDone ? "Ritual Cumprido" : "Seu Ritual"}
-                </span>
-                <span className="text-xl md:text-2xl font-heading font-black text-[#5B1F3D]">
-                  {completedCount} de {challenges.length} Portais
-                </span>
-              </div>
-            </div>
-          </div>
-          
-          <div className="h-5 rounded-full bg-[#E8DED3] overflow-hidden p-[3px] border-2 border-[#D1C4B5]/40 shadow-inner">
-            <div className="h-full rounded-full bg-gradient-to-r from-[#5B1F3D] to-[#C8A66A] transition-all duration-1000 ease-out relative overflow-hidden shadow-lg"
-              style={{ width: `${Math.max((completedCount / challenges.length) * 100, 3)}%` }} />
-          </div>
-          
-          <p className="mt-8 text-[13px] md:text-[14px] font-body font-black text-[#5B1F3D]/80 italic text-center leading-relaxed max-w-[300px] mx-auto">
-            {allDone 
-              ? "Ritual de hoje completo. Volte amanhã para uma nova conexão." 
-              : "Complete os 6 portais para selar sua prática de hoje."}
-          </p>
-        </div>
 
-        <div className="space-y-6">
-          <div className="flex flex-col items-center gap-4 mb-4">
-            <div className="flex items-center gap-4 w-full">
-              <span className="h-px flex-1 bg-[#C8A66A]/20" />
-              <h2 className="font-heading text-[11px] tracking-[0.4em] uppercase font-black text-[#C8A66A]">Portais de Sabedoria</h2>
-              <span className="h-px flex-1 bg-[#C8A66A]/20" />
+              <div className="space-y-4">
+                <div className="flex justify-between items-center px-1">
+                  <span className="text-[10px] font-heading font-black text-plum/40 uppercase tracking-widest">
+                    Chama Ritualística
+                  </span>
+                  <span className="text-[10px] font-heading font-black text-gold uppercase tracking-widest">
+                    {ritualProgress.items.length} de 3 Portais
+                  </span>
+                </div>
+                <div className="h-4 rounded-full bg-gold/10 p-1 border border-gold/20">
+                  <div 
+                    className="h-full rounded-full bg-plum transition-all duration-1000 ease-out relative"
+                    style={{ width: `${Math.min((ritualProgress.items.length / 3) * 100, 100)}%` }}
+                  >
+                    <div className="absolute inset-0 bg-white/20 animate-pulse rounded-full" />
+                  </div>
+                </div>
+              </div>
+              
+              <p className="mt-8 text-[13px] md:text-[14px] font-body font-black text-plum/60 italic text-center leading-relaxed max-w-[300px] mx-auto uppercase tracking-tighter">
+                {ritualProgress.completed 
+                  ? "Sua chama foi mantida hoje. Volte amanhã." 
+                  : "Sua prática de hoje mantém sua chama viva."}
+              </p>
             </div>
-            <p className="font-body text-[13px] md:text-[14px] font-black text-[#5B1F3D]/60 text-center uppercase tracking-[0.1em] px-4">
-               Comece pela Carta do Dia. Ao concluir cada portal, o próximo se abre.
-            </p>
-          </div>
+
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <span className="h-px flex-1 bg-gold/20" />
+                <h2 className="font-heading text-[11px] tracking-[0.4em] uppercase font-black text-gold">Portais de Sabedoria</h2>
+                <span className="h-px flex-1 bg-gold/20" />
+              </div>
 
           <div className="grid gap-6">
             {challenges.map((ch, index) => {
