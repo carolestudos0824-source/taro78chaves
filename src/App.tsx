@@ -15,6 +15,7 @@ import { Header } from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import SessionInitializer from "@/components/SessionInitializer";
 import ConsentBanner from "@/components/ConsentBanner";
+import SecurityGate from "@/components/SecurityGate";
 import { trackPageView, useUTMTracker } from "@/lib/analytics";
 import { useProgress } from "@/hooks/use-progress";
 
