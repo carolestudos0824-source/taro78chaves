@@ -306,10 +306,8 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         
         const { error } = await supabase
           .from("user_progress")
-          .upsert({
-            user_id: user.id,
-            ...corePayload
-          }, { onConflict: 'user_id' });
+          .update(corePayload)
+          .eq("user_id", user.id);
         
         if (error) {
           console.error("[useProgress] Error syncing user_progress:", error);
