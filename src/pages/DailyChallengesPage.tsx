@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ArrowLeft, ChevronRight, Gift, X, Scroll } from "lucide-react";
+import { useHeader } from "@/contexts/header-context";
+
 
 
 import { TarotIcon } from "@/components/TarotIcon";
@@ -33,6 +35,18 @@ const todayStr = () => {
 };
 
 const DailyChallengesPage = () => {
+  const { setHeader, resetHeader } = useHeader();
+  const location = useLocation();
+
+  useEffect(() => {
+    setHeader({
+      title: "Ritual Sagrado",
+      subtitle: "Sua Conexão Diária",
+      backRoute: "/app"
+    });
+    return () => resetHeader();
+  }, [setHeader, resetHeader]);
+
 
 
 
@@ -175,12 +189,13 @@ const DailyChallengesPage = () => {
         />
       )}
 
-      <header className="relative z-20" style={{
+      <header className="relative z-20 hidden md:block" style={{
         borderBottom: "2.5px solid #C8A66A40",
         background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.98), rgba(253, 248, 243, 0.96))",
         backdropFilter: "blur(24px)",
         boxShadow: "0 15px 50px rgba(91, 31, 61, 0.08)"
       }}>
+
 
         <div className="max-w-lg mx-auto pt-8 pb-10 px-6">
           <div className="flex items-center justify-between mb-8">
@@ -218,6 +233,8 @@ const DailyChallengesPage = () => {
       </header>
 
       <div className="relative z-10 max-w-lg mx-auto px-6 pb-[calc(140px+env(safe-area-inset-bottom))] space-y-10 mt-12 overflow-x-hidden">
+
+
 
 
 
