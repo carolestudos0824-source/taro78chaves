@@ -364,7 +364,7 @@ const DashboardPage = () => {
             <div className="w-2 h-2 rounded-full bg-gold/60" />
             <h3 className="font-heading text-[12px] font-black tracking-[0.5em] text-plum uppercase">Utilidades</h3>
           </div>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-4 pb-12 border-b border-gold/10">
             {[
               { label: "Biblioteca", icon: BookOpen, route: "/biblioteca" },
               { label: "Rotina", icon: Clock, route: "/rotina", subtitle: "Organize seu hábito diário de estudo e ritual." },
@@ -390,7 +390,7 @@ const DashboardPage = () => {
         </section>
 
         {/* Premium Access Promotion Card */}
-        <section className="pb-[calc(140px+env(safe-area-inset-bottom))] px-2">
+        <section className="pb-[calc(140px+env(safe-area-inset-bottom))] px-2 relative z-10">
             <div className="bg-plum/95 rounded-[2.5rem] p-8 border border-gold/30 shadow-2xl text-white space-y-6 overflow-hidden relative group">
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform pointer-events-none">
                 <Crown className="w-32 h-32 md:w-48 md:h-48" />
