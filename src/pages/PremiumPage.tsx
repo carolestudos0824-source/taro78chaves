@@ -101,7 +101,10 @@ const PremiumPage = () => {
       }
 
       trackEvent("google_play_checkout_started");
-      const { purchaseToken, response } = await startGooglePlayPurchase(user.id);
+      toast.info("Assinatura via Google Play em manutenção. Use o checkout web.");
+      setLoading(false);
+      return;
+      // const { purchaseToken, response } = await startGooglePlayPurchase(user.id);
       
       // Call our backend to validate and record
       const { data, error } = await supabase.functions.invoke('google-play-billing', {
