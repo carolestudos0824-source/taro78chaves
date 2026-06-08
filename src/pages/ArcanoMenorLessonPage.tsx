@@ -65,8 +65,9 @@ const PONTOS_REWARD = 50;
 const ArcanoMenorLessonPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { progress, completeLesson, addXP } = useProgress();
+  const { progress, completeLesson, addXP, loading: progressLoading } = useProgress();
   const { isStaff, loading: roleLoading } = useRole();
+  const { canAccessArcano, loading: accessLoading } = useAccess();
   const { user } = useAuth();
 
   const card = useMemo(
