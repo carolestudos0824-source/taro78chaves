@@ -325,7 +325,7 @@ const DailyChallengesPage = () => {
                         isCompleted ? "bg-emerald-50 border-emerald-200 text-emerald-600" : 
                         isAvailable ? "bg-[#C8A66A] border-[#C8A66A] text-white animate-pulse" : "bg-gray-100 border-gray-200 text-gray-400"
                       }`}>
-                        {isCompleted ? "Concluído" : isAvailable ? "PRATICAR AGORA" : "Bloqueado"}
+                        {isCompleted ? "Concluído" : isAvailable ? "PRATICAR" : "Bloqueado"}
                       </div>
                       {(isAvailable || isCompleted) && (
                         <div className="w-11 h-11 rounded-full border-2 border-[#C8A66A20] flex items-center justify-center group-hover:bg-[#C8A66A10] group-hover:border-[#C8A66A] transition-all shadow-sm">
