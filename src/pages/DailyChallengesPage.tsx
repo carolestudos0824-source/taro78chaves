@@ -225,7 +225,7 @@ const DailyChallengesPage = () => {
         </div>
       </header>
 
-      <div className="relative z-10 max-w-lg mx-auto px-4 md:px-6 pb-[calc(140px+env(safe-area-inset-bottom))] space-y-10 pt-4 md:mt-12">
+      <div className="relative z-10 max-w-lg mx-auto px-4 md:px-6 pb-[calc(180px+env(safe-area-inset-bottom))] space-y-10 pt-4 md:mt-12">
         <div className="relative rounded-[3rem] overflow-hidden p-8 md:p-10 transition-all duration-500" style={{
           background: "linear-gradient(135deg, #FFFFFF 0%, #FAF5EF 100%)",
           backdropFilter: "blur(24px)",
