@@ -52,7 +52,8 @@ const DailyChallengesPage = () => {
 
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { progress, addXP, updateStreak } = useProgress();
+  const { progress, updateStreak } = useProgress();
+  const { streak: ritualStreak, todayProgress: ritualProgress, completeRitualItem, loading: ritualLoading } = useRitual();
   const { data: arcanos } = useArcanosList({ tipo: "maior" });
   const { data: symbols } = useSymbolsContent();
 
