@@ -82,14 +82,13 @@ const LessonPage = () => {
   const { loading: premiumLoading } = usePremium();
   const { isStaff, loading: roleLoading } = useRole();
   const { canAccessArcano, hasFullAccess, loading: accessLoading } = useAccess();
-  const isAuditMode = new URLSearchParams(window.location.search).get('audit') === 'true';
-
   const { setHeader, resetHeader } = useHeader();
   const [phaseIdx, setPhaseIdx] = useState(0);
   const phase = PHASE_ORDER[phaseIdx];
   
   const arcano = getArcanoById(isValidId ? arcanoId : 0);
-  const hasAccess = isAuditMode || (isValidId ? canAccessArcano(arcanoId) : false);
+  const hasAccess = (isValidId ? canAccessArcano(arcanoId) : false) || isStaff;
+
 
 
   const [pontosEarned, setPontosEarned] = useState(0);
