@@ -189,7 +189,7 @@ const DailyChallengesPage = () => {
         />
       )}
 
-      <header className="relative z-20 hidden md:block" style={{
+      <header className="relative z-20" style={{
         borderBottom: "2.5px solid #C8A66A40",
         background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.98), rgba(253, 248, 243, 0.96))",
         backdropFilter: "blur(24px)",
@@ -232,7 +232,7 @@ const DailyChallengesPage = () => {
         </div>
       </header>
 
-      <div className="relative z-10 max-w-lg mx-auto px-6 pb-[calc(140px+env(safe-area-inset-bottom))] space-y-10 mt-12 overflow-x-hidden">
+      <div className="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 pb-[calc(140px+env(safe-area-inset-bottom))] space-y-10 mt-12">
 
 
 
@@ -302,7 +302,7 @@ const DailyChallengesPage = () => {
                   disabled={isBlocked}
                   className={`w-full text-left group transition-all duration-500 ${isBlocked ? "cursor-not-allowed" : ""}`}
                 >
-                  <div className={`rounded-[2.5rem] p-6 md:p-9 flex flex-col sm:flex-row items-center sm:items-center gap-5 md:gap-6 transition-all duration-500 border-2 shadow-xl ${
+                  <div className={`rounded-[2.5rem] p-6 md:p-9 flex flex-col sm:flex-row items-center sm:items-center gap-5 md:gap-6 transition-all duration-500 border-2 shadow-xl mx-auto w-full ${
                       isCompleted ? "bg-[#FDF8F3] border-[#C8A66A40] opacity-90" : 
                       isAvailable ? "bg-white border-[#C8A66A] hover:shadow-2xl hover:-translate-y-2 ring-4 ring-[#C8A66A20]" : 
                       "bg-[#F5F5F5]/60 border-[#E5E5E5]"
