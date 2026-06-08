@@ -4,6 +4,7 @@ import { ArrowLeft, ChevronRight, Gift, X, Scroll, Bell, Flame, CheckCircle2, Cl
 import { useRitual } from "@/hooks/use-ritual";
 import { useHeader } from "@/contexts/header-context";
 import { TarotIcon } from "@/components/TarotIcon";
+import { getDailyArcanaSet } from "@/lib/content/arcana-utils";
 import { useProgress } from "@/hooks/use-progress";
 import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
@@ -58,6 +59,11 @@ const DailyChallengesPage = () => {
   const simboloDoDia = useMemo(() => buildSimboloDoDia(symbols), [symbols]);
   const combinacaoDoDia = useMemo(() => buildCombinacaoDoDia(arcanosList), [arcanosList]);
   const miniInterpretacao = useMemo(() => buildMiniInterpretacao(arcanosList), [arcanosList]);
+
+  const ritualTriad = useMemo(() => {
+    if (!user) return [];
+    return getDailyArcanaSet(todayStr(), user.id, 3);
+  }, [user]);
 
   const [challenges, setChallenges] = useState<DailyChallengeItem[]>(() => {
     const saved = localStorage.getItem("daily-challenges");
@@ -278,17 +284,37 @@ const DailyChallengesPage = () => {
                           "bg-[#F5F5F5]/60 border-gray-200"
                         }`}>
                         <div className="flex items-center gap-4 md:gap-6 w-full sm:w-auto">
-                          <div className={`w-18 h-18 md:w-24 md:h-24 rounded-[2rem] flex items-center justify-center shrink-0 border-2 transition-all duration-700 shadow-lg ${
+                          <div className={`w-18 h-18 md:w-24 md:h-24 rounded-[2rem] flex items-center justify-center shrink-0 border-2 transition-all duration-700 shadow-lg relative overflow-hidden ${
                             isCompleted ? "bg-ivory border-gold/40 text-gold" : 
                             isAvailable ? "bg-ivory border-gold text-plum group-hover:bg-plum group-hover:border-plum group-hover:text-gold" : 
                             "bg-gray-200 border-gray-300 text-gray-400"
                           }`}>
-                            {isCompleted ? (
-                              <CheckCircle2 className="w-8 h-8 md:w-10 md:h-10 text-gold" />
-                            ) : isBlocked ? (
-                              <TarotIcon name="bloqueado" className="w-8 h-8 md:w-10 md:h-10" />
+                            {ch.type === "carta-do-dia" && cartaDoDia && !isBlocked ? (
+                              <div className="absolute inset-0">
+                                <img 
+                                  src={resolveMaiorVisual(cartaDoDia.arcanoId).resolvedAssetUrl || ""} 
+                                  alt={cartaDoDia.name} 
+                                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                                />
+                                {isCompleted && (
+                                  <div className="absolute inset-0 bg-plum/40 flex items-center justify-center">
+                                    <CheckCircle2 className="w-8 h-8 md:w-10 md:h-10 text-gold" />
+                                  </div>
+                                )}
+                              </div>
                             ) : (
-                              <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
+                              <>
+                                {isCompleted ? (
+                                  <CheckCircle2 className="w-8 h-8 md:w-10 md:h-10 text-gold" />
+                                ) : isBlocked ? (
+                                  <div className="relative w-full h-full flex items-center justify-center bg-gray-200">
+                                    <div className="absolute inset-2 border border-dashed border-gray-400 rounded-xl opacity-30" />
+                                    <TarotIcon name="bloqueado" className="w-8 h-8 md:w-10 md:h-10 opacity-40" />
+                                  </div>
+                                ) : (
+                                  <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
+                                )}
+                              </>
                             )}
                           </div>
 
