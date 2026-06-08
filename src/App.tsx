@@ -193,8 +193,8 @@ const AppRoutes = () => {
           <Route path="/premium" element={<PremiumPage />} />
           <Route path="/perfil" element={<ProfilePage />} />
           <Route path="/jornada-do-louco" element={<FoolsJourneyPage />} />
-          <Route path="/lesson/:id" element={<LessonPage />} />
-          <Route path="/module/:moduleSlug" element={<Index />} />
+          <Route path="/lesson/:id" element={<SecurityGate><LessonPage /></SecurityGate>} />
+          <Route path="/module/:moduleSlug" element={<SecurityGate><Index /></SecurityGate>} />
           
           <Route path="/module/fundamentos" element={<LazyRoute><FundamentosPage /></LazyRoute>} />
           <Route path="/fundamentos/:order" element={<LazyRoute><FundamentosLessonPage /></LazyRoute>} />
