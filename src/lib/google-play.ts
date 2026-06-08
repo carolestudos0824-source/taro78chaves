@@ -6,6 +6,7 @@ export const GOOGLE_PLAY_PRODUCT_ID = "taro78chaves_premium";
 export const GOOGLE_PLAY_BASE_PLAN_ID = "monthly-27";
 
 export async function isGooglePlayBillingSupported(): Promise<boolean> {
+  return false; // Segurança: Billing desativado por política de plataforma.
   if (typeof window === "undefined") return false;
   
   // Check for Digital Goods API support
