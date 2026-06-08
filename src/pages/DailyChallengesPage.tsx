@@ -33,16 +33,7 @@ const todayStr = () => {
 };
 
 const DailyChallengesPage = () => {
-  const { setHeader } = useHeader();
-  const location = useLocation();
 
-  useEffect(() => {
-    setHeader({
-      title: "Ritual Sagrado",
-      subtitle: "Sua Conexão Diária",
-      backRoute: "/app"
-    });
-  }, [setHeader]);
 
 
   const navigate = useNavigate();
