@@ -287,6 +287,7 @@ const DailyChallengesPage = () => {
                       "bg-[#F5F5F5]/60 border-[#E5E5E5] opacity-50 grayscale"
                     }`}>
 
+
                     <div className={`w-18 h-18 md:w-24 md:h-24 rounded-[2rem] flex items-center justify-center shrink-0 border-2 transition-all duration-700 shadow-lg ${
                       isCompleted ? "bg-[#FAF5EF] border-[#C8A66A40] text-[#C8A66A]" : 
                       isAvailable ? "bg-[#FAF5EF] border-[#C8A66A] text-[#5B1F3D] group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D] group-hover:text-[#FAF5EF] group-hover:shadow-[0_15px_40px_rgba(91,31,61,0.3)] group-hover:-rotate-3" : 
