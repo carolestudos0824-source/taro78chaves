@@ -325,7 +325,7 @@ const DailyChallengesPage = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between sm:flex-col sm:items-end gap-3 w-full sm:w-auto pt-4 sm:pt-0 border-t sm:border-t-0 border-[#C8A66A20]">
+                    <div className="flex flex-col items-end gap-3 shrink-0">
                       <div className={`px-5 py-2.5 rounded-full text-[11px] md:text-[12px] font-heading font-black tracking-widest border-2 shadow-sm ${
                         isCompleted ? "bg-emerald-50 border-emerald-200 text-emerald-600" : 
                         isAvailable ? "bg-[#C8A66A] border-[#C8A66A] text-white animate-pulse" : "bg-gray-100 border-gray-200 text-gray-400"
