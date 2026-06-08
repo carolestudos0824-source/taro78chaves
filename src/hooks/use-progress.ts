@@ -513,10 +513,10 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         }, { onConflict: 'user_id' });
       await supabase
         .from("profiles")
-        .upsert({ 
-          user_id: user.id,
+        .update({ 
           student_name: "" 
-        } as never, { onConflict: 'user_id' });
+        })
+        .eq("user_id", user.id);
     }
   }, [user]);
 
