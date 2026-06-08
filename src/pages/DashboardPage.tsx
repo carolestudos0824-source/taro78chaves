@@ -123,8 +123,9 @@ const DashboardPage = () => {
   }, [progress.completedLessons]);
 
   return (
-    <div className="min-h-screen bg-[#FAF5EF]">
-      <main className="container max-w-4xl px-4 pt-12 pb-24 space-y-12 animate-in fade-in duration-1000 relative">
+    <div className="min-h-screen bg-[#FAF5EF] relative overflow-x-hidden">
+      <main className="container max-w-4xl px-4 pt-12 pb-[calc(140px+env(safe-area-inset-bottom))] space-y-12 animate-in fade-in duration-1000 relative">
+
         {/* Subtle decorative elements */}
         <div className="absolute top-0 left-1/4 w-64 h-64 bg-rose-200/20 blur-[100px] pointer-events-none" />
         <div className="absolute top-20 right-1/4 w-48 h-48 bg-gold/10 blur-[80px] pointer-events-none" />
@@ -153,7 +154,8 @@ const DashboardPage = () => {
         </section>
 
         {/* Horizontal School Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-2">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-2 relative z-20">
+
           {[
             { label: "Domínio", value: `${globalProgressPct}%`, icon: Target, color: "text-[#9B7C2C]" },
             { label: totalCompletedArcanos === 1 ? "etapa feita" : "etapas feitas", value: totalCompletedArcanos, icon: KeyRound, color: "text-[#45162D]" },
@@ -187,26 +189,35 @@ const DashboardPage = () => {
         </section>
 
         {/* Auditor/Admin Banner - Simplified and Integrated */}
-        {isStaff && (
+        {/* Auditor/Admin Banner - Simplified and Integrated */}
+        {isStaff && isAdmin && (
           <div className="mx-2 rounded-2xl p-4 bg-plum/5 border border-plum/10 flex flex-col sm:flex-row items-center justify-between gap-4 overflow-hidden relative grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
             <div className="flex items-center gap-3 relative z-10">
               <ShieldCheck className="w-4 h-4 text-plum/40" />
               <div className="space-y-0.5">
                 <p className="text-[9px] font-heading font-black tracking-widest uppercase text-plum/40">
-                  {isAdmin ? "Painel Administrativo" : "Modo Auditoria"}
+                  Painel Administrativo
                 </p>
               </div>
             </div>
-            {isAdmin && (
-              <button 
-                onClick={() => navigate("/admin")}
-                className="w-full sm:w-auto px-4 py-1.5 bg-plum/10 text-plum rounded-lg font-heading text-[9px] font-black tracking-widest uppercase hover:bg-plum hover:text-white transition-all relative z-10"
-              >
-                Acessar
-              </button>
-            )}
+            <button 
+              onClick={() => navigate("/admin")}
+              className="w-full sm:w-auto px-4 py-1.5 bg-plum/10 text-plum rounded-lg font-heading text-[9px] font-black tracking-widest uppercase hover:bg-plum hover:text-white transition-all relative z-10"
+            >
+              Acessar
+            </button>
           </div>
         )}
+
+        {isStaff && isAuditor && !isAdmin && (
+          <div className="mx-2 rounded-2xl p-4 bg-gold/5 border border-gold/10 flex items-center gap-3 opacity-60">
+            <ShieldCheck className="w-4 h-4 text-gold/40" />
+            <p className="text-[9px] font-heading font-black tracking-widest uppercase text-gold/40">
+              Modo Auditoria
+            </p>
+          </div>
+        )}
+
 
         {/* 1. Main Block: Journey Ritual - Premium Duolingo Style */}
         <section className="relative mx-2 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden border border-gold/20 bg-white shadow-2xl shadow-plum/5 group">
