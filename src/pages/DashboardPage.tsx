@@ -390,7 +390,7 @@ const DashboardPage = () => {
           </div>
         </section>
 
-        {/* Quick Access Utility Bar */}
+        {/* 3. Utilities Block */}
         <section className="space-y-6 px-2 relative z-10">
           <div className="flex items-center gap-3 px-2">
             <div className="w-2 h-2 rounded-full bg-gold/60" />
@@ -421,7 +421,7 @@ const DashboardPage = () => {
           </div>
         </section>
 
-        {/* Premium Access Promotion Card */}
+        {/* 4. Sabedoria Ancestral (Now the last block) */}
         <section className="pb-[calc(140px+env(safe-area-inset-bottom))] px-2 relative z-10">
             <div className="bg-plum/95 rounded-[2.5rem] p-8 border border-gold/30 shadow-2xl text-white space-y-6 overflow-hidden relative group">
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform pointer-events-none">
@@ -449,7 +449,7 @@ const DashboardPage = () => {
                     Fazer Inscrição 
                   </button>
                 ) : (
-                    <div className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-gold font-heading text-[10px] font-black tracking-[0.4em] uppercase flex items-center gap-2">
+                    <div className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-gold font-heading text-[10px] font-black tracking-[0.4em] uppercase flex items-center gap-2">
                         <Star className="w-4 h-4 fill-current" /> Assinatura Ativa
                     </div>
                 )}
