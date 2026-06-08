@@ -191,7 +191,7 @@ const AppRoutes = () => {
           <Route path="/trilhas" element={<SecurityGate><TrailsPage /></SecurityGate>} />
           <Route path="/desafios" element={<SecurityGate><DailyChallengesPage /></SecurityGate>} />
           <Route path="/premium" element={<PremiumPage />} />
-          <Route path="/perfil" element={<ProfilePage />} />
+          <Route path="/perfil" element={<SecurityGate><ProfilePage /></SecurityGate>} />
           <Route path="/jornada-do-louco" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
           <Route path="/lesson/:id" element={<SecurityGate><LessonPage /></SecurityGate>} />
           <Route path="/module/:moduleSlug" element={<SecurityGate><Index /></SecurityGate>} />
