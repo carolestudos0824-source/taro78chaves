@@ -1193,6 +1193,66 @@ export type Database = {
         }
         Relationships: []
       }
+      notification_logs: {
+        Row: {
+          error: string | null
+          id: string
+          sent_at: string | null
+          status: string
+          type: string
+          user_id: string | null
+        }
+        Insert: {
+          error?: string | null
+          id?: string
+          sent_at?: string | null
+          status: string
+          type: string
+          user_id?: string | null
+        }
+        Update: {
+          error?: string | null
+          id?: string
+          sent_at?: string | null
+          status?: string
+          type?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      notification_preferences: {
+        Row: {
+          created_at: string | null
+          enabled: boolean | null
+          id: string
+          last_sent_at: string | null
+          reminder_time: string
+          timezone: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          enabled?: boolean | null
+          id?: string
+          last_sent_at?: string | null
+          reminder_time?: string
+          timezone?: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          enabled?: boolean | null
+          id?: string
+          last_sent_at?: string | null
+          reminder_time?: string
+          timezone?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -1234,6 +1294,45 @@ export type Database = {
           stripe_customer_id?: string | null
           student_name?: string | null
           updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      push_subscriptions: {
+        Row: {
+          auth: string
+          created_at: string | null
+          endpoint: string
+          id: string
+          is_active: boolean | null
+          p256dh: string
+          platform: string | null
+          updated_at: string | null
+          user_agent: string | null
+          user_id: string
+        }
+        Insert: {
+          auth: string
+          created_at?: string | null
+          endpoint: string
+          id?: string
+          is_active?: boolean | null
+          p256dh: string
+          platform?: string | null
+          updated_at?: string | null
+          user_agent?: string | null
+          user_id: string
+        }
+        Update: {
+          auth?: string
+          created_at?: string | null
+          endpoint?: string
+          id?: string
+          is_active?: boolean | null
+          p256dh?: string
+          platform?: string | null
+          updated_at?: string | null
+          user_agent?: string | null
           user_id?: string
         }
         Relationships: []
