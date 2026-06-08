@@ -123,8 +123,45 @@ const DailyChallengesPage = () => {
     }
   }, [challenges, user, completeRitualItem]);
 
+  const [showSummary, setShowSummary] = useState(false);
+  const ritualJustFinished = useMemo(() => ritualProgress.completed && !showSummary, [ritualProgress.completed]);
+
   return (
     <div className="min-h-screen relative overflow-x-hidden bg-[#FAF5EF]">
+      {ritualProgress.completed && (
+        <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4 bg-plum/90 backdrop-blur-xl animate-in fade-in duration-500">
+           <div className="bg-white w-full max-w-lg rounded-[3rem] border-4 border-gold shadow-2xl p-10 text-center space-y-8 animate-in zoom-in-95 duration-500">
+              <div className="w-24 h-24 bg-gold/20 rounded-full flex items-center justify-center mx-auto">
+                 <Flame className="w-12 h-12 text-plum fill-plum" />
+              </div>
+              <div className="space-y-2">
+                <h2 className="text-4xl font-heading font-black text-plum">Ritual Concluído</h2>
+                <p className="font-body text-plum/60 italic">Sua chama foi mantida hoje.</p>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4 py-4">
+                 <div className="p-6 rounded-3xl bg-gold/5 border border-gold/20">
+                    <div className="text-[10px] font-heading font-black text-gold uppercase tracking-widest mb-1">Sequência</div>
+                    <div className="text-3xl font-heading font-black text-plum">{ritualStreak.current_streak} dias</div>
+                 </div>
+                 <div className="p-6 rounded-3xl bg-gold/5 border border-gold/20">
+                    <div className="text-[10px] font-heading font-black text-gold uppercase tracking-widest mb-1">Status</div>
+                    <div className="text-xl font-heading font-black text-plum">Mantida</div>
+                 </div>
+              </div>
+
+              <div className="flex flex-col gap-3">
+                 <button onClick={() => navigate("/app")} className="w-full py-5 bg-plum text-white rounded-2xl font-heading text-[11px] font-black tracking-[0.3em] uppercase shadow-xl hover:bg-plum/90 transition-all">
+                    Continuar estudando
+                 </button>
+                 <button onClick={() => navigate("/app")} className="w-full py-3 text-plum/40 font-heading text-[10px] font-black uppercase tracking-widest hover:text-plum transition-colors">
+                    Voltar amanhã
+                 </button>
+              </div>
+           </div>
+        </div>
+      )}
+
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #FAF5EF 0%, #FDF8F3 45%, #F2E7D9 100%)" }} />
       </div>
