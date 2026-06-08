@@ -172,7 +172,7 @@ export const TarotAnimatedCard: React.FC<TarotAnimatedCardProps> = ({
         
         {/* Label - Hidden in lesson variant as it has external label */}
         {variant !== 'lesson' && (
-          <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3 text-center pointer-events-none bg-gradient-to-t from-[#5B1F3D]/80 to-transparent">
+          <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3 text-center pointer-events-none bg-gradient-to-t from-[#5B1F3D]/60 via-[#5B1F3D]/20 to-transparent">
             <span className={cn(
               "text-[9px] sm:text-[10px] md:text-[11px] font-heading tracking-widest uppercase truncate block font-black",
               isLocked ? "text-[#FAF5EF]/90" : "text-white drop-shadow-md"

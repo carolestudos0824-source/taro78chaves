@@ -290,12 +290,14 @@ const ProfilePage = () => {
             ENCERRAR SESSÃO
           </button>
           
-          <nav className="flex items-center gap-8 text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D60]">
+          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 px-4 text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D60]">
             <Link to="/suporte" className="hover:text-[#C8A66A] transition-colors">Suporte</Link>
-            <span className="text-[#C8A66A40]">✦</span>
+            <span className="text-[#C8A66A40] hidden min-[360px]:block">✦</span>
+            <Link to="/privacidade" className="hover:text-[#C8A66A] transition-colors">Privacidade</Link>
+            <span className="text-[#C8A66A40] hidden min-[400px]:block">✦</span>
             <Link to="/termos" className="hover:text-[#C8A66A] transition-colors">Termos</Link>
-            <span className="text-[#C8A66A40]">✦</span>
-            <Link to="/excluir-conta" className="hover:text-[#C8A66A] transition-colors">Excluir</Link>
+            <span className="text-[#C8A66A40] hidden min-[450px]:block">✦</span>
+            <Link to="/excluir-conta" className="hover:text-[#C8A66A] transition-colors whitespace-nowrap">Excluir conta</Link>
           </nav>
 
           <p className="text-[9px] font-heading tracking-[0.4em] text-[#C8A66A80] uppercase">
