@@ -322,8 +322,9 @@ const DailyChallengesPage = () => {
                       <p className={`font-body text-[14px] md:text-[16px] font-black leading-snug transition-colors ${isCompleted ? "text-[#5B1F3D]/40 italic" : isBlocked ? "text-[#5B1F3D]/30" : "text-[#5B1F3D]/80 group-hover:text-[#5B1F3D]/90"}`}>
                         {isBlocked ? "Libera após o portal anterior." : isCompleted ? "Portal concluído. Toque para rever." : ch.subtitle}
                       </p>
-
                     </div>
+                  </div>
+
 
 
                     <div className="flex items-center justify-between sm:flex-col sm:items-end gap-3 w-full sm:w-auto pt-4 sm:pt-0 border-t sm:border-t-0 border-[#C8A66A20]">
