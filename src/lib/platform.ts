@@ -41,7 +41,7 @@ export const isAndroidApp = (): boolean => {
 export const isWebCheckoutAllowed = (): boolean => !isAndroidApp();
 
 /** Whether Google Play Billing is allowed (only on Android App/TWA). */
-export const isGooglePlayBillingAllowed = (): boolean => isAndroidApp();
+export const isGooglePlayBillingAllowed = (): boolean => false; // Manutenção de segurança: desativado no frontend.
 
 export const STRIPE_BLOCKED_ANDROID_MSG = "O checkout externo não está disponível neste app.";
 
