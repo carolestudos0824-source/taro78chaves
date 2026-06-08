@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Download, X, Lock, CheckCircle, Sparkles } from "lucide-react";
+import { ArrowLeft, Download, X, Lock, CheckCircle, Sparkles, Trophy, Flame, Target } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
+import { useRitual } from "@/hooks/use-ritual";
 import { useCertificatesContent } from "@/hooks/use-content";
 import {
   buildEarnedCertificate,
