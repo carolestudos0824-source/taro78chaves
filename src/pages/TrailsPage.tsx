@@ -112,7 +112,7 @@ const TrailsPage = () => {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-[#FAF5EF] pb-40 font-body text-[#5B1F3D] overflow-x-hidden">
+    <div className="relative w-full min-h-screen bg-[#FAF5EF] pb-bottom-nav font-body text-[#5B1F3D] overflow-x-hidden">
       {/* Background Ornaments - Refined for depth */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute top-[5%] right-[-5%] w-[40%] h-[30%] bg-[#C8A66A]/10 blur-[100px] rounded-full" />
@@ -260,7 +260,7 @@ const TrailsPage = () => {
                         key={mod.id}
                         disabled={!unlocked}
                         onClick={() => navigate(mod.route)}
-                        className={`group/mod relative w-full flex items-center text-left transition-all duration-500 rounded-[2.5rem] p-6 sm:p-8 border-2 ${
+                        className={`group/mod relative w-full flex flex-col sm:flex-row items-center sm:items-center text-left transition-all duration-500 rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 border-2 ${
                           unlocked && isNext 
                             ? 'bg-white border-[#5B1F3D] shadow-[0_25px_60px_rgba(91,31,61,0.1)] hover:translate-x-2' : 
                           unlocked 
@@ -283,15 +283,15 @@ const TrailsPage = () => {
                            {modComplete ? <Check className="w-7 h-7 stroke-[4px]" /> : unlocked && isNext ? <Key className="w-8 h-8 animate-pulse" /> : <Lock className="w-6 h-6 text-[#5B1F3D]/60" />}
                         </div>
 
-                        <div className="flex-1 ml-6 sm:ml-8 min-w-0">
-                          <div className="flex items-center gap-3 mb-2">
+                        <div className="flex-1 mt-4 sm:mt-0 sm:ml-8 min-w-0 w-full text-center sm:text-left">
+                          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2 items-center sm:items-start">
                             <span className={`text-[10px] sm:text-[11px] font-heading font-black tracking-[0.3em] uppercase transition-colors duration-500 ${
                               unlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D]/75'
                             }`}>
                               Módulo
                             </span>
                             {isNext && (
-                              <span className="bg-[#5B1F3D] text-[#FAF5EF] text-[9px] font-black px-3.5 py-1.5 rounded-full uppercase tracking-widest flex items-center gap-1.5 shadow-md border border-[#C8A66A33]">
+                              <span className="bg-[#5B1F3D] text-[#FAF5EF] text-[9px] font-black px-3.5 py-1.5 rounded-full uppercase tracking-widest flex items-center gap-1.5 shadow-md border border-[#C8A66A33] w-fit">
                                 <Sparkles className="w-2.5 h-2.5" /> Próxima Chave
                               </span>
                             )}
@@ -303,10 +303,11 @@ const TrailsPage = () => {
                           </h4>
                         </div>
 
-                        <div className="ml-4 flex items-center justify-center">
+                        <div className="mt-6 sm:mt-0 sm:ml-4 flex items-center justify-center w-full sm:w-auto">
                           {unlocked && isNext ? (
-                            <div className="bg-[#5B1F3D] text-white p-3.5 rounded-full shadow-[0_10px_30px_rgba(91,31,61,0.3)] group-hover/mod:scale-110 transition-all border border-[#C8A66A33]">
-                              <Play className="w-6 h-6 fill-current ml-1" />
+                            <div className="bg-[#5B1F3D] text-white py-3 px-8 sm:p-3.5 rounded-full sm:rounded-full shadow-[0_10px_30px_rgba(91,31,61,0.3)] group-hover/mod:scale-105 transition-all border border-[#C8A66A33] flex items-center gap-3 w-full sm:w-auto justify-center">
+                              <span className="sm:hidden text-[10px] font-heading font-black tracking-widest uppercase">Começar</span>
+                              <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-current" />
                             </div>
                           ) : unlocked ? (
                             <div className="p-2 rounded-full bg-[#FAF5EF] border border-[#C8A66A26] transition-all group-hover/mod:border-[#C8A66A80]">
@@ -321,9 +322,9 @@ const TrailsPage = () => {
                   })}
                 </div>
 
-                {/* Landmark Card Decor - Moved further right to ensure zero overlap with modules/text */}
+                {/* Landmark Card Decor - Hidden on small mobile screens, further right on larger ones */}
                 {landmark && (
-                  <div className={`absolute -right-28 sm:-right-64 top-12 sm:top-20 w-24 sm:w-60 transition-all duration-1000 pointer-events-none z-0 ${
+                  <div className={`absolute -right-28 sm:-right-64 top-12 sm:top-20 w-24 sm:w-60 transition-all duration-1000 pointer-events-none z-0 hidden min-[450px]:block ${
                     unlocked 
                       ? 'opacity-[0.15] group-hover:opacity-[0.22] grayscale-0' 
                       : 'opacity-[0.10] grayscale-[0.8]'
@@ -335,14 +336,6 @@ const TrailsPage = () => {
                         alt={landmark.name} 
                         className="w-full rounded-2xl border-[2px] border-white/40 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur-[1px]" 
                       />
-                      {/* Name Label - Hidden on mobile to keep it clean */}
-                      <div className="hidden sm:block absolute inset-x-0 -bottom-6 px-4">
-                        <div className="bg-white/90 backdrop-blur-md py-2 rounded-lg border border-[#C8A66A]/20 shadow-xl">
-                          <p className="font-heading text-[9px] font-black text-[#5B1F3D] text-center uppercase tracking-[0.2em]">
-                            {landmark.name}
-                          </p>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 )}
