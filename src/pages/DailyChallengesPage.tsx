@@ -146,7 +146,7 @@ const DailyChallengesPage = () => {
   }, [challenges, user, addXP, updateStreak]);
 
   return (
-    <div className="min-h-screen relative bg-[#FAF5EF]">
+    <div className="min-h-screen relative overflow-x-hidden bg-[#FAF5EF]">
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
 
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #FAF5EF 0%, #FDF8F3 45%, #F2E7D9 100%)" }} />
