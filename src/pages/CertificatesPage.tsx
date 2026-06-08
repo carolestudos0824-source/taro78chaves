@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 const CertificatesPage = () => {
   const navigate = useNavigate();
   const { progress } = useProgress();
+  const { merits, streak: ritualStreak } = useRitual();
   const { data: certsData, isLoading: contentLoading } = useCertificatesContent();
   const [viewing, setViewing] = useState<EarnedCertificateView | null>(null);
   const [dbCertificates, setDbCertificates] = useState<Record<string, any>>({});
