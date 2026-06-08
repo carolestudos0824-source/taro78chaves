@@ -10,6 +10,8 @@ import { useProgress } from "@/hooks/use-progress";
 import { useRole } from "@/hooks/use-role";
 import { useAuth } from "@/hooks/use-auth";
 import { persistQuizResponse } from "@/lib/quiz-persistence";
+import { useAccess } from "@/hooks/use-access";
+import PremiumGate from "@/components/PremiumGate";
 
 /**
  * Lição-piloto dos Arcanos Menores — multi-fase carrossel.
@@ -65,8 +67,9 @@ const PONTOS_REWARD = 50;
 const ArcanoMenorLessonPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { progress, completeLesson, addXP } = useProgress();
+  const { progress, completeLesson, addXP, loading: progressLoading } = useProgress();
   const { isStaff, loading: roleLoading } = useRole();
+  const { canAccessArcano, loading: accessLoading } = useAccess();
   const { user } = useAuth();
 
   const card = useMemo(
@@ -79,12 +82,28 @@ const ArcanoMenorLessonPage = () => {
   const [quizSubmitted, setQuizSubmitted] = useState<Record<number, boolean>>({});
   const [completed, setCompleted] = useState(false);
 
-  if (roleLoading) {
+  const isAuditMode = new URLSearchParams(window.location.search).get('audit') === 'true';
+  const hasAccess = isAuditMode || isStaff || (card ? canAccessArcano(99) : false); // 99 as proxy for premium-only content
+
+  if (roleLoading || progressLoading || accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
         <div className="text-center space-y-6 animate-pulse">
           <div className="w-12 h-12 border-4 border-[#C8A66A]/20 border-t-[#5B1F3D] animate-spin rounded-full mx-auto shadow-[0_0_15px_rgba(91,31,61,0.1)]" />
           <p className="text-[11px] text-[#5B1F3D] font-heading tracking-[0.3em] uppercase font-black">Lendo Arcanos...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!hasAccess) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF] p-6">
+        <div className="max-w-md w-full">
+          <PremiumGate 
+            featureName={card?.nome || "Arcanos Menores"}
+            message="O acesso aos 56 Arcanos Menores é exclusivo para assinantes da Jornada Completa."
+          />
         </div>
       </div>
     );

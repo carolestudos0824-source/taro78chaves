@@ -15,6 +15,7 @@ import { Header } from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import SessionInitializer from "@/components/SessionInitializer";
 import ConsentBanner from "@/components/ConsentBanner";
+import SecurityGate from "@/components/SecurityGate";
 import { trackPageView, useUTMTracker } from "@/lib/analytics";
 import { useProgress } from "@/hooks/use-progress";
 
@@ -187,13 +188,13 @@ const AppRoutes = () => {
 
         <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
           <Route path="/app" element={<DashboardPage />} />
-          <Route path="/trilhas" element={<TrailsPage />} />
-          <Route path="/desafios" element={<DailyChallengesPage />} />
-          <Route path="/premium" element={<PremiumPage />} />
-          <Route path="/perfil" element={<ProfilePage />} />
-          <Route path="/jornada-do-louco" element={<FoolsJourneyPage />} />
-          <Route path="/lesson/:id" element={<LessonPage />} />
-          <Route path="/module/:moduleSlug" element={<Index />} />
+          <Route path="/trilhas" element={<SecurityGate><TrailsPage /></SecurityGate>} />
+          <Route path="/desafios" element={<SecurityGate><DailyChallengesPage /></SecurityGate>} />
+          <Route path="/premium" element={<SecurityGate><PremiumPage /></SecurityGate>} />
+          <Route path="/perfil" element={<SecurityGate><ProfilePage /></SecurityGate>} />
+          <Route path="/jornada-do-louco" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
+          <Route path="/lesson/:id" element={<SecurityGate><LessonPage /></SecurityGate>} />
+          <Route path="/module/:moduleSlug" element={<SecurityGate><Index /></SecurityGate>} />
           
           <Route path="/module/fundamentos" element={<LazyRoute><FundamentosPage /></LazyRoute>} />
           <Route path="/fundamentos/:order" element={<LazyRoute><FundamentosLessonPage /></LazyRoute>} />
@@ -232,7 +233,7 @@ const AppRoutes = () => {
 
           <Route path="/rotina" element={<LazyRoute><StudyRoutinePage /></LazyRoute>} />
           <Route path="/minha-jornada" element={<LazyRoute><JourneyJournalPage /></LazyRoute>} />
-          <Route path="/admin" element={<LazyRoute><AdminPage /></LazyRoute>} />
+          <Route path="/admin" element={<SecurityGate requireAdmin><AdminPage /></SecurityGate>} />
         </Route>
         
         <Route path="/feedback" element={<Navigate to="/suporte" replace />} />

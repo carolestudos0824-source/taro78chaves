@@ -28,12 +28,30 @@ export const RoleProvider = ({ children }: { children: React.ReactNode }) => {
       return;
     }
 
-    (async () => {
-      setRole("user");
-      setLoading(false);
-    })();
+    const fetchRole = async () => {
+      setLoading(true);
+      try {
+        const { data, error } = await supabase
+          .from("user_roles")
+          .select("role")
+          .eq("user_id", user.id)
+          .maybeSingle();
 
+        if (error) throw error;
+        if (data) {
+          setRole(data.role as AppRole);
+        } else {
+          setRole("user");
+        }
+      } catch (err) {
+        console.error("Error fetching user role:", err);
+        setRole("user");
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchRole();
   }, [authLoading, user]);
 
   const value = useMemo(() => ({
