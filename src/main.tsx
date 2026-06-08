@@ -3,7 +3,7 @@ import App from "./App.tsx";
 import "./index.css";
 import { registerSW } from 'virtual:pwa-register';
 
-// Register the PWA service worker
+// Register the PWA service worker with custom push support
 const updateSW = registerSW({
   onNeedRefresh() {
     if (confirm('Nova versão disponível! Deseja atualizar?')) {
@@ -14,6 +14,19 @@ const updateSW = registerSW({
     console.log('App pronto para uso offline.');
   },
 });
+
+// Register our custom push service worker separately if not already handled
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' })
+      .then(registration => {
+        console.log('Custom Push SW registered:', registration);
+      })
+      .catch(error => {
+        console.error('Custom Push SW registration failed:', error);
+      });
+  });
+}
 
 // Global error handler for dynamic import failures (chunk errors)
 const handleChunkError = (error: any) => {
