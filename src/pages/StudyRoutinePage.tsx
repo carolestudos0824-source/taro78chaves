@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Flame, BookOpen, RefreshCw, Sun, Target, TrendingUp, Check, Clock, Bell, BellOff, Settings2 } from "lucide-react";
+import { ArrowLeft, ChevronRight, Flame, BookOpen, RefreshCw, Sun, Target, TrendingUp, Check, Clock, Bell, BellOff, Settings2, Send } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { MODULES_CATALOG as MODULES, ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull as getArcanoById, isModuleUnlocked } from "@/lib/content";
 import { useState, useEffect } from "react";
@@ -9,6 +9,8 @@ import { toast } from "sonner";
 
 const WEEKDAYS = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
 
+const VAPID_PUBLIC_KEY = "BE_rHyGjRLwNmJuB1sRvIbMVjmqdSHdXBZB2HxGNuz10fCiDYT9dwjwp2l43k77xcucxnPTCmKQL8j05K_MeDuA";
+
 const StudyRoutinePage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -17,6 +19,7 @@ const StudyRoutinePage = () => {
   const [pref, setPref] = useState<{ enabled: boolean; reminder_time: string } | null>(null);
   const [isiOS, setIsIOS] = useState(false);
   const [isPWA, setIsPWA] = useState(false);
+  const [isTesting, setIsTesting] = useState(false);
 
   useEffect(() => {
     // Detect iOS and PWA
@@ -45,6 +48,21 @@ const StudyRoutinePage = () => {
     fetchPrefs();
   }, [user]);
 
+  const urlBase64ToUint8Array = (base64String: string) => {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding)
+      .replace(/\-/g, '+')
+      .replace(/_/g, '/');
+
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+
+    for (let i = 0; i < rawData.length; ++i) {
+      outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
+  };
+
   const toggleReminder = async () => {
     if (!user || !pref) return;
 
@@ -68,8 +86,39 @@ const StudyRoutinePage = () => {
       const permission = await Notification.requestPermission();
       if (permission !== "granted") return;
 
-      // 2. Mock registration for now (real Web Push needs Service Worker registration)
-      // In a real flow, we would call navigator.serviceWorker.ready.then(reg => reg.pushManager.subscribe(...))
+      // 2. Real Web Push Subscription
+      try {
+        const registration = await navigator.serviceWorker.ready;
+        const subscription = await registration.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
+        });
+
+        const subObj = subscription.toJSON();
+        
+        // Save subscription
+        const { error: subError } = await supabase
+          .from("push_subscriptions")
+          .upsert({
+            user_id: user.id,
+            endpoint: subObj.endpoint,
+            p256dh: subObj.keys?.p256dh,
+            auth: subObj.keys?.auth,
+            is_active: true
+          });
+
+        if (subError) throw subError;
+      } catch (err) {
+        console.error("Subscription error:", err);
+        toast.error("Erro ao configurar notificações no dispositivo.");
+        return;
+      }
+    } else {
+      // If disabling, we should ideally unsubscribe, but for now just mark as inactive in preferences
+      await supabase
+        .from("push_subscriptions")
+        .update({ is_active: false })
+        .eq("user_id", user.id);
     }
 
     const newEnabled = !pref.enabled;
@@ -87,6 +136,25 @@ const StudyRoutinePage = () => {
       toast.success(newEnabled ? "Lembrete ritualístico ativado!" : "Lembrete desativado.");
     } else {
       toast.error("Erro ao salvar preferência.");
+    }
+  };
+
+  const testNotification = async () => {
+    if (!user || isTesting) return;
+    setIsTesting(true);
+    
+    try {
+      const { data, error } = await supabase.functions.invoke('send-daily-ritual-reminders', {
+        body: { test_user_id: user.id }
+      });
+
+      if (error) throw error;
+      toast.success("Chamado de teste enviado!");
+    } catch (err) {
+      console.error("Test error:", err);
+      toast.error("Erro ao enviar teste.");
+    } finally {
+      setIsTesting(false);
     }
   };
 
@@ -181,6 +249,14 @@ const StudyRoutinePage = () => {
                       className="bg-transparent font-heading font-bold text-plum focus:outline-none"
                     />
                   </div>
+                  <button 
+                    onClick={testNotification}
+                    disabled={isTesting}
+                    className="w-full py-4 rounded-2xl bg-gold/10 border border-gold/30 font-heading text-[10px] font-black tracking-[0.3em] uppercase text-plum flex items-center justify-center gap-2 hover:bg-gold/20 transition-all"
+                  >
+                    <Send className="w-4 h-4" />
+                    {isTesting ? "Enviando..." : "Testar notificação"}
+                  </button>
                   <button 
                     onClick={toggleReminder}
                     className="w-full py-4 rounded-2xl font-heading text-[10px] font-black tracking-[0.3em] uppercase text-plum/40 hover:text-plum transition-colors"
