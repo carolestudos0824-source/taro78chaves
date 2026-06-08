@@ -308,12 +308,13 @@ const DailyChallengesPage = () => {
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <h3 className={`font-heading text-lg md:text-2xl font-black tracking-tight mb-2 transition-colors ${isCompleted ? "text-[#5B1F3D]/60" : isBlocked ? "text-[#5B1F3D]/80" : "text-[#5B1F3D]"}`}>
+                      <h3 className={`font-heading text-lg md:text-2xl font-black tracking-tight mb-2 transition-colors ${isCompleted ? "text-[#5B1F3D]/60" : isBlocked ? "text-[#5B1F3D]/40" : "text-[#5B1F3D]"}`}>
                         {ch.title}
                       </h3>
-                      <p className={`font-body text-[14px] md:text-[16px] font-black leading-snug transition-colors ${isCompleted ? "text-[#5B1F3D]/40 italic" : isBlocked ? "text-[#5B1F3D]/60" : "text-[#5B1F3D]/80 group-hover:text-[#5B1F3D]/90"}`}>
+                      <p className={`font-body text-[14px] md:text-[16px] font-black leading-snug transition-colors ${isCompleted ? "text-[#5B1F3D]/40 italic" : isBlocked ? "text-[#5B1F3D]/30" : "text-[#5B1F3D]/80 group-hover:text-[#5B1F3D]/90"}`}>
                         {isBlocked ? "Libera após o portal anterior." : isCompleted ? "Portal concluído. Toque para rever." : ch.subtitle}
                       </p>
+
                     </div>
 
 
