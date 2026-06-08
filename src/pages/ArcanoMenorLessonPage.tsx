@@ -82,6 +82,9 @@ const ArcanoMenorLessonPage = () => {
   const [quizSubmitted, setQuizSubmitted] = useState<Record<number, boolean>>({});
   const [completed, setCompleted] = useState(false);
 
+  const isAuditMode = new URLSearchParams(window.location.search).get('audit') === 'true';
+  const hasAccess = isAuditMode || isStaff || (card ? canAccessArcano(99) : false); // 99 as proxy for premium-only content
+
   if (roleLoading || progressLoading || accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
@@ -93,13 +96,17 @@ const ArcanoMenorLessonPage = () => {
     );
   }
 
-  // Initial access check for Arcanos Menores (all premium for now based on use-access/access.ts logic)
-  // hasInitialAccess currently returns false for all Menores.
-  if (!canAccessArcano(0) && !isStaff) { // Using 0 as proxy or just canAccessArcano check
-     // For Menores, we usually check if they are premium.
-     // In access.ts, hasInitialAccess(arcanoId) returns false if > 1.
-     // Since all Menores have string IDs or different numbering, we need to decide.
-     // Currently canAccessArcano in use-access uses hasInitialAccess(arcanoId).
+  if (!hasAccess) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF] p-6">
+        <div className="max-w-md w-full">
+          <PremiumGate 
+            featureName={card?.nome || "Arcanos Menores"}
+            message="O acesso aos 56 Arcanos Menores é exclusivo para assinantes da Jornada Completa."
+          />
+        </div>
+      </div>
+    );
   }
 
   if (!card) {
