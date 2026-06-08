@@ -104,23 +104,6 @@ const PremiumPage = () => {
       toast.info("Assinatura via Google Play em manutenção. Use o checkout web.");
       setLoading(false);
       return;
-      // const { purchaseToken, response } = await startGooglePlayPurchase(user.id);
-      
-      // Call our backend to validate and record
-      const { data, error } = await supabase.functions.invoke('google-play-billing', {
-        body: {
-          purchaseToken,
-          productId: GOOGLE_PLAY_PRODUCT_ID,
-          basePlanId: GOOGLE_PLAY_BASE_PLAN_ID
-        }
-      });
-
-      if (error) throw error;
-
-      await acknowledgeGooglePlayPurchase(purchaseToken, response);
-      trackEvent("google_play_checkout_success");
-      toast.success("Sua jornada completa foi liberada!");
-      navigate("/perfil");
       
     } catch (err: any) {
       console.error(err);
