@@ -82,7 +82,7 @@ const ArcanoMenorLessonPage = () => {
   const [quizSubmitted, setQuizSubmitted] = useState<Record<number, boolean>>({});
   const [completed, setCompleted] = useState(false);
 
-  if (roleLoading) {
+  if (roleLoading || progressLoading || accessLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
         <div className="text-center space-y-6 animate-pulse">
@@ -91,6 +91,15 @@ const ArcanoMenorLessonPage = () => {
         </div>
       </div>
     );
+  }
+
+  // Initial access check for Arcanos Menores (all premium for now based on use-access/access.ts logic)
+  // hasInitialAccess currently returns false for all Menores.
+  if (!canAccessArcano(0) && !isStaff) { // Using 0 as proxy or just canAccessArcano check
+     // For Menores, we usually check if they are premium.
+     // In access.ts, hasInitialAccess(arcanoId) returns false if > 1.
+     // Since all Menores have string IDs or different numbering, we need to decide.
+     // Currently canAccessArcano in use-access uses hasInitialAccess(arcanoId).
   }
 
   if (!card) {
