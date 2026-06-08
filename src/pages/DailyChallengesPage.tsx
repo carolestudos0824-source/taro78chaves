@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Gift, X, Scroll } from "lucide-react";
+import { ArrowLeft, ChevronRight, Gift, X, Scroll, Bell } from "lucide-react";
 import { useHeader } from "@/contexts/header-context";
 
 
@@ -232,7 +232,7 @@ const DailyChallengesPage = () => {
         </div>
       </header>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 pb-[calc(140px+env(safe-area-inset-bottom))] space-y-10 mt-12">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 pb-[calc(140px+env(safe-area-inset-bottom))] space-y-10 mt-12 overflow-x-hidden">
 
 
 
@@ -302,7 +302,7 @@ const DailyChallengesPage = () => {
                   disabled={isBlocked}
                   className={`w-full text-left group transition-all duration-500 ${isBlocked ? "cursor-not-allowed" : ""}`}
                 >
-                  <div className={`rounded-[2.5rem] p-6 md:p-9 flex flex-col sm:flex-row items-center sm:items-center gap-5 md:gap-6 transition-all duration-500 border-2 shadow-xl mx-auto w-full box-border relative overflow-hidden ${
+                  <div className={`rounded-[2.5rem] p-6 md:p-9 flex flex-col sm:flex-row items-center sm:items-center gap-5 md:gap-6 transition-all duration-500 border-2 shadow-xl mx-auto w-full relative overflow-hidden ${
                       isCompleted ? "bg-[#FDF8F3] border-[#C8A66A40] opacity-90" : 
                       isAvailable ? "bg-white border-[#C8A66A] hover:shadow-2xl hover:-translate-y-2 ring-4 ring-[#C8A66A20]" : 
                       "bg-[#F5F5F5]/60 border-[#E5E5E5]"
@@ -355,6 +355,25 @@ const DailyChallengesPage = () => {
               );
             })}
           </div>
+          {/* Notification Invite */}
+          <div className="relative rounded-[2.5rem] overflow-hidden p-8 transition-all duration-500 bg-plum border-2 border-gold shadow-2xl mt-12">
+             <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left relative z-10">
+               <div className="space-y-2">
+                 <h3 className="text-xl font-heading font-black text-gold">Receba seu chamado diário</h3>
+                 <p className="text-[13px] font-body font-bold text-white/80 italic">Ative um lembrete para voltar ao Ritual todos os dias.</p>
+               </div>
+               <button 
+                 onClick={() => navigate("/rotina")}
+                 className="px-8 py-4 bg-gold text-plum rounded-2xl font-heading text-[10px] font-black tracking-[0.3em] uppercase shadow-lg hover:scale-105 transition-all shrink-0"
+               >
+                 Ativar lembrete
+               </button>
+             </div>
+             <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+               <Bell className="w-24 h-24 text-white" />
+             </div>
+          </div>
+
           <FooterInfo />
         </div>
       </div>
