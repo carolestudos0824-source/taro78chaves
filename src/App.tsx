@@ -192,7 +192,7 @@ const AppRoutes = () => {
           <Route path="/desafios" element={<DailyChallengesPage />} />
           <Route path="/premium" element={<PremiumPage />} />
           <Route path="/perfil" element={<ProfilePage />} />
-          <Route path="/jornada-do-louco" element={<FoolsJourneyPage />} />
+          <Route path="/jornada-do-louco" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
           <Route path="/lesson/:id" element={<SecurityGate><LessonPage /></SecurityGate>} />
           <Route path="/module/:moduleSlug" element={<SecurityGate><Index /></SecurityGate>} />
           
