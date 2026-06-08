@@ -291,7 +291,7 @@ const TrailsPage = () => {
                               Módulo
                             </span>
                             {isNext && (
-                              <span className="bg-[#5B1F3D] text-[#FAF5EF] text-[9px] font-black px-3.5 py-1 rounded-full uppercase tracking-widest flex items-center gap-1.5 shadow-md border border-[#C8A66A33] w-fit">
+                              <span className="bg-[#5B1F3D] text-[#FAF5EF] text-[9px] font-black px-3.5 py-1.5 rounded-full uppercase tracking-widest flex items-center gap-1.5 shadow-md border border-[#C8A66A33] w-fit">
                                 <Sparkles className="w-2.5 h-2.5" /> Próxima Chave
                               </span>
                             )}
@@ -336,16 +336,6 @@ const TrailsPage = () => {
                         alt={landmark.name} 
                         className="w-full rounded-2xl border-[2px] border-white/40 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur-[1px]" 
                       />
-                    </div>
-                  </div>
-                )}
-                      <div className="hidden sm:block absolute inset-x-0 -bottom-6 px-4">
-                        <div className="bg-white/90 backdrop-blur-md py-2 rounded-lg border border-[#C8A66A]/20 shadow-xl">
-                          <p className="font-heading text-[9px] font-black text-[#5B1F3D] text-center uppercase tracking-[0.2em]">
-                            {landmark.name}
-                          </p>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 )}
