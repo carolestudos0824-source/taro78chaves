@@ -1521,13 +1521,15 @@ export type Database = {
         Args: { a: Database["public"]["Tables"]["cms_arcanos"]["Row"] }
         Returns: number
       }
-      has_role: {
-        Args: {
-          _role: Database["public"]["Enums"]["app_role"]
-          _user_id: string
-        }
-        Returns: boolean
-      }
+      has_role:
+        | {
+            Args: {
+              _role: Database["public"]["Enums"]["app_role"]
+              _user_id: string
+            }
+            Returns: boolean
+          }
+        | { Args: { role_name: string; user_id: string }; Returns: boolean }
       manually_release_hotmart_access: {
         Args: { p_email: string; p_transaction_id: string }
         Returns: Json
