@@ -365,47 +365,8 @@ const DashboardPage = () => {
               </div>
             </div>
 
-            {/* Premium Access Promotion Card */}
-            <div className="bg-plum/95 rounded-[2.5rem] p-8 border border-gold/30 shadow-2xl text-white space-y-6 overflow-hidden relative group md:col-span-2">
-              <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform pointer-events-none">
-                <Crown className="w-32 h-32 md:w-48 md:h-48" />
-              </div>
-              <div className="absolute inset-0 opacity-[0.03] bg-mystic-bg-procedural pointer-events-none" />
-              
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
-                <div className="space-y-2">
-                   <div className="flex items-center gap-3">
-                       <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center shadow-lg">
-                        <Sparkles className="w-6 h-6 text-gold" />
-                      </div>
-                      <span className="text-[11px] font-heading font-black tracking-[0.5em] text-[#FFD700] drop-shadow-sm uppercase">Formação Completa</span>
-                   </div>
-                   <h3 className="text-2xl md:text-3xl font-heading font-bold tracking-tight text-white drop-shadow-md">Sabedoria Ancestral</h3>
-                   <p className="text-sm font-body italic text-white max-w-sm leading-relaxed">
-                     Desbloqueie todos os 78 portais, acesse meditações guiadas, quizzes de domínio e conquiste seu Certificado de Formação.
-                   </p>
-
-                </div>
-                
-                {!isPremium && !isStaff ? (
-                  <button 
-                    onClick={() => navigate("/premium")}
-                    className="w-full lg:w-auto px-8 py-5 bg-gold text-plum rounded-2xl font-heading text-[10px] font-black tracking-[0.3em] uppercase shadow-2xl hover:bg-white hover:scale-[1.02] transition-all active:scale-95 group/btn"
-                  >
-                    Fazer Inscrição 
-                  </button>
-                ) : (
-                   <div className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-gold font-heading text-[10px] font-black tracking-[0.4em] uppercase flex items-center gap-2">
-                      <Star className="w-4 h-4 fill-current" /> Assinatura Ativa
-                   </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Quick Access Utility Bar */}
-        <section className="space-y-6 pb-20 px-2 relative z-10">
+        <section className="space-y-6 px-2 relative z-10">
           <div className="flex items-center gap-3 px-2">
             <div className="w-2 h-2 rounded-full bg-gold/60" />
             <h3 className="font-heading text-[12px] font-black tracking-[0.5em] text-plum uppercase">Utilidades</h3>
@@ -429,6 +390,45 @@ const DashboardPage = () => {
               </button>
             ))}
           </div>
+        </section>
+
+        {/* Premium Access Promotion Card */}
+        <section className="pb-[calc(140px+env(safe-area-inset-bottom))] px-2">
+            <div className="bg-plum/95 rounded-[2.5rem] p-8 border border-gold/30 shadow-2xl text-white space-y-6 overflow-hidden relative group">
+              <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform pointer-events-none">
+                <Crown className="w-32 h-32 md:w-48 md:h-48" />
+              </div>
+              <div className="absolute inset-0 opacity-[0.03] bg-mystic-bg-procedural pointer-events-none" />
+              
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+                <div className="space-y-2">
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center shadow-lg">
+                          <Sparkles className="w-6 h-6 text-gold" />
+                        </div>
+                        <span className="text-[11px] font-heading font-black tracking-[0.5em] text-[#FFD700] drop-shadow-sm uppercase">Formação Completa</span>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-heading font-bold tracking-tight text-white drop-shadow-md">Sabedoria Ancestral</h3>
+                    <p className="text-sm font-body italic text-white max-w-sm leading-relaxed">
+                      Desbloqueie todos os 78 portais, acesse meditações guiadas, quizzes de domínio e conquiste seu Certificado de Formação.
+                    </p>
+
+                </div>
+                
+                {!isPremium && !isStaff ? (
+                  <button 
+                    onClick={() => navigate("/premium")}
+                    className="w-full lg:w-auto px-8 py-5 bg-gold text-plum rounded-2xl font-heading text-[10px] font-black tracking-[0.3em] uppercase shadow-2xl hover:bg-white hover:scale-[1.02] transition-all active:scale-95 group/btn"
+                  >
+                    Fazer Inscrição 
+                  </button>
+                ) : (
+                    <div className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-gold font-heading text-[10px] font-black tracking-[0.4em] uppercase flex items-center gap-2">
+                        <Star className="w-4 h-4 fill-current" /> Assinatura Ativa
+                    </div>
+                )}
+              </div>
+            </div>
         </section>
       </main>
     </div>
