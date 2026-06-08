@@ -54,6 +54,7 @@ export async function getGooglePlayProductDetails(): Promise<GooglePlayProductDe
 }
 
 export async function startGooglePlayPurchase(userId: string) {
+  throw new Error("Google Play Billing em manutenção de segurança. Utilize o checkout web.");
   if (!(await isGooglePlayBillingSupported())) {
     throw new Error("Google Play Billing is not supported on this device/environment.");
   }
