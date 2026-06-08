@@ -220,14 +220,14 @@ const CertificatesPage = () => {
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-6 pb-16 space-y-8">
+      <div className="max-w-2xl mx-auto px-6 pb-bottom-nav space-y-12">
         {/* Earned */}
         {earned.length > 0 && (
           <div>
             <div className="flex items-center justify-center mb-3">
               <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
             </div>
-            <h2 className="font-heading text-sm tracking-wide text-center mb-4" style={{ color: "hsl(340 42% 22%)" }}>
+            <h2 className="font-heading text-base tracking-wide text-center mb-6" style={{ color: "hsl(340 42% 22%)" }}>
               Conquistados ({earned.length})
             </h2>
             <div className="space-y-4">
@@ -295,36 +295,40 @@ const CertificatesPage = () => {
             <div className="flex items-center justify-center mb-3">
               <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
             </div>
-            <h2 className="font-heading text-sm tracking-wide text-center mb-4" style={{ color: "hsl(230 15% 30% / 0.35)" }}>
+            <h2 className="font-heading text-base tracking-wide text-center mb-6" style={{ color: "hsl(333 50% 24% / 0.70)" }}>
               Em progresso ({locked.length})
             </h2>
-            <div className="space-y-3">
+            <div className="grid grid-cols-1 gap-5">
               {locked.map(cert => (
                 <div
                   key={cert.id}
-                  className="rounded-xl p-5 opacity-50"
+                  className="rounded-[2rem] p-6 md:p-8 transition-all duration-300 relative overflow-hidden group border-2"
                   style={{
-                    background: "hsl(36 18% 90% / 0.50)",
-                    border: "1px solid hsl(36 20% 82% / 0.30)",
+                    background: "rgba(255, 255, 255, 0.5)",
+                    borderColor: "rgba(200, 166, 106, 0.15)",
                   }}
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 text-2xl grayscale" style={{
-                      background: "hsl(36 15% 88% / 0.50)",
-                      border: "1px solid hsl(36 18% 80% / 0.25)",
-                    }}>
-                      <Lock className="w-5 h-5" style={{ color: "hsl(230 15% 30% / 0.30)" }} />
+                  <div className="absolute top-0 right-0 p-4 opacity-5">
+                    <Sparkles className="w-12 h-12 text-[#5B1F3D]" />
+                  </div>
+                  
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 relative z-10 text-center sm:text-left">
+                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 text-3xl bg-[#FAF5EF] border-2 border-[#DCCFC2]/40 shadow-inner group-hover:scale-105 transition-transform">
+                      <Lock className="w-8 h-8 text-[#5B1F3D]/30" />
                     </div>
-                    <div className="flex-1">
-                      <div className="font-heading text-sm tracking-wide" style={{ color: "hsl(230 15% 30% / 0.40)" }}>
+                    <div className="flex-1 space-y-2">
+                      <div className="font-heading text-lg md:text-xl font-black text-[#5B1F3D]/80 leading-tight">
                         {cert.title}
                       </div>
-                      <div className="font-accent text-xs italic" style={{ color: "hsl(230 15% 30% / 0.30)" }}>
+                      <div className="font-accent text-sm md:text-base italic text-[#5B1F3D]/60 font-medium">
                         {cert.subtitle}
                       </div>
-                      <p className="text-[10px] mt-2 font-body text-plum/60 font-bold uppercase tracking-widest">
-                        Seu certificado será liberado ao concluir a jornada obrigatória.
-                      </p>
+                      <div className="pt-3">
+                        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#5B1F3D]/5 border border-[#5B1F3D]/10 text-[10px] md:text-[11px] font-heading font-black uppercase tracking-[0.15em] text-[#5B1F3D]/70">
+                          <Lock className="w-3 h-3" />
+                          Libera ao concluir a jornada obrigatória
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
