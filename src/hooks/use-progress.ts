@@ -325,10 +325,10 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         lastSavedNameRef.current = nameSnapshot;
         const { error } = await supabase
           .from("profiles")
-          .upsert({ 
-            user_id: user.id,
+          .update({ 
             student_name: nameSnapshot 
-          } as never, { onConflict: 'user_id' });
+          })
+          .eq("user_id", user.id);
 
         if (error) {
           console.error("[useProgress] Error syncing student_name:", error);
