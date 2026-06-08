@@ -38,6 +38,7 @@ import imgMago from "@/assets/arcano-1-mago.jpg";
 import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
 import imgImperatriz from "@/assets/arcano-3-imperatriz.jpg";
 import imgImperador from "@/assets/arcano-4-imperador.jpg";
+const imgDezOuros = resolveMenorVisualById("ouros-10").resolvedAssetUrl;
 
 // Decorative components for the premium feel
 const ArchPortal = ({ children, className }: { children: React.ReactNode, className?: string }) => (
