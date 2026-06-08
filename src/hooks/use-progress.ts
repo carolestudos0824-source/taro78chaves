@@ -374,12 +374,8 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   // ─── Actions (same API as before) ───
 
   const addXP = useCallback((amount: number) => {
-    setProgress((prev) => {
-      const newXP = prev.xp + amount;
-      const newLevel = Math.floor(newXP / 100) + 1;
-      console.log(`[progress] adding ${amount} XP. Total: ${newXP}, Level: ${newLevel}`);
-      return { ...prev, xp: newXP, level: newLevel };
-    });
+    // XP is disabled in UI but kept in core to avoid breaking dependencies
+    console.log(`[progress] XP tracking is currently symbolically hidden.`);
   }, []);
 
   const completeModule = useCallback((moduleId: string) => {

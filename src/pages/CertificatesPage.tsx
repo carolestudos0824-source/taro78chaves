@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Download, X, Lock, CheckCircle, Sparkles } from "lucide-react";
+import { ArrowLeft, Download, X, Lock, CheckCircle, Sparkles, Trophy, Flame, Target } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
+import { useRitual } from "@/hooks/use-ritual";
 import { useCertificatesContent } from "@/hooks/use-content";
 import {
   buildEarnedCertificate,
@@ -16,6 +17,7 @@ import { Button } from "@/components/ui/button";
 const CertificatesPage = () => {
   const navigate = useNavigate();
   const { progress } = useProgress();
+  const { merits, streak: ritualStreak } = useRitual();
   const { data: certsData, isLoading: contentLoading } = useCertificatesContent();
   const [viewing, setViewing] = useState<EarnedCertificateView | null>(null);
   const [dbCertificates, setDbCertificates] = useState<Record<string, any>>({});
@@ -221,6 +223,65 @@ const CertificatesPage = () => {
       </div>
 
       <div className="max-w-2xl mx-auto px-6 pb-bottom-nav space-y-12">
+        {/* Symbolic Merits Section */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-center mb-3">
+            <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
+          </div>
+          <h2 className="font-heading text-base tracking-wide text-center mb-6 text-plum">
+            Méritos da Jornada
+          </h2>
+          
+          <div className="grid grid-cols-1 gap-4">
+            {[
+              { key: "chama_acesa", label: "Chama Acesa", desc: "1 dia de Ritual concluído", icon: Flame },
+              { key: "ritmo_iniciado", label: "Ritmo Iniciado", desc: "3 dias seguidos de Ritual", icon: Target },
+              { key: "portal_constante", label: "Portal Constante", desc: "7 dias seguidos de Ritual", icon: Trophy },
+              { key: "habito_firmado", label: "Hábito Firmado", desc: "21 dias seguidos de Ritual", icon: Sparkles },
+              { key: "guardia_rotina", label: "Guardiã da Rotina", desc: "30 dias seguidos de Ritual", icon: CheckCircle }
+            ].map((m) => {
+              const isUnlocked = merits.includes(m.key);
+              return (
+                <div 
+                  key={m.key} 
+                  className={`relative rounded-[2rem] p-6 border-2 transition-all duration-500 overflow-hidden flex items-center gap-5 ${
+                    isUnlocked ? 'bg-white border-gold shadow-lg' : 'bg-gray-50 border-gray-100 opacity-60 grayscale'
+                  }`}
+                >
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border-2 ${
+                    isUnlocked ? 'bg-gold/10 border-gold text-plum' : 'bg-gray-200 border-gray-300 text-gray-400'
+                  }`}>
+                    <m.icon className="w-7 h-7" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className={`font-heading text-sm font-black uppercase tracking-widest ${isUnlocked ? 'text-plum' : 'text-gray-400'}`}>
+                      {m.label}
+                    </h3>
+                    <p className="text-[11px] font-body font-bold italic text-plum/40">
+                      {m.desc}
+                    </p>
+                  </div>
+                  {isUnlocked && (
+                    <div className="absolute top-0 right-0 p-3">
+                      <Sparkles className="w-4 h-4 text-gold animate-pulse" />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Certificates Section */}
+        <div className="pt-6">
+          <div className="flex items-center justify-center mb-3">
+            <div className="ornament-divider-procedural"><div className="ornament-divider-procedural-diamond" /></div>
+          </div>
+          <h2 className="font-heading text-base tracking-wide text-center mb-6 text-plum">
+            Certificados de Formação
+          </h2>
+        </div>
+
         {/* Earned */}
         {earned.length > 0 && (
           <div>

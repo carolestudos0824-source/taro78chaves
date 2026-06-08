@@ -972,6 +972,39 @@ export type Database = {
         }
         Relationships: []
       }
+      daily_ritual_progress: {
+        Row: {
+          completed: boolean | null
+          completed_at: string | null
+          created_at: string | null
+          id: string
+          items_json: Json | null
+          ritual_date: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          completed?: boolean | null
+          completed_at?: string | null
+          created_at?: string | null
+          id?: string
+          items_json?: Json | null
+          ritual_date?: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          completed?: boolean | null
+          completed_at?: string | null
+          created_at?: string | null
+          id?: string
+          items_json?: Json | null
+          ritual_date?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       gift_codes: {
         Row: {
           code: string
@@ -1367,6 +1400,63 @@ export type Database = {
           selected_answer?: number
           user_id?: string
           xp_earned?: number
+        }
+        Relationships: []
+      }
+      ritual_merits: {
+        Row: {
+          created_at: string | null
+          id: string
+          merit_key: string
+          unlocked_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          merit_key: string
+          unlocked_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          merit_key?: string
+          unlocked_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      ritual_streaks: {
+        Row: {
+          created_at: string | null
+          current_streak: number
+          id: string
+          last_completed_date: string | null
+          longest_streak: number
+          streak_protection_available: boolean | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          current_streak?: number
+          id?: string
+          last_completed_date?: string | null
+          longest_streak?: number
+          streak_protection_available?: boolean | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          current_streak?: number
+          id?: string
+          last_completed_date?: string | null
+          longest_streak?: number
+          streak_protection_available?: boolean | null
+          updated_at?: string | null
+          user_id?: string
         }
         Relationships: []
       }
