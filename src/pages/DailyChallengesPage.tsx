@@ -272,7 +272,7 @@ const DailyChallengesPage = () => {
             </p>
           </div>
 
-          <div className="grid gap-6 overflow-hidden">
+          <div className="grid gap-6">
             {challenges.map((ch, index) => {
               const iconName = ch.icon;
               const isCompleted = ch.completed;
