@@ -237,6 +237,7 @@ const DailyChallengesPage = () => {
 
 
 
+
         <div className="relative rounded-[3rem] overflow-hidden p-8 md:p-10 transition-all duration-500" style={{
           background: "linear-gradient(135deg, #FFFFFF 0%, #FAF5EF 100%)",
           backdropFilter: "blur(24px)",
