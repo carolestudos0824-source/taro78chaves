@@ -374,7 +374,7 @@ const DashboardPage = () => {
           <div className="grid grid-cols-3 gap-4">
             {[
               { label: "Biblioteca", icon: BookOpen, route: "/biblioteca" },
-              { label: "Rotina", icon: Clock, route: "/rotina" },
+              { label: "Rotina", icon: Clock, route: "/rotina", subtitle: "Organize seu hábito diário de estudo e ritual." },
               { label: "Méritos", icon: Trophy, route: "/certificados" }
             ].map((link, i) => (
               <button 
@@ -386,7 +386,12 @@ const DashboardPage = () => {
                   <link.icon className="w-7 h-7 text-plum" />
                 </div>
 
-                <span className="text-[11px] font-heading font-black tracking-[0.2em] text-plum uppercase">{link.label}</span>
+                <div className="text-center">
+                  <span className="text-[11px] font-heading font-black tracking-[0.2em] text-plum uppercase block">{link.label}</span>
+                  {link.subtitle && (
+                    <span className="text-[8px] font-body font-black text-plum/40 uppercase mt-1 block leading-tight">{link.subtitle}</span>
+                  )}
+                </div>
               </button>
             ))}
           </div>
