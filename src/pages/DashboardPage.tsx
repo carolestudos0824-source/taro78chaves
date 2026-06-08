@@ -189,8 +189,7 @@ const DashboardPage = () => {
         </section>
 
         {/* Auditor/Admin Banner - Simplified and Integrated */}
-        {/* Auditor/Admin Banner - Simplified and Integrated */}
-        {isStaff && isAdmin && (
+        {isAdmin && (
           <div className="mx-2 rounded-2xl p-4 bg-plum/5 border border-plum/10 flex flex-col sm:flex-row items-center justify-between gap-4 overflow-hidden relative grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100">
             <div className="flex items-center gap-3 relative z-10">
               <ShieldCheck className="w-4 h-4 text-plum/40" />
@@ -209,7 +208,7 @@ const DashboardPage = () => {
           </div>
         )}
 
-        {isStaff && isAuditor && !isAdmin && (
+        {isAuditor && !isAdmin && (
           <div className="mx-2 rounded-2xl p-4 bg-gold/5 border border-gold/10 flex items-center gap-3 opacity-60">
             <ShieldCheck className="w-4 h-4 text-gold/40" />
             <p className="text-[9px] font-heading font-black tracking-widest uppercase text-gold/40">
@@ -406,10 +405,10 @@ const DashboardPage = () => {
         </section>
 
         {/* Quick Access Utility Bar */}
-        <section className="space-y-6 pb-12 px-2">
+        <section className="space-y-6 pb-20 px-2 relative z-10">
           <div className="flex items-center gap-3 px-2">
-            <div className="w-2 h-2 rounded-full bg-gold/40" />
-            <h3 className="font-heading text-[11px] font-black tracking-[0.5em] text-gold uppercase opacity-60">Utilidades</h3>
+            <div className="w-2 h-2 rounded-full bg-gold/60" />
+            <h3 className="font-heading text-[12px] font-black tracking-[0.5em] text-plum uppercase">Utilidades</h3>
           </div>
           <div className="grid grid-cols-3 gap-4">
             {[
@@ -420,13 +419,13 @@ const DashboardPage = () => {
               <button 
                 key={i}
                 onClick={() => navigate(link.route)}
-                className="bg-white/90 backdrop-blur-sm border border-gold/15 rounded-[1.5rem] p-5 flex flex-col items-center gap-3 hover:bg-white hover:border-gold/40 hover:shadow-xl transition-all active:scale-95 group"
+                className="bg-white/95 backdrop-blur-md border border-gold/20 rounded-[2rem] p-6 flex flex-col items-center gap-4 hover:bg-white hover:border-gold/50 hover:shadow-2xl transition-all active:scale-95 group shadow-sm min-h-[140px] justify-center"
               >
-                <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform border border-gold/10">
-                  <link.icon className="w-6 h-6 text-plum" />
+                <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform border border-gold/10 shadow-inner">
+                  <link.icon className="w-7 h-7 text-plum" />
                 </div>
 
-                <span className="text-[10px] font-heading font-black tracking-[0.2em] text-plum/60 uppercase">{link.label}</span>
+                <span className="text-[11px] font-heading font-black tracking-[0.2em] text-plum uppercase">{link.label}</span>
               </button>
             ))}
           </div>
