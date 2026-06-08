@@ -112,7 +112,7 @@ const TrailsPage = () => {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-[#FAF5EF] pb-32 sm:pb-bottom-nav font-body text-[#5B1F3D] overflow-x-hidden">
+    <div className="relative w-full min-h-screen bg-[#FAF5EF] pb-[calc(140px+env(safe-area-inset-bottom))] font-body text-[#5B1F3D] overflow-x-hidden scroll-pb-[calc(140px+env(safe-area-inset-bottom))]">
       {/* Background Ornaments - Refined for depth */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute top-[5%] right-[-5%] w-[40%] h-[30%] bg-[#C8A66A]/10 blur-[100px] rounded-full" />
@@ -120,9 +120,9 @@ const TrailsPage = () => {
         <div className="absolute bottom-[10%] right-[-10%] w-[30%] h-[20%] bg-[#5B1F3D]/5 blur-[80px] rounded-full" />
       </div>
 
-      <div className="relative max-w-2xl mx-auto px-6 pt-10 sm:pt-24 flex flex-col items-center">
+      <div className="relative max-w-2xl mx-auto px-6 pt-2 sm:pt-24 flex flex-col items-center">
         {/* Header Section - Enhanced Spacing & Ritualistic feel */}
-        <div className="text-center mb-8 relative w-full px-4">
+        <div className="text-center mb-2 relative w-full px-4">
           <div className="inline-flex items-center gap-3 mb-4 opacity-80">
             <div className="h-px w-10 bg-[#C8A66A]/60" />
             <Sparkles className="w-3 h-3 text-[#C8A66A]" />
@@ -139,7 +139,7 @@ const TrailsPage = () => {
         </div>
 
         {/* Sua Travessia Card - Higher Contrast & Premium look */}
-        <div className="w-full bg-white/95 backdrop-blur-xl p-8 sm:p-12 rounded-[3rem] border border-[#C8A66A4D] shadow-[0_30px_70px_rgba(91,31,61,0.08)] mb-12 relative overflow-hidden group transition-all duration-500 hover:shadow-[0_40px_80px_rgba(91,31,61,0.12)]">
+        <div className="w-full bg-white/95 backdrop-blur-xl p-8 sm:p-12 rounded-[3rem] border border-[#C8A66A4D] shadow-[0_30px_70px_rgba(91,31,61,0.08)] mb-4 sm:mb-12 relative overflow-hidden group transition-all duration-500 hover:shadow-[0_40px_80px_rgba(91,31,61,0.12)]">
           <div className="absolute top-0 right-0 w-48 h-48 bg-[#C8A66A]/5 rounded-full -mr-24 -mt-24 blur-3xl opacity-50" />
           
           <div className="flex justify-between items-center mb-10">
@@ -187,7 +187,7 @@ const TrailsPage = () => {
         </div>
 
         {/* Journey Path - Guiding the eye */}
-        <div className="w-full relative space-y-24 sm:space-y-36">
+        <div className="w-full relative space-y-8 sm:space-y-36">
           {/* Enhanced Guiding Line */}
           <div className="absolute left-[31px] sm:left-[39px] top-12 bottom-48 w-[3px] z-0">
             <div className="w-full h-full bg-gradient-to-b from-[#C8A66A]/80 via-[#DCCFC2]/60 to-transparent shadow-[0_0_10px_rgba(200,166,106,0.1)]" />
@@ -202,7 +202,7 @@ const TrailsPage = () => {
             return (
               <div key={level.id} className="relative group transition-all duration-700">
                 {/* Portal Header - Ritualistic focus */}
-                <div className="flex items-center gap-7 sm:gap-12 mb-10 sm:mb-16 relative z-10">
+                <div className="flex items-center gap-7 sm:gap-12 mb-4 sm:mb-16 relative z-10">
                   <div className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center border-[3px] transition-all duration-700 shadow-[0_15px_40px_rgba(0,0,0,0.05)] ${
                     unlocked 
                       ? (isCurrent ? 'bg-white border-[#5B1F3D] scale-110 shadow-[0_20px_50px_rgba(91,31,61,0.15)] ring-8 ring-[#5B1F3D]/5' : 'bg-white border-[#C8A66A]') 
