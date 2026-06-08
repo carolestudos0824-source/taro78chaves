@@ -233,7 +233,7 @@ const AppRoutes = () => {
 
           <Route path="/rotina" element={<LazyRoute><StudyRoutinePage /></LazyRoute>} />
           <Route path="/minha-jornada" element={<LazyRoute><JourneyJournalPage /></LazyRoute>} />
-          <Route path="/admin" element={<LazyRoute><AdminPage /></LazyRoute>} />
+          <Route path="/admin" element={<SecurityGate requireAdmin><AdminPage /></SecurityGate>} />
         </Route>
         
         <Route path="/feedback" element={<Navigate to="/suporte" replace />} />
