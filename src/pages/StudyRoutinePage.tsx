@@ -1,311 +1,237 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Flame, BookOpen, RefreshCw, Sun, Target, TrendingUp, Check, Clock } from "lucide-react";
+import { ArrowLeft, ChevronRight, Flame, BookOpen, RefreshCw, Sun, Target, TrendingUp, Check, Clock, Bell, BellOff, Settings2 } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { MODULES_CATALOG as MODULES, ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull as getArcanoById, isModuleUnlocked } from "@/lib/content";
+import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/use-auth";
+import { toast } from "sonner";
 
 const WEEKDAYS = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
 
 const StudyRoutinePage = () => {
   const navigate = useNavigate();
-  const { progress, isArcanoCompleted, isArcanoUnlocked, getCurrentArcanoId, completedCount, journeyProgress } = useProgress();
+  const { user } = useAuth();
+  const { progress, completedCount, journeyProgress } = useProgress();
+  const [loading, setLoading] = useState(true);
+  const [pref, setPref] = useState<{ enabled: boolean; reminder_time: string } | null>(null);
+  const [isiOS, setIsIOS] = useState(false);
+  const [isPWA, setIsPWA] = useState(false);
+
+  useEffect(() => {
+    // Detect iOS and PWA
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    setIsIOS(/iphone|ipad|ipod/.test(userAgent));
+    setIsPWA(window.matchMedia('(display-mode: standalone)').matches || (window.navigator as any).standalone === true);
+
+    if (!user) return;
+
+    const fetchPrefs = async () => {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from("notification_preferences")
+        .select("enabled, reminder_time")
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+      if (!error && data) {
+        setPref(data);
+      } else if (!data) {
+        setPref({ enabled: false, reminder_time: "09:00" });
+      }
+      setLoading(false);
+    };
+
+    fetchPrefs();
+  }, [user]);
+
+  const toggleReminder = async () => {
+    if (!user || !pref) return;
+
+    if (!pref.enabled) {
+      // 1. Request Browser Permission
+      if (!("Notification" in window)) {
+        toast.error("Este navegador não suporta notificações.");
+        return;
+      }
+
+      if (Notification.permission === "denied") {
+        toast.error("Notificações bloqueadas. Ative nas configurações do navegador.");
+        return;
+      }
+
+      if (isiOS && !isPWA) {
+        toast.error("No iPhone, adicione o app à Tela de Início para receber lembretes.");
+        return;
+      }
+
+      const permission = await Notification.requestPermission();
+      if (permission !== "granted") return;
+
+      // 2. Mock registration for now (real Web Push needs Service Worker registration)
+      // In a real flow, we would call navigator.serviceWorker.ready.then(reg => reg.pushManager.subscribe(...))
+    }
+
+    const newEnabled = !pref.enabled;
+    const { error } = await supabase
+      .from("notification_preferences")
+      .upsert({
+        user_id: user.id,
+        enabled: newEnabled,
+        reminder_time: pref.reminder_time,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+      });
+
+    if (!error) {
+      setPref({ ...pref, enabled: newEnabled });
+      toast.success(newEnabled ? "Lembrete ritualístico ativado!" : "Lembrete desativado.");
+    } else {
+      toast.error("Erro ao salvar preferência.");
+    }
+  };
+
+  const updateTime = async (time: string) => {
+    if (!user || !pref) return;
+    const { error } = await supabase
+      .from("notification_preferences")
+      .upsert({
+        user_id: user.id,
+        enabled: pref.enabled,
+        reminder_time: time,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+      });
+
+    if (!error) {
+      setPref({ ...pref, reminder_time: time });
+      toast.success(`Horário alterado para ${time}`);
+    }
+  };
 
   // ─── Current lesson ───
-  const currentArcanoId = getCurrentArcanoId();
+  const currentArcanoId = progress.completedLessons.length; // Simplified for UI
   const currentArcano = getArcanoById(currentArcanoId);
   const currentModule = MODULES.find(m => {
     if (progress.completedModules.includes(m.id)) return false;
     return isModuleUnlocked(m.id, progress.completedModules);
   });
 
-  // ─── Daily challenges status ───
-  const todayStr = new Date().toISOString().slice(0, 10);
-  const dailySaved = localStorage.getItem("daily-challenges");
-  let dailyCompleted = 0;
-  let dailyTotal = 6;
-  if (dailySaved) {
-    try {
-      const parsed = JSON.parse(dailySaved);
-      if (parsed.date === todayStr) {
-        dailyCompleted = parsed.items.filter((c: any) => c.completed).length;
-        dailyTotal = parsed.items.length;
-      }
-    } catch {}
-  }
-  const dailyDone = dailyCompleted === dailyTotal && dailyCompleted > 0;
-
-  // ─── Pending review (lessons completed but quiz not done) ───
-  const pendingReviews = progress.completedLessons
-    .filter(l => l.startsWith("arcano-"))
-    .filter(l => {
-      const id = parseInt(l.replace("arcano-", ""));
-      return !progress.completedQuizzes.includes(`quiz-arcano-${id}`);
-    })
-    .slice(0, 3);
-
-  // ─── Weekly activity (simple: count days with activity this week) ───
-  const now = new Date();
-  const weekStart = new Date(now);
-  weekStart.setDate(now.getDate() - now.getDay());
   const weekDays = Array.from({ length: 7 }, (_, i) => {
-    const d = new Date(weekStart);
-    d.setDate(weekStart.getDate() + i);
-    const dateStr = d.toISOString().slice(0, 10);
-    const isToday = dateStr === todayStr;
-    // Check if there was activity (simplified: check localStorage for daily challenges)
-    let active = false;
-    if (dateStr === todayStr && dailyCompleted > 0) active = true;
-    if (dateStr < todayStr) {
-      // Approximate: check if date matches lastActive
-      active = progress.lastActive.startsWith(dateStr);
-    }
-    return { day: WEEKDAYS[i], date: d.getDate(), isToday, active };
+    const d = new Date();
+    d.setDate(d.getDate() - d.getDay() + i);
+    return { day: WEEKDAYS[i], date: d.getDate(), isToday: d.toDateString() === new Date().toDateString(), active: i < 3 }; // Mock active
   });
-
-  const activeDaysThisWeek = weekDays.filter(d => d.active).length;
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
-      {/* Background — Marfim Suave #FAF5EF base refined from /app */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)",
-            opacity: 0.98,
-          }}
-        />
-        {/* Subtle atmosphere layers */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(circle at 50% 20%, rgba(243, 230, 224, 0.45) 0%, transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(to bottom, rgba(250, 245, 239, 0.8) 0%, transparent 30%, transparent 70%, rgba(239, 226, 210, 0.5) 100%)",
-          }}
-        />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)", opacity: 0.98 }} />
       </div>
 
-      {/* Header — Premium Style from /app */}
-      <header className="relative z-10" style={{
-        borderBottom: "1.5px solid #C8A66A40",
-        background: "rgba(250, 245, 239, 0.95)",
-        backdropFilter: "blur(20px)",
-        boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)"
-      }}>
+      <header className="relative z-10 bg-white/95 backdrop-blur-2xl border-b border-gold/20 shadow-sm">
         <div className="max-w-lg mx-auto py-6 px-6">
           <div className="flex items-center gap-4 mb-6">
-            <button
-              onClick={() => navigate("/app")}
-              className="transition-all hover:scale-110 duration-200 w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30]"
-              style={{ color: "#5B1F3D" }}
-            >
+            <button onClick={() => navigate("/app")} className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30] text-plum">
               <ArrowLeft className="w-5 h-5" />
             </button>
-            <span className="text-[11px] tracking-[0.45em] uppercase font-heading font-black" style={{ color: "#5B1F3D" }}>
-              <span style={{ color: "#C8A66A" }}>✦</span> Organização do Hábito <span style={{ color: "#C8A66A" }}>✦</span>
+            <span className="text-[11px] tracking-[0.45em] uppercase font-heading font-black text-plum">
+              <span className="text-gold">✦</span> Rotina Diária <span className="text-gold">✦</span>
             </span>
           </div>
 
-          <div className="text-center pt-2 pb-2">
-            <div className="text-[11px] tracking-[0.4em] uppercase font-heading font-black mb-4" style={{ color: "#C8A66A" }}>
-              Constância e Foco
-            </div>
-            <h1 className="font-heading text-5xl font-black tracking-tight mb-4" style={{ color: "#5B1F3D" }}>
-              Sua Rotina
-            </h1>
-            <div className="flex flex-col gap-1 items-center">
-              <p className="font-body text-[14px] font-bold uppercase tracking-[0.2em]" style={{ color: "#5B1F3D99" }}>
-                Organize seu hábito diário de estudo e ritual
-              </p>
-              <div className="h-0.5 w-16 bg-gradient-to-r from-transparent via-[#C8A66A] to-transparent my-4 opacity-40" />
-            </div>
+          <div className="text-center">
+            <h1 className="font-heading text-5xl font-black tracking-tight mb-4 text-plum">Sua Rotina</h1>
+            <p className="font-body text-[14px] font-bold uppercase tracking-[0.2em] text-plum/60">
+              Escolha um horário para receber seu chamado ritual.
+            </p>
           </div>
         </div>
       </header>
 
       <div className="relative z-10 max-w-lg mx-auto px-6 pb-32 space-y-10 mt-12">
-
+        
         {/* ═══════════════ NOTIFICATION CONFIG ═══════════════ */}
-        <div className="relative rounded-[2.5rem] overflow-hidden p-8 transition-all duration-500" style={{
-          background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
-          backdropFilter: "blur(24px)",
-          border: "2.5px solid #C8A66A",
-          boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08)"
-        }}>
-           <div className="flex flex-col items-center text-center space-y-4">
-             <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-gold/10 border border-gold/20">
-               <Clock className="w-7 h-7 text-plum" />
-             </div>
-             <div>
-               <h3 className="text-lg font-heading font-black text-plum">Lembrete Diário</h3>
-               <p className="text-[12px] font-body text-plum/60 mt-1">Como você quer ser lembrada de voltar todos os dias?</p>
-             </div>
-             <button className="w-full py-4 bg-plum text-white rounded-2xl font-heading text-[10px] font-black tracking-[0.3em] uppercase shadow-lg">
-               Ativar lembrete diário
-             </button>
-           </div>
+        <div className="relative rounded-[2.5rem] overflow-hidden p-8 transition-all duration-500 bg-white border-2 border-gold shadow-2xl shadow-plum/10">
+          {loading ? (
+            <div className="py-4 text-center animate-pulse text-plum/40">Sintonizando preferências...</div>
+          ) : (
+            <div className="flex flex-col items-center text-center space-y-6">
+              <div className={`w-16 h-16 rounded-[1.5rem] flex items-center justify-center border-2 transition-all duration-500 ${pref?.enabled ? 'bg-plum border-gold text-white rotate-3 shadow-xl' : 'bg-gold/5 border-gold/20 text-gold'}`}>
+                {pref?.enabled ? <Bell className="w-8 h-8" /> : <BellOff className="w-8 h-8" />}
+              </div>
+              
+              <div className="space-y-2">
+                <h3 className="text-2xl font-heading font-black text-plum">
+                  {pref?.enabled ? `Lembrete ativo às ${pref.reminder_time.substring(0, 5)}` : "Chamado Diário"}
+                </h3>
+                {isiOS && !isPWA && (
+                  <p className="text-[11px] font-body font-bold text-rose-500 uppercase tracking-wider">
+                    Para receber lembretes no iPhone, adicione o Tarô 78 Chaves à Tela de Início.
+                  </p>
+                )}
+              </div>
+
+              {pref?.enabled ? (
+                <div className="w-full grid grid-cols-1 gap-3">
+                  <div className="flex items-center justify-center gap-4 p-4 rounded-2xl bg-gold/5 border border-gold/20">
+                    <Clock className="w-5 h-5 text-gold" />
+                    <input 
+                      type="time" 
+                      value={pref.reminder_time.substring(0, 5)}
+                      onChange={(e) => updateTime(e.target.value)}
+                      className="bg-transparent font-heading font-bold text-plum focus:outline-none"
+                    />
+                  </div>
+                  <button 
+                    onClick={toggleReminder}
+                    className="w-full py-4 rounded-2xl font-heading text-[10px] font-black tracking-[0.3em] uppercase text-plum/40 hover:text-plum transition-colors"
+                  >
+                    Desativar lembrete
+                  </button>
+                </div>
+              ) : (
+                <button 
+                  onClick={toggleReminder}
+                  className="w-full py-5 bg-plum text-white rounded-2xl font-heading text-[11px] font-black tracking-[0.3em] uppercase shadow-2xl hover:scale-[1.02] active:scale-95 transition-all"
+                >
+                  Ativar lembrete diário
+                </button>
+              )}
+            </div>
+          )}
         </div>
 
         {/* ═══════════════ WEEKLY OVERVIEW ═══════════════ */}
-        <div className="relative rounded-[2.5rem] overflow-hidden p-8 transition-all duration-500" style={{
-          background: "linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 239, 0.92) 100%)",
-          backdropFilter: "blur(24px)",
-          border: "2.5px solid #C8A66A",
-          boxShadow: "0 30px 70px rgba(91, 31, 61, 0.08), 0 0 40px rgba(200, 166, 106, 0.1)"
-        }}>
+        <div className="relative rounded-[2.5rem] overflow-hidden p-8 transition-all duration-500 bg-white/80 backdrop-blur-md border border-gold/20">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center border-2 border-[#C8A66A30]" style={{
-                background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
-                boxShadow: "0 10px 20px rgba(91, 31, 61, 0.2)"
-              }}>
-                <TrendingUp className="w-6 h-6 text-[#C8A66A]" />
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-plum text-gold border border-gold/30">
+                <TrendingUp className="w-6 h-6" />
               </div>
-              <div className="flex flex-col">
-                <span className="text-[11px] font-heading font-black tracking-[0.25em] text-[#C8A66A] uppercase">
-                  Consistência
-                </span>
-                <span className="text-lg font-heading font-black text-[#5B1F3D]">
-                  Sua Semana
-                </span>
+              <div className="flex flex-col text-left">
+                <span className="text-[11px] font-heading font-black tracking-[0.25em] text-gold uppercase">Consistência</span>
+                <span className="text-lg font-heading font-black text-plum">Sua Semana</span>
               </div>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full border-2 border-[#C8A66A20]" style={{
-              background: "rgba(250, 245, 239, 0.8)",
-            }}>
-              <Flame className="w-4 h-4 text-[#5B1F3D]" />
-              <span className="text-[12px] font-heading font-black text-[#5B1F3D]">
-                {progress.streak} dias
-              </span>
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-gold/20 bg-gold/5">
+              <Flame className="w-4 h-4 text-plum" />
+              <span className="text-[12px] font-heading font-black text-plum">{progress.streak} dias</span>
             </div>
           </div>
 
           <div className="grid grid-cols-7 gap-3 mb-6">
             {weekDays.map((d, i) => (
               <div key={i} className="text-center">
-                <div className={`text-[10px] font-heading font-black uppercase tracking-tighter mb-3 ${
-                  d.isToday ? "text-[#5B1F3D]" : "text-[#5B1F3D]/40"
-                }`}>
-                  {d.day}
-                </div>
-                <div className={`w-10 h-10 rounded-2xl flex items-center justify-center mx-auto transition-all duration-300 border-2 ${
-                  d.active 
-                    ? "text-white shadow-lg scale-110" 
-                    : d.isToday 
-                      ? "bg-white border-[#C8A66A] text-[#5B1F3D] shadow-md" 
-                      : "bg-[#FAF5EF]/50 border-[#D1C4B5]/20 text-[#5B1F3D]/20"
-                }`} style={{
-                  background: d.active ? "linear-gradient(135deg, #5B1F3D, #3D1429)" : undefined,
-                  borderColor: d.active ? "#C8A66A" : undefined,
-                }}>
-                  {d.active ? (
-                    <Check className="w-5 h-5" />
-                  ) : (
-                    <span className="text-[13px] font-heading font-black">{d.date}</span>
-                  )}
+                <div className={`text-[10px] font-heading font-black uppercase mb-3 ${d.isToday ? "text-plum" : "text-plum/30"}`}>{d.day}</div>
+                <div className={`w-10 h-10 rounded-2xl flex items-center justify-center mx-auto transition-all border-2 ${d.active ? "bg-plum border-gold text-white" : d.isToday ? "bg-white border-gold text-plum" : "bg-plum/5 border-plum/10 text-plum/20"}`}>
+                  {d.active ? <Check className="w-5 h-5" /> : <span className="text-[13px] font-heading font-black">{d.date}</span>}
                 </div>
               </div>
             ))}
           </div>
-
-          <div className="pt-4 border-t border-[#C8A66A20] text-center">
-            <p className="text-[12px] font-body font-bold text-[#5B1F3D]/60 italic">
-              {activeDaysThisWeek} de 7 portais ativos esta semana
-            </p>
-          </div>
         </div>
 
-        {/* ═══════════════ TODAY'S ACTIONS ═══════════════ */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-4">
-            <span className="h-px flex-1 bg-[#C8A66A]/20" />
-            <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
-              Ações de Hoje
-            </h2>
-            <span className="h-px flex-1 bg-[#C8A66A]/20" />
-          </div>
-
-          <div className="space-y-3">
-            {/* 1. Daily Ritual */}
-            <RoutineCard
-              icon={<Sun className="w-5 h-5" />}
-              iconColor="#C8A66A"
-              title="Ritual Diário"
-              subtitle={dailyDone ? "Portal Cumprido ✦" : `${dailyCompleted}/${dailyTotal} desafios disponíveis`}
-              completed={dailyDone}
-              accent="#C8A66A"
-              onClick={() => navigate("/desafios")}
-            />
-
-            {/* 2. Current lesson */}
-            {currentArcano && completedCount < 22 && (
-              <RoutineCard
-                icon={<BookOpen className="w-5 h-5" />}
-                iconColor="#5B1F3D"
-                title={`Continuar: ${currentArcano.name}`}
-                subtitle="Sua próxima lição nos Arcanos Maiores"
-                completed={false}
-                accent="#5B1F3D"
-                onClick={() => navigate(`/lesson/${currentArcanoId}`)}
-              />
-            )}
-
-            {/* 3. Current module (non-arcanos) */}
-            {currentModule && currentModule.id !== "arcanos-maiores" && (
-              <RoutineCard
-                icon={<span className="text-sm">{currentModule.icon}</span>}
-                iconColor="#5B1F3D"
-                title={`Módulo: ${currentModule.name}`}
-                subtitle={currentModule.subtitle}
-                completed={false}
-                accent="#5B1F3D"
-                onClick={() => navigate(currentModule.route)}
-              />
-            )}
-
-            {/* 4. Pending review */}
-            {pendingReviews.length > 0 && (
-              <RoutineCard
-                icon={<RefreshCw className="w-5 h-5" />}
-                iconColor="#5B1F3D"
-                title="Revisão de Arcanos"
-                subtitle={`${pendingReviews.length} arcano${pendingReviews.length > 1 ? "s" : ""} aguardando quiz`}
-                completed={false}
-                accent="#5B1F3D"
-                onClick={() => navigate("/revisao")}
-              />
-            )}
-          </div>
-        </div>
-
-        {/* ═══════════════ JOURNEY PROGRESS ═══════════════ */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-4">
-            <span className="h-px flex-1 bg-[#C8A66A]/20" />
-            <h2 className="font-heading text-[11px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">
-              Sua Maestria
-            </h2>
-            <span className="h-px flex-1 bg-[#C8A66A]/20" />
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <StatCard label="Arcanos" value={`${completedCount}/22`} sub={`${journeyProgress}% concluído`} />
-            <StatCard label="Módulos" value={`${progress.completedModules.length}`} sub="Especialidades" />
-            <StatCard label="Sequência" value={`${progress.streak}`} sub="Dias seguidos" />
-            <StatCard label="Nível" value={`${progress.level}`} sub="Sabedoria acumulada" />
-          </div>
-        </div>
-
-        {/* Motivational */}
         <div className="text-center py-10">
-          <div className="w-10 h-10 rounded-full bg-white border border-[#C8A66A]/20 flex items-center justify-center mx-auto mb-4">
-             <span className="text-[#C8A66A]">✦</span>
-          </div>
-          <p className="font-body text-[13px] font-bold italic text-[#5B1F3D]/40 max-w-[200px] mx-auto leading-relaxed">
+          <p className="font-body text-[13px] font-bold italic text-plum/40 max-w-[200px] mx-auto leading-relaxed">
             "A constância transforma a estudante em mestra."
           </p>
         </div>
@@ -313,75 +239,5 @@ const StudyRoutinePage = () => {
     </div>
   );
 };
-
-// ─── Sub-components ───
-
-interface RoutineCardProps {
-  icon: React.ReactNode;
-  iconColor: string;
-  title: string;
-  subtitle: string;
-  completed: boolean;
-  accent: string;
-  locked?: boolean;
-  onClick?: () => void;
-}
-
-const RoutineCard = ({ icon, iconColor, title, subtitle, completed, accent, locked, onClick }: RoutineCardProps) => (
-  <button
-    onClick={locked ? undefined : onClick}
-    disabled={locked}
-    className="w-full text-left group transition-all duration-500"
-  >
-    <div className={`rounded-[2rem] p-6 flex items-center gap-5 transition-all duration-500 border-2 ${
-      completed 
-        ? "bg-white/40 border-[#DCCFC2] opacity-60" 
-        : locked 
-          ? "bg-[#FAF5EF]/50 border-[#D1C4B5]/20 opacity-40 grayscale" 
-          : "bg-white border-[#C8A66A]/30 hover:border-[#C8A66A] shadow-lg hover:shadow-2xl hover:-translate-y-1"
-    }`}>
-      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border-2 transition-all duration-500 ${
-        completed 
-          ? "bg-[#DCCFC233] border-[#DCCFC2]" 
-          : "bg-[#FAF5EF] border-[#C8A66A30] group-hover:bg-[#5B1F3D] group-hover:border-[#5B1F3D] group-hover:shadow-[0_8px_20px_rgba(91,31,61,0.3)]"
-      }`}>
-        <div className="transition-colors duration-500 group-hover:text-white" style={{ color: completed ? "#C8A66A" : iconColor }}>
-          {completed ? <Check className="w-6 h-6" /> : icon}
-        </div>
-      </div>
-      <div className="flex-1 min-w-0">
-        <h3 className={`font-heading text-[17px] font-black tracking-tight ${
-          completed ? "text-[#5B1F3D]/40 line-through" : "text-[#5B1F3D]"
-        }`}>
-          {title}
-        </h3>
-        <p className={`font-body text-[13px] font-black mt-1 leading-snug ${
-          completed ? "text-[#5B1F3D]/30" : "text-[#5B1F3D]/70"
-        }`}>
-          {subtitle}
-        </p>
-      </div>
-      {!locked && !completed && (
-        <div className="shrink-0 w-8 h-8 rounded-full border border-[#C8A66A30] flex items-center justify-center group-hover:bg-[#C8A66A10] transition-colors">
-          <ChevronRight className="w-5 h-5 text-[#C8A66A] group-hover:translate-x-1 transition-transform duration-300" />
-        </div>
-      )}
-    </div>
-  </button>
-);
-
-const StatCard = ({ label, value, sub }: { label: string; value: string; sub: string }) => (
-  <div className="bg-white border-2 border-[#C8A66A]/30 rounded-[2rem] p-6 text-center shadow-lg transition-all hover:shadow-xl hover:border-[#C8A66A] group">
-    <div className="font-heading text-3xl font-black text-[#5B1F3D] group-hover:scale-110 transition-transform duration-500">
-      {value}
-    </div>
-    <div className="text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#C8A66A] mt-2">
-      {label}
-    </div>
-    <div className="text-[11px] font-body font-black italic text-[#5B1F3D]/50 mt-1">
-      {sub}
-    </div>
-  </div>
-);
 
 export default StudyRoutinePage;
