@@ -576,4 +576,17 @@ const InterpretacaoContent = ({ data, onComplete }: { data: MiniInterpretacao | 
   );
 };
 
+const FooterInfo = () => (
+  <div className="pt-8 border-t border-[#C8A66A20] text-center space-y-4">
+    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#C8A66A30] shadow-sm">
+      <span className="text-[#C8A66A]">✦</span>
+      <span className="text-[10px] font-heading font-black tracking-widest text-[#5B1F3D]/60 uppercase">Fim da Trilha de Hoje</span>
+      <span className="text-[#C8A66A]">✦</span>
+    </div>
+    <p className="text-[12px] font-body font-bold italic text-[#5B1F3D]/40 max-w-[240px] mx-auto leading-relaxed">
+      "Cada portal atravessado é um passo a mais na sua maestria."
+    </p>
+  </div>
+);
+
 export default DailyChallengesPage;
