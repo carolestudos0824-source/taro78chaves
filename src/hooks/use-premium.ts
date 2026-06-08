@@ -70,9 +70,14 @@ export const PremiumProvider = ({ children }: { children: React.ReactNode }) => 
           .from("profiles")
           .select("is_premium, premium_until, premium_source, stripe_customer_id")
           .eq("user_id", user.id)
-          .single();
+          .maybeSingle();
 
         if (error) throw error;
+        
+        if (!data) {
+          setState({ isPremium: false, premiumUntil: null, premiumSource: null, stripeCustomerId: null, subscriptionStatus: "no_active_access", loading: false });
+          return;
+        }
 
         const now = new Date();
         const until = data.premium_until ? new Date(data.premium_until) : null;
