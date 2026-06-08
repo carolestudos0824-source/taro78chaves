@@ -294,6 +294,7 @@ const DailyChallengesPage = () => {
                       "bg-[#E5E5E5] border-[#D5D5D5] text-[#A5A5A5]"
                     }`}>
 
+
                       {isCompleted ? (
                         <div className="relative">
                           <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 opacity-40" />
