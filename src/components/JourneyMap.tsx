@@ -15,7 +15,7 @@ export function JourneyMap({ progress }: JourneyMapProps) {
   const { bypassLocks, canAccessArcano } = useAccess();
 
   return (
-    <div className="relative max-w-2xl mx-auto pb-16">
+    <div className="relative max-w-2xl mx-auto pb-32">
       {/* Decorative top */}
       <div className="flex flex-col items-center mb-6 opacity-50">
         <div className="w-px h-10" style={{ background: "linear-gradient(to bottom, transparent, #C8A66A80)" }} />

@@ -270,7 +270,7 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
           {current.question}
         </motion.h4>
 
-        <div className={`grid gap-4 ${isTrueFalse ? "grid-cols-2" : "grid-cols-1"}`}>
+        <div className={`grid gap-3 sm:gap-4 ${isTrueFalse ? "grid-cols-2" : "grid-cols-1"}`}>
           {current.options.map((option, i) => {
             const isSelected = selectedOption === i;
             const isCorrectAnswer = isAnswered && i === current.correctIndex;
@@ -281,7 +281,7 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
                 key={`${currentIndex}-${i}`}
                 onClick={() => handleSelect(i)}
                 disabled={isAnswered}
-                className="group relative w-full text-left rounded-2xl p-5 transition-all duration-300 border-2 overflow-hidden shadow-sm"
+                className="group relative w-full text-left rounded-2xl p-4 sm:p-5 transition-all duration-300 border-2 overflow-hidden shadow-sm h-full flex flex-col justify-center"
                 style={{
                   background: isCorrectAnswer 
                     ? "rgba(200, 166, 106, 0.15)" 
@@ -303,9 +303,9 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
                 animate={isWrongSelected ? { x: [-4, 4, -4, 4, 0] } : isCorrectAnswer ? { scale: [1, 1.02, 1] } : {}}
               >
                 {/* Visual indicator for feedback */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3 sm:gap-4">
                   <div 
-                    className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 border-2 transition-colors"
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center shrink-0 border-2 transition-colors"
                     style={{
                       borderColor: isCorrectAnswer ? "#C8A66A" : isWrongSelected ? "#5B1F3D" : isSelected ? "#C8A66A" : "rgba(200, 166, 106, 0.4)",
                       background: isCorrectAnswer ? "#C8A66A" : isWrongSelected ? "#5B1F3D" : "transparent",
@@ -321,7 +321,7 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
                     )}
                   </div>
                   <span 
-                    className="text-[16px] font-medium leading-relaxed flex-1"
+                    className="text-[14px] sm:text-[16px] font-medium leading-tight sm:leading-relaxed flex-1 break-words"
                     style={{ color: isAnswered && !isCorrectAnswer && !isWrongSelected ? "rgba(91, 31, 61, 0.4)" : "#5B1F3D" }}
                   >
                     {option}
