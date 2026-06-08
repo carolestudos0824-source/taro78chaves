@@ -25,6 +25,7 @@ import {
   getArcanoFull
 } from "@/lib/content";
 import { useProgress } from "@/hooks/use-progress";
+import { useRitual } from "@/hooks/use-ritual";
 import { useAccess } from "@/hooks/use-access";
 import { useRole } from "@/hooks/use-role";
 import { useAuth } from "@/hooks/use-auth";
