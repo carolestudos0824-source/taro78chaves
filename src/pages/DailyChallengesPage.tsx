@@ -31,7 +31,17 @@ const todayStr = () => {
 };
 
 const DailyChallengesPage = () => {
-  console.log("[Ritual] Page mounted/rendered");
+  const { setHeaderState } = useHeader();
+  const location = useLocation();
+
+  useEffect(() => {
+    setHeaderState({
+      title: "Ritual Sagrado",
+      subtitle: "Sua Conexão Diária",
+      backRoute: "/app"
+    });
+  }, [setHeaderState]);
+
   const navigate = useNavigate();
   const { user } = useAuth();
   const { progress, addXP, updateStreak } = useProgress();
