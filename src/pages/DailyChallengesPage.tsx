@@ -134,32 +134,28 @@ const DailyChallengesPage = () => {
     setChallenges(prev => prev.map(c => c.id === id ? { ...c, completed: true } : c));
     setActiveChallenge(null);
 
-    addXP(challenge.xp);
-    updateStreak();
+    // Update new ritual system
+    await completeRitualItem(id);
 
     if (user) {
       const payload = {
         user_id: user.id,
         challenge_id: id,
         challenge_date: todayStr(),
-        xp_earned: challenge.xp
+        xp_earned: 0 // XP disabled
       };
       
-      console.log("[Ritual] Saving to Supabase:", payload);
+      console.log("[Ritual] Saving completion:", payload);
       
       const { error } = await supabase
         .from("daily_challenge_completions")
         .insert(payload);
 
       if (error) {
-        console.error("[Ritual] Supabase INSERT error:", error);
-        toast.error("Erro ao salvar progresso. Verifique sua conexão.");
-      } else {
-        console.log("[Ritual] Supabase INSERT success");
-        toast.success("Portal selado com sucesso!");
+        console.error("[Ritual] Error saving completion:", error);
       }
     }
-  }, [challenges, user, addXP, updateStreak]);
+  }, [challenges, user, completeRitualItem]);
 
   return (
     <div className="min-h-screen relative overflow-x-hidden bg-[#FAF5EF]">
