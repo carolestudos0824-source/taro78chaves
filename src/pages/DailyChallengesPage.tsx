@@ -5,6 +5,7 @@ import { useRitual } from "@/hooks/use-ritual";
 import { useHeader } from "@/contexts/header-context";
 import { TarotIcon } from "@/components/TarotIcon";
 import { getDailyArcanaSet } from "@/lib/content/arcana-utils";
+import { resolveMaiorVisual } from "@/lib/content/visual-registry";
 import { useProgress } from "@/hooks/use-progress";
 import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
@@ -193,13 +194,37 @@ const DailyChallengesPage = () => {
         backdropFilter: "blur(24px)",
         boxShadow: "0 15px 50px rgba(91, 31, 61, 0.08)"
       }}>
-        <div className="max-w-lg mx-auto pt-8 pb-10 px-6 text-center">
-          <h1 className="font-heading text-4xl md:text-6xl font-black tracking-tighter mb-4 text-plum">
-            Leitura Diária
-          </h1>
-          <p className="font-body text-[14px] font-black uppercase tracking-[0.3em] text-gold">
-            Faça sua prática de hoje.
-          </p>
+        <div className="max-w-lg mx-auto pt-8 pb-10 px-6 text-center space-y-6">
+          <div className="space-y-2">
+            <h1 className="font-heading text-4xl md:text-6xl font-black tracking-tighter text-plum">
+              Leitura Diária
+            </h1>
+            <p className="font-body text-[14px] font-black uppercase tracking-[0.3em] text-gold">
+              Faça sua prática de hoje.
+            </p>
+          </div>
+
+          {/* Tríade do Ritual de Hoje */}
+          <div className="space-y-4 pt-2">
+            <div className="flex items-center justify-center gap-3">
+              <div className="h-px w-8 bg-gold/30" />
+              <span className="text-[9px] font-heading font-black tracking-[0.3em] text-gold uppercase">Tríade do Ritual de Hoje</span>
+              <div className="h-px w-8 bg-gold/30" />
+            </div>
+            
+            <div className="flex justify-center -space-x-4">
+              {ritualTriad.map((card, idx) => (
+                <div 
+                  key={card.id} 
+                  className={`w-14 md:w-16 aspect-[2/3.5] rounded-lg overflow-hidden border-2 border-gold/40 shadow-xl bg-ivory transition-transform hover:scale-110 hover:z-30 origin-bottom ${
+                    idx === 0 ? '-rotate-6' : idx === 2 ? 'rotate-6' : 'z-20 scale-110'
+                  }`}
+                >
+                  <img src={card.image} alt={card.name} className="w-full h-full object-cover" title={card.name} />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </header>
 
