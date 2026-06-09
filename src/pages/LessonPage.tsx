@@ -342,9 +342,19 @@ const LessonPage = () => {
                 <blockquote className="font-accent italic text-2xl leading-[1.7] pl-6 border-l-4 border-[#C8A66A] text-[#5B1F3D] font-bold">
                   {arcano.voiceText}
                 </blockquote>
-                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
-                  Continuar para Aplicações
-                </Button>
+                {arcano.id === 0 && arcano.quiz[5] && (
+                  <div className="pt-4">
+                    <QuizSection
+                      questions={[arcano.quiz[5]]}
+                      onComplete={goNext}
+                    />
+                  </div>
+                )}
+                {(!arcano.id === 0 || !arcano.quiz[5]) && (
+                  <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
+                    Continuar para Aplicações
+                  </Button>
+                )}
               </div>
             </div>
           )}
