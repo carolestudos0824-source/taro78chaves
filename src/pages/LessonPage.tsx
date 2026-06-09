@@ -14,7 +14,7 @@ import { DeepDiveSection } from "@/components/DeepDiveSection";
 import { ExerciseSection } from "@/components/ExerciseSection";
 import { QuizSection } from "@/components/QuizSection";
 import PremiumGate from "@/components/PremiumGate";
-import { ArrowLeft, ArrowRight, Check, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Sparkles, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useHeader } from "@/contexts/header-context";
 import { PhaseIndicator } from "@/components/arcano-vivo/PhaseIndicator";
@@ -44,7 +44,8 @@ type LessonPhase =
   | "voz" 
   | "aplicacoes" 
   | "quiz" 
-  | "complete";
+  | "complete"
+  | "legacy-content"; // NEW: To show preserved original content if it was not in cards
 
 const PHASE_ORDER: LessonPhase[] = [
   "intro",
@@ -55,7 +56,8 @@ const PHASE_ORDER: LessonPhase[] = [
   "voz",
   "aplicacoes",
   "quiz",
-  "complete"
+  "complete",
+  "legacy-content"
 ];
 
 const PHASE_LABEL: Record<LessonPhase, string> = {
@@ -68,6 +70,7 @@ const PHASE_LABEL: Record<LessonPhase, string> = {
   aplicacoes: "Aplicações",
   quiz: "Quiz Final",
   complete: "Conclusão",
+  "legacy-content": "Estudo Completo",
 };
 
 const LessonPage = () => {
@@ -342,15 +345,30 @@ const LessonPage = () => {
                 <blockquote className="font-accent italic text-2xl leading-[1.7] pl-6 border-l-4 border-[#C8A66A] text-[#5B1F3D] font-bold">
                   {arcano.voiceText}
                 </blockquote>
-                {arcano.id === 0 && arcano.quiz[5] && (
-                  <div className="pt-4">
+                
+                {arcano.id === 0 && (
+                  <div className="pt-6 space-y-6">
+                    <div className="h-px bg-[#C8A66A]/20" />
                     <QuizSection
-                      questions={[arcano.quiz[5]]}
+                      questions={[{
+                        id: "fool-pilot-6",
+                        type: "multiple-choice",
+                        question: "O que O Louco mais pediria de você neste momento?",
+                        options: [
+                          "Um plano de 10 anos detalhado.",
+                          "Um passo de fé e abertura para o novo.",
+                          "Que você ficasse onde está para evitar erros.",
+                          "Que você seguisse as regras de todos."
+                        ],
+                        correctIndex: 1,
+                        explanation: "Exato. O Louco pede o desapego das garantias para que a vida aconteça.",
+                      }]}
                       onComplete={goNext}
                     />
                   </div>
                 )}
-                {(arcano.id !== 0 || !arcano.quiz[5]) && (
+
+                {arcano.id !== 0 && (
                   <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
                     Continuar para Aplicações
                   </Button>
@@ -394,6 +412,40 @@ const LessonPage = () => {
               <QuizSection
                 questions={arcano.quiz}
                 onComplete={handleQuizComplete}
+              />
+              
+              <div className="mt-12 pt-8 border-t border-[#C8A66A]/20">
+                <button 
+                  onClick={() => {
+                    setPhaseIdx(PHASE_ORDER.indexOf("legacy-content"));
+                    window.scrollTo(0, 0);
+                  }}
+                  className="w-full py-4 rounded-xl border border-[#C8A66A]/30 font-heading text-[10px] font-black tracking-widest uppercase text-[#5B1F3D]/60 hover:text-[#5B1F3D] hover:bg-white transition-all flex items-center justify-center gap-2"
+                >
+                  <BookOpen className="w-3.5 h-3.5" />
+                  Ver explicação completa do arcano
+                </button>
+              </div>
+            </div>
+          )}
+
+          {phase === "legacy-content" && (
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                subtitle="Estudo Completo"
+              />
+              <LessonContent 
+                sections={arcano.lessonSections}
+                essence={arcano.layers.main.essence}
+                light={arcano.layers.main.light}
+                shadow={arcano.layers.main.shadow}
+                onComplete={() => setPhaseIdx(PHASE_ORDER.indexOf("quiz"))}
+                onGoDeepDive={() => {}}
+                onGoExercise={() => {}}
+                onSkipToQuiz={() => setPhaseIdx(PHASE_ORDER.indexOf("quiz"))}
               />
             </div>
           )}
