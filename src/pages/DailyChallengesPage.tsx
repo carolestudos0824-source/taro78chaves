@@ -419,36 +419,108 @@ const DailyChallengesPage = () => {
 
 interface ChallengeModalProps {
   challenge: DailyChallengeItem;
-  data: any;
+  data: {
+    carta: CartaDoDia | null;
+    perguntas: PerguntasDoDia;
+    simbolo: SimboloDoDia | null;
+    combinacao: CombinacaoDoDia | null;
+    interpretacao: MiniInterpretacao | null;
+  };
   onComplete: () => void;
   onClose: () => void;
 }
 
-const ChallengeModal = ({ challenge, data, onComplete, onClose }: ChallengeModalProps) => (
-  <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-plum/80 backdrop-blur-md">
-    <div className="bg-white w-full max-w-lg rounded-[3rem] border-4 border-gold shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
-      <div className="p-8 text-center space-y-6">
-        <div className="w-20 h-20 bg-gold/10 rounded-3xl flex items-center justify-center mx-auto text-plum border-2 border-gold shadow-xl">
-           <TarotIcon name={challenge.icon} className="w-12 h-12" />
+const ChallengeModal = ({ challenge, data, onComplete, onClose }: ChallengeModalProps) => {
+  const [step, setStep] = useState<"initial" | "contemplated">("initial");
+
+  if (challenge.type === "carta-do-dia") {
+    const carta = data.carta;
+    const visual = resolveMaiorVisual(carta?.arcanoId ?? 0);
+    const imageUrl = visual.resolvedAssetUrl;
+
+    return (
+      <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-plum/90 backdrop-blur-xl animate-in fade-in duration-300">
+        <div className="bg-white w-full max-w-lg rounded-[3rem] border-4 border-gold shadow-2xl overflow-hidden animate-in zoom-in-95 duration-500">
+          <div className="p-8 md:p-10 text-center space-y-8">
+            <div className="space-y-2">
+              <h2 className="text-[10px] font-heading font-black text-gold uppercase tracking-[0.4em]">Carta do Dia</h2>
+              <h3 className="text-3xl font-heading font-black text-plum">{carta?.name || "O Louco"}</h3>
+            </div>
+
+            <div className="relative group flex justify-center">
+              <div className="w-48 md:w-56 aspect-[2/3.5] rounded-2xl overflow-hidden border-4 border-gold shadow-2xl bg-ivory transform transition-transform duration-700 group-hover:scale-105">
+                <img 
+                  src={imageUrl || ""} 
+                  alt={carta?.name || "O Louco"} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            <div className="min-h-[80px] flex items-center justify-center px-6">
+              {step === "initial" ? (
+                <p className="font-body text-[15px] font-black text-plum/80 uppercase tracking-tighter leading-relaxed">
+                  Observe o símbolo central deste arcano antes de seguir.
+                </p>
+              ) : (
+                <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-700">
+                  <p className="font-body text-[14px] font-black text-plum italic uppercase tracking-tighter leading-relaxed">
+                    "{carta?.essence || "Um novo começo se apresenta."}"
+                  </p>
+                  <p className="font-body text-[13px] font-black text-plum/60 uppercase tracking-widest">
+                    O portal está pronto para ser selado.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            <div className="flex flex-col gap-3 pt-4">
+              {step === "initial" ? (
+                <button 
+                  onClick={() => setStep("contemplated")}
+                  className="w-full py-5 bg-plum text-white rounded-2xl font-heading text-[11px] font-black tracking-[0.3em] uppercase shadow-xl hover:bg-plum/90 transition-all active:scale-95"
+                >
+                  Contemplar
+                </button>
+              ) : (
+                <button 
+                  onClick={onComplete}
+                  className="w-full py-5 bg-gold text-plum rounded-2xl font-heading text-[11px] font-black tracking-[0.3em] uppercase shadow-xl hover:scale-105 transition-all active:scale-95"
+                >
+                  Selar Portal
+                </button>
+              )}
+              <button onClick={onClose} className="w-full py-3 text-plum/40 font-heading text-[10px] font-black uppercase tracking-widest hover:text-plum transition-colors">
+                Agora não
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="space-y-2">
-          <h2 className="text-3xl font-heading font-black text-plum">{challenge.title}</h2>
-          <p className="font-body text-plum/60 italic">{challenge.subtitle}</p>
-        </div>
-        <div className="p-6 bg-gold/5 rounded-2xl border border-gold/20 min-h-[100px] flex items-center justify-center text-plum font-body font-black uppercase tracking-widest text-[13px]">
-          [ Ritual em Processo ]
-        </div>
-        <div className="flex flex-col gap-3">
-          <button onClick={onComplete} className="w-full py-5 bg-plum text-white rounded-2xl font-heading text-[11px] font-black tracking-[0.3em] uppercase shadow-xl hover:bg-plum/90 transition-all">
+      </div>
+    );
+  }
+
+  // Fallback for other challenge types (keep existing logic simplified)
+  return (
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-plum/80 backdrop-blur-md">
+      <div className="bg-white w-full max-w-lg rounded-[3rem] border-4 border-gold shadow-2xl overflow-hidden">
+        <div className="p-8 text-center space-y-6">
+          <div className="w-20 h-20 bg-gold/10 rounded-3xl flex items-center justify-center mx-auto text-plum border-2 border-gold shadow-xl">
+             <TarotIcon name={challenge.icon} className="w-12 h-12" />
+          </div>
+          <div className="space-y-2">
+            <h2 className="text-3xl font-heading text-plum">{challenge.title}</h2>
+          </div>
+          <button onClick={onComplete} className="w-full py-5 bg-plum text-white rounded-2xl font-heading text-[11px] font-black uppercase">
             Selar Portal
           </button>
-          <button onClick={onClose} className="w-full py-3 text-plum/40 font-heading text-[10px] font-black uppercase tracking-widest hover:text-plum transition-colors">
+          <button onClick={onClose} className="w-full py-3 text-plum/40 font-heading text-[10px] uppercase">
             Agora não
           </button>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default DailyChallengesPage;
