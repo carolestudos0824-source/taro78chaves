@@ -71,7 +71,7 @@ const TrailsPage = () => {
   const { progress } = useProgress();
   const { bypassLocks } = useAccess();
   const { setHeader, resetHeader } = useHeader();
-  const arcanoZeroRef = useRef<HTMLButtonElement>(null);
+  const arcanoZeroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setHeader({
@@ -82,15 +82,16 @@ const TrailsPage = () => {
 
     // Check for focus parameter to scroll to start
     if (searchParams.get("focus") === "arcano-0") {
-      // Delay slightly to ensure layout is ready
-      setTimeout(() => {
-        if (arcanoZeroRef.current) {
-          arcanoZeroRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Delay slightly to ensure JourneyMap is rendered
+      const timer = setTimeout(() => {
+        const element = document.getElementById("arcano-0");
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
-          // Fallback if ref isn't attached or found
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-      }, 300);
+      }, 500);
+      return () => clearTimeout(timer);
     }
 
     return () => resetHeader();
