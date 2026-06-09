@@ -310,7 +310,7 @@ const DashboardPage = () => {
                    <div className="w-8 h-px bg-gold/40" />
                    <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Caminho do Iniciado</span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-plum tracking-tight leading-tight">Sua Jornada</h2>
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-plum tracking-tight leading-tight">TESTE JORNADA</h2>
               </div>
 
               {currentStep && (
