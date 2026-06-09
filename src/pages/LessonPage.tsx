@@ -369,11 +369,8 @@ const LessonPage = () => {
               </div>
             </div>
           )}
-                  Iniciar Quiz Final
-                </Button>
-              </div>
-            </div>
-          )}
+
+
 
 
           {phase === "quiz" && (
