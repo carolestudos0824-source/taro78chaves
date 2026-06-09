@@ -11,64 +11,63 @@ export const O_LOUCO: ArcanoMaiorEditorial = {
   keywords: ["Liberdade", "Coragem", "Travessia", "Impulso", "Desapego"],
 
   essence:
-    "O Louco é o Arcano Zero — o vazio fértil, o potencial puro antes de qualquer manifestação. Ele representa começo, liberdade, risco e abertura para o desconhecido.",
+    "O Louco é o impulso antes da certeza. Ele representa começo, liberdade, risco e abertura para o desconhecido.",
 
   symbols: [
-    { name: "Penhasco", meaning: "Risco, travessia, passo sem garantia" },
-    { name: "Trouxa", meaning: "Karma e experiências que carregamos sem consciência" },
-    { name: "Cachorro", meaning: "Instinto protetor que acompanha o salto" },
-    { name: "Sol", meaning: "Confiança cósmica e apoio do universo" },
-    { name: "Montanhas", meaning: "Desafios superados ou alturas da sabedoria" },
-    { name: "Gesto corporal", meaning: "Entrega total e disponibilidade para o novo" },
+    { name: "Penhasco", meaning: "Risco, travessia, passo sem garantia." },
+    { name: "Trouxa", meaning: "Experiências e o que carregamos." },
+    { name: "Cachorro", meaning: "Instinto protetor." },
+    { name: "Sol", meaning: "Confiança cósmica." },
+    { name: "Montanhas", meaning: "Alturas da sabedoria." },
+    { name: "Gesto corporal", meaning: "Entrega total." },
   ],
 
   archetype:
-    "O Buscador, o Viajante, o Inocente Sábio — aquele que caminha sem mapa, guiado pela fé no desconhecido.",
+    "O Buscador, o Inocente Sábio — aquele que caminha guiado pela fé no desconhecido.",
 
   light:
-    "Na luz, o Louco traz espontaneidade, fé, coragem e disponibilidade para viver uma nova experiência.",
+    "Na luz, O Louco traz espontaneidade, fé, coragem e disponibilidade para viver uma nova experiência.",
 
   shadow:
-    "Na sombra, o Louco pode virar fuga, imprudência, ingenuidade ou falta de compromisso.",
+    "Na sombra, O Louco pode virar fuga, imprudência, ingenuidade ou falta de compromisso.",
 
   initiationLesson:
-    "A lição do Louco é aprender que a jornada importa mais do que o destino. Ele nos convida a abandonar o controle e permitir que a vida nos surpreenda.",
+    "A lição do Louco é aprender que a jornada importa mais do que o destino. Ele nos convida a abandonar o controle.",
 
   love: {
-    light: "Inícios emocionantes, paixão espontânea e vínculos que renascem sem roteiros antigos.",
-    shadow: "Idealização excessiva, medo de compromisso real ou saltar de paixão em paixão sem aprofundar.",
+    light: "Inícios emocionantes e paixão espontânea.",
+    shadow: "Medo de compromisso real ou fuga emocional.",
   },
 
   work: {
-    light: "Novos projetos, mudança de carreira, ideias fora da caixa e a coragem de seguir um chamado.",
-    shadow: "Planos sem estrutura, riscos mal calculados ou falta de compromisso com o processo.",
+    light: "Novos projetos e a coragem de seguir um chamado.",
+    shadow: "Planos sem estrutura ou riscos mal calculados.",
   },
 
   spirituality: {
-    light: "O buscador eterno, aberto a novas formas de conexão com o sagrado sem dogmas fixos.",
-    shadow: "Dispersão espiritual, saltar de tradição em tradição como fuga da realidade material.",
+    light: "O buscador eterno, aberto ao sagrado sem dogmas fixos.",
+    shadow: "Dispersão espiritual como fuga da realidade.",
   },
 
   voice: {
     intro: "Eu sou o Louco. O impulso antes da certeza.",
-    fullText: "Eu sou o Louco. Sou o primeiro passo antes da garantia. Eu não prometo segurança. Eu ensino travessia e coragem.",
+    fullText: "O que eu pediria de você neste momento? Apenas um passo de fé.",
   },
 
   deepDive: {
-    text: "O Louco é o Arcano número 0. Ele não está no início nem no fim; está em toda parte e em lugar nenhum.",
-    symbolism: "A trouxa representa o karma. O precipício não é queda: é fé.",
-    cabala: "Corresponde à letra Aleph (א), o sopro primordial e a respiração da criação.",
-    history: "Historicamente, o Louco era o bobo da corte que podia dizer verdades incômodas.",
+    text: "O Louco é o Arcano 0, o vazio fértil onde tudo começa.",
+    symbolism: "A trouxa é o passado que não nos pesa mais.",
+    cabala: "Letra Aleph (א), o sopro da vida.",
+    history: "Historicamente, o bobo que diz a verdade.",
   },
 
   reflectionQuestions: [
     { id: "louco-r1", question: "Se eu não tivesse medo, o que eu faria agora?" },
-    { id: "louco-r2", question: "Que primeiro passo estou adiando por excesso de controle?" },
   ],
 
   quiz: [
     {
-      id: "fool-q-essencia",
+      id: "fool-pilot-1",
       type: "multiple-choice",
       question: "Quando a energia do Louco ajuda mais?",
       options: [
@@ -78,10 +77,11 @@ export const O_LOUCO: ArcanoMaiorEditorial = {
         "Quando o objetivo final já está concluído."
       ],
       correctIndex: 1,
-      explanation: "Não é isso. O Louco não fala de controle rígido. Ele fala de abertura, movimento e coragem diante do desconhecido.",
+      explanation: "Correto. O Louco é a coragem do início, mesmo diante do incerto.",
+      incorrectExplanation: "Não é isso. O Louco não fala de controle rígido. Ele fala de abertura, movimento e coragem diante do desconhecido.",
     },
     {
-      id: "fool-q-luz",
+      id: "fool-pilot-2",
       type: "multiple-choice",
       question: "Selecione a opção que melhor representa a LUZ do Louco:",
       options: [
@@ -91,36 +91,36 @@ export const O_LOUCO: ArcanoMaiorEditorial = {
         "Fuga de responsabilidades reais."
       ],
       correctIndex: 1,
-      explanation: "Correto. Na luz, O Louco traz a pureza do começo e a fé na jornada.",
+      explanation: "Perfeito. A luz do Louco é a disponibilidade plena para a vida.",
     },
     {
-      id: "fool-q-sombra",
+      id: "fool-pilot-3",
       type: "multiple-choice",
-      question: "Uma pessoa começa vários cursos e não termina nenhum, fugindo sempre que fica difícil. Isso é:",
+      question: "Situação: Alguém abandona um projeto no meio por puro tédio, sem concluir nada. Isso é:",
       options: [
         "O Louco na luz (liberdade).",
-        "O Louco na sombra (fuga e falta de foco).",
-        "O Mago em ação.",
-        "O Eremita em busca."
+        "O Louco na sombra (imprudência e falta de compromisso).",
+        "O Louco no equilíbrio.",
+        "O Mago em ação."
       ],
       correctIndex: 1,
-      explanation: "Exato. Na sombra, a energia do Louco se perde na falta de compromisso e na fuga.",
+      explanation: "Correto. Na sombra, a liberdade do Louco torna-se irresponsabilidade.",
     },
     {
-      id: "fool-q-simbolo",
+      id: "fool-pilot-4",
       type: "multiple-choice",
-      question: "O que o PENHASCO simboliza na carta do Louco?",
+      question: "Qual o significado canônico do PENHASCO no Rider-Waite-Smith?",
       options: [
-        "Uma queda inevitável e perigosa.",
-        "O fim de todas as possibilidades.",
-        "O limiar entre o conhecido e o desconhecido; a fé.",
-        "Um lugar para descansar e observar."
+        "Um perigo mortal que deve ser evitado.",
+        "O limiar entre o conhecido e o desconhecido; o risco.",
+        "Um lugar seguro para descansar.",
+        "O fim de toda a jornada."
       ],
-      correctIndex: 2,
-      explanation: "Penhasco = risco, travessia, passo sem garantia. É onde a fé é testada.",
+      correctIndex: 1,
+      explanation: "Exato. Penhasco = risco, travessia, passo sem garantia.",
     },
     {
-      id: "fool-q-pratico",
+      id: "fool-pilot-5",
       type: "multiple-choice",
       question: "Cliente pergunta: 'Ele vai me procurar?' Sai O Louco. Qual leitura é mais madura?",
       options: [
@@ -135,9 +135,9 @@ export const O_LOUCO: ArcanoMaiorEditorial = {
   ],
 
   quickReview: [
-    { keyword: "Essência", meaning: "Impulso, começo, liberdade" },
-    { keyword: "Luz", meaning: "Fé, coragem, espontaneidade" },
-    { keyword: "Sombra", meaning: "Fuga, imprudência, instabilidade" },
+    { keyword: "Essência", meaning: "Impulso e começo" },
+    { keyword: "Luz", meaning: "Fé e coragem" },
+    { keyword: "Sombra", meaning: "Fuga e imprudência" },
   ],
 
   symbolsMap: [
@@ -151,9 +151,37 @@ export const O_LOUCO: ArcanoMaiorEditorial = {
     {
       id: "trouxa",
       name: "A Trouxa",
-      description: "Karma e experiências que carregamos.",
-      reflectionQuestion: "O que você ainda carrega que não te serve?",
+      description: "Experiências e o que carregamos.",
+      reflectionQuestion: "O que você ainda carrega?",
       position: { x: 35, y: 40 }
+    },
+    {
+      id: "cachorro",
+      name: "O Cachorro",
+      description: "Instinto protetor que acompanha o salto.",
+      reflectionQuestion: "Seus instintos estão te alertando ou te guiando?",
+      position: { x: 65, y: 70 }
+    },
+    {
+      id: "sol",
+      name: "O Sol",
+      description: "Confiança cósmica e apoio do universo.",
+      reflectionQuestion: "Você confia que o universo te sustenta?",
+      position: { x: 15, y: 15 }
+    },
+    {
+      id: "montanhas",
+      name: "As Montanhas",
+      description: "Desafios superados ou sabedoria distante.",
+      reflectionQuestion: "Quais alturas você deseja alcançar?",
+      position: { x: 80, y: 35 }
+    },
+    {
+      id: "gesto",
+      name: "O Gesto Corporal",
+      description: "Entrega total e disponibilidade para o novo.",
+      reflectionQuestion: "Você está realmente aberta para o que vem?",
+      position: { x: 45, y: 25 }
     }
   ],
 };
