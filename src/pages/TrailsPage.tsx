@@ -274,6 +274,8 @@ const TrailsPage = () => {
                     return (
                       <button
                         key={mod.id}
+                        id={modId === "fundamentos" ? "arcano-0" : undefined}
+                        ref={modId === "fundamentos" ? arcanoZeroRef : undefined}
                         disabled={!unlocked}
                         onClick={() => navigate(mod.route)}
                         className={`group/mod relative w-full flex flex-col sm:flex-row items-center sm:items-center text-left transition-all duration-500 rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 border-2 ${
