@@ -117,8 +117,25 @@ const FoolsJourneyPage = () => {
           </div>
         </section>
 
+        {/* Internal Navigation Chips */}
+        <div className="sticky top-20 z-30 mb-8 -mx-6 px-6 py-3 bg-[#FAF5EF]/80 backdrop-blur-md border-y border-[#C8A66A]/10 overflow-x-auto scrollbar-hide flex items-center gap-3 no-scrollbar">
+          {fases.map((phase) => (
+            <button
+              key={phase.id}
+              onClick={() => {
+                const el = document.getElementById(phase.slug);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="whitespace-nowrap px-4 py-1.5 rounded-full text-[10px] font-heading font-black uppercase tracking-widest border border-[#C8A66A]/30 bg-white shadow-sm transition-all hover:border-[#C8A66A] active:scale-95"
+              style={{ color: "#5B1F3D" }}
+            >
+              {phase.titulo}
+            </button>
+          ))}
+        </div>
+
         {/* Introduction Editorial Card */}
-        <section className="mb-14">
+        <section className="mb-14" id="inicio">
           <div className="relative rounded-[2rem] p-8 md:p-10 shadow-2xl overflow-hidden" style={{
             background: "#FAF5EF",
             border: "2px solid rgba(200, 166, 106, 0.4)",
@@ -164,7 +181,8 @@ const FoolsJourneyPage = () => {
           return (
             <section
               key={phase.id}
-              className="mb-14"
+              id={phase.slug}
+              className="mb-14 scroll-mt-24"
               style={{ opacity: 1 }}
             >
               {/* Phase header */}
@@ -188,25 +206,25 @@ const FoolsJourneyPage = () => {
                   <span className="text-2xl" style={{ color: colors.main }}>{phase.simbolo}</span>
                 </div>
                 <div className="flex items-center justify-center gap-2 mb-2">
-                  <span className="text-[10px] font-heading font-bold tracking-[0.3em] uppercase" style={{ color: colors.main }}>
+                  <span className="text-[11px] font-heading font-black tracking-[0.3em] uppercase" style={{ color: colors.main }}>
                     Fase {phaseIndex + 1}
                   </span>
                 </div>
-                <h2 className="font-heading text-xl tracking-wide mb-2" style={{ color: "#3D1429" }}>
+                <h2 className="font-heading text-2xl tracking-wide mb-2" style={{ color: "#3D1429" }}>
                   {phase.titulo}
                 </h2>
-                <p className="font-accent text-base italic" style={{ color: "#5B1F3D" }}>
+                <p className="font-accent text-lg italic" style={{ color: "#5B1F3D" }}>
                   {phase.subtitulo}
                 </p>
               </div>
 
               {/* Phase description */}
-              <div className="rounded-2xl p-6 mb-8 shadow-md" style={{
+              <div className="rounded-2xl p-7 md:p-8 mb-8 shadow-md" style={{
                 background: "#FAF5EF",
                 border: `2px solid ${colors.border}`,
                 boxShadow: "0 8px 30px rgba(91, 31, 61, 0.08)"
               }}>
-                <p className="font-body text-sm leading-[1.85] font-semibold" style={{ color: "#3D1429" }}>
+                <p className="font-body text-[15px] md:text-[16px] leading-[1.85] font-medium" style={{ color: "#3D1429" }}>
                   {phase.descricao}
                 </p>
               </div>
@@ -230,10 +248,10 @@ const FoolsJourneyPage = () => {
                         className="rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-xl hover:border-[#C8A66A]/80"
                         style={{
                           background: "#FFFFFF",
-                          border: `1px solid rgba(200, 166, 106, 0.6)`,
+                          border: `1.5px solid rgba(200, 166, 106, 0.4)`,
                         }}
                       >
-                        <div className={`p-4 flex gap-5 ${!isEven ? 'flex-row-reverse' : ''} items-center`}>
+                        <div className={`p-5 md:p-7 flex gap-6 ${!isEven ? 'flex-row-reverse' : ''} items-center`}>
                           {/* Arcano Visual / Card Image */}
                           <div 
                             className="w-24 h-36 rounded-lg shrink-0 overflow-hidden relative shadow-lg border-2 border-[#C8A66A]/40 group-hover:scale-105 transition-transform duration-500"
@@ -283,13 +301,13 @@ const FoolsJourneyPage = () => {
                               ))}
                             </div>
                             <p
-                              className="font-accent text-[13px] md:text-[15px] italic mb-2 font-bold leading-tight"
-                              style={{ color: "#5B1F3D" }}
+                              className="font-accent text-[15px] md:text-[17px] italic mb-3 font-bold leading-tight"
+                              style={{ color: "#3D1429" }}
                             >
                               {arcano.papel}
                             </p>
                             <p
-                              className="font-body text-[12px] md:text-[13px] leading-relaxed line-clamp-2 md:line-clamp-3 font-semibold"
+                              className="font-body text-[14px] md:text-[15px] leading-relaxed line-clamp-2 md:line-clamp-4 font-medium"
                               style={{ color: "#3D1429" }}
                             >
                               {arcano.textoNarrativo}
