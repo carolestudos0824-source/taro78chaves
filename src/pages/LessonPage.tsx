@@ -397,6 +397,35 @@ const LessonPage = () => {
                 questions={arcano.quiz}
                 onComplete={handleQuizComplete}
               />
+              <div className="mt-12 pt-12 border-t border-[#C8A66A]/20">
+                <button 
+                  onClick={() => setPhaseIdx(PHASE_ORDER.indexOf("legacy-content"))}
+                  className="w-full py-4 text-[10px] font-heading font-black tracking-widest uppercase text-[#C8A66A]/60 hover:text-[#C8A66A] transition-colors"
+                >
+                  Ver explicação completa do arcano
+                </button>
+              </div>
+            </div>
+          )}
+
+          {phase === "legacy-content" && (
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                subtitle="Estudo Completo"
+              />
+              <LessonContent 
+                sections={arcano.lessonSections}
+                essence={arcano.layers.main.essence}
+                light={arcano.layers.main.light}
+                shadow={arcano.layers.main.shadow}
+                onComplete={() => setPhaseIdx(PHASE_ORDER.indexOf("quiz"))}
+                onGoDeepDive={() => {}}
+                onGoExercise={() => {}}
+                onSkipToQuiz={() => setPhaseIdx(PHASE_ORDER.indexOf("quiz"))}
+              />
             </div>
           )}
 
