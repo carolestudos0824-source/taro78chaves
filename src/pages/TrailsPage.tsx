@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Lock, Check, Sparkles, ChevronRight, Key, Play } from "lucide-react";
 import { TarotIcon } from "@/components/TarotIcon";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { useHeader } from "@/contexts/header-context";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { MODULES_CATALOG as MODULES } from "@/lib/content";
 import imgLouco from "@/assets/arcano-0-louco.jpg";
 import imgMago from "@/assets/arcano-1-mago.jpg";
@@ -67,9 +67,11 @@ const TRAIL_LEVELS: TrailLevel[] = [
 
 const TrailsPage = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { progress } = useProgress();
   const { bypassLocks } = useAccess();
   const { setHeader, resetHeader } = useHeader();
+  const arcanoZeroRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setHeader({
@@ -77,8 +79,23 @@ const TrailsPage = () => {
       subtitle: "Sua travessia pelos 78 arcanos.",
       backRoute: "/app"
     });
+
+    // Check for focus parameter to scroll to start
+    if (searchParams.get("focus") === "arcano-0") {
+      // Delay slightly to ensure JourneyMap is rendered
+      const timer = setTimeout(() => {
+        const element = document.getElementById("arcano-0");
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+
     return () => resetHeader();
-  }, [setHeader, resetHeader]);
+  }, [setHeader, resetHeader, searchParams]);
 
   const isLevelComplete = (level: TrailLevel) => 
     level.modules.every(m => progress.completedModules.includes(m));
@@ -258,6 +275,8 @@ const TrailsPage = () => {
                     return (
                       <button
                         key={mod.id}
+                        id={modId === "fundamentos" ? "arcano-0" : undefined}
+                        ref={modId === "fundamentos" ? arcanoZeroRef : undefined}
                         disabled={!unlocked}
                         onClick={() => navigate(mod.route)}
                         className={`group/mod relative w-full flex flex-col sm:flex-row items-center sm:items-center text-left transition-all duration-500 rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 border-2 ${
