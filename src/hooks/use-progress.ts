@@ -508,8 +508,9 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
 
 
   const completeOnboarding = useCallback(() => {
+    if (isStaff) return;
     setProgress((prev) => ({ ...prev, onboardingCompleted: true }));
-  }, []);
+  }, [isStaff]);
 
   const setStudentName = useCallback((name: string) => {
     setProgress((prev) => ({ ...prev, studentName: name }));
