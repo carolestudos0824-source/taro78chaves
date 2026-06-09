@@ -413,11 +413,16 @@ const LessonPage = () => {
                 questions={arcano.quiz}
                 onComplete={handleQuizComplete}
               />
-              <div className="mt-12 pt-12 border-t border-[#C8A66A]/20">
+              
+              <div className="mt-12 pt-8 border-t border-[#C8A66A]/20">
                 <button 
-                  onClick={() => setPhaseIdx(PHASE_ORDER.indexOf("legacy-content"))}
-                  className="w-full py-4 text-[10px] font-heading font-black tracking-widest uppercase text-[#C8A66A]/60 hover:text-[#C8A66A] transition-colors"
+                  onClick={() => {
+                    setPhaseIdx(PHASE_ORDER.indexOf("legacy-content"));
+                    window.scrollTo(0, 0);
+                  }}
+                  className="w-full py-4 rounded-xl border border-[#C8A66A]/30 font-heading text-[10px] font-black tracking-widest uppercase text-[#5B1F3D]/60 hover:text-[#5B1F3D] hover:bg-white transition-all flex items-center justify-center gap-2"
                 >
+                  <BookOpen className="w-3.5 h-3.5" />
                   Ver explicação completa do arcano
                 </button>
               </div>
