@@ -190,6 +190,11 @@ const CombinacoesPage = () => {
                           background: "rgba(250, 245, 239, 0.8)",
                           border: "1px solid #C8A66A40",
                         }
+                      : unlocked
+                      ? {
+                          background: "#FFFFFF",
+                          border: "1px solid #C8A66A30",
+                        }
                       : {
                           background: "rgba(220, 207, 194, 0.3)",
                           border: "1px solid #D1C4B560",
