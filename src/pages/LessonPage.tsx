@@ -345,15 +345,30 @@ const LessonPage = () => {
                 <blockquote className="font-accent italic text-2xl leading-[1.7] pl-6 border-l-4 border-[#C8A66A] text-[#5B1F3D] font-bold">
                   {arcano.voiceText}
                 </blockquote>
-                {arcano.id === 0 && arcano.quiz[5] && (
-                  <div className="pt-4">
+                
+                {arcano.id === 0 && (
+                  <div className="pt-6 space-y-6">
+                    <div className="h-px bg-[#C8A66A]/20" />
                     <QuizSection
-                      questions={[arcano.quiz[5]]}
+                      questions={[{
+                        id: "fool-pilot-6",
+                        type: "multiple-choice",
+                        question: "O que O Louco mais pediria de você neste momento?",
+                        options: [
+                          "Um plano de 10 anos detalhado.",
+                          "Um passo de fé e abertura para o novo.",
+                          "Que você ficasse onde está para evitar erros.",
+                          "Que você seguisse as regras de todos."
+                        ],
+                        correctIndex: 1,
+                        explanation: "Exato. O Louco pede o desapego das garantias para que a vida aconteça.",
+                      }]}
                       onComplete={goNext}
                     />
                   </div>
                 )}
-                {(arcano.id !== 0 || !arcano.quiz[5]) && (
+
+                {arcano.id !== 0 && (
                   <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
                     Continuar para Aplicações
                   </Button>
