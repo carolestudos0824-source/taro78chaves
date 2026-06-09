@@ -44,7 +44,8 @@ type LessonPhase =
   | "voz" 
   | "aplicacoes" 
   | "quiz" 
-  | "complete";
+  | "complete"
+  | "legacy-content"; // NEW: To show preserved original content if it was not in cards
 
 const PHASE_ORDER: LessonPhase[] = [
   "intro",
