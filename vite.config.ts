@@ -51,6 +51,7 @@ export default defineConfig(({ mode }) => ({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff,woff2}'],
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         // Ensure we don't cache sensitive API routes or Stripe/Supabase domains
         navigateFallbackDenylist: [/^\/api/, /^\/auth/, /^\/checkout/, /^\/portal/],
         runtimeCaching: [
