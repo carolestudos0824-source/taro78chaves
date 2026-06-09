@@ -1710,6 +1710,8 @@ export type Database = {
         Args: { a: Database["public"]["Tables"]["cms_arcanos"]["Row"] }
         Returns: number
       }
+      complete_lesson_v2: { Args: { _lesson_id: string }; Returns: undefined }
+      complete_module_v2: { Args: { _module_id: string }; Returns: undefined }
       has_role:
         | {
             Args: {
