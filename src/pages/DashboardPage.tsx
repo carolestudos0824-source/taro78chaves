@@ -151,6 +151,9 @@ const DashboardPage = () => {
   return (
     <div className="min-h-screen bg-[#FAF5EF] relative overflow-x-hidden">
       <main className="container max-w-4xl px-4 pt-12 pb-[calc(180px+env(safe-area-inset-bottom))] space-y-12 animate-in fade-in duration-1000 relative">
+        <div className="bg-red-600 text-white text-4xl font-bold p-10 text-center z-[999] relative">
+          DEBUG ROTA APP REAL
+        </div>
 
         {/* Subtle decorative elements */}
         <div className="absolute top-0 left-1/4 w-64 h-64 bg-rose-200/20 blur-[100px] pointer-events-none" />
@@ -359,7 +362,7 @@ const DashboardPage = () => {
                   className="w-full py-5 rounded-[1.25rem] font-heading text-[11px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-plum text-white border-gold/30 hover:bg-[#45162D] relative z-[100]"
                 >
                   <span>
-                    {totalCompletedArcanos === 0 ? "Iniciar pelo Louco" : "Continuar jornada"}
+                    BOTAO CERTO JORNADA
                   </span>
                   <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform text-gold" />
                 </button>
