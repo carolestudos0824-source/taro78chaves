@@ -219,6 +219,12 @@ const CombinacoesPage = () => {
                               border: "1px solid #C8A66A",
                               color: "#C8A66A",
                             }
+                          : unlocked
+                          ? {
+                              background: "#FFFFFF",
+                              border: "1px solid #C8A66A40",
+                              color: "#5B1F3D",
+                            }
                           : {
                               background: "#DCCFC240",
                               border: "1px solid #DCCFC2",
