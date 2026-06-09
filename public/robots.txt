@@ -1,21 +1,15 @@
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /auth
-Disallow: /feedback
+Allow: /privacidade
+Allow: /termos
+Allow: /suporte
+Allow: /excluir-conta
+Disallow: /app
 Disallow: /perfil
+Disallow: /admin
+Disallow: /mapa
+Disallow: /auth
 Disallow: /lesson/*
 Disallow: /arcano-menor/*
 
-User-agent: Googlebot
-Allow: /
-Disallow: /admin
-Disallow: /auth
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-Sitemap: https://www.taro78chaves.com.br/sitemap.xml
+Sitemap: https://taro78chaves.lovable.app/sitemap.xml
