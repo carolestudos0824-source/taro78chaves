@@ -51,8 +51,8 @@ const DailyChallengesPage = () => {
   const { user } = useAuth();
   const { progress, updateStreak: updateOldStreak } = useProgress();
   const { streak: ritualStreak, todayProgress: ritualProgress, completeRitualItem, loading: ritualLoading, merits } = useRitual();
-  const { data: arcanos } = useArcanosList({ tipo: "maior" });
-  const { data: symbols } = useSymbolsContent();
+  const { data: arcanos, isLoading: arcanosLoading } = useArcanosList({ tipo: "maior" });
+  const { data: symbols, isLoading: symbolsLoading } = useSymbolsContent();
 
   const arcanosList = arcanos ?? [];
   const cartaDoDia = useMemo(() => buildCartaDoDia(arcanosList), [arcanosList]);
