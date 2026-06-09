@@ -14,6 +14,7 @@ import {
   DAILY_POSITIONS,
   DAILY_TITLES,
 } from "./pools";
+import { EDITORIAL_REGISTRY } from "@/data/arcanos";
 
 // ─── Tipos exportados (compat com a UI antiga) ───
 
