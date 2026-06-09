@@ -51,14 +51,13 @@ export const ArcanaPresenceHero = ({
               }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60" />
+            
+            {/* Subtle Shine Overlay inside card */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
           </div>
           <div className="h-10 md:h-12 bg-white flex items-center justify-center border-t border-gold/20">
             <span className="font-heading text-xs md:text-sm tracking-[0.2em] text-plum font-black uppercase">O Louco</span>
           </div>
-        </div>
-          
-          {/* Subtle Shine Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
         </div>
 
         {/* Back Card Right */}
