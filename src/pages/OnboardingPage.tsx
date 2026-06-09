@@ -65,11 +65,11 @@ const STEPS: OnboardingStep[] = [
   {
     symbol: <BookOpen className="w-7 h-7" strokeWidth={1.5} />,
     kicker: "A Jornada Completa",
-    title: "Uma escola viva no seu bolso.",
+    title: "Uma escola de tarô no seu bolso.",
     lines: [
-      "Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes, Chaves e progresso real.",
-      "Estude os 78 arcanos com uma trilha progressiva, fiel ao Rider-Waite-Smith.",
-      "O Tarô deixa de ser imagem e se torna presença.",
+      "Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes e progresso real.",
+      "Uma jornada guiada pelos 78 arcanos, com fidelidade simbólica ao Rider-Waite-Smith.",
+      "O Tarô 78 Chaves ensina com base fiel na tradição visual, preservando a carta como protagonista.",
     ],
   },
   {
