@@ -77,7 +77,14 @@ function isEditorialReady(c: ArcanoMenorEditorial): boolean {
 // Por padrão, marcamos todas como "pendente" — promova para "validado"
 // quando o asset estiver realmente disponível em /assets/arcanos-menores/.
 const VISUAL_VALIDATED: ReadonlySet<string> = new Set<string>([
-  // ex.: "copas-1", "ouros-rainha"  (preencher conforme arte real)
+  // Numerados (já fechados)
+  "copas-1", "copas-2", "copas-3", "copas-4", "copas-5", "copas-6", "copas-7", "copas-8", "copas-9", "copas-10",
+  "paus-1", "paus-2", "paus-3", "paus-4", "paus-5", "paus-6", "paus-7", "paus-8", "paus-9", "paus-10",
+  "espadas-1", "espadas-2", "espadas-3", "espadas-4", "espadas-5", "espadas-6", "espadas-7", "espadas-8", "espadas-9", "espadas-10",
+  "ouros-1", "ouros-2", "ouros-3", "ouros-4", "ouros-5", "ouros-6", "ouros-7", "ouros-8", "ouros-9", "ouros-10",
+  // Cortes fechadas
+  "copas-pajem", "copas-cavaleiro", "copas-rainha", "copas-rei",
+  "paus-pajem", "paus-cavaleiro", "paus-rainha", "paus-rei",
 ]);
 
 // ─── Build do Registry ────────────────────────────────────────────
