@@ -387,11 +387,13 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   // ─── Actions (same API as before) ───
 
   const addXP = useCallback((amount: number) => {
+    if (isStaff) return;
     // XP is disabled in UI but kept in core to avoid breaking dependencies
     console.log(`[progress] XP tracking is currently symbolically hidden.`);
-  }, []);
+  }, [isStaff]);
 
   const completeModule = useCallback((moduleId: string) => {
+    if (isStaff) return;
     setProgress((prev) => {
       if (prev.completedModules.includes(moduleId)) return prev;
       return {
@@ -399,9 +401,10 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         completedModules: [...prev.completedModules, moduleId],
       };
     });
-  }, []);
+  }, [isStaff]);
 
   const completeLesson = useCallback((lessonId: string) => {
+    if (isStaff) return;
     setProgress((prev) => {
       if (prev.completedLessons.includes(lessonId)) return prev;
       console.log(`[progress] completing lesson: ${lessonId}`);
@@ -411,7 +414,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         lastActive: new Date().toISOString(),
       };
     });
-  }, []);
+  }, [isStaff]);
 
   const completeQuiz = useCallback((quizId: string, score?: number, total?: number) => {
     setProgress((prev) => {
