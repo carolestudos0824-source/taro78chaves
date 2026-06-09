@@ -132,6 +132,19 @@ export const O_LOUCO: ArcanoMaiorEditorial = {
       ],
       correctIndex: 1,
       explanation: "Correto. O Louco pode indicar movimento e contato inesperado, mas não garante estabilidade, compromisso ou continuidade.",
+    },
+    {
+      id: "fool-pilot-6",
+      type: "multiple-choice",
+      question: "O que O Louco mais pediria de você neste momento?",
+      options: [
+        "Um plano de 10 anos detalhado.",
+        "Um passo de fé e abertura para o novo.",
+        "Que você ficasse onde está para evitar erros.",
+        "Que você seguisse as regras de todos."
+      ],
+      correctIndex: 1,
+      explanation: "Exato. O Louco pede o desapego das garantias para que a vida aconteça.",
     }
   ],
 
