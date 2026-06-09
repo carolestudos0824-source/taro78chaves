@@ -150,7 +150,7 @@ const DashboardPage = () => {
 
   return (
     <div className="min-h-screen bg-[#FAF5EF] relative overflow-x-hidden">
-      <main className="container max-w-4xl px-4 pt-12 pb-[calc(140px+env(safe-area-inset-bottom))] space-y-12 animate-in fade-in duration-1000 relative">
+      <main className="container max-w-4xl px-4 pt-12 pb-[calc(180px+env(safe-area-inset-bottom))] space-y-12 animate-in fade-in duration-1000 relative">
 
         {/* Subtle decorative elements */}
         <div className="absolute top-0 left-1/4 w-64 h-64 bg-rose-200/20 blur-[100px] pointer-events-none" />
@@ -358,28 +358,37 @@ const DashboardPage = () => {
                   {totalCompletedArcanos === 0 ? "Abrir o Primeiro Portal" : "Continuar estudos"}
                   <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform text-gold" />
                 </button>
-
-                {!ritualProgress.completed && (
-                  <div className="pt-2">
-                    <button
-                      onClick={() => navigate("/desafios")}
-                      className="w-full py-4 rounded-2xl bg-gold/10 border border-gold/30 hover:bg-gold/20 transition-all flex items-center justify-between px-6 group/ritual"
-                    >
-                      <div className="flex items-center gap-3">
-                        <Sparkles className="w-4 h-4 text-gold animate-pulse" />
-                        <span className="text-[10px] font-heading font-black tracking-widest text-plum uppercase">Ritual de hoje aberto</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[9px] font-heading font-black tracking-widest text-gold uppercase">Praticar agora</span>
-                        <ChevronRight className="w-3 h-3 text-gold group-hover/ritual:translate-x-1 transition-transform" />
-                      </div>
-                    </button>
-                  </div>
-                )}
               </div>
             </div>
           </div>
         </section>
+
+        {/* Ritual of the Day - Separate Block */}
+        {!ritualProgress.completed && (
+          <section className="px-2">
+            <div 
+              onClick={() => navigate("/desafios")}
+              className="relative overflow-hidden rounded-[2rem] bg-white border border-gold/20 p-8 shadow-xl cursor-pointer group hover:border-gold/40 transition-all"
+            >
+              <div className="absolute top-0 right-0 p-8 opacity-[0.05] pointer-events-none group-hover:scale-110 transition-transform">
+                <Sparkles className="w-24 h-24 text-gold" />
+              </div>
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
+                <div className="space-y-2 text-center sm:text-left">
+                  <div className="flex items-center justify-center sm:justify-start gap-3">
+                    <div className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+                    <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Conexão Diária</span>
+                  </div>
+                  <h3 className="text-2xl font-heading font-bold text-plum tracking-tight">Ritual de hoje</h3>
+                  <p className="text-xs font-body italic text-plum/50">Mantenha sua chama acesa através da prática ritualística.</p>
+                </div>
+                <button className="px-8 py-4 bg-gold/10 text-plum border border-gold/30 rounded-xl font-heading text-[10px] font-black tracking-[0.3em] uppercase group-hover:bg-gold group-hover:text-plum transition-all flex items-center gap-2">
+                  Praticar agora <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* 2. Trails Grid - The School Map */}
         <section className="space-y-8 px-2">
