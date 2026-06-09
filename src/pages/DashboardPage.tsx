@@ -347,6 +347,7 @@ const DashboardPage = () => {
               <div className="flex flex-col space-y-4">
                 <button
                   id="journey-cta-main"
+                  data-testid="journey-cta-main"
                   onClick={() => {
                     const focusId = totalCompletedArcanos === 0 ? "arcano-0" : (currentStep?.lessonId || "arcano-0");
                     console.log(`[Dashboard] Navigating to journey with focus: ${focusId}`);
