@@ -195,7 +195,8 @@ const AppRoutes = () => {
           <Route path="/perfil" element={<SecurityGate><ProfilePage /></SecurityGate>} />
           <Route path="/jornada-do-louco" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
           <Route path="/lesson/:id" element={<SecurityGate><LessonPage /></SecurityGate>} />
-          
+          <Route path="/module/arcanos-maiores" element={<Index />} />
+
           
           <Route path="/module/fundamentos" element={<LazyRoute><FundamentosPage /></LazyRoute>} />
           <Route path="/fundamentos/:order" element={<LazyRoute><FundamentosLessonPage /></LazyRoute>} />
