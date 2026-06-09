@@ -278,7 +278,7 @@ const DashboardPage = () => {
           </div>
         )}
 
-        {/* 1. Main Block: Journey Ritual - Premium Duolingo Style */}
+        {/* 1. Main Block: Journey Progress - Premium Duolingo Style */}
         <section className="relative mx-2 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden border border-gold/20 bg-white shadow-2xl shadow-plum/5 group">
           <div className="absolute top-0 right-0 w-80 h-80 bg-rose-100/10 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-plum/5 rounded-full blur-[80px] -ml-32 -mb-32 pointer-events-none" />
@@ -355,7 +355,7 @@ const DashboardPage = () => {
                   }}
                   className="w-full py-5 rounded-[1.25rem] font-heading text-[11px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-plum text-white border-gold/30 hover:bg-[#45162D]"
                 >
-                  {totalCompletedArcanos === 0 ? "Abrir o Primeiro Portal" : "Continuar estudos"}
+                  ATRAVESSAR O PORTAL
                   <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform text-gold" />
                 </button>
               </div>
