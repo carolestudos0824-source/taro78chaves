@@ -37,36 +37,36 @@ import { LessonPhaseHeader } from "@/components/arcano-vivo/LessonPhaseHeader";
  */
 type LessonPhase = 
   | "intro" 
+  | "essence"
+  | "light"
+  | "shadow"
   | "simbolos" 
-  | "luz-sombra" 
   | "voz" 
-  | "aprofundamento" 
   | "aplicacoes" 
-  | "reflexao" 
   | "quiz" 
   | "complete";
 
 const PHASE_ORDER: LessonPhase[] = [
   "intro",
+  "essence",
+  "light",
+  "shadow",
   "simbolos",
-  "luz-sombra",
   "voz",
-  "aprofundamento",
   "aplicacoes",
-  "reflexao",
   "quiz",
   "complete"
 ];
 
 const PHASE_LABEL: Record<LessonPhase, string> = {
-  intro: "Apresentação",
+  intro: "Abertura",
+  essence: "Essência",
+  light: "Luz",
+  shadow: "Sombra",
   simbolos: "Símbolos",
-  "luz-sombra": "Luz & Sombra",
   voz: "Voz da Carta",
-  aprofundamento: "Aprofundamento",
   aplicacoes: "Aplicações",
-  reflexao: "Reflexão",
-  quiz: "Quiz",
+  quiz: "Quiz Final",
   complete: "Conclusão",
 };
 
@@ -235,82 +235,100 @@ const LessonPage = () => {
                 arcanoId={arcanoId}
                 cardName={arcano.name}
                 cardImage={arcano.cardImage}
-                arcanoSlug={arcano.id === 0 ? "o-louco" : arcano.id === 1 ? "o-mago" : arcano.id === 15 ? "o-diabo" : "generic"}
+                arcanoSlug={arcano.slug}
                 onContinue={goNext}
               />
-              <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-6">
-                <div className="flex items-center gap-3">
-                  <Sparkles className="w-5 h-5 text-[#C8A66A]" />
-                  <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Essência</h2>
-                </div>
-                <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.layers.main.essence}</p>
-                
-                {arcano.archetype && (
-                  <>
-                    <div className="flex items-center gap-3 pt-4">
-                      <Sparkles className="w-5 h-5 text-[#C8A66A]" />
-                      <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Arquétipo</h2>
-                    </div>
-                    <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.archetype}</p>
-                  </>
-                )}
-
-                {arcano.initiationLesson && (
-                  <>
-                    <div className="flex items-center gap-3 pt-4">
-                      <Sparkles className="w-5 h-5 text-[#C8A66A]" />
-                      <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Lição Iniciática</h2>
-                    </div>
-                    <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.initiationLesson}</p>
-                  </>
-                )}
-              </div>
-
-
-
-
             </div>
           )}
 
-          {phase === "simbolos" && (
-            <SymbolMap
-              cardImage={arcano.cardImage}
-              cardName={arcano.name}
-              symbols={arcano.symbolsMap || []}
-              onComplete={goNext}
-            />
-          )}
-
-          {phase === "luz-sombra" && (
+          {phase === "essence" && (
             <div className="space-y-6">
               <LessonPhaseHeader 
                 cardImage={arcano.cardImage} 
                 cardName={arcano.name} 
                 numeral={arcano.numeral}
-                subtitle="Dualidade e Equilíbrio"
+                subtitle="A Essência"
               />
-              <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-10">
-                <div className="space-y-6">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xl">☀</span>
-                    <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#8B6A30]">Luz</h2>
-                  </div>
-                  <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.layers.main.light}</p>
+              <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
+                <p className="font-body text-[20px] leading-[1.8] text-[#3D1429] font-black">
+                  {arcano.layers.main.essence}
+                </p>
+                <div className="pt-4">
+                  <QuizSection
+                    questions={[arcano.quiz[0]]}
+                    onComplete={goNext}
+                  />
                 </div>
-                <div className="space-y-6">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xl">☾</span>
-                    <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]/60">Sombra</h2>
-                  </div>
-                  <p className="font-body text-[18px] leading-[1.8] text-[#3D1429] font-black">{arcano.layers.main.shadow}</p>
-                </div>
-                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
-                  Continuar para Voz da Carta
-                </Button>
               </div>
             </div>
           )}
 
+          {phase === "light" && (
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                subtitle="A Luz"
+              />
+              <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
+                <p className="font-body text-[20px] leading-[1.8] text-[#3D1429] font-black">
+                  {arcano.layers.main.light}
+                </p>
+                <div className="pt-4">
+                  <QuizSection
+                    questions={[arcano.quiz[1]]}
+                    onComplete={goNext}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {phase === "shadow" && (
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                subtitle="A Sombra"
+              />
+              <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
+                <p className="font-body text-[20px] leading-[1.8] text-[#3D1429] font-black">
+                  {arcano.layers.main.shadow}
+                </p>
+                <div className="pt-4">
+                  <QuizSection
+                    questions={[arcano.quiz[2]]}
+                    onComplete={goNext}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {phase === "simbolos" && (
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                subtitle="Símbolos Sagrados"
+              />
+              <SymbolMap
+                cardImage={arcano.cardImage}
+                cardName={arcano.name}
+                symbols={arcano.symbolsMap || []}
+                onComplete={goNext}
+              />
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border-2 border-[#C8A66A]/20 shadow-lg">
+                <QuizSection
+                  questions={[arcano.quiz[3]]}
+                  onComplete={goNext}
+                />
+              </div>
+            </div>
+          )}
 
           {phase === "voz" && (
             <div className="space-y-6">
@@ -320,32 +338,10 @@ const LessonPage = () => {
                 numeral={arcano.numeral}
                 variant="aura"
               />
-              <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8 relative overflow-hidden">
-                <div className="flex items-center gap-3 relative z-10">
-                  <Sparkles className="w-5 h-5 text-[#C8A66A]" />
-                  <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Voz da Carta</h2>
-                </div>
-                <blockquote className="font-accent italic text-2xl leading-[1.7] pl-6 border-l-4 border-[#C8A66A] text-[#5B1F3D] font-bold relative z-10">
-                  {arcano.voiceText || arcano.layers.main.essence}
+              <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
+                <blockquote className="font-accent italic text-2xl leading-[1.7] pl-6 border-l-4 border-[#C8A66A] text-[#5B1F3D] font-bold">
+                  {arcano.voiceText}
                 </blockquote>
-                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform relative z-10">
-                  Continuar para Aprofundamento
-                </Button>
-              </div>
-            </div>
-          )}
-
-
-          {phase === "aprofundamento" && (
-            <div className="space-y-6">
-              <LessonPhaseHeader 
-                cardImage={arcano.cardImage} 
-                cardName={arcano.name} 
-                numeral={arcano.numeral}
-                subtitle="Sabedoria Oculta"
-              />
-              <div className="space-y-8">
-                <DeepDiveSection {...arcano.layers.deepDive} />
                 <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
                   Continuar para Aplicações
                 </Button>
@@ -353,70 +349,26 @@ const LessonPage = () => {
             </div>
           )}
 
-
           {phase === "aplicacoes" && (
             <div className="space-y-6">
               <LessonPhaseHeader 
                 cardImage={arcano.cardImage} 
                 cardName={arcano.name} 
                 numeral={arcano.numeral}
-                subtitle="O Arcano no Dia a Dia"
+                subtitle="Caso Prático"
               />
               <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
                 <div className="flex items-center gap-3">
                   <Sparkles className="w-5 h-5 text-[#C8A66A]" />
-                  <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Aplicações</h2>
+                  <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Aplicação Real</h2>
                 </div>
-                <div className="space-y-6">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm uppercase font-black text-[#8B6A30]">Amor:</span>
-                  </div>
-                  <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
-                    {arcano.lessonSections.find(s => s.id === "amor")?.content}
-                  </p>
-                  
-                  <div className="flex items-center gap-2 pt-4">
-                    <span className="text-sm uppercase font-black text-[#8B6A30]">Trabalho:</span>
-                  </div>
-                  <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
-                    {arcano.lessonSections.find(s => s.id === "trabalho")?.content}
-                  </p>
-
-                  <div className="flex items-center gap-2 pt-4">
-                    <span className="text-sm uppercase font-black text-[#8B6A30]">Espiritualidade:</span>
-                  </div>
-                  <p className="font-body text-[17px] leading-relaxed text-[#3D1429] font-black">
-                    {arcano.lessonSections.find(s => s.id === "espiritualidade")?.content}
-                  </p>
-
-
-
-                </div>
-
-
-                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
-                  Continuar para Reflexão
-                </Button>
+                <QuizSection
+                  questions={[arcano.quiz[4]]}
+                  onComplete={goNext}
+                />
               </div>
             </div>
           )}
-
-
-          {phase === "reflexao" && (
-            <div className="space-y-6">
-              <LessonPhaseHeader 
-                cardImage={arcano.cardImage} 
-                cardName={arcano.name} 
-                numeral={arcano.numeral}
-                subtitle="Exercício de Conexão"
-              />
-              <div className="space-y-8">
-                <ExerciseSection
-                  {...arcano.layers.exercise}
-                  onComplete={() => {}}
-                  completed={true}
-                />
-                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
                   Iniciar Quiz Final
                 </Button>
               </div>
