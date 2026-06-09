@@ -176,6 +176,7 @@ const DailyChallengesPage = () => {
       {activeChallenge && (
         <ChallengeModal
           challenge={activeChallenge}
+          isLoading={arcanosLoading || symbolsLoading}
           data={{
             carta: cartaDoDia,
             perguntas: perguntasDoDia,
