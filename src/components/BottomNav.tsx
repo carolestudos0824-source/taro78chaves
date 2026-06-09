@@ -11,7 +11,6 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   { path: "/app", label: "Início", icon: "jornada", microcopy: "Seu Dashboard" },
-  { path: "/test-debug", label: "TESTE JORNADA", icon: "louco", microcopy: "DEBUG" },
   { path: "/jornada-do-louco", label: "Jornada", icon: "louco", microcopy: "A Jornada do Louco" },
   { path: "/desafios", label: "Ritual", icon: "ritual", microcopy: "Faça sua prática de hoje." },
   { path: "/mapa", label: "Mapa", icon: "formacao", microcopy: "Mapa da trilha" },
