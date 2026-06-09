@@ -81,7 +81,7 @@ const TrailsPage = () => {
     });
 
     // Check for focus parameter to scroll to start
-    if (searchParams.get("focus") === "arcano-0") {
+    if (searchParams.get("focus") === "arcano-0" || progress.completedLessons.length === 0) {
       // Delay slightly to ensure JourneyMap is rendered
       const timer = setTimeout(() => {
         const element = document.getElementById("arcano-0");
