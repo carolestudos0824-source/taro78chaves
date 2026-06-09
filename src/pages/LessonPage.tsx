@@ -235,7 +235,7 @@ const LessonPage = () => {
                 arcanoId={arcanoId}
                 cardName={arcano.name}
                 cardImage={arcano.cardImage}
-                arcanoSlug={arcano.slug}
+                arcanoSlug={arcano.name.toLowerCase().replace(/\s+/g, "-")}
                 onContinue={goNext}
               />
             </div>
@@ -369,11 +369,8 @@ const LessonPage = () => {
               </div>
             </div>
           )}
-                  Iniciar Quiz Final
-                </Button>
-              </div>
-            </div>
-          )}
+
+
 
 
           {phase === "quiz" && (
