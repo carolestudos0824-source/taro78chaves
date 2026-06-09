@@ -32,12 +32,13 @@ import { useAuth } from "@/hooks/use-auth";
 import { useEffect, useMemo } from "react";
 import { useHeader } from "@/contexts/header-context";
 import { resolveMaiorVisual, resolveMenorVisualById } from "@/lib/content/visual-registry";
+import { getDailyArcanaSet, getJourneyArcanaSet } from "@/lib/content/arcana-utils";
 import imgLouco from "@/assets/arcano-0-louco.jpg";
 import imgMago from "@/assets/arcano-1-mago.jpg";
 import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
 import imgImperatriz from "@/assets/arcano-3-imperatriz.jpg";
 import imgImperador from "@/assets/arcano-4-imperador.jpg";
-import imgDezOuros from "@/assets/menor-ouros-10.jpg";
+const imgDezOuros = resolveMenorVisualById("ouros-10").resolvedAssetUrl;
 
 // Decorative components for the premium feel
 const ArchPortal = ({ children, className }: { children: React.ReactNode, className?: string }) => (
@@ -124,6 +125,29 @@ const DashboardPage = () => {
     return null;
   }, [progress.completedLessons]);
 
+  const journeyTriad = useMemo(() => {
+    if (!currentStep) return getJourneyArcanaSet(0);
+    return getJourneyArcanaSet(currentStep.id);
+  }, [currentStep]);
+
+  const all78Arcana = useMemo(() => {
+    const list = [];
+    for (let i = 0; i <= 21; i++) {
+      const visual = resolveMaiorVisual(i);
+      list.push({ id: `arcano-${i}`, name: ARCANOS_MAIORES_CATALOG[i]?.name || "", image: visual.resolvedAssetUrl });
+    }
+    const naipes = ["copas", "paus", "espadas", "ouros"];
+    const ranks = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "pajem", "cavaleiro", "rainha", "rei"];
+    for (const naipe of naipes) {
+      for (const rank of ranks) {
+        const id = `${naipe}-${rank}`;
+        const visual = resolveMenorVisualById(id);
+        list.push({ id, name: id.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" "), image: visual.resolvedAssetUrl });
+      }
+    }
+    return list;
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#FAF5EF] relative overflow-x-hidden">
       <main className="container max-w-4xl px-4 pt-12 pb-[calc(140px+env(safe-area-inset-bottom))] space-y-12 animate-in fade-in duration-1000 relative">
@@ -153,22 +177,20 @@ const DashboardPage = () => {
               Seu portal de estudo guiado através dos 78 arquétipos do Rider-Waite-Smith.
             </p>
 
-            {/* Canonical 3-card spread visual */}
+            {/* Canonical Journey spread visual */}
             <div className="flex justify-center items-end -space-x-8 pt-4 pb-2 perspective-1000 relative z-10">
-              {/* O Louco */}
-              <div className="w-16 aspect-[2/3.5] rounded-md overflow-hidden border border-gold/30 shadow-lg -rotate-12 transition-transform hover:scale-110 hover:z-20 bg-ivory origin-bottom">
-                <img src={imgLouco} alt="O Louco" className="w-full h-full object-cover" />
-              </div>
-              
-              {/* O Mago (Central, slightly larger) */}
-              <div className="w-20 aspect-[2/3.5] rounded-lg overflow-hidden border-2 border-gold/40 shadow-2xl z-10 transition-transform hover:scale-105 bg-ivory">
-                <img src={imgMago} alt="O Mago" className="w-full h-full object-cover" />
-              </div>
-              
-              {/* A Sacerdotisa */}
-              <div className="w-16 aspect-[2/3.5] rounded-md overflow-hidden border border-gold/30 shadow-lg rotate-12 transition-transform hover:scale-110 hover:z-20 bg-ivory origin-bottom">
-                <img src={imgSacerdotisa} alt="A Sacerdotisa" className="w-full h-full object-cover" />
-              </div>
+              {journeyTriad.map((card, idx) => (
+                <div 
+                  key={card.id} 
+                  className={`aspect-[2/3.5] rounded-md overflow-hidden border border-gold/30 shadow-lg transition-transform hover:scale-110 hover:z-20 bg-ivory origin-bottom ${
+                    idx === 0 ? 'w-16 -rotate-12' : 
+                    idx === 1 ? 'w-20 border-2 border-gold/40 shadow-2xl z-10' : 
+                    'w-16 rotate-12'
+                  }`}
+                >
+                  <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -193,16 +215,37 @@ const DashboardPage = () => {
 
         {/* Explore the 78 Arcanos - Cards Strip */}
         <section className="space-y-4 px-2">
-          <div className="flex items-center gap-3 px-2">
-            <div className="w-2 h-2 rounded-full bg-gold" />
-            <h3 className="font-heading text-[10px] font-black tracking-[0.3em] text-plum/50 uppercase">Explore os 78 Arcanos</h3>
+          <div className="flex items-center justify-between px-2">
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-gold" />
+              <h3 className="font-heading text-[10px] font-black tracking-[0.3em] text-plum/50 uppercase">Explore os 78 Arcanos</h3>
+            </div>
+            <button 
+              onClick={() => navigate("/trilhas")}
+              className="text-[9px] font-heading font-black tracking-widest text-gold uppercase hover:text-plum transition-all flex items-center gap-1.5"
+            >
+              Ver todos <ArrowRight className="w-3 h-3" />
+            </button>
           </div>
-          <div className="flex justify-between items-center gap-2 overflow-x-auto pb-4 scrollbar-hide">
-            {[imgLouco, imgMago, imgSacerdotisa, imgImperatriz, imgImperador].map((img, i) => (
-              <div key={i} className="min-w-[70px] aspect-[2/3.5] rounded-lg overflow-hidden border border-gold/20 shadow-sm opacity-80 hover:opacity-100 hover:scale-105 transition-all">
-                <img src={img} alt={`Arcano ${i}`} className="w-full h-full object-cover" />
-              </div>
-            ))}
+          <div className="relative group/strip">
+            <div className="flex gap-4 overflow-x-auto pb-6 scrollbar-hide px-2 snap-x snap-mandatory cursor-grab active:cursor-grabbing">
+              {all78Arcana.map((card, i) => (
+                <div 
+                  key={card.id} 
+                  className="min-w-[85px] md:min-w-[100px] aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shadow-lg snap-center opacity-85 hover:opacity-100 hover:scale-105 hover:border-gold/50 transition-all duration-500 bg-ivory relative group/card"
+                >
+                  <img src={card.image || ""} alt={card.name} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity flex items-end p-2">
+                    <span className="text-[8px] font-heading font-black text-white uppercase tracking-tighter leading-none">{card.name}</span>
+                  </div>
+                </div>
+              ))}
+              {/* Intentional partial visible card space at the end */}
+              <div className="min-w-[20px] shrink-0" />
+            </div>
+            {/* Horizontal fade indicators */}
+            <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#FAF5EF] to-transparent pointer-events-none opacity-0 group-hover/strip:opacity-100 transition-opacity" />
+            <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#FAF5EF] to-transparent pointer-events-none opacity-100" />
           </div>
         </section>
 

@@ -4,6 +4,8 @@ import { ArrowLeft, ChevronRight, Gift, X, Scroll, Bell, Flame, CheckCircle2, Cl
 import { useRitual } from "@/hooks/use-ritual";
 import { useHeader } from "@/contexts/header-context";
 import { TarotIcon } from "@/components/TarotIcon";
+import { getDailyArcanaSet } from "@/lib/content/arcana-utils";
+import { resolveMaiorVisual } from "@/lib/content/visual-registry";
 import { useProgress } from "@/hooks/use-progress";
 import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
@@ -58,6 +60,11 @@ const DailyChallengesPage = () => {
   const simboloDoDia = useMemo(() => buildSimboloDoDia(symbols), [symbols]);
   const combinacaoDoDia = useMemo(() => buildCombinacaoDoDia(arcanosList), [arcanosList]);
   const miniInterpretacao = useMemo(() => buildMiniInterpretacao(arcanosList), [arcanosList]);
+
+  const ritualTriad = useMemo(() => {
+    if (!user) return [];
+    return getDailyArcanaSet(todayStr(), user.id, 3);
+  }, [user]);
 
   const [challenges, setChallenges] = useState<DailyChallengeItem[]>(() => {
     const saved = localStorage.getItem("daily-challenges");
@@ -187,13 +194,37 @@ const DailyChallengesPage = () => {
         backdropFilter: "blur(24px)",
         boxShadow: "0 15px 50px rgba(91, 31, 61, 0.08)"
       }}>
-        <div className="max-w-lg mx-auto pt-8 pb-10 px-6 text-center">
-          <h1 className="font-heading text-4xl md:text-6xl font-black tracking-tighter mb-4 text-plum">
-            Leitura Diária
-          </h1>
-          <p className="font-body text-[14px] font-black uppercase tracking-[0.3em] text-gold">
-            Faça sua prática de hoje.
-          </p>
+        <div className="max-w-lg mx-auto pt-8 pb-10 px-6 text-center space-y-6">
+          <div className="space-y-2">
+            <h1 className="font-heading text-4xl md:text-6xl font-black tracking-tighter text-plum">
+              Leitura Diária
+            </h1>
+            <p className="font-body text-[14px] font-black uppercase tracking-[0.3em] text-gold">
+              Faça sua prática de hoje.
+            </p>
+          </div>
+
+          {/* Tríade do Ritual de Hoje */}
+          <div className="space-y-4 pt-2">
+            <div className="flex items-center justify-center gap-3">
+              <div className="h-px w-8 bg-gold/30" />
+              <span className="text-[9px] font-heading font-black tracking-[0.3em] text-gold uppercase">Tríade do Ritual de Hoje</span>
+              <div className="h-px w-8 bg-gold/30" />
+            </div>
+            
+            <div className="flex justify-center -space-x-4">
+              {ritualTriad.map((card, idx) => (
+                <div 
+                  key={card.id} 
+                  className={`w-14 md:w-16 aspect-[2/3.5] rounded-lg overflow-hidden border-2 border-gold/40 shadow-xl bg-ivory transition-transform hover:scale-110 hover:z-30 origin-bottom ${
+                    idx === 0 ? '-rotate-6' : idx === 2 ? 'rotate-6' : 'z-20 scale-110'
+                  }`}
+                >
+                  <img src={card.image} alt={card.name} className="w-full h-full object-cover" title={card.name} />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </header>
 
@@ -278,17 +309,40 @@ const DailyChallengesPage = () => {
                           "bg-[#F5F5F5]/60 border-gray-200"
                         }`}>
                         <div className="flex items-center gap-4 md:gap-6 w-full sm:w-auto">
-                          <div className={`w-18 h-18 md:w-24 md:h-24 rounded-[2rem] flex items-center justify-center shrink-0 border-2 transition-all duration-700 shadow-lg ${
+                          <div className={`w-18 h-18 md:w-24 md:h-24 rounded-[2rem] flex items-center justify-center shrink-0 border-2 transition-all duration-700 shadow-lg relative overflow-hidden ${
                             isCompleted ? "bg-ivory border-gold/40 text-gold" : 
                             isAvailable ? "bg-ivory border-gold text-plum group-hover:bg-plum group-hover:border-plum group-hover:text-gold" : 
                             "bg-gray-200 border-gray-300 text-gray-400"
                           }`}>
-                            {isCompleted ? (
-                              <CheckCircle2 className="w-8 h-8 md:w-10 md:h-10 text-gold" />
-                            ) : isBlocked ? (
-                              <TarotIcon name="bloqueado" className="w-8 h-8 md:w-10 md:h-10" />
+                            {ch.type === "carta-do-dia" && cartaDoDia && !isBlocked ? (
+                              <div className="absolute inset-0">
+                                <img 
+                                  src={resolveMaiorVisual(cartaDoDia.arcanoId).resolvedAssetUrl || ""} 
+                                  alt={cartaDoDia.name} 
+                                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                                />
+                                {isCompleted && (
+                                  <div className="absolute inset-0 bg-plum/40 flex items-center justify-center">
+                                    <CheckCircle2 className="w-8 h-8 md:w-10 md:h-10 text-gold" />
+                                  </div>
+                                )}
+                              </div>
                             ) : (
-                              <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
+                              <>
+                                {isCompleted ? (
+                                  <CheckCircle2 className="w-8 h-8 md:w-10 md:h-10 text-gold" />
+                                ) : isBlocked ? (
+                                  <div className="relative w-full h-full flex items-center justify-center bg-gray-200">
+                                    <div className="absolute inset-0 opacity-10">
+                                      <img src={resolveMaiorVisual(0).resolvedAssetUrl || ""} className="w-full h-full object-cover grayscale" alt="Blocked" />
+                                    </div>
+                                    <div className="absolute inset-2 border border-dashed border-gray-400 rounded-xl opacity-30 z-10" />
+                                    <TarotIcon name="bloqueado" className="w-8 h-8 md:w-10 md:h-10 opacity-40 z-10" />
+                                  </div>
+                                ) : (
+                                  <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
+                                )}
+                              </>
                             )}
                           </div>
 
