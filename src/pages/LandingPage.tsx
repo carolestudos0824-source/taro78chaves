@@ -87,7 +87,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       {!isSalesPage && (
         <Helmet>
           <title>Tarô 78 Chaves | A jornada viva pelos 78 arcanos</title>
-          <meta name="description" content="Aprenda Tarô com uma jornada guiada pelos 78 arcanos, baseada no Rider-Waite-Smith, com lições, progresso salvo e experiências dos Arcanos Vivos." />
+          <meta name="description" content="O Tarô 78 Chaves ensina com base fiel na tradição visual do Rider-Waite-Smith. Uma jornada guiada pelos 78 arcanos com lições, progresso salvo e experiências visuais premium." />
           <link rel="canonical" href="https://www.taro78chaves.com.br" />
         </Helmet>
       )}
@@ -165,7 +165,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                 </div>
 
                 <p className="font-accent text-sm md:text-base text-gold-dark font-bold italic border-l-4 border-gold/40 pl-5 py-1.5 bg-gold/5 rounded-r-xl">
-                  “No Tarô 78 Chaves, o aprendizado vira ritual e a imagem vira presença.”
+                  “O Tarô 78 Chaves ensina com base fiel na tradição visual do Rider-Waite-Smith, preservando a carta como protagonista.”
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-6 pt-0 md:pt-1 font-heading text-[9px] md:text-xs tracking-[0.15em] md:tracking-[0.2em] uppercase text-plum font-extrabold drop-shadow-sm">
@@ -246,7 +246,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
           </div>
           <div className="bg-white/60 backdrop-blur-sm border border-gold/10 p-6 md:p-10 rounded-[3rem] text-center space-y-6 shadow-sm relative z-10">
             <h2 className="font-heading text-3xl md:text-4xl text-midnight leading-tight">
-              Você já tentou aprender tarô e ficou <span className="italic text-[#5B1F3D]">mais confusa?</span>
+              Você já tentou aprender tarô e ficou <span className="italic text-[#5B1F3D]">com dúvidas?</span>
             </h2>
             <div className="space-y-6 max-w-2xl mx-auto">
               <p className="text-lg font-body text-midnight/70 leading-relaxed">
@@ -270,7 +270,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
         <div className="max-w-7xl mx-auto px-0 md:px-6 relative z-10">
           <div className="text-center mb-16 px-6 space-y-4">
             <h2 className="font-heading text-3xl md:text-4xl text-midnight">Explore a Trilha do Conhecimento</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto font-body">Aprenda Tarô como uma jornada — arcano por arcano, com lições curtas, quizzes e progresso real.</p>
+            <p className="text-muted-foreground max-w-2xl mx-auto font-body">Uma jornada guiada pelos 78 arcanos, com fidelidade simbólica ao Rider-Waite-Smith e lições curtas.</p>
           </div>
 
           <div className="relative">
@@ -308,7 +308,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
           <div className="mt-8 text-center space-y-8">
             <p className="text-sm font-body text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Inicie pelo Louco e percorra uma jornada interativa pelos 78 arcanos, com aulas objetivas, quizzes dinâmicos e seu progresso salvo em tempo real.
+              Inicie pelo Louco e percorra uma jornada guiada pelos 78 arcanos, com fidelidade simbólica ao Rider-Waite-Smith, lições objetivas e progresso salvo.
             </p>
             <Button 
               onClick={() => handleStart("journey", "COMEÇAR MINHA JORNADA")} 
