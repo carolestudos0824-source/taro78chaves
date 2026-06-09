@@ -1727,6 +1727,11 @@ export type Database = {
         Args: { _code: string; _user_id: string }
         Returns: Json
       }
+      secure_complete_lesson: {
+        Args: { _lesson_id: string }
+        Returns: undefined
+      }
+      secure_earn_badge: { Args: { _badge_id: string }; Returns: undefined }
       validate_certificate: {
         Args: { _code: string }
         Returns: {
