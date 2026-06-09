@@ -1784,6 +1784,7 @@ export type Database = {
             Returns: boolean
           }
         | { Args: { role_name: string; user_id: string }; Returns: boolean }
+      is_privileged_caller: { Args: never; Returns: boolean }
       manually_release_hotmart_access: {
         Args: { p_email: string; p_transaction_id: string }
         Returns: Json
