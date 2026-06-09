@@ -56,7 +56,8 @@ const PHASE_ORDER: LessonPhase[] = [
   "voz",
   "aplicacoes",
   "quiz",
-  "complete"
+  "complete",
+  "legacy-content"
 ];
 
 const PHASE_LABEL: Record<LessonPhase, string> = {
