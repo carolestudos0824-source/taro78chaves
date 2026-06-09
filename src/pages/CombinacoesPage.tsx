@@ -163,7 +163,7 @@ const CombinacoesPage = () => {
           {COMBINACOES_LESSONS.map((lesson, i) => {
             const completed = isLessonCompleted(lesson.id);
             const unlocked = isLessonUnlocked(lesson.order);
-            const isCurrent = unlocked && !completed;
+            const isCurrent = unlocked && !completed && (i === 0 || isLessonCompleted(COMBINACOES_LESSONS[i - 1].id));
 
             return (
               <button
@@ -190,6 +190,11 @@ const CombinacoesPage = () => {
                           background: "rgba(250, 245, 239, 0.8)",
                           border: "1px solid #C8A66A40",
                         }
+                      : unlocked
+                      ? {
+                          background: "#FFFFFF",
+                          border: "1px solid #C8A66A30",
+                        }
                       : {
                           background: "rgba(220, 207, 194, 0.3)",
                           border: "1px solid #D1C4B560",
@@ -213,6 +218,12 @@ const CombinacoesPage = () => {
                               background: "#F3E6E0",
                               border: "1px solid #C8A66A",
                               color: "#C8A66A",
+                            }
+                          : unlocked
+                          ? {
+                              background: "#FFFFFF",
+                              border: "1px solid #C8A66A40",
+                              color: "#5B1F3D",
                             }
                           : {
                               background: "#DCCFC240",

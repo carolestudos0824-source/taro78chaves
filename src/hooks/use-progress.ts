@@ -387,11 +387,13 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   // ─── Actions (same API as before) ───
 
   const addXP = useCallback((amount: number) => {
+    if (isStaff) return;
     // XP is disabled in UI but kept in core to avoid breaking dependencies
     console.log(`[progress] XP tracking is currently symbolically hidden.`);
-  }, []);
+  }, [isStaff]);
 
   const completeModule = useCallback((moduleId: string) => {
+    if (isStaff) return;
     setProgress((prev) => {
       if (prev.completedModules.includes(moduleId)) return prev;
       return {
@@ -399,9 +401,10 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         completedModules: [...prev.completedModules, moduleId],
       };
     });
-  }, []);
+  }, [isStaff]);
 
   const completeLesson = useCallback((lessonId: string) => {
+    if (isStaff) return;
     setProgress((prev) => {
       if (prev.completedLessons.includes(lessonId)) return prev;
       console.log(`[progress] completing lesson: ${lessonId}`);
@@ -411,9 +414,10 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         lastActive: new Date().toISOString(),
       };
     });
-  }, []);
+  }, [isStaff]);
 
   const completeQuiz = useCallback((quizId: string, score?: number, total?: number) => {
+    if (isStaff) return;
     setProgress((prev) => {
       const nextScores = { ...prev.quizScores };
       if (score !== undefined && total !== undefined && total > 0) {
@@ -429,25 +433,28 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         quizScores: nextScores
       };
     });
-  }, []);
+  }, [isStaff]);
 
   const completeExercise = useCallback((exerciseId: string) => {
+    if (isStaff) return;
     setProgress((prev) => {
       if (prev.completedExercises.includes(exerciseId)) return prev;
       return { ...prev, completedExercises: [...prev.completedExercises, exerciseId] };
     });
-  }, []);
+  }, [isStaff]);
 
   const earnBadge = useCallback((badgeId: string) => {
+    if (isStaff) return;
     setProgress((prev) => ({
       ...prev,
       badges: prev.badges.map((b) =>
         b.id === badgeId ? { ...b, earned: true, earnedAt: new Date().toISOString() } : b
       ),
     }));
-  }, []);
+  }, [isStaff]);
 
   const updateStreak = useCallback(() => {
+    if (isStaff) return;
     setProgress((prev) => {
       const lastActiveDate = prev.lastActive ? new Date(prev.lastActive) : null;
       const now = new Date();
@@ -464,7 +471,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
       }
       return prev;
     });
-  }, []);
+  }, [isStaff]);
 
   const isArcanoCompleted = useCallback((arcanoId: number): boolean => {
     const hasLesson = progress.completedLessons.includes(`arcano-${arcanoId}`);
@@ -501,8 +508,9 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
 
 
   const completeOnboarding = useCallback(() => {
+    if (isStaff) return;
     setProgress((prev) => ({ ...prev, onboardingCompleted: true }));
-  }, []);
+  }, [isStaff]);
 
   const setStudentName = useCallback((name: string) => {
     setProgress((prev) => ({ ...prev, studentName: name }));

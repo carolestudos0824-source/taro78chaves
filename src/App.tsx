@@ -195,7 +195,8 @@ const AppRoutes = () => {
           <Route path="/perfil" element={<SecurityGate><ProfilePage /></SecurityGate>} />
           <Route path="/jornada-do-louco" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
           <Route path="/lesson/:id" element={<SecurityGate><LessonPage /></SecurityGate>} />
-          <Route path="/module/:moduleSlug" element={<SecurityGate><Index /></SecurityGate>} />
+          <Route path="/module/arcanos-maiores" element={<Index />} />
+
           
           <Route path="/module/fundamentos" element={<LazyRoute><FundamentosPage /></LazyRoute>} />
           <Route path="/fundamentos/:order" element={<LazyRoute><FundamentosLessonPage /></LazyRoute>} />
@@ -227,7 +228,8 @@ const AppRoutes = () => {
           <Route path="/leitura-aplicada/:order" element={<LazyRoute><LeituraAplicadaLessonPage /></LazyRoute>} />
           <Route path="/module/trabalhar-taro" element={<LazyRoute><TrabalharTaroPage /></LazyRoute>} />
           <Route path="/trabalhar-taro/:order" element={<LazyRoute><TrabalharTaroLessonPage /></LazyRoute>} />
-          
+          <Route path="/module/:moduleSlug" element={<SecurityGate><Index /></SecurityGate>} />
+
           <Route path="/revisao" element={<LazyRoute><ReviewPage /></LazyRoute>} />
           <Route path="/certificados" element={<LazyRoute><CertificatesPage /></LazyRoute>} />
           <Route path="/biblioteca" element={<LazyRoute><SymbolLibraryPage /></LazyRoute>} />
