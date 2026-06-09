@@ -150,7 +150,7 @@ const DashboardPage = () => {
 
   return (
     <div className="min-h-screen bg-[#FAF5EF] relative overflow-x-hidden">
-      <main className="container max-w-4xl px-4 pt-12 pb-[calc(140px+env(safe-area-inset-bottom))] space-y-12 animate-in fade-in duration-1000 relative">
+      <main className="container max-w-4xl px-4 pt-12 pb-[calc(180px+env(safe-area-inset-bottom))] space-y-12 animate-in fade-in duration-1000 relative">
 
         {/* Subtle decorative elements */}
         <div className="absolute top-0 left-1/4 w-64 h-64 bg-rose-200/20 blur-[100px] pointer-events-none" />

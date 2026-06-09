@@ -320,8 +320,15 @@ const DailyChallengesPage = () => {
                                 <img 
                                   src={resolveMaiorVisual(cartaDoDia.arcanoId).resolvedAssetUrl || ""} 
                                   alt={cartaDoDia.name} 
-                                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                                  className="w-full h-full object-cover opacity-90 transition-opacity"
                                 />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                                <div className="absolute top-1 left-0 right-0 text-center">
+                                  <span className="text-[7px] font-heading font-black text-gold bg-plum/40 px-1.5 py-0.5 rounded-sm">{cartaDoDia.numeral}</span>
+                                </div>
+                                <div className="absolute bottom-1 inset-x-0 text-center">
+                                  <span className="text-[8px] font-heading font-black text-white uppercase tracking-tighter leading-none">{cartaDoDia.name}</span>
+                                </div>
                                 {isCompleted && (
                                   <div className="absolute inset-0 bg-plum/40 flex items-center justify-center">
                                     <CheckCircle2 className="w-8 h-8 md:w-10 md:h-10 text-gold" />
