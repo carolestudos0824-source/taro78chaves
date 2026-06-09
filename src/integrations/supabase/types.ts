@@ -1226,6 +1226,63 @@ export type Database = {
         }
         Relationships: []
       }
+      lesson_catalog: {
+        Row: {
+          id: string
+          is_active: boolean | null
+          module_id: string
+          prerequisite_module_id: string | null
+          previous_lesson_id: string | null
+        }
+        Insert: {
+          id: string
+          is_active?: boolean | null
+          module_id: string
+          prerequisite_module_id?: string | null
+          previous_lesson_id?: string | null
+        }
+        Update: {
+          id?: string
+          is_active?: boolean | null
+          module_id?: string
+          prerequisite_module_id?: string | null
+          previous_lesson_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lesson_catalog_module_id_fkey"
+            columns: ["module_id"]
+            isOneToOne: false
+            referencedRelation: "module_catalog"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "lesson_catalog_prerequisite_module_id_fkey"
+            columns: ["prerequisite_module_id"]
+            isOneToOne: false
+            referencedRelation: "module_catalog"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      module_catalog: {
+        Row: {
+          id: string
+          prerequisite_module_id: string | null
+          required_lesson_ids: string[]
+        }
+        Insert: {
+          id: string
+          prerequisite_module_id?: string | null
+          required_lesson_ids: string[]
+        }
+        Update: {
+          id?: string
+          prerequisite_module_id?: string | null
+          required_lesson_ids?: string[]
+        }
+        Relationships: []
+      }
       notification_logs: {
         Row: {
           error: string | null
@@ -1710,8 +1767,14 @@ export type Database = {
         Args: { a: Database["public"]["Tables"]["cms_arcanos"]["Row"] }
         Returns: number
       }
-      complete_lesson_v2: { Args: { _lesson_id: string }; Returns: undefined }
-      complete_module_v2: { Args: { _module_id: string }; Returns: undefined }
+      complete_lesson_v2: {
+        Args: { lesson_id_param: string }
+        Returns: undefined
+      }
+      complete_module_v2: {
+        Args: { module_id_param: string }
+        Returns: undefined
+      }
       has_role:
         | {
             Args: {
