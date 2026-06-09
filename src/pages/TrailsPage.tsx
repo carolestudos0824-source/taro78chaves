@@ -71,7 +71,7 @@ const TrailsPage = () => {
   const { progress } = useProgress();
   const { bypassLocks } = useAccess();
   const { setHeader, resetHeader } = useHeader();
-  const arcanoZeroRef = useRef<HTMLDivElement>(null);
+  const arcanoZeroRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setHeader({
