@@ -239,6 +239,7 @@ const AppRoutes = () => {
           <Route path="/admin" element={<SecurityGate requireAdmin><AdminPage /></SecurityGate>} />
         </Route>
         
+        <Route path="/ritual" element={<Navigate to="/desafios" replace />} />
         <Route path="/feedback" element={<Navigate to="/suporte" replace />} />
         <Route path="*" element={<LazyRoute><NotFound /></LazyRoute>} />
       </Routes>
