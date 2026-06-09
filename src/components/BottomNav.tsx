@@ -24,7 +24,7 @@ const BottomNav = () => {
   const { isPremium } = usePremium();
   const location = useLocation();
 
-  const navItems = isPremium 
+  const navItems = false // force non-premium to check layout 
     ? NAV_ITEMS.filter(item => item.path !== "/premium")
     : NAV_ITEMS;
 
