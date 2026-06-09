@@ -346,19 +346,21 @@ const DashboardPage = () => {
 
               <div className="flex flex-col space-y-4">
                 <button
-                  id="journey-cta-main"
-                  data-testid="journey-cta-main"
+                  id="journey-cta-home-main"
+                  data-testid="journey-cta-home-main"
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     const target = totalCompletedArcanos === 0 
                       ? "/mapa?focus=arcano-0" 
                       : `/mapa?focus=${currentStep?.lessonId || "arcano-0"}`;
+                    console.log("[JOURNEY-CTA-FIX] Navigating to:", target);
                     navigate(target);
                   }}
                   className="w-full py-5 rounded-[1.25rem] font-heading text-[11px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-plum text-white border-gold/30 hover:bg-[#45162D] relative z-[100]"
+                  style={{ border: "2px solid #22c55e" }} // Visible Green Border for Debug
                 >
-                  <span>
+                  <span key={totalCompletedArcanos === 0 ? "start" : "continue"}>
                     {totalCompletedArcanos === 0 ? "Iniciar pelo Louco" : "Continuar jornada"}
                   </span>
                   <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform text-gold" />

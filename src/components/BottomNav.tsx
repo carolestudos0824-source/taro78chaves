@@ -1,39 +1,28 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { usePremium } from "@/hooks/use-premium";
 import { useEffect } from "react";
-import { TarotIcon, TarotIconType } from "./TarotIcon";
+import { TarotIcon } from "./TarotIcon";
 
 interface NavItem {
   path: string;
   label: string;
-  icon: TarotIconType;
+  icon: string;
   microcopy: string;
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { path: "/app", label: "Início", icon: "jornada", microcopy: "Sua jornada" },
+  { path: "/app", label: "Início", icon: "jornada", microcopy: "Seu Dashboard" },
   { path: "/jornada-do-louco", label: "Jornada", icon: "louco", microcopy: "A Jornada do Louco" },
   { path: "/desafios", label: "Ritual", icon: "ritual", microcopy: "Faça sua prática de hoje." },
   { path: "/mapa", label: "Mapa", icon: "formacao", microcopy: "Mapa da trilha" },
-  { path: "/premium", label: "Premium", icon: "premium", microcopy: "Jornada completa" },
   { path: "/perfil", label: "Perfil", icon: "perfil", microcopy: "Suas chaves" },
 ];
 
 const BottomNav = () => {
   const navigate = useNavigate();
-  const { isPremium } = usePremium();
   const location = useLocation();
 
-  const navItems = isPremium 
-    ? NAV_ITEMS.filter(item => item.path !== "/premium")
-    : NAV_ITEMS;
-
   useEffect(() => {
-    const marker = document.getElementById("boot-marker");
-    if (marker) {
-      marker.innerText += " | BOTTOM NAV RENDERED";
-      console.log("BottomNav rendered at", location.pathname);
-    }
+    console.log("[BOTTOM-NAV-FIX] Rendered at", location.pathname);
   }, [location.pathname]);
 
   if (location.pathname === "/") return null;
@@ -41,17 +30,21 @@ const BottomNav = () => {
 
   return (
     <nav
+      id="main-bottom-nav"
+      data-testid="main-bottom-nav"
       className="fixed bottom-0 inset-x-0 z-[100] border-t bg-white/98 backdrop-blur-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe w-full overflow-hidden touch-none"
       style={{
         borderColor: "#C8A66A33",
       }}
     >
       <div className="mx-auto flex items-center justify-between py-1.5 px-0 w-full max-w-full">
-        {navItems.map(item => {
+        {NAV_ITEMS.map(item => {
           const isActive = location.pathname === item.path;
           return (
             <button
               key={item.path}
+              id={`nav-item-${item.label.toLowerCase()}`}
+              data-testid={`nav-item-${item.label.toLowerCase()}`}
               onClick={() => navigate(item.path)}
               className="flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 transition-all duration-300 relative group py-1 select-none"
               title={item.microcopy}
