@@ -86,6 +86,8 @@ const VISUAL_VALIDATED: ReadonlySet<string> = new Set<string>([
   "copas-pajem", "copas-cavaleiro", "copas-rainha", "copas-rei",
   "paus-pajem", "paus-cavaleiro", "paus-rainha", "paus-rei",
   "ouros-pajem", "ouros-cavaleiro", "ouros-rainha", "ouros-rei",
+  // Espadas (Fechando agora)
+  "espadas-pajem", "espadas-cavaleiro", "espadas-rainha", "espadas-rei",
 ]);
 
 // ─── Build do Registry ────────────────────────────────────────────
