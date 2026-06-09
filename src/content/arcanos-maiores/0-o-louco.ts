@@ -63,6 +63,7 @@ export const O_LOUCO: ArcanoMaiorEditorial = {
 
   reflectionQuestions: [
     { id: "louco-r1", question: "Se eu não tivesse medo, o que eu faria agora?" },
+    { id: "louco-r2", question: "Onde eu preciso de mais espontaneidade e menos controle?" },
   ],
 
   quiz: [
