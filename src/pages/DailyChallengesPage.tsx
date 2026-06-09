@@ -520,6 +520,19 @@ const ChallengeModal = ({ challenge, isLoading, data, onComplete, onClose }: Cha
   // ─── REVISÃO RÁPIDA / PERGUNTAS DO DIA ───
   if (challenge.type === "revisao-rapida" || challenge.type === "perguntas-do-dia") {
     const questions = data.perguntas.questions;
+    
+    if (!questions || questions.length === 0) {
+      return (
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-plum/90 backdrop-blur-xl">
+          <div className="bg-white w-full max-w-lg rounded-[3rem] border-4 border-gold shadow-2xl p-10 text-center space-y-6">
+            <AlertCircle className="w-12 h-12 text-gold mx-auto" />
+            <p className="font-heading text-plum font-black uppercase tracking-widest text-[10px]">Nenhuma pergunta disponível para hoje.</p>
+            <button onClick={onClose} className="w-full py-5 bg-plum text-white rounded-2xl font-heading text-[11px] font-black uppercase tracking-widest">Fechar</button>
+          </div>
+        </div>
+      );
+    }
+
     const currentQ = questions[currentQuizIndex];
     const isLast = currentQuizIndex === (challenge.type === "revisao-rapida" ? 0 : questions.length - 1);
 
