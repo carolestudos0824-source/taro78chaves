@@ -14,6 +14,7 @@ import {
   DAILY_POSITIONS,
   DAILY_TITLES,
 } from "./pools";
+import { EDITORIAL_REGISTRY } from "@/data/arcanos";
 
 // ─── Tipos exportados (compat com a UI antiga) ───
 
@@ -123,18 +124,36 @@ export function buildCartaDoDia(arcanos: ArcanoContent[], date = getTodayStr()):
 export function buildPerguntasDoDia(arcanos: ArcanoContent[], date = getTodayStr()): PerguntasDoDia {
   const seed = dateSeed(date);
   const questions: PerguntasDoDia["questions"] = [];
+  
+  // Tenta do banco primeiro
   const arcanosWithQuiz = arcanos.filter((a) => a.quiz && a.quiz.perguntas.length > 0);
 
-  for (let i = 0; i < 3 && arcanosWithQuiz.length > 0; i++) {
-    const a = seededPick(arcanosWithQuiz, seed, i * 7 + 3);
-    const q = seededPick(a.quiz!.perguntas, seed, i * 13);
-    questions.push({
-      id: `daily-${date}-q${i}`,
-      question: q.enunciado,
-      options: q.alternativas,
-      correctIndex: q.correta,
-      explanation: q.explicacao ?? "",
-    });
+  if (arcanosWithQuiz.length > 0) {
+    for (let i = 0; i < 3; i++) {
+      const a = seededPick(arcanosWithQuiz, seed, i * 7 + 3);
+      const q = seededPick(a.quiz!.perguntas, seed, i * 13);
+      questions.push({
+        id: `daily-${date}-q${i}`,
+        question: q.enunciado,
+        options: q.alternativas,
+        correctIndex: q.correta,
+        explanation: q.explicacao ?? "",
+      });
+    }
+  } else {
+    // Fallback para o registry editorial fixo (garante que nunca fique vazio)
+    const editorialList = Object.values(EDITORIAL_REGISTRY).filter(a => a.quiz && a.quiz.length > 0);
+    for (let i = 0; i < 3 && editorialList.length > 0; i++) {
+      const a = seededPick(editorialList, seed, i * 7 + 3);
+      const q = seededPick(a.quiz!, seed, i * 13);
+      questions.push({
+        id: `daily-fallback-${date}-q${i}`,
+        question: q.question,
+        options: q.options,
+        correctIndex: q.correctIndex,
+        explanation: q.explanation ?? "",
+      });
+    }
   }
   return { questions };
 }

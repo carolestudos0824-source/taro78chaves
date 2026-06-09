@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Gift, X, Scroll, Bell, Flame, CheckCircle2, Clock, Trophy } from "lucide-react";
+import { ArrowLeft, ChevronRight, Gift, X, Scroll, Bell, Flame, CheckCircle2, Clock, Trophy, Loader2, Sparkles, AlertCircle } from "lucide-react";
 import { useRitual } from "@/hooks/use-ritual";
 import { useHeader } from "@/contexts/header-context";
 import { TarotIcon } from "@/components/TarotIcon";
@@ -51,8 +51,8 @@ const DailyChallengesPage = () => {
   const { user } = useAuth();
   const { progress, updateStreak: updateOldStreak } = useProgress();
   const { streak: ritualStreak, todayProgress: ritualProgress, completeRitualItem, loading: ritualLoading, merits } = useRitual();
-  const { data: arcanos } = useArcanosList({ tipo: "maior" });
-  const { data: symbols } = useSymbolsContent();
+  const { data: arcanos, isLoading: arcanosLoading } = useArcanosList({ tipo: "maior" });
+  const { data: symbols, isLoading: symbolsLoading } = useSymbolsContent();
 
   const arcanosList = arcanos ?? [];
   const cartaDoDia = useMemo(() => buildCartaDoDia(arcanosList), [arcanosList]);
@@ -176,6 +176,7 @@ const DailyChallengesPage = () => {
       {activeChallenge && (
         <ChallengeModal
           challenge={activeChallenge}
+          isLoading={arcanosLoading || symbolsLoading}
           data={{
             carta: cartaDoDia,
             perguntas: perguntasDoDia,
@@ -419,6 +420,7 @@ const DailyChallengesPage = () => {
 
 interface ChallengeModalProps {
   challenge: DailyChallengeItem;
+  isLoading?: boolean;
   data: {
     carta: CartaDoDia | null;
     perguntas: PerguntasDoDia;
@@ -430,9 +432,24 @@ interface ChallengeModalProps {
   onClose: () => void;
 }
 
-const ChallengeModal = ({ challenge, data, onComplete, onClose }: ChallengeModalProps) => {
-  const [step, setStep] = useState<"initial" | "contemplated">("initial");
+const ChallengeModal = ({ challenge, isLoading, data, onComplete, onClose }: ChallengeModalProps) => {
+  const [step, setStep] = useState<"initial" | "active" | "completed">("initial");
+  const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
+  const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-plum/90 backdrop-blur-xl">
+        <div className="bg-white w-full max-w-lg rounded-[3rem] border-4 border-gold shadow-2xl p-10 text-center space-y-4">
+          <Loader2 className="w-12 h-12 text-gold animate-spin mx-auto" />
+          <p className="font-heading text-plum font-black uppercase tracking-widest text-[10px]">Preparando Portal...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // ─── CARTA DO DIA ───
   if (challenge.type === "carta-do-dia") {
     const carta = data.carta;
     const visual = resolveMaiorVisual(carta?.arcanoId ?? 0);
@@ -477,7 +494,7 @@ const ChallengeModal = ({ challenge, data, onComplete, onClose }: ChallengeModal
             <div className="flex flex-col gap-3 pt-4">
               {step === "initial" ? (
                 <button 
-                  onClick={() => setStep("contemplated")}
+                  onClick={() => setStep("completed")}
                   className="w-full py-5 bg-plum text-white rounded-2xl font-heading text-[11px] font-black tracking-[0.3em] uppercase shadow-xl hover:bg-plum/90 transition-all active:scale-95"
                 >
                   Contemplar
@@ -500,23 +517,208 @@ const ChallengeModal = ({ challenge, data, onComplete, onClose }: ChallengeModal
     );
   }
 
-  // Fallback for other challenge types (keep existing logic simplified)
+  // ─── REVISÃO RÁPIDA / PERGUNTAS DO DIA ───
+  if (challenge.type === "revisao-rapida" || challenge.type === "perguntas-do-dia") {
+    const questions = data.perguntas.questions;
+    
+    if (!questions || questions.length === 0) {
+      return (
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-plum/90 backdrop-blur-xl">
+          <div className="bg-white w-full max-w-lg rounded-[3rem] border-4 border-gold shadow-2xl p-10 text-center space-y-6">
+            <AlertCircle className="w-12 h-12 text-gold mx-auto" />
+            <p className="font-heading text-plum font-black uppercase tracking-widest text-[10px]">Nenhuma pergunta disponível para hoje.</p>
+            <button onClick={onClose} className="w-full py-5 bg-plum text-white rounded-2xl font-heading text-[11px] font-black uppercase tracking-widest">Fechar</button>
+          </div>
+        </div>
+      );
+    }
+
+    const currentQ = questions[currentQuizIndex];
+    const isLast = currentQuizIndex === (challenge.type === "revisao-rapida" ? 0 : questions.length - 1);
+
+    const handleAnswer = (idx: number) => {
+      if (selectedOption !== null) return;
+      setSelectedOption(idx);
+      const correct = idx === currentQ.correctIndex;
+      setIsCorrect(correct);
+      
+      if (correct) {
+        toast.success("Correto!");
+      } else {
+        toast.error("Quase lá! Tente refletir sobre a explicação.");
+      }
+    };
+
+    const nextStep = () => {
+      if (isLast) {
+        setStep("completed");
+      } else {
+        setCurrentQuizIndex(prev => prev + 1);
+        setSelectedOption(null);
+        setIsCorrect(null);
+      }
+    };
+
+    return (
+      <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-plum/90 backdrop-blur-xl animate-in fade-in duration-300">
+        <div className="bg-white w-full max-w-lg rounded-[3rem] border-4 border-gold shadow-2xl overflow-hidden animate-in zoom-in-95 duration-500">
+          <div className="p-8 md:p-10 text-center space-y-8">
+            <div className="space-y-2">
+              <h2 className="text-[10px] font-heading font-black text-gold uppercase tracking-[0.4em]">{challenge.title}</h2>
+              <p className="text-plum/60 font-body italic text-sm">{challenge.subtitle}</p>
+            </div>
+
+            {step !== "completed" ? (
+              <div className="space-y-6 text-left animate-in fade-in duration-500">
+                <div className="p-6 bg-gold/5 rounded-2xl border border-gold/20">
+                  <p className="font-heading text-lg font-black text-plum leading-tight">
+                    {currentQ?.question}
+                  </p>
+                </div>
+
+                <div className="grid gap-3">
+                  {currentQ?.options.map((opt, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleAnswer(idx)}
+                      disabled={selectedOption !== null}
+                      className={`w-full p-4 rounded-xl border-2 text-left font-body font-bold transition-all ${
+                        selectedOption === idx
+                          ? isCorrect ? "bg-green-50 border-green-500 text-green-700" : "bg-red-50 border-red-500 text-red-700"
+                          : selectedOption !== null && idx === currentQ.correctIndex
+                            ? "bg-green-50 border-green-500 text-green-700"
+                            : "bg-white border-gold/20 hover:border-gold text-plum"
+                      }`}
+                    >
+                      {opt}
+                    </button>
+                  ))}
+                </div>
+
+                {selectedOption !== null && (
+                  <div className="p-4 bg-ivory rounded-xl border border-gold/20 animate-in slide-in-from-top-2 duration-500">
+                    <p className="text-[12px] font-body text-plum/70 leading-relaxed">
+                      <span className="font-black text-plum uppercase tracking-widest block mb-1 text-[10px]">Explicação:</span>
+                      {currentQ?.explanation}
+                    </p>
+                    <button 
+                      onClick={nextStep}
+                      className="mt-4 w-full py-3 bg-plum text-white rounded-xl font-heading text-[10px] font-black uppercase tracking-widest"
+                    >
+                      {isLast ? "Concluir Revisão" : "Próxima Pergunta"}
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="space-y-6 animate-in zoom-in-95 duration-500">
+                <div className="w-20 h-20 bg-gold/10 rounded-full flex items-center justify-center mx-auto border-2 border-gold">
+                  <CheckCircle2 className="w-10 h-10 text-plum" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-heading font-black text-plum">Revisão Concluída</h3>
+                  <p className="font-body text-plum/60 italic">Você fortaleceu seu conhecimento hoje.</p>
+                </div>
+                <button 
+                  onClick={onComplete}
+                  className="w-full py-5 bg-gold text-plum rounded-2xl font-heading text-[11px] font-black tracking-[0.3em] uppercase shadow-xl hover:scale-105 transition-all"
+                >
+                  Selar Portal
+                </button>
+              </div>
+            )}
+
+            {step !== "completed" && (
+              <button onClick={onClose} className="w-full py-3 text-plum/40 font-heading text-[10px] font-black uppercase tracking-widest hover:text-plum transition-colors">
+                Agora não
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ─── OUTROS PORTAIS (SIMBOLO, COMBINACAO, MINI) ───
+  let portalContent = null;
+  if (challenge.type === "simbolo-do-dia" && data.simbolo) {
+    portalContent = (
+      <div className="space-y-6 text-left">
+        <div className="p-6 bg-gold/5 rounded-2xl border border-gold/20 space-y-4">
+          <h4 className="font-heading text-xl font-black text-plum">{data.simbolo.name}</h4>
+          <p className="font-body text-sm text-plum/80 leading-relaxed italic">{data.simbolo.explanation}</p>
+        </div>
+        <div className="space-y-2">
+          <p className="text-[10px] font-heading font-black text-gold uppercase tracking-widest">Aparece em:</p>
+          <p className="font-body text-sm text-plum/60 font-black uppercase">{data.simbolo.cards.join(", ")}</p>
+        </div>
+      </div>
+    );
+  } else if (challenge.type === "combinacao-do-dia" && data.combinacao) {
+    portalContent = (
+      <div className="space-y-6 text-left">
+        <div className="flex justify-center gap-4 mb-4">
+           <div className="w-24 aspect-[2/3.5] bg-ivory border-2 border-gold rounded-lg flex items-center justify-center text-[10px] font-black text-plum text-center p-2">
+             {data.combinacao.card1.name}
+           </div>
+           <div className="w-24 aspect-[2/3.5] bg-ivory border-2 border-gold rounded-lg flex items-center justify-center text-[10px] font-black text-plum text-center p-2">
+             {data.combinacao.card2.name}
+           </div>
+        </div>
+        <div className="p-6 bg-gold/5 rounded-2xl border border-gold/20 space-y-4">
+          <p className="font-body text-sm text-plum/80 leading-relaxed italic">"{data.combinacao.insight}"</p>
+        </div>
+      </div>
+    );
+  } else if (challenge.type === "mini-interpretacao" && data.interpretacao) {
+    portalContent = (
+      <div className="space-y-6 text-left">
+        <div className="p-6 bg-gold/5 rounded-2xl border border-gold/20 space-y-4">
+          <p className="text-[10px] font-heading font-black text-gold uppercase tracking-widest">Contexto:</p>
+          <p className="font-body text-sm text-plum font-black leading-snug">{data.interpretacao.context}</p>
+          <p className="text-[10px] font-heading font-black text-gold uppercase tracking-widest mt-4">Leitura Sugerida:</p>
+          <p className="font-body text-sm text-plum/80 leading-relaxed italic">"{data.interpretacao.sampleReading}"</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-plum/80 backdrop-blur-md">
-      <div className="bg-white w-full max-w-lg rounded-[3rem] border-4 border-gold shadow-2xl overflow-hidden">
-        <div className="p-8 text-center space-y-6">
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-plum/90 backdrop-blur-xl animate-in fade-in duration-300">
+      <div className="bg-white w-full max-w-lg rounded-[3rem] border-4 border-gold shadow-2xl overflow-hidden animate-in zoom-in-95 duration-500">
+        <div className="p-8 md:p-10 text-center space-y-8">
+          <div className="space-y-2">
+            <h2 className="text-[10px] font-heading font-black text-gold uppercase tracking-[0.4em]">{challenge.title}</h2>
+            <p className="text-plum/60 font-body italic text-sm">{challenge.subtitle}</p>
+          </div>
+
           <div className="w-20 h-20 bg-gold/10 rounded-3xl flex items-center justify-center mx-auto text-plum border-2 border-gold shadow-xl">
              <TarotIcon name={challenge.icon} className="w-12 h-12" />
           </div>
-          <div className="space-y-2">
-            <h2 className="text-3xl font-heading text-plum">{challenge.title}</h2>
-          </div>
-          <button onClick={onComplete} className="w-full py-5 bg-plum text-white rounded-2xl font-heading text-[11px] font-black uppercase">
-            Selar Portal
-          </button>
-          <button onClick={onClose} className="w-full py-3 text-plum/40 font-heading text-[10px] uppercase">
-            Agora não
-          </button>
+
+          {portalContent ? (
+            <div className="animate-in fade-in slide-in-from-bottom-2 duration-700">
+               {portalContent}
+               <div className="flex flex-col gap-3 pt-6">
+                 <button 
+                   onClick={onComplete}
+                   className="w-full py-5 bg-gold text-plum rounded-2xl font-heading text-[11px] font-black tracking-[0.3em] uppercase shadow-xl hover:scale-105 transition-all"
+                 >
+                   Selar Portal
+                 </button>
+                 <button onClick={onClose} className="w-full py-3 text-plum/40 font-heading text-[10px] font-black uppercase tracking-widest hover:text-plum transition-colors">
+                   Agora não
+                 </button>
+               </div>
+            </div>
+          ) : (
+            <div className="space-y-6">
+               <p className="font-body text-plum/40 italic uppercase tracking-widest text-[12px]">Portal em preparação...</p>
+               <button onClick={onClose} className="w-full py-5 bg-plum/10 text-plum rounded-2xl font-heading text-[11px] font-black tracking-[0.3em] uppercase">
+                 Voltar
+               </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
