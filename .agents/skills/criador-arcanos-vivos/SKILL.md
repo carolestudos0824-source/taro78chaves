@@ -1,50 +1,50 @@
 ---
 name: criador-arcanos-vivos
-description: Gera briefings, prompts de vídeo, roteiros e checklists para a criação de vídeos animados (Arcanos Vivos) do curso Tarô 78 Chaves.
+description: Habilidade especializada em criar prompts, roteiros e especificações para os vídeos animados dos Arcanos Vivos do projeto Tarô 78 Chaves.
 ---
 
-# Criador de Arcanos Vivos
+# Criador Arcanos Vivos - App Tarô 78 Chaves
 
-Habilidade especializada na criação de briefings criativos para vídeos animados da experiência "Arcanos Vivos" do curso Tarô 78 Chaves.
+Você é a habilidade oficial para geração de ativos e integração dos **Arcanos Vivos**. Sua função é garantir que a transição da carta estática para a animada preserve a sacralidade do deck Rider-Waite-Smith.
 
-## Objetivo
-Gerar documentação técnica e criativa (briefing, prompt, roteiro, direção) para a produção de vídeos verticais (9:16) que dão vida aos Arcanos do Tarô, mantendo a fidelidade simbólica e o tom premium da plataforma.
+## Princípios Fundamentais
+- **Deck Canônico**: A base é sempre o Rider-Waite-Smith. A arte não é reinterpretada nem substituída por IA.
+- **Presença, não Imagem**: O vídeo deve fazer o usuário sentir que o arcano "ganhou vida" (respiração, atmosfera, luz), sem perder a identidade visual original.
+- **Não Regressão**: Nunca remova conteúdo, lições ou textos existentes.
+- **Zero XP**: Não mencione ou utilize sistemas de XP.
 
-## Regras de Ouro
-- **Simbologia Rider-Waite-Smith (RWS):** Respeitar rigorosamente os elementos canônicos da carta.
-- **Não Reinterpretar:** O vídeo é uma extensão da carta oficial, não uma nova versão artística que mude o significado.
-- **Camada Experiencial:** Tratar o vídeo como uma imersão sensorial, não como a carta em si.
-- **Estética:** Adulta, elegante, oracular e premium. Evitar fantasia genérica ou elementos infantis.
-- **Sem Ruído Visual:** Proibido inserir texto, legendas ou logotipos no vídeo.
-- **Especificações Técnicas:**
-  - Formato: Vertical 9:16.
-  - Duração: 8 a 12 segundos.
-  - Idioma: Português do Brasil (PT-BR).
-  - Áudio: Voz profunda, ritualística e calma. Atmosfera sonora imersiva.
+## Padrão de Saída para cada Arcano
+Para cada solicitação de Arcano Vivo, você deve fornecer:
 
-## Estrutura de Resposta Obrigatória
+1. **Nome do arcano**
+2. **Objetivo emocional** do vídeo
+3. **Símbolos RWS** preservados
+4. **O que pode ser animado** (atmosfera, luz, respiração)
+5. **O que NÃO pode ser alterado** (figurino, composição, símbolos centrais)
+6. **Prompt principal** (para ferramentas de vídeo IA)
+7. **Prompt negativo**
+8. **Direção de câmera**
+9. **Direção de luz e atmosfera**
+10. **Narração opcional** (Português Brasil, tom oracular)
+11. **Nome sugerido do arquivo** (`nome-do-arcano.mp4`)
+12. **Caminho sugerido** (`public/videos/arcanos/`)
+13. **Configuração técnica** para `src/config/arcano-videos.ts`
+14. **Checklist de validação**
 
-Sempre responda seguindo exatamente este formato:
+## Especificações Técnicas
+- **Formato**: 9:16 (Vertical), 8-12 segundos.
+- **Estética**: Premium, Mística, Cinematográfica.
+- **Fallback**: Se o vídeo falhar, a carta estática canônica DEVE ser exibida.
+- **Arquitetura**: Utilize `ArcanoVivoVideo` e a estrutura existente em `src/config/arcano-videos.ts`.
 
-**ARCANO:** [Nome da Carta]
-**NOME:** [Título do Vídeo/Experiência]
-**OBJETIVO EMOCIONAL:** [Qual sentimento o vídeo deve evocar]
-**SÍMBOLOS OBRIGATÓRIOS:** [Lista de itens do RWS que devem aparecer]
-**SÍMBOLOS PROIBIDOS OU A EVITAR:** [O que não deve estar na cena]
-**PROMPT VISUAL PARA VÍDEO:** [Prompt técnico em inglês e português para ferramentas de IA de vídeo como Runway/Luma/Sora]
-**MOVIMENTO DA CENA:** [Direção de animação e câmera]
-**ROTEIRO DE VOZ:** [Texto curto em PT-BR para narração]
-**DURAÇÃO:** [8 a 12 segundos]
-**CHECKLIST DE APROVAÇÃO:**
+## Checklist de Validação Obrigatório
+- VÍDEO INSERIDO NO CAMINHO CORRETO: SIM/NÃO
+- ARCANO USA VÍDEO NO LUGAR DA CARTA ESTÁTICA: SIM/NÃO
+- POSTER APARECE ANTES DO PLAY: SIM/NÃO
+- BOTÃO DE PLAY FUNCIONA: SIM/NÃO
+- VÍDEO TOCA NO DESKTOP/MOBILE: SIM/NÃO
+- ÁUDIO TOCA APÓS INTERAÇÃO: SIM/NÃO
+- FALLBACK PARA CARTA ESTÁTICA FUNCIONA: SIM/NÃO
+- EXPERIÊNCIA VISUAL APROVADA: SIM/NÃO
 
-- VÍDEO RESPEITA O ARCANO: SIM ou NÃO
-- FIDELIDADE SIMBÓLICA AO RWS: SIM ou NÃO
-- SEM TEXTO NA TELA: SIM ou NÃO
-- SEM LOGO: SIM ou NÃO
-- FORMATO 9:16: SIM ou NÃO
-- DURAÇÃO 8 A 12 SEGUNDOS: SIM ou NÃO
-- TOM ADULTO E PREMIUM: SIM ou NÃO
-- PODE VIRAR ARCANO VIVO: SIM ou NÃO
-
-## Notas Adicionais
-Esta habilidade é uma ferramenta de suporte à produção criativa e não altera o código-fonte, banco de dados ou arquivos de mídia do aplicativo Tarô 78 Chaves sem instrução explícita de desenvolvimento.
+**ARCANO VIVO PRONTO PARA PRODUÇÃO: SIM ou NÃO**
