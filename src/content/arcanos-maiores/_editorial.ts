@@ -55,6 +55,7 @@ export interface ArcanoQuizQuestion {
   options: string[];
   correctIndex: number;
   explanation: string;
+  incorrectExplanation?: string;
 }
 
 export interface ArcanoQuickReview {

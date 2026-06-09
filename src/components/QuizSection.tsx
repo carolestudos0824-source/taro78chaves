@@ -346,10 +346,12 @@ export function QuizSection({ questions = [], onComplete, onAnswer }: QuizSectio
                   <Book className="w-10 h-10 text-[#5B1F3D]" />
                 </div>
                 <div className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D] mb-3">
-                  Sabedoria Integrada
+                  {selectedOption === current.correctIndex ? "Sabedoria Integrada" : "Ajuste de Rota"}
                 </div>
                 <p className="text-[15px] font-accent italic font-bold leading-relaxed text-[#5B1F3D]/90">
-                  {current.explanation}
+                  {selectedOption === current.correctIndex 
+                    ? current.explanation 
+                    : (current.incorrectExplanation || current.explanation)}
                 </p>
               </div>
 

@@ -70,6 +70,7 @@ export interface QuizQuestion {
   options: string[];
   correctIndex: number;
   explanation: string;
+  incorrectExplanation?: string;
 }
 
 // ─── Symbols Map ───────────────────────────────────────────────────
