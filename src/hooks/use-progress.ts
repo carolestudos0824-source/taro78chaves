@@ -304,10 +304,9 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         console.log(`[useProgress] syncing user_progress for ${user.id}...`, corePayload);
         lastSavedCoreRef.current = coreSnapshot;
         
-        const { error } = await supabase
-          .from("user_progress")
-          .update(corePayload)
-          .eq("user_id", user.id);
+        const { error } = await supabase.rpc("complete_lesson_v2", { 
+          _lesson_id: corePayload.completed_lessons[corePayload.completed_lessons.length - 1] 
+        });
         
         if (error) {
           console.error("[useProgress] Error syncing user_progress:", error);
