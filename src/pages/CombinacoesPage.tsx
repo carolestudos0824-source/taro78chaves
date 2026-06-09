@@ -163,7 +163,7 @@ const CombinacoesPage = () => {
           {COMBINACOES_LESSONS.map((lesson, i) => {
             const completed = isLessonCompleted(lesson.id);
             const unlocked = isLessonUnlocked(lesson.order);
-            const isCurrent = unlocked && !completed;
+            const isCurrent = unlocked && !completed && (i === 0 || isLessonCompleted(COMBINACOES_LESSONS[i - 1].id));
 
             return (
               <button
