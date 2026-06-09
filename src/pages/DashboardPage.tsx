@@ -310,7 +310,7 @@ const DashboardPage = () => {
                    <div className="w-8 h-px bg-gold/40" />
                    <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Caminho do Iniciado</span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-plum tracking-tight leading-tight">TESTE JORNADA</h2>
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-plum tracking-tight leading-tight">Sua Jornada</h2>
               </div>
 
               {currentStep && (
@@ -355,7 +355,6 @@ const DashboardPage = () => {
                   }}
                   className="w-full py-5 rounded-[1.25rem] font-heading text-[11px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-plum text-white border-gold/30 hover:bg-[#45162D] relative z-[50]"
                 >
-                  {console.log('[Dashboard] Journey button text logic:', { totalCompletedArcanos, text: totalCompletedArcanos === 0 ? "Iniciar pelo Louco" : "Continuar jornada" })}
                   {totalCompletedArcanos === 0 ? "Iniciar pelo Louco" : "Continuar jornada"}
                   <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform text-gold" />
                 </button>
