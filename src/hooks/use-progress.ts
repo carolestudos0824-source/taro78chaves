@@ -309,7 +309,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         const lastLesson = corePayload.completed_lessons[corePayload.completed_lessons.length - 1];
         if (lastLesson) {
           const { error: rpcError } = await supabase.rpc("complete_lesson_v2", { 
-            _lesson_id: lastLesson 
+            lesson_id_param: lastLesson 
           });
           error = rpcError;
         }
@@ -317,7 +317,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         const lastModule = corePayload.completed_modules[corePayload.completed_modules.length - 1];
         if (lastModule && !error) {
           const { error: rpcError } = await supabase.rpc("complete_module_v2", { 
-            _module_id: lastModule 
+            module_id_param: lastModule 
           });
           error = rpcError;
         }
