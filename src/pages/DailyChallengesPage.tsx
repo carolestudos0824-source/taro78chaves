@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Gift, X, Scroll, Bell, Flame, CheckCircle2, Clock, Trophy } from "lucide-react";
+import { ArrowLeft, ChevronRight, Gift, X, Scroll, Bell, Flame, CheckCircle2, Clock, Trophy, Loader2, Sparkles, AlertCircle } from "lucide-react";
 import { useRitual } from "@/hooks/use-ritual";
 import { useHeader } from "@/contexts/header-context";
 import { TarotIcon } from "@/components/TarotIcon";
