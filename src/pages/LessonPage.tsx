@@ -69,6 +69,7 @@ const PHASE_LABEL: Record<LessonPhase, string> = {
   aplicacoes: "Aplicações",
   quiz: "Quiz Final",
   complete: "Conclusão",
+  "legacy-content": "Estudo Completo",
 };
 
 const LessonPage = () => {
