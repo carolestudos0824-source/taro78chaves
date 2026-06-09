@@ -465,12 +465,21 @@ const ChallengeModal = ({ challenge, isLoading, data, onComplete, onClose }: Cha
             </div>
 
             <div className="relative group flex justify-center">
-              <div className="w-48 md:w-56 aspect-[2/3.5] rounded-2xl overflow-hidden border-4 border-gold shadow-2xl bg-ivory transform transition-transform duration-700 group-hover:scale-105">
+              <div className="w-48 md:w-56 aspect-[2/3.5] rounded-2xl overflow-hidden border-4 border-gold shadow-2xl bg-ivory transform transition-transform duration-700 group-hover:scale-105 relative">
                 <img 
                   src={imageUrl || ""} 
                   alt={carta?.name || "O Louco"} 
                   className="w-full h-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute top-3 left-0 right-0 text-center pointer-events-none">
+                  <span className="inline-block px-3 py-1 font-heading text-[12px] tracking-[0.4em] rounded-sm text-gold bg-plum/60 border border-gold/30">
+                    {carta?.numeral}
+                  </span>
+                </div>
+                <div className="absolute bottom-4 left-0 right-0 text-center">
+                  <h4 className="font-heading text-xl font-bold text-white tracking-tight drop-shadow-lg">{carta?.name}</h4>
+                </div>
               </div>
             </div>
 
@@ -563,8 +572,12 @@ const ChallengeModal = ({ challenge, isLoading, data, onComplete, onClose }: Cha
       <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-plum/90 backdrop-blur-xl animate-in fade-in duration-300">
         <div className="bg-white w-full max-w-lg rounded-[3rem] border-4 border-gold shadow-2xl overflow-hidden animate-in zoom-in-95 duration-500">
           <div className="p-8 md:p-10 text-center space-y-8">
-            <div className="space-y-2">
-              <h2 className="text-[10px] font-heading font-black text-gold uppercase tracking-[0.4em]">{challenge.title}</h2>
+            <div className="space-y-4">
+              <div className="flex items-center justify-center gap-3">
+                <div className="h-px w-8 bg-gold/30" />
+                <h2 className="text-[10px] font-heading font-black text-gold uppercase tracking-[0.4em]">{challenge.title}</h2>
+                <div className="h-px w-8 bg-gold/30" />
+              </div>
               <p className="text-plum/60 font-body italic text-sm">{challenge.subtitle}</p>
             </div>
 
@@ -658,12 +671,28 @@ const ChallengeModal = ({ challenge, isLoading, data, onComplete, onClose }: Cha
     portalContent = (
       <div className="space-y-6 text-left">
         <div className="flex justify-center gap-4 mb-4">
-           <div className="w-24 aspect-[2/3.5] bg-ivory border-2 border-gold rounded-lg flex items-center justify-center text-[10px] font-black text-plum text-center p-2">
-             {data.combinacao.card1.name}
-           </div>
-           <div className="w-24 aspect-[2/3.5] bg-ivory border-2 border-gold rounded-lg flex items-center justify-center text-[10px] font-black text-plum text-center p-2">
-             {data.combinacao.card2.name}
-           </div>
+           {data.combinacao.card1 && (
+             <div className="w-24 md:w-28 aspect-[2/3.5] bg-ivory border-2 border-gold rounded-xl overflow-hidden shadow-xl relative group">
+               <img 
+                 src={resolveMaiorVisual(data.combinacao.card1.name === "O Louco" ? 0 : 1).resolvedAssetUrl} 
+                 className="w-full h-full object-cover opacity-90"
+                 alt={data.combinacao.card1.name} 
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+               <span className="absolute bottom-2 inset-x-0 text-center text-[8px] font-heading font-black text-white uppercase tracking-widest">{data.combinacao.card1.name}</span>
+             </div>
+           )}
+           {data.combinacao.card2 && (
+             <div className="w-24 md:w-28 aspect-[2/3.5] bg-ivory border-2 border-gold rounded-xl overflow-hidden shadow-xl relative group">
+               <img 
+                 src={resolveMaiorVisual(data.combinacao.card2.name === "O Louco" ? 0 : 2).resolvedAssetUrl} 
+                 className="w-full h-full object-cover opacity-90"
+                 alt={data.combinacao.card2.name} 
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+               <span className="absolute bottom-2 inset-x-0 text-center text-[8px] font-heading font-black text-white uppercase tracking-widest">{data.combinacao.card2.name}</span>
+             </div>
+           )}
         </div>
         <div className="p-6 bg-gold/5 rounded-2xl border border-gold/20 space-y-4">
           <p className="font-body text-sm text-plum/80 leading-relaxed italic">"{data.combinacao.insight}"</p>
