@@ -67,9 +67,11 @@ const TRAIL_LEVELS: TrailLevel[] = [
 
 const TrailsPage = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { progress } = useProgress();
   const { bypassLocks } = useAccess();
   const { setHeader, resetHeader } = useHeader();
+  const arcanoZeroRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setHeader({
@@ -77,8 +79,22 @@ const TrailsPage = () => {
       subtitle: "Sua travessia pelos 78 arcanos.",
       backRoute: "/app"
     });
+
+    // Check for focus parameter to scroll to start
+    if (searchParams.get("focus") === "arcano-0") {
+      // Delay slightly to ensure layout is ready
+      setTimeout(() => {
+        if (arcanoZeroRef.current) {
+          arcanoZeroRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          // Fallback if ref isn't attached or found
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 300);
+    }
+
     return () => resetHeader();
-  }, [setHeader, resetHeader]);
+  }, [setHeader, resetHeader, searchParams]);
 
   const isLevelComplete = (level: TrailLevel) => 
     level.modules.every(m => progress.completedModules.includes(m));
