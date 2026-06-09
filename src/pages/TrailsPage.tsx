@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Lock, Check, Sparkles, ChevronRight, Key, Play } from "lucide-react";
 import { TarotIcon } from "@/components/TarotIcon";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { useHeader } from "@/contexts/header-context";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { MODULES_CATALOG as MODULES } from "@/lib/content";
 import imgLouco from "@/assets/arcano-0-louco.jpg";
 import imgMago from "@/assets/arcano-1-mago.jpg";
