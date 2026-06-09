@@ -22,7 +22,8 @@ const BottomNav = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log("[BOTTOM-NAV-FIX] Rendered at", location.pathname);
+    // Scroll to top on navigation to ensure clear view of new page
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, [location.pathname]);
 
   if (location.pathname === "/") return null;
