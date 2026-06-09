@@ -1,4 +1,5 @@
 ---
+name: security-memory
 description: Memória de segurança e diretrizes técnicas para o projeto Tarô 78 Chaves.
 ---
 
