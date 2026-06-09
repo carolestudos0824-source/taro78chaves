@@ -703,10 +703,32 @@ const ChallengeModal = ({ challenge, isLoading, data, onComplete, onClose }: Cha
     portalContent = (
       <div className="space-y-6 text-left">
         <div className="p-6 bg-gold/5 rounded-2xl border border-gold/20 space-y-4">
-          <p className="text-[10px] font-heading font-black text-gold uppercase tracking-widest">Contexto:</p>
-          <p className="font-body text-sm text-plum font-black leading-snug">{data.interpretacao.context}</p>
-          <p className="text-[10px] font-heading font-black text-gold uppercase tracking-widest mt-4">Leitura Sugerida:</p>
-          <p className="font-body text-sm text-plum/80 leading-relaxed italic">"{data.interpretacao.sampleReading}"</p>
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-gold" />
+            <p className="text-[10px] font-heading font-black text-gold uppercase tracking-widest">Contexto:</p>
+          </div>
+          <p className="font-body text-sm text-plum font-black leading-snug p-4 bg-white/50 rounded-xl border border-gold/10 mb-6">{data.interpretacao.context}</p>
+          
+          <div className="flex justify-center mb-6">
+            <div className="w-28 aspect-[2/3.5] bg-ivory border-2 border-gold rounded-xl overflow-hidden shadow-xl relative">
+               <img 
+                 src={resolveMaiorVisual(data.interpretacao.card.name === "O Louco" ? 0 : 3).resolvedAssetUrl} 
+                 className="w-full h-full object-cover"
+                 alt={data.interpretacao.card.name} 
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+               <div className="absolute top-2 left-0 right-0 text-center">
+                 <span className="inline-block px-2 py-0.5 text-[8px] font-heading font-black text-gold bg-plum/40 rounded-sm">{data.interpretacao.card.numeral}</span>
+               </div>
+               <span className="absolute bottom-2 inset-x-0 text-center text-[8px] font-heading font-black text-white uppercase tracking-widest">{data.interpretacao.card.name}</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-gold" />
+            <p className="text-[10px] font-heading font-black text-gold uppercase tracking-widest">Leitura Sugerida:</p>
+          </div>
+          <p className="font-body text-sm text-plum/80 leading-relaxed italic p-4 bg-ivory/50 rounded-xl border border-gold/10">"{data.interpretacao.sampleReading}"</p>
         </div>
       </div>
     );
