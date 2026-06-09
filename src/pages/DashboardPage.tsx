@@ -346,16 +346,10 @@ const DashboardPage = () => {
 
               <div className="flex flex-col space-y-4">
                 <button
-                  onClick={() => {
-                    if (currentStep) {
-                      navigate(currentStep.route);
-                    } else {
-                      navigate("/trilhas");
-                    }
-                  }}
+                  onClick={() => navigate("/mapa")}
                   className="w-full py-5 rounded-[1.25rem] font-heading text-[11px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-plum text-white border-gold/30 hover:bg-[#45162D]"
                 >
-                  ATRAVESSAR O PORTAL
+                  CONTINUAR JORNADA
                   <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform text-gold" />
                 </button>
               </div>
