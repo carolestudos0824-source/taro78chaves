@@ -420,6 +420,7 @@ const DailyChallengesPage = () => {
 
 interface ChallengeModalProps {
   challenge: DailyChallengeItem;
+  isLoading?: boolean;
   data: {
     carta: CartaDoDia | null;
     perguntas: PerguntasDoDia;
@@ -431,11 +432,22 @@ interface ChallengeModalProps {
   onClose: () => void;
 }
 
-const ChallengeModal = ({ challenge, data, onComplete, onClose }: ChallengeModalProps) => {
+const ChallengeModal = ({ challenge, isLoading, data, onComplete, onClose }: ChallengeModalProps) => {
   const [step, setStep] = useState<"initial" | "active" | "completed">("initial");
   const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-plum/90 backdrop-blur-xl">
+        <div className="bg-white w-full max-w-lg rounded-[3rem] border-4 border-gold shadow-2xl p-10 text-center space-y-4">
+          <Loader2 className="w-12 h-12 text-gold animate-spin mx-auto" />
+          <p className="font-heading text-plum font-black uppercase tracking-widest text-[10px]">Preparando Portal...</p>
+        </div>
+      </div>
+    );
+  }
 
   // ─── CARTA DO DIA ───
   if (challenge.type === "carta-do-dia") {
