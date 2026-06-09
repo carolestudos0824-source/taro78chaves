@@ -344,7 +344,20 @@ const DashboardPage = () => {
                 </div>
               )}
 
-              {/* Removed the button container for testing */}
+              <div className="flex flex-col space-y-4">
+                <button
+                  id="journey-cta-main"
+                  data-testid="journey-cta-main"
+                  onClick={() => {
+                    const focusId = totalCompletedArcanos === 0 ? "arcano-0" : (currentStep?.lessonId || "arcano-0");
+                    navigate(`/mapa?focus=${focusId}`);
+                  }}
+                  className="w-full py-5 rounded-[1.25rem] font-heading text-[11px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-plum text-white border-gold/30 hover:bg-[#45162D] relative z-[50]"
+                >
+                  {totalCompletedArcanos === 0 ? "Iniciar pelo Louco" : "Continuar jornada"}
+                  <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform text-gold" />
+                </button>
+              </div>
             </div>
           </div>
         </section>
