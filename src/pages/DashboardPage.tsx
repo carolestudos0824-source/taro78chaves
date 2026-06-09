@@ -344,25 +344,39 @@ const DashboardPage = () => {
                 </div>
               )}
 
-              <button
-                onClick={() => {
-                  if (!ritualProgress.completed) {
-                    navigate("/desafios");
-                  } else if (currentStep) {
-                    navigate(currentStep.route);
-                  }
-                }}
-                className={`w-full py-5 rounded-[1.25rem] font-heading text-[11px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn ${
-                  !ritualProgress.completed 
-                    ? "bg-gold text-plum border-plum/20 hover:bg-gold/90" 
-                    : "bg-plum text-white border-gold/30 hover:bg-[#45162D]"
-                }`}
-              >
-                {!ritualProgress.completed 
-                  ? "Fazer Ritual de hoje" 
-                  : totalCompletedArcanos === 0 ? "Abrir o Primeiro Portal" : "Atravessar o Portal"} 
-                <ArrowRight className={`w-5 h-5 group-hover/btn:translate-x-2 transition-transform ${!ritualProgress.completed ? 'text-plum' : 'text-gold'}`} />
-              </button>
+              <div className="flex flex-col space-y-4">
+                <button
+                  onClick={() => {
+                    if (currentStep) {
+                      navigate(currentStep.route);
+                    } else {
+                      navigate("/trilhas");
+                    }
+                  }}
+                  className="w-full py-5 rounded-[1.25rem] font-heading text-[11px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-plum text-white border-gold/30 hover:bg-[#45162D]"
+                >
+                  {totalCompletedArcanos === 0 ? "Abrir o Primeiro Portal" : "Continuar estudos"}
+                  <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform text-gold" />
+                </button>
+
+                {!ritualProgress.completed && (
+                  <div className="pt-2">
+                    <button
+                      onClick={() => navigate("/desafios")}
+                      className="w-full py-4 rounded-2xl bg-gold/10 border border-gold/30 hover:bg-gold/20 transition-all flex items-center justify-between px-6 group/ritual"
+                    >
+                      <div className="flex items-center gap-3">
+                        <Sparkles className="w-4 h-4 text-gold animate-pulse" />
+                        <span className="text-[10px] font-heading font-black tracking-widest text-plum uppercase">Ritual de hoje aberto</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[9px] font-heading font-black tracking-widest text-gold uppercase">Praticar agora</span>
+                        <ChevronRight className="w-3 h-3 text-gold group-hover/ritual:translate-x-1 transition-transform" />
+                      </div>
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </section>
