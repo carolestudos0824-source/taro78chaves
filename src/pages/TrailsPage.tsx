@@ -80,15 +80,27 @@ const TrailsPage = () => {
       backRoute: "/app"
     });
 
-    // Check for focus parameter to scroll to start
-    if (searchParams.get("focus") === "arcano-0" || progress.completedLessons.length === 0) {
-      // Delay slightly to ensure JourneyMap is rendered
+    const focusId = searchParams.get("focus");
+    if (focusId) {
+      let targetModuleId = focusId;
+      
+      // Mapping lesson focus to module ID
+      if (focusId === "arcano-0") targetModuleId = "fundamentos";
+      else if (focusId.startsWith("arcano-")) targetModuleId = "arcanos-maiores";
+      else if (focusId.startsWith("copas-")) targetModuleId = "copas";
+      else if (focusId.startsWith("paus-")) targetModuleId = "paus";
+      else if (focusId.startsWith("espadas-")) targetModuleId = "espadas";
+      else if (focusId.startsWith("ouros-")) targetModuleId = "ouros";
+
       const timer = setTimeout(() => {
-        const element = document.getElementById("arcano-0");
+        const element = document.getElementById(targetModuleId);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          // Add a brief highlight effect
+          element.classList.add('ring-4', 'ring-gold/50', 'ring-offset-2');
+          setTimeout(() => {
+            element.classList.remove('ring-4', 'ring-gold/50', 'ring-offset-2');
+          }, 3000);
         }
       }, 500);
       return () => clearTimeout(timer);
@@ -275,7 +287,7 @@ const TrailsPage = () => {
                     return (
                       <button
                         key={mod.id}
-                        id={modId === "fundamentos" ? "arcano-0" : undefined}
+                        id={modId}
                         ref={modId === "fundamentos" ? arcanoZeroRef : undefined}
                         disabled={!unlocked}
                         onClick={() => navigate(mod.route)}
