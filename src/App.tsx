@@ -148,7 +148,7 @@ const AppShell = () => {
         pontos={progress.xp} 
         level={progress.level} 
       />
-      <main className="flex-1 pb-24 relative overflow-y-auto">
+      <main className="flex-1 pb-24 relative overflow-y-auto h-[calc(100vh-72px)]">
         {/* Suspense removed from here to prevent content vanishing between eager routes */}
         <Outlet />
       </main>
