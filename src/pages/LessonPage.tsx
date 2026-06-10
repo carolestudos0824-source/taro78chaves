@@ -20,6 +20,8 @@ import { useHeader } from "@/contexts/header-context";
 import { PhaseIndicator } from "@/components/arcano-vivo/PhaseIndicator";
 import { LessonPhaseHeader } from "@/components/arcano-vivo/LessonPhaseHeader";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { PageBackControls } from "@/components/PageBackControls";
+
 
 
 /** 
@@ -121,12 +123,10 @@ const LessonPage = () => {
         hidePontos: true,
         hideStreak: true
       });
-
-
-
     }
     return () => resetHeader();
   }, [arcano, phaseIdx, arcanoId, setHeader, resetHeader]);
+
 
   if (isLiteralRoute || !arcano || !isValidId) {
     if (!arcano || !isValidId) {
@@ -247,14 +247,15 @@ const LessonPage = () => {
 
       <main className="relative z-10 container max-w-lg mx-auto px-4 py-8 pb-32">
         {phaseIdx > 0 && phase !== "complete" && (
-          <button 
-            onClick={goBack}
-            className="mb-6 flex items-center gap-2 text-[#5B1F3D]/60 hover:text-[#5B1F3D] transition-colors font-heading text-[10px] font-black uppercase tracking-widest"
-          >
-            <ArrowLeft className="w-3 h-3" />
-            Voltar etapa
-          </button>
+          <PageBackControls 
+            variant="top" 
+            showLabel={true} 
+            className="mb-6 h-auto p-0" 
+            fallbackRoute={phaseIdx > 0 ? undefined : "/module/arcanos-maiores"}
+          />
         )}
+
+
         <section className="space-y-8 animate-fade-in">
           {phase === "intro" && (
             <div className="space-y-8" data-lesson-wrapper={arcanoId}>
@@ -503,14 +504,10 @@ const LessonPage = () => {
                   </TabsContent>
                 </div>
               </Tabs>
-
-              <div className="pt-4">
-                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-[13px] tracking-widest shadow-xl hover:scale-[1.02] transition-transform leading-tight">
-                  Continuar para Aplicações
-                </Button>
-              </div>
+              <PageBackControls variant="bottom" className="mt-8" />
             </div>
           )}
+
 
           {phase === "aplicacoes" && (
             <div className="space-y-6">
@@ -537,6 +534,7 @@ const LessonPage = () => {
 
 
           {phase === "quiz" && (
+
             <div className="space-y-6">
               <LessonPhaseHeader 
                 cardImage={arcano.cardImage} 
@@ -591,8 +589,8 @@ const LessonPage = () => {
               arcanoName={arcano.name}
               cardImage={arcano.cardImage}
               arcanoId={arcanoId}
-
               pontosEarned={pontosEarned}
+
               quizScore={lastQuizScore}
               quizTotal={lastQuizTotal}
               nextArcano={nextArcano ? { id: nextArcano.id, name: nextArcano.name, numeral: nextArcano.numeral, subtitle: nextArcano.subtitle } : undefined}

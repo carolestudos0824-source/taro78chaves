@@ -25,6 +25,8 @@ import {
   type CombinacaoDoDia,
   type MiniInterpretacao,
 } from "@/lib/daily/builders";
+import { PageBackControls } from "@/components/PageBackControls";
+
 
 const todayStr = () => {
   const now = new Date();
@@ -230,7 +232,9 @@ const DailyChallengesPage = () => {
       </header>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 pb-[calc(140px+env(safe-area-inset-bottom))] space-y-10 mt-12">
+        <PageBackControls variant="top" showLabel={true} className="h-auto p-0 mb-6" />
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
           <div className="lg:col-span-2 space-y-10">
             <div className="relative rounded-[3rem] overflow-hidden p-8 md:p-10 transition-all duration-500 bg-white border-2 border-gold shadow-2xl">
               <div className="flex flex-col sm:flex-row items-center justify-between mb-8 gap-6">
@@ -339,16 +343,20 @@ const DailyChallengesPage = () => {
                               <>
                                 {isCompleted ? (
                                   <CheckCircle2 className="w-8 h-8 md:w-10 md:h-10 text-gold" />
-                                ) : isBlocked ? (
-                                  <div className="relative w-full h-full flex items-center justify-center bg-gray-200">
-                                    <div className="absolute inset-0 opacity-10">
-                                      <img src={resolveMaiorVisual(0).resolvedAssetUrl || ""} className="w-full h-full object-cover grayscale" alt="Blocked" />
-                                    </div>
-                                    <div className="absolute inset-2 border border-dashed border-gray-400 rounded-xl opacity-30 z-10" />
-                                    <TarotIcon name="bloqueado" className="w-8 h-8 md:w-10 md:h-10 opacity-40 z-10" />
-                                  </div>
                                 ) : (
-                                  <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
+                                  <>
+                                    {isBlocked ? (
+                                      <div className="relative w-full h-full flex items-center justify-center bg-gray-200">
+                                        <div className="absolute inset-0 opacity-10">
+                                          <img src={resolveMaiorVisual(0).resolvedAssetUrl || ""} className="w-full h-full object-cover grayscale" alt="Blocked" />
+                                        </div>
+                                        <div className="absolute inset-2 border border-dashed border-gray-400 rounded-xl opacity-30 z-10" />
+                                        <TarotIcon name="bloqueado" className="w-8 h-8 md:w-10 md:h-10 opacity-40 z-10" />
+                                      </div>
+                                    ) : (
+                                      <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
+                                    )}
+                                  </>
                                 )}
                               </>
                             )}
@@ -382,9 +390,9 @@ const DailyChallengesPage = () => {
                   );
                 })}
               </div>
+              <PageBackControls variant="bottom" className="mt-8" />
             </div>
           </div>
-
           <aside className="space-y-8">
             <div className="bg-white rounded-[2.5rem] p-8 border-2 border-gold shadow-xl">
               <div className="flex items-center gap-3 mb-6">
@@ -424,6 +432,8 @@ const DailyChallengesPage = () => {
     </div>
   );
 };
+
+
 
 interface ChallengeModalProps {
   challenge: DailyChallengeItem;

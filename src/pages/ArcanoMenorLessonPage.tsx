@@ -1,6 +1,8 @@
 import { useState, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Check, Sparkles } from "lucide-react";
+import { ArrowRight, Check, Sparkles } from "lucide-react";
+import { PageBackControls } from "@/components/PageBackControls";
+
 import {
   getArcanoMenor,
   NAIPES,
@@ -212,14 +214,14 @@ const ArcanoMenorLessonPage = () => {
       >
         <div className="container max-w-3xl py-4 px-6">
           <div className="flex items-center gap-5 mb-4">
-            <button
-              onClick={goBack}
-              className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30] text-[#5B1F3D] hover:scale-110 transition-all duration-200"
-              aria-label="Voltar"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </button>
+            <PageBackControls 
+              variant="top" 
+              showLabel={false} 
+              className="w-10 h-10 flex items-center justify-center bg-[#FAF5EF] rounded-full border border-[#C8A66A30]" 
+              fallbackRoute={`/module/${card.naipe}`} 
+            />
             <div className="flex-1 min-w-0">
+
               <span
                 className="text-[12px] tracking-[0.35em] uppercase font-heading font-black flex items-center gap-1.5"
                 style={{ color: "#8B6A30" }}
@@ -336,7 +338,9 @@ const ArcanoMenorLessonPage = () => {
             />
           )}
         </section>
+        <PageBackControls variant="bottom" className="mt-8" fallbackRoute={`/module/${card.naipe}`} />
       </main>
+
 
       {/* Footer fixo — botão compacto de avanço (acima do BottomNav: z-50 > z-40) */}
       <div

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams, Navigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Sparkles, MapPin } from "lucide-react";
+import { ArrowRight, Sparkles, MapPin } from "lucide-react";
+import { PageBackControls } from "@/components/PageBackControls";
+
 import { COMBINACOES_LESSONS, getCombinacoesLessonByOrder } from "@/content/lessons/combinacoes";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
@@ -148,9 +150,8 @@ const CombinacoesLessonPage = () => {
       {/* Header */}
       <header className="relative z-10 backdrop-blur-md" style={{ background: "hsl(36 33% 97% / 0.85)", borderBottom: "1px solid hsl(36 45% 58% / 0.15)" }}>
         <div className="container max-w-3xl py-3 px-4 flex items-center gap-4">
-          <button onClick={() => navigate("/module/combinacoes")} className="transition-colors hover:scale-105 duration-200" style={{ color: "hsl(230 10% 40%)" }}>
-            <ArrowLeft className="w-5 h-5" />
-          </button>
+          <PageBackControls variant="top" showLabel={false} className="w-5 h-5" fallbackRoute="/module/combinacoes" />
+
           <div className="flex items-center gap-2 flex-1">
             <span className="text-lg">{lesson.icon}</span>
             <span className="font-heading text-sm truncate" style={{ color: "hsl(230 25% 15%)" }}>{lesson.title}</span>
@@ -282,8 +283,10 @@ const CombinacoesLessonPage = () => {
                   🔮 Aprofundar (opcional)
                 </button>
               )}
+              <PageBackControls variant="bottom" className="mt-8" fallbackRoute="/module/combinacoes" />
             </div>
           </div>
+
         )}
 
         {/* EXERCISE */}

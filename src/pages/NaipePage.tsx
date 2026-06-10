@@ -1,6 +1,8 @@
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-import { ArrowLeft, Lock, Check, ChevronRight, BookOpen, Hash, Crown, Sparkles } from "lucide-react";
+import { Lock, Check, ChevronRight, BookOpen, Hash, Crown, Sparkles } from "lucide-react";
+import { PageBackControls } from "@/components/PageBackControls";
 import { TarotIcon } from "@/components/TarotIcon";
+
 import {
   type Naipe,
   NAIPES,
@@ -210,14 +212,9 @@ const NaipePage = () => {
         <div className="container max-w-3xl py-8 px-6">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-6">
-              <button 
-                onClick={() => navigate("/app")} 
-                className="transition-all hover:scale-110 duration-200 w-12 h-12 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30] shadow-sm" 
-                style={{ color: "#5B1F3D" }}
-              >
-                <ArrowLeft className="w-6 h-6" />
-              </button>
+              <PageBackControls variant="top" showLabel={false} className="w-12 h-12 flex items-center justify-center bg-[#FAF5EF] rounded-full border border-[#C8A66A30]" fallbackRoute="/app" />
               <div>
+
                 <span className="text-[13px] tracking-[0.45em] uppercase font-heading mb-2 flex items-center gap-2 font-black" style={{ color: "#C8A66A" }}>
                   <Sparkles className="w-3.5 h-3.5" /> Arcanos Menores
                 </span>
@@ -338,14 +335,10 @@ const NaipePage = () => {
           {court.map((card, i) => renderCardRow(card, 10 + i, 520 + i * 40))}
         </div>
 
-        {/* Footer */}
-        <div className="text-center pt-4 mb-10" style={{ animation: "fade-up 0.4s ease-out 0.7s both" }}>
-          <button onClick={() => navigate("/app")} className="text-[10px] font-heading tracking-[0.2em] uppercase transition-all hover:text-[#5B1F3D] hover:scale-105" style={{ color: "#5B1F3D" }}>
-            ← Voltar aos módulos
-          </button>
-        </div>
+        <PageBackControls variant="bottom" className="pb-8" fallbackRoute="/app" />
       </main>
     </div>
+
   );
 };
 

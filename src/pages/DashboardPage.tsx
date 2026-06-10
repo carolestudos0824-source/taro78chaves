@@ -18,7 +18,9 @@ import {
   ArrowRight,
   Star
 } from "lucide-react";
+import { PageBackControls } from "@/components/PageBackControls";
 import { TarotIcon } from "@/components/TarotIcon";
+
 import { 
   MODULES_CATALOG as MODULES, 
   ARCANOS_MAIORES_CATALOG,
@@ -151,6 +153,8 @@ const DashboardPage = () => {
   return (
     <div className="min-h-screen bg-[#FAF5EF] relative overflow-x-hidden">
       <main className="container max-w-4xl px-4 pt-12 pb-[calc(180px+env(safe-area-inset-bottom))] space-y-12 animate-in fade-in duration-1000 relative">
+        <PageBackControls variant="top" showLabel={true} className="h-auto p-0 opacity-0 pointer-events-none" />
+
 
         {/* Subtle decorative elements */}
         <div className="absolute top-0 left-1/4 w-64 h-64 bg-rose-200/20 blur-[100px] pointer-events-none" />
@@ -341,6 +345,8 @@ const DashboardPage = () => {
                       </span>
                     </div>
                   </div>
+                  <PageBackControls variant="bottom" className="mt-8" />
+
                 </div>
               )}
 

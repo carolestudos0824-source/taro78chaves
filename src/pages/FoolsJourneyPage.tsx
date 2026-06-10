@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Sparkles } from "lucide-react";
+import { ChevronRight, Sparkles } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { useResolvedArcanosMaiores } from "@/hooks/use-resolved-arcanos-maiores";
 import { useJourneyContent } from "@/hooks/use-content";
 import { CORES_FASE, JOURNEY_MOTION } from "@/config/journey-visual";
 import { EDITORIAL_REGISTRY } from "@/content/arcanos-maiores";
+import { PageBackControls } from "@/components/PageBackControls";
+
 
 const FoolsJourneyPage = () => {
   const navigate = useNavigate();
@@ -46,17 +48,8 @@ const FoolsJourneyPage = () => {
       }}>
         <div className="container max-w-3xl py-5 px-6">
           <div className="flex items-center gap-4">
-            <button
-              onClick={() => navigate(-1)}
-              className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-105 active:scale-95"
-              style={{
-                background: "rgba(200,166,106,0.08)",
-                border: "1px solid rgba(200,166,106,0.18)",
-              }}
-              aria-label="Voltar"
-            >
-              <ArrowLeft className="w-4 h-4" style={{ color: "#5B1F3D" }} />
-            </button>
+            <PageBackControls variant="top" showLabel={false} className="w-9 h-9 flex items-center justify-center rounded-full bg-[#C8A66A]/10 border border-[#C8A66A]/20" />
+
             <div>
               <span className="text-[11px] tracking-[0.35em] uppercase font-heading font-semibold block mb-0.5" style={{ color: "#5B1F3D" }}>
                 ✦ Visão Geral ✦
@@ -370,16 +363,11 @@ const FoolsJourneyPage = () => {
             <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
           </button>
           
-          <button
-            onClick={() => navigate("/module/arcanos-maiores")}
-            className="w-full max-w-xs px-10 py-4 rounded-full font-heading text-[11px] tracking-[0.2em] uppercase transition-all hover:bg-white/60 border-2 border-[#C8A66A30] font-bold"
-            style={{ color: "#5B1F3D" }}
-          >
-            Voltar à Trilha dos Arcanos
-          </button>
+          <PageBackControls variant="bottom" className="w-full" />
         </div>
       </main>
     </div>
+
   );
 };
 

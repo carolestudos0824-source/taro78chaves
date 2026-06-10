@@ -7,8 +7,10 @@ import { JourneyMap } from "@/components/JourneyMap";
 import { useProgress } from "@/hooks/use-progress";
 import { ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull as getArcanoById } from "@/lib/content";
 import { useHeader } from "@/contexts/header-context";
+import { PageBackControls } from "@/components/PageBackControls";
 
 const Index = () => {
+
   const { progress, loading: progressLoading, updateStreak, getCurrentArcanoId, completedCount, journeyProgress } = useProgress();
   const navigate = useNavigate();
   const { setHeader, resetHeader } = useHeader();
@@ -267,11 +269,14 @@ const Index = () => {
         </section>
 
         {/* Bottom ornament */}
-        <div className="pb-16 text-center opacity-30">
+        <div className="pb-8 text-center opacity-30">
           <span className="text-3xl text-[#C8A66A]">✦</span>
         </div>
+
+        <PageBackControls variant="bottom" className="pb-8" />
       </main>
     </div>
+
   );
 };
 

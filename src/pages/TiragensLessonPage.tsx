@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Sparkles, MapPin } from "lucide-react";
+import { ArrowRight, Sparkles, MapPin } from "lucide-react";
+import { PageBackControls } from "@/components/PageBackControls";
+
 import { TIRAGENS_LESSONS, getTiragensLessonByOrder } from "@/content/lessons/tiragens";
 import { useProgress } from "@/hooks/use-progress";
 import { useResolvedLesson } from "@/hooks/use-resolved-lesson";
@@ -163,9 +165,8 @@ const TiragensLessonPage = () => {
 
       <header className="relative z-10 backdrop-blur-md" style={{ background: "hsl(36 33% 97% / 0.85)", borderBottom: "1px solid hsl(36 45% 58% / 0.15)" }}>
         <div className="container max-w-4xl py-4 px-6 flex items-center gap-6">
-          <button onClick={() => navigate("/module/tiragens")} className="transition-colors hover:scale-105 duration-200" style={{ color: "hsl(230 10% 40%)" }}>
-            <ArrowLeft className="w-5 h-5" />
-          </button>
+          <PageBackControls variant="top" showLabel={false} className="w-5 h-5" fallbackRoute="/module/tiragens" />
+
           <div className="flex items-center gap-2 flex-1">
             <span className="text-lg">{lesson.icon}</span>
             <span className="font-heading text-base font-bold truncate" style={{ color: "hsl(230 25% 15%)" }}>{lesson.title}</span>
@@ -567,7 +568,9 @@ const TiragensLessonPage = () => {
             </div>
           </div>
         )}
+        <PageBackControls variant="bottom" className="mt-8" fallbackRoute="/module/tiragens" />
       </main>
+
     </div>
   );
 };

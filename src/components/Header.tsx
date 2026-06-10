@@ -1,13 +1,15 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { Menu, ArrowLeft } from "lucide-react";
+import { Menu } from "lucide-react";
 import { TarotIcon } from "./TarotIcon";
 import { StreakCounter } from "@/components/StreakCounter";
 import { PontosBar } from "@/components/PontosBar";
 import { useState } from "react";
 import GlobalMenu from "@/components/GlobalMenu";
 import { useHeader } from "@/contexts/header-context";
+import { PageBackControls } from "./PageBackControls";
 
 interface HeaderProps {
+
   streak: number;
   pontos: number;
   level: number;
@@ -50,14 +52,14 @@ export const Header = ({ streak, pontos, level }: HeaderProps) => {
               </button>
               
               {state.backRoute && (
-                <button 
-                  onClick={() => navigate(state.backRoute!)}
-                  className="flex items-center justify-center p-1 bg-[#FAF5EF] rounded-xl border border-[#C8A66A]/20 text-[#5B1F3D] active:scale-95 w-9 h-9"
-                  style={{ transform: 'none' }}
-                >
-                  <ArrowLeft className="w-5 h-5" />
-                </button>
+                <PageBackControls 
+                  variant="top" 
+                  fallbackRoute={state.backRoute} 
+                  showLabel={false}
+                  className="w-9 h-9 flex items-center justify-center bg-[#FAF5EF] rounded-xl border border-[#C8A66A]/20"
+                />
               )}
+
             </div>
 
             <div className="flex flex-col justify-center min-w-0 flex-1">

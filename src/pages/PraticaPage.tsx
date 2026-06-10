@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Check, Lock, ChevronRight, Sparkles } from "lucide-react";
+import { Check, Lock, ChevronRight, Sparkles } from "lucide-react";
+import { PageBackControls } from "@/components/PageBackControls";
+
 import { PRATICA_LESSONS } from "@/content/lessons/pratica";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
@@ -45,9 +47,8 @@ const PraticaPage = () => {
       }}>
         <div className="container max-w-3xl py-5 px-6">
           <div className="flex items-center gap-4 mb-4">
-            <button onClick={() => navigate("/app")} className="transition-colors hover:scale-105 duration-200" style={{ color: "hsl(230 10% 40%)" }}>
-              <ArrowLeft className="w-5 h-5" />
-            </button>
+            <PageBackControls variant="top" showLabel={false} className="w-10 h-10 flex items-center justify-center bg-[#FAF5EF] rounded-full border border-[#C8A66A30]" />
+
             <div className="flex flex-col flex-1">
               <span className="text-[12px] tracking-[0.35em] uppercase font-body mb-1 flex items-center gap-1.5" style={{ color: "hsl(270 30% 35%)" }}>
                 <Sparkles className="w-3 h-3" style={{ color: "hsl(270 30% 40%)" }} />
@@ -190,21 +191,12 @@ const PraticaPage = () => {
             <p className="font-accent text-sm italic max-w-sm mx-auto mb-4" style={{ color: "hsl(230 20% 15% / 0.55)" }}>
               Você completou sua formação como leitora. Agora, cada leitura é treino.
             </p>
-            <button
-              onClick={() => navigate("/app")}
-              className="px-8 py-3 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105"
-              style={{
-                background: "linear-gradient(135deg, hsl(270 30% 26%), hsl(270 25% 40%))",
-                color: "hsl(36 33% 97%)",
-                boxShadow: "0 4px 20px hsl(270 30% 25% / 0.2)",
-              }}
-            >
-              Voltar aos Módulos →
-            </button>
+            <PageBackControls variant="bottom" className="w-full" />
           </div>
         )}
       </main>
     </div>
+
   );
 };
 
