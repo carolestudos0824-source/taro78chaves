@@ -153,5 +153,6 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
 };
 
 export function getArcanoTheme(id: number): ArcanoTheme {
+  // Garantimos que o fallback nunca seja O Louco (ID 0) para outros IDs
   return ARCANO_THEMES[id] || { ...DEFAULT_THEME, id };
 }
