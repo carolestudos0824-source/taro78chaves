@@ -29,18 +29,17 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
   const [phase, setPhase] = useState<'dormant' | 'awakening' | 'presence' | 'insight'>('dormant');
   const theme = getArcanoTheme(arcanoId);
   
-  console.log("[LESSON INTRO DEBUG]", {
-    lessonId: arcanoId,
-    arcanoId,
-    cardName,
-    renderedText: phase === 'insight' ? (presenceText || theme.microcopy.presence) : (introText || theme.microcopy.intro),
-    introText,
-    presenceText,
-    themeIntro: theme.microcopy.intro,
-    themePresence: theme.microcopy.presence,
-    themeId: theme.id,
-    sourceFileOrSourceField: introText ? "Prop: introText" : "Theme: microcopy.intro"
-  });
+  // LOG DE DEPURAÇÃO PARA /lesson/6
+  if (arcanoId === 6) {
+    console.log("[LESSON 6 RUNTIME DEBUG]", {
+      cardName,
+      introText,
+      presenceText,
+      themeIntro: theme.microcopy.intro,
+      themePresence: theme.microcopy.presence,
+      renderedText: phase === 'insight' ? (presenceText || theme.microcopy.presence) : (introText || theme.microcopy.intro)
+    });
+  }
   const shouldReduceMotion = useReducedMotionSafe();
 
   useEffect(() => {
