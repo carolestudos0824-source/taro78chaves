@@ -151,13 +151,13 @@ const NaipePage = () => {
             </div>
             
             <div className="flex-1 min-w-0">
-              <h3 className="font-heading text-xl tracking-tight truncate font-black leading-tight" style={{
+              <h3 className="font-heading text-xl tracking-tight font-black leading-tight" style={{
                 color: unlocked ? "#5B1F3D" : "#5B1F3D60",
               }}>
                 {card.nome}
               </h3>
               {card.subtitulo && (
-                <p className="font-accent text-[15px] italic truncate font-black mt-1" style={{ color: unlocked ? "#8B6A30" : "#5B1F3D40" }}>
+                <p className="font-accent text-[15px] italic font-black mt-1" style={{ color: unlocked ? "#8B6A30" : "#5B1F3D40" }}>
                   {card.subtitulo}
                 </p>
               )}
@@ -218,7 +218,7 @@ const NaipePage = () => {
                 <ArrowLeft className="w-6 h-6" />
               </button>
               <div>
-                <span className="text-[11px] tracking-[0.45em] uppercase font-heading mb-2 flex items-center gap-2 font-black" style={{ color: "#C8A66A" }}>
+                <span className="text-[13px] tracking-[0.45em] uppercase font-heading mb-2 flex items-center gap-2 font-black" style={{ color: "#C8A66A" }}>
                   <Sparkles className="w-3.5 h-3.5" /> Arcanos Menores
                 </span>
                 <h1 className="font-heading text-4xl md:text-5xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
@@ -284,7 +284,7 @@ const NaipePage = () => {
                   <TarotIcon name={tool.icon} className="w-6 h-6" />
                 </div>
               </div>
-              <p className="font-heading text-[10px] md:text-[13px] tracking-[0.1em] md:tracking-[0.25em] uppercase mb-1 font-black" style={{ color: "#5B1F3D" }}>
+              <p className="font-heading text-[12px] md:text-[13px] tracking-[0.1em] md:tracking-[0.25em] uppercase mb-1 font-black" style={{ color: "#5B1F3D" }}>
                 {tool.label}
               </p>
               <p className="text-[11px] font-accent italic font-black" style={{ color: "#8B6A30" }}>

@@ -138,7 +138,7 @@ const NaipeIntroPage = () => {
         {/* Keywords Tags */}
         <div className="flex flex-wrap justify-center gap-2 mb-10 animate-fade-up" style={{ animationDelay: "0.1s" }}>
           {(ped.palavrasAncora.length > 0 ? ped.palavrasAncora : info.keywords).map((kw) => (
-            <span key={kw} className="text-[11px] font-heading tracking-[0.2em] uppercase px-5 py-2 rounded-full border-2 font-black" style={{
+            <span key={kw} className="text-[13px] font-heading tracking-[0.2em] uppercase px-5 py-2 rounded-full border-2 font-black" style={{
               background: "white",
               border: `2px solid ${info.color.border}`,
               color: info.color.primary,
@@ -234,7 +234,7 @@ const NaipeIntroPage = () => {
             animationDelay: "0.5s",
             animationFillMode: "both",
           }}>
-            <h3 className="font-heading text-[11px] tracking-[0.35em] uppercase mb-6 font-black flex items-center gap-3" style={{ color: info.color.primary }}>
+            <h3 className="font-heading text-[13px] tracking-[0.35em] uppercase mb-6 font-black flex items-center gap-3" style={{ color: info.color.primary }}>
               <span className="w-2 h-2 rounded-full" style={{ background: info.color.primary }} />
               Aplicações na Leitura
             </h3>
@@ -258,7 +258,7 @@ const NaipeIntroPage = () => {
             animationDelay: "0.6s",
             animationFillMode: "both",
           }}>
-            <h3 className="font-heading text-[10px] tracking-[0.3em] uppercase mb-4 font-black flex items-center gap-2" style={{ color: "#C8A66A" }}>
+            <h3 className="font-heading text-[12px] tracking-[0.3em] uppercase mb-4 font-black flex items-center gap-2" style={{ color: "#C8A66A" }}>
               💭 Momento de Reflexão
             </h3>
             <p className="font-accent text-[18px] md:text-[20px] italic leading-relaxed font-black text-center" style={{ color: "#FAF5EF" }}>
@@ -286,7 +286,7 @@ const NaipeIntroPage = () => {
           
           <button
             onClick={() => navigate("/app")}
-            className="text-[11px] font-heading tracking-[0.3em] uppercase transition-all hover:text-[#5B1F3D] hover:scale-105 font-black"
+            className="text-[13px] font-heading tracking-[0.3em] uppercase transition-all hover:text-[#5B1F3D] hover:scale-105 font-black"
             style={{ color: "#C8A66A" }}
           >
             ← Voltar ao Portal

@@ -90,7 +90,7 @@ const ArcanoMenorLessonPage = () => {
       <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
         <div className="text-center space-y-6 animate-pulse">
           <div className="w-12 h-12 border-4 border-[#C8A66A]/20 border-t-[#5B1F3D] animate-spin rounded-full mx-auto shadow-[0_0_15px_rgba(91,31,61,0.1)]" />
-          <p className="text-[11px] text-[#5B1F3D] font-heading tracking-[0.3em] uppercase font-black">Lendo Arcanos...</p>
+          <p className="text-[13px] text-[#5B1F3D] font-heading tracking-[0.3em] uppercase font-black">Lendo Arcanos...</p>
         </div>
       </div>
     );
@@ -124,7 +124,7 @@ const ArcanoMenorLessonPage = () => {
           </div>
           <button 
             onClick={() => navigate("/app")} 
-            className="w-full py-5 px-6 rounded-2xl font-heading text-[11px] tracking-[0.2em] uppercase transition-all shadow-xl hover:scale-105 active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A] font-black"
+            className="w-full py-5 px-6 rounded-2xl font-heading text-[13px] tracking-[0.2em] uppercase transition-all shadow-xl hover:scale-105 active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A] font-black leading-tight"
           >
             Voltar aos módulos
           </button>
@@ -221,7 +221,7 @@ const ArcanoMenorLessonPage = () => {
             </button>
             <div className="flex-1 min-w-0">
               <span
-                className="text-[10px] tracking-[0.35em] uppercase font-heading font-black flex items-center gap-1.5"
+                className="text-[12px] tracking-[0.35em] uppercase font-heading font-black flex items-center gap-1.5"
                 style={{ color: "#8B6A30" }}
               >
                 {naipeInfo.icon} {naipeInfo.name}
@@ -239,13 +239,13 @@ const ArcanoMenorLessonPage = () => {
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
               <span
-                className="text-[10px] font-heading tracking-wider"
+                className="text-[12px] font-heading tracking-wider"
                 style={{ color: "hsl(230 10% 45%)" }}
               >
                 {PHASE_LABEL[phase]} · {phaseIdx + 1}/{PHASE_ORDER.length}
               </span>
               <span
-                className="text-[10px] font-heading tracking-wider"
+                className="text-[12px] font-heading tracking-wider"
                 style={{ color: naipeInfo.color.primary }}
               >
                 {progressPct}%
@@ -349,7 +349,7 @@ const ArcanoMenorLessonPage = () => {
           <button
             onClick={goNext}
             disabled={phase === "quiz" && !allQuizSubmitted}
-            className="w-full py-5 px-4 rounded-2xl font-heading text-xs tracking-[0.15em] md:tracking-[0.2em] uppercase font-black flex items-center justify-center gap-2 md:gap-3 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed border-2 border-[#C8A66A] shadow-[0_15px_40px_-10px_rgba(91,31,61,0.4)] active:scale-95 hover:scale-105"
+            className="w-full py-5 px-4 rounded-2xl font-heading text-[13px] tracking-[0.15em] md:tracking-[0.2em] uppercase font-black flex items-center justify-center gap-2 md:gap-3 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed border-2 border-[#C8A66A] shadow-[0_15px_40px_-10px_rgba(91,31,61,0.4)] active:scale-95 hover:scale-105 leading-tight"
             style={{
               background: "#5B1F3D",
               color: "#FAF5EF",
