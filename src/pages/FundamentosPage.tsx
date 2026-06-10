@@ -73,7 +73,7 @@ const FundamentosPage = () => {
             </button>
             <div className="flex flex-col flex-1">
               <span
-                className="text-[11px] tracking-[0.45em] uppercase font-heading mb-1.5 flex items-center gap-2 font-bold"
+                className="text-[13px] tracking-[0.45em] uppercase font-heading mb-1.5 flex items-center gap-2 font-bold leading-tight"
                 style={{ color: "#5B1F3D" }}
               >
                 <span style={{ color: "#C8A66A" }}>◈</span>
@@ -92,13 +92,13 @@ const FundamentosPage = () => {
           <div className="space-y-3 bg-white/60 p-4 rounded-2xl border border-[#C8A66A40] shadow-sm">
             <div className="flex items-center justify-between px-1">
               <span
-                className="text-[12px] font-heading tracking-wider font-bold"
+                className="text-[13px] font-heading tracking-wider font-bold leading-tight"
                 style={{ color: "#5B1F3D" }}
               >
                 {completedCount}/{FUNDAMENTOS_LESSONS.length} lições concluídas
               </span>
               <span
-                className="text-[12px] font-heading tracking-wider font-black"
+                className="text-[13px] font-heading tracking-wider font-black"
                 style={{ color: "#5B1F3D" }}
               >
                 {progressPct}%
@@ -165,7 +165,7 @@ const FundamentosPage = () => {
         <div className="flex items-center gap-4 mb-6">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#C8A66A30] to-[#C8A66A70]" />
           <span
-            className="text-[11px] font-heading tracking-[0.32em] uppercase"
+            className="text-[13px] font-heading tracking-[0.32em] uppercase"
             style={{ color: "#5B1F3D", fontWeight: 700 }}
           >
             Trilha de Aprendizado
@@ -252,7 +252,7 @@ const FundamentosPage = () => {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
                         <span
-                          className="text-[10px] font-heading tracking-[0.25em] font-black"
+                          className="text-[12px] font-heading tracking-[0.25em] font-black"
                           style={{
                             color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                           }}
@@ -274,7 +274,7 @@ const FundamentosPage = () => {
                         {lesson.title}
                       </h3>
                       <p
-                        className="font-body text-[13.5px] leading-relaxed"
+                        className="font-body text-[15px] leading-relaxed"
                         style={{
                           color: unlocked ? "#5B1F3D" : "#5B1F3D60",
                           fontWeight: (isCurrent || completed) ? 700 : 500,

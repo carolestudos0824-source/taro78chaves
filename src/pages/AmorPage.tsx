@@ -49,7 +49,7 @@ const AmorPage = () => {
               <ArrowLeft className="w-5 h-5" />
             </button>
             <div className="flex flex-col flex-1">
-              <span className="text-[10px] tracking-[0.35em] uppercase font-body mb-1 flex items-center gap-1.5" style={{ color: "hsl(340 42% 28%)" }}>
+              <span className="text-[12px] tracking-[0.35em] uppercase font-body mb-1 flex items-center gap-1.5" style={{ color: "hsl(340 42% 28%)" }}>
                 <Heart className="w-3 h-3" style={{ color: "hsl(340 42% 35%)" }} />
                 Módulo Premium
               </span>
@@ -65,10 +65,10 @@ const AmorPage = () => {
 
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-heading tracking-wider" style={{ color: "hsl(230 10% 45%)" }}>
+              <span className="text-[12px] font-heading tracking-wider" style={{ color: "hsl(230 10% 45%)" }}>
                 {completedCount}/{AMOR_LESSONS.length} lições
               </span>
-              <span className="text-[10px] font-heading tracking-wider" style={{ color: "hsl(340 42% 30%)" }}>
+              <span className="text-[12px] font-heading tracking-wider" style={{ color: "hsl(340 42% 30%)" }}>
                 {progressPct}%
               </span>
             </div>
@@ -146,12 +146,12 @@ const AmorPage = () => {
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-0.5">
-                        <span className="text-[10px] font-heading tracking-[0.2em]" style={{
+                        <span className="text-[12px] font-heading tracking-[0.2em]" style={{
                           color: isCurrent ? "hsl(340 42% 22%)" : completed ? "hsl(340 35% 40%)" : "hsl(230 10% 45% / 0.30)",
                         }}>
                           {lesson.order + 1}/{AMOR_LESSONS.length}
                         </span>
-                        <h3 className="font-heading text-sm tracking-wide truncate" style={isCurrent ? {
+                        <h3 className="font-heading text-sm tracking-wide break-words" style={isCurrent ? {
                           background: "linear-gradient(135deg, hsl(340 42% 20%), hsl(340 35% 30%))",
                           WebkitBackgroundClip: "text",
                           WebkitTextFillColor: "transparent",
@@ -159,7 +159,7 @@ const AmorPage = () => {
                           {lesson.title}
                         </h3>
                       </div>
-                      <p className="font-accent text-xs italic truncate" style={{
+                      <p className="font-accent text-sm italic break-words" style={{
                         color: isCurrent ? "hsl(230 20% 15% / 0.55)" : completed ? "hsl(230 20% 15% / 0.45)" : "hsl(230 10% 45% / 0.18)",
                       }}>
                         {lesson.subtitle}
