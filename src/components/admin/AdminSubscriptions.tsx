@@ -94,7 +94,7 @@ const ANNUAL_PRICE = PLAN_PRICES.annual.priceBRL;
 type PeriodFilter = "all" | "30d" | "90d" | "12m";
 type PlanFilter = "all" | "monthly" | "annual" | "gift" | "admin" | "free";
 type StatusFilter = "all" | "active" | "expired" | "cancelled" | "gift";
-type OriginFilter = "all" | "store_monthly" | "store_annual" | "gift" | "admin";
+type OriginFilter = "all" | "store_monthly" | "store_annual" | "gift" | "admin" | "kirvano";
 
 /* ═══════════ COMPONENT ═══════════ */
 
@@ -353,6 +353,7 @@ const AdminSubscriptions = () => {
               <SelectItem value="store_annual">Loja (anual)</SelectItem>
               <SelectItem value="gift">Presente</SelectItem>
               <SelectItem value="admin">Admin</SelectItem>
+              <SelectItem value="kirvano">Kirvano</SelectItem>
             </SelectContent>
           </Select>
           {(periodFilter !== "all" || planFilter !== "all" || statusFilter !== "all" || originFilter !== "all") && (
