@@ -393,9 +393,6 @@ const DailyChallengesPage = () => {
               <PageBackControls variant="bottom" className="mt-8" />
             </div>
           </div>
-
-
-
           <aside className="space-y-8">
             <div className="bg-white rounded-[2.5rem] p-8 border-2 border-gold shadow-xl">
               <div className="flex items-center gap-3 mb-6">
@@ -435,6 +432,7 @@ const DailyChallengesPage = () => {
     </div>
   );
 };
+
 
 
 interface ChallengeModalProps {
