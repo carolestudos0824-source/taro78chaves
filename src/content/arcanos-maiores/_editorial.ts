@@ -34,6 +34,7 @@ export interface ArcanoSymbol {
 export interface ArcanoInterpretation {
   light: string;
   shadow: string;
+  [key: string]: string;
 }
 
 export interface ArcanoDeepDive {
@@ -273,5 +274,8 @@ export function editorialToLegacy(editorial: ArcanoMaiorEditorial, unlocked = fa
     reflectionQuestions: editorial.reflectionQuestions,
     initiationLesson: editorial.initiationLesson,
     symbolsMap: editorial.symbolsMap,
+    love: editorial.love,
+    work: editorial.work,
+    spirituality: editorial.spirituality,
   };
 }

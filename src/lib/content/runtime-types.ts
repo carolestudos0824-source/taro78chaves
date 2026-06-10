@@ -85,7 +85,6 @@ export interface ArcanoSymbolMapItem {
 
 // ─── Arcano (forma plana usada por componentes visuais) ────────────
 
-
 export interface ArcanoData {
   id: number;
   name: string;
@@ -104,6 +103,10 @@ export interface ArcanoData {
   reflectionQuestions?: { id: string; question: string }[];
   initiationLesson?: string;
   symbolsMap?: ArcanoSymbolMapItem[];
+  // Novos campos para suporte a Dimensões da Vida
+  love?: { light: string; shadow: string; [key: string]: string };
+  work?: { light: string; shadow: string; [key: string]: string };
+  spirituality?: { light: string; shadow: string; [key: string]: string };
 }
 
 // ─── Badges & Progress ─────────────────────────────────────────────
