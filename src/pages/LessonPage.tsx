@@ -42,10 +42,11 @@ type LessonPhase =
   | "shadow"
   | "simbolos" 
   | "voz" 
+  | "dimensoes"
   | "aplicacoes" 
   | "quiz" 
   | "complete"
-  | "legacy-content"; // NEW: To show preserved original content if it was not in cards
+  | "legacy-content";
 
 const PHASE_ORDER: LessonPhase[] = [
   "intro",
@@ -54,6 +55,7 @@ const PHASE_ORDER: LessonPhase[] = [
   "shadow",
   "simbolos",
   "voz",
+  "dimensoes",
   "aplicacoes",
   "quiz",
   "complete",
@@ -67,10 +69,11 @@ const PHASE_LABEL: Record<LessonPhase, string> = {
   shadow: "Sombra",
   simbolos: "Símbolos",
   voz: "Voz da Carta",
-  aplicacoes: "Aplicações",
+  dimensoes: "Dimensões da Vida",
+  aplicacoes: "Caso Prático",
   quiz: "Quiz Final",
   complete: "Conclusão",
-  "legacy-content": "Estudo Completo",
+  "legacy-content": "Aprofundamento Editorial",
 };
 
 const LessonPage = () => {
