@@ -22,7 +22,9 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
   cardName,
   cardImage,
   arcanoSlug,
-  onContinue
+  onContinue,
+  introText,
+  presenceText
 }) => {
   const [phase, setPhase] = useState<'dormant' | 'awakening' | 'presence' | 'insight'>('dormant');
   const theme = getArcanoTheme(arcanoId);
