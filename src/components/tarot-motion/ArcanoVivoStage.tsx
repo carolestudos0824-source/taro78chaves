@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TarotAnimatedCard } from "./TarotAnimatedCard";
 import { getArcanoTheme } from "./arcano-motion-themes";
@@ -29,52 +29,73 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
   const [phase, setPhase] = useState<'dormant' | 'awakening' | 'presence' | 'insight'>('dormant');
   const theme = getArcanoTheme(arcanoId);
   const shouldReduceMotion = useReducedMotionSafe();
+  const mountedRef = useRef(false);
 
   useEffect(() => {
+    mountedRef.current = true;
     const timers: ReturnType<typeof setTimeout>[] = [];
     
     timers.push(setTimeout(() => setPhase('awakening'), 400));
     timers.push(setTimeout(() => setPhase('presence'), 1200));
     timers.push(setTimeout(() => setPhase('insight'), 2200));
 
-    return () => timers.forEach(clearTimeout);
+    return () => {
+      mountedRef.current = false;
+      timers.forEach(clearTimeout);
+    };
   }, []);
 
   const showParticles = (phase === 'presence' || phase === 'insight') && !shouldReduceMotion;
 
   // PROTECTION & DEBUG LOGIC
-  const currentRenderedText = phase === 'insight' ? (presenceText || theme.microcopy.presence) : (introText || theme.microcopy.intro);
-  const isLoucoLeakDetected = arcanoId !== 0 && (currentRenderedText?.includes("Louco") || currentRenderedText?.includes("impulso antes da certeza"));
+  // PRIORIDADE ABSOLUTA: Texto vindo das props (Editorial)
+  const currentRenderedText = useMemo(() => {
+    return phase === 'insight' 
+      ? (presenceText || theme.microcopy.presence) 
+      : (introText || theme.microcopy.intro);
+  }, [phase, presenceText, theme.microcopy.presence, introText, theme.microcopy.intro]);
 
-  if (isLoucoLeakDetected) {
-    console.error(`BUG P0 DETECTADO: Vazamento de texto do Louco no Arcano ${arcanoId} (${cardName}). Texto: "${currentRenderedText}"`);
-  }
+  const isLoucoLeakDetected = useMemo(() => {
+    if (arcanoId === 0) return false;
+    const text = currentRenderedText?.toLowerCase() || "";
+    return text.includes("eu sou o louco") || text.includes("impulso antes da certeza");
+  }, [arcanoId, currentRenderedText]);
+
+  // LOG DE AUDITORIA REAL
+  useEffect(() => {
+    if (phase === 'insight') {
+      console.log(`[DOM AUDIT] Arcano ${arcanoId} - Fase Insight.`);
+      console.log(`[DATA AUDIT] Prop introText: "${introText?.substring(0, 30)}..."`);
+      console.log(`[DATA AUDIT] Prop presenceText: "${presenceText?.substring(0, 30)}..."`);
+    }
+  }, [phase, arcanoId, introText, presenceText]);
 
   // Final text with emergency fallback
-  const finalText = isLoucoLeakDetected 
-    ? (arcanoId === 6 ? "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa escolher." : "O portal se abre para o novo conhecimento.")
-    : currentRenderedText;
+  const finalText = useMemo(() => {
+    if (isLoucoLeakDetected) {
+      if (arcanoId === 6) return "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa falar.";
+      return "O portal se abre para o novo conhecimento.";
+    }
+    return currentRenderedText;
+  }, [isLoucoLeakDetected, arcanoId, currentRenderedText]);
 
   return (
     <div className="relative min-h-[50vh] md:min-h-[80vh] flex flex-col items-center justify-center py-4 md:py-16 px-6 sm:px-12">
       {/* DEBUG PANEL - Visible only in preview/dev for validation */}
       {process.env.NODE_ENV !== 'production' && (
-        <div className="fixed top-20 right-4 z-[9999] bg-black/90 text-white p-4 rounded-xl text-[10px] font-mono border border-red-500 max-w-[250px] shadow-2xl pointer-events-none opacity-80">
+        <div className="fixed top-20 left-4 z-[9999] bg-black/90 text-white p-4 rounded-xl text-[10px] font-mono border border-red-500 max-w-[300px] shadow-2xl pointer-events-none opacity-90">
           <div className="text-red-500 font-bold mb-1 border-b border-red-500/30 pb-1 flex items-center gap-1">
-            <AlertTriangle className="w-3 h-3" /> DEBUG LESSON INTRO
+            <AlertTriangle className="w-3 h-3" /> DOM LEAK CHECK
           </div>
-          <p><span className="text-gray-400">lessonId:</span> {arcanoId}</p>
+          <p><span className="text-gray-400">matchingText:</span> {document.body.innerText.includes("Eu sou o Louco") ? "LEAK DETECTED" : "NENHUM"}</p>
+          <p><span className="text-gray-400">componentOwner:</span> ArcanoVivoStage</p>
+          <p><span className="text-gray-400">sourceField:</span> {phase === 'insight' ? 'presenceText/microcopy.presence' : 'introText/microcopy.intro'}</p>
+          <p><span className="text-gray-400">sourceFile:</span> ArcanoVivoStage.tsx</p>
+          <p><span className="text-gray-400">renderedText:</span> {finalText}</p>
+          <p><span className="text-gray-400">isLoucoLeakDetected (logic):</span> {isLoucoLeakDetected ? "SIM" : "NÃO"}</p>
           <p><span className="text-gray-400">arcanoId:</span> {arcanoId}</p>
-          <p><span className="text-gray-400">cardName:</span> {cardName}</p>
-          <p className="line-clamp-2"><span className="text-gray-400">renderedText:</span> {finalText}</p>
-          <p><span className="text-gray-400">renderedTextSourceField:</span> {phase === 'insight' ? 'presenceText/microcopy.presence' : 'introText/microcopy.intro'}</p>
-          <p><span className="text-gray-400">renderedTextSourceFile:</span> ArcanoVivoStage.tsx</p>
-          <p><span className="text-gray-400">componentRenderingText:</span> ArcanoVivoStage</p>
-          <p><span className="text-gray-400">introText:</span> {introText?.substring(0, 20)}...</p>
-          <p><span className="text-gray-400">presenceText:</span> {presenceText?.substring(0, 20)}...</p>
-          <p><span className="text-gray-400">themeMicrocopyIntro:</span> {theme.microcopy.intro}</p>
-          <p><span className="text-gray-400">themeId:</span> {theme.id}</p>
-          <p className={isLoucoLeakDetected ? "text-red-500 font-bold" : "text-green-500"}><span className="text-gray-400">isLoucoLeakDetected:</span> {isLoucoLeakDetected ? "SIM" : "NÃO"}</p>
+          <p><span className="text-gray-400">introText (prop):</span> {introText?.substring(0, 30)}</p>
+          <p><span className="text-gray-400">presenceText (prop):</span> {presenceText?.substring(0, 30)}</p>
         </div>
       )}
 
@@ -186,7 +207,11 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
               exit={{ opacity: 0, y: -30 }}
               className="flex flex-col items-center"
             >
-              <p className="font-accent italic text-xl md:text-3xl text-[#5B1F3D] mb-6 md:mb-10 leading-relaxed font-bold tracking-tight">
+              <p 
+                className="font-accent italic text-xl md:text-3xl text-[#5B1F3D] mb-6 md:mb-10 leading-relaxed font-bold tracking-tight"
+                data-rendered-text={finalText}
+                data-arcano-id={arcanoId}
+              >
                 "{finalText}"
               </p>
               

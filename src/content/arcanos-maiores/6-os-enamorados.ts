@@ -50,8 +50,8 @@ export const OS_ENAMORADOS: ArcanoMaiorEditorial = {
   },
 
   voice: {
-    intro: "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa escolher.",
-    fullText: "Nós somos Os Enamorados.\nSomos a encruzilhada onde o coração precisa escolher.\nEm nós, amar é escolher — e escolher é revelar quem você é.\nSomos a nudez sem vergonha, a entrega sem garantia.\nNa nossa luz, trazemos união, autenticidade e alinhamento.\nNa nossa sombra, viramos indecisão, projeção e fuga do compromisso.\nNós não prometemos facilidade.\nPrometemos verdade.",
+    intro: "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa falar. Em nós, amar é escolher — e escolher é revelar quem você é de verdade. Nós não prometemos facilidade. Prometemos verdade.",
+    fullText: "Nós somos Os Enamorados.\nSomos a encruzilhada onde o coração precisa falar.\nEm nós, amar é escolher — e escolher é revelar quem você é.\nSomos a nudez sem vergonha, a entrega sem garantia.\nNa nossa luz, trazemos união, autenticidade e alinhamento.\nNa nossa sombra, viramos indecisão, projeção e fuga do compromisso.\nNós não prometemos facilidade.\nPrometemos verdade.",
   },
 
   deepDive: {
