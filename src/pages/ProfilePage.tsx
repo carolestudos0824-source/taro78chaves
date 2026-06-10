@@ -308,10 +308,9 @@ const ProfilePage = () => {
           
           <PageBackControls variant="bottom" className="w-full pb-8" />
         </div>
-
-        </div>
       </main>
     </div>
+
   );
 };
 

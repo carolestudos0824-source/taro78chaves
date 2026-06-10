@@ -438,11 +438,7 @@ const LessonPage = () => {
                         <Heart className="w-5 h-5 text-[#5B1F3D]" />
                         <h3 className="font-heading text-xl text-[#5B1F3D] font-bold">{arcano.name} no Amor</h3>
                       </div>
-                      </div>
-                      <PageBackControls variant="bottom" className="mt-8" />
-                    </div>
-                  </TabsContent>
-
+                      <div className="space-y-8">
                         {Object.entries(arcano.love || {}).map(([key, value]) => (
                           <div key={key} className="space-y-3">
                             <div className="flex items-center gap-2">
@@ -459,6 +455,7 @@ const LessonPage = () => {
                       </div>
                     </div>
                   </TabsContent>
+
 
                   <TabsContent value="trabalho" className="p-8 m-0 space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
                     <div className="space-y-6">
@@ -509,6 +506,8 @@ const LessonPage = () => {
                   </TabsContent>
                 </div>
               </Tabs>
+              <PageBackControls variant="bottom" className="mt-8" />
+
 
               <div className="pt-4">
                 <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-[13px] tracking-widest shadow-xl hover:scale-[1.02] transition-transform leading-tight">

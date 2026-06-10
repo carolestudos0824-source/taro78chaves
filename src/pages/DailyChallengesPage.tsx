@@ -343,35 +343,27 @@ const DailyChallengesPage = () => {
                               <>
                                 {isCompleted ? (
                                   <CheckCircle2 className="w-8 h-8 md:w-10 md:h-10 text-gold" />
-                                ) : isBlocked ? (
-                                  <div className="relative w-full h-full flex items-center justify-center bg-gray-200">
-                                    <div className="absolute inset-0 opacity-10">
-                                      <img src={resolveMaiorVisual(0).resolvedAssetUrl || ""} className="w-full h-full object-cover grayscale" alt="Blocked" />
-                                    </div>
-                                    <div className="absolute inset-2 border border-dashed border-gray-400 rounded-xl opacity-30 z-10" />
-                                    <TarotIcon name="bloqueado" className="w-8 h-8 md:w-10 md:h-10 opacity-40 z-10" />
-                                  </div>
+                                ) : (
+                                  <>
+                                    {isBlocked ? (
+                                      <div className="relative w-full h-full flex items-center justify-center bg-gray-200">
+                                        <div className="absolute inset-0 opacity-10">
+                                          <img src={resolveMaiorVisual(0).resolvedAssetUrl || ""} className="w-full h-full object-cover grayscale" alt="Blocked" />
+                                        </div>
+                                        <div className="absolute inset-2 border border-dashed border-gray-400 rounded-xl opacity-30 z-10" />
+                                        <TarotIcon name="bloqueado" className="w-8 h-8 md:w-10 md:h-10 opacity-40 z-10" />
+                                      </div>
                                     ) : (
-                                      null
+                                      <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
                                     )}
-                                  </div>
-                                </div>
-                              </div>
-                            </button>
-                          );
-                        })}
-                      </div>
-                      <PageBackControls variant="bottom" className="pt-8" />
-                    </div>
-
-
-                                  <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
+                                  </>
                                 )}
                               </>
                             )}
                           </div>
 
                           <div className="flex-1 min-w-0">
+
                             <h3 className={`font-heading text-lg md:text-2xl font-black tracking-tight mb-2 ${isCompleted ? "text-plum/60" : isBlocked ? "text-plum/40" : "text-plum"}`}>
                               {ch.title}
                             </h3>
@@ -399,8 +391,10 @@ const DailyChallengesPage = () => {
                   );
                 })}
               </div>
+              <PageBackControls variant="bottom" className="mt-8" />
             </div>
           </div>
+
 
           <aside className="space-y-8">
             <div className="bg-white rounded-[2.5rem] p-8 border-2 border-gold shadow-xl">
