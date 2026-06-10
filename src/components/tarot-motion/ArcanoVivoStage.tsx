@@ -44,29 +44,35 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
 
   // PROTECTION & DEBUG LOGIC
   // PRIORIDADE ABSOLUTA: Texto vindo das props (Editorial)
-  const currentRenderedText = phase === 'insight' 
-    ? (presenceText || theme.microcopy.presence) 
-    : (introText || theme.microcopy.intro);
+  const currentRenderedText = useMemo(() => {
+    return phase === 'insight' 
+      ? (presenceText || theme.microcopy.presence) 
+      : (introText || theme.microcopy.intro);
+  }, [phase, presenceText, theme.microcopy.presence, introText, theme.microcopy.intro]);
+
+  const isLoucoLeakDetected = useMemo(() => {
+    if (arcanoId === 0) return false;
+    const text = currentRenderedText?.toLowerCase() || "";
+    return text.includes("eu sou o louco") || text.includes("impulso antes da certeza");
+  }, [arcanoId, currentRenderedText]);
 
   // LOG DE AUDITORIA REAL
   useEffect(() => {
     if (phase === 'insight') {
-      const domCheck = document.body.innerText.includes("Eu sou o Louco");
-      console.log(`[DOM AUDIT] Arcano ${arcanoId} - Fase Insight. Vazamento detectado no DOM: ${domCheck ? 'SIM' : 'NÃO'}`);
+      console.log(`[DOM AUDIT] Arcano ${arcanoId} - Fase Insight.`);
       console.log(`[DATA AUDIT] Prop introText: "${introText?.substring(0, 30)}..."`);
       console.log(`[DATA AUDIT] Prop presenceText: "${presenceText?.substring(0, 30)}..."`);
     }
   }, [phase, arcanoId, introText, presenceText]);
 
-  const isLoucoLeakDetected = arcanoId !== 0 && (
-    currentRenderedText?.includes("Eu sou o Louco") || 
-    currentRenderedText?.includes("impulso antes da certeza")
-  );
-
   // Final text with emergency fallback
-  const finalText = isLoucoLeakDetected 
-    ? (arcanoId === 6 ? "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa falar." : "O portal se abre para o novo conhecimento.")
-    : currentRenderedText;
+  const finalText = useMemo(() => {
+    if (isLoucoLeakDetected) {
+      if (arcanoId === 6) return "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa falar.";
+      return "O portal se abre para o novo conhecimento.";
+    }
+    return currentRenderedText;
+  }, [isLoucoLeakDetected, arcanoId, currentRenderedText]);
 
   return (
     <div className="relative min-h-[50vh] md:min-h-[80vh] flex flex-col items-center justify-center py-4 md:py-16 px-6 sm:px-12">
