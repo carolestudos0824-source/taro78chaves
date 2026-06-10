@@ -87,7 +87,7 @@ const AuthPage = () => {
       </div>
 
       <div className="relative z-10 w-full max-w-sm space-y-10">
-        <button onClick={() => navigate("/")} className="flex items-center gap-3 text-[11px] font-heading tracking-[0.3em] uppercase opacity-60 hover:opacity-100 transition-all font-black text-[#5B1F3D]">
+        <button onClick={() => navigate("/")} className="flex items-center gap-3 text-[11px] font-heading tracking-[0.3em] uppercase opacity-80 hover:opacity-100 transition-all font-black text-[#5B1F3D]">
           <ArrowLeft className="w-4 h-4" />
           Voltar
         </button>
@@ -106,7 +106,7 @@ const AuthPage = () => {
             <h1 className="font-heading text-4xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
               {mode === "signup" ? "Criar conta" : mode === "login" ? "Entrar" : "Recuperar senha"}
             </h1>
-            <p className="text-[14px] font-body text-[#5B1F3D99] max-w-[280px] mx-auto leading-relaxed font-bold">
+            <p className="text-[15px] font-body text-[#5B1F3D] max-w-[280px] mx-auto leading-relaxed font-bold">
               {mode === "signup" ? "Crie sua conta para acessar a plataforma e salvar seu progresso." : mode === "login" ? "Boas-vindas de volta à sua jornada." : "Enviaremos um link de acesso."}
             </p>
           </div>
@@ -146,7 +146,7 @@ const AuthPage = () => {
           {info && <p className="text-[11px] font-body text-success text-center bg-success/5 py-2 rounded-lg">{info}</p>}
 
           <div className="space-y-3">
-            <Button type="submit" disabled={loading} className="btn-premium w-full py-7 mt-4">
+            <Button type="submit" disabled={loading} className="w-full py-7 mt-4 bg-[#5B1F3D] text-[#FAF5EF] font-bold rounded-lg hover:bg-[#5B1F3D]/90 transition-all active:scale-95">
               {loading ? "Aguarde..." : mode === "signup" ? "Criar conta e acessar plataforma" : mode === "login" ? "Entrar e continuar jornada" : "Enviar link"}
             </Button>
             {mode === "signup" && (
