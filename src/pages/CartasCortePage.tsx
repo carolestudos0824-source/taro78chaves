@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronDown, ChevronRight, Sparkles } from "lucide-react";
+import { ChevronDown, ChevronRight, Sparkles } from "lucide-react";
+import { PageBackControls } from "@/components/PageBackControls";
+
 import { useCourtCardsContent } from "@/hooks/use-content";
 import { NAIPES, type Naipe } from "@/registry/naipes";
 import { useResolvedArcanoMenorPilot } from "@/hooks/use-resolved-arcanos-menores-pilot";
@@ -68,13 +70,8 @@ const CartasCortePage = () => {
         boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)"
       }}>
         <div className="container max-w-3xl py-6 px-6 flex items-center gap-6">
-          <button 
-            onClick={() => navigate("/app")} 
-            className="transition-all hover:scale-110 duration-200 w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30] shadow-sm" 
-            style={{ color: "#5B1F3D" }}
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </button>
+          <PageBackControls variant="top" showLabel={false} className="w-10 h-10 flex items-center justify-center bg-[#FAF5EF] rounded-full border border-[#C8A66A30]" />
+
           <div>
             <span className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1.5 flex items-center gap-2 font-black" style={{ color: "#C8A66A" }}>
               <Sparkles className="w-3.5 h-3.5" /> Módulo Formação
@@ -363,9 +360,11 @@ const CartasCortePage = () => {
             ← Voltar ao Portal
           </button>
         </div>
+        <PageBackControls variant="bottom" className="w-full pb-8" />
       </main>
     </div>
   );
 };
 
 export default CartasCortePage;
+

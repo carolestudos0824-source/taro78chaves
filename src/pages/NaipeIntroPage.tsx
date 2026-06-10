@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, ChevronDown, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronRight } from "lucide-react";
+import { PageBackControls } from "@/components/PageBackControls";
 import { TarotIcon } from "@/components/TarotIcon";
+
 import { type Naipe, NAIPES } from "@/registry/naipes";
 import { useSuitIntroContent } from "@/hooks/use-content";
 
@@ -89,13 +91,8 @@ const NaipeIntroPage = () => {
         boxShadow: "0 4px 20px rgba(91, 31, 61, 0.05)"
       }}>
         <div className="container max-w-3xl py-4 px-6 flex items-center gap-4">
-          <button 
-            onClick={() => navigate(`/module/${naipe}`)} 
-            className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30] shadow-sm transition-all hover:scale-110 duration-200" 
-            style={{ color: "#5B1F3D" }}
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </button>
+          <PageBackControls variant="top" showLabel={false} className="w-10 h-10 flex items-center justify-center bg-[#FAF5EF] rounded-full border border-[#C8A66A30]" fallbackRoute={`/module/${naipe}`} />
+
           <div className="flex items-center gap-3 flex-1">
             <TarotIcon name={naipe} className="w-6 h-6" />
             <span className="font-heading text-base font-black tracking-tight" style={{ color: "#5B1F3D" }}>
@@ -284,16 +281,11 @@ const NaipeIntroPage = () => {
             </span>
           </button>
           
-          <button
-            onClick={() => navigate("/app")}
-            className="text-[13px] font-heading tracking-[0.3em] uppercase transition-all hover:text-[#5B1F3D] hover:scale-105 font-black"
-            style={{ color: "#C8A66A" }}
-          >
-            ← Voltar ao Portal
-          </button>
+          <PageBackControls variant="bottom" className="w-full pb-8" fallbackRoute={`/module/${naipe}`} />
         </div>
       </main>
     </div>
+
   );
 };
 
