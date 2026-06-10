@@ -181,7 +181,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
                 data-rendered-text={visibleIntroText}
                 data-arcano-id={arcanoId}
               >
-                "{visibleIntroText}"
+                {arcanoId === 6 ? "TESTE ENAMORADOS VISÍVEL" : visibleIntroText}
               </p>
               
               {arcanoId !== 0 && visibleIntroText.toLowerCase().includes("louco") && (
