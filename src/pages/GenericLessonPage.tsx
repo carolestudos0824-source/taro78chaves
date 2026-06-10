@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowRight, Sparkles, BookOpen, Brain, Lightbulb, CheckCircle2 } from "lucide-react";
-import { PageBackControls } from "./PageBackControls";
+import { PageBackControls } from "@/components/PageBackControls";
 
 import { useProgress } from "@/hooks/use-progress";
 import { useRole } from "@/hooks/use-role";

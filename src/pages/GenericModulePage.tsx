@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Check, Lock, ChevronRight } from "lucide-react";
-import { PageBackControls } from "./PageBackControls";
+import { PageBackControls } from "@/components/PageBackControls";
 
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
