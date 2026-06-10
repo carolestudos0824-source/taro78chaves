@@ -74,7 +74,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     mood: "dramatic",
     microcopy: {
       intro: "O primeiro portal se abre.",
-      presence: "Eu sou o Louco. O impulso antes da certeza.",
+      presence: "O impulso antes da certeza.",
       unlock: "O Louco convida ao salto de fé.",
     },
   },
