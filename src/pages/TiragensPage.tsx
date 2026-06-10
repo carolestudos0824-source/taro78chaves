@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Check, Lock, ChevronRight } from "lucide-react";
+import { PageBackControls } from "@/components/PageBackControls";
+
 import { TIRAGENS_LESSONS } from "@/content/lessons/tiragens";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
@@ -281,16 +283,10 @@ const TiragensPage = () => {
           </div>
         )}
 
-        <div className="text-center pt-10 pb-16">
-           <button 
-             onClick={() => navigate("/app")}
-             className="text-[12px] font-heading font-black tracking-[0.3em] uppercase text-[#5B1F3D]/60 hover:text-[#C8A66A] transition-colors"
-           >
-             ← Voltar à Jornada
-           </button>
-        </div>
+        <PageBackControls variant="bottom" className="w-full pb-8" />
       </main>
     </div>
+
   );
 };
 

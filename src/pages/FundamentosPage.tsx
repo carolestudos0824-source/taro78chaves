@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Check, Lock, ChevronRight, BookOpen } from "lucide-react";
+import { Check, Lock, ChevronRight, BookOpen } from "lucide-react";
+import { PageBackControls } from "@/components/PageBackControls";
+
 import { FUNDAMENTOS_LESSONS } from "@/content/lessons/fundamentos";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
@@ -64,13 +66,8 @@ const FundamentosPage = () => {
       >
         <div className="container max-w-3xl py-6 px-6">
           <div className="flex items-center gap-4 mb-5">
-            <button
-              onClick={() => navigate("/app")}
-              className="transition-all hover:scale-110 duration-200 w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30]"
-              style={{ color: "#5B1F3D" }}
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </button>
+            <PageBackControls variant="top" showLabel={false} className="w-10 h-10 flex items-center justify-center bg-[#FAF5EF] rounded-full border border-[#C8A66A30]" />
+
             <div className="flex flex-col flex-1">
               <span
                 className="text-[13px] tracking-[0.45em] uppercase font-heading mb-1.5 flex items-center gap-2 font-bold leading-tight"
@@ -372,9 +369,10 @@ const FundamentosPage = () => {
           <div className="mt-12 text-center pb-8 opacity-40">
             <span className="text-2xl text-[#C8A66A]">🗝️</span>
           </div>
-        )}
+        <PageBackControls variant="bottom" className="w-full pb-8" />
       </main>
     </div>
+
 
   );
 };
