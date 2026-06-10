@@ -90,20 +90,20 @@ export function LessonContent(props: LessonContentProps) {
                   <div className="rounded-xl p-4 bg-[#C8A66A]/5 border border-[#C8A66A]/10">
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-[#8B6A30]">☀</span>
-                      <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#8B6A30]">Luz</span>
+                      <span className="text-[12px] font-heading font-black tracking-widest uppercase text-[#8B6A30]">Luz</span>
                     </div>
-                    <p className="text-[14px] leading-relaxed text-[#5B1F3D] font-medium">{lightText}</p>
+                    <p className="text-[15px] leading-relaxed text-[#5B1F3D] font-medium">{lightText}</p>
                   </div>
                   <div className="rounded-xl p-4 bg-[#5B1F3D]/5 border border-[#5B1F3D]/10">
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-[#5B1F3D]">☾</span>
-                      <span className="text-[10px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">Sombra</span>
+                      <span className="text-[12px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">Sombra</span>
                     </div>
-                    <p className="text-[14px] leading-relaxed text-[#5B1F3D] font-medium">{shadowText}</p>
+                    <p className="text-[15px] leading-relaxed text-[#5B1F3D] font-medium">{shadowText}</p>
                   </div>
                 </div>
               ) : (
-                <p className="text-[14px] leading-relaxed text-[#5B1F3D] font-medium whitespace-pre-line">{section.content}</p>
+                <p className="text-[15px] leading-relaxed text-[#5B1F3D] font-medium whitespace-pre-line">{section.content}</p>
               )}
             </div>
           )}
