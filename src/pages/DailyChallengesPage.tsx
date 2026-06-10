@@ -436,6 +436,7 @@ const DailyChallengesPage = () => {
   );
 };
 
+
 interface ChallengeModalProps {
   challenge: DailyChallengeItem;
   isLoading?: boolean;
