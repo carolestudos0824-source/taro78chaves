@@ -93,7 +93,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
       {false && (
         <div className="fixed top-20 left-4 z-[9999] bg-black/90 text-white p-4 rounded-xl text-[10px] font-mono border border-red-500 max-w-[300px] shadow-2xl pointer-events-none opacity-90">
           <p>arcanoId: {arcanoId}</p>
-          <p>rendered: {safeVisibleIntroText}</p>
+          <p>rendered: {visibleIntroText}</p>
         </div>
       )}
 
