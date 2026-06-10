@@ -33,9 +33,9 @@ const BottomNav = () => {
     <nav
       id="main-bottom-nav"
       data-testid="main-bottom-nav"
-      className="fixed bottom-0 inset-x-0 z-[100] border-t bg-white/98 backdrop-blur-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe w-full overflow-hidden touch-none"
+      className="fixed bottom-0 inset-x-0 z-[100] border-t bg-[#FAF5EF] shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe w-full overflow-hidden touch-none"
       style={{
-        borderColor: "#C8A66A33",
+        borderColor: "#DCCFC2",
       }}
     >
       <div className="mx-auto flex items-center justify-between py-1.5 px-0 w-full max-w-full">
@@ -53,16 +53,16 @@ const BottomNav = () => {
               <div className="relative flex items-center justify-center">
                 <TarotIcon 
                   name={item.icon}
-                  className={`w-5 h-5 min-[390px]:w-6 min-[390px]:h-6 transition-all duration-300 ${isActive ? "scale-110" : "opacity-70 group-hover:opacity-100"}`} 
-                  strokeWidth={isActive ? 2.5 : 2} 
-                  color={isActive ? "#5B1F3D" : "#5B1F3D"}
+                  className={`w-6 h-6 transition-all duration-300 ${isActive ? "scale-110" : "opacity-80 grayscale-[0.5]"}`} 
+                  strokeWidth={2} 
+                  color={isActive ? "#5B1F3D" : "#DCCFC2"}
                 />
                 {isActive && (
                   <div className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full bg-[#C8A66A] shadow-[0_0_8px_#C8A66A]" />
                 )}
               </div>
-              <span className={`text-[7.5px] min-[360px]:text-[8px] min-[390px]:text-[9px] font-heading tracking-tighter min-[390px]:tracking-tight uppercase transition-all duration-300 truncate w-full text-center px-0.5 ${
-                isActive ? "font-black text-[#5B1F3D]" : "font-bold text-[#5B1F3D]/70"
+              <span className={`text-[11px] font-body tracking-tight transition-all duration-300 truncate w-full text-center px-0.5 ${
+                isActive ? "font-bold text-[#5B1F3D]" : "font-medium text-[#5B1F3D] opacity-60"
               }`}>
                 {item.label}
               </span>

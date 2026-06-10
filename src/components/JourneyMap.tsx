@@ -72,14 +72,14 @@ export function JourneyMap({ progress }: JourneyMapProps) {
                   {/* Pedagogical Label */}
                   <div className={`mt-4 flex flex-col ${side === "left" ? "items-end text-right" : "items-start text-left"}`}>
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-[9px] font-heading tracking-widest text-[#5B1F3D60] font-bold">
+                      <span className="text-[13px] font-body text-[#5B1F3D60] font-bold">
                         {index + 1}/22
                       </span>
-                      <span className="text-[10px] md:text-[11px] font-heading tracking-[0.3em] text-[#C8A66A] font-black uppercase">
+                      <span className="text-[15px] md:text-[18px] font-heading text-[#C8A66A] font-bold uppercase">
                         {arcano.numeral}
                       </span>
                     </div>
-                    <h4 className="font-heading text-sm md:text-base text-[#5B1F3D] font-black tracking-tight leading-tight">
+                    <h4 className="font-heading text-lg md:text-xl text-[#5B1F3D] font-bold tracking-tight leading-tight">
                       {arcano.name}
                     </h4>
                   </div>
@@ -111,7 +111,7 @@ export function JourneyMap({ progress }: JourneyMapProps) {
                   }}
                 >
                   <span 
-                    className="font-heading text-sm md:text-base font-black transition-colors duration-500" 
+                    className="font-heading text-lg md:text-xl font-bold transition-colors duration-500" 
                     style={{ 
                       color: isUnlocked || isCompleted ? "#5B1F3D" : "#5B1F3D40",
                       lineHeight: 1 

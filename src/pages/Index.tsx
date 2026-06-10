@@ -73,11 +73,11 @@ const Index = () => {
             <span className="h-px w-12 bg-gradient-to-l from-transparent to-[#C8A66A]/60" />
           </div>
           
-          <h1 className="font-heading text-5xl md:text-7xl tracking-tight mb-6" style={{ color: "#5B1F3D" }}>
+          <h1 className="font-heading text-4xl md:text-5xl tracking-tight mb-6" style={{ color: "#5B1F3D" }}>
             ARCANOS MAIORES
           </h1>
           
-          <p className="font-accent text-2xl md:text-3xl italic leading-relaxed max-w-xl mx-auto mb-6" style={{ color: "#5B1F3D", fontWeight: 600 }}>
+          <p className="font-body text-xl md:text-2xl leading-relaxed max-w-xl mx-auto mb-6" style={{ color: "#5B1F3D", fontWeight: 700 }}>
             "A jornada pelos 22 grandes arquétipos"
           </p>
           
@@ -102,12 +102,12 @@ const Index = () => {
                   <Stars className="w-6 h-6 text-[#C8A66A]" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Progresso do Módulo</span>
-                  <span className="text-lg font-heading font-black text-[#5B1F3D]">{completedCount}/22 Arcanos</span>
+                  <span className="text-[13px] font-body font-bold text-[#C8A66A]">Progresso do Módulo</span>
+                  <span className="text-xl font-heading font-bold text-[#5B1F3D]">{completedCount}/22 Arcanos</span>
                 </div>
               </div>
               <div className="text-right">
-                <span className="text-2xl font-heading font-black text-[#5B1F3D]">{journeyProgress}%</span>
+                <span className="text-2xl font-heading font-bold text-[#5B1F3D]">{journeyProgress}%</span>
               </div>
             </div>
 
@@ -128,7 +128,7 @@ const Index = () => {
             <div className="mt-8 flex justify-center">
               <button
                 onClick={() => navigate("/jornada-do-louco")}
-                className="px-8 py-3 rounded-xl bg-[#FAF5EF] text-[#5B1F3D] font-heading text-[10px] tracking-[0.2em] uppercase font-black border border-[#C8A66A30] hover:bg-[#5B1F3D] hover:text-white transition-all flex items-center gap-2"
+                className="px-8 py-3 rounded-xl bg-[#FAF5EF] text-[#5B1F3D] font-body text-[15px] font-bold border border-[#C8A66A30] hover:bg-[#5B1F3D] hover:text-white transition-all flex items-center gap-2"
               >
                 Conhecer a Jornada do Louco <ChevronRight className="w-3 h-3" />
               </button>
@@ -165,13 +165,13 @@ const Index = () => {
 
                   {/* Text */}
                   <div className="flex-1 text-left">
-                    <div className="text-[11px] tracking-[0.45em] uppercase font-heading mb-2 font-black" style={{ color: "#5B1F3D" }}>
+                    <div className="text-[13px] font-body font-bold mb-2" style={{ color: "#5B1F3D" }}>
                       Próxima etapa
                     </div>
-                    <h3 className="font-heading text-3xl md:text-4xl tracking-tight mb-2 font-black" style={{ color: "#5B1F3D" }}>
+                    <h3 className="font-heading text-3xl md:text-4xl tracking-tight mb-2 font-bold" style={{ color: "#5B1F3D" }}>
                       {currentArcano.name}
                     </h3>
-                    <p className="font-accent text-lg md:text-xl italic font-medium" style={{ color: "#5B1F3DCC" }}>
+                    <p className="font-body text-lg md:text-xl font-bold" style={{ color: "#5B1F3DCC" }}>
                       {currentArcano.subtitle}
                     </p>
                   </div>
@@ -184,7 +184,7 @@ const Index = () => {
                     }}>
                       <Sparkles className="w-6 h-6 text-[#5B1F3D]" />
                     </div>
-                    <span className="text-[10px] tracking-[0.35em] uppercase font-heading font-black" style={{ color: "#5B1F3D" }}>
+                    <span className="text-[13px] font-body font-bold" style={{ color: "#5B1F3D" }}>
                       {completedCount === 0 ? "Começar" : "Continuar"}
                     </span>
                   </div>
@@ -227,7 +227,7 @@ const Index = () => {
         <section className="mb-12">
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-            <span className="text-[11px] font-heading tracking-[0.4em] uppercase text-plum font-black">
+              <span className="text-[15px] font-body font-bold text-plum">
               Sua Aprendizagem
             </span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A50]" />
@@ -246,7 +246,7 @@ const Index = () => {
                 <span className="block mb-4 transition-transform group-hover:scale-110 duration-500">
                   <TarotIcon name={item.icon} className="w-8 h-8 mx-auto" color="#C8A66A" />
                 </span>
-                <span className="text-[12px] font-heading tracking-wide uppercase leading-snug block font-black" style={{ color: "#5B1F3D" }}>
+                <span className="text-[15px] font-body font-bold leading-snug block" style={{ color: "#5B1F3D" }}>
                   {item.label}
                 </span>
               </div>
@@ -258,7 +258,7 @@ const Index = () => {
         <section className="mb-12">
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-            <span className="text-[11px] font-heading tracking-[0.4em] uppercase text-plum font-black">
+            <span className="text-[15px] font-body font-bold text-plum">
               Mapa da Jornada
             </span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A40]" />

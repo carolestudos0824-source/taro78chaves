@@ -48,10 +48,10 @@ const PremiumGate = ({
           <KeyRound className="w-5 h-5 text-[#C8A66A]" />
         </div>
         <div className="flex-1 text-left">
-          <p className="text-[13px] font-heading tracking-widest font-black text-[#5B1F3D] uppercase">
+          <p className="text-[15px] font-body font-bold text-[#5B1F3D]">
             {webCheckoutAllowed ? "Jornada Completa" : "Conteúdo Restrito"}
           </p>
-          <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/60">
+          <p className="text-[13px] font-body font-bold text-[#5B1F3D]/80">
             {webCheckoutAllowed ? "Acesse as 78 portas da sua travessia" : STRIPE_BLOCKED_ANDROID_MSG}
           </p>
         </div>
@@ -69,7 +69,7 @@ const PremiumGate = ({
         <div className="flex-1 min-w-0">
           <p className="text-[13px] font-body font-bold text-[#5B1F3D]">
             {featureName ? (
-              <><span className="font-black text-[#5B1F3D] uppercase tracking-widest">Portal: {featureName}</span></>
+              <><span className="font-bold text-[#5B1F3D]">Portal: {featureName}</span></>
             ) : (
               webCheckoutAllowed ? "Acesso à Jornada Completa." : STRIPE_BLOCKED_ANDROID_MSG
             )}
@@ -77,7 +77,7 @@ const PremiumGate = ({
         </div>
         <button
           onClick={() => navigate("/premium")}
-          className="text-[10px] font-heading tracking-[0.2em] uppercase shrink-0 px-4 py-2 rounded-xl bg-[#5B1F3D] text-white border border-[#C8A66A] font-black shadow-md transition-all active:scale-95"
+          className="text-[13px] font-body font-bold shrink-0 px-4 py-2 rounded-xl bg-[#5B1F3D] text-white border border-[#C8A66A] shadow-md transition-all active:scale-95"
         >
           {webCheckoutAllowed ? "Abrir" : "Detalhes"}
         </button>
@@ -124,7 +124,7 @@ const PremiumGate = ({
         >
           {webCheckoutAllowed ? "CONTINUAR JORNADA" : "VER PORTAL"}
         </Button>
-        <p className="text-[10px] font-heading tracking-widest uppercase text-[#5B1F3D]/60 mt-5 font-black text-center w-full">
+        <p className="text-[13px] font-body text-[#5B1F3D]/80 mt-5 font-bold text-center w-full">
           {webCheckoutAllowed ? "Receba todas as chaves da sua travessia" : "Conteúdo exclusivo para alunas com acesso ativo"}
         </p>
       </div>
