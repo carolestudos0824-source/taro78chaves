@@ -352,7 +352,7 @@ const DashboardPage = () => {
                     e.preventDefault();
                     e.stopPropagation();
                     const journeyCtaTarget = totalCompletedArcanos === 0 
-                      ? "/mapa?focus=arcano-0" 
+                      ? "/lesson/0" 
                       : `/mapa?focus=${currentStep?.lessonId || "arcano-0"}`;
                     navigate(journeyCtaTarget);
                   }}
