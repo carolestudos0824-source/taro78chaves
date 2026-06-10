@@ -28,6 +28,31 @@ export interface ArcanoTheme {
   };
 }
 
+const DEFAULT_THEME: ArcanoTheme = {
+  id: -1,
+  slug: "generic",
+  palette: {
+    primary: "42 30% 65%",
+    secondary: "333 20% 40%",
+    accent: "42 60% 70%",
+    background: "36 33% 97%",
+  },
+  aura: {
+    intensity: 0.5,
+    color: "42 30% 65%",
+  },
+  particles: {
+    symbols: ["✦", "·", "✧"],
+    style: "float",
+  },
+  mood: "mystical",
+  microcopy: {
+    intro: "Um novo portal se abre.",
+    presence: "A sabedoria do arcano se revela.",
+    unlock: "Um novo conhecimento foi desbloqueado.",
+  },
+};
+
 export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
   0: {
     id: 0,
@@ -77,6 +102,30 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
       unlock: "O Mago foi desbloqueado.",
     },
   },
+  6: {
+    id: 6,
+    slug: "os-enamorados",
+    palette: {
+      primary: "333 40% 50%",
+      secondary: "42 50% 70%",
+      accent: "333 60% 40%",
+      background: "36 33% 97%",
+    },
+    aura: {
+      intensity: 0.8,
+      color: "333 40% 50%",
+    },
+    particles: {
+      symbols: ["❤", "✦", "✨", "🕊"],
+      style: "ascendant",
+    },
+    mood: "gentle",
+    microcopy: {
+      intro: "O encontro revela o caminho.",
+      presence: "O coração escolhe sua direção.",
+      unlock: "A união sagrada foi revelada.",
+    },
+  },
   15: {
     id: 15,
     slug: "o-diabo",
@@ -104,5 +153,5 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
 };
 
 export function getArcanoTheme(id: number): ArcanoTheme {
-  return ARCANO_THEMES[id] || ARCANO_THEMES[0];
+  return ARCANO_THEMES[id] || { ...DEFAULT_THEME, id };
 }

@@ -13,6 +13,8 @@ interface ArcanoVivoStageProps {
   cardImage: string;
   arcanoSlug: string;
   onContinue: () => void;
+  introText?: string;
+  presenceText?: string;
 }
 
 export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
@@ -20,7 +22,9 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
   cardName,
   cardImage,
   arcanoSlug,
-  onContinue
+  onContinue,
+  introText,
+  presenceText
 }) => {
   const [phase, setPhase] = useState<'dormant' | 'awakening' | 'presence' | 'insight'>('dormant');
   const theme = getArcanoTheme(arcanoId);
@@ -149,7 +153,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
               className="flex flex-col items-center"
             >
               <p className="font-accent italic text-xl md:text-3xl text-[#5B1F3D] mb-6 md:mb-10 leading-relaxed font-bold tracking-tight">
-                "{phase === 'insight' ? theme.microcopy.presence : theme.microcopy.intro}"
+                "{phase === 'insight' ? (presenceText || theme.microcopy.presence) : (introText || theme.microcopy.intro)}"
               </p>
               
               {phase === 'insight' && (
