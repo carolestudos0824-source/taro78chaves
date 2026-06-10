@@ -208,7 +208,7 @@ const DashboardPage = () => {
                 <stat.icon className={`w-4 h-4 ${stat.color}`} />
               </div>
               <span className="text-xl font-heading font-bold text-plum leading-none">{stat.value}</span>
-              <span className="text-[9px] font-heading font-black tracking-widest text-plum/30 uppercase">{stat.label}</span>
+              <span className="text-[13px] font-heading font-black tracking-widest text-plum/50 uppercase">{stat.label}</span>
             </div>
           ))}
         </div>
@@ -218,11 +218,11 @@ const DashboardPage = () => {
           <div className="flex items-center justify-between px-2">
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-gold" />
-              <h3 className="font-heading text-[10px] font-black tracking-[0.3em] text-plum/50 uppercase">Explore os 78 Arcanos</h3>
+              <h3 className="font-heading text-[13px] font-black tracking-[0.3em] text-plum/50 uppercase">Explore os 78 Arcanos</h3>
             </div>
             <button 
               onClick={() => navigate("/trilhas")}
-              className="text-[9px] font-heading font-black tracking-widest text-gold uppercase hover:text-plum transition-all flex items-center gap-1.5"
+              className="text-[13px] font-heading font-black tracking-widest text-gold uppercase hover:text-plum transition-all flex items-center gap-1.5"
             >
               Ver todos <ArrowRight className="w-3 h-3" />
             </button>
@@ -235,8 +235,8 @@ const DashboardPage = () => {
                   className="min-w-[85px] md:min-w-[100px] aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shadow-lg snap-center opacity-85 hover:opacity-100 hover:scale-105 hover:border-gold/50 transition-all duration-500 bg-ivory relative group/card"
                 >
                   <img src={card.image || ""} alt={card.name} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity flex items-end p-2">
-                    <span className="text-[8px] font-heading font-black text-white uppercase tracking-tighter leading-none">{card.name}</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity flex items-end p-3">
+                    <span className="text-[11px] font-heading font-black text-white uppercase tracking-normal leading-tight break-words w-full">{card.name}</span>
                   </div>
                 </div>
               ))}
@@ -255,14 +255,14 @@ const DashboardPage = () => {
             <div className="flex items-center gap-3 relative z-10">
               <ShieldCheck className="w-4 h-4 text-plum/40" />
               <div className="space-y-0.5">
-                <p className="text-[9px] font-heading font-black tracking-widest uppercase text-plum/40">
+                <p className="text-[13px] font-heading font-black tracking-widest uppercase text-plum/50">
                   Painel Administrativo
                 </p>
               </div>
             </div>
             <button 
               onClick={() => navigate("/admin")}
-              className="w-full sm:w-auto px-4 py-1.5 bg-plum/10 text-plum rounded-lg font-heading text-[9px] font-black tracking-widest uppercase hover:bg-plum hover:text-white transition-all relative z-10"
+              className="w-full sm:w-auto px-5 py-2.5 bg-plum/10 text-plum rounded-lg font-heading text-[11px] font-black tracking-widest uppercase hover:bg-plum hover:text-white transition-all relative z-10"
             >
               Acessar
             </button>
@@ -272,7 +272,7 @@ const DashboardPage = () => {
         {isAuditor && !isAdmin && (
           <div className="mx-2 rounded-2xl p-4 bg-gold/5 border border-gold/10 flex items-center gap-3 opacity-60">
             <ShieldCheck className="w-4 h-4 text-gold/40" />
-            <p className="text-[9px] font-heading font-black tracking-widest uppercase text-gold/40">
+            <p className="text-[13px] font-heading font-black tracking-widest uppercase text-gold/50">
               Modo Auditoria
             </p>
           </div>
@@ -308,7 +308,7 @@ const DashboardPage = () => {
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                    <div className="w-8 h-px bg-gold/40" />
-                   <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Caminho do Iniciado</span>
+                   <span className="text-[13px] font-heading font-black tracking-[0.4em] text-gold uppercase">Caminho do Iniciado</span>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-heading font-bold text-plum tracking-tight leading-tight">Sua Jornada</h2>
               </div>
@@ -316,7 +316,7 @@ const DashboardPage = () => {
               {currentStep && (
                 <div className="space-y-6">
                   <div className="space-y-1.5 p-4 rounded-2xl bg-gold/5 border border-gold/10">
-                    <p className="text-[10px] font-heading font-black tracking-widest text-gold uppercase flex items-center gap-2">
+                    <p className="text-[13px] font-heading font-black tracking-widest text-gold uppercase flex items-center gap-2">
                       <MapPin className="w-3 h-3" /> {currentStep.moduleName}
                     </p>
                     <h3 className="text-xl md:text-2xl font-heading font-bold text-plum leading-tight">
@@ -333,11 +333,11 @@ const DashboardPage = () => {
                       <div className="absolute inset-0 bg-shimmer animate-shimmer opacity-20" style={{ backgroundSize: '200% 100%' }} />
                     </div>
                     <div className="flex justify-between items-center px-1">
-                      <span className="text-[10px] font-heading font-black text-plum/30 uppercase tracking-[0.2em]">
+                      <span className="text-[11px] font-heading font-black text-plum/40 uppercase tracking-[0.1em] leading-tight max-w-[120px]">
                         {totalCompletedArcanos} de 78 Chaves
                       </span>
-                      <span className="text-[10px] font-heading font-black text-gold uppercase tracking-[0.2em] flex items-center gap-1">
-                        {globalProgressPct}% Integrado <Zap className="w-2 h-2 fill-current" />
+                      <span className="text-[11px] font-heading font-black text-gold uppercase tracking-[0.1em] flex items-center gap-1 leading-tight text-right">
+                        {globalProgressPct}% Integrado <Zap className="w-2.5 h-2.5 fill-current" />
                       </span>
                     </div>
                   </div>

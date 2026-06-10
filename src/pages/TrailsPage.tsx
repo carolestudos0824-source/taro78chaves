@@ -155,7 +155,7 @@ const TrailsPage = () => {
           <div className="inline-flex items-center gap-3 mb-4 opacity-80">
             <div className="h-px w-10 bg-[#C8A66A]/60" />
             <Sparkles className="w-3 h-3 text-[#C8A66A]" />
-            <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.5em] font-heading font-black text-[#C8A66A]">Trilha de Formação</p>
+            <p className="text-[12px] sm:text-[13px] uppercase tracking-[0.5em] font-heading font-black text-[#C8A66A]">Trilha de Formação</p>
             <Sparkles className="w-3 h-3 text-[#C8A66A]" />
             <div className="h-px w-10 bg-[#C8A66A]/60" />
           </div>
@@ -176,13 +176,13 @@ const TrailsPage = () => {
               <div className="p-2 bg-[#FAF5EF] rounded-full border border-[#C8A66A33]">
                 <Key className="w-4 h-4 text-[#C8A66A]" />
               </div>
-              <h2 className="font-heading text-xs sm:text-sm font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Sua Travessia</h2>
+              <h2 className="font-heading text-sm sm:text-base font-black tracking-[0.25em] uppercase text-[#5B1F3D]">Sua Travessia</h2>
             </div>
             <div className="flex flex-col items-end">
-              <span className="bg-[#5B1F3D] text-[#FAF5EF] text-[11px] font-black tracking-widest uppercase px-6 py-2.5 rounded-full shadow-lg border border-[#C8A66A66]">
+              <span className="bg-[#5B1F3D] text-[#FAF5EF] text-[12px] font-black tracking-widest uppercase px-6 py-2.5 rounded-full shadow-lg border border-[#C8A66A66]">
                 {currentLevel ? currentLevel.title.split(' — ')[1] : "Início"}
               </span>
-              <span className="text-[9px] font-heading font-black text-[#C8A66A] mt-2.5 uppercase tracking-widest">Portal Atual</span>
+              <span className="text-[11px] font-heading font-black text-[#C8A66A] mt-2.5 uppercase tracking-widest">Portal Atual</span>
             </div>
           </div>
 
@@ -204,7 +204,7 @@ const TrailsPage = () => {
                       style={{ width: complete ? '100%' : (isCurrent ? `${Math.max(prog, 50)}%` : '0%') }} 
                     />
                   </div>
-                  <p className={`text-[9px] sm:text-[10px] font-heading font-black uppercase text-center tracking-[0.2em] transition-colors duration-500 ${
+                  <p className={`text-[11px] sm:text-[13px] font-heading font-black uppercase text-center tracking-[0.2em] transition-colors duration-500 ${
                     isCurrent ? 'text-[#5B1F3D] scale-110' : unlocked ? 'text-[#5B1F3D]/70' : 'text-[#5B1F3D]/45'
                   }`}>
                     {level.title.split(' — ')[0]}
@@ -249,7 +249,7 @@ const TrailsPage = () => {
 
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className={`text-[10px] sm:text-[12px] font-heading font-black tracking-[0.5em] uppercase transition-colors duration-500 ${
+                      <span className={`text-[12px] sm:text-[13px] font-heading font-black tracking-[0.5em] uppercase transition-colors duration-500 ${
                         unlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D]/75'
                       }`}>
                         {level.title.split(' — ')[0]}
@@ -260,7 +260,7 @@ const TrailsPage = () => {
                         </div>
                       )}
                       {!unlocked && (
-                         <span className="text-[8px] font-heading font-black text-[#5B1F3D]/60 tracking-widest uppercase bg-[#DCCFC2]/40 px-2 py-0.5 rounded">Futuro</span>
+                         <span className="text-[10px] font-heading font-black text-[#5B1F3D]/60 tracking-widest uppercase bg-[#DCCFC2]/40 px-2 py-1 rounded">Futuro</span>
                       )}
                     </div>
                     <h3 className={`font-heading text-2xl sm:text-5xl font-black tracking-tight leading-tight transition-all duration-500 ${
@@ -316,13 +316,13 @@ const TrailsPage = () => {
 
                         <div className="flex-1 mt-4 sm:mt-0 sm:ml-8 min-w-0 w-full text-center sm:text-left">
                           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2 items-center sm:items-start">
-                            <span className={`text-[10px] sm:text-[11px] font-heading font-black tracking-[0.3em] uppercase transition-colors duration-500 ${
+                            <span className={`text-[12px] sm:text-[13px] font-heading font-black tracking-[0.3em] uppercase transition-colors duration-500 ${
                               unlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D]/75'
                             }`}>
                               Módulo
                             </span>
                             {isNext && (
-                              <span className="bg-[#5B1F3D] text-[#FAF5EF] text-[9px] font-black px-3.5 py-1.5 rounded-full uppercase tracking-widest flex items-center gap-1.5 shadow-md border border-[#C8A66A33] w-fit">
+                              <span className="bg-[#5B1F3D] text-[#FAF5EF] text-[10px] font-black px-3.5 py-1.5 rounded-full uppercase tracking-widest flex items-center gap-1.5 shadow-md border border-[#C8A66A33] w-fit">
                                 <Sparkles className="w-2.5 h-2.5" /> Próxima Chave
                               </span>
                             )}
