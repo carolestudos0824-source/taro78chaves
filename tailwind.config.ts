@@ -17,11 +17,11 @@ export default {
         xs: "375px",
       },
       fontFamily: {
-        heading: ["Cinzel", "Cormorant Garamond", "Georgia", "serif"],
-        display: ["Cinzel", "Cormorant Garamond", "Georgia", "serif"],
-        body: ["Lora", "Cormorant Garamond", "Georgia", "serif"],
-        sans: ["Lora", "Inter", "system-ui", "sans-serif"],
-        accent: ["Cormorant Garamond", "Lora", "serif"],
+        heading: ["Cinzel", "serif"],
+        display: ["Cinzel", "serif"],
+        body: ["Lora", "serif"],
+        sans: ["Lora", "sans-serif"],
+        accent: ["Lora", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
