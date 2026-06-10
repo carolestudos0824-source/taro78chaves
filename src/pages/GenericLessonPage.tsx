@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Sparkles, BookOpen, Brain, Lightbulb, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Sparkles, BookOpen, Brain, Lightbulb, CheckCircle2 } from "lucide-react";
+import { PageBackControls } from "./PageBackControls";
+
 import { useProgress } from "@/hooks/use-progress";
 import { useRole } from "@/hooks/use-role";
 import { useResolvedLesson } from "@/hooks/use-resolved-lesson";
@@ -279,13 +281,8 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
         }}
       >
         <div className="max-w-lg mx-auto px-4 py-4 flex items-center gap-4">
-          <button
-            onClick={() => navigate(moduleRoute)}
-            className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-all hover:scale-110 active:scale-95 bg-[#FAF5EF] border border-[#C8A66A30] shadow-sm"
-            style={{ color: "#5B1F3D" }}
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </button>
+          <PageBackControls variant="top" showLabel={false} className="w-10 h-10 flex items-center justify-center bg-[#FAF5EF] rounded-full border border-[#C8A66A30]" fallbackRoute={moduleRoute} />
+
           <div className="flex-1 min-w-0">
             <p className="text-[10px] font-heading tracking-[0.3em] uppercase truncate font-black" style={{ color: "#C8A66A" }}>
               {categoryLabel || moduleName}
@@ -399,7 +396,9 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
               )}
 
               <ContinueButton onClick={() => goTo("exercise")} />
+              <PageBackControls variant="bottom" className="mt-8" fallbackRoute={moduleRoute} />
             </div>
+
           </>
         )}
 

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Sparkles, MapPin, Heart } from "lucide-react";
+import { ArrowRight, Sparkles, MapPin, Heart } from "lucide-react";
+import { PageBackControls } from "@/components/PageBackControls";
+
 import { AMOR_LESSONS, getAmorLessonByOrder } from "@/content/lessons/amor";
 import { useProgress } from "@/hooks/use-progress";
 import { useRole } from "@/hooks/use-role";
@@ -146,9 +148,8 @@ const AmorLessonPage = () => {
 
       <header className="relative z-10 backdrop-blur-md" style={{ background: "hsl(36 33% 97% / 0.85)", borderBottom: "1px solid hsl(340 42% 28% / 0.12)" }}>
         <div className="container max-w-3xl py-3 px-4 flex items-center gap-4">
-          <button onClick={() => navigate("/module/amor")} className="transition-colors hover:scale-105 duration-200" style={{ color: "hsl(230 10% 40%)" }}>
-            <ArrowLeft className="w-5 h-5" />
-          </button>
+          <PageBackControls variant="top" showLabel={false} className="w-10 h-10 flex items-center justify-center bg-[#FAF5EF] rounded-full border border-[#C8A66A30]" fallbackRoute="/module/amor" />
+
           <div className="flex items-center gap-2 flex-1">
             <span className="text-lg">{lesson.icon}</span>
             <span className="font-heading text-sm truncate" style={{ color: "hsl(230 25% 15%)" }}>{lesson.title}</span>
@@ -283,8 +284,10 @@ const AmorLessonPage = () => {
                   🔮 Aprofundar (opcional)
                 </button>
               )}
+              <PageBackControls variant="bottom" className="mt-8" fallbackRoute="/module/amor" />
             </div>
           </div>
+
         )}
 
         {/* EXERCISE */}

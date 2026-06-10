@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Check, Lock, ChevronRight } from "lucide-react";
+import { Check, Lock, ChevronRight } from "lucide-react";
+import { PageBackControls } from "./PageBackControls";
+
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { useResolvedModule } from "@/hooks/use-resolved-module";
@@ -93,13 +95,8 @@ const GenericModulePage = ({
         >
           {/* Back + Streak row */}
           <div className="flex items-center justify-between mb-8">
-            <button
-              onClick={() => navigate(backRoute)}
-              className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 active:scale-95 bg-[#FAF5EF] border border-[#C8A66A30] shadow-sm"
-              style={{ color: "#5B1F3D" }}
-            >
-              <ArrowLeft className="w-6 h-6" />
-            </button>
+            <PageBackControls variant="top" showLabel={false} className="w-12 h-12 flex items-center justify-center bg-[#FAF5EF] rounded-full border border-[#C8A66A30]" fallbackRoute={backRoute} />
+
             <StreakCounter streak={progress.streak} />
           </div>
 
@@ -310,8 +307,10 @@ const GenericModulePage = ({
             );
           })}
         </div>
+        <PageBackControls variant="bottom" className="w-full pb-8" fallbackRoute={backRoute} />
       </div>
     </div>
+
   );
 };
 

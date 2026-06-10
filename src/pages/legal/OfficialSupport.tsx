@@ -222,8 +222,10 @@ const OfficialSupport = () => {
             </p>
           </div>
         </section>
+        <PageBackControls variant="bottom" className="mt-8" />
       </div>
     </LegalLayout>
+
   );
 };
 
