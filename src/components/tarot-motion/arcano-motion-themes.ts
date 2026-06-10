@@ -62,7 +62,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["✦", "☀", "·", "✧", "🌿"], style: "ascendant" },
     mood: "dramatic",
     microcopy: {
-      intro: "O primeiro passo da jornada.",
+      intro: "Eu sou o Louco. O impulso antes da certeza.",
       presence: "O impulso livre de amarras.",
       unlock: "O Louco convida ao salto de fé.",
     },
@@ -75,7 +75,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["∞", "◈", "✦", "⚡", "🌹"], style: "float" },
     mood: "intense",
     microcopy: {
-      intro: "A vontade encontra forma.",
+      intro: "Eu sou O Mago. A vontade que transforma possibilidade em gesto.",
       presence: "O caminho agora aprende a criar.",
       unlock: "O Mago foi desbloqueado.",
     },
@@ -88,7 +88,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["🌙", "✧", "·", "◎"], style: "float" },
     mood: "mystical",
     microcopy: {
-      intro: "O silêncio guarda o portal.",
+      intro: "Eu sou A Sacerdotisa. O silêncio onde o mistério começa a falar.",
       presence: "A voz que nasce do silêncio.",
       unlock: "A Sacerdotisa revelou seus mistérios.",
     },
@@ -101,7 +101,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["🌿", "❀", "✨", "🍎"], style: "ascendant" },
     mood: "gentle",
     microcopy: {
-      intro: "A vida floresce no portal.",
+      intro: "Eu sou A Imperatriz. A vida que floresce quando recebe forma e cuidado.",
       presence: "A abundância de ser quem você é.",
       unlock: "A Imperatriz abençoou sua jornada.",
     },
@@ -114,7 +114,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["◈", "✦", "⚔", "🛡"], style: "float" },
     mood: "intense",
     microcopy: {
-      intro: "A estrutura ergue o portal.",
+      intro: "Eu sou O Imperador. A ordem que sustenta o mundo visível.",
       presence: "A ordem que protege a visão.",
       unlock: "O Imperador estabeleceu sua base.",
     },
@@ -127,7 +127,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["🗝", "✦", "⟡", "📜"], style: "float" },
     mood: "mystical",
     microcopy: {
-      intro: "A tradição abre o portal.",
+      intro: "Eu sou O Hierofante. A ponte entre a tradição e o ensinamento vivo.",
       presence: "O mestre que habita em você.",
       unlock: "O Hierofante transmitiu sua lição.",
     },
@@ -140,8 +140,8 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["❤", "✦", "✨", "🕊"], style: "ascendant" },
     mood: "gentle",
     microcopy: {
-      intro: "O encontro revela o caminho.",
-      presence: "O coração escolhe sua direção.",
+      intro: "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa escolher.",
+      presence: "O coração escolhe sua direction.",
       unlock: "A união sagrada foi revelada.",
     },
   },
@@ -153,7 +153,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["⭐", "✦", "◈", "➹"], style: "float" },
     mood: "dramatic",
     microcopy: {
-      intro: "A vontade move o portal.",
+      intro: "Eu sou O Carro. A direção que nasce quando desejo e disciplina seguem juntos.",
       presence: "A direção que vence o caos.",
       unlock: "O Carro acelerou sua jornada.",
     },
@@ -166,7 +166,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["🦁", "❀", "∞", "✦"], style: "float" },
     mood: "gentle",
     microcopy: {
-      intro: "O poder suave abre o portal.",
+      intro: "Eu sou A Força. A coragem suave que domina sem ferir.",
       presence: "A coragem de ser gentil.",
       unlock: "A Força despertou seu poder.",
     },
@@ -179,7 +179,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["🏮", "·", "✦", "⭐"], style: "float" },
     mood: "mystical",
     microcopy: {
-      intro: "A luz interior revela o portal.",
+      intro: "Eu sou O Eremita. A luz interior que guia quando o mundo se cala.",
       presence: "O silêncio que traz respostas.",
       unlock: "O Eremita iluminou sua busca.",
     },
@@ -192,7 +192,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["🌀", "✦", "✧", "·"], style: "float" },
     mood: "dramatic",
     microcopy: {
-      intro: "O ciclo gira o portal.",
+      intro: "Eu sou A Roda da Fortuna. O movimento que muda tudo que parecia fixo.",
       presence: "A impermanência é a mestra.",
       unlock: "A Roda girou a seu favor.",
     },
@@ -205,7 +205,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["⚖", "⚔", "✦", "·"], style: "float" },
     mood: "intense",
     microcopy: {
-      intro: "A verdade equilibra o portal.",
+      intro: "Eu sou A Justiça. O equilíbrio que revela a consequência de cada escolha.",
       presence: "Toda ação tem seu retorno.",
       unlock: "A Justiça selou sua verdade.",
     },
@@ -218,7 +218,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["💧", "✧", "·", "✦"], style: "float" },
     mood: "mystical",
     microcopy: {
-      intro: "A pausa suspende o portal.",
+      intro: "Eu sou O Enforcado. A pausa que muda o olhar e revela outro caminho.",
       presence: "Ver o mundo de outro ângulo.",
       unlock: "O Enforcado mudou sua visão.",
     },
@@ -231,7 +231,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["🥀", "💀", "✦", "·"], style: "descendant" },
     mood: "dramatic",
     microcopy: {
-      intro: "O fim abre o portal.",
+      intro: "Eu sou A Morte. O fim necessário para que a vida continue.",
       presence: "Morte para o que não serve mais.",
       unlock: "A Morte liberou seu renascimento.",
     },
@@ -244,7 +244,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["💧", "✨", "✦", "🍷"], style: "float" },
     mood: "gentle",
     microcopy: {
-      intro: "A alquimia cura o portal.",
+      intro: "Eu sou A Temperança. A mistura sagrada entre opostos que aprendem a fluir.",
       presence: "O equilíbrio que transforma.",
       unlock: "A Temperança harmonizou seu ser.",
     },
@@ -262,7 +262,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["⛓", "🔥", "·", "⬫"], style: "descendant" },
     mood: "mystical",
     microcopy: {
-      intro: "A sombra revela onde a chave foi esquecida.",
+      intro: "Eu sou O Diabo. A prisão que se rompe quando você reconhece seus próprios laços.",
       presence: "Nem toda prisão tem grades.",
       unlock: "A consciência ilumina o desejo.",
     },
@@ -275,7 +275,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["⚡", "🔥", "✦", "◈"], style: "descendant" },
     mood: "dramatic",
     microcopy: {
-      intro: "O raio derruba o portal.",
+      intro: "Eu sou A Torre. A queda do falso para que a verdade tenha chão.",
       presence: "O colapso da falsa segurança.",
       unlock: "A Torre libertou sua verdade.",
     },
@@ -288,7 +288,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["⭐", "✨", "💧", "✦"], style: "float" },
     mood: "gentle",
     microcopy: {
-      intro: "A esperança ilumina o portal.",
+      intro: "Eu sou A Estrela. A esperança que permanece quando a alma volta a confiar.",
       presence: "Há luz depois da tempestade.",
       unlock: "A Estrela renovou seu propósito.",
     },
@@ -301,7 +301,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["🌙", "🐺", "🦀", "·"], style: "float" },
     mood: "mystical",
     microcopy: {
-      intro: "O mistério sussurra no portal.",
+      intro: "Eu sou A Lua. O caminho incerto onde imagens, medo e intuição se misturam.",
       presence: "A intuição guia na escuridão.",
       unlock: "A Lua revelou seu inconsciente.",
     },
@@ -314,7 +314,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["☀", "🌻", "✨", "✦"], style: "ascendant" },
     mood: "intense",
     microcopy: {
-      intro: "A clareza abre o portal.",
+      intro: "Eu sou O Sol. A clareza que devolve vida, verdade e alegria.",
       presence: "A alegria de estar viva.",
       unlock: "O Sol brilhou em sua jornada.",
     },
@@ -327,7 +327,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["🎺", "🕊", "✦", "✨"], style: "ascendant" },
     mood: "dramatic",
     microcopy: {
-      intro: "O chamado desperta o portal.",
+      intro: "Eu sou O Julgamento. O chamado que desperta aquilo que não pode mais dormir.",
       presence: "A alma se ergue para a verdade.",
       unlock: "O Julgamento ouviu seu despertar.",
     },
@@ -340,7 +340,7 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["❀", "🕊", "✨", "♾"], style: "float" },
     mood: "mystical",
     microcopy: {
-      intro: "A completude dança no portal.",
+      intro: "Eu sou O Mundo. A integração final de uma jornada que se completa.",
       presence: "Você é o centro de tudo.",
       unlock: "O Mundo celebrou sua vitória.",
     },
