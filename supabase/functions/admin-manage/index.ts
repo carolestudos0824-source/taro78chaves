@@ -260,7 +260,7 @@ Deno.serve(async (req) => {
     if (action === "grant_premium") {
       if (!target_user_id) return fail("Usuário obrigatório", { action, error_stage: "validate_target", http_status: 400 });
       const d = Number.isFinite(days) && days > 0 ? days : 30;
-      const src = source === "gift" ? "gift" : "admin";
+      const src = source || "admin";
       const { data: cur, error: currentError } = await admin.from("profiles").select("premium_until").eq("user_id", target_user_id).maybeSingle();
       if (currentError) return fail(currentError.message, { action, target_user_id, error_stage: "load_profile_for_premium", http_status: 500 });
 

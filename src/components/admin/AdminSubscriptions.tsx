@@ -50,7 +50,7 @@ function resolveStatus(p: ProfileRow, now: Date): SubStatus {
   if (p.is_premium && until && until <= now) return "expired";
   if (p.is_premium && p.premium_source === "gift") return "gift_active";
   if (p.is_premium && p.premium_source === "admin") return "admin_grant";
-  if (p.is_premium && p.premium_source === "store_annual") return "annual_active";
+  if (p.is_premium && (p.premium_source === "store_annual" || p.premium_source === "kirvano")) return "annual_active";
   if (p.is_premium) return "monthly_active";
   return "free";
 }
@@ -82,6 +82,7 @@ const SOURCE_LABELS: Record<string, string> = {
   store_annual: "Loja (anual)",
   gift: "Presente",
   admin: "Admin",
+  kirvano: "Kirvano",
 };
 
 // Prices come from src/lib/billing.ts (single source of truth, ready for Stripe).
