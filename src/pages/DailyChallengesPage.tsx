@@ -351,13 +351,19 @@ const DailyChallengesPage = () => {
                                     <div className="absolute inset-2 border border-dashed border-gray-400 rounded-xl opacity-30 z-10" />
                                     <TarotIcon name="bloqueado" className="w-8 h-8 md:w-10 md:h-10 opacity-40 z-10" />
                                   </div>
-                                  ) : (
-                                    null
-                                  )}
+                                    ) : (
+                                      null
+                                    )}
+                                  </div>
                                 </div>
-                                <PageBackControls variant="bottom" className="pt-8" />
                               </div>
-                            </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                      <PageBackControls variant="bottom" className="pt-8" />
+                    </div>
+
 
                                   <TarotIcon name={iconName} className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-500 group-hover:scale-110" />
                                 )}

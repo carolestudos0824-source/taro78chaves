@@ -151,7 +151,9 @@ const TrailsPage = () => {
         <div className="absolute bottom-[10%] right-[-10%] w-[30%] h-[20%] bg-[#5B1F3D]/5 blur-[80px] rounded-full" />
       </div>
 
-      <div className="relative max-w-2xl mx-auto px-6 pt-2 sm:pt-24 flex flex-col items-center">
+      <div className="relative max-w-2xl mx-auto px-6 pt-2 sm:pt-12 flex flex-col items-center">
+        <PageBackControls variant="top" showLabel={true} className="self-start mb-8 h-auto p-0" />
+
         {/* Header Section - Enhanced Spacing & Ritualistic feel */}
         <div className="text-center mb-2 relative w-full px-4">
           <div className="inline-flex items-center gap-3 mb-4 opacity-80">
