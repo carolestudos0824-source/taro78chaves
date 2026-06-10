@@ -27,7 +27,7 @@ const FoolsJourneyPage = () => {
   const { meta, fases, arcanos } = journey;
 
   return (
-    <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
+    <div className="min-h-screen relative overflow-hidden pb-32">
       {/* Background — Marfim suave e atmosfera premium */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         <div className="absolute inset-0" style={{
@@ -118,7 +118,7 @@ const FoolsJourneyPage = () => {
         </section>
 
         {/* Internal Navigation Chips */}
-        <div className="sticky top-20 z-30 mb-8 -mx-6 px-6 py-3 bg-[#FAF5EF]/80 backdrop-blur-md border-y border-[#C8A66A]/10 overflow-x-auto flex items-center gap-3 no-scrollbar scrollbar-hide">
+        <div className="sticky top-20 z-30 mb-8 -mx-6 px-6 py-3 bg-[#FAF5EF]/90 backdrop-blur-md border-y border-[#C8A66A]/10 overflow-x-auto flex items-center gap-4 no-scrollbar scrollbar-hide snap-x snap-mandatory">
           {fases.map((phase) => (
             <button
               key={phase.id}
@@ -126,7 +126,7 @@ const FoolsJourneyPage = () => {
                 const el = document.getElementById(phase.slug);
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="px-4 py-2 rounded-full text-[12px] font-heading font-black uppercase tracking-widest border border-[#C8A66A]/30 bg-white shadow-sm transition-all hover:border-[#C8A66A] active:scale-95 whitespace-normal break-words text-center min-w-[100px]"
+              className="px-5 py-2.5 rounded-full text-[12px] font-heading font-black uppercase tracking-widest border border-[#C8A66A]/30 bg-white shadow-sm transition-all hover:border-[#C8A66A] active:scale-95 whitespace-nowrap text-center min-w-max snap-center"
               style={{ color: "#5B1F3D" }}
             >
               {phase.titulo}
