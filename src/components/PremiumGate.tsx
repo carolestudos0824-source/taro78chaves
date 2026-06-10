@@ -77,7 +77,7 @@ const PremiumGate = ({
         </div>
         <button
           onClick={() => navigate("/premium")}
-          className="text-[10px] font-heading tracking-[0.2em] uppercase shrink-0 px-4 py-2 rounded-xl bg-[#5B1F3D] text-white border border-[#C8A66A] font-black shadow-md transition-all active:scale-95"
+          className="text-[13px] font-body font-bold shrink-0 px-4 py-2 rounded-xl bg-[#5B1F3D] text-white border border-[#C8A66A] shadow-md transition-all active:scale-95"
         >
           {webCheckoutAllowed ? "Abrir" : "Detalhes"}
         </button>
