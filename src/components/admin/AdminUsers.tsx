@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Users, Search, Crown, Gift, RotateCcw, Shield, ArrowUpDown, X, Mail, Calendar, Activity, Award, Flame, BookOpen, CheckCircle2, AlertTriangle, ArrowLeft } from "lucide-react";
+import { Users, Search, Crown, Gift, RotateCcw, Shield, ArrowUpDown, X, Mail, Calendar, Activity, Award, Flame, BookOpen, CheckCircle2, AlertTriangle, ArrowLeft, Plug } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
@@ -91,6 +91,7 @@ const AdminUsers = () => {
     const until = u.premium_until ? new Date(u.premium_until) : null;
     if (until && until <= now) return { label: "Expirado", variant: "destructive" as const, key: "expired" as const };
     if (u.premium_source === "gift" || u.premium_source === "admin") return { label: "Cortesia", variant: "secondary" as const, key: "gift" as const };
+    if (u.premium_source === "kirvano") return { label: "Kirvano", variant: "primary" as const, key: "premium" as const };
     
     if (u.premium_source === "store_monthly" || u.premium_source === "store_annual") return { label: "Legado Stripe", variant: "outline" as const, key: "premium" as const };
     return { label: "Assinante", variant: "primary" as const, key: "premium" as const };
@@ -465,6 +466,9 @@ const UserDetailDialog = ({ userId, onClose, onChanged }: { userId: string | nul
                     </Button>
                     <Button size="sm" variant="outline" onClick={() => run("grant_premium", { days: Number(days), source: "gift" }, "Presente concedido")} disabled={busy === "grant_premium"}>
                       <Gift className="w-3.5 h-3.5" /> Presentear
+                    </Button>
+                    <Button size="sm" variant="outline" className="border-[#C8A66A] text-[#5B1F3D] hover:bg-[#C8A66A]/10" onClick={() => run("grant_premium", { days: Number(days), source: "kirvano" }, "Acesso Kirvano liberado")} disabled={busy === "grant_premium"}>
+                      <Plug className="w-3.5 h-3.5" /> Kirvano
                     </Button>
                     <Button size="sm" variant="ghost" onClick={() => run("revoke_premium", {}, "Premium removido")} disabled={busy === "revoke_premium" || !data.profile?.is_premium}>
                       Remover premium
