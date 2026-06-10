@@ -33,12 +33,12 @@ const BottomNav = () => {
     <nav
       id="main-bottom-nav"
       data-testid="main-bottom-nav"
-      className="fixed bottom-0 inset-x-0 z-[100] border-t bg-white/98 backdrop-blur-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe w-full overflow-hidden touch-none"
+      className="fixed bottom-0 inset-x-0 z-[100] border-t bg-[#FAF5EF] backdrop-blur-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe w-full overflow-hidden touch-none"
       style={{
-        borderColor: "#C8A66A33",
+        borderColor: "#DCCFC2",
       }}
     >
-      <div className="mx-auto flex items-center justify-between py-1.5 px-0 w-full max-w-full">
+      <div className="mx-auto flex items-center justify-between py-2 px-0 w-full max-w-full">
         {NAV_ITEMS.map(item => {
           const isActive = location.pathname === item.path;
           return (
@@ -61,8 +61,8 @@ const BottomNav = () => {
                   <div className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full bg-[#C8A66A] shadow-[0_0_8px_#C8A66A]" />
                 )}
               </div>
-              <span className={`text-[7.5px] min-[360px]:text-[8px] min-[390px]:text-[9px] font-heading tracking-tighter min-[390px]:tracking-tight uppercase transition-all duration-300 truncate w-full text-center px-0.5 ${
-                isActive ? "font-black text-[#5B1F3D]" : "font-bold text-[#5B1F3D]/70"
+              <span className={`text-[10px] min-[390px]:text-[11px] font-heading tracking-tight uppercase transition-all duration-300 truncate w-full text-center px-0.5 ${
+                isActive ? "font-black text-[#5B1F3D]" : "font-bold text-[#5B1F3D]/60"
               }`}>
                 {item.label}
               </span>
