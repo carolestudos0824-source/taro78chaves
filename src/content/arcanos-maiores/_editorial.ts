@@ -34,6 +34,7 @@ export interface ArcanoSymbol {
 export interface ArcanoInterpretation {
   light: string;
   shadow: string;
+  [key: string]: string;
 }
 
 export interface ArcanoDeepDive {
