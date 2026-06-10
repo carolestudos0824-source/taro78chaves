@@ -30,7 +30,7 @@ export function StreakCounter({ streak }: StreakCounterProps) {
         className="w-5 h-5"
         style={{ color: isActive ? "#5B1F3D" : "#5B1F3D4D" }}
       />
-      <span className="text-base font-heading tabular-nums font-black" style={{
+      <span className="text-[15px] font-body tabular-nums font-bold" style={{
         color: isActive ? "#5B1F3D" : "#5B1F3D80"
       }}>
         {streak}
