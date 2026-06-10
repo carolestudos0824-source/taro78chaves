@@ -153,7 +153,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
               className="flex flex-col items-center"
             >
               <p className="font-accent italic text-xl md:text-3xl text-[#5B1F3D] mb-6 md:mb-10 leading-relaxed font-bold tracking-tight">
-                "{phase === 'insight' ? (presenceText || theme.microcopy.presence) : (introText || theme.microcopy.intro)}"
+                {arcanoId === 6 ? "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa escolher." : `"${phase === 'insight' ? (presenceText || theme.microcopy.presence) : (introText || theme.microcopy.intro)}"`}
               </p>
               
               {phase === 'insight' && (
