@@ -207,16 +207,20 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
             >
               <p 
                 className="font-accent italic text-xl md:text-3xl text-[#5B1F3D] mb-6 md:mb-10 leading-relaxed font-bold tracking-tight"
-                data-rendered-text={safeVisibleIntroText}
+                data-rendered-text={visibleIntroText}
                 data-arcano-id={arcanoId}
               >
-                "{safeVisibleIntroText}"
+                "{visibleIntroText}"
               </p>
               
-              {arcanoId !== 0 && safeVisibleIntroText.toLowerCase().includes("louco") && (
+              {arcanoId !== 0 && visibleIntroText.toLowerCase().includes("louco") && (
                 <div style={{ color: "red", fontWeight: "bold" }}>
                   ERRO: VAZAMENTO DO LOUCO NO ARCANO {arcanoId}
                 </div>
+              )}
+              
+              {arcanoId !== 0 && visibleIntroText.includes("Louco") && (
+                (() => { throw new Error("[BLOQUEIO] Vazamento do Louco no arcano " + arcanoId); })()
               )}
               
               {phase === 'insight' && (
