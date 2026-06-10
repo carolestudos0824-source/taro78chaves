@@ -369,12 +369,12 @@ const FundamentosPage = () => {
           <div className="mt-12 text-center pb-8 opacity-40">
             <span className="text-2xl text-[#C8A66A]">🗝️</span>
           </div>
+        )}
         <PageBackControls variant="bottom" className="w-full pb-8" />
       </main>
     </div>
-
-
   );
 };
 
 export default FundamentosPage;
+
