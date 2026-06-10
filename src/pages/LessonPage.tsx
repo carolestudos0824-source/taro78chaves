@@ -399,6 +399,114 @@ const LessonPage = () => {
             </div>
           )}
 
+          {phase === "dimensoes" && (
+            <div className="space-y-6">
+              <LessonPhaseHeader 
+                cardImage={arcano.cardImage} 
+                cardName={arcano.name} 
+                numeral={arcano.numeral}
+                subtitle="Dimensões da Vida"
+              />
+              
+              <Tabs defaultValue="amor" className="w-full">
+                <TabsList className="grid w-full grid-cols-3 bg-white/50 border border-[#C8A66A]/20 h-auto p-1 rounded-2xl">
+                  <TabsTrigger value="amor" className="py-3 rounded-xl data-[state=active]:bg-[#5B1F3D] data-[state=active]:text-white flex flex-col gap-1">
+                    <Heart className="w-4 h-4" />
+                    <span className="text-[9px] uppercase font-black tracking-widest">Amor</span>
+                  </TabsTrigger>
+                  <TabsTrigger value="trabalho" className="py-3 rounded-xl data-[state=active]:bg-[#5B1F3D] data-[state=active]:text-white flex flex-col gap-1">
+                    <Briefcase className="w-4 h-4" />
+                    <span className="text-[9px] uppercase font-black tracking-widest">Trabalho</span>
+                  </TabsTrigger>
+                  <TabsTrigger value="espiritualidade" className="py-3 rounded-xl data-[state=active]:bg-[#5B1F3D] data-[state=active]:text-white flex flex-col gap-1">
+                    <Moon className="w-4 h-4" />
+                    <span className="text-[9px] uppercase font-black tracking-widest">Espírito</span>
+                  </TabsTrigger>
+                </TabsList>
+
+                <div className="mt-6 bg-white/80 backdrop-blur-sm rounded-[2rem] border-2 border-[#C8A66A]/20 shadow-xl overflow-hidden">
+                  <TabsContent value="amor" className="p-8 m-0 space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div className="space-y-6">
+                      <div className="flex items-center gap-3 border-b border-[#C8A66A]/10 pb-4">
+                        <Heart className="w-5 h-5 text-[#5B1F3D]" />
+                        <h3 className="font-heading text-xl text-[#5B1F3D] font-bold">{arcano.name} no Amor</h3>
+                      </div>
+                      <div className="space-y-8">
+                        {Object.entries(arcano.love || {}).map(([key, value]) => (
+                          <div key={key} className="space-y-3">
+                            <div className="flex items-center gap-2">
+                              <div className={`w-2 h-2 rounded-full ${key === 'light' ? 'bg-[#C8A66A]' : 'bg-[#5B1F3D]'}`} />
+                              <span className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">
+                                {key === 'light' ? 'Luz / Potencial' : key === 'shadow' ? 'Sombra / Alerta' : key}
+                              </span>
+                            </div>
+                            <p className="font-body text-[18px] leading-[1.7] text-[#3D1429] font-black pl-4 border-l-2 border-[#C8A66A]/10">
+                              {value}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </TabsContent>
+
+                  <TabsContent value="trabalho" className="p-8 m-0 space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div className="space-y-6">
+                      <div className="flex items-center gap-3 border-b border-[#C8A66A]/10 pb-4">
+                        <Briefcase className="w-5 h-5 text-[#5B1F3D]" />
+                        <h3 className="font-heading text-xl text-[#5B1F3D] font-bold">{arcano.name} no Trabalho</h3>
+                      </div>
+                      <div className="space-y-8">
+                        {Object.entries(arcano.work || {}).map(([key, value]) => (
+                          <div key={key} className="space-y-3">
+                            <div className="flex items-center gap-2">
+                              <div className={`w-2 h-2 rounded-full ${key === 'light' ? 'bg-[#C8A66A]' : 'bg-[#5B1F3D]'}`} />
+                              <span className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">
+                                {key === 'light' ? 'Luz / Potencial' : key === 'shadow' ? 'Sombra / Alerta' : key}
+                              </span>
+                            </div>
+                            <p className="font-body text-[18px] leading-[1.7] text-[#3D1429] font-black pl-4 border-l-2 border-[#C8A66A]/10">
+                              {value}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </TabsContent>
+
+                  <TabsContent value="espiritualidade" className="p-8 m-0 space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div className="space-y-6">
+                      <div className="flex items-center gap-3 border-b border-[#C8A66A]/10 pb-4">
+                        <Moon className="w-5 h-5 text-[#5B1F3D]" />
+                        <h3 className="font-heading text-xl text-[#5B1F3D] font-bold">{arcano.name} na Espiritualidade</h3>
+                      </div>
+                      <div className="space-y-8">
+                        {Object.entries(arcano.spirituality || {}).map(([key, value]) => (
+                          <div key={key} className="space-y-3">
+                            <div className="flex items-center gap-2">
+                              <div className={`w-2 h-2 rounded-full ${key === 'light' ? 'bg-[#C8A66A]' : 'bg-[#5B1F3D]'}`} />
+                              <span className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">
+                                {key === 'light' ? 'Luz / Potencial' : key === 'shadow' ? 'Sombra / Alerta' : key}
+                              </span>
+                            </div>
+                            <p className="font-body text-[18px] leading-[1.7] text-[#3D1429] font-black pl-4 border-l-2 border-[#C8A66A]/10">
+                              {value}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </TabsContent>
+                </div>
+              </Tabs>
+
+              <div className="pt-4">
+                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-[13px] tracking-widest shadow-xl hover:scale-[1.02] transition-transform leading-tight">
+                  Continuar para Aplicações
+                </Button>
+              </div>
+            </div>
+          )}
+
           {phase === "aplicacoes" && (
             <div className="space-y-6">
               <LessonPhaseHeader 
