@@ -47,40 +47,11 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
 
   const showParticles = (phase === 'presence' || phase === 'insight') && !shouldReduceMotion;
 
-  // 4. Criar uma única variável para o texto visível:
-  const safeVisibleIntroText = useMemo(() => {
-    // Tenta pegar o texto das props (fala em primeira pessoa / pedagógico)
-    const editorialText = presenceText || introText || "";
-
-    // Regra de segurança: Arcano Id != 0 não pode ter texto do Louco
-    if (arcanoId !== 0 && (editorialText.toLowerCase().includes("eu sou o louco") || editorialText.toLowerCase().includes("o impulso antes da certeza"))) {
-      console.error("[LOUCO LEAK BLOCKED]", {
-        arcanoId,
-        cardName,
-        editorialText,
-      });
-
-      // Fallback específico para Enamorados se falhar
-      if (arcanoId === 6) {
-        return "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa escolher.";
-      }
-      return "";
-    }
-
-    // Se estiver vazio e for arcano 6, garante o texto dos Enamorados
-    if (arcanoId === 6 && !editorialText) {
-      return "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa escolher.";
-    }
-
-    return editorialText;
-  }, [arcanoId, presenceText, introText, cardName]);
-
+  // 4. Texto visível vindo exclusivamente do tema centralizado:
   const visibleIntroText = useMemo(() => {
-    if (arcanoId === 6) {
-      return "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa escolher.";
-    }
-    return safeVisibleIntroText;
-  }, [arcanoId, safeVisibleIntroText]);
+    return theme.microcopy.intro;
+  }, [theme]);
+
 
   const isLoucoLeakDetected = useMemo(() => {
     if (arcanoId === 0) return false;
@@ -215,13 +186,10 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
               
               {arcanoId !== 0 && visibleIntroText.toLowerCase().includes("louco") && (
                 <div style={{ color: "red", fontWeight: "bold" }}>
-                  ERRO: VAZAMENTO DO LOUCO NO ARCANO {arcanoId}
+                  ERRO DE IDENTIDADE: Vazamento do Louco no Arcano {arcanoId}
                 </div>
               )}
-              
-              {arcanoId !== 0 && visibleIntroText.includes("Louco") && (
-                (() => { throw new Error("[BLOQUEIO] Vazamento do Louco no arcano " + arcanoId); })()
-              )}
+
               
               {phase === 'insight' && (
                 <motion.div
