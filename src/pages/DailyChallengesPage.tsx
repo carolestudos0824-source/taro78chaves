@@ -363,6 +363,7 @@ const DailyChallengesPage = () => {
                           </div>
 
                           <div className="flex-1 min-w-0">
+
                             <h3 className={`font-heading text-lg md:text-2xl font-black tracking-tight mb-2 ${isCompleted ? "text-plum/60" : isBlocked ? "text-plum/40" : "text-plum"}`}>
                               {ch.title}
                             </h3>

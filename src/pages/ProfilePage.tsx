@@ -310,8 +310,8 @@ const ProfilePage = () => {
         </div>
       </main>
     </div>
-
   );
 };
 
 export default ProfilePage;
+
