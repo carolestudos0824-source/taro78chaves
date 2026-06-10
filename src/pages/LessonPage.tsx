@@ -123,12 +123,10 @@ const LessonPage = () => {
         hidePontos: true,
         hideStreak: true
       });
-
-
-
     }
     return () => resetHeader();
   }, [arcano, phaseIdx, arcanoId, setHeader, resetHeader]);
+
 
   if (isLiteralRoute || !arcano || !isValidId) {
     if (!arcano || !isValidId) {
@@ -256,6 +254,7 @@ const LessonPage = () => {
             fallbackRoute={phaseIdx > 0 ? undefined : "/module/arcanos-maiores"}
           />
         )}
+
 
         <section className="space-y-8 animate-fade-in">
           {phase === "intro" && (
@@ -506,17 +505,9 @@ const LessonPage = () => {
                 </div>
               </Tabs>
               <PageBackControls variant="bottom" className="mt-8" />
-
-
-
-
-              <div className="pt-4">
-                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-[13px] tracking-widest shadow-xl hover:scale-[1.02] transition-transform leading-tight">
-                  Continuar para Aplicações
-                </Button>
-              </div>
             </div>
           )}
+
 
           {phase === "aplicacoes" && (
             <div className="space-y-6">
@@ -543,6 +534,7 @@ const LessonPage = () => {
 
 
           {phase === "quiz" && (
+
             <div className="space-y-6">
               <LessonPhaseHeader 
                 cardImage={arcano.cardImage} 
@@ -597,8 +589,8 @@ const LessonPage = () => {
               arcanoName={arcano.name}
               cardImage={arcano.cardImage}
               arcanoId={arcanoId}
-
               pontosEarned={pontosEarned}
+
               quizScore={lastQuizScore}
               quizTotal={lastQuizTotal}
               nextArcano={nextArcano ? { id: nextArcano.id, name: nextArcano.name, numeral: nextArcano.numeral, subtitle: nextArcano.subtitle } : undefined}
