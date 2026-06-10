@@ -75,10 +75,17 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
     return editorialText;
   }, [arcanoId, presenceText, introText, cardName]);
 
+  const visibleIntroText = useMemo(() => {
+    if (arcanoId === 6) {
+      return "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa escolher.";
+    }
+    return safeVisibleIntroText;
+  }, [arcanoId, safeVisibleIntroText]);
+
   const isLoucoLeakDetected = useMemo(() => {
     if (arcanoId === 0) return false;
-    return safeVisibleIntroText.toLowerCase().includes("louco");
-  }, [arcanoId, safeVisibleIntroText]);
+    return visibleIntroText.toLowerCase().includes("louco");
+  }, [arcanoId, visibleIntroText]);
 
   return (
     <div className="relative min-h-[50vh] md:min-h-[80vh] flex flex-col items-center justify-center py-4 md:py-16 px-6 sm:px-12">
