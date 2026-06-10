@@ -27,7 +27,14 @@ const BottomNav = () => {
   }, [location.pathname]);
 
   if (location.pathname === "/") return null;
+  if (location.pathname === "/venda") return null;
+  if (location.pathname === "/auth") return null;
   if (location.pathname.startsWith("/admin")) return null;
+  if (location.pathname === "/privacidade") return null;
+  if (location.pathname === "/termos") return null;
+  if (location.pathname === "/suporte") return null;
+  if (location.pathname === "/excluir-conta") return null;
+
 
   return (
     <nav

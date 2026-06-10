@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { checkoutUrl } from "@/config/checkout";
-import { ArrowLeft, ChevronRight, CheckCircle2, ShieldCheck, Sparkles } from "lucide-react";
+import { ChevronRight, CheckCircle2, ShieldCheck, Sparkles } from "lucide-react";
+import { PageBackControls } from "@/components/PageBackControls";
 import { TarotIcon } from "@/components/TarotIcon";
 import { Button } from "@/components/ui/button";
+
 import { usePremium } from "@/hooks/use-premium";
 import { useRole } from "@/hooks/use-role";
 import { supabase } from "@/integrations/supabase/client";
@@ -132,9 +134,8 @@ const PremiumPage = () => {
 
       <header className="px-6 pt-12 pb-24 relative z-10 overflow-hidden bg-white/40 border-b-2 border-[#C8A66A30] shadow-sm backdrop-blur-md">
         <div className="max-w-lg mx-auto relative z-10 space-y-8">
-          <button onClick={() => navigate(-1)} className="w-11 h-11 rounded-2xl flex items-center justify-center bg-white border-2 border-[#C8A66A20] shadow-sm hover:border-[#C8A66A] transition-all" style={{ color: "#5B1F3D" }}>
-            <ArrowLeft className="w-6 h-6" />
-          </button>
+          <PageBackControls variant="top" showLabel={false} className="w-11 h-11 flex items-center justify-center bg-white rounded-2xl border-2 border-[#C8A66A20]" />
+
           
           <div className="space-y-5">
             <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-[#5B1F3D] border-2 border-[#C8A66A] shadow-lg">
@@ -323,8 +324,10 @@ const PremiumPage = () => {
             ))}
           </div>
         </div>
+        <PageBackControls variant="bottom" className="pb-8" />
       </main>
     </div>
+
   );
 };
 
