@@ -87,8 +87,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
           <div className="text-red-500 font-bold mb-1 border-b border-red-500/30 pb-1 flex items-center gap-1">
             <AlertTriangle className="w-3 h-3" /> DOM LEAK CHECK
           </div>
-          <p><span className="text-gray-400">document.body contains "Eu sou o Louco":</span> <span className={document.body.innerText.includes("Eu sou o Louco") ? "text-red-500 font-bold" : "text-green-500"}>{document.body.innerText.includes("Eu sou o Louco") ? "SIM" : "NÃO"}</span></p>
-          <p><span className="text-gray-400">matchingText:</span> {document.body.innerText.includes("Eu sou o Louco") ? "Eu sou o Louco..." : "NENHUM"}</p>
+          <p><span className="text-gray-400">matchingText:</span> {document.body.innerText.includes("Eu sou o Louco") ? "LEAK DETECTED" : "NENHUM"}</p>
           <p><span className="text-gray-400">componentOwner:</span> ArcanoVivoStage</p>
           <p><span className="text-gray-400">sourceField:</span> {phase === 'insight' ? 'presenceText/microcopy.presence' : 'introText/microcopy.intro'}</p>
           <p><span className="text-gray-400">sourceFile:</span> ArcanoVivoStage.tsx</p>
