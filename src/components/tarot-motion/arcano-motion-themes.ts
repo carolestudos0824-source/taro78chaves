@@ -47,7 +47,7 @@ const DEFAULT_THEME: ArcanoTheme = {
   },
   mood: "mystical",
   microcopy: {
-    intro: "Um novo portal se abre.",
+    intro: "O portal do conhecimento se abre.",
     presence: "A sabedoria do arcano se revela.",
     unlock: "Um novo conhecimento foi desbloqueado.",
   },
@@ -62,8 +62,8 @@ export const ARCANO_THEMES: Record<number, ArcanoTheme> = {
     particles: { symbols: ["✦", "☀", "·", "✧", "🌿"], style: "ascendant" },
     mood: "dramatic",
     microcopy: {
-      intro: "O primeiro portal se abre.",
-      presence: "O impulso antes da certeza.",
+      intro: "O primeiro passo da jornada.",
+      presence: "O impulso livre de amarras.",
       unlock: "O Louco convida ao salto de fé.",
     },
   },

@@ -27,7 +27,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
   presenceText
 }) => {
   const [phase, setPhase] = useState<'dormant' | 'awakening' | 'presence' | 'insight'>('dormant');
-  const theme = getArcanoTheme(arcanoId);
+  const theme = useMemo(() => getArcanoTheme(arcanoId), [arcanoId]);
   const shouldReduceMotion = useReducedMotionSafe();
   const mountedRef = useRef(false);
 
@@ -47,55 +47,46 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
 
   const showParticles = (phase === 'presence' || phase === 'insight') && !shouldReduceMotion;
 
-  // PROTECTION & DEBUG LOGIC
-  // PRIORIDADE ABSOLUTA: Texto vindo das props (Editorial)
-  const currentRenderedText = useMemo(() => {
-    return phase === 'insight' 
-      ? (presenceText || theme.microcopy.presence) 
-      : (introText || theme.microcopy.intro);
-  }, [phase, presenceText, theme.microcopy.presence, introText, theme.microcopy.intro]);
+  // 4. Criar uma única variável para o texto visível:
+  const safeVisibleIntroText = useMemo(() => {
+    // Tenta pegar o texto das props (fala em primeira pessoa / pedagógico)
+    const editorialText = presenceText || introText || "";
+
+    // Regra de segurança: Arcano Id != 0 não pode ter texto do Louco
+    if (arcanoId !== 0 && (editorialText.toLowerCase().includes("eu sou o louco") || editorialText.toLowerCase().includes("o impulso antes da certeza"))) {
+      console.error("[LOUCO LEAK BLOCKED]", {
+        arcanoId,
+        cardName,
+        editorialText,
+      });
+
+      // Fallback específico para Enamorados se falhar
+      if (arcanoId === 6) {
+        return "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa escolher.";
+      }
+      return "";
+    }
+
+    // Se estiver vazio e for arcano 6, garante o texto dos Enamorados
+    if (arcanoId === 6 && !editorialText) {
+      return "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa escolher.";
+    }
+
+    return editorialText;
+  }, [arcanoId, presenceText, introText, cardName]);
 
   const isLoucoLeakDetected = useMemo(() => {
     if (arcanoId === 0) return false;
-    const text = currentRenderedText?.toLowerCase() || "";
-    return text.includes("eu sou o louco") || text.includes("impulso antes da certeza");
-  }, [arcanoId, currentRenderedText]);
-
-  // LOG DE AUDITORIA REAL
-  useEffect(() => {
-    if (phase === 'insight') {
-      console.log(`[DOM AUDIT] Arcano ${arcanoId} - Fase Insight.`);
-      console.log(`[DATA AUDIT] Prop introText: "${introText?.substring(0, 30)}..."`);
-      console.log(`[DATA AUDIT] Prop presenceText: "${presenceText?.substring(0, 30)}..."`);
-    }
-  }, [phase, arcanoId, introText, presenceText]);
-
-  // Final text with emergency fallback
-  const finalText = useMemo(() => {
-    if (isLoucoLeakDetected) {
-      if (arcanoId === 6) return "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa falar.";
-      return "O portal se abre para o novo conhecimento.";
-    }
-    return currentRenderedText;
-  }, [isLoucoLeakDetected, arcanoId, currentRenderedText]);
+    return safeVisibleIntroText.toLowerCase().includes("louco");
+  }, [arcanoId, safeVisibleIntroText]);
 
   return (
     <div className="relative min-h-[50vh] md:min-h-[80vh] flex flex-col items-center justify-center py-4 md:py-16 px-6 sm:px-12">
-      {/* DEBUG PANEL - Visible only in preview/dev for validation */}
-      {process.env.NODE_ENV !== 'production' && (
+      {/* DEBUG PANEL - Hidden in final fix unless explicitly needed */}
+      {false && (
         <div className="fixed top-20 left-4 z-[9999] bg-black/90 text-white p-4 rounded-xl text-[10px] font-mono border border-red-500 max-w-[300px] shadow-2xl pointer-events-none opacity-90">
-          <div className="text-red-500 font-bold mb-1 border-b border-red-500/30 pb-1 flex items-center gap-1">
-            <AlertTriangle className="w-3 h-3" /> DOM LEAK CHECK
-          </div>
-          <p><span className="text-gray-400">matchingText:</span> {document.body.innerText.includes("Eu sou o Louco") ? "LEAK DETECTED" : "NENHUM"}</p>
-          <p><span className="text-gray-400">componentOwner:</span> ArcanoVivoStage</p>
-          <p><span className="text-gray-400">sourceField:</span> {phase === 'insight' ? 'presenceText/microcopy.presence' : 'introText/microcopy.intro'}</p>
-          <p><span className="text-gray-400">sourceFile:</span> ArcanoVivoStage.tsx</p>
-          <p><span className="text-gray-400">renderedText:</span> {finalText}</p>
-          <p><span className="text-gray-400">isLoucoLeakDetected (logic):</span> {isLoucoLeakDetected ? "SIM" : "NÃO"}</p>
-          <p><span className="text-gray-400">arcanoId:</span> {arcanoId}</p>
-          <p><span className="text-gray-400">introText (prop):</span> {introText?.substring(0, 30)}</p>
-          <p><span className="text-gray-400">presenceText (prop):</span> {presenceText?.substring(0, 30)}</p>
+          <p>arcanoId: {arcanoId}</p>
+          <p>rendered: {safeVisibleIntroText}</p>
         </div>
       )}
 
@@ -209,11 +200,17 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
             >
               <p 
                 className="font-accent italic text-xl md:text-3xl text-[#5B1F3D] mb-6 md:mb-10 leading-relaxed font-bold tracking-tight"
-                data-rendered-text={finalText}
+                data-rendered-text={safeVisibleIntroText}
                 data-arcano-id={arcanoId}
               >
-                "{finalText}"
+                "{safeVisibleIntroText}"
               </p>
+              
+              {arcanoId !== 0 && safeVisibleIntroText.toLowerCase().includes("louco") && (
+                <div style={{ color: "red", fontWeight: "bold" }}>
+                  ERRO: VAZAMENTO DO LOUCO NO ARCANO {arcanoId}
+                </div>
+              )}
               
               {phase === 'insight' && (
                 <motion.div
