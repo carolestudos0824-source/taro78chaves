@@ -1814,6 +1814,12 @@ export type Database = {
         Args: { module_id_param: string }
         Returns: undefined
       }
+      get_user_id_by_email: {
+        Args: { p_email: string }
+        Returns: {
+          id: string
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
