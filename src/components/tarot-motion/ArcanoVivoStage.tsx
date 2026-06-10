@@ -27,7 +27,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
   presenceText
 }) => {
   const [phase, setPhase] = useState<'dormant' | 'awakening' | 'presence' | 'insight'>('dormant');
-  const theme = getArcanoTheme(arcanoId);
+  const theme = useMemo(() => getArcanoTheme(arcanoId), [arcanoId]);
   const shouldReduceMotion = useReducedMotionSafe();
   const mountedRef = useRef(false);
 
@@ -82,21 +82,11 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
 
   return (
     <div className="relative min-h-[50vh] md:min-h-[80vh] flex flex-col items-center justify-center py-4 md:py-16 px-6 sm:px-12">
-      {/* DEBUG PANEL - Visible only in preview/dev for validation */}
-      {process.env.NODE_ENV !== 'production' && (
+      {/* DEBUG PANEL - Hidden in final fix unless explicitly needed */}
+      {false && (
         <div className="fixed top-20 left-4 z-[9999] bg-black/90 text-white p-4 rounded-xl text-[10px] font-mono border border-red-500 max-w-[300px] shadow-2xl pointer-events-none opacity-90">
-          <div className="text-red-500 font-bold mb-1 border-b border-red-500/30 pb-1 flex items-center gap-1">
-            <AlertTriangle className="w-3 h-3" /> DOM LEAK CHECK
-          </div>
-          <p><span className="text-gray-400">matchingText:</span> {document.body.innerText.includes("Eu sou o Louco") ? "LEAK DETECTED" : "NENHUM"}</p>
-          <p><span className="text-gray-400">componentOwner:</span> ArcanoVivoStage</p>
-          <p><span className="text-gray-400">sourceField:</span> {phase === 'insight' ? 'presenceText/microcopy.presence' : 'introText/microcopy.intro'}</p>
-          <p><span className="text-gray-400">sourceFile:</span> ArcanoVivoStage.tsx</p>
-          <p><span className="text-gray-400">renderedText:</span> {safeVisibleIntroText}</p>
-          <p><span className="text-gray-400">isLoucoLeakDetected (logic):</span> {isLoucoLeakDetected ? "SIM" : "NÃO"}</p>
-          <p><span className="text-gray-400">arcanoId:</span> {arcanoId}</p>
-          <p><span className="text-gray-400">introText (prop):</span> {introText?.substring(0, 30)}</p>
-          <p><span className="text-gray-400">presenceText (prop):</span> {presenceText?.substring(0, 30)}</p>
+          <p>arcanoId: {arcanoId}</p>
+          <p>rendered: {safeVisibleIntroText}</p>
         </div>
       )}
 
