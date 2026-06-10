@@ -456,7 +456,6 @@ const LessonPage = () => {
                     </div>
                   </TabsContent>
 
-
                   <TabsContent value="trabalho" className="p-8 m-0 space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
                     <div className="space-y-6">
                       <div className="flex items-center gap-3 border-b border-[#C8A66A]/10 pb-4">
@@ -507,6 +506,7 @@ const LessonPage = () => {
                 </div>
               </Tabs>
               <PageBackControls variant="bottom" className="mt-8" />
+
 
 
               <div className="pt-4">
