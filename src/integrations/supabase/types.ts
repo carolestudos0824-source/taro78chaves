@@ -1226,6 +1226,45 @@ export type Database = {
         }
         Relationships: []
       }
+      kirvano_events: {
+        Row: {
+          created_at: string
+          customer_email: string | null
+          error_message: string | null
+          event_type: string | null
+          id: string
+          payload: Json
+          processed_at: string | null
+          sale_id: string | null
+          status: string
+          transaction_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          customer_email?: string | null
+          error_message?: string | null
+          event_type?: string | null
+          id: string
+          payload: Json
+          processed_at?: string | null
+          sale_id?: string | null
+          status?: string
+          transaction_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          customer_email?: string | null
+          error_message?: string | null
+          event_type?: string | null
+          id?: string
+          payload?: Json
+          processed_at?: string | null
+          sale_id?: string | null
+          status?: string
+          transaction_id?: string | null
+        }
+        Relationships: []
+      }
       lesson_catalog: {
         Row: {
           id: string
@@ -1774,6 +1813,12 @@ export type Database = {
       complete_module_v2: {
         Args: { module_id_param: string }
         Returns: undefined
+      }
+      get_user_id_by_email: {
+        Args: { p_email: string }
+        Returns: {
+          id: string
+        }[]
       }
       has_role: {
         Args: {
