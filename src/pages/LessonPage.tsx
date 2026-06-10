@@ -257,8 +257,9 @@ const LessonPage = () => {
         )}
         <section className="space-y-8 animate-fade-in">
           {phase === "intro" && (
-            <div className="space-y-8">
+            <div className="space-y-8" data-lesson-wrapper={arcanoId}>
               <ArcanoVivoStage
+                key={`arcano-stage-${arcanoId}`}
                 arcanoId={arcanoId}
                 cardName={arcano.name}
                 cardImage={arcano.cardImage}
