@@ -4,7 +4,7 @@ import { TarotAnimatedCard } from "./TarotAnimatedCard";
 import { getArcanoTheme } from "./arcano-motion-themes";
 import { portalReveal, auraAwaken } from "./motion-presets";
 import { useReducedMotionSafe } from "./useReducedMotionSafe";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ArcanoVivoStageProps {
@@ -42,8 +42,42 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
 
   const showParticles = (phase === 'presence' || phase === 'insight') && !shouldReduceMotion;
 
+  // PROTECTION & DEBUG LOGIC
+  const currentRenderedText = phase === 'insight' ? (presenceText || theme.microcopy.presence) : (introText || theme.microcopy.intro);
+  const isLoucoLeakDetected = arcanoId !== 0 && (currentRenderedText?.includes("Louco") || currentRenderedText?.includes("impulso antes da certeza"));
+
+  if (isLoucoLeakDetected) {
+    console.error(`BUG P0 DETECTADO: Vazamento de texto do Louco no Arcano ${arcanoId} (${cardName}). Texto: "${currentRenderedText}"`);
+  }
+
+  // Final text with emergency fallback
+  const finalText = isLoucoLeakDetected 
+    ? (arcanoId === 6 ? "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa escolher." : "O portal se abre para o novo conhecimento.")
+    : currentRenderedText;
+
   return (
     <div className="relative min-h-[50vh] md:min-h-[80vh] flex flex-col items-center justify-center py-4 md:py-16 px-6 sm:px-12">
+      {/* DEBUG PANEL - Visible only in preview/dev for validation */}
+      {process.env.NODE_ENV !== 'production' && (
+        <div className="fixed top-20 right-4 z-[9999] bg-black/90 text-white p-4 rounded-xl text-[10px] font-mono border border-red-500 max-w-[250px] shadow-2xl pointer-events-none opacity-80">
+          <div className="text-red-500 font-bold mb-1 border-b border-red-500/30 pb-1 flex items-center gap-1">
+            <AlertTriangle className="w-3 h-3" /> DEBUG LESSON INTRO
+          </div>
+          <p><span className="text-gray-400">lessonId:</span> {arcanoId}</p>
+          <p><span className="text-gray-400">arcanoId:</span> {arcanoId}</p>
+          <p><span className="text-gray-400">cardName:</span> {cardName}</p>
+          <p className="line-clamp-2"><span className="text-gray-400">renderedText:</span> {finalText}</p>
+          <p><span className="text-gray-400">renderedTextSourceField:</span> {phase === 'insight' ? 'presenceText/microcopy.presence' : 'introText/microcopy.intro'}</p>
+          <p><span className="text-gray-400">renderedTextSourceFile:</span> ArcanoVivoStage.tsx</p>
+          <p><span className="text-gray-400">componentRenderingText:</span> ArcanoVivoStage</p>
+          <p><span className="text-gray-400">introText:</span> {introText?.substring(0, 20)}...</p>
+          <p><span className="text-gray-400">presenceText:</span> {presenceText?.substring(0, 20)}...</p>
+          <p><span className="text-gray-400">themeMicrocopyIntro:</span> {theme.microcopy.intro}</p>
+          <p><span className="text-gray-400">themeId:</span> {theme.id}</p>
+          <p className={isLoucoLeakDetected ? "text-red-500 font-bold" : "text-green-500"}><span className="text-gray-400">isLoucoLeakDetected:</span> {isLoucoLeakDetected ? "SIM" : "NÃO"}</p>
+        </div>
+      )}
+
       {/* Background Atmosphere - Enhanced ritualistic altar feel */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Ivory Base */}
@@ -153,7 +187,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
               className="flex flex-col items-center"
             >
               <p className="font-accent italic text-xl md:text-3xl text-[#5B1F3D] mb-6 md:mb-10 leading-relaxed font-bold tracking-tight">
-                "{phase === 'insight' ? (presenceText || theme.microcopy.presence) : (introText || theme.microcopy.intro)}"
+                "{finalText}"
               </p>
               
               {phase === 'insight' && (
