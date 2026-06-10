@@ -565,7 +565,7 @@ const LessonPage = () => {
                 cardImage={arcano.cardImage} 
                 cardName={arcano.name} 
                 numeral={arcano.numeral}
-                subtitle="Estudo Completo"
+                subtitle="Aprofundamento Editorial"
               />
               <LessonContent 
                 sections={arcano.lessonSections}
