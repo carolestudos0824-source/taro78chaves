@@ -264,8 +264,8 @@ const LessonPage = () => {
                 cardImage={arcano.cardImage}
                 arcanoSlug={arcano.name.toLowerCase().replace(/\s+/g, "-")}
                 onContinue={goNext}
-                introText={arcano.firstPersonIntro}
-                presenceText={arcano.voiceText}
+                introText={arcano.voice?.intro}
+                presenceText={arcano.voice?.intro}
               />
             </div>
           )}
