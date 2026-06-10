@@ -217,8 +217,10 @@ const LessonPage = () => {
 
   const handleQuizComplete = (score: number, total: number) => {
     const quizPontos = score * 10;
-    addXP(quizPontos);
-    setPontosEarned(e => e + quizPontos);
+    if (arcano.id !== 0) {
+      addXP(quizPontos);
+      setPontosEarned(e => e + quizPontos);
+    }
     completeQuiz(`quiz-arcano-${arcano.id}`, score, total);
     completeLesson(`arcano-${arcano.id}`);
     if (arcano.id === 0) {
