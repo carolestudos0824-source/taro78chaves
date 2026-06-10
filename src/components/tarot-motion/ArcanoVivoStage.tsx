@@ -13,6 +13,8 @@ interface ArcanoVivoStageProps {
   cardImage: string;
   arcanoSlug: string;
   onContinue: () => void;
+  introText?: string;
+  presenceText?: string;
 }
 
 export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
