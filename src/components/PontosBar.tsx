@@ -75,24 +75,24 @@ export function PontosBar({ pontos, level }: PontosBarProps) {
           <KeyRound className="w-6 h-6" style={{ color: "#C8A66A" }} />
         </div>
         <div className="flex flex-col">
-          <span className="text-[13px] tracking-tight leading-none font-body font-bold" style={{
+          <span className="text-[11px] tracking-[0.2em] uppercase leading-none font-heading font-black" style={{
             color: "#5B1F3D"
           }}>Chave</span>
-          <span className="text-xl font-heading tracking-tight leading-tight font-bold" style={{
+          <span className="text-xl font-heading tracking-tighter leading-tight font-black" style={{
             color: "#5B1F3D"
           }}>{currentKeyInfo.index}</span>
         </div>
       </div>
       <div className="flex-1 relative space-y-1.5">
         <div className="flex justify-between items-end px-1">
-            <span className="text-[15px] font-body font-bold tracking-tight text-[#5B1F3D]/80">
+            <span className="text-[11px] font-heading font-black tracking-widest text-[#5B1F3D]/80 uppercase">
               {isStaff ? (
                 <span className="flex items-center gap-1">
                    {currentKeyInfo.name} <span className="text-[8px] px-1.5 py-0.5 bg-[#C8A66A]/20 rounded text-[#8B6A30] font-black" title="Progresso local da sessão. Não será salvo permanentemente.">Modo Auditoria</span>
                 </span>
               ) : currentKeyInfo.name}
             </span>
-          <span className="text-[13px] font-body font-bold text-[#5B1F3D]">{globalProgressPct}%</span>
+          <span className="text-[11px] font-heading font-black text-[#5B1F3D]">{globalProgressPct}%</span>
         </div>
         <div className="h-3 rounded-full overflow-hidden p-[1.5px]" style={{
           background: "#DCCFC240",
@@ -120,7 +120,7 @@ export function PontosBar({ pontos, level }: PontosBarProps) {
           <span className="text-base font-black text-[#5B1F3D]">{currentKeyInfo.index}</span>
           <span className="text-[10px] font-black text-[#5B1F3D]/30">/78</span>
         </div>
-        <span className="text-[13px] font-body font-bold tracking-tight text-[#5B1F3D] leading-none">Chave</span>
+        <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#5B1F3D] uppercase leading-none">Chave</span>
       </div>
     </div>
   );
