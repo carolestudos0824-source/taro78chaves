@@ -273,5 +273,8 @@ export function editorialToLegacy(editorial: ArcanoMaiorEditorial, unlocked = fa
     reflectionQuestions: editorial.reflectionQuestions,
     initiationLesson: editorial.initiationLesson,
     symbolsMap: editorial.symbolsMap,
+    love: editorial.love,
+    work: editorial.work,
+    spirituality: editorial.spirituality,
   };
 }
