@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TarotAnimatedCard } from "./TarotAnimatedCard";
 import { getArcanoTheme } from "./arcano-motion-themes";
@@ -200,6 +200,8 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
               <p className="font-accent italic text-xl md:text-3xl text-[#5B1F3D] mb-6 md:mb-10 leading-relaxed font-bold tracking-tight">
                 "{finalText}"
               </p>
+              {/* HIDDEN INVISIBLE AUDIT TAG FOR BROWSER--EXTRACT */}
+              <span className="sr-only" data-audit-text={finalText}>AUDIT_MARKER</span>
               
               {phase === 'insight' && (
                 <motion.div
