@@ -112,7 +112,7 @@ const LessonPage = () => {
       setHeader({
         title: arcano.name,
         subtitle: `Arcano ${arcano.numeral} • Lição ${arcanoId + 1}`,
-        backRoute: "/module/arcanos-maiores",
+        backRoute: phaseIdx > 0 ? undefined : "/module/arcanos-maiores",
         rightElement: <PhaseIndicator phases={PHASE_ORDER} currentIndex={phaseIdx} />,
         hidePontos: true,
         hideStreak: true
@@ -198,7 +198,16 @@ const LessonPage = () => {
   const goNext = () => {
     if (phaseIdx < PHASE_ORDER.length - 1) {
       setPhaseIdx(phaseIdx + 1);
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const goBack = () => {
+    if (phaseIdx > 0) {
+      setPhaseIdx(phaseIdx - 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate(-1);
     }
   };
 
@@ -231,6 +240,15 @@ const LessonPage = () => {
       </div>
 
       <main className="relative z-10 container max-w-lg mx-auto px-4 py-8 pb-32">
+        {phaseIdx > 0 && phase !== "complete" && (
+          <button 
+            onClick={goBack}
+            className="mb-6 flex items-center gap-2 text-[#5B1F3D]/60 hover:text-[#5B1F3D] transition-colors font-heading text-[10px] font-black uppercase tracking-widest"
+          >
+            <ArrowLeft className="w-3 h-3" />
+            Voltar etapa
+          </button>
+        )}
         <section className="space-y-8 animate-fade-in">
           {phase === "intro" && (
             <div className="space-y-8">
