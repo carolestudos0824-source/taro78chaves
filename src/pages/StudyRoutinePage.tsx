@@ -201,14 +201,14 @@ const StudyRoutinePage = () => {
             <button onClick={() => navigate("/app")} className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border border-[#C8A66A30] text-plum">
               <ArrowLeft className="w-5 h-5" />
             </button>
-            <span className="text-[11px] tracking-[0.45em] uppercase font-heading font-black text-plum">
+            <span className="text-[13px] tracking-[0.45em] uppercase font-heading font-black text-plum leading-tight">
               <span className="text-gold">✦</span> Rotina Diária <span className="text-gold">✦</span>
             </span>
           </div>
 
           <div className="text-center">
             <h1 className="font-heading text-5xl font-black tracking-tight mb-4 text-plum">Sua Rotina</h1>
-            <p className="font-body text-[14px] font-bold uppercase tracking-[0.2em] text-plum/60">
+            <p className="font-body text-[15px] font-bold uppercase tracking-[0.2em] text-plum/60 leading-tight">
               Escolha um horário para receber seu chamado ritual.
             </p>
           </div>
@@ -232,7 +232,7 @@ const StudyRoutinePage = () => {
                   {pref?.enabled ? `Lembrete ativo às ${pref.reminder_time.substring(0, 5)}` : "Chamado Diário"}
                 </h3>
                 {isiOS && !isPWA && (
-                  <p className="text-[11px] font-body font-bold text-rose-500 uppercase tracking-wider">
+                  <p className="text-[13px] font-body font-bold text-rose-600 uppercase tracking-wider leading-relaxed">
                     Para receber lembretes no iPhone, adicione o Tarô 78 Chaves à Tela de Início.
                   </p>
                 )}

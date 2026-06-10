@@ -35,11 +35,11 @@ export const SmartReviewCard = () => {
             </div>
             <h3 className="font-heading text-[15px] font-black tracking-tight text-[#5B1F3D]">Revisão Inteligente</h3>
           </div>
-          <span className="text-[10px] font-heading uppercase tracking-[0.2em] text-[#5B1F3D] font-black">Reforço necessário</span>
+          <span className="text-[12px] font-heading uppercase tracking-[0.2em] text-[#5B1F3D] font-black leading-tight text-right">Reforço necessário</span>
         </div>
         
         <div className="p-6 space-y-6">
-          <p className="text-[14px] text-[#5B1F3D]/80 font-body leading-relaxed font-bold italic">
+          <p className="text-[15px] text-[#5B1F3D]/80 font-body leading-relaxed font-bold italic">
             Sua jornada encontrou névoa nestes arcanos. Que tal abrir estas portas novamente?
           </p>
           
@@ -50,7 +50,7 @@ export const SmartReviewCard = () => {
                 onClick={() => navigate(`/lesson/${arcano!.id}`)}
                 className="flex items-center gap-3 px-4 py-2 rounded-2xl bg-[#FAF5EF] border-2 border-[#DCCFC2]/40 hover:border-[#C8A66A]/50 transition-all text-[13px] font-bold text-[#5B1F3D] group"
               >
-                <span className="text-[11px] font-black text-[#C8A66A] group-hover:scale-110 transition-transform">{arcano!.numeral}</span>
+                <span className="text-[13px] font-black text-[#C8A66A] group-hover:scale-110 transition-transform">{arcano!.numeral}</span>
                 {arcano!.name}
               </button>
             ))}
@@ -58,7 +58,7 @@ export const SmartReviewCard = () => {
           
           <button
             onClick={() => navigate("/revisao")}
-            className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl bg-[#5B1F3D] text-white text-[11px] font-heading tracking-[0.25em] uppercase transition-all hover:brightness-110 active:scale-[0.98] shadow-lg border-2 border-[#C8A66A]/30"
+            className="w-full flex items-center justify-center gap-3 py-5 rounded-2xl bg-[#5B1F3D] text-white text-[13px] font-heading tracking-[0.25em] uppercase transition-all hover:brightness-110 active:scale-[0.98] shadow-lg border-2 border-[#C8A66A]/30 leading-tight"
           >
             <RotateCcw className="w-4 h-4" />
             LIMPAR A NÉVOA (REVISAR)

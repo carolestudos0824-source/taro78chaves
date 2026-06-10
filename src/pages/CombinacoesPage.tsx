@@ -71,7 +71,7 @@ const CombinacoesPage = () => {
             </button>
             <div className="flex flex-col flex-1">
               <span
-                className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1.5 flex items-center gap-2"
+                className="text-[12px] tracking-[0.4em] uppercase font-heading mb-1.5 flex items-center gap-2"
                 style={{ color: "#C8A66A" }}
               >
                 <span style={{ color: "#C8A66A" }}>∞</span>
@@ -90,13 +90,13 @@ const CombinacoesPage = () => {
           <div className="space-y-2 bg-white/40 p-3 rounded-xl border border-[#C8A66A20]">
             <div className="flex items-center justify-between px-1">
               <span
-                className="text-[11px] font-heading tracking-wider"
+                className="text-[12px] font-heading tracking-wider"
                 style={{ color: "#5B1F3DAA" }}
               >
                 {completedCount}/{COMBINACOES_LESSONS.length} lições concluídas
               </span>
               <span
-                className="text-[11px] font-heading tracking-wider"
+                className="text-[12px] font-heading tracking-wider"
                 style={{ color: "#C8A66A" }}
               >
                 {progressPct}%
@@ -152,7 +152,7 @@ const CombinacoesPage = () => {
         {/* Lesson trail section header */}
         <div className="flex items-center gap-4 mb-6">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-          <span className="text-[10px] font-heading tracking-[0.2em] uppercase text-[#C8A66A]">
+          <span className="text-[12px] font-heading tracking-[0.2em] uppercase text-[#C8A66A]">
             Conteúdo do Módulo
           </span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A40]" />
@@ -245,7 +245,7 @@ const CombinacoesPage = () => {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
                         <span
-                          className="text-[9px] font-heading tracking-[0.2em] font-bold"
+                          className="text-[12px] font-heading tracking-[0.2em] font-bold"
                           style={{
                             color: unlocked ? "#C8A66A" : "#5B1F3D40",
                           }}
@@ -267,7 +267,7 @@ const CombinacoesPage = () => {
                         {lesson.title}
                       </h3>
                       <p
-                        className="font-body text-xs leading-relaxed"
+                        className="font-body text-[15px] leading-relaxed"
                         style={{
                           color: unlocked ? "#5B1F3DBB" : "#5B1F3D20",
                         }}

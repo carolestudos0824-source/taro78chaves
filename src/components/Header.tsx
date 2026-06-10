@@ -61,11 +61,11 @@ export const Header = ({ streak, pontos, level }: HeaderProps) => {
             </div>
 
             <div className="flex flex-col justify-center min-w-0 flex-1">
-              <h1 className="font-heading text-[#5B1F3D] font-black tracking-tight leading-tight text-[12px] min-[360px]:text-[13px] min-[400px]:text-[15px] sm:text-lg truncate w-full">
+              <h1 className="font-heading text-[#5B1F3D] font-black tracking-tight leading-tight text-[15px] min-[400px]:text-[17px] sm:text-lg w-full break-words">
                 {state.title}
               </h1>
               {state.subtitle && (
-                <span className="font-heading text-[8px] min-[400px]:text-[9px] tracking-[0.1em] min-[360px]:tracking-[0.2em] uppercase text-[#5B1F3D]/60 font-black leading-none truncate w-full">
+                <span className="font-heading text-[10px] min-[400px]:text-[11px] tracking-[0.1em] min-[360px]:tracking-[0.2em] uppercase text-[#5B1F3D]/80 font-black leading-tight w-full break-words mt-0.5">
                   {state.subtitle}
                 </span>
               )}

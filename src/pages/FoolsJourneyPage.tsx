@@ -118,7 +118,7 @@ const FoolsJourneyPage = () => {
         </section>
 
         {/* Internal Navigation Chips */}
-        <div className="sticky top-20 z-30 mb-8 -mx-6 px-6 py-3 bg-[#FAF5EF]/80 backdrop-blur-md border-y border-[#C8A66A]/10 overflow-x-auto scrollbar-hide flex items-center gap-3 no-scrollbar">
+        <div className="sticky top-20 z-30 mb-8 -mx-6 px-6 py-3 bg-[#FAF5EF]/80 backdrop-blur-md border-y border-[#C8A66A]/10 overflow-x-auto flex items-center gap-3 no-scrollbar scrollbar-hide">
           {fases.map((phase) => (
             <button
               key={phase.id}
@@ -126,7 +126,7 @@ const FoolsJourneyPage = () => {
                 const el = document.getElementById(phase.slug);
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="whitespace-nowrap px-4 py-1.5 rounded-full text-[10px] font-heading font-black uppercase tracking-widest border border-[#C8A66A]/30 bg-white shadow-sm transition-all hover:border-[#C8A66A] active:scale-95"
+              className="px-4 py-2 rounded-full text-[12px] font-heading font-black uppercase tracking-widest border border-[#C8A66A]/30 bg-white shadow-sm transition-all hover:border-[#C8A66A] active:scale-95 whitespace-normal break-words text-center min-w-[100px]"
               style={{ color: "#5B1F3D" }}
             >
               {phase.titulo}
@@ -307,7 +307,7 @@ const FoolsJourneyPage = () => {
                               {arcano.papel}
                             </p>
                             <p
-                              className="font-body text-[14px] md:text-[15px] leading-relaxed line-clamp-2 md:line-clamp-4 font-medium"
+                              className="font-body text-[15px] md:text-[16px] leading-relaxed font-medium"
                               style={{ color: "#3D1429" }}
                             >
                               {arcano.textoNarrativo}

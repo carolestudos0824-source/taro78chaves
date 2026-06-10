@@ -43,11 +43,11 @@ export function LibrarySection({ materials, cardName }: LibrarySectionProps) {
               <div className={`w-10 h-10 rounded-lg bg-muted flex items-center justify-center shrink-0 ${config.color}`}>
                 <Icon className="w-5 h-5" />
               </div>
-              <div className="flex-1 min-w-0">
-                <h4 className="font-heading text-sm text-foreground group-hover:text-primary transition-colors truncate">
+              <div className="flex-1 min-w-0 py-1">
+                <h4 className="font-heading text-sm text-foreground group-hover:text-primary transition-colors break-words leading-tight">
                   {material.title}
                 </h4>
-                <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{material.description}</p>
+                <p className="text-[13px] text-muted-foreground mt-1 leading-relaxed">{material.description}</p>
               </div>
               <div className="flex items-center gap-2 shrink-0">
                 {material.duration && (

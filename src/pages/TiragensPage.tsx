@@ -60,10 +60,10 @@ const TiragensPage = () => {
         {/* Progress summary for this module */}
         <div className="mb-10 bg-white/60 backdrop-blur-md p-6 rounded-[2rem] border-2 border-[#C8A66A]/30 shadow-xl">
             <div className="flex items-center justify-between mb-4 px-1">
-              <span className="text-[11px] font-heading tracking-widest uppercase font-black text-[#5B1F3D]">
+              <span className="text-[13px] font-heading tracking-widest uppercase font-black text-[#5B1F3D]">
                 Progresso no Módulo
               </span>
-              <span className="text-[13px] font-heading font-black px-3 py-1 rounded-full bg-[#C8A66A]/10 border border-[#C8A66A]/20" style={{ color: "#8B6A30" }}>
+              <span className="text-[15px] font-heading font-black px-3 py-1 rounded-full bg-[#C8A66A]/10 border border-[#C8A66A]/20" style={{ color: "#8B6A30" }}>
                 {progressPct}%
               </span>
             </div>
@@ -75,7 +75,7 @@ const TiragensPage = () => {
                  <div className="absolute inset-0 w-1/2 h-full bg-white/30 skew-x-[-25deg] animate-pulse" style={{ left: '10%' }} />
               </div>
             </div>
-            <p className="mt-4 text-center text-[11px] font-heading font-black tracking-tight text-[#5B1F3D]/60 uppercase">
+            <p className="mt-4 text-center text-[13px] font-heading font-black tracking-tight text-[#5B1F3D]/60 uppercase">
                {completedCount} de {TIRAGENS_LESSONS.length} lições dominadas
             </p>
         </div>
@@ -106,7 +106,7 @@ const TiragensPage = () => {
         {/* Lesson trail section header */}
         <div className="flex items-center gap-4 mb-6">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
-          <span className="text-[10px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D]">
+          <span className="text-[12px] font-heading tracking-[0.2em] uppercase text-[#5B1F3D]">
             Conteúdo do Módulo
           </span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A40]" />
@@ -188,7 +188,7 @@ const TiragensPage = () => {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
                         <span
-                          className="text-[9px] font-heading tracking-[0.2em] font-bold"
+                          className="text-[12px] font-heading tracking-[0.2em] font-bold"
                           style={{
                             color: unlocked ? "#5B1F3D" : "#5B1F3D40",
                           }}
@@ -210,7 +210,7 @@ const TiragensPage = () => {
                         {lesson.title}
                       </h3>
                       <p
-                        className="font-body text-xs leading-relaxed"
+                        className="font-body text-[15px] leading-relaxed"
                         style={{
                           color: unlocked ? "#5B1F3D" : "#5B1F3D20",
                         }}
@@ -284,7 +284,7 @@ const TiragensPage = () => {
         <div className="text-center pt-10 pb-16">
            <button 
              onClick={() => navigate("/app")}
-             className="text-[10px] font-heading font-black tracking-[0.3em] uppercase text-[#5B1F3D]/60 hover:text-[#C8A66A] transition-colors"
+             className="text-[12px] font-heading font-black tracking-[0.3em] uppercase text-[#5B1F3D]/60 hover:text-[#C8A66A] transition-colors"
            >
              ← Voltar à Jornada
            </button>

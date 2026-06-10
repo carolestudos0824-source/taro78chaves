@@ -202,7 +202,7 @@ const CertificatesPage = () => {
           </button>
 
           <div className="text-center">
-            <div className="text-[10px] tracking-[0.4em] uppercase font-body mb-2" style={{ color: "hsl(36 45% 58% / 0.60)" }}>
+            <div className="text-[12px] tracking-[0.4em] uppercase font-body mb-2" style={{ color: "hsl(36 45% 58% / 0.60)" }}>
               Escola Digital
             </div>
             <h1
@@ -257,7 +257,7 @@ const CertificatesPage = () => {
                     <h3 className={`font-heading text-sm font-black uppercase tracking-widest ${isUnlocked ? 'text-plum' : 'text-gray-400'}`}>
                       {m.label}
                     </h3>
-                    <p className="text-[11px] font-body font-bold italic text-plum/40">
+                    <p className="text-[13px] font-body font-bold italic text-plum/40 leading-relaxed">
                       {m.desc}
                     </p>
                   </div>

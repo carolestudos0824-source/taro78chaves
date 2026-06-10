@@ -84,7 +84,7 @@ const ProfilePage = () => {
             <div className="w-28 h-28 rounded-full flex items-center justify-center bg-white border-4 border-[#C8A66A] shadow-2xl relative z-10 overflow-hidden ring-8 ring-[#C8A66A]/10">
               <span className="font-heading text-5xl text-[#5B1F3D] font-black">{LEVEL_TITLES[progress.level]?.charAt(0)}</span>
             </div>
-            <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-full flex items-center justify-center bg-[#5B1F3D] text-white text-[12px] font-heading font-black border-2 border-white shadow-lg z-20">
+            <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-full flex items-center justify-center bg-[#5B1F3D] text-white text-[13px] font-heading font-black border-2 border-white shadow-lg z-20">
               {progress.level}
             </div>
           </div>
@@ -105,7 +105,7 @@ const ProfilePage = () => {
           </div>
 
           <div className="w-full space-y-3 px-4">
-            <div className="flex justify-between items-end text-[9px] min-[400px]:text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D] gap-2">
+            <div className="flex justify-between items-end text-[11px] min-[400px]:text-[12px] font-heading font-black tracking-widest uppercase text-[#5B1F3D] gap-2">
               <span className="truncate">{isStaff ? "Sincronização desativada (Auditoria)" : "Progresso na Travessia"}</span>
               <span className="shrink-0">{journeyProgress}%</span>
             </div>
@@ -132,7 +132,7 @@ const ProfilePage = () => {
             </div>
             <div className="text-left">
               <p className="font-heading text-lg font-black tracking-tight leading-none mb-1">Continuar minha jornada</p>
-              <p className="text-[11px] font-body font-bold italic text-white/70 leading-none">
+              <p className="text-[13px] font-body font-bold italic text-white/70 leading-none">
                 {nextSuggestion?.label || "Retomar seus estudos"}
               </p>
             </div>
@@ -151,7 +151,7 @@ const ProfilePage = () => {
                 <TarotIcon name={s.icon} className="w-4 h-4" color={s.color} />
               </div>
               <div className="font-heading text-xl font-black text-[#5B1F3D]">{s.val}</div>
-              <div className="text-[9px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">{s.label}</div>
+              <div className="text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">{s.label}</div>
             </div>
           ))}
         </div>
@@ -160,7 +160,7 @@ const ProfilePage = () => {
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <p className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/80">
+                <p className="text-[13px] font-heading font-black tracking-[0.2em] uppercase text-[#5B1F3D]/80">
                   {isAdmin ? "O Oráculo" : "Seu Acesso"}
                 </p>
                 {isPremium && <TarotIcon name="premium" className="w-3.5 h-3.5 text-[#C8A66A]" />}
@@ -177,7 +177,7 @@ const ProfilePage = () => {
               {isPremium && (
                 <div className="space-y-1">
                   {untilFormatted && (
-                    <p className="text-[10px] font-body font-bold italic text-[#5B1F3D]/80 uppercase tracking-widest">
+                    <p className="text-[12px] font-body font-bold italic text-[#5B1F3D]/80 uppercase tracking-widest leading-tight">
                       {isStripeRecurring ? `Renovação: ${untilFormatted}` : (premiumSource === "google_play" ? `Assinatura Google Play ativa` : `Acesso ativo até: ${untilFormatted}`)}
                     </p>
                   )}
@@ -204,7 +204,7 @@ const ProfilePage = () => {
               )
             ) : (
               webCheckoutAllowed && (
-                <button onClick={() => navigate("/premium")} className="bg-[#5B1F3D] text-white px-6 py-2.5 rounded-xl font-heading font-black text-[10px] tracking-widest uppercase border border-[#C8A66A]">Upgrade</button>
+                <button onClick={() => navigate("/premium")} className="bg-[#5B1F3D] text-white px-6 py-2.5 rounded-xl font-heading font-black text-[11px] tracking-widest uppercase border border-[#C8A66A]">Upgrade</button>
               )
             )}
           </div>

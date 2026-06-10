@@ -28,8 +28,8 @@ const ConsentBanner = () => {
   if (!show) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[100] p-4 md:p-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <div className="max-w-4xl mx-auto bg-white/95 backdrop-blur-md border border-gold/20 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] p-6 md:p-8 rounded-[2rem] flex flex-col md:flex-row items-center gap-6 justify-between">
+    <div className="fixed bottom-0 left-0 right-0 z-[150] p-4 md:p-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div className="max-w-4xl mx-auto bg-white/98 backdrop-blur-xl border border-gold/30 shadow-[0_-10px_50px_-15px_rgba(0,0,0,0.15)] p-5 md:p-8 rounded-[2rem] flex flex-col md:flex-row items-center gap-5 justify-between">
         <div className="space-y-2 text-center md:text-left">
           <p className="font-heading text-sm md:text-base text-plum font-bold">
             Respeitamos sua privacidade ✦
