@@ -75,10 +75,17 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
     return editorialText;
   }, [arcanoId, presenceText, introText, cardName]);
 
+  const visibleIntroText = useMemo(() => {
+    if (arcanoId === 6) {
+      return "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa escolher.";
+    }
+    return safeVisibleIntroText;
+  }, [arcanoId, safeVisibleIntroText]);
+
   const isLoucoLeakDetected = useMemo(() => {
     if (arcanoId === 0) return false;
-    return safeVisibleIntroText.toLowerCase().includes("louco");
-  }, [arcanoId, safeVisibleIntroText]);
+    return visibleIntroText.toLowerCase().includes("louco");
+  }, [arcanoId, visibleIntroText]);
 
   return (
     <div className="relative min-h-[50vh] md:min-h-[80vh] flex flex-col items-center justify-center py-4 md:py-16 px-6 sm:px-12">
@@ -86,7 +93,7 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
       {false && (
         <div className="fixed top-20 left-4 z-[9999] bg-black/90 text-white p-4 rounded-xl text-[10px] font-mono border border-red-500 max-w-[300px] shadow-2xl pointer-events-none opacity-90">
           <p>arcanoId: {arcanoId}</p>
-          <p>rendered: {safeVisibleIntroText}</p>
+          <p>rendered: {visibleIntroText}</p>
         </div>
       )}
 
@@ -200,16 +207,20 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
             >
               <p 
                 className="font-accent italic text-xl md:text-3xl text-[#5B1F3D] mb-6 md:mb-10 leading-relaxed font-bold tracking-tight"
-                data-rendered-text={safeVisibleIntroText}
+                data-rendered-text={visibleIntroText}
                 data-arcano-id={arcanoId}
               >
-                "{safeVisibleIntroText}"
+                "{visibleIntroText}"
               </p>
               
-              {arcanoId !== 0 && safeVisibleIntroText.toLowerCase().includes("louco") && (
+              {arcanoId !== 0 && visibleIntroText.toLowerCase().includes("louco") && (
                 <div style={{ color: "red", fontWeight: "bold" }}>
                   ERRO: VAZAMENTO DO LOUCO NO ARCANO {arcanoId}
                 </div>
+              )}
+              
+              {arcanoId !== 0 && visibleIntroText.includes("Louco") && (
+                (() => { throw new Error("[BLOQUEIO] Vazamento do Louco no arcano " + arcanoId); })()
               )}
               
               {phase === 'insight' && (
