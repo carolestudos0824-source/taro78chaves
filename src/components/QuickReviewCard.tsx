@@ -57,7 +57,7 @@ export function QuickReviewCard({ review, isStudied }: QuickReviewCardProps) {
             {review.name}
           </h3>
           <p
-            className="text-[12px] font-accent italic font-black truncate"
+            className="text-[13px] font-accent italic font-black break-words leading-tight"
             style={{ color: isStudied ? "#5B1F3D70" : "#5B1F3D20" }}
           >
             {review.keyword}
@@ -78,7 +78,7 @@ export function QuickReviewCard({ review, isStudied }: QuickReviewCardProps) {
         )}
 
         {!isStudied && (
-          <span className="text-[10px] tracking-[0.2em] uppercase font-heading font-black shrink-0" style={{ color: "#5B1F3D40" }}>
+          <span className="text-[12px] tracking-[0.2em] uppercase font-heading font-black shrink-0" style={{ color: "#5B1F3D40" }}>
             Bloqueado
           </span>
         )}
@@ -95,10 +95,10 @@ export function QuickReviewCard({ review, isStudied }: QuickReviewCardProps) {
               <Sun className="w-5 h-5" style={{ color: "#C8A66A" }} />
             </div>
             <div className="flex-1">
-              <span className="text-[10px] font-heading tracking-[0.3em] uppercase block mb-1 font-black" style={{ color: "#C8A66A" }}>
+              <span className="text-[12px] font-heading tracking-[0.3em] uppercase block mb-1 font-black" style={{ color: "#C8A66A" }}>
                 Luz
               </span>
-              <p className="text-[14px] leading-relaxed font-body font-bold" style={{ color: "#5B1F3D" }}>
+              <p className="text-[15px] leading-relaxed font-body font-bold" style={{ color: "#5B1F3D" }}>
                 {review.light}
               </p>
             </div>
@@ -110,10 +110,10 @@ export function QuickReviewCard({ review, isStudied }: QuickReviewCardProps) {
               <Moon className="w-5 h-5" style={{ color: "#5B1F3D" }} />
             </div>
             <div className="flex-1">
-              <span className="text-[10px] font-heading tracking-[0.3em] uppercase block mb-1 font-black" style={{ color: "#5B1F3D" }}>
+              <span className="text-[12px] font-heading tracking-[0.3em] uppercase block mb-1 font-black" style={{ color: "#5B1F3D" }}>
                 Sombra
               </span>
-              <p className="text-[14px] leading-relaxed font-body font-bold" style={{ color: "#5B1F3D" }}>
+              <p className="text-[15px] leading-relaxed font-body font-bold" style={{ color: "#5B1F3D" }}>
                 {review.shadow}
               </p>
             </div>
@@ -125,10 +125,10 @@ export function QuickReviewCard({ review, isStudied }: QuickReviewCardProps) {
               <Lightbulb className="w-5 h-5" style={{ color: "#C8A66A" }} />
             </div>
             <div className="flex-1">
-              <span className="text-[10px] font-heading tracking-[0.3em] uppercase block mb-1 font-black" style={{ color: "#5B1F3D" }}>
+              <span className="text-[12px] font-heading tracking-[0.3em] uppercase block mb-1 font-black" style={{ color: "#5B1F3D" }}>
                 Lição Central
               </span>
-              <p className="text-[14px] leading-relaxed font-body font-bold" style={{ color: "#5B1F3D" }}>
+              <p className="text-[15px] leading-relaxed font-body font-bold" style={{ color: "#5B1F3D" }}>
                 {review.lesson}
               </p>
             </div>
@@ -140,10 +140,10 @@ export function QuickReviewCard({ review, isStudied }: QuickReviewCardProps) {
               <Compass className="w-5 h-5" style={{ color: "#5B1F3D" }} />
             </div>
             <div className="flex-1">
-              <span className="text-[10px] font-heading tracking-[0.3em] uppercase block mb-1 font-black" style={{ color: "#5B1F3D" }}>
+              <span className="text-[12px] font-heading tracking-[0.3em] uppercase block mb-1 font-black" style={{ color: "#5B1F3D" }}>
                 Aplicação Prática
               </span>
-              <p className="text-[14px] leading-relaxed font-body font-bold" style={{ color: "#5B1F3D" }}>
+              <p className="text-[15px] leading-relaxed font-body font-bold" style={{ color: "#5B1F3D" }}>
                 {review.practicalApplication}
               </p>
             </div>
@@ -160,7 +160,7 @@ export function QuickReviewCard({ review, isStudied }: QuickReviewCardProps) {
             <div className="absolute top-0 right-0 p-2 opacity-10">
               <Quote className="w-12 h-12" style={{ color: "#C8A66A" }} />
             </div>
-            <p className="text-[13px] font-accent italic font-black leading-relaxed relative z-10 text-center" style={{ color: "#5B1F3D" }}>
+            <p className="text-[15px] font-accent italic font-black leading-relaxed relative z-10 text-center" style={{ color: "#5B1F3D" }}>
               "{review.fixationPhrase}"
             </p>
           </div>

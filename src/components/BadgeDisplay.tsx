@@ -63,7 +63,7 @@ export function BadgeDisplay({ badges }: BadgeDisplayProps) {
                 </span>
               </div>
             </div>
-            <span className="text-[9px] font-body text-center leading-tight tracking-wider uppercase transition-colors duration-300" style={badge.earned ? {
+            <span className="text-[11px] font-body text-center leading-tight tracking-wider uppercase transition-colors duration-300" style={badge.earned ? {
               color: "hsl(230 20% 12% / 0.72)"
             } : {
               color: "hsl(230 10% 40% / 0.32)"
