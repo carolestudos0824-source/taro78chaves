@@ -208,7 +208,7 @@ const DashboardPage = () => {
                 <stat.icon className={`w-4 h-4 ${stat.color}`} />
               </div>
               <span className="text-xl font-heading font-bold text-plum leading-none">{stat.value}</span>
-              <span className="text-[9px] font-heading font-black tracking-widest text-plum/30 uppercase">{stat.label}</span>
+              <span className="text-sm font-body font-medium tracking-widest text-[#5B1F3D] opacity-90 uppercase">{stat.label}</span>
             </div>
           ))}
         </div>
@@ -279,7 +279,7 @@ const DashboardPage = () => {
         )}
 
         {/* 1. Main Block: Journey Progress - Premium Duolingo Style */}
-        <section className="relative mx-2 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden border border-gold/20 bg-white shadow-2xl shadow-plum/5 group">
+        <section className="relative mx-2 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden border border-gold/30 bg-[#5B1F3D] shadow-2xl shadow-plum/20 group">
           <div className="absolute top-0 right-0 w-80 h-80 bg-rose-100/10 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-plum/5 rounded-full blur-[80px] -ml-32 -mb-32 pointer-events-none" />
           <div className="absolute inset-0 opacity-[0.02] bg-mystic-bg-procedural pointer-events-none" />
@@ -310,7 +310,7 @@ const DashboardPage = () => {
                    <div className="w-8 h-px bg-gold/40" />
                    <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Caminho do Iniciado</span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-plum tracking-tight leading-tight">Sua Jornada</h2>
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#FAF5EF] tracking-tight leading-tight">Sua Jornada</h2>
               </div>
 
               {currentStep && (
@@ -319,13 +319,13 @@ const DashboardPage = () => {
                     <p className="text-[10px] font-heading font-black tracking-widest text-gold uppercase flex items-center gap-2">
                       <MapPin className="w-3 h-3" /> {currentStep.moduleName}
                     </p>
-                    <h3 className="text-xl md:text-2xl font-heading font-bold text-plum leading-tight">
+                    <h3 className="text-xl md:text-2xl font-heading font-bold text-[#FAF5EF] leading-tight">
                       Arcano {currentStep.numeral} — {currentStep.name}
                     </h3>
                   </div>
 
                   <div className="space-y-3">
-                    <div className="relative h-2 rounded-full bg-ivory border border-gold/10 overflow-hidden shadow-inner">
+                    <div className="relative h-2 rounded-full bg-white/10 border border-white/5 overflow-hidden shadow-inner">
                       <div 
                         className="h-full rounded-full bg-gradient-to-r from-plum via-plum/80 to-gold transition-all duration-1000 ease-out"
                         style={{ width: `${Math.max(globalProgressPct, 5)}%` }}
@@ -333,11 +333,11 @@ const DashboardPage = () => {
                       <div className="absolute inset-0 bg-shimmer animate-shimmer opacity-20" style={{ backgroundSize: '200% 100%' }} />
                     </div>
                     <div className="flex justify-between items-center px-1">
-                      <span className="text-[10px] font-heading font-black text-plum/30 uppercase tracking-[0.2em]">
+                      <span className="text-[13px] font-body text-[#FAF5EF] opacity-90 uppercase tracking-[0.2em]">
                         {totalCompletedArcanos} de 78 Chaves
                       </span>
-                      <span className="text-[10px] font-heading font-black text-gold uppercase tracking-[0.2em] flex items-center gap-1">
-                        {globalProgressPct}% Integrado <Zap className="w-2 h-2 fill-current" />
+                      <span className="text-[13px] font-body text-[#FAF5EF] opacity-90 uppercase tracking-[0.2em] flex items-center gap-1">
+                        {globalProgressPct}% Integrado <Zap className="w-2.5 h-2.5 fill-gold text-gold" />
                       </span>
                     </div>
                   </div>
@@ -373,7 +373,7 @@ const DashboardPage = () => {
           <section className="px-2">
             <div 
               onClick={() => navigate("/desafios")}
-              className="relative overflow-hidden rounded-[2rem] bg-white border border-gold/20 p-8 shadow-xl cursor-pointer group hover:border-gold/40 transition-all"
+              className="relative overflow-hidden rounded-[2rem] bg-[#5B1F3D] border border-gold/30 p-8 shadow-xl cursor-pointer group hover:border-gold/50 transition-all"
             >
               <div className="absolute top-0 right-0 p-8 opacity-[0.05] pointer-events-none group-hover:scale-110 transition-transform">
                 <Sparkles className="w-24 h-24 text-gold" />
@@ -384,10 +384,10 @@ const DashboardPage = () => {
                     <div className="w-2 h-2 rounded-full bg-gold animate-pulse" />
                     <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Conexão Diária</span>
                   </div>
-                  <h3 className="text-2xl font-heading font-bold text-plum tracking-tight">Ritual de hoje</h3>
-                  <p className="text-xs font-body italic text-plum/50">Mantenha sua chama acesa através da prática ritualística.</p>
+                  <h3 className="text-2xl font-heading font-bold text-[#FAF5EF] tracking-tight">Ritual de hoje</h3>
+                  <p className="text-xs font-body italic text-[#FAF5EF] opacity-80">Mantenha sua chama acesa através da prática ritualística.</p>
                 </div>
-                <button className="px-8 py-4 bg-gold/10 text-plum border border-gold/30 rounded-xl font-heading text-[10px] font-black tracking-[0.3em] uppercase group-hover:bg-gold group-hover:text-plum transition-all flex items-center gap-2">
+                <button className="px-8 py-4 bg-[#C8A66A] text-[#5B1F3D] border border-transparent rounded-xl font-heading text-[10px] font-black tracking-[0.3em] uppercase hover:bg-[#C8A66A]/90 transition-all flex items-center gap-2">
                   Praticar agora <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
