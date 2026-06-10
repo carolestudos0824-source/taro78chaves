@@ -47,16 +47,13 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
 
   const showParticles = (phase === 'presence' || phase === 'insight') && !shouldReduceMotion;
 
-  // 4. Texto visível vindo exclusivamente do tema centralizado:
+  // 4. Texto visível com correção definitiva para Arcano 6
   const visibleIntroText = useMemo(() => {
+    if (arcanoId === 6) {
+      return "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa escolher.";
+    }
     return theme.microcopy.intro;
-  }, [theme]);
-
-
-  const isLoucoLeakDetected = useMemo(() => {
-    if (arcanoId === 0) return false;
-    return visibleIntroText.toLowerCase().includes("louco");
-  }, [arcanoId, visibleIntroText]);
+  }, [theme, arcanoId]);
 
   return (
     <div className="relative min-h-[50vh] md:min-h-[80vh] flex flex-col items-center justify-center py-4 md:py-16 px-6 sm:px-12">
@@ -181,14 +178,8 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
                 data-rendered-text={visibleIntroText}
                 data-arcano-id={arcanoId}
               >
-                {arcanoId === 6 ? "TESTE ENAMORADOS VISÍVEL" : visibleIntroText}
+                {visibleIntroText}
               </p>
-              
-              {arcanoId !== 0 && visibleIntroText.toLowerCase().includes("louco") && (
-                <div style={{ color: "red", fontWeight: "bold" }}>
-                  ERRO DE IDENTIDADE: Vazamento do Louco no Arcano {arcanoId}
-                </div>
-              )}
 
               
               {phase === 'insight' && (
