@@ -27,7 +27,7 @@ const FoolsJourneyPage = () => {
   const { meta, fases, arcanos } = journey;
 
   return (
-    <div className="min-h-screen relative overflow-hidden pb-32">
+    <div className="min-h-screen relative pb-32">
       {/* Background — Marfim suave e atmosfera premium */}
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         <div className="absolute inset-0" style={{
