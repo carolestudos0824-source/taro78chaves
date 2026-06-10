@@ -20,6 +20,8 @@ import { useHeader } from "@/contexts/header-context";
 import { PhaseIndicator } from "@/components/arcano-vivo/PhaseIndicator";
 import { LessonPhaseHeader } from "@/components/arcano-vivo/LessonPhaseHeader";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { PageBackControls } from "@/components/PageBackControls";
+
 
 
 /** 
@@ -247,14 +249,14 @@ const LessonPage = () => {
 
       <main className="relative z-10 container max-w-lg mx-auto px-4 py-8 pb-32">
         {phaseIdx > 0 && phase !== "complete" && (
-          <button 
-            onClick={goBack}
-            className="mb-6 flex items-center gap-2 text-[#5B1F3D]/60 hover:text-[#5B1F3D] transition-colors font-heading text-[10px] font-black uppercase tracking-widest"
-          >
-            <ArrowLeft className="w-3 h-3" />
-            Voltar etapa
-          </button>
+          <PageBackControls 
+            variant="top" 
+            showLabel={true} 
+            className="mb-6 h-auto p-0" 
+            fallbackRoute={phaseIdx > 0 ? undefined : "/module/arcanos-maiores"}
+          />
         )}
+
         <section className="space-y-8 animate-fade-in">
           {phase === "intro" && (
             <div className="space-y-8" data-lesson-wrapper={arcanoId}>
@@ -436,7 +438,11 @@ const LessonPage = () => {
                         <Heart className="w-5 h-5 text-[#5B1F3D]" />
                         <h3 className="font-heading text-xl text-[#5B1F3D] font-bold">{arcano.name} no Amor</h3>
                       </div>
-                      <div className="space-y-8">
+                      </div>
+                      <PageBackControls variant="bottom" className="mt-8" />
+                    </div>
+                  </TabsContent>
+
                         {Object.entries(arcano.love || {}).map(([key, value]) => (
                           <div key={key} className="space-y-3">
                             <div className="flex items-center gap-2">

@@ -13,6 +13,8 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { trackEvent } from "@/lib/analytics";
 import { findNextLessonSuggestion } from "@/lib/content/suggestions";
+import { PageBackControls } from "@/components/PageBackControls";
+
 
 import { isWebCheckoutAllowed } from "@/lib/platform";
 
@@ -303,6 +305,10 @@ const ProfilePage = () => {
           <p className="text-[9px] font-heading tracking-[0.4em] text-[#C8A66A80] uppercase">
             Tarô 78 Chaves · © 2026
           </p>
+          
+          <PageBackControls variant="bottom" className="w-full pb-8" />
+        </div>
+
         </div>
       </main>
     </div>

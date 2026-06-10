@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { PageBackControls } from "./PageBackControls";
+
 
 interface Props {
   title: string;
@@ -14,11 +15,10 @@ const LegalLayout = ({ title, updatedAt = "Abril de 2026", children }: Props) =>
     <div className="min-h-screen bg-background text-foreground">
       <header className="border-b border-border/50 bg-card/30 sticky top-0 z-20 backdrop-blur-sm">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3">
-          <button onClick={() => navigate(-1)} className="text-[#5B1F3D]/70 hover:text-[#5B1F3D] transition-colors" aria-label="Voltar">
-            <ArrowLeft className="w-5 h-5" />
-          </button>
+          <PageBackControls variant="top" showLabel={false} className="h-auto p-0" />
           <h1 className="font-heading text-base sm:text-lg tracking-wider">{title}</h1>
         </div>
+
       </header>
 
       <main className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
@@ -34,6 +34,9 @@ const LegalLayout = ({ title, updatedAt = "Abril de 2026", children }: Props) =>
           <Link to="/excluir-conta" className="text-[#5B1F3D]/70 hover:text-[#5B1F3D] underline-offset-2 hover:underline">Excluir conta</Link>
           <Link to="/" className="text-[#5B1F3D]/70 hover:text-[#5B1F3D] underline-offset-2 hover:underline ml-auto">Início</Link>
         </nav>
+        
+        <PageBackControls variant="bottom" className="mt-8 border-t border-[#DCCFC2]/20 pt-8" />
+
         <div className="mt-8 pt-8 border-t border-border/20 text-center">
           <p className="text-[10px] text-[#5B1F3D]/60 font-body tracking-wider space-y-1">
             <span className="block">© 2026 Tarô 78 Chaves</span>
