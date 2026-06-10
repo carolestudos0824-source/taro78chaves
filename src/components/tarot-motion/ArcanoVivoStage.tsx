@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TarotAnimatedCard } from "./TarotAnimatedCard";
 import { getArcanoTheme } from "./arcano-motion-themes";
@@ -29,15 +29,20 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
   const [phase, setPhase] = useState<'dormant' | 'awakening' | 'presence' | 'insight'>('dormant');
   const theme = getArcanoTheme(arcanoId);
   const shouldReduceMotion = useReducedMotionSafe();
+  const mountedRef = useRef(false);
 
   useEffect(() => {
+    mountedRef.current = true;
     const timers: ReturnType<typeof setTimeout>[] = [];
     
     timers.push(setTimeout(() => setPhase('awakening'), 400));
     timers.push(setTimeout(() => setPhase('presence'), 1200));
     timers.push(setTimeout(() => setPhase('insight'), 2200));
 
-    return () => timers.forEach(clearTimeout);
+    return () => {
+      mountedRef.current = false;
+      timers.forEach(clearTimeout);
+    };
   }, []);
 
   const showParticles = (phase === 'presence' || phase === 'insight') && !shouldReduceMotion;
@@ -203,11 +208,13 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
               exit={{ opacity: 0, y: -30 }}
               className="flex flex-col items-center"
             >
-              <p className="font-accent italic text-xl md:text-3xl text-[#5B1F3D] mb-6 md:mb-10 leading-relaxed font-bold tracking-tight">
+              <p 
+                className="font-accent italic text-xl md:text-3xl text-[#5B1F3D] mb-6 md:mb-10 leading-relaxed font-bold tracking-tight"
+                data-rendered-text={finalText}
+                data-arcano-id={arcanoId}
+              >
                 "{finalText}"
               </p>
-              {/* HIDDEN INVISIBLE AUDIT TAG FOR BROWSER--EXTRACT */}
-              <span className="sr-only" data-audit-text={finalText}>AUDIT_MARKER</span>
               
               {phase === 'insight' && (
                 <motion.div
