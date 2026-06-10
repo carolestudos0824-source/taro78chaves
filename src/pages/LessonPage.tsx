@@ -140,7 +140,7 @@ const LessonPage = () => {
             </div>
             <button 
               onClick={() => navigate("/module/arcanos-maiores")} 
-              className="w-full h-auto py-5 px-4 rounded-2xl font-heading text-[11px] tracking-[0.1em] uppercase transition-all shadow-xl hover:scale-105 active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A] font-black leading-tight text-center"
+              className="w-full h-auto py-5 px-4 rounded-2xl font-heading text-[13px] tracking-[0.1em] uppercase transition-all shadow-xl hover:scale-105 active:scale-95 bg-[#5B1F3D] text-white border-2 border-[#C8A66A] font-black leading-tight text-center"
             >
               Voltar à Jornada
             </button>
@@ -369,7 +369,7 @@ const LessonPage = () => {
                 )}
 
                 {arcano.id !== 0 && (
-                  <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
+                  <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-[13px] tracking-widest shadow-xl hover:scale-[1.02] transition-transform leading-tight">
                     Continuar para Aplicações
                   </Button>
                 )}
@@ -388,7 +388,7 @@ const LessonPage = () => {
               <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
                 <div className="flex items-center gap-3">
                   <Sparkles className="w-5 h-5 text-[#C8A66A]" />
-                  <h2 className="font-heading text-xs tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Aplicação Real</h2>
+                  <h2 className="font-heading text-[13px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Aplicação Real</h2>
                 </div>
                 <QuizSection
                   questions={[arcano.quiz[4]]}
@@ -420,7 +420,7 @@ const LessonPage = () => {
                     setPhaseIdx(PHASE_ORDER.indexOf("legacy-content"));
                     window.scrollTo(0, 0);
                   }}
-                  className="w-full py-4 rounded-xl border border-[#C8A66A]/30 font-heading text-[10px] font-black tracking-widest uppercase text-[#5B1F3D]/60 hover:text-[#5B1F3D] hover:bg-white transition-all flex items-center justify-center gap-2"
+                  className="w-full py-4 rounded-xl border border-[#C8A66A]/30 font-heading text-[12px] font-black tracking-widest uppercase text-[#5B1F3D]/60 hover:text-[#5B1F3D] hover:bg-white transition-all flex items-center justify-center gap-2"
                 >
                   <BookOpen className="w-3.5 h-3.5" />
                   Ver explicação completa do arcano
