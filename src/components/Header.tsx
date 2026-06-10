@@ -30,7 +30,7 @@ export const Header = ({ streak, pontos, level }: HeaderProps) => {
 
   return (
     <header 
-      className="sticky top-0 z-50 w-full bg-[#FAF5EF] border-b-2 border-[#C8A66A]/20 shadow-sm"
+      className="sticky top-0 z-50 w-full bg-[#FAF5EF] border-b border-[#DCCFC2] shadow-sm"
       style={{ 
         height: 'auto',
         minHeight: '72px',
@@ -61,7 +61,7 @@ export const Header = ({ streak, pontos, level }: HeaderProps) => {
             </div>
 
             <div className="flex flex-col justify-center min-w-0 flex-1">
-              <h1 className="font-heading text-[#5B1F3D] font-black tracking-tight leading-tight text-[11px] min-[360px]:text-[12px] min-[400px]:text-[14px] sm:text-base truncate w-full">
+              <h1 className="font-heading text-[#5B1F3D] font-black tracking-tight leading-tight text-[12px] min-[360px]:text-[13px] min-[400px]:text-[15px] sm:text-lg truncate w-full">
                 {state.title}
               </h1>
               {state.subtitle && (
