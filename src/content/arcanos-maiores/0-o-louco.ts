@@ -51,7 +51,7 @@ export const O_LOUCO: ArcanoMaiorEditorial = {
 
   voice: {
     intro: "Eu sou o Louco. O impulso antes da certeza.",
-    fullText: "Não me procure nos livros de definições estáticas. Eu existo no intervalo entre a intenção e o ato. Ensinarei você a enxergar além das palavras decoradas.",
+    fullText: "Você tenta decorar significados, mas trava quando precisa interpretar uma carta real? O Tarô não começa pela memória. Começa pelo olhar simbólico. Eu sou o Louco. Ensinarei você a enxergar além das palavras decoradas. Não me procure nos livros de definições estáticas. Eu existo no intervalo entre a intenção e o ato. Ensinarei você a enxergar além das palavras decoradas.",
   },
 
   deepDive: {
