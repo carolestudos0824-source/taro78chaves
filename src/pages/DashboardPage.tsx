@@ -16,7 +16,8 @@ import {
   Calendar,
   Zap,
   ArrowRight,
-  Star
+  Star,
+  Lock
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -650,17 +651,32 @@ const DashboardPage = () => {
           </div>
           <div className="grid grid-cols-3 gap-4 pb-12 border-b border-gold/10">
             {[
-              { label: "Biblioteca", icon: BookOpen, route: "/biblioteca" },
-              { label: "Rotina", icon: Clock, route: "/rotina", subtitle: "Organize seu hábito diário de estudo e ritual." },
-              { label: "Méritos", icon: Trophy, route: "/certificados" }
+              { label: "Biblioteca", icon: BookOpen, route: "/biblioteca", locked: !isPremium },
+              { label: "Rotina", icon: Clock, route: "/rotina", subtitle: "Organize seu hábito diário de estudo e ritual.", locked: false },
+              { label: "Méritos", icon: Trophy, route: "/certificados", locked: !isPremium }
             ].map((link, i) => (
               <button 
                 key={i}
-                onClick={() => navigate(link.route)}
-                className="bg-white/95 backdrop-blur-md border border-gold/20 rounded-[2rem] p-6 flex flex-col items-center gap-4 hover:bg-white hover:border-gold/50 hover:shadow-2xl transition-all active:scale-95 group shadow-sm min-h-[140px] justify-center"
+                onClick={() => {
+                  if (link.locked && !isAdmin) {
+                    toast.info("Você vai desbloquear essa área conforme avança na jornada.", {
+                      description: "Acesse a Escola Digital para liberar utilidades premium.",
+                      action: {
+                        label: "Upgrade",
+                        onClick: () => navigate("/premium")
+                      }
+                    });
+                    return;
+                  }
+                  navigate(link.route);
+                }}
+                className={cn(
+                  "bg-white/95 backdrop-blur-md border border-gold/20 rounded-[2rem] p-6 flex flex-col items-center gap-4 hover:bg-white hover:border-gold/50 hover:shadow-2xl transition-all active:scale-95 group shadow-sm min-h-[140px] justify-center",
+                  link.locked && !isAdmin && "opacity-60 grayscale-[0.5]"
+                )}
               >
                 <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform border border-gold/10 shadow-inner">
-                  <link.icon className={`w-7 h-7 text-plum`} />
+                  {link.locked && !isAdmin ? <Lock className="w-7 h-7 text-plum/40" /> : <link.icon className={`w-7 h-7 text-plum`} />}
                 </div>
                 <div className="text-center">
                   <span className="text-[12px] font-heading font-black tracking-[0.2em] text-plum uppercase block">{link.label}</span>

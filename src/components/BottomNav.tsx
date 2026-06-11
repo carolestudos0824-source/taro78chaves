@@ -67,8 +67,8 @@ const BottomNav = () => {
           
           const handleClick = () => {
             if (isLocked) {
-              toast.info("Essa jornada faz parte da Escola Digital completa.", {
-                description: "Desbloqueie a formação para iniciar sua travessia.",
+              toast.info("A Jornada completa faz parte da Escola Digital.", {
+                description: "Comece pelos Fundamentos ou desbloqueie o acesso completo.",
                 action: {
                   label: "Upgrade",
                   onClick: () => navigate("/premium")
