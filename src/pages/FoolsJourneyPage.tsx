@@ -5,6 +5,7 @@ import { useResolvedArcanosMaiores } from "@/hooks/use-resolved-arcanos-maiores"
 import { useJourneyContent } from "@/hooks/use-content";
 import { CORES_FASE, JOURNEY_MOTION } from "@/config/journey-visual";
 import { EDITORIAL_REGISTRY } from "@/content/arcanos-maiores";
+import { Lock } from "lucide-react";
 
 
 
@@ -234,7 +235,7 @@ const FoolsJourneyPage = () => {
                       key={arcano.id}
                       onClick={() => studied ? navigate(`/lesson/${arcano.arcanoNumero}`) : undefined}
                       disabled={!studied}
-                      className="w-full text-left group transition-all duration-300 active:scale-[0.98]"
+                      className={`w-full text-left group transition-all duration-300 active:scale-[0.98] ${!studied ? "opacity-60 grayscale-[0.3]" : ""}`}
                       style={{ opacity: 1 }}
                     >
                       <div
@@ -272,7 +273,12 @@ const FoolsJourneyPage = () => {
                           </div>
 
                           {/* Content */}
-                          <div className={`flex-1 min-w-0 flex flex-col justify-center ${!isEven ? 'text-right' : 'text-left'} py-1`}>
+                          <div className={`flex-1 min-w-0 flex flex-col justify-center ${!isEven ? 'text-right' : 'text-left'} py-1 relative`}>
+                            {!studied && (
+                              <div className="absolute top-0 right-0 left-0 bottom-0 flex items-center justify-center pointer-events-none opacity-20">
+                                <Lock className="w-12 h-12 text-[#5B1F3D]" />
+                              </div>
+                            )}
                             <div className={`flex items-center gap-2 mb-1 ${!isEven ? 'justify-end' : 'justify-start'}`}>
                               <span 
                                 className="font-heading text-[10px] md:text-[11px] tracking-[0.2em] font-bold"
