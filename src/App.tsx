@@ -171,11 +171,14 @@ const LazyRoute = ({ children }: { children: React.ReactNode }) => (
 
 const AppRoutes = () => {
   const location = useLocation();
+  
   useEffect(() => {
-    if (location.pathname === "/jornada") {
-      console.log("Routing to /jornada detected in AppRoutes");
+    // Debug for route matching in external preview
+    if (location.pathname === "/jornada" || location.pathname === "/jornada/") {
+      console.log("AppRoutes matching /jornada. User:", !!localStorage.getItem("supabase.auth.token"));
     }
   }, [location.pathname]);
+
 
   return (
     <>
