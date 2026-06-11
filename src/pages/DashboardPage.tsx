@@ -18,7 +18,7 @@ import {
   ArrowRight,
   Star
 } from "lucide-react";
-import { PageBackControls } from "@/components/PageBackControls";
+
 import { TarotIcon } from "@/components/TarotIcon";
 
 import { 
