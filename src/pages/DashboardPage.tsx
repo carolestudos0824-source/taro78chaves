@@ -548,30 +548,41 @@ const DashboardPage = () => {
               </div>
               <div className="absolute inset-0 opacity-[0.03] bg-mystic-bg-procedural pointer-events-none" />
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
-                <div className="space-y-2">
-                    <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center shadow-lg">
-                          <Sparkles className="w-6 h-6 text-gold" />
+                <div className="space-y-4">
+                    <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center shadow-lg shrink-0">
+                          <Crown className="w-6 h-6 text-gold" />
                         </div>
-                        <span className="text-[13px] font-heading font-black tracking-[0.5em] text-[#FFD700] drop-shadow-sm uppercase">Formação Completa</span>
+                        <div className="flex flex-col">
+                          <span className="text-[13px] font-heading font-black tracking-[0.4em] text-[#FFD700] drop-shadow-sm uppercase">Formação Completa</span>
+                          <h3 className="text-2xl md:text-3xl font-heading font-bold tracking-tight text-white drop-shadow-md">Sabedoria Ancestral</h3>
+                        </div>
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-heading font-bold tracking-tight text-white drop-shadow-md">Sabedoria Ancestral</h3>
                     <p className="text-[15px] font-body italic text-white/90 max-w-sm leading-relaxed">
-                      Desbloqueie todos os 78 portais, acesse meditações guiadas, quizzes de domínio e conquiste seu Certificado de Formação.
+                      Desbloqueie todas as 78 Chaves, acesse meditações guiadas, quizzes de domínio e conquiste seu Certificado de Formação.
                     </p>
                 </div>
-                {!isPremium && !isStaff ? (
+                {isAdmin ? (
+                  <div className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-gold font-heading text-[12px] font-black tracking-[0.4em] uppercase flex items-center gap-2">
+                      <ShieldCheck className="w-4 h-4" /> Acesso Administrativo
+                  </div>
+                ) : isAuditor ? (
+                  <div className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-gold font-heading text-[12px] font-black tracking-[0.4em] uppercase flex items-center gap-2">
+                      <ShieldCheck className="w-4 h-4" /> Acesso de Auditoria
+                  </div>
+                ) : isPremium ? (
+                  <div className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-gold font-heading text-[12px] font-black tracking-[0.4em] uppercase flex items-center gap-2">
+                      <Star className="w-4 h-4 fill-current" /> Formação Ativa
+                  </div>
+                ) : (
                   <button 
                     onClick={() => navigate("/premium")}
                     className="w-full lg:w-auto px-8 py-5 bg-gold text-plum rounded-2xl font-heading text-[13px] font-black tracking-[0.3em] uppercase shadow-2xl hover:bg-white hover:scale-[1.02] transition-all active:scale-95 group/btn"
                   >
-                    Fazer Inscrição 
+                    Desbloquear Acesso
                   </button>
-                ) : (
-                    <div className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-gold font-heading text-[13px] font-black tracking-[0.4em] uppercase flex items-center gap-2">
-                        <Star className="w-4 h-4 fill-current" /> Assinatura Ativa
-                    </div>
                 )}
+
               </div>
             </div>
         </section>
