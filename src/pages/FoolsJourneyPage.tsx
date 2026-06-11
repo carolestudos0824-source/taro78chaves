@@ -63,8 +63,8 @@ const FoolsJourneyPage = () => {
             
 
             <div>
-              <span className="text-[11px] tracking-[0.35em] uppercase font-heading font-black block mb-0.5" style={{ color: "hsl(var(--primary) / 0.8)" }}>
-                ✦ Visão Geral ✦
+              <span className="text-[11px] tracking-[0.35em] uppercase font-heading font-black block mb-0.5" style={{ color: "#C8A66A" }}>
+                ✦ Jornada Integrada ✦
               </span>
               <h1 className="font-heading text-xl tracking-wide" style={{
                 background: "linear-gradient(135deg, #3D1429 0%, #5B1F3D 50%, #8B6A30 100%)",
