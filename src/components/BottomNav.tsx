@@ -3,6 +3,7 @@ import { useEffect, useMemo } from "react";
 import { TarotIcon } from "./TarotIcon";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
+import { toast } from "sonner";
 
 
 
@@ -64,12 +65,26 @@ const BottomNav = () => {
           const path = isJourneyTab ? currentJourneyPath : item.path;
           const isLocked = !bypassLocks && isJourneyTab && !fundamentosComplete && item.path !== "/module/fundamentos";
           
+          const handleClick = () => {
+            if (isLocked) {
+              toast.info("Este conteúdo faz parte da Escola Digital completa.", {
+                description: "Complete os Fundamentos do Tarô para iniciar sua jornada.",
+                action: {
+                  label: "Upgrade",
+                  onClick: () => navigate("/premium")
+                }
+              });
+              return;
+            }
+            navigate(path);
+          };
+
           return (
             <button
               key={item.path}
               id={`nav-item-${item.label.toLowerCase()}`}
               data-testid={`nav-item-${item.label.toLowerCase()}`}
-              onClick={() => navigate(path)}
+              onClick={handleClick}
 
 
               className={`flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 transition-all duration-300 relative group py-1 select-none ${isLocked ? "opacity-30" : ""}`}
