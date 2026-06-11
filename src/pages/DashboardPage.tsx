@@ -16,7 +16,8 @@ import {
   Calendar,
   Zap,
   ArrowRight,
-  Star
+  Star,
+  Lock
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -533,7 +534,19 @@ const DashboardPage = () => {
                   <p className="text-[13px] font-body italic text-plum/70">Mantenha sua chama acesa através da prática ritualística.</p>
                 </div>
                 <button 
-                  onClick={() => navigate("/desafios")}
+                  onClick={() => {
+                    if (progress.completedLessons.length === 0 && !isAdmin) {
+                      toast.info("Seu ritual será liberado depois da primeira lição.", {
+                        description: "Complete Fundamentos do Tarô — Lição 1.",
+                        action: {
+                          label: "Começar",
+                          onClick: () => navigate("/fundamentos/0")
+                        }
+                      });
+                      return;
+                    }
+                    navigate("/desafios");
+                  }}
                   className="px-8 py-4 bg-gold/10 text-plum border border-gold/30 rounded-xl font-heading text-[13px] font-black tracking-[0.3em] uppercase group-hover:bg-gold group-hover:text-plum transition-all flex items-center gap-2"
                 >
                   Praticar agora <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
@@ -550,7 +563,22 @@ const DashboardPage = () => {
               <div className="w-2 h-2 rounded-full bg-gold" />
               <h3 className="font-heading text-[14px] font-black tracking-[0.5em] text-gold uppercase">Mapa de Estudo</h3>
             </div>
-            <button onClick={() => navigate("/trilhas")} className="text-[12px] font-heading font-black tracking-widest text-plum/70 hover:text-plum transition-colors flex items-center gap-2 group">
+            <button 
+              onClick={() => {
+                if (!fundamentosComplete && !isAdmin) {
+                  toast.info("Este módulo será desbloqueado quando você avançar na sua formação.", {
+                    description: "Continue construindo sua base.",
+                    action: {
+                      label: "Continuar",
+                      onClick: () => navigate("/module/fundamentos")
+                    }
+                  });
+                  return;
+                }
+                navigate("/trilhas");
+              }} 
+              className="text-[12px] font-heading font-black tracking-widest text-plum/70 hover:text-plum transition-colors flex items-center gap-2 group"
+            >
               Explorar <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
@@ -650,17 +678,32 @@ const DashboardPage = () => {
           </div>
           <div className="grid grid-cols-3 gap-4 pb-12 border-b border-gold/10">
             {[
-              { label: "Biblioteca", icon: BookOpen, route: "/biblioteca" },
-              { label: "Rotina", icon: Clock, route: "/rotina", subtitle: "Organize seu hábito diário de estudo e ritual." },
-              { label: "Méritos", icon: Trophy, route: "/certificados" }
+              { label: "Biblioteca", icon: BookOpen, route: "/biblioteca", locked: !isPremium },
+              { label: "Rotina", icon: Clock, route: "/rotina", subtitle: "Organize seu hábito diário de estudo e ritual.", locked: false },
+              { label: "Méritos", icon: Trophy, route: "/certificados", locked: !isPremium }
             ].map((link, i) => (
               <button 
                 key={i}
-                onClick={() => navigate(link.route)}
-                className="bg-white/95 backdrop-blur-md border border-gold/20 rounded-[2rem] p-6 flex flex-col items-center gap-4 hover:bg-white hover:border-gold/50 hover:shadow-2xl transition-all active:scale-95 group shadow-sm min-h-[140px] justify-center"
+                onClick={() => {
+                  if (link.locked && !isAdmin) {
+                    toast.info("Você vai desbloquear essa área conforme avança na jornada.", {
+                      description: "Acesse a Escola Digital para liberar utilidades premium.",
+                      action: {
+                        label: "Upgrade",
+                        onClick: () => navigate("/premium")
+                      }
+                    });
+                    return;
+                  }
+                  navigate(link.route);
+                }}
+                className={cn(
+                  "bg-white/95 backdrop-blur-md border border-gold/20 rounded-[2rem] p-6 flex flex-col items-center gap-4 hover:bg-white hover:border-gold/50 hover:shadow-2xl transition-all active:scale-95 group shadow-sm min-h-[140px] justify-center",
+                  link.locked && !isAdmin && "opacity-60 grayscale-[0.5]"
+                )}
               >
                 <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform border border-gold/10 shadow-inner">
-                  <link.icon className={`w-7 h-7 text-plum`} />
+                  {link.locked && !isAdmin ? <Lock className="w-7 h-7 text-plum/40" /> : <link.icon className={`w-7 h-7 text-plum`} />}
                 </div>
                 <div className="text-center">
                   <span className="text-[12px] font-heading font-black tracking-[0.2em] text-plum uppercase block">{link.label}</span>
@@ -788,7 +831,7 @@ const DashboardPage = () => {
                     onClick={() => navigate("/premium")}
                     className="w-full lg:w-auto px-8 py-5 bg-gold text-plum rounded-2xl font-heading text-[13px] font-black tracking-[0.3em] uppercase shadow-2xl hover:bg-white hover:scale-[1.02] transition-all active:scale-95 group/btn"
                   >
-                    Desbloquear Formação Completa
+                    Assinar e desbloquear a Escola Digital
                   </button>
                 )}
 
