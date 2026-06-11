@@ -36,6 +36,7 @@ const AuthPage = () => {
     if (msg.includes("signup requires a valid email")) return "Informe um e-mail válido.";
     if (msg.includes("unable to validate email address")) return "Não foi possível validar o endereço de e-mail.";
     if (msg.includes("signup disabled")) return "O cadastro de novos usuários está desativado.";
+    if (msg.includes("database error saving new user")) return "Não foi possível criar sua conta agora. Tente novamente em alguns minutos ou fale com o suporte.";
     return message;
   };
 
