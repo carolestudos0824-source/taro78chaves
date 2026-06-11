@@ -96,8 +96,10 @@ const DashboardPage = () => {
           id: lesson.id,
           name: lesson.title,
           numeral: (i + 1).toString(),
-          image: imgLouco, // Placeholder or specific icon
+          label: "Lição",
+          image: imgLouco, 
           moduleName: "Fundamentos do Tarô",
+
           moduleSlug: "fundamentos",
           lessonId: lesson.id,
           lessonName: lesson.title,
@@ -116,7 +118,9 @@ const DashboardPage = () => {
           id: i,
           name: summary.name,
           numeral: summary.numeral,
+          label: "Arcano",
           image: resolveMaiorVisual(i).resolvedAssetUrl || imgLouco,
+
           moduleName: "Arcanos Maiores",
           moduleSlug: "arcanos-maiores",
           lessonId: `arcano-${i}`,
@@ -139,7 +143,9 @@ const DashboardPage = () => {
             id: id,
             name: name,
             numeral: posicao.toString().toUpperCase(),
+            label: "Arcano Menor",
             image: visual.resolvedAssetUrl || imgLouco,
+
             moduleName: `Naipe de ${naipe.charAt(0).toUpperCase() + naipe.slice(1)}`,
             moduleSlug: naipe,
             lessonId: id,
@@ -327,9 +333,17 @@ const DashboardPage = () => {
                       <img 
                         src={currentStep.image} 
                         alt={currentStep.name}
-                        className="w-full h-full object-cover"
+                        className={`w-full h-full object-cover ${currentStep.type === "fundamentos" ? "opacity-60 blur-[1px]" : ""}`}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                      {currentStep.type === "fundamentos" && (
+                        <div className="absolute inset-0 flex items-center justify-center p-4 text-center">
+                          <span className="bg-plum/80 text-ivory text-[10px] font-heading font-black tracking-widest uppercase px-3 py-2 rounded-lg border border-gold/30 backdrop-blur-sm shadow-xl">
+                            Imagem Decorativa
+                          </span>
+                        </div>
+                      )}
+
                    </div>
                  </ArchPortal>
                )}
@@ -351,8 +365,9 @@ const DashboardPage = () => {
                       <MapPin className="w-3 h-3" /> {currentStep.moduleName}
                     </p>
                     <h3 className="text-xl md:text-2xl font-heading font-bold text-plum leading-tight">
-                      Arcano {currentStep.numeral} — {currentStep.name}
+                      {currentStep.label} {currentStep.numeral} — {currentStep.name}
                     </h3>
+
                   </div>
 
                   <div className="space-y-3">
