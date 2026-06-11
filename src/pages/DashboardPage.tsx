@@ -118,7 +118,9 @@ const DashboardPage = () => {
           id: i,
           name: summary.name,
           numeral: summary.numeral,
+          label: "Arcano",
           image: resolveMaiorVisual(i).resolvedAssetUrl || imgLouco,
+
           moduleName: "Arcanos Maiores",
           moduleSlug: "arcanos-maiores",
           lessonId: `arcano-${i}`,
