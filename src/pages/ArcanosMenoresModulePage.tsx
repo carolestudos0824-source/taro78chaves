@@ -179,16 +179,24 @@ const ArcanosMenoresModulePage = () => {
             <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 border border-amber-200">
               <Lock className="w-6 h-6 text-amber-600" />
             </div>
-            <h3 className="font-heading text-xl text-amber-900 font-black mb-2 uppercase tracking-tight">Portal Bloqueado</h3>
+            <h3 className="font-heading text-xl text-amber-900 font-black mb-2 uppercase tracking-tight">Portal Trancado</h3>
             <p className="text-sm text-amber-800 font-medium leading-relaxed mb-6">
-              Complete a jornada dos Arcanos Maiores para desbloquear o portal dos Menores e aprofundar seu conhecimento.
+              "Os Arcanos Menores são exclusivos para assinantes da Escola Digital completa."
             </p>
-            <button
-              onClick={() => navigate("/module/arcanos-maiores")}
-              className="px-8 py-3 rounded-xl bg-[#5B1F3D] text-white font-heading text-[11px] tracking-[0.2em] uppercase font-black shadow-lg hover:scale-105 transition-all"
-            >
-              Ir para Arcanos Maiores
-            </button>
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={() => navigate("/premium")}
+                className="px-8 py-3 rounded-xl bg-[#5B1F3D] text-white font-heading text-[11px] tracking-[0.2em] uppercase font-black shadow-lg hover:scale-105 transition-all"
+              >
+                Desbloquear Escola Digital
+              </button>
+              <button
+                onClick={() => navigate("/module/fundamentos")}
+                className="text-[11px] font-heading font-black tracking-widest uppercase text-[#C8A66A] hover:text-[#5B1F3D] transition-colors"
+              >
+                Continuar experiência gratuita
+              </button>
+            </div>
           </div>
         )}
 
