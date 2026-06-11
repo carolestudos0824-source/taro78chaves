@@ -364,13 +364,23 @@ const FoolsJourneyPage = () => {
             }}
             className="group relative w-full max-w-xs px-10 py-5 rounded-full font-heading text-[12px] tracking-[0.3em] uppercase transition-all duration-500 hover:scale-105 active:scale-95 shadow-xl"
             style={{
-              background: "linear-gradient(135deg, #5B1F3D 0%, #3D1429 100%)",
-              color: "#FAF5EF",
+              background: isComplete(0) ? "#FFFFFF" : "linear-gradient(135deg, #5B1F3D 0%, #3D1429 100%)",
+              color: isComplete(0) ? "#5B1F3D" : "#FAF5EF",
+              border: isComplete(0) ? "2px solid #C8A66A" : "none"
             }}
           >
             <span className="relative z-10 flex items-center justify-center gap-3">
-              <Sparkles className="w-4 h-4 text-[#C8A66A] group-hover:rotate-12 transition-transform" />
-              Começar pelo Louco
+              {isComplete(0) ? (
+                <>
+                  <BookOpen className="w-4 h-4 text-[#C8A66A]" />
+                  Revisar O Louco
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-4 h-4 text-[#C8A66A] group-hover:rotate-12 transition-transform" />
+                  Iniciar Arcano 0
+                </>
+              )}
             </span>
             <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
           </button>
