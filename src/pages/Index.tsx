@@ -8,17 +8,29 @@ import { useProgress } from "@/hooks/use-progress";
 import { ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull as getArcanoById } from "@/lib/content";
 import { useHeader } from "@/contexts/header-context";
 import { PageBackControls } from "@/components/PageBackControls";
+import { useAccess } from "@/hooks/use-access";
 
 const Index = () => {
 
-  const { progress, loading: progressLoading, updateStreak, getCurrentArcanoId, completedCount, journeyProgress } = useProgress();
+  const progressState = useProgress();
+  const { 
+    progress, 
+    loading: progressLoading, 
+    updateStreak, 
+    getCurrentArcanoId, 
+    completedCount, 
+    journeyProgress, 
+    fundamentosComplete: progressFundamentosComplete 
+  } = progressState;
+
+  const { bypassLocks } = useAccess();
   const navigate = useNavigate();
   const { setHeader, resetHeader } = useHeader();
 
   useEffect(() => {
     setHeader({
       title: "Arcanos Maiores",
-      subtitle: "Módulo 03 • A Jornada do Louco",
+      subtitle: "Módulo 03 • Arcanos Maiores",
       backRoute: "/app"
     });
     return () => resetHeader();
@@ -37,7 +49,9 @@ const Index = () => {
 
   const currentArcanoId = getCurrentArcanoId();
   const currentArcano = ARCANOS_MAIORES.find(a => a.id === currentArcanoId);
-  const allComplete = completedCount >= 22;
+  
+  const fundamentosComplete = progressFundamentosComplete || bypassLocks;
+  const allComplete = fundamentosComplete && (completedCount >= 22);
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
@@ -134,16 +148,30 @@ const Index = () => {
             <div className="mt-8 flex justify-center">
               <button
                 onClick={() => navigate("/jornada-do-louco")}
-                className="px-8 py-3 rounded-xl bg-[#FAF5EF] text-[#5B1F3D] font-heading text-[10px] tracking-[0.2em] uppercase font-black border border-[#C8A66A30] hover:bg-[#5B1F3D] hover:text-white transition-all flex items-center gap-2"
+                disabled={!fundamentosComplete}
+                className={`px-8 py-3 rounded-xl bg-[#FAF5EF] text-[#5B1F3D] font-heading text-[10px] tracking-[0.2em] uppercase font-black border border-[#C8A66A30] hover:bg-[#5B1F3D] hover:text-white transition-all flex items-center gap-2 ${!fundamentosComplete ? "opacity-50 grayscale cursor-not-allowed" : ""}`}
               >
                 Conhecer a Jornada do Louco <ChevronRight className="w-3 h-3" />
               </button>
             </div>
           </div>
+          
+          {!fundamentosComplete && (
+            <div className="mt-8 p-6 rounded-2xl bg-amber-50 border border-amber-200 text-center">
+              <p className="text-amber-800 font-bold mb-4">Módulo Bloqueado</p>
+              <p className="text-sm text-amber-700 mb-6">Complete os Fundamentos do Tarô para desbloquear a Jornada dos Arcanos Maiores.</p>
+              <button
+                onClick={() => navigate("/module/fundamentos")}
+                className="px-8 py-3 rounded-xl bg-[#5B1F3D] text-white font-heading text-[11px] tracking-[0.2em] uppercase font-black shadow-lg hover:scale-105 transition-all"
+              >
+                Ir para Fundamentos
+              </button>
+            </div>
+          )}
         </section>
 
         {/* ═══════════════ CURRENT ARCANO CTA ═══════════════ */}
-        {!allComplete && currentArcano && (
+        {fundamentosComplete && !allComplete && currentArcano && (
           <section className="mb-12">
             <button
               onClick={() => navigate(`/lesson/${currentArcanoId}`)}
@@ -201,14 +229,14 @@ const Index = () => {
         )}
 
         {/* Premium upsell after completing O Louco */}
-        {completedCount >= 1 && (
+        {completedCount >= 1 && fundamentosComplete && (
           <section className="mb-12">
             <PremiumGate variant="banner" className="mb-0" />
           </section>
         )}
 
         {/* celebration celebration */}
-        {allComplete && (
+        {allComplete && fundamentosComplete && (
           <section className="mb-12 text-center py-10 rounded-2xl" style={{
             background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
             border: "2px solid #C8A66A",
@@ -261,7 +289,7 @@ const Index = () => {
         </section>
 
         {/* ═══════════════ JOURNEY MAP ═══════════════ */}
-        <section className="mb-12">
+        <section className={`mb-12 transition-all duration-700 ${!fundamentosComplete ? "opacity-30 blur-[2px] pointer-events-none grayscale" : ""}`}>
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
             <span className="text-[11px] font-heading tracking-[0.4em] uppercase text-plum font-black">

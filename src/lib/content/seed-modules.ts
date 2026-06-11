@@ -14,10 +14,10 @@ import type { LearningModule } from "./runtime-types";
 export const MODULES_SEED: readonly LearningModule[] = [
   // ─── Fundação ───
   { id: "fundamentos",         name: "Fundamentos do Tarô",           subtitle: "A Base de Tudo",             description: "O que é o tarô, estrutura do baralho, simbologia, intuição, ética e como estudar",  icon: "📖", symbol: "◈",  order: 0,  category: "foundation",    totalLessons: 10, route: "/module/fundamentos" },
-  { id: "leitura-simbolica",   name: "Leitura Simbólica e Método",    subtitle: "O Olhar que Revela",         description: "Como observar uma carta: cor, gesto, direção, postura, cenário e interpretação",    icon: "👁", symbol: "◉",  order: 1,  category: "foundation",    totalLessons: 8,  route: "/module/leitura-simbolica", prerequisiteModuleId: "fundamentos" },
+  { id: "leitura-simbolica",   name: "Leitura Simbólica e Método",    subtitle: "O Olhar que Revela",         description: "Como observar uma carta: cor, gesto, direção, postura, cenário e interpretação",    icon: "👁", symbol: "◉",  order: 1,  category: "foundation",    totalLessons: 8,  route: "/module/leitura-simbolica", prerequisiteModuleId: "arcanos-maiores" },
 
   // ─── Arcanos Maiores ───
-  { id: "arcanos-maiores",     name: "Arcanos Maiores",               subtitle: "A Jornada do Louco",         description: "Os 22 arquétipos universais da jornada da alma",                                    icon: "🃏", symbol: "✦",  order: 2,  category: "major-arcana",  totalLessons: 22, route: "/module/arcanos-maiores",    prerequisiteModuleId: "leitura-simbolica" },
+  { id: "arcanos-maiores",     name: "Arcanos Maiores",               subtitle: "A Jornada do Louco",         description: "Os 22 arquétipos universais da jornada da alma",                                    icon: "🃏", symbol: "✦",  order: 2,  category: "major-arcana",  totalLessons: 22, route: "/module/arcanos-maiores",    prerequisiteModuleId: "fundamentos" },
 
   // ─── Arcanos Menores ───
   { id: "arquitetura-menores", name: "Arquitetura dos Menores",       subtitle: "O Mapa dos 56",              description: "Os 4 naipes, a lógica dos números e como ler Menores com profundidade",             icon: "🗺", symbol: "▣",  order: 3,  category: "minor-arcana",  totalLessons: 6,  route: "/module/arquitetura-menores", prerequisiteModuleId: "arcanos-maiores" },

@@ -52,7 +52,7 @@ const AuthPage = () => {
         const { error } = await signIn(email, password);
         if (error) throw error;
       }
-      navigate("/app");
+      navigate("/module/fundamentos");
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -107,7 +107,7 @@ const AuthPage = () => {
               {mode === "signup" ? "Criar conta" : mode === "login" ? "Entrar" : "Recuperar senha"}
             </h1>
             <p className="text-[15px] font-body text-[#5B1F3D] max-w-[280px] mx-auto leading-relaxed font-bold">
-              {mode === "signup" ? "Crie sua conta para acessar a plataforma e salvar seu progresso." : mode === "login" ? "Boas-vindas de volta à sua jornada." : "Enviaremos um link de acesso."}
+              {mode === "signup" ? "Inicie pelos Fundamentos para desbloquear toda a Jornada." : mode === "login" ? "Boas-vindas de volta à sua jornada." : "Enviaremos um link de acesso."}
             </p>
           </div>
         </div>

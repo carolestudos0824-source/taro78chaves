@@ -146,7 +146,7 @@ const FundamentosLessonPage = () => {
       completeQuiz(`quiz-${lesson.id}`);
       completeLesson(lesson.id);
       addXP(15 + 10); // lesson (15) + quiz completion (10)
-      if (!nextLesson) completeModule("fundamentos");
+      if (lesson.order === 9) completeModule("fundamentos");
       setPhase("complete");
     }
   };
@@ -497,12 +497,17 @@ const FundamentosLessonPage = () => {
                     Você construiu a base. Agora está preparada para a Jornada dos 22 Arcanos Maiores.
                   </p>
                   <button
-                    onClick={() => navigate("/module/arcanos-maiores")}
+                    onClick={() => {
+                      if (lesson.order === 9) {
+                        completeModule("fundamentos");
+                      }
+                      navigate("/module/arcanos-maiores");
+                    }}
                     className="px-8 py-3 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105"
                     style={{
-                      background: "linear-gradient(135deg, hsl(340 42% 26%), hsl(36 42% 44%))",
-                      color: "hsl(36 33% 97%)",
-                      boxShadow: "0 4px 20px hsl(340 42% 28% / 0.15)",
+                      background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+                      color: "#FAF5EF",
+                      boxShadow: "0 4px 20px rgba(91, 31, 61, 0.2)",
                     }}
                   >
                     Começar Arcanos Maiores →

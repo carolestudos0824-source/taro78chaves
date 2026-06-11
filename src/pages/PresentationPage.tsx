@@ -51,7 +51,7 @@ const PresentationPage = () => {
 
   const handleCTA = () => {
     if (user) {
-      navigate("/app");
+      navigate("/module/fundamentos");
     } else {
       navigate("/auth");
     }

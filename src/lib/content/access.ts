@@ -16,15 +16,15 @@ import { MODULES_CATALOG, getModuleFromCatalog } from "./catalog";
  * Mantemos o nome FREE_ARCANO_IDS internamente por compatibilidade, 
  * mas a lógica comercial é de "acesso inicial".
  */
-export const FREE_ARCANO_IDS: readonly number[] = [0];
+export const FREE_ARCANO_IDS: readonly number[] = [];
 
-export function hasInitialAccess(arcanoId: number, quizScores: Record<string, number> = {}): boolean {
-  // O Louco (ID 0) é 100% gratuito e completo
-  if (arcanoId === 0) return true;
+export function hasInitialAccess(arcanoId: number, quizScores: Record<string, number> = {}, completedModules: string[] = []): boolean {
+  // O Louco (ID 0) is 100% free but requires completing Fundamentos first.
+  if (arcanoId === 0) {
+    return completedModules.includes("fundamentos");
+  }
   
-  // O Mago (ID 1) requer assinatura (acesso total) para usuário comum
-  // A regra de performance (nota 80% no Louco) continua sendo um requisito pedagógico,
-  // mas o bloqueio comercial de assinatura agora é soberano no PremiumGate.
+  // All other arcanos (Mago onwards) require subscription
   return false;
 }
 

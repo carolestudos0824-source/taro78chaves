@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { TarotIcon } from "./TarotIcon";
+import { useProgress } from "@/hooks/use-progress";
 
 interface NavItem {
   path: string;
@@ -11,7 +12,7 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   { path: "/app", label: "Início", icon: "jornada", microcopy: "Seu Dashboard" },
-  { path: "/jornada-do-louco", label: "Jornada", icon: "louco", microcopy: "A Jornada do Louco" },
+  { path: "/module/arcanos-maiores", label: "Jornada", icon: "louco", microcopy: "Os 22 Arcanos Maiores" },
   { path: "/desafios", label: "Ritual", icon: "ritual", microcopy: "Faça sua prática de hoje." },
   { path: "/mapa", label: "Mapa", icon: "formacao", microcopy: "Mapa da trilha" },
   { path: "/perfil", label: "Perfil", icon: "perfil", microcopy: "Suas chaves" },
@@ -20,6 +21,8 @@ const NAV_ITEMS: NavItem[] = [
 const BottomNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { progress } = useProgress();
+  const fundamentosComplete = progress.completedModules.includes("fundamentos");
 
   useEffect(() => {
     // Scroll to top on navigation to ensure clear view of new page
@@ -48,18 +51,21 @@ const BottomNav = () => {
       <div className="mx-auto flex items-center justify-between py-2 px-0 w-full max-w-full">
         {NAV_ITEMS.map(item => {
           const isActive = location.pathname === item.path;
+          const isJourneyTab = item.path === "/module/arcanos-maiores";
+          const isLocked = isJourneyTab && !fundamentosComplete;
+          
           return (
             <button
               key={item.path}
               id={`nav-item-${item.label.toLowerCase()}`}
               data-testid={`nav-item-${item.label.toLowerCase()}`}
-              onClick={() => navigate(item.path)}
-              className="flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 transition-all duration-300 relative group py-1 select-none"
-              title={item.microcopy}
+              onClick={() => !isLocked && navigate(item.path)}
+              className={`flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 transition-all duration-300 relative group py-1 select-none ${isLocked ? "opacity-30" : ""}`}
+              title={isLocked ? "Complete os Fundamentos primeiro" : item.microcopy}
             >
               <div className="relative flex items-center justify-center">
                 <TarotIcon 
-                  name={item.icon}
+                  name={isLocked ? "bloqueado" : item.icon}
                   className={`w-5 h-5 min-[390px]:w-6 min-[390px]:h-6 transition-all duration-300 ${isActive ? "scale-110" : "opacity-70 group-hover:opacity-100"}`} 
                   strokeWidth={isActive ? 2.5 : 2} 
                   color={isActive ? "#5B1F3D" : "#5B1F3D"}

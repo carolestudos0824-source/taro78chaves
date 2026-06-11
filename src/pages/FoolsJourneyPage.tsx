@@ -1,16 +1,17 @@
-import { useNavigate } from "react-router-dom";
-import { ChevronRight, Sparkles } from "lucide-react";
+import { useNavigate, Navigate, Link } from "react-router-dom";
+import { ChevronRight, Sparkles, BookOpen, ArrowLeft } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { useResolvedArcanosMaiores } from "@/hooks/use-resolved-arcanos-maiores";
 import { useJourneyContent } from "@/hooks/use-content";
 import { CORES_FASE, JOURNEY_MOTION } from "@/config/journey-visual";
 import { EDITORIAL_REGISTRY } from "@/content/arcanos-maiores";
+import { Lock } from "lucide-react";
 
 
 
 const FoolsJourneyPage = () => {
   const navigate = useNavigate();
-  const { progress, isArcanoUnlocked, isArcanoCompleted } = useProgress();
+  const { progress, isArcanoUnlocked, isArcanoCompleted, loading: progressLoading, fundamentosComplete } = useProgress();
 
   // Fase 2C: lista agregada dos 22 Arcanos Maiores também passa pelo adaptador
   const resolvedMaiores = useResolvedArcanosMaiores();
@@ -22,6 +23,11 @@ const FoolsJourneyPage = () => {
   const isStudied = (arcanoId: number) => isArcanoUnlocked(arcanoId);
   const isComplete = (arcanoId: number) => isArcanoCompleted(arcanoId);
 
+  if (progressLoading) return null;
+  if (!fundamentosComplete) {
+    return <Navigate to="/module/fundamentos" replace />;
+  }
+  
   if (!journey) {
     return null;
   }
@@ -48,6 +54,9 @@ const FoolsJourneyPage = () => {
       }}>
         <div className="container max-w-3xl py-5 px-6">
           <div className="flex items-center gap-4">
+            <Link to="/module/arcanos-maiores" className="w-10 h-10 flex items-center justify-center bg-[#FAF5EF] rounded-full border border-[#C8A66A30] text-[#5B1F3D] hover:bg-[#5B1F3D] hover:text-white transition-all shadow-sm">
+              <ArrowLeft className="w-5 h-5" />
+            </Link>
             
 
             <div>
@@ -111,7 +120,7 @@ const FoolsJourneyPage = () => {
         </section>
 
         {/* Internal Navigation Chips */}
-        <div className="sticky top-20 z-30 mb-8 -mx-6 px-6 py-3 bg-[#FAF5EF]/90 backdrop-blur-md border-y border-[#C8A66A]/10 overflow-x-auto flex items-center gap-4 no-scrollbar scrollbar-hide snap-x snap-mandatory">
+        <div className="sticky top-[72px] z-30 mb-8 -mx-6 px-6 py-3 bg-[#FAF5EF]/90 backdrop-blur-md border-y border-[#C8A66A]/10 overflow-x-auto flex items-center gap-4 no-scrollbar scrollbar-hide snap-x snap-mandatory">
           {fases.map((phase) => (
             <button
               key={phase.id}
@@ -234,7 +243,7 @@ const FoolsJourneyPage = () => {
                       key={arcano.id}
                       onClick={() => studied ? navigate(`/lesson/${arcano.arcanoNumero}`) : undefined}
                       disabled={!studied}
-                      className="w-full text-left group transition-all duration-300 active:scale-[0.98]"
+                      className={`w-full text-left group transition-all duration-300 active:scale-[0.98] ${!studied ? "opacity-60 grayscale-[0.3]" : ""}`}
                       style={{ opacity: 1 }}
                     >
                       <div
@@ -272,7 +281,12 @@ const FoolsJourneyPage = () => {
                           </div>
 
                           {/* Content */}
-                          <div className={`flex-1 min-w-0 flex flex-col justify-center ${!isEven ? 'text-right' : 'text-left'} py-1`}>
+                          <div className={`flex-1 min-w-0 flex flex-col justify-center ${!isEven ? 'text-right' : 'text-left'} py-1 relative`}>
+                            {!isStudied(arcano.arcanoNumero) && (
+                              <div className="absolute top-0 right-0 left-0 bottom-0 flex items-center justify-center pointer-events-none opacity-20">
+                                <Lock className="w-12 h-12 text-[#5B1F3D]" />
+                              </div>
+                            )}
                             <div className={`flex items-center gap-2 mb-1 ${!isEven ? 'justify-end' : 'justify-start'}`}>
                               <span 
                                 className="font-heading text-[10px] md:text-[11px] tracking-[0.2em] font-bold"
@@ -352,13 +366,23 @@ const FoolsJourneyPage = () => {
             }}
             className="group relative w-full max-w-xs px-10 py-5 rounded-full font-heading text-[12px] tracking-[0.3em] uppercase transition-all duration-500 hover:scale-105 active:scale-95 shadow-xl"
             style={{
-              background: "linear-gradient(135deg, #5B1F3D 0%, #3D1429 100%)",
-              color: "#FAF5EF",
+              background: isComplete(0) ? "#FFFFFF" : "linear-gradient(135deg, #5B1F3D 0%, #3D1429 100%)",
+              color: isComplete(0) ? "#5B1F3D" : "#FAF5EF",
+              border: isComplete(0) ? "2px solid #C8A66A" : "none"
             }}
           >
             <span className="relative z-10 flex items-center justify-center gap-3">
-              <Sparkles className="w-4 h-4 text-[#C8A66A] group-hover:rotate-12 transition-transform" />
-              Começar pelo Louco
+              {isComplete(0) ? (
+                <>
+                  <BookOpen className="w-4 h-4 text-[#C8A66A]" />
+                  Revisar O Louco
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-4 h-4 text-[#C8A66A] group-hover:rotate-12 transition-transform" />
+                  Iniciar Arcano 0
+                </>
+              )}
             </span>
             <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
           </button>

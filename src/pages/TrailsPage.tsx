@@ -286,6 +286,9 @@ const TrailsPage = () => {
                     const mod = MODULES.find(m => m.id === modId);
                     if (!mod) return null;
                     const modComplete = progress.completedModules.includes(modId);
+                    
+                    // Unified lock logic
+                    const modUnlocked = bypassLocks || !mod.prerequisiteModuleId || progress.completedModules.includes(mod.prerequisiteModuleId);
                     const isNext = modId === nextGlobalModuleId;
 
                     return (
@@ -293,35 +296,35 @@ const TrailsPage = () => {
                         key={mod.id}
                         id={modId}
                         ref={modId === "fundamentos" ? arcanoZeroRef : undefined}
-                        disabled={!unlocked}
+                        disabled={!modUnlocked}
                         onClick={() => navigate(mod.route)}
                         className={`group/mod relative w-full flex flex-col sm:flex-row items-center sm:items-center text-left transition-all duration-500 rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 border-2 ${
-                          unlocked && isNext 
+                          modUnlocked && isNext 
                             ? 'bg-white border-[#5B1F3D] shadow-[0_25px_60px_rgba(91,31,61,0.1)] hover:translate-x-2' : 
-                          unlocked 
+                          modUnlocked 
                             ? 'bg-white/70 border-[#C8A66A26] hover:border-[#C8A66A80] hover:translate-x-2 hover:bg-white shadow-[0_10px_30px_rgba(0,0,0,0.02)]' : 
-                          'bg-white/40 border-[#DCCFC299] cursor-not-allowed'
+                          'bg-white/40 border-[#DCCFC299] opacity-70'
                         }`}
                       >
                         {/* More Evident Node Connector */}
                         <div className={`absolute -left-[54px] sm:-left-[74px] w-5 h-5 rounded-full border-[3px] border-[#FAF5EF] z-20 transition-all duration-500 shadow-sm ${
                           modComplete ? 'bg-[#C8A66A] scale-100 shadow-[0_0_10px_rgba(200,166,106,0.5)]' : 
                           isNext ? 'bg-[#5B1F3D] scale-[1.6] shadow-[0_0_15px_rgba(91,31,61,0.5)]' : 
-                          unlocked ? 'bg-[#DCCFC2] scale-100' : 'bg-[#DCCFC2]/80 scale-90'
+                          modUnlocked ? 'bg-[#DCCFC2] scale-100' : 'bg-[#DCCFC2]/80 scale-90'
                         }`} />
 
                         <div className={`w-14 h-14 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center shrink-0 shadow-[0_10px_25px_rgba(0,0,0,0.05)] transition-all duration-700 group-hover/mod:rotate-6 group-hover/mod:scale-105 ${
                           modComplete ? 'bg-[#FAF5EF] text-[#C8A66A] border-2 border-[#C8A66A1A]' : 
-                          unlocked && isNext ? 'bg-[#5B1F3D] text-[#FAF5EF]' : 
+                          modUnlocked && isNext ? 'bg-[#5B1F3D] text-[#FAF5EF]' : 
                           'bg-[#DCCFC2]/50 text-[#5B1F3D]/60 border border-[#DCCFC2]'
                         }`}>
-                           {modComplete ? <Check className="w-7 h-7 stroke-[4px]" /> : unlocked && isNext ? <Key className="w-8 h-8 animate-pulse" /> : <Lock className="w-6 h-6 text-[#5B1F3D]/60" />}
+                           {modComplete ? <Check className="w-7 h-7 stroke-[4px]" /> : modUnlocked && isNext ? <Key className="w-8 h-8 animate-pulse" /> : <Lock className="w-6 h-6 text-[#5B1F3D]/60" />}
                         </div>
 
                         <div className="flex-1 mt-4 sm:mt-0 sm:ml-8 min-w-0 w-full text-center sm:text-left">
                           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2 items-center sm:items-start">
                             <span className={`text-[12px] sm:text-[13px] font-heading font-black tracking-[0.3em] uppercase transition-colors duration-500 ${
-                              unlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D]/75'
+                              modUnlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D]/75'
                             }`}>
                               Módulo
                             </span>
@@ -332,14 +335,14 @@ const TrailsPage = () => {
                             )}
                           </div>
                           <h4 className={`font-heading text-xl sm:text-3xl font-black tracking-tight leading-tight transition-all duration-500 ${
-                            unlocked ? 'text-[#5B1F3D]' : 'text-[#5B1F3D]/85'
+                            modUnlocked ? 'text-[#5B1F3D]' : 'text-[#5B1F3D]/85'
                           }`}>
                             {mod.name}
                           </h4>
                         </div>
 
                         <div className="mt-6 sm:mt-0 sm:ml-4 flex items-center justify-center w-full sm:w-auto">
-                          {unlocked && isNext ? (
+                          {modUnlocked && isNext ? (
                             <div className="bg-[#5B1F3D] text-white py-3 px-8 sm:p-3.5 rounded-full sm:rounded-full shadow-[0_10px_30px_rgba(91,31,61,0.3)] group-hover/mod:scale-105 transition-all border border-[#C8A66A33] flex items-center gap-3 w-full sm:w-auto justify-center">
                               <span className="sm:hidden text-[10px] font-heading font-black tracking-widest uppercase">Começar</span>
                               <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-current" />

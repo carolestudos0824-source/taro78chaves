@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Lock, Check, Sparkles, Crown } from "lucide-react";
 import { TarotIcon } from "./TarotIcon";
+import { useProgress } from "@/hooks/use-progress";
 import { ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull } from "@/lib/content";
 import type { UserProgress } from "@/lib/content";
 import { useAccess } from "@/hooks/use-access";
@@ -12,6 +13,7 @@ interface JourneyMapProps {
 
 export function JourneyMap({ progress }: JourneyMapProps) {
   const navigate = useNavigate();
+  const { fundamentosComplete: progressFundamentosComplete } = useProgress();
   const { bypassLocks, canAccessArcano } = useAccess();
 
   return (
@@ -38,10 +40,13 @@ export function JourneyMap({ progress }: JourneyMapProps) {
           const isCompleted = progress.completedLessons.includes(`arcano-${arcano.id}`) && progress.completedQuizzes.includes(`quiz-arcano-${arcano.id}`);
           const isFree = canAccessArcano(arcano.id);
           const isPremium = !isFree && !bypassLocks;
-          const isUnlocked = bypassLocks || isFree || (
+          
+          const fundamentosComplete = progressFundamentosComplete || bypassLocks;
+          
+          const isUnlocked = bypassLocks || (fundamentosComplete && (isFree || (
             progress.completedLessons.includes(`arcano-${arcano.id - 1}`) &&
             progress.completedQuizzes.includes(`quiz-arcano-${arcano.id - 1}`)
-          );
+          )));
           const isCurrent = isUnlocked && !isCompleted;
           const side = index % 2 === 0 ? "left" : "right";
 

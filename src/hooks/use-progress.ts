@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef, createContext, useContext } from "react";
 import { DEFAULT_PROGRESS, type Badge, type UserProgress } from "@/lib/content";
+import { FUNDAMENTOS_LESSONS } from "@/content/lessons/fundamentos";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { useRole } from "@/hooks/use-role";
@@ -157,6 +158,9 @@ interface ProgressContextType {
   getCurrentArcanoId: () => number;
   completedCount: number;
   journeyProgress: number;
+  fundamentosComplete: boolean;
+  fundamentosLessonsCompleted: number;
+  isFirstVisit: boolean;
   completeOnboarding: () => void;
   setStudentName: (name: string) => void;
   resetProgress: () => Promise<void>;
@@ -394,6 +398,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
 
   const completeModule = useCallback((moduleId: string) => {
     if (isStaff) return;
+    console.log(`[progress] completing module: ${moduleId}`);
     setProgress((prev) => {
       if (prev.completedModules.includes(moduleId)) return prev;
       return {
@@ -488,22 +493,34 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   }, [progress.completedLessons, progress.completedQuizzes]);
 
   const isArcanoUnlocked = useCallback((arcanoId: number): boolean => {
+    // Phase 6.6 — Pedagogy: Arcanos Maiores require Fundamentos completion
+    const fundamentosComplete = progress.completedModules.includes("fundamentos");
+    if (!fundamentosComplete && !isStaff) return false;
+    
     if (arcanoId === 0) return true;
     return isArcanoCompleted(arcanoId - 1);
-  }, [isArcanoCompleted]);
+  }, [isArcanoCompleted, progress.completedModules, isStaff]);
 
+  const fundamentosComplete = progress.completedModules.includes("fundamentos");
+  const fundamentosLessonsCompleted = FUNDAMENTOS_LESSONS.filter(l => progress.completedLessons.includes(l.id)).length;
+  const isFirstVisit = !progress.onboardingCompleted && progress.completedLessons.length === 0;
+  
   const getCurrentArcanoId = useCallback((): number => {
+    // If Fundamentos not complete, technically none are current in this module
+    const fundamentosComplete = progress.completedModules.includes("fundamentos");
+    if (!fundamentosComplete && !isStaff) return 0;
+
     for (let i = 0; i <= 21; i++) {
       if (isArcanoUnlocked(i) && !isArcanoCompleted(i)) return i;
     }
     return 21;
-  }, [isArcanoUnlocked, isArcanoCompleted]);
+  }, [isArcanoUnlocked, isArcanoCompleted, progress.completedModules, isStaff]);
 
   const totalCompletedArcanos = Array.from({ length: 22 }, (_, i) => i).filter(id => {
     return progress.completedLessons.includes(`arcano-${id}`) && progress.completedQuizzes.includes(`quiz-arcano-${id}`);
   }).length;
   const completedCount = totalCompletedArcanos;
-  const journeyProgress = Math.round((totalCompletedArcanos / 78) * 100);
+  const journeyProgress = fundamentosComplete ? Math.round((totalCompletedArcanos / 22) * 100) : 0;
 
 
 
@@ -548,6 +565,9 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     getCurrentArcanoId,
     completedCount,
     journeyProgress,
+    fundamentosComplete,
+    fundamentosLessonsCompleted,
+    isFirstVisit,
     completeOnboarding,
     setStudentName,
     resetProgress,

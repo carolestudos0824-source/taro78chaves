@@ -33,6 +33,7 @@ import { useRole } from "@/hooks/use-role";
 import { useAuth } from "@/hooks/use-auth";
 import { useEffect, useMemo } from "react";
 import { useHeader } from "@/contexts/header-context";
+import { FUNDAMENTOS_LESSONS } from "@/content/lessons/fundamentos";
 import { resolveMaiorVisual, resolveMenorVisualById } from "@/lib/content/visual-registry";
 import { getDailyArcanaSet, getJourneyArcanaSet } from "@/lib/content/arcana-utils";
 import imgLouco from "@/assets/arcano-0-louco.jpg";
@@ -58,7 +59,7 @@ const ArchPortal = ({ children, className }: { children: React.ReactNode, classN
 const DashboardPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { progress, loading: progressLoading } = useProgress();
+  const { progress, loading: progressLoading, fundamentosLessonsCompleted } = useProgress();
   const { todayProgress: ritualProgress, streak: ritualStreak } = useRitual();
   const { isPremium, subscriptionStatus, isAdmin } = useAccess();
   const { isStaff, isAuditor, role } = useRole();
@@ -83,6 +84,26 @@ const DashboardPage = () => {
   const globalProgressPct = Math.round((totalCompletedArcanos / totalArcanosCount) * 100);
 
   const currentStep = useMemo(() => {
+    // 1. Check Fundamentos first (new pedagogical flow)
+    for (let i = 0; i < FUNDAMENTOS_LESSONS.length; i++) {
+      const lesson = FUNDAMENTOS_LESSONS[i];
+      if (!progress.completedLessons.includes(lesson.id)) {
+        return {
+          type: "fundamentos" as const,
+          id: lesson.id,
+          name: lesson.title,
+          numeral: (i + 1).toString(),
+          image: imgLouco, // Placeholder or specific icon
+          moduleName: "Fundamentos do Tarô",
+          moduleSlug: "fundamentos",
+          lessonId: lesson.id,
+          lessonName: lesson.title,
+          route: `/fundamentos/${lesson.order}`
+        };
+      }
+    }
+
+    // 2. Check Arcanos Maiores
     for (let i = 0; i <= 21; i++) {
       if (!progress.completedLessons.includes(`arcano-${i}`)) {
         const summary = ARCANOS_MAIORES_CATALOG[i];
@@ -101,6 +122,7 @@ const DashboardPage = () => {
         };
       }
     }
+    // 3. Arcanos Menores...
     const naipes = ["copas", "paus", "espadas", "ouros"] as const;
     const posicoes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "pajem", "cavaleiro", "rainha", "rei"] as const;
     for (const naipe of naipes) {
@@ -171,7 +193,7 @@ const DashboardPage = () => {
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-plum tracking-tight flex flex-col items-center">
               <span className="text-xl md:text-2xl font-light italic text-plum/50 mb-1">Escola Digital de Tarô</span>
               <span className="relative inline-block">
-                Jornada dos 78 Arcanos
+                {currentStep?.type === "fundamentos" ? "Fundamentos do Tarô" : "Jornada dos 78 Arcanos"}
                 <div className="absolute -right-10 -top-4 opacity-40">
                   <Star className="w-6 h-6 text-gold fill-gold/20" />
                 </div>
@@ -357,15 +379,14 @@ const DashboardPage = () => {
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    const journeyCtaTarget = totalCompletedArcanos === 0 
-                      ? "/lesson/0" 
-                      : `/mapa?focus=${currentStep?.lessonId || "arcano-0"}`;
-                    navigate(journeyCtaTarget);
+                    navigate(currentStep?.route || "/module/fundamentos");
                   }}
                   className="w-full py-5 rounded-[1.25rem] font-heading text-[11px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-plum text-white border-gold/30 hover:bg-[#45162D] relative z-[100]"
                 >
                   <span>
-                    {totalCompletedArcanos === 0 ? "Iniciar pelo Louco" : "Continuar jornada"}
+                    {currentStep?.type === "fundamentos" 
+                      ? (fundamentosLessonsCompleted === 0 ? "Começar Pelos Fundamentos" : "Continuar Fundamentos") 
+                      : "Continuar jornada"}
                   </span>
                   <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform text-gold" />
                 </button>

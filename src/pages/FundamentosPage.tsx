@@ -10,7 +10,7 @@ import { PontosBar } from "@/components/PontosBar";
 
 const FundamentosPage = () => {
   const navigate = useNavigate();
-  const { progress } = useProgress();
+  const { progress, fundamentosComplete, completeModule } = useProgress();
   const { bypassLocks } = useAccess();
   // Fase 4A — telemetria invisível: módulo Fundamentos via adaptador (DB-first).
   useResolvedModule("fundamentos");
@@ -22,14 +22,19 @@ const FundamentosPage = () => {
     if (bypassLocks) return true;
     if (order === 0) return true;
     const prev = FUNDAMENTOS_LESSONS.find((l) => l.order === order - 1);
-    return prev ? isLessonCompleted(prev.id) : false;
+    const prevCompleted = prev ? isLessonCompleted(prev.id) : false;
+    
+    // Check if previous lesson has a completed quiz
+    const prevQuizCompleted = prev ? progress.completedQuizzes.includes(`quiz-${prev.id}`) : false;
+    
+    return prevCompleted && prevQuizCompleted;
   };
 
-  const completedCount = FUNDAMENTOS_LESSONS.filter((l) =>
+  const completedLessonsCount = FUNDAMENTOS_LESSONS.filter((l) =>
     isLessonCompleted(l.id)
   ).length;
 
-  const progressPct = Math.round((completedCount / FUNDAMENTOS_LESSONS.length) * 100);
+  const progressPct = Math.round((completedLessonsCount / FUNDAMENTOS_LESSONS.length) * 100);
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
@@ -92,7 +97,7 @@ const FundamentosPage = () => {
                 className="text-[13px] font-heading tracking-wider font-bold leading-tight"
                 style={{ color: "#5B1F3D" }}
               >
-                {completedCount}/{FUNDAMENTOS_LESSONS.length} lições concluídas
+                {completedLessonsCount}/{FUNDAMENTOS_LESSONS.length} lições concluídas
               </span>
               <span
                 className="text-[13px] font-heading tracking-wider font-black"
@@ -307,7 +312,7 @@ const FundamentosPage = () => {
         </div>
 
         {/* Module completion message */}
-        {completedCount === FUNDAMENTOS_LESSONS.length ? (
+        { (fundamentosComplete || completedLessonsCount === 10) ? (
           <div
             className="mt-12 rounded-2xl p-8 text-center relative overflow-hidden"
             style={{
@@ -341,7 +346,12 @@ const FundamentosPage = () => {
               </p>
               
               <button
-                onClick={() => navigate("/module/arcanos-maiores")}
+                onClick={() => {
+                  if (!fundamentosComplete) {
+                    completeModule("fundamentos");
+                  }
+                  navigate("/module/arcanos-maiores");
+                }}
                 className="group relative px-10 py-4 rounded-full font-heading text-sm tracking-[0.2em] transition-all duration-500 hover:scale-105 active:scale-95"
                 style={{
                   background: "#C8A66A",
@@ -368,6 +378,7 @@ const FundamentosPage = () => {
         ) : (
           <div className="mt-12 text-center pb-8 opacity-40">
             <span className="text-2xl text-[#C8A66A]">🗝️</span>
+            <p className="mt-4 text-[10px] uppercase tracking-widest font-heading font-black">Conclua as 10 lições para desbloquear a jornada</p>
           </div>
         )}
         <PageBackControls variant="bottom" className="w-full pb-8" />
