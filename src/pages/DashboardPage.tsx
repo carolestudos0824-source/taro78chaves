@@ -68,12 +68,16 @@ const DashboardPage = () => {
   const { isStaff, isAuditor, role } = useRole();
   const { setHeader, resetHeader } = useHeader();
 
-  const userName = user?.user_metadata?.display_name || progress.studentName || (isAdmin ? "Administrador" : isAuditor ? "Auditor" : "Aluna");
+  const userName = user?.user_metadata?.display_name || progress.studentName || "Aluna";
 
   useEffect(() => {
+    let subtitle = `Bem-vinda, ${userName}`;
+    if (isAdmin) subtitle = "Acesso Administrativo";
+    else if (isAuditor) subtitle = "Modo Auditoria";
+
     setHeader({
       title: "Tarô 78 Chaves",
-      subtitle: isAdmin ? "Acesso Administrativo" : isAuditor ? "Modo Auditoria" : `Bem-vinda, ${userName}`,
+      subtitle,
     });
     return () => resetHeader();
   }, [userName, isAdmin, isAuditor, setHeader, resetHeader]);
@@ -87,7 +91,10 @@ const DashboardPage = () => {
   const globalProgressPct = Math.round((totalCompletedArcanos / totalArcanosCount) * 100);
 
   const currentStep = useMemo(() => {
-    // 1. Check Fundamentos first (new pedagogical flow)
+    // Admin/Auditor logic: skip pedagogical gating
+    if (isAdmin || isAuditor) return null;
+
+    // 1. Check Fundamentos first
     for (let i = 0; i < FUNDAMENTOS_LESSONS.length; i++) {
       const lesson = FUNDAMENTOS_LESSONS[i];
       const studyCompleted = progress.completedLessons.includes(lesson.id);
@@ -100,9 +107,8 @@ const DashboardPage = () => {
           name: lesson.title,
           numeral: (i + 1).toString(),
           label: "Lição",
-          image: imgLouco, 
+          image: imgLouco,
           moduleName: "Fundamentos do Tarô",
-
           moduleSlug: "fundamentos",
           lessonId: lesson.id,
           lessonName: lesson.title,
@@ -111,29 +117,44 @@ const DashboardPage = () => {
       }
     }
 
-    // 2. Check Arcanos Maiores
+    // 2. After Fundamentos: Check for Arcano 0 (The Fool) experience
+    if (!progress.completedLessons.includes("arcano-0")) {
+       return {
+          type: "experience-louco" as const,
+          id: 0,
+          name: "O Louco",
+          numeral: "0",
+          label: "Experiência",
+          image: imgLouco,
+          moduleName: "Experiência Gratuita",
+          moduleSlug: "jornada-do-louco",
+          lessonId: "arcano-0",
+          lessonName: "O Louco",
+          route: "/lesson/0"
+        };
+    }
+
+    // 3. After Arcano 0 (if user is free and completed Arcano 0, they should see paywall)
+    if (!isPremium) {
+       return {
+          type: "paywall" as const,
+          id: -1,
+          name: "Escola Digital",
+          numeral: "∞",
+          label: "Acesso",
+          image: imgLouco,
+          moduleName: "Formação Completa",
+          moduleSlug: "premium",
+          lessonId: "premium",
+          lessonName: "Assinatura",
+          route: "/premium"
+       };
+    }
+
+    // 4. Subscriber/Full flow (Arcanos)
     for (let i = 0; i <= 21; i++) {
       if (!progress.completedLessons.includes(`arcano-${i}`)) {
         const summary = ARCANOS_MAIORES_CATALOG[i];
-        if (!summary) continue;
-
-        // If it's the very first Arcano, lead to the Journey Portal first
-        if (i === 0 && !progress.completedLessons.includes("arcano-0")) {
-          return {
-            type: "arcano" as const,
-            id: i,
-            name: "A Jornada do Louco",
-            numeral: "I",
-            label: "Portal",
-            image: resolveMaiorVisual(0).resolvedAssetUrl || imgLouco,
-            moduleName: "Arcanos Maiores",
-            moduleSlug: "arcanos-maiores",
-            lessonId: "portal-maiores",
-            lessonName: "A Jornada do Louco",
-            route: "/jornada"
-          };
-        }
-
         return {
           type: "arcano" as const,
           id: i,
@@ -141,7 +162,6 @@ const DashboardPage = () => {
           numeral: summary.numeral,
           label: "Arcano",
           image: resolveMaiorVisual(i).resolvedAssetUrl || imgLouco,
-
           moduleName: "Arcanos Maiores",
           moduleSlug: "arcanos-maiores",
           lessonId: `arcano-${i}`,
@@ -150,56 +170,10 @@ const DashboardPage = () => {
         };
       }
     }
-    // 3. Arcanos Menores...
-    const naipes = ["copas", "paus", "espadas", "ouros"] as const;
-    const posicoes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "pajem", "cavaleiro", "rainha", "rei"] as const;
-
-    // If all Maiores are done but no Menores started, lead to the Menores Portal
-    const completedMenores = progress.completedLessons.filter(l => 
-      naipes.some(n => l.startsWith(`${n}-`))
-    ).length;
-
-    if (completedMaiores === 22 && completedMenores === 0) {
-      return {
-        type: "menor" as const,
-        id: "portal-menores",
-        name: "Portal dos Arcanos Menores",
-        numeral: "IV",
-        label: "Portal",
-        image: resolveMenorVisualById("copas-1").resolvedAssetUrl || imgLouco,
-        moduleName: "Arcanos Menores",
-        moduleSlug: "arcanos-menores",
-        lessonId: "portal-menores",
-        lessonName: "O Mapa dos 56",
-        route: "/module/arcanos-menores"
-      };
-    }
-
-    for (const naipe of naipes) {
-      for (const posicao of posicoes) {
-        const id = `${naipe}-${posicao}`;
-        if (!progress.completedLessons.includes(id)) {
-          const visual = resolveMenorVisualById(id);
-          const name = id.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-          return {
-            type: "menor" as const,
-            id: id,
-            name: name,
-            numeral: posicao.toString().toUpperCase(),
-            label: "Arcano Menor",
-            image: visual.resolvedAssetUrl || imgLouco,
-
-            moduleName: `Naipe de ${naipe.charAt(0).toUpperCase() + naipe.slice(1)}`,
-            moduleSlug: naipe,
-            lessonId: id,
-            lessonName: name,
-            route: `/arcano-menor/${id}`
-          };
-        }
-      }
-    }
+    
+    // Portal dos Menores...
     return null;
-  }, [progress.completedLessons]);
+  }, [progress.completedLessons, progress.completedQuizzes, isPremium, isAdmin, isAuditor]);
 
   const journeyTriad = useMemo(() => {
     if (!currentStep) return getJourneyArcanaSet(0);
