@@ -2,6 +2,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useMemo } from "react";
 import { TarotIcon } from "./TarotIcon";
 import { useProgress } from "@/hooks/use-progress";
+import { useAccess } from "@/hooks/use-access";
+
 
 
 interface NavItem {
@@ -23,10 +25,12 @@ const BottomNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { progress } = useProgress();
+  const { bypassLocks } = useAccess();
   const fundamentosComplete = progress.completedModules.includes("fundamentos");
 
   // Determine current active journey path
   const currentJourneyPath = useMemo(() => {
+    if (bypassLocks) return "/module/arcanos-maiores";
     if (!fundamentosComplete) return "/module/fundamentos";
     
     // Check if Maiores are completed
@@ -34,7 +38,8 @@ const BottomNav = () => {
     if (completedMaiores < 22) return "/module/arcanos-maiores";
     
     return "/module/arcanos-menores";
-  }, [fundamentosComplete, progress.completedLessons]);
+  }, [fundamentosComplete, progress.completedLessons, bypassLocks]);
+
 
   useEffect(() => {
     // Scroll to top on navigation to ensure clear view of new page
@@ -66,14 +71,15 @@ const BottomNav = () => {
           const isActive = location.pathname === item.path || (item.label === "Jornada" && location.pathname.startsWith("/module/"));
           const isJourneyTab = item.label === "Jornada";
           const path = isJourneyTab ? currentJourneyPath : item.path;
-          const isLocked = isJourneyTab && !fundamentosComplete && item.path !== "/module/fundamentos";
+          const isLocked = !bypassLocks && isJourneyTab && !fundamentosComplete && item.path !== "/module/fundamentos";
           
           return (
             <button
               key={item.path}
               id={`nav-item-${item.label.toLowerCase()}`}
               data-testid={`nav-item-${item.label.toLowerCase()}`}
-              onClick={() => !isLocked && navigate(path)}
+              onClick={() => navigate(path)}
+
 
               className={`flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 transition-all duration-300 relative group py-1 select-none ${isLocked ? "opacity-30" : ""}`}
               title={isLocked ? "Complete os Fundamentos primeiro" : item.microcopy}
