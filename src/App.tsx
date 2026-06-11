@@ -190,6 +190,11 @@ const AppRoutes = () => {
               <Route path="/cartas-corte" element={<CartasCortePage />} />
               <Route path="/numerologia" element={<NumerologiaPage />} />
               <Route path="/presentation" element={<PresentationPage />} />
+              
+              {/* Catch all for nested app routes to avoid NotFound inside the shell */}
+              <Route path="/perfil/*" element={<Navigate to="/profile" replace />} />
+              <Route path="/mapa/*" element={<Navigate to="/trails" replace />} />
+              <Route path="/desafios/*" element={<Navigate to="/daily-challenges" replace />} />
             </Route>
 
             <Route path="/admin" element={<AdminPage />} />
