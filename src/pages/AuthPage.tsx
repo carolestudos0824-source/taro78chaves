@@ -30,7 +30,7 @@ const AuthPage = () => {
   const translateError = (message: string) => {
     const msg = message.toLowerCase();
     if (msg.includes("invalid login credentials")) return "E-mail ou senha incorretos.";
-    if (msg.includes("user already registered")) return "Este e-mail já está cadastrado.";
+    if (msg.includes("user already registered")) return "Este e-mail já está cadastrado. Entre na sua conta ou recupere sua senha.";
     if (msg.includes("password should be at least 6 characters")) return "A senha deve ter pelo menos 6 caracteres.";
     if (msg.includes("email not confirmed")) return "Confirme seu e-mail antes de entrar.";
     if (msg.includes("signup requires a valid email")) return "Informe um e-mail válido.";
@@ -183,7 +183,41 @@ const AuthPage = () => {
             </div>
           )}
 
-          {error && <p className="text-[11px] font-body text-destructive text-center bg-destructive/5 py-2 rounded-lg">{error}</p>}
+          {error && (
+            <div className="bg-destructive/5 p-4 rounded-lg space-y-3">
+              <p className="text-[11px] font-body text-destructive text-center leading-relaxed">
+                {error}
+              </p>
+              {error.includes("já está cadastrado") && (
+                <div className="flex flex-col gap-2 pt-1">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    type="button"
+                    onClick={() => {
+                      setMode("login");
+                      setError("");
+                    }}
+                    className="h-8 text-[10px] font-heading tracking-widest uppercase border-[#5B1F3D]/20 text-[#5B1F3D] hover:bg-[#5B1F3D]/5"
+                  >
+                    Entrar
+                  </Button>
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    type="button"
+                    onClick={() => {
+                      setMode("forgot");
+                      setError("");
+                    }}
+                    className="h-8 text-[10px] font-heading tracking-widest uppercase text-[#5B1F3D]/60 hover:text-[#5B1F3D]"
+                  >
+                    Esqueci minha senha
+                  </Button>
+                </div>
+              )}
+            </div>
+          )}
           {info && <p className="text-[11px] font-body text-success text-center bg-success/5 py-2 rounded-lg">{info}</p>}
 
           <div className="space-y-3">
