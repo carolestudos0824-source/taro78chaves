@@ -117,17 +117,17 @@ const AuthPage = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           {mode === "signup" && (
             <div className="space-y-1.5">
-              <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-plum/70 ml-1">Nome</label>
+              <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-plum/80 ml-1 font-black">Nome</label>
               <Input className="shadcn-input-premium py-6" value={name} onChange={e => setName(e.target.value)} placeholder="Seu nome" />
             </div>
           )}
           <div className="space-y-1.5">
-            <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-plum/70 ml-1">E-mail</label>
+            <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-plum/80 ml-1 font-black">E-mail</label>
             <Input className="shadcn-input-premium py-6" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="seu@email.com" required />
           </div>
           {mode !== "forgot" && (
             <div className="space-y-1.5 relative">
-              <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-plum/70 ml-1">Senha</label>
+              <label className="text-[10px] font-heading tracking-[0.2em] uppercase text-plum/80 ml-1 font-black">Senha</label>
               <div className="relative">
                 <Input
                   className="shadcn-input-premium py-6"
@@ -161,7 +161,7 @@ const AuthPage = () => {
 
         <div className="text-center space-y-4">
           {mode === "login" && (
-            <button onClick={() => setMode("forgot")} className="text-[11px] font-heading tracking-widest uppercase opacity-40 hover:opacity-100 transition-opacity">
+            <button onClick={() => setMode("forgot")} className="text-[11px] font-heading tracking-widest uppercase opacity-70 hover:opacity-100 transition-opacity font-bold">
               Esqueci minha senha
             </button>
           )}
