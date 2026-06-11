@@ -174,10 +174,12 @@ const AppRoutes = () => {
   
   useEffect(() => {
     // Debug for route matching in external preview
-    if (location.pathname === "/jornada" || location.pathname === "/jornada/") {
-      console.log("AppRoutes matching /jornada. User:", !!localStorage.getItem("supabase.auth.token"));
+    if (location.pathname.includes("jornada")) {
+      console.log("[RouteDebug] Current path:", location.pathname);
+      console.log("[RouteDebug] Is authenticated:", !!localStorage.getItem("supabase.auth.token"));
     }
   }, [location.pathname]);
+
 
 
   return (
@@ -208,6 +210,7 @@ const AppRoutes = () => {
           <Route path="/app" element={<DashboardPage />} />
           <Route path="/trilhas" element={<SecurityGate><TrailsPage /></SecurityGate>} />
           <Route path="/mapa" element={<SecurityGate><TrailsPage /></SecurityGate>} />
+
           <Route path="/desafios" element={<SecurityGate><DailyChallengesPage /></SecurityGate>} />
           <Route path="/premium" element={<SecurityGate><PremiumPage /></SecurityGate>} />
           <Route path="/perfil" element={<SecurityGate><ProfilePage /></SecurityGate>} />
