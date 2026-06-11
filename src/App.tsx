@@ -187,6 +187,9 @@ const AppRoutes = () => {
       <AnalyticsTracker />
       <ConsentBanner />
       <Routes>
+        <Route path="/jornada" element={<ProtectedRoute><AppShell><SecurityGate><FoolsJourneyPage /></SecurityGate></AppShell></ProtectedRoute>} />
+        <Route path="/jornada-do-louco" element={<ProtectedRoute><AppShell><SecurityGate><FoolsJourneyPage /></SecurityGate></AppShell></ProtectedRoute>} />
+
         <Route path="/" element={<LandingPage />} />
         <Route path="/venda" element={<LandingPage isSalesPage={true} />} />
         <Route path="/acesso-comprado" element={<LazyRoute><AcessoComprado /></LazyRoute>} />
@@ -201,15 +204,15 @@ const AppRoutes = () => {
         <Route path="/visual-certificado" element={<LazyRoute><CertificateVisualModel /></LazyRoute>} />
 
 
+
         
 
 
         <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
-          <Route path="/jornada" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
-          <Route path="/jornada-do-louco" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
           <Route path="/app" element={<DashboardPage />} />
           <Route path="/trilhas" element={<SecurityGate><TrailsPage /></SecurityGate>} />
           <Route path="/mapa" element={<SecurityGate><TrailsPage /></SecurityGate>} />
+
 
           <Route path="/desafios" element={<SecurityGate><DailyChallengesPage /></SecurityGate>} />
           <Route path="/premium" element={<SecurityGate><PremiumPage /></SecurityGate>} />
