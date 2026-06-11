@@ -57,7 +57,7 @@ const FoolsJourneyPage = () => {
       }}>
         <div className="container max-w-3xl py-5 px-6">
           <div className="flex items-center gap-4">
-            <Link to="/module/arcanos-maiores" className="w-10 h-10 flex items-center justify-center bg-[#FAF5EF] rounded-full border border-[#C8A66A30] text-[#5B1F3D] hover:bg-[#5B1F3D] hover:text-white transition-all shadow-sm">
+            <Link to="/app" className="w-10 h-10 flex items-center justify-center bg-[#FAF5EF] rounded-full border border-[#C8A66A30] text-[#5B1F3D] hover:bg-[#5B1F3D] hover:text-white transition-all shadow-sm">
               <ArrowLeft className="w-5 h-5" />
             </Link>
             
