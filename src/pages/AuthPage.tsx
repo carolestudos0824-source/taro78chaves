@@ -28,11 +28,14 @@ const AuthPage = () => {
   }, []);
 
   const translateError = (message: string) => {
-    if (message.includes("Invalid login credentials")) return "E-mail ou senha incorretos.";
-    if (message.includes("User already registered")) return "Este e-mail já está cadastrado.";
-    if (message.includes("Password should be at least 6 characters")) return "A senha deve ter pelo menos 6 caracteres.";
-    if (message.includes("Email not confirmed")) return "Confirme seu e-mail antes de entrar.";
-    if (message.includes("Signup requires a valid email")) return "Informe um e-mail válido.";
+    const msg = message.toLowerCase();
+    if (msg.includes("invalid login credentials")) return "E-mail ou senha incorretos.";
+    if (msg.includes("user already registered")) return "Este e-mail já está cadastrado.";
+    if (msg.includes("password should be at least 6 characters")) return "A senha deve ter pelo menos 6 caracteres.";
+    if (msg.includes("email not confirmed")) return "Confirme seu e-mail antes de entrar.";
+    if (msg.includes("signup requires a valid email")) return "Informe um e-mail válido.";
+    if (msg.includes("unable to validate email address")) return "Não foi possível validar o endereço de e-mail.";
+    if (msg.includes("signup disabled")) return "O cadastro de novos usuários está desativado.";
     return message;
   };
 
