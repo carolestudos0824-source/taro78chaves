@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes, Navigate, useLocation, Outlet } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -22,7 +22,6 @@ import { trackPageView, useUTMTracker } from "@/lib/analytics";
 import LandingPage from "./pages/LandingPage.tsx";
 import AuthPage from "./pages/AuthPage.tsx";
 import DashboardPage from "./pages/DashboardPage.tsx";
-import Index from "./pages/Index.tsx";
 import LessonPage from "./pages/LessonPage.tsx";
 import PremiumPage from "./pages/PremiumPage.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
@@ -118,90 +117,87 @@ const AppRoutes = () => {
   useUTMTracker();
 
   return (
-    <div className=\"flex flex-col min-h-screen\">
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <main className=\"flex-grow\">
+      <main className="flex-grow">
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
-            <Route path=\"/\" element={<LandingPage />} />
-            <Route path=\"/auth\" element={<AuthPage />} />
-            <Route path=\"/beta-invite\" element={<BetaInvitePage />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/auth" element={<AuthPage />} />
+            <Route path="/beta-invite" element={<BetaInvitePage />} />
             
-            {/* Protected Routes Wrapper */}
             <Route element={<SecurityGate />}>
-              <Route path=\"/app\" element={<DashboardPage />} />
-              <Route path=\"/profile\" element={<ProfilePage />} />
-              <Route path=\"/premium\" element={<PremiumPage />} />
-              <Route path=\"/acesso-comprado\" element={<AcessoComprado />} />
+              <Route path="/app" element={<DashboardPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/premium" element={<PremiumPage />} />
+              <Route path="/acesso-comprado" element={<AcessoComprado />} />
               
-              <Route path=\"/fundamentos\" element={<FundamentosPage />} />
-              <Route path=\"/fundamentos/:lessonId\" element={<FundamentosLessonPage />} />
+              <Route path="/fundamentos" element={<FundamentosPage />} />
+              <Route path="/fundamentos/:lessonId" element={<FundamentosLessonPage />} />
               
-              <Route path=\"/jornada-do-louco\" element={<FoolsJourneyPage />} />
-              <Route path=\"/jornada\" element={<JornadaAlias />} />
-              <Route path=\"/trails\" element={<TrailsPage />} />
+              <Route path="/jornada-do-louco" element={<FoolsJourneyPage />} />
+              <Route path="/jornada" element={<JornadaAlias />} />
+              <Route path="/trails" element={<TrailsPage />} />
               
-              <Route path=\"/lesson/:id\" element={<LessonPage />} />
+              <Route path="/lesson/:id" element={<LessonPage />} />
               
-              <Route path=\"/journal\" element={<JourneyJournalPage />} />
-              <Route path=\"/daily-challenges\" element={<DailyChallengesPage />} />
+              <Route path="/journal" element={<JourneyJournalPage />} />
+              <Route path="/daily-challenges" element={<DailyChallengesPage />} />
               
-              {/* Module & Lesson Specific Routes */}
-              <Route path=\"/arcanos-menores\" element={<ArcanosMenoresModulePage />} />
-              <Route path=\"/naipe/:naipeId\" element={<NaipePage />} />
-              <Route path=\"/naipe/:naipeId/intro\" element={<NaipeIntroPage />} />
-              <Route path=\"/arcanos-menores/:naipe/:rank\" element={<ArcanoMenorLessonPage />} />
+              <Route path="/arcanos-menores" element={<ArcanosMenoresModulePage />} />
+              <Route path="/naipe/:naipeId" element={<NaipePage />} />
+              <Route path="/naipe/:naipeId/intro" element={<NaipeIntroPage />} />
+              <Route path="/arcanos-menores/:naipe/:rank" element={<ArcanoMenorLessonPage />} />
               
-              <Route path=\"/amor\" element={<AmorPage />} />
-              <Route path=\"/amor/lesson\" element={<AmorLessonPage />} />
+              <Route path="/amor" element={<AmorPage />} />
+              <Route path="/amor/lesson" element={<AmorLessonPage />} />
               
-              <Route path=\"/leitura-simbolica\" element={<LeituraSimbolicaPage />} />
-              <Route path=\"/leitura-simbolica/lesson\" element={<LeituraSimbolicaLessonPage />} />
+              <Route path="/leitura-simbolica" element={<LeituraSimbolicaPage />} />
+              <Route path="/leitura-simbolica/lesson" element={<LeituraSimbolicaLessonPage />} />
               
-              <Route path=\"/arquitetura-menores\" element={<ArquiteturaMenoresPage />} />
-              <Route path=\"/arquitetura-menores/lesson\" element={<ArquiteturaMenoresLessonPage />} />
+              <Route path="/arquitetura-menores" element={<ArquiteturaMenoresPage />} />
+              <Route path="/arquitetura-menores/lesson" element={<ArquiteturaMenoresLessonPage />} />
               
-              <Route path=\"/pratica\" element={<PraticaPage />} />
-              <Route path=\"/pratica/lesson\" element={<PraticaLessonPage />} />
+              <Route path="/pratica" element={<PraticaPage />} />
+              <Route path="/pratica/lesson" element={<PraticaLessonPage />} />
 
-              <Route path=\"/combinacoes\" element={<CombinacoesPage />} />
-              <Route path=\"/combinacoes/:id\" element={<CombinacoesLessonPage />} />
+              <Route path="/combinacoes" element={<CombinacoesPage />} />
+              <Route path="/combinacoes/:id" element={<CombinacoesLessonPage />} />
 
-              <Route path=\"/tiragens\" element={<TiragensPage />} />
-              <Route path=\"/tiragens/:id\" element={<TiragensLessonPage />} />
+              <Route path="/tiragens" element={<TiragensPage />} />
+              <Route path="/tiragens/:id" element={<TiragensLessonPage />} />
 
-              <Route path=\"/espiritualidade\" element={<EspiritualidadePage />} />
-              <Route path=\"/espiritualidade/:id\" element={<EspiritualidadeLessonPage />} />
+              <Route path="/espiritualidade" element={<EspiritualidadePage />} />
+              <Route path="/espiritualidade/:id" element={<EspiritualidadeLessonPage />} />
 
-              <Route path=\"/mesa-taro\" element={<MesaTaroPage />} />
-              <Route path=\"/mesa-taro/:id\" element={<MesaTaroLessonPage />} />
+              <Route path="/mesa-taro" element={<MesaTaroPage />} />
+              <Route path="/mesa-taro/:id" element={<MesaTaroLessonPage />} />
 
-              <Route path=\"/leitura-aplicada\" element={<LeituraAplicadaPage />} />
-              <Route path=\"/leitura-aplicada/:id\" element={<LeituraAplicadaLessonPage />} />
+              <Route path="/leitura-aplicada" element={<LeituraAplicadaPage />} />
+              <Route path="/leitura-aplicada/:id" element={<LeituraAplicadaLessonPage />} />
 
-              <Route path=\"/trabalhar-taro\" element={<TrabalharTaroPage />} />
-              <Route path=\"/trabalhar-taro/:id\" element={<TrabalharTaroLessonPage />} />
+              <Route path="/trabalhar-taro" element={<TrabalharTaroPage />} />
+              <Route path="/trabalhar-taro/:id" element={<TrabalharTaroLessonPage />} />
               
-              <Route path=\"/review/:id\" element={<ReviewPage />} />
-              <Route path=\"/certificates\" element={<CertificatesPage />} />
-              <Route path=\"/library\" element={<SymbolLibraryPage />} />
-              <Route path=\"/study-routine\" element={<StudyRoutinePage />} />
-              <Route path=\"/cartas-corte\" element={<CartasCortePage />} />
-              <Route path=\"/numerologia\" element={<NumerologiaPage />} />
-              <Route path=\"/presentation\" element={<PresentationPage />} />
+              <Route path="/review/:id" element={<ReviewPage />} />
+              <Route path="/certificates" element={<CertificatesPage />} />
+              <Route path="/library" element={<SymbolLibraryPage />} />
+              <Route path="/study-routine" element={<StudyRoutinePage />} />
+              <Route path="/cartas-corte" element={<CartasCortePage />} />
+              <Route path="/numerologia" element={<NumerologiaPage />} />
+              <Route path="/presentation" element={<PresentationPage />} />
             </Route>
 
-            {/* Admin/Legal routes */}
-            <Route path=\"/admin\" element={<AdminPage />} />
-            <Route path=\"/reset-password\" element={<ResetPasswordPage />} />
-            <Route path=\"/privacy\" element={<PrivacyPage />} />
-            <Route path=\"/terms\" element={<TermsPage />} />
-            <Route path=\"/support\" element={<SupportPage />} />
-            <Route path=\"/delete-account\" element={<DeleteAccountPage />} />
-            <Route path=\"/validate-certificate\" element={<ValidateCertificatePage />} />
-            <Route path=\"/certificate-model\" element={<CertificateVisualModel />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/support" element={<SupportPage />} />
+            <Route path="/delete-account" element={<DeleteAccountPage />} />
+            <Route path="/validate-certificate" element={<ValidateCertificatePage />} />
+            <Route path="/certificate-model" element={<CertificateVisualModel />} />
             
-            <Route path=\"*\" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>
@@ -225,7 +221,7 @@ const App = () => (
                     <BrowserRouter>
                       <AppRoutes />
                       <Toaster />
-                      <Sonner position=\"top-center\" expand={true} richColors />
+                      <Sonner position="top-center" expand={true} richColors />
                     </BrowserRouter>
                   </TooltipProvider>
                 </HeaderProvider>
