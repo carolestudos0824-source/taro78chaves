@@ -10,7 +10,7 @@ import { PontosBar } from "@/components/PontosBar";
 
 const FundamentosPage = () => {
   const navigate = useNavigate();
-  const { progress, completedCount: globalCompletedCount, completeModule } = useProgress();
+  const { progress, fundamentosComplete, completeModule } = useProgress();
   const { bypassLocks } = useAccess();
   // Fase 4A — telemetria invisível: módulo Fundamentos via adaptador (DB-first).
   useResolvedModule("fundamentos");
@@ -312,7 +312,7 @@ const FundamentosPage = () => {
         </div>
 
         {/* Module completion message */}
-        { (progress.completedModules.includes("fundamentos") || completedLessonsCount === 10) ? (
+        { (fundamentosComplete || completedLessonsCount === 10) ? (
           <div
             className="mt-12 rounded-2xl p-8 text-center relative overflow-hidden"
             style={{
@@ -347,7 +347,7 @@ const FundamentosPage = () => {
               
               <button
                 onClick={() => {
-                  if (!progress.completedModules.includes("fundamentos")) {
+                  if (!fundamentosComplete) {
                     completeModule("fundamentos");
                   }
                   navigate("/module/arcanos-maiores");
