@@ -16,8 +16,8 @@ const ArcanosMenoresModulePage = () => {
 
   useEffect(() => {
     setHeader({
-      title: "Arcanos Menores",
-      subtitle: "Módulo 04 • O Mapa dos 56",
+      title: "Portal dos Arcanos Menores",
+      subtitle: "A Geometria Sagrada dos 56",
       backRoute: "/app"
     });
     return () => resetHeader();
@@ -129,10 +129,10 @@ const ArcanosMenoresModulePage = () => {
 
           <div className="animate-fade-in">
             <h1 className="font-heading text-3xl md:text-5xl tracking-tight font-black mb-2" style={{ color: "#5B1F3D" }}>
-              ARCANOS MENORES
+              PORTAL DOS MENORES
             </h1>
             <p className="font-accent text-lg md:text-xl italic font-black leading-snug" style={{ color: "#5B1F3D99" }}>
-              "A aplicação do Tarô na vida cotidiana"
+              "A manifestação prática do Tarô"
             </p>
           </div>
 

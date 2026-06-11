@@ -64,14 +64,14 @@ const FoolsJourneyPage = () => {
 
             <div>
               <span className="text-[11px] tracking-[0.35em] uppercase font-heading font-black block mb-0.5" style={{ color: "#C8A66A" }}>
-                ✦ Jornada Integrada ✦
+                ✦ Portal dos Arcanos Maiores ✦
               </span>
               <span className="font-heading text-lg sm:text-xl tracking-wide font-black" style={{
                 background: "linear-gradient(135deg, #3D1429 0%, #5B1F3D 50%, #8B6A30 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}>
-                Portal dos Arcanos Maiores
+                A Jornada do Louco
               </span>
             </div>
           </div>
