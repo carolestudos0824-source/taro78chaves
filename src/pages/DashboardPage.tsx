@@ -18,6 +18,7 @@ import {
   ArrowRight,
   Star
 } from "lucide-react";
+import { toast } from "sonner";
 
 import { TarotIcon } from "@/components/TarotIcon";
 
