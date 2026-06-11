@@ -385,10 +385,10 @@ const DashboardPage = () => {
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        if (totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0) {
-                          navigate("/fundamentos/0");
+                        if (currentStep?.route) {
+                          navigate(currentStep.route);
                         } else {
-                          navigate(currentStep?.route || "/jornada");
+                          navigate("/jornada");
                         }
                       }}
                       className="w-full py-5 rounded-[1.25rem] font-heading text-[13px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-[#5B1F3D] text-white border-gold/30 hover:bg-[#45162D] relative z-[100]"
