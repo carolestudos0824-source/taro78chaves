@@ -11,7 +11,7 @@ import { usePremium } from "@/hooks/use-premium";
 interface CompletionScreenProps {
   arcanoName: string;
   cardImage?: string;
-  pontosEarned: number;
+  keyEarned: boolean;
   quizScore: number;
   quizTotal: number;
   nextArcano?: { id: number; name: string; numeral: string; subtitle?: string } | null;
@@ -28,7 +28,7 @@ interface CompletionScreenProps {
  * Phase 5: Completion with progress saved confirmation + editorial continuity
  */
 export function CompletionScreen({
-  arcanoName, cardImage, pontosEarned, quizScore, quizTotal,
+  arcanoName, cardImage, keyEarned, quizScore, quizTotal,
   nextArcano, prevArcano, isPrevCompleted,
   onNextArcano, onPrevArcano, onBackToMap, isLastArcano, arcanoId,
 }: CompletionScreenProps & { arcanoId?: number }) {

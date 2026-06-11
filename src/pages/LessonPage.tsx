@@ -100,7 +100,7 @@ const LessonPage = () => {
 
 
 
-  const [pontosEarned, setPontosEarned] = useState(0);
+  const [keyEarned, setKeyEarned] = useState(false);
   const [lastQuizScore, setLastQuizScore] = useState(0);
   const [lastQuizTotal, setLastQuizTotal] = useState(0);
   const [showUnlockMoment, setShowUnlockMoment] = useState(false);
@@ -223,6 +223,7 @@ const LessonPage = () => {
     if (arcano.id === 0) {
       earnBadge("fool-complete");
       setShowUnlockMoment(true);
+226:       setKeyEarned(true);
     }
     setLastQuizScore(score);
     setLastQuizTotal(total);

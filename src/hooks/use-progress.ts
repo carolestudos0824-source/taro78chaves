@@ -146,7 +146,7 @@ function progressToDbCore(p: UserProgress) {
 interface ProgressContextType {
   progress: UserProgress;
   loading: boolean;
-  addXP: (amount: number) => void;
+  addKey: () => void;
   completeLesson: (lessonId: string) => void;
   completeModule: (moduleId: string) => void;
   completeQuiz: (quizId: string, score?: number, total?: number) => void;
@@ -368,7 +368,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
 
     try {
       const parsed = JSON.parse(old);
-      if (parsed.completedLessons?.length > 0 || parsed.xp > 0) {
+      if (parsed.completedLessons?.length > 0) {
         setProgress(prev => ({
           ...prev,
           xp: Math.max(prev.xp, parsed.xp ?? 0),

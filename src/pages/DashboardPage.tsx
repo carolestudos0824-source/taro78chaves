@@ -227,7 +227,7 @@ const DashboardPage = () => {
         {/* Horizontal School Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-2 relative z-20">
           {[
-            { label: "Domínio", value: `${globalProgressPct}%`, icon: Target, color: "text-[#9B7C2C]" },
+            { label: "Domínio", value: `${globalProgressPct}%`, icon: KeyRound, color: "text-[#9B7C2C]" },
             { label: totalCompletedArcanos === 1 ? "etapa feita" : "etapas feitas", value: totalCompletedArcanos, icon: KeyRound, color: "text-[#45162D]" },
             { label: progress.completedLessons.length === 1 ? "lição feita" : "lições feitas", value: progress.completedLessons.length, icon: BookOpen, color: "text-[#9B7C2C]" },
             { label: progress.streak === 1 ? "dia" : "dias", value: `${progress.streak}`, icon: Flame, color: "text-[#D97706]" }
