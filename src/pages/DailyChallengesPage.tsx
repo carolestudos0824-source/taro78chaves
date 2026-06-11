@@ -419,8 +419,8 @@ const DailyChallengesPage = () => {
             <div className="bg-plum rounded-[2.5rem] p-8 text-white shadow-2xl relative overflow-hidden">
                <div className="relative z-10 space-y-4">
                  <h3 className="text-xl font-heading font-black text-gold">Chamado Diário</h3>
-                 <p className="text-[13px] font-body font-bold italic opacity-80">Receba um lembrete para seu Ritual todos os dias.</p>
-                 <button onClick={() => navigate("/rotina")} className="w-full py-4 bg-gold text-plum rounded-2xl font-heading text-[10px] font-black tracking-widest uppercase shadow-lg hover:scale-105 transition-all">
+                 <p className="text-[14px] font-body font-black italic opacity-90">Receba um lembrete para seu Ritual todos os dias.</p>
+                 <button onClick={() => navigate("/rotina")} className="w-full py-4 bg-gold text-plum rounded-2xl font-heading text-[11px] font-black tracking-widest uppercase shadow-lg hover:scale-105 transition-all">
                    Ativar lembrete
                  </button>
                </div>
