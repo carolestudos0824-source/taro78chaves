@@ -69,7 +69,8 @@ export function ChaveProgress() {
         <div className="flex flex-col">
           <span className="text-[11px] tracking-[0.2em] uppercase leading-none font-heading font-black" style={{
             color: "#5B1F3D"
-          }}>Chave</span>
+          }}>{currentKeyInfo.index === 1 ? "Chave" : "Chaves"}</span>
+
           <span className="text-xl font-heading tracking-tighter leading-tight font-black" style={{
             color: "#5B1F3D"
           }}>{currentKeyInfo.index}</span>
@@ -112,7 +113,7 @@ export function ChaveProgress() {
           <span className="text-base font-black text-[#5B1F3D]">{currentKeyInfo.index}</span>
           <span className="text-[10px] font-black text-[#5B1F3D]/30">/78</span>
         </div>
-        <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#5B1F3D] uppercase leading-none">Chave</span>
+        <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#5B1F3D] uppercase leading-none">{currentKeyInfo.index === 1 ? "Chave" : "Chaves"}</span>
       </div>
     </div>
   );

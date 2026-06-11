@@ -24,10 +24,22 @@ const BottomNav = () => {
   const { progress } = useProgress();
   const fundamentosComplete = progress.completedModules.includes("fundamentos");
 
+  // Determine current active journey path
+  const currentJourneyPath = useMemo(() => {
+    if (!fundamentosComplete) return "/module/fundamentos";
+    
+    // Check if Maiores are completed
+    const completedMaiores = progress.completedLessons.filter(l => l.startsWith("arcano-")).length;
+    if (completedMaiores < 22) return "/module/arcanos-maiores";
+    
+    return "/module/arcanos-menores";
+  }, [fundamentosComplete, progress.completedLessons]);
+
   useEffect(() => {
     // Scroll to top on navigation to ensure clear view of new page
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [location.pathname]);
+
 
   if (location.pathname === "/") return null;
   if (location.pathname === "/venda") return null;
@@ -50,16 +62,18 @@ const BottomNav = () => {
     >
       <div className="mx-auto flex items-center justify-between py-2 px-0 w-full max-w-full">
         {NAV_ITEMS.map(item => {
-          const isActive = location.pathname === item.path;
-          const isJourneyTab = item.path === "/module/arcanos-maiores";
-          const isLocked = isJourneyTab && !fundamentosComplete;
+          const isActive = location.pathname === item.path || (item.label === "Jornada" && location.pathname.startsWith("/module/"));
+          const isJourneyTab = item.label === "Jornada";
+          const path = isJourneyTab ? currentJourneyPath : item.path;
+          const isLocked = isJourneyTab && !fundamentosComplete && item.path !== "/module/fundamentos";
           
           return (
             <button
               key={item.path}
               id={`nav-item-${item.label.toLowerCase()}`}
               data-testid={`nav-item-${item.label.toLowerCase()}`}
-              onClick={() => !isLocked && navigate(item.path)}
+              onClick={() => !isLocked && navigate(path)}
+
               className={`flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 transition-all duration-300 relative group py-1 select-none ${isLocked ? "opacity-30" : ""}`}
               title={isLocked ? "Complete os Fundamentos primeiro" : item.microcopy}
             >

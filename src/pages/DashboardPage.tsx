@@ -229,9 +229,10 @@ const DashboardPage = () => {
           {[
             { label: "Domínio", value: `${globalProgressPct}%`, icon: KeyRound, color: "text-[#9B7C2C]" },
             { label: totalCompletedArcanos === 1 ? "etapa feita" : "etapas feitas", value: totalCompletedArcanos, icon: KeyRound, color: "text-[#45162D]" },
-            { label: progress.completedLessons.length === 1 ? "lição feita" : "lições feitas", value: progress.completedLessons.length, icon: BookOpen, color: "text-[#9B7C2C]" },
+            { label: progress.completedLessons.length === 1 ? "lição vista" : "lições vistas", value: progress.completedLessons.length, icon: BookOpen, color: "text-[#9B7C2C]" },
             { label: progress.streak === 1 ? "dia" : "dias", value: `${progress.streak}`, icon: Flame, color: "text-[#D97706]" }
           ].map((stat, i) => (
+
             <div key={i} className="bg-white/80 backdrop-blur-md rounded-2xl p-4 border border-gold/15 shadow-sm flex flex-col items-center justify-center space-y-1 group hover:border-gold/30 transition-all">
               <div className="w-8 h-8 rounded-full bg-gold/5 flex items-center justify-center mb-1 group-hover:scale-110 transition-transform">
                 <stat.icon className={`w-4 h-4 ${stat.color}`} />
@@ -363,8 +364,9 @@ const DashboardPage = () => {
                     </div>
                     <div className="flex justify-between items-center px-1">
                       <span className="text-[11px] font-heading font-black text-plum/40 uppercase tracking-[0.1em] leading-tight max-w-[120px]">
-                        {totalCompletedArcanos} de 78 Chaves
+                        {totalCompletedArcanos} de 78 {totalCompletedArcanos === 1 ? "Chave" : "Chaves"}
                       </span>
+
                       <span className="text-[11px] font-heading font-black text-gold uppercase tracking-[0.1em] flex items-center gap-1 leading-tight text-right">
                         {globalProgressPct}% Integrado <Zap className="w-2.5 h-2.5 fill-current" />
                       </span>
