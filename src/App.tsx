@@ -125,8 +125,13 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
 const PublicOnlyRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading } = useAuth();
-  if (loading) return <LoadingFallback />;
-  if (user) return <Navigate to="/app" replace />;
+  const { isFirstVisit, loading: progressLoading } = useProgress();
+  
+  if (loading || progressLoading) return <LoadingFallback />;
+  if (user) {
+    if (isFirstVisit) return <Navigate to="/module/fundamentos" replace />;
+    return <Navigate to="/app" replace />;
+  }
   return <>{children}</>;
 };
 
