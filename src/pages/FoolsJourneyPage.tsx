@@ -11,8 +11,7 @@ import { Lock } from "lucide-react";
 
 const FoolsJourneyPage = () => {
   const navigate = useNavigate();
-  const { progress, isArcanoUnlocked, isArcanoCompleted, loading: progressLoading } = useProgress();
-  const fundamentosComplete = progress.completedModules.includes("fundamentos");
+  const { progress, isArcanoUnlocked, isArcanoCompleted, loading: progressLoading, fundamentosComplete } = useProgress();
 
   // Fase 2C: lista agregada dos 22 Arcanos Maiores também passa pelo adaptador
   const resolvedMaiores = useResolvedArcanosMaiores();
