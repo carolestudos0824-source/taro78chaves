@@ -831,7 +831,7 @@ const DashboardPage = () => {
                     onClick={() => navigate("/premium")}
                     className="w-full lg:w-auto px-8 py-5 bg-gold text-plum rounded-2xl font-heading text-[13px] font-black tracking-[0.3em] uppercase shadow-2xl hover:bg-white hover:scale-[1.02] transition-all active:scale-95 group/btn"
                   >
-                    Desbloquear Formação Completa
+                    Assinar e desbloquear a Escola Digital
                   </button>
                 )}
 
