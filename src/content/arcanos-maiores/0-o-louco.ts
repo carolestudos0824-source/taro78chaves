@@ -11,7 +11,7 @@ export const O_LOUCO: ArcanoMaiorEditorial = {
   keywords: ["Liberdade", "Coragem", "Travessia", "Impulso", "Desapego"],
 
   essence:
-    "O Louco é o impulso puro da alma. Ele não se prende a regras ou memórias do passado. No Tarô, ele representa a coragem de ser quem você é, sem o peso do julgamento. É o primeiro passo de uma jornada que transformará sua visão de mundo.",
+    "O Louco é o impulso puro da alma. Ele não se prende a regras ou memórias do passado. No Tarô, ele representa a coragem de ser quem você é, sem o peso do julgamento. É o primeiro passo de uma jornada que transformará sua visão de mundo. Você tenta decorar significados, mas trava quando precisa interpretar uma carta real. O Tarô não começa pela memória. Começa pelo olhar simbólico. O Louco é o impulso antes da certeza. Ele representa o começo, a liberdade e a coragem de saltar para o desconhecido.",
 
   symbols: [
     { name: "Penhasco", meaning: "Risco, travessia, passo sem garantia." },
@@ -51,7 +51,7 @@ export const O_LOUCO: ArcanoMaiorEditorial = {
 
   voice: {
     intro: "Eu sou o Louco. O impulso antes da certeza.",
-    fullText: "Não me procure nos livros de definições estáticas. Eu existo no intervalo entre a intenção e o ato. Ensinarei você a enxergar além das palavras decoradas.",
+    fullText: "Você tenta decorar significados, mas trava quando precisa interpretar uma carta real? O Tarô não começa pela memória. Começa pelo olhar simbólico. Eu sou o Louco. Ensinarei você a enxergar além das palavras decoradas. Não me procure nos livros de definições estáticas. Eu existo no intervalo entre a intenção e o ato. Ensinarei você a enxergar além das palavras decoradas.",
   },
 
   deepDive: {

@@ -39,6 +39,7 @@ import { PageBackControls } from "@/components/PageBackControls";
  * 9. complete (Conclusão / Revisão)
  */
 type LessonPhase = 
+  | "orientation"
   | "intro" 
   | "essence"
   | "light"
@@ -52,6 +53,7 @@ type LessonPhase =
   | "legacy-content";
 
 const PHASE_ORDER: LessonPhase[] = [
+  "orientation",
   "intro",
   "essence",
   "light",
@@ -66,7 +68,8 @@ const PHASE_ORDER: LessonPhase[] = [
 ];
 
 const PHASE_LABEL: Record<LessonPhase, string> = {
-  intro: "Abertura",
+  orientation: "Objetivo",
+  intro: "Portal do Arcano",
   essence: "Essência",
   light: "Luz",
   shadow: "Sombra",
@@ -255,77 +258,85 @@ const LessonPage = () => {
 
 
         <section className="space-y-8 animate-fade-in">
+          {phase === "orientation" && (
+            <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <div className="text-center space-y-4">
+                <span className="text-[11px] font-heading font-black tracking-[0.5em] uppercase text-[#C8A66A] block opacity-90">
+                  {arcanoId === 0 ? "Objetivo da Lição" : `Lição ${arcanoId}`}
+                </span>
+                <h2 className="text-4xl md:text-6xl font-heading text-[#5B1F3D] font-black tracking-tighter">
+                  Arcano {arcano.numeral} — {arcano.name}
+                </h2>
+                <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-[#C8A66A]/40 to-transparent mx-auto mt-4" />
+              </div>
+
+              <div className="bg-white/80 backdrop-blur-xl border-2 border-[#C8A66A]/20 p-8 rounded-[2rem] shadow-xl space-y-6">
+                <div className="space-y-2">
+                  <p className="text-[16px] md:text-[18px] text-[#5B1F3D] font-black leading-relaxed italic text-center">
+                    {arcanoId === 0 
+                      ? "“Antes de memorizar palavras-chave, aprenda a observar a cena.”"
+                      : `“Aprofunde sua conexão com ${arcano.name} através da observação e prática.”`}
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A] border-b border-[#C8A66A]/10 pb-2">
+                    O que você vai aprender
+                  </h3>
+                  <ul className="grid grid-cols-1 gap-3">
+                    {arcanoId === 0 ? (
+                      [
+                        { item: "O personagem", desc: "O impulso de começar" },
+                        { item: "O precipício", desc: "O risco e a travessia" },
+                        { item: "O cão", desc: "O instinto protetor" },
+                        { item: "A trouxa", desc: "O que carregamos" },
+                        { item: "O sol", desc: "A confiança cósmica" }
+                      ].map((li, i) => (
+                        <li key={i} className="flex items-center gap-3 text-[14px] text-[#5B1F3D] font-bold">
+                          <Sparkles className="w-3.5 h-3.5 text-[#C8A66A] shrink-0" />
+                          <span><span className="text-[#C8A66A]">{li.item}</span>: {li.desc}</span>
+                        </li>
+                      ))
+                    ) : (
+                      [
+                        { item: "A Essência", desc: "O coração do arcano" },
+                        { item: "Símbolos", desc: "A linguagem visual" },
+                        { item: "Luz e Sombra", desc: "A dualidade da energia" },
+                        { item: "Prática", desc: "Aplicação na vida real" }
+                      ].map((li, i) => (
+                        <li key={i} className="flex items-center gap-3 text-[14px] text-[#5B1F3D] font-bold">
+                          <Sparkles className="w-3.5 h-3.5 text-[#C8A66A] shrink-0" />
+                          <span><span className="text-[#C8A66A]">{li.item}</span>: {li.desc}</span>
+                        </li>
+                      ))
+                    )}
+                  </ul>
+                </div>
+
+                <div className="pt-4">
+                  <Button 
+                    onClick={goNext} 
+                    className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-[13px] tracking-widest shadow-xl hover:scale-[1.02] transition-transform leading-tight"
+                  >
+                    Começar estudo
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
+
           {phase === "intro" && (
             <div className="space-y-8" data-lesson-wrapper={arcanoId}>
-              {arcanoId === 0 ? (
-                <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                  <div className="text-center space-y-4">
-                    <span className="text-[11px] font-heading font-black tracking-[0.5em] uppercase text-[#C8A66A] block opacity-90">
-                      O Início da Jornada
-                    </span>
-                    <h2 className="text-4xl md:text-6xl font-heading text-[#5B1F3D] font-black tracking-tighter">
-                      Arcano 0 — O Louco
-                    </h2>
-                    <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-[#C8A66A]/40 to-transparent mx-auto mt-4" />
-                  </div>
-
-                  <div className="relative aspect-[2/3] w-48 md:w-56 mx-auto rounded-2xl overflow-hidden border-2 border-[#C8A66A]/30 shadow-[0_20px_50px_rgba(91,31,61,0.2)]">
-                    <img src={arcano.cardImage} alt={arcano.name} className="w-full h-full object-cover" />
-                  </div>
-
-                  <div className="bg-white/80 backdrop-blur-xl border-2 border-[#C8A66A]/20 p-8 rounded-[2rem] shadow-xl space-y-6">
-                    <div className="space-y-2">
-                      <p className="text-[16px] md:text-[18px] text-[#5B1F3D] font-black leading-relaxed italic text-center">
-                        “Antes de memorizar palavras-chave, aprenda a observar a cena.”
-                      </p>
-                    </div>
-
-                    <div className="space-y-4">
-                      <h3 className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A] border-b border-[#C8A66A]/10 pb-2">
-                        O que você vai aprender
-                      </h3>
-                      <ul className="grid grid-cols-1 gap-3">
-                        {[
-                          { item: "O personagem", desc: "O impulso de começar" },
-                          { item: "O precipício", desc: "O risco e a travessia" },
-                          { item: "O cão", desc: "O instinto protetor" },
-                          { item: "A trouxa", desc: "O que carregamos" },
-                          { item: "O sol", desc: "A confiança cósmica" }
-                        ].map((li, i) => (
-                          <li key={i} className="flex items-center gap-3 text-[14px] text-[#5B1F3D] font-bold">
-                            <Sparkles className="w-3.5 h-3.5 text-[#C8A66A] shrink-0" />
-                            <span><span className="text-[#C8A66A]">{li.item}</span>: {li.desc}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="pt-4">
-                      <Button 
-                        onClick={goNext} 
-                        className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-[13px] tracking-widest shadow-xl hover:scale-[1.02] transition-transform leading-tight"
-                      >
-                        Começar estudo
-                      </Button>
-                    </div>
-
-                    <p className="text-[11px] font-heading font-black text-[#5B1F3D]/40 text-center uppercase tracking-widest">
-                      O portal está aberto
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                <ArcanoVivoStage
-                  key={`arcano-stage-${arcanoId}`}
-                  arcanoId={arcanoId}
-                  cardName={arcano.name}
-                  cardImage={arcano.cardImage}
-                  arcanoSlug={arcano.name.toLowerCase().replace(/\s+/g, "-")}
-                  onContinue={goNext}
-                  introText={arcano.id === 3 ? "Eu sou a Imperatriz. Sou a terra que gera, o ventre que acolhe, a mão que nutre." : arcano.firstPersonIntro}
-                  presenceText={arcano.id === 3 ? "Em mim, a vida encontra forma, cor, textura e prazer. Eu não penso a criação — eu a sinto nascer." : arcano.voiceText}
-                />
-              )}
+              <ArcanoVivoStage
+                key={`arcano-stage-${arcanoId}`}
+                arcanoId={arcanoId}
+                cardName={arcano.name}
+                cardImage={arcano.cardImage}
+                arcanoSlug={arcano.name.toLowerCase().replace(/\s+/g, "-")}
+                onContinue={goNext}
+                introText={arcano.id === 3 ? "Eu sou a Imperatriz. Sou a terra que gera, o ventre que acolhe, a mão que nutre." : arcano.firstPersonIntro}
+                presenceText={arcano.id === 3 ? "Em mim, a vida encontra forma, cor, textura e prazer. Eu não penso a criação — eu a sinto nascer." : arcano.voiceText}
+              />
             </div>
           )}
 
