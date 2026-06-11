@@ -81,7 +81,7 @@ export function mapLegacyArcanoMaiorToUI(a: LegacyArcanoMaior): ArcanoContent {
     },
     quiz: null,
     metadata: { source: "legacy", sourceId: String(a.number) },
-    symbolsMap: a.symbols?.map((s, i) => ({
+    symbolsMap: a.symbols && Array.isArray(a.symbols) ? a.symbols.map((s, i) => ({
       id: `${a.slug}-symbol-${i}`,
       name: s.name,
       description: s.meaning + (s.explanation ? ` ${s.explanation}` : ""),
@@ -90,7 +90,7 @@ export function mapLegacyArcanoMaiorToUI(a: LegacyArcanoMaior): ArcanoContent {
         x: 20 + (i * 12) % 60, 
         y: 25 + (i * 15) % 50 
       }
-    }))
+    })) : []
   };
 }
 
@@ -250,8 +250,7 @@ export function mapLegacyLessonToUI(
     quiz: l.quiz && l.quiz.length > 0
       ? mapLegacyQuizToUI(l.quiz, { tipo: "licao", id: l.id, slug: l.id }, l.id, `Quiz: ${l.title}`)
       : null,
-    metadata: { source: "legacy", sourceId: l.id, usedFallback: true },
-    symbolsMap: [] // Lessons don't have symbolsMap yet
+    metadata: { source: "legacy", sourceId: l.id, usedFallback: true }
   };
 }
 
