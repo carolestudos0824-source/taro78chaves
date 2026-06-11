@@ -279,7 +279,7 @@ const Index = () => {
         </section>
 
         {/* ═══════════════ JOURNEY MAP ═══════════════ */}
-        <section className="mb-12">
+        <section className={`mb-12 transition-all duration-700 ${!fundamentosComplete ? "opacity-30 blur-[2px] pointer-events-none grayscale" : ""}`}>
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
             <span className="text-[11px] font-heading tracking-[0.4em] uppercase text-plum font-black">
