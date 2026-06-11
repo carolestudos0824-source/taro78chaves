@@ -98,8 +98,15 @@ const DashboardPage = () => {
       }
     }
 
-    // Arcano 0 (The Fool)
-    if (!progress.completedLessons.includes("arcano-0")) {
+    // Arcano 0 (The Fool) - Accessible for FREE after Lesson 1 (which is checked above by finishing all Fundamentos loop)
+    // Wait, the rule says: after Lesson 1 of Fundamentos.
+    // If FUNDAMENTOS_LESSONS[0] is completed, and we are on index >= 1, it should show Arcano 0.
+    
+    // Let's refine the logic:
+    const lesson1Completed = progress.completedLessons.includes(FUNDAMENTOS_LESSONS[0]?.id) && 
+                             progress.completedQuizzes.includes(`quiz-${FUNDAMENTOS_LESSONS[0]?.id}`);
+
+    if (lesson1Completed && !progress.completedLessons.includes("arcano-0")) {
       return {
         type: "arcano" as const,
         id: 0,
@@ -111,32 +118,35 @@ const DashboardPage = () => {
         moduleSlug: "jornada-do-louco",
         lessonId: "arcano-0",
         lessonName: "O Louco",
-        route: "/lesson/0"
+        route: "/lesson/0",
+        isFreeLouco: true
       };
     }
 
-    // Subscribers progress
-    for (let i = 1; i <= 21; i++) {
-      if (!progress.completedLessons.includes(`arcano-${i}`)) {
-        const summary = ARCANOS_MAIORES_CATALOG[i];
-        return {
-          type: "arcano" as const,
-          id: i,
-          name: summary?.name || "",
-          numeral: summary?.numeral || "",
-          label: "Arcano",
-          image: resolveMaiorVisual(i).resolvedAssetUrl || imgLouco,
-          moduleName: "Arcanos Maiores",
-          moduleSlug: "arcanos-maiores",
-          lessonId: `arcano-${i}`,
-          lessonName: summary?.name || "",
-          route: `/lesson/${i}`
-        };
+    // Standard progression for subscribers
+    if (isPremium || isAdmin || isAuditor) {
+      for (let i = 1; i <= 21; i++) {
+        if (!progress.completedLessons.includes(`arcano-${i}`)) {
+          const summary = ARCANOS_MAIORES_CATALOG[i];
+          return {
+            type: "arcano" as const,
+            id: i,
+            name: summary?.name || "",
+            numeral: summary?.numeral || "",
+            label: "Arcano",
+            image: resolveMaiorVisual(i).resolvedAssetUrl || imgLouco,
+            moduleName: "Arcanos Maiores",
+            moduleSlug: "arcanos-maiores",
+            lessonId: `arcano-${i}`,
+            lessonName: summary?.name || "",
+            route: `/lesson/${i}`
+          };
+        }
       }
     }
 
     return null;
-  }, [progress.completedLessons, progress.completedQuizzes]);
+  }, [progress.completedLessons, progress.completedQuizzes, isPremium, isAdmin, isAuditor]);
 
   const all78Arcana = useMemo(() => {
     const list = [];
@@ -206,19 +216,27 @@ const DashboardPage = () => {
                 <h3 className="text-2xl md:text-3xl font-heading font-bold text-plum leading-tight">
                   {fundamentosLessonsCompleted === 0 
                     ? "Fundamentos do Tarô — Lição 1: O que é o Tarô" 
-                    : `${currentStep?.label} ${currentStep?.numeral} — ${currentStep?.name}`}
+                    : (currentStep as any)?.isFreeLouco 
+                      ? "Arcano 0 — O Louco" 
+                      : `${currentStep?.label} ${currentStep?.numeral} — ${currentStep?.name}`}
                 </h3>
                 <p className="text-[17px] font-body text-plum/90 font-medium leading-relaxed">
                   {fundamentosLessonsCompleted === 0 
                     ? "Dê o primeiro passo e avance na sua base." 
-                    : "Continue sua jornada e receba suas próximas chaves."}
+                    : (currentStep as any)?.isFreeLouco 
+                      ? "Experimente gratuitamente sua primeira chave." 
+                      : "Continue sua jornada e receba suas próximas chaves."}
                 </p>
               </div>
               <button 
                 onClick={() => navigate(currentStep?.route || "/fundamentos/0")}
                 className="w-full py-6 bg-[#45162D] text-white rounded-2xl font-heading text-[14px] font-black tracking-widest uppercase hover:bg-plum hover:scale-[1.02] transition-all shadow-xl flex items-center justify-center gap-3"
               >
-                {fundamentosLessonsCompleted === 0 ? "Começar primeira lição" : "Continuar Fundamentos"}
+                {fundamentosLessonsCompleted === 0 
+                  ? "Começar primeira lição" 
+                  : (currentStep as any)?.isFreeLouco 
+                    ? "Experimentar o Louco" 
+                    : "Continuar Jornada"}
                 <ArrowRight className="w-5 h-5 text-gold" />
               </button>
             </div>
