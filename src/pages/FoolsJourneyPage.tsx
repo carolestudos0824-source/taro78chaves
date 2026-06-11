@@ -362,7 +362,7 @@ const FoolsJourneyPage = () => {
           <button
             onClick={(e) => {
               e.preventDefault();
-              navigate("/lesson/0");
+              navigate("/module/arcanos-maiores");
             }}
             className="group relative w-full max-w-xs px-10 py-5 rounded-full font-heading text-[12px] tracking-[0.3em] uppercase transition-all duration-500 hover:scale-105 active:scale-95 shadow-xl"
             style={{
