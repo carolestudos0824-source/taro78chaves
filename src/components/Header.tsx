@@ -51,7 +51,7 @@ export const Header = ({ streak, pontos, level }: HeaderProps) => {
                 <Menu className="w-5 h-5 text-[#5B1F3D]" />
               </button>
               
-              {state.backRoute && (
+              {state.backRoute && !isLessonMode && (
                 <PageBackControls 
                   variant="top" 
                   fallbackRoute={state.backRoute} 
@@ -101,7 +101,7 @@ export const Header = ({ streak, pontos, level }: HeaderProps) => {
         
         {isMenuOpen && <GlobalMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />}
         
-        {!state.hidePontos && !isLessonMode && (
+        {!state.hidePontos && !isLessonMode && location.pathname !== "/app" && (
           <div className="mt-2">
             <PontosBar pontos={pontos} level={level} />
           </div>

@@ -123,7 +123,6 @@ const FundamentosLessonPage = () => {
   const currentIdx = phaseSteps.indexOf(phase);
 
   const handleStartQuiz = () => {
-    // PROGRESS REMOVAL: Lesson completion moved to the end of the quiz
     setPhase("quiz");
   };
 
@@ -143,10 +142,14 @@ const FundamentosLessonPage = () => {
       setSelectedAnswer(null);
       setShowExplanation(false);
     } else {
+      // Duolingo Rule: Save progress only after quiz completion
       completeQuiz(`quiz-${lesson.id}`);
       completeLesson(lesson.id);
-      addXP(15 + 10); // lesson (15) + quiz completion (10)
-      if (lesson.order === 9) completeModule("fundamentos");
+      
+      if (lesson.order === 9) {
+        completeModule("fundamentos");
+      }
+      
       setPhase("complete");
     }
   };

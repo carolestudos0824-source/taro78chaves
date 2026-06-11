@@ -18,16 +18,20 @@ const FundamentosPage = () => {
   const isLessonCompleted = (lessonId: string) =>
     progress.completedLessons.includes(lessonId);
 
+  const isQuizCompleted = (lessonId: string) =>
+    progress.completedQuizzes.includes(`quiz-${lessonId}`);
+
   const isLessonUnlocked = (order: number) => {
     if (bypassLocks) return true;
     if (order === 0) return true;
     const prev = FUNDAMENTOS_LESSONS.find((l) => l.order === order - 1);
-    const prevCompleted = prev ? isLessonCompleted(prev.id) : false;
+    if (!prev) return false;
     
-    // Check if previous lesson has a completed quiz
-    const prevQuizCompleted = prev ? progress.completedQuizzes.includes(`quiz-${prev.id}`) : false;
+    // Duolingo Rule: Must complete both study AND quiz of the previous lesson
+    const prevStudyCompleted = isLessonCompleted(prev.id);
+    const prevQuizCompleted = isQuizCompleted(prev.id);
     
-    return prevCompleted && prevQuizCompleted;
+    return prevStudyCompleted && prevQuizCompleted;
   };
 
   const completedLessonsCount = FUNDAMENTOS_LESSONS.filter((l) =>

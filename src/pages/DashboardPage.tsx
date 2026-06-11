@@ -87,7 +87,10 @@ const DashboardPage = () => {
     // 1. Check Fundamentos first (new pedagogical flow)
     for (let i = 0; i < FUNDAMENTOS_LESSONS.length; i++) {
       const lesson = FUNDAMENTOS_LESSONS[i];
-      if (!progress.completedLessons.includes(lesson.id)) {
+      const studyCompleted = progress.completedLessons.includes(lesson.id);
+      const quizCompleted = progress.completedQuizzes.includes(`quiz-${lesson.id}`);
+      
+      if (!studyCompleted || !quizCompleted) {
         return {
           type: "fundamentos" as const,
           id: lesson.id,
