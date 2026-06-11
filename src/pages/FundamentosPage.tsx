@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Check, Lock, ChevronRight, BookOpen } from "lucide-react";
 import { PageBackControls } from "@/components/PageBackControls";
+import { toast } from "sonner";
 
 import { FUNDAMENTOS_LESSONS } from "@/content/lessons/fundamentos";
 import { useProgress } from "@/hooks/use-progress";
@@ -201,10 +202,15 @@ const FundamentosPage = () => {
             return (
               <button
                 key={lesson.id}
-                onClick={() =>
-                  unlocked && navigate(`/fundamentos/${lesson.order}`)
-                }
-                disabled={!unlocked}
+                onClick={() => {
+                  if (unlocked) {
+                    navigate(`/fundamentos/${lesson.order}`);
+                  } else {
+                    toast.info("Você vai desbloquear as próximas lições depois de concluir o quiz da anterior.", {
+                      description: "Construa sua base passo a passo.",
+                    });
+                  }
+                }}
                 className="w-full text-left group transition-all duration-300"
                 style={{
                   animation: `fade-up 0.5s ease-out both`,
