@@ -431,7 +431,10 @@ const DashboardPage = () => {
                   <h3 className="text-2xl font-heading font-bold text-plum tracking-tight">Ritual de hoje</h3>
                   <p className="text-[13px] font-body italic text-plum/70">Mantenha sua chama acesa através da prática ritualística.</p>
                 </div>
-                <button className="px-8 py-4 bg-gold/10 text-plum border border-gold/30 rounded-xl font-heading text-[13px] font-black tracking-[0.3em] uppercase group-hover:bg-gold group-hover:text-plum transition-all flex items-center gap-2">
+                <button 
+                  onClick={() => navigate("/desafios")}
+                  className="px-8 py-4 bg-gold/10 text-plum border border-gold/30 rounded-xl font-heading text-[13px] font-black tracking-[0.3em] uppercase group-hover:bg-gold group-hover:text-plum transition-all flex items-center gap-2"
+                >
                   Praticar agora <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>

@@ -95,7 +95,7 @@ const LessonPage = () => {
   const [phaseIdx, setPhaseIdx] = useState(0);
   const phase = PHASE_ORDER[phaseIdx];
   
-  const arcano = getArcanoById(isValidId ? arcanoId : 0);
+  const arcano = isValidId ? getArcanoById(arcanoId) : undefined;
   const hasAccess = (isValidId ? canAccessArcano(arcanoId) : false) || isStaff;
 
 
@@ -223,8 +223,8 @@ const LessonPage = () => {
     if (arcano.id === 0) {
       earnBadge("fool-complete");
       setShowUnlockMoment(true);
-setKeyEarned(true);
     }
+    setKeyEarned(true);
     setLastQuizScore(score);
     setLastQuizTotal(total);
     setPhaseIdx(PHASE_ORDER.indexOf("complete"));
