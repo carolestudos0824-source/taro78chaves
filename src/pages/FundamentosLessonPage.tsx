@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowRight, Sparkles, MapPin } from "lucide-react";
+import { ArrowRight, Sparkles, MapPin, Key } from "lucide-react";
 import { PageBackControls } from "@/components/PageBackControls";
 
 import { FUNDAMENTOS_LESSONS, getFundamentosLessonByOrder } from "@/content/lessons/fundamentos";
@@ -444,11 +444,17 @@ const FundamentosLessonPage = () => {
         {/* COMPLETE */}
         {phase === "complete" && (
           <div className="text-center py-12 space-y-8" style={{ animation: "fade-up 0.6s ease-out" }}>
-            <div className="w-20 h-20 mx-auto rounded-full flex items-center justify-center text-3xl" style={{
-              background: "linear-gradient(135deg, hsl(36 45% 58% / 0.15), hsl(42 70% 80% / 0.1))",
-              border: "2px solid hsl(36 45% 58% / 0.3)",
-            }}>
-              ✦
+            <div className="relative">
+              <div className="w-24 h-24 mx-auto rounded-full flex flex-col items-center justify-center transition-all duration-700 hover:scale-110"
+                style={{
+                  background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
+                  border: "3px solid #C8A66A",
+                  boxShadow: "0 20px 50px rgba(91, 31, 61, 0.3), 0 0 30px rgba(200, 166, 106, 0.2)",
+                }}
+              >
+                <Key className="w-10 h-10 text-[#C8A66A] animate-pulse" />
+                <span className="text-[8px] font-heading font-black text-[#C8A66A] uppercase tracking-[0.2em] mt-1">Chave</span>
+              </div>
             </div>
             <h2 className="font-heading text-2xl" style={{
               background: "linear-gradient(135deg, hsl(340 42% 22%), hsl(36 45% 44%))",

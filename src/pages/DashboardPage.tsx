@@ -415,7 +415,7 @@ const DashboardPage = () => {
                     if (totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0) {
                       navigate("/fundamentos/0");
                     } else {
-                      navigate(currentStep?.type === "fundamentos" ? currentStep.route : (currentStep?.route || "/jornada"));
+                      navigate(currentStep?.route || "/jornada");
                     }
                   }}
                   className="w-full py-5 rounded-[1.25rem] font-heading text-[13px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-[#5B1F3D] text-white border-gold/30 hover:bg-[#45162D] relative z-[100]"
