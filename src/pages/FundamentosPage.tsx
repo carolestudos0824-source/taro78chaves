@@ -373,6 +373,7 @@ const FundamentosPage = () => {
         ) : (
           <div className="mt-12 text-center pb-8 opacity-40">
             <span className="text-2xl text-[#C8A66A]">🗝️</span>
+            <p className="mt-4 text-[10px] uppercase tracking-widest font-heading font-black">Conclua as 10 lições para desbloquear a jornada</p>
           </div>
         )}
         <PageBackControls variant="bottom" className="w-full pb-8" />
