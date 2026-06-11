@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef, createContext, useContext } from "react";
 import { DEFAULT_PROGRESS, type Badge, type UserProgress } from "@/lib/content";
+import { FUNDAMENTOS_LESSONS } from "@/content/lessons/fundamentos";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { useRole } from "@/hooks/use-role";
@@ -158,6 +159,8 @@ interface ProgressContextType {
   completedCount: number;
   journeyProgress: number;
   fundamentosComplete: boolean;
+  fundamentosLessonsCompleted: number;
+  isFirstVisit: boolean;
   completeOnboarding: () => void;
   setStudentName: (name: string) => void;
   resetProgress: () => Promise<void>;
@@ -499,6 +502,8 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   }, [isArcanoCompleted, progress.completedModules, isStaff]);
 
   const fundamentosComplete = progress.completedModules.includes("fundamentos");
+  const fundamentosLessonsCompleted = FUNDAMENTOS_LESSONS.filter(l => progress.completedLessons.includes(l.id)).length;
+  const isFirstVisit = !progress.onboardingCompleted && progress.completedLessons.length === 0;
   
   const getCurrentArcanoId = useCallback((): number => {
     // If Fundamentos not complete, technically none are current in this module
@@ -561,6 +566,8 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     completedCount,
     journeyProgress,
     fundamentosComplete,
+    fundamentosLessonsCompleted,
+    isFirstVisit,
     completeOnboarding,
     setStudentName,
     resetProgress,
