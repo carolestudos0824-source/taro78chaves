@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { ChevronRight, Sparkles } from "lucide-react";
+import { useNavigate, Navigate } from "react-router-dom";
+import { ChevronRight, Sparkles, BookOpen } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { useResolvedArcanosMaiores } from "@/hooks/use-resolved-arcanos-maiores";
 import { useJourneyContent } from "@/hooks/use-content";
@@ -11,7 +11,8 @@ import { Lock } from "lucide-react";
 
 const FoolsJourneyPage = () => {
   const navigate = useNavigate();
-  const { progress, isArcanoUnlocked, isArcanoCompleted } = useProgress();
+  const { progress, isArcanoUnlocked, isArcanoCompleted, loading: progressLoading } = useProgress();
+  const fundamentosComplete = progress.completedModules.includes("fundamentos");
 
   // Fase 2C: lista agregada dos 22 Arcanos Maiores também passa pelo adaptador
   const resolvedMaiores = useResolvedArcanosMaiores();
@@ -23,6 +24,11 @@ const FoolsJourneyPage = () => {
   const isStudied = (arcanoId: number) => isArcanoUnlocked(arcanoId);
   const isComplete = (arcanoId: number) => isArcanoCompleted(arcanoId);
 
+  if (progressLoading) return null;
+  if (!fundamentosComplete) {
+    return <Navigate to="/module/fundamentos" replace />;
+  }
+  
   if (!journey) {
     return null;
   }
