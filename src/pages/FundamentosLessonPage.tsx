@@ -146,7 +146,7 @@ const FundamentosLessonPage = () => {
       completeQuiz(`quiz-${lesson.id}`);
       completeLesson(lesson.id);
       addXP(15 + 10); // lesson (15) + quiz completion (10)
-      if (lesson.id === "fund-10") completeModule("fundamentos");
+      if (lesson.order === 9) completeModule("fundamentos");
       setPhase("complete");
     }
   };
