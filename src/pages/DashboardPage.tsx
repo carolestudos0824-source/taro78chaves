@@ -144,6 +144,11 @@ const DashboardPage = () => {
       const visual = resolveMaiorVisual(i);
       list.push({ id: `arcano-${i}`, name: ARCANOS_MAIORES_CATALOG[i]?.name || "", image: visual.resolvedAssetUrl });
     }
+    const naipes = ["copas", "paus", "espadas", "ouros"];
+    for (const naipe of naipes) {
+      const visual = resolveMenorVisualById(`${naipe}-1`);
+      list.push({ id: `${naipe}-1`, name: `Ás de ${naipe}`, image: visual.resolvedAssetUrl });
+    }
     return list;
   }, []);
 
