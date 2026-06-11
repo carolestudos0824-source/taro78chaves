@@ -20,7 +20,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
   const location = useLocation();
   const { signOut } = useAuth();
   const { isAdmin } = useIsAdmin();
-  const { getCurrentArcanoId } = useProgress();
+  const { getCurrentArcanoId, fundamentosLessonsCompleted } = useProgress();
 
   const currentArcanoId = getCurrentArcanoId();
 
@@ -80,7 +80,7 @@ const GlobalMenu = ({ isOpen, onClose }: GlobalMenuProps) => {
       <NavItem to="/trilhas" icon="formacao" label="Mapa da Formação" />
       <NavItem to="/desafios" icon="ritual" label="Ritual Diário" />
       <NavItem 
-        to={`/lesson/${currentArcanoId}`} 
+        to={currentArcanoId === 0 && fundamentosLessonsCompleted < 10 ? "/module/fundamentos" : `/lesson/${currentArcanoId}`} 
         icon="proximo" 
         label="Continuar de Onde Parei" 
         badge="Agora" 
