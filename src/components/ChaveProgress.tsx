@@ -55,8 +55,9 @@ export function ChaveProgress() {
   return (
     <div 
       className="flex items-center gap-4"
-      title={`Sua Travessia: ${totalCompletedArcanos} de 78 Chaves`}
-      aria-label={`Sua Travessia: ${totalCompletedArcanos} de 78 Chaves`}
+      title={`Sua Travessia: ${totalCompletedArcanos} de 78 ${totalCompletedArcanos === 1 ? "Chave" : "Chaves"}`}
+      aria-label={`Sua Travessia: ${totalCompletedArcanos} de 78 ${totalCompletedArcanos === 1 ? "Chave" : "Chaves"}`}
+
     >
       <div className="flex items-center gap-3 shrink-0">
         <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transition-transform hover:scale-105" style={{
