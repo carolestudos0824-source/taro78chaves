@@ -146,7 +146,7 @@ const AnalyticsTracker = () => {
   return null;
 };
 
-const AppShell = () => {
+const AppShell = ({ children }: { children?: React.ReactNode }) => {
   const { progress } = useProgress();
   return (
     <div className="flex flex-col min-h-screen bg-[#FAF5EF]">
@@ -156,12 +156,13 @@ const AppShell = () => {
 
       <main className="flex-1 pb-24 relative overflow-y-auto h-[calc(100vh-72px)]">
         {/* Suspense removed from here to prevent content vanishing between eager routes */}
-        <Outlet />
+        {children || <Outlet />}
       </main>
       <BottomNav />
     </div>
   );
 };
+
 
 const LazyRoute = ({ children }: { children: React.ReactNode }) => (
   <Suspense fallback={null}>
