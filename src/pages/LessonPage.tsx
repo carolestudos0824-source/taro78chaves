@@ -263,8 +263,8 @@ const LessonPage = () => {
                 cardImage={arcano.cardImage}
                 arcanoSlug={arcano.name.toLowerCase().replace(/\s+/g, "-")}
                 onContinue={goNext}
-                introText={arcano.firstPersonIntro}
-                presenceText={arcano.voiceText}
+                introText={arcano.id === 3 ? "Eu sou a Imperatriz. Sou a terra que gera, o ventre que acolhe, a mão que nutre." : arcano.firstPersonIntro}
+                presenceText={arcano.id === 3 ? "Em mim, a vida encontra forma, cor, textura e prazer. Eu não penso a criação — eu a sinto nascer." : arcano.voiceText}
               />
             </div>
           )}
