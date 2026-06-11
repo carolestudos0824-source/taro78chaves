@@ -201,6 +201,11 @@ const FundamentosLessonPage = () => {
           <div className="flex flex-col flex-1 min-w-0">
             <span className="text-[10px] tracking-[0.4em] uppercase font-heading mb-1 flex items-center gap-2 font-black" style={{ color: "#C8A66A" }}>
               <MapPin className="w-3 h-3" /> {lessonOrder + 1}/{FUNDAMENTOS_LESSONS.length}
+              {progress.completedLessons.includes(lesson.id) && (
+                <span className="ml-2 px-1.5 py-0.5 bg-[#C8A66A20] text-[#C8A66A] rounded text-[8px] tracking-widest border border-[#C8A66A30]">
+                  REVISÃO
+                </span>
+              )}
             </span>
             <h2 className="font-heading text-base truncate font-black" style={{ color: "#5B1F3D" }}>
               {lesson.title}
