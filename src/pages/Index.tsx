@@ -12,7 +12,7 @@ import { useAccess } from "@/hooks/use-access";
 
 const Index = () => {
 
-  const { progress, loading: progressLoading, updateStreak, getCurrentArcanoId, completedCount, journeyProgress } = useProgress();
+  const { progress, loading: progressLoading, updateStreak, getCurrentArcanoId, completedCount, journeyProgress, fundamentosComplete: progressFundamentosComplete } = useProgress();
   const { bypassLocks } = useAccess();
   const navigate = useNavigate();
   const { setHeader, resetHeader } = useHeader();
@@ -40,8 +40,8 @@ const Index = () => {
   const currentArcanoId = getCurrentArcanoId();
   const currentArcano = ARCANOS_MAIORES.find(a => a.id === currentArcanoId);
   
-  const fundamentosComplete = progress.completedModules.includes("fundamentos") || bypassLocks;
-  const allComplete = (completedCount >= 22) || !fundamentosComplete;
+  const fundamentosComplete = progressFundamentosComplete || bypassLocks;
+  const allComplete = fundamentosComplete && (completedCount >= 22);
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
