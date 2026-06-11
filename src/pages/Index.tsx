@@ -138,7 +138,8 @@ const Index = () => {
             <div className="mt-8 flex justify-center">
               <button
                 onClick={() => navigate("/jornada-do-louco")}
-                className="px-8 py-3 rounded-xl bg-[#FAF5EF] text-[#5B1F3D] font-heading text-[10px] tracking-[0.2em] uppercase font-black border border-[#C8A66A30] hover:bg-[#5B1F3D] hover:text-white transition-all flex items-center gap-2"
+                disabled={!fundamentosComplete}
+                className={`px-8 py-3 rounded-xl bg-[#FAF5EF] text-[#5B1F3D] font-heading text-[10px] tracking-[0.2em] uppercase font-black border border-[#C8A66A30] hover:bg-[#5B1F3D] hover:text-white transition-all flex items-center gap-2 ${!fundamentosComplete ? "opacity-50 grayscale cursor-not-allowed" : ""}`}
               >
                 Conhecer a Jornada do Louco <ChevronRight className="w-3 h-3" />
               </button>
