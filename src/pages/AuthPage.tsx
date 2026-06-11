@@ -10,8 +10,9 @@ import { trackEvent } from "@/lib/analytics";
 
 const AuthPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialMode = searchParams.get("mode") === "forgot" ? "forgot" : "signup";
+  const initialMode = searchParams.get("mode") === "login" ? "login" : searchParams.get("mode") === "forgot" ? "forgot" : "signup";
   const [mode, setMode] = useState<"login" | "signup" | "forgot">(initialMode);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
