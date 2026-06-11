@@ -66,6 +66,10 @@ const Index = () => {
       </div>
 
       <main className="relative z-10 container max-w-3xl px-6 pb-12">
+        <div className="pt-8">
+          <PageBackControls variant="top" showLabel={false} className="h-auto p-0" />
+        </div>
+
 
         {/* ═══════════════ HERO SECTION ═══════════════ */}
         <section className="pt-20 pb-12 text-center relative">
