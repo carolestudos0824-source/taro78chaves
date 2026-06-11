@@ -145,7 +145,7 @@ const ProfilePage = () => {
         <div className="grid grid-cols-3 gap-4">
           {[
             { label: "Ritual", val: progress.streak, icon: "ritual", color: "#5B1F3D" },
-            { label: "Portais", val: completedCount, icon: "premium", color: "#C8A66A" },
+            { label: "Chaves", val: completedCount, icon: "premium", color: "#C8A66A" },
             { label: "Insignias", val: progress.badges.filter(b => b.earned).length, icon: "Sparkles", color: "#5B1F3D" },
           ].map(s => (
             <div key={s.label} className="bg-white border-2 border-[#DCCFC2]/30 p-5 rounded-[1.5rem] text-center shadow-lg transform transition-transform hover:scale-[1.02]">
