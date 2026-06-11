@@ -29,9 +29,8 @@ const Index = () => {
 
   useEffect(() => {
     setHeader({
-      title: "Portal de Arcanos Maiores",
-      subtitle: "Módulo 03 • A Jornada do Louco",
-
+      title: "Arcanos Maiores",
+      subtitle: "A Jornada do Louco ao Mundo",
       backRoute: "/app",
       hidePontos: false,
       hideStreak: false
@@ -151,11 +150,11 @@ const Index = () => {
 
             <div className="mt-8 flex justify-center">
               <button
-                onClick={() => navigate("/trilhas")}
+                onClick={() => navigate("/jornada-do-louco")}
                 disabled={!fundamentosComplete}
                 className={`px-8 py-3 rounded-xl bg-[#FAF5EF] text-[#5B1F3D] font-heading text-[10px] tracking-[0.2em] uppercase font-black border border-[#C8A66A30] hover:bg-[#5B1F3D] hover:text-white transition-all flex items-center gap-2 ${!fundamentosComplete ? "opacity-50 grayscale cursor-not-allowed" : ""}`}
               >
-                Conhecer a Trilha de Formação <ChevronRight className="w-3 h-3" />
+                Ler a Jornada do Louco ao Mundo <ChevronRight className="w-3 h-3" />
               </button>
             </div>
           </div>
@@ -261,21 +260,60 @@ const Index = () => {
           </section>
         )}
 
+        {/* ═══════════════ THE FOOL'S JOURNEY NARRATIVE ═══════════════ */}
+        {fundamentosComplete && (
+          <section className="mb-16">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
+              <span className="text-[11px] font-heading tracking-[0.4em] uppercase text-plum font-black">
+                A Travessia Iniciática
+              </span>
+              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A50]" />
+            </div>
+
+            <div className="relative rounded-[2rem] p-8 md:p-10 overflow-hidden" style={{
+              background: "rgba(255, 255, 255, 0.7)",
+              backdropFilter: "blur(12px)",
+              border: "1.5px solid rgba(200, 166, 106, 0.2)",
+              boxShadow: "0 20px 40px rgba(91, 31, 61, 0.03)"
+            }}>
+              <h3 className="font-heading text-2xl mb-6 text-[#5B1F3D]">A Jornada do Louco</h3>
+              <div className="space-y-4">
+                <p className="font-body text-[16px] leading-[1.7] text-[#5B1F3D] font-bold">
+                  Os 22 Arcanos Maiores não são apenas cartas isoladas, mas capítulos de uma grande jornada da consciência humana.
+                </p>
+                <p className="font-body text-[15px] leading-[1.7] text-[#5B1F3D]/80 font-bold">
+                  Tudo começa com <strong>O Louco (0)</strong>, o viajante que salta no desconhecido, e termina com <strong>O Mundo (XXI)</strong>, a integração de todo o aprendizado. Entre o início e o fim, passamos pelos mestres do mundo material, as provas do mundo interior e a travessia das sombras até a iluminação final.
+                </p>
+              </div>
+              
+              <div className="mt-8 flex justify-start">
+                <button
+                  onClick={() => navigate("/jornada-do-louco")}
+                  className="group flex items-center gap-2 text-[#C8A66A] font-heading text-[11px] tracking-[0.2em] uppercase font-black"
+                >
+                  Ver narrativa completa <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </button>
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* ═══════════════ WHAT YOU'LL LEARN ═══════════════ */}
         <section className="mb-12">
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
             <span className="text-[11px] font-heading tracking-[0.4em] uppercase text-plum font-black">
-              Sua Aprendizagem
+              O que você vai dominar
             </span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A50]" />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { icon: "Stars", label: "Essência e arquétipos" },
-              { icon: "Sparkles", label: "Símbolos e significados" },
-              { icon: "sol", label: "Luz e sombra" },
-              { icon: "enamorados", label: "Amor, trabalho e espírito" },
+              { icon: "Stars", label: "Arquétipos da Alma" },
+              { icon: "Sparkles", label: "Símbolos Ocultos" },
+              { icon: "sol", label: "Luz e Sombra" },
+              { icon: "enamorados", label: "Missão de Vida" },
             ].map((item) => (
               <div key={item.label} className="rounded-[1.5rem] p-7 text-center transition-all hover:bg-white border border-[#C8A66A25] group shadow-sm hover:shadow-xl" style={{
                 background: "rgba(255, 255, 255, 0.85)",
@@ -297,7 +335,7 @@ const Index = () => {
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
             <span className="text-[11px] font-heading tracking-[0.4em] uppercase text-plum font-black">
-              Visão da Jornada
+              Mapa da Jornada Acadêmica
             </span>
 
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A40]" />
