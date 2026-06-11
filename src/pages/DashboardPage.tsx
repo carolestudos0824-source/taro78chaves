@@ -534,7 +534,19 @@ const DashboardPage = () => {
                   <p className="text-[13px] font-body italic text-plum/70">Mantenha sua chama acesa através da prática ritualística.</p>
                 </div>
                 <button 
-                  onClick={() => navigate("/desafios")}
+                  onClick={() => {
+                    if (progress.completedLessons.length === 0 && !isAdmin) {
+                      toast.info("Seu ritual será liberado depois da primeira lição.", {
+                        description: "Complete Fundamentos do Tarô — Lição 1.",
+                        action: {
+                          label: "Começar",
+                          onClick: () => navigate("/fundamentos/0")
+                        }
+                      });
+                      return;
+                    }
+                    navigate("/desafios");
+                  }}
                   className="px-8 py-4 bg-gold/10 text-plum border border-gold/30 rounded-xl font-heading text-[13px] font-black tracking-[0.3em] uppercase group-hover:bg-gold group-hover:text-plum transition-all flex items-center gap-2"
                 >
                   Praticar agora <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
@@ -551,7 +563,22 @@ const DashboardPage = () => {
               <div className="w-2 h-2 rounded-full bg-gold" />
               <h3 className="font-heading text-[14px] font-black tracking-[0.5em] text-gold uppercase">Mapa de Estudo</h3>
             </div>
-            <button onClick={() => navigate("/trilhas")} className="text-[12px] font-heading font-black tracking-widest text-plum/70 hover:text-plum transition-colors flex items-center gap-2 group">
+            <button 
+              onClick={() => {
+                if (!fundamentosComplete && !isAdmin) {
+                  toast.info("Este módulo será desbloqueado quando você avançar na sua formação.", {
+                    description: "Continue construindo sua base.",
+                    action: {
+                      label: "Continuar",
+                      onClick: () => navigate("/module/fundamentos")
+                    }
+                  });
+                  return;
+                }
+                navigate("/trilhas");
+              }} 
+              className="text-[12px] font-heading font-black tracking-widest text-plum/70 hover:text-plum transition-colors flex items-center gap-2 group"
+            >
               Explorar <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
