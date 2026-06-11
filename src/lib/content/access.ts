@@ -16,15 +16,16 @@ import { MODULES_CATALOG, getModuleFromCatalog } from "./catalog";
  * Mantemos o nome FREE_ARCANO_IDS internamente por compatibilidade, 
  * mas a lógica comercial é de "acesso inicial".
  */
-export const FREE_ARCANO_IDS: readonly number[] = [0];
+export const FREE_ARCANO_IDS: readonly number[] = [];
 
 export function hasInitialAccess(arcanoId: number, quizScores: Record<string, number> = {}, completedModules: string[] = []): boolean {
-  // O Louco (ID 0) is only accessible after completing Fundamentos
+  // Pedagogy Phase 6.6: No arcanos are free by default.
+  // Must complete Fundamentos module first.
   if (arcanoId === 0) {
     return completedModules.includes("fundamentos");
   }
   
-  // O Mago (ID 1) requires subscription
+  // All other arcanos (Mago onwards) require subscription
   return false;
 }
 
