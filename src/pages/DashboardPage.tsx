@@ -345,7 +345,7 @@ const DashboardPage = () => {
                       </span>
                     </div>
                   </div>
-                  <PageBackControls variant="bottom" className="mt-8" />
+                  
 
                 </div>
               )}
