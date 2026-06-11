@@ -99,6 +99,7 @@ export interface ArcanoContent {
     source: ContentSource;
     sourceId?: string;
   };
+  symbolsMap?: import("./runtime-types").ArcanoSymbolMapItem[];
 }
 
 // ─── Lição ─────────────────────────────────────────────────────────

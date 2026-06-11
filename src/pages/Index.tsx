@@ -32,7 +32,8 @@ const Index = () => {
       title: "Arcanos Maiores",
       subtitle: "Módulo 03 • Arcanos Maiores",
       backRoute: "/app",
-      hidePontos: true
+      hidePontos: false,
+      hideStreak: false
     });
     return () => resetHeader();
   }, [setHeader, resetHeader]);

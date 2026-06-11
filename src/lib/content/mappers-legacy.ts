@@ -28,7 +28,7 @@ export interface LegacyArcanoMaior {
   cardImage: string;
   keywords: string[];
   essence: string;
-  symbols: unknown;
+  symbols: { name: string; meaning: string; explanation?: string; pedagogicSense?: string; relation?: string }[];
   archetype: string;
   light: string;
   shadow: string;
@@ -81,6 +81,16 @@ export function mapLegacyArcanoMaiorToUI(a: LegacyArcanoMaior): ArcanoContent {
     },
     quiz: null,
     metadata: { source: "legacy", sourceId: String(a.number) },
+    symbolsMap: a.symbols && Array.isArray(a.symbols) ? a.symbols.map((s, i) => ({
+      id: `${a.slug}-symbol-${i}`,
+      name: s.name,
+      description: s.meaning + (s.explanation ? ` ${s.explanation}` : ""),
+      reflectionQuestion: s.pedagogicSense || "O que este símbolo desperta em você?",
+      position: { 
+        x: 20 + (i * 12) % 60, 
+        y: 25 + (i * 15) % 50 
+      }
+    })) : []
   };
 }
 
@@ -240,7 +250,7 @@ export function mapLegacyLessonToUI(
     quiz: l.quiz && l.quiz.length > 0
       ? mapLegacyQuizToUI(l.quiz, { tipo: "licao", id: l.id, slug: l.id }, l.id, `Quiz: ${l.title}`)
       : null,
-    metadata: { source: "legacy", sourceId: l.id, usedFallback: true },
+    metadata: { source: "legacy", sourceId: l.id, usedFallback: true }
   };
 }
 

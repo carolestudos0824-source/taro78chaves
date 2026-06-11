@@ -14,12 +14,55 @@ export const A_IMPERATRIZ: ArcanoMaiorEditorial = {
     "A Imperatriz é o Arcano III — a Grande Mãe, a força criativa que dá forma à vida. Ela é a natureza em seu estado mais generoso: fértil, sensual, abundante. Enquanto a Sacerdotisa guarda o mistério no silêncio, a Imperatriz o manifesta em matéria, cor, textura e prazer. Ela não pensa a criação — ela a sente, a gesta, a nutre. Quando a Imperatriz aparece, o universo diz: é hora de criar, nutrir e florescer.",
 
   symbols: [
-    { name: "Coroa de doze estrelas", meaning: "Os doze signos do zodíaco e o domínio sobre os ciclos naturais. Coroa-se não pelo poder, mas pela harmonia com o tempo cósmico — quem rege a Imperatriz é a própria natureza." },
-    { name: "Cetro com globo", meaning: "Poder sobre o mundo material e a fertilidade da terra. O globo no topo lembra que sua autoridade é orgânica: ela não impõe, ela faz crescer." },
-    { name: "Escudo em forma de coração com Vênus", meaning: "Símbolo imperial gravado com o glifo de Vênus — poder criador e proteção maternal. Reforça que esta soberania é regida pelo amor, não pela conquista." },
-    { name: "Campo de trigo dourado", meaning: "Abundância concreta, colheita e os frutos do que foi cultivado com paciência. Indica que a Imperatriz só aparece em vida onde alguém regou o solo antes." },
-    { name: "Cascata e rio fluindo", meaning: "Emoções em movimento, fluxo criativo e fertilidade contínua. A água que desce dos altos lembra que a vida circula livremente quando nada é represado." },
-    { name: "Almofadas e tecidos luxuosos", meaning: "Conforto, prazer sensorial e conexão com o corpo. Ensina que prazer não é frivolidade — é via legítima de contato com o sagrado." },
+    { 
+      name: "Coroa de doze estrelas", 
+      meaning: "Domínio sobre os ciclos cósmicos e terrestres.",
+      explanation: "As doze estrelas representam os signos do zodíaco e os meses do ano.",
+      pedagogicSense: "Ensina que a criação está em harmonia com o tempo universal.",
+      relation: "Coroa a Imperatriz como regente da natureza viva."
+    },
+    { 
+      name: "Cetro com globo", 
+      meaning: "Autoridade orgânica sobre a vida e a fertilidade.",
+      explanation: "O globo representa o mundo material sob seu cuidado nutritivo.",
+      pedagogicSense: "Mostra que o verdadeiro poder é aquele que faz crescer.",
+      relation: "Simboliza sua soberania sobre a terra fértil."
+    },
+    { 
+      name: "Escudo de Vênus", 
+      meaning: "Poder criador regido pelo amor e beleza.",
+      explanation: "O coração com o glifo de Vênus indica proteção maternal.",
+      pedagogicSense: "Reforça que a criação nasce do afeto, não da força.",
+      relation: "Conecta a Imperatriz à deusa do amor e da abundância."
+    },
+    { 
+      name: "Campo de trigo", 
+      meaning: "Abundância concreta e colheita dos esforços.",
+      explanation: "Representa a Lei da Colheita: colhemos o que cultivamos.",
+      pedagogicSense: "Ensina a paciência necessária para o florescimento.",
+      relation: "Reflete a fertilidade da terra que ela habita."
+    },
+    { 
+      name: "Trono luxuoso", 
+      meaning: "Conforto e acolhimento da Grande Mãe.",
+      explanation: "Almofadas e tecidos sugerem prazer sensorial e repouso.",
+      pedagogicSense: "Lembra que o prazer é uma via sagrada de conexão.",
+      relation: "Sustenta sua presença soberana e generosa."
+    },
+    { 
+      name: "Cetro da Criação", 
+      meaning: "A vara de poder que manifesta a vida.",
+      explanation: "Representa a vontade criativa canalizada para a forma.",
+      pedagogicSense: "Convida a assumir o papel de co-criadora da realidade.",
+      relation: "Instrumento de manifestação da abundância."
+    },
+    { 
+      name: "Floresta e Rio", 
+      meaning: "Vitalidade contínua e fluxo das emoções.",
+      explanation: "A água que flui e o verde intenso simbolizam vida eterna.",
+      pedagogicSense: "Ensina que a vida nunca estagna quando flui livremente.",
+      relation: "Cenário de abundância onde ela exerce seu domínio."
+    },
   ],
 
   archetype:
@@ -50,8 +93,8 @@ export const A_IMPERATRIZ: ArcanoMaiorEditorial = {
   },
 
   voice: {
-    intro: "Eu sou a Imperatriz. Sou a terra que gera, o ventre que acolhe, a mão que nutre. Em mim, a vida encontra forma, cor, textura e prazer. Eu não penso a criação — eu a sinto nascer.",
-    fullText: "Eu sou a Imperatriz.\nSou a terra que gera, o ventre que acolhe, a mão que nutre.\nEm mim, a vida encontra forma, cor, textura e prazer.\nEu sou o campo de trigo dourado, o rio que flui, a flor que desabrocha.\nNa minha luz, eu trago abundância, fertilidade e amor incondicional.\nNa minha sombra, eu viro possessividade, excesso e sufocamento.\nEu não penso a criação.\nEu a sinto nascer.",
+    intro: "Eu sou a Imperatriz. Sou a terra que gera, o ventre que acolhe, a mão que nutre.",
+    fullText: "Eu sou a Imperatriz. Sou a terra que gera, o ventre que acolhe, a mão que nutre. Em mim, a vida encontra forma, cor, textura e prazer. Eu não penso a criação — eu a sinto nascer. Eu sou o campo de trigo dourado, o rio que flui, a flor que desabrocha. Na minha luz, eu trago abundância, fertilidade e amor incondicional. Na minha sombra, eu viro possessividade, excesso e sufocamento. Eu não penso a criação. Eu a sinto nascer.",
   },
 
   deepDive: {

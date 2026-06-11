@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Info, HelpCircle, X, ChevronRight, ChevronLeft } from "lucide-react";
+import { Info, HelpCircle, ChevronRight, ChevronLeft } from "lucide-react";
 import { type ArcanoSymbolMapItem } from "@/lib/content/runtime-types";
+import { Button } from "@/components/ui/button";
 
 interface SymbolMapProps {
   cardImage: string;
@@ -12,6 +13,10 @@ interface SymbolMapProps {
 export function SymbolMap({ cardImage, cardName, symbols, onComplete }: SymbolMapProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  if (!symbols || symbols.length === 0) {
+    return null;
+  }
 
   const selectedSymbol = symbols.find(s => s.id === selectedId) || symbols[currentIndex];
 

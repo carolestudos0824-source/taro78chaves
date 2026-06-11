@@ -1,9 +1,9 @@
 /**
- * @deprecated [Fase 6.6 — Faxina final]
- * Arquivo legado mantido apenas como SEED / BACKUP / ROLLBACK.
- * NÃO importar no runtime (páginas, componentes, hooks).
- * Runtime principal: @/lib/content (DB) + @/content/** + @/config/** + @/registry/**.
- * Importação fora de src/lib/content/**, src/data/** ou src/components/admin/** é bloqueada por ESLint.
+/**
+ * MODELO EDITORIAL OFICIAL — ARCANOS MAIORES
+ * 
+ * Estrutura fixa para os 22 Arcanos Maiores.
+ * Cada arcano deve preencher TODOS os campos obrigatórios.
  */
 /**
  * MODELO EDITORIAL OFICIAL — ARCANOS MAIORES
@@ -27,6 +27,9 @@ import { getDeckEntry, getCanonicalNumeral } from "./deck-registry";
 export interface ArcanoSymbol {
   name: string;
   meaning: string;
+  explanation?: string;
+  pedagogicSense?: string;
+  relation?: string;
 }
 
 export interface ArcanoInterpretation {
@@ -202,7 +205,13 @@ export function editorialToLegacy(editorial: ArcanoMaiorEditorial, unlocked = fa
       id: "simbolos",
       title: "Símbolos Centrais",
       icon: "◎",
-      content: editorial.symbols.map(s => `${s.name}: ${s.meaning}`).join(". "),
+      content: editorial.symbols.map(s => {
+        let text = `**${s.name}**: ${s.meaning}`;
+        if (s.explanation) text += `\n*Explicação:* ${s.explanation}`;
+        if (s.pedagogicSense) text += `\n*Sentido Pedagógico:* ${s.pedagogicSense}`;
+        if (s.relation) text += `\n*Relação:* ${s.relation}`;
+        return text;
+      }).join("\n\n"),
     },
     { id: "luz", title: "Luz", icon: "☀", accent: "gold", content: editorial.light },
     { id: "sombra", title: "Sombra", icon: "☾", accent: "plum", content: editorial.shadow },
@@ -266,5 +275,15 @@ export function editorialToLegacy(editorial: ArcanoMaiorEditorial, unlocked = fa
     quickReview: editorial.quickReview,
     reflectionQuestions: editorial.reflectionQuestions,
     initiationLesson: editorial.initiationLesson,
+    symbolsMap: editorial.symbols.map((s, i) => ({
+      id: `${editorial.slug}-symbol-${i}`,
+      name: s.name,
+      description: s.meaning + (s.explanation ? ` ${s.explanation}` : ""),
+      reflectionQuestion: s.pedagogicSense || "O que este símbolo desperta em você?",
+      position: { 
+        x: 20 + (i * 12) % 60, 
+        y: 25 + (i * 15) % 50 
+      }
+    }))
   };
 }
