@@ -219,7 +219,7 @@ const PremiumPage = () => {
               </div>
 
               <Button 
-                onClick={() => navigate("/app")} 
+                onClick={() => navigate("/module/fundamentos")} 
                 className="w-full py-7 text-sm bg-[#5B1F3D] hover:bg-[#3D1429] text-white rounded-2xl font-heading font-black tracking-[0.2em] shadow-xl border-2 border-[#C8A66A] h-auto"
               >
                 CONTINUAR MINHA JORNADA
@@ -313,7 +313,7 @@ const PremiumPage = () => {
           <h2 className="text-center font-heading text-lg font-black text-[#5B1F3D]">Dúvidas da Travessia</h2>
           <div className="space-y-4">
             {[
-              { q: "Por onde eu começo?", a: "Você começa pelo Louco, o primeiro portal da jornada. Depois, segue carta por carta com método, prática e progresso." },
+              { q: "Por onde eu começo?", a: "Você começa pelo Módulo de Fundamentos, onde constrói sua base. Após concluí-lo, o portal do Louco e dos outros 21 Arcanos Maiores se abre para sua travessia." },
               { q: "O que está incluso?", a: "Acesso à jornada completa pelos 78 arcanos, quizzes, práticas rituais, módulos premium e progresso salvo." },
               { q: "Preciso saber Tarô antes?", a: "Não. A Escola Digital foi criada para guiar você desde a base, uma carta por vez, abrindo as chaves do seu olhar." }
             ].map((item, i) => (
