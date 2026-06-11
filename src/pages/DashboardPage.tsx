@@ -190,7 +190,7 @@ const DashboardPage = () => {
           <div className="relative z-10 space-y-4">
             <div className="flex items-center justify-center gap-3 mb-2">
               <div className="h-px w-10 bg-gold/30" />
-              <span className="text-[10px] font-heading font-black tracking-[0.6em] text-gold uppercase">Sabedoria Ancestral</span>
+              <span className="text-[11px] font-heading font-black tracking-[0.6em] text-gold uppercase opacity-100">Sabedoria Ancestral</span>
               <div className="h-px w-10 bg-gold/30" />
             </div>
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-plum tracking-tight flex flex-col items-center">
@@ -202,9 +202,10 @@ const DashboardPage = () => {
                 </div>
               </span>
             </h1>
-            <p className="text-sm font-body italic text-plum/40 max-w-sm mx-auto leading-relaxed">
-              Seu portal de estudo guiado através dos 78 arquétipos do Rider-Waite-Smith.
-            </p>
+            <p className="text-[15px] font-body italic text-plum/70 max-w-sm mx-auto leading-relaxed">
+               Seu portal de estudo guiado através dos 78 arquétipos do Rider-Waite-Smith.
+             </p>
+
 
             {/* Canonical Journey spread visual */}
             <div className="flex justify-center items-end -space-x-8 pt-4 pb-2 perspective-1000 relative z-10">
@@ -238,7 +239,7 @@ const DashboardPage = () => {
                 <stat.icon className={`w-4 h-4 ${stat.color}`} />
               </div>
               <span className="text-xl font-heading font-bold text-plum leading-none">{stat.value}</span>
-              <span className="text-[13px] font-heading font-black tracking-widest text-plum/50 uppercase">{stat.label}</span>
+              <span className="text-[14px] font-heading font-black tracking-widest text-plum/70 uppercase">{stat.label}</span>
             </div>
           ))}
         </div>
@@ -248,7 +249,7 @@ const DashboardPage = () => {
           <div className="flex items-center justify-between px-2">
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-gold" />
-              <h3 className="font-heading text-[13px] font-black tracking-[0.3em] text-plum/50 uppercase">Explore os 78 Arcanos</h3>
+              <h3 className="font-heading text-[14px] font-black tracking-[0.3em] text-plum/70 uppercase">Explore os 78 Arcanos</h3>
             </div>
             <button 
               onClick={() => navigate("/trilhas")}
@@ -266,7 +267,7 @@ const DashboardPage = () => {
                 >
                   <img src={card.image || ""} alt={card.name} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity flex items-end p-3">
-                    <span className="text-[11px] font-heading font-black text-white uppercase tracking-normal leading-tight break-words w-full">{card.name}</span>
+                    <span className="text-[12px] font-heading font-black text-white uppercase tracking-normal leading-tight break-words w-full">{card.name}</span>
                   </div>
                 </div>
               ))}
@@ -285,7 +286,7 @@ const DashboardPage = () => {
             <div className="flex items-center gap-3 relative z-10">
               <ShieldCheck className="w-4 h-4 text-plum/40" />
               <div className="space-y-0.5">
-                <p className="text-[13px] font-heading font-black tracking-widest uppercase text-plum/50">
+                <p className="text-[14px] font-heading font-black tracking-widest uppercase text-plum/70">
                   Painel Administrativo
                 </p>
               </div>
@@ -302,7 +303,7 @@ const DashboardPage = () => {
         {isAuditor && !isAdmin && (
           <div className="mx-2 rounded-2xl p-4 bg-gold/5 border border-gold/10 flex items-center gap-3 opacity-60">
             <ShieldCheck className="w-4 h-4 text-gold/40" />
-            <p className="text-[13px] font-heading font-black tracking-widest uppercase text-gold/50">
+            <p className="text-[14px] font-heading font-black tracking-widest uppercase text-gold/70">
               Modo Auditoria
             </p>
           </div>
@@ -338,7 +339,7 @@ const DashboardPage = () => {
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                    <div className="w-8 h-px bg-gold/40" />
-                   <span className="text-[13px] font-heading font-black tracking-[0.4em] text-gold uppercase">Caminho do Iniciado</span>
+                   <span className="text-[14px] font-heading font-black tracking-[0.4em] text-gold uppercase">Caminho do Iniciado</span>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-heading font-bold text-plum tracking-tight leading-tight">Sua Jornada</h2>
               </div>
@@ -346,7 +347,7 @@ const DashboardPage = () => {
               {currentStep && (
                 <div className="space-y-6">
                   <div className="space-y-1.5 p-4 rounded-2xl bg-gold/5 border border-gold/10">
-                    <p className="text-[13px] font-heading font-black tracking-widest text-gold uppercase flex items-center gap-2">
+                    <p className="text-[14px] font-heading font-black tracking-widest text-gold uppercase flex items-center gap-2">
                       <MapPin className="w-3 h-3" /> {currentStep.moduleName}
                     </p>
                     <h3 className="text-xl md:text-2xl font-heading font-bold text-plum leading-tight">
@@ -363,7 +364,7 @@ const DashboardPage = () => {
                       <div className="absolute inset-0 bg-shimmer animate-shimmer opacity-20" style={{ backgroundSize: '200% 100%' }} />
                     </div>
                     <div className="flex justify-between items-center px-1">
-                      <span className="text-[11px] font-heading font-black text-plum/40 uppercase tracking-[0.1em] leading-tight max-w-[120px]">
+                      <span className="text-[13px] font-heading font-black text-plum/60 uppercase tracking-[0.1em] leading-tight max-w-[120px]">
                         {totalCompletedArcanos} de 78 {totalCompletedArcanos === 1 ? "Chave" : "Chaves"}
                       </span>
 
@@ -387,7 +388,7 @@ const DashboardPage = () => {
                     e.stopPropagation();
                     navigate(currentStep?.route || "/module/fundamentos");
                   }}
-                  className="w-full py-5 rounded-[1.25rem] font-heading text-[11px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-plum text-white border-gold/30 hover:bg-[#45162D] relative z-[100]"
+                  className="w-full py-5 rounded-[1.25rem] font-heading text-[13px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-plum text-white border-gold/30 hover:bg-[#45162D] relative z-[100]"
                 >
                   <span>
                     {currentStep?.type === "fundamentos" 
@@ -415,12 +416,12 @@ const DashboardPage = () => {
                 <div className="space-y-2 text-center sm:text-left">
                   <div className="flex items-center justify-center sm:justify-start gap-3">
                     <div className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-                    <span className="text-[10px] font-heading font-black tracking-[0.4em] text-gold uppercase">Conexão Diária</span>
+                    <span className="text-[12px] font-heading font-black tracking-[0.4em] text-gold uppercase">Conexão Diária</span>
                   </div>
                   <h3 className="text-2xl font-heading font-bold text-plum tracking-tight">Ritual de hoje</h3>
-                  <p className="text-xs font-body italic text-plum/50">Mantenha sua chama acesa através da prática ritualística.</p>
+                  <p className="text-[13px] font-body italic text-plum/70">Mantenha sua chama acesa através da prática ritualística.</p>
                 </div>
-                <button className="px-8 py-4 bg-gold/10 text-plum border border-gold/30 rounded-xl font-heading text-[10px] font-black tracking-[0.3em] uppercase group-hover:bg-gold group-hover:text-plum transition-all flex items-center gap-2">
+                <button className="px-8 py-4 bg-gold/10 text-plum border border-gold/30 rounded-xl font-heading text-[13px] font-black tracking-[0.3em] uppercase group-hover:bg-gold group-hover:text-plum transition-all flex items-center gap-2">
                   Praticar agora <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
@@ -433,9 +434,9 @@ const DashboardPage = () => {
           <div className="flex items-center justify-between px-2">
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-gold" />
-              <h3 className="font-heading text-[11px] font-black tracking-[0.5em] text-gold uppercase">Mapa de Estudo</h3>
+              <h3 className="font-heading text-[14px] font-black tracking-[0.5em] text-gold uppercase">Mapa de Estudo</h3>
             </div>
-            <button onClick={() => navigate("/trilhas")} className="text-[10px] font-heading font-black tracking-widest text-plum/40 hover:text-plum transition-colors flex items-center gap-2 group">
+            <button onClick={() => navigate("/trilhas")} className="text-[12px] font-heading font-black tracking-widest text-plum/70 hover:text-plum transition-colors flex items-center gap-2 group">
               Explorar <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
@@ -453,11 +454,12 @@ const DashboardPage = () => {
               </div>
               <div className="space-y-3 flex-1 relative z-10 pt-1">
                 <h4 className="font-heading text-xl font-bold text-plum tracking-tight">Arcanos Maiores</h4>
-                <p className="text-[12px] font-body italic text-plum/50 leading-relaxed">A jornada espiritual através dos 22 arquétipos mestres.</p>
+                <p className="text-[14px] font-body italic text-plum/70 leading-relaxed">A jornada espiritual através dos 22 arquétipos mestres.</p>
                 <div className="pt-2 space-y-2">
                    <div className="flex justify-between items-center px-0.5">
-                      <span className="text-[9px] font-heading font-black text-gold uppercase tracking-widest">{completedMaiores} de 22</span>
-                      <span className="text-[9px] font-heading font-black text-plum/20 uppercase tracking-widest">{Math.round((completedMaiores/22)*100)}%</span>
+                      <span className="text-[11px] font-heading font-black text-gold uppercase tracking-widest">{completedMaiores} de 22</span>
+                      <span className="text-[11px] font-heading font-black text-plum/60 uppercase tracking-widest">{Math.round((completedMaiores/22)*100)}%</span>
+
                    </div>
                    <div className="h-1.5 bg-[#FAF5EF] rounded-full overflow-hidden border border-gold/5">
                       <div className="h-full bg-gold rounded-full" style={{ width: `${(completedMaiores/22)*100}%` }} />
@@ -480,11 +482,12 @@ const DashboardPage = () => {
               </div>
               <div className="space-y-3 flex-1 relative z-10 pt-1">
                 <h4 className="font-heading text-xl font-bold text-plum tracking-tight">Arcanos Menores</h4>
-                <p className="text-[12px] font-body italic text-plum/50 leading-relaxed">A aplicação prática dos 4 naipes e 56 situações cotidianas.</p>
+                <p className="text-[14px] font-body italic text-plum/70 leading-relaxed">A aplicação prática dos 4 naipes e 56 situações cotidianas.</p>
                 <div className="pt-2 space-y-2">
                    <div className="flex justify-between items-center px-0.5">
-                      <span className="text-[9px] font-heading font-black text-plum/40 uppercase tracking-widest">{completedMenores} de 56</span>
-                      <span className="text-[9px] font-heading font-black text-plum/20 uppercase tracking-widest">{Math.round((completedMenores/56)*100)}%</span>
+                      <span className="text-[11px] font-heading font-black text-plum/70 uppercase tracking-widest">{completedMenores} de 56</span>
+                      <span className="text-[11px] font-heading font-black text-plum/60 uppercase tracking-widest">{Math.round((completedMenores/56)*100)}%</span>
+
                    </div>
                    <div className="h-1.5 bg-[#FAF5EF] rounded-full overflow-hidden border border-gold/5">
                       <div className="h-full bg-plum/40 rounded-full" style={{ width: `${(completedMenores/56)*100}%` }} />
@@ -499,7 +502,7 @@ const DashboardPage = () => {
         <section className="space-y-6 px-2 relative z-10">
           <div className="flex items-center gap-3 px-2">
             <div className="w-2 h-2 rounded-full bg-gold/60" />
-            <h3 className="font-heading text-[12px] font-black tracking-[0.5em] text-plum uppercase">Utilidades</h3>
+            <h3 className="font-heading text-[14px] font-black tracking-[0.5em] text-plum/80 uppercase">Utilidades</h3>
           </div>
           <div className="grid grid-cols-3 gap-4 pb-12 border-b border-gold/10">
             {[
@@ -516,9 +519,10 @@ const DashboardPage = () => {
                   <link.icon className={`w-7 h-7 text-plum`} />
                 </div>
                 <div className="text-center">
-                  <span className="text-[11px] font-heading font-black tracking-[0.2em] text-plum uppercase block">{link.label}</span>
+                  <span className="text-[12px] font-heading font-black tracking-[0.2em] text-plum uppercase block">{link.label}</span>
                   {link.subtitle && (
-                    <span className="text-[8px] font-body font-black text-plum/40 uppercase mt-1 block leading-tight">{link.subtitle}</span>
+                    <span className="text-[10px] font-body font-black text-plum/60 uppercase mt-1 block leading-tight">{link.subtitle}</span>
+
                   )}
                 </div>
               </button>
@@ -539,22 +543,22 @@ const DashboardPage = () => {
                         <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center shadow-lg">
                           <Sparkles className="w-6 h-6 text-gold" />
                         </div>
-                        <span className="text-[11px] font-heading font-black tracking-[0.5em] text-[#FFD700] drop-shadow-sm uppercase">Formação Completa</span>
+                        <span className="text-[13px] font-heading font-black tracking-[0.5em] text-[#FFD700] drop-shadow-sm uppercase">Formação Completa</span>
                     </div>
                     <h3 className="text-2xl md:text-3xl font-heading font-bold tracking-tight text-white drop-shadow-md">Sabedoria Ancestral</h3>
-                    <p className="text-sm font-body italic text-white max-w-sm leading-relaxed">
+                    <p className="text-[15px] font-body italic text-white/90 max-w-sm leading-relaxed">
                       Desbloqueie todos os 78 portais, acesse meditações guiadas, quizzes de domínio e conquiste seu Certificado de Formação.
                     </p>
                 </div>
                 {!isPremium && !isStaff ? (
                   <button 
                     onClick={() => navigate("/premium")}
-                    className="w-full lg:w-auto px-8 py-5 bg-gold text-plum rounded-2xl font-heading text-[10px] font-black tracking-[0.3em] uppercase shadow-2xl hover:bg-white hover:scale-[1.02] transition-all active:scale-95 group/btn"
+                    className="w-full lg:w-auto px-8 py-5 bg-gold text-plum rounded-2xl font-heading text-[13px] font-black tracking-[0.3em] uppercase shadow-2xl hover:bg-white hover:scale-[1.02] transition-all active:scale-95 group/btn"
                   >
                     Fazer Inscrição 
                   </button>
                 ) : (
-                    <div className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-gold font-heading text-[10px] font-black tracking-[0.4em] uppercase flex items-center gap-2">
+                    <div className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-gold font-heading text-[13px] font-black tracking-[0.4em] uppercase flex items-center gap-2">
                         <Star className="w-4 h-4 fill-current" /> Assinatura Ativa
                     </div>
                 )}
