@@ -251,6 +251,7 @@ export function mapLegacyLessonToUI(
       ? mapLegacyQuizToUI(l.quiz, { tipo: "licao", id: l.id, slug: l.id }, l.id, `Quiz: ${l.title}`)
       : null,
     metadata: { source: "legacy", sourceId: l.id, usedFallback: true },
+    symbolsMap: [] // Lessons don't have symbolsMap yet
   };
 }
 
