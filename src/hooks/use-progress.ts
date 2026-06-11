@@ -157,6 +157,7 @@ interface ProgressContextType {
   getCurrentArcanoId: () => number;
   completedCount: number;
   journeyProgress: number;
+  fundamentosComplete: boolean;
   completeOnboarding: () => void;
   setStudentName: (name: string) => void;
   resetProgress: () => Promise<void>;
@@ -559,6 +560,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     getCurrentArcanoId,
     completedCount,
     journeyProgress,
+    fundamentosComplete,
     completeOnboarding,
     setStudentName,
     resetProgress,
