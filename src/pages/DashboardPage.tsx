@@ -544,7 +544,7 @@ const DashboardPage = () => {
         <section className="pb-[calc(140px+env(safe-area-inset-bottom))] px-2 relative z-10">
             <div className="bg-plum/95 rounded-[2.5rem] p-8 border border-gold/30 shadow-2xl text-white space-y-6 overflow-hidden relative group">
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform pointer-events-none">
-                <Crown className="w-32 h-32 md:w-48 md:h-48" />
+                <KeyRound className="w-32 h-32 md:w-48 md:h-48" />
               </div>
               <div className="absolute inset-0 opacity-[0.03] bg-mystic-bg-procedural pointer-events-none" />
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
