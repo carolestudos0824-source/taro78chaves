@@ -394,6 +394,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
 
   const completeModule = useCallback((moduleId: string) => {
     if (isStaff) return;
+    console.log(`[progress] completing module: ${moduleId}`);
     setProgress((prev) => {
       if (prev.completedModules.includes(moduleId)) return prev;
       return {
