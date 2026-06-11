@@ -301,7 +301,7 @@ const FundamentosLessonPage = () => {
           <div className="space-y-6" style={{ animation: "fade-up 0.5s ease-out" }}>
             <div className="flex items-center justify-between">
               <span className="text-xs font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(36 40% 42%)" }}>
-                ✍️ Exercício
+                ✍️ Prática
               </span>
             </div>
 
