@@ -1,7 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { Menu } from "lucide-react";
 import { TarotIcon } from "./TarotIcon";
-import { StreakCounter } from "@/components/StreakCounter";
 import { ChaveProgress } from "@/components/ChaveProgress";
 import { useState } from "react";
 import GlobalMenu from "@/components/GlobalMenu";
@@ -9,16 +8,12 @@ import { useHeader } from "@/contexts/header-context";
 import { PageBackControls } from "./PageBackControls";
 
 interface HeaderProps {
-
   streak: number;
-  pontos: number;
-  level: number;
 }
 
 /**
  * Header unificado e estável.
- * REMOVIDO: hysteresis, compact mode, transições de scroll e transformações.
- * MOTIVO: Corrigir tremor (jitter) visual na rota /lesson/0.
+ * REMOVIDO: XP/Pontos visíveis. Recompensas agora são Chaves.
  */
 export const Header = ({ streak }: HeaderProps) => {
   const navigate = useNavigate();
@@ -59,7 +54,6 @@ export const Header = ({ streak }: HeaderProps) => {
                   className="w-9 h-9 flex items-center justify-center bg-[#FAF5EF] rounded-xl border border-[#C8A66A]/20"
                 />
               )}
-
             </div>
 
             <div className="flex flex-col justify-center min-w-0 flex-1">
@@ -106,7 +100,6 @@ export const Header = ({ streak }: HeaderProps) => {
             <ChaveProgress />
           </div>
         )}
-
 
         {state.rightElement && (
           <div className="mt-3 flex justify-center w-full overflow-hidden">
