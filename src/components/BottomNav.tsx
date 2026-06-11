@@ -15,7 +15,7 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   { path: "/app", label: "Início", icon: "jornada", microcopy: "Seu Dashboard" },
-  { path: "/module/arcanos-maiores", label: "Jornada", icon: "louco", microcopy: "Os 22 Arcanos Maiores" },
+  { path: "/jornada", label: "Jornada", icon: "louco", microcopy: "Jornada do Louco ao Mundo" },
   { path: "/desafios", label: "Ritual", icon: "ritual", microcopy: "Faça sua prática de hoje." },
   { path: "/mapa", label: "Mapa", icon: "formacao", microcopy: "Mapa da trilha" },
   { path: "/perfil", label: "Perfil", icon: "perfil", microcopy: "Suas chaves" },
@@ -30,15 +30,11 @@ const BottomNav = () => {
 
   // Determine current active journey path
   const currentJourneyPath = useMemo(() => {
-    if (bypassLocks) return "/module/arcanos-maiores";
+    if (bypassLocks) return "/jornada";
     if (!fundamentosComplete) return "/module/fundamentos";
     
-    // Check if Maiores are completed
-    const completedMaiores = progress.completedLessons.filter(l => l.startsWith("arcano-")).length;
-    if (completedMaiores < 22) return "/module/arcanos-maiores";
-    
-    return "/module/arcanos-menores";
-  }, [fundamentosComplete, progress.completedLessons, bypassLocks]);
+    return "/jornada";
+  }, [fundamentosComplete, bypassLocks]);
 
 
   useEffect(() => {
@@ -68,7 +64,7 @@ const BottomNav = () => {
     >
       <div className="mx-auto flex items-center justify-between py-2 px-0 w-full max-w-full">
         {NAV_ITEMS.map(item => {
-          const isActive = location.pathname === item.path || (item.label === "Jornada" && location.pathname.startsWith("/module/"));
+          const isActive = location.pathname === item.path || (item.label === "Jornada" && (location.pathname === "/jornada" || location.pathname === "/jornada-do-louco"));
           const isJourneyTab = item.label === "Jornada";
           const path = isJourneyTab ? currentJourneyPath : item.path;
           const isLocked = !bypassLocks && isJourneyTab && !fundamentosComplete && item.path !== "/module/fundamentos";
