@@ -73,9 +73,9 @@ const PHASE_LABEL: Record<LessonPhase, string> = {
   simbolos: "Símbolos",
   voz: "Voz da Carta",
   dimensoes: "Dimensões da Vida",
-  aplicacoes: "Caso Prático",
+  aplicacoes: "Prática",
   quiz: "Quiz Final",
-  complete: "Conclusão",
+  complete: "Chave Conquistada",
   "legacy-content": "Aprofundamento Editorial",
 };
 
