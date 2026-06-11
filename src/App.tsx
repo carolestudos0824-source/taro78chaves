@@ -193,9 +193,9 @@ const AppRoutes = () => {
         <Route path="/visual-certificado" element={<LazyRoute><CertificateVisualModel /></LazyRoute>} />
 
         <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
-          {/* Main Paths first to ensure better matching */}
           <Route path="/jornada" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
           <Route path="/jornada-do-louco" element={<Navigate to="/jornada" replace />} />
+          <Route path="/module/arcanos-maiores" element={<Navigate to="/jornada" replace />} />
           <Route path="/app" element={<DashboardPage />} />
           <Route path="/trilhas" element={<SecurityGate><TrailsPage /></SecurityGate>} />
           <Route path="/mapa" element={<SecurityGate><TrailsPage /></SecurityGate>} />
