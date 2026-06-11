@@ -12,6 +12,7 @@ import { useAccess } from "@/hooks/use-access";
 
 const Index = () => {
 
+  const progressState = useProgress();
   const { 
     progress, 
     loading: progressLoading, 
@@ -20,7 +21,7 @@ const Index = () => {
     completedCount, 
     journeyProgress, 
     fundamentosComplete: progressFundamentosComplete 
-  } = useProgress();
+  } = progressState;
 
   const { bypassLocks } = useAccess();
   const navigate = useNavigate();
