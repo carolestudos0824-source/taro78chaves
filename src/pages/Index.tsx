@@ -12,6 +12,7 @@ import { PageBackControls } from "@/components/PageBackControls";
 const Index = () => {
 
   const { progress, loading: progressLoading, updateStreak, getCurrentArcanoId, completedCount, journeyProgress } = useProgress();
+  const { bypassLocks } = useAccess();
   const navigate = useNavigate();
   const { setHeader, resetHeader } = useHeader();
 
@@ -37,7 +38,9 @@ const Index = () => {
 
   const currentArcanoId = getCurrentArcanoId();
   const currentArcano = ARCANOS_MAIORES.find(a => a.id === currentArcanoId);
-  const allComplete = completedCount >= 22;
+  
+  const fundamentosComplete = progress.completedModules.includes("fundamentos") || bypassLocks;
+  const allComplete = (completedCount >= 22) || !fundamentosComplete;
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
@@ -140,10 +143,23 @@ const Index = () => {
               </button>
             </div>
           </div>
+          
+          {!fundamentosComplete && (
+            <div className="mt-8 p-6 rounded-2xl bg-amber-50 border border-amber-200 text-center">
+              <p className="text-amber-800 font-bold mb-4">Módulo Bloqueado</p>
+              <p className="text-sm text-amber-700 mb-6">Complete os Fundamentos do Tarô para desbloquear a Jornada dos Arcanos Maiores.</p>
+              <button
+                onClick={() => navigate("/module/fundamentos")}
+                className="px-8 py-3 rounded-xl bg-[#5B1F3D] text-white font-heading text-[11px] tracking-[0.2em] uppercase font-black shadow-lg hover:scale-105 transition-all"
+              >
+                Ir para Fundamentos
+              </button>
+            </div>
+          )}
         </section>
 
         {/* ═══════════════ CURRENT ARCANO CTA ═══════════════ */}
-        {!allComplete && currentArcano && (
+        {fundamentosComplete && !allComplete && currentArcano && (
           <section className="mb-12">
             <button
               onClick={() => navigate(`/lesson/${currentArcanoId}`)}
@@ -201,14 +217,14 @@ const Index = () => {
         )}
 
         {/* Premium upsell after completing O Louco */}
-        {completedCount >= 1 && (
+        {completedCount >= 1 && fundamentosComplete && (
           <section className="mb-12">
             <PremiumGate variant="banner" className="mb-0" />
           </section>
         )}
 
         {/* celebration celebration */}
-        {allComplete && (
+        {allComplete && fundamentosComplete && (
           <section className="mb-12 text-center py-10 rounded-2xl" style={{
             background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
             border: "2px solid #C8A66A",

@@ -22,7 +22,7 @@ export function useAccess() {
 
   const canAccessArcano = (arcanoId: number) => {
     if (hasFullAccess) return true;
-    return hasInitialAccess(arcanoId, progress.quizScores);
+    return hasInitialAccess(arcanoId, progress.quizScores, progress.completedModules);
   };
 
   return {

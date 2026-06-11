@@ -33,6 +33,7 @@ import { useRole } from "@/hooks/use-role";
 import { useAuth } from "@/hooks/use-auth";
 import { useEffect, useMemo } from "react";
 import { useHeader } from "@/contexts/header-context";
+import { FUNDAMENTOS_LESSONS } from "@/content/lessons/fundamentos";
 import { resolveMaiorVisual, resolveMenorVisualById } from "@/lib/content/visual-registry";
 import { getDailyArcanaSet, getJourneyArcanaSet } from "@/lib/content/arcana-utils";
 import imgLouco from "@/assets/arcano-0-louco.jpg";
@@ -83,6 +84,26 @@ const DashboardPage = () => {
   const globalProgressPct = Math.round((totalCompletedArcanos / totalArcanosCount) * 100);
 
   const currentStep = useMemo(() => {
+    // 1. Check Fundamentos first (new pedagogical flow)
+    for (let i = 0; i < FUNDAMENTOS_LESSONS.length; i++) {
+      const lesson = FUNDAMENTOS_LESSONS[i];
+      if (!progress.completedLessons.includes(lesson.id)) {
+        return {
+          type: "fundamentos" as const,
+          id: lesson.id,
+          name: lesson.title,
+          numeral: (i + 1).toString(),
+          image: imgLouco, // Placeholder or specific icon
+          moduleName: "Fundamentos do Tarô",
+          moduleSlug: "fundamentos",
+          lessonId: lesson.id,
+          lessonName: lesson.title,
+          route: `/fundamentos/${lesson.order}`
+        };
+      }
+    }
+
+    // 2. Check Arcanos Maiores
     for (let i = 0; i <= 21; i++) {
       if (!progress.completedLessons.includes(`arcano-${i}`)) {
         const summary = ARCANOS_MAIORES_CATALOG[i];
@@ -101,6 +122,7 @@ const DashboardPage = () => {
         };
       }
     }
+    // 3. Arcanos Menores...
     const naipes = ["copas", "paus", "espadas", "ouros"] as const;
     const posicoes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "pajem", "cavaleiro", "rainha", "rei"] as const;
     for (const naipe of naipes) {

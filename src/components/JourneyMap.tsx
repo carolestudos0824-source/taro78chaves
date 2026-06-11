@@ -38,10 +38,13 @@ export function JourneyMap({ progress }: JourneyMapProps) {
           const isCompleted = progress.completedLessons.includes(`arcano-${arcano.id}`) && progress.completedQuizzes.includes(`quiz-arcano-${arcano.id}`);
           const isFree = canAccessArcano(arcano.id);
           const isPremium = !isFree && !bypassLocks;
-          const isUnlocked = bypassLocks || isFree || (
+          
+          const fundamentosComplete = progress.completedModules.includes("fundamentos") || bypassLocks;
+          
+          const isUnlocked = bypassLocks || (fundamentosComplete && (isFree || (
             progress.completedLessons.includes(`arcano-${arcano.id - 1}`) &&
             progress.completedQuizzes.includes(`quiz-arcano-${arcano.id - 1}`)
-          );
+          )));
           const isCurrent = isUnlocked && !isCompleted;
           const side = index % 2 === 0 ? "left" : "right";
 

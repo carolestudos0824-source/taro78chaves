@@ -22,7 +22,12 @@ const FundamentosPage = () => {
     if (bypassLocks) return true;
     if (order === 0) return true;
     const prev = FUNDAMENTOS_LESSONS.find((l) => l.order === order - 1);
-    return prev ? isLessonCompleted(prev.id) : false;
+    const prevCompleted = prev ? isLessonCompleted(prev.id) : false;
+    
+    // Check if previous lesson has a completed quiz
+    const prevQuizCompleted = prev ? progress.completedQuizzes.includes(`quiz-${prev.id}`) : false;
+    
+    return prevCompleted && prevQuizCompleted;
   };
 
   const completedCount = FUNDAMENTOS_LESSONS.filter((l) =>
