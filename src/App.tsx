@@ -174,12 +174,10 @@ const AppRoutes = () => {
   const location = useLocation();
   
   useEffect(() => {
-    // Debug for route matching in external preview
-    if (location.pathname.includes("jornada")) {
-      console.log("[RouteDebug] Current path:", location.pathname);
-      console.log("[RouteDebug] Is authenticated:", !!localStorage.getItem("supabase.auth.token"));
-    }
+    // Ensure scroll to top on each route change
+    window.scrollTo(0, 0);
   }, [location.pathname]);
+
 
 
 
