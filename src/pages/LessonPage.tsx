@@ -223,7 +223,7 @@ const LessonPage = () => {
     if (arcano.id === 0) {
       earnBadge("fool-complete");
       setShowUnlockMoment(true);
-226:       setKeyEarned(true);
+setKeyEarned(true);
     }
     setLastQuizScore(score);
     setLastQuizTotal(total);
@@ -585,7 +585,9 @@ const LessonPage = () => {
               arcanoName={arcano.name}
               cardImage={arcano.cardImage}
               arcanoId={arcanoId}
-              pontosEarned={pontosEarned}
+              keyEarned={keyEarned}
+
+
 
               quizScore={lastQuizScore}
               quizTotal={lastQuizTotal}

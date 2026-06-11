@@ -135,6 +135,8 @@ interface ProgressContextType {
   progress: UserProgress;
   loading: boolean;
   addKey: () => void;
+  /** @deprecated XP foi removido; mantido como no-op para compatibilidade. */
+  addXP: (amount?: number) => void;
   completeLesson: (lessonId: string) => void;
   completeModule: (moduleId: string) => void;
   completeQuiz: (quizId: string, score?: number, total?: number) => void;
@@ -415,7 +417,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <ProgressContext.Provider value={{
-      progress, loading, addKey, completeLesson, completeModule, completeQuiz, completeExercise, earnBadge, updateStreak,
+      progress, loading, addKey, addXP: () => {}, completeLesson, completeModule, completeQuiz, completeExercise, earnBadge, updateStreak,
       isArcanoCompleted, isArcanoUnlocked, getCurrentArcanoId, completedCount, journeyProgress, fundamentosComplete,
       fundamentosLessonsCompleted, isFirstVisit, completeOnboarding, setStudentName, resetProgress
     }}>
