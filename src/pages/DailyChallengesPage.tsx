@@ -50,11 +50,11 @@ const DailyChallengesPage = () => {
   }, [setHeader, resetHeader]);
 
   const navigate = useNavigate();
-  const { user } = useAuth();
-  const { progress, updateStreak: updateOldStreak } = useProgress();
+  const { progress, updateStreak: updateOldStreak, fundamentosLessonsCompleted } = useProgress();
   const { streak: ritualStreak, todayProgress: ritualProgress, completeRitualItem, loading: ritualLoading, merits } = useRitual();
   const { data: arcanos, isLoading: arcanosLoading } = useArcanosList({ tipo: "maior" });
   const { data: symbols, isLoading: symbolsLoading } = useSymbolsContent();
+  const fundamentosComplete = fundamentosLessonsCompleted > 0;
 
   const arcanosList = arcanos ?? [];
   const cartaDoDia = useMemo(() => buildCartaDoDia(arcanosList), [arcanosList]);
@@ -137,7 +137,32 @@ const DailyChallengesPage = () => {
 
   return (
     <div className="min-h-screen relative overflow-x-hidden bg-[#FAF5EF]">
-      {ritualProgress.completed && (
+      {!fundamentosComplete ? (
+        <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4 bg-[#FAF5EF]/95 backdrop-blur-xl">
+           <div className="bg-white w-full max-w-lg rounded-[3rem] border-2 border-gold shadow-2xl p-10 text-center space-y-8 animate-in zoom-in-95 duration-500">
+              <div className="w-24 h-24 bg-gold/10 rounded-full flex items-center justify-center mx-auto">
+                 <TarotIcon name="bloqueado" className="w-12 h-12 text-plum" />
+              </div>
+              <div className="space-y-2">
+                <h2 className="text-3xl font-heading font-black text-plum">Seu ritual será liberado depois da primeira lição.</h2>
+                <p className="font-body text-plum/60 italic">Construa sua base nos Fundamentos para iniciar a prática diária.</p>
+              </div>
+              
+              <button 
+                onClick={() => navigate("/module/fundamentos")} 
+                className="w-full py-5 bg-plum text-white rounded-2xl font-heading text-[11px] font-black tracking-[0.3em] uppercase shadow-xl hover:bg-plum/90 transition-all active:scale-95"
+              >
+                Começar primeira lição
+              </button>
+              <button 
+                onClick={() => navigate("/app")} 
+                className="w-full py-3 text-plum/40 font-heading text-[10px] font-black uppercase tracking-widest hover:text-plum transition-colors"
+              >
+                Voltar ao Início
+              </button>
+           </div>
+        </div>
+      ) : ritualProgress.completed && (
         <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4 bg-plum/90 backdrop-blur-xl animate-in fade-in duration-500">
            <div className="bg-white w-full max-w-lg rounded-[3rem] border-4 border-gold shadow-2xl p-10 text-center space-y-8 animate-in zoom-in-95 duration-500">
               <div className="w-24 h-24 bg-gold/20 rounded-full flex items-center justify-center mx-auto">
