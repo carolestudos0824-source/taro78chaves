@@ -96,8 +96,10 @@ const DashboardPage = () => {
           id: lesson.id,
           name: lesson.title,
           numeral: (i + 1).toString(),
-          image: imgLouco, // Placeholder or specific icon
+          label: "Lição",
+          image: imgLouco, 
           moduleName: "Fundamentos do Tarô",
+
           moduleSlug: "fundamentos",
           lessonId: lesson.id,
           lessonName: lesson.title,
