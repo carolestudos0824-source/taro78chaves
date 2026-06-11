@@ -20,7 +20,7 @@ const Index = () => {
   useEffect(() => {
     setHeader({
       title: "Arcanos Maiores",
-      subtitle: "Módulo 03 • A Jornada do Louco",
+      subtitle: "Módulo 03 • Arcanos Maiores",
       backRoute: "/app"
     });
     return () => resetHeader();
