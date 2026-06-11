@@ -349,13 +349,13 @@ const DashboardPage = () => {
                    <div className="w-8 h-px bg-gold/40" />
                    <span className="text-[14px] font-heading font-black tracking-[0.4em] text-gold uppercase">
                      {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 
-                       ? "Sua jornada começa agora" 
+                       ? "Comece por aqui" 
                        : "Caminho do Iniciado"}
                    </span>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-heading font-bold text-plum tracking-tight leading-tight">
                   {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 
-                    ? "Sua jornada começa agora" 
+                    ? "Antes dos 78 arcanos, você vai construir sua base." 
                     : "Sua Jornada"}
                 </h2>
               </div>
@@ -375,12 +375,12 @@ const DashboardPage = () => {
                     </p>
                     <h3 className="text-xl md:text-2xl font-heading font-bold text-plum leading-tight">
                       {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 
-                        ? "Arcano 0 — O Louco" 
+                        ? "Fundamentos do Tarô — Lição 1: O que é o Tarô" 
                         : `${currentStep.label} ${currentStep.numeral} — ${currentStep.name}`}
                     </h3>
                     {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 && (
                       <p className="text-[14px] font-body italic text-plum/70 mt-2">
-                        Comece pelo Arcano 0 — O Louco e receba sua primeira chave.
+                        Dê o primeiro passo e receba sua primeira chave.
                       </p>
                     )}
                   </div>
@@ -413,17 +413,18 @@ const DashboardPage = () => {
                     e.preventDefault();
                     e.stopPropagation();
                     if (totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0) {
-                      navigate("/lesson/0");
+                      navigate("/fundamentos/0");
                     } else {
-                      navigate(currentStep?.type === "fundamentos" ? currentStep.route : "/jornada");
+                      navigate(currentStep?.type === "fundamentos" ? currentStep.route : (currentStep?.route || "/jornada"));
                     }
                   }}
                   className="w-full py-5 rounded-[1.25rem] font-heading text-[13px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-[#5B1F3D] text-white border-gold/30 hover:bg-[#45162D] relative z-[100]"
                 >
                   <span>
                     {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0
-                      ? "Começar pelo Arcano 0"
+                      ? "Começar primeira lição"
                       : currentStep?.type === "fundamentos" 
+
                         ? (fundamentosLessonsCompleted === 0 ? "Começar Pelos Fundamentos" : "Continuar Fundamentos") 
                         : "Abrir Jornada do Louco"}
                   </span>
