@@ -143,11 +143,15 @@ const FundamentosLessonPage = () => {
       setShowExplanation(false);
     } else {
       // Duolingo Rule: Save progress only after quiz completion
-      completeQuiz(`quiz-${lesson.id}`);
-      completeLesson(lesson.id);
+      const isReviewMode = progress.completedLessons.includes(lesson.id) && progress.completedQuizzes.includes(`quiz-${lesson.id}`);
       
-      if (lesson.order === 9) {
-        completeModule("fundamentos");
+      if (!isReviewMode) {
+        completeQuiz(`quiz-${lesson.id}`);
+        completeLesson(lesson.id);
+        
+        if (lesson.order === 9) {
+          completeModule("fundamentos");
+        }
       }
       
       setPhase("complete");
