@@ -585,7 +585,8 @@ setKeyEarned(true);
               arcanoName={arcano.name}
               cardImage={arcano.cardImage}
               arcanoId={arcanoId}
-              pontosEarned={pontosEarned}
+
+
 
               quizScore={lastQuizScore}
               quizTotal={lastQuizTotal}

@@ -55,7 +55,7 @@ const ProgressCelebration = ({ streak, completedLessons }: ProgressCelebrationPr
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const c = detectCelebration(streak, completedLessons);
+    const c = detectCelebration(0, 0, streak, completedLessons);
     if (!c) return;
 
     const lastShown = localStorage.getItem(CELEBRATION_KEY);
