@@ -150,6 +150,28 @@ const DashboardPage = () => {
     // 3. Arcanos Menores...
     const naipes = ["copas", "paus", "espadas", "ouros"] as const;
     const posicoes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "pajem", "cavaleiro", "rainha", "rei"] as const;
+
+    // If all Maiores are done but no Menores started, lead to the Menores Portal
+    const completedMenores = progress.completedLessons.filter(l => 
+      naipes.some(n => l.startsWith(`${n}-`))
+    ).length;
+
+    if (completedMaiores === 22 && completedMenores === 0) {
+      return {
+        type: "menor" as const,
+        id: "portal-menores",
+        name: "Portal dos Arcanos Menores",
+        numeral: "IV",
+        label: "Portal",
+        image: resolveMenorVisualById("copas-1").resolvedAssetUrl || imgLouco,
+        moduleName: "Arcanos Menores",
+        moduleSlug: "arcanos-menores",
+        lessonId: "portal-menores",
+        lessonName: "O Mapa dos 56",
+        route: "/module/arcanos-menores"
+      };
+    }
+
     for (const naipe of naipes) {
       for (const posicao of posicoes) {
         const id = `${naipe}-${posicao}`;
