@@ -82,8 +82,8 @@ const BottomNav = () => {
               toast.info("Seu ritual será liberado depois da primeira lição.", {
                 description: "Complete a lição 'O que é o Tarô' nos Fundamentos.",
                 action: {
-                  label: "Começar",
-                  onClick: () => navigate("/module/fundamentos")
+                  label: "Começar primeira lição",
+                  onClick: () => navigate("/fundamentos/0")
                 }
               });
               return;
