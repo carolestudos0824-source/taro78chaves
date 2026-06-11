@@ -496,6 +496,8 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     return isArcanoCompleted(arcanoId - 1);
   }, [isArcanoCompleted, progress.completedModules, isStaff]);
 
+  const fundamentosComplete = progress.completedModules.includes("fundamentos");
+  
   const getCurrentArcanoId = useCallback((): number => {
     // If Fundamentos not complete, technically none are current in this module
     const fundamentosComplete = progress.completedModules.includes("fundamentos");
@@ -511,7 +513,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     return progress.completedLessons.includes(`arcano-${id}`) && progress.completedQuizzes.includes(`quiz-arcano-${id}`);
   }).length;
   const completedCount = totalCompletedArcanos;
-  const journeyProgress = Math.round((totalCompletedArcanos / 78) * 100);
+  const journeyProgress = fundamentosComplete ? Math.round((totalCompletedArcanos / 22) * 100) : 0;
 
 
 
