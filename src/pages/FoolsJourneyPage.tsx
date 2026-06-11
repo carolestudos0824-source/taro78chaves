@@ -57,7 +57,7 @@ const FoolsJourneyPage = () => {
       }}>
         <div className="container max-w-3xl py-5 px-6">
           <div className="flex items-center gap-4">
-            <Link to="/module/arcanos-maiores" className="w-10 h-10 flex items-center justify-center bg-[#FAF5EF] rounded-full border border-[#C8A66A30] text-[#5B1F3D] hover:bg-[#5B1F3D] hover:text-white transition-all shadow-sm">
+            <Link to="/app" className="w-10 h-10 flex items-center justify-center bg-[#FAF5EF] rounded-full border border-[#C8A66A30] text-[#5B1F3D] hover:bg-[#5B1F3D] hover:text-white transition-all shadow-sm">
               <ArrowLeft className="w-5 h-5" />
             </Link>
             
@@ -66,13 +66,13 @@ const FoolsJourneyPage = () => {
               <span className="text-[11px] tracking-[0.35em] uppercase font-heading font-black block mb-0.5" style={{ color: "#C8A66A" }}>
                 ✦ Jornada Integrada ✦
               </span>
-              <h1 className="font-heading text-xl tracking-wide" style={{
+              <span className="font-heading text-lg sm:text-xl tracking-wide font-black" style={{
                 background: "linear-gradient(135deg, #3D1429 0%, #5B1F3D 50%, #8B6A30 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}>
-                {meta.introTitulo}
-              </h1>
+                Portal dos Arcanos Maiores
+              </span>
             </div>
           </div>
         </div>
@@ -81,19 +81,19 @@ const FoolsJourneyPage = () => {
       {/* Content */}
       <main className="relative z-10 container max-w-3xl py-8 px-6">
         {!canViewContent ? (
-          <section className="mt-12 text-center py-16 px-6 rounded-[2.5rem] bg-white/80 backdrop-blur-md border-2 border-[#C8A66A40] shadow-xl">
-            <div className="w-20 h-20 mx-auto mb-8 bg-[#5B1F3D] rounded-3xl flex items-center justify-center shadow-lg">
-              <Lock className="w-10 h-10 text-white" />
+          <section className="mt-4 text-center py-12 px-6 rounded-[2.5rem] bg-white border-2 border-[#C8A66A40] shadow-xl">
+            <div className="w-16 h-16 mx-auto mb-6 bg-[#5B1F3D] rounded-2xl flex items-center justify-center shadow-lg">
+              <Lock className="w-8 h-8 text-white" />
             </div>
-            <h2 className="font-heading text-3xl font-black text-[#5B1F3D] mb-4">Jornada Trancada</h2>
-            <p className="font-body text-lg text-[#5B1F3D]/70 mb-8 max-w-sm mx-auto font-bold italic">
-              A travessia do Louco ao Mundo exige que você complete os Fundamentos do Tarô primeiro.
+            <h2 className="font-heading text-2xl font-black text-[#5B1F3D] mb-4">Portal Trancado</h2>
+            <p className="font-body text-base text-[#5B1F3D]/70 mb-8 max-w-sm mx-auto font-bold italic leading-relaxed">
+              "A travessia real exige que você complete os Fundamentos do Tarô primeiro."
             </p>
             <button
               onClick={() => navigate("/module/fundamentos")}
-              className="px-10 py-5 bg-[#5B1F3D] text-white rounded-full font-heading text-[12px] tracking-[0.3em] uppercase font-black hover:scale-105 transition-all shadow-xl border-2 border-[#C8A66A]"
+              className="w-full sm:w-auto px-10 py-5 bg-[#5B1F3D] text-white rounded-full font-heading text-[12px] tracking-[0.3em] uppercase font-black hover:scale-105 transition-all shadow-xl border-2 border-[#C8A66A]"
             >
-              Ir para Fundamentos
+              Começar Pelos Fundamentos
             </button>
           </section>
         ) : (
@@ -124,10 +124,10 @@ const FoolsJourneyPage = () => {
           </div>
 
           <div className="flex flex-col items-center max-w-lg mx-auto">
-            <h1 className="font-heading text-4xl md:text-5xl tracking-tight mb-4" style={{ color: "#3D1429" }}>
+            <h2 className="font-heading text-3xl md:text-5xl tracking-tight mb-4 font-black" style={{ color: "#3D1429" }}>
               {meta.introTitulo}
-            </h1>
-            <p className="font-accent text-xl md:text-2xl italic leading-relaxed mb-4 px-4" style={{ color: "hsl(var(--primary) / 0.9)", fontWeight: 800 }}>
+            </h2>
+            <p className="font-accent text-lg md:text-2xl italic leading-relaxed mb-4 px-4 font-bold" style={{ color: "hsl(var(--primary) / 0.9)" }}>
               "{meta.introEpigrafe}"
             </p>
             <div className="flex items-center gap-3 mb-2">
