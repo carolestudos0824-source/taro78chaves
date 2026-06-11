@@ -10,7 +10,7 @@ import { PontosBar } from "@/components/PontosBar";
 
 const FundamentosPage = () => {
   const navigate = useNavigate();
-  const { progress } = useProgress();
+  const { progress, completedCount: globalCompletedCount } = useProgress();
   const { bypassLocks } = useAccess();
   // Fase 4A — telemetria invisível: módulo Fundamentos via adaptador (DB-first).
   useResolvedModule("fundamentos");
@@ -30,11 +30,11 @@ const FundamentosPage = () => {
     return prevCompleted && prevQuizCompleted;
   };
 
-  const completedCount = FUNDAMENTOS_LESSONS.filter((l) =>
+  const completedLessonsCount = FUNDAMENTOS_LESSONS.filter((l) =>
     isLessonCompleted(l.id)
   ).length;
 
-  const progressPct = Math.round((completedCount / FUNDAMENTOS_LESSONS.length) * 100);
+  const progressPct = Math.round((completedLessonsCount / FUNDAMENTOS_LESSONS.length) * 100);
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
@@ -97,7 +97,7 @@ const FundamentosPage = () => {
                 className="text-[13px] font-heading tracking-wider font-bold leading-tight"
                 style={{ color: "#5B1F3D" }}
               >
-                {completedCount}/{FUNDAMENTOS_LESSONS.length} lições concluídas
+                {completedLessonsCount}/{FUNDAMENTOS_LESSONS.length} lições concluídas
               </span>
               <span
                 className="text-[13px] font-heading tracking-wider font-black"
