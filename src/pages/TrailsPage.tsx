@@ -10,7 +10,7 @@ import imgLouco from "@/assets/arcano-0-louco.jpg";
 import imgMago from "@/assets/arcano-1-mago.jpg";
 import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
 import imgMundo from "@/assets/arcano-21-mundo.jpg";
-import { PageBackControls } from "@/components/PageBackControls";
+
 
 
 interface TrailLevel {
