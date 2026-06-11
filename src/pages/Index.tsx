@@ -8,6 +8,7 @@ import { useProgress } from "@/hooks/use-progress";
 import { ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull as getArcanoById } from "@/lib/content";
 import { useHeader } from "@/contexts/header-context";
 import { PageBackControls } from "@/components/PageBackControls";
+import { useAccess } from "@/hooks/use-access";
 
 const Index = () => {
 
