@@ -80,7 +80,7 @@
 
     /* Brand semantic aliases (oficial Tarô 78 Chaves) */
     --brand-plum: 333 50% 24%;          /* #5B1F3D */
-    --brand-gold: 38 47% 60%;           /* #C8A66A */
+    --brand-gold: 38 47% 48%;           /* #C8A66A updated for contrast */
     --brand-greige: 30 22% 82%;         /* #DCCFC2 */
     --brand-rose: 18 38% 92%;           /* #F3E6E0 */
     --brand-ivory: 35 56% 96%;          /* #FAF5EF */
@@ -147,8 +147,9 @@
 
 @layer utilities {
   .pb-bottom-nav {
-    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px)); /* Increased to prevent overlap */
   }
+
 
   .pb-safe {
     padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -209,9 +210,10 @@
 
   /* ─── Typography Scales ─── */
   .t-section-title {
-    @apply text-[10px] tracking-[0.3em] font-heading uppercase opacity-85 font-black;
+    @apply text-[11px] tracking-[0.3em] font-heading uppercase opacity-100 font-black; /* Removed opacity for better reading */
     color: hsl(var(--secondary));
   }
+
   .t-kicker {
     @apply text-[11px] tracking-[0.25em] font-heading uppercase font-bold;
     color: hsl(var(--secondary) / 0.9);
