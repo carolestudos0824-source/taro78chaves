@@ -2,7 +2,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Menu } from "lucide-react";
 import { TarotIcon } from "./TarotIcon";
 import { StreakCounter } from "@/components/StreakCounter";
-import { PontosBar } from "@/components/PontosBar";
+import { ChaveProgress } from "@/components/ChaveProgress";
 import { useState } from "react";
 import GlobalMenu from "@/components/GlobalMenu";
 import { useHeader } from "@/contexts/header-context";
@@ -103,9 +103,10 @@ export const Header = ({ streak, pontos, level }: HeaderProps) => {
         
         {!state.hidePontos && !isLessonMode && location.pathname !== "/app" && (
           <div className="mt-2">
-            <PontosBar pontos={pontos} level={level} />
+            <ChaveProgress />
           </div>
         )}
+
 
         {state.rightElement && (
           <div className="mt-3 flex justify-center w-full overflow-hidden">

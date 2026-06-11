@@ -3,12 +3,7 @@ import { useProgress } from "@/hooks/use-progress";
 import { useRole } from "@/hooks/use-role";
 import { ARCANOS_MAIORES_CATALOG } from "@/lib/content";
 
-interface PontosBarProps {
-  pontos: number;
-  level: number;
-}
-
-export function PontosBar({ pontos, level }: PontosBarProps) {
+export function ChaveProgress() {
   const { progress } = useProgress();
   const { isStaff } = useRole();
   
@@ -21,9 +16,7 @@ export function PontosBar({ pontos, level }: PontosBarProps) {
   const totalArcanosCount = 78;
   const globalProgressPct = Math.round((totalCompletedArcanos / totalArcanosCount) * 100);
 
-  // ─── Arcano Atual para o Header ───
   const getHeaderArcanoAtual = () => {
-    // 1. Verificar Maiores
     for (let i = 0; i <= 21; i++) {
       if (!progress.completedLessons.includes(`arcano-${i}`)) {
         return { 
@@ -33,7 +26,6 @@ export function PontosBar({ pontos, level }: PontosBarProps) {
       }
     }
     
-    // 2. Verificar Menores
     const naipes = ["copas", "paus", "espadas", "ouros"] as const;
     const posicoes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "pajem", "cavaleiro", "rainha", "rei"] as const;
     
