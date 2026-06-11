@@ -12,7 +12,7 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   { path: "/app", label: "Início", icon: "jornada", microcopy: "Seu Dashboard" },
-  { path: "/jornada-do-louco", label: "Jornada", icon: "louco", microcopy: "A Jornada do Louco" },
+  { path: "/module/arcanos-maiores", label: "Jornada", icon: "louco", microcopy: "Os 22 Arcanos Maiores" },
   { path: "/desafios", label: "Ritual", icon: "ritual", microcopy: "Faça sua prática de hoje." },
   { path: "/mapa", label: "Mapa", icon: "formacao", microcopy: "Mapa da trilha" },
   { path: "/perfil", label: "Perfil", icon: "perfil", microcopy: "Suas chaves" },
@@ -51,7 +51,7 @@ const BottomNav = () => {
       <div className="mx-auto flex items-center justify-between py-2 px-0 w-full max-w-full">
         {NAV_ITEMS.map(item => {
           const isActive = location.pathname === item.path;
-          const isJourneyTab = item.path === "/jornada-do-louco";
+          const isJourneyTab = item.path === "/module/arcanos-maiores";
           const isLocked = isJourneyTab && !fundamentosComplete;
           
           return (
