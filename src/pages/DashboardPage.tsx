@@ -546,54 +546,51 @@ const DashboardPage = () => {
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-
-
-                   </div>
+                      <div className="absolute top-4 right-4 bg-gold/90 text-plum w-10 h-10 rounded-full flex items-center justify-center font-heading font-black text-sm shadow-lg border border-white/20">
+                        {currentStep.numeral}
+                      </div>
+                    </div>
                  </ArchPortal>
                )}
             </div>
 
-            <div className="flex-1 p-8 md:p-14 flex flex-col justify-center space-y-8">
-              <div className="space-y-3">
+            <div className="flex-1 p-8 md:p-12 flex flex-col justify-between space-y-8">
+              <div className="space-y-6">
                 <div className="flex items-center gap-3">
-                   <div className="w-8 h-px bg-gold/40" />
-                   <span className="text-[14px] font-heading font-black tracking-[0.4em] text-gold uppercase">
-                     {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 
-                       ? "Comece por aqui" 
-                       : "Caminho do Iniciado"}
-                   </span>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-plum tracking-tight leading-tight">
-                  {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 
-                    ? "Antes dos 78 arcanos, você vai construir sua base." 
-                    : "Sua Jornada"}
-                </h2>
-              </div>
-
-              {currentStep && (
-                <div className="space-y-6">
-                  {currentStep.type === "fundamentos" && currentStep.lessonId === "fundamentos-1" && (
-                    <div className="p-3 rounded-xl bg-gold/10 border border-gold/20 mb-2">
-                       <p className="text-[12px] font-heading font-black text-gold uppercase tracking-widest text-center">
-                         Comece pelos Fundamentos
-                       </p>
-                    </div>
-                  )}
-                  <div className="space-y-1.5 p-4 rounded-2xl bg-gold/5 border border-gold/10">
-                    <p className="text-[14px] font-heading font-black tracking-widest text-gold uppercase flex items-center gap-2">
-                      <MapPin className="w-3 h-3" /> {currentStep.moduleName}
-                    </p>
-                    <h3 className="text-xl md:text-2xl font-heading font-bold text-plum leading-tight">
-                      {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 
-                        ? "Fundamentos do Tarô — Lição 1: O que é o Tarô" 
-                        : `${currentStep.label} ${currentStep.numeral} — ${currentStep.name}`}
-                    </h3>
-                    {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 && (
-                      <p className="text-[14px] font-body italic text-plum/70 mt-2">
-                        Dê o primeiro passo e receba sua primeira chave.
-                      </p>
-                    )}
+                  <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center border border-gold/20 shadow-inner">
+                    <Target className="w-5 h-5 text-gold" />
                   </div>
+                  <div className="flex flex-col">
+                    <span className="text-[11px] font-heading font-black tracking-[0.3em] text-gold uppercase opacity-100">Próximo Passo</span>
+                    <span className="text-[10px] font-heading font-black tracking-[0.2em] text-plum/40 uppercase">Sua trilha guiada</span>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  {currentStep && (
+                    <div className="space-y-4">
+                      {currentStep.type === "fundamentos" && fundamentosLessonsCompleted === 0 && (
+                        <div className="p-3 rounded-xl bg-gold/10 border border-gold/20 mb-2">
+                           <p className="text-[12px] font-heading font-black text-gold uppercase tracking-widest text-center">
+                             Comece pelos Fundamentos
+                           </p>
+                        </div>
+                      )}
+                      <div className="space-y-1.5 p-4 rounded-2xl bg-gold/5 border border-gold/10">
+                        <p className="text-[14px] font-heading font-black tracking-widest text-gold uppercase flex items-center gap-2">
+                          <MapPin className="w-3 h-3" /> {currentStep.moduleName}
+                        </p>
+                        <h3 className="text-xl md:text-2xl font-heading font-bold text-plum leading-tight">
+                          {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 
+                            ? "Fundamentos do Tarô — Lição 1: O que é o Tarô" 
+                            : `${currentStep.label} ${currentStep.numeral} — ${currentStep.name}`}
+                        </h3>
+                        {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 && (
+                          <p className="text-[14px] font-body italic text-plum/70 mt-2">
+                            Dê o primeiro passo e receba sua primeira chave.
+                          </p>
+                        )}
+                      </div>
 
                   <div className="space-y-3">
                     <div className="relative h-2 rounded-full bg-ivory border border-gold/10 overflow-hidden shadow-inner">
