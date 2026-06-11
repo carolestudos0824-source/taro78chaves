@@ -379,9 +379,10 @@ const DashboardPage = () => {
                       <div className="absolute inset-0 bg-shimmer animate-shimmer opacity-20" style={{ backgroundSize: '200% 100%' }} />
                     </div>
                     <div className="flex justify-between items-center px-1">
-                      <span className="text-[13px] font-heading font-black text-plum/60 uppercase tracking-[0.1em] leading-tight max-w-[120px]">
-                        {totalCompletedArcanos} de 78 {totalCompletedArcanos === 1 ? "Chave" : "Chaves"}
+                      <span className="text-[13px] font-heading font-black text-plum/60 uppercase tracking-[0.1em] leading-tight max-w-[150px]">
+                        {totalCompletedArcanos} {totalCompletedArcanos === 1 ? "Chave conquistada" : "Chaves conquistadas"}
                       </span>
+
 
                       <span className="text-[11px] font-heading font-black text-gold uppercase tracking-[0.1em] flex items-center gap-1 leading-tight text-right">
                         {globalProgressPct}% Integrado <Zap className="w-2.5 h-2.5 fill-current" />
