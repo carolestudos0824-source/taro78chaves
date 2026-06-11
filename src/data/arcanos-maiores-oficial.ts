@@ -1,9 +1,8 @@
 /**
- * @deprecated [Fase 6.6 — Faxina final]
- * Arquivo legado mantido apenas como SEED / BACKUP / ROLLBACK.
- * NÃO importar no runtime (páginas, componentes, hooks).
- * Runtime principal: @/lib/content (DB) + @/content/** + @/config/** + @/registry/**.
- * Importação fora de src/lib/content/**, src/data/** ou src/components/admin/** é bloqueada por ESLint.
+/**
+ * ════════════════════════════════════════════════════════════════
+ * MANIFESTO OFICIAL DOS 22 ARCANOS MAIORES — DECK PRINCIPAL
+ * ════════════════════════════════════════════════════════════════
  */
 /**
  * ════════════════════════════════════════════════════════════════
