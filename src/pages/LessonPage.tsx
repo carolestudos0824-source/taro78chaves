@@ -39,6 +39,7 @@ import { PageBackControls } from "@/components/PageBackControls";
  * 9. complete (Conclusão / Revisão)
  */
 type LessonPhase = 
+  | "orientation"
   | "intro" 
   | "essence"
   | "light"
@@ -52,6 +53,7 @@ type LessonPhase =
   | "legacy-content";
 
 const PHASE_ORDER: LessonPhase[] = [
+  "orientation",
   "intro",
   "essence",
   "light",
