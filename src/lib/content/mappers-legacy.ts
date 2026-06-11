@@ -28,7 +28,7 @@ export interface LegacyArcanoMaior {
   cardImage: string;
   keywords: string[];
   essence: string;
-  symbols: unknown;
+  symbols: { name: string; meaning: string; explanation?: string; pedagogicSense?: string; relation?: string }[];
   archetype: string;
   light: string;
   shadow: string;
@@ -81,6 +81,16 @@ export function mapLegacyArcanoMaiorToUI(a: LegacyArcanoMaior): ArcanoContent {
     },
     quiz: null,
     metadata: { source: "legacy", sourceId: String(a.number) },
+    symbolsMap: a.symbols?.map((s, i) => ({
+      id: `${a.slug}-symbol-${i}`,
+      name: s.name,
+      description: s.meaning + (s.explanation ? ` ${s.explanation}` : ""),
+      reflectionQuestion: s.pedagogicSense || "O que este símbolo desperta em você?",
+      position: { 
+        x: 20 + (i * 12) % 60, 
+        y: 25 + (i * 15) % 50 
+      }
+    }))
   };
 }
 
