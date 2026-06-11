@@ -68,7 +68,8 @@ const PHASE_ORDER: LessonPhase[] = [
 ];
 
 const PHASE_LABEL: Record<LessonPhase, string> = {
-  intro: "Abertura",
+  orientation: "Objetivo",
+  intro: "Portal do Arcano",
   essence: "Essência",
   light: "Luz",
   shadow: "Sombra",
