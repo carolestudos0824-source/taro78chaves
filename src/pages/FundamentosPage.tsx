@@ -6,7 +6,7 @@ import { FUNDAMENTOS_LESSONS } from "@/content/lessons/fundamentos";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { useResolvedModule } from "@/hooks/use-resolved-module";
-import { PontosBar } from "@/components/PontosBar";
+import { ChaveProgress } from "@/components/ChaveProgress";
 
 const FundamentosPage = () => {
   const navigate = useNavigate();
