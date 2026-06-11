@@ -5,6 +5,7 @@ import { ReflectionSection } from "../ReflectionSection";
 import { useNavigate } from "react-router-dom";
 import { useProgress } from "@/hooks/use-progress";
 import { useRole } from "@/hooks/use-role";
+import { usePremium } from "@/hooks/use-premium";
 
 
 interface CompletionScreenProps {
@@ -34,6 +35,7 @@ export function CompletionScreen({
 
   const navigate = useNavigate();
   const { progress, fundamentosComplete, isArcanoUnlocked, isArcanoCompleted } = useProgress();
+  const { isPremium } = usePremium();
   const { isStaff } = useRole();
   const percentage = Math.round((quizScore / quizTotal) * 100);
   const isExcellent = percentage >= 80;
@@ -102,7 +104,7 @@ export function CompletionScreen({
 
         <p className="text-[15px] font-medium px-6" style={{ color: "#5B1F3D" }}>
           {arcanoId === 0 
-            ? (progress.isPremium || isStaff ? "Você despertou a primeira chave: O Louco. Agora a jornada continua com O Mago, o arcano da vontade, da direção e do primeiro ato consciente." : "Você despertou a primeira chave: O Louco. Para continuar a jornada real através dos 22 Arcanos Maiores, ative sua assinatura.")
+            ? (isPremium || isStaff ? "Você despertou a primeira chave: O Louco. Agora a jornada continua com O Mago, o arcano da vontade, da direção e do primeiro ato consciente." : "Você despertou a primeira chave: O Louco. Para continuar a jornada real através dos 22 Arcanos Maiores, ative sua assinatura.")
             : `Você dominou o portal de ${arcanoName}.`}
         </p>
         <div className="mt-3 inline-flex items-center gap-2 px-4 py-1.5 rounded-xl bg-[#FAF5EF] border border-[#C8A66A]/30">
@@ -178,14 +180,14 @@ export function CompletionScreen({
       <div className="flex flex-col items-center gap-5 pt-4">
         {nextArcano && (
           <button onClick={onNextArcano}
-            disabled={arcanoId === 0 && !progress.isPremium && !isStaff}
-            className={`w-full max-w-sm py-6 rounded-2xl font-heading text-xs font-black tracking-[0.3em] uppercase transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-4 shadow-2xl border-2 border-[#C8A66A] ${(arcanoId === 0 && !progress.isPremium && !isStaff) ? "opacity-50 grayscale cursor-not-allowed" : ""}`}
+            disabled={arcanoId === 0 && !isPremium && !isStaff}
+            className={`w-full max-w-sm py-6 rounded-2xl font-heading text-xs font-black tracking-[0.3em] uppercase transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-4 shadow-2xl border-2 border-[#C8A66A] ${(arcanoId === 0 && !isPremium && !isStaff) ? "opacity-50 grayscale cursor-not-allowed" : ""}`}
             style={{
               background: "#5B1F3D",
               color: "white",
             }}
           >
-            <span>{arcanoId === 0 && !progress.isPremium && !isStaff ? "Desbloquear O Mago" : "Seguir Travessia"}</span>
+            <span>{arcanoId === 0 && !isPremium && !isStaff ? "Desbloquear O Mago" : "Seguir Travessia"}</span>
             <ArrowRight className="w-5 h-5" />
           </button>
         )}
