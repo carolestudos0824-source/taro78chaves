@@ -313,6 +313,18 @@ const DashboardPage = () => {
                 const arcanoId = isArcanoMaior ? parseInt(card.id.replace("arcano-", ""), 10) : -1;
                 
                 const handleCardClick = () => {
+                  // If it's a locked card for free user
+                  if (!isPremium && !isAdmin && (card.id.startsWith("copas-") || card.id.startsWith("paus-") || card.id.startsWith("espadas-") || card.id.startsWith("ouros-") || (isArcanoMaior && arcanoId > 0))) {
+                    toast.info("Você vai desbloquear os arcanos depois de construir sua base na Escola Digital.", {
+                      description: "Acesse a jornada completa para abrir todas as portas.",
+                      action: {
+                        label: "Upgrade",
+                        onClick: () => navigate("/premium")
+                      }
+                    });
+                    return;
+                  }
+
                   if (progress.completedLessons.length === 0) {
                     toast.info("Você vai desbloquear os arcanos depois de construir sua base nos Fundamentos.", {
                       description: "Comece pela primeira lição para iniciar sua jornada.",

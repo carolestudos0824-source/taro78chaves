@@ -67,8 +67,8 @@ const BottomNav = () => {
           
           const handleClick = () => {
             if (isLocked) {
-              toast.info("Este conteúdo faz parte da Escola Digital completa.", {
-                description: "Complete os Fundamentos do Tarô para iniciar sua jornada.",
+              toast.info("Essa jornada faz parte da Escola Digital completa.", {
+                description: "Desbloqueie a formação para iniciar sua travessia.",
                 action: {
                   label: "Upgrade",
                   onClick: () => navigate("/premium")
