@@ -10,8 +10,9 @@ import { trackEvent } from "@/lib/analytics";
 
 const AuthPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialMode = searchParams.get("mode") === "forgot" ? "forgot" : "signup";
+  const initialMode = searchParams.get("mode") === "login" ? "login" : searchParams.get("mode") === "forgot" ? "forgot" : "signup";
   const [mode, setMode] = useState<"login" | "signup" | "forgot">(initialMode);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -104,8 +105,9 @@ const AuthPage = () => {
           
           <div className="space-y-4">
             <h1 className="font-heading text-4xl tracking-tight font-black" style={{ color: "#5B1F3D" }}>
-              {mode === "signup" ? "Criar conta" : mode === "login" ? "Entrar" : "Recuperar senha"}
+              {mode === "signup" ? "Criar conta" : mode === "login" ? "Entre na sua conta" : "Recuperar senha"}
             </h1>
+
             <p className="text-[15px] font-body text-[#5B1F3D] max-w-[280px] mx-auto leading-relaxed font-bold">
               {mode === "signup" ? "Inicie pelos Fundamentos para desbloquear toda a Jornada." : mode === "login" ? "Boas-vindas de volta à sua jornada." : "Enviaremos um link de acesso."}
             </p>
