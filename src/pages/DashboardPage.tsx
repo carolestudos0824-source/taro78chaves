@@ -645,7 +645,7 @@ const DashboardPage = () => {
         </section>
 
         {/* Ritual of the Day - Separate Block */}
-        {!ritualProgress.completed && (
+        {!ritualProgress.completed && progress.completedLessons.length > 0 && (
           <section className="px-2">
             <div 
               onClick={() => navigate("/desafios")}
@@ -664,19 +664,7 @@ const DashboardPage = () => {
                   <p className="text-[13px] font-body italic text-plum/70">Mantenha sua chama acesa através da prática ritualística.</p>
                 </div>
                 <button 
-                  onClick={() => {
-                    if (progress.completedLessons.length === 0 && !isAdmin) {
-                      toast.info("Seu ritual será liberado depois da primeira lição.", {
-                        description: "Complete Fundamentos do Tarô — Lição 1.",
-                        action: {
-                          label: "Começar",
-                          onClick: () => navigate("/fundamentos/0")
-                        }
-                      });
-                      return;
-                    }
-                    navigate("/desafios");
-                  }}
+                  onClick={() => navigate("/desafios")}
                   className="px-8 py-4 bg-gold/10 text-plum border border-gold/30 rounded-xl font-heading text-[13px] font-black tracking-[0.3em] uppercase group-hover:bg-gold group-hover:text-plum transition-all flex items-center gap-2"
                 >
                   Praticar agora <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
@@ -911,7 +899,7 @@ const DashboardPage = () => {
                     onClick={() => navigate("/premium")}
                     className="w-full py-3 bg-gold text-[#5B1F3D] rounded-xl font-heading text-[11px] font-black tracking-widest uppercase hover:bg-white transition-all shadow-lg active:scale-95"
                   >
-                    Ver Planos
+                    Assinar e desbloquear a Escola Digital
                   </button>
                 </div>
               </div>
