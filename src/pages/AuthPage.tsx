@@ -52,7 +52,7 @@ const AuthPage = () => {
         const { error } = await signIn(email, password);
         if (error) throw error;
       }
-      navigate("/app");
+      navigate("/module/fundamentos");
     } catch (err: any) {
       setError(err.message);
     } finally {
