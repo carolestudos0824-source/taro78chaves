@@ -193,7 +193,7 @@ const DashboardPage = () => {
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-plum tracking-tight flex flex-col items-center">
               <span className="text-xl md:text-2xl font-light italic text-plum/50 mb-1">Escola Digital de Tarô</span>
               <span className="relative inline-block">
-                Jornada dos 78 Arcanos
+                {currentStep?.type === "fundamentos" ? "Fundamentos do Tarô" : "Jornada dos 78 Arcanos"}
                 <div className="absolute -right-10 -top-4 opacity-40">
                   <Star className="w-6 h-6 text-gold fill-gold/20" />
                 </div>
@@ -384,7 +384,7 @@ const DashboardPage = () => {
                   className="w-full py-5 rounded-[1.25rem] font-heading text-[11px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-plum text-white border-gold/30 hover:bg-[#45162D] relative z-[100]"
                 >
                   <span>
-                    {currentStep?.type === "fundamentos" ? "Começar Estudo" : "Continuar jornada"}
+                    {currentStep?.type === "fundamentos" ? "Começar Pelos Fundamentos" : "Continuar jornada"}
                   </span>
                   <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform text-gold" />
                 </button>
