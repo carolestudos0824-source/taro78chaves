@@ -153,7 +153,7 @@ const DashboardPage = () => {
   return (
     <div className="min-h-screen bg-[#FAF5EF] relative overflow-x-hidden">
       <main className="container max-w-4xl px-4 pt-12 pb-[calc(180px+env(safe-area-inset-bottom))] space-y-12 animate-in fade-in duration-1000 relative">
-        <PageBackControls variant="top" showLabel={true} className="h-auto p-0 opacity-0 pointer-events-none" />
+        
 
 
         {/* Subtle decorative elements */}
