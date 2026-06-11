@@ -73,8 +73,7 @@ const PraticaLessonPage = () => {
   const currentIdx = phaseSteps.indexOf(phase);
 
   const handleStartQuiz = () => {
-    completeLesson(lesson.id);
-    addXP(15);
+    // PROGRESS REMOVAL: Lesson completion moved to the end of the quiz
     setPhase("quiz");
   };
 
@@ -95,7 +94,8 @@ const PraticaLessonPage = () => {
       setShowExplanation(false);
     } else {
       completeQuiz(`quiz-${lesson.id}`);
-      addXP(10);
+      completeLesson(lesson.id);
+      addXP(15 + 10); // lesson (15) + quiz completion (10)
       if (!nextLesson) completeModule("pratica");
       setPhase("complete");
     }
@@ -261,7 +261,7 @@ const PraticaLessonPage = () => {
 
             <div className="flex flex-col items-center gap-3 pt-4">
               <button
-                onClick={() => { completeLesson(lesson.id); addXP(15); setPhase("exercise"); }}
+                onClick={() => { setPhase("exercise"); }}
                 className="px-10 py-3.5 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105"
                 style={{
                   background: `linear-gradient(135deg, ${accentColor} 26%), ${accentColor} 40%))`,
@@ -286,7 +286,7 @@ const PraticaLessonPage = () => {
           <div className="space-y-6" style={{ animation: "fade-up 0.5s ease-out" }}>
             <div className="flex items-center justify-between">
               <span className="text-xs font-heading tracking-[0.2em] uppercase" style={{ color: `${accentColor} 26%)` }}>✍️ Exercício Prático</span>
-              <button onClick={handleStartQuiz} className="text-xs font-heading tracking-wider" style={{ color: `${accentColor} 35%)` }}>Pular para Quiz →</button>
+              
             </div>
             <div className="rounded-xl p-6" style={{ background: `${accentColor} 25% / 0.04)`, border: `1px solid ${accentColor} 25% / 0.18)` }}>
               <div className="flex items-center gap-2 mb-4">
@@ -314,7 +314,7 @@ const PraticaLessonPage = () => {
           <div className="space-y-6" style={{ animation: "fade-up 0.5s ease-out" }}>
             <div className="flex items-center justify-between">
               <span className="text-xs font-heading tracking-[0.2em] uppercase" style={{ color: `${accentColor} 26%)` }}>Aprofundamento</span>
-              <button onClick={handleStartQuiz} className="text-xs font-heading tracking-wider" style={{ color: `${accentColor} 35%)` }}>Ir ao Quiz →</button>
+              
             </div>
             <div className="rounded-xl p-6" style={{ background: "hsl(38 30% 95% / 0.85)", border: `1px solid ${accentColor} 25% / 0.10)` }}>
               {lesson.deepDive.split("\n\n").map((p, i) => (

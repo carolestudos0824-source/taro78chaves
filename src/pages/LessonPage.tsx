@@ -286,10 +286,9 @@ const LessonPage = () => {
                   {arcano.layers.main.essence}
                 </p>
                 <div className="pt-4">
-                  <QuizSection
-                    questions={[arcano.quiz[0]]}
-                    onComplete={goNext}
-                  />
+                  <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-[13px] tracking-widest shadow-xl hover:scale-[1.02] transition-transform leading-tight">
+                    Continuar para Luz
+                  </Button>
                 </div>
               </div>
             </div>
@@ -308,10 +307,9 @@ const LessonPage = () => {
                   {arcano.layers.main.light}
                 </p>
                 <div className="pt-4">
-                  <QuizSection
-                    questions={[arcano.quiz[1]]}
-                    onComplete={goNext}
-                  />
+                  <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-[13px] tracking-widest shadow-xl hover:scale-[1.02] transition-transform leading-tight">
+                    Continuar para Sombra
+                  </Button>
                 </div>
               </div>
             </div>
@@ -330,10 +328,9 @@ const LessonPage = () => {
                   {arcano.layers.main.shadow}
                 </p>
                 <div className="pt-4">
-                  <QuizSection
-                    questions={[arcano.quiz[2]]}
-                    onComplete={goNext}
-                  />
+                  <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-[13px] tracking-widest shadow-xl hover:scale-[1.02] transition-transform leading-tight">
+                    Continuar para Símbolos
+                  </Button>
                 </div>
               </div>
             </div>
@@ -354,10 +351,9 @@ const LessonPage = () => {
                 onComplete={goNext}
               />
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border-2 border-[#C8A66A]/20 shadow-lg">
-                <QuizSection
-                  questions={[arcano.quiz[3]]}
-                  onComplete={goNext}
-                />
+                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-[13px] tracking-widest shadow-xl hover:scale-[1.02] transition-transform leading-tight">
+                  Continuar para Voz
+                </Button>
               </div>
             </div>
           )}
@@ -378,22 +374,9 @@ const LessonPage = () => {
                 {arcano.id === 0 && (
                   <div className="pt-6 space-y-6">
                     <div className="h-px bg-[#C8A66A]/20" />
-                    <QuizSection
-                      questions={[{
-                        id: "fool-pilot-6",
-                        type: "multiple-choice",
-                        question: "O que O Louco mais pediria de você neste momento?",
-                        options: [
-                          "Um plano de 10 anos detalhado.",
-                          "Um passo de fé e abertura para o novo.",
-                          "Que você ficasse onde está para evitar erros.",
-                          "Que você seguisse as regras de todos."
-                        ],
-                        correctIndex: 1,
-                        explanation: "Exato. O Louco pede o desapego das garantias para que a vida aconteça.",
-                      }]}
-                      onComplete={goNext}
-                    />
+                    <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-[13px] tracking-widest shadow-xl hover:scale-[1.02] transition-transform leading-tight">
+                      Continuar para Dimensões
+                    </Button>
                   </div>
                 )}
 
@@ -523,10 +506,9 @@ const LessonPage = () => {
                   <Sparkles className="w-5 h-5 text-[#C8A66A]" />
                   <h2 className="font-heading text-[13px] tracking-[0.3em] uppercase font-black text-[#5B1F3D]">Aplicação Real</h2>
                 </div>
-                <QuizSection
-                  questions={[arcano.quiz[4]]}
-                  onComplete={goNext}
-                />
+                <Button onClick={goNext} className="w-full h-auto py-5 bg-[#5B1F3D] text-white rounded-2xl border-2 border-[#C8A66A] font-black uppercase text-[13px] tracking-widest shadow-xl hover:scale-[1.02] transition-transform leading-tight">
+                  Ir para o Quiz Final
+                </Button>
               </div>
             </div>
           )}
