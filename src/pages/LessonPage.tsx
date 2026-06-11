@@ -506,6 +506,8 @@ const LessonPage = () => {
                 cardName={arcano.name} 
                 numeral={arcano.numeral}
                 subtitle="Caso Prático"
+                showBack={true}
+                onBack={goBack}
               />
               <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
                 <div className="flex items-center gap-3">
@@ -530,6 +532,8 @@ const LessonPage = () => {
                 cardName={arcano.name} 
                 numeral={arcano.numeral}
                 subtitle="Integração de Saberes"
+                showBack={true}
+                onBack={goBack}
               />
               <QuizSection
                 questions={arcano.quiz}
@@ -558,6 +562,8 @@ const LessonPage = () => {
                 cardName={arcano.name} 
                 numeral={arcano.numeral}
                 subtitle="Aprofundamento Editorial"
+                showBack={true}
+                onBack={goBack}
               />
               <LessonContent 
                 sections={arcano.lessonSections}
