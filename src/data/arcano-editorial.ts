@@ -27,6 +27,9 @@ import { getDeckEntry, getCanonicalNumeral } from "./deck-registry";
 export interface ArcanoSymbol {
   name: string;
   meaning: string;
+  explanation?: string;
+  pedagogicSense?: string;
+  relation?: string;
 }
 
 export interface ArcanoInterpretation {
@@ -202,7 +205,13 @@ export function editorialToLegacy(editorial: ArcanoMaiorEditorial, unlocked = fa
       id: "simbolos",
       title: "Símbolos Centrais",
       icon: "◎",
-      content: editorial.symbols.map(s => `${s.name}: ${s.meaning}`).join(". "),
+      content: editorial.symbols.map(s => {
+        let text = `**${s.name}**: ${s.meaning}`;
+        if (s.explanation) text += `\n*Explicação:* ${s.explanation}`;
+        if (s.pedagogicSense) text += `\n*Sentido Pedagógico:* ${s.pedagogicSense}`;
+        if (s.relation) text += `\n*Relação:* ${s.relation}`;
+        return text;
+      }).join("\n\n"),
     },
     { id: "luz", title: "Luz", icon: "☀", accent: "gold", content: editorial.light },
     { id: "sombra", title: "Sombra", icon: "☾", accent: "plum", content: editorial.shadow },
