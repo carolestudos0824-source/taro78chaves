@@ -585,6 +585,7 @@ setKeyEarned(true);
               arcanoName={arcano.name}
               cardImage={arcano.cardImage}
               arcanoId={arcanoId}
+              keyEarned={keyEarned}
 
 
 
