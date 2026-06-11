@@ -428,35 +428,6 @@ const DashboardPage = () => {
           </div>
         </section>
 
-        {/* Ritual of the Day - Separate Block */}
-        {!ritualProgress.completed && fundamentosLessonsCompleted > 0 && (
-          <section className="px-2">
-            <div 
-              onClick={() => navigate("/desafios")}
-              className="relative overflow-hidden rounded-[2rem] bg-white border border-gold/20 p-8 shadow-xl cursor-pointer group hover:border-gold/40 transition-all"
-            >
-              <div className="absolute top-0 right-0 p-8 opacity-[0.05] pointer-events-none group-hover:scale-110 transition-transform">
-                <Sparkles className="w-24 h-24 text-gold" />
-              </div>
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
-                <div className="space-y-2 text-center sm:text-left">
-                  <div className="flex items-center justify-center sm:justify-start gap-3">
-                    <div className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-                    <span className="text-[12px] font-heading font-black tracking-[0.4em] text-gold uppercase">Conexão Diária</span>
-                  </div>
-                  <h3 className="text-2xl font-heading font-bold text-plum tracking-tight">Ritual de hoje</h3>
-                  <p className="text-[13px] font-body italic text-plum/70">Mantenha sua chama acesa através da prática ritualística.</p>
-                </div>
-                <button 
-                  onClick={() => navigate("/desafios")}
-                  className="px-8 py-4 bg-gold/10 text-plum border border-gold/30 rounded-xl font-heading text-[13px] font-black tracking-[0.3em] uppercase group-hover:bg-gold group-hover:text-plum transition-all flex items-center gap-2"
-                >
-                  Praticar agora <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* 2. Explore the 78 Arcanos - Cards Strip */}
         <section className="space-y-4 px-2">
@@ -467,11 +438,11 @@ const DashboardPage = () => {
             </div>
             <button 
               onClick={() => {
-                if (progress.completedLessons.length === 0 && !isAdmin) {
+                if (fundamentosLessonsCompleted === 0 && !isAdmin) {
                   toast.info("Você vai desbloquear a visão completa depois de construir sua base nos Fundamentos.", {
                     description: "Inicie a primeira lição para começar sua jornada.",
                     action: {
-                      label: "Começar",
+                      label: "Começar primeira lição",
                       onClick: () => navigate("/fundamentos/0")
                     }
                   });
@@ -503,11 +474,11 @@ const DashboardPage = () => {
                     return;
                   }
 
-                  if (progress.completedLessons.length === 0 && !isAdmin) {
+                  if (fundamentosLessonsCompleted === 0 && !isAdmin) {
                     toast.info("Você vai desbloquear os arcanos depois de construir sua base nos Fundamentos.", {
                       description: "Comece pela primeira lição para iniciar sua jornada.",
                       action: {
-                        label: "Começar",
+                        label: "Começar primeira lição",
                         onClick: () => navigate("/fundamentos/0")
                       }
                     });
@@ -634,7 +605,7 @@ const DashboardPage = () => {
                     <h3 className="font-heading text-lg font-bold text-plum">Ritual de Hoje</h3>
                     <p className="text-[14px] font-body text-plum/60 leading-relaxed font-bold">
                       {fundamentosLessonsCompleted === 0 
-                        ? "Complete sua primeira lição para liberar a prática ritual diária." 
+                        ? "Complete sua primeira lição para liberar sua prática ritual diária." 
                         : "Sua prática mística para manter a conexão com os arquétipos."}
                     </p>
                   </div>
@@ -644,7 +615,7 @@ const DashboardPage = () => {
                       if (fundamentosLessonsCompleted === 0) {
                         toast.info("Seu ritual será liberado depois da primeira lição.", {
                           action: {
-                            label: "Começar",
+                            label: "Começar primeira lição",
                             onClick: () => navigate("/fundamentos/0")
                           }
                         });
@@ -654,7 +625,7 @@ const DashboardPage = () => {
                     }}
                     className={`flex items-center gap-2 text-[12px] font-heading font-black tracking-widest uppercase transition-all ${
                       fundamentosLessonsCompleted === 0 
-                        ? "text-gold/50 cursor-not-allowed" 
+                        ? "text-gold/40 cursor-not-allowed" 
                         : "text-gold hover:text-plum"
                     }`}
                   >
