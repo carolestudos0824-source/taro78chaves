@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef, createContext, useContext } from "react";
+import React, { useState, useEffect, useCallback, useRef, createContext, useContext, useMemo } from "react";
 import { DEFAULT_PROGRESS, type Badge, type UserProgress } from "@/lib/content";
 import { FUNDAMENTOS_LESSONS } from "@/content/lessons/fundamentos";
 import { supabase } from "@/integrations/supabase/client";
@@ -229,7 +229,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
 
     fetchProgress();
     return () => { cancelled = true; };
-  }, [user]);
+  }, [user, authLoading]);
 
   useEffect(() => {
     if (!user || loading || isStaff) return;
