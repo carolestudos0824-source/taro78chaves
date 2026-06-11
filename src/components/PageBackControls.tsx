@@ -18,6 +18,11 @@ export const PageBackControls = ({
 }: PageBackControlsProps) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const mainRoutes = ["/", "/app", "/inicio", "/jornada", "/ritual", "/mapa", "/perfil", "/jornada-do-louco", "/desafios"];
+  
+  if (mainRoutes.includes(location.pathname)) {
+    return null;
+  }
 
   const handleBack = () => {
     // If there's history, go back

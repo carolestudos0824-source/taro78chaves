@@ -10,7 +10,7 @@ import imgLouco from "@/assets/arcano-0-louco.jpg";
 import imgMago from "@/assets/arcano-1-mago.jpg";
 import imgSacerdotisa from "@/assets/arcano-2-sacerdotisa.jpg";
 import imgMundo from "@/assets/arcano-21-mundo.jpg";
-import { PageBackControls } from "@/components/PageBackControls";
+
 
 
 interface TrailLevel {
@@ -152,7 +152,7 @@ const TrailsPage = () => {
       </div>
 
       <div className="relative max-w-2xl mx-auto px-6 pt-2 sm:pt-12 flex flex-col items-center">
-        <PageBackControls variant="top" showLabel={true} className="self-start mb-8 h-auto p-0" />
+        
 
         {/* Header Section - Enhanced Spacing & Ritualistic feel */}
         <div className="text-center mb-2 relative w-full px-4">
@@ -378,7 +378,7 @@ const TrailsPage = () => {
             );
           })}
         </div>
-        <PageBackControls variant="bottom" className="pb-8" />
+        
       </div>
     </div>
   );

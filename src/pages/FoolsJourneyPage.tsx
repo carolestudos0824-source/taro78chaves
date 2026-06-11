@@ -5,7 +5,7 @@ import { useResolvedArcanosMaiores } from "@/hooks/use-resolved-arcanos-maiores"
 import { useJourneyContent } from "@/hooks/use-content";
 import { CORES_FASE, JOURNEY_MOTION } from "@/config/journey-visual";
 import { EDITORIAL_REGISTRY } from "@/content/arcanos-maiores";
-import { PageBackControls } from "@/components/PageBackControls";
+
 
 
 const FoolsJourneyPage = () => {
@@ -48,7 +48,7 @@ const FoolsJourneyPage = () => {
       }}>
         <div className="container max-w-3xl py-5 px-6">
           <div className="flex items-center gap-4">
-            <PageBackControls variant="top" showLabel={false} className="w-9 h-9 flex items-center justify-center rounded-full bg-[#C8A66A]/10 border border-[#C8A66A]/20" />
+            
 
             <div>
               <span className="text-[11px] tracking-[0.35em] uppercase font-heading font-semibold block mb-0.5" style={{ color: "#5B1F3D" }}>
@@ -363,7 +363,7 @@ const FoolsJourneyPage = () => {
             <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
           </button>
           
-          <PageBackControls variant="bottom" className="w-full" />
+          
         </div>
       </main>
     </div>
