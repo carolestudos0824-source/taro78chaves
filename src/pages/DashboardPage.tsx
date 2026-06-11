@@ -544,14 +544,14 @@ const DashboardPage = () => {
         <section className="pb-[calc(140px+env(safe-area-inset-bottom))] px-2 relative z-10">
             <div className="bg-plum/95 rounded-[2.5rem] p-8 border border-gold/30 shadow-2xl text-white space-y-6 overflow-hidden relative group">
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform pointer-events-none">
-                <Crown className="w-32 h-32 md:w-48 md:h-48" />
+                <KeyRound className="w-32 h-32 md:w-48 md:h-48" />
               </div>
               <div className="absolute inset-0 opacity-[0.03] bg-mystic-bg-procedural pointer-events-none" />
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
                 <div className="space-y-4">
                     <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center shadow-lg shrink-0">
-                          <Crown className="w-6 h-6 text-gold" />
+                          <KeyRound className="w-6 h-6 text-gold" />
                         </div>
                         <div className="flex flex-col">
                           <span className="text-[13px] font-heading font-black tracking-[0.4em] text-[#FFD700] drop-shadow-sm uppercase">Formação Completa</span>
@@ -571,15 +571,18 @@ const DashboardPage = () => {
                       <ShieldCheck className="w-4 h-4" /> Acesso de Auditoria
                   </div>
                 ) : isPremium ? (
-                  <div className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-gold font-heading text-[12px] font-black tracking-[0.4em] uppercase flex items-center gap-2">
-                      <Star className="w-4 h-4 fill-current" /> Formação Ativa
-                  </div>
+                  <button 
+                    onClick={() => navigate("/perfil")}
+                    className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-gold font-heading text-[12px] font-black tracking-[0.4em] uppercase flex items-center gap-2 hover:bg-white/20 transition-all"
+                  >
+                      <Star className="w-4 h-4 fill-current" /> Formação Completa Ativa
+                  </button>
                 ) : (
                   <button 
                     onClick={() => navigate("/premium")}
                     className="w-full lg:w-auto px-8 py-5 bg-gold text-plum rounded-2xl font-heading text-[13px] font-black tracking-[0.3em] uppercase shadow-2xl hover:bg-white hover:scale-[1.02] transition-all active:scale-95 group/btn"
                   >
-                    Desbloquear Acesso
+                    Desbloquear Formação Completa
                   </button>
                 )}
 
