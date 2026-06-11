@@ -13,7 +13,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { trackEvent } from "@/lib/analytics";
 import { findNextLessonSuggestion } from "@/lib/content/suggestions";
-import { PageBackControls } from "@/components/PageBackControls";
+
 
 
 import { isWebCheckoutAllowed } from "@/lib/platform";
