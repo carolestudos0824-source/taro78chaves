@@ -306,7 +306,7 @@ const ProfilePage = () => {
             Tarô 78 Chaves · © 2026
           </p>
           
-          <PageBackControls variant="bottom" className="w-full pb-8" />
+          
         </div>
       </main>
     </div>
