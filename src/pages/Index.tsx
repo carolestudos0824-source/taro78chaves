@@ -29,8 +29,9 @@ const Index = () => {
 
   useEffect(() => {
     setHeader({
-      title: "Arcanos Maiores",
-      subtitle: "Módulo 03 • Arcanos Maiores",
+      title: "Portal de Arcanos Maiores",
+      subtitle: "Módulo 03 • A Jornada do Louco",
+
       backRoute: "/app",
       hidePontos: false,
       hideStreak: false
@@ -150,11 +151,11 @@ const Index = () => {
 
             <div className="mt-8 flex justify-center">
               <button
-                onClick={() => navigate("/jornada-do-louco")}
+                onClick={() => navigate("/trilhas")}
                 disabled={!fundamentosComplete}
                 className={`px-8 py-3 rounded-xl bg-[#FAF5EF] text-[#5B1F3D] font-heading text-[10px] tracking-[0.2em] uppercase font-black border border-[#C8A66A30] hover:bg-[#5B1F3D] hover:text-white transition-all flex items-center gap-2 ${!fundamentosComplete ? "opacity-50 grayscale cursor-not-allowed" : ""}`}
               >
-                Conhecer a Jornada do Louco <ChevronRight className="w-3 h-3" />
+                Conhecer a Trilha de Formação <ChevronRight className="w-3 h-3" />
               </button>
             </div>
           </div>
@@ -296,8 +297,9 @@ const Index = () => {
           <div className="flex items-center gap-4 mb-8">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#C8A66A40]" />
             <span className="text-[11px] font-heading tracking-[0.4em] uppercase text-plum font-black">
-              Mapa da Jornada
+              Visão da Jornada
             </span>
+
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#C8A66A40]" />
           </div>
           <JourneyMap progress={progress} />
