@@ -1,35 +1,47 @@
-O bloco de segurança Supabase/RLS foi validado e fechado. Agora focaremos na **Estabilidade Visual (Flicker Zero)** e na criação do **Painel da Jornada da Aluna**, garantindo uma experiência pedagógica fluida e orientada ao progresso.
+1. **Restore and Integrate Journey Content**:
+    *   I will modify `src/pages/FoolsJourneyPage.tsx` to integrate the narrative texts for each of the 22 Major Arcana.
+    *   The narrative text will be displayed alongside each arcano in the list, ensuring it's pedagogically rich as requested.
+    *   I will use the `JourneyArcanoContent` from the content adapter, which already includes `textoNarrativo` and `papel`.
 
-### 1. Eliminação do Flicker (Pisca) na Navegação
-O "pisca" ocorre pela interrupção do `Suspense` em rotas `lazy`.
-- **Eager Loading**: Converter rotas críticas (`Dashboard`, `Trails`, `Lesson`, `Profile`, `Modules`) para importação síncrona no `App.tsx`.
-- **Shell Stability**: O `ShellFallback` será neutralizado para evitar flashes de carregamento entre trocas de página, mantendo o `AppShell` (Header/Nav) estático.
-- **JourneyMap**: Remoção do `framer-motion` e substituição por animações CSS (Tailwind) para evitar re-montagens pesadas que acentuam o flicker.
+2. **Update UI in `src/pages/FoolsJourneyPage.tsx`**:
+    *   Ensure the "Hero" section uses the integrated title ("A Jornada do Louco" or "Jornada dos Arcanos Maiores").
+    *   Ensure the introduction narrative correctly explains the path of the 22 Arcana.
+    *   Update the arcano cards within the list to show:
+        *   Image of the card.
+        *   Canonical number and name.
+        *   The narrative/pedagogical text (`papel` + `textoNarrativo`).
+        *   Status (locked/unlocked/completed).
+        *   Action button (Start/Continue).
 
-### 2. Painel da Jornada da Aluna (Dashboard)
-Transformação da tela inicial autenticada (`/app`) em um hub pedagógico completo.
-- **Novo Componente `DashboardPage`**:
-    - **Bloco Principal "Minha Jornada"**: Status da aluna, Arcano/Módulo atual, Progresso % Geral e CTA "Continuar de onde parei".
-    - **Card de Progresso**: Métricas reais de lições, quizzes e XP.
-    - **Card de Próximo Passo**: Identificação inteligente da próxima lição com CTA direto.
-    - **Card de Conquistas**: Exibição de insígnias e nível.
-    - **Card de Plano**: Status da assinatura (Premium/Gratuito) com upgrade elegante para usuários Free.
-- **Lógica de Dados**: Uso intensivo dos hooks `useProgress`, `useAccess` e `useRole` para garantir que:
-    - Admin não gere progresso automático.
-    - Auditor teste premium sem salvar dados.
-    - Aluna veja apenas seu progresso real.
+3. **Consolidate Navigation**:
+    *   Update `src/components/BottomNav.tsx` to ensure the "Jornada" tab always points to `/jornada`.
+    *   Update `src/pages/Index.tsx` (the current `/module/arcanos-maiores` portal) to provide a clear path to the integrated Journey, or keep it as the "Map/Academic" view while ensuring `/jornada` is the "Narrative" experience.
+    *   Actually, the user wants `/jornada` to be the integrated experience and `BottomNav` to point to it.
 
-### Detalhes Técnicos (Arquivos Alterados)
-- **`src/App.tsx`**: Reestruturação de imports e rotas.
-- **`src/pages/DashboardPage.tsx`**: Criação da nova interface do painel (baseada na evolução da `ModulesPage`).
-- **`src/components/JourneyMap.tsx`**: Refatoração para animações CSS puras.
-- **`src/hooks/use-progress.ts`**: (Opcional) Pequeno ajuste para facilitar a identificação da "Última Lição".
+4. **Preserve Logic and Data**:
+    *   I will not delete any content or change the deck images.
+    *   I will ensure keys (recompensa) are used instead of XP.
+    *   I will maintain the current unlocking/progression logic.
 
-### Veredito Final de Sucesso (Relatório)
-- **PAINEL DA JORNADA EXISTE**: SIM
-- **ALUNA ORIENTADA**: SIM
-- **FLICKER REMOVIDO**: SIM
-- **MOBILE 390PX OTIMIZADO**: SIM
-- **SEGURANÇA PRESERVADA**: SIM
+5. **Technical Details**:
+    *   Read `src/data/fools-journey.ts` to ensure all original narrative texts are available in the integrated page (the `useJourneyContent` hook should already provide them via the legacy repo fallback if not in DB).
+    *   Adjust `src/pages/FoolsJourneyPage.tsx` to render these texts effectively for mobile (390px) and desktop.
+    *   Ensure the division by phases (Atos) is preserved or enhanced.
 
-**Importante**: Não haverá alteração em Stripe, políticas de banco de dados ou conteúdo editorial. O foco é puramente UX e Funcionalidade Pedagógica.
+---
+
+### Technical Plan
+
+- **File: `src/pages/FoolsJourneyPage.tsx`**
+    - Update the arcano card rendering to include `arcano.papel` and `arcano.textoNarrativo`.
+    - Add a "Start/Continue" button to each arcano if it's unlocked.
+    - Improve the visual layout to make the texts highly legible.
+
+- **File: `src/components/BottomNav.tsx`**
+    - Verify that the "Jornada" item points to `/jornada`.
+
+- **File: `src/pages/Index.tsx`**
+    - Keep it as the "Arcanos Maiores" module portal, but ensure it links prominently to the "integrated narrative journey" at `/jornada`.
+
+- **File: `src/App.tsx`**
+    - Ensure `/jornada` and `/module/arcanos-maiores` routes are correctly set up.
