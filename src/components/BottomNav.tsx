@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { TarotIcon } from "./TarotIcon";
+import { useProgress } from "@/hooks/use-progress";
 
 interface NavItem {
   path: string;
@@ -20,6 +21,8 @@ const NAV_ITEMS: NavItem[] = [
 const BottomNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { progress } = useProgress();
+  const fundamentosComplete = progress.completedModules.includes("fundamentos");
 
   useEffect(() => {
     // Scroll to top on navigation to ensure clear view of new page
