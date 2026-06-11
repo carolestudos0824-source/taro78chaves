@@ -20,7 +20,7 @@ interface HeaderProps {
  * REMOVIDO: hysteresis, compact mode, transições de scroll e transformações.
  * MOTIVO: Corrigir tremor (jitter) visual na rota /lesson/0.
  */
-export const Header = ({ streak, pontos, level }: HeaderProps) => {
+export const Header = ({ streak }: HeaderProps) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { state } = useHeader();
