@@ -19,11 +19,12 @@ import { MODULES_CATALOG, getModuleFromCatalog } from "./catalog";
 export const FREE_ARCANO_IDS: readonly number[] = [0];
 
 export function hasInitialAccess(arcanoId: number, quizScores: Record<string, number> = {}): boolean {
+  // O Louco (ID 0) é 100% gratuito e completo
   if (arcanoId === 0) return true;
-  if (arcanoId === 1) {
-    const score = quizScores["quiz-arcano-0"] || 0;
-    return score >= 0.8;
-  }
+  
+  // O Mago (ID 1) requer assinatura (acesso total) para usuário comum
+  // A regra de performance (nota 80% no Louco) continua sendo um requisito pedagógico,
+  // mas o bloqueio comercial de assinatura agora é soberano no PremiumGate.
   return false;
 }
 

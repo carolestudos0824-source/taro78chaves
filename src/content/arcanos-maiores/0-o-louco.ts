@@ -11,7 +11,7 @@ export const O_LOUCO: ArcanoMaiorEditorial = {
   keywords: ["Liberdade", "Coragem", "Travessia", "Impulso", "Desapego"],
 
   essence:
-    "O Louco é o impulso antes da certeza. Ele representa começo, liberdade, risco e abertura para o desconhecido. É o Arcano Zero — o vazio fértil, o potencial puro antes de qualquer manifestação.",
+    "Você tenta decorar significados, mas trava quando precisa interpretar uma carta real. O Tarô não começa pela memória. Começa pelo olhar simbólico. O Louco é o impulso antes da certeza. Ele representa o começo, a liberdade e a coragem de saltar para o desconhecido.",
 
   symbols: [
     { name: "Penhasco", meaning: "Risco, travessia, passo sem garantia." },
@@ -32,7 +32,7 @@ export const O_LOUCO: ArcanoMaiorEditorial = {
     "Na sombra, o Louco pode virar fuga, imprudência, ingenuidade ou falta de compromisso.",
 
   initiationLesson:
-    "A lição do Louco é aprender que a jornada importa mais do que o destino. Ele nos convida a abandonar o controle e permitir que a vida nos surpreenda.",
+    "A lição do Louco é aprender que a jornada importa mais do que o destino. Ele nos convida a abandonar o controle e permitir que a vida nos surpreenda. Você despertou a primeira chave: O Louco. Agora a jornada continua com O Mago, o arcano da vontade, da direção e do primeiro ato consciente.",
 
   love: {
     light: "Inícios emocionantes, paixão espontânea e vínculos que renascem sem roteiros antigos.",
@@ -51,7 +51,7 @@ export const O_LOUCO: ArcanoMaiorEditorial = {
 
   voice: {
     intro: "Eu sou o Louco. O impulso antes da certeza.",
-    fullText: "Eu sou o Louco. Sou o primeiro passo antes da garantia. Eu não prometo segurança. Eu ensino travessia e coragem.",
+    fullText: "Você tenta decorar significados, mas trava quando precisa interpretar uma carta real? O Tarô não começa pela memória. Começa pelo olhar simbólico. Eu sou o Louco. Ensinarei você a enxergar além das palavras decoradas.",
   },
 
   deepDive: {
