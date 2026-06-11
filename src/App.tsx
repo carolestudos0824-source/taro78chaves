@@ -17,6 +17,8 @@ import SessionInitializer from "@/components/SessionInitializer";
 import ConsentBanner from "@/components/ConsentBanner";
 import SecurityGate from "@/components/SecurityGate";
 import { trackPageView, useUTMTracker } from "@/lib/analytics";
+import { useProgress } from "@/hooks/use-progress";
+
 
 // Eager: critical path (Zero Flicker)
 import LandingPage from "./pages/LandingPage.tsx";
