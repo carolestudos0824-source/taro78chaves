@@ -61,7 +61,7 @@ const ArchPortal = ({ children, className }: { children: React.ReactNode, classN
 const DashboardPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { progress, loading: progressLoading, fundamentosLessonsCompleted } = useProgress();
+  const { progress, loading: progressLoading, fundamentosLessonsCompleted, fundamentosComplete } = useProgress();
   const { todayProgress: ritualProgress, streak: ritualStreak } = useRitual();
   const { isPremium, subscriptionStatus, isAdmin } = useAccess();
   const { isStaff, isAuditor, role } = useRole();
