@@ -228,8 +228,6 @@ const DashboardPage = () => {
     <div className="min-h-screen bg-[#FAF5EF] relative overflow-x-hidden">
       <main className="container max-w-4xl px-4 pt-12 pb-[calc(180px+env(safe-area-inset-bottom))] space-y-12 animate-in fade-in duration-1000 relative">
         
-
-
         {/* Subtle decorative elements */}
         <div className="absolute top-0 left-1/4 w-64 h-64 bg-rose-200/20 blur-[100px] pointer-events-none" />
         <div className="absolute top-20 right-1/4 w-48 h-48 bg-gold/10 blur-[80px] pointer-events-none" />
@@ -293,7 +291,155 @@ const DashboardPage = () => {
           ))}
         </div>
 
-        {/* Explore the 78 Arcanos - Cards Strip */}
+        {/* 1. Main Block: Journey Progress - Premium Duolingo Style */}
+        <section className="relative mx-2 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden border border-gold/20 bg-white shadow-2xl shadow-plum/5 group">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-rose-100/10 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-plum/5 rounded-full blur-[80px] -ml-32 -mb-32 pointer-events-none" />
+          <div className="absolute inset-0 opacity-[0.02] bg-mystic-bg-procedural pointer-events-none" />
+          
+          <div className="relative z-10 flex flex-col md:flex-row min-h-[380px]">
+            <div className="w-full md:w-[280px] p-8 md:p-12 bg-[#45162D] flex items-center justify-center relative overflow-hidden shrink-0">
+               <div className="absolute inset-0 opacity-10 bg-mystic-bg-procedural scale-150 rotate-6" />
+               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#45162D] to-transparent z-10" />
+               
+               {currentStep && (
+                 <ArchPortal className="relative z-20">
+                    <div className="absolute -inset-4 bg-gold/10 blur-xl rounded-full opacity-50" />
+                    <div className="w-44 aspect-[2/3.5] rounded-2xl overflow-hidden border-2 border-gold/40 shadow-[0_25px_60px_rgba(0,0,0,0.6)] transition-all duration-700 group-hover:scale-[1.03] group-hover:rotate-1 relative">
+                      <img 
+                        src={currentStep.image} 
+                        alt={currentStep.name}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute top-4 right-4 bg-gold/90 text-plum w-10 h-10 rounded-full flex items-center justify-center font-heading font-black text-sm shadow-lg border border-white/20">
+                        {currentStep.numeral}
+                      </div>
+                    </div>
+                 </ArchPortal>
+               )}
+            </div>
+
+            <div className="flex-1 p-8 md:p-12 flex flex-col justify-between space-y-8">
+              <div className="space-y-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center border border-gold/20 shadow-inner">
+                    <Target className="w-5 h-5 text-gold" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[11px] font-heading font-black tracking-[0.3em] text-gold uppercase opacity-100">Próximo Passo</span>
+                    <span className="text-[10px] font-heading font-black tracking-[0.2em] text-plum/40 uppercase">Sua trilha guiada</span>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  {currentStep && (
+                    <div className="space-y-4">
+                      {currentStep.type === "fundamentos" && fundamentosLessonsCompleted === 0 && (
+                        <div className="p-3 rounded-xl bg-gold/10 border border-gold/20 mb-2">
+                           <p className="text-[12px] font-heading font-black text-gold uppercase tracking-widest text-center">
+                             Comece pelos Fundamentos
+                           </p>
+                        </div>
+                      )}
+                      <div className="space-y-1.5 p-4 rounded-2xl bg-gold/5 border border-gold/10">
+                        <p className="text-[14px] font-heading font-black tracking-widest text-gold uppercase flex items-center gap-2">
+                          <MapPin className="w-3 h-3" /> {currentStep.moduleName}
+                        </p>
+                        <h3 className="text-xl md:text-2xl font-heading font-bold text-plum leading-tight">
+                          {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 
+                            ? "Fundamentos do Tarô — Lição 1: O que é o Tarô" 
+                            : `${currentStep.label} ${currentStep.numeral} — ${currentStep.name}`}
+                        </h3>
+                        {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 && (
+                          <p className="text-[14px] font-body italic text-plum/70 mt-2">
+                            Dê o primeiro passo e receba sua primeira chave.
+                          </p>
+                        )}
+                      </div>
+
+                      <div className="space-y-3">
+                        <div className="relative h-2 rounded-full bg-ivory border border-gold/10 overflow-hidden shadow-inner">
+                          <div 
+                            className="h-full rounded-full bg-gradient-to-r from-plum via-plum/80 to-gold transition-all duration-1000 ease-out"
+                            style={{ width: `${Math.max(globalProgressPct, 5)}%` }}
+                          />
+                          <div className="absolute inset-0 bg-shimmer animate-shimmer opacity-20" style={{ backgroundSize: '200% 100%' }} />
+                        </div>
+                        <div className="flex justify-between items-center px-1">
+                          <span className="text-[13px] font-heading font-black text-plum/60 uppercase tracking-[0.1em] leading-tight max-w-[150px]">
+                            {totalCompletedArcanos} {totalCompletedArcanos === 1 ? "Chave conquistada" : "Chaves conquistadas"}
+                          </span>
+                          <span className="text-[11px] font-heading font-black text-gold uppercase tracking-[0.1em] flex items-center gap-1 leading-tight text-right">
+                            {globalProgressPct}% Integrado <Zap className="w-2.5 h-2.5 fill-current" />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="flex flex-col space-y-4">
+                    <button
+                      id="journey-cta-home-main"
+                      data-testid="journey-cta-home-main"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0) {
+                          navigate("/fundamentos/0");
+                        } else {
+                          navigate(currentStep?.route || "/jornada");
+                        }
+                      }}
+                      className="w-full py-5 rounded-[1.25rem] font-heading text-[13px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-[#5B1F3D] text-white border-gold/30 hover:bg-[#45162D] relative z-[100]"
+                    >
+                      <span>
+                        {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0
+                          ? "Começar primeira lição"
+                          : currentStep?.type === "fundamentos" 
+                            ? (fundamentosLessonsCompleted === 0 ? "Começar Pelos Fundamentos" : "Continuar Fundamentos") 
+                            : "Continuar Jornada"}
+                      </span>
+                      <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform text-gold" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Ritual of the Day - Separate Block */}
+        {!ritualProgress.completed && progress.completedLessons.length > 0 && (
+          <section className="px-2">
+            <div 
+              onClick={() => navigate("/desafios")}
+              className="relative overflow-hidden rounded-[2rem] bg-white border border-gold/20 p-8 shadow-xl cursor-pointer group hover:border-gold/40 transition-all"
+            >
+              <div className="absolute top-0 right-0 p-8 opacity-[0.05] pointer-events-none group-hover:scale-110 transition-transform">
+                <Sparkles className="w-24 h-24 text-gold" />
+              </div>
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
+                <div className="space-y-2 text-center sm:text-left">
+                  <div className="flex items-center justify-center sm:justify-start gap-3">
+                    <div className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+                    <span className="text-[12px] font-heading font-black tracking-[0.4em] text-gold uppercase">Conexão Diária</span>
+                  </div>
+                  <h3 className="text-2xl font-heading font-bold text-plum tracking-tight">Ritual de hoje</h3>
+                  <p className="text-[13px] font-body italic text-plum/70">Mantenha sua chama acesa através da prática ritualística.</p>
+                </div>
+                <button 
+                  onClick={() => navigate("/desafios")}
+                  className="px-8 py-4 bg-gold/10 text-plum border border-gold/30 rounded-xl font-heading text-[13px] font-black tracking-[0.3em] uppercase group-hover:bg-gold group-hover:text-plum transition-all flex items-center gap-2"
+                >
+                  Praticar agora <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* 2. Explore the 78 Arcanos - Cards Strip */}
         <section className="space-y-4 px-2">
           <div className="flex items-center justify-between px-2">
             <div className="flex items-center gap-3">
@@ -301,7 +447,19 @@ const DashboardPage = () => {
               <h3 className="font-heading text-[14px] font-black tracking-[0.3em] text-plum/70 uppercase">Explore os 78 Arcanos</h3>
             </div>
             <button 
-              onClick={() => navigate("/trilhas")}
+              onClick={() => {
+                if (progress.completedLessons.length === 0 && !isAdmin) {
+                  toast.info("Você vai desbloquear a visão completa depois de construir sua base nos Fundamentos.", {
+                    description: "Inicie a primeira lição para começar sua jornada.",
+                    action: {
+                      label: "Começar",
+                      onClick: () => navigate("/fundamentos/0")
+                    }
+                  });
+                  return;
+                }
+                navigate("/trilhas");
+              }}
               className="text-[13px] font-heading font-black tracking-widest text-gold uppercase hover:text-plum transition-all flex items-center gap-1.5"
             >
               Ver todos <ArrowRight className="w-3 h-3" />
@@ -326,7 +484,7 @@ const DashboardPage = () => {
                     return;
                   }
 
-                  if (progress.completedLessons.length === 0) {
+                  if (progress.completedLessons.length === 0 && !isAdmin) {
                     toast.info("Você vai desbloquear os arcanos depois de construir sua base nos Fundamentos.", {
                       description: "Comece pela primeira lição para iniciar sua jornada.",
                       action: {
@@ -394,281 +552,6 @@ const DashboardPage = () => {
             </p>
           </div>
         )}
-
-        {/* 1. Main Block: Journey Progress - Premium Duolingo Style */}
-        <section className="relative mx-2 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden border border-gold/20 bg-white shadow-2xl shadow-plum/5 group">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-rose-100/10 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-plum/5 rounded-full blur-[80px] -ml-32 -mb-32 pointer-events-none" />
-          <div className="absolute inset-0 opacity-[0.02] bg-mystic-bg-procedural pointer-events-none" />
-          
-          <div className="relative z-10 flex flex-col md:flex-row min-h-[380px]">
-            <div className="w-full md:w-[280px] p-8 md:p-12 bg-[#45162D] flex items-center justify-center relative overflow-hidden shrink-0">
-               <div className="absolute inset-0 opacity-10 bg-mystic-bg-procedural scale-150 rotate-6" />
-               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#45162D] to-transparent z-10" />
-               
-               {currentStep && (
-                 <ArchPortal className="relative z-20">
-                    <div className="absolute -inset-4 bg-gold/10 blur-xl rounded-full opacity-50" />
-                    <div className="w-44 aspect-[2/3.5] rounded-2xl overflow-hidden border-2 border-gold/40 shadow-[0_25px_60px_rgba(0,0,0,0.6)] transition-all duration-700 group-hover:scale-[1.03] group-hover:rotate-1 relative">
-                      <img 
-                        src={currentStep.image} 
-                        alt={currentStep.name}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-
-
-                   </div>
-                 </ArchPortal>
-               )}
-            </div>
-
-            <div className="flex-1 p-8 md:p-14 flex flex-col justify-center space-y-8">
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                   <div className="w-8 h-px bg-gold/40" />
-                   <span className="text-[14px] font-heading font-black tracking-[0.4em] text-gold uppercase">
-                     {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 
-                       ? "Comece por aqui" 
-                       : "Caminho do Iniciado"}
-                   </span>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-plum tracking-tight leading-tight">
-                  {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 
-                    ? "Antes dos 78 arcanos, você vai construir sua base." 
-                    : "Sua Jornada"}
-                </h2>
-              </div>
-
-              {currentStep && (
-                <div className="space-y-6">
-                  {currentStep.type === "fundamentos" && currentStep.lessonId === "fundamentos-1" && (
-                    <div className="p-3 rounded-xl bg-gold/10 border border-gold/20 mb-2">
-                       <p className="text-[12px] font-heading font-black text-gold uppercase tracking-widest text-center">
-                         Comece pelos Fundamentos
-                       </p>
-                    </div>
-                  )}
-                  <div className="space-y-1.5 p-4 rounded-2xl bg-gold/5 border border-gold/10">
-                    <p className="text-[14px] font-heading font-black tracking-widest text-gold uppercase flex items-center gap-2">
-                      <MapPin className="w-3 h-3" /> {currentStep.moduleName}
-                    </p>
-                    <h3 className="text-xl md:text-2xl font-heading font-bold text-plum leading-tight">
-                      {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 
-                        ? "Fundamentos do Tarô — Lição 1: O que é o Tarô" 
-                        : `${currentStep.label} ${currentStep.numeral} — ${currentStep.name}`}
-                    </h3>
-                    {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 && (
-                      <p className="text-[14px] font-body italic text-plum/70 mt-2">
-                        Dê o primeiro passo e receba sua primeira chave.
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="space-y-3">
-                    <div className="relative h-2 rounded-full bg-ivory border border-gold/10 overflow-hidden shadow-inner">
-                      <div 
-                        className="h-full rounded-full bg-gradient-to-r from-plum via-plum/80 to-gold transition-all duration-1000 ease-out"
-                        style={{ width: `${Math.max(globalProgressPct, 5)}%` }}
-                      />
-                      <div className="absolute inset-0 bg-shimmer animate-shimmer opacity-20" style={{ backgroundSize: '200% 100%' }} />
-                    </div>
-                    <div className="flex justify-between items-center px-1">
-                      <span className="text-[13px] font-heading font-black text-plum/60 uppercase tracking-[0.1em] leading-tight max-w-[150px]">
-                        {totalCompletedArcanos} {totalCompletedArcanos === 1 ? "Chave conquistada" : "Chaves conquistadas"}
-                      </span>
-                      <span className="text-[11px] font-heading font-black text-gold uppercase tracking-[0.1em] flex items-center gap-1 leading-tight text-right">
-                        {globalProgressPct}% Integrado <Zap className="w-2.5 h-2.5 fill-current" />
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              <div className="flex flex-col space-y-4">
-                <button
-                  id="journey-cta-home-main"
-                  data-testid="journey-cta-home-main"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    if (totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0) {
-                      navigate("/fundamentos/0");
-                    } else {
-                      navigate(currentStep?.route || "/jornada");
-                    }
-                  }}
-                  className="w-full py-5 rounded-[1.25rem] font-heading text-[13px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-[#5B1F3D] text-white border-gold/30 hover:bg-[#45162D] relative z-[100]"
-                >
-                  <span>
-                    {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0
-                      ? "Começar primeira lição"
-                      : currentStep?.type === "fundamentos" 
-                        ? (fundamentosLessonsCompleted === 0 ? "Começar Pelos Fundamentos" : "Continuar Fundamentos") 
-                        : "Continuar Jornada"}
-                  </span>
-                  <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform text-gold" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Ritual of the Day - Separate Block */}
-        {!ritualProgress.completed && (
-          <section className="px-2">
-            <div 
-              onClick={() => navigate("/desafios")}
-              className="relative overflow-hidden rounded-[2rem] bg-white border border-gold/20 p-8 shadow-xl cursor-pointer group hover:border-gold/40 transition-all"
-            >
-              <div className="absolute top-0 right-0 p-8 opacity-[0.05] pointer-events-none group-hover:scale-110 transition-transform">
-                <Sparkles className="w-24 h-24 text-gold" />
-              </div>
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
-                <div className="space-y-2 text-center sm:text-left">
-                  <div className="flex items-center justify-center sm:justify-start gap-3">
-                    <div className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-                    <span className="text-[12px] font-heading font-black tracking-[0.4em] text-gold uppercase">Conexão Diária</span>
-                  </div>
-                  <h3 className="text-2xl font-heading font-bold text-plum tracking-tight">Ritual de hoje</h3>
-                  <p className="text-[13px] font-body italic text-plum/70">Mantenha sua chama acesa através da prática ritualística.</p>
-                </div>
-                <button 
-                  onClick={() => {
-                    if (progress.completedLessons.length === 0 && !isAdmin) {
-                      toast.info("Seu ritual será liberado depois da primeira lição.", {
-                        description: "Complete Fundamentos do Tarô — Lição 1.",
-                        action: {
-                          label: "Começar",
-                          onClick: () => navigate("/fundamentos/0")
-                        }
-                      });
-                      return;
-                    }
-                    navigate("/desafios");
-                  }}
-                  className="px-8 py-4 bg-gold/10 text-plum border border-gold/30 rounded-xl font-heading text-[13px] font-black tracking-[0.3em] uppercase group-hover:bg-gold group-hover:text-plum transition-all flex items-center gap-2"
-                >
-                  Praticar agora <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* 2. Trails Grid - The School Map */}
-        <section className="space-y-8 px-2">
-          <div className="flex items-center justify-between px-2">
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-gold" />
-              <h3 className="font-heading text-[14px] font-black tracking-[0.5em] text-gold uppercase">Mapa de Estudo</h3>
-            </div>
-            <button 
-              onClick={() => {
-                if (!fundamentosComplete && !isAdmin) {
-                  toast.info("Este módulo será desbloqueado quando você avançar na sua formação.", {
-                    description: "Continue construindo sua base.",
-                    action: {
-                      label: "Continuar",
-                      onClick: () => navigate("/module/fundamentos")
-                    }
-                  });
-                  return;
-                }
-                navigate("/trilhas");
-              }} 
-              className="text-[12px] font-heading font-black tracking-widest text-plum/70 hover:text-plum transition-colors flex items-center gap-2 group"
-            >
-              Explorar <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-12 border-b border-gold/10">
-            <div 
-              onClick={() => {
-                if (!fundamentosComplete && !isAdmin) {
-                  toast.info("Este conteúdo faz parte da Escola Digital completa.", {
-                    description: "Complete os Fundamentos do Tarô para iniciar sua jornada.",
-                    action: {
-                      label: "Upgrade",
-                      onClick: () => navigate("/premium")
-                    }
-                  });
-                  return;
-                }
-                navigate("/module/arcanos-maiores");
-              }}
-              className={cn(
-                "bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/40 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden",
-                !fundamentosComplete && !isAdmin && "opacity-60 grayscale-[0.5]"
-              )}
-            >
-              <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none group-hover:scale-110 group-hover:opacity-[0.05] transition-all">
-                <KeyRound className="w-24 h-24 text-plum" />
-              </div>
-              <div className="w-20 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shrink-0 group-hover:scale-[1.03] transition-all duration-500 shadow-xl">
-                 <img src={imgMago} alt="Arcanos Maiores" className="w-full h-full object-cover" />
-              </div>
-              <div className="space-y-3 flex-1 relative z-10 pt-1">
-                <h4 className="font-heading text-xl font-bold text-plum tracking-tight">Arcanos Maiores</h4>
-                <p className="text-[14px] font-body italic text-plum/70 leading-relaxed">A jornada espiritual através dos 22 arquétipos mestres.</p>
-                <div className="pt-2 space-y-2">
-                   <div className="flex justify-between items-center px-0.5">
-                      <span className="text-[11px] font-heading font-black text-gold uppercase tracking-widest">{completedMaiores} de 22</span>
-                      <span className="text-[11px] font-heading font-black text-plum/60 uppercase tracking-widest">{Math.round((completedMaiores/22)*100)}%</span>
-
-                   </div>
-                   <div className="h-1.5 bg-[#FAF5EF] rounded-full overflow-hidden border border-gold/5">
-                      <div className="h-full bg-gold rounded-full" style={{ width: `${(completedMaiores/22)*100}%` }} />
-                   </div>
-                </div>
-              </div>
-            </div>
-
-            <div 
-              onClick={() => {
-                if (!isPremium && !isAdmin) {
-                  toast.info("Este conteúdo faz parte da Escola Digital completa.", {
-                    description: "Os Arcanos Menores são exclusivos para assinantes.",
-                    action: {
-                      label: "Upgrade",
-                      onClick: () => navigate("/premium")
-                    }
-                  });
-                  return;
-                }
-                navigate("/module/arcanos-menores");
-              }}
-
-              className={cn(
-                "bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/40 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden",
-                !isPremium && !isAdmin && "opacity-60 grayscale-[0.5]"
-              )}
-            >
-              <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none group-hover:scale-110 group-hover:opacity-[0.05] transition-all">
-                <Layout className="w-24 h-24 text-plum" />
-              </div>
-              <div className="w-20 aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/30 shrink-0 group-hover:scale-[1.03] transition-all duration-500 shadow-xl relative bg-ivory">
-                 <img src={imgDezOuros} alt="Arcanos Menores" className="w-full h-full object-cover" />
-                 <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
-              </div>
-              <div className="space-y-3 flex-1 relative z-10 pt-1">
-                <h4 className="font-heading text-xl font-bold text-plum tracking-tight">Arcanos Menores</h4>
-                <p className="text-[14px] font-body italic text-plum/70 leading-relaxed">A aplicação prática dos 4 naipes e 56 situações cotidianas.</p>
-                <div className="pt-2 space-y-2">
-                   <div className="flex justify-between items-center px-0.5">
-                      <span className="text-[11px] font-heading font-black text-plum/70 uppercase tracking-widest">{completedMenores} de 56</span>
-                      <span className="text-[11px] font-heading font-black text-plum/60 uppercase tracking-widest">{Math.round((completedMenores/56)*100)}%</span>
-
-                   </div>
-                   <div className="h-1.5 bg-[#FAF5EF] rounded-full overflow-hidden border border-gold/5">
-                      <div className="h-full bg-plum/40 rounded-full" style={{ width: `${(completedMenores/56)*100}%` }} />
-                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* 3. Utilities Block */}
         <section className="space-y-6 px-2 relative z-10">
@@ -781,7 +664,7 @@ const DashboardPage = () => {
                     onClick={() => navigate("/premium")}
                     className="w-full py-3 bg-gold text-[#5B1F3D] rounded-xl font-heading text-[11px] font-black tracking-widest uppercase hover:bg-white transition-all shadow-lg active:scale-95"
                   >
-                    Ver Planos
+                    Assinar e desbloquear a Escola Digital
                   </button>
                 </div>
               </div>
