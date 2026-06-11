@@ -505,7 +505,7 @@ const LessonPage = () => {
                 cardImage={arcano.cardImage} 
                 cardName={arcano.name} 
                 numeral={arcano.numeral}
-                subtitle="Caso Prático"
+                subtitle="Prática"
                 showBack={true}
                 onBack={goBack}
               />
