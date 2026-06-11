@@ -63,8 +63,8 @@ const FoolsJourneyPage = () => {
             
 
             <div>
-              <span className="text-[11px] tracking-[0.35em] uppercase font-heading font-black block mb-0.5" style={{ color: "hsl(var(--primary) / 0.8)" }}>
-                ✦ Visão Geral ✦
+              <span className="text-[11px] tracking-[0.35em] uppercase font-heading font-black block mb-0.5" style={{ color: "#C8A66A" }}>
+                ✦ Jornada Integrada ✦
               </span>
               <h1 className="font-heading text-xl tracking-wide" style={{
                 background: "linear-gradient(135deg, #3D1429 0%, #5B1F3D 50%, #8B6A30 100%)",
@@ -335,11 +335,25 @@ const FoolsJourneyPage = () => {
                               {arcano.papel}
                             </p>
                             <p
-                              className="font-body text-[16px] md:text-[17px] leading-relaxed font-bold"
+                              className="font-body text-[16px] md:text-[17px] leading-relaxed font-bold mb-4"
                               style={{ color: "#3D1429" }}
                             >
                               {arcano.textoNarrativo}
                             </p>
+                            
+                            {studied && (
+                              <div className={`flex ${!isEven ? 'justify-end' : 'justify-start'}`}>
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    navigate(`/lesson/${arcano.arcanoNumero}`);
+                                  }}
+                                  className="px-6 py-2 bg-[#5B1F3D] text-white rounded-full font-heading text-[10px] tracking-[0.2em] uppercase font-black hover:scale-105 transition-all shadow-md border border-[#C8A66A30]"
+                                >
+                                  {isComplete(arcano.arcanoNumero) ? "Revisar" : "Estudar"}
+                                </button>
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
