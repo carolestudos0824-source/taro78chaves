@@ -631,6 +631,78 @@ const DashboardPage = () => {
           </div>
         </section>
 
+        {/* Correction 2 & 3: Ritual and Premium Goals for New Users */}
+        <section className="space-y-8 px-2 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white/80 backdrop-blur-xl border border-gold/20 rounded-[2rem] p-6 shadow-xl shadow-plum/5 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
+              
+              <div className="flex items-start gap-5 relative z-10">
+                <div className="w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center shrink-0 border border-gold/20 group-hover:scale-110 transition-transform">
+                  <Calendar className="w-6 h-6 text-gold" />
+                </div>
+                <div className="flex-1 space-y-4">
+                  <div className="space-y-1">
+                    <h3 className="font-heading text-lg font-bold text-plum">Ritual de Hoje</h3>
+                    <p className="text-[14px] font-body text-plum/60 leading-relaxed font-bold">
+                      {progress.completedLessons.length === 0 
+                        ? "Complete sua primeira lição para liberar a prática ritual diária." 
+                        : "Sua prática mística para manter a conexão com os arquétipos."}
+                    </p>
+                  </div>
+                  
+                  <button 
+                    onClick={() => {
+                      if (progress.completedLessons.length === 0) {
+                        toast.info("Seu ritual será liberado depois da primeira lição.", {
+                          action: {
+                            label: "Começar",
+                            onClick: () => navigate("/fundamentos/0")
+                          }
+                        });
+                        return;
+                      }
+                      navigate("/desafios");
+                    }}
+                    className={`flex items-center gap-2 text-[12px] font-heading font-black tracking-widest uppercase transition-all ${
+                      progress.completedLessons.length === 0 
+                        ? "text-gold/50 cursor-not-allowed" 
+                        : "text-gold hover:text-plum"
+                    }`}
+                  >
+                    Praticar agora <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Premium Block - Integrated as a secondary goal */}
+            {!isPremium && (
+              <div className="bg-gradient-to-br from-[#5B1F3D] to-[#3D1429] rounded-[2rem] p-6 border border-gold/30 shadow-2xl relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" />
+                <div className="relative z-10 flex flex-col gap-4">
+                  <div className="flex items-center gap-3">
+                    <Crown className="w-5 h-5 text-gold" />
+                    <span className="text-[11px] font-heading font-black tracking-[0.3em] text-gold/80 uppercase">Formação Completa</span>
+                  </div>
+                  <div className="space-y-1">
+                    <h3 className="font-heading text-lg font-bold text-white">Desbloqueie toda a Jornada</h3>
+                    <p className="text-[13px] font-body text-white/60 leading-relaxed font-bold">
+                      Tenha acesso ilimitado aos 78 arcanos, certificados e mentoria.
+                    </p>
+                  </div>
+                  <button 
+                    onClick={() => navigate("/premium")}
+                    className="w-full py-3 bg-gold text-[#5B1F3D] rounded-xl font-heading text-[11px] font-black tracking-widest uppercase hover:bg-white transition-all shadow-lg active:scale-95"
+                  >
+                    Ver Planos
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+
         {/* 4. Sabedoria Ancestral (Now the last block) */}
         <section className="pb-[calc(140px+env(safe-area-inset-bottom))] px-2 relative z-10">
             <div className="bg-plum/95 rounded-[2.5rem] p-8 border border-gold/30 shadow-2xl text-white space-y-6 overflow-hidden relative group">
