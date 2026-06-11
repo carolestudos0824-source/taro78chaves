@@ -18,10 +18,10 @@ import { MODULES_CATALOG, getModuleFromCatalog } from "./catalog";
  */
 export const FREE_ARCANO_IDS: readonly number[] = [];
 
-export function hasInitialAccess(arcanoId: number, quizScores: Record<string, number> = {}, completedModules: string[] = []): boolean {
-  // O Louco (ID 0) is 100% free but requires completing Fundamentos first.
+export function hasInitialAccess(arcanoId: number, quizScores: Record<string, number> = {}, completedLessons: string[] = []): boolean {
+  // O Louco (ID 0) is available after first lesson of Fundamentos
   if (arcanoId === 0) {
-    return completedModules.includes("fundamentos");
+    return completedLessons.includes("fundamentos-0");
   }
   
   // All other arcanos (Mago onwards) require subscription

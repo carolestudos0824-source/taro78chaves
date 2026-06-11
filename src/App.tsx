@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes, Navigate, useLocation, Outlet } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,19 +17,20 @@ import SessionInitializer from "@/components/SessionInitializer";
 import ConsentBanner from "@/components/ConsentBanner";
 import SecurityGate from "@/components/SecurityGate";
 import { trackPageView, useUTMTracker } from "@/lib/analytics";
-import { useProgress } from "@/hooks/use-progress";
-
 
 // Eager: critical path (Zero Flicker)
 import LandingPage from "./pages/LandingPage.tsx";
 import AuthPage from "./pages/AuthPage.tsx";
 import DashboardPage from "./pages/DashboardPage.tsx";
-import Index from "./pages/Index.tsx";
 import LessonPage from "./pages/LessonPage.tsx";
 import PremiumPage from "./pages/PremiumPage.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
 import FoolsJourneyPage from "./pages/FoolsJourneyPage.tsx";
 import TrailsPage from "./pages/TrailsPage.tsx";
+
+// Alias route for /jornada
+const JornadaAlias = () => <Navigate to="/jornada-do-louco" replace />;
+
 import DailyChallengesPage from "./pages/DailyChallengesPage.tsx";
 import ArcanosMenoresModulePage from "./pages/ArcanosMenoresModulePage.tsx";
 
@@ -98,195 +99,139 @@ const LoadingFallback = () => (
     </div>
     <div className="text-center space-y-6 relative z-10">
       <div className="w-12 h-12 rounded-full border-2 border-[#C8A66A]/20 border-t-[#C8A66A] animate-spin mx-auto" />
-      <div className="space-y-2">
-        <p className="text-[10px] text-[#5B1F3D]/80 font-heading tracking-[0.3em] uppercase">Tarô 78 Chaves</p>
-        <p className="text-[11px] text-[#5B1F3D]/60 font-body italic">Sintonizando sua jornada...</p>
-      </div>
+      <p className="text-[#C8A66A] font-heading font-black tracking-widest uppercase text-[10px]">Portal de Sabedoria</p>
     </div>
   </div>
 );
 
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { user, loading: authLoading } = useAuth();
-  const { loading: roleLoading } = useRole();
-  const { loading: premiumLoading } = usePremium();
-  
-  if (authLoading && !user) return <LoadingFallback />;
-  if (!authLoading && !user) return <Navigate to="/" replace />;
-  if ((roleLoading || premiumLoading) && !user) return <LoadingFallback />;
-  
-  return (
-    <>
-      <SessionInitializer />
-      {children}
-    </>
-  );
-};
-
-const PublicOnlyRoute = ({ children }: { children: React.ReactNode }) => {
-  const { user, loading } = useAuth();
-  const { progress, loading: progressLoading } = useProgress();
-  const { isStaff } = useRole();
-  
-  if (loading || progressLoading) return <LoadingFallback />;
-  if (user) {
-    // Aluna nova comum: sem lições concluídas -> vai para fundamentos
-    if (!isStaff && progress.completedLessons.length === 0) {
-      return <Navigate to="/module/fundamentos" replace />;
-    }
-    return <Navigate to="/app" replace />;
-  }
-  return <>{children}</>;
-};
-
-const AnalyticsTracker = () => {
+const AppRoutes = () => {
   const location = useLocation();
-  useUTMTracker();
+  const { isAuditor } = useRole();
+  const { user } = useAuth();
+  const { isPremium } = usePremium();
+
   useEffect(() => {
     trackPageView(location.pathname + location.search);
   }, [location]);
-  return null;
-};
 
-const AppShell = () => {
-  const { progress } = useProgress();
+  useUTMTracker();
+
   return (
-    <div className="flex flex-col min-h-screen bg-[#FAF5EF]">
-      <Header 
-        streak={progress.streak} 
-      />
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-grow">
+        <Suspense fallback={<LoadingFallback />}>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/auth" element={<AuthPage />} />
+            <Route path="/beta-invite" element={<BetaInvitePage />} />
+            
+            <Route element={<SecurityGate />}>
+              <Route path="/app" element={<DashboardPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/premium" element={<PremiumPage />} />
+              <Route path="/acesso-comprado" element={<AcessoComprado />} />
+              
+              <Route path="/fundamentos" element={<FundamentosPage />} />
+              <Route path="/fundamentos/:lessonId" element={<FundamentosLessonPage />} />
+              
+              <Route path="/jornada-do-louco" element={<FoolsJourneyPage />} />
+              <Route path="/jornada" element={<JornadaAlias />} />
+              <Route path="/trails" element={<TrailsPage />} />
+              
+              <Route path="/lesson/:id" element={<LessonPage />} />
+              
+              <Route path="/journal" element={<JourneyJournalPage />} />
+              <Route path="/daily-challenges" element={<DailyChallengesPage />} />
+              
+              <Route path="/arcanos-menores" element={<ArcanosMenoresModulePage />} />
+              <Route path="/naipe/:naipeId" element={<NaipePage />} />
+              <Route path="/naipe/:naipeId/intro" element={<NaipeIntroPage />} />
+              <Route path="/arcanos-menores/:naipe/:rank" element={<ArcanoMenorLessonPage />} />
+              
+              <Route path="/amor" element={<AmorPage />} />
+              <Route path="/amor/lesson" element={<AmorLessonPage />} />
+              
+              <Route path="/leitura-simbolica" element={<LeituraSimbolicaPage />} />
+              <Route path="/leitura-simbolica/lesson" element={<LeituraSimbolicaLessonPage />} />
+              
+              <Route path="/arquitetura-menores" element={<ArquiteturaMenoresPage />} />
+              <Route path="/arquitetura-menores/lesson" element={<ArquiteturaMenoresLessonPage />} />
+              
+              <Route path="/pratica" element={<PraticaPage />} />
+              <Route path="/pratica/lesson" element={<PraticaLessonPage />} />
 
-      <main className="flex-1 pb-24 relative overflow-y-auto h-[calc(100vh-72px)]">
-        <Outlet />
+              <Route path="/combinacoes" element={<CombinacoesPage />} />
+              <Route path="/combinacoes/:id" element={<CombinacoesLessonPage />} />
+
+              <Route path="/tiragens" element={<TiragensPage />} />
+              <Route path="/tiragens/:id" element={<TiragensLessonPage />} />
+
+              <Route path="/espiritualidade" element={<EspiritualidadePage />} />
+              <Route path="/espiritualidade/:id" element={<EspiritualidadeLessonPage />} />
+
+              <Route path="/mesa-taro" element={<MesaTaroPage />} />
+              <Route path="/mesa-taro/:id" element={<MesaTaroLessonPage />} />
+
+              <Route path="/leitura-aplicada" element={<LeituraAplicadaPage />} />
+              <Route path="/leitura-aplicada/:id" element={<LeituraAplicadaLessonPage />} />
+
+              <Route path="/trabalhar-taro" element={<TrabalharTaroPage />} />
+              <Route path="/trabalhar-taro/:id" element={<TrabalharTaroLessonPage />} />
+              
+              <Route path="/review/:id" element={<ReviewPage />} />
+              <Route path="/certificates" element={<CertificatesPage />} />
+              <Route path="/library" element={<SymbolLibraryPage />} />
+              <Route path="/study-routine" element={<StudyRoutinePage />} />
+              <Route path="/cartas-corte" element={<CartasCortePage />} />
+              <Route path="/numerologia" element={<NumerologiaPage />} />
+              <Route path="/presentation" element={<PresentationPage />} />
+            </Route>
+
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/support" element={<SupportPage />} />
+            <Route path="/delete-account" element={<DeleteAccountPage />} />
+            <Route path="/validate-certificate" element={<ValidateCertificatePage />} />
+            <Route path="/certificate-model" element={<CertificateVisualModel />} />
+            
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
       <BottomNav />
+      <SessionInitializer />
+      <ConsentBanner />
     </div>
   );
 };
 
-const LazyRoute = ({ children }: { children: React.ReactNode }) => (
-  <Suspense fallback={null}>
-    {children}
-  </Suspense>
-);
-
-const AppRoutes = () => {
-  const location = useLocation();
-  
-  useEffect(() => {
-    // Ensure scroll to top on each route change
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
-
-  return (
-    <>
-      <AnalyticsTracker />
-      <ConsentBanner />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/venda" element={<LandingPage isSalesPage={true} />} />
-        <Route path="/acesso-comprado" element={<LazyRoute><AcessoComprado /></LazyRoute>} />
-        <Route path="/auth" element={<PublicOnlyRoute><AuthPage /></PublicOnlyRoute>} />
-        <Route path="/reset-password" element={<LazyRoute><ResetPasswordPage /></LazyRoute>} />
-        <Route path="/privacidade" element={<LazyRoute><PrivacyPage /></LazyRoute>} />
-        <Route path="/termos" element={<LazyRoute><TermsPage /></LazyRoute>} />
-        <Route path="/suporte" element={<SupportPage />} />
-        <Route path="/excluir-conta" element={<LazyRoute><DeleteAccountPage /></LazyRoute>} />
-        <Route path="/apresentacao" element={<LazyRoute><PresentationPage /></LazyRoute>} />
-        <Route path="/validar-certificado" element={<LazyRoute><ValidateCertificatePage /></LazyRoute>} />
-        <Route path="/visual-certificado" element={<LazyRoute><CertificateVisualModel /></LazyRoute>} />
-
-        <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
-          <Route path="/jornada" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
-          <Route path="/jornada-do-louco" element={<Navigate to="/jornada" replace />} />
-          <Route path="/module/arcanos-maiores" element={<Navigate to="/jornada" replace />} />
-          <Route path="/app" element={<DashboardPage />} />
-          <Route path="/trilhas" element={<SecurityGate><TrailsPage /></SecurityGate>} />
-          <Route path="/mapa" element={<SecurityGate><TrailsPage /></SecurityGate>} />
-          <Route path="/desafios" element={<SecurityGate><DailyChallengesPage /></SecurityGate>} />
-          <Route path="/premium" element={<SecurityGate><PremiumPage /></SecurityGate>} />
-          <Route path="/perfil" element={<SecurityGate><ProfilePage /></SecurityGate>} />
-          <Route path="/lesson/:id" element={<SecurityGate><LessonPage /></SecurityGate>} />
-          
-          <Route path="/module/arcanos-maiores" element={<Navigate to="/jornada" replace />} />
-          <Route path="/module/arcanos-menores" element={<SecurityGate><ArcanosMenoresModulePage /></SecurityGate>} />
-          <Route path="/module/fundamentos" element={<LazyRoute><FundamentosPage /></LazyRoute>} />
-          <Route path="/fundamentos/:order" element={<LazyRoute><FundamentosLessonPage /></LazyRoute>} />
-          
-          <Route path="/module/copas" element={<NaipePage />} />
-          <Route path="/module/paus" element={<NaipePage />} />
-          <Route path="/module/espadas" element={<NaipePage />} />
-          <Route path="/module/ouros" element={<NaipePage />} />
-          <Route path="/naipe/:naipe/intro" element={<NaipeIntroPage />} />
-          <Route path="/module/cartas-corte" element={<LazyRoute><CartasCortePage /></LazyRoute>} />
-          <Route path="/numerologia" element={<LazyRoute><NumerologiaPage /></LazyRoute>} />
-          <Route path="/arcano-menor/:id" element={<ArcanoMenorLessonPage />} />
-          <Route path="/module/combinacoes" element={<LazyRoute><CombinacoesPage /></LazyRoute>} />
-          <Route path="/combinacoes/:order" element={<LazyRoute><CombinacoesLessonPage /></LazyRoute>} />
-          <Route path="/module/tiragens" element={<LazyRoute><TiragensPage /></LazyRoute>} />
-          <Route path="/tiragens/:order" element={<LazyRoute><TiragensLessonPage /></LazyRoute>} />
-          <Route path="/module/amor" element={<AmorPage />} />
-          <Route path="/amor/:order" element={<AmorLessonPage />} />
-          <Route path="/module/pratica" element={<PraticaPage />} />
-          <Route path="/pratica/:order" element={<PraticaLessonPage />} />
-          <Route path="/module/leitura-simbolica" element={<LeituraSimbolicaPage />} />
-          <Route path="/leitura-simbolica/:order" element={<LeituraSimbolicaLessonPage />} />
-          <Route path="/module/arquitetura-menores" element={<ArquiteturaMenoresPage />} />
-          <Route path="/arquitetura-menores/:order" element={<ArquiteturaMenoresLessonPage />} />
-          <Route path="/module/espiritualidade" element={<LazyRoute><EspiritualidadePage /></LazyRoute>} />
-          <Route path="/espiritualidade/:order" element={<LazyRoute><EspiritualidadeLessonPage /></LazyRoute>} />
-          <Route path="/module/mesa-taro" element={<LazyRoute><MesaTaroPage /></LazyRoute>} />
-          <Route path="/mesa-taro/:order" element={<LazyRoute><MesaTaroLessonPage /></LazyRoute>} />
-          <Route path="/module/leitura-aplicada" element={<LazyRoute><LeituraAplicadaPage /></LazyRoute>} />
-          <Route path="/leitura-aplicada/:order" element={<LazyRoute><LeituraAplicadaLessonPage /></LazyRoute>} />
-          <Route path="/module/trabalhar-taro" element={<LazyRoute><TrabalharTaroPage /></LazyRoute>} />
-          <Route path="/trabalhar-taro/:order" element={<LazyRoute><TrabalharTaroLessonPage /></LazyRoute>} />
-          <Route path="/module/:moduleSlug" element={<SecurityGate><Index /></SecurityGate>} />
-
-          <Route path="/revisao" element={<LazyRoute><ReviewPage /></LazyRoute>} />
-          <Route path="/certificados" element={<LazyRoute><CertificatesPage /></LazyRoute>} />
-          <Route path="/biblioteca" element={<LazyRoute><SymbolLibraryPage /></LazyRoute>} />
-          <Route path="/rotina" element={<LazyRoute><StudyRoutinePage /></LazyRoute>} />
-          <Route path="/minha-jornada" element={<LazyRoute><JourneyJournalPage /></LazyRoute>} />
-          <Route path="/admin" element={<SecurityGate requireAdmin><AdminPage /></SecurityGate>} />
-        </Route>
-        
-        <Route path="/ritual" element={<Navigate to="/desafios" replace />} />
-        <Route path="/feedback" element={<Navigate to="/suporte" replace />} />
-        <Route path="*" element={<LazyRoute><NotFound /></LazyRoute>} />
-      </Routes>
-    </>
-  );
-};
-
-const App = () => {
-  return (
+const App = () => (
+  <HelmetProvider>
     <QueryClientProvider client={queryClient}>
-      <HelmetProvider>
-        <HeaderProvider>
-          <FontSizeProvider>
-            <TooltipProvider>
-              <Toaster />
-              <Sonner />
-              <BrowserRouter>
-                <AuthProvider>
-                  <RoleProvider>
-                    <PremiumProvider>
-                      <ProgressProvider>
-                        <Suspense fallback={<LoadingFallback />}>
-                          <AppRoutes />
-                        </Suspense>
-                      </ProgressProvider>
-                    </PremiumProvider>
-                  </RoleProvider>
-                </AuthProvider>
-              </BrowserRouter>
-            </TooltipProvider>
-          </FontSizeProvider>
-        </HeaderProvider>
-      </HelmetProvider>
+      <AuthProvider>
+        <RoleProvider>
+          <PremiumProvider>
+            <ProgressProvider>
+              <FontSizeProvider>
+                <HeaderProvider>
+                  <TooltipProvider>
+                    <BrowserRouter>
+                      <AppRoutes />
+                      <Toaster />
+                      <Sonner position="top-center" expand={true} richColors />
+                    </BrowserRouter>
+                  </TooltipProvider>
+                </HeaderProvider>
+              </FontSizeProvider>
+            </ProgressProvider>
+          </PremiumProvider>
+        </RoleProvider>
+      </AuthProvider>
     </QueryClientProvider>
-  );
-};
+  </HelmetProvider>
+);
 
 export default App;

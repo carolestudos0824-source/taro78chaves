@@ -380,11 +380,18 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   }, [progress.completedLessons, progress.completedQuizzes]);
 
   const isArcanoUnlocked = useCallback((arcanoId: number): boolean => {
+    if (isStaff) return true;
+    
     const fundamentosComplete = progress.completedModules.includes("fundamentos");
-    if (!fundamentosComplete && !isStaff) return false;
-    if (arcanoId === 0) return true;
+    const lesson1Complete = progress.completedLessons.includes("fundamentos-0");
+
+    // Arcano 0 (O Louco) is unlocked after Lesson 1 of Fundamentos
+    if (arcanoId === 0) return lesson1Complete;
+    
+    // Other arcanos require Fundamentos complete AND previous arcano complete
+    if (!fundamentosComplete) return false;
     return isArcanoCompleted(arcanoId - 1);
-  }, [progress.completedModules, isArcanoCompleted, isStaff]);
+  }, [progress.completedModules, progress.completedLessons, isArcanoCompleted, isStaff]);
 
   const getCurrentArcanoId = useCallback((): number => {
     for (let i = 0; i <= 21; i++) {
