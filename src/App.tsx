@@ -129,6 +129,7 @@ const AppRoutes = () => {
             <Route element={<SecurityGate />}>
               <Route path="/app" element={<DashboardPage />} />
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/perfil" element={<Navigate to="/profile" replace />} />
               <Route path="/premium" element={<PremiumPage />} />
               <Route path="/acesso-comprado" element={<AcessoComprado />} />
               
@@ -138,11 +139,13 @@ const AppRoutes = () => {
               <Route path="/jornada-do-louco" element={<FoolsJourneyPage />} />
               <Route path="/jornada" element={<JornadaAlias />} />
               <Route path="/trails" element={<TrailsPage />} />
+              <Route path="/mapa" element={<Navigate to="/trails" replace />} />
               
               <Route path="/lesson/:id" element={<LessonPage />} />
               
               <Route path="/journal" element={<JourneyJournalPage />} />
               <Route path="/daily-challenges" element={<DailyChallengesPage />} />
+              <Route path="/desafios" element={<Navigate to="/daily-challenges" replace />} />
               
               <Route path="/arcanos-menores" element={<ArcanosMenoresModulePage />} />
               <Route path="/naipe/:naipeId" element={<NaipePage />} />
@@ -151,6 +154,7 @@ const AppRoutes = () => {
               
               <Route path="/amor" element={<AmorPage />} />
               <Route path="/amor/lesson" element={<AmorLessonPage />} />
+              <Route path="/rotina" element={<Navigate to="/study-routine" replace />} />
               
               <Route path="/leitura-simbolica" element={<LeituraSimbolicaPage />} />
               <Route path="/leitura-simbolica/lesson" element={<LeituraSimbolicaLessonPage />} />
@@ -186,6 +190,11 @@ const AppRoutes = () => {
               <Route path="/cartas-corte" element={<CartasCortePage />} />
               <Route path="/numerologia" element={<NumerologiaPage />} />
               <Route path="/presentation" element={<PresentationPage />} />
+              
+              {/* Catch all for nested app routes to avoid NotFound inside the shell */}
+              <Route path="/perfil/*" element={<Navigate to="/profile" replace />} />
+              <Route path="/mapa/*" element={<Navigate to="/trails" replace />} />
+              <Route path="/desafios/*" element={<Navigate to="/daily-challenges" replace />} />
             </Route>
 
             <Route path="/admin" element={<AdminPage />} />
