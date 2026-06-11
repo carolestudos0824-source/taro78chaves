@@ -202,7 +202,7 @@ const DailyChallengesPage = () => {
             <h1 className="font-heading text-4xl md:text-6xl font-black tracking-tighter text-plum">
               Leitura Diária
             </h1>
-            <p className="font-body text-[14px] font-black uppercase tracking-[0.3em] text-gold">
+            <p className="font-body text-[15px] font-black uppercase tracking-[0.3em] text-gold opacity-100">
               Faça sua prática de hoje.
             </p>
           </div>
@@ -243,7 +243,7 @@ const DailyChallengesPage = () => {
                     {ritualProgress.completed ? <CheckCircle2 className="w-8 h-8" /> : <Flame className="w-8 h-8" />}
                   </div>
                   <div className="flex flex-col text-left">
-                    <span className="text-[13px] font-heading font-black tracking-[0.35em] text-gold uppercase mb-1">
+                    <span className="text-[14px] font-heading font-black tracking-[0.35em] text-gold uppercase mb-1">
                       Missão do Dia
                     </span>
                     <span className="text-2xl font-heading font-black text-plum">
@@ -262,10 +262,10 @@ const DailyChallengesPage = () => {
 
               <div className="space-y-4">
                 <div className="flex justify-between items-center px-1">
-                  <span className="text-[12px] font-heading font-black text-plum/40 uppercase tracking-widest leading-tight">
+                  <span className="text-[13px] font-heading font-black text-plum/60 uppercase tracking-widest leading-tight">
                     Chama Ritualística
                   </span>
-                  <span className="text-[12px] font-heading font-black text-gold uppercase tracking-widest leading-tight">
+                  <span className="text-[13px] font-heading font-black text-gold uppercase tracking-widest leading-tight">
                     {ritualProgress.items.length} de 3 Portais
                   </span>
                 </div>
@@ -279,7 +279,7 @@ const DailyChallengesPage = () => {
                 </div>
               </div>
               
-              <p className="mt-8 text-[15px] md:text-[16px] font-body font-black text-plum/60 italic text-center leading-relaxed max-w-[320px] mx-auto uppercase tracking-normal">
+              <p className="mt-8 text-[16px] md:text-[17px] font-body font-black text-plum/70 italic text-center leading-relaxed max-w-[320px] mx-auto uppercase tracking-normal">
                 {ritualProgress.completed 
                   ? "Sua chama foi mantida hoje. Volte amanhã." 
                   : "Sua prática de hoje mantém sua chama viva."}
@@ -289,7 +289,7 @@ const DailyChallengesPage = () => {
             <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <span className="h-px flex-1 bg-gold/20" />
-                <h2 className="font-heading text-[13px] tracking-[0.4em] uppercase font-black text-gold">Portais de Sabedoria</h2>
+                <h2 className="font-heading text-[14px] tracking-[0.4em] uppercase font-black text-gold">Portais de Sabedoria</h2>
                 <span className="h-px flex-1 bg-gold/20" />
               </div>
 
@@ -366,7 +366,7 @@ const DailyChallengesPage = () => {
                             <h3 className={`font-heading text-lg md:text-2xl font-black tracking-tight mb-2 ${isCompleted ? "text-plum/60" : isBlocked ? "text-plum/40" : "text-plum"}`}>
                               {ch.title}
                             </h3>
-                            <p className={`font-body text-[14px] md:text-[16px] font-black leading-snug ${isCompleted ? "text-plum/40 italic" : isBlocked ? "text-plum/30" : "text-plum/80"}`}>
+                            <p className={`font-body text-[15px] md:text-[17px] font-black leading-snug ${isCompleted ? "text-plum/50 italic" : isBlocked ? "text-plum/40" : "text-plum/90"}`}>
                               {isBlocked ? "Libera após o portal anterior." : isCompleted ? "Portal concluído. Toque para rever." : ch.subtitle}
                             </p>
                           </div>
@@ -407,7 +407,7 @@ const DailyChallengesPage = () => {
                       <div className="w-10 h-10 rounded-xl bg-white border border-current flex items-center justify-center">
                         <Trophy className="w-5 h-5" />
                       </div>
-                      <span className="text-[11px] font-heading font-black uppercase tracking-widest leading-tight">
+                      <span className="text-[12px] font-heading font-black uppercase tracking-widest leading-tight">
                         {mKey.replace("_", " ")}
                       </span>
                     </div>
