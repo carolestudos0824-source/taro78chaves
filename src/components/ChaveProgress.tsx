@@ -69,13 +69,13 @@ export function ChaveProgress() {
         </div>
         <div className="flex flex-col">
           <span className="text-[11px] tracking-[0.2em] uppercase leading-none font-heading font-black" style={{
-            color: "#5B1F3D"
-          }}>{currentKeyInfo.index === 1 ? "Chave" : "Chaves"}</span>
-
+            color: "#8B6A30"
+          }}>Chave atual</span>
           <span className="text-xl font-heading tracking-tighter leading-tight font-black" style={{
             color: "#5B1F3D"
-          }}>{currentKeyInfo.index}</span>
+          }}>{currentKeyInfo.index} de 78</span>
         </div>
+
       </div>
       <div className="flex-1 relative space-y-1.5">
         <div className="flex justify-between items-end px-1">
@@ -111,11 +111,11 @@ export function ChaveProgress() {
       </div>
       <div className="flex flex-col items-end tabular-nums shrink-0">
         <div className="flex items-baseline gap-0.5">
-          <span className="text-base font-black text-[#5B1F3D]">{currentKeyInfo.index}</span>
-          <span className="text-[10px] font-black text-[#5B1F3D]/30">/78</span>
+          <span className="text-base font-black text-[#5B1F3D]">{totalCompletedArcanos}</span>
         </div>
-        <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#5B1F3D] uppercase leading-none">{currentKeyInfo.index === 1 ? "Chave" : "Chaves"}</span>
+        <span className="text-[10px] font-heading font-black tracking-[0.2em] text-[#8B6A30] uppercase leading-none">{totalCompletedArcanos === 1 ? "Conquistada" : "Conquistadas"}</span>
       </div>
+
     </div>
   );
 }
