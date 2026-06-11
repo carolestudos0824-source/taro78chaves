@@ -170,6 +170,13 @@ const LazyRoute = ({ children }: { children: React.ReactNode }) => (
 );
 
 const AppRoutes = () => {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname === "/jornada") {
+      console.log("Routing to /jornada detected in AppRoutes");
+    }
+  }, [location.pathname]);
+
   return (
     <>
       <AnalyticsTracker />
