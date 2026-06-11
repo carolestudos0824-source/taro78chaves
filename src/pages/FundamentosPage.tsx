@@ -282,6 +282,11 @@ const FundamentosPage = () => {
                           }}
                         >
                           LIÇÃO {lesson.order + 1}
+                          {completed && (
+                            <span className="ml-2 px-1.5 py-0.5 bg-[#C8A66A20] text-[#C8A66A] rounded text-[8px] tracking-widest border border-[#C8A66A30]">
+                              REVISÃO
+                            </span>
+                          )}
                         </span>
                         {isCurrent && (
                           <span className="text-[9px] bg-[#C8A66A] text-[#FAF5EF] px-2.5 py-0.5 rounded-full font-heading tracking-widest uppercase font-black animate-pulse shadow-sm">
