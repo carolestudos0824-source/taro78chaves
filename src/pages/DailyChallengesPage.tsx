@@ -25,7 +25,7 @@ import {
   type CombinacaoDoDia,
   type MiniInterpretacao,
 } from "@/lib/daily/builders";
-import { PageBackControls } from "@/components/PageBackControls";
+
 
 
 const todayStr = () => {
