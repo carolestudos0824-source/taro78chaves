@@ -27,6 +27,15 @@ const AuthPage = () => {
     console.log("AuthPage mounted");
   }, []);
 
+  const translateError = (message: string) => {
+    if (message.includes("Invalid login credentials")) return "E-mail ou senha incorretos.";
+    if (message.includes("User already registered")) return "Este e-mail já está cadastrado.";
+    if (message.includes("Password should be at least 6 characters")) return "A senha deve ter pelo menos 6 caracteres.";
+    if (message.includes("Email not confirmed")) return "Confirme seu e-mail antes de entrar.";
+    if (message.includes("Signup requires a valid email")) return "Informe um e-mail válido.";
+    return message;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -37,7 +46,7 @@ const AuthPage = () => {
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: `${window.location.origin}/reset-password`,
       });
-      if (error) setError(error.message);
+      if (error) setError(translateError(error.message));
       else setInfo("E-mail de recuperação enviado.");
       setLoading(false);
       return;
@@ -46,16 +55,37 @@ const AuthPage = () => {
     try {
       if (mode === "signup") {
         trackEvent("signup_started");
-        const { error } = await signUp(email, password, name);
+        // Using direct supabase call to get more details if needed
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: { display_name: name },
+            emailRedirectTo: window.location.origin,
+          },
+        });
+        
         if (error) throw error;
+        
         trackEvent("signup_completed");
+
+        // Check if session exists (auto-confirm is ON) or just user (auto-confirm is OFF)
+        if (data.user && !data.session) {
+          setInfo("Conta criada! Confirme seu e-mail para acessar.");
+          setMode("login"); // Voltar para login para quando confirmar
+          setLoading(false);
+          return;
+        }
       } else {
         const { error } = await signIn(email, password);
         if (error) throw error;
       }
-      navigate("/module/fundamentos");
+      
+      // Se chegou aqui, está logado ou em processo de login bem sucedido
+      // Navegamos para /app e o roteador inteligente decide (ex: aluna nova -> fundamentos)
+      navigate("/app");
     } catch (err: any) {
-      setError(err.message);
+      setError(translateError(err.message));
     } finally {
       setLoading(false);
     }
