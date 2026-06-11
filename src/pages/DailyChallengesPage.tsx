@@ -390,7 +390,7 @@ const DailyChallengesPage = () => {
                   );
                 })}
               </div>
-              <PageBackControls variant="bottom" className="mt-8" />
+              
             </div>
           </div>
           <aside className="space-y-8">
