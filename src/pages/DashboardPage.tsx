@@ -333,9 +333,17 @@ const DashboardPage = () => {
                       <img 
                         src={currentStep.image} 
                         alt={currentStep.name}
-                        className="w-full h-full object-cover"
+                        className={`w-full h-full object-cover ${currentStep.type === "fundamentos" ? "opacity-60 blur-[1px]" : ""}`}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                      {currentStep.type === "fundamentos" && (
+                        <div className="absolute inset-0 flex items-center justify-center p-4 text-center">
+                          <span className="bg-plum/80 text-ivory text-[10px] font-heading font-black tracking-widest uppercase px-3 py-2 rounded-lg border border-gold/30 backdrop-blur-sm shadow-xl">
+                            Imagem Decorativa
+                          </span>
+                        </div>
+                      )}
+
                    </div>
                  </ArchPortal>
                )}
