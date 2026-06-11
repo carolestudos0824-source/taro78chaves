@@ -279,7 +279,7 @@ const FoolsJourneyPage = () => {
 
                           {/* Content */}
                           <div className={`flex-1 min-w-0 flex flex-col justify-center ${!isEven ? 'text-right' : 'text-left'} py-1 relative`}>
-                            {!studied && (
+                            {!isStudied(arcano.arcanoNumero) && (
                               <div className="absolute top-0 right-0 left-0 bottom-0 flex items-center justify-center pointer-events-none opacity-20">
                                 <Lock className="w-12 h-12 text-[#5B1F3D]" />
                               </div>
