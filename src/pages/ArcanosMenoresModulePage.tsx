@@ -87,6 +87,15 @@ const ArcanosMenoresModulePage = () => {
       route: "/module/cartas-corte",
       unlocked: isUnlocked && (bypassLocks || progress.completedModules.includes("copas") || progress.completedModules.includes("paus") || progress.completedModules.includes("espadas") || progress.completedModules.includes("ouros")),
       completed: progress.completedModules.includes("cartas-corte")
+    },
+    {
+      id: "pratica",
+      name: "Prática e Leituras",
+      subtitle: "Aplicação Real dos 78",
+      icon: <Sparkles className="w-6 h-6" />,
+      route: "/module/pratica",
+      unlocked: isUnlocked && progress.completedModules.includes("cartas-corte"),
+      completed: progress.completedModules.includes("pratica")
     }
   ];
 
