@@ -30,6 +30,8 @@ import ProfilePage from "./pages/ProfilePage.tsx";
 import FoolsJourneyPage from "./pages/FoolsJourneyPage.tsx";
 import TrailsPage from "./pages/TrailsPage.tsx";
 import DailyChallengesPage from "./pages/DailyChallengesPage.tsx";
+import ArcanosMenoresModulePage from "./pages/ArcanosMenoresModulePage.tsx";
+
 
 
 
