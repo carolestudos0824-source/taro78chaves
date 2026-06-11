@@ -17,7 +17,7 @@ type Phase = "lesson" | "exercise" | "deepdive" | "quiz" | "complete";
 const FundamentosLessonPage = () => {
   const { order } = useParams();
   const navigate = useNavigate();
-  const { addXP, completeLesson, completeQuiz, completeModule } = useProgress();
+  const { progress, addXP, completeLesson, completeQuiz, completeModule } = useProgress();
   const { isStaff, loading: roleLoading } = useRole();
   const [phase, setPhase] = useState<Phase>("lesson");
   const [quizIndex, setQuizIndex] = useState(0);
