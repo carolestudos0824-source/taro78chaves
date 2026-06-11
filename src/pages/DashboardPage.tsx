@@ -143,7 +143,9 @@ const DashboardPage = () => {
             id: id,
             name: name,
             numeral: posicao.toString().toUpperCase(),
+            label: "Arcano Menor",
             image: visual.resolvedAssetUrl || imgLouco,
+
             moduleName: `Naipe de ${naipe.charAt(0).toUpperCase() + naipe.slice(1)}`,
             moduleSlug: naipe,
             lessonId: id,
