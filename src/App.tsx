@@ -30,6 +30,8 @@ import ProfilePage from "./pages/ProfilePage.tsx";
 import FoolsJourneyPage from "./pages/FoolsJourneyPage.tsx";
 import TrailsPage from "./pages/TrailsPage.tsx";
 import DailyChallengesPage from "./pages/DailyChallengesPage.tsx";
+import ArcanosMenoresModulePage from "./pages/ArcanosMenoresModulePage.tsx";
+
 
 
 
@@ -200,6 +202,8 @@ const AppRoutes = () => {
           <Route path="/jornada-do-louco" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
           <Route path="/lesson/:id" element={<SecurityGate><LessonPage /></SecurityGate>} />
           <Route path="/module/arcanos-maiores" element={<Index />} />
+          <Route path="/module/arcanos-menores" element={<SecurityGate><ArcanosMenoresModulePage /></SecurityGate>} />
+
 
           
           <Route path="/module/fundamentos" element={<LazyRoute><FundamentosPage /></LazyRoute>} />

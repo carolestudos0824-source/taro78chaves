@@ -464,7 +464,8 @@ const DashboardPage = () => {
             </div>
 
             <div 
-              onClick={() => navigate("/trilhas")}
+              onClick={() => navigate("/module/arcanos-menores")}
+
               className="bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/40 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none group-hover:scale-110 group-hover:opacity-[0.05] transition-all">
