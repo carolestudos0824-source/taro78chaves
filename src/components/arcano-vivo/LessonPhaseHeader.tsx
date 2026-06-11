@@ -1,5 +1,7 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface LessonPhaseHeaderProps {
   cardImage: string;
@@ -7,6 +9,8 @@ interface LessonPhaseHeaderProps {
   numeral: string;
   subtitle?: string;
   variant?: "small" | "aura";
+  onBack?: () => void;
+  showBack?: boolean;
 }
 
 export const LessonPhaseHeader: React.FC<LessonPhaseHeaderProps> = ({
@@ -14,7 +18,9 @@ export const LessonPhaseHeader: React.FC<LessonPhaseHeaderProps> = ({
   cardName,
   numeral,
   subtitle,
-  variant = "small"
+  variant = "small",
+  onBack,
+  showBack = false
 }) => {
   if (variant === "aura") {
     return (
@@ -45,8 +51,18 @@ export const LessonPhaseHeader: React.FC<LessonPhaseHeaderProps> = ({
     <motion.div 
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex items-center gap-4 mb-8 bg-white/40 backdrop-blur-sm p-3 rounded-2xl border border-[#C8A66A]/20 shadow-sm"
+      className="flex items-center gap-4 mb-8 bg-white/40 backdrop-blur-sm p-3 rounded-2xl border border-[#C8A66A]/20 shadow-sm relative"
     >
+      {showBack && onBack && (
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onBack}
+          className="absolute -left-12 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-[#C8A66A]/20 shadow-sm text-[#5B1F3D] hover:bg-[#FAF5EF]"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </Button>
+      )}
       <div className="w-16 aspect-[2/3] rounded-lg overflow-hidden border-2 border-[#C8A66A]/30 shadow-lg shrink-0">
         <img src={cardImage} alt={cardName} className="w-full h-full object-cover" />
       </div>

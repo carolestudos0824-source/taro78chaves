@@ -87,7 +87,7 @@ const LessonPage = () => {
   const isValidId = !isNaN(arcanoId) && arcanoId >= 0 && arcanoId <= 21;
   const isLiteralRoute = id === ":id";
 
-  const { addXP, completeLesson, completeQuiz, earnBadge } = useProgress();
+  const { completeLesson, completeQuiz, earnBadge } = useProgress();
   const { loading: premiumLoading } = usePremium();
   const { isStaff, loading: roleLoading } = useRole();
   const { canAccessArcano, hasFullAccess, loading: accessLoading } = useAccess();
@@ -217,11 +217,7 @@ const LessonPage = () => {
   };
 
   const handleQuizComplete = (score: number, total: number) => {
-    const quizPontos = score * 10;
-    if (arcano.id !== 0) {
-      addXP(quizPontos);
-      setPontosEarned(e => e + quizPontos);
-    }
+    // Duolingo Rule: Progress only saved after quiz
     completeQuiz(`quiz-arcano-${arcano.id}`, score, total);
     completeLesson(`arcano-${arcano.id}`);
     if (arcano.id === 0) {
@@ -280,6 +276,8 @@ const LessonPage = () => {
                 cardName={arcano.name} 
                 numeral={arcano.numeral}
                 subtitle="A Essência"
+                showBack={phaseIdx > 0}
+                onBack={goBack}
               />
               <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
                 <p className="font-body text-[20px] leading-[1.8] text-[#3D1429] font-black">
@@ -301,6 +299,8 @@ const LessonPage = () => {
                 cardName={arcano.name} 
                 numeral={arcano.numeral}
                 subtitle="A Luz"
+                showBack={true}
+                onBack={goBack}
               />
               <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
                 <p className="font-body text-[20px] leading-[1.8] text-[#3D1429] font-black">
@@ -322,6 +322,8 @@ const LessonPage = () => {
                 cardName={arcano.name} 
                 numeral={arcano.numeral}
                 subtitle="A Sombra"
+                showBack={true}
+                onBack={goBack}
               />
               <div className="bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border-2 border-[#C8A66A]/20 shadow-xl space-y-8">
                 <p className="font-body text-[20px] leading-[1.8] text-[#3D1429] font-black">
@@ -343,6 +345,8 @@ const LessonPage = () => {
                 cardName={arcano.name} 
                 numeral={arcano.numeral}
                 subtitle="Símbolos Sagrados"
+                showBack={true}
+                onBack={goBack}
               />
               <SymbolMap
                 cardImage={arcano.cardImage}
@@ -396,6 +400,8 @@ const LessonPage = () => {
                 cardName={arcano.name} 
                 numeral={arcano.numeral}
                 subtitle="Dimensões da Vida"
+                showBack={true}
+                onBack={goBack}
               />
               
               <Tabs defaultValue="amor" className="w-full">
