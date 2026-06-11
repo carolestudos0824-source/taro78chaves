@@ -357,8 +357,9 @@ const DashboardPage = () => {
                       <MapPin className="w-3 h-3" /> {currentStep.moduleName}
                     </p>
                     <h3 className="text-xl md:text-2xl font-heading font-bold text-plum leading-tight">
-                      Arcano {currentStep.numeral} — {currentStep.name}
+                      {currentStep.label} {currentStep.numeral} — {currentStep.name}
                     </h3>
+
                   </div>
 
                   <div className="space-y-3">
