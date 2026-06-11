@@ -107,7 +107,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               <span className="font-heading text-lg md:text-xl tracking-tight text-plum font-bold leading-none">
                 Tarô 78 Chaves
               </span>
-              <span className="font-heading text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-plum font-bold mt-1">
+              <span className="font-heading text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-plum font-bold mt-1">
                 A jornada viva
               </span>
             </div>
@@ -142,7 +142,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               {/* Symbolic Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 md:px-5 md:py-1.5 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in mb-1 md:mb-1">
                 <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-gold-dark" />
-                <span className="text-[9px] md:text-[11px] font-heading tracking-[0.2em] md:tracking-[0.25em] uppercase font-bold text-plum">
+                <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] md:tracking-[0.25em] uppercase font-bold text-plum">
                   A jornada viva dos 78 arcanos
                 </span>
               </div>
@@ -294,7 +294,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                     </div>
                   </div>
                   <div className="text-center">
-                    <span className="text-[10px] md:text-xs font-heading tracking-[0.1em] uppercase text-plum font-bold block truncate w-full px-1">
+                    <span className="text-[11px] md:text-xs font-heading tracking-[0.1em] uppercase text-plum font-bold block truncate w-full px-1">
                       {card.name.toUpperCase()}
                     </span>
                   </div>

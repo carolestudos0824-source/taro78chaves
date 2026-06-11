@@ -86,9 +86,10 @@ const ProfilePage = () => {
             <div className="w-28 h-28 rounded-full flex items-center justify-center bg-white border-4 border-[#C8A66A] shadow-2xl relative z-10 overflow-hidden ring-8 ring-[#C8A66A]/10">
               <span className="font-heading text-5xl text-[#5B1F3D] font-black">{LEVEL_TITLES[progress.level]?.charAt(0)}</span>
             </div>
-            <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-full flex items-center justify-center bg-[#5B1F3D] text-white text-[13px] font-heading font-black border-2 border-white shadow-lg z-20">
+            <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-full flex items-center justify-center bg-[#5B1F3D] text-white text-[14px] font-heading font-black border-2 border-white shadow-lg z-20">
               {progress.level}
             </div>
+
           </div>
 
           <div className="text-center space-y-2">
@@ -101,7 +102,7 @@ const ProfilePage = () => {
             {isStaff && (
               <div className="mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#5B1F3D]/10 border border-[#C8A66A]/30 text-[#5B1F3D] animate-pulse">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#C8A66A]" />
-                <span className="text-[10px] font-heading font-black tracking-widest uppercase">Modo Auditoria</span>
+                <span className="text-[11px] font-heading font-black tracking-widest uppercase">Modo Auditoria</span>
               </div>
             )}
           </div>
@@ -153,7 +154,7 @@ const ProfilePage = () => {
                 <TarotIcon name={s.icon} className="w-4 h-4" color={s.color} />
               </div>
               <div className="font-heading text-xl font-black text-[#5B1F3D]">{s.val}</div>
-              <div className="text-[11px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]">{s.label}</div>
+              <div className="text-[12px] font-heading font-black tracking-widest uppercase text-[#5B1F3D]"> {s.label}</div>
             </div>
           ))}
         </div>
@@ -184,7 +185,7 @@ const ProfilePage = () => {
                     </p>
                   )}
                   {premiumSource === "google_play" && (
-                    <p className="text-[9px] font-body font-bold italic text-[#5B1F3D]/50 uppercase tracking-widest">
+                    <p className="text-[11px] font-body font-bold italic text-[#5B1F3D]/60 uppercase tracking-widest">
                       Gerencie sua assinatura na Play Store
                     </p>
                   )}

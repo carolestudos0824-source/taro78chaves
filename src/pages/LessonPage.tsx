@@ -409,15 +409,16 @@ setKeyEarned(true);
                 <TabsList className="grid w-full grid-cols-3 bg-white/50 border border-[#C8A66A]/20 h-auto p-1 rounded-2xl">
                   <TabsTrigger value="amor" className="py-3 rounded-xl data-[state=active]:bg-[#5B1F3D] data-[state=active]:text-white flex flex-col gap-1">
                     <Heart className="w-4 h-4" />
-                    <span className="text-[9px] uppercase font-black tracking-widest">Amor</span>
+                    <span className="text-[10px] min-[390px]:text-[11px] uppercase font-black tracking-widest">Amor</span>
                   </TabsTrigger>
                   <TabsTrigger value="trabalho" className="py-3 rounded-xl data-[state=active]:bg-[#5B1F3D] data-[state=active]:text-white flex flex-col gap-1">
                     <Briefcase className="w-4 h-4" />
-                    <span className="text-[9px] uppercase font-black tracking-widest">Trabalho</span>
+                    <span className="text-[10px] min-[390px]:text-[11px] uppercase font-black tracking-widest">Trabalho</span>
                   </TabsTrigger>
                   <TabsTrigger value="espiritualidade" className="py-3 rounded-xl data-[state=active]:bg-[#5B1F3D] data-[state=active]:text-white flex flex-col gap-1">
                     <Moon className="w-4 h-4" />
-                    <span className="text-[9px] uppercase font-black tracking-widest">Espírito</span>
+                    <span className="text-[10px] min-[390px]:text-[11px] uppercase font-black tracking-widest">Espírito</span>
+
                   </TabsTrigger>
                 </TabsList>
 
@@ -433,9 +434,10 @@ setKeyEarned(true);
                           <div key={key} className="space-y-3">
                             <div className="flex items-center gap-2">
                               <div className={`w-2 h-2 rounded-full ${key === 'light' ? 'bg-[#C8A66A]' : 'bg-[#5B1F3D]'}`} />
-                              <span className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">
+                              <span className="text-[11px] min-[390px]:text-[12px] font-heading font-black tracking-[0.2em] uppercase text-[#9B7C2C]">
                                 {key === 'light' ? 'Luz / Potencial' : key === 'shadow' ? 'Sombra / Alerta' : key}
                               </span>
+
                             </div>
                             <p className="font-body text-[18px] leading-[1.7] text-[#3D1429] font-black pl-4 border-l-2 border-[#C8A66A]/10">
                               {value}
@@ -457,9 +459,10 @@ setKeyEarned(true);
                           <div key={key} className="space-y-3">
                             <div className="flex items-center gap-2">
                               <div className={`w-2 h-2 rounded-full ${key === 'light' ? 'bg-[#C8A66A]' : 'bg-[#5B1F3D]'}`} />
-                              <span className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">
+                              <span className="text-[11px] min-[390px]:text-[12px] font-heading font-black tracking-[0.2em] uppercase text-[#9B7C2C]">
                                 {key === 'light' ? 'Luz / Potencial' : key === 'shadow' ? 'Sombra / Alerta' : key}
                               </span>
+
                             </div>
                             <p className="font-body text-[18px] leading-[1.7] text-[#3D1429] font-black pl-4 border-l-2 border-[#C8A66A]/10">
                               {value}
@@ -481,9 +484,10 @@ setKeyEarned(true);
                           <div key={key} className="space-y-3">
                             <div className="flex items-center gap-2">
                               <div className={`w-2 h-2 rounded-full ${key === 'light' ? 'bg-[#C8A66A]' : 'bg-[#5B1F3D]'}`} />
-                              <span className="text-[11px] font-heading font-black tracking-[0.2em] uppercase text-[#C8A66A]">
+                              <span className="text-[11px] min-[390px]:text-[12px] font-heading font-black tracking-[0.2em] uppercase text-[#9B7C2C]">
                                 {key === 'light' ? 'Luz / Potencial' : key === 'shadow' ? 'Sombra / Alerta' : key}
                               </span>
+
                             </div>
                             <p className="font-body text-[18px] leading-[1.7] text-[#3D1429] font-black pl-4 border-l-2 border-[#C8A66A]/10">
                               {value}
