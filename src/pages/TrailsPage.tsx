@@ -378,7 +378,7 @@ const TrailsPage = () => {
             );
           })}
         </div>
-        <PageBackControls variant="bottom" className="pb-8" />
+        
       </div>
     </div>
   );
