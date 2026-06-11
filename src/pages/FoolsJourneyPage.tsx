@@ -3,6 +3,8 @@ import { ChevronRight, Sparkles, BookOpen, ArrowLeft } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { useResolvedArcanosMaiores } from "@/hooks/use-resolved-arcanos-maiores";
 import { useJourneyContent } from "@/hooks/use-content";
+import { useAccess } from "@/hooks/use-access";
+import { useRole } from "@/hooks/use-role";
 import { CORES_FASE, JOURNEY_MOTION } from "@/config/journey-visual";
 import { EDITORIAL_REGISTRY } from "@/content/arcanos-maiores";
 import { Lock } from "lucide-react";
