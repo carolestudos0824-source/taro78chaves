@@ -19,8 +19,7 @@ import { MODULES_CATALOG, getModuleFromCatalog } from "./catalog";
 export const FREE_ARCANO_IDS: readonly number[] = [];
 
 export function hasInitialAccess(arcanoId: number, quizScores: Record<string, number> = {}, completedModules: string[] = []): boolean {
-  // Pedagogy Phase 6.6: No arcanos are free by default.
-  // Must complete Fundamentos module first.
+  // O Louco (ID 0) is 100% free but requires completing Fundamentos first.
   if (arcanoId === 0) {
     return completedModules.includes("fundamentos");
   }
