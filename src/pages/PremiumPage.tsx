@@ -255,7 +255,7 @@ const PremiumPage = () => {
                   disabled={loading} 
                   className="w-full h-auto min-h-[4rem] py-5 px-4 text-[11px] min-[400px]:text-sm bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.1em] min-[400px]:tracking-[0.15em] shadow-xl border-2 border-[#C8A66A] whitespace-normal leading-tight text-center"
                 >
-                  COMEÇAR MINHA JORNADA
+                  ASSINAR E DESBLOQUEAR A ESCOLA DIGITAL
                 </Button>
               </div>
             </div>
@@ -289,7 +289,7 @@ const PremiumPage = () => {
                   disabled={loading || billingSupported === false} 
                   className="w-full h-auto min-h-[4rem] py-5 px-4 text-[11px] min-[400px]:text-sm bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.1em] min-[400px]:tracking-[0.15em] shadow-xl border-2 border-[#C8A66A] whitespace-normal leading-tight text-center"
                 >
-                  {billingSupported === false ? "BILLING INDISPONÍVEL" : "ASSINAR PELA GOOGLE PLAY"}
+                  {billingSupported === false ? "BILLING INDISPONÍVEL" : "ASSINAR E DESBLOQUEAR A ESCOLA DIGITAL"}
                 </Button>
                 
                 {billingSupported === false && (

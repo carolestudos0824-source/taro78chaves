@@ -21,6 +21,7 @@ import {
 import { toast } from "sonner";
 
 import { TarotIcon } from "@/components/TarotIcon";
+import { cn } from "@/lib/utils";
 
 import { 
   MODULES_CATALOG as MODULES, 
@@ -60,7 +61,7 @@ const ArchPortal = ({ children, className }: { children: React.ReactNode, classN
 const DashboardPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { progress, loading: progressLoading, fundamentosLessonsCompleted } = useProgress();
+  const { progress, loading: progressLoading, fundamentosLessonsCompleted, fundamentosComplete } = useProgress();
   const { todayProgress: ritualProgress, streak: ritualStreak } = useRitual();
   const { isPremium, subscriptionStatus, isAdmin } = useAccess();
   const { isStaff, isAuditor, role } = useRole();
@@ -544,8 +545,23 @@ const DashboardPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-12 border-b border-gold/10">
             <div 
-              onClick={() => navigate("/module/arcanos-maiores")}
-              className="bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/40 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden"
+              onClick={() => {
+                if (!fundamentosComplete && !isAdmin) {
+                  toast.info("Este conteúdo faz parte da Escola Digital completa.", {
+                    description: "Complete os Fundamentos do Tarô para iniciar sua jornada.",
+                    action: {
+                      label: "Upgrade",
+                      onClick: () => navigate("/premium")
+                    }
+                  });
+                  return;
+                }
+                navigate("/module/arcanos-maiores");
+              }}
+              className={cn(
+                "bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/40 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden",
+                !fundamentosComplete && !isAdmin && "opacity-60 grayscale-[0.5]"
+              )}
             >
               <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none group-hover:scale-110 group-hover:opacity-[0.05] transition-all">
                 <KeyRound className="w-24 h-24 text-plum" />
@@ -570,9 +586,24 @@ const DashboardPage = () => {
             </div>
 
             <div 
-              onClick={() => navigate("/module/arcanos-menores")}
+              onClick={() => {
+                if (!isPremium && !isAdmin) {
+                  toast.info("Este conteúdo faz parte da Escola Digital completa.", {
+                    description: "Os Arcanos Menores são exclusivos para assinantes.",
+                    action: {
+                      label: "Upgrade",
+                      onClick: () => navigate("/premium")
+                    }
+                  });
+                  return;
+                }
+                navigate("/module/arcanos-menores");
+              }}
 
-              className="bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/40 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden"
+              className={cn(
+                "bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-8 border border-gold/15 shadow-sm hover:shadow-xl hover:border-gold/40 transition-all cursor-pointer group flex items-start gap-6 relative overflow-hidden",
+                !isPremium && !isAdmin && "opacity-60 grayscale-[0.5]"
+              )}
             >
               <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none group-hover:scale-110 group-hover:opacity-[0.05] transition-all">
                 <Layout className="w-24 h-24 text-plum" />
