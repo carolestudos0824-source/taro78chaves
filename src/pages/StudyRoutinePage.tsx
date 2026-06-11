@@ -143,16 +143,30 @@ const StudyRoutinePage = () => {
     if (!user || isTesting) return;
     setIsTesting(true);
     
+    // Check if notification API exists
+    if (!("Notification" in window)) {
+      toast.error("Este navegador não suporta notificações.");
+      setIsTesting(false);
+      return;
+    }
+
+    // Check permission
+    if (Notification.permission !== "granted") {
+      toast.error("Permita notificações no navegador para testar o lembrete.");
+      setIsTesting(false);
+      return;
+    }
+
     try {
       const { data, error } = await supabase.functions.invoke('send-daily-ritual-reminders', {
         body: { test_user_id: user.id }
       });
 
       if (error) throw error;
-      toast.success("Chamado de teste enviado!");
+      toast.success("Lembrete salvo. As notificações serão testadas no app instalado.");
     } catch (err) {
       console.error("Test error:", err);
-      toast.error("Erro ao enviar teste.");
+      toast.error("Teste de notificação indisponível no preview. Valide no domínio publicado.");
     } finally {
       setIsTesting(false);
     }
@@ -176,6 +190,7 @@ const StudyRoutinePage = () => {
   };
 
   // ─── Current lesson ───
+  const fundamentosComplete = progress.completedLessons.length > 0;
   const currentArcanoId = progress.completedLessons.length; // Simplified for UI
   const currentArcano = getArcanoById(currentArcanoId);
   const currentModule = MODULES.find(m => {
@@ -216,101 +231,116 @@ const StudyRoutinePage = () => {
       </header>
 
       <div className="relative z-10 max-w-lg mx-auto px-6 pb-32 space-y-10 mt-12">
-        
-        {/* ═══════════════ NOTIFICATION CONFIG ═══════════════ */}
-        <div className="relative rounded-[2.5rem] overflow-hidden p-8 transition-all duration-500 bg-white border-2 border-gold shadow-2xl shadow-plum/10">
-          {loading ? (
-            <div className="py-4 text-center animate-pulse text-plum/40">Sintonizando preferências...</div>
-          ) : (
-            <div className="flex flex-col items-center text-center space-y-6">
-              <div className={`w-16 h-16 rounded-[1.5rem] flex items-center justify-center border-2 transition-all duration-500 ${pref?.enabled ? 'bg-plum border-gold text-white rotate-3 shadow-xl' : 'bg-gold/5 border-gold/20 text-gold'}`}>
-                {pref?.enabled ? <Bell className="w-8 h-8" /> : <BellOff className="w-8 h-8" />}
-              </div>
-              
-              <div className="space-y-2">
-                <h3 className="text-2xl font-heading font-black text-plum">
-                  {pref?.enabled ? `Lembrete ativo às ${pref.reminder_time.substring(0, 5)}` : "Chamado Diário"}
-                </h3>
-                {isiOS && !isPWA && (
-                  <p className="text-[13px] font-body font-bold text-rose-600 uppercase tracking-wider leading-relaxed">
-                    Para receber lembretes no iPhone, adicione o Tarô 78 Chaves à Tela de Início.
-                  </p>
-                )}
-              </div>
-
-              {pref?.enabled ? (
-                <div className="w-full grid grid-cols-1 gap-3">
-                  <div className="flex items-center justify-center gap-4 p-4 rounded-2xl bg-gold/5 border border-gold/20">
-                    <Clock className="w-5 h-5 text-gold" />
-                    <input 
-                      type="time" 
-                      value={pref.reminder_time.substring(0, 5)}
-                      onChange={(e) => updateTime(e.target.value)}
-                      className="bg-transparent font-heading font-bold text-plum focus:outline-none"
-                    />
-                  </div>
-                  <button 
-                    onClick={testNotification}
-                    disabled={isTesting}
-                    className="w-full py-4 rounded-2xl bg-gold/10 border border-gold/30 font-heading text-[10px] font-black tracking-[0.3em] uppercase text-plum flex items-center justify-center gap-2 hover:bg-gold/20 transition-all"
-                  >
-                    <Send className="w-4 h-4" />
-                    {isTesting ? "Enviando..." : "Testar notificação"}
-                  </button>
-                  <button 
-                    onClick={toggleReminder}
-                    className="w-full py-4 rounded-2xl font-heading text-[10px] font-black tracking-[0.3em] uppercase text-plum/40 hover:text-plum transition-colors"
-                  >
-                    Desativar lembrete
-                  </button>
-                </div>
+        {!fundamentosComplete ? (
+          <div className="relative rounded-[2.5rem] overflow-hidden p-8 transition-all duration-500 bg-white border-2 border-gold shadow-2xl shadow-plum/10 text-center space-y-6">
+            <h3 className="text-2xl font-heading font-black text-plum">
+              Seu ritual será liberado depois da primeira lição.
+            </h3>
+            <button 
+              onClick={() => navigate("/module/fundamentos")}
+              className="w-full py-5 bg-plum text-white rounded-2xl font-heading text-[11px] font-black tracking-[0.3em] uppercase shadow-2xl hover:scale-[1.02] active:scale-95 transition-all"
+            >
+              Começar primeira lição
+            </button>
+          </div>
+        ) : (
+          <>
+            {/* ═══════════════ NOTIFICATION CONFIG ═══════════════ */}
+            <div className="relative rounded-[2.5rem] overflow-hidden p-8 transition-all duration-500 bg-white border-2 border-gold shadow-2xl shadow-plum/10">
+              {loading ? (
+                <div className="py-4 text-center animate-pulse text-plum/40">Sintonizando preferências...</div>
               ) : (
-                <button 
-                  onClick={toggleReminder}
-                  className="w-full py-5 bg-plum text-white rounded-2xl font-heading text-[11px] font-black tracking-[0.3em] uppercase shadow-2xl hover:scale-[1.02] active:scale-95 transition-all"
-                >
-                  Ativar lembrete diário
-                </button>
+                <div className="flex flex-col items-center text-center space-y-6">
+                  <div className={`w-16 h-16 rounded-[1.5rem] flex items-center justify-center border-2 transition-all duration-500 ${pref?.enabled ? 'bg-plum border-gold text-white rotate-3 shadow-xl' : 'bg-gold/5 border-gold/20 text-gold'}`}>
+                    {pref?.enabled ? <Bell className="w-8 h-8" /> : <BellOff className="w-8 h-8" />}
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <h3 className="text-2xl font-heading font-black text-plum">
+                      {pref?.enabled ? `Lembrete ativo às ${pref.reminder_time.substring(0, 5)}` : "Chamado Diário"}
+                    </h3>
+                    {isiOS && !isPWA && (
+                      <p className="text-[13px] font-body font-bold text-rose-600 uppercase tracking-wider leading-relaxed">
+                        Para receber lembretes no iPhone, adicione o Tarô 78 Chaves à Tela de Início.
+                      </p>
+                    )}
+                  </div>
+
+                  {pref?.enabled ? (
+                    <div className="w-full grid grid-cols-1 gap-3">
+                      <div className="flex items-center justify-center gap-4 p-4 rounded-2xl bg-gold/5 border border-gold/20">
+                        <Clock className="w-5 h-5 text-gold" />
+                        <input 
+                          type="time" 
+                          value={pref.reminder_time.substring(0, 5)}
+                          onChange={(e) => updateTime(e.target.value)}
+                          className="bg-transparent font-heading font-bold text-plum focus:outline-none"
+                        />
+                      </div>
+                      <button 
+                        onClick={testNotification}
+                        disabled={isTesting}
+                        className="w-full py-4 rounded-2xl bg-gold/10 border border-gold/30 font-heading text-[10px] font-black tracking-[0.3em] uppercase text-plum flex items-center justify-center gap-2 hover:bg-gold/20 transition-all"
+                      >
+                        <Send className="w-4 h-4" />
+                        {isTesting ? "Enviando..." : "Testar notificação"}
+                      </button>
+                      <button 
+                        onClick={toggleReminder}
+                        className="w-full py-4 rounded-2xl font-heading text-[10px] font-black tracking-[0.3em] uppercase text-plum/40 hover:text-plum transition-colors"
+                      >
+                        Desativar lembrete
+                      </button>
+                    </div>
+                  ) : (
+                    <button 
+                      onClick={toggleReminder}
+                      className="w-full py-5 bg-plum text-white rounded-2xl font-heading text-[11px] font-black tracking-[0.3em] uppercase shadow-2xl hover:scale-[1.02] active:scale-95 transition-all"
+                    >
+                      Ativar lembrete diário
+                    </button>
+                  )}
+                </div>
               )}
             </div>
-          )}
-        </div>
 
-        {/* ═══════════════ WEEKLY OVERVIEW ═══════════════ */}
-        <div className="relative rounded-[2.5rem] overflow-hidden p-8 transition-all duration-500 bg-white/80 backdrop-blur-md border border-gold/20">
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-plum text-gold border border-gold/30">
-                <TrendingUp className="w-6 h-6" />
-              </div>
-              <div className="flex flex-col text-left">
-                <span className="text-[11px] font-heading font-black tracking-[0.25em] text-gold uppercase">Consistência</span>
-                <span className="text-lg font-heading font-black text-plum">Sua Semana</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-gold/20 bg-gold/5">
-              <Flame className="w-4 h-4 text-plum" />
-              <span className="text-[12px] font-heading font-black text-plum">{progress.streak} dias</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-7 gap-3 mb-6">
-            {weekDays.map((d, i) => (
-              <div key={i} className="text-center">
-                <div className={`text-[10px] font-heading font-black uppercase mb-3 ${d.isToday ? "text-plum" : "text-plum/30"}`}>{d.day}</div>
-                <div className={`w-10 h-10 rounded-2xl flex items-center justify-center mx-auto transition-all border-2 ${d.active ? "bg-plum border-gold text-white" : d.isToday ? "bg-white border-gold text-plum" : "bg-plum/5 border-plum/10 text-plum/20"}`}>
-                  {d.active ? <Check className="w-5 h-5" /> : <span className="text-[13px] font-heading font-black">{d.date}</span>}
+            {/* ═══════════════ WEEKLY OVERVIEW ═══════════════ */}
+            <div className="relative rounded-[2.5rem] overflow-hidden p-8 transition-all duration-500 bg-white/80 backdrop-blur-md border border-gold/20">
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-plum text-gold border border-gold/30">
+                    <TrendingUp className="w-6 h-6" />
+                  </div>
+                  <div className="flex flex-col text-left">
+                    <span className="text-[11px] font-heading font-black tracking-[0.25em] text-gold uppercase">Consistência</span>
+                    <span className="text-lg font-heading font-black text-plum">Sua Semana</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-gold/20 bg-gold/5">
+                  <Flame className="w-4 h-4 text-plum" />
+                  <span className="text-[12px] font-heading font-black text-plum">{progress.streak} dias</span>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
 
-        <div className="text-center py-10">
-          <p className="font-body text-[13px] font-bold italic text-plum/40 max-w-[200px] mx-auto leading-relaxed">
-            "A constância transforma a estudante em mestra."
-          </p>
-        </div>
+              <div className="grid grid-cols-7 gap-3 mb-6">
+                {weekDays.map((d, i) => (
+                  <div key={i} className="text-center">
+                    <div className={`text-[10px] font-heading font-black uppercase mb-3 ${d.isToday ? "text-plum" : "text-plum/30"}`}>{d.day}</div>
+                    <div className={`w-10 h-10 rounded-2xl flex items-center justify-center mx-auto transition-all border-2 ${d.active ? "bg-plum border-gold text-white" : d.isToday ? "bg-white border-gold text-plum" : "bg-plum/5 border-plum/10 text-plum/20"}`}>
+                      {d.active ? <Check className="w-5 h-5" /> : <span className="text-[13px] font-heading font-black">{d.date}</span>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="text-center py-10">
+              <p className="font-body text-[13px] font-bold italic text-plum/40 max-w-[200px] mx-auto leading-relaxed">
+                "A constância transforma a estudante em mestra."
+              </p>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
