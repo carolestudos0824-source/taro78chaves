@@ -152,9 +152,10 @@ const Index = () => {
               <button
                 onClick={() => navigate("/jornada")}
                 disabled={!fundamentosComplete}
-                className={`px-8 py-3 rounded-xl bg-[#FAF5EF] text-[#5B1F3D] font-heading text-[10px] tracking-[0.2em] uppercase font-black border border-[#C8A66A30] hover:bg-[#5B1F3D] hover:text-white transition-all flex items-center gap-2 ${!fundamentosComplete ? "opacity-50 grayscale cursor-not-allowed" : ""}`}
+                className={`px-8 py-4 rounded-xl bg-[#5B1F3D] text-white font-heading text-[12px] tracking-[0.2em] uppercase font-black border-2 border-[#C8A66A] hover:scale-105 transition-all flex items-center gap-3 shadow-xl ${!fundamentosComplete ? "opacity-50 grayscale cursor-not-allowed" : ""}`}
               >
-                Ler a Jornada do Louco ao Mundo <ChevronRight className="w-3 h-3" />
+                <Sparkles className="w-4 h-4 text-[#C8A66A]" />
+                Fazer a Jornada do Louco ao Mundo
               </button>
             </div>
           </div>
