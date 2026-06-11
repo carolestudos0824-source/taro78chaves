@@ -1,5 +1,5 @@
-import { useNavigate, Navigate } from "react-router-dom";
-import { ChevronRight, Sparkles, BookOpen } from "lucide-react";
+import { useNavigate, Navigate, Link } from "react-router-dom";
+import { ChevronRight, Sparkles, BookOpen, ArrowLeft } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { useResolvedArcanosMaiores } from "@/hooks/use-resolved-arcanos-maiores";
 import { useJourneyContent } from "@/hooks/use-content";
@@ -54,6 +54,9 @@ const FoolsJourneyPage = () => {
       }}>
         <div className="container max-w-3xl py-5 px-6">
           <div className="flex items-center gap-4">
+            <Link to="/module/arcanos-maiores" className="w-10 h-10 flex items-center justify-center bg-[#FAF5EF] rounded-full border border-[#C8A66A30] text-[#5B1F3D] hover:bg-[#5B1F3D] hover:text-white transition-all shadow-sm">
+              <ArrowLeft className="w-5 h-5" />
+            </Link>
             
 
             <div>
