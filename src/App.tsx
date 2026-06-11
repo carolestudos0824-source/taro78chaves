@@ -193,14 +193,14 @@ const AppRoutes = () => {
 
 
         <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
+          <Route path="/jornada" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
+          <Route path="/jornada-do-louco" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
           <Route path="/app" element={<DashboardPage />} />
           <Route path="/trilhas" element={<SecurityGate><TrailsPage /></SecurityGate>} />
           <Route path="/mapa" element={<SecurityGate><TrailsPage /></SecurityGate>} />
           <Route path="/desafios" element={<SecurityGate><DailyChallengesPage /></SecurityGate>} />
           <Route path="/premium" element={<SecurityGate><PremiumPage /></SecurityGate>} />
           <Route path="/perfil" element={<SecurityGate><ProfilePage /></SecurityGate>} />
-          <Route path="/jornada" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
-          <Route path="/jornada-do-louco" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
           <Route path="/lesson/:id" element={<SecurityGate><LessonPage /></SecurityGate>} />
           <Route path="/module/arcanos-maiores" element={<Index />} />
           <Route path="/module/arcanos-menores" element={<SecurityGate><ArcanosMenoresModulePage /></SecurityGate>} />
