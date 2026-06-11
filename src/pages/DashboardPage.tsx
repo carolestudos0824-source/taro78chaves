@@ -343,8 +343,8 @@ const DashboardPage = () => {
                         </div>
                       )}
                       <div className="space-y-1.5 p-4 rounded-2xl bg-gold/5 border border-gold/10">
-                        <p className="text-[14px] font-heading font-black tracking-widest text-gold uppercase flex items-center gap-2">
-                          <MapPin className="w-3 h-3" /> {currentStep.moduleName}
+                        <p className="text-[13px] font-heading font-black tracking-widest text-gold uppercase flex items-center gap-2">
+                          <MapPin className="w-3.5 h-3.5" /> {currentStep.moduleName}
                         </p>
                         <h3 className="text-xl md:text-2xl font-heading font-bold text-plum leading-tight">
                           {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 
@@ -352,7 +352,7 @@ const DashboardPage = () => {
                             : `${currentStep.label} ${currentStep.numeral} — ${currentStep.name}`}
                         </h3>
                         {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 && (
-                          <p className="text-[14px] font-body italic text-plum/70 mt-2">
+                          <p className="text-[15px] font-body italic text-plum/80 mt-2 font-medium">
                             Dê o primeiro passo e receba sua primeira chave.
                           </p>
                         )}
@@ -364,14 +364,13 @@ const DashboardPage = () => {
                             className="h-full rounded-full bg-gradient-to-r from-plum via-plum/80 to-gold transition-all duration-1000 ease-out"
                             style={{ width: `${Math.max(globalProgressPct, 5)}%` }}
                           />
-                          <div className="absolute inset-0 bg-shimmer animate-shimmer opacity-20" style={{ backgroundSize: '200% 100%' }} />
                         </div>
                         <div className="flex justify-between items-center px-1">
-                          <span className="text-[13px] font-heading font-black text-plum/60 uppercase tracking-[0.1em] leading-tight max-w-[150px]">
+                          <span className="text-[14px] font-heading font-black text-plum/70 uppercase tracking-[0.1em] leading-tight">
                             {totalCompletedArcanos} {totalCompletedArcanos === 1 ? "Chave conquistada" : "Chaves conquistadas"}
                           </span>
-                          <span className="text-[11px] font-heading font-black text-gold uppercase tracking-[0.1em] flex items-center gap-1 leading-tight text-right">
-                            {globalProgressPct}% Integrado <Zap className="w-2.5 h-2.5 fill-current" />
+                          <span className="text-[12px] font-heading font-black text-gold uppercase tracking-[0.1em] flex items-center gap-1 leading-tight text-right">
+                            {globalProgressPct}% Integrado <Zap className="w-3 h-3 fill-current" />
                           </span>
                         </div>
                       </div>
@@ -391,7 +390,7 @@ const DashboardPage = () => {
                           navigate("/jornada");
                         }
                       }}
-                      className="w-full py-5 rounded-[1.25rem] font-heading text-[13px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-[#5B1F3D] text-white border-gold/30 hover:bg-[#45162D] relative z-[100]"
+                      className="w-full py-5 rounded-[1.25rem] font-heading text-[14px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-[#5B1F3D] text-white border-gold/30 hover:bg-[#45162D] relative z-[100]"
                     >
                       <span>
                         {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0
@@ -406,6 +405,19 @@ const DashboardPage = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* 2. Block: How your journey begins */}
+        <section className="mx-2 p-8 rounded-[2rem] bg-gold/5 border border-gold/20 space-y-4 relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-4 opacity-10">
+             <Sparkles className="w-12 h-12 text-gold" />
+          </div>
+          <div className="relative z-10 space-y-2">
+            <h3 className="text-xl font-heading font-bold text-plum">Como sua jornada começa</h3>
+            <p className="text-[15px] font-body text-plum/80 leading-relaxed font-medium">
+              Você começa pelos Fundamentos do Tarô. Depois da primeira lição, vai experimentar o Arcano 0 — O Louco. Para continuar a formação completa pelos 78 arcanos, desbloqueie a Escola Digital.
+            </p>
           </div>
         </section>
 
