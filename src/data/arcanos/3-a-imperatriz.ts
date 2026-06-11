@@ -94,7 +94,7 @@ export const A_IMPERATRIZ: ArcanoMaiorEditorial = {
 
   voice: {
     intro: "Eu sou a Imperatriz. Sou a terra que gera, o ventre que acolhe, a mão que nutre.",
-    fullText: "Eu sou a Imperatriz. Sou a terra que gera, o ventre que acolhe, a mão que nutre. Em mim, a vida encontra forma, cor, textura e prazer. Eu não penso a criação — eu a sinto nascer. Eu sou o campo de trigo dourado, o rio que flui, a flor que desabrocha. Na minha luz, eu trago abundância, fertilidade e amor incondicional. Na minha sombra, eu viro possessividade, excesso e sufocamento. Eu não penso a criação. Eu a sinto nascer.",
+    fullText: "Eu sou a Imperatriz. Sou a terra que gera, o ventre que acolhe, a mão que nutre. Em mim, a vida encontra forma, cor, textura e prazer. Eu não penso a criação — eu a sinto nascer. Eu sou o campo de trigo dourado, o rio que flui, a flor que desabrocha. Na minha luz, eu trago abundância, fertilidade e amor incondicional. Na minha sombra, eu viro possessividade, excesso e sufocamento.",
   },
 
   deepDive: {
