@@ -109,9 +109,10 @@ const GenericModulePage = ({
               <span
                 className="text-[11px] font-heading uppercase tracking-[0.35em] px-5 py-2 rounded-full font-black"
                 style={{
-                  color: "#C8A66A",
-                  background: "rgba(91, 31, 61, 0.05)",
-                  border: "1.5px solid rgba(200, 166, 106, 0.3)",
+                  color: "hsl(var(--gold))",
+                  background: "rgba(91, 31, 61, 0.08)",
+                  border: "1.5px solid hsl(var(--gold) / 0.4)",
+
                 }}
               >
                 {categoryLabel}
@@ -135,7 +136,7 @@ const GenericModulePage = ({
             </div>
             <p
               className="font-accent text-lg md:text-xl italic font-black leading-snug"
-              style={{ color: "#5B1F3D99" }}
+              style={{ color: "hsl(var(--primary) / 0.85)" }}
             >
               {moduleSubtitle}
             </p>
@@ -145,9 +146,10 @@ const GenericModulePage = ({
           {editorialIntro && (
             <div className="mt-8 pt-8 border-t border-[#C8A66A20]">
               <div className="flex items-center justify-center gap-4 mb-4 opacity-90">
-                <span className="h-px w-10" style={{ background: "linear-gradient(90deg, transparent, #C8A66A)" }} />
-                <span className="text-[12px] font-black" style={{ color: "#C8A66A", letterSpacing: "0.4em" }}>✶ ◈ ✶</span>
-                <span className="h-px w-10" style={{ background: "linear-gradient(90deg, #C8A66A, transparent)" }} />
+                <span className="h-px w-10" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold)))" }} />
+                <span className="text-[12px] font-black" style={{ color: "hsl(var(--gold))", letterSpacing: "0.4em" }}>✶ ◈ ✶</span>
+                <span className="h-px w-10" style={{ background: "linear-gradient(90deg, hsl(var(--gold)), transparent)" }} />
+
               </div>
               <p
                 className="font-accent text-[17px] md:text-[19px] leading-relaxed italic animate-fade-in text-center"
@@ -176,10 +178,11 @@ const GenericModulePage = ({
         >
           <div
             className="flex justify-between text-[11px] font-heading tracking-wider mb-2 px-1"
-            style={{ color: "#5B1F3DAA" }}
+            style={{ color: "hsl(var(--primary) / 0.75)" }}
           >
             <span>{completedCount}/{lessons.length} lições concluídas</span>
-            <span style={{ color: "#5B1F3D" }}>{pct}%</span>
+            <span style={{ color: "hsl(var(--primary))" }}>{pct}%</span>
+
           </div>
           <div className="h-2 rounded-full overflow-hidden" style={{ background: "#E8DED3", border: "1px solid #D1C4B5" }}>
             <div
@@ -272,7 +275,7 @@ const GenericModulePage = ({
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 mb-1">
-                      <span className="text-[10px] font-heading font-black tracking-[0.25em]" style={{ color: unlocked ? "#C8A66A" : "#5B1F3D30" }}>
+                      <span className="text-[10px] font-heading font-black tracking-[0.25em]" style={{ color: unlocked ? "hsl(var(--gold))" : "hsl(var(--primary) / 0.35)" }}>
                         LIÇÃO {lesson.order + 1}
                       </span>
                       {isCurrent && (
@@ -289,7 +292,7 @@ const GenericModulePage = ({
                     </h3>
                     <p
                       className="font-body text-[13px] leading-relaxed truncate font-black mt-1"
-                      style={{ color: unlocked ? "#5B1F3D80" : "#5B1F3D30" }}
+                      style={{ color: unlocked ? "hsl(var(--primary) / 0.85)" : "hsl(var(--primary) / 0.4)" }}
                     >
                       {lesson.subtitle}
                     </p>
@@ -298,7 +301,8 @@ const GenericModulePage = ({
                     <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FAF5EF] border-2 border-[#C8A66A]/20 transition-all duration-500 group-hover:bg-[#C8A66A]/10 group-hover:border-[#C8A66A] group-hover:translate-x-2">
                       <ChevronRight
                         className="w-6 h-6 shrink-0"
-                        style={{ color: "#C8A66A" }}
+                        style={{ color: "hsl(var(--gold))" }}
+
                       />
                     </div>
                   )}
