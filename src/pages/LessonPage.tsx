@@ -247,7 +247,7 @@ const LessonPage = () => {
       </div>
 
       <main className="relative z-10 container max-w-lg mx-auto px-4 py-8 pb-32">
-        {phaseIdx > 0 && phase !== "complete" && (
+        {phase !== "complete" && (
           <PageBackControls 
             variant="top" 
             showLabel={true} 
