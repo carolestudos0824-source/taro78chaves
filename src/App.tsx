@@ -17,7 +17,6 @@ import SessionInitializer from "@/components/SessionInitializer";
 import ConsentBanner from "@/components/ConsentBanner";
 import SecurityGate from "@/components/SecurityGate";
 import { trackPageView, useUTMTracker } from "@/lib/analytics";
-import { useProgress } from "@/hooks/use-progress";
 
 // Eager: critical path (Zero Flicker)
 import LandingPage from "./pages/LandingPage.tsx";
@@ -31,9 +30,6 @@ import FoolsJourneyPage from "./pages/FoolsJourneyPage.tsx";
 import TrailsPage from "./pages/TrailsPage.tsx";
 import DailyChallengesPage from "./pages/DailyChallengesPage.tsx";
 import ArcanosMenoresModulePage from "./pages/ArcanosMenoresModulePage.tsx";
-
-
-
 
 // Eager Module & Lesson Pages (Crucial for Journey Continuity)
 import NaipePage from "./pages/NaipePage.tsx";
@@ -146,7 +142,7 @@ const AnalyticsTracker = () => {
   return null;
 };
 
-const AppShell = ({ children }: { children?: React.ReactNode }) => {
+const AppShell = () => {
   const { progress } = useProgress();
   return (
     <div className="flex flex-col min-h-screen bg-[#FAF5EF]">
@@ -155,14 +151,12 @@ const AppShell = ({ children }: { children?: React.ReactNode }) => {
       />
 
       <main className="flex-1 pb-24 relative overflow-y-auto h-[calc(100vh-72px)]">
-        {/* Suspense removed from here to prevent content vanishing between eager routes */}
-        {children || <Outlet />}
+        <Outlet />
       </main>
       <BottomNav />
     </div>
   );
 };
-
 
 const LazyRoute = ({ children }: { children: React.ReactNode }) => (
   <Suspense fallback={null}>
@@ -178,17 +172,11 @@ const AppRoutes = () => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-
-
-
   return (
     <>
       <AnalyticsTracker />
       <ConsentBanner />
       <Routes>
-        <Route path="/jornada" element={<ProtectedRoute><AppShell><SecurityGate><FoolsJourneyPage /></SecurityGate></AppShell></ProtectedRoute>} />
-        <Route path="/jornada-do-louco" element={<ProtectedRoute><AppShell><SecurityGate><FoolsJourneyPage /></SecurityGate></AppShell></ProtectedRoute>} />
-
         <Route path="/" element={<LandingPage />} />
         <Route path="/venda" element={<LandingPage isSalesPage={true} />} />
         <Route path="/acesso-comprado" element={<LazyRoute><AcessoComprado /></LazyRoute>} />
@@ -202,28 +190,23 @@ const AppRoutes = () => {
         <Route path="/validar-certificado" element={<LazyRoute><ValidateCertificatePage /></LazyRoute>} />
         <Route path="/visual-certificado" element={<LazyRoute><CertificateVisualModel /></LazyRoute>} />
 
-
-
-        
-
-
         <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
+          {/* Main Paths first to ensure better matching */}
+          <Route path="/jornada" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
+          <Route path="/jornada-do-louco" element={<SecurityGate><FoolsJourneyPage /></SecurityGate>} />
           <Route path="/app" element={<DashboardPage />} />
           <Route path="/trilhas" element={<SecurityGate><TrailsPage /></SecurityGate>} />
           <Route path="/mapa" element={<SecurityGate><TrailsPage /></SecurityGate>} />
-
-
           <Route path="/desafios" element={<SecurityGate><DailyChallengesPage /></SecurityGate>} />
           <Route path="/premium" element={<SecurityGate><PremiumPage /></SecurityGate>} />
           <Route path="/perfil" element={<SecurityGate><ProfilePage /></SecurityGate>} />
           <Route path="/lesson/:id" element={<SecurityGate><LessonPage /></SecurityGate>} />
+          
           <Route path="/module/arcanos-maiores" element={<Index />} />
           <Route path="/module/arcanos-menores" element={<SecurityGate><ArcanosMenoresModulePage /></SecurityGate>} />
-
-
-          
           <Route path="/module/fundamentos" element={<LazyRoute><FundamentosPage /></LazyRoute>} />
           <Route path="/fundamentos/:order" element={<LazyRoute><FundamentosLessonPage /></LazyRoute>} />
+          
           <Route path="/module/copas" element={<NaipePage />} />
           <Route path="/module/paus" element={<NaipePage />} />
           <Route path="/module/espadas" element={<NaipePage />} />
@@ -257,7 +240,6 @@ const AppRoutes = () => {
           <Route path="/revisao" element={<LazyRoute><ReviewPage /></LazyRoute>} />
           <Route path="/certificados" element={<LazyRoute><CertificatesPage /></LazyRoute>} />
           <Route path="/biblioteca" element={<LazyRoute><SymbolLibraryPage /></LazyRoute>} />
-
           <Route path="/rotina" element={<LazyRoute><StudyRoutinePage /></LazyRoute>} />
           <Route path="/minha-jornada" element={<LazyRoute><JourneyJournalPage /></LazyRoute>} />
           <Route path="/admin" element={<SecurityGate requireAdmin><AdminPage /></SecurityGate>} />
