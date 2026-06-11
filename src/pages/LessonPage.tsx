@@ -223,8 +223,8 @@ const LessonPage = () => {
     if (arcano.id === 0) {
       earnBadge("fool-complete");
       setShowUnlockMoment(true);
-setKeyEarned(true);
     }
+    setKeyEarned(true);
     setLastQuizScore(score);
     setLastQuizTotal(total);
     setPhaseIdx(PHASE_ORDER.indexOf("complete"));
