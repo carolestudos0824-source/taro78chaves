@@ -232,7 +232,7 @@ const DailyChallengesPage = () => {
       </header>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 pb-[calc(140px+env(safe-area-inset-bottom))] space-y-10 mt-12">
-        <PageBackControls variant="top" showLabel={true} className="h-auto p-0 mb-6" />
+        
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
           <div className="lg:col-span-2 space-y-10">
