@@ -91,7 +91,7 @@ const Index = () => {
         <section className="pt-20 pb-12 text-center relative">
           <div className="flex items-center justify-center gap-4 mb-8 opacity-90">
             <span className="h-px w-12 bg-gradient-to-r from-transparent to-[#C8A66A]/60" />
-            <span className="text-[14px] tracking-[0.5em] uppercase font-bold" style={{ color: "#C8A66A" }}>✶ ◈ ✶</span>
+            <span className="text-[14px] tracking-[0.5em] uppercase font-bold" style={{ color: "hsl(var(--secondary))" }}>✶ ◈ ✶</span>
             <span className="h-px w-12 bg-gradient-to-l from-transparent to-[#C8A66A]/60" />
           </div>
           
@@ -103,7 +103,7 @@ const Index = () => {
             "A jornada pelos 22 grandes arquétipos"
           </p>
           
-          <p className="text-[16px] font-body max-w-lg mx-auto leading-relaxed px-6" style={{ color: "#5B1F3DCC", fontWeight: 500 }}>
+          <p className="text-[16px] font-body max-w-lg mx-auto leading-relaxed px-6" style={{ color: "hsl(var(--primary) / 0.85)", fontWeight: 700 }}>
             Do Louco ao Mundo, cada Arcano revela uma etapa da travessia interior.
           </p>
         </section>
@@ -124,8 +124,9 @@ const Index = () => {
                   <Stars className="w-6 h-6 text-[#C8A66A]" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-heading font-black tracking-[0.3em] text-[#C8A66A] uppercase">Progresso do Módulo</span>
-                  <span className="text-lg font-heading font-black text-[#5B1F3D]">{completedCount}/22 Arcanos</span>
+                  <span className="text-[11px] font-heading font-black tracking-[0.3em] text-gold uppercase opacity-100">Progresso do Módulo</span>
+                  <span className="text-xl font-heading font-black text-[#5B1F3D]">{completedCount}/22 Arcanos</span>
+
                 </div>
               </div>
               <div className="text-right">
@@ -201,13 +202,13 @@ const Index = () => {
 
                   {/* Text */}
                   <div className="flex-1 text-left">
-                    <div className="text-[11px] tracking-[0.45em] uppercase font-heading mb-2 font-black" style={{ color: "#5B1F3D" }}>
+                    <div className="text-[12px] tracking-[0.45em] uppercase font-heading mb-2 font-black" style={{ color: "#5B1F3D" }}>
                       Próxima etapa
                     </div>
                     <h3 className="font-heading text-3xl md:text-4xl tracking-tight mb-2 font-black" style={{ color: "#5B1F3D" }}>
                       {currentArcano.name}
                     </h3>
-                    <p className="font-accent text-lg md:text-xl italic font-medium" style={{ color: "#5B1F3DCC" }}>
+                    <p className="font-accent text-lg md:text-xl italic font-black" style={{ color: "hsl(var(--primary) / 0.85)" }}>
                       {currentArcano.subtitle}
                     </p>
                   </div>
@@ -280,7 +281,7 @@ const Index = () => {
                 backdropFilter: "blur(12px)",
               }}>
                 <span className="block mb-4 transition-transform group-hover:scale-110 duration-500">
-                  <TarotIcon name={item.icon} className="w-8 h-8 mx-auto" color="#C8A66A" />
+                  <TarotIcon name={item.icon} className="w-8 h-8 mx-auto" color="hsl(var(--secondary))" />
                 </span>
                 <span className="text-[12px] font-heading tracking-wide uppercase leading-snug block font-black" style={{ color: "#5B1F3D" }}>
                   {item.label}
