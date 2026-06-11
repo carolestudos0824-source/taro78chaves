@@ -362,6 +362,13 @@ const DashboardPage = () => {
 
               {currentStep && (
                 <div className="space-y-6">
+                  {currentStep.type === "fundamentos" && currentStep.lessonId === "fundamentos-1" && (
+                    <div className="p-3 rounded-xl bg-gold/10 border border-gold/20 mb-2">
+                       <p className="text-[12px] font-heading font-black text-gold uppercase tracking-widest text-center">
+                         Comece pelos Fundamentos
+                       </p>
+                    </div>
+                  )}
                   <div className="space-y-1.5 p-4 rounded-2xl bg-gold/5 border border-gold/10">
                     <p className="text-[14px] font-heading font-black tracking-widest text-gold uppercase flex items-center gap-2">
                       <MapPin className="w-3 h-3" /> {currentStep.moduleName}

@@ -125,11 +125,15 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
 const PublicOnlyRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading } = useAuth();
-  const { isFirstVisit, loading: progressLoading } = useProgress();
+  const { progress, loading: progressLoading } = useProgress();
+  const { isStaff } = useRole();
   
   if (loading || progressLoading) return <LoadingFallback />;
   if (user) {
-    if (isFirstVisit) return <Navigate to="/module/fundamentos" replace />;
+    // Aluna nova comum: sem lições concluídas -> vai para fundamentos
+    if (!isStaff && progress.completedLessons.length === 0) {
+      return <Navigate to="/module/fundamentos" replace />;
+    }
     return <Navigate to="/app" replace />;
   }
   return <>{children}</>;

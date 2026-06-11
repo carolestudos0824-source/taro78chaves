@@ -166,6 +166,18 @@ const FundamentosPage = () => {
             antes de mergulhar nos 22 Arcanos Maiores."
           </p>
         </div>
+        
+        {/* Orientation Text for new students */}
+        {completedLessonsCount === 0 && (
+          <div className="mb-10 text-center animate-in fade-in slide-in-from-top-4 duration-1000">
+            <p className="text-[13px] font-heading font-black tracking-[0.4em] text-[#C8A66A] uppercase mb-3">
+              Comece por aqui
+            </p>
+            <p className="text-[16px] text-[#5B1F3D]/70 font-body italic leading-relaxed max-w-sm mx-auto">
+              Antes dos 78 arcanos, você vai construir sua base.
+            </p>
+          </div>
+        )}
 
         {/* Lesson trail section header */}
         <div className="flex items-center gap-4 mb-6">
@@ -279,6 +291,13 @@ const FundamentosPage = () => {
                       >
                         {lesson.title}
                       </h3>
+                      
+                      {isCurrent && lesson.order === 0 && (
+                        <p className="text-[11px] font-heading font-black text-[#C8A66A] uppercase tracking-[0.15em] mt-1 mb-1">
+                          Começar primeira lição
+                        </p>
+                      )}
+                      
                       <p
                         className="font-body text-[15px] leading-relaxed"
                         style={{
