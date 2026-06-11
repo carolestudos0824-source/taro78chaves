@@ -80,8 +80,26 @@ const FoolsJourneyPage = () => {
 
       {/* Content */}
       <main className="relative z-10 container max-w-3xl py-8 px-6">
-        {/* Hero Visual Guide - O Louco */}
-        <section className="relative z-10 mb-12 text-center flex flex-col items-center">
+        {!canViewContent ? (
+          <section className="mt-12 text-center py-16 px-6 rounded-[2.5rem] bg-white/80 backdrop-blur-md border-2 border-[#C8A66A40] shadow-xl">
+            <div className="w-20 h-20 mx-auto mb-8 bg-[#5B1F3D] rounded-3xl flex items-center justify-center shadow-lg">
+              <Lock className="w-10 h-10 text-white" />
+            </div>
+            <h2 className="font-heading text-3xl font-black text-[#5B1F3D] mb-4">Jornada Trancada</h2>
+            <p className="font-body text-lg text-[#5B1F3D]/70 mb-8 max-w-sm mx-auto font-bold italic">
+              A travessia do Louco ao Mundo exige que você complete os Fundamentos do Tarô primeiro.
+            </p>
+            <button
+              onClick={() => navigate("/module/fundamentos")}
+              className="px-10 py-5 bg-[#5B1F3D] text-white rounded-full font-heading text-[12px] tracking-[0.3em] uppercase font-black hover:scale-105 transition-all shadow-xl border-2 border-[#C8A66A]"
+            >
+              Ir para Fundamentos
+            </button>
+          </section>
+        ) : (
+          <>
+            {/* Hero Visual Guide - O Louco */}
+            <section className="relative z-10 mb-12 text-center flex flex-col items-center">
           <div className="relative mb-8 group">
             {/* Soft halo behind the card */}
             <div className="absolute inset-0 bg-[#C8A66A] opacity-20 blur-3xl rounded-full scale-150 animate-pulse" />
@@ -332,6 +350,9 @@ const FoolsJourneyPage = () => {
             </section>
           );
         })}
+
+          </>
+        )}
 
         {/* Closing */}
         <section className="mb-12 mt-8">
