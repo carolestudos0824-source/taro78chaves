@@ -156,4 +156,55 @@ export const A_IMPERATRIZ: ArcanoMaiorEditorial = {
     { keyword: "Cabala", meaning: "Daleth (ד) — entre Chokmah e Binah" },
     { keyword: "Planeta", meaning: "Vênus — amor, beleza e fertilidade" },
   ],
+  symbolsMap: [
+    {
+      id: "coroa",
+      name: "Coroa de 12 Estrelas",
+      description: "Os 12 signos do zodíaco e o domínio sobre os ciclos naturais.",
+      reflectionQuestion: "Como você se alinha com os ritmos naturais da vida?",
+      position: { x: 50, y: 15 }
+    },
+    {
+      id: "romas",
+      name: "Romãs no Vestido",
+      description: "Símbolo de fertilidade e abundância de vida.",
+      reflectionQuestion: "O que você está gestando ou fazendo crescer agora?",
+      position: { x: 50, y: 55 }
+    },
+    {
+      id: "escudo",
+      name: "Escudo de Vênus",
+      description: "O glifo de Vênus em forma de coração — a soberania do amor.",
+      reflectionQuestion: "Como o amor guia suas criações?",
+      position: { x: 75, y: 70 }
+    },
+    {
+      id: "trigo",
+      name: "Campo de Trigo",
+      description: "A Lei da Colheita e a abundância material concreta.",
+      reflectionQuestion: "O que você já está pronta para colher?",
+      position: { x: 30, y: 85 }
+    },
+    {
+      id: "trono",
+      name: "O Trono",
+      description: "Conforto e autoridade exercida com suavidade.",
+      reflectionQuestion: "Você se sente confortável em sua própria autoridade?",
+      position: { x: 45, y: 65 }
+    },
+    {
+      id: "cetro",
+      name: "O Cetro",
+      description: "Poder orgânico sobre o mundo material.",
+      reflectionQuestion: "Como você usa seu poder para nutrir os outros?",
+      position: { x: 65, y: 40 }
+    },
+    {
+      id: "floresta",
+      name: "Floresta e Rio",
+      description: "Fluxo criativo contínuo e conexão com a vitalidade da natureza.",
+      reflectionQuestion: "Você permite que suas emoções fluam livremente?",
+      position: { x: 85, y: 30 }
+    }
+  ],
 };
