@@ -49,11 +49,11 @@ export const ArcanoUnlockMoment: React.FC<ArcanoUnlockMomentProps> = ({
           </div>
 
           <h2 className="text-2xl font-heading text-[#5B1F3D] mb-2">
-            Novo Portal Aberto
+            Primeira Chave Despertada
           </h2>
           
           <p className="font-accent italic text-[#5B1F3D]/60 mb-8">
-            {theme.microcopy.unlock}
+            Você despertou a primeira chave: O Louco. Agora a jornada continua com O Mago, o arcano da vontade.
           </p>
 
           <div className="mb-8 relative">

@@ -156,7 +156,7 @@ const LessonPage = () => {
   }
 
   if (!hasAccess && !accessLoading) {
-    const isPerformanceLocked = arcanoId === 1 && !hasFullAccess;
+    const isMago = arcanoId === 1;
     return (
       <div className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center p-6">
         <div className="fixed inset-0 z-0">
@@ -180,18 +180,19 @@ const LessonPage = () => {
           <div className="bg-white/60 backdrop-blur-xl border-2 border-[#C8A66A]/30 p-8 rounded-[2rem] shadow-xl">
             <PremiumGate 
               featureName={arcano.name}
-              message={isPerformanceLocked 
-                ? "Para desbloquear O Mago, você precisa de uma nota mínima de 80% no Quiz do Louco. O Tarô é método e fundamento."
+              message={isMago 
+                ? "Você despertou a primeira chave: O Louco. Agora a jornada continua com O Mago, o arcano da vontade, da direção e do primeiro ato consciente."
                 : "Conteúdo exclusivo para assinantes da Jornada Completa."
               }
+              ctaText="Desbloquear minha jornada"
             />
           </div>
-          {isPerformanceLocked && (
+          {isMago && (
             <button 
               onClick={() => navigate("/lesson/0")} 
-              className="w-full h-auto bg-[#5B1F3D] text-white py-5 px-4 rounded-2xl font-heading font-black text-xs tracking-[0.1em] uppercase border-2 border-[#C8A66A] shadow-xl transition-all hover:scale-105 active:scale-95 leading-tight text-center"
+              className="w-full h-auto bg-white text-[#5B1F3D] py-4 px-4 rounded-2xl font-heading font-black text-xs tracking-[0.1em] uppercase border-2 border-[#C8A66A]/40 shadow-md transition-all hover:scale-105 active:scale-95 leading-tight text-center"
             >
-              Refazer Quiz do Louco
+              Revisar O Louco
             </button>
           )}
         </div>

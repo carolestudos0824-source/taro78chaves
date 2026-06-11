@@ -52,19 +52,11 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
     if (arcanoId === 6) {
       return "Nós somos Os Enamorados. Somos a encruzilhada onde o coração precisa escolher.";
     }
-    return theme.microcopy.intro;
-  }, [theme, arcanoId]);
+    return introText || theme.microcopy.intro;
+  }, [theme, arcanoId, introText]);
 
   return (
     <div className="relative min-h-[50vh] md:min-h-[80vh] flex flex-col items-center justify-center py-4 md:py-16 px-6 sm:px-12">
-      {/* DEBUG PANEL - Hidden in final fix unless explicitly needed */}
-      {false && (
-        <div className="fixed top-20 left-4 z-[9999] bg-black/90 text-white p-4 rounded-xl text-[10px] font-mono border border-red-500 max-w-[300px] shadow-2xl pointer-events-none opacity-90">
-          <p>arcanoId: {arcanoId}</p>
-          <p>rendered: {visibleIntroText}</p>
-        </div>
-      )}
-
       {/* Background Atmosphere - Enhanced ritualistic altar feel */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Ivory Base */}
@@ -174,14 +166,26 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
               className="flex flex-col items-center"
             >
               <p 
-                className="font-accent italic text-xl md:text-3xl text-[#5B1F3D] mb-6 md:mb-10 leading-relaxed font-bold tracking-tight"
+                className="font-accent italic text-xl md:text-3xl text-[#5B1F3D] mb-6 md:mb-10 leading-relaxed font-black tracking-tight"
                 data-rendered-text={visibleIntroText}
                 data-arcano-id={arcanoId}
               >
                 {visibleIntroText}
               </p>
 
-              
+              {presenceText && phase === 'insight' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="bg-white/80 backdrop-blur-md p-8 rounded-[2rem] border-2 border-[#C8A66A]/20 shadow-xl mb-8"
+                >
+                  <p className="text-xl md:text-2xl font-heading font-black text-[#5B1F3D] leading-relaxed italic">
+                    "{presenceText}"
+                  </p>
+                </motion.div>
+              )}
+
               {phase === 'insight' && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -191,9 +195,9 @@ export const ArcanoVivoStage: React.FC<ArcanoVivoStageProps> = ({
                 >
                   <Button
                     onClick={onContinue}
-                    className="bg-[#5B1F3D] hover:bg-[#4A1932] text-white rounded-full px-10 py-6 md:px-12 md:py-8 text-sm md:text-base font-heading font-black tracking-[0.2em] uppercase border-2 border-[#C8A66A]/50 shadow-2xl group transition-all duration-300 hover:scale-110 active:scale-95 ring-4 ring-[#5B1F3D]/10"
+                    className="bg-[#5B1F3D] hover:bg-[#4A1932] text-white rounded-full px-10 py-6 md:px-12 md:py-8 text-sm md:text-base font-heading font-black tracking-[0.2em] uppercase border-2 border-[#C8A66A]/50 shadow-2xl group transition-all duration-300 hover:scale-110 active:scale-95 ring-4 ring-[#5B1F3D]/10 h-auto"
                   >
-                    Começar Lição
+                    Atravessar Portal
                     <ChevronRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
                   </Button>
                   

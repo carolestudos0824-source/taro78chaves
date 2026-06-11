@@ -91,7 +91,7 @@ export function CompletionScreen({
           background: "linear-gradient(135deg, #5B1F3D, #C8A66A)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
-        }}>Chave Conquistada</h2>
+        }}>{arcanoId === 0 ? "Primeira Chave Despertada" : "Chave Conquistada"}</h2>
         
         {isStaff && (
           <div className="mb-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#5B1F3D]/10 border border-[#C8A66A]/30 text-[#5B1F3D] animate-pulse">
@@ -100,8 +100,10 @@ export function CompletionScreen({
           </div>
         )}
 
-        <p className="text-[15px] font-medium" style={{ color: "#5B1F3D" }}>
-          Você dominou o portal de <strong className="font-black text-[#C8A66A]">{arcanoName}</strong>.
+        <p className="text-[15px] font-medium px-6" style={{ color: "#5B1F3D" }}>
+          {arcanoId === 0 
+            ? "Você despertou a primeira chave: O Louco. Agora a jornada continua com O Mago, o arcano da vontade, da direção e do primeiro ato consciente."
+            : `Você dominou o portal de ${arcanoName}.`}
         </p>
         <div className="mt-3 inline-flex items-center gap-2 px-4 py-1.5 rounded-xl bg-[#FAF5EF] border border-[#C8A66A]/30">
           <span className="text-[11px] font-heading font-black text-[#5B1F3D] uppercase tracking-wider">
