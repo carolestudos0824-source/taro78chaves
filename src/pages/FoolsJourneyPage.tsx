@@ -335,11 +335,25 @@ const FoolsJourneyPage = () => {
                               {arcano.papel}
                             </p>
                             <p
-                              className="font-body text-[16px] md:text-[17px] leading-relaxed font-bold"
+                              className="font-body text-[16px] md:text-[17px] leading-relaxed font-bold mb-4"
                               style={{ color: "#3D1429" }}
                             >
                               {arcano.textoNarrativo}
                             </p>
+                            
+                            {studied && (
+                              <div className={`flex ${!isEven ? 'justify-end' : 'justify-start'}`}>
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    navigate(`/lesson/${arcano.arcanoNumero}`);
+                                  }}
+                                  className="px-6 py-2 bg-[#5B1F3D] text-white rounded-full font-heading text-[10px] tracking-[0.2em] uppercase font-black hover:scale-105 transition-all shadow-md border border-[#C8A66A30]"
+                                >
+                                  {isComplete(arcano.arcanoNumero) ? "Revisar" : "Estudar"}
+                                </button>
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
