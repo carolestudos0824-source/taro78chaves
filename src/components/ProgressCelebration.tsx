@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { Sparkles, Star, Award } from "lucide-react";
 
 interface ProgressCelebrationProps {
-  pontos: number;
-  level: number;
   streak: number;
   completedLessons: number;
 }
@@ -17,32 +15,34 @@ interface Celebration {
 
 const CELEBRATION_KEY = "last-celebration-shown";
 
-function detectCelebration(pontos: number, level: number, streak: number, lessons: number): Celebration | null {
-  // Level up
-  if (pontos > 0 && pontos % 100 < 15) {
-    return {
-      id: `level-${level}`,
-      title: `Nível ${level}`,
-      subtitle: "Sua sabedoria se aprofunda a cada passo.",
-      icon: "star",
-    };
-  }
-
-  // Pontos milestones
-  const pontosMilestones = [100, 250, 500, 1000, 2000];
-  for (const m of pontosMilestones) {
-    if (pontos >= m && pontos < m + 15) {
+function detectCelebration(streak: number, lessons: number): Celebration | null {
+  // Milestone de lições
+  const lessonMilestones = [1, 5, 10, 22];
+  for (const m of lessonMilestones) {
+    if (lessons === m) {
       return {
-        id: `pontos-${m}`,
-        title: `${m} Pontos alcançados`,
-        subtitle: "Cada ponto reflete dedicação genuína à sua jornada.",
-        icon: "sparkle",
+        id: `lessons-${m}`,
+        title: `${m === 1 ? 'Primeira' : m} Lição Concluída`,
+        subtitle: "Cada passo revela uma nova chave da sua jornada.",
+        icon: "award",
       };
     }
   }
 
+  // Streak milestones
+  if (streak === 3) {
+    return {
+      id: "streak-3",
+      title: "Chama Constante",
+      subtitle: "3 dias conectada com o Tarô.",
+      icon: "sparkle",
+    };
+  }
+
+
   return null;
 }
+
 
 const ICONS = {
   sparkle: Sparkles,
@@ -55,7 +55,7 @@ const ProgressCelebration = ({ streak, completedLessons }: ProgressCelebrationPr
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const c = detectCelebration(0, 0, streak, completedLessons);
+    const c = detectCelebration(streak, completedLessons);
     if (!c) return;
 
     const lastShown = localStorage.getItem(CELEBRATION_KEY);
@@ -68,6 +68,7 @@ const ProgressCelebration = ({ streak, completedLessons }: ProgressCelebrationPr
     const timer = setTimeout(() => setVisible(false), 4500);
     return () => clearTimeout(timer);
   }, [streak, completedLessons]);
+
 
   if (!celebration || !visible) return null;
 

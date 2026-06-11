@@ -5,7 +5,7 @@ import { PageBackControls } from "@/components/PageBackControls";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { useResolvedModule } from "@/hooks/use-resolved-module";
-import { PontosBar } from "@/components/PontosBar";
+import { ChaveProgress } from "@/components/ChaveProgress";
 import { StreakCounter } from "@/components/StreakCounter";
 
 interface GenericLesson {
@@ -166,7 +166,7 @@ const GenericModulePage = ({
 
         {/* Pontos Bar */}
         <div className="animate-fade-in px-2" style={{ animationDelay: "250ms", animationFillMode: "both" }}>
-          <PontosBar pontos={progress.xp} level={progress.level} />
+          <ChaveProgress />
         </div>
 
         {/* Progress */}
