@@ -86,11 +86,11 @@ const BottomNav = () => {
                   color={isActive ? "#5B1F3D" : "#5B1F3D"}
                 />
                 {isActive && (
-                  <div className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full bg-[#C8A66A] shadow-[0_0_8px_#C8A66A]" />
+                  <div className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_8px_hsl(var(--gold))]" />
                 )}
               </div>
               <span className={`text-[10px] min-[390px]:text-[11px] font-heading tracking-tight uppercase transition-all duration-300 w-full text-center px-0.5 leading-tight ${
-                isActive ? "font-black text-[#5B1F3D]" : "font-bold text-[#5B1F3D]/60"
+                isActive ? "font-black text-[#5B1F3D]" : "font-black text-[#5B1F3D]/80"
               }`}>
                 {item.label}
               </span>

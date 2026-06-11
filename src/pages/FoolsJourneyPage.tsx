@@ -60,7 +60,7 @@ const FoolsJourneyPage = () => {
             
 
             <div>
-              <span className="text-[11px] tracking-[0.35em] uppercase font-heading font-semibold block mb-0.5" style={{ color: "#5B1F3D" }}>
+              <span className="text-[11px] tracking-[0.35em] uppercase font-heading font-black block mb-0.5" style={{ color: "hsl(var(--primary) / 0.8)" }}>
                 ✦ Visão Geral ✦
               </span>
               <h1 className="font-heading text-xl tracking-wide" style={{
@@ -106,7 +106,7 @@ const FoolsJourneyPage = () => {
             <h1 className="font-heading text-4xl md:text-5xl tracking-tight mb-4" style={{ color: "#3D1429" }}>
               {meta.introTitulo}
             </h1>
-            <p className="font-accent text-xl md:text-2xl italic leading-relaxed mb-4 px-4" style={{ color: "#5B1F3D", fontWeight: 700 }}>
+            <p className="font-accent text-xl md:text-2xl italic leading-relaxed mb-4 px-4" style={{ color: "hsl(var(--primary) / 0.9)", fontWeight: 800 }}>
               "{meta.introEpigrafe}"
             </p>
             <div className="flex items-center gap-3 mb-2">
@@ -149,7 +149,7 @@ const FoolsJourneyPage = () => {
             
             <div className="space-y-5 relative z-10">
               {meta.introCorpo.map((para, i) => (
-                <p key={i} className="font-body text-[15px] md:text-[16px] leading-[1.8] font-medium" style={{ color: "#3D1429" }}>
+                <p key={i} className="font-body text-[16px] md:text-[17px] leading-[1.8] font-bold" style={{ color: "#3D1429" }}>
                   {para}
                 </p>
               ))}
@@ -170,7 +170,7 @@ const FoolsJourneyPage = () => {
               </div>
               <span className="text-[11px] font-heading tracking-[0.25em] uppercase font-bold block mb-2" style={{ color: "#8B6A30" }}>{point.label}</span>
               <h4 className="font-heading text-base font-bold mb-2" style={{ color: "#3D1429" }}>{point.title}</h4>
-              <p className="font-body text-[13px] leading-relaxed font-semibold" style={{ color: "#5B1F3D" }}>{point.text}</p>
+              <p className="font-body text-[14px] leading-relaxed font-black" style={{ color: "hsl(var(--primary) / 0.8)" }}>{point.text}</p>
             </div>
           ))}
         </section>
@@ -208,14 +208,14 @@ const FoolsJourneyPage = () => {
                   <span className="text-2xl" style={{ color: colors.main }}>{phase.simbolo}</span>
                 </div>
                 <div className="flex items-center justify-center gap-2 mb-2">
-                  <span className="text-[11px] font-heading font-black tracking-[0.3em] uppercase" style={{ color: colors.main }}>
+                  <span className="text-[12px] font-heading font-black tracking-[0.3em] uppercase" style={{ color: colors.main }}>
                     Fase {phaseIndex + 1}
                   </span>
                 </div>
                 <h2 className="font-heading text-2xl tracking-wide mb-2" style={{ color: "#3D1429" }}>
                   {phase.titulo}
                 </h2>
-                <p className="font-accent text-lg italic" style={{ color: "#5B1F3D" }}>
+                <p className="font-accent text-xl italic" style={{ color: "hsl(var(--primary) / 0.85)" }}>
                   {phase.subtitulo}
                 </p>
               </div>
@@ -226,7 +226,7 @@ const FoolsJourneyPage = () => {
                 border: `2px solid ${colors.border}`,
                 boxShadow: "0 8px 30px rgba(91, 31, 61, 0.08)"
               }}>
-                <p className="font-body text-[15px] md:text-[16px] leading-[1.85] font-medium" style={{ color: "#3D1429" }}>
+                <p className="font-body text-[16px] md:text-[17px] leading-[1.85] font-bold" style={{ color: "#3D1429" }}>
                   {phase.descricao}
                 </p>
               </div>
@@ -289,7 +289,7 @@ const FoolsJourneyPage = () => {
                             )}
                             <div className={`flex items-center gap-2 mb-1 ${!isEven ? 'justify-end' : 'justify-start'}`}>
                               <span 
-                                className="font-heading text-[10px] md:text-[11px] tracking-[0.2em] font-bold"
+                                className="font-heading text-[11px] md:text-[12px] tracking-[0.2em] font-black"
                                 style={{ color: "#8B6A30" }}
                               >
                                 {arcano.numeral}
@@ -308,13 +308,13 @@ const FoolsJourneyPage = () => {
                               ))}
                             </div>
                             <p
-                              className="font-accent text-[15px] md:text-[17px] italic mb-3 font-bold leading-tight"
+                              className="font-accent text-[16px] md:text-[18px] italic mb-3 font-black leading-tight"
                               style={{ color: "#3D1429" }}
                             >
                               {arcano.papel}
                             </p>
                             <p
-                              className="font-body text-[15px] md:text-[16px] leading-relaxed font-medium"
+                              className="font-body text-[16px] md:text-[17px] leading-relaxed font-bold"
                               style={{ color: "#3D1429" }}
                             >
                               {arcano.textoNarrativo}
