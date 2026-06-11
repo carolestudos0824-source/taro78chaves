@@ -12,7 +12,15 @@ import { useAccess } from "@/hooks/use-access";
 
 const Index = () => {
 
-  const { progress, loading: progressLoading, updateStreak, getCurrentArcanoId, completedCount, journeyProgress, fundamentosComplete: progressFundamentosComplete } = useProgress();
+  const { 
+    progress, 
+    loading: progressLoading, 
+    updateStreak, 
+    getCurrentArcanoId, 
+    completedCount, 
+    journeyProgress, 
+    fundamentosComplete: progressFundamentosComplete 
+  } = useProgress();
 
   const { bypassLocks } = useAccess();
   const navigate = useNavigate();
