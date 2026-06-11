@@ -10,6 +10,7 @@ interface PremiumGateProps {
   message?: string;
   variant?: "inline" | "block" | "banner";
   className?: string;
+  ctaText?: string;
   children?: React.ReactNode;
 }
 
@@ -27,6 +28,7 @@ const PremiumGate = ({
   message,
   variant = "block",
   className = "",
+  ctaText,
   children,
 }: PremiumGateProps) => {
   const navigate = useNavigate();
@@ -122,7 +124,7 @@ const PremiumGate = ({
           onClick={() => navigate("/premium")}
           className="w-full h-auto py-5 px-4 bg-[#5B1F3D] hover:bg-[#5B1F3D]/90 text-white rounded-2xl font-heading font-black tracking-[0.1em] shadow-xl border-2 border-[#C8A66A] leading-tight text-center whitespace-normal break-words"
         >
-          {webCheckoutAllowed ? "CONTINUAR JORNADA" : "VER PORTAL"}
+          {ctaText || (webCheckoutAllowed ? "CONTINUAR JORNADA" : "VER PORTAL")}
         </Button>
         <p className="text-[10px] font-heading tracking-widest uppercase text-[#5B1F3D]/60 mt-5 font-black text-center w-full">
           {webCheckoutAllowed ? "Receba todas as chaves da sua travessia" : "Conteúdo exclusivo para alunas com acesso ativo"}
