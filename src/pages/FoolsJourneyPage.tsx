@@ -117,7 +117,7 @@ const FoolsJourneyPage = () => {
         </section>
 
         {/* Internal Navigation Chips */}
-        <div className="sticky top-20 z-30 mb-8 -mx-6 px-6 py-3 bg-[#FAF5EF]/90 backdrop-blur-md border-y border-[#C8A66A]/10 overflow-x-auto flex items-center gap-4 no-scrollbar scrollbar-hide snap-x snap-mandatory">
+        <div className="sticky top-[72px] z-30 mb-8 -mx-6 px-6 py-3 bg-[#FAF5EF]/90 backdrop-blur-md border-y border-[#C8A66A]/10 overflow-x-auto flex items-center gap-4 no-scrollbar scrollbar-hide snap-x snap-mandatory">
           {fases.map((phase) => (
             <button
               key={phase.id}
