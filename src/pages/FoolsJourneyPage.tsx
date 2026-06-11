@@ -363,7 +363,7 @@ const FoolsJourneyPage = () => {
             <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
           </button>
           
-          <PageBackControls variant="bottom" className="w-full" />
+          
         </div>
       </main>
     </div>
