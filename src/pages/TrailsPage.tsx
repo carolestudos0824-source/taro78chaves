@@ -296,12 +296,12 @@ const TrailsPage = () => {
                         key={mod.id}
                         id={modId}
                         ref={modId === "fundamentos" ? arcanoZeroRef : undefined}
-                        disabled={!unlocked}
+                        disabled={!modUnlocked}
                         onClick={() => navigate(mod.route)}
                         className={`group/mod relative w-full flex flex-col sm:flex-row items-center sm:items-center text-left transition-all duration-500 rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 border-2 ${
-                          unlocked && isNext 
+                          modUnlocked && isNext 
                             ? 'bg-white border-[#5B1F3D] shadow-[0_25px_60px_rgba(91,31,61,0.1)] hover:translate-x-2' : 
-                          unlocked 
+                          modUnlocked 
                             ? 'bg-white/70 border-[#C8A66A26] hover:border-[#C8A66A80] hover:translate-x-2 hover:bg-white shadow-[0_10px_30px_rgba(0,0,0,0.02)]' : 
                           'bg-white/40 border-[#DCCFC299] opacity-70'
                         }`}
