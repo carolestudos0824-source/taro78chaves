@@ -1,7 +1,8 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { TarotIcon } from "./TarotIcon";
 import { useProgress } from "@/hooks/use-progress";
+
 
 interface NavItem {
   path: string;
