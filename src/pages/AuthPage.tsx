@@ -75,11 +75,16 @@ const AuthPage = () => {
 
         // Check if session exists (auto-confirm is ON) or just user (auto-confirm is OFF)
         if (data.user && !data.session) {
-          setInfo("Conta criada! Confirme seu e-mail para acessar.");
-          setMode("login"); // Voltar para login para quando confirmar
-          setLoading(false);
-          return;
+          // Se ainda assim não tiver sessão (configuração demorando a propagar), tentamos login imediato
+          const { error: signInError } = await signIn(email, password);
+          if (signInError) throw signInError;
         }
+        
+        setInfo("Conta criada! Sua jornada começa agora.");
+        // Pequeno delay para a aluna ler a mensagem antes de ir para o /app
+        setTimeout(() => navigate("/app"), 1500);
+        setLoading(false);
+        return;
       } else {
         const { error } = await signIn(email, password);
         if (error) throw error;
