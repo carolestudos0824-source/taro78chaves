@@ -59,7 +59,7 @@ const ArchPortal = ({ children, className }: { children: React.ReactNode, classN
 const DashboardPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { progress, loading: progressLoading } = useProgress();
+  const { progress, loading: progressLoading, fundamentosLessonsCompleted } = useProgress();
   const { todayProgress: ritualProgress, streak: ritualStreak } = useRitual();
   const { isPremium, subscriptionStatus, isAdmin } = useAccess();
   const { isStaff, isAuditor, role } = useRole();
@@ -384,7 +384,7 @@ const DashboardPage = () => {
                   className="w-full py-5 rounded-[1.25rem] font-heading text-[11px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-plum text-white border-gold/30 hover:bg-[#45162D] relative z-[100]"
                 >
                   <span>
-                    {currentStep?.type === "fundamentos" ? "Começar Pelos Fundamentos" : "Continuar jornada"}
+                    {currentStep?.type === "fundamentos" ? "Continuar Fundamentos" : "Continuar jornada"}
                   </span>
                   <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform text-gold" />
                 </button>
