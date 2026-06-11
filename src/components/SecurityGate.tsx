@@ -6,12 +6,13 @@ import { ShieldAlert, ArrowLeft, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface SecurityGateProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   requireAdmin?: boolean;
   requirePremium?: boolean;
 }
 
 const SecurityGate = ({ children, requireAdmin, requirePremium }: SecurityGateProps) => {
+  const content = children || <Outlet />;
   const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
   const { isAdmin, loading: roleLoading } = useRole();
@@ -109,7 +110,7 @@ const SecurityGate = ({ children, requireAdmin, requirePremium }: SecurityGatePr
     );
   }
 
-  return <>{children}</>;
+  return <>{content}</>;
 };
 
 export default SecurityGate;

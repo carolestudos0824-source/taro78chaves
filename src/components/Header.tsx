@@ -8,7 +8,7 @@ import { useHeader } from "@/contexts/header-context";
 import { PageBackControls } from "./PageBackControls";
 
 interface HeaderProps {
-  streak: number;
+  streak?: number;
 }
 
 /**
