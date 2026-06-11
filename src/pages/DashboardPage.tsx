@@ -68,16 +68,12 @@ const DashboardPage = () => {
   const { isStaff, isAuditor, role } = useRole();
   const { setHeader, resetHeader } = useHeader();
 
-  const userName = user?.user_metadata?.display_name || progress.studentName || "Aluna";
+  const userName = user?.user_metadata?.display_name || progress.studentName || (isAdmin ? "Administrador" : isAuditor ? "Auditor" : "Aluna");
 
   useEffect(() => {
-    let subtitle = `Bem-vinda, ${userName}`;
-    if (isAdmin) subtitle = "Acesso Administrativo";
-    else if (isAuditor) subtitle = "Modo Auditoria";
-
     setHeader({
       title: "Tarô 78 Chaves",
-      subtitle,
+      subtitle: isAdmin ? "Acesso Administrativo" : isAuditor ? "Modo Auditoria" : `Bem-vinda, ${userName}`,
     });
     return () => resetHeader();
   }, [userName, isAdmin, isAuditor, setHeader, resetHeader]);
@@ -91,10 +87,7 @@ const DashboardPage = () => {
   const globalProgressPct = Math.round((totalCompletedArcanos / totalArcanosCount) * 100);
 
   const currentStep = useMemo(() => {
-    // Admin/Auditor logic: skip pedagogical gating
-    if (isAdmin || isAuditor) return null;
-
-    // 1. Check Fundamentos first
+    // 1. Check Fundamentos first (new pedagogical flow)
     for (let i = 0; i < FUNDAMENTOS_LESSONS.length; i++) {
       const lesson = FUNDAMENTOS_LESSONS[i];
       const studyCompleted = progress.completedLessons.includes(lesson.id);
@@ -107,8 +100,9 @@ const DashboardPage = () => {
           name: lesson.title,
           numeral: (i + 1).toString(),
           label: "Lição",
-          image: imgLouco,
+          image: imgLouco, 
           moduleName: "Fundamentos do Tarô",
+
           moduleSlug: "fundamentos",
           lessonId: lesson.id,
           lessonName: lesson.title,
@@ -117,44 +111,29 @@ const DashboardPage = () => {
       }
     }
 
-    // 2. After Fundamentos: Check for Arcano 0 (The Fool) experience
-    if (!progress.completedLessons.includes("arcano-0")) {
-       return {
-          type: "experience-louco" as const,
-          id: 0,
-          name: "O Louco",
-          numeral: "0",
-          label: "Experiência",
-          image: imgLouco,
-          moduleName: "Experiência Gratuita",
-          moduleSlug: "jornada-do-louco",
-          lessonId: "arcano-0",
-          lessonName: "O Louco",
-          route: "/lesson/0"
-        };
-    }
-
-    // 3. After Arcano 0 (if user is free and completed Arcano 0, they should see paywall)
-    if (!isPremium) {
-       return {
-          type: "paywall" as const,
-          id: -1,
-          name: "Escola Digital",
-          numeral: "∞",
-          label: "Acesso",
-          image: imgLouco,
-          moduleName: "Formação Completa",
-          moduleSlug: "premium",
-          lessonId: "premium",
-          lessonName: "Assinatura",
-          route: "/premium"
-       };
-    }
-
-    // 4. Subscriber/Full flow (Arcanos)
+    // 2. Check Arcanos Maiores
     for (let i = 0; i <= 21; i++) {
       if (!progress.completedLessons.includes(`arcano-${i}`)) {
         const summary = ARCANOS_MAIORES_CATALOG[i];
+        if (!summary) continue;
+
+        // If it's the very first Arcano, lead to the Journey Portal first
+        if (i === 0 && !progress.completedLessons.includes("arcano-0")) {
+          return {
+            type: "arcano" as const,
+            id: i,
+            name: "A Jornada do Louco",
+            numeral: "I",
+            label: "Portal",
+            image: resolveMaiorVisual(0).resolvedAssetUrl || imgLouco,
+            moduleName: "Arcanos Maiores",
+            moduleSlug: "arcanos-maiores",
+            lessonId: "portal-maiores",
+            lessonName: "A Jornada do Louco",
+            route: "/jornada"
+          };
+        }
+
         return {
           type: "arcano" as const,
           id: i,
@@ -162,6 +141,7 @@ const DashboardPage = () => {
           numeral: summary.numeral,
           label: "Arcano",
           image: resolveMaiorVisual(i).resolvedAssetUrl || imgLouco,
+
           moduleName: "Arcanos Maiores",
           moduleSlug: "arcanos-maiores",
           lessonId: `arcano-${i}`,
@@ -170,10 +150,56 @@ const DashboardPage = () => {
         };
       }
     }
-    
-    // Portal dos Menores...
+    // 3. Arcanos Menores...
+    const naipes = ["copas", "paus", "espadas", "ouros"] as const;
+    const posicoes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "pajem", "cavaleiro", "rainha", "rei"] as const;
+
+    // If all Maiores are done but no Menores started, lead to the Menores Portal
+    const completedMenores = progress.completedLessons.filter(l => 
+      naipes.some(n => l.startsWith(`${n}-`))
+    ).length;
+
+    if (completedMaiores === 22 && completedMenores === 0) {
+      return {
+        type: "menor" as const,
+        id: "portal-menores",
+        name: "Portal dos Arcanos Menores",
+        numeral: "IV",
+        label: "Portal",
+        image: resolveMenorVisualById("copas-1").resolvedAssetUrl || imgLouco,
+        moduleName: "Arcanos Menores",
+        moduleSlug: "arcanos-menores",
+        lessonId: "portal-menores",
+        lessonName: "O Mapa dos 56",
+        route: "/module/arcanos-menores"
+      };
+    }
+
+    for (const naipe of naipes) {
+      for (const posicao of posicoes) {
+        const id = `${naipe}-${posicao}`;
+        if (!progress.completedLessons.includes(id)) {
+          const visual = resolveMenorVisualById(id);
+          const name = id.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+          return {
+            type: "menor" as const,
+            id: id,
+            name: name,
+            numeral: posicao.toString().toUpperCase(),
+            label: "Arcano Menor",
+            image: visual.resolvedAssetUrl || imgLouco,
+
+            moduleName: `Naipe de ${naipe.charAt(0).toUpperCase() + naipe.slice(1)}`,
+            moduleSlug: naipe,
+            lessonId: id,
+            lessonName: name,
+            route: `/arcano-menor/${id}`
+          };
+        }
+      }
+    }
     return null;
-  }, [progress.completedLessons, progress.completedQuizzes, isPremium, isAdmin, isAuditor]);
+  }, [progress.completedLessons]);
 
   const journeyTriad = useMemo(() => {
     if (!currentStep) return getJourneyArcanaSet(0);
@@ -307,7 +333,7 @@ const DashboardPage = () => {
                 </div>
 
                 <div className="space-y-6">
-                  {currentStep ? (
+                  {currentStep && (
                     <div className="space-y-4">
                       {currentStep.type === "fundamentos" && fundamentosLessonsCompleted === 0 && (
                         <div className="p-3 rounded-xl bg-gold/10 border border-gold/20 mb-2">
@@ -316,45 +342,18 @@ const DashboardPage = () => {
                            </p>
                         </div>
                       )}
-                      {currentStep.type === "experience-louco" && (
-                        <div className="p-3 rounded-xl bg-gold/10 border border-gold/20 mb-2">
-                           <p className="text-[12px] font-heading font-black text-gold uppercase tracking-widest text-center">
-                             Experiência Gratuita
-                           </p>
-                        </div>
-                      )}
-                      {currentStep.type === "paywall" && (
-                        <div className="p-3 rounded-xl bg-[#5B1F3D]/10 border border-[#5B1F3D]/20 mb-2">
-                           <p className="text-[12px] font-heading font-black text-[#5B1F3D] uppercase tracking-widest text-center">
-                             Você concluiu sua experiência gratuita
-                           </p>
-                        </div>
-                      )}
-
                       <div className="space-y-1.5 p-4 rounded-2xl bg-gold/5 border border-gold/10">
                         <p className="text-[14px] font-heading font-black tracking-widest text-gold uppercase flex items-center gap-2">
                           <MapPin className="w-3 h-3" /> {currentStep.moduleName}
                         </p>
                         <h3 className="text-xl md:text-2xl font-heading font-bold text-plum leading-tight">
-                          {currentStep.type === "paywall" 
-                            ? "Arcanos Maiores e Menores" 
-                            : currentStep.type === "fundamentos" && fundamentosLessonsCompleted === 0 
-                              ? "Fundamentos do Tarô — Lição 1: O que é o Tarô"
-                              : `${currentStep.label} ${currentStep.numeral} — ${currentStep.name}`}
+                          {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 
+                            ? "Fundamentos do Tarô — Lição 1: O que é o Tarô" 
+                            : `${currentStep.label} ${currentStep.numeral} — ${currentStep.name}`}
                         </h3>
-                        {currentStep.type === "fundamentos" && fundamentosLessonsCompleted === 0 && (
+                        {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0 && (
                           <p className="text-[14px] font-body italic text-plum/70 mt-2">
-                            Dê o primeiro passo e desbloqueie sua experiência com O Louco.
-                          </p>
-                        )}
-                        {currentStep.type === "experience-louco" && (
-                          <p className="text-[14px] font-body italic text-plum/70 mt-2">
-                            Agora experimente o método vivo através do primeiro arcano.
-                          </p>
-                        )}
-                        {currentStep.type === "paywall" && (
-                          <p className="text-[14px] font-body italic text-plum/70 mt-2">
-                            Para continuar sua formação pelos 78 arcanos, desbloqueie a Escola Digital.
+                            Dê o primeiro passo e receba sua primeira chave.
                           </p>
                         )}
                       </div>
@@ -365,68 +364,80 @@ const DashboardPage = () => {
                             className="h-full rounded-full bg-gradient-to-r from-plum via-plum/80 to-gold transition-all duration-1000 ease-out"
                             style={{ width: `${Math.max(globalProgressPct, 5)}%` }}
                           />
+                          <div className="absolute inset-0 bg-shimmer animate-shimmer opacity-20" style={{ backgroundSize: '200% 100%' }} />
                         </div>
                         <div className="flex justify-between items-center px-1">
                           <span className="text-[13px] font-heading font-black text-plum/60 uppercase tracking-[0.1em] leading-tight max-w-[150px]">
-                            {currentStep.type === "paywall" 
-                              ? "Acesso Completo" 
-                              : currentStep.type === "experience-louco"
-                                ? "O Louco"
-                                : currentStep.type === "fundamentos" 
-                                  ? (fundamentosLessonsCompleted === 0 ? "Fundamentos" : "Base Sólida")
-                                  : "Jornada"}
+                            {totalCompletedArcanos} {totalCompletedArcanos === 1 ? "Chave conquistada" : "Chaves conquistadas"}
+                          </span>
+                          <span className="text-[11px] font-heading font-black text-gold uppercase tracking-[0.1em] flex items-center gap-1 leading-tight text-right">
+                            {globalProgressPct}% Integrado <Zap className="w-2.5 h-2.5 fill-current" />
                           </span>
                         </div>
                       </div>
-
-                      <div className="pt-4">
-                        <button
-                          id="journey-cta-home-main"
-                          onClick={() => navigate(currentStep.route)}
-                          className="w-full py-5 rounded-[1.25rem] font-heading text-[13px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-[#5B1F3D] text-white border-gold/30 hover:bg-[#45162D] relative z-[100]"
-                        >
-                          <span>
-                            {currentStep.type === "paywall" 
-                              ? "Assinar e desbloquear a Escola Digital" 
-                              : currentStep.type === "experience-louco"
-                                ? "Experimentar o Louco"
-                                : currentStep.type === "fundamentos" 
-                                  ? (fundamentosLessonsCompleted === 0 ? "Começar primeira lição" : "Continuar Fundamentos")
-                                  : "Continuar Jornada"}
-                          </span>
-                          <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform text-gold" />
-                        </button>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="space-y-4">
-                      <div className="space-y-1.5 p-4 rounded-2xl bg-plum/5 border border-plum/10">
-                        <p className="text-[14px] font-heading font-black tracking-widest text-plum/40 uppercase flex items-center gap-2">
-                           <ShieldCheck className="w-3 h-3" /> {isAdmin ? "Administrador" : "Auditor"}
-                        </p>
-                        <h3 className="text-xl md:text-2xl font-heading font-bold text-plum leading-tight">
-                          {isAdmin ? "Acesso Administrativo" : "Painel de Auditoria"}
-                        </h3>
-                        <p className="text-[14px] font-body italic text-plum/70 mt-2">
-                          Você tem permissões especiais para auditar e gerenciar a Escola Digital.
-                        </p>
-                      </div>
-                      <div className="pt-4">
-                        <button 
-                          onClick={() => navigate(isAdmin ? "/admin" : "/trilhas")}
-                          className="w-full py-5 rounded-[1.25rem] font-heading text-[13px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all bg-[#5B1F3D] text-white border-gold/30 hover:bg-[#45162D]"
-                        >
-                          {isAdmin ? "Acessar Painel Admin" : "Auditar Trilhas"}
-                          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </button>
-                      </div>
                     </div>
                   )}
+
+                  <div className="flex flex-col space-y-4">
+                    <button
+                      id="journey-cta-home-main"
+                      data-testid="journey-cta-home-main"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (currentStep?.route) {
+                          navigate(currentStep.route);
+                        } else {
+                          navigate("/jornada");
+                        }
+                      }}
+                      className="w-full py-5 rounded-[1.25rem] font-heading text-[13px] tracking-[0.4em] uppercase font-black flex items-center justify-center gap-4 border shadow-2xl transition-all hover:translate-y-[-4px] active:translate-y-0 group/btn bg-[#5B1F3D] text-white border-gold/30 hover:bg-[#45162D] relative z-[100]"
+                    >
+                      <span>
+                        {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0
+                          ? "Começar primeira lição"
+                          : currentStep?.type === "fundamentos" 
+                            ? (fundamentosLessonsCompleted === 0 ? "Começar Pelos Fundamentos" : "Continuar Fundamentos") 
+                            : "Continuar Jornada"}
+                      </span>
+                      <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform text-gold" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Ritual of the Day - Separate Block */}
+        {!ritualProgress.completed && fundamentosLessonsCompleted > 0 && (
+          <section className="px-2">
+            <div 
+              onClick={() => navigate("/desafios")}
+              className="relative overflow-hidden rounded-[2rem] bg-white border border-gold/20 p-8 shadow-xl cursor-pointer group hover:border-gold/40 transition-all"
+            >
+              <div className="absolute top-0 right-0 p-8 opacity-[0.05] pointer-events-none group-hover:scale-110 transition-transform">
+                <Sparkles className="w-24 h-24 text-gold" />
+              </div>
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
+                <div className="space-y-2 text-center sm:text-left">
+                  <div className="flex items-center justify-center sm:justify-start gap-3">
+                    <div className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+                    <span className="text-[12px] font-heading font-black tracking-[0.4em] text-gold uppercase">Conexão Diária</span>
+                  </div>
+                  <h3 className="text-2xl font-heading font-bold text-plum tracking-tight">Ritual de hoje</h3>
+                  <p className="text-[13px] font-body italic text-plum/70">Mantenha sua chama acesa através da prática ritualística.</p>
+                </div>
+                <button 
+                  onClick={() => navigate("/desafios")}
+                  className="px-8 py-4 bg-gold/10 text-plum border border-gold/30 rounded-xl font-heading text-[13px] font-black tracking-[0.3em] uppercase group-hover:bg-gold group-hover:text-plum transition-all flex items-center gap-2"
+                >
+                  Praticar agora <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </section>
+        )}
 
 
         {/* 2. Explore the 78 Arcanos - Cards Strip */}
@@ -438,11 +449,11 @@ const DashboardPage = () => {
             </div>
             <button 
               onClick={() => {
-                if (fundamentosLessonsCompleted === 0 && !isAdmin) {
+                if (progress.completedLessons.length === 0 && !isAdmin) {
                   toast.info("Você vai desbloquear a visão completa depois de construir sua base nos Fundamentos.", {
                     description: "Inicie a primeira lição para começar sua jornada.",
                     action: {
-                      label: "Começar primeira lição",
+                      label: "Começar",
                       onClick: () => navigate("/fundamentos/0")
                     }
                   });
@@ -474,11 +485,11 @@ const DashboardPage = () => {
                     return;
                   }
 
-                  if (fundamentosLessonsCompleted === 0 && !isAdmin) {
+                  if (progress.completedLessons.length === 0 && !isAdmin) {
                     toast.info("Você vai desbloquear os arcanos depois de construir sua base nos Fundamentos.", {
                       description: "Comece pela primeira lição para iniciar sua jornada.",
                       action: {
-                        label: "Começar primeira lição",
+                        label: "Começar",
                         onClick: () => navigate("/fundamentos/0")
                       }
                     });
@@ -615,7 +626,7 @@ const DashboardPage = () => {
                       if (fundamentosLessonsCompleted === 0) {
                         toast.info("Seu ritual será liberado depois da primeira lição.", {
                           action: {
-                            label: "Começar primeira lição",
+                            label: "Começar",
                             onClick: () => navigate("/fundamentos/0")
                           }
                         });
@@ -625,7 +636,7 @@ const DashboardPage = () => {
                     }}
                     className={`flex items-center gap-2 text-[12px] font-heading font-black tracking-widest uppercase transition-all ${
                       fundamentosLessonsCompleted === 0 
-                        ? "text-gold/40 cursor-not-allowed" 
+                        ? "text-gold/50 cursor-not-allowed" 
                         : "text-gold hover:text-plum"
                     }`}
                   >
