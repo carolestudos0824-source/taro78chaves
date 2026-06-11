@@ -145,9 +145,6 @@ export function LessonContent(props: LessonContentProps) {
             Lição do Arcano
           </span>
         </div>
-        <button onClick={onSkipToQuiz} className="text-[10px] font-heading tracking-wider text-[#C8A66A]/80 hover:text-[#C8A66A]">
-          Ir ao Quiz →
-        </button>
       </div>
 
       {/* 1, 2, 3: Essência, Luz, Sombra (Destaque Inicial) */}

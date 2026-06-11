@@ -286,7 +286,7 @@ const PraticaLessonPage = () => {
           <div className="space-y-6" style={{ animation: "fade-up 0.5s ease-out" }}>
             <div className="flex items-center justify-between">
               <span className="text-xs font-heading tracking-[0.2em] uppercase" style={{ color: `${accentColor} 26%)` }}>✍️ Exercício Prático</span>
-              <button onClick={handleStartQuiz} className="text-xs font-heading tracking-wider" style={{ color: `${accentColor} 35%)` }}>Pular para Quiz →</button>
+              
             </div>
             <div className="rounded-xl p-6" style={{ background: `${accentColor} 25% / 0.04)`, border: `1px solid ${accentColor} 25% / 0.18)` }}>
               <div className="flex items-center gap-2 mb-4">
@@ -314,7 +314,7 @@ const PraticaLessonPage = () => {
           <div className="space-y-6" style={{ animation: "fade-up 0.5s ease-out" }}>
             <div className="flex items-center justify-between">
               <span className="text-xs font-heading tracking-[0.2em] uppercase" style={{ color: `${accentColor} 26%)` }}>Aprofundamento</span>
-              <button onClick={handleStartQuiz} className="text-xs font-heading tracking-wider" style={{ color: `${accentColor} 35%)` }}>Ir ao Quiz →</button>
+              
             </div>
             <div className="rounded-xl p-6" style={{ background: "hsl(38 30% 95% / 0.85)", border: `1px solid ${accentColor} 25% / 0.10)` }}>
               {lesson.deepDive.split("\n\n").map((p, i) => (
