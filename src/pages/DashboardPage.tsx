@@ -113,6 +113,24 @@ const DashboardPage = () => {
       if (!progress.completedLessons.includes(`arcano-${i}`)) {
         const summary = ARCANOS_MAIORES_CATALOG[i];
         if (!summary) continue;
+
+        // If it's the very first Arcano, lead to the Journey Portal first
+        if (i === 0 && !progress.completedLessons.includes("arcano-0")) {
+          return {
+            type: "arcano" as const,
+            id: i,
+            name: "A Jornada do Louco",
+            numeral: "I",
+            label: "Portal",
+            image: resolveMaiorVisual(0).resolvedAssetUrl || imgLouco,
+            moduleName: "Arcanos Maiores",
+            moduleSlug: "arcanos-maiores",
+            lessonId: "portal-maiores",
+            lessonName: "A Jornada do Louco",
+            route: "/jornada"
+          };
+        }
+
         return {
           type: "arcano" as const,
           id: i,
