@@ -306,17 +306,42 @@ const DashboardPage = () => {
           </div>
           <div className="relative group/strip">
             <div className="flex gap-4 overflow-x-auto pb-6 scrollbar-hide px-2 snap-x snap-mandatory cursor-grab active:cursor-grabbing">
-              {all78Arcana.map((card, i) => (
-                <div 
-                  key={card.id} 
-                  className="min-w-[85px] md:min-w-[100px] aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shadow-lg snap-center opacity-85 hover:opacity-100 hover:scale-105 hover:border-gold/50 transition-all duration-500 bg-ivory relative group/card"
-                >
-                  <img src={card.image || ""} alt={card.name} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity flex items-end p-3">
-                    <span className="text-[12px] font-heading font-black text-white uppercase tracking-normal leading-tight break-words w-full">{card.name}</span>
-                  </div>
-                </div>
-              ))}
+              {all78Arcana.map((card, i) => {
+                const isArcanoMaior = card.id.startsWith("arcano-");
+                const arcanoId = isArcanoMaior ? parseInt(card.id.replace("arcano-", ""), 10) : -1;
+                
+                const handleCardClick = () => {
+                  if (progress.completedLessons.length === 0) {
+                    toast.info("Você vai desbloquear os arcanos depois de construir sua base nos Fundamentos.", {
+                      description: "Comece pela primeira lição para iniciar sua jornada.",
+                      action: {
+                        label: "Começar",
+                        onClick: () => navigate("/fundamentos/0")
+                      }
+                    });
+                    return;
+                  }
+                  
+                  if (isArcanoMaior) {
+                    navigate(`/lesson/${arcanoId}`);
+                  } else {
+                    navigate(`/arcano-menor/${card.id}`);
+                  }
+                };
+
+                return (
+                  <button 
+                    key={card.id} 
+                    onClick={handleCardClick}
+                    className="min-w-[85px] md:min-w-[100px] aspect-[2/3.5] rounded-xl overflow-hidden border border-gold/20 shadow-lg snap-center opacity-85 hover:opacity-100 hover:scale-105 hover:border-gold/50 transition-all duration-500 bg-ivory relative group/card"
+                  >
+                    <img src={card.image || ""} alt={card.name} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity flex items-end p-3">
+                      <span className="text-[12px] font-heading font-black text-white uppercase tracking-normal leading-tight break-words w-full">{card.name}</span>
+                    </div>
+                  </button>
+                );
+              })}
               {/* Intentional partial visible card space at the end */}
               <div className="min-w-[20px] shrink-0" />
             </div>
