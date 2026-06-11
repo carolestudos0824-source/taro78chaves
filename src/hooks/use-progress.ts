@@ -8,16 +8,6 @@ import { toast } from "sonner";
 
 const LOCAL_EXTRAS_KEY = "tarot-journey-extras";
 
-/**
- * Fields stored in Supabase user_progress table.
- *
- * `badges`, `certificates_earned` and `current_module` were added in the
- * cross-device sync migration; `student_name` lives on `profiles`.
- *
- * localStorage is kept as a write-through cache so the UI can render
- * instantly on cold start before the DB fetch resolves (no flash of empty
- * state). DB is the source of truth — on hydrate we overwrite the cache.
- */
 interface DbProgress {
   xp: number;
   level: number;
@@ -94,7 +84,6 @@ function saveLocalExtras(extras: LocalExtras) {
   } catch { /* ignore */ }
 }
 
-/** Merge persisted badges (just `id` + `earned` + `earnedAt`) into the canonical DEFAULT_PROGRESS list to keep names/descriptions in sync with code. */
 function mergeBadges(persisted: Badge[] | null | undefined): Badge[] {
   if (!persisted || !Array.isArray(persisted) || persisted.length === 0) {
     return DEFAULT_PROGRESS.badges;
@@ -136,7 +125,6 @@ function progressToDbCore(p: UserProgress) {
     completed_quizzes: p.completedQuizzes,
     completed_exercises: p.completedExercises,
     completed_modules: p.completedModules,
-    // jsonb columns — Supabase generated types want `Json`; runtime accepts plain JS values
     badges: p.badges as unknown as never,
     certificates_earned: p.certificatesEarned as unknown as never,
     current_module: p.currentModule,
@@ -174,25 +162,18 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   const isStaff = roleState?.isStaff ?? false;
   const initialExtras = getLocalExtras();
   const [progress, setProgress] = useState<UserProgress>({ ...DEFAULT_PROGRESS, ...initialExtras });
-  // If we have any cached progress, don't block the UI with a global loader.
-  // We check for xp > 0 or any completed lessons as a sign of cached data.
-  const hasCachedData = progress.xp > 0 || progress.completedLessons.length > 0;
+  const hasCachedData = progress.completedLessons.length > 0;
   const [loading, setLoading] = useState(!hasCachedData);
 
   const prevUserIdRef = useRef<string | undefined>(user?.id);
 
   useEffect(() => {
-    // If user changed (login or logout or switch), reset state immediately to prevent leakage
     if (user?.id !== prevUserIdRef.current) {
-      console.log("User changed detected in useProgress, resetting state. Old:", prevUserIdRef.current, "New:", user?.id);
-      
-      // Clear localStorage if logging out
       if (!user) {
         localStorage.removeItem(LOCAL_EXTRAS_KEY);
       }
-      
       setProgress({ ...DEFAULT_PROGRESS });
-      setLoading(!!user); // Only show loading if we are about to fetch for a new user
+      setLoading(!!user);
       prevUserIdRef.current = user?.id;
     }
   }, [user]);
@@ -201,37 +182,25 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   const lastSavedCoreRef = useRef<string>("");
   const lastSavedNameRef = useRef<string>("");
 
-  // ─── Fetch from Supabase when user is available ───
   useEffect(() => {
     if (authLoading) return;
-    const marker = document.getElementById("boot-marker");
     if (!user) {
       setProgress({ ...DEFAULT_PROGRESS, ...getLocalExtras() });
       setLoading(false);
-      if (marker) marker.innerText += " | PROGRESS: PUBLIC";
       return;
     }
 
-
-
-
     let cancelled = false;
-    if (marker) marker.innerText += " | USE PROGRESS START";
 
     const fetchProgress = async () => {
       try {
-        console.log(`[useProgress] fetching progress for user: ${user.id}`);
-        
         const { data: progressRow, error: progressError } = await supabase
           .from("user_progress")
           .select("*")
           .eq("user_id", user.id)
           .maybeSingle();
 
-        if (progressError) {
-          console.error("[useProgress] error fetching user_progress:", progressError);
-          throw progressError;
-        }
+        if (progressError) throw progressError;
 
         const { data: profileRow, error: profileError } = await supabase
           .from("profiles")
@@ -239,13 +208,9 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
           .eq("user_id", user.id)
           .maybeSingle();
 
-        if (profileError) {
-          console.error("[useProgress] error fetching profile:", profileError);
-          throw profileError;
-        }
+        if (profileError) throw profileError;
 
         if (progressRow) {
-          console.log("[useProgress] progress found in DB, hydrating state.");
           const dbData = dbToProgress(progressRow as any, profileRow?.student_name ?? "");
           if (!cancelled) {
             setProgress(dbData);
@@ -253,7 +218,6 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
             lastSavedNameRef.current = profileRow?.student_name ?? "";
           }
         } else {
-          console.log("[useProgress] no progress found in DB, using defaults.");
           if (!cancelled) setProgress({ ...DEFAULT_PROGRESS, ...getLocalExtras() });
         }
       } catch (err) {
@@ -263,16 +227,10 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
       }
     };
 
-
-
-
-
-
     fetchProgress();
     return () => { cancelled = true; };
   }, [user]);
 
-  // ─── Debounced save to Supabase (user_progress + profiles.student_name) ───
   useEffect(() => {
     if (!user || loading || isStaff) return;
 
@@ -283,7 +241,6 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     const coreChanged = coreSnapshot !== lastSavedCoreRef.current;
     const nameChanged = nameSnapshot !== lastSavedNameRef.current;
 
-    // Always keep localStorage cache fresh
     saveLocalExtras({
       badges: progress.badges,
       currentModule: progress.currentModule,
@@ -305,61 +262,32 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     if (saveTimer.current) clearTimeout(saveTimer.current);
     saveTimer.current = setTimeout(async () => {
       if (coreChanged) {
-        console.log(`[useProgress] syncing user_progress for ${user.id}...`, corePayload);
         lastSavedCoreRef.current = coreSnapshot;
-        
-        // We use RPCs for sensitive data instead of direct UPDATE
         let error = null;
         const lastLesson = corePayload.completed_lessons[corePayload.completed_lessons.length - 1];
         if (lastLesson) {
-          const { error: rpcError } = await supabase.rpc("complete_lesson_v2", { 
-            lesson_id_param: lastLesson 
-          });
+          const { error: rpcError } = await supabase.rpc("complete_lesson_v2", { lesson_id_param: lastLesson });
           error = rpcError;
         }
-
         const lastModule = corePayload.completed_modules[corePayload.completed_modules.length - 1];
         if (lastModule && !error) {
-          const { error: rpcError } = await supabase.rpc("complete_module_v2", { 
-            module_id_param: lastModule 
-          });
+          const { error: rpcError } = await supabase.rpc("complete_module_v2", { module_id_param: lastModule });
           error = rpcError;
         }
-        
         if (error) {
-          console.error("[useProgress] Error syncing user_progress:", error);
           lastSavedCoreRef.current = "";
-          toast.error("Erro ao salvar progresso. Verifique sua conexão.");
-        } else {
-          console.log("[useProgress] user_progress synced successfully");
+          toast.error("Erro ao salvar progresso.");
         }
       }
-      
       if (nameChanged) {
-        console.log(`[useProgress] syncing student_name for ${user.id}: "${nameSnapshot}"`);
         lastSavedNameRef.current = nameSnapshot;
-        const { error } = await supabase
-          .from("profiles")
-          .update({ 
-            student_name: nameSnapshot 
-          })
-          .eq("user_id", user.id);
-
-        if (error) {
-          console.error("[useProgress] Error syncing student_name:", error);
-          lastSavedNameRef.current = "";
-        } else {
-          console.log("[useProgress] student_name synced successfully");
-        }
+        await supabase.from("profiles").update({ student_name: nameSnapshot }).eq("user_id", user.id);
       }
     }, 300);
 
-    return () => {
-      if (saveTimer.current) clearTimeout(saveTimer.current);
-    };
+    return () => { if (saveTimer.current) clearTimeout(saveTimer.current); };
   }, [progress, user, loading, isStaff]);
 
-  // ─── Migrate old localStorage data on first load ───
   useEffect(() => {
     if (!user || loading) return;
     const oldKey = "tarot-journey-progress";
@@ -371,9 +299,6 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
       if (parsed.completedLessons?.length > 0) {
         setProgress(prev => ({
           ...prev,
-          xp: Math.max(prev.xp, parsed.xp ?? 0),
-          level: Math.max(prev.level, parsed.level ?? 1),
-          streak: Math.max(prev.streak, parsed.streak ?? 0),
           completedLessons: [...new Set([...prev.completedLessons, ...(parsed.completedLessons ?? [])])],
           completedQuizzes: [...new Set([...prev.completedQuizzes, ...(parsed.completedQuizzes ?? [])])],
           completedExercises: [...new Set([...prev.completedExercises, ...(parsed.completedExercises ?? [])])],
@@ -384,27 +309,18 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         }));
       }
     } catch { /* ignore */ }
-
     localStorage.removeItem(oldKey);
   }, [user, loading]);
 
-  // ─── Actions (same API as before) ───
-
-  const addXP = useCallback((amount: number) => {
+  const addKey = useCallback(() => {
     if (isStaff) return;
-    // XP is disabled in UI but kept in core to avoid breaking dependencies
-    console.log(`[progress] XP tracking is currently symbolically hidden.`);
   }, [isStaff]);
 
   const completeModule = useCallback((moduleId: string) => {
     if (isStaff) return;
-    console.log(`[progress] completing module: ${moduleId}`);
     setProgress((prev) => {
       if (prev.completedModules.includes(moduleId)) return prev;
-      return {
-        ...prev,
-        completedModules: [...prev.completedModules, moduleId],
-      };
+      return { ...prev, completedModules: [...prev.completedModules, moduleId] };
     });
   }, [isStaff]);
 
@@ -412,12 +328,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     if (isStaff) return;
     setProgress((prev) => {
       if (prev.completedLessons.includes(lessonId)) return prev;
-      console.log(`[progress] completing lesson: ${lessonId}`);
-      return {
-        ...prev,
-        completedLessons: [...prev.completedLessons, lessonId],
-        lastActive: new Date().toISOString(),
-      };
+      return { ...prev, completedLessons: [...prev.completedLessons, lessonId], lastActive: new Date().toISOString() };
     });
   }, [isStaff]);
 
@@ -425,18 +336,9 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     if (isStaff) return;
     setProgress((prev) => {
       const nextScores = { ...prev.quizScores };
-      if (score !== undefined && total !== undefined && total > 0) {
-        nextScores[quizId] = score / total;
-      }
-      
+      if (score !== undefined && total !== undefined && total > 0) nextScores[quizId] = score / total;
       if (prev.completedQuizzes.includes(quizId) && prev.quizScores[quizId] === nextScores[quizId]) return prev;
-      
-      console.log(`[progress] completing quiz: ${quizId}, score: ${score}/${total}`);
-      return { 
-        ...prev, 
-        completedQuizzes: prev.completedQuizzes.includes(quizId) ? prev.completedQuizzes : [...prev.completedQuizzes, quizId],
-        quizScores: nextScores
-      };
+      return { ...prev, completedQuizzes: prev.completedQuizzes.includes(quizId) ? prev.completedQuizzes : [...prev.completedQuizzes, quizId], quizScores: nextScores };
     });
   }, [isStaff]);
 
@@ -452,9 +354,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     if (isStaff) return;
     setProgress((prev) => ({
       ...prev,
-      badges: prev.badges.map((b) =>
-        b.id === badgeId ? { ...b, earned: true, earnedAt: new Date().toISOString() } : b
-      ),
+      badges: prev.badges.map((b) => b.id === badgeId ? { ...b, earned: true, earnedAt: new Date().toISOString() } : b),
     }));
   }, [isStaff]);
 
@@ -463,17 +363,10 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     setProgress((prev) => {
       const lastActiveDate = prev.lastActive ? new Date(prev.lastActive) : null;
       const now = new Date();
-      
-      if (!lastActiveDate) {
-        return { ...prev, streak: 1, lastActive: now.toISOString() };
-      }
-
+      if (!lastActiveDate) return { ...prev, streak: 1, lastActive: now.toISOString() };
       const diffDays = Math.floor((now.getTime() - lastActiveDate.getTime()) / (1000 * 60 * 60 * 24));
-      if (diffDays === 1) {
-        return { ...prev, streak: prev.streak + 1, lastActive: now.toISOString() };
-      } else if (diffDays > 1) {
-        return { ...prev, streak: 1, lastActive: now.toISOString() };
-      }
+      if (diffDays === 1) return { ...prev, streak: prev.streak + 1, lastActive: now.toISOString() };
+      else if (diffDays > 1) return { ...prev, streak: 1, lastActive: now.toISOString() };
       return prev;
     });
   }, [isStaff]);
@@ -481,105 +374,58 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   const isArcanoCompleted = useCallback((arcanoId: number): boolean => {
     const hasLesson = progress.completedLessons.includes(`arcano-${arcanoId}`);
     const hasQuiz = progress.completedQuizzes.includes(`quiz-arcano-${arcanoId}`);
-    
-    // Regra pedagógica: Arcano concluído = Lição + Quiz finalizados
-    const isCompleted = hasLesson && hasQuiz;
-    
-    if (arcanoId === 0) {
-      console.log(`[progress] diagnostic O LOUCO:`, { hasLesson, hasQuiz, isCompleted });
-    }
-    
-    return isCompleted;
+    return hasLesson && hasQuiz;
   }, [progress.completedLessons, progress.completedQuizzes]);
 
   const isArcanoUnlocked = useCallback((arcanoId: number): boolean => {
-    // Phase 6.6 — Pedagogy: Arcanos Maiores require Fundamentos completion
     const fundamentosComplete = progress.completedModules.includes("fundamentos");
     if (!fundamentosComplete && !isStaff) return false;
-    
     if (arcanoId === 0) return true;
     return isArcanoCompleted(arcanoId - 1);
-  }, [isArcanoCompleted, progress.completedModules, isStaff]);
+  }, [progress.completedModules, isArcanoCompleted, isStaff]);
 
-  const fundamentosComplete = progress.completedModules.includes("fundamentos");
-  const fundamentosLessonsCompleted = FUNDAMENTOS_LESSONS.filter(l => progress.completedLessons.includes(l.id)).length;
-  const isFirstVisit = !progress.onboardingCompleted && progress.completedLessons.length === 0;
-  
   const getCurrentArcanoId = useCallback((): number => {
-    // If Fundamentos not complete, technically none are current in this module
-    const fundamentosComplete = progress.completedModules.includes("fundamentos");
-    if (!fundamentosComplete && !isStaff) return 0;
-
     for (let i = 0; i <= 21; i++) {
-      if (isArcanoUnlocked(i) && !isArcanoCompleted(i)) return i;
+      if (!isArcanoCompleted(i)) return i;
     }
     return 21;
-  }, [isArcanoUnlocked, isArcanoCompleted, progress.completedModules, isStaff]);
+  }, [isArcanoCompleted]);
 
-  const totalCompletedArcanos = Array.from({ length: 22 }, (_, i) => i).filter(id => {
-    return progress.completedLessons.includes(`arcano-${id}`) && progress.completedQuizzes.includes(`quiz-arcano-${id}`);
-  }).length;
-  const completedCount = totalCompletedArcanos;
-  const journeyProgress = fundamentosComplete ? Math.round((totalCompletedArcanos / 22) * 100) : 0;
-
-
+  const completedCount = useMemo(() => progress.completedLessons.length, [progress.completedLessons]);
+  const journeyProgress = useMemo(() => Math.round((completedCount / 78) * 100), [completedCount]);
+  const fundamentosComplete = useMemo(() => progress.completedModules.includes("fundamentos"), [progress.completedModules]);
+  const fundamentosLessonsCompleted = useMemo(() => FUNDAMENTOS_LESSONS.filter(l => progress.completedLessons.includes(l.id)).length, [progress.completedLessons]);
+  const isFirstVisit = useMemo(() => !progress.onboardingCompleted, [progress.onboardingCompleted]);
 
   const completeOnboarding = useCallback(() => {
-    if (isStaff) return;
-    setProgress((prev) => ({ ...prev, onboardingCompleted: true }));
-  }, [isStaff]);
+    setProgress(p => ({ ...p, onboardingCompleted: true }));
+  }, []);
 
-  const setStudentName = useCallback((name: string) => {
-    setProgress((prev) => ({ ...prev, studentName: name }));
+  const setStudentName = useCallback((studentName: string) => {
+    setProgress(p => ({ ...p, studentName }));
   }, []);
 
   const resetProgress = useCallback(async () => {
     setProgress({ ...DEFAULT_PROGRESS });
     localStorage.removeItem(LOCAL_EXTRAS_KEY);
     if (user) {
-      await supabase
-        .from("user_progress")
-        .update(progressToDbCore(DEFAULT_PROGRESS))
-        .eq("user_id", user.id);
-      await supabase
-        .from("profiles")
-        .update({ 
-          student_name: "" 
-        })
-        .eq("user_id", user.id);
+      await supabase.from("user_progress").delete().eq("user_id", user.id);
     }
   }, [user]);
 
-  const value = {
-    progress,
-    loading,
-    addXP,
-    completeLesson,
-    completeModule,
-    completeQuiz,
-    completeExercise,
-    earnBadge,
-    updateStreak,
-    isArcanoCompleted,
-    isArcanoUnlocked,
-    getCurrentArcanoId,
-    completedCount,
-    journeyProgress,
-    fundamentosComplete,
-    fundamentosLessonsCompleted,
-    isFirstVisit,
-    completeOnboarding,
-    setStudentName,
-    resetProgress,
-  };
-
-  return React.createElement(ProgressContext.Provider, { value }, children);
+  return (
+    <ProgressContext.Provider value={{
+      progress, loading, addKey, completeLesson, completeModule, completeQuiz, completeExercise, earnBadge, updateStreak,
+      isArcanoCompleted, isArcanoUnlocked, getCurrentArcanoId, completedCount, journeyProgress, fundamentosComplete,
+      fundamentosLessonsCompleted, isFirstVisit, completeOnboarding, setStudentName, resetProgress
+    }}>
+      {children}
+    </ProgressContext.Provider>
+  );
 }
 
-export function useProgress() {
+export const useProgress = () => {
   const context = useContext(ProgressContext);
-  if (context === undefined) {
-    throw new Error("useProgress must be used within a ProgressProvider");
-  }
+  if (!context) throw new Error("useProgress must be used within a ProgressProvider");
   return context;
-}
+};
