@@ -1,5 +1,5 @@
 import { useNavigate, Navigate, Link } from "react-router-dom";
-import { ChevronRight, Sparkles, BookOpen, ArrowLeft } from "lucide-react";
+import { ChevronRight, Sparkles, BookOpen, ArrowLeft, Lock } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { useResolvedArcanosMaiores } from "@/hooks/use-resolved-arcanos-maiores";
 import { useJourneyContent } from "@/hooks/use-content";
@@ -7,7 +7,7 @@ import { useAccess } from "@/hooks/use-access";
 import { useRole } from "@/hooks/use-role";
 import { CORES_FASE, JOURNEY_MOTION } from "@/config/journey-visual";
 import { EDITORIAL_REGISTRY } from "@/content/arcanos-maiores";
-import { Lock } from "lucide-react";
+import { toast } from "sonner";
 
 
 
@@ -87,14 +87,22 @@ const FoolsJourneyPage = () => {
             </div>
             <h2 className="font-heading text-2xl font-black text-[#5B1F3D] mb-4">Portal Trancado</h2>
             <p className="font-body text-base text-[#5B1F3D]/70 mb-8 max-w-sm mx-auto font-bold italic leading-relaxed">
-              "A travessia real exige que você complete os Fundamentos do Tarô primeiro."
+              "Essa jornada faz parte da Escola Digital completa. Complete os Fundamentos do Tarô para iniciar sua jornada."
             </p>
-            <button
-              onClick={() => navigate("/module/fundamentos")}
-              className="w-full sm:w-auto px-10 py-5 bg-[#5B1F3D] text-white rounded-full font-heading text-[12px] tracking-[0.3em] uppercase font-black hover:scale-105 transition-all shadow-xl border-2 border-[#C8A66A]"
-            >
-              Começar Pelos Fundamentos
-            </button>
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={() => navigate("/premium")}
+                className="w-full sm:w-auto px-10 py-5 bg-[#5B1F3D] text-white rounded-full font-heading text-[12px] tracking-[0.3em] uppercase font-black hover:scale-105 transition-all shadow-xl border-2 border-[#C8A66A]"
+              >
+                Desbloquear Escola Digital
+              </button>
+              <button
+                onClick={() => navigate("/module/fundamentos")}
+                className="text-[11px] font-heading font-black tracking-widest uppercase text-[#C8A66A] hover:text-[#5B1F3D] transition-colors"
+              >
+                Continuar experiência gratuita
+              </button>
+            </div>
           </section>
         ) : (
           <>
@@ -262,8 +270,19 @@ const FoolsJourneyPage = () => {
                   return (
                     <button
                       key={arcano.id}
-                      onClick={() => studied ? navigate(`/lesson/${arcano.arcanoNumero}`) : undefined}
-                      disabled={!studied}
+                      onClick={() => {
+                        if (studied) {
+                          navigate(`/lesson/${arcano.arcanoNumero}`);
+                        } else {
+                          toast.info("Você vai desbloquear os arcanos depois de construir sua base na Escola Digital.", {
+                            description: "Desbloqueie a jornada completa para abrir todas as portas.",
+                            action: {
+                              label: "Upgrade",
+                              onClick: () => navigate("/premium")
+                            }
+                          });
+                        }
+                      }}
                       className={`w-full text-left group transition-all duration-300 active:scale-[0.98] ${!studied ? "opacity-60 grayscale-[0.3]" : ""}`}
                       style={{ opacity: 1 }}
                     >
