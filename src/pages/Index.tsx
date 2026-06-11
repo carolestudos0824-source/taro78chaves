@@ -150,7 +150,7 @@ const Index = () => {
 
             <div className="mt-8 flex justify-center">
               <button
-                onClick={() => navigate("/jornada-do-louco")}
+                onClick={() => navigate("/jornada")}
                 disabled={!fundamentosComplete}
                 className={`px-8 py-3 rounded-xl bg-[#FAF5EF] text-[#5B1F3D] font-heading text-[10px] tracking-[0.2em] uppercase font-black border border-[#C8A66A30] hover:bg-[#5B1F3D] hover:text-white transition-all flex items-center gap-2 ${!fundamentosComplete ? "opacity-50 grayscale cursor-not-allowed" : ""}`}
               >
@@ -289,7 +289,7 @@ const Index = () => {
               
               <div className="mt-8 flex justify-start">
                 <button
-                  onClick={() => navigate("/jornada-do-louco")}
+                  onClick={() => navigate("/jornada")}
                   className="group flex items-center gap-2 text-[#C8A66A] font-heading text-[11px] tracking-[0.2em] uppercase font-black"
                 >
                   Ver narrativa completa <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
