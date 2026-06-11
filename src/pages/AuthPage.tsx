@@ -82,7 +82,8 @@ const AuthPage = () => {
       }
       
       // Se chegou aqui, está logado ou em processo de login bem sucedido
-      navigate("/module/fundamentos");
+      // Navegamos para /app e o roteador inteligente decide (ex: aluna nova -> fundamentos)
+      navigate("/app");
     } catch (err: any) {
       setError(translateError(err.message));
     } finally {
