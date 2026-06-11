@@ -571,9 +571,12 @@ const DashboardPage = () => {
                       <ShieldCheck className="w-4 h-4" /> Acesso de Auditoria
                   </div>
                 ) : isPremium ? (
-                  <div className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-gold font-heading text-[12px] font-black tracking-[0.4em] uppercase flex items-center gap-2">
-                      <Star className="w-4 h-4 fill-current" /> Formação Ativa
-                  </div>
+                  <button 
+                    onClick={() => navigate("/perfil")}
+                    className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-gold font-heading text-[12px] font-black tracking-[0.4em] uppercase flex items-center gap-2 hover:bg-white/20 transition-all"
+                  >
+                      <Star className="w-4 h-4 fill-current" /> Formação Completa Ativa
+                  </button>
                 ) : (
                   <button 
                     onClick={() => navigate("/premium")}
