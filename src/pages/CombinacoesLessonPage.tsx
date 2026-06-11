@@ -294,9 +294,6 @@ const CombinacoesLessonPage = () => {
           <div className="space-y-6" style={{ animation: "fade-up 0.5s ease-out" }}>
             <div className="flex items-center justify-between">
               <span className="text-xs font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(36 40% 42%)" }}>✍️ Exercício Prático</span>
-              <button onClick={handleStartQuiz} className="text-xs font-heading tracking-wider" style={{ color: "hsl(36 45% 58%)" }}>
-                Pular para Quiz →
-              </button>
             </div>
             <div className="rounded-xl p-6" style={{ background: "hsl(340 42% 28% / 0.04)", border: "1px solid hsl(340 42% 28% / 0.18)" }}>
               <div className="flex items-center gap-2 mb-4">
@@ -335,7 +332,7 @@ const CombinacoesLessonPage = () => {
           <div className="space-y-6" style={{ animation: "fade-up 0.5s ease-out" }}>
             <div className="flex items-center justify-between">
               <span className="text-xs font-heading tracking-[0.2em] uppercase" style={{ color: "hsl(36 40% 42%)" }}>Aprofundamento</span>
-              <button onClick={handleStartQuiz} className="text-xs font-heading tracking-wider" style={{ color: "hsl(36 45% 58%)" }}>Ir ao Quiz →</button>
+              
             </div>
             <div className="rounded-xl p-6" style={{ background: "hsl(38 30% 95% / 0.85)", border: "1px solid hsl(36 45% 58% / 0.15)" }}>
               {lesson.deepDive.split("\n\n").map((p, i) => (
