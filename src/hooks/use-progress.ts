@@ -488,9 +488,13 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   }, [progress.completedLessons, progress.completedQuizzes]);
 
   const isArcanoUnlocked = useCallback((arcanoId: number): boolean => {
+    // Phase 6.6 — Pedagogy: Arcanos Maiores require Fundamentos completion
+    const fundamentosComplete = progress.completedModules.includes("fundamentos");
+    if (!fundamentosComplete && !isStaff) return false;
+    
     if (arcanoId === 0) return true;
     return isArcanoCompleted(arcanoId - 1);
-  }, [isArcanoCompleted]);
+  }, [isArcanoCompleted, progress.completedModules, isStaff]);
 
   const getCurrentArcanoId = useCallback((): number => {
     for (let i = 0; i <= 21; i++) {
