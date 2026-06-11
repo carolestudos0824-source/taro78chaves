@@ -497,7 +497,12 @@ const FundamentosLessonPage = () => {
                     Você construiu a base. Agora está preparada para a Jornada dos 22 Arcanos Maiores.
                   </p>
                   <button
-                    onClick={() => navigate("/module/arcanos-maiores")}
+                    onClick={() => {
+                      if (lesson.order === 9) {
+                        completeModule("fundamentos");
+                      }
+                      navigate("/module/arcanos-maiores");
+                    }}
                     className="px-8 py-3 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105"
                     style={{
                       background: "linear-gradient(135deg, #5B1F3D, #3D1429)",
