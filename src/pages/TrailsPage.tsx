@@ -324,8 +324,9 @@ const TrailsPage = () => {
                         <div className="flex-1 mt-4 sm:mt-0 sm:ml-8 min-w-0 w-full text-center sm:text-left">
                           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2 items-center sm:items-start">
                             <span className={`text-[12px] sm:text-[13px] font-heading font-black tracking-[0.3em] uppercase transition-colors duration-500 ${
-                              modUnlocked ? 'text-[#C8A66A]' : 'text-[#5B1F3D]/75'
+                              modUnlocked ? 'text-gold' : 'text-[#5B1F3D]/85'
                             }`}>
+
                               Módulo
                             </span>
                             {isNext && (
