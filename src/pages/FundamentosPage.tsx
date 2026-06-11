@@ -312,7 +312,7 @@ const FundamentosPage = () => {
         </div>
 
         {/* Module completion message */}
-        {completedCount === FUNDAMENTOS_LESSONS.length ? (
+        {progress.completedModules.includes("fundamentos") ? (
           <div
             className="mt-12 rounded-2xl p-8 text-center relative overflow-hidden"
             style={{
