@@ -410,7 +410,7 @@ const DashboardPage = () => {
         </section>
 
         {/* Ritual of the Day - Separate Block */}
-        {!ritualProgress.completed && progress.completedLessons.length > 0 && (
+        {!ritualProgress.completed && fundamentosLessonsCompleted > 0 && (
           <section className="px-2">
             <div 
               onClick={() => navigate("/desafios")}
@@ -614,7 +614,7 @@ const DashboardPage = () => {
                   <div className="space-y-1">
                     <h3 className="font-heading text-lg font-bold text-plum">Ritual de Hoje</h3>
                     <p className="text-[14px] font-body text-plum/60 leading-relaxed font-bold">
-                      {progress.completedLessons.length === 0 
+                      {fundamentosLessonsCompleted === 0 
                         ? "Complete sua primeira lição para liberar a prática ritual diária." 
                         : "Sua prática mística para manter a conexão com os arquétipos."}
                     </p>
@@ -622,7 +622,7 @@ const DashboardPage = () => {
                   
                   <button 
                     onClick={() => {
-                      if (progress.completedLessons.length === 0) {
+                      if (fundamentosLessonsCompleted === 0) {
                         toast.info("Seu ritual será liberado depois da primeira lição.", {
                           action: {
                             label: "Começar",
@@ -634,7 +634,7 @@ const DashboardPage = () => {
                       navigate("/desafios");
                     }}
                     className={`flex items-center gap-2 text-[12px] font-heading font-black tracking-widest uppercase transition-all ${
-                      progress.completedLessons.length === 0 
+                      fundamentosLessonsCompleted === 0 
                         ? "text-gold/50 cursor-not-allowed" 
                         : "text-gold hover:text-plum"
                     }`}

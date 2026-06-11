@@ -25,9 +25,10 @@ const NAV_ITEMS: NavItem[] = [
 const BottomNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { progress } = useProgress();
+  const { progress, fundamentosLessonsCompleted } = useProgress();
   const { bypassLocks } = useAccess();
   const fundamentosComplete = progress.completedModules.includes("fundamentos");
+  const hasStartedFundamentos = fundamentosLessonsCompleted > 0;
 
   // Determine current active journey path
   const currentJourneyPath = "/jornada";
@@ -64,6 +65,7 @@ const BottomNav = () => {
           const isJourneyTab = item.label === "Jornada";
           const path = isJourneyTab ? currentJourneyPath : item.path;
           const isLocked = !bypassLocks && isJourneyTab && !fundamentosComplete && item.path !== "/module/fundamentos";
+          const isRitualLocked = !bypassLocks && item.label === "Ritual" && !hasStartedFundamentos;
           
           const handleClick = () => {
             if (isLocked) {
@@ -72,6 +74,16 @@ const BottomNav = () => {
                 action: {
                   label: "Upgrade",
                   onClick: () => navigate("/premium")
+                }
+              });
+              return;
+            }
+            if (isRitualLocked) {
+              toast.info("Seu ritual será liberado depois da primeira lição.", {
+                description: "Complete a lição 'O que é o Tarô' nos Fundamentos.",
+                action: {
+                  label: "Começar",
+                  onClick: () => navigate("/module/fundamentos")
                 }
               });
               return;
@@ -87,12 +99,12 @@ const BottomNav = () => {
               onClick={handleClick}
 
 
-              className={`flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 transition-all duration-300 relative group py-1 select-none ${isLocked ? "opacity-30" : ""}`}
-              title={isLocked ? "Complete os Fundamentos primeiro" : item.microcopy}
+              className={`flex flex-col items-center justify-center gap-0.5 min-w-0 flex-1 transition-all duration-300 relative group py-1 select-none ${isLocked || isRitualLocked ? "opacity-30" : ""}`}
+              title={isLocked ? "Complete os Fundamentos primeiro" : isRitualLocked ? "Complete a primeira lição primeiro" : item.microcopy}
             >
               <div className="relative flex items-center justify-center">
                 <TarotIcon 
-                  name={isLocked ? "bloqueado" : item.icon}
+                  name={isLocked || isRitualLocked ? "bloqueado" : item.icon}
                   className={`w-5 h-5 min-[390px]:w-6 min-[390px]:h-6 transition-all duration-300 ${isActive ? "scale-110" : "opacity-70 group-hover:opacity-100"}`} 
                   strokeWidth={isActive ? 2.5 : 2} 
                   color={isActive ? "#5B1F3D" : "#5B1F3D"}
