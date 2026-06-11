@@ -424,9 +424,8 @@ const DashboardPage = () => {
                     {totalCompletedArcanos === 0 && fundamentosLessonsCompleted === 0
                       ? "Começar primeira lição"
                       : currentStep?.type === "fundamentos" 
-
                         ? (fundamentosLessonsCompleted === 0 ? "Começar Pelos Fundamentos" : "Continuar Fundamentos") 
-                        : "Abrir Jornada do Louco"}
+                        : "Continuar Jornada"}
                   </span>
                   <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform text-gold" />
                 </button>
