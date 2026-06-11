@@ -43,8 +43,8 @@ export interface JourneyArcanoSummary {
 
 /** Introduction text for the Fool's Journey */
 export const JOURNEY_INTRO = {
-  title: "A Jornada do Louco",
-  subtitle: "O percurso iniciático dos 22 Arcanos Maiores",
+  title: "A Jornada do Louco ao Mundo",
+  subtitle: "A travessia iniciática dos 22 Arcanos Maiores",
   epigraph: "O Louco não é o início nem o fim — é a coragem de caminhar.",
   body: [
     "Os 22 Arcanos Maiores do Tarô não são cartas soltas. São capítulos de uma única grande história — a história da consciência humana em busca de si mesma.",
@@ -102,112 +102,112 @@ export const JOURNEY_PHASES: JourneyPhase[] = [
 export const JOURNEY_ARCANOS: JourneyArcanoSummary[] = [
   {
     id: 0, numeral: "0", name: "O Louco",
-    journeyRole: "O viajante que inicia a jornada",
+    journeyRole: "O início da travessia",
     narrativeText: "Tudo começa com um salto de fé. O Louco é o potencial puro antes de qualquer forma — a coragem de caminhar sem mapa. Ele carrega apenas a confiança de que o caminho se revela a quem ousa começar.",
   },
   {
     id: 1, numeral: "I", name: "O Mago",
-    journeyRole: "O primeiro mestre: a vontade criadora",
+    journeyRole: "A vontade e manifestação",
     narrativeText: "O Louco encontra seu primeiro poder: a capacidade de manifestar. O Mago ensina que os quatro elementos estão disponíveis — basta a vontade focada e a consciência desperta para transformar potencial em realidade.",
   },
   {
     id: 2, numeral: "II", name: "A Sacerdotisa",
-    journeyRole: "O véu entre o consciente e o mistério",
+    journeyRole: "O mistério interior",
     narrativeText: "Após a ação, o silêncio. A Sacerdotisa ensina que nem tudo se manifesta pela força — há um saber que mora no silêncio, na intuição, no que está oculto. O Louco aprende a escutar antes de agir.",
   },
   {
     id: 3, numeral: "III", name: "A Imperatriz",
-    journeyRole: "A abundância criativa e o feminino sagrado",
+    journeyRole: "A criação",
     narrativeText: "O viajante descobre a fertilidade do mundo. A Imperatriz é a mãe de todas as formas — criatividade, nutrição, beleza e abundância. Aqui, o Louco aprende que criar é um ato de amor.",
   },
   {
     id: 4, numeral: "IV", name: "O Imperador",
-    journeyRole: "A estrutura e a autoridade necessárias",
+    journeyRole: "A estrutura",
     narrativeText: "Toda criação precisa de forma. O Imperador traz ordem, limites e responsabilidade. O Louco aprende que liberdade sem estrutura é caos — e que liderar começa por governar a si mesmo.",
   },
   {
     id: 5, numeral: "V", name: "O Hierofante",
-    journeyRole: "O mestre da tradição e do sagrado",
+    journeyRole: "A tradição",
     narrativeText: "O viajante encontra a tradição. O Hierofante é a ponte entre o divino e o humano — rituais, ensinamentos, valores compartilhados. O Louco aprende que pertencer a algo maior é parte do caminho.",
   },
   {
     id: 6, numeral: "VI", name: "Os Enamorados",
-    journeyRole: "A primeira escolha do coração",
+    journeyRole: "A escolha",
     narrativeText: "Agora o Louco precisa escolher. Os Enamorados representam o momento em que valores, desejos e caminhos se cruzam. Não é apenas sobre amor romântico — é sobre alinhar a vida com o que é verdadeiro.",
   },
   {
     id: 7, numeral: "VII", name: "O Carro",
-    journeyRole: "A determinação de seguir em frente",
+    journeyRole: "A direção",
     narrativeText: "Com a escolha feita, o Louco precisa de força para avançar. O Carro é a vontade em movimento, a determinação de superar obstáculos. Mas a vitória exige disciplinar forças opostas dentro de si.",
   },
   {
     id: 8, numeral: "VIII", name: "A Justiça",
-    journeyRole: "O equilíbrio entre ação e consequência",
+    journeyRole: "O equilíbrio",
     narrativeText: "Toda ação tem seu peso. A Justiça ensina que o universo responde com exatidão — e que ser justo consigo mesmo é tão importante quanto ser justo com os outros. O Louco aprende a responsabilidade kármica.",
   },
   {
     id: 9, numeral: "IX", name: "O Eremita",
-    journeyRole: "A busca solitária pela verdade interior",
+    journeyRole: "A busca interna",
     narrativeText: "O viajante se recolhe. O Eremita é o momento em que o Louco precisa se afastar do mundo para encontrar sua própria luz. A lanterna ilumina apenas o próximo passo — e isso é suficiente.",
   },
   {
     id: 10, numeral: "X", name: "A Roda da Fortuna",
-    journeyRole: "O ciclo inevitável da mudança",
+    journeyRole: "Os ciclos",
     narrativeText: "Nada permanece. A Roda ensina que subidas e descidas fazem parte do percurso. O Louco compreende que não controla o destino — mas pode escolher como responder a cada giro.",
   },
   {
     id: 11, numeral: "XI", name: "A Força",
-    journeyRole: "A coragem gentil que domina o instinto",
+    journeyRole: "O domínio interior",
     narrativeText: "Não é força bruta — é a força da alma. O Louco descobre que domar seus medos e instintos exige compaixão, não violência. A mulher que acaricia o leão ensina que o poder verdadeiro é suave.",
   },
   {
     id: 12, numeral: "XII", name: "O Enforcado",
-    journeyRole: "A rendição que transforma a perspectiva",
+    journeyRole: "A nova visão",
     narrativeText: "O Louco precisa parar. O Enforcado é a inversão voluntária — soltar o controle, ver o mundo de cabeça para baixo. Nessa entrega, surge uma sabedoria que a ação jamais alcançaria.",
   },
   {
     id: 13, numeral: "XIII", name: "A Morte",
-    journeyRole: "O fim necessário para o renascimento",
+    journeyRole: "A transformação",
     narrativeText: "Algo precisa morrer. A Morte não é destruição — é transformação profunda. O Louco aprende que segurar o que já passou impede o que precisa nascer. Soltar é o ato mais corajoso da jornada.",
   },
   {
     id: 14, numeral: "XIV", name: "A Temperança",
-    journeyRole: "A cura e o equilíbrio após a transformação",
+    journeyRole: "A integração",
     narrativeText: "Após a morte simbólica, vem a cura. A Temperança mistura opostos com paciência — fogo e água, consciente e inconsciente. O Louco aprende que integração exige tempo, presença e fé no processo.",
   },
   {
     id: 15, numeral: "XV", name: "O Diabo",
-    journeyRole: "O confronto com as cadeias que criamos",
+    journeyRole: "A sombra",
     narrativeText: "O viajante encontra suas sombras. O Diabo revela os apegos, vícios e ilusões que nos prendem — mas a verdade perturbadora é que as correntes estão frouxas. O Louco pode se libertar a qualquer momento.",
   },
   {
     id: 16, numeral: "XVI", name: "A Torre",
-    journeyRole: "A destruição do que era falso",
+    journeyRole: "A ruptura",
     narrativeText: "O raio cai. A Torre destrói estruturas construídas sobre mentiras, ego ou medo. É violento, é assustador — mas é necessário. O Louco aprende que só sobre ruínas verdadeiras se constrói algo autêntico.",
   },
   {
     id: 17, numeral: "XVII", name: "A Estrela",
-    journeyRole: "A esperança que nasce após a destruição",
+    journeyRole: "A cura",
     narrativeText: "Após a tempestade, a estrela brilha. A Estrela é a cura profunda, a fé restaurada, a vulnerabilidade como força. O Louco, nu e aberto, finalmente confia no fluxo da vida sem precisar de armaduras.",
   },
   {
     id: 18, numeral: "XVIII", name: "A Lua",
-    journeyRole: "A travessia pelo inconsciente e seus medos",
+    journeyRole: "O inconsciente",
     narrativeText: "O caminho escurece. A Lua ilumina com luz difusa — revelando medos, ilusões e verdades que a razão esconde. O Louco precisa atravessar essa noite sem fugir, confiando na intuição como bússola.",
   },
   {
     id: 19, numeral: "XIX", name: "O Sol",
-    journeyRole: "A alegria essencial e a clareza reconquistada",
+    journeyRole: "A clareza",
     narrativeText: "A luz retorna em plenitude. O Sol é a alegria inocente, a vitalidade restaurada, a clareza após a confusão. O Louco redescobre a criança interior — aquela que celebra a vida sem condições.",
   },
   {
     id: 20, numeral: "XX", name: "O Julgamento",
-    journeyRole: "O chamado final da alma",
+    journeyRole: "O chamado",
     narrativeText: "A trombeta soa. O Julgamento não é punição — é despertar. O Louco ouve o chamado de sua vocação mais profunda e decide responder. É o momento em que todas as experiências ganham sentido.",
   },
   {
     id: 21, numeral: "XXI", name: "O Mundo",
-    journeyRole: "A completude e o recomeço consciente",
+    journeyRole: "A integração",
     narrativeText: "O ciclo se completa. O Mundo é a dança da integração — o Louco que percorreu todos os estágios e agora celebra a totalidade de quem se tornou. Mas o fim é também um novo início: a espiral continua.",
   },
 ];

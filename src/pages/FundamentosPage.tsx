@@ -354,7 +354,7 @@ const FundamentosPage = () => {
                   if (!fundamentosComplete) {
                     completeModule("fundamentos");
                   }
-                  navigate("/module/arcanos-maiores");
+                  navigate("/jornada");
                 }}
                 className="group relative px-10 py-4 rounded-full font-heading text-sm tracking-[0.2em] transition-all duration-500 hover:scale-105 active:scale-95"
                 style={{
