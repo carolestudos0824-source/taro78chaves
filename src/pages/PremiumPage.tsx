@@ -16,12 +16,12 @@ import { startGooglePlayPurchase, acknowledgeGooglePlayPurchase, GOOGLE_PLAY_PRO
 import { cn } from "@/lib/utils";
 
 const PREMIUM_BENEFITS = [
-  { icon: "jornada", title: "78 arcanos guiados", desc: "Abra todas as portas do deck completo." },
-  { icon: "formacao", title: "Jornada progressiva", desc: "A trilha mística para o domínio real." },
-  { icon: "quiz", title: "Quizzes", desc: "Teste seu olhar e integre a sabedoria." },
-  { icon: "mago", title: "Práticas guiadas", desc: "Rituais de leitura para o cotidiano." },
-  { icon: "concluido", title: "Progresso salvo", desc: "Suas chaves sempre com você." },
-  { icon: "Stars", title: "Arcanos Vivos", desc: "A essência profunda de cada símbolo." },
+  { icon: "formacao", title: "Trilha completa dos 78 arcanos", desc: "Acesso total aos Fundamentos, Maiores e Menores." },
+  { icon: "jornada", title: "Escola Digital de Tarô", desc: "Método exclusivo Rider-Waite-Smith com progressão real." },
+  { icon: "quiz", title: "Quizzes e Chaves", desc: "Valide seu conhecimento e conquiste cada etapa." },
+  { icon: "Stars", title: "Arcanos Vivos Premium", desc: "Conteúdo imersivo reservado para assinantes." },
+  { icon: "mago", title: "Biblioteca e Rituais", desc: "Ferramentas práticas para sua jornada diária." },
+  { icon: "concluido", title: "Progresso e Certificado", desc: "Sua evolução salva e reconhecida pela Escola." },
 ];
 
 const PremiumPage = () => {
@@ -246,7 +246,7 @@ const PremiumPage = () => {
                     <span className="text-xs font-heading font-black text-[#5B1F3D]/40">/mês</span>
                   </div>
                   <p className="text-sm font-black text-[#5B1F3D] italic leading-relaxed">
-                    Assinatura mensal de R$ 27/mês. Pague com cartão ou Pix.
+                    Acesso total e imediato após confirmação do e-mail de compra.
                   </p>
                 </div>
 
