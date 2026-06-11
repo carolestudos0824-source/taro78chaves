@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Info, HelpCircle, X, ChevronRight, ChevronLeft } from "lucide-react";
+import { Info, HelpCircle, ChevronRight, ChevronLeft } from "lucide-react";
 import { type ArcanoSymbolMapItem } from "@/lib/content/runtime-types";
+import { Button } from "@/components/ui/button";
 
 interface SymbolMapProps {
   cardImage: string;
@@ -12,6 +13,10 @@ interface SymbolMapProps {
 export function SymbolMap({ cardImage, cardName, symbols, onComplete }: SymbolMapProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  if (!symbols || symbols.length === 0) {
+    return null;
+  }
 
   const selectedSymbol = symbols.find(s => s.id === selectedId) || symbols[currentIndex];
 
@@ -31,19 +36,17 @@ export function SymbolMap({ cardImage, cardName, symbols, onComplete }: SymbolMa
 
   return (
     <div className="space-y-6 pb-8 animate-fade-up">
-      {symbols.length > 0 && (
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Info className="w-4 h-4 text-[#5B1F3D]" />
-            <span className="text-[10px] font-heading tracking-[0.25em] uppercase text-[#5B1F3D] font-black">
-              Mapa de Símbolos
-            </span>
-          </div>
-          <span className="text-[10px] font-heading font-black tracking-wider text-[#5B1F3D]/80">
-            {currentIndex + 1} / {symbols.length}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Info className="w-4 h-4 text-[#5B1F3D]" />
+          <span className="text-[10px] font-heading tracking-[0.25em] uppercase text-[#5B1F3D] font-black">
+            Mapa de Símbolos
           </span>
         </div>
-      )}
+        <span className="text-[10px] font-heading font-black tracking-wider text-[#5B1F3D]/80">
+          {currentIndex + 1} / {symbols.length}
+        </span>
+      </div>
 
       <div className="relative aspect-[2/3] max-w-[280px] mx-auto rounded-2xl overflow-hidden shadow-2xl group">
         <img 
@@ -82,8 +85,7 @@ export function SymbolMap({ cardImage, cardName, symbols, onComplete }: SymbolMa
       </div>
 
       {/* Symbol Content Card */}
-      {symbols.length > 0 && (
-        <div className="min-h-[220px] relative">
+      <div className="min-h-[220px] relative">
         <div 
           key={selectedSymbol?.id}
           className="bg-white rounded-2xl p-6 border-2 shadow-xl animate-fade-up"
@@ -114,7 +116,7 @@ export function SymbolMap({ cardImage, cardName, symbols, onComplete }: SymbolMa
             </p>
           </div>
         </div>
-      )}
+      </div>
 
       {/* Navigation */}
       <div className="flex items-center justify-between pt-2">
