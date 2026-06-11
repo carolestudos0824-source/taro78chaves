@@ -29,12 +29,7 @@ const BottomNav = () => {
   const fundamentosComplete = progress.completedModules.includes("fundamentos");
 
   // Determine current active journey path
-  const currentJourneyPath = useMemo(() => {
-    if (bypassLocks) return "/jornada";
-    if (!fundamentosComplete) return "/module/fundamentos";
-    
-    return "/jornada";
-  }, [fundamentosComplete, bypassLocks]);
+  const currentJourneyPath = "/jornada";
 
 
   useEffect(() => {

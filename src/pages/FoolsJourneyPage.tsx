@@ -12,6 +12,8 @@ import { Lock } from "lucide-react";
 const FoolsJourneyPage = () => {
   const navigate = useNavigate();
   const { progress, isArcanoUnlocked, isArcanoCompleted, loading: progressLoading, fundamentosComplete } = useProgress();
+  const { isAdmin } = useAccess();
+  const { isAuditor } = useRole();
 
   // Fase 2C: lista agregada dos 22 Arcanos Maiores também passa pelo adaptador
   const resolvedMaiores = useResolvedArcanosMaiores();
@@ -23,10 +25,9 @@ const FoolsJourneyPage = () => {
   const isStudied = (arcanoId: number) => isArcanoUnlocked(arcanoId);
   const isComplete = (arcanoId: number) => isArcanoCompleted(arcanoId);
 
+  const canViewContent = fundamentosComplete || isAdmin || isAuditor;
+
   if (progressLoading) return null;
-  if (!fundamentosComplete) {
-    return <Navigate to="/module/fundamentos" replace />;
-  }
   
   if (!journey) {
     return null;
