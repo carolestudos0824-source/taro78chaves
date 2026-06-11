@@ -54,7 +54,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       return;
     }
 
-    const dest = user ? "/app" : "/auth";
+    const dest = user ? "/module/fundamentos" : "/auth";
     navigate(appendUTMsToUrl(dest));
   };
 
@@ -115,7 +115,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
           <button
             onClick={() => {
               trackEvent("landing_login_click", { source: "landing" });
-              if (user) navigate("/app");
+              if (user) navigate("/module/fundamentos");
               else navigate("/auth?mode=login");
             }}
             className="inline-flex items-center font-heading text-xs tracking-[0.2em] uppercase text-plum hover:text-gold-dark transition-all hover:translate-x-1 font-bold"
@@ -276,9 +276,9 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
           <div className="relative">
             <div className="flex overflow-x-auto gap-4 md:gap-6 pb-8 px-6 md:px-8 scrollbar-elegant snap-x snap-mandatory items-end min-h-[340px] justify-start">
               {[
-                { id: 0, img: imgLouco, name: "O Louco", badge: "Início" },
-                { id: 1, img: imgMago, name: "O Mago", badge: "Desbloqueável" },
-                { id: 2, img: imgSacerdotisa, name: "A Sacerdotisa", badge: "Premium" },
+                { id: 0, img: imgLouco, name: "O Louco", badge: "Acesso Livre" },
+                { id: 1, img: imgMago, name: "O Mago", badge: "Assinante" },
+                { id: 2, img: imgSacerdotisa, name: "A Sacerdotisa", badge: "Assinante" },
                 { id: 3, img: imgImperatriz, name: "A Imperatriz", badge: "Premium" },
                 { id: 4, img: imgImperador, name: "O Imperador", badge: "Premium" },
                 { id: 5, img: imgHierofante, name: "O Hierofante", badge: "Premium" },
