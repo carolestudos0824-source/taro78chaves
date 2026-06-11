@@ -90,8 +90,7 @@ const CombinacoesLessonPage = () => {
   const currentIdx = phaseSteps.indexOf(phase);
 
   const handleStartQuiz = () => {
-    completeLesson(lesson.id);
-    addXP(15);
+    // PROGRESS REMOVAL: Lesson completion moved to the end of the quiz
     setPhase("quiz");
   };
 
@@ -112,7 +111,8 @@ const CombinacoesLessonPage = () => {
       setShowExplanation(false);
     } else {
       completeQuiz(`quiz-${lesson.id}`);
-      addXP(10);
+      completeLesson(lesson.id);
+      addXP(15 + 10); // lesson (15) + quiz completion (10)
       if (!nextLesson) completeModule("combinacoes");
       setPhase("complete");
     }
@@ -261,7 +261,7 @@ const CombinacoesLessonPage = () => {
             {/* Actions */}
             <div className="flex flex-col items-center gap-3 pt-4">
               <button
-                onClick={() => { completeLesson(lesson.id); addXP(15); setPhase("exercise"); }}
+                onClick={() => { setPhase("exercise"); }}
                 className="px-10 py-3.5 rounded-full font-heading text-sm tracking-wider transition-all duration-300 hover:scale-105"
                 style={{
                   background: "linear-gradient(135deg, hsl(36 40% 42%), hsl(36 45% 58%))",
