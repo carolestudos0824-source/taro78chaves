@@ -275,5 +275,15 @@ export function editorialToLegacy(editorial: ArcanoMaiorEditorial, unlocked = fa
     quickReview: editorial.quickReview,
     reflectionQuestions: editorial.reflectionQuestions,
     initiationLesson: editorial.initiationLesson,
+    symbolsMap: editorial.symbols.map((s, i) => ({
+      id: `${editorial.slug}-symbol-${i}`,
+      name: s.name,
+      description: s.meaning + (s.explanation ? ` ${s.explanation}` : ""),
+      reflectionQuestion: s.pedagogicSense || "O que este símbolo desperta em você?",
+      position: { 
+        x: 20 + (i * 12) % 60, 
+        y: 25 + (i * 15) % 50 
+      }
+    }))
   };
 }
