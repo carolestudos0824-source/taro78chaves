@@ -551,7 +551,7 @@ const DashboardPage = () => {
                 <div className="space-y-4">
                     <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center shadow-lg shrink-0">
-                          <Crown className="w-6 h-6 text-gold" />
+                          <KeyRound className="w-6 h-6 text-gold" />
                         </div>
                         <div className="flex flex-col">
                           <span className="text-[13px] font-heading font-black tracking-[0.4em] text-[#FFD700] drop-shadow-sm uppercase">Formação Completa</span>
