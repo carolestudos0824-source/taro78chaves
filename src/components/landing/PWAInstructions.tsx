@@ -2,18 +2,19 @@ import { Smartphone, MoreVertical, Share, Check } from "lucide-react";
 
 export const PWAInstructions = () => {
   return (
-    <section className="py-20 md:py-32 px-6 bg-white/40 border-y border-gold/10 relative overflow-hidden">
+    <section className="py-24 md:py-32 px-6 bg-gradient-to-b from-white/50 to-white/20 border-y border-gold/15 relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-40 bg-gold/5 blur-[100px] rounded-full pointer-events-none" />
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16 space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold-dark font-heading text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold-dark font-heading text-[10px] md:text-xs tracking-[0.25em] uppercase font-bold">
             <Smartphone className="w-3.5 h-3.5" />
             Acesso Rápido
           </div>
-          <h2 className="font-heading text-4xl md:text-5xl text-midnight">Use como aplicativo no celular</h2>
-          <p className="font-body text-lg md:text-xl text-midnight/70 max-w-3xl mx-auto leading-relaxed">
+          <h2 className="font-heading text-4xl md:text-5xl text-plum font-black">Use como aplicativo no celular</h2>
+          <p className="font-body text-lg md:text-xl text-midnight/75 max-w-3xl mx-auto leading-relaxed">
             A Escola Digital Tarô 78 Chaves funciona online, pelo navegador do celular, tablet ou computador.
           </p>
-          <p className="font-body text-lg md:text-xl text-midnight/70 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-body text-base md:text-lg text-midnight/65 max-w-3xl mx-auto leading-relaxed">
             No celular, você pode salvar o acesso na tela inicial, como um aplicativo. Assim, basta tocar no ícone do Tarô 78 Chaves para entrar na sua área de estudos.
           </p>
         </div>
