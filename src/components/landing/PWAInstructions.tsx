@@ -56,16 +56,16 @@ export const PWAInstructions = () => {
           </div>
 
           {/* Card iPhone */}
-          <div className="p-8 md:p-12 rounded-[2.5rem] bg-white border border-gold/10 shadow-sm space-y-8 transition-all hover:shadow-md relative overflow-hidden group">
+          <div className="p-8 md:p-12 rounded-[2.5rem] bg-white border border-gold/20 shadow-[0_20px_60px_-30px_rgba(91,31,61,0.3)] space-y-8 transition-all hover:shadow-[0_30px_70px_-25px_rgba(91,31,61,0.4)] hover:-translate-y-1 hover:border-gold/40 relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-6 opacity-[0.05] group-hover:opacity-10 transition-opacity">
               <Smartphone className="w-24 h-24 text-midnight" />
             </div>
 
-            <div className="space-y-4">
-              <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center border border-blue-100">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-2xl flex items-center justify-center border border-blue-200/60 shadow-sm">
                 <span className="text-2xl">🍎</span>
               </div>
-              <h3 className="font-heading text-2xl text-midnight">iPhone</h3>
+              <h3 className="font-heading text-2xl md:text-3xl text-plum font-black">iPhone</h3>
             </div>
 
             <ul className="space-y-4">
