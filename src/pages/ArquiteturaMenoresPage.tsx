@@ -12,6 +12,7 @@ const ArquiteturaMenoresPage = () => (
     lessons={ARQUITETURA_MENORES_LESSONS}
     lessonRoutePrefix="/arquitetura-menores"
     moduleSlug="arquitetura-menores"
+    backRoute="/app"
   />
 );
 
