@@ -87,7 +87,13 @@ interface TarotIconProps {
   strokeWidth?: number;
 }
 
-const SuitCopas = ({ className, size, color }: any) => (
+interface SvgProps {
+  className?: string;
+  size?: number;
+  color?: string;
+}
+
+const SuitCopas = ({ className, size, color }: SvgProps) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M5 4v3a7 7 0 0 0 14 0V4" />
     <path d="M12 11v8" />
@@ -96,7 +102,7 @@ const SuitCopas = ({ className, size, color }: any) => (
   </svg>
 );
 
-const SuitPaus = ({ className, size, color }: any) => (
+const SuitPaus = ({ className, size, color }: SvgProps) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M12 3v18" />
     <path d="M9 7l3-1 3 1" />
@@ -106,7 +112,7 @@ const SuitPaus = ({ className, size, color }: any) => (
   </svg>
 );
 
-const SuitEspadas = ({ className, size, color }: any) => (
+const SuitEspadas = ({ className, size, color }: SvgProps) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M12 3v14" />
     <path d="M8 17h8" />
@@ -115,7 +121,7 @@ const SuitEspadas = ({ className, size, color }: any) => (
   </svg>
 );
 
-const SuitOuros = ({ className, size, color }: any) => (
+const SuitOuros = ({ className, size, color }: SvgProps) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <circle cx="12" cy="12" r="9" />
     <path d="M12 3l2.5 6.5h7l-5.5 4 2 7-6-4.5-6 4.5 2-7-5.5-4h7z" />
