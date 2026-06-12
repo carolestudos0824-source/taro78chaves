@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowRight, Sparkles, BookOpen, Brain, Lightbulb, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Sparkles, BookOpen, Brain, Lightbulb, CheckCircle2, Lock } from "lucide-react";
 import { PageBackControls } from "@/components/PageBackControls";
 
 import { useProgress } from "@/hooks/use-progress";
 import { useRole } from "@/hooks/use-role";
+import { usePremium } from "@/hooks/use-premium";
 import { useResolvedLesson } from "@/hooks/use-resolved-lesson";
 import { StreakCounter } from "@/components/StreakCounter";
 
@@ -51,6 +52,7 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
   const { order } = useParams();
   const navigate = useNavigate();
   const { progress, addXP, completeLesson, completeQuiz, completeModule } = useProgress();
+  const { isPremium } = usePremium();
   const { isStaff, loading: roleLoading } = useRole();
   const [phase, setPhase] = useState<Phase>("lesson");
   const [quizIdx, setQuizIdx] = useState(0);
@@ -119,6 +121,56 @@ const GenericLessonPage = ({ lessons, getLessonByOrder, moduleRoute, moduleName,
             style={{ background: "#C8A66A", color: "#5B1F3D" }}
           >
             Voltar ao módulo
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // Bloqueio de Segurança para Lição
+  const isUnlocked = () => {
+    if (isStaff) return true;
+    
+    const isPremiumModule = moduleSlug === "arquitetura-menores" || 
+                           moduleSlug === "leitura-simbolica" || 
+                           moduleSlug === "combinacoes" ||
+                           moduleSlug === "tiragens" ||
+                           moduleSlug === "espiritualidade" ||
+                           moduleSlug === "mesa-taro" ||
+                           moduleSlug === "leitura-aplicada" ||
+                           moduleSlug === "pratica" ||
+                           moduleSlug === "trabalhar-taro";
+
+    if (isPremiumModule && !isPremium) return false;
+
+    if (lessonOrder === 0) {
+      if (moduleSlug === "fundamentos" || moduleSlug === "arcanos-maiores") return true;
+      return isPremium;
+    }
+
+    const prevLesson = getLessonByOrder(lessonOrder - 1);
+    return prevLesson ? progress.completedLessons.includes(prevLesson.id) : false;
+  };
+
+  if (!isUnlocked()) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF5EF]">
+        <div className="text-center space-y-6 max-w-xs px-6">
+          <div className="w-16 h-16 bg-[#F3E6E0] rounded-full flex items-center justify-center mx-auto mb-2 border border-[#C8A66A30]">
+            <Lock className="w-8 h-8 text-[#5B1F3D]" />
+          </div>
+          <div className="space-y-2">
+            <h2 className="font-heading text-xl" style={{ color: "#5B1F3D" }}>Acesso Bloqueado</h2>
+            <p className="font-body text-sm text-[#5B1F3D]/60 italic leading-relaxed">
+              {isPremium && !isPremium ? "Este conteúdo é exclusivo para assinantes Premium." : "Conclua as lições anteriores para liberar este portal."}
+            </p>
+          </div>
+          <button 
+            onClick={() => navigate(isPremium ? moduleRoute : "/premium")} 
+            className="w-full py-3.5 px-6 rounded-full font-heading text-[12px] tracking-[0.2em] uppercase transition-all shadow-md hover:scale-105 active:scale-95"
+            style={{ background: "#C8A66A", color: "#5B1F3D" }}
+          >
+            {isPremium ? "Voltar ao módulo" : "Ver planos Premium"}
           </button>
         </div>
       </div>

@@ -128,8 +128,8 @@ const AppRoutes = () => {
             
             <Route element={<SecurityGate />}>
               <Route path="/app" element={<DashboardPage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/perfil" element={<Navigate to="/profile" replace />} />
+              <Route path="/perfil" element={<ProfilePage />} />
+              <Route path="/profile" element={<Navigate to="/perfil" replace />} />
               <Route path="/premium" element={<PremiumPage />} />
               <Route path="/acesso-comprado" element={<AcessoComprado />} />
               
@@ -138,14 +138,14 @@ const AppRoutes = () => {
               
               <Route path="/jornada-do-louco" element={<FoolsJourneyPage />} />
               <Route path="/jornada" element={<JornadaAlias />} />
-              <Route path="/trails" element={<TrailsPage />} />
-              <Route path="/mapa" element={<Navigate to="/trails" replace />} />
+              <Route path="/mapa" element={<TrailsPage />} />
+              <Route path="/trails" element={<Navigate to="/mapa" replace />} />
               
               <Route path="/lesson/:id" element={<LessonPage />} />
               
               <Route path="/journal" element={<JourneyJournalPage />} />
-              <Route path="/daily-challenges" element={<DailyChallengesPage />} />
-              <Route path="/desafios" element={<Navigate to="/daily-challenges" replace />} />
+              <Route path="/desafios" element={<DailyChallengesPage />} />
+              <Route path="/daily-challenges" element={<Navigate to="/desafios" replace />} />
               
               <Route path="/arcanos-menores" element={<ArcanosMenoresModulePage />} />
               <Route path="/naipe/:naipeId" element={<NaipePage />} />
@@ -154,6 +154,7 @@ const AppRoutes = () => {
               
               <Route path="/amor" element={<AmorPage />} />
               <Route path="/amor/lesson" element={<AmorLessonPage />} />
+              <Route path="/study-routine" element={<StudyRoutinePage />} />
               <Route path="/rotina" element={<Navigate to="/study-routine" replace />} />
               
               <Route path="/leitura-simbolica" element={<LeituraSimbolicaPage />} />
@@ -186,7 +187,6 @@ const AppRoutes = () => {
               <Route path="/review/:id" element={<ReviewPage />} />
               <Route path="/certificates" element={<CertificatesPage />} />
               <Route path="/library" element={<SymbolLibraryPage />} />
-              <Route path="/study-routine" element={<StudyRoutinePage />} />
               <Route path="/cartas-corte" element={<CartasCortePage />} />
               <Route path="/numerologia" element={<NumerologiaPage />} />
               <Route path="/presentation" element={<PresentationPage />} />
@@ -216,9 +216,9 @@ const AppRoutes = () => {
               <Route path="/excluir-conta" element={<Navigate to="/delete-account" replace />} />
 
               {/* Catch all for nested app routes to avoid NotFound inside the shell */}
-              <Route path="/perfil/*" element={<Navigate to="/profile" replace />} />
-              <Route path="/mapa/*" element={<Navigate to="/trails" replace />} />
-              <Route path="/desafios/*" element={<Navigate to="/daily-challenges" replace />} />
+              <Route path="/perfil/*" element={<Navigate to="/perfil" replace />} />
+              <Route path="/mapa/*" element={<Navigate to="/mapa" replace />} />
+              <Route path="/desafios/*" element={<Navigate to="/desafios" replace />} />
             </Route>
 
             <Route path="/admin" element={<AdminPage />} />

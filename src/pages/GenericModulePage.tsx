@@ -5,6 +5,8 @@ import { PageBackControls } from "@/components/PageBackControls";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { useResolvedModule } from "@/hooks/use-resolved-module";
+import { usePremium } from "@/hooks/use-premium";
+import { useRole } from "@/hooks/use-role";
 import { ChaveProgress } from "@/components/ChaveProgress";
 import { StreakCounter } from "@/components/StreakCounter";
 
@@ -48,13 +50,37 @@ const GenericModulePage = ({
   const navigate = useNavigate();
   const { progress } = useProgress();
   const { bypassLocks } = useAccess();
+  const { isPremium } = usePremium();
+  const { isStaff } = useRole();
   // Fase 4B — telemetria invisível via adaptador (DB-first com fallback).
   useResolvedModule(moduleSlug ?? null);
 
   const isCompleted = (id: string) => progress.completedLessons.includes(id);
   const isUnlocked = (order: number) => {
-    if (bypassLocks) return true;
-    if (order === 0) return true;
+    if (bypassLocks || isStaff) return true;
+    
+    // Bloqueio Premium para módulos específicos
+    const isPremiumModule = moduleSlug === "arquitetura-menores" || 
+                           moduleSlug === "leitura-simbolica" || 
+                           moduleSlug === "combinacoes" ||
+                           moduleSlug === "tiragens" ||
+                           moduleSlug === "espiritualidade" ||
+                           moduleSlug === "mesa-taro" ||
+                           moduleSlug === "leitura-aplicada" ||
+                           moduleSlug === "pratica" ||
+                           moduleSlug === "trabalhar-taro";
+                           
+    if (isPremiumModule && !isPremium) return false;
+
+    if (order === 0) {
+      // Fundamentos e Arcanos Maiores (Jornada) podem começar order 0
+      if (moduleSlug === "fundamentos" || moduleSlug === "arcanos-maiores") return true;
+      
+      // Para outros módulos, a primeira lição pode exigir progresso anterior ou ser bloqueada por padrão
+      // No caso de arquitetura-menores, se não for premium, já retornou false acima.
+      // Se for premium, liberamos a primeira lição.
+      return isPremium;
+    }
     const prev = lessons.find(l => l.order === order - 1);
     return prev ? isCompleted(prev.id) : false;
   };
