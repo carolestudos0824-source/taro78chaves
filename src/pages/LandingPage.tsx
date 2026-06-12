@@ -293,16 +293,19 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               ].map((card, i) => (
                 <div key={i} className="flex-shrink-0 flex flex-col items-center gap-3 snap-start group">
                   <div className="relative">
-                    <div className="w-32 h-52 md:w-40 md:h-60 rounded-2xl overflow-hidden shadow-xl border-4 border-white transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-2xl group-hover:border-gold/20">
+                    <div className="w-32 h-52 md:w-44 md:h-64 rounded-2xl overflow-hidden shadow-[0_20px_50px_-20px_rgba(91,31,61,0.5)] border-[5px] border-white transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-[0_30px_70px_-15px_rgba(91,31,61,0.6)] group-hover:border-gold/40">
                       <img src={card.img} alt={card.name} className="w-full h-full object-cover" />
-                      <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[8px] font-heading tracking-widest uppercase shadow-lg z-20 ${ card.badge === "Início" ? "bg-plum text-white" : "bg-gold text-white" }`}>
+                      <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[8px] font-heading font-bold tracking-widest uppercase shadow-lg z-20 ${ card.badge === "Acesso Livre" ? "bg-plum text-white" : "bg-gold text-white" }`}>
                         {card.badge}
                       </div>
                     </div>
                   </div>
-                  <div className="text-center">
-                    <span className="text-[11px] md:text-xs font-heading tracking-[0.1em] uppercase text-plum font-bold block truncate w-full px-1">
-                      {card.name.toUpperCase()}
+                  <div className="text-center space-y-1">
+                    <span className="text-[9px] md:text-[10px] font-heading tracking-[0.25em] uppercase text-gold-dark font-bold block">
+                      Chave {String(card.id + 1).padStart(2, '0')}
+                    </span>
+                    <span className="text-[12px] md:text-sm font-heading tracking-[0.05em] text-plum font-black block truncate w-full px-1">
+                      {card.name}
                     </span>
                   </div>
                 </div>
