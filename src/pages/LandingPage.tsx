@@ -142,13 +142,13 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               {/* Symbolic Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in">
                 <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-gold-dark" />
-                <span className="text-[10px] md:text-[11px] font-heading tracking-[0.25em] uppercase font-bold text-plum">
+                <span className="text-[11px] md:text-xs font-heading tracking-[0.25em] uppercase font-bold text-plum">
                   A jornada viva dos 78 arcanos
                 </span>
               </div>
 
               <div className="space-y-5 md:space-y-7">
-                <h1 className="font-heading text-[2.6rem] md:text-6xl lg:text-7xl leading-[1.02] tracking-tight text-plum normal-case font-black">
+                <h1 className="font-heading text-[2.75rem] md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-plum normal-case font-black">
                   Domine o Tarô <br className="hidden md:block" /> em uma Escola Digital
                 </h1>
                 
@@ -156,10 +156,10 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                   <p className="font-heading text-xl md:text-2xl text-plum font-extrabold leading-snug">
                     Você quer aprender Tarô, mas ainda trava na hora de interpretar as cartas?
                   </p>
-                  <p className="font-body text-lg md:text-xl text-plum/90 leading-relaxed font-medium">
+                  <p className="font-body text-lg md:text-xl text-plum leading-relaxed font-medium">
                     No Tarô 78 Chaves, você percorre cada arcano com método, lições curtas e progressão real.
                   </p>
-                  <p className="font-body text-base md:text-lg text-plum/75 leading-relaxed">
+                  <p className="font-body text-base md:text-lg text-plum/85 leading-relaxed">
                     Aprenda Tarô do zero, carta por carta, em uma jornada guiada com lições curtas, exercícios, quizzes, progresso salvo e prática diária.
                   </p>
                 </div>
@@ -168,61 +168,67 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                   “O Tarô 78 Chaves ensina com base fiel na tradição visual do Rider-Waite-Smith, preservando a carta como protagonista.”
                 </p>
 
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-7 pt-1 font-heading text-[9px] md:text-xs tracking-[0.2em] uppercase text-plum font-extrabold">
-                  <div className="flex items-center gap-2 group">
-                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/30">
-                      <Zap className="w-3 h-3 md:w-3.5 md:h-3.5 text-gold-dark" />
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-7 pt-2 font-heading text-[10px] md:text-xs tracking-[0.2em] uppercase text-plum font-extrabold">
+                  <div className="flex items-center gap-2.5 group">
+                    <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/30">
+                      <Zap className="w-3.5 h-3.5 md:w-4 md:h-4 text-gold-dark" />
                     </div>
                     <span>Quizzes de Conhecimento</span>
                   </div>
-                  <div className="flex items-center gap-2 group">
-                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/30">
-                      <Layers className="w-3 h-3 md:w-3.5 md:h-3.5 text-gold-dark" />
+                  <div className="flex items-center gap-2.5 group">
+                    <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/30">
+                      <Layers className="w-3.5 h-3.5 md:w-4 md:h-4 text-gold-dark" />
                     </div>
                     <span>Progresso salvo</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 group">
+                    <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/30">
+                      <BookOpen className="w-3.5 h-3.5 md:w-4 md:h-4 text-gold-dark" />
+                    </div>
+                    <span>Lições guiadas</span>
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-start gap-3 pt-3 w-full">
-                <Button 
-                  onClick={() => handleStart("hero", "COMEÇAR MINHA JORNADA")}
-                  className="w-full sm:w-auto min-h-[68px] md:min-h-[76px] px-6 md:px-16 rounded-2xl bg-gradient-to-br from-plum to-[#3f1429] hover:from-plum hover:to-plum text-ivory font-heading text-base md:text-lg tracking-[0.15em] md:tracking-[0.25em] uppercase border border-gold/30 shadow-[0_24px_60px_-18px_rgba(91,31,61,0.75)] hover:shadow-[0_28px_70px_-16px_rgba(91,31,61,0.85)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3 md:gap-4 group/btn whitespace-normal text-center leading-tight font-black"
-                >
-                  <Key className="w-5 h-5 md:w-6 md:h-6 group-hover/btn:rotate-12 transition-transform text-gold shrink-0" />
-                  <span>COMEÇAR MINHA JORNADA</span>
-                </Button>
-                <div className="flex flex-col items-center lg:items-start gap-1 mt-1">
-                  {isWebCheckoutAllowed() && (
-                    <>
-                      <p className="text-[11px] md:text-sm font-heading tracking-[0.1em] text-plum/90 font-bold uppercase">
-                        ✦ Assinatura mensal por apenas R$27/mês.
-                      </p>
-                      <p className="text-[10px] md:text-xs font-body text-plum/55 italic">
-                        Cancele quando quiser. Acesso imediato.
-                      </p>
-                    </>
-                  )}
+                <div className="flex flex-col items-center lg:items-start gap-3 pt-4 w-full">
+                  <Button 
+                    onClick={() => handleStart("hero", "COMEÇAR MINHA JORNADA")}
+                    className="w-full sm:w-auto min-h-[72px] md:min-h-[80px] px-6 md:px-16 rounded-2xl bg-gradient-to-br from-plum to-[#3f1429] hover:from-plum hover:to-plum text-ivory font-heading text-base md:text-lg tracking-[0.15em] md:tracking-[0.25em] uppercase border border-gold/30 shadow-[0_24px_60px_-18px_rgba(91,31,61,0.75)] hover:shadow-[0_28px_70px_-16px_rgba(91,31,61,0.85)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3 md:gap-4 group/btn whitespace-normal text-center leading-tight font-black"
+                  >
+                    <Key className="w-5 h-5 md:w-6 md:h-6 group-hover/btn:rotate-12 transition-transform text-gold shrink-0" />
+                    <span>COMEÇAR MINHA JORNADA</span>
+                  </Button>
+                  <div className="flex flex-col items-center lg:items-start gap-1.5 mt-1">
+                    {isWebCheckoutAllowed() && (
+                      <>
+                        <p className="text-xs md:text-sm font-heading tracking-[0.1em] text-plum font-bold uppercase">
+                          ✦ Assinatura mensal por apenas R$27/mês.
+                        </p>
+                        <p className="text-[11px] md:text-xs font-body text-plum/60 italic">
+                          Cancele quando quiser. Acesso imediato.
+                        </p>
+                      </>
+                    )}
+                  </div>
+                  <button 
+                    onClick={() => {
+                      trackEvent("landing_how_it_works_click", {
+                        source: "landing",
+                        page_path: window.location.pathname
+                      });
+                      const element = document.getElementById('como-funciona');
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      } else {
+                        window.location.hash = "#como-funciona";
+                      }
+                    }} 
+                    className="group inline-flex items-center gap-2 text-[11px] md:text-xs font-heading tracking-[0.25em] uppercase text-plum hover:text-gold-dark underline underline-offset-4 transition-all font-extrabold cursor-pointer p-2 mt-1"
+                  >
+                    Ver como funciona
+                    <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  </button>
                 </div>
-                <button 
-                  onClick={() => {
-                    trackEvent("landing_how_it_works_click", {
-                      source: "landing",
-                      page_path: window.location.pathname
-                    });
-                    const element = document.getElementById('como-funciona');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    } else {
-                      window.location.hash = "#como-funciona";
-                    }
-                  }} 
-                  className="group inline-flex items-center gap-2 text-[10px] md:text-[11px] font-heading tracking-[0.25em] uppercase text-plum hover:text-gold-dark underline underline-offset-4 transition-all font-extrabold cursor-pointer p-2 mt-1"
-                >
-                  Ver como funciona
-                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
             </div>
 
             <div className="relative flex justify-center lg:justify-end order-2 lg:order-2 mt-6 md:mt-0 lg:scale-110 lg:origin-right">
@@ -272,16 +278,16 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
         
         <div className="max-w-7xl mx-auto px-0 md:px-6 relative z-10">
           <div className="text-center mb-16 px-6 space-y-5">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold-dark font-heading text-[10px] md:text-xs tracking-[0.25em] uppercase font-bold">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold-dark font-heading text-[11px] md:text-xs tracking-[0.25em] uppercase font-bold">
               <Key className="w-3.5 h-3.5" />
               78 Chaves · 78 Portais
             </div>
             <h2 className="font-heading text-3xl md:text-5xl text-plum font-black">Explore a Trilha do Conhecimento</h2>
-            <p className="text-midnight/70 max-w-2xl mx-auto font-body text-base md:text-lg leading-relaxed">Uma jornada guiada pelos 78 arcanos, com fidelidade simbólica ao Rider-Waite-Smith. Cada carta concluída é uma Chave que abre o próximo Portal.</p>
+            <p className="text-midnight/80 max-w-2xl mx-auto font-body text-[15px] md:text-lg leading-relaxed">Uma jornada guiada pelos 78 arcanos, com fidelidade simbólica ao Rider-Waite-Smith. Cada carta concluída é uma Chave que abre o próximo Portal.</p>
           </div>
 
           <div className="relative">
-            <div className="flex overflow-x-auto gap-4 md:gap-6 pb-8 px-6 md:px-8 scrollbar-elegant snap-x snap-mandatory items-end min-h-[340px] justify-start">
+            <div className="flex overflow-x-auto gap-5 md:gap-7 pb-8 px-6 md:px-8 scrollbar-elegant snap-x snap-mandatory items-end min-h-[340px] justify-start">
               {[
                 { id: 0, img: imgLouco, name: "O Louco", badge: "Acesso Livre" },
                 { id: 1, img: imgMago, name: "O Mago", badge: "Assinante" },
@@ -295,16 +301,16 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                   <div className="relative">
                     <div className="w-32 h-52 md:w-44 md:h-64 rounded-2xl overflow-hidden shadow-[0_20px_50px_-20px_rgba(91,31,61,0.5)] border-[5px] border-white transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-[0_30px_70px_-15px_rgba(91,31,61,0.6)] group-hover:border-gold/40">
                       <img src={card.img} alt={card.name} className="w-full h-full object-cover" />
-                      <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-[8px] font-heading font-bold tracking-widest uppercase shadow-lg z-20 ${ card.badge === "Acesso Livre" ? "bg-plum text-white" : "bg-gold text-white" }`}>
+                      <div className={`absolute top-3 right-3 px-2.5 py-1 rounded-full text-[9px] font-heading font-bold tracking-widest uppercase shadow-lg z-20 ${ card.badge === "Acesso Livre" ? "bg-plum text-white" : "bg-gold text-white" }`}>
                         {card.badge}
                       </div>
                     </div>
                   </div>
                   <div className="text-center space-y-1">
-                    <span className="text-[9px] md:text-[10px] font-heading tracking-[0.25em] uppercase text-gold-dark font-bold block">
+                    <span className="text-[10px] md:text-[11px] font-heading tracking-[0.25em] uppercase text-gold-dark font-bold block">
                       Chave {String(card.id + 1).padStart(2, '0')}
                     </span>
-                    <span className="text-[12px] md:text-sm font-heading tracking-[0.05em] text-plum font-black block truncate w-full px-1">
+                    <span className="text-sm md:text-base font-heading tracking-[0.05em] text-plum font-black block truncate w-full px-1">
                       {card.name}
                     </span>
                   </div>
@@ -335,15 +341,15 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       <section className="py-24 px-6 bg-[#FAF5EF]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 space-y-5">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plum/5 border border-plum/15 text-plum font-heading text-[10px] md:text-xs tracking-[0.25em] uppercase font-bold">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plum/5 border border-plum/15 text-plum font-heading text-[11px] md:text-xs tracking-[0.25em] uppercase font-bold">
               <Sparkles className="w-3.5 h-3.5 text-gold-dark" />
               Tudo o que você recebe
             </div>
             <h2 className="font-heading text-3xl md:text-5xl text-plum font-black">O que está incluído na Escola Digital Tarô 78 Chaves</h2>
-            <p className="text-midnight/70 max-w-2xl mx-auto font-body text-base md:text-lg leading-relaxed text-balance">Estude os 78 arcanos com uma trilha progressiva, fiel ao Rider-Waite-Smith e pensada para criar prática, continuidade e domínio simbólico.</p>
+            <p className="text-midnight/80 max-w-2xl mx-auto font-body text-[15px] md:text-lg leading-relaxed text-balance">Estude os 78 arcanos com uma trilha progressiva, fiel ao Rider-Waite-Smith e pensada para criar prática, continuidade e domínio simbólico.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-10 mb-16">
             {[
               { Icon: Key, title: "O Caminho do Aprendiz", text: "Aprenda a ler cada arcano de forma fluida, sem decorar tabelas de significados ou palavras-chave soltas.", tone: "plum" },
               { Icon: Sparkles, title: "Método Arcano Vivo", text: "Uma metodologia que conecta a simbologia clássica do Rider-Waite-Smith com aplicação prática no seu dia a dia.", tone: "gold" },
@@ -352,13 +358,13 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               { Icon: BookOpen, title: "Lições que ensinam a olhar", text: "Cada arcano traz essência, símbolos, luz e sombra aplicados ao amor, trabalho e vida prática com clareza.", tone: "plum" },
               { Icon: Award, title: "Ganhe Confiança Real", text: "Aprenda a lógica por trás de cada arcano para que a interpretação flua com mais naturalidade, clareza e autoridade.", tone: "gold" },
             ].map(({ Icon, title, text, tone }, i) => (
-              <div key={i} className="group relative p-8 md:p-9 rounded-3xl bg-white border border-gold/15 shadow-[0_10px_40px_-20px_rgba(91,31,61,0.25)] space-y-5 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_-18px_rgba(91,31,61,0.4)] hover:border-gold/40 overflow-hidden">
+              <div key={i} className="group relative p-8 md:p-10 rounded-3xl bg-white border border-gold/15 shadow-[0_10px_40px_-20px_rgba(91,31,61,0.25)] space-y-5 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_-18px_rgba(91,31,61,0.4)] hover:border-gold/40 overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-gold/5 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className={`relative w-14 h-14 rounded-2xl flex items-center justify-center border ${tone === "plum" ? "bg-plum/5 border-plum/15" : "bg-gold/10 border-gold/25"}`}>
                   <Icon className={`w-7 h-7 ${tone === "plum" ? "text-plum" : "text-gold-dark"}`} />
                 </div>
                 <h3 className="font-heading text-xl md:text-2xl text-plum font-black leading-tight">{title}</h3>
-                <p className="text-[15px] text-midnight/75 font-body leading-relaxed">{text}</p>
+                <p className="text-base text-midnight/85 font-body leading-relaxed">{text}</p>
                 <div className="pt-1 h-px bg-gradient-to-r from-gold/30 via-gold/10 to-transparent" />
               </div>
             ))}
@@ -416,27 +422,27 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
         <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-white/5 blur-[150px] rounded-full" />
         
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-16">
-          <div className="space-y-4">
+          <div className="space-y-5">
             <h2 className="font-heading text-4xl md:text-5xl text-[#FAF5EF]">Assine a Escola Digital Tarô 78 Chaves</h2>
-            <p className="text-[#D8CFC2] font-body text-lg max-w-2xl mx-auto">Percorra a jornada completa pelos 78 arcanos e desenvolva sua leitura com profundidade e consciência.</p>
+            <p className="text-[#E8DED2] font-body text-lg max-w-2xl mx-auto">Percorra a jornada completa pelos 78 arcanos e desenvolva sua leitura com profundidade e consciência.</p>
           </div>
 
           <div className="max-w-2xl md:max-w-3xl mx-auto">
             {/* Monthly Subscription Plan */}
             <div className="p-6 md:p-14 rounded-[2rem] md:rounded-[3rem] bg-white text-midnight shadow-2xl border-2 md:border-4 border-gold relative flex flex-col text-left space-y-6 md:space-y-8 animate-fade-in w-full mx-auto">
-              <div className="absolute -top-4 md:-top-6 left-1/2 -translate-x-1/2 bg-gold px-4 md:px-8 py-2 md:py-3 rounded-full text-[10px] md:text-sm font-heading font-black tracking-[0.1em] md:tracking-[0.2em] text-white shadow-[0_10px_30px_-5px_rgba(200,166,106,0.5)] whitespace-nowrap border border-white/20">
+              <div className="absolute -top-4 md:-top-6 left-1/2 -translate-x-1/2 bg-gold px-4 md:px-8 py-2 md:py-3 rounded-full text-[11px] md:text-sm font-heading font-black tracking-[0.1em] md:tracking-[0.2em] text-white shadow-[0_10px_30px_-5px_rgba(200,166,106,0.5)] whitespace-nowrap border border-white/20">
                 ✦ OFERTA EXCLUSIVA
               </div>
               
               <div className="space-y-4 md:space-y-6">
-                <h3 className="font-heading text-xl md:text-3xl text-plum font-black uppercase tracking-tight md:tracking-widest leading-tight">
+                <h3 className="font-heading text-2xl md:text-3xl text-plum font-black uppercase tracking-tight md:tracking-widest leading-tight">
                   Assinatura Mensal • Escola Digital
                 </h3>
                 
                 <div className="space-y-4">
                   <div className="flex flex-col">
                     <div className="flex items-baseline gap-3">
-                      <span className="text-sm md:xl text-plum font-heading uppercase tracking-widest font-black">Por apenas</span>
+                      <span className="text-sm md:text-xl text-plum font-heading uppercase tracking-widest font-black">Por apenas</span>
                       <span className="text-5xl sm:text-7xl md:text-9xl font-heading text-midnight leading-none tracking-tighter">R$27</span>
                       <span className="text-sm md:text-2xl text-midnight/40 font-heading font-bold uppercase tracking-widest">/mês</span>
                     </div>
@@ -463,11 +469,11 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               </div>
 
               <div className="space-y-6 pt-4 border-t border-gold/10">
-                <p className="text-sm md:text-base text-midnight/80 font-body leading-relaxed">
+                <p className="text-base md:text-lg text-midnight/90 font-body leading-relaxed">
                   Acesse a jornada completa pelos 78 arcanos, com aulas organizadas, quizzes, progresso salvo e área de membros para estudar no seu ritmo.
                 </p>
 
-                <div className="space-y-4">
+                <div className="space-y-5">
                   {[
                     "Aprenda a interpretar as cartas com mais segurança, sem depender apenas de listas de palavras-chave",
                     "Quizzes, exercícios e progresso salvo",
@@ -481,7 +487,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                       <div className="w-5 h-5 rounded-full bg-gold/20 flex items-center justify-center shrink-0 mt-1">
                         <Check className="w-3.5 h-3.5 text-gold-dark" />
                       </div>
-                      <span className="text-base md:text-lg text-midnight/80 font-bold leading-snug">{item}</span>
+                      <span className="text-base md:text-lg text-midnight/90 font-bold leading-snug">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -491,24 +497,24 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
 
                 <Button 
                   onClick={() => handleSubscribe("monthly")} 
-                  className="w-full h-auto min-h-[64px] md:h-20 py-4 bg-plum hover:bg-plum/90 text-ivory rounded-full text-sm md:text-xl shadow-[0_15px_35px_-10px_rgba(91,31,61,0.5)] hover:scale-[1.02] transition-all font-heading tracking-tight md:tracking-widest font-black uppercase flex items-center justify-center gap-2 md:gap-3 px-4 whitespace-normal text-center"
+                  className="w-full h-auto min-h-[72px] md:h-20 py-4 bg-plum hover:bg-plum/90 text-ivory rounded-full text-sm md:text-xl shadow-[0_15px_35px_-10px_rgba(91,31,61,0.5)] hover:scale-[1.02] transition-all font-heading tracking-tight md:tracking-widest font-black uppercase flex items-center justify-center gap-2 md:gap-3 px-4 whitespace-normal text-center"
                 >
                   <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-gold animate-pulse shrink-0" />
                   <span>COMEÇAR MINHA JORNADA</span>
                 </Button>
                 
                 <div className="space-y-2 text-center">
-                  <p className="text-[10px] md:text-xs text-midnight/40 font-body uppercase tracking-[0.2em] font-bold">
+                  <p className="text-[11px] md:text-sm text-midnight/40 font-body uppercase tracking-[0.2em] font-bold">
                     Pagamento processado via Stripe. Acesso liberado automaticamente após a confirmação da compra.
                   </p>
-                  <p className="text-[10px] md:text-xs text-midnight/40 font-body uppercase tracking-[0.2em] font-bold">
+                  <p className="text-[11px] md:text-sm text-midnight/40 font-body uppercase tracking-[0.2em] font-bold">
                     Certificado digital emitido pelo Tarô 78 Chaves com código de validação.
                   </p>
                 </div>
               </div>
 
               <div className="pt-4 border-t border-gold/10 text-center">
-                <p className="text-[11px] md:text-xs text-plum font-bold font-body leading-relaxed max-w-[280px] mx-auto italic">
+                <p className="text-xs md:text-sm text-plum font-bold font-body leading-relaxed max-w-[280px] mx-auto italic">
                   “O acesso à jornada completa é liberado imediatamente após a confirmação do pagamento.”
                 </p>
               </div>
@@ -523,99 +529,99 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       {/* ─── FAQ Section ─── */}
       <section className="py-24 md:py-32 px-6 bg-gradient-to-b from-white/30 to-white/10">
         <div className="max-w-4xl mx-auto space-y-16">
-          <div className="text-center space-y-4">
+          <div className="text-center space-y-5">
              <HelpCircle className="w-12 h-12 text-gold-dark mx-auto mb-4" />
              <h2 className="font-heading text-4xl md:text-5xl text-plum font-black">Dúvidas Frequentes</h2>
-             <p className="font-body text-midnight/70 text-base md:text-lg max-w-xl mx-auto">Tudo o que você precisa saber antes de iniciar sua jornada pelas 78 Chaves.</p>
+             <p className="font-body text-midnight/80 text-base md:text-lg max-w-xl mx-auto">Tudo o que você precisa saber antes de iniciar sua jornada pelas 78 Chaves.</p>
           </div>
           
-          <Accordion type="single" collapsible className="w-full space-y-3 md:space-y-4">
+          <Accordion type="single" collapsible className="w-full space-y-4 md:space-y-5">
             <AccordionItem value="item-access" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Como meu acesso é liberado?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Como meu acesso é liberado?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 O acesso é liberado imediatamente após a confirmação da assinatura. Você receberá os detalhes em seu e-mail cadastrado e poderá cancelar a qualquer momento.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-1" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Por onde eu começo?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Por onde eu começo?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 Você começa pela Chave 1: O Louco. A Escola Digital guia sua jornada passo a passo, com lições curtas, quizzes e progresso salvo para quem possui o programa completo.
               </AccordionContent>
             </AccordionItem>
             
             <AccordionItem value="item-2" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">O que são as 78 Chaves?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">O que são as 78 Chaves?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 As 78 Chaves representam os 78 arcanos do tarô. Cada arcano estudado e concluído se torna uma chave conquistada na sua jornada.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-3" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Preciso saber tarô antes?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Preciso saber tarô antes?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 Não. O Tarô 78 Chaves foi criado para conduzir iniciantes desde a base, com uma jornada progressiva e organizada.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-4" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">A Escola Digital usa qual baralho?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">A Escola Digital usa qual baralho?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 O estudo é baseado no Rider-Waite-Smith, referência clássica para o aprendizado simbólico do tarô.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-5" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">O que está incluso?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">O que está incluso?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 Lições guiadas, quizzes, progresso por Chaves, trilhas de estudo, Arcanos Maiores, Arcanos Menores, práticas e conteúdos progressivos.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-6" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Tarô é profissão regulamentada?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Tarô é profissão regulamentada?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 No Brasil, a leitura de oráculos pode ser reconhecida como ocupação, mas não exige diploma obrigatório nem conselho profissional. A diferença está no método, na ética e na qualidade do atendimento.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-7" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Tem certificado?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Tem certificado?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 Sim. Ao concluir a jornada obrigatória da Escola Digital Tarô 78 Chaves, você poderá emitir seu certificado digital de conclusão dentro da plataforma. O certificado é emitido pelo Tarô 78 Chaves e se refere à conclusão de curso livre/formação livre.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-8" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">O app salva meu progresso?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">O app salva meu progresso?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 Sim. Seu progresso fica salvo para você continuar a jornada dos 78 arcanos no seu ritmo.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-9" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Posso cancelar?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Posso cancelar?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 Se houver assinatura ativa, o gerenciamento e cancelamento podem ser feitos diretamente em seu perfil na plataforma.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-10" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Tenho suporte?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Tenho suporte?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 Sim. Para dúvidas de acesso, pagamento, conta ou suporte pedagógico, acesse nossa <Link to="/suporte" className="underline font-bold text-[#5B1F3D]">Central de Suporte</Link> ou entre em contato pelo e-mail {businessInfo.supportEmail}.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-11" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Como eu acesso a Escola Digital?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Como eu acesso a Escola Digital?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 A Escola Digital Tarô 78 Chaves é online. Você acessa pelo navegador (Chrome, Safari ou direto no app se instalado) e pode salvar o ícone na tela inicial do seu celular para abrir como um aplicativo.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-12" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Como salvo na tela inicial do celular?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Como salvo na tela inicial do celular?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 <p className="mb-2"><strong>No Android:</strong> abra pelo Chrome, toque nos três pontinhos e escolha “Adicionar à tela inicial” ou “Instalar app”.</p>
                 <p><strong>No iPhone:</strong> abra pelo Safari, toque no botão de compartilhar e escolha “Adicionar à Tela de Início”.</p>
               </AccordionContent>
