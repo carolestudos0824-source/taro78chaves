@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Gift, X, Scroll, Bell, Flame, CheckCircle2, Clock, Trophy, Loader2, Sparkles, AlertCircle } from "lucide-react";
+import { ArrowLeft, ChevronRight, Gift, X, Scroll, Bell, Flame, CheckCircle2, Clock, Trophy, Loader2, Sparkles, AlertCircle, ShieldCheck } from "lucide-react";
 import { useRitual } from "@/hooks/use-ritual";
 import { useHeader } from "@/contexts/header-context";
 import { TarotIcon } from "@/components/TarotIcon";
@@ -8,6 +8,7 @@ import { getDailyArcanaSet } from "@/lib/content/arcana-utils";
 import { resolveMaiorVisual } from "@/lib/content/visual-registry";
 import { useProgress } from "@/hooks/use-progress";
 import { useAuth } from "@/hooks/use-auth";
+import { useRole } from "@/hooks/use-role";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useArcanosList, useSymbolsContent } from "@/hooks/use-content";
@@ -51,11 +52,12 @@ const DailyChallengesPage = () => {
 
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { progress, updateStreak: updateOldStreak, fundamentosLessonsCompleted } = useProgress();
+  const { isStaff, isAdmin } = useRole();
+  const { progress, fundamentosLessonsCompleted } = useProgress();
   const { streak: ritualStreak, todayProgress: ritualProgress, completeRitualItem, loading: ritualLoading, merits } = useRitual();
   const { data: arcanos, isLoading: arcanosLoading } = useArcanosList({ tipo: "maior" });
   const { data: symbols, isLoading: symbolsLoading } = useSymbolsContent();
-  const fundamentosComplete = fundamentosLessonsCompleted > 0;
+  const fundamentosComplete = fundamentosLessonsCompleted > 0 || isStaff;
 
   const arcanosList = arcanos ?? [];
   const cartaDoDia = useMemo(() => buildCartaDoDia(arcanosList), [arcanosList]);
@@ -121,7 +123,7 @@ const DailyChallengesPage = () => {
 
     await completeRitualItem(id);
 
-    if (user) {
+    if (user && !isStaff) {
       await supabase
         .from("daily_challenge_completions")
         .insert({
@@ -131,14 +133,23 @@ const DailyChallengesPage = () => {
           xp_earned: 0
         });
     }
-  }, [challenges, user, completeRitualItem]);
+  }, [challenges, user, isStaff, completeRitualItem]);
 
   const [showSummary, setShowSummary] = useState(false);
   const ritualJustFinished = useMemo(() => ritualProgress.completed && !showSummary, [ritualProgress.completed]);
 
   return (
     <div className="min-h-screen relative overflow-x-hidden bg-[#FAF5EF]">
-      {!fundamentosComplete ? (
+      {isStaff && (
+        <div className="fixed top-20 right-6 z-[3000] animate-in fade-in slide-in-from-right-4 duration-500">
+          <div className="flex items-center gap-2 px-4 py-2 bg-plum text-white rounded-full shadow-xl border border-gold/30">
+            <ShieldCheck className="w-4 h-4 text-gold" />
+            <span className="text-[10px] font-heading font-black uppercase tracking-widest">Modo Auditoria</span>
+          </div>
+        </div>
+      )}
+
+      {(!fundamentosComplete && !isStaff) ? (
         <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4 bg-[#FAF5EF]/95 backdrop-blur-xl">
            <div className="bg-white w-full max-w-lg rounded-[3rem] border-2 border-gold shadow-2xl p-10 text-center space-y-8 animate-in zoom-in-95 duration-500">
               <div className="w-24 h-24 bg-gold/10 rounded-full flex items-center justify-center mx-auto">

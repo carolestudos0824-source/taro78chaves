@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
+import { useRole } from "@/hooks/use-role";
 import { toast } from "sonner";
 
 export interface RitualProgress {
@@ -16,6 +17,7 @@ export interface RitualStreak {
 
 export function useRitual() {
   const { user } = useAuth();
+  const { isStaff } = useRole();
   const [loading, setLoading] = useState(true);
   const [streak, setStreak] = useState<RitualStreak>({ current_streak: 0, longest_streak: 0, last_completed_date: null });
   const [todayProgress, setTodayProgress] = useState<RitualProgress>({ completed: false, items: [] });
@@ -75,9 +77,16 @@ export function useRitual() {
     const today = new Date().toISOString().split("T")[0];
     const newItems = [...new Set([...todayProgress.items, itemKey])];
     
-    // Check if all required items are done (Mission of the day)
-    // Required: Carta do Dia, Reflexão, Portal (simplified logic)
     const isNowComplete = newItems.length >= 3;
+
+    // Local update first for immediate feedback
+    setTodayProgress({ completed: isNowComplete, items: newItems });
+
+    // Skip DB updates for staff
+    if (isStaff) {
+      console.log("[useRitual] Skipping DB update for staff member.");
+      return;
+    }
 
     try {
       const { error: progError } = await supabase
@@ -91,7 +100,6 @@ export function useRitual() {
         });
 
       if (progError) throw progError;
-      setTodayProgress({ completed: isNowComplete, items: newItems });
 
       if (isNowComplete && (!streak.last_completed_date || streak.last_completed_date !== today)) {
         await updateStreak(today);
@@ -104,7 +112,7 @@ export function useRitual() {
   };
 
   const updateStreak = async (today: string) => {
-    if (!user) return;
+    if (!user || isStaff) return;
     
     let newStreak = 1;
     const yesterday = new Date();
@@ -137,6 +145,7 @@ export function useRitual() {
   };
 
   const checkMerits = async (currentStreak: number) => {
+    if (isStaff) return;
     const meritMap: Record<number, string> = {
       1: "chama_acesa",
       3: "ritmo_iniciado",
