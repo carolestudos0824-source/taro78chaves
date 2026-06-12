@@ -238,24 +238,27 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       </section>
 
       {/* ─── Pain Section ─── */}
-      <section className="pt-2 pb-8 md:pt-4 md:pb-10 px-6 bg-[#FAF5EF]">
+      <section className="pt-6 pb-12 md:pt-10 md:pb-16 px-6 bg-[#FAF5EF]">
 
         <div className="max-w-3xl mx-auto relative">
           <div className="absolute -top-6 -left-6 md:-top-10 md:-left-10 opacity-10 pointer-events-none">
             <Key className="w-20 h-20 md:w-32 md:h-32 text-gold-dark rotate-[-15deg]" />
           </div>
-          <div className="bg-white/60 backdrop-blur-sm border border-gold/10 p-6 md:p-10 rounded-[3rem] text-center space-y-6 shadow-sm relative z-10">
-            <h2 className="font-heading text-3xl md:text-4xl text-midnight leading-tight">
-              Você já tentou aprender tarô e ficou <span className="italic text-[#5B1F3D]">com dúvidas?</span>
+          <div className="bg-white border border-gold/25 p-8 md:p-14 rounded-[2.5rem] text-center space-y-7 shadow-[0_30px_80px_-40px_rgba(91,31,61,0.35)] relative z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-plum/5 border border-plum/15">
+              <span className="text-[10px] font-heading tracking-[0.25em] uppercase font-bold text-plum/70">Para quem está começando</span>
+            </div>
+            <h2 className="font-heading text-3xl md:text-4xl text-plum leading-tight font-black">
+              Você já tentou aprender tarô e ficou <span className="italic">com dúvidas?</span>
             </h2>
             <div className="space-y-6 max-w-2xl mx-auto">
-              <p className="text-lg font-body text-midnight/70 leading-relaxed">
+              <p className="text-lg font-body text-midnight/80 leading-relaxed">
                 Vídeos soltos, listas de palavras-chave e significados decorados até ajudam no começo. Mas na hora de fazer uma leitura real, os símbolos não conversam.
               </p>
-              <div className="pt-4 border-t border-gold/10">
-                <p className="text-xl font-heading text-[#5B1F3D] tracking-wide leading-snug">
+              <div className="pt-6 border-t border-gold/20">
+                <p className="text-xl md:text-2xl font-heading text-plum tracking-wide leading-snug">
                   O problema não é sua intuição.<br className="hidden md:block" />
-                  <span className="font-bold">É a falta de uma plataforma estruturada.</span>
+                  <span className="font-black">É a falta de uma plataforma estruturada.</span>
                 </p>
               </div>
             </div>
