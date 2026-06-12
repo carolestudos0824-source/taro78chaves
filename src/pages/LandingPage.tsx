@@ -521,14 +521,15 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       <PWAInstructions />
 
       {/* ─── FAQ Section ─── */}
-      <section className="py-24 md:py-32 px-6 bg-white/20">
+      <section className="py-24 md:py-32 px-6 bg-gradient-to-b from-white/30 to-white/10">
         <div className="max-w-4xl mx-auto space-y-16">
           <div className="text-center space-y-4">
-             <HelpCircle className="w-12 h-12 text-gold mx-auto mb-4" />
-             <h2 className="font-heading text-4xl md:text-5xl text-midnight">Dúvidas Frequentes</h2>
+             <HelpCircle className="w-12 h-12 text-gold-dark mx-auto mb-4" />
+             <h2 className="font-heading text-4xl md:text-5xl text-plum font-black">Dúvidas Frequentes</h2>
+             <p className="font-body text-midnight/70 text-base md:text-lg max-w-xl mx-auto">Tudo o que você precisa saber antes de iniciar sua jornada pelas 78 Chaves.</p>
           </div>
           
-          <Accordion type="single" collapsible className="w-full space-y-4">
+          <Accordion type="single" collapsible className="w-full space-y-3 md:space-y-4">
             <AccordionItem value="item-access" className="border-gold/30 bg-white/40 rounded-2xl overflow-hidden px-2">
               <AccordionTrigger className="font-heading text-left hover:text-plum transition-colors font-black text-plum py-6 md:text-xl">Como meu acesso é liberado?</AccordionTrigger>
               <AccordionContent className="font-body text-midnight/80 p-4 pt-0 leading-relaxed md:text-base">
