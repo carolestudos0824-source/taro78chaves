@@ -135,7 +135,9 @@ const RetentionBanner = ({ streak, completedLessons, pontos, level, lastActive }
         if (parsed.date === today && parsed.title === message?.title) {
           setDismissed(true);
         }
-      } catch // No-op callback
+      } catch (e) {
+        // No-op callback
+      }
     }
   }, [message?.title]);
 
