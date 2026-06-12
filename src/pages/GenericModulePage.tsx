@@ -5,6 +5,8 @@ import { PageBackControls } from "@/components/PageBackControls";
 import { useProgress } from "@/hooks/use-progress";
 import { useAccess } from "@/hooks/use-access";
 import { useResolvedModule } from "@/hooks/use-resolved-module";
+import { usePremium } from "@/hooks/use-premium";
+import { useRole } from "@/hooks/use-role";
 import { ChaveProgress } from "@/components/ChaveProgress";
 import { StreakCounter } from "@/components/StreakCounter";
 
