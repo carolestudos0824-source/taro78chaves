@@ -529,99 +529,99 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       {/* ─── FAQ Section ─── */}
       <section className="py-24 md:py-32 px-6 bg-gradient-to-b from-white/30 to-white/10">
         <div className="max-w-4xl mx-auto space-y-16">
-          <div className="text-center space-y-4">
+          <div className="text-center space-y-5">
              <HelpCircle className="w-12 h-12 text-gold-dark mx-auto mb-4" />
              <h2 className="font-heading text-4xl md:text-5xl text-plum font-black">Dúvidas Frequentes</h2>
-             <p className="font-body text-midnight/70 text-base md:text-lg max-w-xl mx-auto">Tudo o que você precisa saber antes de iniciar sua jornada pelas 78 Chaves.</p>
+             <p className="font-body text-midnight/80 text-base md:text-lg max-w-xl mx-auto">Tudo o que você precisa saber antes de iniciar sua jornada pelas 78 Chaves.</p>
           </div>
           
-          <Accordion type="single" collapsible className="w-full space-y-3 md:space-y-4">
+          <Accordion type="single" collapsible className="w-full space-y-4 md:space-y-5">
             <AccordionItem value="item-access" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Como meu acesso é liberado?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Como meu acesso é liberado?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 O acesso é liberado imediatamente após a confirmação da assinatura. Você receberá os detalhes em seu e-mail cadastrado e poderá cancelar a qualquer momento.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-1" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Por onde eu começo?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Por onde eu começo?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 Você começa pela Chave 1: O Louco. A Escola Digital guia sua jornada passo a passo, com lições curtas, quizzes e progresso salvo para quem possui o programa completo.
               </AccordionContent>
             </AccordionItem>
             
             <AccordionItem value="item-2" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">O que são as 78 Chaves?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">O que são as 78 Chaves?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 As 78 Chaves representam os 78 arcanos do tarô. Cada arcano estudado e concluído se torna uma chave conquistada na sua jornada.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-3" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Preciso saber tarô antes?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Preciso saber tarô antes?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 Não. O Tarô 78 Chaves foi criado para conduzir iniciantes desde a base, com uma jornada progressiva e organizada.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-4" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">A Escola Digital usa qual baralho?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">A Escola Digital usa qual baralho?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 O estudo é baseado no Rider-Waite-Smith, referência clássica para o aprendizado simbólico do tarô.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-5" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">O que está incluso?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">O que está incluso?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 Lições guiadas, quizzes, progresso por Chaves, trilhas de estudo, Arcanos Maiores, Arcanos Menores, práticas e conteúdos progressivos.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-6" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Tarô é profissão regulamentada?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Tarô é profissão regulamentada?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 No Brasil, a leitura de oráculos pode ser reconhecida como ocupação, mas não exige diploma obrigatório nem conselho profissional. A diferença está no método, na ética e na qualidade do atendimento.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-7" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Tem certificado?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Tem certificado?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 Sim. Ao concluir a jornada obrigatória da Escola Digital Tarô 78 Chaves, você poderá emitir seu certificado digital de conclusão dentro da plataforma. O certificado é emitido pelo Tarô 78 Chaves e se refere à conclusão de curso livre/formação livre.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-8" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">O app salva meu progresso?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">O app salva meu progresso?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 Sim. Seu progresso fica salvo para você continuar a jornada dos 78 arcanos no seu ritmo.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-9" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Posso cancelar?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Posso cancelar?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 Se houver assinatura ativa, o gerenciamento e cancelamento podem ser feitos diretamente em seu perfil na plataforma.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-10" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Tenho suporte?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Tenho suporte?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 Sim. Para dúvidas de acesso, pagamento, conta ou suporte pedagógico, acesse nossa <Link to="/suporte" className="underline font-bold text-[#5B1F3D]">Central de Suporte</Link> ou entre em contato pelo e-mail {businessInfo.supportEmail}.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-11" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Como eu acesso a Escola Digital?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Como eu acesso a Escola Digital?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 A Escola Digital Tarô 78 Chaves é online. Você acessa pelo navegador (Chrome, Safari ou direto no app se instalado) e pode salvar o ícone na tela inicial do seu celular para abrir como um aplicativo.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-12" className="border border-gold/25 bg-white rounded-2xl overflow-hidden px-5 md:px-6 shadow-[0_8px_30px_-15px_rgba(91,31,61,0.2)] transition-all hover:border-gold/40 hover:shadow-[0_12px_35px_-12px_rgba(91,31,61,0.3)] data-[state=open]:border-gold/50 data-[state=open]:shadow-[0_15px_40px_-15px_rgba(91,31,61,0.35)]">
-              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-6 md:py-7 text-base md:text-xl leading-snug">Como salvo na tela inicial do celular?</AccordionTrigger>
-              <AccordionContent className="font-body text-midnight/80 pb-6 pt-2 leading-relaxed text-[15px] md:text-base">
+              <AccordionTrigger className="font-heading text-left hover:no-underline font-black text-plum py-7 md:py-8 text-[15px] md:text-xl leading-snug">Como salvo na tela inicial do celular?</AccordionTrigger>
+              <AccordionContent className="font-body text-midnight/85 pb-6 pt-2 leading-relaxed text-base">
                 <p className="mb-2"><strong>No Android:</strong> abra pelo Chrome, toque nos três pontinhos e escolha “Adicionar à tela inicial” ou “Instalar app”.</p>
                 <p><strong>No iPhone:</strong> abra pelo Safari, toque no botão de compartilhar e escolha “Adicionar à Tela de Início”.</p>
               </AccordionContent>
