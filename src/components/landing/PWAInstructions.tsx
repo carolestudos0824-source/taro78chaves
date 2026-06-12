@@ -19,7 +19,7 @@ export const PWAInstructions = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
           {/* Card Android */}
           <div className="p-8 md:p-12 rounded-[2.5rem] bg-white border border-gold/10 shadow-sm space-y-8 transition-all hover:shadow-md relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-6 opacity-[0.05] group-hover:opacity-10 transition-opacity">
