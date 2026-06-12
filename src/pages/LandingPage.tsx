@@ -380,23 +380,31 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       </section>
 
       {/* ─── Institutional Block ─── */}
-      <section className="py-20 px-6 bg-white relative overflow-hidden">
-        <div className="max-w-4xl mx-auto space-y-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="font-heading text-3xl md:text-4xl text-plum">Quem está por trás do Tarô 78 Chaves</h2>
-              <p className="text-lg font-body text-midnight/80 leading-relaxed">
-                O Tarô 78 Chaves é uma escola digital da Lua de Kaya, criada para ensinar Tarô com profundidade, simbologia e aplicação prática.
+      <section className="py-24 md:py-32 px-6 bg-white relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="max-w-5xl mx-auto space-y-12 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-14 items-center">
+            <div className="md:col-span-3 space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plum/5 border border-plum/15 text-plum font-heading text-[10px] md:text-xs tracking-[0.25em] uppercase font-bold">
+                Institucional
+              </div>
+              <h2 className="font-heading text-3xl md:text-5xl text-plum font-black leading-tight">Quem está por trás do Tarô 78 Chaves</h2>
+              <p className="text-lg md:text-xl font-body text-midnight/85 leading-relaxed">
+                O Tarô 78 Chaves é uma escola digital da <span className="font-bold text-plum">Lua de Kaya</span>, criada para ensinar Tarô com profundidade, simbologia e aplicação prática.
               </p>
               <p className="text-lg font-body text-midnight/80 leading-relaxed">
-                A jornada foi estruturada para conduzir a aluna arcano por arcano, com lições guiadas, quizzes, progresso salvo e uma metodologia pensada para transformar estudo em prática real.
+                A jornada foi estruturada para conduzir você arcano por arcano, com lições guiadas, quizzes, progresso salvo e uma metodologia pensada para transformar estudo em prática real.
+              </p>
+              <p className="font-accent text-lg md:text-xl text-gold-dark font-bold italic border-l-4 border-gold/50 pl-5 py-2 bg-gold/5 rounded-r-xl">
+                “No app Tarô 78 Chaves, o tarô deixa de ser imagem e se torna presença.”
               </p>
             </div>
-            <div className="relative">
-              <div className="aspect-square rounded-3xl bg-plum/5 border-2 border-gold/20 flex items-center justify-center p-8">
-                <img src={brandLogo} alt="Lua de Kaya - Tarô 78 Chaves" className="w-full h-full object-contain opacity-80" />
+            <div className="md:col-span-2 relative">
+              <div className="aspect-square rounded-[2rem] bg-gradient-to-br from-plum/[0.04] to-gold/[0.08] border border-gold/30 flex items-center justify-center p-10 shadow-[0_30px_70px_-30px_rgba(91,31,61,0.3)]">
+                <img src={brandLogo} alt="Lua de Kaya - Tarô 78 Chaves" className="w-full h-full object-contain" />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-gold/10 rounded-full blur-2xl" />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gold/15 rounded-full blur-3xl" />
+              <div className="absolute -top-4 -left-4 w-24 h-24 bg-plum/10 rounded-full blur-2xl" />
             </div>
           </div>
         </div>
