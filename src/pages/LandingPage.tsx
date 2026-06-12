@@ -126,7 +126,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
       </header>
 
       {/* ─── Hero Section ─── */}
-      <section className="relative pt-2 pb-6 md:pt-4 md:pb-2 px-6 overflow-hidden flex flex-col items-center min-h-fit mt-0">
+      <section className="relative pt-6 pb-10 md:pt-10 md:pb-16 px-6 overflow-hidden flex flex-col items-center min-h-fit mt-0">
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-gold/15 blur-[120px]" />
@@ -136,69 +136,69 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             
-            <div className="text-center lg:text-left space-y-3 md:space-y-4 order-1 lg:order-1">
+            <div className="text-center lg:text-left space-y-5 md:space-y-7 order-1 lg:order-1">
               {/* Symbolic Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 md:px-5 md:py-1.5 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in mb-1 md:mb-1">
+              <div className="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2 rounded-full bg-plum/5 border border-gold/30 shadow-sm animate-fade-in">
                 <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-gold-dark" />
-                <span className="text-[10px] md:text-[11px] font-heading tracking-[0.2em] md:tracking-[0.25em] uppercase font-bold text-plum">
+                <span className="text-[10px] md:text-[11px] font-heading tracking-[0.25em] uppercase font-bold text-plum">
                   A jornada viva dos 78 arcanos
                 </span>
               </div>
 
-              <div className="space-y-3 md:space-y-4">
-                <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl leading-[1.05] md:leading-[1] tracking-tight text-plum normal-case font-black">
+              <div className="space-y-5 md:space-y-7">
+                <h1 className="font-heading text-[2.6rem] md:text-6xl lg:text-7xl leading-[1.02] tracking-tight text-plum normal-case font-black">
                   Domine o Tarô <br className="hidden md:block" /> em uma Escola Digital
                 </h1>
                 
-                <div className="space-y-2 md:space-y-3">
-                  <p className="font-heading text-xl md:text-2xl text-plum font-extrabold leading-tight">
+                <div className="space-y-3 md:space-y-4">
+                  <p className="font-heading text-xl md:text-2xl text-plum font-extrabold leading-snug">
                     Você quer aprender Tarô, mas ainda trava na hora de interpretar as cartas?
                   </p>
                   <p className="font-body text-lg md:text-xl text-plum/90 leading-relaxed font-medium">
                     No Tarô 78 Chaves, você percorre cada arcano com método, lições curtas e progressão real.
                   </p>
-                  <p className="font-body text-base md:text-lg text-plum/80 leading-relaxed">
+                  <p className="font-body text-base md:text-lg text-plum/75 leading-relaxed">
                     Aprenda Tarô do zero, carta por carta, em uma jornada guiada com lições curtas, exercícios, quizzes, progresso salvo e prática diária.
                   </p>
                 </div>
 
-                <p className="font-accent text-sm md:text-base text-gold-dark font-bold italic border-l-4 border-gold/40 pl-5 py-1.5 bg-gold/5 rounded-r-xl">
+                <p className="font-accent text-sm md:text-base text-gold-dark font-bold italic border-l-4 border-gold/50 pl-5 py-3 bg-gold/5 rounded-r-xl">
                   “O Tarô 78 Chaves ensina com base fiel na tradição visual do Rider-Waite-Smith, preservando a carta como protagonista.”
                 </p>
 
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-6 pt-0 md:pt-1 font-heading text-[9px] md:text-xs tracking-[0.15em] md:tracking-[0.2em] uppercase text-plum font-extrabold drop-shadow-sm">
-                  <div className="flex items-center gap-1.5 group">
-                    <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
-                      <Zap className="w-2.5 h-2.5 md:w-3 md:h-3 text-gold-dark" />
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-7 pt-1 font-heading text-[9px] md:text-xs tracking-[0.2em] uppercase text-plum font-extrabold">
+                  <div className="flex items-center gap-2 group">
+                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/30">
+                      <Zap className="w-3 h-3 md:w-3.5 md:h-3.5 text-gold-dark" />
                     </div>
                     <span>Quizzes de Conhecimento</span>
                   </div>
-                  <div className="flex items-center gap-1.5 group">
-                    <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/20">
-                      <Layers className="w-2.5 h-2.5 md:w-3 md:h-3 text-gold-dark" />
+                  <div className="flex items-center gap-2 group">
+                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors border border-gold/30">
+                      <Layers className="w-3 h-3 md:w-3.5 md:h-3.5 text-gold-dark" />
                     </div>
                     <span>Progresso salvo</span>
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-start gap-1 pt-0 w-full">
+              <div className="flex flex-col items-center lg:items-start gap-3 pt-3 w-full">
                 <Button 
                   onClick={() => handleStart("hero", "COMEÇAR MINHA JORNADA")}
-                  className="w-full sm:w-auto min-h-[64px] md:min-h-[72px] px-4 md:px-14 rounded-2xl bg-plum hover:bg-plum/90 text-ivory font-heading text-lg md:text-lg tracking-[0.1em] md:tracking-[0.25em] uppercase border-none shadow-[0_20px_50px_-15px_rgba(91,31,61,0.7)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3 md:gap-4 group/btn whitespace-normal text-center leading-tight"
+                  className="w-full sm:w-auto min-h-[68px] md:min-h-[76px] px-6 md:px-16 rounded-2xl bg-gradient-to-br from-plum to-[#3f1429] hover:from-plum hover:to-plum text-ivory font-heading text-base md:text-lg tracking-[0.15em] md:tracking-[0.25em] uppercase border border-gold/30 shadow-[0_24px_60px_-18px_rgba(91,31,61,0.75)] hover:shadow-[0_28px_70px_-16px_rgba(91,31,61,0.85)] transition-all hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3 md:gap-4 group/btn whitespace-normal text-center leading-tight font-black"
                 >
                   <Key className="w-5 h-5 md:w-6 md:h-6 group-hover/btn:rotate-12 transition-transform text-gold shrink-0" />
                   <span>COMEÇAR MINHA JORNADA</span>
                 </Button>
-                <div className="flex flex-col items-center lg:items-start gap-0.5 mt-1 md:mt-1">
+                <div className="flex flex-col items-center lg:items-start gap-1 mt-1">
                   {isWebCheckoutAllowed() && (
                     <>
-                      <p className="text-[11px] md:text-base font-heading tracking-[0.1em] text-plum/80 font-bold uppercase">
+                      <p className="text-[11px] md:text-sm font-heading tracking-[0.1em] text-plum/90 font-bold uppercase">
                         ✦ Assinatura mensal por apenas R$27/mês.
                       </p>
-                      <p className="text-[10px] md:text-xs font-body text-plum/50 italic">
+                      <p className="text-[10px] md:text-xs font-body text-plum/55 italic">
                         Cancele quando quiser. Acesso imediato.
                       </p>
                     </>
@@ -217,7 +217,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
                       window.location.hash = "#como-funciona";
                     }
                   }} 
-                  className="group inline-flex items-center gap-2 text-[10px] md:text-[11px] font-heading tracking-[0.2em] uppercase text-plum hover:text-gold-dark underline underline-offset-4 transition-all font-extrabold cursor-pointer p-2 mt-2 md:mt-0"
+                  className="group inline-flex items-center gap-2 text-[10px] md:text-[11px] font-heading tracking-[0.25em] uppercase text-plum hover:text-gold-dark underline underline-offset-4 transition-all font-extrabold cursor-pointer p-2 mt-1"
                 >
                   Ver como funciona
                   <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
@@ -225,7 +225,7 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
               </div>
             </div>
 
-            <div className="relative flex justify-center lg:justify-end order-2 lg:order-2 mt-4 md:mt-0">
+            <div className="relative flex justify-center lg:justify-end order-2 lg:order-2 mt-6 md:mt-0 lg:scale-110 lg:origin-right">
               <ArcanaPresenceHero 
                 mainCard={imgLouco}
                 backCardLeft={imgMago}
