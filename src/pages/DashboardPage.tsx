@@ -75,34 +75,29 @@ const DashboardPage = () => {
   const globalProgressPct = Math.round((totalCompletedArcanos / totalArcanosCount) * 100);
 
   const currentStep = useMemo(() => {
-    // Priority: Fundamentos
-    for (let i = 0; i < FUNDAMENTOS_LESSONS.length; i++) {
-      const lesson = FUNDAMENTOS_LESSONS[i];
-      const studyCompleted = progress.completedLessons.includes(lesson.id);
-      const quizCompleted = progress.completedQuizzes.includes(`quiz-${lesson.id}`);
-      
-      if (!studyCompleted || !quizCompleted) {
-        return {
-          type: "fundamentos" as const,
-          id: lesson.id,
-          name: lesson.title,
-          numeral: (i + 1).toString(),
-          label: "Lição",
-          image: imgLouco,
-          moduleName: "Fundamentos do Tarô",
-          moduleSlug: "fundamentos",
-          lessonId: lesson.id,
-          lessonName: lesson.title,
-          route: `/fundamentos/${lesson.order}`
-        };
-      }
+    // Priority: Fundamentos Lesson 1
+    const lesson1 = FUNDAMENTOS_LESSONS[0];
+    const lesson1StudyDone = progress.completedLessons.includes(lesson1.id);
+    const lesson1QuizDone = progress.completedQuizzes.includes(`quiz-${lesson1.id}`);
+    
+    if (!lesson1StudyDone || !lesson1QuizDone) {
+      return {
+        type: "fundamentos" as const,
+        id: lesson1.id,
+        name: lesson1.title,
+        numeral: "1",
+        label: "Lição",
+        image: imgLouco,
+        moduleName: "Fundamentos do Tarô",
+        moduleSlug: "fundamentos",
+        lessonId: lesson1.id,
+        lessonName: lesson1.title,
+        route: `/fundamentos/${lesson1.order}`
+      };
     }
 
     // Arcano 0 (The Fool) - Accessible for FREE after Lesson 1
-    const lesson1Completed = progress.completedLessons.includes(FUNDAMENTOS_LESSONS[0]?.id) && 
-                             progress.completedQuizzes.includes(`quiz-${FUNDAMENTOS_LESSONS[0]?.id}`);
-
-    if (lesson1Completed && !progress.completedLessons.includes("arcano-0")) {
+    if (!progress.completedLessons.includes("arcano-0")) {
       return {
         type: "arcano" as const,
         id: 0,
@@ -119,8 +114,30 @@ const DashboardPage = () => {
       };
     }
 
-    // Standard progression for subscribers
+    // Standard progression for subscribers (rest of Fundamentos and other Arcanos)
     if (isPremium || isAdmin || isAuditor) {
+      // Continue with remaining Fundamentos
+      for (let i = 1; i < FUNDAMENTOS_LESSONS.length; i++) {
+        const lesson = FUNDAMENTOS_LESSONS[i];
+        const studyCompleted = progress.completedLessons.includes(lesson.id);
+        const quizCompleted = progress.completedQuizzes.includes(`quiz-${lesson.id}`);
+        
+        if (!studyCompleted || !quizCompleted) {
+          return {
+            type: "fundamentos" as const,
+            id: lesson.id,
+            name: lesson.title,
+            numeral: (i + 1).toString(),
+            label: "Lição",
+            image: imgLouco,
+            moduleName: "Fundamentos do Tarô",
+            moduleSlug: "fundamentos",
+            lessonId: lesson.id,
+            lessonName: lesson.title,
+            route: `/fundamentos/${lesson.order}`
+          };
+        }
+      }
       for (let i = 1; i <= 21; i++) {
         if (!progress.completedLessons.includes(`arcano-${i}`)) {
           const summary = ARCANOS_MAIORES_CATALOG[i];
