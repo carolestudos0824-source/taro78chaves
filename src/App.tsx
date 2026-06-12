@@ -191,6 +191,30 @@ const AppRoutes = () => {
               <Route path="/numerologia" element={<NumerologiaPage />} />
               <Route path="/presentation" element={<PresentationPage />} />
               
+              {/* Alias routes for modules and common paths */}
+              <Route path="/module/arquitetura-menores" element={<Navigate to="/arquitetura-menores" replace />} />
+              <Route path="/module/arcanos-maiores" element={<Navigate to="/jornada-do-louco" replace />} />
+              <Route path="/module/leitura-simbolica" element={<Navigate to="/leitura-simbolica" replace />} />
+              <Route path="/module/fundamentos" element={<Navigate to="/fundamentos" replace />} />
+              <Route path="/module/copas" element={<Navigate to="/naipe/copas" replace />} />
+              <Route path="/module/paus" element={<Navigate to="/naipe/paus" replace />} />
+              <Route path="/module/espadas" element={<Navigate to="/naipe/espadas" replace />} />
+              <Route path="/module/ouros" element={<Navigate to="/naipe/ouros" replace />} />
+              <Route path="/module/cartas-corte" element={<Navigate to="/cartas-corte" replace />} />
+              <Route path="/module/combinacoes" element={<Navigate to="/combinacoes" replace />} />
+              <Route path="/module/tiragens" element={<Navigate to="/tiragens" replace />} />
+              <Route path="/module/espiritualidade" element={<Navigate to="/espiritualidade" replace />} />
+              <Route path="/module/mesa-taro" element={<Navigate to="/mesa-taro" replace />} />
+              <Route path="/module/leitura-aplicada" element={<Navigate to="/leitura-aplicada" replace />} />
+              <Route path="/module/pratica" element={<Navigate to="/pratica" replace />} />
+              <Route path="/module/trabalhar-taro" element={<Navigate to="/trabalhar-taro" replace />} />
+              <Route path="/biblioteca" element={<Navigate to="/library" replace />} />
+              <Route path="/trilhas" element={<Navigate to="/trails" replace />} />
+              <Route path="/privacidade" element={<Navigate to="/privacy" replace />} />
+              <Route path="/termos" element={<Navigate to="/terms" replace />} />
+              <Route path="/suporte" element={<Navigate to="/support" replace />} />
+              <Route path="/excluir-conta" element={<Navigate to="/delete-account" replace />} />
+
               {/* Catch all for nested app routes to avoid NotFound inside the shell */}
               <Route path="/perfil/*" element={<Navigate to="/profile" replace />} />
               <Route path="/mapa/*" element={<Navigate to="/trails" replace />} />
