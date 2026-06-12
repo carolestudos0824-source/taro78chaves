@@ -98,11 +98,7 @@ const DashboardPage = () => {
       }
     }
 
-    // Arcano 0 (The Fool) - Accessible for FREE after Lesson 1 (which is checked above by finishing all Fundamentos loop)
-    // Wait, the rule says: after Lesson 1 of Fundamentos.
-    // If FUNDAMENTOS_LESSONS[0] is completed, and we are on index >= 1, it should show Arcano 0.
-    
-    // Let's refine the logic:
+    // Arcano 0 (The Fool) - Accessible for FREE after Lesson 1
     const lesson1Completed = progress.completedLessons.includes(FUNDAMENTOS_LESSONS[0]?.id) && 
                              progress.completedQuizzes.includes(`quiz-${FUNDAMENTOS_LESSONS[0]?.id}`);
 
