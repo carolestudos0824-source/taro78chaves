@@ -656,10 +656,10 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
         </div>
 
         <nav className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-[13px] md:text-[14px] font-heading tracking-[0.25em] uppercase relative z-10 px-4">
-          <Link to="/privacidade" onClick={() => trackEvent("landing_legal_link_click", { link_name: "privacidade", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Privacidade</Link>
-          <Link to="/termos" onClick={() => trackEvent("landing_legal_link_click", { link_name: "termos", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Termos</Link>
-          <Link to="/suporte" onClick={() => trackEvent("landing_legal_link_click", { link_name: "suporte", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Suporte</Link>
-          <Link to="/excluir-conta" onClick={() => trackEvent("landing_legal_link_click", { link_name: "excluir_conta", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-black border-b border-gold/40 pb-1">Excluir conta</Link>
+          <Link to="/privacidade" onClick={() => trackEvent("landing_legal_link_click", { link_name: "privacidade", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-bold border-b border-gold/50 pb-1.5 hover:border-gold">Privacidade</Link>
+          <Link to="/termos" onClick={() => trackEvent("landing_legal_link_click", { link_name: "termos", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-bold border-b border-gold/50 pb-1.5 hover:border-gold">Termos</Link>
+          <Link to="/suporte" onClick={() => trackEvent("landing_legal_link_click", { link_name: "suporte", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-bold border-b border-gold/50 pb-1.5 hover:border-gold">Suporte</Link>
+          <Link to="/excluir-conta" onClick={() => trackEvent("landing_legal_link_click", { link_name: "excluir_conta", source: "landing" })} className="text-ivory hover:text-gold transition-colors font-bold border-b border-gold/50 pb-1.5 hover:border-gold">Excluir conta</Link>
         </nav>
 
         <div className="pt-8 border-t border-gold/10 max-w-sm mx-auto relative z-10">
