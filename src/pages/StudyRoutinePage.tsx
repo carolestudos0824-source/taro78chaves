@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Flame, BookOpen, RefreshCw, Sun, Target, TrendingUp, Check, Clock, Bell, BellOff, Settings2, Send } from "lucide-react";
+import { ArrowLeft, ChevronRight, Flame, BookOpen, RefreshCw, Sun, Target, TrendingUp, Check, Clock, Bell, BellOff, Settings2, Send, ShieldCheck } from "lucide-react";
 import { useProgress } from "@/hooks/use-progress";
 import { MODULES_CATALOG as MODULES, ARCANOS_MAIORES_CATALOG as ARCANOS_MAIORES, getArcanoFull as getArcanoById, isModuleUnlocked } from "@/lib/content";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
+import { useRole } from "@/hooks/use-role";
 import { toast } from "sonner";
 
 const WEEKDAYS = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
@@ -14,7 +15,8 @@ const VAPID_PUBLIC_KEY = "BE_rHyGjRLwNmJuB1sRvIbMVjmqdSHdXBZB2HxGNuz10fCiDYT9dwj
 const StudyRoutinePage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { progress, completedCount, journeyProgress } = useProgress();
+  const { isStaff } = useRole();
+  const { progress, fundamentosLessonsCompleted } = useProgress();
   const [loading, setLoading] = useState(true);
   const [pref, setPref] = useState<{ enabled: boolean; reminder_time: string } | null>(null);
   const [isiOS, setIsIOS] = useState(false);
@@ -190,7 +192,7 @@ const StudyRoutinePage = () => {
   };
 
   // ─── Current lesson ───
-  const fundamentosComplete = progress.completedLessons.length > 0;
+  const fundamentosComplete = fundamentosLessonsCompleted > 0;
   const currentArcanoId = progress.completedLessons.length; // Simplified for UI
   const currentArcano = getArcanoById(currentArcanoId);
   const currentModule = MODULES.find(m => {
@@ -206,6 +208,15 @@ const StudyRoutinePage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden pb-bottom-nav">
+      {isStaff && (
+        <div className="fixed top-24 right-6 z-[3000] animate-in fade-in slide-in-from-right-4 duration-500">
+          <div className="flex items-center gap-2 px-4 py-2 bg-plum text-white rounded-full shadow-xl border border-gold/30">
+            <ShieldCheck className="w-4 h-4 text-gold" />
+            <span className="text-[10px] font-heading font-black uppercase tracking-widest">Modo Auditoria</span>
+          </div>
+        </div>
+      )}
+
       <div className="fixed inset-0 z-0 mystic-bg-procedural">
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #FAF5EF 0%, #F5EBDE 45%, #EFE2D2 100%)", opacity: 0.98 }} />
       </div>
@@ -231,7 +242,7 @@ const StudyRoutinePage = () => {
       </header>
 
       <div className="relative z-10 max-w-lg mx-auto px-6 pb-32 space-y-10 mt-12">
-        {!fundamentosComplete ? (
+        {(!fundamentosComplete && !isStaff) ? (
           <div className="relative rounded-[2.5rem] overflow-hidden p-8 transition-all duration-500 bg-white border-2 border-gold shadow-2xl shadow-plum/10 text-center space-y-6">
             <h3 className="text-2xl font-heading font-black text-plum">
               Seu ritual será liberado depois da primeira lição.
