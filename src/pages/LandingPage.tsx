@@ -271,9 +271,13 @@ const LandingPage = ({ isSalesPage = false }: { isSalesPage?: boolean }) => {
         <div className="absolute top-1/2 left-0 w-full h-px bg-gold/10 -translate-y-1/2 z-0" />
         
         <div className="max-w-7xl mx-auto px-0 md:px-6 relative z-10">
-          <div className="text-center mb-16 px-6 space-y-4">
-            <h2 className="font-heading text-3xl md:text-4xl text-midnight">Explore a Trilha do Conhecimento</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto font-body">Uma jornada guiada pelos 78 arcanos, com fidelidade simbólica ao Rider-Waite-Smith e lições curtas.</p>
+          <div className="text-center mb-16 px-6 space-y-5">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold-dark font-heading text-[10px] md:text-xs tracking-[0.25em] uppercase font-bold">
+              <Key className="w-3.5 h-3.5" />
+              78 Chaves · 78 Portais
+            </div>
+            <h2 className="font-heading text-3xl md:text-5xl text-plum font-black">Explore a Trilha do Conhecimento</h2>
+            <p className="text-midnight/70 max-w-2xl mx-auto font-body text-base md:text-lg leading-relaxed">Uma jornada guiada pelos 78 arcanos, com fidelidade simbólica ao Rider-Waite-Smith. Cada carta concluída é uma Chave que abre o próximo Portal.</p>
           </div>
 
           <div className="relative">
