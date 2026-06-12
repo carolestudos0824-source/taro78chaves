@@ -210,10 +210,10 @@ const AppRoutes = () => {
               <Route path="/module/trabalhar-taro" element={<Navigate to="/trabalhar-taro" replace />} />
               <Route path="/biblioteca" element={<Navigate to="/library" replace />} />
               <Route path="/trilhas" element={<Navigate to="/trails" replace />} />
-              <Route path="/privacidade" element={<Navigate to="/privacy" replace />} />
-              <Route path="/termos" element={<Navigate to="/terms" replace />} />
-              <Route path="/suporte" element={<Navigate to="/support" replace />} />
-              <Route path="/excluir-conta" element={<Navigate to="/delete-account" replace />} />
+              <Route path="/privacy" element={<Navigate to="/privacidade" replace />} />
+              <Route path="/terms" element={<Navigate to="/termos" replace />} />
+              <Route path="/support" element={<Navigate to="/suporte" replace />} />
+              <Route path="/delete-account" element={<Navigate to="/excluir-conta" replace />} />
 
               {/* Catch all for nested app routes to avoid NotFound inside the shell */}
               <Route path="/perfil/*" element={<Navigate to="/perfil" replace />} />
@@ -223,10 +223,10 @@ const AppRoutes = () => {
 
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/reset-password" element={<ResetPasswordPage />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="/support" element={<SupportPage />} />
-            <Route path="/delete-account" element={<DeleteAccountPage />} />
+            <Route path="/privacidade" element={<PrivacyPage />} />
+            <Route path="/termos" element={<TermsPage />} />
+            <Route path="/suporte" element={<SupportPage />} />
+            <Route path="/excluir-conta" element={<DeleteAccountPage />} />
             <Route path="/validate-certificate" element={<ValidateCertificatePage />} />
             <Route path="/certificate-model" element={<CertificateVisualModel />} />
             
